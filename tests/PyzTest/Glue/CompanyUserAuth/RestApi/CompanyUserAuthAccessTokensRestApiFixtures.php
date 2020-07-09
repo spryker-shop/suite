@@ -96,6 +96,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     protected function createOauthResponseForCompanyUser(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
     {
         $customerTransfer = $this->createCustomerWithCompanyUser($I);
+        $customerTransfer = $I->confirmCustomer($customerTransfer);
 
         return $I->haveAuthorizationToGlue($customerTransfer);
     }
@@ -108,6 +109,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     protected function createOauthResponseForNotCompanyUser(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
     {
         $customerTransfer = $this->createCustomer($I);
+        $customerTransfer = $I->confirmCustomer($customerTransfer);
 
         return $I->haveAuthorizationToGlue($customerTransfer);
     }
@@ -121,6 +123,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
         CompanyUserAuthRestApiTester $I
     ): OauthResponseTransfer {
         $customerTransfer = $this->createCustomerWithTwoCompanyUsers($I);
+        $customerTransfer = $I->confirmCustomer($customerTransfer);
 
         return $I->haveAuthorizationToGlue($customerTransfer);
     }

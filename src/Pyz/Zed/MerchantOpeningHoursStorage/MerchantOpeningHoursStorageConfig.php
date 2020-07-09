@@ -8,6 +8,7 @@
 namespace Pyz\Zed\MerchantOpeningHoursStorage;
 
 use Pyz\Zed\Synchronization\SynchronizationConfig;
+use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\MerchantOpeningHoursStorage\MerchantOpeningHoursStorageConfig as SprykerMerchantOpeningHoursStorageConfig;
 
 class MerchantOpeningHoursStorageConfig extends SprykerMerchantOpeningHoursStorageConfig
@@ -18,5 +19,13 @@ class MerchantOpeningHoursStorageConfig extends SprykerMerchantOpeningHoursStora
     public function getMerchantOpeningHoursSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
     }
 }

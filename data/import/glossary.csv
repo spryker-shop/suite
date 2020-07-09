@@ -385,6 +385,8 @@ global.cart,Warenkorb,de_DE
 global.cart,Cart,en_US
 global.no_image_available,Kein Bild verfügbar,de_DE
 global.no_image_available,No image available,en_US
+global.add-to-cart,In den Warenkorb,de_DE
+global.add-to-cart,Add to Cart,en_US
 error.404,Error 404,de_DE
 error.404,Error 404,en_US
 homepage.carousel.previous,Zurück,de_DE
@@ -489,6 +491,10 @@ customer.anonymization.failed,Your account could not be deleted,en_US
 customer.anonymization.failed,Ihr Account konnte nicht gelöscht werden.,de_DE
 customer.authorization.success,Registration Successful,en_US
 customer.authorization.success,Registrierung erfolgreich,de_DE
+customer.authorization.success,"Almost there! We send you an email to validate your email address. Please confirm it to be able to log in.",en_US
+customer.authorization.success,"Fast dort! Wir senden Ihnen eine E-Mail, um Ihre E-Mail-Adresse zu bestätigen. Bitte bestätigen Sie dies, um sich anmelden zu können.",de_DE
+customer.authorization.account_confirmed,"Your email address is validated. Please login to continue.",en_US
+customer.authorization.account_confirmed,"Ihre E-Mail-Adresse wird bestätigt. Bitte einloggen zum Fortfahren.",de_DE
 customer.profile.change.success,Profile was successfully saved,en_US
 customer.profile.change.success,Profil wurde erfolgreich gespeichert,de_DE
 customer.password.invalid_password,Current password is wrong,en_US
@@ -573,6 +579,8 @@ customer.order.payment,Zahlung,de_DE
 customer.order.payment,Payment,en_US
 customer.order.complete_checkout,Gesamtsumme,de_DE
 customer.order.complete_checkout,Complete checkout,en_US
+customer.order.items_state,Items State,en_US
+customer.order.items_state,Stand der Artikel,de_DE
 customer.newsletter.subscription,Newsletter settings,en_US
 customer.newsletter.subscription,Meine Newsletter Einstellungen,de_DE
 customer.newsletter.subscription_agreement,I agree to newsletter subscription,en_US
@@ -991,6 +999,8 @@ mail.company.status.subject,Your company has changed status,en_US
 mail.company.status.subject,Ihre Firma hat den Status geändert,de_DE
 mail.company.status.text,Your company has changed status to: ,en_US
 mail.company.status.text,Ihre Firma hat den Status geändert zu: ,de_DE
+mail.company.status.pending,Waiting for Approval,en_US
+mail.company.status.pending,Warten auf die Bestätigung,de_DE
 mail.company.status.approved,Approved ,en_US
 mail.company.status.approved,Bestätigt,de_DE
 mail.company.status.denied,Denied,en_US
@@ -1079,6 +1089,10 @@ mail.order.shipped.footer.text_line_1,Viele Grüße,de_DE
 mail.order.shipped.footer.text_line_1,Have a great day!,en_US
 mail.order.shipped.footer.text_line_2,Dein Spryker Shop,de_DE
 mail.order.shipped.footer.text_line_2,Your Spryker Shop,en_US
+mail.order_invoice.subject,"Invoice: %invoiceReference%",en_US
+mail.order_invoice.subject,"Rechnung: %invoiceReference%",de_DE
+mail.trans.customerRegistration.confirmationLink,"Validate your email address",en_US
+mail.trans.customerRegistration.confirmationLink,"Bestätigen Sie Ihre E-Mail-Adresse",de_DE
 cart.item.remove.confirm,Are you sure that you want to remove this item?,en_US
 cart.item.remove.confirm,"Sind Sie sicher, dass Sie diesen Artikel entfernen möchten?",de_DE
 cart.voucher.remove,Remove,en_US
@@ -3457,6 +3471,14 @@ oms.state.shipped-by-merchant,Shipped by merchant,en_US
 oms.state.shipped-by-merchant,Von dem Händler versandt,de_DE
 oms.state.return-canceled,Return canceled,en_US
 oms.state.return-canceled,Retoure wurde abgebrochen,de_DE
+oms.state.merchant-split-pending,Merchant split pending,en_US
+oms.state.merchant-split-pending,Händleraufteilung steht noch aus,de_DE
+oms.state.gift-card-purchased,Gift card purchased,en_US
+oms.state.gift-card-purchased,Geschenkkarte gekauft,de_DE
+oms.state.gift-card-created,Gift card created,en_US
+oms.state.gift-card-created,Geschenkkarte erstellt,de_DE
+oms.state.gift-card-shipped,Gift card shipped,en_US
+oms.state.gift-card-shipped,Geschenkkarte verschickt,de_DE
 return.create_return.validation.returnable_items_error,Return cannot be created as it contains non-returnable items,en_US
 return.create_return.validation.returnable_items_error,"Retoure kann nicht angestellt werden, weil sie die Artikel beinhaltet, die nicht retourniert werden können",de_DE
 return.create_return.validation.store_error,Return cannot be created - a wrong store has been selected,en_US
@@ -3465,6 +3487,8 @@ return.create_return.validation.items_error,Return cannot be cretaed for this se
 return.create_return.validation.items_error,Für dieses Set der Artikel kann die Retoure nicht erstellt werden,de_DE
 return.return_policy.returnable_till.message,Returnable till: %date%,en_US
 return.return_policy.returnable_till.message,Man kann retournieren bis: %date%,de_DE
+cart_page.error_message.unexpected_error,Unexpected error occurred.,en_US
+cart_page.error_message.unexpected_error,Ein unerwarteter Fehler aufgetreten.,de_DE
 sales.error.customer_order_not_found,Customer Order not found.,en_US
 sales.error.customer_order_not_found,Die Bestellung wurde nicht gefunden.,de_DE
 sales.error.order_cannot_be_canceled_due_to_wrong_item_state,Order cannot be canceled due to wrong item state.,en_US
@@ -3473,3 +3497,198 @@ order_cancel_widget.cancel_order,Cancel Order,en_US
 order_cancel_widget.cancel_order,Bestellung stornieren,de_DE
 order_cancel_widget.order.cancelled,Order was canceled successfully.,en_US
 order_cancel_widget.order.cancelled,Die Bestellung wurde erfolgreich storniert.,de_DE
+order_invoice.invoice_template.table.number,Pos.,en_US
+order_invoice.invoice_template.table.number,Pos.,de_DE
+order_invoice.invoice_template.table.quantity,Quantity,en_US
+order_invoice.invoice_template.table.quantity,Menge,de_DE
+order_invoice.invoice_template.table.name,Item,en_US
+order_invoice.invoice_template.table.name,Artikelbezeihnung,de_DE
+order_invoice.invoice_template.table.tax,Tax rate,en_US
+order_invoice.invoice_template.table.tax,Steuersatz,de_DE
+order_invoice.invoice_template.table.price,Price,en_US
+order_invoice.invoice_template.table.price,Preis,de_DE
+order_invoice.invoice_template.table.subtotal,Subtotal,en_US
+order_invoice.invoice_template.table.subtotal,Zwischensumme,de_DE
+order_invoice.invoice_template.table.discount,Discount,en_US
+order_invoice.invoice_template.table.discount,Rabatt,de_DE
+order_invoice.invoice_template.table.tax.included,this includes %tax_rate%% VAT net,en_US
+order_invoice.invoice_template.table.tax.included,darin enthalten %tax_rate%% MwSt. Netto,de_DE
+order_invoice.invoice_template.table.tax.name,VAT,en_US
+order_invoice.invoice_template.table.tax.name,MwSt.,de_DE
+order_invoice.invoice_template.table.grandtotal,Grand total,en_US
+order_invoice.invoice_template.table.grandtotal,Summe,de_DE
+order_invoice.invoice_template.reference,Invoice number:,en_US
+order_invoice.invoice_template.reference,Rechnungsnummer:,de_DE
+order_invoice.invoice_template.introduction,We hereby charge you for the following goods:,en_US
+order_invoice.invoice_template.introduction,Hiermit berechnen wir Ihnen folgende Ware:,de_DE
+order_invoice.invoice_template.company.name,Spryker Systems GmbH Berlin,en_US
+order_invoice.invoice_template.company.name,Spryker Systems GmbH Berlin,de_DE
+order_invoice.invoice_template.company.address,Julie-Wolfthorn-Straße 1<br>10115 Berlin <br> Germany,en_US
+order_invoice.invoice_template.company.address,Julie-Wolfthorn-Straße 1<br>10115 Berlin <br> Germany,de_DE
+order_invoice.invoice_template.company.group,Unternehmensgruppe Spryker Systems GmbH	,en_US
+order_invoice.invoice_template.company.group,Spryker Systems GmbH Group,de_DE
+order_invoice.invoice_template.merchant.name,Spryker Systems GmbH Berlin,en_US
+order_invoice.invoice_template.merchant.name,Spryker Systems GmbH Berlin,de_DE
+order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Berlin,en_US
+order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Berlin,de_DE
+order_invoice.invoice_template.table.total.net,Total net,en_US
+order_invoice.invoice_template.table.total.net,Gesamt Netto,de_DE
+PayoneCreditCard,Credit Card,en_US
+PayoneCreditCard,Kreditkarte,de_DE
+PayoneInstantOnlineTransfer,Online bank transfer,en_US
+PayoneInstantOnlineTransfer,Sofort-Überweisung,de_DE
+Payone_credit_card,Credit Card,en_US
+Payone_credit_card,Kreditkarte,de_DE
+Payone_credit_card.cardtype,Card type,en_US
+Payone_credit_card.cardtype,Kreditkarten-Typ,de_DE
+Payone_credit_card.cardpan,Card number,en_US
+Payone_credit_card.cardpan,Kartennummer,de_DE
+Payone_credit_card.cardholder,Card holder,en_US
+Payone_credit_card.cardholder,Karteninhaber,de_DE
+Payone_credit_card.cardexpiredate,Expire date,en_US
+Payone_credit_card.cardexpiredate,Verfallsdatum,de_DE
+Payone_credit_card.cardcvc2,CVC,en_US
+Payone_credit_card.cardcvc2,CVC (Kartenprüfnummer),de_DE
+payment.payone.creditcard,Credit Card,en_US
+payment.payone.creditcard,Kreditkarte,de_DE
+Payment.payone.creditcard,Credit Card,en_US
+Payment.payone.creditcard,Kreditkarte,de_DE
+payment.payone.online_bank_transfer,Online bank transfer,en_US
+payment.payone.online_bank_transfer,Sofort-Überweisung,de_DE
+Payment.payone.online_bank_transfer,Online bank transfer,en_US
+Payment.payone.online_bank_transfer,Sofort-Überweisung,de_DE
+payment.payone.instant-online-transfer,Online bank transfer,en_US
+payment.payone.instant-online-transfer,Sofort-Überweisung,de_DE
+Payment.payone.instant-online-transfer,Online bank transfer,en_US
+Payment.payone.instant-online-transfer,Sofort-Überweisung,de_DE
+payone.order.payment_details,Payment details,en_US
+payone.order.payment_details,Zahlungsdetails,de_DE
+payone.payment.error,The payment data was rejected. Please try another payment method.,en_US
+payone.payment.error,Die Bezahldaten wurden abgelehnt. Versuche es bitte mit einer anderen Zahlungsart.,de_DE
+checkout.payment.provider.Payone,Payone,en_US
+checkout.payment.provider.Payone,Payone,de_DE
+checkout.step.payment.cardholder_name,Cardholder name,en_US
+checkout.step.payment.cardholder_name,Karteninhaber Name,de_DE
+mail.trans.availability_notification.subtitle,The wait is over! Add this product to your cart now.,en_US
+mail.trans.availability_notification.subtitle,Das Warten hat ein Ende! Du kannst diesen Artikel jetzt in deinen Warenkorb legen.,de_DE
+mail.trans.availability_notification.title.part2,is available again!,en_US
+mail.trans.availability_notification.title.part2,wieder verfügbar!,de_DE
+mail.trans.availability_notification_subscription.subtitle,You will receive an email when the product is available again.,en_US
+mail.trans.availability_notification_subscription.subtitle,"Du erhälst eine E-Mail, sobald der Artikel wieder verfügbar ist.",de_DE
+mail.trans.availability_notification_subscription.title,We just informed our purchase team about your subscription!,en_US
+mail.trans.availability_notification_subscription.title,Unser Einkaufsteam wurde über deine Anfrage informiert.,de_DE
+mail.trans.availability_notification_unsubscribed.subtitle,You will not be notified when the product is available again.,en_US
+mail.trans.availability_notification_unsubscribed.subtitle,"Du wirst keine Benachrichtigung erhalten, wenn der Artikel wieder verfügbar ist.",de_DE
+mail.trans.availability_notification_unsubscribed.title.part1,Your subscription to,en_US
+mail.trans.availability_notification_unsubscribed.title.part1,Deine Anfrage zu,de_DE
+mail.trans.availability_notification_unsubscribed.title.part2,was canceled,en_US
+mail.trans.availability_notification_unsubscribed.title.part2,wurde gelöscht.,de_DE
+mail.trans.common.go_to_shop,Go to shop,en_US
+mail.trans.common.go_to_shop,Zum Shop,de_DE
+mail.trans.common.hello_for_first_name,Hello,en_US
+mail.trans.common.hello_for_first_name,Hallo,de_DE
+mail.trans.common.my_account,My Account,en_US
+mail.trans.common.my_account,Mein Konto,de_DE
+mail.trans.customer_registration.change_info,"You can change your info (delivery address, email address, password etc.) in My Account",en_US
+mail.trans.customer_registration.change_info,"Du kannst deine Angaben (Lieferadresse, E-Mail, Passwort usw.) hier ändern: Mein Konto",de_DE
+mail.trans.customer_registration.registration_success,Your registration to the Spryker Shop was successful!,en_US
+mail.trans.customer_registration.registration_success,Die Registrierung im Spryker Shop war erfolgreich!,de_DE
+mail.trans.customer_registration.title,Thank you for signing up with Spryker Shop!,en_US
+mail.trans.customer_registration.title,Vielen Dank für deine Registrierung im Spryker Shop,de_DE
+mail.trans.customer_restored_password_confirmation.title,Your password was changed successfully,en_US
+mail.trans.customer_restored_password_confirmation.title,Dein Passwort wurde erfolgreich geändert,de_DE
+mail.trans.customer_restore_password.change_password,Change password,en_US
+mail.trans.customer_restore_password.change_password,Passwort ändern,de_DE
+mail.trans.customer_restore_password.subtitle,"Somebody has requested a new password for your Spryker Shop account. If this was not you, please ignore this email. If it was you, please follow the instructions in the button below.",en_US
+mail.trans.customer_restore_password.subtitle,"Es wurde ein neues Passwort für dein Spryker Shop-Konto angefordert. Wenn du es nicht warst, kannst du diese E-Mail ignorieren. Wenn du es warst, klicke bitte den Knopf unten an:",de_DE
+mail.trans.customer_restore_password.title,New password for your Spryker Shop account,en_US
+mail.trans.customer_restore_password.title,Neues Passwort für dein Spryker Shop-Konto,de_DE
+mail.trans.footer.contact_email_address,info@spryker.com,en_US
+mail.trans.footer.contact_email_address,info@spryker.com,de_DE
+mail.trans.footer.if_you_have_further_questions,"If you have any further questions, please contact our customer service at",en_US
+mail.trans.footer.if_you_have_further_questions,"Wenn du weitere Fragen hast, wende dich bitte an unseren Kundenservice unter",de_DE
+mail.trans.footer.shop_address,Julie-Wolfthorn-Strasse 1,en_US
+mail.trans.footer.shop_address,Julie-Wolfthorn-Straße 2,de_DE
+mail.trans.footer.shop_city,Berlin,en_US
+mail.trans.footer.shop_city,Berlin,de_DE
+mail.trans.footer.shop_name,Spryker Systems GmbH,en_US
+mail.trans.footer.shop_name,Spryker Systems GmbH,de_DE
+mail.trans.footer.shop_phone,+49 (0) 30 208 498 350,en_US
+mail.trans.footer.shop_phone,+49 (0) 30 208 498 351,de_DE
+mail.trans.footer.shopping_experience,Enjoy your shopping experience.,en_US
+mail.trans.footer.shopping_experience,Genieße das Shopping mit uns.,de_DE
+mail.trans.footer.shop_zip_code,10115,en_US
+mail.trans.footer.shop_zip_code,10115,de_DE
+mail.trans.footer.your_team,Your Spryker team!,en_US
+mail.trans.footer.your_team,Dein Spryker Team!,de_DE
+mail.trans.gift_card_delivery.subtitle,Your gift card code is,en_US
+mail.trans.gift_card_delivery.subtitle,Dein Geschenkgutschein-Code lautet,de_DE
+mail.trans.gift_card_delivery.title,"Dear customer, thank you for purchasing a gift card in our shop.",en_US
+mail.trans.gift_card_delivery.title,Hallo! Vielen Dank für den Kauf eines Geschenkgutscheins in unserem Shop.,de_DE
+mail.trans.gift_card_usage.subtitle,Your gift card code is,en_US
+mail.trans.gift_card_usage.subtitle,Dein Geschenkgutschein-Code lautet,de_DE
+mail.trans.gift_card_usage.title,You just used a gift card!,en_US
+mail.trans.gift_card_usage.title,Geschenkgutschein wurde gerade benutzt!,de_DE
+mail.trans.header.shop_name,Spryker Shop,en_US
+mail.trans.header.shop_name,Spryker Shop,de_DE
+mail.trans.newsletter_subscribed.subtitle,We will do our best to deliver the most relevant and exciting news and updates.,en_US
+mail.trans.newsletter_subscribed.subtitle,"Wir werden unser Bestes tun, um dir die relevantesten und aufregendsten Nachrichten und Updates zu liefern.",de_DE
+mail.trans.newsletter_subscribed.title,We are thrilled you have signed up for our newsletter.,en_US
+mail.trans.newsletter_subscribed.title,"Wir freuen uns, dass du dich für unseren Newsletter angemeldet hast.",de_DE
+mail.trans.newsletter_unsubscribed.subtitle,Your email address has been unsubscribed from Spryker Shop newsletter. You can always manage your subscription in your customer profile.,en_US
+mail.trans.newsletter_unsubscribed.subtitle,"Deine E-Mail-Adresse wurde vom Spryker Shop Newsletter abgemeldet, aber du kannst dein Abo jederzeit in deinem Konto verwalten.",de_DE
+mail.trans.newsletter_unsubscribed.title,Sorry to see you go...,en_US
+mail.trans.newsletter_unsubscribed.title,"Es ist schade, dass du gehst...",de_DE
+mail.trans.order.billing_address,Billing address,en_US
+mail.trans.order.billing_address,Rechnungsadresse,de_DE
+mail.trans.order.delivery_address,Delivery address,en_US
+mail.trans.order.delivery_address,Lieferadresse,de_DE
+mail.trans.order.delivery_method,Shipment method,en_US
+mail.trans.order.delivery_method,Versandart,de_DE
+mail.trans.order.discounts_total,Discounts,en_US
+mail.trans.order.discounts_total,Rabatt,de_DE
+mail.trans.order.grand_total,Grand Total,en_US
+mail.trans.order.grand_total,Gesamtsumme,de_DE
+mail.trans.order.order_date,Order date,en_US
+mail.trans.order.order_date,Bestelldatum,de_DE
+mail.trans.order.order_details,Order details,en_US
+mail.trans.order.order_details,Bestellung,de_DE
+mail.trans.order.order_reference,Order reference,en_US
+mail.trans.order.order_reference,Bestellnummer,de_DE
+mail.trans.order.quantity,Qty,en_US
+mail.trans.order.quantity,Anzahl,de_DE
+mail.trans.order.requested_delivery_date,Requested delivery date,en_US
+mail.trans.order.requested_delivery_date,Gewünschtes Lieferdatum,de_DE
+mail.trans.order.shipment_costs_total,Shipment costs (total),en_US
+mail.trans.order.shipment_costs_total,Lieferkosten (gesamt),de_DE
+mail.trans.order.shipment_for_number.part1,Shipment,en_US
+mail.trans.order.shipment_for_number.part1,Lieferung,de_DE
+mail.trans.order.shipment_for_number.part2,of,en_US
+mail.trans.order.shipment_for_number.part2,von,de_DE
+mail.trans.order.subtotal,Subtotal,en_US
+mail.trans.order.subtotal,Zwischensumme,de_DE
+mail.trans.order.taxes,Taxes,en_US
+mail.trans.order.taxes,Steuern,de_DE
+mail.trans.order_confirmation.subtitle,"We are writing to let you know that we recieved your order. You can expect a shipping confirmation by e-mail as soon as the order has been sent. We hope you like your order, but if you change your mind, please return it within 14 days.",en_US
+mail.trans.order_confirmation.subtitle,"Wir haben deine Bestellung erhalten. Du erhälst von uns eine Versandbestätigung per E-Mail, sobald die Bestellung verschickt wurde. Wir hoffen, dass dir deine Bestellung gefällt. Falls du deine Meinung änderst, kannst du deine Artikel innerhalb von 14 Tagen zurückschicken.",de_DE
+mail.trans.order_confirmation.title,Thank you for shopping at Spryker Shop!,en_US
+mail.trans.order_confirmation.title,Vielen Dank für deinen Einkauf im Spryker Shop!,de_DE
+mail.trans.restore_password.change_password,Change password,en_US
+mail.trans.restore_password.change_password,Passwort ändern,de_DE
+mail.trans.restore_password.subtitle,"Somebody has requested a new password for your Spryker Back Office account. If it was not you, please ignore this email. If it was you, please follow the instructions in  the button bellow",en_US
+mail.trans.restore_password.subtitle,"Es wurde ein neues Passwort für dein Spryker Shop-Konto angefordert. Wenn du es nicht warst, kannst du diese E-Mail ignorieren. Wenn du es warst, klicke bitte den Knopf unten an:",de_DE
+mail.trans.restore_password.title,New password for your Spryker Back Office account,en_US
+mail.trans.restore_password.title,Neues Passwort für dein Spryker Back Office-Konto,de_DE
+mail.trans.order_shipped.title,Your order is on its way!,en_US
+mail.trans.order_shipped.title,Deine Bestellung ist unterwegs!,de_DE
+mail.trans.company_status.title,The status of your company has been changed to,en_US
+mail.trans.company_status.title,Der Status deines Unternehmens wurde geändert auf,de_DE
+mail.trans.customer_registration.confirmation_link,Validate your email address,en_US
+mail.trans.customer_registration.confirmation_link,Bestätigen Sie Ihre E-Mail-Adresse,de_DE
+customer.error.confirm_email_link.invalid_or_used,This email verification link is invalid or has been already used.,en_US
+customer.error.confirm_email_link.invalid_or_used,Dieser E-Mail-Verifizierungslink ist ungültig oder wurde bereits verwendet.,de_DE
+customer.authorization.validate_email_address,"Almost there! We send you an email to validate your email address. Please confirm it to be able to log in.",en_US
+customer.authorization.validate_email_address,"Fast dort! Wir senden Ihnen eine E-Mail, um Ihre E-Mail-Adresse zu bestätigen. Bitte bestätigen Sie dies, um sich anmelden zu können.",de_DE
+customer.authorization.invalid_account,"You must first validate your email address before being able to log in",en_US
+customer.authorization.invalid_account,"Sie müssen zuerst Ihre E-Mail-Adresse überprüfen, bevor Sie sich anmelden können",de_DE
+
