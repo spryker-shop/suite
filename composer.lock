@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb7d1f3e9027898670cb377e3376ffcf",
+    "content-hash": "2ff7195995cb4e991efe87315967d2c7",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1888,15 +1888,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
+                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com",
-                    "role": "Developer"
+                    "homepage": "http://www.alexbilbie.com"
                 },
                 {
                     "name": "Andy Millington",
+                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io",
-                    "role": "Developer"
+                    "homepage": "https://www.noexceptions.io"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -3191,20 +3191,6 @@
                 "x.509",
                 "x509"
             ],
-            "funding": [
-                {
-                    "url": "https://github.com/terrafrost",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/phpseclib",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpseclib/phpseclib",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-08T09:08:33+00:00"
         },
         {
@@ -3706,7 +3692,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5283,11 +5269,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mp-2689/dev-select-and-buy-merchant-product",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "758fe861495c78446bfab3fa1ddaeb3b048e46ac"
+                "reference": "e6184ca16e1ad8ecbff07ba5f127391f35f00044"
             },
             "require": {
                 "php": ">=7.2"
@@ -5610,6 +5596,7 @@
                 "spryker/merchant-product-offer-storage-extension": "*",
                 "spryker/merchant-product-offers-rest-api": "*",
                 "spryker/merchant-product-search": "*",
+                "spryker/merchant-product-storage": "*",
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
@@ -6014,15 +6001,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-07-09T07:30:57+00:00"
+            "time": "2020-07-09T12:01:16+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/mp-2689/dev-select-and-buy-merchant-product",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "4c3851697fb4572a46f903ba0c567ecc5c05f0b4"
+                "reference": "7ba8556957e8adb9c3dd960b9367f7cfe5485bbf"
             },
             "require": {
                 "php": ">=7.2"
@@ -6083,6 +6070,7 @@
                 "spryker-shop/merchant-opening-hours-widget": "*",
                 "spryker-shop/merchant-page": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
+                "spryker-shop/merchant-product-widget": "*",
                 "spryker-shop/merchant-profile-widget": "*",
                 "spryker-shop/merchant-sales-order-widget": "*",
                 "spryker-shop/merchant-switcher-widget": "*",
@@ -6179,7 +6167,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-07-09T07:31:00+00:00"
+            "time": "2020-07-09T13:14:07+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -12866,6 +12854,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
