@@ -14,5 +14,5 @@ class PriceProductConfig extends SprykerPriceProductConfig
     /**
      * Decides if orphan store prices need to be cleared after every product price update.
      */
-    protected const IS_DELETE_ORPHAN_STORE_PRICES_ON_SAVE_ENABLED = false;
+    protected const IS_DELETE_ORPHAN_STORE_PRICES_ON_SAVE_ENABLED = true;
 }
