@@ -97,6 +97,8 @@ class WishlistsRestApiFixtures implements FixturesBuilderInterface, FixturesCont
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
 
+        $this->customerTransfer = $I->confirmCustomer($this->customerTransfer);
+
         $this->wishlistTransfer = $I->haveWishlist([
             WishlistTransfer::FK_CUSTOMER => $this->customerTransfer->getIdCustomer(),
         ]);

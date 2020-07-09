@@ -45,6 +45,7 @@ use SprykerShop\Yves\CompanyWidget\Widget\CompanyMenuItemWidget;
 use SprykerShop\Yves\ConfigurableBundleNoteWidget\Widget\ConfiguredBundleNoteWidget;
 use SprykerShop\Yves\ConfigurableBundleWidget\Widget\QuoteConfiguredBundleWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
+use SprykerShop\Yves\CustomerPage\Plugin\Application\CustomerConfirmationUserCheckerApplicationPlugin;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderFormWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemCheckboxWidget;
@@ -300,6 +301,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new SecurityApplicationPlugin(),
             new WebProfilerApplicationPlugin(),
             new ShopContextApplicationPlugin(),
+            new CustomerConfirmationUserCheckerApplicationPlugin(),
         ];
     }
 }
