@@ -50,6 +50,11 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     protected $synchronizedMessageCollection = [];
 
     /**
+     * @var \Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface[]
+     */
+    protected $productAbstractStorageExpanderPlugins = [];
+
+    /**
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterface $productFacade
      * @param \Spryker\Zed\ProductStorage\Business\Attribute\AttributeMapInterface $attributeMap
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
@@ -57,6 +62,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
+     * @param \Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface[] $productAbstractStorageExpanderPlugins
      */
     public function __construct(
         ProductStorageToProductInterface $productFacade,
@@ -65,9 +71,17 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         ProductStorageToStoreFacadeInterface $storeFacade,
         $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient
+        QueueClientInterface $queueClient,
+        $productAbstractStorageExpanderPlugins
     ) {
-        parent::__construct($productFacade, $attributeMap, $queryContainer, $storeFacade, $isSendingToQueue);
+        parent::__construct(
+            $productFacade,
+            $attributeMap,
+            $queryContainer,
+            $storeFacade,
+            $isSendingToQueue,
+            $productAbstractStorageExpanderPlugins
+        );
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;

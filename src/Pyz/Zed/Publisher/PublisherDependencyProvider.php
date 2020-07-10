@@ -14,6 +14,8 @@ use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryPublisher
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryTranslation\GlossaryWritePublisherPlugin as GlossaryTranslationWritePublisherPlugin;
 use Spryker\Zed\MerchantProductSearch\Communication\Plugin\Publisher\Merchant\MerchantProductSearchWritePublisherPlugin as MerchantMerchantProductSearchWritePublisherPlugin;
 use Spryker\Zed\MerchantProductSearch\Communication\Plugin\Publisher\MerchantProduct\MerchantProductSearchWritePublisherPlugin;
+use Spryker\Zed\MerchantProductStorage\Communication\Plugin\Publisher\Merchant\MerchantUpdatePublisherPlugin;
+use Spryker\Zed\MerchantProductStorage\Communication\Plugin\Publisher\MerchantProduct\MerchantProductWritePublisherPlugin;
 use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\Merchant\MerchantStoragePublisherPlugin;
 use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\MerchantPublisherTriggerPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\Publisher\ProductLabel\ProductLabelWritePublisherPlugin as ProductLabelSearchWritePublisherPlugin;
@@ -50,6 +52,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductRelationStoragePlugins(),
             $this->getMerchantStoragePlugins(),
             $this->getReturnReasonSearchPlugins(),
+            $this->getMerchantProductPlugins(),
             $this->getMerchantProductSearchPlugins()
         );
     }
@@ -139,6 +142,17 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
         return [
             new ReturnReasonWritePublisherPlugin(),
             new ReturnReasonDeletePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
+     */
+    protected function getMerchantProductPlugins(): array
+    {
+        return [
+            new MerchantProductWritePublisherPlugin(),
+            new MerchantUpdatePublisherPlugin(),
         ];
     }
 
