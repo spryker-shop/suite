@@ -6,15 +6,15 @@
 
     <process name="MarketplacePayment01" main="true">
         <states>
-            <state name="new" reserved="true"/>
-            <state name="paid" reserved="true"/>
-            <state name="canceled"/>
-            <state name="refunded"/>
-            <state name="merchant split pending" reserved="true"/>
-            <state name="sent to merchant" reserved="true"/>
-            <state name="shipped by merchant" reserved="true"/>
-            <state name="delivered" reserved="true"/>
-            <state name="closed"/>
+            <state name="new" reserved="true" display="oms.state.new"/>
+            <state name="paid" reserved="true" display="oms.state.paid"/>
+            <state name="canceled" display="oms.state.canceled"/>
+            <state name="refunded" display="oms.state.refunded"/>
+            <state name="merchant split pending" reserved="true" display="oms.state.merchant-split-pending"/>
+            <state name="sent to merchant" reserved="true" display="oms.state.sent-to-merchant"/>
+            <state name="shipped by merchant" reserved="true" display="oms.state.shipped-by-merchant"/>
+            <state name="delivered" reserved="true" display="oms.state.delivered"/>
+            <state name="closed" display="oms.state.closed"/>
         </states>
 
         <transitions>

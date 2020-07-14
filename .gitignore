@@ -47,6 +47,7 @@ FOSS.md
 /config/Yves/config_assets.php
 config/Yves/cache_bust.php
 /node_modules/
+.yarn/
 
 # public stuff
 public/Yves/assets/
@@ -59,6 +60,7 @@ Vagrantfile
 # docker stuff
 /.docker-sync/
 /.unison*
+/deploy.local.yml
 
 # profiling
 /profiler
@@ -71,6 +73,7 @@ npm-debug.log
 !/tests/_output/.gitkeep
 /tests/_support/_generated/*
 !/tests/_support/_generated/.gitkeep
+/codeception.local.yml
 
 /tests/PyzTest/*/*/_output/*
 /tests/PyzTest/*/*/_support/_generated/*

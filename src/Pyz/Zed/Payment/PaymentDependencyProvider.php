@@ -8,7 +8,7 @@
 namespace Pyz\Zed\Payment;
 
 use Spryker\Shared\Nopayment\NopaymentConfig as SprykerNopaymentConfig;
-use Spryker\Zed\DummyMarketplacePayment\Communication\Plugin\Payment\MerchantProductOfferPaymentMethodFilterPlugin;
+use Spryker\Zed\DummyMarketplacePayment\Communication\Plugin\Payment\MerchantProductItemPaymentMethodFilterPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardOrderSaverPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardPaymentMethodFilterPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardPreCheckPlugin;
@@ -18,6 +18,9 @@ use Spryker\Zed\Nopayment\Communication\Plugin\Checkout\NopaymentPreCheckPlugin;
 use Spryker\Zed\Nopayment\Communication\Plugin\Payment\PriceToPayPaymentMethodFilterPlugin;
 use Spryker\Zed\Payment\Dependency\Plugin\Checkout\CheckoutPluginCollectionInterface;
 use Spryker\Zed\Payment\PaymentDependencyProvider as SprykerPaymentDependencyProvider;
+use SprykerEco\Zed\Payone\Communication\Plugin\Checkout\PayonePreCheckPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Checkout\PayoneSaveOrderPlugin;
+use SprykerEco\Zed\Payone\PayoneConfig;
 
 class PaymentDependencyProvider extends SprykerPaymentDependencyProvider
 {
@@ -42,7 +45,7 @@ class PaymentDependencyProvider extends SprykerPaymentDependencyProvider
         return [
             new PriceToPayPaymentMethodFilterPlugin(),
             new GiftCardPaymentMethodFilterPlugin(),
-            new MerchantProductOfferPaymentMethodFilterPlugin(),
+            new MerchantProductItemPaymentMethodFilterPlugin(),
         ];
     }
 
@@ -72,6 +75,18 @@ class PaymentDependencyProvider extends SprykerPaymentDependencyProvider
                     new NopaymentPreCheckPlugin(),
                     SprykerNopaymentConfig::PAYMENT_PROVIDER_NAME,
                     PaymentDependencyProvider::CHECKOUT_ORDER_SAVER_PLUGINS
+                );
+
+                $pluginCollection->add(
+                    new PayonePreCheckPlugin(),
+                    PayoneConfig::PROVIDER_NAME,
+                    static::CHECKOUT_PRE_CHECK_PLUGINS
+                );
+
+                $pluginCollection->add(
+                    new PayoneSaveOrderPlugin(),
+                    PayoneConfig::PROVIDER_NAME,
+                    static::CHECKOUT_ORDER_SAVER_PLUGINS
                 );
 
                 return $pluginCollection;

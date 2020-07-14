@@ -29,6 +29,15 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class ProductPricePropelDataSetWriter implements DataSetWriterInterface
 {
+    protected const COLUMN_ABSTRACT_SKU = ProductPriceHydratorStep::COLUMN_ABSTRACT_SKU;
+    protected const COLUMN_CONCRETE_SKU = ProductPriceHydratorStep::COLUMN_CONCRETE_SKU;
+    protected const COLUMN_STORE = ProductPriceHydratorStep::COLUMN_STORE;
+    protected const COLUMN_CURRENCY = ProductPriceHydratorStep::COLUMN_CURRENCY;
+    protected const COLUMN_PRICE_GROSS = ProductPriceHydratorStep::COLUMN_PRICE_GROSS;
+    protected const COLUMN_PRICE_NET = ProductPriceHydratorStep::COLUMN_PRICE_NET;
+    protected const COLUMN_PRICE_DATA = ProductPriceHydratorStep::COLUMN_PRICE_DATA;
+    protected const COLUMN_PRICE_DATA_CHECKSUM = ProductPriceHydratorStep::COLUMN_PRICE_DATA_CHECKSUM;
+
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
      */
@@ -108,22 +117,22 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         $query = SpyPriceProductQuery::create();
         $query->filterByFkPriceType($priceTypeEntity->getIdPriceType());
 
-        if (empty($dataSet[ProductPriceHydratorStep::KEY_ABSTRACT_SKU]) && empty($dataSet[ProductPriceHydratorStep::KEY_CONCRETE_SKU])) {
+        if (empty($dataSet[static::COLUMN_ABSTRACT_SKU]) && empty($dataSet[static::COLUMN_CONCRETE_SKU])) {
             throw new DataKeyNotFoundInDataSetException(sprintf(
                 'One of "%s" or "%s" must be in the data set. Given: "%s"',
-                ProductPriceHydratorStep::KEY_ABSTRACT_SKU,
-                ProductPriceHydratorStep::KEY_CONCRETE_SKU,
+                static::COLUMN_ABSTRACT_SKU,
+                static::COLUMN_CONCRETE_SKU,
                 implode(', ', array_keys($dataSet->getArrayCopy()))
             ));
         }
 
-        if (!empty($dataSet[ProductPriceHydratorStep::KEY_ABSTRACT_SKU])) {
-            $idProductAbstract = $this->productRepository->getIdProductAbstractByAbstractSku($dataSet[ProductPriceHydratorStep::KEY_ABSTRACT_SKU]);
+        if (!empty($dataSet[static::COLUMN_ABSTRACT_SKU])) {
+            $idProductAbstract = $this->productRepository->getIdProductAbstractByAbstractSku($dataSet[static::COLUMN_ABSTRACT_SKU]);
             $query->filterByFkProductAbstract($idProductAbstract);
             DataImporterPublisher::addEvent(PriceProductEvents::PRICE_ABSTRACT_PUBLISH, $idProductAbstract);
             DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $idProductAbstract);
         } else {
-            $idProduct = $this->productRepository->getIdProductByConcreteSku($dataSet[ProductPriceHydratorStep::KEY_CONCRETE_SKU]);
+            $idProduct = $this->productRepository->getIdProductByConcreteSku($dataSet[static::COLUMN_CONCRETE_SKU]);
             DataImporterPublisher::addEvent(PriceProductEvents::PRICE_CONCRETE_PUBLISH, $idProduct);
             $query->filterByFkProduct($idProduct);
         }
@@ -144,8 +153,8 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         DataSetInterface $dataSet,
         SpyPriceProduct $spyPriceProduct
     ): SpyPriceProductStore {
-        $storeTransfer = $this->storeFacade->getStoreByName($dataSet[ProductPriceHydratorStep::KEY_STORE]);
-        $currencyTransfer = $this->currencyFacade->fromIsoCode($dataSet[ProductPriceHydratorStep::KEY_CURRENCY]);
+        $storeTransfer = $this->storeFacade->getStoreByName($dataSet[static::COLUMN_STORE]);
+        $currencyTransfer = $this->currencyFacade->fromIsoCode($dataSet[static::COLUMN_CURRENCY]);
 
         $priceProductStoreEntity = SpyPriceProductStoreQuery::create()
             ->filterByFkStore($storeTransfer->getIdStore())
@@ -153,11 +162,11 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
             ->filterByFkPriceProduct($spyPriceProduct->getPrimaryKey())
             ->findOneOrCreate();
 
-        $priceProductStoreEntity->setGrossPrice($dataSet[ProductPriceHydratorStep::KEY_PRICE_GROSS]);
-        $priceProductStoreEntity->setNetPrice($dataSet[ProductPriceHydratorStep::KEY_PRICE_NET]);
+        $priceProductStoreEntity->setGrossPrice($dataSet[static::COLUMN_PRICE_GROSS]);
+        $priceProductStoreEntity->setNetPrice($dataSet[static::COLUMN_PRICE_NET]);
 
-        $priceProductStoreEntity->setPriceData($dataSet[ProductPriceHydratorStep::KEY_PRICE_DATA]);
-        $priceProductStoreEntity->setPriceDataChecksum($dataSet[ProductPriceHydratorStep::KEY_PRICE_DATA_CHECKSUM]);
+        $priceProductStoreEntity->setPriceData($dataSet[static::COLUMN_PRICE_DATA]);
+        $priceProductStoreEntity->setPriceDataChecksum($dataSet[static::COLUMN_PRICE_DATA_CHECKSUM]);
 
         $priceProductStoreEntity->save();
 

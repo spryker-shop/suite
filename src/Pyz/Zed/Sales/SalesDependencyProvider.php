@@ -28,7 +28,9 @@ use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferenceO
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferencesOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\IsCancellableOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\IsCancellableSearchOrderExpanderPlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Sales\ItemStateOrderItemExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\OmsStatesOrderExpanderPlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Sales\OrderAggregatedItemStateSearchOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\StateHistoryOrderItemExpanderPlugin;
 use Spryker\Zed\OrderCustomReference\Communication\Plugin\Sales\OrderCustomReferenceOrderPostSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Sales\PaymentOrderHydratePlugin;
@@ -190,6 +192,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new QuantitySalesUnitOrderItemExpanderPlugin(),
             new AmountLeadProductOrderItemExpanderPlugin(),
             new AmountSalesUnitOrderItemExpanderPlugin(),
+            new ItemStateOrderItemExpanderPlugin(),
         ];
     }
 
@@ -200,6 +203,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new ItemMetadataSearchOrderExpanderPlugin(),
+            new OrderAggregatedItemStateSearchOrderExpanderPlugin(),
             new IsCancellableSearchOrderExpanderPlugin(),
         ];
     }

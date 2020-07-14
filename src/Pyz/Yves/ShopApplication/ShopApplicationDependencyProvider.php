@@ -31,6 +31,7 @@ use SprykerShop\Yves\CartNoteWidget\Widget\CartNoteFormWidget;
 use SprykerShop\Yves\CartPage\Widget\AddItemsFormWidget;
 use SprykerShop\Yves\CartPage\Widget\AddToCartFormWidget;
 use SprykerShop\Yves\CartPage\Widget\CartChangeQuantityFormWidget;
+use SprykerShop\Yves\CartPage\Widget\ProductAbstractAddToCartButtonWidget;
 use SprykerShop\Yves\CartPage\Widget\RemoveFromCartFormWidget;
 use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
@@ -44,6 +45,7 @@ use SprykerShop\Yves\CompanyWidget\Widget\CompanyMenuItemWidget;
 use SprykerShop\Yves\ConfigurableBundleNoteWidget\Widget\ConfiguredBundleNoteWidget;
 use SprykerShop\Yves\ConfigurableBundleWidget\Widget\QuoteConfiguredBundleWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
+use SprykerShop\Yves\CustomerPage\Plugin\Application\CustomerConfirmationUserCheckerApplicationPlugin;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderFormWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemCheckboxWidget;
@@ -53,6 +55,8 @@ use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
 use SprykerShop\Yves\MerchantOpeningHoursWidget\Widget\MerchantOpeningHoursWidget;
 use SprykerShop\Yves\MerchantProductOfferWidget\Widget\MerchantProductOfferWidget;
 use SprykerShop\Yves\MerchantProductOfferWidget\Widget\ProductOfferSoldByMerchantWidget;
+use SprykerShop\Yves\MerchantProductWidget\Widget\MerchantProductWidget;
+use SprykerShop\Yves\MerchantProductWidget\Widget\ProductSoldByMerchantWidget;
 use SprykerShop\Yves\MerchantSalesOrderWidget\Widget\MerchantOrderReferenceForItemsWidget;
 use SprykerShop\Yves\MerchantSwitcherWidget\Widget\MerchantSwitcherSelectorFormWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\AddToMultiCartWidget;
@@ -227,6 +231,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProceedToCheckoutButtonWidget::class,
             QuoteApprovalWidget::class,
             ProductOfferSoldByMerchantWidget::class,
+            ProductSoldByMerchantWidget::class,
             ProductConcreteSearchWidget::class,
             ProductConcreteSearchGridWidget::class,
             PriceProductWidget::class,
@@ -242,6 +247,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CommentThreadWidget::class,
             QuoteConfiguredBundleWidget::class,
             MerchantProductOfferWidget::class,
+            MerchantProductWidget::class,
             ConfiguredBundleNoteWidget::class,
             QuoteRequestActionsWidget::class,
             OrderCustomReferenceWidget::class,
@@ -256,6 +262,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CustomerReorderItemsFormWidget::class,
             OrderItemsProductBundleWidget::class,
             RemoveFromCartFormWidget::class,
+            ProductAbstractAddToCartButtonWidget::class,
             OrderCancelButtonWidget::class,
         ];
     }
@@ -294,6 +301,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new SecurityApplicationPlugin(),
             new WebProfilerApplicationPlugin(),
             new ShopContextApplicationPlugin(),
+            new CustomerConfirmationUserCheckerApplicationPlugin(),
         ];
     }
 }
