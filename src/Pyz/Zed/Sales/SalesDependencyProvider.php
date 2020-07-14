@@ -26,7 +26,6 @@ use Spryker\Zed\MerchantOmsGui\Communication\Plugin\Sales\MerchantOmsStateOrderI
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantOrderDataOrderExpanderPlugin;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferenceOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferencesOrderExpanderPlugin;
-use Spryker\Zed\MerchantSalesOrderGui\Communication\Plugin\Sales\MerchantNameOrderItemsTableExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\IsCancellableOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\IsCancellableSearchOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\OmsStatesOrderExpanderPlugin;
@@ -237,7 +236,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     protected function getOrderItemsTableExpanderPlugins(): array
     {
         return [
-            new MerchantNameOrderItemsTableExpanderPlugin(),
+//            new MerchantNameOrderItemsTableExpanderPlugin(),
             new MerchantOmsStateOrderItemsTableExpanderPlugin(),
         ];
     }
