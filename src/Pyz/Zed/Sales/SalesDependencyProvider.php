@@ -240,7 +240,6 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     protected function getOrderItemsTableExpanderPlugins(): array
     {
         return [
-//            new MerchantNameOrderItemsTableExpanderPlugin(),
             new MerchantOmsStateOrderItemsTableExpanderPlugin(),
         ];
     }
