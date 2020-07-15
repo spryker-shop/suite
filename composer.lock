@@ -2196,31 +2196,33 @@
         },
         {
             "name": "propel/propel",
-            "version": "2.0.0-alpha8",
+            "version": "2.0.0-alpha10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/propelorm/Propel2.git",
-                "reference": "4c309e3e5adaba077f54c0fab93c34995d7c9b3d"
+                "reference": "776f746747c62962f4b70b3a3ac1de2b249ffd35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/4c309e3e5adaba077f54c0fab93c34995d7c9b3d",
-                "reference": "4c309e3e5adaba077f54c0fab93c34995d7c9b3d",
+                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/776f746747c62962f4b70b3a3ac1de2b249ffd35",
+                "reference": "776f746747c62962f4b70b3a3ac1de2b249ffd35",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5",
-                "psr/log": "~1.0",
-                "symfony/config": "~2.3||~3.0||~4.0",
-                "symfony/console": "~2.3||~3.0||~4.0",
-                "symfony/filesystem": "~2.3||~3.0||~4.0",
-                "symfony/finder": "~2.3||~3.0||~4.0",
-                "symfony/validator": "~2.3||~3.0.0||~3.1.0||^3.2.4||~4.0",
-                "symfony/yaml": "~2.3||~3.0||~4.0"
+                "php": ">=7.1",
+                "psr/log": "^1.0",
+                "symfony/config": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
+                "symfony/console": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
+                "symfony/filesystem": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
+                "symfony/finder": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
+                "symfony/translation": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
+                "symfony/validator": "^2.7.0||^3.3.0||^4.0.0||^5.0.0",
+                "symfony/yaml": "^2.7.0||^3.3.0||^4.0.0||^5.0.0"
             },
             "require-dev": {
-                "monolog/monolog": "~1.3",
-                "phpunit/phpunit": "~4.0||~5.0"
+                "monolog/monolog": "^1.3",
+                "phpstan/phpstan": "^0.12.4",
+                "phpunit/phpunit": "^7.5.15"
             },
             "suggest": {
                 "monolog/monolog": "The recommended logging library to use with Propel."
@@ -2235,8 +2237,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Propel": "src/"
+                "psr-4": {
+                    "Propel\\": "src/Propel/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2245,18 +2247,18 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
-            "description": "Propel2 is an open-source Object-Relational Mapping (ORM) for PHP 5.5 and up.",
+            "description": "Propel2 is an open-source Object-Relational Mapping (ORM) for PHP.",
             "homepage": "http://www.propelorm.org/",
             "keywords": [
                 "Active Record",
                 "orm",
                 "persistence"
             ],
-            "time": "2018-02-19T12:58:55+00:00"
+            "time": "2020-07-13T12:20:41+00:00"
         },
         {
             "name": "psr/container",
@@ -35106,21 +35108,21 @@
         },
         {
             "name": "spryker/propel-orm",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel-orm.git",
-                "reference": "0b14139d2c0934863c7b1079e7256e8aea10bb2f"
+                "reference": "af0b76721674cfbf99d4356be7c5eddbf289e86f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/0b14139d2c0934863c7b1079e7256e8aea10bb2f",
-                "reference": "0b14139d2c0934863c7b1079e7256e8aea10bb2f",
+                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/af0b76721674cfbf99d4356be7c5eddbf289e86f",
+                "reference": "af0b76721674cfbf99d4356be7c5eddbf289e86f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "propel/propel": "2.0.0-alpha8",
+                "propel/propel": "2.0.0-alpha10",
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.0.0",
                 "spryker/kernel": "^3.49.0",
@@ -35147,7 +35149,7 @@
                 "proprietary"
             ],
             "description": "PropelOrm module",
-            "time": "2020-05-20T07:56:57+00:00"
+            "time": "2020-07-13T16:58:06+00:00"
         },
         {
             "name": "spryker/propel-query-builder",
@@ -42882,32 +42884,34 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.4.10",
+            "version": "v5.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "395f6e09e1dc6ac9c1a5eea3b7f44f7a820a5504"
+                "reference": "b8623ef3d99fe62a34baf7a111b576216965f880"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/395f6e09e1dc6ac9c1a5eea3b7f44f7a820a5504",
-                "reference": "395f6e09e1dc6ac9c1a5eea3b7f44f7a820a5504",
+                "url": "https://api.github.com/repos/symfony/config/zipball/b8623ef3d99fe62a34baf7a111b576216965f880",
+                "reference": "b8623ef3d99fe62a34baf7a111b576216965f880",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.3",
-                "symfony/filesystem": "^3.4|^4.0|^5.0",
-                "symfony/polyfill-ctype": "~1.8"
+                "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.1",
+                "symfony/filesystem": "^4.4|^5.0",
+                "symfony/polyfill-ctype": "~1.8",
+                "symfony/polyfill-php80": "^1.15"
             },
             "conflict": {
-                "symfony/finder": "<3.4"
+                "symfony/finder": "<4.4"
             },
             "require-dev": {
-                "symfony/event-dispatcher": "^3.4|^4.0|^5.0",
-                "symfony/finder": "^3.4|^4.0|^5.0",
-                "symfony/messenger": "^4.1|^5.0",
+                "symfony/event-dispatcher": "^4.4|^5.0",
+                "symfony/finder": "^4.4|^5.0",
+                "symfony/messenger": "^4.4|^5.0",
                 "symfony/service-contracts": "^1.1|^2",
-                "symfony/yaml": "^3.4|^4.0|^5.0"
+                "symfony/yaml": "^4.4|^5.0"
             },
             "suggest": {
                 "symfony/yaml": "To use the yaml reference dumper"
@@ -42915,7 +42919,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.4-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -42956,7 +42960,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-23T09:11:46+00:00"
+            "time": "2020-05-23T13:08:13+00:00"
         },
         {
             "name": "symfony/console",
@@ -47430,16 +47434,16 @@
         },
         {
             "name": "composer/package-versions-deprecated",
-            "version": "1.8.2",
+            "version": "1.10.99",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/package-versions-deprecated.git",
-                "reference": "7a8001fe2c9befad9d001bf54ef0b4a17d950d0f"
+                "reference": "dd51b4443d58b34b6d9344cf4c288e621c9a826f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/7a8001fe2c9befad9d001bf54ef0b4a17d950d0f",
-                "reference": "7a8001fe2c9befad9d001bf54ef0b4a17d950d0f",
+                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/dd51b4443d58b34b6d9344cf4c288e621c9a826f",
+                "reference": "dd51b4443d58b34b6d9344cf4c288e621c9a826f",
                 "shasum": ""
             },
             "require": {
@@ -47447,7 +47451,7 @@
                 "php": "^7"
             },
             "replace": {
-                "ocramius/package-versions": "1.8.99"
+                "ocramius/package-versions": "1.10.99"
             },
             "require-dev": {
                 "composer/composer": "^1.9.3 || ^2.0@dev",
@@ -47495,7 +47499,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-10T14:10:26+00:00"
+            "time": "2020-07-15T08:39:18+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -51401,37 +51405,39 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v4.4.10",
+            "version": "v5.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "a37cc0a90fec178768aa5048fea9251efde591c5"
+                "reference": "6508423eded583fc07e88a0172803e1a62f0310c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/a37cc0a90fec178768aa5048fea9251efde591c5",
-                "reference": "a37cc0a90fec178768aa5048fea9251efde591c5",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/6508423eded583fc07e88a0172803e1a62f0310c",
+                "reference": "6508423eded583fc07e88a0172803e1a62f0310c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.3",
+                "php": ">=7.2.5",
                 "psr/container": "^1.0",
+                "symfony/deprecation-contracts": "^2.1",
+                "symfony/polyfill-php80": "^1.15",
                 "symfony/service-contracts": "^1.1.6|^2"
             },
             "conflict": {
-                "symfony/config": "<4.3|>=5.0",
-                "symfony/finder": "<3.4",
-                "symfony/proxy-manager-bridge": "<3.4",
-                "symfony/yaml": "<3.4"
+                "symfony/config": "<5.1",
+                "symfony/finder": "<4.4",
+                "symfony/proxy-manager-bridge": "<4.4",
+                "symfony/yaml": "<4.4"
             },
             "provide": {
                 "psr/container-implementation": "1.0",
                 "symfony/service-implementation": "1.0"
             },
             "require-dev": {
-                "symfony/config": "^4.3",
-                "symfony/expression-language": "^3.4|^4.0|^5.0",
-                "symfony/yaml": "^3.4|^4.0|^5.0"
+                "symfony/config": "^5.1",
+                "symfony/expression-language": "^4.4|^5.0",
+                "symfony/yaml": "^4.4|^5.0"
             },
             "suggest": {
                 "symfony/config": "",
@@ -51443,7 +51449,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.4-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -51484,7 +51490,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-12T07:37:04+00:00"
+            "time": "2020-06-12T08:11:32+00:00"
         },
         {
             "name": "symfony/dom-crawler",
