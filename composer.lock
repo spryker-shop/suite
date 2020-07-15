@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "390ae6c03ef57b7a0fd21fead1fa7d77",
+    "content-hash": "422e545a5fe75774899fefe37bd9acb5",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -942,10 +942,6 @@
                 "rest",
                 "web service"
             ],
-            "support": {
-                "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/6.5"
-            },
             "time": "2020-06-16T21:01:06+00:00"
         },
         {
@@ -11928,16 +11924,16 @@
         },
         {
             "name": "spryker/catalog-search-rest-api",
-            "version": "2.4.2",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/catalog-search-rest-api.git",
-                "reference": "45031000c86682e52ab377a055fbbec9e4cdcefc"
+                "reference": "fdcf9a83099bc139c9c36a052489d8d219d25a8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/catalog-search-rest-api/zipball/45031000c86682e52ab377a055fbbec9e4cdcefc",
-                "reference": "45031000c86682e52ab377a055fbbec9e4cdcefc",
+                "url": "https://api.github.com/repos/spryker/catalog-search-rest-api/zipball/fdcf9a83099bc139c9c36a052489d8d219d25a8c",
+                "reference": "fdcf9a83099bc139c9c36a052489d8d219d25a8c",
                 "shasum": ""
             },
             "require": {
@@ -11974,7 +11970,7 @@
                 "proprietary"
             ],
             "description": "CatalogSearchRestApi module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-06-30T15:53:00+00:00"
         },
         {
             "name": "spryker/categories-rest-api",
@@ -13662,6 +13658,52 @@
             "time": "2020-05-29T13:08:37+00:00"
         },
         {
+            "name": "spryker/cms-content-widget-content-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-content-widget-content-connector.git",
+                "reference": "98aa1f5dd8498025e51ec0908c42a87930d1396f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-content-widget-content-connector/zipball/98aa1f5dd8498025e51ec0908c42a87930d1396f",
+                "reference": "98aa1f5dd8498025e51ec0908c42a87930d1396f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/content": "^2.2.0",
+                "spryker/kernel": "^3.33.0"
+            },
+            "require-dev": {
+                "spryker/cms-content-widget": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/cms-content-widget": "Use this module when you want to use the Cms Content Widget."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsContentWidgetContentConnector module",
+            "time": "2020-07-02T16:48:14+00:00"
+        },
+        {
             "name": "spryker/cms-content-widget-product-connector",
             "version": "1.1.1",
             "source": {
@@ -14083,6 +14125,142 @@
             ],
             "description": "CmsPageSearch module",
             "time": "2020-07-03T07:32:24+00:00"
+        },
+        {
+            "name": "spryker/cms-pages-content-banners-resource-relationship",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-pages-content-banners-resource-relationship.git",
+                "reference": "d19212f28225bc0642ab6fbe4d45ba7ce617763b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-pages-content-banners-resource-relationship/zipball/d19212f28225bc0642ab6fbe4d45ba7ce617763b",
+                "reference": "d19212f28225bc0642ab6fbe4d45ba7ce617763b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-storage": "^2.4.0",
+                "spryker/content-banners-rest-api": "^2.2.0",
+                "spryker/glue-application": "^1.8.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/store": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsPagesContentBannersResourceRelationship module",
+            "time": "2020-07-03T12:16:11+00:00"
+        },
+        {
+            "name": "spryker/cms-pages-content-product-abstract-lists-resource-relationship",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-pages-content-product-abstract-lists-resource-relationship.git",
+                "reference": "de7621d4670db91d6e29a5ccf5be8d62e4d4059a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-pages-content-product-abstract-lists-resource-relationship/zipball/de7621d4670db91d6e29a5ccf5be8d62e4d4059a",
+                "reference": "de7621d4670db91d6e29a5ccf5be8d62e4d4059a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-storage": "^2.4.0",
+                "spryker/content-product-abstract-lists-rest-api": "^1.2.0",
+                "spryker/glue-application": "^1.8.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/store": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsPagesContentProductAbstractListsResourceRelationship module",
+            "time": "2020-07-03T12:16:11+00:00"
+        },
+        {
+            "name": "spryker/cms-pages-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-pages-rest-api.git",
+                "reference": "2f14b726ea875754bea6d6ed403713ddea0dde0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-pages-rest-api/zipball/2f14b726ea875754bea6d6ed403713ddea0dde0f",
+                "reference": "2f14b726ea875754bea6d6ed403713ddea0dde0f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-page-search": "^2.2.0",
+                "spryker/cms-storage": "^2.4.0",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/store": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/urls-rest-api-extension": "^1.0.0",
+                "spryker/uuid-behavior": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsPagesRestApi module",
+            "time": "2020-07-03T12:16:11+00:00"
         },
         {
             "name": "spryker/cms-slot",
@@ -14958,16 +15136,16 @@
         },
         {
             "name": "spryker/cms-storage",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-storage.git",
-                "reference": "c611023d1ee3bb23ce6ca6160992607621b1e989"
+                "reference": "87d7020fce70722cc1721da8cf7c3257f853802e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-storage/zipball/c611023d1ee3bb23ce6ca6160992607621b1e989",
-                "reference": "c611023d1ee3bb23ce6ca6160992607621b1e989",
+                "url": "https://api.github.com/repos/spryker/cms-storage/zipball/87d7020fce70722cc1721da8cf7c3257f853802e",
+                "reference": "87d7020fce70722cc1721da8cf7c3257f853802e",
                 "shasum": ""
             },
             "require": {
@@ -14977,10 +15155,12 @@
                 "spryker/kernel": "^3.33.0",
                 "spryker/locale": "^3.1.0",
                 "spryker/propel-orm": "^1.0.0",
+                "spryker/storage": "^3.4.0",
                 "spryker/store": "^1.5.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
-                "spryker/synchronization-extension": "^1.0.0"
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -15011,7 +15191,7 @@
                 "proprietary"
             ],
             "description": "CmsStorage module",
-            "time": "2020-07-03T07:32:24+00:00"
+            "time": "2020-07-15T12:32:38+00:00"
         },
         {
             "name": "spryker/cms-user-connector",
@@ -18000,16 +18180,16 @@
         },
         {
             "name": "spryker/content",
-            "version": "2.1.2",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/content.git",
-                "reference": "0ccf3b3126185cd71a75c1427bd519f3dc9068c6"
+                "reference": "8ee9fd69da6cb7f0f7939ba32f793c217d8aea82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content/zipball/0ccf3b3126185cd71a75c1427bd519f3dc9068c6",
-                "reference": "0ccf3b3126185cd71a75c1427bd519f3dc9068c6",
+                "url": "https://api.github.com/repos/spryker/content/zipball/8ee9fd69da6cb7f0f7939ba32f793c217d8aea82",
+                "reference": "8ee9fd69da6cb7f0f7939ba32f793c217d8aea82",
                 "shasum": ""
             },
             "require": {
@@ -18041,25 +18221,25 @@
                 "proprietary"
             ],
             "description": "Content module",
-            "time": "2020-06-09T12:51:37+00:00"
+            "time": "2020-07-15T12:32:38+00:00"
         },
         {
             "name": "spryker/content-banner",
-            "version": "2.1.2",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/content-banner.git",
-                "reference": "8f9dd564fbabbcce4111a43bf52480872b5ebb21"
+                "reference": "d80e21007bf5da34a9c3024c419e881e74748621"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-banner/zipball/8f9dd564fbabbcce4111a43bf52480872b5ebb21",
-                "reference": "8f9dd564fbabbcce4111a43bf52480872b5ebb21",
+                "url": "https://api.github.com/repos/spryker/content-banner/zipball/d80e21007bf5da34a9c3024c419e881e74748621",
+                "reference": "d80e21007bf5da34a9c3024c419e881e74748621",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "spryker/content-storage": "^2.0.0",
+                "spryker/content-storage": "^2.4.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/symfony": "^3.0.0"
             },
@@ -18083,7 +18263,7 @@
                 "proprietary"
             ],
             "description": "ContentBanner module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-15T12:32:38+00:00"
         },
         {
             "name": "spryker/content-banner-data-import",
@@ -18176,21 +18356,21 @@
         },
         {
             "name": "spryker/content-banners-rest-api",
-            "version": "2.1.3",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/content-banners-rest-api.git",
-                "reference": "7fc925192eb30c0fe70e86eb49cfad4a0a18475a"
+                "reference": "91739a79550ac9cb6ba74ff9b30d88ca5a682a36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-banners-rest-api/zipball/7fc925192eb30c0fe70e86eb49cfad4a0a18475a",
-                "reference": "7fc925192eb30c0fe70e86eb49cfad4a0a18475a",
+                "url": "https://api.github.com/repos/spryker/content-banners-rest-api/zipball/91739a79550ac9cb6ba74ff9b30d88ca5a682a36",
+                "reference": "91739a79550ac9cb6ba74ff9b30d88ca5a682a36",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "spryker/content-banner": "^2.0.0",
+                "spryker/content-banner": "^2.2.0",
                 "spryker/glue-application": "^1.8.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -18215,7 +18395,7 @@
                 "proprietary"
             ],
             "description": "ContentBannersRestApi module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-15T12:32:38+00:00"
         },
         {
             "name": "spryker/content-file",
@@ -18538,21 +18718,21 @@
         },
         {
             "name": "spryker/content-product",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/content-product.git",
-                "reference": "87b4645d7ec99b6847d682081651be670d350793"
+                "reference": "8f32a24e801e67c69fe2446f8a328622e0febde7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-product/zipball/87b4645d7ec99b6847d682081651be670d350793",
-                "reference": "87b4645d7ec99b6847d682081651be670d350793",
+                "url": "https://api.github.com/repos/spryker/content-product/zipball/8f32a24e801e67c69fe2446f8a328622e0febde7",
+                "reference": "8f32a24e801e67c69fe2446f8a328622e0febde7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "spryker/content-storage": "^2.0.0",
+                "spryker/content-storage": "^2.4.0",
                 "spryker/kernel": "^3.32.0"
             },
             "require-dev": {
@@ -18575,29 +18755,30 @@
                 "proprietary"
             ],
             "description": "ContentProduct module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-15T12:32:38+00:00"
         },
         {
             "name": "spryker/content-product-abstract-lists-rest-api",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/content-product-abstract-lists-rest-api.git",
-                "reference": "fe5917b2f37464657439c925e80e8996c78fdf8b"
+                "reference": "e8b5388c054620c776a969931fec2f4d45981340"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-product-abstract-lists-rest-api/zipball/fe5917b2f37464657439c925e80e8996c78fdf8b",
-                "reference": "fe5917b2f37464657439c925e80e8996c78fdf8b",
+                "url": "https://api.github.com/repos/spryker/content-product-abstract-lists-rest-api/zipball/e8b5388c054620c776a969931fec2f4d45981340",
+                "reference": "e8b5388c054620c776a969931fec2f4d45981340",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "spryker/content-product": "^1.0.0",
+                "spryker/content-product": "^1.1.0",
                 "spryker/glue-application": "^1.15.0",
                 "spryker/glue-application-extension": "^1.2.0",
                 "spryker/kernel": "^3.32.0",
-                "spryker/products-rest-api": "^2.4.0",
+                "spryker/products-rest-api": "^2.10.0",
+                "spryker/store": "^1.0.0",
                 "spryker/symfony": "^3.2.0"
             },
             "require-dev": {
@@ -18619,7 +18800,7 @@
                 "proprietary"
             ],
             "description": "ContentProductAbstractListsRestApi module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-15T12:32:38+00:00"
         },
         {
             "name": "spryker/content-product-data-import",
@@ -18849,16 +19030,16 @@
         },
         {
             "name": "spryker/content-storage",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/content-storage.git",
-                "reference": "b502237be06843baf815fad5ea6c45efcc429f2f"
+                "reference": "64486a1fbb02f4cb1855e60801fb2fe975aa5c63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-storage/zipball/b502237be06843baf815fad5ea6c45efcc429f2f",
-                "reference": "b502237be06843baf815fad5ea6c45efcc429f2f",
+                "url": "https://api.github.com/repos/spryker/content-storage/zipball/64486a1fbb02f4cb1855e60801fb2fe975aa5c63",
+                "reference": "64486a1fbb02f4cb1855e60801fb2fe975aa5c63",
                 "shasum": ""
             },
             "require": {
@@ -18901,7 +19082,7 @@
                 "proprietary"
             ],
             "description": "ContentStorage module",
-            "time": "2020-07-03T07:32:24+00:00"
+            "time": "2020-07-15T12:32:38+00:00"
         },
         {
             "name": "spryker/content-storage-extension",
@@ -34960,16 +35141,16 @@
         },
         {
             "name": "spryker/products-rest-api",
-            "version": "2.9.2",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/products-rest-api.git",
-                "reference": "b8948cc97aa6eb97355558930e776aaf08fa3a09"
+                "reference": "0f7bf31bbd9311bbfd6bce1d490bcd580f00f1aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/products-rest-api/zipball/b8948cc97aa6eb97355558930e776aaf08fa3a09",
-                "reference": "b8948cc97aa6eb97355558930e776aaf08fa3a09",
+                "url": "https://api.github.com/repos/spryker/products-rest-api/zipball/0f7bf31bbd9311bbfd6bce1d490bcd580f00f1aa",
+                "reference": "0f7bf31bbd9311bbfd6bce1d490bcd580f00f1aa",
                 "shasum": ""
             },
             "require": {
@@ -34978,7 +35159,7 @@
                 "spryker/glue-application": "^1.0.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/product-storage": "^1.2.0",
+                "spryker/product-storage": "^1.22.0",
                 "spryker/products-rest-api-extension": "^1.1.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
@@ -35003,7 +35184,7 @@
                 "proprietary"
             ],
             "description": "ProductsRestApi module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-01T08:47:04+00:00"
         },
         {
             "name": "spryker/products-rest-api-extension",
@@ -44057,16 +44238,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d"
+                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d",
-                "reference": "2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/1c302646f6efc070cd46856e600e5e0684d6b454",
+                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454",
                 "shasum": ""
             },
             "require": {
@@ -44078,7 +44259,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -44129,20 +44310,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-iconv",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-iconv.git",
-                "reference": "ba6c9c18db36235b859cc29b8372d1c01298c035"
+                "reference": "6c2f78eb8f5ab8eaea98f6d414a5915f2e0fce36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/ba6c9c18db36235b859cc29b8372d1c01298c035",
-                "reference": "ba6c9c18db36235b859cc29b8372d1c01298c035",
+                "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/6c2f78eb8f5ab8eaea98f6d414a5915f2e0fce36",
+                "reference": "6c2f78eb8f5ab8eaea98f6d414a5915f2e0fce36",
                 "shasum": ""
             },
             "require": {
@@ -44154,7 +44335,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -44206,20 +44387,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
-                "reference": "6e4dbcf5e81eba86e36731f94fe56b1726835846"
+                "reference": "b740103edbdcc39602239ee8860f0f45a8eb9aa5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/6e4dbcf5e81eba86e36731f94fe56b1726835846",
-                "reference": "6e4dbcf5e81eba86e36731f94fe56b1726835846",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/b740103edbdcc39602239ee8860f0f45a8eb9aa5",
+                "reference": "b740103edbdcc39602239ee8860f0f45a8eb9aa5",
                 "shasum": ""
             },
             "require": {
@@ -44231,7 +44412,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -44284,20 +44465,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-icu.git",
-                "reference": "7b5e03aeb88cc8b4b2b136e34b0fc0830e86cd4d"
+                "reference": "4e45a6e39041a9cc78835b11abc47874ae302a55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/7b5e03aeb88cc8b4b2b136e34b0fc0830e86cd4d",
-                "reference": "7b5e03aeb88cc8b4b2b136e34b0fc0830e86cd4d",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/4e45a6e39041a9cc78835b11abc47874ae302a55",
+                "reference": "4e45a6e39041a9cc78835b11abc47874ae302a55",
                 "shasum": ""
             },
             "require": {
@@ -44310,7 +44491,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -44360,25 +44541,26 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "a57f8161502549a742a63c09f0a604997bf47027"
+                "reference": "bc6549d068d0160e0f10f7a5a23c7d1406b95ebe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/a57f8161502549a742a63c09f0a604997bf47027",
-                "reference": "a57f8161502549a742a63c09f0a604997bf47027",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/bc6549d068d0160e0f10f7a5a23c7d1406b95ebe",
+                "reference": "bc6549d068d0160e0f10f7a5a23c7d1406b95ebe",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "symfony/polyfill-mbstring": "^1.3",
+                "symfony/polyfill-intl-normalizer": "^1.10",
+                "symfony/polyfill-php70": "^1.10",
                 "symfony/polyfill-php72": "^1.10"
             },
             "suggest": {
@@ -44387,7 +44569,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -44410,6 +44592,10 @@
                 {
                     "name": "Laurent Bassin",
                     "email": "laurent@bassin.info"
+                },
+                {
+                    "name": "Trevor Rowbotham",
+                    "email": "trevor.rowbotham@pm.me"
                 },
                 {
                     "name": "Symfony Community",
@@ -44440,20 +44626,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
-                "reference": "40309d1700e8f72447bb9e7b54af756eeea35620"
+                "reference": "37078a8dd4a2a1e9ab0231af7c6cb671b2ed5a7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/40309d1700e8f72447bb9e7b54af756eeea35620",
-                "reference": "40309d1700e8f72447bb9e7b54af756eeea35620",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/37078a8dd4a2a1e9ab0231af7c6cb671b2ed5a7e",
+                "reference": "37078a8dd4a2a1e9ab0231af7c6cb671b2ed5a7e",
                 "shasum": ""
             },
             "require": {
@@ -44465,7 +44651,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -44521,20 +44707,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-14T14:40:37+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "7110338d81ce1cbc3e273136e4574663627037a7"
+                "reference": "a6977d63bf9a0ad4c65cd352709e230876f9904a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7110338d81ce1cbc3e273136e4574663627037a7",
-                "reference": "7110338d81ce1cbc3e273136e4574663627037a7",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/a6977d63bf9a0ad4c65cd352709e230876f9904a",
+                "reference": "a6977d63bf9a0ad4c65cd352709e230876f9904a",
                 "shasum": ""
             },
             "require": {
@@ -44546,7 +44732,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -44598,20 +44784,97 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
-            "name": "symfony/polyfill-php72",
-            "version": "v1.17.1",
+            "name": "symfony/polyfill-php70",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a"
+                "url": "https://github.com/symfony/polyfill-php70.git",
+                "reference": "0dd93f2c578bdc9c72697eaa5f1dd25644e618d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a",
-                "reference": "3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/0dd93f2c578bdc9c72697eaa5f1dd25644e618d3",
+                "reference": "0dd93f2c578bdc9c72697eaa5f1dd25644e618d3",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": "~1.0|~2.0|~9.99",
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.18-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php70\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 7.0+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-14T12:35:20+00:00"
+        },
+        {
+            "name": "symfony/polyfill-php72",
+            "version": "v1.18.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php72.git",
+                "reference": "639447d008615574653fb3bc60d1986d7172eaae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/639447d008615574653fb3bc60d1986d7172eaae",
+                "reference": "639447d008615574653fb3bc60d1986d7172eaae",
                 "shasum": ""
             },
             "require": {
@@ -44620,7 +44883,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -44671,20 +44934,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-php73",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php73.git",
-                "reference": "fa0837fe02d617d31fbb25f990655861bb27bd1a"
+                "reference": "fffa1a52a023e782cdcc221d781fe1ec8f87fcca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php73/zipball/fa0837fe02d617d31fbb25f990655861bb27bd1a",
-                "reference": "fa0837fe02d617d31fbb25f990655861bb27bd1a",
+                "url": "https://api.github.com/repos/symfony/polyfill-php73/zipball/fffa1a52a023e782cdcc221d781fe1ec8f87fcca",
+                "reference": "fffa1a52a023e782cdcc221d781fe1ec8f87fcca",
                 "shasum": ""
             },
             "require": {
@@ -44693,7 +44956,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -44747,20 +45010,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "4a5b6bba3259902e386eb80dd1956181ee90b5b2"
+                "reference": "d87d5766cbf48d72388a9f6b85f280c8ad51f981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/4a5b6bba3259902e386eb80dd1956181ee90b5b2",
-                "reference": "4a5b6bba3259902e386eb80dd1956181ee90b5b2",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/d87d5766cbf48d72388a9f6b85f280c8ad51f981",
+                "reference": "d87d5766cbf48d72388a9f6b85f280c8ad51f981",
                 "shasum": ""
             },
             "require": {
@@ -44769,7 +45032,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -44827,7 +45090,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/process",
