@@ -118,6 +118,7 @@ use Spryker\Zed\RestRequestValidator\Communication\Console\BuildRestApiValidatio
 use Spryker\Zed\RestRequestValidator\Communication\Console\RemoveRestApiValidationCacheConsole;
 use Spryker\Zed\Router\Communication\Plugin\Console\RouterCacheWarmUpConsole;
 use Spryker\Zed\Router\Communication\Plugin\Console\RouterDebugZedConsole;
+use Spryker\Zed\SalesInvoice\Communication\Console\OrderInvoiceSendConsole;
 use Spryker\Zed\SalesOms\Communication\Console\ImportOrderItemsStatusConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerCleanConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerResumeConsole;
@@ -369,6 +370,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new CustomerPasswordResetConsole(),
             new CustomerPasswordSetConsole(),
+
+            new OrderInvoiceSendConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

@@ -46,6 +46,8 @@ use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\Propel\PropelConfig;
+use SprykerEco\Shared\Payone\PayoneConstants;
+use SprykerEco\Zed\Payone\PayoneConfig;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
@@ -134,11 +136,15 @@ $config[WebProfilerConstants::PROFILER_CACHE_DIRECTORY] = '/tmp/webprofiler';
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
     'MarketplacePayment01',
+    'PayoneCreditCardPartialOperations',
+    'PayoneOnlineTransferPartialOperations',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
     DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
     DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
+    PayoneConfig::PAYMENT_METHOD_CREDIT_CARD => 'PayoneCreditCardPartialOperations',
+    PayoneConfig::PAYMENT_METHOD_INSTANT_ONLINE_TRANSFER => 'PayoneOnlineTransferPartialOperations',
 ];
 
 $config[EventConstants::LOGGER_ACTIVE] = true;
@@ -226,6 +232,7 @@ $config[PropelConstants::ZED_DB_PORT] = getenv('SPRYKER_DB_PORT');
 $config[PropelConstants::ZED_DB_ENGINE] = strtolower(getenv('SPRYKER_DB_ENGINE') ?: '') ?: PropelConfig::DB_ENGINE_PGSQL;
 $config[PropelQueryBuilderConstants::ZED_DB_ENGINE] = $config[PropelConstants::ZED_DB_ENGINE];
 $config[PropelConstants::ZED_DB_DATABASE] = getenv('SPRYKER_DB_DATABASE');
+$config[PropelConstants::ZED_DB_REPLICAS] = json_decode(getenv('SPRYKER_DB_REPLICAS') ?: '[]', true);
 /* End Database */
 
 /* Job runner */
@@ -398,6 +405,29 @@ $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('D
 // ----------- Documentation generator
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
 
-// ----------- HTTP Security
-$config[KernelConstants::STRICT_DOMAIN_REDIRECT] = false;
+// ----------- Payone
+$config[PayoneConstants::PAYONE] = [
+    PayoneConstants::PAYONE_CREDENTIALS_ENCODING => 'UTF-8',
+    PayoneConstants::PAYONE_CREDENTIALS_KEY => '',
+    PayoneConstants::PAYONE_CREDENTIALS_MID => '',
+    PayoneConstants::PAYONE_CREDENTIALS_AID => '',
+    PayoneConstants::PAYONE_CREDENTIALS_PORTAL_ID => '',
+    PayoneConstants::PAYONE_PAYMENT_GATEWAY_URL => 'https://api.pay1.de/post-gateway/',
+    PayoneConstants::HOST_YVES => $config[ApplicationConstants::BASE_URL_YVES],
+    PayoneConstants::PAYONE_MODE => PayoneConstants::PAYONE_MODE_TEST,
+    PayoneConstants::PAYONE_EMPTY_SEQUENCE_NUMBER => 0,
+    PayoneConstants::PAYONE_REDIRECT_SUCCESS_URL => sprintf(
+        '%s/payone/payment-success',
+        $config[ApplicationConstants::BASE_URL_YVES]
+    ),
+    PayoneConstants::PAYONE_REDIRECT_ERROR_URL => sprintf(
+        '%s/payone/payment-failure',
+        $config[ApplicationConstants::BASE_URL_YVES]
+    ),
+    PayoneConstants::PAYONE_REDIRECT_BACK_URL => sprintf(
+        '%s/payone/regular-redirect-payment-cancellation',
+        $config[ApplicationConstants::BASE_URL_YVES]
+    ),
+];
+
 $config[KernelConstants::DOMAIN_WHITELIST] = [];

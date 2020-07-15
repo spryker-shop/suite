@@ -70,6 +70,7 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
         $this->customerTransfer = $this->createCustomer($I);
+        $this->customerTransfer = $I->confirmCustomer($this->customerTransfer);
         $this->productConcreteTransfer = $this->createProduct($I);
 
         return $this;

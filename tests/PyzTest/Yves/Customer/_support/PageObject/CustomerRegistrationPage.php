@@ -24,4 +24,6 @@ class CustomerRegistrationPage extends Customer
     public const FORM_FIELD_SELECTOR_ACCEPT_TERMS = '[data-qa*="registerForm_accept_terms"] label';
 
     public const SUCCESS_MESSAGE = 'Registration Successful';
+
+    public const CONFIRM_YOUR_ACCOUNT_MESSAGE = 'Almost there! We send you an email to validate your email address. Please confirm it to be able to log in.';
 }
