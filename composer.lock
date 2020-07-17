@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "021eeb3af2a90bd7fd85b1694afe2155",
+    "content-hash": "d4d6595f3761f3130d3b421f2daa862a",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -23738,16 +23738,16 @@
         },
         {
             "name": "spryker/merchant-oms",
-            "version": "0.3.1",
+            "version": "0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-oms.git",
-                "reference": "963e494cafb4a7c92062e75413f1b518c90c4bfa"
+                "reference": "d9d8d4558da041c9ddc060ada45cadf8882386be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-oms/zipball/963e494cafb4a7c92062e75413f1b518c90c4bfa",
-                "reference": "963e494cafb4a7c92062e75413f1b518c90c4bfa",
+                "url": "https://api.github.com/repos/spryker/merchant-oms/zipball/d9d8d4558da041c9ddc060ada45cadf8882386be",
+                "reference": "d9d8d4558da041c9ddc060ada45cadf8882386be",
                 "shasum": ""
             },
             "require": {
@@ -23783,7 +23783,7 @@
                 "proprietary"
             ],
             "description": "MerchantOms module",
-            "time": "2020-07-01T14:24:00+00:00"
+            "time": "2020-07-14T13:06:17+00:00"
         },
         {
             "name": "spryker/merchant-oms-data-import",
@@ -23829,6 +23829,47 @@
             ],
             "description": "MerchantOmsDataImport module",
             "time": "2020-05-29T08:34:44+00:00"
+        },
+        {
+            "name": "spryker/merchant-oms-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-oms-gui.git",
+                "reference": "61b1728082cf4a909e76ea8554123c0cc0ed3067"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-oms-gui/zipball/61b1728082cf4a909e76ea8554123c0cc0ed3067",
+                "reference": "61b1728082cf4a909e76ea8554123c0cc0ed3067",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-oms": "^0.3.2",
+                "spryker/sales-extension": "^1.8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantOmsGui module",
+            "time": "2020-07-15T13:30:40+00:00"
         },
         {
             "name": "spryker/merchant-opening-hours",
@@ -25498,6 +25539,47 @@
             ],
             "description": "MerchantShipment module",
             "time": "2020-04-15T20:33:53+00:00"
+        },
+        {
+            "name": "spryker/merchant-shipment-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-shipment-gui.git",
+                "reference": "76b51e447ace7b0b6b8e96c213018ada81d33a46"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-shipment-gui/zipball/76b51e447ace7b0b6b8e96c213018ada81d33a46",
+                "reference": "76b51e447ace7b0b6b8e96c213018ada81d33a46",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant": "^3.0.0",
+                "spryker/shipment-gui-extension": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantShipmentGui module",
+            "time": "2020-07-17T07:52:29+00:00"
         },
         {
             "name": "spryker/merchant-stock",
@@ -36544,16 +36626,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "11.13.0",
+            "version": "11.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "a3b59acaad045a7de7f98da0978f8a3a3e8ff97d"
+                "reference": "fbf57f21957af4211b7bd18b4f332e4461d1f143"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/a3b59acaad045a7de7f98da0978f8a3a3e8ff97d",
-                "reference": "a3b59acaad045a7de7f98da0978f8a3a3e8ff97d",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/fbf57f21957af4211b7bd18b4f332e4461d1f143",
+                "reference": "fbf57f21957af4211b7bd18b4f332e4461d1f143",
                 "shasum": ""
             },
             "require": {
@@ -36568,7 +36650,7 @@
                 "spryker/oms": "^10.3.0 || ^11.0.0",
                 "spryker/propel": "^3.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/sales-extension": "^1.7.0",
+                "spryker/sales-extension": "^1.8.0",
                 "spryker/sales-split": "^3.0.0 || ^5.0.0",
                 "spryker/sequence-number": "^3.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -36612,7 +36694,7 @@
                 "proprietary"
             ],
             "description": "Sales module",
-            "time": "2020-07-06T13:07:59+00:00"
+            "time": "2020-07-14T12:33:41+00:00"
         },
         {
             "name": "spryker/sales-configurable-bundle",
@@ -36715,16 +36797,16 @@
         },
         {
             "name": "spryker/sales-extension",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-extension.git",
-                "reference": "b6396247f73629b0e39c8ada0df043790c8a8f39"
+                "reference": "03525275e0b9f4cfe156278cca017fcd6c2b6909"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-extension/zipball/b6396247f73629b0e39c8ada0df043790c8a8f39",
-                "reference": "b6396247f73629b0e39c8ada0df043790c8a8f39",
+                "url": "https://api.github.com/repos/spryker/sales-extension/zipball/03525275e0b9f4cfe156278cca017fcd6c2b6909",
+                "reference": "03525275e0b9f4cfe156278cca017fcd6c2b6909",
                 "shasum": ""
             },
             "require": {
@@ -36749,7 +36831,7 @@
                 "proprietary"
             ],
             "description": "SalesExtension module",
-            "time": "2020-04-23T10:38:06+00:00"
+            "time": "2020-07-14T12:33:41+00:00"
         },
         {
             "name": "spryker/sales-invoice",
@@ -39061,16 +39143,16 @@
         },
         {
             "name": "spryker/shipment-gui",
-            "version": "2.2.9",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-gui.git",
-                "reference": "3861c2f3557f241c494a9b9b7418ac0e1d81c633"
+                "reference": "0e9b720321cb10bef018d48057cb8b006d121796"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-gui/zipball/3861c2f3557f241c494a9b9b7418ac0e1d81c633",
-                "reference": "3861c2f3557f241c494a9b9b7418ac0e1d81c633",
+                "url": "https://api.github.com/repos/spryker/shipment-gui/zipball/0e9b720321cb10bef018d48057cb8b006d121796",
+                "reference": "0e9b720321cb10bef018d48057cb8b006d121796",
                 "shasum": ""
             },
             "require": {
@@ -39080,6 +39162,7 @@
                 "spryker/kernel": "^3.33.0",
                 "spryker/sales": "^11.4.0",
                 "spryker/shipment": "^8.0.0",
+                "spryker/shipment-gui-extension": "^0.1.0",
                 "spryker/store": "^1.9.1",
                 "spryker/symfony": "^3.2.2",
                 "spryker/tax": "^5.0.0",
@@ -39104,7 +39187,45 @@
                 "proprietary"
             ],
             "description": "ShipmentGui module",
-            "time": "2020-07-03T08:13:47+00:00"
+            "time": "2020-07-16T09:51:42+00:00"
+        },
+        {
+            "name": "spryker/shipment-gui-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shipment-gui-extension.git",
+                "reference": "10272d81471a6202681bc8542cd4c4068c009531"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shipment-gui-extension/zipball/10272d81471a6202681bc8542cd4c4068c009531",
+                "reference": "10272d81471a6202681bc8542cd4c4068c009531",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShipmentGuiExtension module",
+            "time": "2020-07-16T09:13:57+00:00"
         },
         {
             "name": "spryker/shipments-rest-api",
