@@ -61,9 +61,9 @@
 
         <events>
             <event name="initiate" onEnter="true"/>
-            <event name="ship" manual="true"/>
-            <event name="deliver" manual="true"/>
-            <event name="close" manual="true"/>
+            <event name="ship" manual="true" command="DummyMarketplacePayment/ShipOrderItem"/>
+            <event name="deliver" manual="true" command="DummyMarketplacePayment/DeliverOrderItem"/>
+            <event name="close"/>
             <event name="cancel by merchant" manual="true"/>
         </events>
 

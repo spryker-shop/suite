@@ -22,6 +22,7 @@ use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\SaveCompanyUuid
 use Spryker\Zed\Customer\Communication\Plugin\Sales\CustomerOrderHydratePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
 use Spryker\Zed\ManualOrderEntry\Communication\Plugin\Sales\OrderSourceExpanderPreSavePlugin;
+use Spryker\Zed\MerchantOmsGui\Communication\Plugin\Sales\MerchantOmsStateOrderItemsTableExpanderPlugin;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantOrderDataOrderExpanderPlugin;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferenceOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferencesOrderExpanderPlugin;
@@ -230,6 +231,16 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         return [
             new CompanyBusinessUnitCustomerOrderAccessCheckPlugin(),
             new CompanyCustomerOrderAccessCheckPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderItemsTableExpanderPluginInterface[]
+     */
+    protected function getOrderItemsTableExpanderPlugins(): array
+    {
+        return [
+            new MerchantOmsStateOrderItemsTableExpanderPlugin(),
         ];
     }
 }
