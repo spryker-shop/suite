@@ -43,6 +43,11 @@ tag: '1.0'
 environment: docker
 image:
     tag: spryker/php:7.3
+    environment:
+      SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r pre-deploy -vvv"
+      SPRYKER_HOOK_AFTER_DEPLOY: "true"
+      SPRYKER_HOOK_INSTALL: "vendor/bin/install -r production --no-ansi -vvv"
+      SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r destructive --no-ansi -vvv"
     php:
         enabled-extensions:
             - blackfire
@@ -66,7 +71,7 @@ regions:
     DE:
         services:
             database:
-                database: spryker_konstantin
+                database: spryker_dev2
                 username: spryker
                 password: secret
 
@@ -109,32 +114,41 @@ groups:
             Yves:
                 application: yves
                 endpoints:
-                    www.de.konstantin.cloud.spryker.toys:
+                    www.de.dev2.cloud.spryker.toys:
                         store: DE
                         <<: *frontend-auth
-                    de.konstantin.cloud.spryker.toys:
+                    de.dev2.cloud.spryker.toys:
                         store: DE
                         <<: *frontend-auth
-                    www.at.konstantin.cloud.spryker.toys:
+                    www.at.dev2.cloud.spryker.toys:
                         store: AT
                         <<: *frontend-auth
-                    at.konstantin.cloud.spryker.toys:
+                    at.dev2.cloud.spryker.toys:
                         store: AT
                         <<: *frontend-auth
-                    www.us.konstantin.cloud.spryker.toys:
+                    www.us.dev2.cloud.spryker.toys:
                         store: US
                         <<: *frontend-auth
-                    us.konstantin.cloud.spryker.toys:
+                    us.dev2.cloud.spryker.toys:
                         store: US
                         <<: *frontend-auth
             Zed:
                 application: zed
                 endpoints:
-                    zed.de.konstantin.cloud.spryker.toys:
+                    zed.de.dev2.cloud.spryker.toys:
                         store: DE
-                    zed.at.konstantin.cloud.spryker.toys:
+                    zed.at.dev2.cloud.spryker.toys:
                         store: AT
-                    zed.us.konstantin.cloud.spryker.toys:
+                    zed.us.dev2.cloud.spryker.toys:
+                        store: US
+            Glue:
+                application: glue
+                endpoints:
+                    glue.de.dev2.cloud.spryker.toys:
+                        store: DE
+                    glue.at.dev2.cloud.spryker.toys:
+                        store: AT
+                    glue.us.dev2.cloud.spryker.toys:
                         store: US
 services:
     database:
@@ -152,7 +166,7 @@ services:
             username: "spryker"
             password: "secret"
         endpoints:
-            queue.konstantin.cloud.spryker.toys:
+            queue.dev2.cloud.spryker.toys:
             localhost:5672:
                 protocol: tcp
     session:
@@ -171,11 +185,11 @@ services:
     scheduler:
         engine: jenkins
         endpoints:
-            scheduler.konstantin.cloud.spryker.toys:
+            scheduler.dev2.cloud.spryker.toys:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.konstantin.cloud.spryker.toys:
+            mail.dev2.cloud.spryker.toys:
 
 docker:
 
