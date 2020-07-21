@@ -10,7 +10,6 @@ namespace PyzTest\Glue\Checkout\RestApi\Fixtures;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\PaymentMethodTransfer;
 use Generated\Shared\Transfer\PaymentProviderTransfer;
-use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
@@ -34,6 +33,7 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     protected const TEST_USERNAME = 'CheckoutRestApiFixtures';
     protected const TEST_USERNAME_2 = 'CheckoutRestApiFixtures2';
     protected const TEST_PASSWORD = 'password';
+    protected const PRODUCT_CONCRETES_GENERATE_NUMBER = 100;
 
     /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
@@ -46,9 +46,9 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     protected $customerTransferWithPersistedAddress;
 
     /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
+     * @var \Generated\Shared\Transfer\ProductConcreteTransfer[]
      */
-    protected $productConcreteTransfer;
+    protected $productConcreteTransfers;
 
     /**
      * @var \Generated\Shared\Transfer\QuoteTransfer
@@ -77,11 +77,11 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer[]
      */
-    public function getProductConcreteTransfer(): ProductConcreteTransfer
+    public function getProductConcreteTransfers(): array
     {
-        return $this->productConcreteTransfer;
+        return $this->productConcreteTransfers;
     }
 
     /**
@@ -114,7 +114,9 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         ]);
 
         $this->customerTransfer = $I->confirmCustomer($customerTransfer);
-        $this->productConcreteTransfer = $I->haveProductWithStock();
+        for ($i = 0; $i < static::PRODUCT_CONCRETES_GENERATE_NUMBER; $i++) {
+            $this->productConcreteTransfers[] = $I->haveProductWithStock();
+        }
 
         $customerTransferWithPersistedAddress = $I->haveCustomerWithPersistentAddress([
             CustomerTransfer::USERNAME => static::TEST_USERNAME_2,
