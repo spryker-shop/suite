@@ -356,8 +356,8 @@ class CheckoutApiTester extends ApiEndToEndTester
             PriceProductTransfer::ID_PRODUCT => $productConcreteTransfer->getIdProductConcrete(),
             PriceProductTransfer::PRICE_TYPE_NAME => 'DEFAULT',
             PriceProductTransfer::MONEY_VALUE => [
-                MoneyValueTransfer::NET_AMOUNT => 7770,
-                MoneyValueTransfer::GROSS_AMOUNT => 8880,
+                MoneyValueTransfer::NET_AMOUNT => 770,
+                MoneyValueTransfer::GROSS_AMOUNT => 880,
             ],
         ];
         $this->havePriceProduct($priceProductOverride);
