@@ -1,6 +1,7 @@
 build:
     environment:
-        php: '7.3'
+        php: '7.3.20'
+        node: 'v12.18.2'
 
     tests:
         override:
@@ -9,5 +10,9 @@ build:
     nodes:
         analysis:
             tests:
+                requires:
+                    - branch: master
+                    - branch: /feature\/[a-z]+-\d+\/(master|dev).+|feature\/[a-z]+-\d+\/[a-z]+-\d+\/(master|dev).+/
+                    - branch: /(bugfix|hotfix|beta)\/.+/
                 override:
                     - php-scrutinizer-run
