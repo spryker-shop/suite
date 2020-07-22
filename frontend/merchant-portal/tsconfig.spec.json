@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.mp.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "module": "commonjs",
+    "types": ["jest", "node"]
+  },
+  "files": [
+    "test-setup.ts"
+  ],
+  "include": [
+    "../../vendor/spryker/*/src/Spryker/Zed/*/Presentation/Components/**/*.spec.ts",
+    "../../vendor/spryker/*/src/Spryker/Zed/*/Presentation/Components/**/*.d.ts"
+  ]
+}

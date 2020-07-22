@@ -3,25 +3,29 @@
         "baseUrl": ".",
         "sourceMap": true,
         "noImplicitAny": false,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "skipLibCheck": true,
-        "skipDefaultLibCheck": true,
         "module": "esnext",
         "moduleResolution": "node",
         "removeComments": true,
-        "target": "es2015",
-        "lib": ["dom", "esnext"],
+        "target": "es5",
+        "lib": [
+            "dom",
+            "es5",
+            "es6",
+            "es7"
+        ],
         "paths": {
-            "@mp/zed-ui/*": [
-                "./vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/*"
+            "*": [
+                "*"
             ],
-            "*": ["*"],
             "ShopUi/*": [
                 "./vendor/spryker-shop/shop-ui/src/SprykerShop/Yves/ShopUi/Theme/default/*"
             ]
         }
     },
+    "files": [
+        "./src/Pyz/Yves/ShopUi/Theme/default/app.ts",
+        "./src/Pyz/Yves/ShopUi/Theme/default/vendor.ts"
+    ],
     "include": [
         "./vendor/spryker-shop/**/*",
         "./vendor/spryker-eco/**/*",

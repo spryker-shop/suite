@@ -1,31 +1,30 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
         "sourceMap": true,
-        "noImplicitAny": false,
+        "declaration": false,
+        "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "noEmitHelpers": true,
+        "importHelpers": true,
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "removeComments": true,
         "target": "es2015",
-        "lib": ["dom", "esnext"],
+        "module": "esnext",
+        "typeRoots": ["node_modules/@types"],
+        "lib": ["esnext", "dom"],
+        "baseUrl": ".",
+        "rootDir": ".",
         "paths": {
             "@mp/zed-ui/*": [
                 "./vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/*"
-            ],
-            "*": ["*"],
-            "ShopUi/*": [
-                "./vendor/spryker-shop/shop-ui/src/SprykerShop/Yves/ShopUi/Theme/default/*"
             ]
         }
     },
     "include": [
-        "./vendor/spryker-shop/**/*",
-        "./vendor/spryker-eco/**/*",
-        "./src/Pyz/Yves/**/*"
+        "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/main.ts",
+        "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/polyfills.ts",
+        "vendor/spryker/*/src/Spryker/Zed/*/Presentation/Components/index.ts"
     ],
     "exclude": [
         "**/node_modules/**",
