@@ -2,6 +2,12 @@
     "rulesDirectory": [
         "node_modules/tslint-lines-between-class-members"
     ],
+    "linterOptions": {
+        "exclude": [
+            "vendor/spryker/spryker/Bundles/*/src/Spryker/Zed/*/Presentation/Components/**",
+            "**/node_modules/**"
+        ]
+    },
     "rules": {
         "ban-ts-ignore": true,
         "ban-types": [

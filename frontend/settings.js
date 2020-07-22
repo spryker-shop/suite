@@ -20,7 +20,7 @@ const globalSettings = {
 
     paths: {
         // locate the typescript configuration json file
-        tsConfig: './tsconfig.json',
+        tsConfig: './tsconfig.yves.json',
 
         // path to frontend build config json file
         namespaceConfig: './config/Yves/frontend-build-config.json',
