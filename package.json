@@ -27,13 +27,13 @@
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
     "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod",
-    "mp:build": "npm run fe:root -- yarn workspaces foreach run build",
-    "mp:build:production": "npm run fe:root -- yarn workspaces foreach run build",
-    "mp:test": "yarn workspaces foreach run test --watch=false --browsers ChromeHeadless",
+    "mp:build": "ng build",
+    "mp:build:watch": "ng build --watch",
+    "mp:build:production": "ng build --prod",
+    "mp:test": "ng test",
+    "mp:lint": "ng lint",
     "mp:clean": "run-s mp:clean:*",
-    "mp:clean:dist": "yarn workspaces foreach rimraf dist",
-    "mp:clean:modules": "yarn workspaces foreach rimraf node_modules",
-    "fe:root": "export FE_ROOT_DIR=\"../../..\" && "
+    "mp:clean:dist": "rimraf public/Zed/assets/js/mp"
   },
   "engines": {
     "node": ">=8.11.4",

@@ -4,7 +4,7 @@ const path = require("path");
 
 const ROOT_DIR = path.resolve(__dirname, "../..");
 
-const SPRYKER_CORE_DIR = path.join(ROOT_DIR, "vendor/spryker/spryker/Bundles");
+const SPRYKER_CORE_DIR = path.join(ROOT_DIR, "vendor/spryker");
 
 const MP_ENTRY_POINT_FILE =
     "*/src/Spryker/Zed/*/Presentation/Components/index.ts";

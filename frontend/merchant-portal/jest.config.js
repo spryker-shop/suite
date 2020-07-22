@@ -1,6 +1,6 @@
 module.exports = {
     name: "merchant-portal",
-    roots: ["<rootDir>/../../vendor/spryker/spryker/Bundles"],
+    roots: ["<rootDir>/../../vendor/spryker"],
     testRegex: ["\/src\/Spryker\/Zed\/.+\/Presentation\/Components\/.+\\.(test|spec)\\.[jt]sx?$"],
     transform: {
         "^.+\\.(ts|js|html)$": "ts-jest",

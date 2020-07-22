@@ -20,9 +20,9 @@
                         "indexTransform": "./frontend/merchant-portal/html-transform.js",
                         "outputPath": "public/Zed/assets/js/mp",
                         "deployUrl": "/assets/js/mp/",
-                        "index": "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/index.html",
-                        "main": "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/main.ts",
-                        "polyfills": "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/polyfills.ts",
+                        "index": "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/index.html",
+                        "main": "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/main.ts",
+                        "polyfills": "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/polyfills.ts",
                         "tsConfig": "tsconfig.mp.json",
                         "assets": [
                             {
@@ -32,7 +32,7 @@
                             }
                         ],
                         "styles": [
-                            "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/styles.less"
+                            "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/styles.less"
                         ],
                         "scripts": [],
                         "extractCss": true
@@ -41,8 +41,8 @@
                         "production": {
                             "fileReplacements": [
                                 {
-                                    "replace": "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/environments/environment.ts",
-                                    "with": "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/environments/environment.prod.ts"
+                                    "replace": "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/environment.ts",
+                                    "with": "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/environment.prod.ts"
                                 }
                             ],
                             "optimization": true,
