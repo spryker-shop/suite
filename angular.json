@@ -1,0 +1,100 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "defaultProject": "merchant-portal",
+    "projects": {
+        "merchant-portal": {
+            "root": ".",
+            "sourceRoot": ".",
+            "projectType": "application",
+            "prefix": "mp",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@angular-builders/custom-webpack:browser",
+                    "options": {
+                        "customWebpackConfig": {
+                            "path": "./frontend/merchant-portal/webpack.config.ts",
+                            "mergeStrategies": {}
+                        },
+                        "indexTransform": "./frontend/merchant-portal/html-transform.js",
+                        "outputPath": "public/Zed/assets/js/mp",
+                        "deployUrl": "/assets/js/mp/",
+                        "index": "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/index.html",
+                        "main": "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/main.ts",
+                        "polyfills": "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/polyfills.ts",
+                        "tsConfig": "tsconfig.mp.json",
+                        "assets": [
+                            {
+                                "glob": "*/src/Spryker/Zed/*/Presentation/Components/assets/**/*",
+                                "input": "vendor/spryker/spryker/Bundles",
+                                "output": "/assets/"
+                            }
+                        ],
+                        "styles": [
+                            "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/styles.less"
+                        ],
+                        "scripts": [],
+                        "extractCss": true
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/environments/environment.ts",
+                                    "with": "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "none",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": true,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "bundle",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-builders/custom-webpack:dev-server",
+                    "options": {
+                        "browserTarget": "merchant-portal:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "merchant-portal:build:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": ["tsconfig.mp.json"],
+                        "tslintConfig": "tslint.mp.json",
+                        "exclude": ["**/node_modules/**"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "frontend/merchant-portal/jest.config.js",
+                        "tsConfig": "frontend/merchant-portal/tsconfig.spec.json",
+                        "setupFile": "frontend/merchant-portal/test-setup.ts"
+                    }
+                }
+            }
+        }
+    },
+    "cli": {
+        "analytics": false
+    }
+}
