@@ -128,10 +128,12 @@ $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 
-$config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED]
-    = $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED]
-    = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
-$config[WebProfilerConstants::PROFILER_CACHE_DIRECTORY] = '/tmp/webprofiler';
+if (class_exists(WebProfilerConstants::class)) {
+    $config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED]
+        = $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED]
+        = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
+    $config[WebProfilerConstants::PROFILER_CACHE_DIRECTORY] = '/tmp/webprofiler';
+}
 
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
@@ -215,6 +217,11 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf(
 );
 $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '';
+
+if (class_exists(TestifyConstants::class)) {
+    $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
+    $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
+}
 
 $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
 $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
