@@ -5,10 +5,9 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Zed\Console;
+namespace PyzTest\Zed\Development;
 
 use Codeception\Actor;
-use Symfony\Component\Process\Process;
 
 /**
  * Inherited Methods
@@ -22,24 +21,13 @@ use Symfony\Component\Process\Process;
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
+ * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
+ *
+ * @method \Spryker\Zed\Development\Business\DevelopmentBusinessFactory getFactory($moduleName = null) : \Spryker\Zed\Development\Business\DevelopmentBusinessFactory
  */
-class ConsoleConsoleTester extends Actor
+class DevelopmentBusinessTester extends Actor
 {
-    use _generated\ConsoleConsoleTesterActions;
-
-    /**
-     * @return string
-     */
-    public function runConsoleApplication()
-    {
-        $cmd = 'vendor/bin/console';
-        $process = new Process([$cmd]);
-        $process->run();
-        $output = $process->getOutput();
-
-        return $output;
-    }
+    use _generated\DevelopmentBusinessTesterActions;
 }

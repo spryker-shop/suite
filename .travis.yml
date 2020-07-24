@@ -419,10 +419,15 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then composer psalm ; fi
 
   - timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-logfile=/tmp/phantomjs.log --webdriver-loglevel=DEBUG">/dev/null &
-  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.stage0.yml --ext DotReporter ; fi
-  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.yml --ext DotReporter ; fi
-  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.stage2.yml --ext DotReporter ; fi
-  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g EndToEnd -g Presentation -x DockerOnly --ext DotReporter ; fi
+#  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.stage0.yml --ext DotReporter ; fi
+#  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.yml --ext DotReporter ; fi
+#  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.stage2.yml --ext DotReporter ; fi
+#  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g EndToEnd -g Presentation -x DockerOnly --ext DotReporter ; fi
+
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.stage0.yml ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.yml ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.stage2.yml ; fi
+  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g EndToEnd -g Presentation -x DockerOnly ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/stylelint ; fi
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/tslint stylish ; fi
