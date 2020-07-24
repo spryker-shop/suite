@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use SprykerShop\Yves\ShopApplication\YvesBootstrap as SprykerYvesBootstrap;
+use SprykerShop\Yves\ShopApplication\Bootstrap\YvesBootstrap as SprykerYvesBootstrap;
 
 class YvesBootstrap extends SprykerYvesBootstrap
 {

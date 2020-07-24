@@ -28,8 +28,4 @@ use Codeception\Actor;
 class AclCommunicationTester extends Actor
 {
     use _generated\AclCommunicationTesterActions;
-
-   /**
-    * Define custom actions here
-    */
 }
