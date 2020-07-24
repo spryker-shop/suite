@@ -11,7 +11,6 @@ use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
-use Silex\Provider\TwigServiceProvider as SilexTwigServiceProvider;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole;
@@ -429,19 +428,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         return [
             new EventBehaviorPostHookPlugin(),
         ];
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Silex\ServiceProviderInterface[]
-     */
-    public function getServiceProviders(Container $container)
-    {
-        $serviceProviders = parent::getServiceProviders($container);
-        $serviceProviders[] = new SilexTwigServiceProvider();
-
-        return $serviceProviders;
     }
 
     /**
