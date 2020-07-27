@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "660b3f164cbba374815042f9f7288b8c",
+    "content-hash": "7d41ed283609e6ea46b498ab051ad6c8",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -942,6 +942,10 @@
                 "rest",
                 "web service"
             ],
+            "support": {
+                "issues": "https://github.com/guzzle/guzzle/issues",
+                "source": "https://github.com/guzzle/guzzle/tree/6.5"
+            },
             "time": "2020-06-16T21:01:06+00:00"
         },
         {
@@ -2695,33 +2699,34 @@
         },
         {
             "name": "propel/propel",
-            "version": "2.0.0-alpha10",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/propelorm/Propel2.git",
-                "reference": "776f746747c62962f4b70b3a3ac1de2b249ffd35"
+                "reference": "421dcba7e31c2e6f2996c1e9ec50e30de6d56703"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/776f746747c62962f4b70b3a3ac1de2b249ffd35",
-                "reference": "776f746747c62962f4b70b3a3ac1de2b249ffd35",
+                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/421dcba7e31c2e6f2996c1e9ec50e30de6d56703",
+                "reference": "421dcba7e31c2e6f2996c1e9ec50e30de6d56703",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "psr/log": "^1.0",
-                "symfony/config": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/console": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/filesystem": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/finder": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/translation": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/validator": "^2.7.0||^3.3.0||^4.0.0||^5.0.0",
-                "symfony/yaml": "^2.7.0||^3.3.0||^4.0.0||^5.0.0"
+                "symfony/config": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/console": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/filesystem": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/finder": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/translation": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/validator": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/yaml": "^3.4.0||^4.3.0||^5.0.0"
             },
             "require-dev": {
                 "monolog/monolog": "^1.3",
                 "phpstan/phpstan": "^0.12.4",
-                "phpunit/phpunit": "^7.5.15"
+                "phpunit/phpunit": "^7.5.15",
+                "spryker/code-sniffer": "^0.15.4"
             },
             "suggest": {
                 "monolog/monolog": "The recommended logging library to use with Propel."
@@ -2757,7 +2762,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2020-07-13T12:20:41+00:00"
+            "time": "2020-07-16T14:54:26+00:00"
         },
         {
             "name": "psr/cache",
@@ -3718,7 +3723,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c8505b3132890d060541e94102394a324a61fc34"
+                "reference": "47ef2aaee1c5657fc6adee9f04d51869e16316dd"
             },
             "require": {
                 "php": ">=7.2"
@@ -4456,7 +4461,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-07-27T06:29:14+00:00"
+            "time": "2020-07-27T08:34:02+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -13976,6 +13981,7 @@
         "spryker-eco/loggly": 20,
         "spryker-eco/new-relic": 20,
         "spryker-eco/payone": 20,
+        "propel/propel": 20,
         "codeception/lib-innerbrowser": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/development-core": 20,
