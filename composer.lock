@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.147.4",
+            "version": "3.147.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "5a393f4be30df12e2517bba104002dbb21da5122"
+                "reference": "8a2612f740f16e3ba8fa90dd9fb2ed5cc87c0689"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5a393f4be30df12e2517bba104002dbb21da5122",
-                "reference": "5a393f4be30df12e2517bba104002dbb21da5122",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8a2612f740f16e3ba8fa90dd9fb2ed5cc87c0689",
+                "reference": "8a2612f740f16e3ba8fa90dd9fb2ed5cc87c0689",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-07-23T18:17:54+00:00"
+            "time": "2020-07-24T18:12:22+00:00"
         },
         {
             "name": "brick/math",
@@ -1429,16 +1429,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.69",
+            "version": "1.0.70",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "7106f78428a344bc4f643c233a94e48795f10967"
+                "reference": "585824702f534f8d3cf7fab7225e8466cc4b7493"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/7106f78428a344bc4f643c233a94e48795f10967",
-                "reference": "7106f78428a344bc4f643c233a94e48795f10967",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/585824702f534f8d3cf7fab7225e8466cc4b7493",
+                "reference": "585824702f534f8d3cf7fab7225e8466cc4b7493",
                 "shasum": ""
             },
             "require": {
@@ -1449,7 +1449,7 @@
                 "league/flysystem-sftp": "<1.0.6"
             },
             "require-dev": {
-                "phpspec/phpspec": "^3.4",
+                "phpspec/phpspec": "^3.4 || ^4.0 || ^5.0 || ^6.0",
                 "phpunit/phpunit": "^5.7.26"
             },
             "suggest": {
@@ -1515,7 +1515,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2020-05-18T15:13:39+00:00"
+            "time": "2020-07-26T07:20:36+00:00"
         },
         {
             "name": "league/flysystem-aws-s3-v3",
@@ -3718,7 +3718,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "feadb350db1958069acaae924c02a51422736b13"
+                "reference": "c8505b3132890d060541e94102394a324a61fc34"
             },
             "require": {
                 "php": ">=7.2"
@@ -4098,6 +4098,7 @@
                 "spryker/oauth": "*",
                 "spryker/oauth-company-user": "*",
                 "spryker/oauth-company-user-extension": "*",
+                "spryker/oauth-cryptography": "*",
                 "spryker/oauth-customer-connector": "*",
                 "spryker/oauth-customer-connector-extension": "*",
                 "spryker/oauth-extension": "*",
@@ -4434,7 +4435,7 @@
                 "spryker/zend": "*"
             },
             "require-dev": {
-                "spryker/code-sniffer": "dev-master"
+                "spryker/code-sniffer": "dev-bugfix/mp-3261-sniffer-removes-throw-annotation"
             },
             "bin": [
                 "Bundles/Console/bin/console",
@@ -4455,7 +4456,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-07-24T10:06:09+00:00"
+            "time": "2020-07-27T06:29:14+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8960,16 +8961,16 @@
         },
         {
             "name": "voku/portable-utf8",
-            "version": "5.4.46",
+            "version": "5.4.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "664a710cc07c83c5d023a3ae8be22d69e3622286"
+                "reference": "c92522515a2d5ec9b03fd3c9e231b8b277c65121"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/664a710cc07c83c5d023a3ae8be22d69e3622286",
-                "reference": "664a710cc07c83c5d023a3ae8be22d69e3622286",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/c92522515a2d5ec9b03fd3c9e231b8b277c65121",
+                "reference": "c92522515a2d5ec9b03fd3c9e231b8b277c65121",
                 "shasum": ""
             },
             "require": {
@@ -9051,7 +9052,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-18T00:16:14+00:00"
+            "time": "2020-07-26T11:17:51+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -10692,16 +10693,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.6.0",
+            "version": "v4.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "c346bbfafe2ff60680258b631afb730d186ed864"
+                "reference": "21dce06dfbf0365c6a7cc8fdbdc995926c6a9300"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/c346bbfafe2ff60680258b631afb730d186ed864",
-                "reference": "c346bbfafe2ff60680258b631afb730d186ed864",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/21dce06dfbf0365c6a7cc8fdbdc995926c6a9300",
+                "reference": "21dce06dfbf0365c6a7cc8fdbdc995926c6a9300",
                 "shasum": ""
             },
             "require": {
@@ -10718,7 +10719,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.7-dev"
                 }
             },
             "autoload": {
@@ -10740,7 +10741,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-07-02T17:12:47+00:00"
+            "time": "2020-07-25T13:18:53+00:00"
         },
         {
             "name": "pdepend/pdepend",
@@ -13130,12 +13131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "31d1f8ef40f2814928f1f603e932ba71d6c0a963"
+                "reference": "9c4af75fb777d4bdc2596c93f382d47ef4b08aa3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/31d1f8ef40f2814928f1f603e932ba71d6c0a963",
-                "reference": "31d1f8ef40f2814928f1f603e932ba71d6c0a963",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/9c4af75fb777d4bdc2596c93f382d47ef4b08aa3",
+                "reference": "9c4af75fb777d4bdc2596c93f382d47ef4b08aa3",
                 "shasum": ""
             },
             "require": {
@@ -13176,7 +13177,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-06-26T15:11:15+00:00"
+            "time": "2020-07-27T06:29:11+00:00"
         },
         {
             "name": "spryker/development-core",

@@ -31,6 +31,7 @@ use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Shared\Nopayment\NopaymentConstants;
 use Spryker\Shared\Oauth\OauthConstants;
+use Spryker\Shared\OauthCryptography\OauthCryptographyConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
@@ -534,6 +535,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = '';
 //Check how to generate https://oauth2.thephpleague.com/installation/
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://';
 $config[OauthConstants::PUBLIC_KEY_PATH] = 'file://';
+$config[OauthCryptographyConstants::PUBLIC_KEY_PATH] = 'file://';
 $config[OauthConstants::ENCRYPTION_KEY] = '';
 $config[OauthConstants::OAUTH_CLIENT_IDENTIFIER] = '';
 $config[OauthConstants::OAUTH_CLIENT_SECRET] = '';
