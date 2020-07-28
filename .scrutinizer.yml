@@ -1,12 +1,9 @@
 build:
     environment:
         php: '7.3.20'
-        node: 'v10.14.2'
 
     dependencies:
         override:
-            - npm rebuild
-            - npm install
             - composer install --ignore-platform-reqs --no-interaction --no-scripts
 
     tests:
@@ -15,6 +12,8 @@ build:
 
     nodes:
         analysis:
+            requires:
+                - branch: /^master$|^(bugfix|hotfix|beta)\/.+|^feature\/[a-z]+-\d+\/(master|dev)-.+|^feature\/[a-z]+-\d+\/[a-z]+-\d+\/(master|dev)-.+/
             tests:
                 override:
                     - php-scrutinizer-run
