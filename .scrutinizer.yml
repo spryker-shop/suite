@@ -13,8 +13,14 @@ build:
         override:
             - true # disable test execution on scrutinizer
 
+    dependencies:
+        override:
+            - true
+
     nodes:
         analysis:
+            requires:
+                - branch: /^master$|^(bugfix|hotfix|beta)\/.+|^feature\/[a-z]+-\d+\/(master|dev)-.+|^feature\/[a-z]+-\d+\/[a-z]+-\d+\/(master|dev)-.+/
             tests:
                 override:
                     - php-scrutinizer-run
