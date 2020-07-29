@@ -1562,6 +1562,10 @@
                 }
             ],
             "description": "Flysystem adapter for the AWS S3 SDK v3.x",
+            "support": {
+                "issues": "https://github.com/thephpleague/flysystem-aws-s3-v3/issues",
+                "source": "https://github.com/thephpleague/flysystem-aws-s3-v3/tree/1.0.25"
+            },
             "time": "2020-06-02T18:41:58+00:00"
         },
         {
@@ -2216,6 +2220,8 @@
                 "symfony/yaml": "^3.4.0||^4.3.0||^5.0.0"
             },
             "require-dev": {
+                "ext-json": "*",
+                "ext-pdo": "*",
                 "monolog/monolog": "^1.3",
                 "phpstan/phpstan": "^0.12.4",
                 "phpunit/phpunit": "^7.5.15",
@@ -2255,7 +2261,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2020-07-23T15:55:19+00:00"
+            "time": "2020-07-28T13:07:01+00:00"
         },
         {
             "name": "psr/container",
@@ -10049,16 +10055,16 @@
         },
         {
             "name": "spryker/auth-rest-api",
-            "version": "2.10.0",
+            "version": "2.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/auth-rest-api.git",
-                "reference": "5404d1f3ef042ba069464f72788af328976de154"
+                "reference": "27dc701e917217ff09f1d19d2e359e30dafea03f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/auth-rest-api/zipball/5404d1f3ef042ba069464f72788af328976de154",
-                "reference": "5404d1f3ef042ba069464f72788af328976de154",
+                "url": "https://api.github.com/repos/spryker/auth-rest-api/zipball/27dc701e917217ff09f1d19d2e359e30dafea03f",
+                "reference": "27dc701e917217ff09f1d19d2e359e30dafea03f",
                 "shasum": ""
             },
             "require": {
@@ -10067,7 +10073,7 @@
                 "spryker/glue-application": "^1.15.0",
                 "spryker/glue-application-extension": "^1.2.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/oauth": "^1.9.0",
+                "spryker/oauth": "^1.9.0 || ^2.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/util-encoding": "^2.0.0",
                 "spryker/zed-request": "^3.0.0"
@@ -10100,7 +10106,7 @@
                 "proprietary"
             ],
             "description": "AuthRestApi module",
-            "time": "2020-07-24T09:13:15+00:00"
+            "time": "2020-07-27T10:47:30+00:00"
         },
         {
             "name": "spryker/auth-rest-api-extension",
@@ -17164,16 +17170,16 @@
         },
         {
             "name": "spryker/company-user-auth-rest-api",
-            "version": "2.0.4",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-user-auth-rest-api.git",
-                "reference": "ee6a90d49ab2ba6b490bdf458d29b37abfd8e8f0"
+                "reference": "2917d860025008906d8ea72e6b93faec9b6ec969"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-user-auth-rest-api/zipball/ee6a90d49ab2ba6b490bdf458d29b37abfd8e8f0",
-                "reference": "ee6a90d49ab2ba6b490bdf458d29b37abfd8e8f0",
+                "url": "https://api.github.com/repos/spryker/company-user-auth-rest-api/zipball/2917d860025008906d8ea72e6b93faec9b6ec969",
+                "reference": "2917d860025008906d8ea72e6b93faec9b6ec969",
                 "shasum": ""
             },
             "require": {
@@ -17183,7 +17189,7 @@
                 "spryker/glue-application": "^1.15.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/oauth": "^1.4.0",
+                "spryker/oauth": "^1.4.0 || ^2.0.0",
                 "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
@@ -17205,7 +17211,7 @@
                 "proprietary"
             ],
             "description": "CompanyUserAuthRestApi module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-20T18:03:09+00:00"
         },
         {
             "name": "spryker/company-user-data-import",
@@ -23625,6 +23631,9 @@
                 "MIT"
             ],
             "description": "MerchantDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-data-import/tree/master"
+            },
             "time": "2020-05-15T13:58:38+00:00"
         },
         {
@@ -23851,6 +23860,9 @@
                 "MIT"
             ],
             "description": "MerchantOmsDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-oms-data-import/tree/0.2.2"
+            },
             "time": "2020-05-29T08:34:44+00:00"
         },
         {
@@ -23979,6 +23991,9 @@
                 "MIT"
             ],
             "description": "MerchantOpeningHoursDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-opening-hours-data-import/tree/0.2.1"
+            },
             "time": "2020-05-12T15:08:12+00:00"
         },
         {
@@ -24724,6 +24739,9 @@
                 "MIT"
             ],
             "description": "MerchantProfileDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-profile-data-import/tree/master"
+            },
             "time": "2020-05-20T07:54:04+00:00"
         },
         {
@@ -24911,6 +24929,9 @@
                 "MIT"
             ],
             "description": "MerchantRelationshipDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-relationship-data-import/tree/0.1.8"
+            },
             "time": "2020-05-12T15:08:12+00:00"
         },
         {
@@ -25693,6 +25714,9 @@
                 "MIT"
             ],
             "description": "MerchantStockDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-stock-data-import/tree/master"
+            },
             "time": "2020-05-18T11:59:13+00:00"
         },
         {
@@ -26878,16 +26902,16 @@
         },
         {
             "name": "spryker/oauth-company-user",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth-company-user.git",
-                "reference": "22f555a0acf29a7df39e2ec621d577d0a1a5ad71"
+                "reference": "6d042bf721b3320588c0771b457110a1a5c48a69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-company-user/zipball/22f555a0acf29a7df39e2ec621d577d0a1a5ad71",
-                "reference": "22f555a0acf29a7df39e2ec621d577d0a1a5ad71",
+                "url": "https://api.github.com/repos/spryker/oauth-company-user/zipball/6d042bf721b3320588c0771b457110a1a5c48a69",
+                "reference": "6d042bf721b3320588c0771b457110a1a5c48a69",
                 "shasum": ""
             },
             "require": {
@@ -26897,7 +26921,7 @@
                 "spryker/customer": "^7.0.0",
                 "spryker/customer-extension": "^1.3.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/oauth": "^1.4.0",
+                "spryker/oauth": "^1.4.0 || ^2.0.0",
                 "spryker/oauth-company-user-extension": "^1.1.0",
                 "spryker/oauth-extension": "^1.1.0",
                 "spryker/util-encoding": "^2.0.0",
@@ -26930,7 +26954,7 @@
                 "proprietary"
             ],
             "description": "OauthCompanyUser module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-27T10:47:30+00:00"
         },
         {
             "name": "spryker/oauth-company-user-extension",
@@ -27015,23 +27039,23 @@
         },
         {
             "name": "spryker/oauth-customer-connector",
-            "version": "1.4.1",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth-customer-connector.git",
-                "reference": "9cb96b8d4cf737e209d6686c940b108f0b187a2a"
+                "reference": "0d7687793f4620adfbf700f69cb61fa95c448d11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-customer-connector/zipball/9cb96b8d4cf737e209d6686c940b108f0b187a2a",
-                "reference": "9cb96b8d4cf737e209d6686c940b108f0b187a2a",
+                "url": "https://api.github.com/repos/spryker/oauth-customer-connector/zipball/0d7687793f4620adfbf700f69cb61fa95c448d11",
+                "reference": "0d7687793f4620adfbf700f69cb61fa95c448d11",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/customer": "^7.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/oauth": "^1.2.0",
+                "spryker/oauth": "^1.2.0 || ^2.0.0",
                 "spryker/oauth-customer-connector-extension": "^1.0.0",
                 "spryker/oauth-extension": "^1.0.0",
                 "spryker/util-encoding": "^2.0.0"
@@ -27061,7 +27085,7 @@
                 "proprietary"
             ],
             "description": "OauthCustomerConnector module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-20T18:03:09+00:00"
         },
         {
             "name": "spryker/oauth-customer-connector-extension",
@@ -27143,23 +27167,23 @@
         },
         {
             "name": "spryker/oauth-permission",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth-permission.git",
-                "reference": "fed888bd0cc4068be1e9cab9d88acac0791fa78d"
+                "reference": "713d27683a46bba1c96ec55c3c2a3f5a95f61f1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-permission/zipball/fed888bd0cc4068be1e9cab9d88acac0791fa78d",
-                "reference": "fed888bd0cc4068be1e9cab9d88acac0791fa78d",
+                "url": "https://api.github.com/repos/spryker/oauth-permission/zipball/713d27683a46bba1c96ec55c3c2a3f5a95f61f1a",
+                "reference": "713d27683a46bba1c96ec55c3c2a3f5a95f61f1a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/company-user": "^2.9.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/oauth": "^1.3.0",
+                "spryker/oauth": "^1.3.0 || ^2.0.0",
                 "spryker/oauth-company-user-extension": "^1.0.0",
                 "spryker/oauth-customer-connector-extension": "^1.0.0",
                 "spryker/oauth-extension": "^1.2.0",
@@ -27193,27 +27217,27 @@
                 "proprietary"
             ],
             "description": "OauthPermission module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-20T18:03:09+00:00"
         },
         {
             "name": "spryker/oauth-revoke",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth-revoke.git",
-                "reference": "4054b15e6bdfc9e0a056a439592d16f365e1b4c8"
+                "reference": "2058b2356767409c1638256f13e4a74ff79d445b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-revoke/zipball/4054b15e6bdfc9e0a056a439592d16f365e1b4c8",
-                "reference": "4054b15e6bdfc9e0a056a439592d16f365e1b4c8",
+                "url": "https://api.github.com/repos/spryker/oauth-revoke/zipball/2058b2356767409c1638256f13e4a74ff79d445b",
+                "reference": "2058b2356767409c1638256f13e4a74ff79d445b",
                 "shasum": ""
             },
             "require": {
                 "league/oauth2-server": "^7.1.0 || ^8.0.0",
                 "php": ">=7.2",
                 "spryker/kernel": "^3.30.0",
-                "spryker/oauth": "^1.6.0",
+                "spryker/oauth": "^1.6.0 || ^2.0.0",
                 "spryker/oauth-extension": "^1.3.0",
                 "spryker/oauth-revoke-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -27240,7 +27264,7 @@
                 "proprietary"
             ],
             "description": "OauthRevoke module",
-            "time": "2020-07-23T11:18:57+00:00"
+            "time": "2020-07-24T08:36:53+00:00"
         },
         {
             "name": "spryker/oauth-revoke-extension",
@@ -37091,6 +37115,9 @@
                 "proprietary"
             ],
             "description": "SalesOms module",
+            "support": {
+                "source": "https://github.com/spryker/sales-oms/tree/0.1.0"
+            },
             "time": "2020-05-29T12:33:32+00:00"
         },
         {
@@ -40250,6 +40277,9 @@
                 "MIT"
             ],
             "description": "StockDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/stock-data-import/tree/1.1.2"
+            },
             "time": "2020-05-05T00:59:59+00:00"
         },
         {
@@ -48715,16 +48745,16 @@
         },
         {
             "name": "nette/robot-loader",
-            "version": "v3.2.3",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/robot-loader.git",
-                "reference": "726c462e73e739e965ec654a667407074cfe83c0"
+                "reference": "737ff8ee1709eff053d9cc27e6c661d82395bd8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/robot-loader/zipball/726c462e73e739e965ec654a667407074cfe83c0",
-                "reference": "726c462e73e739e965ec654a667407074cfe83c0",
+                "url": "https://api.github.com/repos/nette/robot-loader/zipball/737ff8ee1709eff053d9cc27e6c661d82395bd8b",
+                "reference": "737ff8ee1709eff053d9cc27e6c661d82395bd8b",
                 "shasum": ""
             },
             "require": {
@@ -48741,7 +48771,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
@@ -48774,7 +48804,7 @@
                 "nette",
                 "trait"
             ],
-            "time": "2020-02-28T13:10:07+00:00"
+            "time": "2020-07-28T13:34:12+00:00"
         },
         {
             "name": "nette/schema",
@@ -50963,6 +50993,10 @@
                 "update",
                 "versions"
             ],
+            "support": {
+                "issues": "https://github.com/soullivaneuh/composer-versions-check/issues",
+                "source": "https://github.com/soullivaneuh/composer-versions-check/tree/master"
+            },
             "time": "2020-05-05T13:03:07+00:00"
         },
         {
