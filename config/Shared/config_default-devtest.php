@@ -52,7 +52,6 @@ $config[KernelConstants::RESOLVED_INSTANCE_CACHE_ENABLED] = false;
 // ---------- ZedRequest
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = true;
-$config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/cache/codeBucket/yves-requests';
 
 // ---------- Testify
 $config[TestifyConstants::BOOTSTRAP_CLASS_YVES] = YvesBootstrap::class;

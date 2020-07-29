@@ -153,6 +153,8 @@ class CheckoutRestApiCest
     }
 
     /**
+     * @skip Flickering test, must be fixed and re-enabled.
+     *
      * @depends loadFixtures
      *
      * @group DockerOnly
