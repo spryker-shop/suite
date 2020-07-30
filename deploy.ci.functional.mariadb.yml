@@ -9,7 +9,7 @@ image:
     tag: spryker/php:7.4
 
 composer:
-    mode: --no-dev
+    mode: ''
     autoload: --classmap-authoritative
 
 regions:
@@ -110,7 +110,8 @@ docker:
 
     debug:
         enabled: false
-        xdebug: false
+        xdebug:
+            enabled: false
 
     testing:
         store: DE
