@@ -331,6 +331,7 @@ cache:
     - $HOME/.nvm/.cache
     - /tmp/pear/cache/
     - $HOME/.yarn/cache
+    - ./node_modules
 
 services:
   - postgresql
@@ -341,6 +342,7 @@ before_install:
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - phpenv config-rm xdebug.ini
+  - composer global require hirak/prestissimo
   # Merges travis-ci/stores.php into the general stores.php at the defined "travis hook" line. Uses temporary file during the process.
   # - grabs all lines until the travis hook from stores.php (including that line)
   # - grabs all lines after the 1st line in travis-ci/stores.php (php opening tag)

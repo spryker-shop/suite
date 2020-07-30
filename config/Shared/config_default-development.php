@@ -47,8 +47,12 @@ $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = true;
 
-$config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED] = true;
-$config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED] = true;
+if (interface_exists(WebProfilerConstants::class)) {
+    $config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED] = true;
+}
+if (interface_exists(WebProfilerWidgetConstants::class)) {
+    $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED] = true;
+}
 
 $config[RouterConstants::YVES_IS_SSL_ENABLED] = false;
 $config[RouterConstants::ZED_IS_SSL_ENABLED] = false;

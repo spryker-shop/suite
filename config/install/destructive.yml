@@ -1,5 +1,5 @@
 env:
-    APPLICATION_ENV: docker
+    NEW_RELIC_ENABLED: 0
 
 command-timeout: 7200
 
@@ -25,6 +25,8 @@ sections:
 
         clean-db:
             command: "vendor/bin/console propel:tables:drop -vvv --no-ansi"
+            stores:
+                - DE
 
     init-storage:
         setup-search-create-sources:
@@ -43,25 +45,35 @@ sections:
 
         propel-tables-drop:
             command: "vendor/bin/console propel:tables:drop -vvv --no-ansi"
+            stores:
+                - DE
 
         propel-diff:
             command: "vendor/bin/console propel:diff -vvv --no-ansi"
 
         propel-migrate:
             command: "vendor/bin/console propel:migrate -vvv --no-ansi"
+            stores:
+                - DE
 
         propel-migration-cleanup:
             command: "vendor/bin/console propel:migration:delete -vvv --no-ansi"
 
         init-database:
             command: "vendor/bin/console setup:init-db -vvv --no-ansi"
+            stores:
+                - DE
 
     demodata:
-        import-demodata:
-            command: "vendor/bin/console data:import --config=data/import/production/full_EU.yml"
+        import-eu-region-demodata:
+            command: "vendor/bin/console data:import --config=data/import/local/full_EU.yml"
+            stores:
+                - DE
 
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update -vvv --no-ansi"
+            stores:
+                - DE
 
         check-product-validity:
             command: "vendor/bin/console product:check-validity"

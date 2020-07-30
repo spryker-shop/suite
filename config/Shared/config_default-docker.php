@@ -116,9 +116,13 @@ $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 
-$config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED]
-    = $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED]
-    = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
+if (interface_exists(WebProfilerConstants::class)) {
+    $config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED] = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
+}
+
+if (interface_exists(WebProfilerWidgetConstants::class)) {
+    $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED] = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
+}
 
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',

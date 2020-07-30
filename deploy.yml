@@ -166,12 +166,16 @@ services:
         endpoints:
             swagger.spryker.local:
 
-
 docker:
 
     ssl:
         enabled: false
         redirect: true
+
+    debug:
+        enabled: false
+        xdebug:
+            enabled: false
 
     testing:
         store: DE

@@ -162,7 +162,6 @@ services:
         endpoints:
             swagger.spryker.local:
 
-
 docker:
 
     ssl:
@@ -174,6 +173,8 @@ docker:
 
     debug:
         enabled: true
+        xdebug:
+            enabled: true
 
     mount:
         native:
