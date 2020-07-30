@@ -149,7 +149,7 @@ services:
                 protocol: tcp
     search:
         engine: elastic
-        version: 6.8
+        version: 7.6
         endpoints:
             localhost:9200:
                 protocol: tcp
@@ -166,12 +166,16 @@ services:
         endpoints:
             swagger.spryker.local:
 
-
 docker:
 
     ssl:
         enabled: false
         redirect: true
+
+    debug:
+        enabled: false
+        xdebug:
+            enabled: false
 
     testing:
         store: DE

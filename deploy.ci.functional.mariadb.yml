@@ -97,7 +97,7 @@ services:
         engine: redis
     search:
         engine: elastic
-        version: 6.8
+        version: 7.6
     scheduler:
         engine: jenkins
     mail_catcher:
@@ -110,7 +110,8 @@ docker:
 
     debug:
         enabled: false
-        xdebug: false
+        xdebug:
+            enabled: false
 
     testing:
         store: DE

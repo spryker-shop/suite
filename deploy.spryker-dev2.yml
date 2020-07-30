@@ -178,7 +178,7 @@ services:
                 protocol: tcp
     search:
         engine: elastic
-        version: 6.8
+        version: 7.6
         endpoints:
             localhost:9200:
                 protocol: tcp
@@ -204,6 +204,8 @@ docker:
 
     debug:
         enabled: true
+        xdebug:
+            enabled: false
 
     mount:
         baked:

@@ -29,7 +29,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
      */
     protected function getApplicationPlugins(): array
     {
-        $applicationPlugins = [
+        $plugins = [
             new SessionApplicationPlugin(),
             new TwigApplicationPlugin(),
             new EventDispatcherApplicationPlugin(),
@@ -45,9 +45,9 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         ];
 
         if (class_exists(WebProfilerApplicationPlugin::class)) {
-            $applicationPlugins[] = new WebProfilerApplicationPlugin();
+            $plugins[] = new WebProfilerApplicationPlugin();
         }
 
-        return $applicationPlugins;
+        return $plugins;
     }
 }

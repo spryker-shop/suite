@@ -19,6 +19,7 @@ use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Oauth\OauthConstants;
+use Spryker\Shared\OauthCryptography\OauthCryptographyConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelOrm\PropelOrmConstants;
 use Spryker\Shared\PropelQueryBuilder\PropelQueryBuilderConstants;
@@ -46,8 +47,12 @@ $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = true;
 
-$config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED] = true;
-$config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED] = true;
+if (interface_exists(WebProfilerConstants::class)) {
+    $config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED] = true;
+}
+if (interface_exists(WebProfilerWidgetConstants::class)) {
+    $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED] = true;
+}
 
 $config[RouterConstants::YVES_IS_SSL_ENABLED] = false;
 $config[RouterConstants::ZED_IS_SSL_ENABLED] = false;
@@ -102,7 +107,6 @@ $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
 // ---------- Zed request
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = true;
-$config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/cache/codeBucket/yves-requests';
 
 // ---------- Navigation
 $config[ZedNavigationConstants::ZED_NAVIGATION_CACHE_ENABLED] = true;
@@ -132,6 +136,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = true;
 // ----------- OAUTH
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_private.key';
 $config[OauthConstants::PUBLIC_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_public.key';
+$config[OauthCryptographyConstants::PUBLIC_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_public.key';
 $config[OauthConstants::ENCRYPTION_KEY] = 'lxZFUEsBCJ2Yb14IF2ygAHI5N4+ZAUXXaSeeJm6+twsUmIen';
 $config[OauthConstants::OAUTH_CLIENT_IDENTIFIER] = 'frontend';
 $config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';

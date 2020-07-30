@@ -31,6 +31,7 @@ use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Shared\Nopayment\NopaymentConstants;
 use Spryker\Shared\Oauth\OauthConstants;
+use Spryker\Shared\OauthCryptography\OauthCryptographyConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
@@ -52,7 +53,6 @@ use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
-use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\User\UserConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
@@ -68,14 +68,12 @@ use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
-use Twig\Cache\FilesystemCache;
 
 $domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
 $storeLowerCase = strtolower(APPLICATION_STORE);
 
 // ---------- General environment
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
-$config[KernelConstants::AUTO_LOADER_CACHE_FILE_PATH] = sprintf(APPLICATION_ROOT_DIR . '/data/cache/codeBucket%s/' . APPLICATION . '/unresolvable.cache', APPLICATION_CODE_BUCKET);
 
 $config[KernelConstants::RESOLVABLE_CLASS_NAMES_CACHE_ENABLED] = true;
 $config[KernelConstants::RESOLVED_INSTANCE_CACHE_ENABLED] = true;
@@ -206,40 +204,6 @@ $config[CollectorConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUM
 // ---------- Page search
 $config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE]
     = $config[SearchElasticsearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
-
-// ---------- Twig
-$config[TwigConstants::YVES_TWIG_OPTIONS] = [
-    'cache' => new FilesystemCache(
-        sprintf(
-            '%s/data/cache/codeBucket%s/%s/twig',
-            APPLICATION_ROOT_DIR,
-            APPLICATION_CODE_BUCKET,
-            APPLICATION
-        ),
-        FilesystemCache::FORCE_BYTECODE_INVALIDATION
-    ),
-];
-$config[TwigConstants::ZED_TWIG_OPTIONS] = [
-    'cache' => new FilesystemCache(
-        sprintf(
-            '%s/data/cache/codeBucket%s/%s/twig',
-            APPLICATION_ROOT_DIR,
-            APPLICATION_CODE_BUCKET,
-            APPLICATION
-        ),
-        FilesystemCache::FORCE_BYTECODE_INVALIDATION
-    ),
-];
-$config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
-    '%s/data/cache/codeBucket%s/YVES/twig/.pathCache',
-    APPLICATION_ROOT_DIR,
-    APPLICATION_CODE_BUCKET
-);
-$config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
-    '%s/data/cache/codeBucket%s/ZED/twig/.pathCache',
-    APPLICATION_ROOT_DIR,
-    APPLICATION_CODE_BUCKET
-);
 
 // ---------- Navigation
 // The cache should always be activated. Refresh/build with CLI command: vendor/bin/console application:build-navigation-cache
@@ -534,6 +498,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = '';
 //Check how to generate https://oauth2.thephpleague.com/installation/
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://';
 $config[OauthConstants::PUBLIC_KEY_PATH] = 'file://';
+$config[OauthCryptographyConstants::PUBLIC_KEY_PATH] = 'file://';
 $config[OauthConstants::ENCRYPTION_KEY] = '';
 $config[OauthConstants::OAUTH_CLIENT_IDENTIFIER] = '';
 $config[OauthConstants::OAUTH_CLIENT_SECRET] = '';
@@ -563,15 +528,6 @@ $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
 // ----------- Translator
 $config[TranslatorConstants::TRANSLATION_ZED_FALLBACK_LOCALES] = [
     'de_DE' => ['en_US'],
-];
-
-$config[TranslatorConstants::TRANSLATION_ZED_CACHE_DIRECTORY] = sprintf(
-    '%s/data/cache/codeBucket/ZED/translation',
-    APPLICATION_ROOT_DIR
-);
-
-$config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
-    APPLICATION_ROOT_DIR . '/data/translation/Zed/*/[a-z][a-z]_[A-Z][A-Z].csv',
 ];
 
 // ----------- Yves assets

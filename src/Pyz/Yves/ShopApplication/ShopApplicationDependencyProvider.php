@@ -284,7 +284,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
      */
     protected function getApplicationPlugins(): array
     {
-        $applicationPlugins = [
+        $plugins = [
             new TwigApplicationPlugin(),
             new EventDispatcherApplicationPlugin(),
             new ShopApplicationApplicationPlugin(),
@@ -304,9 +304,9 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
         ];
 
         if (class_exists(WebProfilerApplicationPlugin::class)) {
-            $applicationPlugins[] = new WebProfilerApplicationPlugin();
+            $plugins[] = new WebProfilerApplicationPlugin();
         }
 
-        return $applicationPlugins;
+        return $plugins;
     }
 }
