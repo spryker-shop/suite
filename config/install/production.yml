@@ -1,5 +1,5 @@
 env:
-    APPLICATION_ENV: docker
+    NEW_RELIC_ENABLED: 0
 
 command-timeout: 1200
 
@@ -40,20 +40,6 @@ sections:
             command: "vendor/bin/console propel:migration:delete -vvv --no-ansi"
             stores:
                 - DE
-
-#    new-store-data:
-#        setup-search-create-sources:
-#            command: "vendor/bin/console search:setup:sources"
-#            stores: true
-
-#        setup-virtual-hosts:
-#            command: "vendor/bin/console rabbitmq:virtual-hosts:init"
-#            stores: true
-
-#        demodata:
-#            command: "vendor/bin/console data:import -vvv --no-ansi || true"
-#            stores:
-#                - DE
 
     scheduler-start:
         scheduler-setup:
