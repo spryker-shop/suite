@@ -53,7 +53,6 @@ use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
-use Twig\Cache\FilesystemCache;
 
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
@@ -90,20 +89,8 @@ $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
     $config[ZedRequestConstants::HOST_ZED_API]
 );
 
-$config[TwigConstants::ZED_TWIG_OPTIONS] = [
-    'cache' => new FilesystemCache(
-        sprintf(
-            '%s/data/cache/codeBucket%s/ZED/twig',
-            APPLICATION_ROOT_DIR,
-            APPLICATION_CODE_BUCKET
-        ),
-        FilesystemCache::FORCE_BYTECODE_INVALIDATION
-    ),
-];
-
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = true;
-$config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/cache/codeBucket/yves-requests';
 
 $config[SessionConstants::ZED_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 
@@ -232,7 +219,6 @@ if (class_exists(TestifyConstants::class)) {
 /* End Glue */
 
 /* Database */
-$config[PropelConstants::SCHEMA_FILE_PATH_PATTERN] = APPLICATION_VENDOR_DIR . '/*/*/src/*/Zed/*/Persistence/Propel/Schema/';
 $config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = false;
 
 $config[PropelOrmConstants::PROPEL_SHOW_EXTENDED_EXCEPTION] = true;
