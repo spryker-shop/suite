@@ -414,6 +414,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new SprykDumpConsole();
             $commands[] = new SprykBuildConsole();
             $commands[] = new ComposerConstraintConsole();
+
+            if (class_exists(BenchmarkRunConsole::class)) {
+                $commands[] = new BenchmarkRunConsole();
+            }
         }
 
         return $commands;
@@ -444,7 +448,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
         return $applicationPlugins;
     }
-    
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
