@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.147.8",
+            "version": "3.147.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "b121ee1d69d3a1200ebc22d937cd40043b96a940"
+                "reference": "da548c59c87b0a54d2cd1a43e5e149e56ca2569b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b121ee1d69d3a1200ebc22d937cd40043b96a940",
-                "reference": "b121ee1d69d3a1200ebc22d937cd40043b96a940",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/da548c59c87b0a54d2cd1a43e5e149e56ca2569b",
+                "reference": "da548c59c87b0a54d2cd1a43e5e149e56ca2569b",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-07-29T18:16:33+00:00"
+            "time": "2020-07-30T18:13:38+00:00"
         },
         {
             "name": "brick/math",
@@ -1577,10 +1577,6 @@
                 }
             ],
             "description": "Flysystem adapter for the AWS S3 SDK v3.x",
-            "support": {
-                "issues": "https://github.com/thephpleague/flysystem-aws-s3-v3/issues",
-                "source": "https://github.com/thephpleague/flysystem-aws-s3-v3/tree/1.0.25"
-            },
             "time": "2020-06-02T18:41:58+00:00"
         },
         {
@@ -2282,7 +2278,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2020-07-28T13:07:01+00:00"
+            "time": "2020-07-29T09:37:05+00:00"
         },
         {
             "name": "psr/container",
@@ -2332,6 +2328,55 @@
                 "psr"
             ],
             "time": "2017-02-14T16:28:37+00:00"
+        },
+        {
+            "name": "psr/http-client",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-client.git",
+                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
+                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^8.0",
+                "psr/http-message": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP clients",
+            "homepage": "https://github.com/php-fig/http-client",
+            "keywords": [
+                "http",
+                "http-client",
+                "psr",
+                "psr-18"
+            ],
+            "time": "2020-06-29T06:28:15+00:00"
         },
         {
             "name": "psr/http-message",
@@ -22631,20 +22676,20 @@
         },
         {
             "name": "spryker/guzzle",
-            "version": "2.2.1",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/guzzle.git",
-                "reference": "80ff1ae91b93114aba969e7b7683e310aeef911b"
+                "reference": "64ba9d0cbec58367c4aac1a08d653ffcac58fe68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/guzzle/zipball/80ff1ae91b93114aba969e7b7683e310aeef911b",
-                "reference": "80ff1ae91b93114aba969e7b7683e310aeef911b",
+                "url": "https://api.github.com/repos/spryker/guzzle/zipball/64ba9d0cbec58367c4aac1a08d653ffcac58fe68",
+                "reference": "64ba9d0cbec58367c4aac1a08d653ffcac58fe68",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "^6.3.0",
+                "guzzlehttp/guzzle": "^6.3.0 || ^7.0.0",
                 "php": ">=7.2"
             },
             "type": "library",
@@ -22658,7 +22703,7 @@
                 "proprietary"
             ],
             "description": "Guzzle module",
-            "time": "2019-11-19T10:06:34+00:00"
+            "time": "2020-07-23T14:18:52+00:00"
         },
         {
             "name": "spryker/health-check",
@@ -23653,9 +23698,6 @@
                 "MIT"
             ],
             "description": "MerchantDataImport module",
-            "support": {
-                "source": "https://github.com/spryker/merchant-data-import/tree/master"
-            },
             "time": "2020-05-15T13:58:38+00:00"
         },
         {
@@ -23882,9 +23924,6 @@
                 "MIT"
             ],
             "description": "MerchantOmsDataImport module",
-            "support": {
-                "source": "https://github.com/spryker/merchant-oms-data-import/tree/0.2.2"
-            },
             "time": "2020-05-29T08:34:44+00:00"
         },
         {
@@ -24013,9 +24052,6 @@
                 "MIT"
             ],
             "description": "MerchantOpeningHoursDataImport module",
-            "support": {
-                "source": "https://github.com/spryker/merchant-opening-hours-data-import/tree/0.2.1"
-            },
             "time": "2020-05-12T15:08:12+00:00"
         },
         {
@@ -24761,9 +24797,6 @@
                 "MIT"
             ],
             "description": "MerchantProfileDataImport module",
-            "support": {
-                "source": "https://github.com/spryker/merchant-profile-data-import/tree/master"
-            },
             "time": "2020-05-20T07:54:04+00:00"
         },
         {
@@ -24951,9 +24984,6 @@
                 "MIT"
             ],
             "description": "MerchantRelationshipDataImport module",
-            "support": {
-                "source": "https://github.com/spryker/merchant-relationship-data-import/tree/0.1.8"
-            },
             "time": "2020-05-12T15:08:12+00:00"
         },
         {
@@ -25736,9 +25766,6 @@
                 "MIT"
             ],
             "description": "MerchantStockDataImport module",
-            "support": {
-                "source": "https://github.com/spryker/merchant-stock-data-import/tree/master"
-            },
             "time": "2020-05-18T11:59:13+00:00"
         },
         {
@@ -37137,9 +37164,6 @@
                 "proprietary"
             ],
             "description": "SalesOms module",
-            "support": {
-                "source": "https://github.com/spryker/sales-oms/tree/0.1.0"
-            },
             "time": "2020-05-29T12:33:32+00:00"
         },
         {
@@ -40299,9 +40323,6 @@
                 "MIT"
             ],
             "description": "StockDataImport module",
-            "support": {
-                "source": "https://github.com/spryker/stock-data-import/tree/1.1.2"
-            },
             "time": "2020-05-05T00:59:59+00:00"
         },
         {
@@ -49970,16 +49991,16 @@
         },
         {
             "name": "psalm/phar",
-            "version": "3.12.2",
+            "version": "3.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/phar.git",
-                "reference": "19957cf3088ffc9d7c02f9e692f9c0a7522fe3ff"
+                "reference": "9fdc9388c760e94d35a14634367895bfeac5137b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/19957cf3088ffc9d7c02f9e692f9c0a7522fe3ff",
-                "reference": "19957cf3088ffc9d7c02f9e692f9c0a7522fe3ff",
+                "url": "https://api.github.com/repos/psalm/phar/zipball/9fdc9388c760e94d35a14634367895bfeac5137b",
+                "reference": "9fdc9388c760e94d35a14634367895bfeac5137b",
                 "shasum": ""
             },
             "require": {
@@ -49997,7 +50018,7 @@
                 "MIT"
             ],
             "description": "Composer-based Psalm Phar",
-            "time": "2020-07-03T19:29:42+00:00"
+            "time": "2020-07-30T20:17:42+00:00"
         },
         {
             "name": "psr/cache",
@@ -51013,10 +51034,6 @@
                 "update",
                 "versions"
             ],
-            "support": {
-                "issues": "https://github.com/soullivaneuh/composer-versions-check/issues",
-                "source": "https://github.com/soullivaneuh/composer-versions-check/tree/master"
-            },
             "time": "2020-05-05T13:03:07+00:00"
         },
         {
