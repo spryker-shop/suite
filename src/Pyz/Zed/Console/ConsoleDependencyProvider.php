@@ -163,6 +163,7 @@ use Spryker\Zed\ZedNavigation\Communication\Console\RemoveNavigationCacheConsole
 use SprykerSdk\Spryk\Console\SprykBuildConsole;
 use SprykerSdk\Spryk\Console\SprykDumpConsole;
 use SprykerSdk\Spryk\Console\SprykRunConsole;
+use SprykerSdk\Zed\Benchmark\Communication\Console\BenchmarkRunConsole;
 use SprykerSdk\Zed\ComposerConstrainer\Communication\Console\ComposerConstraintConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
@@ -413,6 +414,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new SprykDumpConsole();
             $commands[] = new SprykBuildConsole();
             $commands[] = new ComposerConstraintConsole();
+
+            if (class_exists(BenchmarkRunConsole::class)) {
+                $commands[] = new BenchmarkRunConsole();
+            }
         }
 
         return $commands;
@@ -443,7 +448,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
         return $applicationPlugins;
     }
-    
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
