@@ -120,9 +120,11 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
 
 // >>> TESTING
 
-$config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
-$config[TestifyConstants::BOOTSTRAP_CLASS_YVES] = YvesBootstrap::class;
-$config[TestifyConstants::BOOTSTRAP_CLASS_ZED] = ZedBootstrap::class;
+if (class_exists(TestifyConstants::class)) {
+    $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
+    $config[TestifyConstants::BOOTSTRAP_CLASS_YVES] = YvesBootstrap::class;
+    $config[TestifyConstants::BOOTSTRAP_CLASS_ZED] = ZedBootstrap::class;
+}
 
 // ----------------------------------------------------------------------------
 // ------------------------------ SECURITY ------------------------------------
@@ -486,12 +488,16 @@ $config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = '/assets/' . (getenv('SPRYKE
 $glueHost = getenv('SPRYKER_API_HOST') ?: 'localhost';
 $gluePort = (int)(getenv('SPRYKER_API_PORT')) ?: 443;
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN]
-    = $config[TestifyConstants::GLUE_APPLICATION_DOMAIN]
     = sprintf(
         'https://%s%s',
         $glueHost,
         $gluePort !== 443 ? ':' . $gluePort : ''
     );
+
+if (class_exists(TestifyConstants::class)) {
+    $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
+}
+
 $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '';
 
 // ----------------------------------------------------------------------------

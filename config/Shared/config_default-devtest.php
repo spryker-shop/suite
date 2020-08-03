@@ -180,11 +180,14 @@ $config[ApplicationConstants::BASE_URL_YVES]
 // ----------------------------------------------------------------------------
 
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN]
-    = $config[TestifyConstants::GLUE_APPLICATION_DOMAIN]
     = sprintf(
         'http://%s',
         $glueHost
     );
+
+if (class_exists(TestifyConstants::class)) {
+    $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
+}
 
 $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = '*';
 
