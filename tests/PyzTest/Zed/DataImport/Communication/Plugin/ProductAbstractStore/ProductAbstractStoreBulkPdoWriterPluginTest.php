@@ -13,6 +13,7 @@ use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstractStore\ProductAbstract
 use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Propel\PropelConstants;
+use Spryker\Zed\Propel\PropelConfig;
 
 /**
  * Auto-generated group annotations
@@ -36,7 +37,7 @@ class ProductAbstractStoreBulkPdoWriterPluginTest extends AbstractWriterPluginTe
      */
     public function testProductAbstractStoreBulkPdoWriterPlugin(): void
     {
-        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== Config::get(PropelConstants::ZED_DB_ENGINE_PGSQL)) {
+        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== PropelConfig::DB_ENGINE_PGSQL) {
             $this->markTestSkipped('PostgreSQL related test');
         }
 
