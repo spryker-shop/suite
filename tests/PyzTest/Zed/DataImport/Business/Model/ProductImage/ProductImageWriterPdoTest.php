@@ -10,6 +10,7 @@ namespace PyzTest\Zed\DataImport\Business\Model\ProductImage;
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Propel\PropelConstants;
+use Spryker\Zed\Propel\PropelConfig;
 
 /**
  * Auto-generated group annotations
@@ -34,7 +35,7 @@ class ProductImageWriterPdoTest extends AbstractProductImageWriterTest
      */
     public function testProductImageWriter(): void
     {
-        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== Config::get(PropelConstants::ZED_DB_ENGINE_PGSQL)) {
+        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== PropelConfig::DB_ENGINE_PGSQL) {
             $this->markTestSkipped('PostgreSQL related test');
         }
 
@@ -60,7 +61,7 @@ class ProductImageWriterPdoTest extends AbstractProductImageWriterTest
      */
     public function testProductImagesWithSameUrlAreSavedSeparately(): void
     {
-        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== Config::get(PropelConstants::ZED_DB_ENGINE_PGSQL)) {
+        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== PropelConfig::DB_ENGINE_PGSQL) {
             $this->markTestSkipped('PostgreSQL related test');
         }
 
