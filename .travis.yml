@@ -5,7 +5,8 @@ git:
 
 env:
   global:
-    - APPLICATION_ENV=devtest
+    - APPLICATION_ENV=ci.pgsql
+    - SPRYKER_TESTING_ENABLED=1
     - APPLICATION_STORE=DE
     - PROJECT=suite
     - POSTGRES_PORT="5433"
@@ -307,11 +308,6 @@ before_script:
   - chmod -R 660 config/Zed/dev_only_private.key
   - chmod -R 660 config/Zed/dev_only_public.key
   - if [[ $VALIDATION == 1 ]] ; then npm install speccy@0.11.0 -g ; fi
-
-  - if [[ -z $DB_ENGINE ]] ; then cat config/Shared/ci/travis/postgresql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
-  - if [[ $DB_ENGINE == 'mysql' ]] ; then cat config/Shared/ci/travis/mysql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
-
-  - cp config/Shared/ci/travis/config_ci.php config/Shared/config_local.php
 
   - if [[ $TEST_GROUP == 'acceptance' || $TEST_GROUP == 'without-acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -v; fi
