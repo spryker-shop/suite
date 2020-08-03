@@ -25,7 +25,11 @@ use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
-$domain = getenv('VM_PROJECT') ?: 'suite';
+// ############################################################################
+// ############################## TESTING IN DEVVM ############################
+// ############################################################################
+
+$domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
 $storeLowerCase = strtolower(APPLICATION_STORE);
 $stores = array_combine(Store::getInstance()->getAllowedStores(), Store::getInstance()->getAllowedStores());
 $yvesHost = sprintf('www-test.%s.%s.local', $storeLowerCase, $domain);
@@ -36,8 +40,8 @@ $zedHost = sprintf('zed-test.%s.%s.local', $storeLowerCase, $domain);
 // ------------------------------ CODEBASE ------------------------------------
 // ----------------------------------------------------------------------------
 
-// ---------- General
-$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
+$config[KernelConstants::RESOLVABLE_CLASS_NAMES_CACHE_ENABLED] = false;
+$config[KernelConstants::RESOLVED_INSTANCE_CACHE_ENABLED] = false;
 
 // >>> Debug
 

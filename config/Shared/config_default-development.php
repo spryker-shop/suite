@@ -32,8 +32,21 @@ use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
 
-// ---------- General environment
-$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
+// ############################################################################
+// ############################## DEVELOPMENT IN DEVVM ########################
+// ############################################################################
+
+$domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
+$storeLowerCase = strtolower(APPLICATION_STORE);
+$stores = array_combine(Store::getInstance()->getAllowedStores(), Store::getInstance()->getAllowedStores());
+$yvesHost = sprintf('www.%s.%s.local', $storeLowerCase, $domain);
+$glueHost = sprintf('glue.de.%s.local', $domain);
+$zedHost = sprintf('zed.%s.%s.local', $storeLowerCase, $domain);
+
+// ----------------------------------------------------------------------------
+// ------------------------------ CODEBASE ------------------------------------
+// ----------------------------------------------------------------------------
+
 $config[KernelConstants::STORE_PREFIX] = 'DEV';
 
 // >>> Debug
