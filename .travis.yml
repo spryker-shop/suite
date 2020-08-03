@@ -57,6 +57,8 @@ jobs:
         - APPLICATION_ENV=ci.mysql
 
     - php: "7.2"
+      # disabled
+      if: true = false
       dist: bionic
       env:
         - TEST_GROUP=acceptance
@@ -65,6 +67,8 @@ jobs:
         - PREFER_LOWEST=1
 
     - php: "7.2"
+      # disabled
+      if: true = false
       dist: bionic
       env:
         - TEST_GROUP=without-acceptance
