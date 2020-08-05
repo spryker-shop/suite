@@ -9,14 +9,14 @@ namespace Pyz\Zed\MerchantSalesOrder\Communication;
 
 use Pyz\Zed\MerchantSalesOrder\MerchantSalesOrderDependencyProvider;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
-use Spryker\Zed\Sales\Business\SalesFacadeInterface;
+use Spryker\Zed\MerchantSalesOrder\Dependency\Facade\MerchantSalesOrderToSalesFacadeInterface;
 
 class MerchantSalesOrderCommunicationFactory extends AbstractCommunicationFactory
 {
     /**
-     * @return \Spryker\Zed\Sales\Business\SalesFacadeInterface
+     * @return \Spryker\Zed\MerchantSalesOrder\Dependency\Facade\MerchantSalesOrderToSalesFacadeInterface
      */
-    public function getSalesFacade(): SalesFacadeInterface
+    public function getSalesFacade(): MerchantSalesOrderToSalesFacadeInterface
     {
         return $this->getProvidedDependency(MerchantSalesOrderDependencyProvider::FACADE_SALES);
     }
