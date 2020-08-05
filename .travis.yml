@@ -277,7 +277,7 @@ jobs:
 
 addons:
   apt:
-    update: false
+    update: true
     sources:
       - sourceline: ppa:chris-lea/redis-server
       - sourceline: deb http://dl.bintray.com/rabbitmq-erlang/debian bionic erlang
