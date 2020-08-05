@@ -27,7 +27,7 @@
         {% endblock %}
 
         {% block mobile %}
-            <button class="button--transparent js-page-layout-main__side-drawer-trigger spacing-right">
+            <button class="button button--dark-text button--no-padding button--transparent js-page-layout-main__side-drawer-trigger spacing-right">
                 {% include atom('icon') with {
                     class: 'spacing-right',
                     modifiers: ['big'],
@@ -36,7 +36,7 @@
                     },
                 } only %}
             </button>
-            <button class="button--transparent {{ config.jsName }}__mobile-search-trigger">
+            <button class="button button--dark-text button--no-padding button--transparent {{ config.jsName }}__mobile-search-trigger">
                 {% include atom('icon') with {
                     modifiers: ['big'],
                     data: {
