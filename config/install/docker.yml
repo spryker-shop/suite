@@ -1,5 +1,5 @@
 env:
-    APPLICATION_ENV: docker
+    NEW_RELIC_ENABLED: 0
 
 sections:
     build:
@@ -35,6 +35,11 @@ sections:
 
         translator-generate-cache:
             command: "vendor/bin/console translator:generate-cache"
+
+    build-production:
+        excluded: true
+        cache-class-resolver-build:
+            command: 'vendor/bin/console cache:class-resolver:build'
 
     build-development:
         generate-transfers:
@@ -120,3 +125,6 @@ sections:
     demodata:
         import-demodata:
             command: "vendor/bin/console data:import --config=data/import/local/full_${SPRYKER_REGION}.yml"
+
+        update-product-labels:
+            command: "vendor/bin/console product-label:relations:update"

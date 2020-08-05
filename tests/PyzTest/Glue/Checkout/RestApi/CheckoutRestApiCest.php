@@ -155,6 +155,8 @@ class CheckoutRestApiCest
     /**
      * @depends loadFixtures
      *
+     * @group DockerOnly
+     *
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
      *
      * @return void

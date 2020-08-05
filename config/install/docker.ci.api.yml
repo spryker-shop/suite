@@ -1,3 +1,7 @@
+env:
+    NEW_RELIC_ENABLED: 0
+    SPRYKER_LOG_STDOUT: /dev/null
+
 sections:
     build:
         generate-transfers:
@@ -23,6 +27,9 @@ sections:
 
         translator-generate-cache:
             command: "vendor/bin/console translator:generate-cache"
+
+        cache-class-resolver-build:
+            command: 'vendor/bin/console cache:class-resolver:build'
 
     build-development:
         generate-transfers:

@@ -3,7 +3,7 @@ version: "0.1"
 namespace: spryker
 tag: 'dev'
 
-environment: docker
+environment: docker.dev
 image:
     tag: spryker/php:7.3
     php:
@@ -145,7 +145,7 @@ services:
                 protocol: tcp
     search:
         engine: elastic
-        version: 6.8
+        version: 7.6
         endpoints:
             localhost:9200:
                 protocol: tcp
@@ -161,7 +161,10 @@ services:
         engine: swagger-ui
         endpoints:
             swagger.spryker.local:
-
+    dashboard:
+        engine: dashboard
+        endpoints:
+            spryker.local:
 
 docker:
 
@@ -174,6 +177,8 @@ docker:
 
     debug:
         enabled: true
+        xdebug:
+            enabled: true
 
     mount:
         native:

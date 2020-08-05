@@ -14,7 +14,6 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Oms\OmsConstants;
-use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Shared\Search\SearchConstants;
@@ -27,13 +26,11 @@ use Spryker\Shared\SessionRedis\SessionRedisConfig;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
-use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\User\UserConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\Oms\OmsConfig;
-use Spryker\Zed\Propel\PropelConfig;
 
 $config[KernelConstants::PROJECT_NAMESPACES] = [
     'Pyz',
@@ -45,18 +42,10 @@ $config[KernelConstants::CORE_NAMESPACES] = [
     'Spryker',
 ];
 
-$config[ApplicationConstants::PROJECT_TIMEZONE] = 'UTC';
 $config[KernelConstants::PROJECT_NAMESPACE] = 'Pyz';
 
 $config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf('%s/data/%s/cache/YVES/twig/.pathCache', APPLICATION_ROOT_DIR, APPLICATION_STORE);
 $config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf('%s/data/%s/cache/ZED/twig/.pathCache', APPLICATION_ROOT_DIR, APPLICATION_STORE);
-
-$config[PropelConstants::ZED_DB_ENGINE_MYSQL] = PropelConfig::DB_ENGINE_MYSQL;
-$config[PropelConstants::ZED_DB_ENGINE_PGSQL] = PropelConfig::DB_ENGINE_PGSQL;
-$config[PropelConstants::ZED_DB_SUPPORTED_ENGINES] = [
-    PropelConfig::DB_ENGINE_MYSQL => 'MySql',
-    PropelConfig::DB_ENGINE_PGSQL => 'PostgreSql',
-];
 
 /**
  * Elasticsearch settings
@@ -127,8 +116,6 @@ $config[ZedRequestConstants::TRANSFER_PASSWORD] = 'o7&bg=Fz;nSslHBC';
 
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = false;
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_NAME] = 'XDEBUG_SESSION';
-
-$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
 
 $config[StorageConstants::STORAGE_KV_SOURCE] = 'redis';
 $config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION] = true;
@@ -316,13 +303,6 @@ $config[ErrorHandlerConstants::ERROR_LEVEL] = E_ALL & ~E_DEPRECATED & ~E_USER_DE
 
 $config[ApplicationConstants::ENABLE_WEB_PROFILER] = false;
 
-$config[PropelConstants::ZED_DB_ENGINE_MYSQL] = PropelConfig::DB_ENGINE_MYSQL;
-$config[PropelConstants::ZED_DB_ENGINE_PGSQL] = PropelConfig::DB_ENGINE_PGSQL;
-$config[PropelConstants::ZED_DB_SUPPORTED_ENGINES] = [
-    PropelConfig::DB_ENGINE_MYSQL => 'MySql',
-    PropelConfig::DB_ENGINE_PGSQL => 'PostgreSql',
-];
-
 $config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
     'CheckoutPage' => [
         'DummyPayment',
@@ -351,12 +331,6 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
     DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
 ];
-
-$config[TaxConstants::DEFAULT_TAX_RATE] = 19;
-
-$config[QueueConstants::QUEUE_SERVER_ID] = (gethostname()) ?: php_uname('n');
-$config[QueueConstants::QUEUE_WORKER_INTERVAL_MILLISECONDS] = 1000;
-$config[QueueConstants::QUEUE_WORKER_MAX_THRESHOLD_SECONDS] = 59;
 
 /*
  * Queues can have different adapters and maximum worker number
