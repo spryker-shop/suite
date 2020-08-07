@@ -34,6 +34,9 @@ sections:
         translator-generate-cache:
             command: "vendor/bin/console translator:generate-cache"
 
+        class-resolver-build:
+            command: "vendor/bin/console cache:class-resolver:build"
+
     database-migrate:
         propel-create:
             command: "vendor/bin/console propel:database:create"
