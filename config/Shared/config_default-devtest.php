@@ -24,6 +24,7 @@ use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
+use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 
 // ############################################################################
 // ############################## TESTING IN DEVVM ############################
@@ -40,9 +41,6 @@ $zedHost = sprintf('zed-test.%s.%s.local', $storeLowerCase, $domain);
 // ------------------------------ CODEBASE ------------------------------------
 // ----------------------------------------------------------------------------
 
-$config[KernelConstants::RESOLVABLE_CLASS_NAMES_CACHE_ENABLED] = false;
-$config[KernelConstants::RESOLVED_INSTANCE_CACHE_ENABLED] = false;
-
 // >>> Debug
 
 $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = true;
@@ -53,7 +51,10 @@ $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
 
 // >>> ErrorHandler
+$config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = true;
+$config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebExceptionErrorRenderer::class;
+$config[ErrorHandlerConstants::IS_PRETTY_ERROR_HANDLER_ENABLED] = true;
 
 // ----------------------------------------------------------------------------
 // ------------------------------ SECURITY ------------------------------------
@@ -90,6 +91,7 @@ require 'common/config_oauth-development.php';
 
 require 'common/config_services-devvm.php';
 require 'common/config_logs-files.php';
+require 'common/config_logs-ci-errors.php';
 
 // >>> DATABASE
 $config[PropelConstants::ZED_DB_USERNAME] = 'devtest';

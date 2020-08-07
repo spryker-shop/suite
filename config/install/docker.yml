@@ -36,8 +36,6 @@ sections:
         translator-generate-cache:
             command: "vendor/bin/console translator:generate-cache"
 
-    build-production:
-        excluded: true
         cache-class-resolver-build:
             command: 'vendor/bin/console cache:class-resolver:build'
 

@@ -88,7 +88,8 @@ require 'common/config_oauth-development.php';
 // ------------------------------ SERVICES ------------------------------------
 // ----------------------------------------------------------------------------
 
-require 'common/config_logs-files.php';
+require 'common/config_logs-ci-errors.php';
+require 'common/config_logs-ci-info.php';
 
 // >>> DATABASE
 // Look at:
