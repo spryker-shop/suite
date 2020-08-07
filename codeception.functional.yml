@@ -2,9 +2,11 @@ namespace: PyzTest
 actor: Tester
 
 include:
-    - tests/PyzTest/*/*
+    - tests/PyzTest/Zed/*
     - vendor/spryker/spryker/Bundles/*/*
-    - vendor/spryker/spryker-shop/Bundles/*/*
+    - vendor/spryker/rabbit-mq/*/*
+    - vendor/spryker-sdk/composer-constrainer
+    - vendor/spryker-sdk/composer-replace/
 
 paths:
     tests: tests
@@ -14,7 +16,6 @@ paths:
     envs: tests/_envs
 
 settings:
-    bootstrap: _bootstrap.php
     suite_class: \PHPUnit_Framework_TestSuite
     colors: true
     memory_limit: 1024M
@@ -35,3 +36,22 @@ extensions:
                 - Presentation
                 - Glue
                 - Api
+                # ProductPageSearchListenerTest fails if runs after something
+                # see codeception.functional.stage0.yml
+                - ProductPageSearchListenerTest
+                # Zed & Client SearchElasticsearch tests always fail if running AFTER Shared SearchElasticsearch tests
+                # see codeception.functional.stage2.yml
+                - SearchElasticsearch
+                # Also see FacetQueryExpanderPluginFilteredQueryTest::createFilteredStringFacetDataWithMultipleValues
+                - SearchClientBCTest
+                - SearchFacadeBCTest
+                # ACL breadcrumbs tests falls due to no user in session (AclNavigationItemCollectionFilterPlugin)
+                - AclGroupCreateCest
+                - AclGroupEditCest
+                - AclGroupListCest
+                - AclRoleCreateCest
+                - AclRoleEditCest
+                - AclRoleListCest
+params:
+    - tests/default.yml
+    - env

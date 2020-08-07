@@ -38,8 +38,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 abstract class AbstractProductStockWriterTest extends AbstractWriterTest
 {
     protected const WAREHOUSES_QTY = [
-        12345,
-        123456,
+        1234,
     ];
 
     /**
@@ -146,7 +145,6 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
 
         foreach ($fetchedResult['availability'] as $availability) {
             $dataSetProductStock = $dataSets[$availability[SpyAvailabilityTableMap::COL_SKU]][ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER];
-
             $this->assertEquals(
                 $dataSetProductStock->getQuantity(),
                 $availability[SpyAvailabilityTableMap::COL_QUANTITY]
