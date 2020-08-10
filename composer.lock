@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2fadaefd03fc384122647a5710f03d3b",
+    "content-hash": "ccec31067bc0552caf94ec3b368fa919",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -28156,16 +28156,16 @@
         },
         {
             "name": "spryker/oms",
-            "version": "11.12.1",
+            "version": "11.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oms.git",
-                "reference": "00d43b2f8c86dbc030c858ad3119720b306f212b"
+                "reference": "77d96e3b0c0d8307df5fc13a7503ef82ae575da3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oms/zipball/00d43b2f8c86dbc030c858ad3119720b306f212b",
-                "reference": "00d43b2f8c86dbc030c858ad3119720b306f212b",
+                "url": "https://api.github.com/repos/spryker/oms/zipball/77d96e3b0c0d8307df5fc13a7503ef82ae575da3",
+                "reference": "77d96e3b0c0d8307df5fc13a7503ef82ae575da3",
                 "shasum": ""
             },
             "require": {
@@ -28216,7 +28216,7 @@
                 "proprietary"
             ],
             "description": "Oms module",
-            "time": "2020-07-29T19:28:31+00:00"
+            "time": "2020-08-07T13:50:52+00:00"
         },
         {
             "name": "spryker/oms-discount-connector",
@@ -28302,6 +28302,51 @@
             ],
             "description": "OmsExtension module",
             "time": "2020-06-23T16:50:44+00:00"
+        },
+        {
+            "name": "spryker/oms-multi-thread",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/oms-multi-thread.git",
+                "reference": "d78da8c762dd781a41f77af7644e980b28f16e21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/oms-multi-thread/zipball/d78da8c762dd781a41f77af7644e980b28f16e21",
+                "reference": "d78da8c762dd781a41f77af7644e980b28f16e21",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/sales": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/oms": "If you want to have OMS multi-threading enabled, minimum required version: 11.13.0",
+                "spryker/sales": "If you want to use OmsMultiThreadProcessorIdentifierOrderExpanderPreSave plugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OmsMultiThread module",
+            "time": "2020-08-06T14:52:35+00:00"
         },
         {
             "name": "spryker/oms-product-offer-reservation",
