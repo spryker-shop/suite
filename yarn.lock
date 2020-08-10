@@ -5467,13 +5467,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"camelcase@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "camelcase@npm:3.0.0"
-  checksum: 2/7993433f5bc180928f70399b06a0f11a02840bfe027e51a7e6c1b4f68c5c3119a58ec64e17b3112acab9ba420a97613956a0a2cf65f6fc8247fc9938aee64de6
-  languageName: node
-  linkType: hard
-
 "camelcase@npm:^4.1.0":
   version: 4.1.0
   resolution: "camelcase@npm:4.1.0"
@@ -5860,17 +5853,6 @@ __metadata:
   version: 2.2.1
   resolution: "cli-width@npm:2.2.1"
   checksum: 2/f7c830bddca78d8b2706c213d6ffa4e751988b7f70ec3e871c97a87e12a9e17e9f9652f13a5bfcea0e2e8dbae1da4b0939d59cf2bf8c36979541c624043d6315
-  languageName: node
-  linkType: hard
-
-"cliui@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "cliui@npm:3.2.0"
-  dependencies:
-    string-width: ^1.0.1
-    strip-ansi: ^3.0.1
-    wrap-ansi: ^2.0.0
-  checksum: 2/369a15d48058633e21e024c29ad314e082da6da6c9ed322385ac3171bce305bb3b3d61374cbe5444feca445de06ffaa2239cf8edb8307dad6a4b6ef62200a281
   languageName: node
   linkType: hard
 
@@ -10944,13 +10926,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"invert-kv@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "invert-kv@npm:1.0.0"
-  checksum: 2/fccd6ea4ee18d30b00fc21d6679191690f8447f248cbcdf6f74fe81a4048d51a3858d7af17a0318bd7c6fe6c46abee5a10756109787a3ec0e0a02a2c1b4a635d
-  languageName: node
-  linkType: hard
-
 "invert-kv@npm:^2.0.0":
   version: 2.0.0
   resolution: "invert-kv@npm:2.0.0"
@@ -12172,10 +12147,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jquery@npm:>=1.7, jquery@npm:>=1.9.1, jquery@npm:~3.4.1":
+"jquery@npm:>=1.7, jquery@npm:>=1.9.1":
   version: 3.4.1
   resolution: "jquery@npm:3.4.1"
   checksum: 2/918300d1c768ae029bc88be13dc248ae0e82e1282f0353a6cced10ba6dabb70342a581777dc594da339c1beec7a04d3754358934a098c6627c35c6fb7d9af440
+  languageName: node
+  linkType: hard
+
+"jquery@npm:~3.5.1":
+  version: 3.5.1
+  resolution: "jquery@npm:3.5.1"
+  checksum: 2/c50818c84837902a60938c85786feb612f346a9918f7285409d605449460790b3815ad8aaf5806f19e89f1a79b27d327802b421ab354fe213f3fd1801e3562e6
   languageName: node
   linkType: hard
 
@@ -12449,15 +12431,6 @@ fsevents@^1.2.7:
     lodash: ^4.17.5
     webpack-sources: ^1.1.0
   checksum: 2/aaa8255d4e1e9f20fd98aa6dd89af4e8efa27a516d4c3a183cd1b368c20ac4102f4ddb659010fce5ea1eaed66b59d88ea6cd1063b75c8db1e43ba129c64b68c4
-  languageName: node
-  linkType: hard
-
-"lcid@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "lcid@npm:1.0.0"
-  dependencies:
-    invert-kv: ^1.0.0
-  checksum: 2/36f50f8be935c90e3f9296d3f7057df950ee27c4f1608549b11b3f88d26d68a19a47cf787b1a6e3eb292e820fcc8c96a67be2fca14f713430adb57b24e06fb96
   languageName: node
   linkType: hard
 
@@ -14315,33 +14288,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"node-sass@npm:~4.13.1":
-  version: 4.13.1
-  resolution: "node-sass@npm:4.13.1"
-  dependencies:
-    async-foreach: ^0.1.3
-    chalk: ^1.1.1
-    cross-spawn: ^3.0.0
-    gaze: ^1.0.0
-    get-stdin: ^4.0.1
-    glob: ^7.0.3
-    in-publish: ^2.0.0
-    lodash: ^4.17.15
-    meow: ^3.7.0
-    mkdirp: ^0.5.1
-    nan: ^2.13.2
-    node-gyp: ^3.8.0
-    npmlog: ^4.0.0
-    request: ^2.88.0
-    sass-graph: ^2.2.4
-    stdout-stream: ^1.4.0
-    true-case-path: ^1.0.2
-  bin:
-    node-sass: bin/node-sass
-  checksum: 2/13bf3b28bf6897d1eff1d13fd7f220b58ec80ac8be7c360b00d3220920ff14f2ddd2aa6f439f8cca96530af4d1900dc73bbfed5b0b0af5c9f859ab4c0a97f869
-  languageName: node
-  linkType: hard
-
 "node-sass@npm:~4.14.1":
   version: 4.14.1
   resolution: "node-sass@npm:4.14.1"
@@ -14948,15 +14894,6 @@ fsevents@^1.2.7:
   version: 2.0.0
   resolution: "os-homedir@npm:2.0.0"
   checksum: 2/f8a12ba830f83d3c5cd3df24cece5f4848f87b5a66998c888bfe9e568c84d16df56482b74f99f4bd446d6c3e155e7e75e553225277876b1d59cd10959dab543c
-  languageName: node
-  linkType: hard
-
-"os-locale@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "os-locale@npm:1.4.0"
-  dependencies:
-    lcid: ^1.0.0
-  checksum: 2/19d876790073758c346c8df2ec40a9c28ee1497b185bfb54d3fd082b9b82e61f2ee3a9bd329cdd6ae878c7fce045c0c3b21c1196061af8360aebf2775fa27b2b
   languageName: node
   linkType: hard
 
@@ -15594,9 +15531,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"plotly.js@npm:^1.48.3":
-  version: 1.54.6
-  resolution: "plotly.js@npm:1.54.6"
+"plotly.js@npm:~1.54.5":
+  version: 1.54.7
+  resolution: "plotly.js@npm:1.54.7"
   dependencies:
     "@plotly/d3-sankey": 0.7.2
     "@plotly/d3-sankey-circular": 0.33.1
@@ -15662,7 +15599,7 @@ fsevents@^1.2.7:
     topojson-client: ^3.1.0
     webgl-context: ^2.2.0
     world-calendars: ^1.0.3
-  checksum: 2/153571e4eee270bde938b3930aa8525c5e08a4540e1791557d0697aa87ca3bc2ccc9639097c6dead6c1ed51f006e6e9bfd614f02b08ea8c329a2c905b0f320ce
+  checksum: 2/082c0dbcae9d5f1851b2944388b065b06c70ca9b3feb4b20b1ceab442181af6fc3430e4dc91fda29e74e8d7caca6ce11e3a37f7fe1f051a3e75aebda42c6656d
   languageName: node
   linkType: hard
 
@@ -17834,20 +17771,6 @@ resolve@^0.6.1:
   languageName: node
   linkType: hard
 
-"sass-graph@npm:^2.2.4":
-  version: 2.2.6
-  resolution: "sass-graph@npm:2.2.6"
-  dependencies:
-    glob: ^7.0.0
-    lodash: ^4.0.0
-    scss-tokenizer: ^0.2.3
-    yargs: ^7.0.0
-  bin:
-    sassgraph: bin/sassgraph
-  checksum: 2/2d251dee0c1765681cd9a439b25a138980fcd96040226a31e18158dba4c8e78cf6d64d15d7413fb73513020bcd70fc390d58990dc9dbb3c2413aedd37e8f7596
-  languageName: node
-  linkType: hard
-
 "sass-loader@npm:8.0.2, sass-loader@npm:~8.0.0":
   version: 8.0.2
   resolution: "sass-loader@npm:8.0.2"
@@ -18769,7 +18692,7 @@ resolve@^0.6.1:
     jest-preset-angular: ~8.2.1
     lodash-es: ~4.17.15
     mini-css-extract-plugin: ~0.8.0
-    node-sass: ~4.13.1
+    node-sass: ~4.14.1
     npm-run-all: ~4.1.5
     optimize-css-assets-webpack-plugin: ~5.0.1
     postcss-loader: ~3.0.0
@@ -18797,7 +18720,7 @@ resolve@^0.6.1:
   version: 0.0.0-use.local
   resolution: "spryker-zed-chart-plotly@workspace:vendor/spryker/chart/assets/Zed"
   dependencies:
-    plotly.js: ^1.48.3
+    plotly.js: ~1.54.5
   languageName: unknown
   linkType: soft
 
@@ -18882,7 +18805,7 @@ resolve@^0.6.1:
     datatables.net-select-bs: ~1.3.0
     es6-promise: ~4.0.5
     font-awesome: ~4.7.0
-    jquery: ~3.4.1
+    jquery: ~3.5.1
     jquery-migrate: ~3.0.0
     jquery-ui: ~1.12.1
     jstree: ~3.3.3
@@ -19163,7 +19086,7 @@ resolve@^0.6.1:
   languageName: node
   linkType: hard
 
-"string-width@npm:^1.0.1, string-width@npm:^1.0.2":
+"string-width@npm:^1.0.1":
   version: 1.0.2
   resolution: "string-width@npm:1.0.2"
   dependencies:
@@ -21551,13 +21474,6 @@ resolve@^0.6.1:
   languageName: node
   linkType: hard
 
-"which-module@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "which-module@npm:1.0.0"
-  checksum: 2/2fbdb5d875d9dd141de049ad14820de43403cb664142df2b16430a6349bbbcc48b30a24491df0794b7f16284a977fd03ce8b797fa668db92272172dcbe21f8b6
-  languageName: node
-  linkType: hard
-
 "which-module@npm:^2.0.0":
   version: 2.0.0
   resolution: "which-module@npm:2.0.0"
@@ -21819,16 +21735,6 @@ resolve@^0.6.1:
   languageName: node
   linkType: hard
 
-"yargs-parser@npm:5.0.0-security.0":
-  version: 5.0.0-security.0
-  resolution: "yargs-parser@npm:5.0.0-security.0"
-  dependencies:
-    camelcase: ^3.0.0
-    object.assign: ^4.1.0
-  checksum: 2/b351d8dff2ae692815171b4c4d321812767ce903a50284177bbbb79aeadf7312d7d3c9d89605e1077e8d8ee8565123e5a344ed015a719d620a834bd8a060aed5
-  languageName: node
-  linkType: hard
-
 "yargs-parser@npm:^13.1.2":
   version: 13.1.2
   resolution: "yargs-parser@npm:13.1.2"
@@ -21921,27 +21827,6 @@ resolve@^0.6.1:
     y18n: ^4.0.0
     yargs-parser: ^18.1.2
   checksum: 2/dbf687d6b938f01bbf11e158dde6df906282b70cd9295af0217ee8cefbd83ad09d49fa9458d0d5325b0e66f03df954a38986db96f91e5b46ccdbbaf9a0157b23
-  languageName: node
-  linkType: hard
-
-"yargs@npm:^7.0.0":
-  version: 7.1.1
-  resolution: "yargs@npm:7.1.1"
-  dependencies:
-    camelcase: ^3.0.0
-    cliui: ^3.2.0
-    decamelize: ^1.1.1
-    get-caller-file: ^1.0.1
-    os-locale: ^1.4.0
-    read-pkg-up: ^1.0.1
-    require-directory: ^2.1.1
-    require-main-filename: ^1.0.1
-    set-blocking: ^2.0.0
-    string-width: ^1.0.2
-    which-module: ^1.0.0
-    y18n: ^3.2.1
-    yargs-parser: 5.0.0-security.0
-  checksum: 2/62bb2345031bbb3dd99626a62fd94caa0c13610c53b3d914792f387432c7c7d49432d85ea9eb6339092aca5788a2f1184507826f98c3af277e1e2202ae1d9341
   languageName: node
   linkType: hard
 
