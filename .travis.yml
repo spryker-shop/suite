@@ -416,7 +416,9 @@ script:
 
   - if [[ $VALIDATION == 1 ]] ; then ./tests/travis_check_untracked.sh ; fi
   - timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-logfile=/tmp/phantomjs.log --webdriver-loglevel=DEBUG">/dev/null &
-  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x EndToEnd -x Presentation --ext DotReporter ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.stage0.yml --ext DotReporter ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.yml --ext DotReporter ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.stage2.yml --ext DotReporter ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g EndToEnd -g Presentation -x DockerOnly --ext DotReporter ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/stylelint ; fi
