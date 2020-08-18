@@ -32,12 +32,6 @@ jobs:
       env:
         - VALIDATION=1
 
-    - php: "7.2"
-      dist: bionic
-      env:
-        - VALIDATION=1
-        - PREFER_LOWEST=1
-
     - php: "7.4"
       dist: bionic
       env:
