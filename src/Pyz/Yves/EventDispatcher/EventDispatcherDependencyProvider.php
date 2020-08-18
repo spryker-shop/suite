@@ -47,7 +47,6 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new LastVisitCookieEventDispatcherPlugin(),
             new LocaleEventDispatcherPlugin(),
             new RouterLocaleEventDispatcherPlugin(),
-            new HeadersSecurityEventDispatcherPlugin(),
             new RouterListenerEventDispatcherPlugin(),
             new RouterSslRedirectEventDispatcherPlugin(),
             new CookieEventDispatcherPlugin(),
