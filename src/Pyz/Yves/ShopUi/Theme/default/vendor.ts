@@ -18,6 +18,7 @@ require(`core-js/${coreJsFeaturesFolder}/map`);
 /* tslint:enable */
 
 import 'whatwg-fetch';
+import 'element-remove';
 import 'classlist-polyfill';
 import 'string.prototype.startswith';
 import 'date-input-polyfill';
