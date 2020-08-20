@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "547aa95569aa021cce5f1a949e54ce19",
+    "content-hash": "1df0abd4586e76df3e87d34cfcf2243b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -31131,16 +31131,16 @@
         },
         {
             "name": "spryker/product-bundle",
-            "version": "7.7.0",
+            "version": "7.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-bundle.git",
-                "reference": "164fdec2e71facbdfed1472421df1ca646543b02"
+                "reference": "f81c7047fa54ea4859aeac37ffafebb68e65b437"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-bundle/zipball/164fdec2e71facbdfed1472421df1ca646543b02",
-                "reference": "164fdec2e71facbdfed1472421df1ca646543b02",
+                "url": "https://api.github.com/repos/spryker/product-bundle/zipball/f81c7047fa54ea4859aeac37ffafebb68e65b437",
+                "reference": "f81c7047fa54ea4859aeac37ffafebb68e65b437",
                 "shasum": ""
             },
             "require": {
@@ -31193,7 +31193,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\ProductBundle\\Helper\\": "tests/SprykerTest/Shared/ProductBundle/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -31201,7 +31202,7 @@
                 "proprietary"
             ],
             "description": "ProductBundle module",
-            "time": "2020-07-06T07:43:13+00:00"
+            "time": "2020-08-19T12:01:53+00:00"
         },
         {
             "name": "spryker/product-bundle-product-list-connector",
@@ -31246,6 +31247,64 @@
             ],
             "description": "ProductBundleProductListConnector module",
             "time": "2020-05-29T13:08:37+00:00"
+        },
+        {
+            "name": "spryker/product-bundle-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-bundle-storage.git",
+                "reference": "0cc4984b73b764f1f3dcc0eb2243244ef3a1dfe2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-bundle-storage/zipball/0cc4984b73b764f1f3dcc0eb2243244ef3a1dfe2",
+                "reference": "0cc4984b73b764f1f3dcc0eb2243244ef3a1dfe2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/product-bundle": "^7.0.0",
+                "spryker/product-storage": "^1.20.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/availability": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/currency": "*",
+                "spryker/price-product": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/stock": "*",
+                "spryker/store": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event": "To use event behavior."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductBundleStorage module",
+            "time": "2020-08-18T19:47:16+00:00"
         },
         {
             "name": "spryker/product-cart-connector",
