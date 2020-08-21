@@ -105,6 +105,10 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     {
         $resource = $this->findResourceArguments($urlStorageTransfer->toArray());
 
+        if ($resource === null) {
+            return;
+        }
+
         $urlStorage = [
             'resources' => [
                 'fk_' . $resource[static::RESOURCE_TYPE] => $resource[static::RESOURCE_VALUE],
