@@ -16,12 +16,7 @@
 {% endblock %}
 
 {% block header %}
-    {% embed organism('header') with {
-        modifiers: ['gray'],
-        data: {
-            isNew: true,
-        },
-    } only %}
+    {% embed organism('header') only %}
         {% block mainNavigation %}
             {% cms_slot 'slt-desktop-header' %}
         {% endblock %}
