@@ -39,6 +39,7 @@ use Spryker\Zed\PriceProductStorage\Communication\Plugin\Synchronization\PricePr
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Synchronization\PriceProductConcreteSynchronizationDataPlugin;
 use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Synchronization\ProductAlternativeSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Synchronization\ProductReplacementForSynchronizationDataBulkPlugin;
+use Spryker\Zed\ProductBundleStorage\Communication\Plugin\Synchronization\ProductBundleSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Synchronization\ProductCategoryFilterSynchronizationDataPlugin;
 use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Synchronization\ProductCategorySynchronizationDataPlugin;
 use Spryker\Zed\ProductDiscontinuedStorage\Communication\Plugin\Synchronization\ProductDiscontinuedSynchronizationDataBulkPlugin;
@@ -146,6 +147,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new PriceProductOfferSynchronizationDataPlugin(),
             new ConfigurableBundleTemplatePageSynchronizationDataBulkPlugin(),
             new ReturnReasonSynchronizationDataBulkRepositoryPlugin(),
+            new ProductBundleSynchronizationDataBulkRepositoryPlugin(),
         ];
     }
 }

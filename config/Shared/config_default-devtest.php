@@ -23,7 +23,10 @@ use Spryker\Shared\SessionRedis\SessionRedisConfig;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
+use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
+use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
+use Twig\Cache\FilesystemCache;
 
 // ############################################################################
 // ############################## TESTING IN DEVVM ############################
@@ -53,7 +56,10 @@ $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
 
 // >>> ErrorHandler
+$config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = true;
+$config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebExceptionErrorRenderer::class;
+$config[ErrorHandlerConstants::IS_PRETTY_ERROR_HANDLER_ENABLED] = true;
 
 // ----------------------------------------------------------------------------
 // ------------------------------ SECURITY ------------------------------------
@@ -90,6 +96,7 @@ require 'common/config_oauth-development.php';
 
 require 'common/config_services-devvm.php';
 require 'common/config_logs-files.php';
+require 'common/config_logs-ci-errors.php';
 
 // >>> DATABASE
 $config[PropelConstants::ZED_DB_USERNAME] = 'devtest';
@@ -204,3 +211,38 @@ require 'common/config_oms-development.php';
 // >>> PAYONE
 
 require 'common/config_payone-development.php';
+
+// >>> Twig
+
+$config[TwigConstants::YVES_TWIG_OPTIONS] = [
+    'cache' => new FilesystemCache(
+        sprintf(
+            '%s/data/cache/codeBucket%s/%s/twig',
+            APPLICATION_ROOT_DIR,
+            APPLICATION_CODE_BUCKET,
+            APPLICATION
+        ),
+        FilesystemCache::FORCE_BYTECODE_INVALIDATION
+    ),
+];
+$config[TwigConstants::ZED_TWIG_OPTIONS] = [
+    'cache' => new FilesystemCache(
+        sprintf(
+            '%s/data/cache/codeBucket%s/%s/twig',
+            APPLICATION_ROOT_DIR,
+            APPLICATION_CODE_BUCKET,
+            APPLICATION
+        ),
+        FilesystemCache::FORCE_BYTECODE_INVALIDATION
+    ),
+];
+$config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
+    '%s/data/cache/codeBucket%s/YVES/twig/.pathCache',
+    APPLICATION_ROOT_DIR,
+    APPLICATION_CODE_BUCKET
+);
+$config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
+    '%s/data/cache/codeBucket%s/ZED/twig/.pathCache',
+    APPLICATION_ROOT_DIR,
+    APPLICATION_CODE_BUCKET
+);
