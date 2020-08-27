@@ -28,8 +28,4 @@ use Codeception\Actor;
 class ApplicationPresentationTester extends Actor
 {
     use _generated\ApplicationPresentationTesterActions;
-
-   /**
-    * Define custom actions here
-    */
 }

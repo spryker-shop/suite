@@ -27,6 +27,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     private const TEST_PASSWORD = 'test_password';
+
     /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
      */

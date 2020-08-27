@@ -7,6 +7,12 @@
 
 namespace Pyz\Glue\GlueApplication;
 
+use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentAccessTokenRestRequestValidatorPlugin;
+use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentAccessTokenRestUserFinderPlugin;
+use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentAccessTokensResourceRoutePlugin;
+use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentCustomerImpersonationAccessTokensResourceRoutePlugin;
+use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentCustomerSearchResourceRoutePlugin;
+use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentRestUserValidatorPlugin;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\AbstractAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\ConcreteAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
@@ -268,6 +274,9 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ProductOfferPricesResourceRoutePlugin(),
             new CmsPagesResourceRoutePlugin(),
             new ContentProductAbstractListsResourceRoutePlugin(),
+            new AgentAccessTokensResourceRoutePlugin(),
+            new AgentCustomerImpersonationAccessTokensResourceRoutePlugin(),
+            new AgentCustomerSearchResourceRoutePlugin(),
         ];
     }
 
@@ -292,6 +301,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new AccessTokenRestRequestValidatorPlugin(),
+            new AgentAccessTokenRestRequestValidatorPlugin(),
             new SimultaneousAuthenticationRestRequestValidatorPlugin(),
             new ValidateRestRequestAttributesPlugin(),
             new CurrencyParameterValidatorPlugin(),
@@ -310,6 +320,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new CompanyUserRestUserValidatorPlugin(),
+            new AgentRestUserValidatorPlugin(),
         ];
     }
 
@@ -651,6 +662,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new RestUserFinderByAccessTokenPlugin(),
+            new AgentAccessTokenRestUserFinderPlugin(),
         ];
     }
 
