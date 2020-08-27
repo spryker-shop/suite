@@ -28,8 +28,4 @@ use Codeception\Actor;
 class DataImportCommunicationTester extends Actor
 {
     use _generated\DataImportCommunicationTesterActions;
-
-   /**
-    * Define custom actions here
-    */
 }
