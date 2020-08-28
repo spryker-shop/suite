@@ -57,24 +57,24 @@ class PaymentDependencyProvider extends SprykerPaymentDependencyProvider
     protected function extendPaymentPlugins(Container $container): Container
     {
         $container->extend(
-            PaymentDependencyProvider::CHECKOUT_PLUGINS,
+            static::CHECKOUT_PLUGINS,
             function (CheckoutPluginCollectionInterface $pluginCollection) {
                 $pluginCollection->add(
                     new GiftCardPreCheckPlugin(),
                     SprykerGiftCardConfig::PROVIDER_NAME,
-                    PaymentDependencyProvider::CHECKOUT_PRE_CHECK_PLUGINS
+                    static::CHECKOUT_PRE_CHECK_PLUGINS
                 );
 
                 $pluginCollection->add(
                     new GiftCardOrderSaverPlugin(),
                     SprykerGiftCardConfig::PROVIDER_NAME,
-                    PaymentDependencyProvider::CHECKOUT_ORDER_SAVER_PLUGINS
+                    static::CHECKOUT_ORDER_SAVER_PLUGINS
                 );
 
                 $pluginCollection->add(
                     new NopaymentPreCheckPlugin(),
                     SprykerNopaymentConfig::PAYMENT_PROVIDER_NAME,
-                    PaymentDependencyProvider::CHECKOUT_ORDER_SAVER_PLUGINS
+                    static::CHECKOUT_ORDER_SAVER_PLUGINS
                 );
 
                 $pluginCollection->add(
