@@ -136,7 +136,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
      */
     protected function extendConditionPlugins(Container $container): Container
     {
-        $container->extend(OmsDependencyProvider::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
+        $container->extend(self::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
             $conditionCollection
                 ->add(new IsGiftCardConditionPlugin(), 'GiftCard/IsGiftCard');
             $conditionCollection
