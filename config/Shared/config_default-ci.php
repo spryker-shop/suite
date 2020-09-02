@@ -28,10 +28,8 @@ use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
-use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
-use Twig\Cache\FilesystemCache;
 
 // ############################################################################
 // ############################## TESTING IN CI ###############################
@@ -243,38 +241,3 @@ require 'common/config_oms-development.php';
 // >>> PAYONE
 
 require 'common/config_payone-development.php';
-
-// >>> Twig
-
-$config[TwigConstants::YVES_TWIG_OPTIONS] = [
-    'cache' => new FilesystemCache(
-        sprintf(
-            '%s/data/cache/codeBucket%s/%s/twig',
-            APPLICATION_ROOT_DIR,
-            APPLICATION_CODE_BUCKET,
-            APPLICATION
-        ),
-        FilesystemCache::FORCE_BYTECODE_INVALIDATION
-    ),
-];
-$config[TwigConstants::ZED_TWIG_OPTIONS] = [
-    'cache' => new FilesystemCache(
-        sprintf(
-            '%s/data/cache/codeBucket%s/%s/twig',
-            APPLICATION_ROOT_DIR,
-            APPLICATION_CODE_BUCKET,
-            APPLICATION
-        ),
-        FilesystemCache::FORCE_BYTECODE_INVALIDATION
-    ),
-];
-$config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
-    '%s/data/cache/codeBucket%s/YVES/twig/.pathCache',
-    APPLICATION_ROOT_DIR,
-    APPLICATION_CODE_BUCKET
-);
-$config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
-    '%s/data/cache/codeBucket%s/ZED/twig/.pathCache',
-    APPLICATION_ROOT_DIR,
-    APPLICATION_CODE_BUCKET
-);
