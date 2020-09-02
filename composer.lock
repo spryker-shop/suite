@@ -6,10 +6,14 @@
     ],
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "content-hash": "56d15a5587287e6d6540453ee51e67ed",
 =======
     "content-hash": "2d976af75e62ffadca0c25a0cee82cd7",
 >>>>>>> TE-7001 Updated composer constraint for ruflin.
+=======
+    "content-hash": "c4867e8efe279292583e2395f2e67ee2",
+>>>>>>> TE-7001 Updated composer.lock.
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3835,6 +3839,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "reference": "0c0da433ab1b04f38bf21f12ac4e13c0fef7be5b"
 =======
                 "reference": "503451c21b7c5184cefd69eabca6e3fb0cfb0e30"
@@ -3844,6 +3849,9 @@
 >>>>>>> TE-7200: update composer.lock
 =======
                 "reference": "b793cb4bc8978d454bc5a7aadc91c262663c8b27"
+>>>>>>> TE-7001 Updated composer.lock.
+=======
+                "reference": "d6bc755b72c0a5f6d7358581d5c3ded2c5623e7a"
 >>>>>>> TE-7001 Updated composer.lock.
             },
             "require": {
@@ -4601,6 +4609,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             "time": "2020-09-02T10:59:33+00:00"
 =======
             "time": "2020-08-13T15:05:21+00:00"
@@ -4610,6 +4619,9 @@
 >>>>>>> TE-7200: update composer.lock
 =======
             "time": "2020-09-02T08:34:47+00:00"
+>>>>>>> TE-7001 Updated composer.lock.
+=======
+            "time": "2020-09-02T11:09:11+00:00"
 >>>>>>> TE-7001 Updated composer.lock.
         },
         {
@@ -8038,11 +8050,16 @@
         },
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             "name": "symfony/security",
             "version": "v4.4.13",
 =======
             "name": "symfony/security-core",
             "version": "v5.1.5",
+>>>>>>> TE-7001 Updated composer.lock.
+=======
+            "name": "symfony/security",
+            "version": "v4.4.13",
 >>>>>>> TE-7001 Updated composer.lock.
             "source": {
                 "type": "git",
@@ -8089,6 +8106,7 @@
                 "symfony/expression-language": "For using the expression voter",
                 "symfony/form": "",
                 "symfony/ldap": "For using the LDAP user and authentication providers",
+<<<<<<< HEAD
                 "symfony/routing": "For using the HttpUtils class to create sub-requests, redirect the user, and match URLs",
                 "symfony/validator": "For using the user password constraint"
             },
@@ -8303,21 +8321,26 @@
                 "symfony/security-csrf": "^4.4|^5.0"
             },
             "suggest": {
+=======
+>>>>>>> TE-7001 Updated composer.lock.
                 "symfony/routing": "For using the HttpUtils class to create sub-requests, redirect the user, and match URLs",
-                "symfony/security-csrf": "For using tokens to protect authentication/logout attempts"
+                "symfony/validator": "For using the user password constraint"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.1-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Symfony\\Component\\Security\\Http\\": ""
+                    "Symfony\\Component\\Security\\": ""
                 },
                 "exclude-from-classmap": [
-                    "/Tests/"
+                    "/Core/Tests/",
+                    "/Csrf/Tests/",
+                    "/Guard/Tests/",
+                    "/Http/Tests/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8334,9 +8357,9 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony Security Component - HTTP Integration",
+            "description": "Symfony Security Component",
             "homepage": "https://symfony.com",
-            "time": "2020-08-25T15:26:05+00:00"
+            "time": "2020-08-17T09:35:39+00:00"
         },
         {
             "name": "symfony/serializer",
@@ -12578,12 +12601,15 @@
                 "phpmd",
                 "pmd"
             ],
+<<<<<<< HEAD
             "funding": [
                 {
                     "url": "https://tidelift.com/funding/github/packagist/phpmd/phpmd",
                     "type": "tidelift"
                 }
             ],
+=======
+>>>>>>> TE-7001 Updated composer.lock.
             "time": "2020-09-02T09:12:27+00:00"
         },
         {
@@ -14666,10 +14692,14 @@
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "reference": "bb91fb25defd6542484b5b0c4cfb888b46fe0716"
 =======
                 "reference": "9aedb77cef0a074625b2b3fb08fc2a6af038b6a6"
 >>>>>>> TE-7127 update symfony finder
+=======
+                "reference": "c0140d644d09fe75892805954217883ffd63f64f"
+>>>>>>> TE-7001 Updated composer.lock.
             },
             "require": {
                 "composer/semver": "^1.0.0 || ^2.0.0 || ^3.0.0",
@@ -14713,10 +14743,14 @@
             ],
             "description": "DevelopmentCore module",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "time": "2020-08-31T13:40:34+00:00"
 =======
             "time": "2020-08-11T12:41:42+00:00"
 >>>>>>> TE-7127 update symfony finder
+=======
+            "time": "2020-09-02T11:24:37+00:00"
+>>>>>>> TE-7001 Updated composer.lock.
         },
         {
             "name": "spryker/git-hook",
