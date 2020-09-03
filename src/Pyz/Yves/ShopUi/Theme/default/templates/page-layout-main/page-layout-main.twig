@@ -3,7 +3,6 @@
 {% block sidebar %}
     {% embed organism('side-drawer') with {
         class: 'is-hidden-lg-xl',
-        modifiers: ['is-new'],
         attributes: {
             'container-selector': 'js-page-layout-main',
             'trigger-selector': 'js-page-layout-main__side-drawer-trigger',
@@ -42,7 +41,7 @@
                 {% include molecule('toggler-click') with {
                     attributes: {
                         'trigger-class-name': config.jsName ~ '__mobile-search-trigger',
-                        'target-class-name': 'search-form--is-new',
+                        'target-class-name': 'search-form',
                         'class-to-toggle': 'mobile-search-visible',
                     },
                 } only %}
