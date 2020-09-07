@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c7e0e5a281a4eb4f1519200544641b59",
+    "content-hash": "7e6ab0647fbddf3bad2eb209b12d3eae",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.151.4",
+            "version": "3.152.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "08d8e5540bdef23127fec4787270d9d12ccc8117"
+                "reference": "c5b43109dc0ecf77c4a18a8504ca3023f705b306"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/08d8e5540bdef23127fec4787270d9d12ccc8117",
-                "reference": "08d8e5540bdef23127fec4787270d9d12ccc8117",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c5b43109dc0ecf77c4a18a8504ca3023f705b306",
+                "reference": "c5b43109dc0ecf77c4a18a8504ca3023f705b306",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-09-01T18:17:03+00:00"
+            "time": "2020-09-04T18:16:32+00:00"
         },
         {
             "name": "beberlei/assert",
@@ -564,16 +564,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.19",
+            "version": "2.1.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "840d5603eb84cc81a6a0382adac3293e57c1c64c"
+                "reference": "f46887bc48db66c7f38f668eb7d6ae54583617ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/840d5603eb84cc81a6a0382adac3293e57c1c64c",
-                "reference": "840d5603eb84cc81a6a0382adac3293e57c1c64c",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/f46887bc48db66c7f38f668eb7d6ae54583617ff",
+                "reference": "f46887bc48db66c7f38f668eb7d6ae54583617ff",
                 "shasum": ""
             },
             "require": {
@@ -618,7 +618,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-08-08T21:28:19+00:00"
+            "time": "2020-09-06T13:44:32+00:00"
         },
         {
             "name": "elasticsearch/elasticsearch",
@@ -1192,6 +1192,10 @@
                 "rest",
                 "web service"
             ],
+            "support": {
+                "issues": "https://github.com/guzzle/guzzle/issues",
+                "source": "https://github.com/guzzle/guzzle/tree/7.0"
+            },
             "time": "2020-06-27T10:33:25+00:00"
         },
         {
@@ -1449,16 +1453,16 @@
         },
         {
             "name": "league/csv",
-            "version": "9.6.0",
+            "version": "9.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/csv.git",
-                "reference": "7351a74625601914409b42b32cabb91a93773b7b"
+                "reference": "634322df4aed210fdfbb7c94e434dc860da733d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/csv/zipball/7351a74625601914409b42b32cabb91a93773b7b",
-                "reference": "7351a74625601914409b42b32cabb91a93773b7b",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/634322df4aed210fdfbb7c94e434dc860da733d9",
+                "reference": "634322df4aed210fdfbb7c94e434dc860da733d9",
                 "shasum": ""
             },
             "require": {
@@ -1468,11 +1472,12 @@
             },
             "require-dev": {
                 "ext-curl": "*",
+                "ext-dom": "*",
                 "friendsofphp/php-cs-fixer": "^2.16",
                 "phpstan/phpstan": "^0.12.0",
                 "phpstan/phpstan-phpunit": "^0.12.0",
                 "phpstan/phpstan-strict-rules": "^0.12.0",
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^8.5"
             },
             "suggest": {
                 "ext-dom": "Required to use the XMLConverter and or the HTMLConverter classes",
@@ -1522,7 +1527,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-03-17T15:15:35+00:00"
+            "time": "2020-09-05T08:40:12+00:00"
         },
         {
             "name": "league/event",
@@ -2895,6 +2900,9 @@
                 "psr",
                 "psr-18"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/http-client/tree/master"
+            },
             "time": "2020-06-29T06:28:15+00:00"
         },
         {
@@ -23390,6 +23398,9 @@
                 "proprietary"
             ],
             "description": "Guzzle module",
+            "support": {
+                "source": "https://github.com/spryker/guzzle/tree/2.3.0"
+            },
             "time": "2020-07-23T14:18:52+00:00"
         },
         {
@@ -24385,6 +24396,9 @@
                 "MIT"
             ],
             "description": "MerchantDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-data-import/tree/master"
+            },
             "time": "2020-05-15T13:58:38+00:00"
         },
         {
@@ -24613,6 +24627,9 @@
                 "MIT"
             ],
             "description": "MerchantOmsDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-oms-data-import/tree/0.2.2"
+            },
             "time": "2020-05-29T08:34:44+00:00"
         },
         {
@@ -24741,6 +24758,9 @@
                 "MIT"
             ],
             "description": "MerchantOpeningHoursDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-opening-hours-data-import/tree/0.2.1"
+            },
             "time": "2020-05-12T15:08:12+00:00"
         },
         {
@@ -25531,6 +25551,9 @@
                 "MIT"
             ],
             "description": "MerchantProfileDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-profile-data-import/tree/master"
+            },
             "time": "2020-05-20T07:54:04+00:00"
         },
         {
@@ -25718,6 +25741,9 @@
                 "MIT"
             ],
             "description": "MerchantRelationshipDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-relationship-data-import/tree/0.1.8"
+            },
             "time": "2020-05-12T15:08:12+00:00"
         },
         {
@@ -26500,6 +26526,9 @@
                 "MIT"
             ],
             "description": "MerchantStockDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-stock-data-import/tree/master"
+            },
             "time": "2020-05-18T11:59:13+00:00"
         },
         {
@@ -38477,6 +38506,9 @@
                 "proprietary"
             ],
             "description": "SalesOms module",
+            "support": {
+                "source": "https://github.com/spryker/sales-oms/tree/0.1.0"
+            },
             "time": "2020-05-29T12:33:32+00:00"
         },
         {
@@ -41635,6 +41667,9 @@
                 "MIT"
             ],
             "description": "StockDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/stock-data-import/tree/1.1.2"
+            },
             "time": "2020-05-05T00:59:59+00:00"
         },
         {
@@ -51276,7 +51311,6 @@
             "keywords": [
                 "tokenizer"
             ],
-            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
@@ -51878,7 +51912,6 @@
             ],
             "description": "FinderFacade is a convenience wrapper for Symfony's Finder component.",
             "homepage": "https://github.com/sebastianbergmann/finder-facade",
-            "abandoned": true,
             "time": "2020-01-16T08:08:45+00:00"
         },
         {
@@ -52418,6 +52451,10 @@
                 "update",
                 "versions"
             ],
+            "support": {
+                "issues": "https://github.com/soullivaneuh/composer-versions-check/issues",
+                "source": "https://github.com/soullivaneuh/composer-versions-check/tree/master"
+            },
             "time": "2020-05-05T13:03:07+00:00"
         },
         {
@@ -54258,14 +54295,7 @@
             "time": "2020-07-12T23:59:07+00:00"
         }
     ],
-    "aliases": [
-        {
-            "alias": "0.14.0",
-            "alias_normalized": "0.14.0.0",
-            "version": "9999999-dev",
-            "package": "spryker/code-sniffer"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
         "spryker/code-sniffer": 20
