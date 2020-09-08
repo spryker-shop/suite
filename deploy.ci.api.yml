@@ -15,6 +15,10 @@ composer:
 regions:
     EU:
         services:
+            mail:
+                sender:
+                    name: Spryker No-Reply
+                    email: no-reply@spryker.local
             database:
                 database: eu-docker
                 username: spryker
