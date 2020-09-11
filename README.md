@@ -7,10 +7,11 @@ License: [MIT](LICENSE)
 ## Vagrant Installation
 In order to install the Shop Suite on your machine, you can follow the instructions described in the link below:
 
-* [Installation Guide](https://academy.spryker.com/getting_started/installation_guide.html)
+For DevVM based installation instructions, see [About the Installation Guides](https://documentation.spryker.com/docs/about-installation).
 
+If you encounter any issues during or after the installation, see [Troubleshooting article](https://documentation.spryker.com/docs/troubleshooting).
 
-If you encounter any issues during or after installation, you can first check our Troubleshooting article:
+## Docker installation
 
 * [Troubleshooting](https://academy.spryker.com/getting_started/troubleshooting.html)
 

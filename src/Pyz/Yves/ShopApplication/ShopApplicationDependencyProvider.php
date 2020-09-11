@@ -82,6 +82,11 @@ use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleItemCounterWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleItemsMultiCartItemsListWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleMultiCartItemsListWidget;
 use SprykerShop\Yves\ProductCategoryWidget\Widget\ProductBreadcrumbsWithCategoriesWidget;
+use SprykerShop\Yves\ProductConfigurationWidget\Widget\ProductConfigurationCartItemDisplayWidget;
+use SprykerShop\Yves\ProductConfigurationWidget\Widget\ProductConfigurationCartPageButtonWidget;
+use SprykerShop\Yves\ProductConfigurationWidget\Widget\ProductConfigurationProductDetailPageButtonWidget;
+use SprykerShop\Yves\ProductConfigurationWidget\Widget\ProductConfigurationProductViewDisplayWidget;
+use SprykerShop\Yves\ProductConfigurationWidget\Widget\ProductConfigurationQuoteValidatorWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedNoteWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedWidget;
 use SprykerShop\Yves\ProductGroupWidget\Widget\ProductGroupColorWidget;
@@ -121,6 +126,7 @@ use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderItemsConfiguredBundleWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SalesProductBundleWidget\Widget\OrderItemsProductBundleWidget;
+use SprykerShop\Yves\SalesProductConfigurationWidget\Widget\ProductConfigurationOrderItemDisplayWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
@@ -264,6 +270,12 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             RemoveFromCartFormWidget::class,
             ProductAbstractAddToCartButtonWidget::class,
             OrderCancelButtonWidget::class,
+            ProductConfigurationCartPageButtonWidget::class,
+            ProductConfigurationCartItemDisplayWidget::class,
+            ProductConfigurationProductDetailPageButtonWidget::class,
+            ProductConfigurationProductViewDisplayWidget::class,
+            ProductConfigurationOrderItemDisplayWidget::class,
+            ProductConfigurationQuoteValidatorWidget::class,
         ];
     }
 
