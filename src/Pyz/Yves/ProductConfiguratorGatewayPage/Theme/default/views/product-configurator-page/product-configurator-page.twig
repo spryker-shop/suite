@@ -1,0 +1,61 @@
+{% define data = {
+    productConfiguratorRequestDataTransfer: _view.productConfiguratorRequestDataTransfer,
+} %}
+
+<form method="POST" action="{{ data.productConfiguratorRequestDataTransfer.submitUrl }}">
+    <div>
+        <div>
+            <label for="configuration">configuration</label>
+        </div>
+        <div>
+            <input id="configuration" name="productConfigurationInstance[configuration]" value="{{ data.productConfiguratorRequestDataTransfer.configuration }}">
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="displayData">displayData</label>
+        </div>
+        <div>
+            <input id="displayData" name="productConfigurationInstance[displayData]" value="{{ data.productConfiguratorRequestDataTransfer.displayData }}">
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="prices">prices</label>
+        </div>
+        <div>
+            <input id="prices" name="productConfigurationInstance[prices][]">
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="availableQuantity">availableQuantity</label>
+        </div>
+        <div>
+            <input id="availableQuantity" name="productConfigurationInstance[availableQuantity]">
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <label for="isComplete">isComplete</label>
+        </div>
+        <div>
+            <input id="isComplete" name="productConfigurationInstance[isComplete]" type="checkbox">
+        </div>
+    </div>
+
+    <input name="sourceType" type="hidden" value="{{ data.productConfiguratorRequestDataTransfer.sourceType }}">
+    <input name="timestamp" type="hidden" value="{{ date().timestamp }}">
+    <input name="sku" type="hidden" value="{{ data.productConfiguratorRequestDataTransfer.sku }}">
+    <input name="productConfigurationInstance[configuratorKey]" type="hidden" value="{{ data.productConfiguratorRequestDataTransfer.configuratorKey }}">
+    <input name="itemGroupKey" type="hidden" value="{{ data.productConfiguratorRequestDataTransfer.itemGroupKey }}">
+    <input name="checkSum" type="hidden" value="change123">
+
+    <div>
+        <button>Submit</button>
+        <a href="{{ data.productConfiguratorRequestDataTransfer.backUrl }}">Cancel</a>
+    </div>
+</form>
+
+{{ data.productConfiguratorRequestDataTransfer.toArray|json_encode() }}

@@ -11,6 +11,7 @@ use Spryker\Service\PriceProduct\PriceProductDependencyProvider as SprykerPriceP
 use Spryker\Service\PriceProductOfferStorage\Plugin\PriceProduct\ProductOfferPriceProductFilterPlugin;
 use Spryker\Service\PriceProductOfferVolume\Plugin\PriceProductOffer\PriceProductOfferVolumeFilterPlugin;
 use Spryker\Service\PriceProductVolume\Plugin\PriceProductExtension\PriceProductVolumeFilterPlugin;
+use Spryker\Service\ProductConfigurationStorage\Plugin\PriceProduct\ProductConfigurationPriceProductFilterPlugin;
 
 class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvider
 {
@@ -25,6 +26,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
             new ProductOfferPriceProductFilterPlugin(),
             new PriceProductOfferVolumeFilterPlugin(),
             new PriceProductVolumeFilterPlugin(),
+            new ProductConfigurationPriceProductFilterPlugin(),
         ], parent::getPriceProductDecisionPlugins());
     }
 }
