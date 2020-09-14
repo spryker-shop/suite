@@ -20,6 +20,10 @@ assets:
 regions:
     EU:
         services:
+            mail:
+                sender:
+                    name: Spryker No-Reply
+                    email: no-reply@spryker.local
             database:
                 database: eu-docker
                 username: spryker
@@ -44,6 +48,10 @@ regions:
                         namespace: at_search
     US:
         services:
+            mail:
+                sender:
+                    name: Spryker No-Reply
+                    email: no-reply@spryker.local
             database:
                 database: us-docker
                 username: spryker
