@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c7ac1abbf4abd0d0b85c3d71e276af6",
+    "content-hash": "6ec1905b8000d90e786b6bed1c145bba",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.154.2",
+            "version": "3.154.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "57be3873ea9a32ccd8467c38d325544c2c064f69"
+                "reference": "0001c05c03f2bd354f6b38f6b81b60f45c2514f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/57be3873ea9a32ccd8467c38d325544c2c064f69",
-                "reference": "57be3873ea9a32ccd8467c38d325544c2c064f69",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0001c05c03f2bd354f6b38f6b81b60f45c2514f8",
+                "reference": "0001c05c03f2bd354f6b38f6b81b60f45c2514f8",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-09-14T19:50:15+00:00"
+            "time": "2020-09-15T18:15:35+00:00"
         },
         {
             "name": "brick/math",
@@ -2203,16 +2203,16 @@
         },
         {
             "name": "nette/robot-loader",
-            "version": "v3.3.0",
+            "version": "v3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/robot-loader.git",
-                "reference": "737ff8ee1709eff053d9cc27e6c661d82395bd8b"
+                "reference": "15c1ecd0e6e69e8d908dfc4cca7b14f3b850a96b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/robot-loader/zipball/737ff8ee1709eff053d9cc27e6c661d82395bd8b",
-                "reference": "737ff8ee1709eff053d9cc27e6c661d82395bd8b",
+                "url": "https://api.github.com/repos/nette/robot-loader/zipball/15c1ecd0e6e69e8d908dfc4cca7b14f3b850a96b",
+                "reference": "15c1ecd0e6e69e8d908dfc4cca7b14f3b850a96b",
                 "shasum": ""
             },
             "require": {
@@ -2262,7 +2262,7 @@
                 "nette",
                 "trait"
             ],
-            "time": "2020-07-28T13:34:12+00:00"
+            "time": "2020-09-15T15:14:17+00:00"
         },
         {
             "name": "nette/schema",
@@ -3747,19 +3747,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "3f9610f0d883b7deb20094677b579b373a165d6b"
+                "reference": "f82d950af005b2d01af65c97e05796b145f4c674"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/3f9610f0d883b7deb20094677b579b373a165d6b",
-                "reference": "3f9610f0d883b7deb20094677b579b373a165d6b",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/f82d950af005b2d01af65c97e05796b145f4c674",
+                "reference": "f82d950af005b2d01af65c97e05796b145f4c674",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/container": "^1.1.0",
                 "symfony/event-dispatcher": "^3.0.0 || ^4.0.0",
-                "symfony/http-kernel": "^3.0.0 || ^4.0.0",
+                "symfony/http-kernel": "^3.4.0 || ^4.0.0",
                 "symfony/routing": "^3.0.0 || ^4.0.0"
             },
             "conflict": {
@@ -3768,6 +3768,7 @@
             "require-dev": {
                 "doctrine/dbal": "~2.2",
                 "monolog/monolog": "^1.4.1",
+                "phpstan/phpstan": "^0.12.35",
                 "phpunit/phpunit": "^8",
                 "sllh/composer-versions-check": "^2.0",
                 "swiftmailer/swiftmailer": "~5",
@@ -3787,7 +3788,7 @@
                 "symfony/translation": "^3.0.0 || ^4.0.0",
                 "symfony/twig-bridge": "^3.2.0 || ^4.0.0",
                 "symfony/validator": "^3.0.0 || ^4.0.0",
-                "twig/twig": "~1.28|~2.0"
+                "twig/twig": "^1.41 || ^2.0.0 || ^3.0.0"
             },
             "type": "library",
             "extra": {
@@ -3819,7 +3820,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2020-01-17T11:44:57+00:00"
+            "time": "2020-09-16T14:19:13+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -3827,7 +3828,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b5fc19c7629e0b9c1feb7ab1f64e2c0e39a121b8"
+                "reference": "55c65ce867cecd4bb553dcd7c2a643590c92d787"
             },
             "require": {
                 "php": ">=7.2"
@@ -4588,7 +4589,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-09-15T12:00:21+00:00"
+            "time": "2020-09-16T14:19:16+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -4596,7 +4597,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8c8cbdceb743eb85a451e95260fc5bd0013e6caa"
+                "reference": "f99688091887c4a8e234f8856c32508a88b7953b"
             },
             "require": {
                 "php": ">=7.2"
@@ -4760,7 +4761,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-09-11T12:39:18+00:00"
+            "time": "2020-09-16T14:19:20+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8935,21 +8936,22 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.43.1",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "2311602f6a208715252febe682fa7c38e56a3373"
+                "reference": "9b76b1535483cdf4edf01bb787b0217b62bd68a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/2311602f6a208715252febe682fa7c38e56a3373",
-                "reference": "2311602f6a208715252febe682fa7c38e56a3373",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9b76b1535483cdf4edf01bb787b0217b62bd68a5",
+                "reference": "9b76b1535483cdf4edf01bb787b0217b62bd68a5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.3",
-                "symfony/polyfill-ctype": "^1.8"
+                "php": ">=7.2.5",
+                "symfony/polyfill-ctype": "^1.8",
+                "symfony/polyfill-mbstring": "^1.3"
             },
             "require-dev": {
                 "psr/container": "^1.0",
@@ -8958,13 +8960,10 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.43-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Twig_": "lib/"
-                },
                 "psr-4": {
                     "Twig\\": "src/"
                 }
@@ -9005,7 +9004,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-05T15:05:05+00:00"
+            "time": "2020-08-05T15:13:19+00:00"
         },
         {
             "name": "voku/anti-xss",
@@ -9690,66 +9689,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "ajgl/breakpoint-twig-extension",
-            "version": "0.3.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ajgarlag/AjglBreakpointTwigExtension.git",
-                "reference": "13ee39406dc3d959c5704b462a3dbc3cbf088f16"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ajgarlag/AjglBreakpointTwigExtension/zipball/13ee39406dc3d959c5704b462a3dbc3cbf088f16",
-                "reference": "13ee39406dc3d959c5704b462a3dbc3cbf088f16",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6",
-                "twig/twig": "^1.14|^2.0"
-            },
-            "require-dev": {
-                "symfony/framework-bundle": "^2.7|^3.2|^4.1",
-                "symfony/phpunit-bridge": "^3.4|^4.1",
-                "symfony/twig-bundle": "^2.7|^3.2|^4.1"
-            },
-            "suggest": {
-                "ext-xdebug": "The Xdebug extension is required for the breakpoint to work",
-                "symfony/framework-bundle": "The framework bundle to integrate the extension into Symfony",
-                "symfony/twig-bundle": "The twig bundle to integrate the extension into Symfony"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Ajgl\\Twig\\Extension\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Antonio J. García Lagar",
-                    "email": "aj@garcialagar.es",
-                    "homepage": "http://aj.garcialagar.es",
-                    "role": "developer"
-                }
-            ],
-            "description": "Twig extension to set breakpoints",
-            "homepage": "https://github.com/ajgarlag/AjglBreakpointTwigExtension",
-            "keywords": [
-                "Xdebug",
-                "breakpoint",
-                "twig"
-            ],
-            "time": "2019-04-10T11:41:26+00:00"
-        },
         {
             "name": "beberlei/assert",
             "version": "v3.2.7",
@@ -13804,12 +13743,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "664497effbbaf9c13100ba57219bc15296e09822"
+                "reference": "d9a49bc43a7ae3a67d61115fa04b81d5b910d8f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/664497effbbaf9c13100ba57219bc15296e09822",
-                "reference": "664497effbbaf9c13100ba57219bc15296e09822",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/d9a49bc43a7ae3a67d61115fa04b81d5b910d8f1",
+                "reference": "d9a49bc43a7ae3a67d61115fa04b81d5b910d8f1",
                 "shasum": ""
             },
             "require": {
@@ -13823,7 +13762,7 @@
                 "symfony/filesystem": "^3.4.0 || ^4.0.0 || ^5.0.0",
                 "symfony/finder": "^3.4.0 || ^4.0.0 || ^5.0.0",
                 "symfony/yaml": "^3.4.9 || ^4.0.0 || ^5.0.0",
-                "twig/twig": "^1.34 || ^2.0.0",
+                "twig/twig": "^1.41 || ^2.0.0 || ^3.0.0",
                 "zendframework/zend-filter": "^2.8"
             },
             "require-dev": {
@@ -13853,7 +13792,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2020-06-23T11:11:42+00:00"
+            "time": "2020-09-16T14:19:11+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -14743,8 +14682,8 @@
             "package": "spryker/uuid-behavior"
         },
         {
-            "alias": "0.3.1",
-            "alias_normalized": "0.3.1.0",
+            "alias": "0.3.2",
+            "alias_normalized": "0.3.2.0",
             "version": "9999999-dev",
             "package": "spryker/silexphp"
         },
@@ -14761,8 +14700,8 @@
             "package": "codeception/lib-innerbrowser"
         },
         {
-            "alias": "0.2.6",
-            "alias_normalized": "0.2.6.0",
+            "alias": "0.2.7",
+            "alias_normalized": "0.2.7.0",
             "version": "9999999-dev",
             "package": "spryker-sdk/spryk"
         }
