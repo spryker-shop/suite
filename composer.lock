@@ -10764,16 +10764,16 @@
         },
         {
             "name": "spryker/application",
-            "version": "3.24.0",
+            "version": "3.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/application.git",
-                "reference": "bb00b0f90e5ed57f8523067b267c74a7394d2703"
+                "reference": "b7c257f3dffcc6cf0983797d6e6ace2f02419afb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/application/zipball/bb00b0f90e5ed57f8523067b267c74a7394d2703",
-                "reference": "bb00b0f90e5ed57f8523067b267c74a7394d2703",
+                "url": "https://api.github.com/repos/spryker/application/zipball/b7c257f3dffcc6cf0983797d6e6ace2f02419afb",
+                "reference": "b7c257f3dffcc6cf0983797d6e6ace2f02419afb",
                 "shasum": ""
             },
             "require": {
@@ -10826,7 +10826,7 @@
                 "proprietary"
             ],
             "description": "Application module",
-            "time": "2020-09-16T09:12:00+00:00"
+            "time": "2020-09-16T17:16:28+00:00"
         },
         {
             "name": "spryker/application-extension",
@@ -23545,16 +23545,16 @@
         },
         {
             "name": "spryker/gui",
-            "version": "3.35.0",
+            "version": "3.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "68a35fc06da98b812dce59e112cfbc19fe4220c4"
+                "reference": "e3d8005dd3a6457cca5494875ab6d5457ff6b8e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/68a35fc06da98b812dce59e112cfbc19fe4220c4",
-                "reference": "68a35fc06da98b812dce59e112cfbc19fe4220c4",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/e3d8005dd3a6457cca5494875ab6d5457ff6b8e6",
+                "reference": "e3d8005dd3a6457cca5494875ab6d5457ff6b8e6",
                 "shasum": ""
             },
             "require": {
@@ -23598,7 +23598,7 @@
                 "proprietary"
             ],
             "description": "Gui module",
-            "time": "2020-09-01T11:14:46+00:00"
+            "time": "2020-09-16T17:16:28+00:00"
         },
         {
             "name": "spryker/gui-table",
@@ -43352,16 +43352,16 @@
         },
         {
             "name": "spryker/twig",
-            "version": "3.13.0",
+            "version": "3.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/twig.git",
-                "reference": "d8557dc24fdce055bdd5e2d317ed6bae5f5d7b83"
+                "reference": "e5040efde323173c15dee5781b6b5093ec2071ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/twig/zipball/d8557dc24fdce055bdd5e2d317ed6bae5f5d7b83",
-                "reference": "d8557dc24fdce055bdd5e2d317ed6bae5f5d7b83",
+                "url": "https://api.github.com/repos/spryker/twig/zipball/e5040efde323173c15dee5781b6b5093ec2071ba",
+                "reference": "e5040efde323173c15dee5781b6b5093ec2071ba",
                 "shasum": ""
             },
             "require": {
@@ -43405,7 +43405,7 @@
                 "proprietary"
             ],
             "description": "Twig module",
-            "time": "2020-09-14T13:17:17+00:00"
+            "time": "2020-09-16T17:16:28+00:00"
         },
         {
             "name": "spryker/twig-extension",
@@ -53244,20 +53244,20 @@
         },
         {
             "name": "spryker-sdk/spryk-gui",
-            "version": "0.1.5",
+            "version": "0.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk-gui.git",
-                "reference": "3664ca09e586425e865cc54a3f9e3cb943afadcf"
+                "reference": "48637dce766decdf22c9eae29e559ddce4c3b49d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/3664ca09e586425e865cc54a3f9e3cb943afadcf",
-                "reference": "3664ca09e586425e865cc54a3f9e3cb943afadcf",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/48637dce766decdf22c9eae29e559ddce4c3b49d",
+                "reference": "48637dce766decdf22c9eae29e559ddce4c3b49d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-sdk/spryk": "^0.2.2",
                 "spryker/development": "^3.12.0",
                 "spryker/graph": "^3.0.0",
@@ -53268,8 +53268,15 @@
             "require-dev": {
                 "spryker/application": "*",
                 "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/form": "*",
+                "spryker/gui": "*",
                 "spryker/propel": "*",
+                "spryker/router": "*",
                 "spryker/testify": "*",
+                "spryker/twig": "*",
+                "spryker/validator": "*",
                 "spryker/zed-navigation": "*"
             },
             "type": "library",
@@ -53288,7 +53295,7 @@
                 "proprietary"
             ],
             "description": "SprykGui module",
-            "time": "2019-10-07T07:45:13+00:00"
+            "time": "2020-09-17T10:16:50+00:00"
         },
         {
             "name": "spryker-shop/web-profiler-widget",
@@ -53554,16 +53561,16 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.30.1",
+            "version": "3.30.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "0f0a7ced7d0ef9fe0260614bf837a98fc2119732"
+                "reference": "a79610b5f61778f935bf97a45fef72d40fb16e34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/0f0a7ced7d0ef9fe0260614bf837a98fc2119732",
-                "reference": "0f0a7ced7d0ef9fe0260614bf837a98fc2119732",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/a79610b5f61778f935bf97a45fef72d40fb16e34",
+                "reference": "a79610b5f61778f935bf97a45fef72d40fb16e34",
                 "shasum": ""
             },
             "require": {
@@ -53618,7 +53625,7 @@
                 "proprietary"
             ],
             "description": "Testify module",
-            "time": "2020-08-17T10:51:58+00:00"
+            "time": "2020-09-04T12:54:12+00:00"
         },
         {
             "name": "spryker/web-profiler",
