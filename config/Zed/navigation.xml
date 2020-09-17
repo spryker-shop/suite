@@ -704,14 +704,14 @@
         <title>Offers</title>
         <icon>offers</icon>
         <bundle>product-offer-merchant-portal-gui</bundle>
-        <controller>offers</controller>
+        <controller>product-offers</controller>
         <action>index</action>
         <pages>
             <create-offer>
                 <label>Create Offer</label>
                 <title>Create Offer</title>
                 <bundle>product-offer-merchant-portal-gui</bundle>
-                <controller>create-offer</controller>
+                <controller>product-list</controller>
                 <action>index</action>
                 <visible>0</visible>
             </create-offer>
@@ -725,6 +725,14 @@
         <controller>orders</controller>
         <action>index</action>
     </sales-merchant-portal-gui>
+    <product-merchant-portal-gui>
+        <label>Products</label>
+        <title>Products</title>
+        <icon>offers</icon>
+        <bundle>product-merchant-portal-gui</bundle>
+        <controller>products</controller>
+        <action>index</action>
+    </product-merchant-portal-gui>
     <merchant-portal-authentication>
         <label>Logout</label>
         <title>Logout</title>
