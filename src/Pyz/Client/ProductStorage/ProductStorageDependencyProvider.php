@@ -11,6 +11,7 @@ use Spryker\Client\AvailabilityStorage\Plugin\ProductViewAvailabilityStorageExpa
 use Spryker\Client\MerchantProductOfferStorage\Plugin\ProductStorage\ProductViewOfferExpanderPlugin;
 use Spryker\Client\MerchantProductStorage\Plugin\ProductStorage\ProductViewMerchantProductExpanderPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
+use Spryker\Client\ProductConfigurationStorage\Plugin\ProductStorage\ProductViewProductConfigurationExpanderPlugin;
 use Spryker\Client\ProductDiscontinuedStorage\Plugin\ProductStorage\ProductDiscontinuedProductAvailabilityExpanderPlugin;
 use Spryker\Client\ProductDiscontinuedStorage\Plugin\ProductStorage\ProductViewDiscontinuedOptionsExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
@@ -34,6 +35,7 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
             new ProductViewVariantExpanderPlugin(),
             new ProductViewMerchantProductExpanderPlugin(),
             new ProductViewOfferExpanderPlugin(),
+            new ProductViewProductConfigurationExpanderPlugin(),
             new ProductViewPriceExpanderPlugin(),
             new ProductViewAvailabilityStorageExpanderPlugin(),
             new ProductDiscontinuedProductAvailabilityExpanderPlugin(), #ProductDiscontinuedFeature

@@ -1,0 +1,14 @@
+{# //todo would be fully reworked in 2nd phase. Will keep it for now as demo version  #}
+{% extends model('template') %}
+
+{% define data = {
+    listItems: {},
+} %}
+
+{% block body %}
+    {% include molecule('collapsible-list') with {
+        data: {
+            listItems: data.listItems,
+        },
+    } only %}
+{% endblock %}
