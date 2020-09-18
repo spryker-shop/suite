@@ -361,7 +361,7 @@ install:
   - if [[ ${TRAVIS_PHP_VERSION} == "7.4" && $PREFER_LOWEST == 1 ]] ; then composer update --optimize-autoloader --no-interaction --prefer-lowest ; fi
   - if [[ ${TRAVIS_PHP_VERSION} == "7.4" && $PREFER_LOWEST != 1 ]] ; then composer install --optimize-autoloader --no-interaction ; fi
   # The composer.lock file contains packages that work only with PHP 7.3 or higher, for lower versions we need to update instead of install.
-  - if [[ ${TRAVIS_PHP_VERSION} == "7.2" && $PREFER_LOWEST == 1 ]] ; tSprykerTest/Zed/Testify/_support/Helper/Communication/CommunicationHelper.php:124hen composer update --optimize-autoloader --no-interaction --prefer-lowest ; fi
+  - if [[ ${TRAVIS_PHP_VERSION} == "7.2" && $PREFER_LOWEST == 1 ]] ; then composer update --optimize-autoloader --no-interaction --prefer-lowest ; fi
   - if [[ ${TRAVIS_PHP_VERSION} == "7.2" && $PREFER_LOWEST != 1 ]] ; then composer update --optimize-autoloader --no-interaction ; fi
   - config/Shared/ci/travis/install_mailcatcher.sh
   - if [[ -z $MP_TEST ]] ; then config/Shared/ci/travis/configure_postgres.sh ; fi
