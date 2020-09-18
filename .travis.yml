@@ -358,9 +358,10 @@ before_install:
 install:
   - chmod -R a+x config/Shared/ci/travis/
   - if [[ $PREFER_LOWEST == 1 ]] ; then config/Shared/ci/travis/install_elasticsearch_6_8.sh ; else config/Shared/ci/travis/install_elasticsearch_7_6.sh ; fi
-  - if [[ $PREFER_LOWEST == 1 ]] ; then composer update --optimize-autoloader --no-interaction --prefer-lowest ; else composer install --optimize-autoloader --no-interaction ; fi
+  - if [[ ${TRAVIS_PHP_VERSION} == "7.4" && $PREFER_LOWEST == 1 ]] ; then composer update --optimize-autoloader --no-interaction --prefer-lowest ; else composer install --optimize-autoloader --no-interaction ; fi
   # The composer.lock file contains packages that work only with PHP 7.3 or higher, for lower versions we need to update instead of install.
-  - if [[ ${TRAVIS_PHP_VERSION} == "7.2" ]]; then composer update --optimize-autoloader --no-interaction ; fi
+  - if [[ ${TRAVIS_PHP_VERSION} == "7.2" && $PREFER_LOWEST != 1]]; then composer update --optimize-autoloader --no-interaction ; fi
+  - if [[ ${TRAVIS_PHP_VERSION} == "7.2" && $PREFER_LOWEST == 1]]; then composer update --optimize-autoloader --no-interaction --prefer-lowest ; fi
   - config/Shared/ci/travis/install_mailcatcher.sh
   - if [[ -z $MP_TEST ]] ; then config/Shared/ci/travis/configure_postgres.sh ; fi
 
