@@ -13,7 +13,6 @@ use Spryker\Yves\Monitoring\Plugin\Console\MonitoringConsolePlugin;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Yves\Router\Plugin\Console\RouterCacheWarmUpConsole;
 use Spryker\Yves\Router\Plugin\Console\RouterDebugYvesConsole;
-use SprykerSdk\Yves\Benchmark\Plugin\Console\BenchmarkRunConsole;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
@@ -28,10 +27,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new RouterDebugYvesConsole(),
             new RouterCacheWarmUpConsole(),
         ];
-
-        if (class_exists(BenchmarkRunConsole::class)) {
-            $consoleCommands[] = new BenchmarkRunConsole();
-        }
 
         return $consoleCommands;
     }
