@@ -77,7 +77,7 @@
     "symfony/validator": "^4.3.0",
     "symfony/web-profiler-bundle": "^4.0.0",
     "symfony/yaml": "^4.0.0",
-    "twig/twig": "^1.41.0 || ^2.0.0 || ^3.0.0",
+    "twig/twig": "^1.41.0 || ^2.9.0 || ^3.0.0",
     "voku/anti-xss": "^4.1.20",
     "webmozart/glob": "^4.0.0",
     "willdurand/negotiation": "^2.3",
@@ -202,7 +202,10 @@
     "psalm": "vendor/bin/psalm.phar --show-info=false",
     "psalm-update-baseline": "vendor/bin/psalm.phar --update-baseline",
     "psalm-set-baseline": "vendor/bin/psalm.phar --set-baseline=psalm-baseline.xml",
-    "psalm-update-report": "vendor/bin/psalm.phar --report=psalm-report.xml"
+    "psalm-update-report": "vendor/bin/psalm.phar --report=psalm-report.xml",
+    "prefer-mid": [
+      "COMPOSER_MEMORY_LIMIT=-1 composer require twig/twig:\"^2.9.0\""
+    ]
   },
   "extra": {
     "merge-plugin": {
