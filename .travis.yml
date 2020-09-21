@@ -35,12 +35,6 @@ jobs:
     - php: "7.4"
       dist: bionic
       env:
-       - VALIDATION=1
-       - PREFER_MID=1
-
-    - php: "7.4"
-      dist: bionic
-      env:
         - TEST_GROUP=acceptance
 
     - php: "7.4"
@@ -332,7 +326,6 @@ install:
   - chmod -R a+x config/Shared/ci/travis/
   - if [[ $PREFER_LOWEST == 1 ]] ; then config/Shared/ci/travis/install_elasticsearch_6_8.sh ; else config/Shared/ci/travis/install_elasticsearch_7_6.sh ; fi
   - if [[ $PREFER_LOWEST == 1 ]] ; then composer update --optimize-autoloader --no-interaction --prefer-lowest ; else composer install --optimize-autoloader --no-interaction ; fi
-  - if [[ $PREFER_MID == 1 ]] ; then composer prefer-mid ; fi
   - config/Shared/ci/travis/install_mailcatcher.sh
   - if [[ -z $MP_TEST ]] ; then config/Shared/ci/travis/configure_postgres.sh ; fi
 
