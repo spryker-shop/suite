@@ -23,7 +23,7 @@ use PyzTest\Zed\Acl\AclCommunicationTester;
 class RoleControllerCest
 {
     /**
-     * @deprecated This is a backwards compatibility test for camelCasedUrl's. Change URL from `rulesetTable` to `ruleset-table` when `\Spryker\Zed\Router\Communication\Plugin\Router\RouterEnhancer\BackwardsCompatibleUrlRouterEnhancerPlugin` gets removed.
+     * @internal This is a backwards compatibility test for camelCasedUrl's. Change URL from `rulesetTable` to `ruleset-table` when `\Spryker\Zed\Router\Communication\Plugin\Router\RouterEnhancer\BackwardsCompatibleUrlRouterEnhancerPlugin` gets removed.
      *
      * @see \Spryker\Zed\Router\Communication\Plugin\Router\RouterEnhancer\BackwardsCompatibleUrlRouterEnhancerPlugin
      *
