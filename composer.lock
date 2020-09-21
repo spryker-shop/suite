@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "28141de32349ab4f427594d24b28284b",
+    "content-hash": "c310832094be65bb66455261552b79cc",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -24626,6 +24626,91 @@
             ],
             "description": "Merchant module",
             "time": "2020-05-04T07:45:52+00:00"
+        },
+        {
+            "name": "spryker/merchant-category",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-category.git",
+                "reference": "74b35c851f0a8b2eb75b9895d8cb32f4601a6571"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-category/zipball/74b35c851f0a8b2eb75b9895d8cb32f4601a6571",
+                "reference": "74b35c851f0a8b2eb75b9895d8cb32f4601a6571",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/category": "^4.0.0",
+                "spryker/merchant": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantCategory module",
+            "time": "2020-09-16T09:12:51+00:00"
+        },
+        {
+            "name": "spryker/merchant-category-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-category-data-import.git",
+                "reference": "5800a463b7f83423bb61ceba351cff7c24fcda38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-category-data-import/zipball/5800a463b7f83423bb61ceba351cff7c24fcda38",
+                "reference": "5800a463b7f83423bb61ceba351cff7c24fcda38",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/category": "^4.0.0",
+                "spryker/data-import": "^1.11.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^3.0.0",
+                "spryker/merchant-category": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "MerchantCategoryDataImport module",
+            "time": "2020-09-16T09:12:51+00:00"
         },
         {
             "name": "spryker/merchant-data-import",
