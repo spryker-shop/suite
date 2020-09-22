@@ -171,6 +171,7 @@ jobs:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
+        - composer update --optimize-autoloader --no-interaction --prefer-lowest
         - docker/sdk boot deploy.ci.api.yml -v
         - docker/sdk up -t -v
         - docker/sdk testing codecept fixtures
@@ -212,6 +213,7 @@ jobs:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
+        - composer update --optimize-autoloader --no-interaction --prefer-lowest
         - docker/sdk boot deploy.ci.functional.mariadb.yml -v
         - docker/sdk up -t -v
         - docker/sdk testing codecept run -c codeception.ci.functional.yml
@@ -251,6 +253,7 @@ jobs:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
+        - composer update --optimize-autoloader --no-interaction --prefer-lowest
         - docker/sdk boot deploy.ci.functional.yml -v
         - docker/sdk up -t -v
         - docker/sdk testing codecept run -c codeception.ci.functional.yml
