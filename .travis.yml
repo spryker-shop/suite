@@ -58,12 +58,6 @@ jobs:
     - php: "7.4"
       dist: bionic
       env:
-       - VALIDATION=1
-       - PREFER_MID=1
-
-    - php: "7.4"
-      dist: bionic
-      env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
 
