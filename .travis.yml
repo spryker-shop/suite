@@ -146,7 +146,6 @@ jobs:
       env:
         - PROGRESS_TYPE=plain
         - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
-        - SPRYKER_COMPOSER_MODE=--no-dev --prefer-lowest
         - TRAVIS=1
       addons:
         hosts:
@@ -188,7 +187,6 @@ jobs:
       env:
         - PROGRESS_TYPE=plain
         - SPRYKER_PLATFORM_IMAGE=spryker/php:7.2
-        - SPRYKER_COMPOSER_MODE=--no-dev --prefer-lowest
         - TRAVIS=1
       addons:
         hosts:
@@ -228,7 +226,6 @@ jobs:
       env:
         - PROGRESS_TYPE=plain
         - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3-debian
-        - SPRYKER_COMPOSER_MODE=--no-dev --prefer-lowest
         - TRAVIS=1
       addons:
         hosts:
