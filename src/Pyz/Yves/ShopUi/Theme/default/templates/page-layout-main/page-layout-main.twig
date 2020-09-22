@@ -21,31 +21,14 @@
         {% endblock %}
 
         {% block mobile %}
-            <button class="button button--dark-text button--no-padding button--transparent js-page-layout-main__side-drawer-trigger spacing-right">
+            <a href="#" class="link link--alt js-page-layout-main__side-drawer-trigger">
                 {% include atom('icon') with {
-                    class: 'spacing-right',
-                    modifiers: ['xbig'],
+                    modifiers: ['big'],
                     data: {
                         name: 'bars',
                     },
                 } only %}
-            </button>
-            <button class="button button--dark-text button--no-padding button--transparent {{ config.jsName }}__mobile-search-trigger">
-                {% include atom('icon') with {
-                    modifiers: ['xbig'],
-                    data: {
-                        name: 'search',
-                    },
-                } only %}
-
-                {% include molecule('toggler-click') with {
-                    attributes: {
-                        'trigger-class-name': config.jsName ~ '__mobile-search-trigger',
-                        'target-class-name': 'search-form',
-                        'class-to-toggle': 'mobile-search-visible',
-                    },
-                } only %}
-            </button>
+            </a>
         {% endblock %}
     {% endembed %}
 {% endblock %}
