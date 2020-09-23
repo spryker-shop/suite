@@ -8,6 +8,7 @@
 namespace PyzTest\Zed\Acl;
 
 use Codeception\Actor;
+use Codeception\Scenario;
 
 /**
  * Inherited Methods
@@ -28,4 +29,14 @@ use Codeception\Actor;
 class AclCommunicationTester extends Actor
 {
     use _generated\AclCommunicationTesterActions;
+
+    /**
+     * @param \Codeception\Scenario $scenario
+     */
+    public function __construct(Scenario $scenario)
+    {
+        parent::__construct($scenario);
+
+        $this->amLoggedInUser();
+    }
 }
