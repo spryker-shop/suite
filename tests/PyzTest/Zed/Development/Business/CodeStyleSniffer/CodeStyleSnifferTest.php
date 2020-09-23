@@ -96,7 +96,6 @@ class CodeStyleSnifferTest extends Unit
             ->getMockBuilder(CodeStyleSniffer::class)
             ->setConstructorArgs([
                 $developmentConfig,
-//                $this->tester->createCodeStyleSnifferConfigurationLoader(),
                 $this->tester->getFactory()->createCodeStyleSnifferConfigurationLoader(),
             ])
             ->setMethods(['runSnifferCommand'])
