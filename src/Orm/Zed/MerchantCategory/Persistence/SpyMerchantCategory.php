@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\MerchantCategory\Persistence;
 
-use Spryker\Zed\MerchantCategory\Persistence\Propel\AbstractSpyMerchantCategory as BaseSpyMerchantCategory;
+use Spryker\Zed\MerchantCategory\Persistence\Propel\AbstractSpyMerchantCategory;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_merchant_category' table.
@@ -18,6 +18,6 @@ use Spryker\Zed\MerchantCategory\Persistence\Propel\AbstractSpyMerchantCategory 
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyMerchantCategory extends BaseSpyMerchantCategory
+class SpyMerchantCategory extends AbstractSpyMerchantCategory
 {
 }

@@ -64,8 +64,22 @@ jobs:
     - php: "7.4"
       dist: bionic
       env:
-        - TEST_GROUP=without-acceptance
-        - ON_EVENTS=cron,push
+       - TEST_GROUP=acceptance
+       - ON_EVENTS=push,cron
+       - PREFER_MID=1
+
+    - php: "7.4"
+      dist: bionic
+      env:
+       - TEST_GROUP=without-acceptance
+       - ON_EVENTS=cron,push
+
+    - php: "7.4"
+      dist: bionic
+      env:
+       - TEST_GROUP=without-acceptance
+       - ON_EVENTS=cron,push
+       - PREFER_MID=1
 
     - php: "7.2"
       dist: bionic
