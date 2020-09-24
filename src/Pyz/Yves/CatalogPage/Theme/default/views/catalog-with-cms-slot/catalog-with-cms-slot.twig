@@ -26,7 +26,7 @@
 
 {% block filterBar %}
     {{ parent() }}
-    <div class="box">
+    <div class="box box--cms-content catalog-cms-block">
         {% cms_slot 'slt-3' with {
             idCategory: data.categoryId,
         } %}
@@ -35,7 +35,7 @@
 
 {% block content %}
     {% if data.categoryId %}
-        <div class="box">
+        <div class="box box--cms-content catalog-cms-block">
             {% cms_slot 'slt-2' with {
                 idCategory: data.categoryId,
             } %}
@@ -44,7 +44,7 @@
 
     {{ parent() }}
 
-    <div class="box">
+    <div class="box box--cms-content catalog-cms-block">
         {% cms_slot 'slt-4' with {
             idCategory: data.categoryId,
         } %}

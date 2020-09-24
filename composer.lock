@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.155.0",
+            "version": "3.155.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1957df567541f738fd01bbd2710af7665b61f6d3"
+                "reference": "575430a46c329a2a3723cdcb2d30df390f434ba1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1957df567541f738fd01bbd2710af7665b61f6d3",
-                "reference": "1957df567541f738fd01bbd2710af7665b61f6d3",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/575430a46c329a2a3723cdcb2d30df390f434ba1",
+                "reference": "575430a46c329a2a3723cdcb2d30df390f434ba1",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-09-22T18:11:10+00:00"
+            "time": "2020-09-23T18:11:33+00:00"
         },
         {
             "name": "beberlei/assert",
@@ -13881,16 +13881,16 @@
         },
         {
             "name": "spryker/checkout-rest-api",
-            "version": "3.3.1",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/checkout-rest-api.git",
-                "reference": "e2022ee16fee8db2309410c4e4cf309a91549e32"
+                "reference": "d49998f8c0b8038e1fe0254cb18c5c4eb0dad961"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checkout-rest-api/zipball/e2022ee16fee8db2309410c4e4cf309a91549e32",
-                "reference": "e2022ee16fee8db2309410c4e4cf309a91549e32",
+                "url": "https://api.github.com/repos/spryker/checkout-rest-api/zipball/d49998f8c0b8038e1fe0254cb18c5c4eb0dad961",
+                "reference": "d49998f8c0b8038e1fe0254cb18c5c4eb0dad961",
                 "shasum": ""
             },
             "require": {
@@ -13899,7 +13899,7 @@
                 "spryker/cart": "^5.0.0 || ^7.0.0",
                 "spryker/carts-rest-api": "^2.2.0 || ^3.0.0 || ^5.0.0",
                 "spryker/checkout": "^4.0.0 || ^6.0.0",
-                "spryker/checkout-rest-api-extension": "^1.3.0",
+                "spryker/checkout-rest-api-extension": "^1.4.0",
                 "spryker/customer": "^7.11.0",
                 "spryker/glossary-storage": "^1.0.0",
                 "spryker/glue-application": "^1.2.0",
@@ -13934,27 +13934,31 @@
                 "proprietary"
             ],
             "description": "CheckoutRestApi module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-09-22T14:59:09+00:00"
         },
         {
             "name": "spryker/checkout-rest-api-extension",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/checkout-rest-api-extension.git",
-                "reference": "ad0211752039151485269e44f284cf98a1e99420"
+                "reference": "e11d2af3094866e203134ef4e2a57fca1017833e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checkout-rest-api-extension/zipball/ad0211752039151485269e44f284cf98a1e99420",
-                "reference": "ad0211752039151485269e44f284cf98a1e99420",
+                "url": "https://api.github.com/repos/spryker/checkout-rest-api-extension/zipball/e11d2af3094866e203134ef4e2a57fca1017833e",
+                "reference": "e11d2af3094866e203134ef4e2a57fca1017833e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/glue-application": "*"
+            },
+            "suggest": {
+                "spryker/glue-application": "Required if you want to use \\Spryker\\Glue\\CheckoutRestApiExtension\\Dependency\\Plugin\\CheckoutRequestExpanderPluginInterface."
             },
             "type": "library",
             "extra": {
@@ -13972,7 +13976,7 @@
                 "proprietary"
             ],
             "description": "CheckoutRestApiExtension module",
-            "time": "2020-02-27T10:35:37+00:00"
+            "time": "2020-09-24T12:44:39+00:00"
         },
         {
             "name": "spryker/cms",
@@ -18631,25 +18635,26 @@
         },
         {
             "name": "spryker/company-users-rest-api",
-            "version": "2.2.2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-users-rest-api.git",
-                "reference": "fbf8023b81c3aef3b9976d188420c8547a9610f1"
+                "reference": "2783140201361bf1ad43591b2a89a1407c089255"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-users-rest-api/zipball/fbf8023b81c3aef3b9976d188420c8547a9610f1",
-                "reference": "fbf8023b81c3aef3b9976d188420c8547a9610f1",
+                "url": "https://api.github.com/repos/spryker/company-users-rest-api/zipball/2783140201361bf1ad43591b2a89a1407c089255",
+                "reference": "2783140201361bf1ad43591b2a89a1407c089255",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/carts-rest-api-extension": "^1.2.0",
+                "spryker/checkout-rest-api-extension": "^1.4.0",
                 "spryker/company": "^1.0.0",
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
                 "spryker/company-role": "^1.0.0",
-                "spryker/company-user": "^2.5.0",
+                "spryker/company-user": "^2.7.0",
                 "spryker/company-user-storage": "^1.0.0",
                 "spryker/customer": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/customers-rest-api-extension": "^1.1.0",
@@ -18683,7 +18688,7 @@
                 "proprietary"
             ],
             "description": "CompanyUsersRestApi module",
-            "time": "2020-06-02T09:42:31+00:00"
+            "time": "2020-09-23T12:10:25+00:00"
         },
         {
             "name": "spryker/config",
@@ -29146,16 +29151,16 @@
         },
         {
             "name": "spryker/orders-rest-api",
-            "version": "4.4.1",
+            "version": "4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/orders-rest-api.git",
-                "reference": "07000ccbc7a093e6b985577c96cca08a68a286e4"
+                "reference": "74c98b0d2eff1dbb873026e2084ae63c01a14f20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/orders-rest-api/zipball/07000ccbc7a093e6b985577c96cca08a68a286e4",
-                "reference": "07000ccbc7a093e6b985577c96cca08a68a286e4",
+                "url": "https://api.github.com/repos/spryker/orders-rest-api/zipball/74c98b0d2eff1dbb873026e2084ae63c01a14f20",
+                "reference": "74c98b0d2eff1dbb873026e2084ae63c01a14f20",
                 "shasum": ""
             },
             "require": {
@@ -29189,7 +29194,7 @@
                 "proprietary"
             ],
             "description": "OrdersRestApi module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-09-21T13:51:37+00:00"
         },
         {
             "name": "spryker/orders-rest-api-extension",
@@ -51082,16 +51087,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.10.0",
+            "version": "v4.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "1c13d05035deff45f1230ca68bd7d74d621762d9"
+                "reference": "1b479e7592812411c20c34d9ed33db3957bde66e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1c13d05035deff45f1230ca68bd7d74d621762d9",
-                "reference": "1c13d05035deff45f1230ca68bd7d74d621762d9",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1b479e7592812411c20c34d9ed33db3957bde66e",
+                "reference": "1b479e7592812411c20c34d9ed33db3957bde66e",
                 "shasum": ""
             },
             "require": {
@@ -51130,7 +51135,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-09-19T14:52:48+00:00"
+            "time": "2020-09-23T18:23:49+00:00"
         },
         {
             "name": "pdepend/pdepend",
@@ -51507,16 +51512,16 @@
         },
         {
             "name": "phpmd/phpmd",
-            "version": "2.9.0",
+            "version": "2.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "2a346575a45a6f00e631f4d7f3f71b6a05e0d46d"
+                "reference": "ce10831d4ddc2686c1348a98069771dd314534a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/2a346575a45a6f00e631f4d7f3f71b6a05e0d46d",
-                "reference": "2a346575a45a6f00e631f4d7f3f71b6a05e0d46d",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/ce10831d4ddc2686c1348a98069771dd314534a8",
+                "reference": "ce10831d4ddc2686c1348a98069771dd314534a8",
                 "shasum": ""
             },
             "require": {
@@ -51581,7 +51586,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-02T09:12:27+00:00"
+            "time": "2020-09-23T22:06:32+00:00"
         },
         {
             "name": "phpspec/prophecy",
