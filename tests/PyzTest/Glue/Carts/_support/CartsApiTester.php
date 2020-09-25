@@ -39,6 +39,14 @@ class CartsApiTester extends ApiEndToEndTester
     use _generated\CartsApiTesterActions;
 
     /**
+     * @return string
+     */
+    public function createGuestCustomerReference(): string
+    {
+        return uniqid('testReference', true);
+    }
+
+    /**
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
