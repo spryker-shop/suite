@@ -24,10 +24,10 @@ class QueueConfig extends SprykerQueueConfig
     public function getSignalsForGracefulWorkerShutdown(): array
     {
         return [
-            SIGTERM,
-            SIGINT,
-            SIGQUIT,
-            SIGABRT,
+            static::SIGINT,
+            static::SIGQUIT,
+            static::SIGABRT,
+            static::SIGTERM,
         ];
     }
 
