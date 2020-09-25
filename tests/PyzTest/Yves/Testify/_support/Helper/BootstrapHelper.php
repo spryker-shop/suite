@@ -5,11 +5,11 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Zed\Testify\Helper;
+namespace PyzTest\Yves\Testify\Helper;
 
 use Codeception\Lib\Framework;
 use Codeception\TestInterface;
-use Pyz\Zed\Application\Communication\ZedBootstrap;
+use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use SprykerTest\Shared\Testify\Helper\ConfigHelperTrait;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,7 +37,7 @@ class BootstrapHelper extends Framework
 
         Request::setFactory($requestFactory);
 
-        $application = new ZedBootstrap();
+        $application = new YvesBootstrap();
         $this->client = new HttpKernelBrowser($application->boot());
     }
 
