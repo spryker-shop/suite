@@ -34,7 +34,7 @@ class ProductStorageConfig extends SprykerProductStorageConfig
      */
     public function getProductConcreteEventQueueName(): ?string
     {
-        return SprykerSharedProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT;
+        return SprykerSharedProductStorageConfig::PUBLISH_PRODUCT_CONCRETE;
     }
 
     /**
@@ -42,6 +42,6 @@ class ProductStorageConfig extends SprykerProductStorageConfig
      */
     public function getProductAbstractEventQueueName(): ?string
     {
-        return SprykerSharedProductStorageConfig::PUBLISH_PRODUCT_CONCRETE;
+        return SprykerSharedProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT;
     }
 }
