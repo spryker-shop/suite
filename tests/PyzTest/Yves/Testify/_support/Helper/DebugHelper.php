@@ -8,7 +8,6 @@
 namespace PyzTest\Yves\Testify\Helper;
 
 use Codeception\Module;
-use Spryker\Shared\Config\Config;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use SprykerTest\Shared\Testify\Helper\ConfigHelperTrait;
 
@@ -26,7 +25,7 @@ class DebugHelper extends Module
      */
     public function _beforeSuite($settings = []): void
     {
-        $_COOKIE[Config::get(ZedRequestConstants::TRANSFER_DEBUG_SESSION_NAME)] = 'XDEBUG_ECLIPSE';
+        $_COOKIE['XDEBUG_SESSION'] = 'XDEBUG_ECLIPSE';
         $this->getConfigHelper()->setConfig(ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED, true);
     }
 }
