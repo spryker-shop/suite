@@ -85,7 +85,7 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
         foreach ($productAbstractStores as $productAbstractStore) {
             $productAbstractStoreDataSet = $dataSets[$productAbstractStore[SpyProductAbstractTableMap::COL_SKU]];
             $this->assertNotEmpty($productAbstractStoreDataSet);
-            $this->assertEquals(
+            $this->assertSame(
                 $productAbstractStoreDataSet[ProductAbstractStoreHydratorStep::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER]->getStoreName(),
                 $productAbstractStore[SpyStoreTableMap::COL_NAME]
             );
