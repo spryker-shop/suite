@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.155.4",
+            "version": "3.157.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "892ec081f4466ea023d6158d78b6a8b82d38c9ae"
+                "reference": "ad2c0183d7ebc695acb1ba39d528f2328f2c0de3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/892ec081f4466ea023d6158d78b6a8b82d38c9ae",
-                "reference": "892ec081f4466ea023d6158d78b6a8b82d38c9ae",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ad2c0183d7ebc695acb1ba39d528f2328f2c0de3",
+                "reference": "ad2c0183d7ebc695acb1ba39d528f2328f2c0de3",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-09-28T18:13:43+00:00"
+            "time": "2020-09-30T18:58:20+00:00"
         },
         {
             "name": "beberlei/assert",
@@ -49720,11 +49720,17 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "dev-feature/deactivate-c3-call-in-localserver",
+            "version": "4.1.7",
             "source": {
                 "type": "git",
-                "url": "git@github.com:qlmmlp/codeception.git",
-                "reference": "873955ddbca9df1ddab2ebc30fb2a3baa33451b7"
+                "url": "https://github.com/Codeception/Codeception.git",
+                "reference": "220ad18d3c192137d9dc2d0dd8d69a0d82083a26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/220ad18d3c192137d9dc2d0dd8d69a0d82083a26",
+                "reference": "220ad18d3c192137d9dc2d0dd8d69a0d82083a26",
+                "shasum": ""
             },
             "require": {
                 "behat/gherkin": "^4.4.0",
@@ -49775,13 +49781,7 @@
                     "Codeception\\Extension\\": "ext"
                 }
             },
-            "autoload-dev": {
-                "classmap": [
-                    "tests/cli/_steps",
-                    "tests/data/DummyClass.php",
-                    "tests/data/claypit/tests/_data"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -49796,12 +49796,18 @@
             "homepage": "http://codeception.com/",
             "keywords": [
                 "BDD",
+                "TDD",
                 "acceptance testing",
                 "functional testing",
-                "tdd",
                 "unit testing"
             ],
-            "time": "2020-09-23T19:34:14+00:00"
+            "funding": [
+                {
+                    "url": "https://opencollective.com/codeception",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2020-08-28T06:37:06+00:00"
         },
         {
             "name": "codeception/lib-asserts",
@@ -52415,23 +52421,25 @@
         },
         {
             "name": "roave/signature",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/Signature.git",
-                "reference": "bed4ecbdd7f312ab6bb39561ac191f520bcee386"
+                "reference": "c4e8a59946bad694ab5682a76e7884a9157a8a2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/Signature/zipball/bed4ecbdd7f312ab6bb39561ac191f520bcee386",
-                "reference": "bed4ecbdd7f312ab6bb39561ac191f520bcee386",
+                "url": "https://api.github.com/repos/Roave/Signature/zipball/c4e8a59946bad694ab5682a76e7884a9157a8a2c",
+                "reference": "c4e8a59946bad694ab5682a76e7884a9157a8a2c",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0|^7.1"
+                "php": "^7.1 || ^7.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.6"
+                "infection/infection": "^0.7.1",
+                "phpunit/phpunit": "^7.0",
+                "squizlabs/php_codesniffer": "^3.2"
             },
             "type": "library",
             "autoload": {
@@ -52444,7 +52452,7 @@
                 "MIT"
             ],
             "description": "Sign and verify stuff",
-            "time": "2017-02-17T13:53:21+00:00"
+            "time": "2020-10-01T07:27:11+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
