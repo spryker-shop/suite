@@ -134,15 +134,17 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
         foreach ($fetchedResult as $productPrice) {
             /** @var \Generated\Shared\Transfer\SpyPriceProductEntityTransfer $dataSetPrice */
             $dataSetPrice = $dataSets[$productPrice[SpyProductAbstractTableMap::COL_SKU]][ProductPriceHydratorStep::PRICE_PRODUCT_TRANSFER];
-            $this->assertEquals(
+            $this->assertSame(
                 $dataSetPrice->getPriceType()->getName(),
                 $productPrice[SpyPriceTypeTableMap::COL_NAME]
             );
             $spyPriceProductStore = $dataSetPrice->getSpyPriceProductStores()[0];
+            // TODO: Fix to assertSame() once true ints are returned from also MySQL
             $this->assertEquals(
                 $spyPriceProductStore->getNetPrice(),
                 $productPrice[SpyPriceProductStoreTableMap::COL_NET_PRICE]
             );
+            // TODO: Fix to assertSame() once true ints are returned from also MySQL
             $this->assertEquals(
                 $spyPriceProductStore->getGrossPrice(),
                 $productPrice[SpyPriceProductStoreTableMap::COL_GROSS_PRICE]

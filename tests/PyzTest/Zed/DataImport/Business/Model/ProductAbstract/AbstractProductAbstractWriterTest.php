@@ -139,11 +139,11 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
             //Abstract product
             /** @var \Generated\Shared\Transfer\SpyProductAbstractEntityTransfer $dataSetProduct */
             $dataSetProduct = $dataSets[$abstractProductEntity->getSku()][ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_TRANSFER];
-            $this->assertEquals(
+            $this->assertSame(
                 $dataSetProduct->getAttributes(),
                 $abstractProductEntity->getAttributes()
             );
-            $this->assertEquals(
+            $this->assertSame(
                 $dataSetProduct->getColorCode(),
                 $abstractProductEntity->getColorCode()
             );
@@ -161,15 +161,15 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                     if ($localizedAttribute->getFkLocale() !== $localizedAttributeTransfer->getFkLocale()) {
                         continue;
                     }
-                    $this->assertEquals(
+                    $this->assertSame(
                         $localizedAttributeTransfer->getName(),
                         $localizedAttribute->getName()
                     );
-                    $this->assertEquals(
+                    $this->assertSame(
                         $localizedAttributeTransfer->getDescription(),
                         $localizedAttribute->getDescription()
                     );
-                    $this->assertEquals(
+                    $this->assertSame(
                         $localizedAttributeTransfer->getMetaTitle(),
                         $localizedAttribute->getMetaTitle()
                     );
