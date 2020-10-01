@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b4bad00430ffb58abaccc2368217d639",
+    "content-hash": "7a127a8a34c2b8da2dbf5af5491a21e0",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3870,7 +3870,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3181b89563b9556633349c2096dcb3d9b5ba511b"
+                "reference": "bc086c8e7579f8aad9d0717c5a87fad3706b1542"
             },
             "require": {
                 "php": ">=7.2"
@@ -4635,7 +4635,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-09-30T13:32:15+00:00"
+            "time": "2020-10-01T07:50:33+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -9557,17 +9557,11 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "4.1.7",
+            "version": "dev-feature/deactivate-c3-call-in-localserver",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "220ad18d3c192137d9dc2d0dd8d69a0d82083a26"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/220ad18d3c192137d9dc2d0dd8d69a0d82083a26",
-                "reference": "220ad18d3c192137d9dc2d0dd8d69a0d82083a26",
-                "shasum": ""
+                "url": "git@github.com:spryker/Codeception.git",
+                "reference": "873955ddbca9df1ddab2ebc30fb2a3baa33451b7"
             },
             "require": {
                 "behat/gherkin": "^4.4.0",
@@ -9618,7 +9612,13 @@
                     "Codeception\\Extension\\": "ext"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "classmap": [
+                    "tests/cli/_steps",
+                    "tests/data/DummyClass.php",
+                    "tests/data/claypit/tests/_data"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -9633,18 +9633,12 @@
             "homepage": "http://codeception.com/",
             "keywords": [
                 "BDD",
-                "TDD",
                 "acceptance testing",
                 "functional testing",
+                "tdd",
                 "unit testing"
             ],
-            "funding": [
-                {
-                    "url": "https://opencollective.com/codeception",
-                    "type": "open_collective"
-                }
-            ],
-            "time": "2020-08-28T06:37:06+00:00"
+            "time": "2020-09-23T19:34:14+00:00"
         },
         {
             "name": "codeception/lib-asserts",
@@ -14929,6 +14923,12 @@
             "package": "spryker-eco/payone"
         },
         {
+            "alias": "4.1.7",
+            "alias_normalized": "4.1.7.0",
+            "version": "dev-feature/deactivate-c3-call-in-localserver",
+            "package": "codeception/codeception"
+        },
+        {
             "alias": "1.3.2",
             "alias_normalized": "1.3.2.0",
             "version": "dev-feature/use-client-through-getter",
@@ -14954,6 +14954,7 @@
         "spryker-eco/loggly": 20,
         "spryker-eco/new-relic": 20,
         "spryker-eco/payone": 20,
+        "codeception/codeception": 20,
         "codeception/lib-innerbrowser": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/development-core": 20,
