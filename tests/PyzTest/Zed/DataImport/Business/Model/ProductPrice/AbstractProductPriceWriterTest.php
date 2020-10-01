@@ -140,11 +140,11 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
             );
             $spyPriceProductStore = $dataSetPrice->getSpyPriceProductStores()[0];
             $this->assertSame(
-                $spyPriceProductStore->getNetPrice(),
+                (string)$spyPriceProductStore->getNetPrice(),
                 $productPrice[SpyPriceProductStoreTableMap::COL_NET_PRICE]
             );
             $this->assertSame(
-                $spyPriceProductStore->getGrossPrice(),
+                (string)$spyPriceProductStore->getGrossPrice(),
                 $productPrice[SpyPriceProductStoreTableMap::COL_GROSS_PRICE]
             );
         }
