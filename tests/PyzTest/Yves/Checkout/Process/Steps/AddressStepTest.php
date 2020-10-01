@@ -63,8 +63,8 @@ class AddressStepTest extends Unit
 
         $addressStep->execute($this->createRequest(), $quoteTransfer);
 
-        $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getShippingAddress()->getAddress1());
-        $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
+        $this->assertSame($addressTransfer->getAddress1(), $quoteTransfer->getShippingAddress()->getAddress1());
+        $this->assertSame($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
     }
 
     /**
@@ -85,8 +85,8 @@ class AddressStepTest extends Unit
 
         $addressStep->execute($this->createRequest(), $quoteTransfer);
 
-        $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress()->getAddress1());
-        $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
+        $this->assertSame($addressTransfer->getAddress1(), $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress()->getAddress1());
+        $this->assertSame($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
     }
 
     /**
@@ -122,8 +122,8 @@ class AddressStepTest extends Unit
 
         $addressStep->execute($this->createRequest(), $quoteTransfer);
 
-        $this->assertEquals($shippingAddress->getAddress1(), $quoteTransfer->getShippingAddress()->getAddress1());
-        $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
+        $this->assertSame($shippingAddress->getAddress1(), $quoteTransfer->getShippingAddress()->getAddress1());
+        $this->assertSame($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
     }
 
     /**
@@ -158,8 +158,8 @@ class AddressStepTest extends Unit
 
         $addressStep->execute($this->createRequest(), $quoteTransfer);
 
-        $this->assertEquals($shippingAddress->getAddress1(), $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress()->getAddress1());
-        $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
+        $this->assertSame($shippingAddress->getAddress1(), $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress()->getAddress1());
+        $this->assertSame($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
     }
 
     /**
@@ -187,8 +187,8 @@ class AddressStepTest extends Unit
 
         $addressStep->execute($this->createRequest(), $quoteTransfer);
 
-        $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getShippingAddress()->getAddress1());
-        $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
+        $this->assertSame($addressTransfer->getAddress1(), $quoteTransfer->getShippingAddress()->getAddress1());
+        $this->assertSame($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
     }
 
     /**
@@ -219,8 +219,8 @@ class AddressStepTest extends Unit
 
         $addressStep->execute($this->createRequest(), $quoteTransfer);
 
-        $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress()->getAddress1());
-        $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
+        $this->assertSame($addressTransfer->getAddress1(), $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress()->getAddress1());
+        $this->assertSame($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
     }
 
     /**

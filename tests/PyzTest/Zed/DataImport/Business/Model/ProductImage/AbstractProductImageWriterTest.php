@@ -177,7 +177,7 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
             //Image Set
             /** @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer $dataSetProductImageSet */
             $dataSetProductImageSet = $dataSets[$productImageSet[SpyProductAbstractTableMap::COL_SKU]][ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER];
-            $this->assertEquals(
+            $this->assertSame(
                 $dataSetProductImageSet->getName(),
                 $productImageSet[SpyProductImageSetTableMap::COL_NAME]
             );
