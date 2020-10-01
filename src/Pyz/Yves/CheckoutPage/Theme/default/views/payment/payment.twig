@@ -36,6 +36,11 @@
             customForms: data.customForms
         }
     } only %}
+        {% block errors %}
+            {{ parent() }}
+            {{ form_errors(data.form.paymentSelection) }}
+        {% endblock %}
+
         {% block fieldset %}
             {% for name, choices in data.form.paymentSelection.vars.choices %}
                 {% set paymentProviderIndex = loop.index0 %}

@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.156.0",
+            "version": "3.157.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "994831c4560d8c309882f5d5b9adafb85748f0e8"
+                "reference": "ad2c0183d7ebc695acb1ba39d528f2328f2c0de3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/994831c4560d8c309882f5d5b9adafb85748f0e8",
-                "reference": "994831c4560d8c309882f5d5b9adafb85748f0e8",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ad2c0183d7ebc695acb1ba39d528f2328f2c0de3",
+                "reference": "ad2c0183d7ebc695acb1ba39d528f2328f2c0de3",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-09-29T18:17:44+00:00"
+            "time": "2020-09-30T18:58:20+00:00"
         },
         {
             "name": "brick/math",
@@ -4618,7 +4618,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "da6c9483cbd010f8d0bb44a872d302d42e50601b"
+                "reference": "55b8d18d7f6ffa4f169de68679c9110deb197cd6"
             },
             "require": {
                 "php": ">=7.2"
@@ -4782,7 +4782,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-09-28T11:29:41+00:00"
+            "time": "2020-10-01T17:14:03+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9913,7 +9913,7 @@
             "version": "dev-feature/deactivate-c3-call-in-localserver",
             "source": {
                 "type": "git",
-                "url": "git@github.com:qlmmlp/codeception.git",
+                "url": "git@github.com:spryker/Codeception.git",
                 "reference": "873955ddbca9df1ddab2ebc30fb2a3baa33451b7"
             },
             "require": {
@@ -10095,7 +10095,7 @@
             "keywords": [
                 "codeception"
             ],
-            "time": "2020-07-07T12:54:40+00:00"
+            "time": "2020-07-07T08:01:35+00:00"
         },
         {
             "name": "codeception/module-asserts",
@@ -12601,23 +12601,25 @@
         },
         {
             "name": "roave/signature",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/Signature.git",
-                "reference": "bed4ecbdd7f312ab6bb39561ac191f520bcee386"
+                "reference": "c4e8a59946bad694ab5682a76e7884a9157a8a2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/Signature/zipball/bed4ecbdd7f312ab6bb39561ac191f520bcee386",
-                "reference": "bed4ecbdd7f312ab6bb39561ac191f520bcee386",
+                "url": "https://api.github.com/repos/Roave/Signature/zipball/c4e8a59946bad694ab5682a76e7884a9157a8a2c",
+                "reference": "c4e8a59946bad694ab5682a76e7884a9157a8a2c",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0|^7.1"
+                "php": "^7.1 || ^7.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.6"
+                "infection/infection": "^0.7.1",
+                "phpunit/phpunit": "^7.0",
+                "squizlabs/php_codesniffer": "^3.2"
             },
             "type": "library",
             "autoload": {
@@ -12630,7 +12632,7 @@
                 "MIT"
             ],
             "description": "Sign and verify stuff",
-            "time": "2017-02-17T13:53:21+00:00"
+            "time": "2020-10-01T07:27:11+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
