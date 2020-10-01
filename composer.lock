@@ -3870,7 +3870,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "bc086c8e7579f8aad9d0717c5a87fad3706b1542"
+                "reference": "ea5fa715fdb81b0a352a3fe29b4e769f626f9c3d"
             },
             "require": {
                 "php": ">=7.2"
@@ -4635,7 +4635,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-10-01T07:50:33+00:00"
+            "time": "2020-10-01T11:50:18+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -4643,7 +4643,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "b97ef6db28f280f6e00773dce06650f0228855b7"
+                "reference": "07e9b8af739cb06e9043af5c713d0a8305adb105"
             },
             "require": {
                 "php": ">=7.2"
@@ -4807,7 +4807,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-09-30T07:04:26+00:00"
+            "time": "2020-10-01T11:13:22+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -12294,23 +12294,25 @@
         },
         {
             "name": "roave/signature",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/Signature.git",
-                "reference": "bed4ecbdd7f312ab6bb39561ac191f520bcee386"
+                "reference": "c4e8a59946bad694ab5682a76e7884a9157a8a2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/Signature/zipball/bed4ecbdd7f312ab6bb39561ac191f520bcee386",
-                "reference": "bed4ecbdd7f312ab6bb39561ac191f520bcee386",
+                "url": "https://api.github.com/repos/Roave/Signature/zipball/c4e8a59946bad694ab5682a76e7884a9157a8a2c",
+                "reference": "c4e8a59946bad694ab5682a76e7884a9157a8a2c",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0|^7.1"
+                "php": "^7.1 || ^7.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.6"
+                "infection/infection": "^0.7.1",
+                "phpunit/phpunit": "^7.0",
+                "squizlabs/php_codesniffer": "^3.2"
             },
             "type": "library",
             "autoload": {
@@ -12323,7 +12325,7 @@
                 "MIT"
             ],
             "description": "Sign and verify stuff",
-            "time": "2017-02-17T13:53:21+00:00"
+            "time": "2020-10-01T07:27:11+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
