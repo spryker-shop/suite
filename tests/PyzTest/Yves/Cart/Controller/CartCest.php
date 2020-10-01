@@ -29,10 +29,12 @@ class CartCest
     public function quickAddToCart(CheckoutControllerTester $i): void
     {
         $i->amOnPage('/en/cart');
-        $i->fillField(['name' => 'product_quick_add_form[sku]'], 147);
-        $i->fillField(['name' => 'product_quick_add_form[quantity]'], 1);
+        $i->fillField(['name' => 'sku'], '147_30046188');
+        $i->fillField(['name' => 'quantity'], 1);
         $i->click('Add to Cart');
+        $i->canSeeResponseCodeIsRedirection();
 
-        $i->seeResponseCodeIs(200);
+        $i->amOnPage('/en/cart/quick-add/147_30046188?quantity=1');
+        $i->canSeeResponseCodeIsRedirection();
     }
 }
