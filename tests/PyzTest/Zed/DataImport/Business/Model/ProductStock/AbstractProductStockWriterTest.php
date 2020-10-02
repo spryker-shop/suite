@@ -130,11 +130,12 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
         foreach ($fetchedResult['stockProducts'] as $stockProduct) {
             $dataSetStock = $dataSets[$stockProduct[SpyProductTableMap::COL_SKU]][ProductStockHydratorStep::STOCK_ENTITY_TRANSFER];
 
-            $this->assertEquals(
+            $this->assertSame(
                 $dataSetStock->getName(),
                 $stockProduct[SpyStockTableMap::COL_NAME]
             );
 
+            /** @var \Generated\Shared\Transfer\SpyProductOfferStockEntityTransfer $dataSetProductStock */
             $dataSetProductStock = $dataSets[$stockProduct[SpyProductTableMap::COL_SKU]][ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER];
 
             $this->assertEquals(
