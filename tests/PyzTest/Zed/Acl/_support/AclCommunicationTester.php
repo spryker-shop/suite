@@ -5,10 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Zed\Console;
+namespace PyzTest\Zed\Acl;
 
 use Codeception\Actor;
-use Symfony\Component\Process\Process;
+use Codeception\Scenario;
 
 /**
  * Inherited Methods
@@ -22,24 +22,21 @@ use Symfony\Component\Process\Process;
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
+ * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
  */
-class ConsoleConsoleTester extends Actor
+class AclCommunicationTester extends Actor
 {
-    use _generated\ConsoleConsoleTesterActions;
+    use _generated\AclCommunicationTesterActions;
 
     /**
-     * @return string
+     * @param \Codeception\Scenario $scenario
      */
-    public function runConsoleApplication()
+    public function __construct(Scenario $scenario)
     {
-        $cmd = 'vendor/bin/console';
-        $process = new Process([$cmd]);
-        $process->run();
-        $output = $process->getOutput();
+        parent::__construct($scenario);
 
-        return $output;
+        $this->amLoggedInUser();
     }
 }
