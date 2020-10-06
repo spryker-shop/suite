@@ -414,7 +414,9 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate-xml-names ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:validate ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/spryker-dev-console dev:changed-module:command-executor -c "vendor/bin/spryker-dev-console dev:validate-module-transfers -v -m {moduleName}" -v ; fi
+    # You can also use this locally: vendor/bin/spryker-dev-console dev:changed-module:command-executor -c "vendor/bin/spryker-dev-console dev:validate-module-transfers -v -m {moduleName}" -v
+  - if [[ $VALIDATION == 1 ]] ; then tests/travis_check_touched_modules.sh ; fi
+
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/spryker-dev-console dev:validate-module-schemas ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/spryker-dev-console dev:validate-module-databuilders ; fi
 
