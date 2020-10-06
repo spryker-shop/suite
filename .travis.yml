@@ -372,7 +372,6 @@ before_install:
 install:
   - chmod -R a+x config/Shared/ci/travis/
   - if [[ $PREFER_LOWEST == 1 ]] ; then config/Shared/ci/travis/install_elasticsearch_6_8.sh ; else config/Shared/ci/travis/install_elasticsearch_7_6.sh ; fi
-  - if [[ $PREFER_LOWEST == 1 ]] ; then config/Shared/ci/travis/install_elasticsearch_6_8.sh ; else config/Shared/ci/travis/install_elasticsearch_7_6.sh ; fi
   - if [[ $PREFER_LOWEST == 1 ]] ; then composer update --optimize-autoloader --no-interaction --prefer-lowest ; else composer install --optimize-autoloader --no-interaction ; fi
   - if [[ $PREFER_MID == 1 ]] ; then composer prefer-mid ; fi
   - config/Shared/ci/travis/install_mailcatcher.sh
