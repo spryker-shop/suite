@@ -5,10 +5,9 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Zed\Acl;
+namespace PyzTest\Zed\Development;
 
 use Codeception\Actor;
-use Codeception\Scenario;
 
 /**
  * Inherited Methods
@@ -25,18 +24,10 @@ use Codeception\Scenario;
  * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
+ *
+ * @method \Spryker\Zed\Development\Business\DevelopmentBusinessFactory getFactory($moduleName = null) : \Spryker\Zed\Development\Business\DevelopmentBusinessFactory
  */
-class AclCommunicationTester extends Actor
+class DevelopmentBusinessTester extends Actor
 {
-    use _generated\AclCommunicationTesterActions;
-
-    /**
-     * @param \Codeception\Scenario $scenario
-     */
-    public function __construct(Scenario $scenario)
-    {
-        parent::__construct($scenario);
-
-        $this->amLoggedInUser();
-    }
+    use _generated\DevelopmentBusinessTesterActions;
 }

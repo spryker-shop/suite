@@ -1,4 +1,4 @@
-namespace: PyzTest\Yves\Checkout
+namespace: PyzTest\Yves\Cart
 
 paths:
     tests: .
@@ -14,7 +14,7 @@ coverage:
 suites:
     Controller:
         path: .
-        class_name: CheckoutControllerTester
+        class_name: CartControllerTester
         modules:
             enabled:
                 - \SprykerTest\Yves\Testify\Helper\YvesEnvironment

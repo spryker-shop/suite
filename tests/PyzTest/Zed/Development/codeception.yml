@@ -1,4 +1,4 @@
-namespace: PyzTest\Zed\Acl
+namespace: PyzTest\Zed\Development
 
 paths:
     tests: .
@@ -12,12 +12,14 @@ coverage:
     whitelist: { include: ['../../../../src/*'] }
 
 suites:
-    Communication:
-        path: Communication
-        class_name: AclCommunicationTester
+    Business:
+        path: Business
+        class_name: DevelopmentBusinessTester
         modules:
             enabled:
+                - Asserts
                 - \SprykerTest\Shared\Testify\Helper\Environment
                 - \SprykerTest\Shared\Testify\Helper\ConfigHelper
-                - \PyzTest\Zed\Testify\Helper\LoginHelper
-                - \PyzTest\Zed\Testify\Helper\BootstrapHelper
+                - \SprykerTest\Zed\Testify\Helper\Business\BusinessHelper
+                -   \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                        projectNamespaces: ['Pyz']
