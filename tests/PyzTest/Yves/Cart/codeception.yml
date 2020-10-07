@@ -17,6 +17,7 @@ suites:
         class_name: CartControllerTester
         modules:
             enabled:
+                - Asserts
                 - \SprykerTest\Yves\Testify\Helper\YvesEnvironment
                 - \SprykerTest\Shared\Testify\Helper\ConfigHelper
                 - \PyzTest\Yves\Testify\Helper\DebugHelper
