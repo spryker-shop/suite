@@ -439,6 +439,7 @@ script:
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.stage0.yml --ext DotReporter ; fi
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.yml --ext DotReporter ; fi
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.stage2.yml --ext DotReporter ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.glue.yml --ext DotReporter ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g EndToEnd -g Presentation -x DockerOnly --ext DotReporter ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/stylelint ; fi
