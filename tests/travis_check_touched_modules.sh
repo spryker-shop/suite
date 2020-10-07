@@ -3,7 +3,7 @@
 EXITCODE=0
 
 validateModuleTransfers() {
-  MODULES=$(git -C vendor/spryker/$1 diff --name-only --diff-filter=ACMRTUXB master.. | grep "^Bundles\/" | cut -d "/" -f2- | cut -d "/" -f1 | sort | uniq)
+  MODULES=$(git -C vendor/spryker/$1 diff --name-only --diff-filter=ACMRTUXB master... | grep "^Bundles\/" | cut -d "/" -f2- | cut -d "/" -f1 | sort | uniq)
 
   for module in $MODULES
       do
