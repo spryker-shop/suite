@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Yves\Application;
+namespace PyzTest\Yves\Cart;
 
 use Codeception\Actor;
 
@@ -21,11 +21,11 @@ use Codeception\Actor;
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = NULL)
+ * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
  */
-class ApplicationCommunicationTester extends Actor
+class CartControllerTester extends Actor
 {
-    use _generated\ApplicationCommunicationTesterActions;
+    use _generated\CartControllerTesterActions;
 }
