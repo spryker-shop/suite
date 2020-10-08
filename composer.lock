@@ -3567,7 +3567,6 @@
                 "spryker/symfony": "^3.1.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
                 "spryker/event-dispatcher": "*",
@@ -45365,7 +45364,6 @@
                 "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
                 "spryker/testify": "*"
@@ -54010,12 +54008,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "1352d06e24e74e27892bfc889f4ff9194b5116b8"
+                "reference": "12eb8a42689f113d51783a5d5f04c70bd2a1ab45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/1352d06e24e74e27892bfc889f4ff9194b5116b8",
-                "reference": "1352d06e24e74e27892bfc889f4ff9194b5116b8",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/12eb8a42689f113d51783a5d5f04c70bd2a1ab45",
+                "reference": "12eb8a42689f113d51783a5d5f04c70bd2a1ab45",
                 "shasum": ""
             },
             "require": {
@@ -54026,6 +54024,8 @@
                 "spryker/zend": "^2.0.0"
             },
             "require-dev": {
+                "codeception/module-asserts": "^1.2",
+                "phpunit/phpunit": "<8",
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
@@ -54045,7 +54045,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2020-10-08T09:02:20+00:00"
+            "time": "2020-08-19T10:02:01+00:00"
         },
         {
             "name": "spryker/code-sniffer",
