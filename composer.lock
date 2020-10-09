@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.158.4",
+            "version": "3.158.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "c0c0df79edc0a646a7ccd6b2e8d1723ff4ba88e2"
+                "reference": "dae8d62d976adc737d9daf4817ac36de6d53c3e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c0c0df79edc0a646a7ccd6b2e8d1723ff4ba88e2",
-                "reference": "c0c0df79edc0a646a7ccd6b2e8d1723ff4ba88e2",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/dae8d62d976adc737d9daf4817ac36de6d53c3e8",
+                "reference": "dae8d62d976adc737d9daf4817ac36de6d53c3e8",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-10-07T18:12:22+00:00"
+            "time": "2020-10-08T18:13:24+00:00"
         },
         {
             "name": "brick/math",
@@ -1528,16 +1528,16 @@
         },
         {
             "name": "league/flysystem-aws-s3-v3",
-            "version": "1.0.28",
+            "version": "1.0.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-aws-s3-v3.git",
-                "reference": "af7384a12f7cd7d08183390d930c9d0ec629c990"
+                "reference": "4e25cc0582a36a786c31115e419c6e40498f6972"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/af7384a12f7cd7d08183390d930c9d0ec629c990",
-                "reference": "af7384a12f7cd7d08183390d930c9d0ec629c990",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/4e25cc0582a36a786c31115e419c6e40498f6972",
+                "reference": "4e25cc0582a36a786c31115e419c6e40498f6972",
                 "shasum": ""
             },
             "require": {
@@ -1571,7 +1571,7 @@
                 }
             ],
             "description": "Flysystem adapter for the AWS S3 SDK v3.x",
-            "time": "2020-08-22T08:43:01+00:00"
+            "time": "2020-10-08T18:58:37+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -3727,12 +3727,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "f449d32442fa838972c13f6b30767037fa9e8135"
+                "reference": "f4f4598f0277bae7c8f49655d679d714d0a7fd13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/f449d32442fa838972c13f6b30767037fa9e8135",
-                "reference": "f449d32442fa838972c13f6b30767037fa9e8135",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/f4f4598f0277bae7c8f49655d679d714d0a7fd13",
+                "reference": "f4f4598f0277bae7c8f49655d679d714d0a7fd13",
                 "shasum": ""
             },
             "require": {
@@ -3747,6 +3747,7 @@
                 "spryker/transfer": "^3.8.0"
             },
             "require-dev": {
+                "phpstan/phpstan": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
@@ -3783,7 +3784,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2020-10-06T09:24:05+00:00"
+            "time": "2020-10-08T11:57:57+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -3875,7 +3876,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1bacb02726fe91736d1a048bab246d8c06b71b2d"
+                "reference": "1a9bded8990f17b6ac51421f26468767896e8a94"
             },
             "require": {
                 "php": ">=7.2"
@@ -4640,7 +4641,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-10-08T10:07:57+00:00"
+            "time": "2020-10-09T09:58:37+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -13708,11 +13709,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "5dc0444177606374dc7f601aadd0dee870808672"
+                "reference": "a15c3986d59c630978157820eb76fea26bbf904d"
             },
             "require": {
                 "composer/semver": "^1.0.0 || ^2.0.0 || ^3.0.0",
                 "php": ">=7.2",
+                "sebastian/diff": "^3.0.0",
                 "sebastian/git": "^2.0.0",
                 "spryker/development": "@stable",
                 "spryker/kernel": "^3.30.0",
@@ -13752,7 +13754,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2020-10-07T16:55:52+00:00"
+            "time": "2020-10-08T14:50:53+00:00"
         },
         {
             "name": "spryker/git-hook",
