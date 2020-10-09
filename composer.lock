@@ -3876,7 +3876,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "25a045b73d75a0d40f0afc775afcbe62c1cd0460"
+                "reference": "adac8202ad9a704b715c5a44602af7a6ad2c6fc9"
             },
             "require": {
                 "php": ">=7.2"
@@ -4641,7 +4641,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-10-09T13:56:22+00:00"
+            "time": "2020-10-09T16:12:10+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -4649,7 +4649,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "2ebf88e78b2f3b800d3f984e8aa32c2562ec8afb"
+                "reference": "0b7a748748c42307292e34d7bd854ce5f88cf98b"
             },
             "require": {
                 "php": ">=7.2"
@@ -4813,7 +4813,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-10-08T09:44:27+00:00"
+            "time": "2020-10-09T16:12:13+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -13223,17 +13223,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/benchmark.git",
-                "reference": "3c7da51d79ab7009d376406ed2c099f0329a4117"
+                "reference": "d22b3cda1a4ab8b8e9582636cc9bfa0c49ea33d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/benchmark/zipball/3c7da51d79ab7009d376406ed2c099f0329a4117",
-                "reference": "3c7da51d79ab7009d376406ed2c099f0329a4117",
+                "url": "https://api.github.com/repos/spryker-sdk/benchmark/zipball/d22b3cda1a4ab8b8e9582636cc9bfa0c49ea33d1",
+                "reference": "d22b3cda1a4ab8b8e9582636cc9bfa0c49ea33d1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "phpbench/phpbench": "^0.17.0",
+                "psr/http-message": "^1.0.0",
                 "spryker/guzzle": "^2.1.0",
                 "spryker/kernel": "^3.54.0",
                 "spryker/symfony": "^3.1.0",
@@ -13259,7 +13260,7 @@
                 "proprietary"
             ],
             "description": "Benchmark module",
-            "time": "2020-09-18T07:50:57+00:00"
+            "time": "2020-10-09T16:11:57+00:00"
         },
         {
             "name": "spryker-sdk/codeception-phantoman",
@@ -13307,16 +13308,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/composer-constrainer.git",
-                "reference": "6473bc67b67fcbe409970da41a13406b0251edae"
+                "reference": "af8eb485ca41826e801c0f63092bc68b7c339b14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/6473bc67b67fcbe409970da41a13406b0251edae",
-                "reference": "6473bc67b67fcbe409970da41a13406b0251edae",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/af8eb485ca41826e801c0f63092bc68b7c339b14",
+                "reference": "af8eb485ca41826e801c0f63092bc68b7c339b14",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "roave/better-reflection": "^4.3.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/symfony": "^3.2.2",
                 "spryker/zend": "^2.1.0"
@@ -13342,7 +13344,7 @@
                 "proprietary"
             ],
             "description": "ComposerConstrainer module",
-            "time": "2020-06-30T12:23:27+00:00"
+            "time": "2020-10-09T16:12:00+00:00"
         },
         {
             "name": "spryker-sdk/composer-replace",
@@ -13442,12 +13444,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "d0bc2568e9043d699e05a4e3f14b759a410eb93d"
+                "reference": "3058a5f00f7d3224184af4b0d5d19c70423edf0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/d0bc2568e9043d699e05a4e3f14b759a410eb93d",
-                "reference": "d0bc2568e9043d699e05a4e3f14b759a410eb93d",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/3058a5f00f7d3224184af4b0d5d19c70423edf0e",
+                "reference": "3058a5f00f7d3224184af4b0d5d19c70423edf0e",
                 "shasum": ""
             },
             "require": {
@@ -13461,19 +13463,13 @@
                 "symfony/filesystem": "^3.4.0 || ^4.0.0 || ^5.0.0",
                 "symfony/finder": "^3.4.0 || ^4.0.0 || ^5.0.0",
                 "symfony/yaml": "^3.4.9 || ^4.0.0 || ^5.0.0",
-                "twig/twig": "^1.41 || ^2.0.0 || ^3.0.0",
-                "zendframework/zend-filter": "^2.8"
+                "twig/twig": "^1.41 || ^2.0.0 || ^3.0.0"
             },
             "require-dev": {
                 "codeception/codeception": "^4.0.0",
-                "nette/finder": "^2.4.0",
-                "nette/utils": "^2.5.0",
-                "php-coveralls/php-coveralls": "^1.0",
                 "phpstan/phpstan": "^0.12.0",
-                "phpunit/phpunit": "^7.0.0 || ^8.0.0",
-                "sllh/composer-versions-check": "^2.0",
                 "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/testify": "^3.0.0"
             },
             "type": "library",
             "extra": {
@@ -13491,7 +13487,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2020-09-30T10:35:19+00:00"
+            "time": "2020-10-09T16:12:03+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -13499,16 +13495,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk-gui.git",
-                "reference": "48637dce766decdf22c9eae29e559ddce4c3b49d"
+                "reference": "f73cd26706e61e80eb512c83a95acd912f1ba86f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/48637dce766decdf22c9eae29e559ddce4c3b49d",
-                "reference": "48637dce766decdf22c9eae29e559ddce4c3b49d",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/f73cd26706e61e80eb512c83a95acd912f1ba86f",
+                "reference": "f73cd26706e61e80eb512c83a95acd912f1ba86f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "roave/better-reflection": "^4.3.0",
                 "spryker-sdk/spryk": "^0.2.2",
                 "spryker/development": "^3.12.0",
                 "spryker/graph": "^3.0.0",
@@ -13546,7 +13543,7 @@
                 "proprietary"
             ],
             "description": "SprykGui module",
-            "time": "2020-09-17T10:16:50+00:00"
+            "time": "2020-10-09T16:12:07+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",

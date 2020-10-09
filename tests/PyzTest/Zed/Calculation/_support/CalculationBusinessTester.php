@@ -161,8 +161,8 @@ class CalculationBusinessTester extends Actor
         $calculationBusinessFactory = new CalculationBusinessFactory();
 
         $container = new Container();
-        $container[CalculationDependencyProvider::QUOTE_CALCULATOR_PLUGIN_STACK] = $calculatorPlugins;
-        $container[CalculationDependencyProvider::PLUGINS_QUOTE_POST_RECALCULATE] = [];
+        $container->set(CalculationDependencyProvider::QUOTE_CALCULATOR_PLUGIN_STACK, $calculatorPlugins);
+        $container->set(CalculationDependencyProvider::PLUGINS_QUOTE_POST_RECALCULATE, []);
 
         $container->set(CalculationDependencyProvider::SERVICE_UTIL_TEXT, function (Container $container) {
             return new CalculationToUtilTextBridge($container->getLocator()->utilText()->service());
