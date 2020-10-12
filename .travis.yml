@@ -146,7 +146,7 @@ jobs:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-        - docker/sdk boot deploy.ci.functional.yml -v
+        - docker/sdk boot -v deploy.ci.functional.yml
         - docker/sdk up -t -v
         - docker/sdk testing codecept run -c codeception.ci.functional.yml
       before_install: skip
@@ -184,7 +184,7 @@ jobs:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-        - docker/sdk boot deploy.ci.api.yml -v
+        - docker/sdk boot -v deploy.ci.api.yml
         - docker/sdk up -t -v
         - docker/sdk testing codecept fixtures
         - docker/sdk testing console queue:worker:start --stop-when-empty
@@ -224,7 +224,7 @@ jobs:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-        - docker/sdk boot deploy.ci.functional.mariadb.yml -v
+        - docker/sdk boot -v deploy.ci.functional.mariadb.yml
         - docker/sdk up -t -v
         - docker/sdk testing codecept run -c codeception.ci.functional.yml
       before_install: skip
@@ -262,7 +262,7 @@ jobs:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-        - docker/sdk boot deploy.ci.functional.yml -v
+        - docker/sdk boot -v deploy.ci.functional.yml
         - docker/sdk up -t -v
         - docker/sdk testing codecept run -c codeception.ci.functional.yml
       before_install: skip
@@ -329,6 +329,44 @@ addons:
       - postgresql-client-12
       - postgresql-server-dev-12
       - rabbitmq-server
+      - gnupg
+      - libnss3-dev
+      - ca-certificates
+      - fonts-liberation
+      - libappindicator3-1
+      - libasound2
+      - libatk-bridge2.0-0
+      - libatk1.0-0
+      - libc6
+      - libcairo2
+      - libcups2
+      - libdbus-1-3
+      - libexpat1
+      - libfontconfig1
+      - libgbm1
+      - libgcc1
+      - libglib2.0-0
+      - libgtk-3-0
+      - libnspr4
+      - libnss3
+      - libpango-1.0-0
+      - libpangocairo-1.0-0
+      - libstdc++6
+      - libx11-6
+      - libx11-xcb1
+      - libxcb1
+      - libxcomposite1
+      - libxcursor1
+      - libxdamage1
+      - libxext6
+      - libxfixes3
+      - libxi6
+      - libxrandr2
+      - libxrender1
+      - libxss1
+      - libxtst6
+      - lsb-release
+      - xdg-utils
   postgresql: "12"
   mariadb: "10.3"
 
@@ -339,7 +377,7 @@ addons:
       - $(find ./tests/_output/* -not -empty | tr "\n" ":")
       - $(find ./tests/PyzTest/*/*/_output/* -not -empty | tr "\n" ":")
       - $(find ./vendor/spryker/spryker/Bundles/*/tests/_output/* -not -empty | tr "\n" ":")
-      - /tmp/phantomjs.log.gz
+      - /tmp/chromedriver.log.gz
       - /tmp/yves-error.log
       - /tmp/glue-error.log
       - /tmp/zed-error.log
@@ -357,6 +395,7 @@ cache:
     - /tmp/pear/cache/
     - $HOME/.yarn/cache
     - ./node_modules
+    - $HOME/chromium-ecosystem
 
 services:
   - postgresql
@@ -368,6 +407,12 @@ before_install:
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - phpenv config-rm xdebug.ini
   - composer global require hirak/prestissimo
+  # Chromedriver section
+  - curl -L "https://github.com/spryker/docker-chromedriver/archive/master.zip" -o $HOME/chromium-ecosystem/docker-chromedriver.zip
+  - rm -rf $HOME/chromium-ecosystem/docker-chromedriver-master
+  - unzip -o $HOME/chromium-ecosystem/docker-chromedriver.zip -d $HOME/chromium-ecosystem/
+  - rm -rf $HOME/chromium-ecosystem/*.zip
+  - export CHROMEDRIVER_REVISION=814168
 
 install:
   - chmod -R a+x config/Shared/ci/travis/
@@ -376,6 +421,8 @@ install:
   - if [[ $PREFER_MID == 1 ]] ; then composer prefer-mid ; fi
   - config/Shared/ci/travis/install_mailcatcher.sh
   - if [[ -z $MP_TEST ]] ; then config/Shared/ci/travis/configure_postgres.sh ; fi
+  # Exposes ${CHROMEDRIVER_BINARY} and ${CHROMIUM_BINARY}
+  - . $HOME/chromium-ecosystem/docker-chromedriver-master/chromium-installer $CHROMEDRIVER_REVISION $HOME/chromium-ecosystem false
 
 before_script:
   - nvm install 12 > /dev/null
@@ -402,10 +449,8 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console rest-api:generate:documentation ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:project:install-dependencies ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies ; fi
-    # Puppeteer installs chromium binary which we will use for headless unit tests
   - if [[ $MP_TEST == 1 ]] ; then vendor/bin/console transfer:generate ; fi
-  - if [[ $MP_TEST == 1 ]] ; then npm i -g puppeteer && npm link puppeteer ; fi
-  - if [[ $MP_TEST == 1 ]] ; then unset CHROME_BIN && export CHROME_BIN=$(node -e "console.log(require('puppeteer').executablePath())") ; fi
+  - if [[ $MP_TEST == 1 ]] ; then unset CHROME_BIN && export CHROME_BIN=${CHROMIUM_BINARY} ; fi
     # Install npm packages
   - if [[ $MP_TEST == 1 ]] ; then export YARN_CACHE_FOLDER=$HOME/.yarn/cache && vendor/bin/console frontend:mp:install-dependencies ; fi
 
@@ -435,7 +480,7 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/ ; fi
   - if [[ $VALIDATION == 1 ]] ; then composer psalm ; fi
 
-  - timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-logfile=/tmp/phantomjs.log --webdriver-loglevel=DEBUG">/dev/null &
+  - timeout 45m bash -c "${CHROMEDRIVER_BINARY} --port=4444 --whitelisted-ips= --url-base=/wd/hub --log-path=/tmp/chromedriver.log --log-level=DEBUG">/dev/null &
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.stage0.yml --ext DotReporter ; fi
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.yml --ext DotReporter ; fi
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.stage2.yml --ext DotReporter ; fi
@@ -449,8 +494,8 @@ script:
   - if [[ $MP_TEST == 1 ]] ; then yarn mp:test ; fi
 
 after_script:
-  - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/phantomjs.log ; fi
-  - if [[ $TRAVIS_TEST_RESULT == 1 ]] ; then gzip --best /tmp/phantomjs.log ; fi
+  - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/chromedriver.log ; fi
+  - if [[ $TRAVIS_TEST_RESULT == 1 ]] ; then gzip --best /tmp/chromedriver.log ; fi
 
 notifications:
   email: false

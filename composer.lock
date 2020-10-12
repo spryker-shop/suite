@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "481018320593576fa67d239c267067de",
+    "content-hash": "4de17b571553553186ba962790b2cde5",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3876,7 +3876,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "076064787445bfa85b41518ba5ceb32ab6dcc356"
+                "reference": "f25b84d1a6bf48937c959596f70c45efe7957575"
             },
             "require": {
                 "php": ">=7.2"
@@ -4641,7 +4641,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-10-12T10:10:57+00:00"
+            "time": "2020-10-12T13:44:39+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -4649,7 +4649,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "0b7a748748c42307292e34d7bd854ce5f88cf98b"
+                "reference": "873914d780a9103905a0b2e2d46c704fde6a8fa5"
             },
             "require": {
                 "php": ">=7.2"
@@ -4813,7 +4813,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-10-09T16:12:13+00:00"
+            "time": "2020-10-12T11:41:06+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10684,56 +10684,6 @@
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
-            "name": "jakoch/phantomjs-installer",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jakoch/phantomjs-installer.git",
-                "reference": "1f2df4a7cd4c860b01bf9c3ffeb9962f85f76e67"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jakoch/phantomjs-installer/zipball/1f2df4a7cd4c860b01bf9c3ffeb9962f85f76e67",
-                "reference": "1f2df4a7cd4c860b01bf9c3ffeb9962f85f76e67",
-                "shasum": ""
-            },
-            "require": {
-                "ext-bz2": "*",
-                "ext-openssl": "*",
-                "php": ">5.3"
-            },
-            "require-dev": {
-                "composer/composer": "^1.2",
-                "phpunit/phpunit": "^8"
-            },
-            "type": "custom-installer",
-            "autoload": {
-                "psr-4": {
-                    "PhantomInstaller\\Test\\": "tests/"
-                },
-                "psr-0": {
-                    "PhantomInstaller\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jens-André Koch",
-                    "email": "jakoch@web.de"
-                }
-            ],
-            "description": "A Composer package which installs the PhantomJS binary (Linux, Windows, Mac) into `/bin` of your project.",
-            "keywords": [
-                "binaries",
-                "headless",
-                "phantomjs"
-            ],
-            "time": "2020-07-18T05:26:32+00:00"
-        },
-        {
             "name": "jetbrains/phpstorm-stubs",
             "version": "v2019.3",
             "source": {
@@ -13754,6 +13704,39 @@
             "time": "2020-10-08T14:50:53+00:00"
         },
         {
+            "name": "spryker/docker-chromedriver",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/docker-chromedriver.git",
+                "reference": "acc17f3698859e4f0e0d9191fdbd2cef30460acd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/docker-chromedriver/zipball/acc17f3698859e4f0e0d9191fdbd2cef30460acd",
+                "reference": "acc17f3698859e4f0e0d9191fdbd2cef30460acd",
+                "shasum": ""
+            },
+            "type": "custom-installer",
+            "autoload": {
+                "psr-4": {
+                    "ChromedriverInstaller\\": "src/ChromedriverInstaller/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Bezpiatov",
+                    "email": "aleksandr.bezpiatov@spryker.com"
+                }
+            ],
+            "description": "Source of Chromedriver with Chromium for building Docker containers and integrated usage.",
+            "time": "2020-10-07T09:58:21+00:00"
+        },
+        {
             "name": "spryker/git-hook",
             "version": "dev-master",
             "source": {
@@ -14974,7 +14957,8 @@
         "spryker-sdk/composer-replace": 20,
         "spryker-sdk/spryk": 20,
         "spryker-sdk/spryk-gui": 20,
-        "spryker-sdk/benchmark": 20
+        "spryker-sdk/benchmark": 20,
+        "spryker/docker-chromedriver": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

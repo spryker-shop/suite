@@ -107,7 +107,6 @@
     "symfony/var-dumper": "*",
     "spryker-sdk/codeception-phantoman": "dev-master",
     "sllh/composer-versions-check": "^2.0.2",
-    "jakoch/phantomjs-installer": " ^3.0.0",
     "stecman/symfony-console-completion": "*",
     "fzaninotto/faker": "^1.6.0",
     "spryker-sdk/phpstan-spryker": "^0.3.0",
@@ -130,7 +129,8 @@
     "phpstan/phpstan": "0.12.25",
     "roave/better-reflection": "^4.3.0",
     "nette/neon": "^3.2.1",
-    "spryker-sdk/benchmark": "dev-master"
+    "spryker-sdk/benchmark": "dev-master",
+    "spryker/docker-chromedriver": "dev-master"
   },
   "autoload": {
     "psr-4": {
@@ -165,7 +165,8 @@
       "php": "7.2.15"
     },
     "use-include-path": true,
-    "process-timeout": 900
+    "process-timeout": 900,
+    "chromium-revision": 814168
   },
   "repositories": [
     {
@@ -194,13 +195,13 @@
       "mkdir -p ./data/DE/logs/ZED"
     ],
     "post-install-cmd": [
-      "PhantomInstaller\\Installer::installPhantomJS",
+      "ChromedriverInstaller\\Installer::installChromedriver",
       "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerHooks",
       "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerShopHooks",
       "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
     ],
     "post-update-cmd": [
-      "PhantomInstaller\\Installer::installPhantomJS",
+      "ChromedriverInstaller\\Installer::installChromedriver",
       "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerHooks",
       "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerShopHooks",
       "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
