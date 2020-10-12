@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.158.5",
+            "version": "3.158.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "dae8d62d976adc737d9daf4817ac36de6d53c3e8"
+                "reference": "4e912c1ae4d4b3538ada36ac1478f980f9bdf329"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/dae8d62d976adc737d9daf4817ac36de6d53c3e8",
-                "reference": "dae8d62d976adc737d9daf4817ac36de6d53c3e8",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4e912c1ae4d4b3538ada36ac1478f980f9bdf329",
+                "reference": "4e912c1ae4d4b3538ada36ac1478f980f9bdf329",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-10-08T18:13:24+00:00"
+            "time": "2020-10-09T18:11:48+00:00"
         },
         {
             "name": "brick/math",
@@ -958,23 +958,23 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.1.1",
+            "version": "7.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "7427d6f99df41cc01f33cd59832f721c150ffdf3"
+                "reference": "0aa74dfb41ae110835923ef10a9d803a22d50e79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/7427d6f99df41cc01f33cd59832f721c150ffdf3",
-                "reference": "7427d6f99df41cc01f33cd59832f721c150ffdf3",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0aa74dfb41ae110835923ef10a9d803a22d50e79",
+                "reference": "0aa74dfb41ae110835923ef10a9d803a22d50e79",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^1.0",
-                "guzzlehttp/psr7": "^1.6.1",
-                "php": "^7.2.5",
+                "guzzlehttp/promises": "^1.4",
+                "guzzlehttp/psr7": "^1.7",
+                "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0"
             },
             "provide": {
@@ -982,8 +982,8 @@
             },
             "require-dev": {
                 "ext-curl": "*",
-                "php-http/client-integration-tests": "dev-phpunit8",
-                "phpunit/phpunit": "^8.5.5",
+                "php-http/client-integration-tests": "^3.0",
+                "phpunit/phpunit": "^8.5.5 || ^9.3.5",
                 "psr/log": "^1.1"
             },
             "suggest": {
@@ -1052,7 +1052,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-30T08:51:17+00:00"
+            "time": "2020-10-10T11:47:56+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -3876,7 +3876,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "adac8202ad9a704b715c5a44602af7a6ad2c6fc9"
+                "reference": "076064787445bfa85b41518ba5ceb32ab6dcc356"
             },
             "require": {
                 "php": ">=7.2"
@@ -4641,7 +4641,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-10-09T16:12:10+00:00"
+            "time": "2020-10-12T10:10:57+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -9810,20 +9810,20 @@
         },
         {
             "name": "codeception/module-cli",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-cli.git",
-                "reference": "ca35844de0392356b413e93dba52423aaf1a67a6"
+                "reference": "74736cd5abd400b5d1f8388a7a9cb3f9f7d16c7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-cli/zipball/ca35844de0392356b413e93dba52423aaf1a67a6",
-                "reference": "ca35844de0392356b413e93dba52423aaf1a67a6",
+                "url": "https://api.github.com/repos/Codeception/module-cli/zipball/74736cd5abd400b5d1f8388a7a9cb3f9f7d16c7b",
+                "reference": "74736cd5abd400b5d1f8388a7a9cb3f9f7d16c7b",
                 "shasum": ""
             },
             "require": {
-                "codeception/codeception": "*@dev",
+                "codeception/codeception": "^4.0",
                 "php": ">=5.6.0 <8.0"
             },
             "conflict": {
@@ -9852,7 +9852,7 @@
             "keywords": [
                 "codeception"
             ],
-            "time": "2020-02-07T17:34:13+00:00"
+            "time": "2020-10-11T18:34:36+00:00"
         },
         {
             "name": "codeception/module-filesystem",
@@ -9964,16 +9964,16 @@
         },
         {
             "name": "codeception/module-rest",
-            "version": "1.2.3",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-rest.git",
-                "reference": "63d09a1ed9fb9bb981d22396e7c2c7d20570f217"
+                "reference": "308d1b7782317310018e0ea45223caada51ea89f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/63d09a1ed9fb9bb981d22396e7c2c7d20570f217",
-                "reference": "63d09a1ed9fb9bb981d22396e7c2c7d20570f217",
+                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/308d1b7782317310018e0ea45223caada51ea89f",
+                "reference": "308d1b7782317310018e0ea45223caada51ea89f",
                 "shasum": ""
             },
             "require": {
@@ -10011,20 +10011,20 @@
                 "codeception",
                 "rest"
             ],
-            "time": "2020-09-17T13:36:51+00:00"
+            "time": "2020-10-11T18:38:50+00:00"
         },
         {
             "name": "codeception/module-webdriver",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-webdriver.git",
-                "reference": "237c6cb42d3e914f011d0419e966cbe0cb5d82c6"
+                "reference": "d055c645f600e991e33d1f289a9645eee46c384e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/237c6cb42d3e914f011d0419e966cbe0cb5d82c6",
-                "reference": "237c6cb42d3e914f011d0419e966cbe0cb5d82c6",
+                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/d055c645f600e991e33d1f289a9645eee46c384e",
+                "reference": "d055c645f600e991e33d1f289a9645eee46c384e",
                 "shasum": ""
             },
             "require": {
@@ -10066,20 +10066,20 @@
                 "browser-testing",
                 "codeception"
             ],
-            "time": "2020-08-06T07:39:31+00:00"
+            "time": "2020-10-11T18:54:47+00:00"
         },
         {
             "name": "codeception/phpunit-wrapper",
-            "version": "8.1.2",
+            "version": "8.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/phpunit-wrapper.git",
-                "reference": "e610200adf75ebc1ea7cf10d7cdb43e0f5fff3cc"
+                "reference": "8c2c9b49d20b6e2d61e926a16b1bf2cee5f4db9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/e610200adf75ebc1ea7cf10d7cdb43e0f5fff3cc",
-                "reference": "e610200adf75ebc1ea7cf10d7cdb43e0f5fff3cc",
+                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/8c2c9b49d20b6e2d61e926a16b1bf2cee5f4db9c",
+                "reference": "8c2c9b49d20b6e2d61e926a16b1bf2cee5f4db9c",
                 "shasum": ""
             },
             "require": {
@@ -10110,7 +10110,7 @@
                 }
             ],
             "description": "PHPUnit classes used by Codeception",
-            "time": "2020-04-17T18:30:51+00:00"
+            "time": "2020-10-11T18:16:48+00:00"
         },
         {
             "name": "codeception/stub",
@@ -10779,16 +10779,16 @@
         },
         {
             "name": "lstrojny/functional-php",
-            "version": "1.14.0",
+            "version": "1.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lstrojny/functional-php.git",
-                "reference": "4924870cecd16c8fe6536ff25f4deb1f18e53f39"
+                "reference": "9e8363e3cb9db924327f51b5804f4dfba03605aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lstrojny/functional-php/zipball/4924870cecd16c8fe6536ff25f4deb1f18e53f39",
-                "reference": "4924870cecd16c8fe6536ff25f4deb1f18e53f39",
+                "url": "https://api.github.com/repos/lstrojny/functional-php/zipball/9e8363e3cb9db924327f51b5804f4dfba03605aa",
+                "reference": "9e8363e3cb9db924327f51b5804f4dfba03605aa",
                 "shasum": ""
             },
             "require": {
@@ -10919,7 +10919,7 @@
             "keywords": [
                 "functional"
             ],
-            "time": "2020-08-24T14:15:56+00:00"
+            "time": "2020-10-12T09:48:50+00:00"
         },
         {
             "name": "myclabs/deep-copy",
