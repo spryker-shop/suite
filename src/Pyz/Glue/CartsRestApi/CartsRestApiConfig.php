@@ -8,9 +8,16 @@
 namespace Pyz\Glue\CartsRestApi;
 
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig as SprykerCartsRestApiConfig;
+use Spryker\Glue\ConfigurableBundleCartsRestApi\ConfigurableBundleCartsRestApiConfig;
 
 class CartsRestApiConfig extends SprykerCartsRestApiConfig
 {
+    protected const GUEST_CART_RESOURCES = [
+        self::RESOURCE_GUEST_CARTS,
+        self::RESOURCE_GUEST_CARTS_ITEMS,
+        ConfigurableBundleCartsRestApiConfig::RESOURCE_GUEST_CONFIGURED_BUNDLES,
+    ];
+
     protected const ALLOWED_CART_ITEM_EAGER_RELATIONSHIP = false;
     protected const ALLOWED_GUEST_CART_ITEM_EAGER_RELATIONSHIP = false;
 }
