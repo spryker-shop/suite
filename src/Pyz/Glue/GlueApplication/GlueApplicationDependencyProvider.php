@@ -297,6 +297,9 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new AgentCustomerSearchResourceRoutePlugin(),
             new ConcreteProductsBundledProductsResourceRoutePlugin(),
             new ProductManagementAttributesResourceRoutePlugin(),
+            new ConfigurableBundleTemplatesResourceRoutePlugin(),
+            new ConfiguredBundlesResourceRoutePlugin(),
+            new GuestConfiguredBundlesResourceRoutePlugin(),
         ];
     }
 
