@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3b2846b9809b58eab385aeedeebd1ec",
+    "content-hash": "4d887d03eadea0f367b98468f3bd13cb",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2130,20 +2130,20 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v9.99.99",
+            "version": "v9.99.100",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95"
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
-                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/996434e5492cb4c3edcb9168db6fbb1359ef965a",
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a",
                 "shasum": ""
             },
             "require": {
-                "php": "^7"
+                "php": ">= 7"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.*|5.*",
@@ -2171,7 +2171,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-07-02T15:55:56+00:00"
+            "time": "2020-10-15T08:29:30+00:00"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -12762,16 +12762,16 @@
         },
         {
             "name": "spryker/catalog",
-            "version": "5.6.2",
+            "version": "5.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/catalog.git",
-                "reference": "a45ee675fc018a009691d46bfcf4e4ef19057e27"
+                "reference": "1ce344d969e0abea16c8e3604aa4536c78952b8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/catalog/zipball/a45ee675fc018a009691d46bfcf4e4ef19057e27",
-                "reference": "a45ee675fc018a009691d46bfcf4e4ef19057e27",
+                "url": "https://api.github.com/repos/spryker/catalog/zipball/1ce344d969e0abea16c8e3604aa4536c78952b8d",
+                "reference": "1ce344d969e0abea16c8e3604aa4536c78952b8d",
                 "shasum": ""
             },
             "require": {
@@ -12807,7 +12807,7 @@
                 "proprietary"
             ],
             "description": "Catalog module",
-            "time": "2020-08-07T10:31:31+00:00"
+            "time": "2020-09-29T11:51:26+00:00"
         },
         {
             "name": "spryker/catalog-price-product-connector",
@@ -18693,16 +18693,16 @@
         },
         {
             "name": "spryker/configurable-bundle-cart",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/configurable-bundle-cart.git",
-                "reference": "107a975e19f415cac4ffe602f40284fc80614e61"
+                "reference": "fc4d24d073a9650e05c64cd34648a1bc07973cb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/configurable-bundle-cart/zipball/107a975e19f415cac4ffe602f40284fc80614e61",
-                "reference": "107a975e19f415cac4ffe602f40284fc80614e61",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-cart/zipball/fc4d24d073a9650e05c64cd34648a1bc07973cb7",
+                "reference": "fc4d24d073a9650e05c64cd34648a1bc07973cb7",
                 "shasum": ""
             },
             "require": {
@@ -18733,7 +18733,64 @@
                 "proprietary"
             ],
             "description": "ConfigurableBundleCart module",
-            "time": "2019-12-20T14:12:49+00:00"
+            "time": "2020-10-07T07:20:47+00:00"
+        },
+        {
+            "name": "spryker/configurable-bundle-carts-rest-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundle-carts-rest-api.git",
+                "reference": "341f3ef889ad06436043e6d87bfd2f8789eed9bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-carts-rest-api/zipball/341f3ef889ad06436043e6d87bfd2f8789eed9bb",
+                "reference": "341f3ef889ad06436043e6d87bfd2f8789eed9bb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/carts-rest-api": "^5.7.0",
+                "spryker/carts-rest-api-extension": "^1.5.0",
+                "spryker/configurable-bundle-cart": "^1.3.0",
+                "spryker/configurable-bundle-storage": "^2.1.0",
+                "spryker/glossary-storage": "^1.5.0",
+                "spryker/glue-application": "^1.9.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/persistent-cart": "^3.4.0",
+                "spryker/store": "^1.1.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/cart": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/configurable-bundle": "*",
+                "spryker/customer": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/quote": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleCartsRestApi module",
+            "time": "2020-10-12T09:15:08+00:00"
         },
         {
             "name": "spryker/configurable-bundle-data-import",
@@ -19023,16 +19080,16 @@
         },
         {
             "name": "spryker/configurable-bundle-storage",
-            "version": "2.4.0",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/configurable-bundle-storage.git",
-                "reference": "e601b3a8f9d60c62addbc8c4b3154de0d7f2ea8e"
+                "reference": "b15b503459a60d7cf62e189046d3ec0bca969881"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/configurable-bundle-storage/zipball/e601b3a8f9d60c62addbc8c4b3154de0d7f2ea8e",
-                "reference": "e601b3a8f9d60c62addbc8c4b3154de0d7f2ea8e",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-storage/zipball/b15b503459a60d7cf62e189046d3ec0bca969881",
+                "reference": "b15b503459a60d7cf62e189046d3ec0bca969881",
                 "shasum": ""
             },
             "require": {
@@ -19046,7 +19103,8 @@
                 "spryker/storage": "^3.0.0",
                 "spryker/synchronization": "^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
-                "spryker/synchronization-extension": "^1.0.0"
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -19075,7 +19133,98 @@
                 "proprietary"
             ],
             "description": "ConfigurableBundleStorage module",
-            "time": "2020-08-18T09:02:36+00:00"
+            "time": "2020-09-30T14:57:41+00:00"
+        },
+        {
+            "name": "spryker/configurable-bundles-products-resource-relationship",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundles-products-resource-relationship.git",
+                "reference": "a9a11cf726dc02fb573651337e4cbd1456ec92fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundles-products-resource-relationship/zipball/a9a11cf726dc02fb573651337e4cbd1456ec92fd",
+                "reference": "a9a11cf726dc02fb573651337e4cbd1456ec92fd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/catalog": "^5.5.0",
+                "spryker/configurable-bundles-rest-api": "^1.0.0",
+                "spryker/glue-application": "^1.9.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/products-rest-api": "^2.12.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundlesProductsResourceRelationship module",
+            "time": "2020-10-08T12:02:13+00:00"
+        },
+        {
+            "name": "spryker/configurable-bundles-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundles-rest-api.git",
+                "reference": "bd48eeca5736c39286ed41e193f5f041b4cc9293"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundles-rest-api/zipball/bd48eeca5736c39286ed41e193f5f041b4cc9293",
+                "reference": "bd48eeca5736c39286ed41e193f5f041b4cc9293",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/configurable-bundle": "^2.0.0",
+                "spryker/configurable-bundle-page-search": "^1.0.0",
+                "spryker/configurable-bundle-storage": "^2.5.0",
+                "spryker/glossary-storage": "^1.5.0",
+                "spryker/glue-application": "^1.9.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/orders-rest-api-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundlesRestApi module",
+            "time": "2020-10-08T12:02:13+00:00"
         },
         {
             "name": "spryker/console",
@@ -36002,16 +36151,16 @@
         },
         {
             "name": "spryker/product-quantity",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-quantity.git",
-                "reference": "29a043a0d3615acd0dd5e99a06dcf0c1f8ad66db"
+                "reference": "44b2d128b23e9698186e89f26ab150f166705d9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-quantity/zipball/29a043a0d3615acd0dd5e99a06dcf0c1f8ad66db",
-                "reference": "29a043a0d3615acd0dd5e99a06dcf0c1f8ad66db",
+                "url": "https://api.github.com/repos/spryker/product-quantity/zipball/44b2d128b23e9698186e89f26ab150f166705d9a",
+                "reference": "44b2d128b23e9698186e89f26ab150f166705d9a",
                 "shasum": ""
             },
             "require": {
@@ -36046,7 +36195,7 @@
                 "proprietary"
             ],
             "description": "ProductQuantity module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-10-06T07:30:11+00:00"
         },
         {
             "name": "spryker/product-quantity-data-import",
@@ -37174,16 +37323,16 @@
         },
         {
             "name": "spryker/product-storage",
-            "version": "1.28.0",
+            "version": "1.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-storage.git",
-                "reference": "7e9c1c0d6a2c6723af901b7e204cd1adc0fbef86"
+                "reference": "4506c8c1421a7a0afa4ddcce687aa58b8656ee49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-storage/zipball/7e9c1c0d6a2c6723af901b7e204cd1adc0fbef86",
-                "reference": "7e9c1c0d6a2c6723af901b7e204cd1adc0fbef86",
+                "url": "https://api.github.com/repos/spryker/product-storage/zipball/4506c8c1421a7a0afa4ddcce687aa58b8656ee49",
+                "reference": "4506c8c1421a7a0afa4ddcce687aa58b8656ee49",
                 "shasum": ""
             },
             "require": {
@@ -37232,7 +37381,7 @@
                 "proprietary"
             ],
             "description": "ProductStorage module",
-            "time": "2020-09-09T10:18:24+00:00"
+            "time": "2020-10-07T07:20:47+00:00"
         },
         {
             "name": "spryker/product-storage-extension",
@@ -37408,16 +37557,16 @@
         },
         {
             "name": "spryker/products-rest-api",
-            "version": "2.11.0",
+            "version": "2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/products-rest-api.git",
-                "reference": "d60dafb2b907f70133cd331c4aff857874e5116c"
+                "reference": "bd17ee1da42b4e30e855204f231ec45f2ca5da7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/products-rest-api/zipball/d60dafb2b907f70133cd331c4aff857874e5116c",
-                "reference": "d60dafb2b907f70133cd331c4aff857874e5116c",
+                "url": "https://api.github.com/repos/spryker/products-rest-api/zipball/bd17ee1da42b4e30e855204f231ec45f2ca5da7f",
+                "reference": "bd17ee1da42b4e30e855204f231ec45f2ca5da7f",
                 "shasum": ""
             },
             "require": {
@@ -37426,7 +37575,7 @@
                 "spryker/glue-application": "^1.0.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/product-storage": "^1.22.0",
+                "spryker/product-storage": "^1.29.0",
                 "spryker/products-rest-api-extension": "^1.1.0",
                 "spryker/store": "^1.4.0",
                 "spryker/symfony": "^3.0.0",
@@ -37452,7 +37601,7 @@
                 "proprietary"
             ],
             "description": "ProductsRestApi module",
-            "time": "2020-09-25T14:18:45+00:00"
+            "time": "2020-09-29T10:06:13+00:00"
         },
         {
             "name": "spryker/products-rest-api-extension",
@@ -46247,16 +46396,16 @@
         },
         {
             "name": "symfony/http-client-contracts",
-            "version": "v2.2.0",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client-contracts.git",
-                "reference": "3a5d0fe7908daaa23e3dbf4cee3ba4bfbb19fdd3"
+                "reference": "41db680a15018f9c1d4b23516059633ce280ca33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/3a5d0fe7908daaa23e3dbf4cee3ba4bfbb19fdd3",
-                "reference": "3a5d0fe7908daaa23e3dbf4cee3ba4bfbb19fdd3",
+                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/41db680a15018f9c1d4b23516059633ce280ca33",
+                "reference": "41db680a15018f9c1d4b23516059633ce280ca33",
                 "shasum": ""
             },
             "require": {
@@ -46267,8 +46416,9 @@
             },
             "type": "library",
             "extra": {
+                "branch-version": "2.3",
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-main": "2.3-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -46318,7 +46468,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-07T11:33:47+00:00"
+            "time": "2020-10-14T17:08:19+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -50923,6 +51073,7 @@
                 }
             ],
             "description": "JSONPath implementation for parsing, searching and flattening arrays",
+            "abandoned": "softcreatr/jsonpath",
             "time": "2019-07-15T17:23:22+00:00"
         },
         {
@@ -52644,16 +52795,16 @@
         },
         {
             "name": "psalm/phar",
-            "version": "3.17.1",
+            "version": "3.17.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/phar.git",
-                "reference": "8a8ddff69bf1767e41a6e4d18b8ec75103f7d154"
+                "reference": "2c5887d44012f7cbd6fce2e7075460d2add2d2ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/8a8ddff69bf1767e41a6e4d18b8ec75103f7d154",
-                "reference": "8a8ddff69bf1767e41a6e4d18b8ec75103f7d154",
+                "url": "https://api.github.com/repos/psalm/phar/zipball/2c5887d44012f7cbd6fce2e7075460d2add2d2ec",
+                "reference": "2c5887d44012f7cbd6fce2e7075460d2add2d2ec",
                 "shasum": ""
             },
             "require": {
@@ -52671,7 +52822,7 @@
                 "MIT"
             ],
             "description": "Composer-based Psalm Phar",
-            "time": "2020-10-13T00:57:36+00:00"
+            "time": "2020-10-15T00:53:38+00:00"
         },
         {
             "name": "psr/cache",
