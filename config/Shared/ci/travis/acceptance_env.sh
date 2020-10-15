@@ -1,22 +1,5 @@
 #!/bin/bash -e
 
-# # provide antelope legacy
-# FE_ANTELOPE_LEGACY=false
-
-# # package manager (npm|yarn)
-# FE_PACKAGE_MANAGER='npm'
-
-# # install command (add flags/args here if you need)
-# FE_INSTALL_COMMAND='install'
-
-# # yves
-# FE_YVES_SCRIPT='yves'
-# FE_YVES_BUNDLE_PKGJSON_PATTERN=".+/assets/Yves/package.json$"
-
-# # zed
-# FE_ZED_SCRIPT='zed'
-# FE_ZED_BUNDLE_PKGJSON_PATTERN=".+/assets/Zed/package.json$"
-
 sudo apt-get -qqy install apache2
 
 config/Shared/ci/travis/install_mod_fastcgi.sh
@@ -62,6 +45,3 @@ sudo service apache2 restart
 sudo ln -s -f "$CHROMIUM_BINARY" /usr/local/bin/chrome
 
 # node.js is required - it is installed by '- nvm install (...)' in .travis.yml
-
-# codeception
-wget https://raw.github.com/Codeception/c3/2.0/c3.php > /dev/null
