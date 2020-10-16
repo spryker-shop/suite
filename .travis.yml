@@ -416,6 +416,7 @@ script:
     - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/ ; fi
     - if [[ $VALIDATION == 1 ]] ; then vendor/bin/psalm.phar --show-info=false ; fi
 
+    - timeout 45m bash -c "${CHROMEDRIVER_BINARY} --port=4444 --whitelisted-ips= --url-base=/wd/hub --log-path=/tmp/chromedriver.log --log-level=DEBUG">/dev/null &
     - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -c codeception.functional.yml --ext DotReporter ; fi
     - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g EndToEnd -g Presentation -x DockerOnly --ext DotReporter ; fi
 
