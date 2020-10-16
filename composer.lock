@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d887d03eadea0f367b98468f3bd13cb",
+    "content-hash": "4b997b3b1d4723bbe212f31d4cace6a9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.158.6",
+            "version": "3.158.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "4e912c1ae4d4b3538ada36ac1478f980f9bdf329"
+                "reference": "9afc422ad4ef0f1de9fa2a0be4b856c1dfa31123"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4e912c1ae4d4b3538ada36ac1478f980f9bdf329",
-                "reference": "4e912c1ae4d4b3538ada36ac1478f980f9bdf329",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9afc422ad4ef0f1de9fa2a0be4b856c1dfa31123",
+                "reference": "9afc422ad4ef0f1de9fa2a0be4b856c1dfa31123",
                 "shasum": ""
             },
             "require": {
@@ -89,69 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-10-09T18:11:48+00:00"
-        },
-        {
-            "name": "beberlei/assert",
-            "version": "v3.2.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/beberlei/assert.git",
-                "reference": "d63a6943fc4fd1a2aedb65994e3548715105abcf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/beberlei/assert/zipball/d63a6943fc4fd1a2aedb65994e3548715105abcf",
-                "reference": "d63a6943fc4fd1a2aedb65994e3548715105abcf",
-                "shasum": ""
-            },
-            "require": {
-                "ext-ctype": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "ext-simplexml": "*",
-                "php": "^7"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "*",
-                "phpstan/phpstan-shim": "*",
-                "phpunit/phpunit": ">=6.0.0 <8"
-            },
-            "suggest": {
-                "ext-intl": "Needed to allow Assertion::count(), Assertion::isCountable(), Assertion::minCount(), and Assertion::maxCount() to operate on ResourceBundles"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Assert\\": "lib/Assert"
-                },
-                "files": [
-                    "lib/Assert/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "Richard Quadling",
-                    "email": "rquadling@gmail.com",
-                    "role": "Collaborator"
-                }
-            ],
-            "description": "Thin assertion library for input validation in business models.",
-            "keywords": [
-                "assert",
-                "assertion",
-                "validation"
-            ],
-            "time": "2019-12-19T17:51:41+00:00"
+            "time": "2020-10-15T18:16:19+00:00"
         },
         {
             "name": "brick/math",
@@ -348,76 +286,6 @@
                 "symmetric key cryptography"
             ],
             "time": "2018-07-24T23:27:56+00:00"
-        },
-        {
-            "name": "doctrine/annotations",
-            "version": "1.10.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/annotations.git",
-                "reference": "bfe91e31984e2ba76df1c1339681770401ec262f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/bfe91e31984e2ba76df1c1339681770401ec262f",
-                "reference": "bfe91e31984e2ba76df1c1339681770401ec262f",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/lexer": "1.*",
-                "ext-tokenizer": "*",
-                "php": "^7.1 || ^8.0"
-            },
-            "require-dev": {
-                "doctrine/cache": "1.*",
-                "phpstan/phpstan": "^0.12.20",
-                "phpunit/phpunit": "^7.5 || ^9.1.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.9.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Docblock Annotations Parser",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "annotations",
-                "docblock",
-                "parser"
-            ],
-            "time": "2020-08-10T19:35:50+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1755,150 +1623,6 @@
             "time": "2020-07-01T11:33:50+00:00"
         },
         {
-            "name": "lstrojny/functional-php",
-            "version": "1.14.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lstrojny/functional-php.git",
-                "reference": "9e8363e3cb9db924327f51b5804f4dfba03605aa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lstrojny/functional-php/zipball/9e8363e3cb9db924327f51b5804f4dfba03605aa",
-                "reference": "9e8363e3cb9db924327f51b5804f4dfba03605aa",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~7"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.14",
-                "phpunit/phpunit": "~7",
-                "squizlabs/php_codesniffer": "~3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Functional\\": "src/Functional"
-                },
-                "files": [
-                    "src/Functional/Ary.php",
-                    "src/Functional/Average.php",
-                    "src/Functional/ButLast.php",
-                    "src/Functional/Capture.php",
-                    "src/Functional/ConstFunction.php",
-                    "src/Functional/CompareOn.php",
-                    "src/Functional/CompareObjectHashOn.php",
-                    "src/Functional/Compose.php",
-                    "src/Functional/Concat.php",
-                    "src/Functional/Contains.php",
-                    "src/Functional/Converge.php",
-                    "src/Functional/Curry.php",
-                    "src/Functional/CurryN.php",
-                    "src/Functional/Difference.php",
-                    "src/Functional/DropFirst.php",
-                    "src/Functional/DropLast.php",
-                    "src/Functional/Each.php",
-                    "src/Functional/Equal.php",
-                    "src/Functional/ErrorToException.php",
-                    "src/Functional/Every.php",
-                    "src/Functional/False.php",
-                    "src/Functional/Falsy.php",
-                    "src/Functional/Filter.php",
-                    "src/Functional/First.php",
-                    "src/Functional/FirstIndexOf.php",
-                    "src/Functional/FlatMap.php",
-                    "src/Functional/Flatten.php",
-                    "src/Functional/Flip.php",
-                    "src/Functional/GreaterThan.php",
-                    "src/Functional/GreaterThanOrEqual.php",
-                    "src/Functional/Group.php",
-                    "src/Functional/Head.php",
-                    "src/Functional/Id.php",
-                    "src/Functional/IfElse.php",
-                    "src/Functional/Identical.php",
-                    "src/Functional/IndexesOf.php",
-                    "src/Functional/Intersperse.php",
-                    "src/Functional/Invoke.php",
-                    "src/Functional/InvokeFirst.php",
-                    "src/Functional/InvokeIf.php",
-                    "src/Functional/InvokeLast.php",
-                    "src/Functional/Invoker.php",
-                    "src/Functional/Last.php",
-                    "src/Functional/LastIndexOf.php",
-                    "src/Functional/LessThan.php",
-                    "src/Functional/LessThanOrEqual.php",
-                    "src/Functional/LexicographicCompare.php",
-                    "src/Functional/Map.php",
-                    "src/Functional/Matching.php",
-                    "src/Functional/Maximum.php",
-                    "src/Functional/Memoize.php",
-                    "src/Functional/Minimum.php",
-                    "src/Functional/None.php",
-                    "src/Functional/Noop.php",
-                    "src/Functional/Not.php",
-                    "src/Functional/OmitKeys.php",
-                    "src/Functional/PartialAny.php",
-                    "src/Functional/PartialLeft.php",
-                    "src/Functional/PartialMethod.php",
-                    "src/Functional/PartialRight.php",
-                    "src/Functional/Partition.php",
-                    "src/Functional/Pick.php",
-                    "src/Functional/Pluck.php",
-                    "src/Functional/Poll.php",
-                    "src/Functional/Product.php",
-                    "src/Functional/Ratio.php",
-                    "src/Functional/ReduceLeft.php",
-                    "src/Functional/ReduceRight.php",
-                    "src/Functional/Reindex.php",
-                    "src/Functional/Reject.php",
-                    "src/Functional/Repeat.php",
-                    "src/Functional/Retry.php",
-                    "src/Functional/Select.php",
-                    "src/Functional/SelectKeys.php",
-                    "src/Functional/SequenceConstant.php",
-                    "src/Functional/SequenceExponential.php",
-                    "src/Functional/SequenceLinear.php",
-                    "src/Functional/Some.php",
-                    "src/Functional/Sort.php",
-                    "src/Functional/Sum.php",
-                    "src/Functional/SuppressError.php",
-                    "src/Functional/Tap.php",
-                    "src/Functional/Tail.php",
-                    "src/Functional/TailRecursion.php",
-                    "src/Functional/TakeLeft.php",
-                    "src/Functional/TakeRight.php",
-                    "src/Functional/True.php",
-                    "src/Functional/Truthy.php",
-                    "src/Functional/Unique.php",
-                    "src/Functional/ValueToKey.php",
-                    "src/Functional/With.php",
-                    "src/Functional/Zip.php",
-                    "src/Functional/ZipAll.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lars Strojny",
-                    "email": "lstrojny@php.net",
-                    "homepage": "http://usrportage.de"
-                },
-                {
-                    "name": "Max Beutel",
-                    "email": "nash12@gmail.com"
-                }
-            ],
-            "description": "Functional primitives for PHP",
-            "keywords": [
-                "functional"
-            ],
-            "time": "2020-10-12T09:48:50+00:00"
-        },
-        {
             "name": "moneyphp/money",
             "version": "v3.3.1",
             "source": {
@@ -2249,172 +1973,6 @@
                 "rabbitmq"
             ],
             "time": "2020-09-25T18:34:58+00:00"
-        },
-        {
-            "name": "phpbench/container",
-            "version": "1.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpbench/container.git",
-                "reference": "2f2b269b3b8cb9a0053cf98f1c3a84866fe7f0e2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpbench/container/zipball/2f2b269b3b8cb9a0053cf98f1c3a84866fe7f0e2",
-                "reference": "2f2b269b3b8cb9a0053cf98f1c3a84866fe7f0e2",
-                "shasum": ""
-            },
-            "require": {
-                "psr/container": "^1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.36"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpBench\\DependencyInjection\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel Leech",
-                    "email": "daniel@dantleech.com"
-                }
-            ],
-            "description": "Simple, configurable, service container.",
-            "time": "2020-08-23T23:43:00+00:00"
-        },
-        {
-            "name": "phpbench/dom",
-            "version": "0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpbench/dom.git",
-                "reference": "b135378dd0004c05ba5446aeddaf0b83339c1c4c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpbench/dom/zipball/b135378dd0004c05ba5446aeddaf0b83339c1c4c",
-                "reference": "b135378dd0004c05ba5446aeddaf0b83339c1c4c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "php": "^5.4|^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.6"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpBench\\Dom\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel Leech",
-                    "email": "daniel@dantleech.com"
-                }
-            ],
-            "description": "DOM wrapper to simplify working with the PHP DOM implementation",
-            "time": "2016-02-27T12:15:56+00:00"
-        },
-        {
-            "name": "phpbench/phpbench",
-            "version": "0.17.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpbench/phpbench.git",
-                "reference": "3211debc3afb9da79d796cf7471d52cad97b17f1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpbench/phpbench/zipball/3211debc3afb9da79d796cf7471d52cad97b17f1",
-                "reference": "3211debc3afb9da79d796cf7471d52cad97b17f1",
-                "shasum": ""
-            },
-            "require": {
-                "beberlei/assert": "^2.4 || ^3.0",
-                "doctrine/annotations": "^1.2.7",
-                "ext-dom": "*",
-                "ext-json": "*",
-                "ext-pcre": "*",
-                "ext-reflection": "*",
-                "ext-spl": "*",
-                "lstrojny/functional-php": "1.0 || ^1.2.3",
-                "php": "^7.2",
-                "phpbench/container": "~1.2",
-                "phpbench/dom": "~0.2.0",
-                "seld/jsonlint": "^1.1",
-                "symfony/console": "^4.2 || ^5.0",
-                "symfony/debug": "^4.2 || ^5.0",
-                "symfony/filesystem": "^4.2 || ^5.0",
-                "symfony/finder": "^4.2 || ^5.0",
-                "symfony/options-resolver": "^4.2 || ^5.0",
-                "symfony/process": "^4.2 || ^5.0",
-                "webmozart/path-util": "^2.3"
-            },
-            "require-dev": {
-                "doctrine/dbal": "^2.4",
-                "friendsofphp/php-cs-fixer": "^2.13.1",
-                "padraic/phar-updater": "^1.0",
-                "phpspec/prophecy": "^1.8",
-                "phpstan/phpstan": "^0.12.7",
-                "phpunit/phpunit": "^8.5"
-            },
-            "suggest": {
-                "ext-curl": "For (web) reports extension",
-                "ext-xdebug": "For Xdebug profiling extension."
-            },
-            "bin": [
-                "bin/phpbench"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpBench\\": "lib/",
-                    "PhpBench\\Extensions\\Dbal\\": "extensions/dbal/lib/",
-                    "PhpBench\\Extensions\\XDebug\\": "extensions/xdebug/lib/",
-                    "PhpBench\\Extensions\\Reports\\": "extensions/reports/lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel Leech",
-                    "email": "daniel@dantleech.com"
-                }
-            ],
-            "description": "PHP Benchmarking Framework",
-            "time": "2020-06-13T11:59:17+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -3203,65 +2761,6 @@
             "time": "2020-06-10T12:07:24+00:00"
         },
         {
-            "name": "seld/jsonlint",
-            "version": "1.8.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Seldaek/jsonlint.git",
-                "reference": "590cfec960b77fd55e39b7d9246659e95dd6d337"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/590cfec960b77fd55e39b7d9246659e95dd6d337",
-                "reference": "590cfec960b77fd55e39b7d9246659e95dd6d337",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3 || ^7.0 || ^8.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
-            },
-            "bin": [
-                "bin/jsonlint"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Seld\\JsonLint\\": "src/Seld/JsonLint/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be",
-                    "homepage": "http://seld.be"
-                }
-            ],
-            "description": "JSON Linter",
-            "keywords": [
-                "json",
-                "linter",
-                "parser",
-                "validator"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/Seldaek",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/seld/jsonlint",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2020-08-25T06:56:57+00:00"
-        },
-        {
             "name": "spryker-eco/loggly",
             "version": "0.1.0",
             "source": {
@@ -3380,51 +2879,6 @@
             ],
             "description": "Payone module",
             "time": "2020-09-22T14:57:01+00:00"
-        },
-        {
-            "name": "spryker-sdk/benchmark",
-            "version": "0.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-sdk/benchmark.git",
-                "reference": "d22b3cda1a4ab8b8e9582636cc9bfa0c49ea33d1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/benchmark/zipball/d22b3cda1a4ab8b8e9582636cc9bfa0c49ea33d1",
-                "reference": "d22b3cda1a4ab8b8e9582636cc9bfa0c49ea33d1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "phpbench/phpbench": "^0.17.0",
-                "psr/http-message": "^1.0.0",
-                "spryker/guzzle": "^2.1.0",
-                "spryker/kernel": "^3.54.0",
-                "spryker/symfony": "^3.1.0",
-                "spryker/util-encoding": "^2.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/config": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerSdk\\": "src/SprykerSdk/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Benchmark module",
-            "time": "2020-10-09T16:11:57+00:00"
         },
         {
             "name": "spryker-shop/agent-page",
@@ -38923,16 +38377,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "11.18.2",
+            "version": "11.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "20f4ec91fcd15b996ffa2f5698d59ec158b675ef"
+                "reference": "15c681de41ef53a2eb9cfc67a3474c3ffcba6155"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/20f4ec91fcd15b996ffa2f5698d59ec158b675ef",
-                "reference": "20f4ec91fcd15b996ffa2f5698d59ec158b675ef",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/15c681de41ef53a2eb9cfc67a3474c3ffcba6155",
+                "reference": "15c681de41ef53a2eb9cfc67a3474c3ffcba6155",
                 "shasum": ""
             },
             "require": {
@@ -38991,7 +38445,7 @@
                 "proprietary"
             ],
             "description": "Sales module",
-            "time": "2020-09-18T10:42:22+00:00"
+            "time": "2020-10-13T08:13:30+00:00"
         },
         {
             "name": "spryker/sales-configurable-bundle",
@@ -40427,16 +39881,16 @@
         },
         {
             "name": "spryker/search-elasticsearch",
-            "version": "1.5.2",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/search-elasticsearch.git",
-                "reference": "6ae74def5ee17c3de579a1a3fd4c6367dd902d95"
+                "reference": "fd6bb3f4dccc53faed6ca79a124753244c17006e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/search-elasticsearch/zipball/6ae74def5ee17c3de579a1a3fd4c6367dd902d95",
-                "reference": "6ae74def5ee17c3de579a1a3fd4c6367dd902d95",
+                "url": "https://api.github.com/repos/spryker/search-elasticsearch/zipball/fd6bb3f4dccc53faed6ca79a124753244c17006e",
+                "reference": "fd6bb3f4dccc53faed6ca79a124753244c17006e",
                 "shasum": ""
             },
             "require": {
@@ -40477,7 +39931,7 @@
                 "proprietary"
             ],
             "description": "SearchElasticsearch module",
-            "time": "2020-09-30T11:34:19+00:00"
+            "time": "2020-10-15T15:11:29+00:00"
         },
         {
             "name": "spryker/search-elasticsearch-gui",
@@ -50024,6 +49478,68 @@
     ],
     "packages-dev": [
         {
+            "name": "beberlei/assert",
+            "version": "v3.2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beberlei/assert.git",
+                "reference": "d63a6943fc4fd1a2aedb65994e3548715105abcf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/d63a6943fc4fd1a2aedb65994e3548715105abcf",
+                "reference": "d63a6943fc4fd1a2aedb65994e3548715105abcf",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "php": "^7"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "*",
+                "phpstan/phpstan-shim": "*",
+                "phpunit/phpunit": ">=6.0.0 <8"
+            },
+            "suggest": {
+                "ext-intl": "Needed to allow Assertion::count(), Assertion::isCountable(), Assertion::minCount(), and Assertion::maxCount() to operate on ResourceBundles"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Assert\\": "lib/Assert"
+                },
+                "files": [
+                    "lib/Assert/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Richard Quadling",
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
+                }
+            ],
+            "description": "Thin assertion library for input validation in business models.",
+            "keywords": [
+                "assert",
+                "assertion",
+                "validation"
+            ],
+            "time": "2019-12-19T17:51:41+00:00"
+        },
+        {
             "name": "behat/gherkin",
             "version": "v4.6.2",
             "source": {
@@ -50904,6 +50420,76 @@
             "time": "2020-02-18T21:20:04+00:00"
         },
         {
+            "name": "doctrine/annotations",
+            "version": "1.10.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/annotations.git",
+                "reference": "bfe91e31984e2ba76df1c1339681770401ec262f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/bfe91e31984e2ba76df1c1339681770401ec262f",
+                "reference": "bfe91e31984e2ba76df1c1339681770401ec262f",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/lexer": "1.*",
+                "ext-tokenizer": "*",
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "doctrine/cache": "1.*",
+                "phpstan/phpstan": "^0.12.20",
+                "phpunit/phpunit": "^7.5 || ^9.1.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "Docblock Annotations Parser",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "annotations",
+                "docblock",
+                "parser"
+            ],
+            "time": "2020-08-10T19:35:50+00:00"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.3.1",
             "source": {
@@ -51127,56 +50713,6 @@
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
-            "name": "jakoch/phantomjs-installer",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jakoch/phantomjs-installer.git",
-                "reference": "1f2df4a7cd4c860b01bf9c3ffeb9962f85f76e67"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jakoch/phantomjs-installer/zipball/1f2df4a7cd4c860b01bf9c3ffeb9962f85f76e67",
-                "reference": "1f2df4a7cd4c860b01bf9c3ffeb9962f85f76e67",
-                "shasum": ""
-            },
-            "require": {
-                "ext-bz2": "*",
-                "ext-openssl": "*",
-                "php": ">5.3"
-            },
-            "require-dev": {
-                "composer/composer": "^1.2",
-                "phpunit/phpunit": "^8"
-            },
-            "type": "custom-installer",
-            "autoload": {
-                "psr-4": {
-                    "PhantomInstaller\\Test\\": "tests/"
-                },
-                "psr-0": {
-                    "PhantomInstaller\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jens-André Koch",
-                    "email": "jakoch@web.de"
-                }
-            ],
-            "description": "A Composer package which installs the PhantomJS binary (Linux, Windows, Mac) into `/bin` of your project.",
-            "keywords": [
-                "binaries",
-                "headless",
-                "phantomjs"
-            ],
-            "time": "2020-07-18T05:26:32+00:00"
-        },
-        {
             "name": "jetbrains/phpstorm-stubs",
             "version": "v2019.1",
             "source": {
@@ -51214,6 +50750,150 @@
                 "type"
             ],
             "time": "2019-03-25T16:59:23+00:00"
+        },
+        {
+            "name": "lstrojny/functional-php",
+            "version": "1.14.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lstrojny/functional-php.git",
+                "reference": "9e8363e3cb9db924327f51b5804f4dfba03605aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lstrojny/functional-php/zipball/9e8363e3cb9db924327f51b5804f4dfba03605aa",
+                "reference": "9e8363e3cb9db924327f51b5804f4dfba03605aa",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "phpunit/phpunit": "~7",
+                "squizlabs/php_codesniffer": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Functional\\": "src/Functional"
+                },
+                "files": [
+                    "src/Functional/Ary.php",
+                    "src/Functional/Average.php",
+                    "src/Functional/ButLast.php",
+                    "src/Functional/Capture.php",
+                    "src/Functional/ConstFunction.php",
+                    "src/Functional/CompareOn.php",
+                    "src/Functional/CompareObjectHashOn.php",
+                    "src/Functional/Compose.php",
+                    "src/Functional/Concat.php",
+                    "src/Functional/Contains.php",
+                    "src/Functional/Converge.php",
+                    "src/Functional/Curry.php",
+                    "src/Functional/CurryN.php",
+                    "src/Functional/Difference.php",
+                    "src/Functional/DropFirst.php",
+                    "src/Functional/DropLast.php",
+                    "src/Functional/Each.php",
+                    "src/Functional/Equal.php",
+                    "src/Functional/ErrorToException.php",
+                    "src/Functional/Every.php",
+                    "src/Functional/False.php",
+                    "src/Functional/Falsy.php",
+                    "src/Functional/Filter.php",
+                    "src/Functional/First.php",
+                    "src/Functional/FirstIndexOf.php",
+                    "src/Functional/FlatMap.php",
+                    "src/Functional/Flatten.php",
+                    "src/Functional/Flip.php",
+                    "src/Functional/GreaterThan.php",
+                    "src/Functional/GreaterThanOrEqual.php",
+                    "src/Functional/Group.php",
+                    "src/Functional/Head.php",
+                    "src/Functional/Id.php",
+                    "src/Functional/IfElse.php",
+                    "src/Functional/Identical.php",
+                    "src/Functional/IndexesOf.php",
+                    "src/Functional/Intersperse.php",
+                    "src/Functional/Invoke.php",
+                    "src/Functional/InvokeFirst.php",
+                    "src/Functional/InvokeIf.php",
+                    "src/Functional/InvokeLast.php",
+                    "src/Functional/Invoker.php",
+                    "src/Functional/Last.php",
+                    "src/Functional/LastIndexOf.php",
+                    "src/Functional/LessThan.php",
+                    "src/Functional/LessThanOrEqual.php",
+                    "src/Functional/LexicographicCompare.php",
+                    "src/Functional/Map.php",
+                    "src/Functional/Matching.php",
+                    "src/Functional/Maximum.php",
+                    "src/Functional/Memoize.php",
+                    "src/Functional/Minimum.php",
+                    "src/Functional/None.php",
+                    "src/Functional/Noop.php",
+                    "src/Functional/Not.php",
+                    "src/Functional/OmitKeys.php",
+                    "src/Functional/PartialAny.php",
+                    "src/Functional/PartialLeft.php",
+                    "src/Functional/PartialMethod.php",
+                    "src/Functional/PartialRight.php",
+                    "src/Functional/Partition.php",
+                    "src/Functional/Pick.php",
+                    "src/Functional/Pluck.php",
+                    "src/Functional/Poll.php",
+                    "src/Functional/Product.php",
+                    "src/Functional/Ratio.php",
+                    "src/Functional/ReduceLeft.php",
+                    "src/Functional/ReduceRight.php",
+                    "src/Functional/Reindex.php",
+                    "src/Functional/Reject.php",
+                    "src/Functional/Repeat.php",
+                    "src/Functional/Retry.php",
+                    "src/Functional/Select.php",
+                    "src/Functional/SelectKeys.php",
+                    "src/Functional/SequenceConstant.php",
+                    "src/Functional/SequenceExponential.php",
+                    "src/Functional/SequenceLinear.php",
+                    "src/Functional/Some.php",
+                    "src/Functional/Sort.php",
+                    "src/Functional/Sum.php",
+                    "src/Functional/SuppressError.php",
+                    "src/Functional/Tap.php",
+                    "src/Functional/Tail.php",
+                    "src/Functional/TailRecursion.php",
+                    "src/Functional/TakeLeft.php",
+                    "src/Functional/TakeRight.php",
+                    "src/Functional/True.php",
+                    "src/Functional/Truthy.php",
+                    "src/Functional/Unique.php",
+                    "src/Functional/ValueToKey.php",
+                    "src/Functional/With.php",
+                    "src/Functional/Zip.php",
+                    "src/Functional/ZipAll.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lars Strojny",
+                    "email": "lstrojny@php.net",
+                    "homepage": "http://usrportage.de"
+                },
+                {
+                    "name": "Max Beutel",
+                    "email": "nash12@gmail.com"
+                }
+            ],
+            "description": "Functional primitives for PHP",
+            "keywords": [
+                "functional"
+            ],
+            "time": "2020-10-12T09:48:50+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -52047,6 +51727,172 @@
                 "webdriver"
             ],
             "time": "2020-10-06T19:10:04+00:00"
+        },
+        {
+            "name": "phpbench/container",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpbench/container.git",
+                "reference": "2f2b269b3b8cb9a0053cf98f1c3a84866fe7f0e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpbench/container/zipball/2f2b269b3b8cb9a0053cf98f1c3a84866fe7f0e2",
+                "reference": "2f2b269b3b8cb9a0053cf98f1c3a84866fe7f0e2",
+                "shasum": ""
+            },
+            "require": {
+                "psr/container": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.36"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpBench\\DependencyInjection\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Leech",
+                    "email": "daniel@dantleech.com"
+                }
+            ],
+            "description": "Simple, configurable, service container.",
+            "time": "2020-08-23T23:43:00+00:00"
+        },
+        {
+            "name": "phpbench/dom",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpbench/dom.git",
+                "reference": "b135378dd0004c05ba5446aeddaf0b83339c1c4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpbench/dom/zipball/b135378dd0004c05ba5446aeddaf0b83339c1c4c",
+                "reference": "b135378dd0004c05ba5446aeddaf0b83339c1c4c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "php": "^5.4|^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpBench\\Dom\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Leech",
+                    "email": "daniel@dantleech.com"
+                }
+            ],
+            "description": "DOM wrapper to simplify working with the PHP DOM implementation",
+            "time": "2016-02-27T12:15:56+00:00"
+        },
+        {
+            "name": "phpbench/phpbench",
+            "version": "0.17.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpbench/phpbench.git",
+                "reference": "3211debc3afb9da79d796cf7471d52cad97b17f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpbench/phpbench/zipball/3211debc3afb9da79d796cf7471d52cad97b17f1",
+                "reference": "3211debc3afb9da79d796cf7471d52cad97b17f1",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "^2.4 || ^3.0",
+                "doctrine/annotations": "^1.2.7",
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-pcre": "*",
+                "ext-reflection": "*",
+                "ext-spl": "*",
+                "lstrojny/functional-php": "1.0 || ^1.2.3",
+                "php": "^7.2",
+                "phpbench/container": "~1.2",
+                "phpbench/dom": "~0.2.0",
+                "seld/jsonlint": "^1.1",
+                "symfony/console": "^4.2 || ^5.0",
+                "symfony/debug": "^4.2 || ^5.0",
+                "symfony/filesystem": "^4.2 || ^5.0",
+                "symfony/finder": "^4.2 || ^5.0",
+                "symfony/options-resolver": "^4.2 || ^5.0",
+                "symfony/process": "^4.2 || ^5.0",
+                "webmozart/path-util": "^2.3"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^2.4",
+                "friendsofphp/php-cs-fixer": "^2.13.1",
+                "padraic/phar-updater": "^1.0",
+                "phpspec/prophecy": "^1.8",
+                "phpstan/phpstan": "^0.12.7",
+                "phpunit/phpunit": "^8.5"
+            },
+            "suggest": {
+                "ext-curl": "For (web) reports extension",
+                "ext-xdebug": "For Xdebug profiling extension."
+            },
+            "bin": [
+                "bin/phpbench"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpBench\\": "lib/",
+                    "PhpBench\\Extensions\\Dbal\\": "extensions/dbal/lib/",
+                    "PhpBench\\Extensions\\XDebug\\": "extensions/xdebug/lib/",
+                    "PhpBench\\Extensions\\Reports\\": "extensions/reports/lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Leech",
+                    "email": "daniel@dantleech.com"
+                }
+            ],
+            "description": "PHP Benchmarking Framework",
+            "time": "2020-06-13T11:59:17+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -53686,6 +53532,65 @@
             "time": "2016-10-03T07:35:21+00:00"
         },
         {
+            "name": "seld/jsonlint",
+            "version": "1.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/jsonlint.git",
+                "reference": "590cfec960b77fd55e39b7d9246659e95dd6d337"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/590cfec960b77fd55e39b7d9246659e95dd6d337",
+                "reference": "590cfec960b77fd55e39b7d9246659e95dd6d337",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
+            },
+            "bin": [
+                "bin/jsonlint"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Seld\\JsonLint\\": "src/Seld/JsonLint/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                }
+            ],
+            "description": "JSON Linter",
+            "keywords": [
+                "json",
+                "linter",
+                "parser",
+                "validator"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/seld/jsonlint",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-08-25T06:56:57+00:00"
+        },
+        {
             "name": "sensiolabs/security-checker",
             "version": "v6.0.3",
             "source": {
@@ -53842,6 +53747,51 @@
                 "versions"
             ],
             "time": "2020-05-05T13:03:07+00:00"
+        },
+        {
+            "name": "spryker-sdk/benchmark",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-sdk/benchmark.git",
+                "reference": "d22b3cda1a4ab8b8e9582636cc9bfa0c49ea33d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/benchmark/zipball/d22b3cda1a4ab8b8e9582636cc9bfa0c49ea33d1",
+                "reference": "d22b3cda1a4ab8b8e9582636cc9bfa0c49ea33d1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "phpbench/phpbench": "^0.17.0",
+                "psr/http-message": "^1.0.0",
+                "spryker/guzzle": "^2.1.0",
+                "spryker/kernel": "^3.54.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/config": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerSdk\\": "src/SprykerSdk/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Benchmark module",
+            "time": "2020-10-09T16:11:57+00:00"
         },
         {
             "name": "spryker-sdk/codeception-phantoman",
@@ -54350,6 +54300,39 @@
             ],
             "description": "Development module",
             "time": "2020-10-09T11:31:07+00:00"
+        },
+        {
+            "name": "spryker/docker-chromedriver",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/docker-chromedriver.git",
+                "reference": "acc17f3698859e4f0e0d9191fdbd2cef30460acd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/docker-chromedriver/zipball/acc17f3698859e4f0e0d9191fdbd2cef30460acd",
+                "reference": "acc17f3698859e4f0e0d9191fdbd2cef30460acd",
+                "shasum": ""
+            },
+            "type": "custom-installer",
+            "autoload": {
+                "psr-4": {
+                    "ChromedriverInstaller\\": "src/ChromedriverInstaller/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Bezpiatov",
+                    "email": "aleksandr.bezpiatov@spryker.com"
+                }
+            ],
+            "description": "Source of Chromedriver with Chromium for building Docker containers and integrated usage.",
+            "time": "2020-10-07T09:58:21+00:00"
         },
         {
             "name": "spryker/testify",
@@ -55612,7 +55595,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "spryker/code-sniffer": 20
+        "spryker/code-sniffer": 20,
+        "spryker/docker-chromedriver": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

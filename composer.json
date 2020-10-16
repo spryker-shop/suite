@@ -19,7 +19,6 @@
     "propel/propel": "2.0.0-alpha11",
     "spryker-eco/loggly": "^0.1.0",
     "spryker-eco/payone": "^4.0.0",
-    "spryker-sdk/benchmark": "^0.2.0",
     "spryker-shop/agent-page": "^1.0.0",
     "spryker-shop/agent-widget": "^1.0.0",
     "spryker-shop/availability-notification-page": "^1.0.0",
@@ -889,7 +888,6 @@
     "doctrine/lexer": "^1.0.2",
     "filp/whoops": "^2.7",
     "fzaninotto/faker": "^1.6",
-    "jakoch/phantomjs-installer": "^3.0.0",
     "myclabs/deep-copy": "^1.8.1",
     "pdepend/pdepend": "^2.2.4",
     "phpstan/phpstan": "0.12.25",
@@ -901,6 +899,7 @@
     "sebastian/recursion-context": "^3.0.0",
     "sensiolabs/security-checker": "^6.0.0",
     "sllh/composer-versions-check": "^2.0.2",
+    "spryker-sdk/benchmark": "^0.2.0",
     "spryker-sdk/codeception-phantoman": "^0.1.0",
     "spryker-sdk/composer-constrainer": "^0.2.0",
     "spryker-sdk/phpstan-spryker": "^0.3",
@@ -910,6 +909,7 @@
     "spryker/code-generator": "^0.3.0",
     "spryker/code-sniffer": "dev-master",
     "spryker/development": "^3.0.0",
+    "spryker/docker-chromedriver": "dev-master",
     "spryker/testify": "^3.0.0",
     "spryker/web-profiler": "^1.5",
     "spryker/web-profiler-extension": "^1.0.0",
@@ -944,7 +944,8 @@
     "use-include-path": true,
     "sort-packages": true,
     "github-protocols": ["https"],
-    "process-timeout": 900
+    "process-timeout": 900,
+    "chromium-revision": 814168
   },
   "scripts": {
     "compile": [
@@ -953,10 +954,10 @@
       "./deploy/heroku/run.sh"
     ],
     "post-install-cmd": [
-      "PhantomInstaller\\Installer::installPhantomJS"
+      "ChromedriverInstaller\\Installer::installChromedriver"
     ],
     "post-update-cmd": [
-      "PhantomInstaller\\Installer::installPhantomJS"
+      "ChromedriverInstaller\\Installer::installChromedriver"
     ],
     "phpstan": [
       "php -d memory_limit=1024M vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/"
