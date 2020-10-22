@@ -885,6 +885,32 @@ jobs:
         - docker/sdk up -t -v
         - docker/sdk testing codecept run -c codeception.ci.functional.yml
 
+    - name: Docker / Alpine / PHP 7.2 / MariaDB / Acceptance
+      <<: *DOCKER_BUILD_TEMPLATE
+      stage: Test
+      env:
+          - PROGRESS_TYPE=plain
+          - SPRYKER_PLATFORM_IMAGE=spryker/php:7.2
+          - TRAVIS=1
+      script:
+          - docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
+          - docker/sdk up -t
+          - docker/sdk testing console queue:worker:start --stop-when-empty
+          - docker/sdk testing codecept run -c codeception.acceptance.yml
+
+    - name: Docker / Alpine / PHP 7.4 / PostgreSQL / Acceptance
+      <<: *DOCKER_BUILD_TEMPLATE
+      stage: Test
+      env:
+          - PROGRESS_TYPE=plain
+          - SPRYKER_PLATFORM_IMAGE=spryker/php:7.4
+          - TRAVIS=1
+      script:
+          - docker/sdk boot -v deploy.ci.acceptance.yml
+          - docker/sdk up -t
+          - docker/sdk testing console queue:worker:start --stop-when-empty
+          - docker/sdk testing codecept run -c codeception.acceptance.yml
+
     - name: Docker / Alpine / PHP 7.4 / PostgreSQL / Glue
       <<: *DOCKER_BUILD_TEMPLATE
       stage: Test
@@ -906,11 +932,12 @@ jobs:
         - PROGRESS_TYPE=plain
         - SPRYKER_PLATFORM_IMAGE=spryker/php:7.2
         - TRAVIS=1
-        - APPLICATION_ENV=ci.mysql
       script:
-        - docker/sdk boot -v deploy.ci.functional.mariadb.yml
+        - docker/sdk boot -v deploy.ci.api.mariadb.yml
         - docker/sdk up -t -v
-        - docker/sdk testing codecept run -c codeception.ci.functional.yml
+        - docker/sdk testing codecept fixtures
+        - docker/sdk testing console queue:worker:start --stop-when-empty
+        - docker/sdk testing codecept run -c codeception.api.yml
 
     - name: Docker / Alpine / PHP 7.4 / Frontend & Assets
       <<: *DOCKER_BUILD_TEMPLATE
