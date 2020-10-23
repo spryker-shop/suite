@@ -31,7 +31,7 @@ class ProductStockWriterPropelTest extends AbstractProductStockWriterTest
     public function testProductStockWriter(): void
     {
         $this->markTestSkipped('This test is flickery for MariaDB.');
-        
+
         $writer = $this->getDataImportBusinessFactoryStub()->createProductStockPropelWriter();
 
         $productSkus = $this->getProductsSkus();
