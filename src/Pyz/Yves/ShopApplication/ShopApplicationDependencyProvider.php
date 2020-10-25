@@ -145,7 +145,6 @@ use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListSubtotalWidget;
 use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\Application\WebProfilerApplicationPlugin;
-use SprykerShop\Yves\WishlistWidget\Widget\WishlistMenuItemWidget;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
@@ -228,7 +227,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ShoppingListSubtotalWidget::class,
             SimilarProductsWidget::class,
             UpSellingProductsWidget::class,
-            WishlistMenuItemWidget::class,
             WishlistProductAlternativeWidget::class,
             CompanyBusinessUnitAddressWidget::class,
             FullTextSearchTabsWidget::class,

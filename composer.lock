@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b997b3b1d4723bbe212f31d4cace6a9",
+    "content-hash": "dd722248cfc61ee2d9ec13ee38e9ccd4",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -413,20 +413,6 @@
                 "lexer",
                 "parser",
                 "php"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.doctrine-project.org/sponsorship.html",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.patreon.com/phpdoctrine",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Flexer",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-05-25T17:44:05+00:00"
         },
@@ -1614,12 +1600,6 @@
                 "secure",
                 "server"
             ],
-            "funding": [
-                {
-                    "url": "https://github.com/sephster",
-                    "type": "github"
-                }
-            ],
             "time": "2020-07-01T11:33:50+00:00"
         },
         {
@@ -1782,16 +1762,6 @@
                 "log",
                 "logging",
                 "psr-3"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/Seldaek",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-23T08:41:23+00:00"
         },
@@ -9632,108 +9602,6 @@
             ],
             "description": "TabsWidgetExtension module",
             "time": "2018-11-23T16:11:33+00:00"
-        },
-        {
-            "name": "spryker-shop/wishlist-page",
-            "version": "1.8.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/wishlist-page.git",
-                "reference": "de9ef8542550030e87cb6ba9c025650c1c1e1d97"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/wishlist-page/zipball/de9ef8542550030e87cb6ba9c025650c1c1e1d97",
-                "reference": "de9ef8542550030e87cb6ba9c025650c1c1e1d97",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker-shop/customer-page": "^1.0.0 || ^2.0.0",
-                "spryker-shop/shop-application": "^1.0.0",
-                "spryker-shop/shop-ui": "^1.40.0",
-                "spryker/application": "^3.8.0",
-                "spryker/customer": "^7.4.0",
-                "spryker/kernel": "^3.52.0",
-                "spryker/product-storage": "^1.1.0",
-                "spryker/symfony": "^3.1.0",
-                "spryker/wishlist": "^5.1.0 || ^6.0.0 || ^8.0.0"
-            },
-            "require-dev": {
-                "spryker-shop/product-discontinued-widget": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/router": "*",
-                "spryker/silex": "*"
-            },
-            "suggest": {
-                "spryker-shop/product-discontinued-widget": "If you want to use ProductDiscontinuedWidget or ProductDiscontinuedWidgetPlugin.",
-                "spryker/router": "Use this module when you want to use the Router.",
-                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "WishlistPage module",
-            "time": "2020-08-14T11:59:09+00:00"
-        },
-        {
-            "name": "spryker-shop/wishlist-widget",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/wishlist-widget.git",
-                "reference": "8377dc5212f3f43e99b0acb5f5c3ccfa055fe8af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/wishlist-widget/zipball/8377dc5212f3f43e99b0acb5f5c3ccfa055fe8af",
-                "reference": "8377dc5212f3f43e99b0acb5f5c3ccfa055fe8af",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker-shop/shop-ui": "^1.0.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/wishlist": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^8.0.0"
-            },
-            "require-dev": {
-                "spryker-shop/customer-page": "*",
-                "spryker-shop/product-detail-page": "*",
-                "spryker/code-sniffer": "*"
-            },
-            "suggest": {
-                "spryker-shop/customer-page": "To have customer account pages",
-                "spryker-shop/product-detail-page": "Widget plugins are available for this module."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "WishlistWidget module",
-            "time": "2020-06-26T16:02:13+00:00"
         },
         {
             "name": "spryker/acl",
@@ -45603,20 +45471,6 @@
                 "interoperability",
                 "standards"
             ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-06T13:19:58+00:00"
         },
         {
@@ -48920,28 +48774,6 @@
                 "clean",
                 "php"
             ],
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/moelleken",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/voku",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/portable-ascii",
-                    "type": "open_collective"
-                },
-                {
-                    "url": "https://www.patreon.com/voku",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-ascii",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-22T23:32:04+00:00"
         },
         {
@@ -49014,28 +48846,6 @@
                 "unicode",
                 "utf-8",
                 "utf8"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/moelleken",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/voku",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/portable-utf8",
-                    "type": "open_collective"
-                },
-                {
-                    "url": "https://www.patreon.com/voku",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-utf8",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-26T11:17:51+00:00"
         },
@@ -50541,20 +50351,6 @@
                 "constructor",
                 "instantiate"
             ],
-            "funding": [
-                {
-                    "url": "https://www.doctrine-project.org/sponsorship.html",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.patreon.com/phpdoctrine",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finstantiator",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-05-29T17:27:14+00:00"
         },
         {
@@ -50657,7 +50453,6 @@
                 }
             ],
             "description": "JSONPath implementation for parsing, searching and flattening arrays",
-            "abandoned": "softcreatr/jsonpath",
             "time": "2019-07-15T17:23:22+00:00"
         },
         {
@@ -50984,12 +50779,6 @@
                 "duplicate",
                 "object",
                 "object graph"
-            ],
-            "funding": [
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/myclabs/deep-copy",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-06-29T13:22:24+00:00"
         },
@@ -51547,12 +51336,6 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "funding": [
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/pdepend/pdepend",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-06-20T10:53:13+00:00"
         },
         {
@@ -52275,20 +52058,6 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "funding": [
-                {
-                    "url": "https://github.com/ondrejmirtes",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/phpstan",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-05-10T20:36:16+00:00"
         },
         {
@@ -52541,7 +52310,6 @@
             "keywords": [
                 "tokenizer"
             ],
-            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
@@ -52624,16 +52392,6 @@
                 "phpunit",
                 "testing",
                 "xunit"
-            ],
-            "funding": [
-                {
-                    "url": "https://phpunit.de/donate.html",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
             ],
             "time": "2020-06-22T07:06:58+00:00"
         },
@@ -53145,7 +52903,6 @@
             ],
             "description": "FinderFacade is a convenience wrapper for Symfony's Finder component.",
             "homepage": "https://github.com/sebastianbergmann/finder-facade",
-            "abandoned": true,
             "time": "2020-01-16T08:08:45+00:00"
         },
         {
@@ -55581,12 +55338,6 @@
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
-            "funding": [
-                {
-                    "url": "https://github.com/theseer",
-                    "type": "github"
-                }
-            ],
             "time": "2020-07-12T23:59:07+00:00"
         }
     ],

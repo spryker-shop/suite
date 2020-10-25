@@ -154,8 +154,6 @@
     "spryker-shop/storage-router-extension": "^1.0.0",
     "spryker-shop/tabs-widget": "^1.0.0",
     "spryker-shop/tabs-widget-extension": "^1.0.0",
-    "spryker-shop/wishlist-page": "^1.0.0",
-    "spryker-shop/wishlist-widget": "^1.0.0",
     "spryker/acl": "^3.0.0",
     "spryker/acl-extension": "^1.0.0",
     "spryker/agent": "^1.0.0",
@@ -863,7 +861,6 @@
     "spryker/validator-extension": "^1.0.0",
     "spryker/vault": "^1.0.0",
     "spryker/weekday-schedule": "^0.1.0",
-    "spryker/wishlist": "^8.0.0",
     "spryker/wishlist-extension": "^1.0.0",
     "spryker/wishlists-rest-api": "^1.0.0",
     "spryker/zed-navigation": "^1.0.0",
@@ -947,6 +944,12 @@
     "process-timeout": 900,
     "chromium-revision": 814168
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url":  "git@github.com:demkos/spryker-installer.git"
+    }
+  ],
   "scripts": {
     "compile": [
       "mkdir -p ./data/DE/logs/ZED",
