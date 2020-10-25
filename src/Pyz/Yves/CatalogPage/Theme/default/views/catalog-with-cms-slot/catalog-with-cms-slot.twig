@@ -26,27 +26,27 @@
 
 {% block filterBar %}
     {{ parent() }}
-    <div class="box box--cms-content catalog-cms-block">
+    <section class="box box--cms-content catalog-cms-block">
         {% cms_slot 'slt-3' with {
             idCategory: data.categoryId,
         } %}
-    </div>
+    </section>
 {% endblock %}
 
 {% block content %}
     {% if data.categoryId %}
-        <div class="box box--cms-content catalog-cms-block">
+        <section class="box box--cms-content catalog-cms-block">
             {% cms_slot 'slt-2' with {
                 idCategory: data.categoryId,
             } %}
-        </div>
+        </section>
     {% endif %}
 
     {{ parent() }}
 
-    <div class="box box--cms-content catalog-cms-block">
+    <section class="box box--cms-content catalog-cms-block">
         {% cms_slot 'slt-4' with {
             idCategory: data.categoryId,
         } %}
-    </div>
+    </section>
 {% endblock %}
