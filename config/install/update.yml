@@ -1,0 +1,86 @@
+env:
+    APPLICATION_ENV: development
+
+stores:
+    - DE
+
+command-timeout: 3600
+
+sections:
+    hidden:
+        excluded: true
+        maintenance-all-on:
+            command: "vendor/bin/console maintenance:enable"
+
+        maintenance-all-off:
+            command: "vendor/bin/console maintenance:disable"
+
+        maintenance-zed-on:
+            command: "vendor/bin/console maintenance:enable zed"
+
+        maintenance-zed-off:
+            command: "vendor/bin/console maintenance:disable zed"
+
+        maintenance-yves-on:
+            command: "vendor/bin/console maintenance:enable yves"
+
+        maintenance-yves-off:
+            command: "vendor/bin/console maintenance:disable yves"
+
+    environment:
+        console-environment:
+            command: "if [ ! -f ./config/Shared/console_env_local.php ]; then cp ./config/Shared/console_env_local.dist.php ./config/Shared/console_env_local.php ; fi"
+
+    clear:
+        remove-cache:
+            command: "vendor/bin/console cache:empty-all"
+
+        remove-auto-completion:
+            command: "vendor/bin/console dev:ide-auto-completion:remove"
+
+    generate:
+        generate-transfers:
+            command: "vendor/bin/console transfer:generate"
+
+        generate-ide-auto-completion:
+            command: "vendor/bin/console dev:ide-auto-completion:generate"
+
+    cache:
+        router-cache-warmup-yves:
+            command: "vendor/bin/yves router:cache:warm-up"
+
+        router-cache-warmup-zed:
+            command: "vendor/bin/console router:cache:warm-up"
+
+        twig-cache-warmup:
+            command: "vendor/bin/console twig:cache:warmer"
+
+        navigation-cache-warmup:
+            command: "vendor/bin/console navigation:build-cache"
+
+        rest-request-validation-cache-warmup:
+            command: "vendor/bin/console rest-api:build-request-validation-cache"
+            stores: true
+
+        class-resolver-build:
+            command: "vendor/bin/console cache:class-resolver:build"
+
+    database-migrate:
+        propel-install:
+            command: "vendor/bin/console propel:install"
+            stores:
+                - US
+                - DE
+            groups:
+                - propel
+
+    frontend:
+        yves-build-frontend:
+            command: "vendor/bin/console frontend:yves:build"
+            groups:
+                - yves
+
+        zed-build-frontend:
+            command: "vendor/bin/console frontend:zed:build"
+            groups:
+                - zed
