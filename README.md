@@ -1,6 +1,6 @@
 # Spryker Suite
 [![Build Status](https://api.travis-ci.org/spryker-shop/suite.svg?branch=master)](https://travis-ci.org/spryker-shop/suite)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
 
 Suite (internal)
 [![Build Status](https://travis-ci.com/spryker/suite-nonsplit.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/spryker/suite-nonsplit)
@@ -24,7 +24,7 @@ If you encounter any issues during or after the installation, see [Troubleshooti
 
 ## Docker installation
 
-For detailed installation instructions of Spryker in Docker, see [Getting Started with Docker](https://documentation.spryker.com/docs/getting-started-with-docker). 
+For detailed installation instructions of Spryker in Docker, see [Getting Started with Docker](https://documentation.spryker.com/docs/getting-started-with-docker).
 
 For troubleshooting of Docker based instanaces, see [Troubleshooting](https://documentation.spryker.com/docs/spryker-in-docker-troubleshooting).
 
@@ -67,7 +67,7 @@ docker/sdk up --build --assets --data
 >
 > - `--build` - update composer, generate transfer objects, etc.
 > - `--assets` - build assets
-> - `--data` - get new demo data 
+> - `--data` - get new demo data
 
 3. If you get unexpected application behavior or unexpected errors:
 
@@ -75,8 +75,8 @@ docker/sdk up --build --assets --data
     ```bash
     git status
     ```
-    
-    2. If there are unnecessary untracked files (red ones), remove them. 
+
+    2. If there are unnecessary untracked files (red ones), remove them.
 
     3. Restrart file sync and re-build the codebase:
     ```bash
@@ -119,7 +119,7 @@ docker/sdk up --assets --data
 > Optional `up` command arguments:
 >
 > - `--assets` - build assets
-> - `--data` - get new demo data 
+> - `--data` - get new demo data
 
 3. Light git checkout:
 
