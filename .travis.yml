@@ -503,7 +503,7 @@ jobs:
         <<: *ADDONS_BASE_INFRASTRUCTURE
 
     - name: PHP Validation (prefer-lowest)
-      php: "7.2"
+      php: "7.3"
       stage: Test
       before_install:
         - *AWS_SYNC_DOWN_POSTGRES
@@ -529,7 +529,7 @@ jobs:
         <<: *ADDONS_BASE_INFRASTRUCTURE
 
     - name: PHPStan spryker/spryker (prefer-lowest)
-      php: "7.2"
+      php: "7.3"
       stage: Test
       before_install:
         - *AWS_SYNC_DOWN_POSTGRES
@@ -555,7 +555,7 @@ jobs:
         <<: *ADDONS_BASE_INFRASTRUCTURE
 
     - name: PHPStan spryker/spryker-shop (prefer-lowest)
-      php: "7.2"
+      php: "7.3"
       stage: Test
       before_install:
         - *AWS_SYNC_DOWN_POSTGRES
@@ -613,8 +613,8 @@ jobs:
         <<: *ADDONS_BASE_INFRASTRUCTURE
         <<: *ADDONS_ARTIFACTS
 
-    - name: PHP 7.2 / MariaDB / Browser Testing (Presentation)
-      php: "7.2"
+    - name: PHP 7.3 / MariaDB / Browser Testing (Presentation)
+      php: "7.3"
       stage: Test
       env:
         - APPLICATION_ENV=ci.mysql
@@ -636,8 +636,8 @@ jobs:
         <<: *ADDONS_BASE_INFRASTRUCTURE
         <<: *ADDONS_ARTIFACTS
 
-    - name: PHP 7.2 / MariaDB / Browser Testing (Presentation, prefer-lowest)
-      php: "7.2"
+    - name: PHP 7.3 / MariaDB / Browser Testing (Presentation, prefer-lowest)
+      php: "7.3"
       stage: Test
       env:
         - APPLICATION_ENV=ci.mysql
@@ -705,8 +705,8 @@ jobs:
         mariadb: 10.3
         <<: *ADDONS_BASE_INFRASTRUCTURE
 
-    - name: PHP 7.2 / MariaDB / Testing (Business, Communication, ...)
-      php: "7.2"
+    - name: PHP 7.3 / MariaDB / Testing (Business, Communication, ...)
+      php: "7.3"
       stage: Test
       env:
         - APPLICATION_ENV=ci.mysql
@@ -727,8 +727,8 @@ jobs:
         mariadb: 10.3
         <<: *ADDONS_BASE_INFRASTRUCTURE
 
-    - name: PHP 7.2 / MariaDB / Testing (Business, Communication, ..., prefer-lowest)
-      php: "7.2"
+    - name: PHP 7.3 / MariaDB / Testing (Business, Communication, ..., prefer-lowest)
+      php: "7.3"
       stage: Test
       env:
         - APPLICATION_ENV=ci.mysql
@@ -772,8 +772,8 @@ jobs:
         <<: *ADDONS_ARTIFACTS
         postgresql: 9.6
 
-    - name: PHP 7.2 / PostgreSQL 9.6 / Testing (Presentation)
-      php: "7.2"
+    - name: PHP 7.3 / PostgreSQL 9.6 / Testing (Presentation)
+      php: "7.3"
       stage: Test
       before_install:
         - *AWS_SYNC_DOWN_POSTGRES
@@ -814,8 +814,8 @@ jobs:
         <<: *ADDONS_ARTIFACTS
         postgresql: 9.6
 
-    - name: PHP 7.2 / PostgreSQL 9.6 / Testing (Business, Communication, ...)
-      php: "7.2"
+    - name: PHP 7.3 / PostgreSQL 9.6 / Testing (Business, Communication, ...)
+      php: "7.3"
       stage: Test
       before_install:
         - *AWS_SYNC_DOWN_POSTGRES
@@ -861,12 +861,12 @@ jobs:
         mariadb: 10.3
         <<: *ADDONS_BASE_INFRASTRUCTURE
 
-    - name: Docker / Alpine / PHP 7.2 / MariaDB / Functional Tests
+    - name: Docker / Alpine / PHP 7.3 / MariaDB / Functional Tests
       <<: *DOCKER_BUILD_TEMPLATE
       stage: Test
       env:
         - PROGRESS_TYPE=plain
-        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.2
+        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
         - TRAVIS=1
       script:
         - docker/sdk boot -v deploy.ci.functional.mariadb.yml
@@ -885,12 +885,12 @@ jobs:
         - docker/sdk up -t -v
         - docker/sdk testing codecept run -c codeception.ci.functional.yml
 
-    - name: Docker / Alpine / PHP 7.2 / MariaDB / Acceptance
+    - name: Docker / Alpine / PHP 7.3 / MariaDB / Acceptance
       <<: *DOCKER_BUILD_TEMPLATE
       stage: Test
       env:
           - PROGRESS_TYPE=plain
-          - SPRYKER_PLATFORM_IMAGE=spryker/php:7.2
+          - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
           - TRAVIS=1
       script:
           - docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
@@ -925,12 +925,12 @@ jobs:
         - docker/sdk testing console queue:worker:start --stop-when-empty
         - docker/sdk testing codecept run -c codeception.api.yml
 
-    - name: Docker / Alpine / PHP 7.2 / MariaDB / Glue
+    - name: Docker / Alpine / PHP 7.3 / MariaDB / Glue
       <<: *DOCKER_BUILD_TEMPLATE
       stage: Test
       env:
         - PROGRESS_TYPE=plain
-        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.2
+        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
         - TRAVIS=1
       script:
         - docker/sdk boot -v deploy.ci.api.mariadb.yml
