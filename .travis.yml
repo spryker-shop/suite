@@ -42,21 +42,21 @@ jobs:
           env:
               - TEST_GROUP=without-acceptance
 
-        - php: "7.2"
+        - php: "7.3"
           dist: bionic
           env:
               - TEST_GROUP=acceptance
               - DB_ENGINE=mysql
               - APPLICATION_ENV=ci.mysql
 
-        - php: "7.2"
+        - php: "7.3"
           dist: bionic
           env:
               - TEST_GROUP=without-acceptance
               - DB_ENGINE=mysql
               - APPLICATION_ENV=ci.mysql
 
-        - php: "7.2"
+        - php: "7.3"
             # disabled
           if: true = false
           dist: bionic
@@ -66,7 +66,7 @@ jobs:
               - APPLICATION_ENV=ci.mysql
               - PREFER_LOWEST=1
 
-        - php: "7.2"
+        - php: "7.3"
             # disabled
           if: true = false
           dist: bionic
@@ -156,13 +156,13 @@ jobs:
           before_script: skip
           after_script: skip
 
-        - name: Docker / Alpine / PHP 7.2 / MariaDB / Functional
+        - name: Docker / Alpine / PHP 7.3 / MariaDB / Functional
           os: linux
           dist: bionic
           language: shell
           env:
               - PROGRESS_TYPE=plain
-              - SPRYKER_PLATFORM_IMAGE=spryker/php:7.2
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
               - TRAVIS=1
           addons:
               hosts:
@@ -234,13 +234,13 @@ jobs:
           before_script: skip
           after_script: skip
 
-        - name: Docker / Alpine / PHP 7.2 / MariaDB / Acceptance
+        - name: Docker / Alpine / PHP 7.3 / MariaDB / Acceptance
           os: linux
           dist: bionic
           language: shell
           env:
               - PROGRESS_TYPE=plain
-              - SPRYKER_PLATFORM_IMAGE=spryker/php:7.2
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
               - TRAVIS=1
           addons:
               hosts:
