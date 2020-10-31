@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.158.17",
+            "version": "3.158.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "086a504647f45d1166d18af2345684893ef43875"
+                "reference": "75aebc2f5dfd23ad7272ff1d59c521bc2a8e2802"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/086a504647f45d1166d18af2345684893ef43875",
-                "reference": "086a504647f45d1166d18af2345684893ef43875",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/75aebc2f5dfd23ad7272ff1d59c521bc2a8e2802",
+                "reference": "75aebc2f5dfd23ad7272ff1d59c521bc2a8e2802",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.158.17"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.158.18"
             },
-            "time": "2020-10-29T18:16:24+00:00"
+            "time": "2020-10-30T18:12:38+00:00"
         },
         {
             "name": "brick/math",
@@ -39465,20 +39465,20 @@
         },
         {
             "name": "spryker/propel",
-            "version": "3.25.3",
+            "version": "3.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel.git",
-                "reference": "9d8e7a552dfb697f76bde129cc1f1685cf25ae1d"
+                "reference": "ad026082e2b712b6fbe29b4b788e2de53d7898a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel/zipball/9d8e7a552dfb697f76bde129cc1f1685cf25ae1d",
-                "reference": "9d8e7a552dfb697f76bde129cc1f1685cf25ae1d",
+                "url": "https://api.github.com/repos/spryker/propel/zipball/ad026082e2b712b6fbe29b4b788e2de53d7898a1",
+                "reference": "ad026082e2b712b6fbe29b4b788e2de53d7898a1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/config": "^3.0.0",
                 "spryker/health-check-extension": "^1.0.0",
@@ -39520,26 +39520,26 @@
             ],
             "description": "Propel module",
             "support": {
-                "source": "https://github.com/spryker/propel/tree/3.25.3"
+                "source": "https://github.com/spryker/propel/tree/3.26.0"
             },
-            "time": "2020-09-30T11:34:19+00:00"
+            "time": "2020-10-30T16:08:44+00:00"
         },
         {
             "name": "spryker/propel-orm",
-            "version": "1.11.3",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel-orm.git",
-                "reference": "322e73a3e4a952937622f3ad08407b224f76dc44"
+                "reference": "22c3aa2eaec9bc97b95ac52361776026699c3031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/322e73a3e4a952937622f3ad08407b224f76dc44",
-                "reference": "322e73a3e4a952937622f3ad08407b224f76dc44",
+                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/22c3aa2eaec9bc97b95ac52361776026699c3031",
+                "reference": "22c3aa2eaec9bc97b95ac52361776026699c3031",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "propel/propel": "2.0.0-alpha11",
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.0.0",
@@ -39559,7 +39559,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\PropelOrm\\Helper\\": "tests/SprykerTest/Shared/PropelOrm/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -39568,9 +39569,9 @@
             ],
             "description": "PropelOrm module",
             "support": {
-                "source": "https://github.com/spryker/propel-orm/tree/master"
+                "source": "https://github.com/spryker/propel-orm/tree/1.12.0"
             },
-            "time": "2020-08-07T10:51:41+00:00"
+            "time": "2020-10-30T16:08:44+00:00"
         },
         {
             "name": "spryker/propel-query-builder",
@@ -42724,20 +42725,20 @@
         },
         {
             "name": "spryker/session",
-            "version": "4.8.1",
+            "version": "4.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/session.git",
-                "reference": "836eb8c9846088616ce8fbf532d20b1093cb8f93"
+                "reference": "787571ff7cc38f37d63aa4e479882f5b5c90ae68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/session/zipball/836eb8c9846088616ce8fbf532d20b1093cb8f93",
-                "reference": "836eb8c9846088616ce8fbf532d20b1093cb8f93",
+                "url": "https://api.github.com/repos/spryker/session/zipball/787571ff7cc38f37d63aa4e479882f5b5c90ae68",
+                "reference": "787571ff7cc38f37d63aa4e479882f5b5c90ae68",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/config": "^3.0.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
@@ -42781,9 +42782,9 @@
             ],
             "description": "Session module",
             "support": {
-                "source": "https://github.com/spryker/session/tree/4.8.1"
+                "source": "https://github.com/spryker/session/tree/4.8.2"
             },
-            "time": "2020-10-19T12:42:15+00:00"
+            "time": "2020-10-30T16:08:44+00:00"
         },
         {
             "name": "spryker/session-extension",
@@ -57529,16 +57530,16 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.33.0",
+            "version": "3.34.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "e16dbfa6f978fdd298fde1208a14e04df96ba2d2"
+                "reference": "3a1d6df954b2e62e8ef7388f63c5e0ea108114f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/e16dbfa6f978fdd298fde1208a14e04df96ba2d2",
-                "reference": "e16dbfa6f978fdd298fde1208a14e04df96ba2d2",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/3a1d6df954b2e62e8ef7388f63c5e0ea108114f2",
+                "reference": "3a1d6df954b2e62e8ef7388f63c5e0ea108114f2",
                 "shasum": ""
             },
             "require": {
@@ -57546,7 +57547,7 @@
                 "dms/phpunit-arraysubset-asserts": "^0.1.0",
                 "fzaninotto/faker": "^1.6.0",
                 "mikey179/vfsstream": "^1.6",
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/application": "^3.12.0",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/config": "^3.0.0",
@@ -57595,9 +57596,9 @@
             ],
             "description": "Testify module",
             "support": {
-                "source": "https://github.com/spryker/testify/tree/3.33.0"
+                "source": "https://github.com/spryker/testify/tree/3.34.0"
             },
-            "time": "2020-10-16T07:26:06+00:00"
+            "time": "2020-10-30T16:08:44+00:00"
         },
         {
             "name": "spryker/web-profiler",
