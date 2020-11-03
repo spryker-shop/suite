@@ -7,11 +7,11 @@
 
 namespace Pyz\Zed\Router;
 
+use Laminas\Filter\FilterChain;
+use Laminas\Filter\StringToLower;
+use Laminas\Filter\Word\CamelCaseToDash;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Zed\Router\RouterConfig as SprykerRouterConfig;
-use Zend\Filter\FilterChain;
-use Zend\Filter\StringToLower;
-use Zend\Filter\Word\CamelCaseToDash;
 
 class RouterConfig extends SprykerRouterConfig
 {
