@@ -85,14 +85,10 @@ groups:
 
 services:
     database:
-        engine: mysql
-        version: mariadb-10.4
+        engine: postgres
         root:
             username: "root"
             password: "secret"
-        endpoints:
-            localhost:3306:
-                protocol: tcp
     broker:
         engine: rabbitmq
         api:
