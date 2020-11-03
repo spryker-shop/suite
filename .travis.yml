@@ -386,6 +386,12 @@ env:
     - POSTGRES_PORT="5432"
     - PGPORT="5432"
 
+branches:
+  only:
+    - master
+    - /feature\/[a-z]+-\d+\/(master|dev).+|feature\/[a-z]+-\d+\/[a-z]+-\d+\/(master|dev).+/
+    - /(bugfix|hotfix|beta)\/.+/
+
 cache:
   directories:
     - $HOME/other-downloads
