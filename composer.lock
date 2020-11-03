@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e0b504cddffeca6451e49a732c133ca",
+    "content-hash": "f14d920c9b5885d34623be2c13ed2dff",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1235,6 +1235,371 @@
                 "source": "https://github.com/justinrainbow/json-schema/tree/5.2.10"
             },
             "time": "2020-05-27T16:41:55+00:00"
+        },
+        {
+            "name": "laminas/laminas-config",
+            "version": "3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-config.git",
+                "reference": "0bce6f5abab41dc673196741883b19018a2b5994"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-config/zipball/0bce6f5abab41dc673196741883b19018a2b5994",
+                "reference": "0bce6f5abab41dc673196741883b19018a2b5994",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laminas/laminas-stdlib": "^2.7.7 || ^3.1",
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^7.3 || ^8.0",
+                "psr/container": "^1.0"
+            },
+            "conflict": {
+                "container-interop/container-interop": "<1.2.0"
+            },
+            "replace": {
+                "zendframework/zend-config": "^3.3.0"
+            },
+            "require-dev": {
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "laminas/laminas-filter": "^2.7.2",
+                "laminas/laminas-i18n": "^2.10.3",
+                "laminas/laminas-servicemanager": "^3.4.1",
+                "malukenho/docheader": "^0.1.6",
+                "phpunit/phpunit": "^8.5.8"
+            },
+            "suggest": {
+                "laminas/laminas-filter": "^2.7.2; install if you want to use the Filter processor",
+                "laminas/laminas-i18n": "^2.7.4; install if you want to use the Translator processor",
+                "laminas/laminas-servicemanager": "^2.7.8 || ^3.3; if you need an extensible plugin manager for use with the Config Factory"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4.x-dev",
+                    "dev-develop": "3.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\Config\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "provides a nested object property based user interface for accessing this configuration data within application code",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "config",
+                "laminas"
+            ],
+            "support": {
+                "chat": "https://laminas.dev/chat",
+                "docs": "https://docs.laminas.dev/laminas-config/",
+                "forum": "https://discourse.laminas.dev",
+                "issues": "https://github.com/laminas/laminas-config/issues",
+                "rss": "https://github.com/laminas/laminas-config/releases.atom",
+                "source": "https://github.com/laminas/laminas-config"
+            },
+            "funding": [
+                {
+                    "url": "https://funding.communitybridge.org/projects/laminas-project",
+                    "type": "community_bridge"
+                }
+            ],
+            "time": "2020-08-25T11:56:37+00:00"
+        },
+        {
+            "name": "laminas/laminas-filter",
+            "version": "2.9.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-filter.git",
+                "reference": "3c4476e772a062cef7531c6793377ae585d89c82"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/3c4476e772a062cef7531c6793377ae585d89c82",
+                "reference": "3c4476e772a062cef7531c6793377ae585d89c82",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-stdlib": "^2.7.7 || ^3.1",
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^5.6 || ^7.0"
+            },
+            "conflict": {
+                "laminas/laminas-validator": "<2.10.1"
+            },
+            "replace": {
+                "zendframework/zend-filter": "^2.9.2"
+            },
+            "require-dev": {
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "laminas/laminas-crypt": "^3.2.1",
+                "laminas/laminas-servicemanager": "^2.7.8 || ^3.3",
+                "laminas/laminas-uri": "^2.6",
+                "pear/archive_tar": "^1.4.3",
+                "phpunit/phpunit": "^5.7.23 || ^6.4.3",
+                "psr/http-factory": "^1.0"
+            },
+            "suggest": {
+                "laminas/laminas-crypt": "Laminas\\Crypt component, for encryption filters",
+                "laminas/laminas-i18n": "Laminas\\I18n component for filters depending on i18n functionality",
+                "laminas/laminas-servicemanager": "Laminas\\ServiceManager component, for using the filter chain functionality",
+                "laminas/laminas-uri": "Laminas\\Uri component, for the UriNormalize filter",
+                "psr/http-factory-implementation": "psr/http-factory-implementation, for creating file upload instances when consuming PSR-7 in file upload filters"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.9.x-dev",
+                    "dev-develop": "2.10.x-dev"
+                },
+                "laminas": {
+                    "component": "Laminas\\Filter",
+                    "config-provider": "Laminas\\Filter\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\Filter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Programmatically filter and normalize data and files",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "filter",
+                "laminas"
+            ],
+            "support": {
+                "chat": "https://laminas.dev/chat",
+                "docs": "https://docs.laminas.dev/laminas-filter/",
+                "forum": "https://discourse.laminas.dev",
+                "issues": "https://github.com/laminas/laminas-filter/issues",
+                "rss": "https://github.com/laminas/laminas-filter/releases.atom",
+                "source": "https://github.com/laminas/laminas-filter"
+            },
+            "time": "2020-03-29T12:41:29+00:00"
+        },
+        {
+            "name": "laminas/laminas-servicemanager",
+            "version": "3.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-servicemanager.git",
+                "reference": "0d4c8628a71fae9f7bd0b1b74b76382e5e9a04b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-servicemanager/zipball/0d4c8628a71fae9f7bd0b1b74b76382e5e9a04b1",
+                "reference": "0d4c8628a71fae9f7bd0b1b74b76382e5e9a04b1",
+                "shasum": ""
+            },
+            "require": {
+                "container-interop/container-interop": "^1.2",
+                "laminas/laminas-stdlib": "^3.2.1",
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^5.6 || ^7.0",
+                "psr/container": "^1.0"
+            },
+            "provide": {
+                "container-interop/container-interop-implementation": "^1.2",
+                "psr/container-implementation": "^1.0"
+            },
+            "replace": {
+                "zendframework/zend-servicemanager": "^3.4.0"
+            },
+            "require-dev": {
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "mikey179/vfsstream": "^1.6.5",
+                "ocramius/proxy-manager": "^1.0 || ^2.0",
+                "phpbench/phpbench": "^0.13.0",
+                "phpunit/phpunit": "^5.7.25 || ^6.4.4"
+            },
+            "suggest": {
+                "laminas/laminas-stdlib": "laminas-stdlib ^2.5 if you wish to use the MergeReplaceKey or MergeRemoveKey features in Config instances",
+                "ocramius/proxy-manager": "ProxyManager 1.* to handle lazy initialization of services"
+            },
+            "bin": [
+                "bin/generate-deps-for-config-factory",
+                "bin/generate-factory-for-class"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev",
+                    "dev-develop": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\ServiceManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Factory-Driven Dependency Injection Container",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "PSR-11",
+                "dependency-injection",
+                "di",
+                "dic",
+                "laminas",
+                "service-manager",
+                "servicemanager"
+            ],
+            "support": {
+                "chat": "https://laminas.dev/chat",
+                "docs": "https://docs.laminas.dev/laminas-servicemanager/",
+                "forum": "https://discourse.laminas.dev",
+                "issues": "https://github.com/laminas/laminas-servicemanager/issues",
+                "rss": "https://github.com/laminas/laminas-servicemanager/releases.atom",
+                "source": "https://github.com/laminas/laminas-servicemanager"
+            },
+            "funding": [
+                {
+                    "url": "https://funding.communitybridge.org/projects/laminas-project",
+                    "type": "community_bridge"
+                }
+            ],
+            "time": "2020-05-11T14:43:22+00:00"
+        },
+        {
+            "name": "laminas/laminas-stdlib",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-stdlib.git",
+                "reference": "b9d84eaa39fde733356ea948cdef36c631f202b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/b9d84eaa39fde733356ea948cdef36c631f202b6",
+                "reference": "b9d84eaa39fde733356ea948cdef36c631f202b6",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^7.3 || ^8.0"
+            },
+            "replace": {
+                "zendframework/zend-stdlib": "^3.2.1"
+            },
+            "require-dev": {
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "phpbench/phpbench": "^0.17.1",
+                "phpunit/phpunit": "^9.3.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev",
+                    "dev-develop": "3.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\Stdlib\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "SPL extensions, array utilities, error handlers, and more",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "laminas",
+                "stdlib"
+            ],
+            "support": {
+                "chat": "https://laminas.dev/chat",
+                "docs": "https://docs.laminas.dev/laminas-stdlib/",
+                "forum": "https://discourse.laminas.dev",
+                "issues": "https://github.com/laminas/laminas-stdlib/issues",
+                "rss": "https://github.com/laminas/laminas-stdlib/releases.atom",
+                "source": "https://github.com/laminas/laminas-stdlib"
+            },
+            "funding": [
+                {
+                    "url": "https://funding.communitybridge.org/projects/laminas-project",
+                    "type": "community_bridge"
+                }
+            ],
+            "time": "2020-08-25T09:08:16+00:00"
+        },
+        {
+            "name": "laminas/laminas-zendframework-bridge",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-zendframework-bridge.git",
+                "reference": "6ede70583e101030bcace4dcddd648f760ddf642"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-zendframework-bridge/zipball/6ede70583e101030bcace4dcddd648f760ddf642",
+                "reference": "6ede70583e101030bcace4dcddd648f760ddf642",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.1 || ^9.3",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "laminas": {
+                    "module": "Laminas\\ZendFrameworkBridge"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/autoload.php"
+                ],
+                "psr-4": {
+                    "Laminas\\ZendFrameworkBridge\\": "src//"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Alias legacy ZF class names to Laminas Project equivalents.",
+            "keywords": [
+                "ZendFramework",
+                "autoloading",
+                "laminas",
+                "zf"
+            ],
+            "support": {
+                "forum": "https://discourse.laminas.dev/",
+                "issues": "https://github.com/laminas/laminas-zendframework-bridge/issues",
+                "rss": "https://github.com/laminas/laminas-zendframework-bridge/releases.atom",
+                "source": "https://github.com/laminas/laminas-zendframework-bridge"
+            },
+            "funding": [
+                {
+                    "url": "https://funding.communitybridge.org/projects/laminas-project",
+                    "type": "community_bridge"
+                }
+            ],
+            "time": "2020-09-14T14:23:00+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -25164,16 +25529,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.56.0",
+            "version": "3.57.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "427d74506d4fd43ac284ef4d27d11b67d2329bf8"
+                "reference": "f504a116b47568f71f29a3cdda55e277c61c77b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/427d74506d4fd43ac284ef4d27d11b67d2329bf8",
-                "reference": "427d74506d4fd43ac284ef4d27d11b67d2329bf8",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/f504a116b47568f71f29a3cdda55e277c61c77b7",
+                "reference": "f504a116b47568f71f29a3cdda55e277c61c77b7",
                 "shasum": ""
             },
             "require": {
@@ -25183,11 +25548,11 @@
                 "spryker/container": "^1.1.0",
                 "spryker/error-handler": "^2.2.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/log": "^3.7.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/symfony": "^3.5.0",
-                "spryker/util-encoding": "^2.0.0",
-                "spryker/zend": "^2.0.0"
+                "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -25219,9 +25584,9 @@
             ],
             "description": "Kernel module",
             "support": {
-                "source": "https://github.com/spryker/kernel/tree/3.56.0"
+                "source": "https://github.com/spryker/kernel/tree/3.57.0"
             },
-            "time": "2020-10-29T10:50:00+00:00"
+            "time": "2020-11-03T09:40:32+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -25264,6 +25629,42 @@
                 "source": "https://github.com/spryker/KeyBuilder/tree/1.0.1"
             },
             "time": "2017-09-26T09:11:18+00:00"
+        },
+        {
+            "name": "spryker/laminas",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/laminas.git",
+                "reference": "d4f781af6c3fec1893ce870a1bc854a317d356fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/laminas/zipball/d4f781af6c3fec1893ce870a1bc854a317d356fc",
+                "reference": "d4f781af6c3fec1893ce870a1bc854a317d356fc",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-config": "^2.5.1 || ^3.1.0",
+                "laminas/laminas-filter": "^2.5.1",
+                "laminas/laminas-servicemanager": "^2.7.4 || ^3.3.0",
+                "php": ">=7.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Laminas module",
+            "support": {
+                "source": "https://github.com/spryker/laminas/tree/1.0.0"
+            },
+            "time": "2020-11-03T12:10:28+00:00"
         },
         {
             "name": "spryker/locale",
@@ -28516,23 +28917,23 @@
         },
         {
             "name": "spryker/module-finder",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/module-finder.git",
-                "reference": "4acadc6f53e8929d55c028f765a4a594c37712b7"
+                "reference": "1931ea1482602bbfc82b781b20f9760cc83a5927"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/module-finder/zipball/4acadc6f53e8929d55c028f765a4a594c37712b7",
-                "reference": "4acadc6f53e8929d55c028f765a4a594c37712b7",
+                "url": "https://api.github.com/repos/spryker/module-finder/zipball/1931ea1482602bbfc82b781b20f9760cc83a5927",
+                "reference": "1931ea1482602bbfc82b781b20f9760cc83a5927",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.3",
                 "spryker/kernel": "^3.33.0",
-                "spryker/symfony": "^3.2.0",
-                "spryker/zend": "^2.0.0"
+                "spryker/laminas": "^1.0.0",
+                "spryker/symfony": "^3.2.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -28555,9 +28956,9 @@
             ],
             "description": "ModuleFinder module",
             "support": {
-                "source": "https://github.com/spryker/module-finder/tree/1.0.0"
+                "source": "https://github.com/spryker/module-finder/tree/1.1.0"
             },
-            "time": "2019-06-05T07:55:43+00:00"
+            "time": "2020-11-03T09:40:32+00:00"
         },
         {
             "name": "spryker/money",
@@ -37717,28 +38118,29 @@
         },
         {
             "name": "spryker/product-page-search",
-            "version": "3.20.2",
+            "version": "3.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-page-search.git",
-                "reference": "5e6ce64bf1e5e1bc84e75fe5a09f219aab57c51d"
+                "reference": "a455c3296c79d0c43b39a6f6706df5cdf7471ed8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-page-search/zipball/5e6ce64bf1e5e1bc84e75fe5a09f219aab57c51d",
-                "reference": "5e6ce64bf1e5e1bc84e75fe5a09f219aab57c51d",
+                "url": "https://api.github.com/repos/spryker/product-page-search/zipball/a455c3296c79d0c43b39a6f6706df5cdf7471ed8",
+                "reference": "a455c3296c79d0c43b39a6f6706df5cdf7471ed8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/catalog-price-product-connector": "^1.1.0",
                 "spryker/category": "^4.3.0",
                 "spryker/error-handler": "^2.0.0",
                 "spryker/event-behavior": "^1.14.0",
                 "spryker/kernel": "^3.49.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/locale": "^3.3.0",
                 "spryker/price": "^5.3.0",
-                "spryker/price-product": "^1.1.0 || ^2.8.0 || ^4.0.0",
+                "spryker/price-product": "^1.2.0 || ^2.8.0 || ^4.0.0",
                 "spryker/product": "^6.16.0",
                 "spryker/product-category": "^4.5.0",
                 "spryker/product-image": "^3.8.0",
@@ -37751,8 +38153,7 @@
                 "spryker/synchronization-extension": "^1.0.0",
                 "spryker/url": "^3.3.0",
                 "spryker/util-encoding": "^2.0.0",
-                "spryker/util-sanitize": "^2.1.0",
-                "spryker/zend": "^2.0.0"
+                "spryker/util-sanitize": "^2.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -37783,9 +38184,9 @@
             ],
             "description": "ProductPageSearch module",
             "support": {
-                "source": "https://github.com/spryker/product-page-search/tree/3.20.2"
+                "source": "https://github.com/spryker/product-page-search/tree/3.21.0"
             },
-            "time": "2020-08-19T11:39:28+00:00"
+            "time": "2020-11-03T09:40:32+00:00"
         },
         {
             "name": "spryker/product-page-search-extension",
@@ -39123,22 +39524,23 @@
         },
         {
             "name": "spryker/product-storage",
-            "version": "1.29.0",
+            "version": "1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-storage.git",
-                "reference": "4506c8c1421a7a0afa4ddcce687aa58b8656ee49"
+                "reference": "de5e03efb1b92a96e0cef339a8d7e60032905f52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-storage/zipball/4506c8c1421a7a0afa4ddcce687aa58b8656ee49",
-                "reference": "4506c8c1421a7a0afa4ddcce687aa58b8656ee49",
+                "url": "https://api.github.com/repos/spryker/product-storage/zipball/de5e03efb1b92a96e0cef339a8d7e60032905f52",
+                "reference": "de5e03efb1b92a96e0cef339a8d7e60032905f52",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/event-behavior": "^1.10.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/locale": "^3.1.0",
                 "spryker/product": "^5.5.0 || ^6.0.0",
                 "spryker/product-storage-extension": "^1.5.0",
@@ -39149,8 +39551,7 @@
                 "spryker/synchronization-behavior": "^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0",
                 "spryker/url": "^3.3.0",
-                "spryker/util-encoding": "^1.0.0 || ^2.0.0",
-                "spryker/zend": "^2.0.0"
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -39182,9 +39583,9 @@
             ],
             "description": "ProductStorage module",
             "support": {
-                "source": "https://github.com/spryker/product-storage/tree/1.29.0"
+                "source": "https://github.com/spryker/product-storage/tree/1.30.0"
             },
-            "time": "2020-10-07T07:20:47+00:00"
+            "time": "2020-11-03T09:40:32+00:00"
         },
         {
             "name": "spryker/product-storage-extension",
@@ -39469,16 +39870,16 @@
         },
         {
             "name": "spryker/propel",
-            "version": "3.26.0",
+            "version": "3.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel.git",
-                "reference": "ad026082e2b712b6fbe29b4b788e2de53d7898a1"
+                "reference": "b02d78f8bf6202d2d902b6ca6d7a207b74cc4c21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel/zipball/ad026082e2b712b6fbe29b4b788e2de53d7898a1",
-                "reference": "ad026082e2b712b6fbe29b4b788e2de53d7898a1",
+                "url": "https://api.github.com/repos/spryker/propel/zipball/b02d78f8bf6202d2d902b6ca6d7a207b74cc4c21",
+                "reference": "b02d78f8bf6202d2d902b6ca6d7a207b74cc4c21",
                 "shasum": ""
             },
             "require": {
@@ -39498,9 +39899,9 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
+                "spryker/laminas": "*",
                 "spryker/silex": "*",
-                "spryker/testify": "*",
-                "spryker/zend": "*"
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/container": "If you want to use the PropelApplicationPlugin.",
@@ -39524,9 +39925,9 @@
             ],
             "description": "Propel module",
             "support": {
-                "source": "https://github.com/spryker/propel/tree/3.26.0"
+                "source": "https://github.com/spryker/propel/tree/3.27.0"
             },
-            "time": "2020-10-30T16:08:44+00:00"
+            "time": "2020-11-03T09:40:32+00:00"
         },
         {
             "name": "spryker/propel-orm",
@@ -40720,28 +41121,28 @@
         },
         {
             "name": "spryker/router",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/router.git",
-                "reference": "8a64b305dfb639101a7747258610861b7d767f3a"
+                "reference": "b6e7c583ef7de897f1793eebde6fb5e6fb05a004"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/router/zipball/8a64b305dfb639101a7747258610861b7d767f3a",
-                "reference": "8a64b305dfb639101a7747258610861b7d767f3a",
+                "url": "https://api.github.com/repos/spryker/router/zipball/b6e7c583ef7de897f1793eebde6fb5e6fb05a004",
+                "reference": "b6e7c583ef7de897f1793eebde6fb5e6fb05a004",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/container": "^1.1.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/kernel": "^3.48.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/log": "^3.0.0",
                 "spryker/router-extension": "^1.0.0",
-                "spryker/symfony": "^3.5.0",
-                "spryker/zend": "^2.1.0"
+                "spryker/symfony": "^3.5.0"
             },
             "require-dev": {
                 "spryker/application": "*",
@@ -40773,9 +41174,9 @@
             ],
             "description": "Router module",
             "support": {
-                "source": "https://github.com/spryker/router/tree/1.10.0"
+                "source": "https://github.com/spryker/router/tree/1.11.0"
             },
-            "time": "2020-09-25T05:35:53+00:00"
+            "time": "2020-11-03T09:40:32+00:00"
         },
         {
             "name": "spryker/router-extension",
@@ -42360,26 +42761,27 @@
         },
         {
             "name": "spryker/search",
-            "version": "8.16.1",
+            "version": "8.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/search.git",
-                "reference": "ba645b0fa6c700dc9d2087d3befb47360058d297"
+                "reference": "b9843439e595f3313a43a9e0eccc3b1f5cb08bf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/search/zipball/ba645b0fa6c700dc9d2087d3befb47360058d297",
-                "reference": "ba645b0fa6c700dc9d2087d3befb47360058d297",
+                "url": "https://api.github.com/repos/spryker/search/zipball/b9843439e595f3313a43a9e0eccc3b1f5cb08bf5",
+                "reference": "b9843439e595f3313a43a9e0eccc3b1f5cb08bf5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/config": "^3.0.0",
                 "spryker/elastica": "^4.0.0 || ^5.0.0 || ^6.0.0",
                 "spryker/gui": "^3.0.0",
                 "spryker/guzzle": "^2.0.0",
                 "spryker/health-check-extension": "^1.0.0",
                 "spryker/kernel": "^3.52.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/log": "^3.0.0",
                 "spryker/money": "^2.0.0",
                 "spryker/product-page-search-extension": "^1.0.0",
@@ -42387,8 +42789,7 @@
                 "spryker/store": "^1.1.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/twig": "^3.0.0",
-                "spryker/util-encoding": "^2.0.0",
-                "spryker/zend": "^2.0.0"
+                "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
                 "spryker/application": "*",
@@ -42418,29 +42819,30 @@
             ],
             "description": "Search module",
             "support": {
-                "source": "https://github.com/spryker/search/tree/8.16.1"
+                "source": "https://github.com/spryker/search/tree/8.17.0"
             },
-            "time": "2020-09-25T05:35:53+00:00"
+            "time": "2020-11-03T09:40:32+00:00"
         },
         {
             "name": "spryker/search-elasticsearch",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/search-elasticsearch.git",
-                "reference": "fd6bb3f4dccc53faed6ca79a124753244c17006e"
+                "reference": "151f5cf86b0007fda2ec349e6b0c68cccb38effa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/search-elasticsearch/zipball/fd6bb3f4dccc53faed6ca79a124753244c17006e",
-                "reference": "fd6bb3f4dccc53faed6ca79a124753244c17006e",
+                "url": "https://api.github.com/repos/spryker/search-elasticsearch/zipball/151f5cf86b0007fda2ec349e6b0c68cccb38effa",
+                "reference": "151f5cf86b0007fda2ec349e6b0c68cccb38effa",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/elastica": "^5.0.0 || ^6.0.0",
                 "spryker/error-handler": "^2.1.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/log": "^3.0.0",
                 "spryker/money": "^2.8.0",
@@ -42449,8 +42851,7 @@
                 "spryker/symfony": "^3.0.0",
                 "spryker/twig": "^3.0.0",
                 "spryker/util-encoding": "^2.1.0",
-                "spryker/util-sanitize": "^2.2.0",
-                "spryker/zend": "^2.1.0"
+                "spryker/util-sanitize": "^2.2.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -42475,9 +42876,9 @@
             ],
             "description": "SearchElasticsearch module",
             "support": {
-                "source": "https://github.com/spryker/search-elasticsearch/tree/1.6.0"
+                "source": "https://github.com/spryker/search-elasticsearch/tree/1.7.0"
             },
-            "time": "2020-10-15T15:11:29+00:00"
+            "time": "2020-11-03T09:40:32+00:00"
         },
         {
             "name": "spryker/search-elasticsearch-gui",
@@ -45707,28 +46108,28 @@
         },
         {
             "name": "spryker/transfer",
-            "version": "3.25.0",
+            "version": "3.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/transfer.git",
-                "reference": "94a61073d0e95a5bc0358f9dbb3784bd51620d42"
+                "reference": "5b3da5e7b42779d6d3c60d04c344bbcd9655ef90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/transfer/zipball/94a61073d0e95a5bc0358f9dbb3784bd51620d42",
-                "reference": "94a61073d0e95a5bc0358f9dbb3784bd51620d42",
+                "url": "https://api.github.com/repos/spryker/transfer/zipball/5b3da5e7b42779d6d3c60d04c344bbcd9655ef90",
+                "reference": "5b3da5e7b42779d6d3c60d04c344bbcd9655ef90",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
                 "spryker/decimal-object": "^1.0.0",
                 "spryker/kernel": "^3.56.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/log": "^3.0.0",
                 "spryker/propel": "^3.21.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/twig": "^3.0.0",
-                "spryker/util-glob": "^1.0.0",
-                "spryker/zend": "^2.0.0"
+                "spryker/util-glob": "^1.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -45752,9 +46153,9 @@
             ],
             "description": "Transfer module",
             "support": {
-                "source": "https://github.com/spryker/transfer/tree/3.25.0"
+                "source": "https://github.com/spryker/transfer/tree/3.26.0"
             },
-            "time": "2020-10-29T15:51:53+00:00"
+            "time": "2020-11-03T09:52:07+00:00"
         },
         {
             "name": "spryker/translator",
@@ -45862,28 +46263,28 @@
         },
         {
             "name": "spryker/twig",
-            "version": "3.13.4",
+            "version": "3.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/twig.git",
-                "reference": "d73240ff000079581ceea11a3fa3bc392ec8f777"
+                "reference": "fc63911420835c362f732cc58c1690be61ad5778"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/twig/zipball/d73240ff000079581ceea11a3fa3bc392ec8f777",
-                "reference": "d73240ff000079581ceea11a3fa3bc392ec8f777",
+                "url": "https://api.github.com/repos/spryker/twig/zipball/fc63911420835c362f732cc58c1690be61ad5778",
+                "reference": "fc63911420835c362f732cc58c1690be61ad5778",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/container": "^1.1.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/kernel": "^3.52.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/twig-extension": "^1.0.0",
                 "spryker/util-text": "^1.0.0",
-                "spryker/zend": "^2.0.0",
                 "twig/twig": "^1.43.1 || ^2.9.0 || ^3.0.0"
             },
             "require-dev": {
@@ -45916,9 +46317,9 @@
             ],
             "description": "Twig module",
             "support": {
-                "source": "https://github.com/spryker/twig/tree/3.13.4"
+                "source": "https://github.com/spryker/twig/tree/3.14.0"
             },
-            "time": "2020-10-13T10:19:48+00:00"
+            "time": "2020-11-03T09:40:32+00:00"
         },
         {
             "name": "spryker/twig-extension",
@@ -47581,29 +47982,29 @@
         },
         {
             "name": "spryker/zed-navigation",
-            "version": "1.9.2",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/zed-navigation.git",
-                "reference": "d847b7769a166bf6ca7029d1323b690958e859a4"
+                "reference": "d5b5f8872cd4061bc736eaccde6e9ae289e2ca92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-navigation/zipball/d847b7769a166bf6ca7029d1323b690958e859a4",
-                "reference": "d847b7769a166bf6ca7029d1323b690958e859a4",
+                "url": "https://api.github.com/repos/spryker/zed-navigation/zipball/d5b5f8872cd4061bc736eaccde6e9ae289e2ca92",
+                "reference": "d5b5f8872cd4061bc736eaccde6e9ae289e2ca92",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/kernel": "^3.52.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/log": "^2.0.0 || ^3.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.8.0",
                 "spryker/twig-extension": "^1.0.0",
                 "spryker/url": "^3.0.0",
                 "spryker/util-encoding": "^2.0.0",
-                "spryker/zed-navigation-extension": "^1.1.0",
-                "spryker/zend": "^2.0.0"
+                "spryker/zed-navigation-extension": "^1.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -47636,9 +48037,9 @@
             ],
             "description": "ZedNavigation module",
             "support": {
-                "source": "https://github.com/spryker/zed-navigation/tree/1.9.2"
+                "source": "https://github.com/spryker/zed-navigation/tree/1.10.0"
             },
-            "time": "2020-09-30T11:34:19+00:00"
+            "time": "2020-11-03T09:40:32+00:00"
         },
         {
             "name": "spryker/zed-navigation-extension",
@@ -52055,281 +52456,6 @@
                 "source": "https://github.com/willdurand/Negotiation/tree/2.x"
             },
             "time": "2017-05-14T17:21:12+00:00"
-        },
-        {
-            "name": "zendframework/zend-config",
-            "version": "3.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-config.git",
-                "reference": "012341361ae3cc97a99959e7cb7c9ebd04d49572"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-config/zipball/012341361ae3cc97a99959e7cb7c9ebd04d49572",
-                "reference": "012341361ae3cc97a99959e7cb7c9ebd04d49572",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": "^5.6 || ^7.0",
-                "psr/container": "^1.0",
-                "zendframework/zend-stdlib": "^2.7.7 || ^3.1"
-            },
-            "conflict": {
-                "container-interop/container-interop": "<1.2.0"
-            },
-            "require-dev": {
-                "malukenho/docheader": "^0.1.6",
-                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.2",
-                "zendframework/zend-coding-standard": "~1.0.0",
-                "zendframework/zend-filter": "^2.7.2",
-                "zendframework/zend-i18n": "^2.7.4",
-                "zendframework/zend-servicemanager": "^2.7.8 || ^3.3"
-            },
-            "suggest": {
-                "zendframework/zend-filter": "^2.7.2; install if you want to use the Filter processor",
-                "zendframework/zend-i18n": "^2.7.4; install if you want to use the Translator processor",
-                "zendframework/zend-servicemanager": "^2.7.8 || ^3.3; if you need an extensible plugin manager for use with the Config Factory"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3.x-dev",
-                    "dev-develop": "3.4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zend\\Config\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "provides a nested object property based user interface for accessing this configuration data within application code",
-            "keywords": [
-                "ZendFramework",
-                "config",
-                "zf"
-            ],
-            "support": {
-                "chat": "https://zendframework-slack.herokuapp.com",
-                "docs": "https://docs.zendframework.com/zend-config/",
-                "forum": "https://discourse.zendframework.com/c/questions/components",
-                "issues": "https://github.com/zendframework/zend-config/issues",
-                "rss": "https://github.com/zendframework/zend-config/releases.atom",
-                "source": "https://github.com/zendframework/zend-config"
-            },
-            "abandoned": "laminas/laminas-config",
-            "time": "2019-06-08T18:58:54+00:00"
-        },
-        {
-            "name": "zendframework/zend-filter",
-            "version": "2.9.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-filter.git",
-                "reference": "d78f2cdde1c31975e18b2a0753381ed7b61118ef"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-filter/zipball/d78f2cdde1c31975e18b2a0753381ed7b61118ef",
-                "reference": "d78f2cdde1c31975e18b2a0753381ed7b61118ef",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6 || ^7.0",
-                "zendframework/zend-stdlib": "^2.7.7 || ^3.1"
-            },
-            "conflict": {
-                "zendframework/zend-validator": "<2.10.1"
-            },
-            "require-dev": {
-                "pear/archive_tar": "^1.4.3",
-                "phpunit/phpunit": "^5.7.23 || ^6.4.3",
-                "psr/http-factory": "^1.0",
-                "zendframework/zend-coding-standard": "~1.0.0",
-                "zendframework/zend-crypt": "^3.2.1",
-                "zendframework/zend-servicemanager": "^2.7.8 || ^3.3",
-                "zendframework/zend-uri": "^2.6"
-            },
-            "suggest": {
-                "psr/http-factory-implementation": "psr/http-factory-implementation, for creating file upload instances when consuming PSR-7 in file upload filters",
-                "zendframework/zend-crypt": "Zend\\Crypt component, for encryption filters",
-                "zendframework/zend-i18n": "Zend\\I18n component for filters depending on i18n functionality",
-                "zendframework/zend-servicemanager": "Zend\\ServiceManager component, for using the filter chain functionality",
-                "zendframework/zend-uri": "Zend\\Uri component, for the UriNormalize filter"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.9.x-dev",
-                    "dev-develop": "2.10.x-dev"
-                },
-                "zf": {
-                    "component": "Zend\\Filter",
-                    "config-provider": "Zend\\Filter\\ConfigProvider"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zend\\Filter\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Programmatically filter and normalize data and files",
-            "keywords": [
-                "ZendFramework",
-                "filter",
-                "zf"
-            ],
-            "support": {
-                "chat": "https://zendframework-slack.herokuapp.com",
-                "docs": "https://docs.zendframework.com/zend-filter/",
-                "forum": "https://discourse.zendframework.com/c/questions/components",
-                "issues": "https://github.com/zendframework/zend-filter/issues",
-                "rss": "https://github.com/zendframework/zend-filter/releases.atom",
-                "source": "https://github.com/zendframework/zend-filter"
-            },
-            "abandoned": "laminas/laminas-filter",
-            "time": "2019-08-19T07:08:04+00:00"
-        },
-        {
-            "name": "zendframework/zend-servicemanager",
-            "version": "3.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-servicemanager.git",
-                "reference": "a1ed6140d0d3ee803fec96582593ed024950067b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-servicemanager/zipball/a1ed6140d0d3ee803fec96582593ed024950067b",
-                "reference": "a1ed6140d0d3ee803fec96582593ed024950067b",
-                "shasum": ""
-            },
-            "require": {
-                "container-interop/container-interop": "^1.2",
-                "php": "^5.6 || ^7.0",
-                "psr/container": "^1.0",
-                "zendframework/zend-stdlib": "^3.2.1"
-            },
-            "provide": {
-                "container-interop/container-interop-implementation": "^1.2",
-                "psr/container-implementation": "^1.0"
-            },
-            "require-dev": {
-                "mikey179/vfsstream": "^1.6.5",
-                "ocramius/proxy-manager": "^1.0 || ^2.0",
-                "phpbench/phpbench": "^0.13.0",
-                "phpunit/phpunit": "^5.7.25 || ^6.4.4",
-                "zendframework/zend-coding-standard": "~1.0.0"
-            },
-            "suggest": {
-                "ocramius/proxy-manager": "ProxyManager 1.* to handle lazy initialization of services",
-                "zendframework/zend-stdlib": "zend-stdlib ^2.5 if you wish to use the MergeReplaceKey or MergeRemoveKey features in Config instances"
-            },
-            "bin": [
-                "bin/generate-deps-for-config-factory",
-                "bin/generate-factory-for-class"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3-dev",
-                    "dev-develop": "4.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zend\\ServiceManager\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Factory-Driven Dependency Injection Container",
-            "keywords": [
-                "PSR-11",
-                "ZendFramework",
-                "dependency-injection",
-                "di",
-                "dic",
-                "service-manager",
-                "servicemanager",
-                "zf"
-            ],
-            "support": {
-                "docs": "https://docs.zendframework.com/zend-servicemanager/",
-                "forum": "https://discourse.zendframework.com/c/questions/components",
-                "issues": "https://github.com/zendframework/zend-servicemanager/issues",
-                "rss": "https://github.com/zendframework/zend-servicemanager/releases.atom",
-                "slack": "https://zendframework-slack.herokuapp.com",
-                "source": "https://github.com/zendframework/zend-servicemanager"
-            },
-            "abandoned": "laminas/laminas-servicemanager",
-            "time": "2018-12-22T06:05:09+00:00"
-        },
-        {
-            "name": "zendframework/zend-stdlib",
-            "version": "3.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-stdlib.git",
-                "reference": "66536006722aff9e62d1b331025089b7ec71c065"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/66536006722aff9e62d1b331025089b7ec71c065",
-                "reference": "66536006722aff9e62d1b331025089b7ec71c065",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6 || ^7.0"
-            },
-            "require-dev": {
-                "phpbench/phpbench": "^0.13",
-                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.2",
-                "zendframework/zend-coding-standard": "~1.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.2.x-dev",
-                    "dev-develop": "3.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zend\\Stdlib\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "SPL extensions, array utilities, error handlers, and more",
-            "keywords": [
-                "ZendFramework",
-                "stdlib",
-                "zf"
-            ],
-            "support": {
-                "docs": "https://docs.zendframework.com/zend-stdlib/",
-                "forum": "https://discourse.zendframework.com/c/questions/components",
-                "issues": "https://github.com/zendframework/zend-stdlib/issues",
-                "rss": "https://github.com/zendframework/zend-stdlib/releases.atom",
-                "slack": "https://zendframework-slack.herokuapp.com",
-                "source": "https://github.com/zendframework/zend-stdlib"
-            },
-            "abandoned": "laminas/laminas-stdlib",
-            "time": "2018-08-28T21:34:05+00:00"
         }
     ],
     "packages-dev": [
@@ -57462,29 +57588,29 @@
         },
         {
             "name": "spryker/development",
-            "version": "3.26.0",
+            "version": "3.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/development.git",
-                "reference": "9bf1648f540be0c52df5e3ffb02bfb6f2e3fc0b4"
+                "reference": "99eebd9b1eec481c99ab48bf382279d8ff88b82f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/development/zipball/9bf1648f540be0c52df5e3ffb02bfb6f2e3fc0b4",
-                "reference": "9bf1648f540be0c52df5e3ffb02bfb6f2e3fc0b4",
+                "url": "https://api.github.com/repos/spryker/development/zipball/99eebd9b1eec481c99ab48bf382279d8ff88b82f",
+                "reference": "99eebd9b1eec481c99ab48bf382279d8ff88b82f",
                 "shasum": ""
             },
             "require": {
                 "nette/di": "^2.4.7 || ^3.0",
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "phpmd/phpmd": "^2.0.0",
                 "spryker/config": "^3.0.0",
                 "spryker/graph": "^3.0.0",
                 "spryker/kernel": "^3.52.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/module-finder": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/twig": "^3.0.0",
-                "spryker/zend": "^2.0.0"
+                "spryker/twig": "^3.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -57512,9 +57638,9 @@
             ],
             "description": "Development module",
             "support": {
-                "source": "https://github.com/spryker/development/tree/3.26.0"
+                "source": "https://github.com/spryker/development/tree/3.27.0"
             },
-            "time": "2020-10-09T11:31:07+00:00"
+            "time": "2020-11-03T12:45:02+00:00"
         },
         {
             "name": "spryker/docker-chromedriver",
