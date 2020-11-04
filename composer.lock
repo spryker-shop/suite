@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e4c1b7c732eac25c5eda6b89cdfd829d",
+    "content-hash": "82f42290cf11684d662eec3def421bcb",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2688,16 +2688,16 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v3.5.0",
+            "version": "v3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "9162f7455059755dcbece1b5570d1bbfc6f0ab0d"
+                "reference": "fe54415cd22d01bee1307a608058bf131978610a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/9162f7455059755dcbece1b5570d1bbfc6f0ab0d",
-                "reference": "9162f7455059755dcbece1b5570d1bbfc6f0ab0d",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/fe54415cd22d01bee1307a608058bf131978610a",
+                "reference": "fe54415cd22d01bee1307a608058bf131978610a",
                 "shasum": ""
             },
             "require": {
@@ -2750,9 +2750,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/php-generator/issues",
-                "source": "https://github.com/nette/php-generator/tree/v3.5.0"
+                "source": "https://github.com/nette/php-generator/tree/v3.5.1"
             },
-            "time": "2020-11-02T16:16:58+00:00"
+            "time": "2020-11-04T11:26:26+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -4222,12 +4222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "8330b69a208a12ee7b643b21fb2703e4d7c223ad"
+                "reference": "81d51722c1b7e613bce452133fb1121bb816ca8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/8330b69a208a12ee7b643b21fb2703e4d7c223ad",
-                "reference": "8330b69a208a12ee7b643b21fb2703e4d7c223ad",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/81d51722c1b7e613bce452133fb1121bb816ca8a",
+                "reference": "81d51722c1b7e613bce452133fb1121bb816ca8a",
                 "shasum": ""
             },
             "require": {
@@ -4235,12 +4235,14 @@
                 "spryker/event": "^2.4.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/kernel": "^3.49.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/symfony": "^3.1.0",
-                "spryker/util-encoding": "^2.1.0",
-                "spryker/zend": "^2.1.0"
+                "spryker/util-encoding": "^2.1.0"
             },
             "require-dev": {
+                "codeception/codeception": "^4.0.0",
+                "codeception/module-asserts": "^1.3.0",
                 "phpstan/phpstan": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/config": "^3.1.0",
@@ -4282,7 +4284,7 @@
             "support": {
                 "source": "https://github.com/spryker/event-behavior"
             },
-            "time": "2020-10-27T11:39:46+00:00"
+            "time": "2020-11-04T14:55:41+00:00"
         },
         {
             "name": "spryker/install",
@@ -4497,7 +4499,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "522210ee9573f535d1dd285a503a83b2e65e976a"
+                "reference": "6c708705ef6e24160d2b33d77fc3e71e87d630d1"
             },
             "require": {
                 "php": ">=7.3"
@@ -5268,7 +5270,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-11-03T12:45:02+00:00"
+            "time": "2020-11-03T20:16:41+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5449,23 +5451,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "0d8d5828f3f75c7b9fc4ebea67aca1b2a9b2ee2b"
+                "reference": "ac6c9ec2cda631ac291887f6ee00706f97789cd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/0d8d5828f3f75c7b9fc4ebea67aca1b2a9b2ee2b",
-                "reference": "0d8d5828f3f75c7b9fc4ebea67aca1b2a9b2ee2b",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/ac6c9ec2cda631ac291887f6ee00706f97789cd0",
+                "reference": "ac6c9ec2cda631ac291887f6ee00706f97789cd0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
                 "spryker/kernel": "^3.30.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/queue": "^1.1.2",
-                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0",
-                "spryker/zend": "^2.1.0"
+                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0"
             },
             "require-dev": {
+                "codeception/codeception": "^4.0.0",
+                "codeception/module-asserts": "^1.3.0",
                 "phpstan/phpstan": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
@@ -5495,7 +5499,7 @@
             "support": {
                 "source": "https://github.com/spryker/synchronization-behavior"
             },
-            "time": "2020-10-27T11:39:15+00:00"
+            "time": "2020-11-04T14:55:47+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -5503,22 +5507,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/uuid-behavior.git",
-                "reference": "0b2222d1fab8cbe7ea09229d01e1fbf6735a9859"
+                "reference": "3b537188a52d0830d733ef39b38d296800163cfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/uuid-behavior/zipball/0b2222d1fab8cbe7ea09229d01e1fbf6735a9859",
-                "reference": "0b2222d1fab8cbe7ea09229d01e1fbf6735a9859",
+                "url": "https://api.github.com/repos/spryker/uuid-behavior/zipball/3b537188a52d0830d733ef39b38d296800163cfc",
+                "reference": "3b537188a52d0830d733ef39b38d296800163cfc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
                 "spryker/kernel": "^3.30.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/propel-orm": "^1.6.0",
-                "spryker/util-uuid-generator": "^1.0.0",
-                "spryker/zend": "^2.1.0"
+                "spryker/util-uuid-generator": "^1.0.0"
             },
             "require-dev": {
+                "codeception/codeception": "^4.0.0",
+                "codeception/module-asserts": "^1.3.0",
                 "phpstan/phpstan": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/propel": "*",
@@ -5546,42 +5552,7 @@
             "support": {
                 "source": "https://github.com/spryker/uuid-behavior"
             },
-            "time": "2020-10-27T11:39:34+00:00"
-        },
-        {
-            "name": "spryker/zend",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/Zend.git",
-                "reference": "820b8ecbadc8fb54b9e1e1048a788366f3248183"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Zend/zipball/820b8ecbadc8fb54b9e1e1048a788366f3248183",
-                "reference": "820b8ecbadc8fb54b9e1e1048a788366f3248183",
-                "shasum": ""
-            },
-            "require": {
-                "zendframework/zend-config": "^2.5.1 || ^3.1.0",
-                "zendframework/zend-filter": "^2.5.1",
-                "zendframework/zend-servicemanager": "^2.7.4 || ^3.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Zend module",
-            "support": {
-                "source": "https://github.com/spryker/Zend/tree/2.1.0"
-            },
-            "time": "2017-08-02T16:31:17+00:00"
+            "time": "2020-11-04T14:55:50+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -13917,20 +13888,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/composer-constrainer.git",
-                "reference": "64f017ae3df5e6d95e7d338341b980d6e7cfa5ca"
+                "reference": "7d8acf1987f0cf603b669f31d96182093a377463"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/64f017ae3df5e6d95e7d338341b980d6e7cfa5ca",
-                "reference": "64f017ae3df5e6d95e7d338341b980d6e7cfa5ca",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/7d8acf1987f0cf603b669f31d96182093a377463",
+                "reference": "7d8acf1987f0cf603b669f31d96182093a377463",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
                 "roave/better-reflection": "^4.3.0",
                 "spryker/kernel": "^3.33.0",
-                "spryker/symfony": "^3.2.2",
-                "spryker/zend": "^2.1.0"
+                "spryker/laminas": "^1.0.0",
+                "spryker/symfony": "^3.2.2"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -13956,9 +13927,9 @@
             "description": "ComposerConstrainer module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/composer-constrainer/issues",
-                "source": "https://github.com/spryker-sdk/composer-constrainer/tree/master"
+                "source": "https://github.com/spryker-sdk/composer-constrainer/tree/0.2.2"
             },
-            "time": "2020-10-27T11:33:54+00:00"
+            "time": "2020-11-04T14:55:34+00:00"
         },
         {
             "name": "spryker-sdk/composer-replace",
@@ -14067,21 +14038,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "24b87b1d803e4896949a156428c9e0934a7a6623"
+                "reference": "6d7f1d0b938ae23700ada33ffa723adff452cd48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/24b87b1d803e4896949a156428c9e0934a7a6623",
-                "reference": "24b87b1d803e4896949a156428c9e0934a7a6623",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/6d7f1d0b938ae23700ada33ffa723adff452cd48",
+                "reference": "6d7f1d0b938ae23700ada33ffa723adff452cd48",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
-                "roave/better-reflection": "^3.0 || ^4.0",
+                "roave/better-reflection": "^3.2 || ^4.0",
                 "spryker/config": "^3.0.0",
                 "spryker/doctrine-inflector": "^1.0.0",
                 "spryker/glue-application-extension": "^1.1.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/laminas": "^1.0.0",
                 "symfony/console": "^3.4.0 || ^4.0.0 || ^5.0.0",
                 "symfony/filesystem": "^3.4.0 || ^4.0.0 || ^5.0.0",
                 "symfony/finder": "^3.4.0 || ^4.0.0 || ^5.0.0",
@@ -14091,6 +14063,7 @@
             "require-dev": {
                 "codeception/codeception": "^4.0.0",
                 "phpstan/phpstan": "^0.12.0",
+                "phpunit/phpunit": "^7.0.0 || ^8.0.0",
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "^3.0.0"
             },
@@ -14113,9 +14086,9 @@
             "description": "Spryk module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/spryk/issues",
-                "source": "https://github.com/spryker-sdk/spryk/tree/master"
+                "source": "https://github.com/spryker-sdk/spryk/tree/0.2.9"
             },
-            "time": "2020-10-27T17:55:47+00:00"
+            "time": "2020-11-04T09:50:23+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -14123,12 +14096,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk-gui.git",
-                "reference": "17fe0aaf7f84056e593df972524b1010abc9b922"
+                "reference": "220aa290ff982692d40e8a8c45d6ba7f46c6914a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/17fe0aaf7f84056e593df972524b1010abc9b922",
-                "reference": "17fe0aaf7f84056e593df972524b1010abc9b922",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/220aa290ff982692d40e8a8c45d6ba7f46c6914a",
+                "reference": "220aa290ff982692d40e8a8c45d6ba7f46c6914a",
                 "shasum": ""
             },
             "require": {
@@ -14138,8 +14111,8 @@
                 "spryker/development": "^3.12.0",
                 "spryker/graph": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/zend": "^2.0.0"
+                "spryker/laminas": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
                 "spryker/application": "*",
@@ -14174,9 +14147,9 @@
             "description": "SprykGui module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/spryk-gui/issues",
-                "source": "https://github.com/spryker-sdk/spryk-gui/tree/master"
+                "source": "https://github.com/spryker-sdk/spryk-gui/tree/0.1.8"
             },
-            "time": "2020-10-27T11:33:23+00:00"
+            "time": "2020-11-04T12:00:23+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
@@ -14184,21 +14157,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "64ec598e65cccef7ec72bfdc88d241663a42bfb1"
+                "reference": "8f153aabdce603fe0c410f6a0bc547bf8f29db9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/64ec598e65cccef7ec72bfdc88d241663a42bfb1",
-                "reference": "64ec598e65cccef7ec72bfdc88d241663a42bfb1",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/8f153aabdce603fe0c410f6a0bc547bf8f29db9a",
+                "reference": "8f153aabdce603fe0c410f6a0bc547bf8f29db9a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "phpmd/phpmd": "^2.4.1",
                 "roave/better-reflection": "*",
-                "symfony/finder": "*",
-                "zendframework/zend-config": "*",
-                "zendframework/zend-filter": "*"
+                "spryker/laminas": "*",
+                "symfony/finder": "*"
             },
             "require-dev": {
                 "codeception/codeception": "^2.4",
@@ -14239,7 +14211,7 @@
                 "issues": "https://github.com/spryker/architecture-sniffer/issues",
                 "source": "https://github.com/spryker/architecture-sniffer"
             },
-            "time": "2020-08-18T08:05:12+00:00"
+            "time": "2020-11-03T15:30:56+00:00"
         },
         {
             "name": "spryker/code-generator",
@@ -14247,20 +14219,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "1352d06e24e74e27892bfc889f4ff9194b5116b8"
+                "reference": "a0c140efee205533685f3ec86bf11142ed280100"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/1352d06e24e74e27892bfc889f4ff9194b5116b8",
-                "reference": "1352d06e24e74e27892bfc889f4ff9194b5116b8",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/a0c140efee205533685f3ec86bf11142ed280100",
+                "reference": "a0c140efee205533685f3ec86bf11142ed280100",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/kernel": "^3.30.0",
+                "spryker/laminas": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/twig": "^3.0.0",
-                "spryker/zend": "^2.0.0"
+                "spryker/twig": "^3.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -14285,9 +14257,9 @@
             "description": "CodeGenerator module",
             "support": {
                 "issues": "https://github.com/spryker/code-generator/issues",
-                "source": "https://github.com/spryker/code-generator/tree/master"
+                "source": "https://github.com/spryker/code-generator/tree/0.3.9"
             },
-            "time": "2020-10-08T09:02:20+00:00"
+            "time": "2020-11-04T14:55:38+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -14446,20 +14418,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "b28c04acddf75dae9666f56375e7df0b40c160ba"
+                "reference": "f68427b1be1971dd7f730ab0b1a760d3fcfa214b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/b28c04acddf75dae9666f56375e7df0b40c160ba",
-                "reference": "b28c04acddf75dae9666f56375e7df0b40c160ba",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/f68427b1be1971dd7f730ab0b1a760d3fcfa214b",
+                "reference": "f68427b1be1971dd7f730ab0b1a760d3fcfa214b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
+                "spryker/laminas": "^1.0.0",
                 "symfony/console": "^3.0.0 || ^4.0.0 || ^5.0.0",
                 "symfony/process": "^3.3.0 || ^4.0.0 || ^5.0.0",
-                "symfony/yaml": "^3.0.0 || ^4.0.0 || ^5.0.0",
-                "zendframework/zend-filter": "^2.0.0"
+                "symfony/yaml": "^3.0.0 || ^4.0.0 || ^5.0.0"
             },
             "require-dev": {
                 "phpstan/phpstan": "^0.12.0",
@@ -14495,7 +14467,7 @@
                 "issues": "https://github.com/spryker/git-hook/issues",
                 "source": "https://github.com/spryker/git-hook"
             },
-            "time": "2020-10-27T11:41:19+00:00"
+            "time": "2020-11-03T15:28:50+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -15604,8 +15576,8 @@
         {
             "package": "spryker-sdk/spryk",
             "version": "9999999-dev",
-            "alias": "0.2.7",
-            "alias_normalized": "0.2.7.0"
+            "alias": "0.2.9",
+            "alias_normalized": "0.2.9.0"
         }
     ],
     "minimum-stability": "dev",
