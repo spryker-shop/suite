@@ -4,8 +4,9 @@ _COMPOSER_INSTALL: &COMPOSER_INSTALL
 
 _COMPOSER_PREFER_MID: &COMPOSER_PREFER_MID
     - echo "_COMPOSER_PREFER_MID"
-    - COMPOSER_MEMORY_LIMIT=-1 composer install --optimize-autoloader --no-interaction
+    - COMPOSER_MEMORY_LIMIT=-1 composer install --no-interaction
     - COMPOSER_MEMORY_LIMIT=-1 composer prefer-mid
+    - COMPOSER_MEMORY_LIMIT=-1 composer dumpautoload -o
 
 _COMPOSER_PREFER_LOWEST: &COMPOSER_PREFER_LOWEST
   - echo "_COMPOSER_PREFER_LOWEST"

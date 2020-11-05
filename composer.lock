@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82f42290cf11684d662eec3def421bcb",
+    "content-hash": "bf10c4d421f1c3688c81fadae11690fb",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3986,20 +3986,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/loggly.git",
-                "reference": "416cdb33a99c73b748223abd8e7b582c9ae29bae"
+                "reference": "bd4a9185a7c17d4ef47e44af453664c88a6c4ce5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/416cdb33a99c73b748223abd8e7b582c9ae29bae",
-                "reference": "416cdb33a99c73b748223abd8e7b582c9ae29bae",
+                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/bd4a9185a7c17d4ef47e44af453664c88a6c4ce5",
+                "reference": "bd4a9185a7c17d4ef47e44af453664c88a6c4ce5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/kernel": "^3.30.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/monolog": "*",
                 "spryker/queue": "*"
@@ -4029,7 +4028,7 @@
                 "issues": "https://github.com/spryker-eco/loggly/issues",
                 "source": "https://github.com/spryker-eco/loggly/tree/master"
             },
-            "time": "2020-10-08T09:29:08+00:00"
+            "time": "2020-11-05T10:28:50+00:00"
         },
         {
             "name": "spryker-eco/new-relic",
@@ -4165,27 +4164,78 @@
             "time": "2020-09-22T14:57:01+00:00"
         },
         {
-            "name": "spryker/decimal-object",
-            "version": "1.0.0",
+            "name": "spryker/composer-merge-plugin",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/decimal-object.git",
-                "reference": "03ec7aa5b3adb1bbb2790a493d49627360971a16"
+                "url": "https://github.com/spryker/composer-merge-plugin.git",
+                "reference": "37bc321eba15215b37b79c405dfd2579700c912d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/decimal-object/zipball/03ec7aa5b3adb1bbb2790a493d49627360971a16",
-                "reference": "03ec7aa5b3adb1bbb2790a493d49627360971a16",
+                "url": "https://api.github.com/repos/spryker/composer-merge-plugin/zipball/37bc321eba15215b37b79c405dfd2579700c912d",
+                "reference": "37bc321eba15215b37b79c405dfd2579700c912d",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1.0 || ^2.0.0",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "composer/composer": "^1.1.0 || ^2.0.0"
+            },
+            "default-branch": true,
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                },
+                "class": "Spryker\\Composer\\Plugin\\MergePlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\Composer\\": "src/Spryker/Composer"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "René Klatt",
+                    "email": "rene.klatt@spryker.com"
+                }
+            ],
+            "description": "Composer plugin to merge multiple autoload and autoload-dev from composer.json files",
+            "support": {
+                "issues": "https://github.com/spryker/composer-merge-plugin/issues",
+                "source": "https://github.com/spryker/composer-merge-plugin/tree/master"
+            },
+            "time": "2020-11-05T11:04:52+00:00"
+        },
+        {
+            "name": "spryker/decimal-object",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/decimal-object.git",
+                "reference": "4366191e7eb33dafa49661615c086b20abb5d380"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/decimal-object/zipball/4366191e7eb33dafa49661615c086b20abb5d380",
+                "reference": "4366191e7eb33dafa49661615c086b20abb5d380",
                 "shasum": ""
             },
             "require": {
                 "ext-bcmath": "*",
                 "ext-json": "*",
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "require-dev": {
-                "phpstan/phpstan-shim": "^0.11",
-                "phpunit/phpunit": "^7.0.0 || ^8.0.0",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.0.0 || ^9.0.0",
                 "spryker/code-sniffer": "@stable"
             },
             "type": "library",
@@ -4212,9 +4262,9 @@
             "description": "PHP decimal handling as value object",
             "support": {
                 "issues": "https://github.com/spryker/decimal-object/issues",
-                "source": "https://github.com/spryker/decimal-object/tree/master"
+                "source": "https://github.com/spryker/decimal-object/tree/1.0.1"
             },
-            "time": "2019-11-25T09:43:59+00:00"
+            "time": "2020-11-05T10:31:54+00:00"
         },
         {
             "name": "spryker/event-behavior",
@@ -4498,7 +4548,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6c708705ef6e24160d2b33d77fc3e71e87d630d1"
+                "reference": "704ab1e7bcfcfe139e8658040bb40001440402fb"
             },
             "require": {
                 "php": ">=7.3"
@@ -5255,11 +5305,6 @@
                 "Bundles/Console/bin/glue"
             ],
             "type": "library",
-            "autoload": {
-                "files": [
-                    "autoload.php"
-                ]
-            },
             "scripts": {
                 "cs-check": [
                     "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
@@ -5269,7 +5314,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-11-03T20:16:41+00:00"
+            "time": "2020-11-05T11:04:54+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5277,7 +5322,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "0c482dfb381391632377cbfd3ef4f32c65e794cb"
+                "reference": "0c36553f40b5b819f729ab86196cf5df90276a11"
             },
             "require": {
                 "php": ">=7.3"
@@ -5428,11 +5473,6 @@
             },
             "default-branch": true,
             "type": "library",
-            "autoload": {
-                "files": [
-                    "autoload.php"
-                ]
-            },
             "scripts": {
                 "cs-check": [
                     "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
@@ -5442,7 +5482,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-11-03T11:08:31+00:00"
+            "time": "2020-11-05T11:04:57+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -15590,6 +15630,7 @@
         "spryker-eco/loggly": 20,
         "spryker-eco/new-relic": 20,
         "spryker-eco/payone": 20,
+        "spryker/composer-merge-plugin": 20,
         "codeception/codeception": 20,
         "codeception/lib-innerbrowser": 20,
         "spryker/architecture-sniffer": 20,
