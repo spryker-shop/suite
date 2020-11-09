@@ -1,0 +1,129 @@
+name: Validation
+
+on: [
+    push,
+    pull_request
+]
+
+jobs:
+    validation:
+        runs-on: ubuntu-18.04
+        strategy:
+            fail-fast: false
+            matrix:
+                php-version: [
+                    '7.3',
+                    'nightly'
+                ]
+
+        env:
+            APPLICATION_ENV: devtest
+            APPLICATION_STORE: DE
+            PROJECT: suite
+
+        steps:
+            - uses: actions/checkout@v1
+              with:
+                  fetch-depth: 1
+
+            - name: Configure sysctl limits
+              run: |
+                sudo swapoff -a
+                sudo sysctl -w vm.swappiness=1
+                sudo sysctl -w fs.file-max=262144
+                sudo sysctl -w vm.max_map_count=262144
+
+            - name: Runs Elasticsearch
+              uses: elastic/elastic-github-actions/elasticsearch@master
+              with:
+                stack-version: 7.6.0
+                port: 10005
+
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: '12'
+
+            - name: Validate composer.json and composer.lock
+              run: composer validate --strict
+
+            - name: Get Composer Cache Directory
+              id: composer-cache
+              run: |
+                  echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+            - uses: actions/cache@v2
+              with:
+                  path: ${{ steps.composer-cache.outputs.dir }}
+                  key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-composer-
+
+            - name: Composer install
+              run: |
+                  composer --version
+                  composer install
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php-version }}
+                  extensions: mbstring, intl, pdo_mysql
+
+            - name: Generate transfer objects
+              run: vendor/bin/console transfer:generate
+
+            - name: Generate transfer databuilder objects
+              run: vendor/bin/console transfer:databuilder:generate
+
+            - name: Propel install
+              run: |
+                  vendor/bin/console propel:schema:copy
+                  vendor/bin/console propel:model:build
+                  vendor/bin/console transfer:entity:generate
+
+            - name: Setup search
+              run: vendor/bin/console setup:search
+
+            - name: Install NPM packages
+              run: |
+                  npm install speccy@0.11.0 -g
+
+            - name: Codecept build
+              run: vendor/bin/codecept build --ansi
+
+            - name: Generate autocompletion files
+              run: vendor/bin/console dev:ide-auto-completion:generate
+
+            - name: Generate rest API dcoumentation
+              run: vendor/bin/console rest-api:generate:documentation
+
+            - name: Frontend install-dependencies
+              run: |
+                vendor/bin/console frontend:project:install-dependencies
+                vendor/bin/console frontend:yves:install-dependencies
+
+            - name: Speccy lint Glue specification
+              run: speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
+
+            - name: Style lint
+              run: node ./frontend/libs/stylelint
+
+            - name: TS lint
+              run: node ./frontend/libs/tslint stylish
+
+            - name: Validate propel files
+              run: |
+                  vendor/bin/console propel:schema:validate
+                  vendor/bin/console propel:schema:validate-xml-names
+
+            - name: Validate transfer files
+              run: vendor/bin/console transfer:validate
+
+            - name: Run CodeStyle checks
+              run: vendor/bin/console code:sniff:style
+
+            - name: Run Architecture rules
+              run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
+
+            - name: Run PHPStan
+              run: vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/
