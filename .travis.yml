@@ -470,7 +470,7 @@ before_script:
     - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r ci ; fi
     - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r ci -x frontend -x fixtures ; fi
 
-    - if [[ $VALIDATION == 1 ]] ; then vendor/bin/install DE -r ci -s generate ; fi
+    - if [[ $VALIDATION == 1 ]] ; then vendor/bin/install DE -r ci -s generate -s database-migrate ; fi
     - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install ; fi
 
 script:
