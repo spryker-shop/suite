@@ -15,5 +15,6 @@ class SearchElasticsearchConfig extends SprykerSearchElasticsearchConfig
         'page',
         'product-review',
         'return_reason',
+        'merchant',
     ];
 }
