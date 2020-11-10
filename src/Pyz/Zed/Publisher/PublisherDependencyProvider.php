@@ -12,10 +12,15 @@ use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\Gloss
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryWritePublisherPlugin as GlossaryKeyWriterPublisherPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryPublisherTriggerPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryTranslation\GlossaryWritePublisherPlugin as GlossaryTranslationWritePublisherPlugin;
+use Spryker\Zed\MerchantCategory\Communication\Plugin\Publisher\Category\CategoryWritePublisherPlugin;
 use Spryker\Zed\MerchantProductSearch\Communication\Plugin\Publisher\Merchant\MerchantProductSearchWritePublisherPlugin as MerchantMerchantProductSearchWritePublisherPlugin;
 use Spryker\Zed\MerchantProductSearch\Communication\Plugin\Publisher\MerchantProduct\MerchantProductSearchWritePublisherPlugin;
 use Spryker\Zed\MerchantProductStorage\Communication\Plugin\Publisher\Merchant\MerchantUpdatePublisherPlugin;
 use Spryker\Zed\MerchantProductStorage\Communication\Plugin\Publisher\MerchantProduct\MerchantProductWritePublisherPlugin;
+use Spryker\Zed\MerchantSearch\Communication\Plugin\Publisher\Merchant\MerchantDeletePublisherPlugin;
+use Spryker\Zed\MerchantSearch\Communication\Plugin\Publisher\Merchant\MerchantWritePublisherPlugin;
+use Spryker\Zed\MerchantSearch\Communication\Plugin\Publisher\MerchantCategory\MerchantCategoryWritePublisherPlugin;
+use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\Merchant\MerchantCategoryStoragePublisherPlugin;
 use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\Merchant\MerchantStoragePublisherPlugin;
 use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\MerchantPublisherTriggerPlugin;
 use Spryker\Zed\ProductBundleStorage\Communication\Plugin\Publisher\ProductBundle\ProductBundlePublishWritePublisherPlugin;
@@ -59,11 +64,13 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductRelationStoragePlugins(),
             $this->getMerchantStoragePlugins(),
             $this->getReturnReasonSearchPlugins(),
+            $this->getMerchantCategoryPlugins(),
             $this->getMerchantProductPlugins(),
             $this->getMerchantProductSearchPlugins(),
             $this->getProductBundleStoragePlugins(),
             $this->getMerchantProductSearchPlugins(),
-            $this->getProductConfigurationStoragePlugins()
+            $this->getProductConfigurationStoragePlugins(),
+            $this->getMerchantSearchPlugins()
         );
     }
 
@@ -139,10 +146,33 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     /**
      * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
      */
+    protected function getMerchantCategoryPlugins(): array
+    {
+        return [
+            new CategoryWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
+     */
     protected function getMerchantStoragePlugins(): array
     {
         return [
+            new MerchantCategoryStoragePublisherPlugin(),
             new MerchantStoragePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getMerchantSearchPlugins(): array
+    {
+        return [
+           new MerchantWritePublisherPlugin(),
+           new MerchantCategoryWritePublisherPlugin(),
+           new MerchantDeletePublisherPlugin(),
         ];
     }
 
