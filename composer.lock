@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "39cb3d0519804d8299af75da807ffed1",
+    "content-hash": "84294bf4194c2d72e8202bd1674d852f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4172,6 +4172,50 @@
             "time": "2020-09-22T14:57:01+00:00"
         },
         {
+            "name": "spryker/checksum-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/checksum-generator.git",
+                "reference": "79db109a1e7206e9ec6419c4b21319fcca68b38a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/checksum-generator/zipball/79db109a1e7206e9ec6419c4b21319fcca68b38a",
+                "reference": "79db109a1e7206e9ec6419c4b21319fcca68b38a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ChecksumGenerator",
+            "support": {
+                "issues": "https://github.com/spryker/checksum-generator/issues",
+                "source": "https://github.com/spryker/checksum-generator/tree/master"
+            },
+            "time": "2020-11-16T13:36:29+00:00"
+        },
+        {
             "name": "spryker/composer-merge-plugin",
             "version": "dev-master",
             "source": {
@@ -4556,7 +4600,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1f8d9c452e0e0d970f7b63bdaf7968ad3f6c26c0"
+                "reference": "3a7d416cc4eb8c6085db61d37a91cf69db0cf6eb"
             },
             "require": {
                 "php": ">=7.3"
@@ -4582,6 +4626,7 @@
                 "spryker/authentication-merchant-portal-gui": "*",
                 "spryker/availability": "*",
                 "spryker/availability-cart-connector": "*",
+                "spryker/availability-cart-connector-extension": "*",
                 "spryker/availability-data-feed": "*",
                 "spryker/availability-extension": "*",
                 "spryker/availability-gui": "*",
@@ -5040,7 +5085,9 @@
                 "spryker/product-configuration": "*",
                 "spryker/product-configuration-data-import": "*",
                 "spryker/product-configuration-extension": "*",
+                "spryker/product-configuration-gui": "*",
                 "spryker/product-configuration-storage": "*",
+                "spryker/product-configuration-storage-extension": "*",
                 "spryker/product-customer-permission": "*",
                 "spryker/product-customer-permission-collector": "*",
                 "spryker/product-discontinued": "*",
@@ -5184,6 +5231,8 @@
                 "spryker/sales-order-threshold-gui": "*",
                 "spryker/sales-order-threshold-gui-extension": "*",
                 "spryker/sales-product-configuration": "*",
+                "spryker/sales-product-configuration-gui": "*",
+                "spryker/sales-product-configuration-gui-extension": "*",
                 "spryker/sales-product-connector": "*",
                 "spryker/sales-quantity": "*",
                 "spryker/sales-reclamation": "*",
@@ -5326,7 +5375,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-11-12T08:47:13+00:00"
+            "time": "2020-11-16T13:29:16+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5334,7 +5383,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "1c7d85a58c344846c3ee0fbf36f79b88a59fcabc"
+                "reference": "d8d2c83176d59a5ef3ec3aa0ad065d717f8c24da"
             },
             "require": {
                 "php": ">=7.3"
@@ -5385,6 +5434,7 @@
                 "spryker-shop/customer-page-extension": "*",
                 "spryker-shop/customer-reorder-widget": "*",
                 "spryker-shop/customer-reorder-widget-extension": "*",
+                "spryker-shop/date-time-configurator-page-example": "*",
                 "spryker-shop/discount-promotion-widget": "*",
                 "spryker-shop/discount-widget": "*",
                 "spryker-shop/error-page": "*",
@@ -5494,7 +5544,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-11-16T10:06:57+00:00"
+            "time": "2020-11-16T13:29:20+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",

@@ -177,6 +177,7 @@ use SprykerSdk\Spryk\Console\SprykRunConsole;
 use SprykerSdk\Zed\Benchmark\Communication\Console\BenchmarkRunConsole;
 use SprykerSdk\Zed\ComposerConstrainer\Communication\Console\ComposerConstraintConsole;
 use SprykerSdk\Zed\ComposerReplace\Communication\Console\ComposerReplaceConsole;
+use SprykerShop\Zed\DateTimeConfiguratorPageExample\Communication\Console\DateTimeProductConfiguratorBuildFrontendConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
 /**
@@ -428,6 +429,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new EventTriggerListenerConsole();
             $commands[] = new ComposerConstraintConsole();
             $commands[] = new CleanOutputConsole();
+            $commands[] = new DateTimeProductConfiguratorBuildFrontendConsole();
 
             if (class_exists(BenchmarkRunConsole::class)) {
                 $commands[] = new BenchmarkRunConsole();

@@ -79,6 +79,9 @@ sections:
         zed-build-frontend:
             command: "vendor/bin/console frontend:zed:build"
 
+        date-time-product-configurator:
+            command: "vendor/bin/console frontend:date-time-product-configurator:build"
+
     scheduler-setup:
         jenkins-setup:
             command: "vendor/bin/console scheduler:setup"
