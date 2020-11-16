@@ -12,6 +12,7 @@ use Spryker\Service\PriceProductOfferStorage\Plugin\PriceProduct\ProductOfferPri
 use Spryker\Service\PriceProductOfferVolume\Plugin\PriceProductOffer\PriceProductOfferVolumeFilterPlugin;
 use Spryker\Service\PriceProductVolume\Plugin\PriceProductExtension\PriceProductVolumeFilterPlugin;
 use Spryker\Service\ProductConfigurationStorage\Plugin\PriceProduct\ProductConfigurationPriceProductFilterPlugin;
+use Spryker\Service\ProductConfigurationStorage\Plugin\PriceProduct\ProductConfigurationPriceProductVolumeFilterPlugin;
 
 class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvider
 {
@@ -23,10 +24,11 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     protected function getPriceProductDecisionPlugins(): array
     {
         return array_merge([
+            new ProductConfigurationPriceProductFilterPlugin(),
+            new ProductConfigurationPriceProductVolumeFilterPlugin(),
             new ProductOfferPriceProductFilterPlugin(),
             new PriceProductOfferVolumeFilterPlugin(),
             new PriceProductVolumeFilterPlugin(),
-            new ProductConfigurationPriceProductFilterPlugin(),
         ], parent::getPriceProductDecisionPlugins());
     }
 }

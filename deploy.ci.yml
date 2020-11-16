@@ -48,7 +48,11 @@ image:
         enabled-extensions:
             - blackfire
             - newrelic
-
+    environment:
+        SPRYKER_PRODUCT_CONFIGURATOR_HOST: demo-date-time-configurator.night-test.cloud.spryker.toys
+        SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
+        SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
+        SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR: '0c1ffefeebdab4a3d839d0e52590c9a2'
 composer:
     mode: --no-dev
     autoload: --classmap-authoritative
@@ -114,6 +118,8 @@ groups:
             Yves:
                 application: yves
                 endpoints:
+                    demo-date-time-configurator.night-test.cloud.spryker.toys:
+                        entry-point: Configurator
                     www.de.night-test.cloud.spryker.toys:
                         store: DE
                         <<: *frontend-auth
@@ -137,6 +143,7 @@ groups:
                 endpoints:
                     zed.de.night-test.cloud.spryker.toys:
                         store: DE
+                        primal: true
                     zed.at.night-test.cloud.spryker.toys:
                         store: AT
                     zed.us.night-test.cloud.spryker.toys:

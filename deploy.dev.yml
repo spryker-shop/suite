@@ -9,7 +9,11 @@ image:
     php:
         enabled-extensions:
             - blackfire
-
+    environment:
+        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.spryker.local
+        SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
+        SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
+        SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR: '0c1ffefeebdab4a3d839d0e52590c9a2'
 composer:
     mode: ''
     autoload: ''
@@ -72,6 +76,8 @@ groups:
             yves_eu:
                 application: yves
                 endpoints:
+                    date-time-configurator-example.spryker.local:
+                        entry-point: Configurator
                     yves.de.spryker.local:
                         store: DE
                         services:
@@ -94,6 +100,7 @@ groups:
                 endpoints:
                     zed.de.spryker.local:
                         store: DE
+                        primal: true
                         services:
                             session:
                                 namespace: 3

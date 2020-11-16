@@ -8,7 +8,9 @@
 namespace Pyz\Zed\Availability;
 
 use Spryker\Zed\Availability\AvailabilityDependencyProvider as SprykerAvailabilityDependencyProvider;
+use Spryker\Zed\ProductConfiguration\Communication\Plugin\Availability\ProductConfigurationCartItemQuantityCounterStrategyPlugin;
 use Spryker\Zed\ProductOfferAvailability\Communication\Plugin\Availability\ProductOfferAvailabilityStrategyPlugin;
+use SprykerShop\Zed\DateTimeConfiguratorPageExample\Communication\Plugin\Availability\ExampleDateTimeConfiguratorAvailabilityStrategyPlugin;
 
 class AvailabilityDependencyProvider extends SprykerAvailabilityDependencyProvider
 {
@@ -18,7 +20,18 @@ class AvailabilityDependencyProvider extends SprykerAvailabilityDependencyProvid
     protected function getAvailabilityStrategyPlugins(): array
     {
         return [
+            new ExampleDateTimeConfiguratorAvailabilityStrategyPlugin(),
             new ProductOfferAvailabilityStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\AvailabilityExtension\Dependency\Plugin\CartItemQuantityCounterStrategyPluginInterface[]
+     */
+    protected function getCartItemQuantityCounterStrategyPlugins(): array
+    {
+        return [
+            new ProductConfigurationCartItemQuantityCounterStrategyPlugin(),
         ];
     }
 }

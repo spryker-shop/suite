@@ -48,6 +48,10 @@ image:
       SPRYKER_HOOK_AFTER_DEPLOY: "true"
       SPRYKER_HOOK_INSTALL: "vendor/bin/install -r production --no-ansi -vvv"
       SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r destructive --no-ansi -vvv"
+      SPRYKER_PRODUCT_CONFIGURATOR_HOST: demo-date-time-configurator.dev.cloud.spryker.toys
+      SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
+      SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
+      SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR: '0c1ffefeebdab4a3d839d0e52590c9a2'
     php:
         enabled-extensions:
             - blackfire
@@ -118,6 +122,8 @@ groups:
             Yves:
                 application: yves
                 endpoints:
+                    demo-date-time-configurator.dev.cloud.spryker.toys:
+                        entry-point: Configurator
                     www.de.dev.cloud.spryker.toys:
                         store: DE
                         <<: *frontend-auth
@@ -141,6 +147,7 @@ groups:
                 endpoints:
                     zed.de.dev.cloud.spryker.toys:
                         store: DE
+                        primal: true
                     zed.at.dev.cloud.spryker.toys:
                         store: AT
                     zed.us.dev.cloud.spryker.toys:
