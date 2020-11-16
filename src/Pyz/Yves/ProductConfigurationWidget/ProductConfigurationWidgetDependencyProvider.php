@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\ProductConfigurationWidget;
 
-use Pyz\Yves\ProductConfigurationWidget\Plugin\ProductConfigurationWidget\ProductConfigurationPlainRenderStrategyPlugin;
+use SprykerShop\Yves\DateTimeConfiguratorPageExample\Plugin\ProductConfigurationWidget\ExampleDateTimeProductConfigurationRenderStrategyPlugin;
 use SprykerShop\Yves\ProductConfigurationWidget\ProductConfigurationWidgetDependencyProvider as SprykerProductConfigurationWidgetDependencyProvider;
 
 class ProductConfigurationWidgetDependencyProvider extends SprykerProductConfigurationWidgetDependencyProvider
@@ -18,7 +18,7 @@ class ProductConfigurationWidgetDependencyProvider extends SprykerProductConfigu
     protected function getProductConfigurationRenderStrategyPlugins(): array
     {
         return [
-            new ProductConfigurationPlainRenderStrategyPlugin(),
+            new ExampleDateTimeProductConfigurationRenderStrategyPlugin(),
         ];
     }
 }

@@ -7,11 +7,12 @@
 
 namespace Pyz\Client\ProductConfiguration;
 
-use Pyz\Client\ProductConfiguration\Plugin\ProductConfiguration\DemoProductConfiguratorRequestPlugin;
-use Pyz\Client\ProductConfiguration\Plugin\ProductConfiguration\DemoProductConfiguratorResponsePlugin;
+use Spryker\Client\ProductConfiguration\Plugin\ProductConfiguratorAccessTokenRequestPlugin;
 use Spryker\Client\ProductConfiguration\ProductConfigurationDependencyProvider as SprykerProductConfigurationDependencyProvider;
 use Spryker\Client\ProductConfigurationExtension\Dependency\Plugin\ProductConfiguratorRequestPluginInterface;
 use Spryker\Client\ProductConfigurationExtension\Dependency\Plugin\ProductConfiguratorResponsePluginInterface;
+use Spryker\Client\ProductConfigurationStorage\Plugin\ProductConfiguration\ProductConfiguratorCheckSumResponsePlugin;
+use SprykerShop\Client\DateTimeConfiguratorPageExample\Plugin\ProductConfiguration\ExampleDateTimeProductConfiguratorRequestExpanderPlugin;
 
 /**
  * @method \Spryker\Client\ProductConfiguration\ProductConfigurationConfig getConfig()
@@ -23,7 +24,7 @@ class ProductConfigurationDependencyProvider extends SprykerProductConfiguration
      */
     protected function getDefaultProductConfiguratorRequestPlugin(): ProductConfiguratorRequestPluginInterface
     {
-        return new DemoProductConfiguratorRequestPlugin();
+        return new ProductConfiguratorAccessTokenRequestPlugin();
     }
 
     /**
@@ -31,6 +32,16 @@ class ProductConfigurationDependencyProvider extends SprykerProductConfiguration
      */
     protected function getDefaultProductConfiguratorResponsePlugin(): ProductConfiguratorResponsePluginInterface
     {
-        return new DemoProductConfiguratorResponsePlugin();
+        return new ProductConfiguratorCheckSumResponsePlugin();
+    }
+
+    /**
+     * @return \Spryker\Client\ProductConfigurationExtension\Dependency\Plugin\ProductConfiguratorRequestExpanderInterface[]
+     */
+    protected function getProductConfigurationRequestExpanderPlugins(): array
+    {
+        return [
+            new ExampleDateTimeProductConfiguratorRequestExpanderPlugin(),
+        ];
     }
 }
