@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84294bf4194c2d72e8202bd1674d852f",
+    "content-hash": "721bbd8189e226cf87dadcc2f71dd1ef",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.161.1",
+            "version": "3.162.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "4c1852e9efaef18e15f2a6c914d8dc41fda2a052"
+                "reference": "64b0468417c4a84ff5cc51a69cf2ff9d899c2e8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4c1852e9efaef18e15f2a6c914d8dc41fda2a052",
-                "reference": "4c1852e9efaef18e15f2a6c914d8dc41fda2a052",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/64b0468417c4a84ff5cc51a69cf2ff9d899c2e8e",
+                "reference": "64b0468417c4a84ff5cc51a69cf2ff9d899c2e8e",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.161.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.162.0"
             },
-            "time": "2020-11-13T19:17:55+00:00"
+            "time": "2020-11-17T19:12:26+00:00"
         },
         {
             "name": "brick/math",
@@ -4177,12 +4177,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/checksum-generator.git",
-                "reference": "79db109a1e7206e9ec6419c4b21319fcca68b38a"
+                "reference": "94366ba2d0fd34ac4948a8391fb9ecdde3ab092c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checksum-generator/zipball/79db109a1e7206e9ec6419c4b21319fcca68b38a",
-                "reference": "79db109a1e7206e9ec6419c4b21319fcca68b38a",
+                "url": "https://api.github.com/repos/spryker/checksum-generator/zipball/94366ba2d0fd34ac4948a8391fb9ecdde3ab092c",
+                "reference": "94366ba2d0fd34ac4948a8391fb9ecdde3ab092c",
                 "shasum": ""
             },
             "require": {
@@ -4190,6 +4190,7 @@
                 "php": ">=7.3"
             },
             "require-dev": {
+                "phpstan/phpstan": "^0.12",
                 "spryker/code-sniffer": "*"
             },
             "default-branch": true,
@@ -4211,9 +4212,9 @@
             "description": "ChecksumGenerator",
             "support": {
                 "issues": "https://github.com/spryker/checksum-generator/issues",
-                "source": "https://github.com/spryker/checksum-generator/tree/master"
+                "source": "https://github.com/spryker/checksum-generator/tree/1.0.0"
             },
-            "time": "2020-11-16T13:36:29+00:00"
+            "time": "2020-11-16T14:02:55+00:00"
         },
         {
             "name": "spryker/composer-merge-plugin",
@@ -15680,6 +15681,12 @@
             "alias_normalized": "0.2.9.0"
         },
         {
+            "package": "spryker/checksum-generator",
+            "version": "9999999-dev",
+            "alias": "1.0.0",
+            "alias_normalized": "1.0.0.0"
+        },
+        {
             "package": "spryker/event-behavior",
             "version": "9999999-dev",
             "alias": "1.20.0",
@@ -15714,6 +15721,7 @@
         "spryker/synchronization-behavior": 20,
         "spryker/uuid-behavior": 20,
         "spryker/silexphp": 20,
+        "spryker/checksum-generator": 20,
         "spryker-eco/loggly": 20,
         "spryker-eco/new-relic": 20,
         "spryker-eco/payone": 20,
