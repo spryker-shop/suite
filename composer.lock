@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb043cafb3862daa36e28c13f49465f1",
+    "content-hash": "51608433c867f9c9b9cf51eaf89e17d0",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.161.1",
+            "version": "3.162.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "4c1852e9efaef18e15f2a6c914d8dc41fda2a052"
+                "reference": "64b0468417c4a84ff5cc51a69cf2ff9d899c2e8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4c1852e9efaef18e15f2a6c914d8dc41fda2a052",
-                "reference": "4c1852e9efaef18e15f2a6c914d8dc41fda2a052",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/64b0468417c4a84ff5cc51a69cf2ff9d899c2e8e",
+                "reference": "64b0468417c4a84ff5cc51a69cf2ff9d899c2e8e",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.161.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.162.0"
             },
-            "time": "2020-11-13T19:17:55+00:00"
+            "time": "2020-11-17T19:12:26+00:00"
         },
         {
             "name": "brick/math",
@@ -48658,20 +48658,20 @@
         },
         {
             "name": "spryker/zed-request",
-            "version": "3.15.1",
+            "version": "3.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/zed-request.git",
-                "reference": "a3712d43d888e049edee42b368b5abe2c5dfffbb"
+                "reference": "9b512cecfcbbe3300f976957907548bb4ea9dec4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-request/zipball/a3712d43d888e049edee42b368b5abe2c5dfffbb",
-                "reference": "a3712d43d888e049edee42b368b5abe2c5dfffbb",
+                "url": "https://api.github.com/repos/spryker/zed-request/zipball/9b512cecfcbbe3300f976957907548bb4ea9dec4",
+                "reference": "9b512cecfcbbe3300f976957907548bb4ea9dec4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "psr/http-message": "^1.0.0",
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.1.0",
@@ -48682,7 +48682,8 @@
                 "spryker/messenger": "^3.0.0",
                 "spryker/symfony": "^3.5.0",
                 "spryker/util-network": "^1.1.0",
-                "spryker/util-text": "^1.1.0"
+                "spryker/util-text": "^1.1.0",
+                "spryker/zed-request-extension": "^1.0.0"
             },
             "require-dev": {
                 "spryker/application": "^3.2.0",
@@ -48718,9 +48719,50 @@
             ],
             "description": "ZedRequest module",
             "support": {
-                "source": "https://github.com/spryker/zed-request/tree/3.15.1"
+                "source": "https://github.com/spryker/zed-request/tree/3.16.0"
             },
-            "time": "2020-10-09T11:31:07+00:00"
+            "time": "2020-11-11T13:55:08+00:00"
+        },
+        {
+            "name": "spryker/zed-request-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/zed-request-extension.git",
+                "reference": "4607cea5e438b72b452aae5f405859e2a6f4be43"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/zed-request-extension/zipball/4607cea5e438b72b452aae5f405859e2a6f4be43",
+                "reference": "4607cea5e438b72b452aae5f405859e2a6f4be43",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ZedRequestExtension module",
+            "support": {
+                "source": "https://github.com/spryker/zed-request-extension/tree/1.0.0"
+            },
+            "time": "2020-11-11T13:55:08+00:00"
         },
         {
             "name": "spryker/zed-ui",
@@ -58215,16 +58257,16 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.34.0",
+            "version": "3.35.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "3a1d6df954b2e62e8ef7388f63c5e0ea108114f2"
+                "reference": "13b786b8e0f83324d62c91c0f97e1f5ef20980e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/3a1d6df954b2e62e8ef7388f63c5e0ea108114f2",
-                "reference": "3a1d6df954b2e62e8ef7388f63c5e0ea108114f2",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/13b786b8e0f83324d62c91c0f97e1f5ef20980e3",
+                "reference": "13b786b8e0f83324d62c91c0f97e1f5ef20980e3",
                 "shasum": ""
             },
             "require": {
@@ -58281,9 +58323,9 @@
             ],
             "description": "Testify module",
             "support": {
-                "source": "https://github.com/spryker/testify/tree/3.34.0"
+                "source": "https://github.com/spryker/testify/tree/3.35.0"
             },
-            "time": "2020-10-30T16:08:44+00:00"
+            "time": "2020-11-11T13:55:08+00:00"
         },
         {
             "name": "spryker/web-profiler",
@@ -58615,20 +58657,20 @@
         },
         {
             "name": "symfony/cache-contracts",
-            "version": "v1.1.10",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache-contracts.git",
-                "reference": "8d5489c10ef90aa7413e4921fc3c0520e24cbed7"
+                "reference": "8034ca0b61d4dd967f3698aaa1da2507b631d0cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache-contracts/zipball/8d5489c10ef90aa7413e4921fc3c0520e24cbed7",
-                "reference": "8d5489c10ef90aa7413e4921fc3c0520e24cbed7",
+                "url": "https://api.github.com/repos/symfony/cache-contracts/zipball/8034ca0b61d4dd967f3698aaa1da2507b631d0cb",
+                "reference": "8034ca0b61d4dd967f3698aaa1da2507b631d0cb",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.3",
+                "php": ">=7.2.5",
                 "psr/cache": "^1.0"
             },
             "suggest": {
@@ -58637,7 +58679,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "2.2-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -58674,7 +58716,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/cache-contracts/tree/v1.1.10"
+                "source": "https://github.com/symfony/cache-contracts/tree/v2.2.0"
             },
             "funding": [
                 {
@@ -58690,7 +58732,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-02T16:08:58+00:00"
+            "time": "2020-09-07T11:33:47+00:00"
         },
         {
             "name": "symfony/css-selector",
