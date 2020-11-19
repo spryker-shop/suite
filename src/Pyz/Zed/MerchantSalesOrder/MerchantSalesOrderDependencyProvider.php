@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\MerchantSalesOrder;
 
+use Spryker\Zed\DiscountMerchantSalesOrder\Communication\Plugin\DiscountMerchantOrderFilterPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantOms\Communication\Plugin\MerchantSalesOrder\EventTriggerMerchantOrderPostCreatePlugin;
 use Spryker\Zed\MerchantOms\Communication\Plugin\MerchantSalesOrder\MerchantOmsMerchantOrderExpanderPlugin;
@@ -22,6 +23,7 @@ class MerchantSalesOrderDependencyProvider extends SprykerMerchantSalesOrderDepe
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
+
         $container = $this->addSalesFacade($container);
 
         return $container;
@@ -44,6 +46,16 @@ class MerchantSalesOrderDependencyProvider extends SprykerMerchantSalesOrderDepe
     {
         return [
             new MerchantOmsMerchantOrderExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\MerchantSalesOrderExtension\Dependency\Plugin\MerchantOrderFilterPluginInterface[]
+     */
+    protected function getMerchantOrderFilterPlugins(): array
+    {
+        return [
+            new DiscountMerchantOrderFilterPlugin(),
         ];
     }
 }
