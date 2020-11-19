@@ -21,7 +21,7 @@ class LoginHelper extends Module
     {
         $i = $this->getClient();
 
-        $i->amOnPage('/auth/login');
+        $i->amOnPage('/security-gui/login');
 
         $i->fillField('#auth_username', $username);
         $i->fillField('#auth_password', $password);

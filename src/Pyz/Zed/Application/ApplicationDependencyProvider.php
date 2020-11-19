@@ -17,6 +17,7 @@ use Spryker\Zed\Locale\Communication\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Zed\Messenger\Communication\Plugin\Application\MessengerApplicationPlugin;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Zed\Router\Communication\Plugin\Application\RouterApplicationPlugin;
+use Spryker\Zed\Security\Communication\Plugin\Application\SecurityApplicationPlugin;
 use Spryker\Zed\Session\Communication\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
@@ -44,6 +45,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new FormApplicationPlugin(),
             new ValidatorApplicationPlugin(),
             new GuiTableApplicationPlugin(),
+            new SecurityApplicationPlugin(),
         ];
 
         if (class_exists(WebProfilerApplicationPlugin::class)) {
