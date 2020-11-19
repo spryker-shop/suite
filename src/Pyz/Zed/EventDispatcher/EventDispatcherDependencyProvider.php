@@ -11,8 +11,6 @@ use Spryker\Shared\Http\Plugin\EventDispatcher\ResponseListenerEventDispatcherPl
 use Spryker\Zed\Acl\Communication\Plugin\EventDispatcher\AccessControlEventDispatcherPlugin;
 use Spryker\Zed\Api\Communication\Plugin\EventDispatcher\ApiControllerEventDispatcherPlugin;
 use Spryker\Zed\Application\Communication\Plugin\EventDispatcher\HeadersSecurityEventDispatcherPlugin;
-use Spryker\Zed\Auth\Communication\Plugin\EventDispatcher\AuthorizationEventDispatcherPlugin;
-use Spryker\Zed\Auth\Communication\Plugin\EventDispatcher\RedirectAfterLoginEventDispatcherPlugin;
 use Spryker\Zed\EventBehavior\Communication\Plugin\EventDispatcher\EventBehaviorEventDispatcherPlugin;
 use Spryker\Zed\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
 use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\CookieEventDispatcherPlugin;
@@ -39,14 +37,12 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
     protected function getEventDispatcherPlugins(): array
     {
         return [
-            new AuthorizationEventDispatcherPlugin(),
             new AccessControlEventDispatcherPlugin(),
             new EventBehaviorEventDispatcherPlugin(),
             new GatewayControllerEventDispatcherPlugin(),
             new HeadersSecurityEventDispatcherPlugin(),
             new LocaleEventDispatcherPlugin(),
             new MonitoringRequestTransactionEventDispatcherPlugin(),
-            new RedirectAfterLoginEventDispatcherPlugin(),
             new RouterLocaleEventDispatcherPlugin(),
             new RouterListenerEventDispatcherPlugin(),
             new RouterSslRedirectEventDispatcherPlugin(),
