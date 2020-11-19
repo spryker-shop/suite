@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.162.0",
+            "version": "3.163.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "64b0468417c4a84ff5cc51a69cf2ff9d899c2e8e"
+                "reference": "d3f51c57f17581d79151c9b5265e131391bd191f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/64b0468417c4a84ff5cc51a69cf2ff9d899c2e8e",
-                "reference": "64b0468417c4a84ff5cc51a69cf2ff9d899c2e8e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d3f51c57f17581d79151c9b5265e131391bd191f",
+                "reference": "d3f51c57f17581d79151c9b5265e131391bd191f",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.162.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.163.0"
             },
-            "time": "2020-11-17T19:12:26+00:00"
+            "time": "2020-11-18T19:12:41+00:00"
         },
         {
             "name": "brick/math",
@@ -4601,7 +4601,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "0d75a20c4c356e9fc16025f6d31f28804bc44113"
+                "reference": "5a1c16f4e0dbceb4e8b8ebf2e3349ca58a70fac9"
             },
             "require": {
                 "php": ">=7.3"
@@ -4656,6 +4656,7 @@
                 "spryker/cart-note": "*",
                 "spryker/cart-note-extension": "*",
                 "spryker/cart-note-merchant-portal-gui": "*",
+                "spryker/cart-note-merchant-sales-order-gui": "*",
                 "spryker/cart-note-product-bundle-connector": "*",
                 "spryker/cart-permission-connector": "*",
                 "spryker/cart-permission-groups-rest-api": "*",
@@ -4856,6 +4857,8 @@
                 "spryker/discount": "*",
                 "spryker/discount-calculation-connector": "*",
                 "spryker/discount-extension": "*",
+                "spryker/discount-merchant-sales-order": "*",
+                "spryker/discount-merchant-sales-order-gui": "*",
                 "spryker/discount-promotion": "*",
                 "spryker/discount-promotions-rest-api": "*",
                 "spryker/doctrine-inflector": "*",
@@ -4961,6 +4964,8 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-sales-order-extension": "*",
+                "spryker/merchant-sales-order-merchant-user-gui": "*",
+                "spryker/merchant-sales-order-threshold-gui": "*",
                 "spryker/merchant-search": "*",
                 "spryker/merchant-search-extension": "*",
                 "spryker/merchant-shipment": "*",
@@ -5377,7 +5382,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-11-18T14:58:00+00:00"
+            "time": "2020-11-19T07:19:05+00:00"
         },
         {
             "name": "spryker/spryker-shop",

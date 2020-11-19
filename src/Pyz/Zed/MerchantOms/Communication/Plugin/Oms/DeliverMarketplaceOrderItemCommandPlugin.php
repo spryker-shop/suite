@@ -15,6 +15,7 @@ use Spryker\Zed\StateMachine\Dependency\Plugin\CommandPluginInterface;
 
 /**
  * @method \Pyz\Zed\MerchantOms\Communication\MerchantOmsCommunicationFactory getFactory()
+ * @method \Pyz\Zed\MerchantOms\MerchantOmsConfig getConfig()
  */
 class DeliverMarketplaceOrderItemCommandPlugin extends AbstractPlugin implements CommandPluginInterface
 {
