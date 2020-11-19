@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\SessionRedis;
 
-use Spryker\Zed\Auth\Communication\Plugin\SessionRedis\SystemUserSessionRedisLifeTimeCalculatorPlugin;
+use Spryker\Zed\SecuritySystemUser\Communication\Plugin\SessionRedis\SystemUserSessionRedisLifeTimeCalculatorPlugin;
 use Spryker\Zed\SessionRedis\SessionRedisDependencyProvider as SprykerSessionRedisDependencyProvider;
 
 class SessionRedisDependencyProvider extends SprykerSessionRedisDependencyProvider

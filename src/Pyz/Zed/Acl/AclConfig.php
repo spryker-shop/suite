@@ -65,7 +65,7 @@ class AclConfig extends SprykerAclConfig
             'dashboard-merchant-portal-gui',
             'merchant-profile-merchant-portal-gui',
             'product-offer-merchant-portal-gui',
-            'authentication-merchant-portal-gui',
+            'security-merchant-portal-gui',
             'sales-merchant-portal-gui',
             'product-merchant-portal-gui',
         ];
