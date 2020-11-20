@@ -324,6 +324,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new MerchantPortalInstallDependenciesConsole(),
             new MerchantPortalBuildFrontendConsole(),
 
+            new DateTimeProductConfiguratorBuildFrontendConsole(),
+
             new DeleteAllQueuesConsole(),
             new PurgeAllQueuesConsole(),
             new DeleteAllExchangesConsole(),
