@@ -335,6 +335,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new MerchantPortalInstallDependenciesConsole(),
             new MerchantPortalBuildFrontendConsole(),
 
+            new DateTimeProductConfiguratorBuildFrontendConsole(),
+
             new DeleteAllQueuesConsole(),
             new PurgeAllQueuesConsole(),
             new DeleteAllExchangesConsole(),
@@ -429,7 +431,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new EventTriggerListenerConsole();
             $commands[] = new ComposerConstraintConsole();
             $commands[] = new CleanOutputConsole();
-            $commands[] = new DateTimeProductConfiguratorBuildFrontendConsole();
 
             if (class_exists(BenchmarkRunConsole::class)) {
                 $commands[] = new BenchmarkRunConsole();
