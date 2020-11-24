@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.163.1",
+            "version": "3.163.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7b6948915654f0f94847ccaf51172fa1a7f1cc59"
+                "reference": "f6cd8fe1334b19e1dc0d841fa1b2da7cd30a1e8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7b6948915654f0f94847ccaf51172fa1a7f1cc59",
-                "reference": "7b6948915654f0f94847ccaf51172fa1a7f1cc59",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f6cd8fe1334b19e1dc0d841fa1b2da7cd30a1e8a",
+                "reference": "f6cd8fe1334b19e1dc0d841fa1b2da7cd30a1e8a",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.163.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.163.3"
             },
-            "time": "2020-11-19T19:26:10+00:00"
+            "time": "2020-11-23T20:34:30+00:00"
         },
         {
             "name": "brick/math",
@@ -4596,7 +4596,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1301e2ab1d9573008165d9c463d77fb048fa8ccc"
+                "reference": "bcf72817342bd8fc92e8402d807961e310fea8de"
             },
             "require": {
                 "php": ">=7.3"
@@ -5379,7 +5379,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-11-20T13:02:58+00:00"
+            "time": "2020-11-24T12:56:21+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -9895,32 +9895,31 @@
     "packages-dev": [
         {
             "name": "beberlei/assert",
-            "version": "v3.2.7",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/beberlei/assert.git",
-                "reference": "d63a6943fc4fd1a2aedb65994e3548715105abcf"
+                "reference": "5367e3895976b49704ae671f75bc5f0ba1b986ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/beberlei/assert/zipball/d63a6943fc4fd1a2aedb65994e3548715105abcf",
-                "reference": "d63a6943fc4fd1a2aedb65994e3548715105abcf",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/5367e3895976b49704ae671f75bc5f0ba1b986ab",
+                "reference": "5367e3895976b49704ae671f75bc5f0ba1b986ab",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
+                "ext-intl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "ext-simplexml": "*",
-                "php": "^7"
+                "php": "^7.0 || ^8.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "*",
-                "phpstan/phpstan-shim": "*",
-                "phpunit/phpunit": ">=6.0.0 <8"
-            },
-            "suggest": {
-                "ext-intl": "Needed to allow Assertion::count(), Assertion::isCountable(), Assertion::minCount(), and Assertion::maxCount() to operate on ResourceBundles"
+                "phpstan/phpstan": "*",
+                "phpunit/phpunit": ">=6.0.0",
+                "yoast/phpunit-polyfills": "^0.1.0"
             },
             "type": "library",
             "autoload": {
@@ -9955,9 +9954,9 @@
             ],
             "support": {
                 "issues": "https://github.com/beberlei/assert/issues",
-                "source": "https://github.com/beberlei/assert/tree/v3"
+                "source": "https://github.com/beberlei/assert/tree/v3.3.0"
             },
-            "time": "2019-12-19T17:51:41+00:00"
+            "time": "2020-11-13T20:02:54+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -14315,12 +14314,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "aadbf65936aa84bb112e9cca4d5d5f8fcb8e5278"
+                "reference": "e5d8978930566aa3f96a67f3078c7aeafd643009"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/aadbf65936aa84bb112e9cca4d5d5f8fcb8e5278",
-                "reference": "aadbf65936aa84bb112e9cca4d5d5f8fcb8e5278",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/e5d8978930566aa3f96a67f3078c7aeafd643009",
+                "reference": "e5d8978930566aa3f96a67f3078c7aeafd643009",
                 "shasum": ""
             },
             "require": {
@@ -14356,7 +14355,7 @@
                 "issues": "https://github.com/spryker/code-generator/issues",
                 "source": "https://github.com/spryker/code-generator/tree/master"
             },
-            "time": "2020-11-20T09:51:16+00:00"
+            "time": "2020-11-20T13:42:05+00:00"
         },
         {
             "name": "spryker/code-sniffer",
