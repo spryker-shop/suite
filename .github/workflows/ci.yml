@@ -79,7 +79,7 @@ jobs:
                       ${{ runner.os }}-composer-
 
             - name: Composer validate
-              run: composer validate --strict
+              run: composer validate
 
             - name: Composer install
               run: |
