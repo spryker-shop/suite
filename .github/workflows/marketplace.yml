@@ -31,7 +31,7 @@ jobs:
                   node-version: '12'
 
             - name: Validate composer.json and composer.lock
-              run: composer validate --strict
+              run: composer validate
 
             - name: Get Composer Cache Directory
               id: composer-cache
