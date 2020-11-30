@@ -51,7 +51,7 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
     protected const IS_PAYMENT_PROVIDER_METHOD_TO_STATE_MACHINE_MAPPING_ENABLED = false;
 
     /**
-     * @return array
+     * @return string[][]
      */
     public function getPaymentProviderMethodToStateMachineMapping(): array
     {
@@ -75,6 +75,14 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
      * @return bool
      */
     public function isPaymentProvidersMappedToAttributes(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAddressesMappedToAttributes(): bool
     {
         return false;
     }

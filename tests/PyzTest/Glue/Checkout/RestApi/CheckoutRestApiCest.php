@@ -163,6 +163,8 @@ class CheckoutRestApiCest
      */
     public function requestWithHundredItemInQuoteAndInvoicePayment(CheckoutApiTester $I): void
     {
+        $I->markTestSkipped('The test is not be re-enabled once the checkout performance is improved (TD created).');
+
         // Arrange
         $customerTransfer = $this->fixtures->getCustomerTransfer();
         $I->authorizeCustomerToGlue($customerTransfer);
