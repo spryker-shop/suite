@@ -123,4 +123,50 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
 
         return pg_escape_string($this->utilEncodingService->encodeJson($priceData));
     }
+
+    /**
+     * @param array $values
+     * @param int|null $minimumLength
+     *
+     * @return string
+     */
+    public function formatStringList(array $values, ?int $minimumLength = null): string
+    {
+        if ($minimumLength > 0 && count($values) < $minimumLength) {
+            $values = array_pad($values, $minimumLength, '');
+        }
+
+        if ($values === []) {
+            return '';
+        }
+
+        $values = array_map(function ($value) {
+            return $value ?? '';
+        }, $values);
+
+        return implode(',', $values);
+    }
+
+    /**
+     * @param array $values
+     * @param int|null $minimumLength
+     *
+     * @return string
+     */
+    public function formatPriceStringList(array $values, ?int $minimumLength = null): string
+    {
+        if ($minimumLength > 0 && count($values) < $minimumLength) {
+            $values = array_pad($values, $minimumLength, '');
+        }
+
+        if ($values === []) {
+            return '';
+        }
+
+        $values = array_map(function ($value) {
+            return str_replace(',', '|', $value) ?? '';
+        }, $values);
+
+        return implode(',', $values);
+    }
 }

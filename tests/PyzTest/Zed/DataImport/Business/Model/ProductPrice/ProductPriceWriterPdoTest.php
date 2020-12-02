@@ -7,9 +7,7 @@
 
 namespace PyzTest\Zed\DataImport\Business\Model\ProductPrice;
 
-use Spryker\Shared\Config\Config;
-use Spryker\Shared\Propel\PropelConstants;
-use Spryker\Zed\Propel\PropelConfig;
+use Pyz\Zed\DataImport\Business\Model\PropelMariaDBVersionConstraintException;
 
 /**
  * Auto-generated group annotations
@@ -34,9 +32,9 @@ class ProductPriceWriterPdoTest extends AbstractProductPriceWriterTest
      */
     public function testProductPriceWriter(): void
     {
-        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== PropelConfig::DB_ENGINE_PGSQL) {
-            $this->markTestSkipped('PostgreSQL related test');
-        }
+        $this->markTestSkipped('Need to implement MariaDB version check to decide whether we expect exception.');
+
+        $this->expectException(PropelMariaDBVersionConstraintException::class);
 
         $writer = $this->getDataImportBusinessFactoryStub()->createProductPriceBulkPdoWriter();
 

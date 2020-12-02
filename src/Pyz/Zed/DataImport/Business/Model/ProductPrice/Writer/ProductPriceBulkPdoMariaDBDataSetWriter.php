@@ -8,18 +8,22 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\PropelMariaDBVersionConstraintTrait;
 use Spryker\Zed\DataImport\Business\Model\ApplicableDatabaseEngineAwareInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\Propel\PropelConfig;
 
-class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWriter implements DataSetWriterInterface, ApplicableDatabaseEngineAwareInterface
+class ProductPriceBulkPdoMariaDBDataSetWriter extends AbstractProductPriceBulkDataSetWriter implements DataSetWriterInterface, ApplicableDatabaseEngineAwareInterface
 {
+    use PropelMariaDBVersionConstraintTrait;
+
     /**
      * @return bool
      */
     public function isApplicable(): bool
     {
-        return $this->dataImportConfig->getCurrentDatabaseEngine() === PropelConfig::DB_ENGINE_PGSQL;
+        return $this->dataImportConfig->getCurrentDatabaseEngine() === PropelConfig::DB_ENGINE_MYSQL
+            && $this->checkIsMariaDBSupportsBulkImport($this->propelExecutor);
     }
 
     /**
@@ -31,18 +35,21 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     {
         $priceTypeCollection = $this->dataFormatter->getCollectionDataByKey($priceProductCollection, ProductPriceHydratorStep::KEY_PRICE_TYPE_NAME);
         $priceTypeModeCollection = $this->dataFormatter->getCollectionDataByKey($priceProductCollection, ProductPriceHydratorStep::KEY_PRICE_MODE_CONFIGURATION);
-        $priceType = $this->dataFormatter->formatPostgresArrayString($priceTypeCollection);
-        $priceMode = $this->dataFormatter->formatPostgresArrayString($priceTypeModeCollection);
-        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($priceTypeCollection));
+
+        $rowCount = count($priceTypeCollection);
+        $priceType = $this->dataFormatter->formatStringList($priceTypeCollection, $rowCount);
+        $priceMode = $this->dataFormatter->formatStringList($priceTypeModeCollection, $rowCount);
+        $orderKey = $this->dataFormatter->formatStringList(array_keys($priceTypeCollection), $rowCount);
 
         $sql = $this->productPriceSql->createPriceTypeSQL();
         $parameters = [
+            $rowCount,
             $priceType,
             $priceMode,
             $orderKey,
         ];
 
-        $this->propelExecutor->execute($sql, $parameters);
+        $this->propelExecutor->execute($sql, $parameters, false);
     }
 
     /**
@@ -53,12 +60,15 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     protected function prepareProductPriceTypeIdsCollection(array $priceProductConcreteCollection): void
     {
         $priceTypeCollection = $this->dataFormatter->getCollectionDataByKey($priceProductConcreteCollection, ProductPriceHydratorStep::KEY_PRICE_TYPE_NAME);
-        $priceType = $this->dataFormatter->formatPostgresArrayString($priceTypeCollection);
-        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($priceTypeCollection));
+
+        $rowCount = count($priceTypeCollection);
+        $priceType = $this->dataFormatter->formatStringList($priceTypeCollection, $rowCount);
+        $orderKey = $this->dataFormatter->formatStringList(array_keys($priceTypeCollection), $rowCount);
 
         $sql = $this->productPriceSql->collectPriceTypes();
 
         $parameters = [
+            $rowCount,
             $priceType,
             $orderKey,
         ];
@@ -79,12 +89,15 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     {
         $storeCollection = $this->dataFormatter->getCollectionDataByKey($priceProductCollection, static::COLUMN_STORE);
         $storeNameCollection = $this->dataFormatter->getCollectionDataByKey($storeCollection, ProductPriceHydratorStep::KEY_STORE_NAME);
-        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($storeNameCollection));
-        $store = $this->dataFormatter->formatPostgresArrayString($storeNameCollection);
+
+        $rowCount = count($storeNameCollection);
+        $orderKey = $this->dataFormatter->formatStringList(array_keys($storeNameCollection), $rowCount);
+        $store = $this->dataFormatter->formatStringList($storeNameCollection, $rowCount);
 
         $sql = $this->productPriceSql->convertStoreNameToId();
 
         $parameters = [
+            $rowCount,
             $orderKey,
             $store,
         ];
@@ -105,12 +118,15 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     {
         $currencyCollection = $this->dataFormatter->getCollectionDataByKey($priceProductCollection, static::COLUMN_CURRENCY);
         $currencyNameCollection = $this->dataFormatter->getCollectionDataByKey($currencyCollection, ProductPriceHydratorStep::KEY_CURRENCY_NAME);
-        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($currencyNameCollection));
-        $currency = $this->dataFormatter->formatPostgresArrayString($currencyNameCollection);
+
+        $rowCount = count($currencyNameCollection);
+        $orderKey = $this->dataFormatter->formatStringList(array_keys($currencyNameCollection), $rowCount);
+        $currency = $this->dataFormatter->formatStringList($currencyNameCollection, $rowCount);
 
         $sql = $this->productPriceSql->convertCurrencyNameToId();
 
         $parameters = [
+            $rowCount,
             $orderKey,
             $currency,
         ];
@@ -135,12 +151,15 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
         string $productKey
     ): void {
         $productConcreteSkuCollection = $this->dataFormatter->getCollectionDataByKey($priceProductCollection, ProductPriceHydratorStep::KEY_SKU);
-        $productSku = $this->dataFormatter->formatPostgresArray($productConcreteSkuCollection);
-        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($productConcreteSkuCollection));
+
+        $rowCount = count($productConcreteSkuCollection);
+        $productSku = $this->dataFormatter->formatStringList($productConcreteSkuCollection, $rowCount);
+        $orderKey = $this->dataFormatter->formatStringList(array_keys($productConcreteSkuCollection), $rowCount);
 
         $sql = $this->productPriceSql->convertProductSkuToId($tableName, $productKey);
 
         $parameters = [
+            $rowCount,
             $orderKey,
             $productSku,
         ];
@@ -169,12 +188,16 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
         }
 
         $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productIds, $productIdKey);
-        $product = $this->dataFormatter->formatPostgresArray($productCollection);
-        $priceType = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$productPriceTypeIdsCollection, ProductPriceHydratorStep::KEY_ID_PRICE_TYPE)
+
+        $rowCount = count($productCollection);
+        $product = $this->dataFormatter->formatStringList($productCollection, $rowCount);
+        $priceType = $this->dataFormatter->formatStringList(
+            $this->dataFormatter->getCollectionDataByKey(static::$productPriceTypeIdsCollection, ProductPriceHydratorStep::KEY_ID_PRICE_TYPE),
+            $rowCount
         );
 
         $priceProductAbstractParameters = [
+            $rowCount,
             $product,
             $priceType,
         ];
@@ -185,7 +208,7 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
             $productFkKey
         );
 
-        $this->propelExecutor->execute($sql, $priceProductAbstractParameters);
+        $this->propelExecutor->execute($sql, $priceProductAbstractParameters, false);
     }
 
     /**
@@ -197,10 +220,13 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     protected function addPriceProductEvents(string $productIdKey, string $productFkKey): array
     {
         $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productIds, $productIdKey);
-        $product = $this->dataFormatter->formatPostgresArray($productCollection);
-        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($productCollection));
-        $priceType = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$productPriceTypeIdsCollection, ProductPriceHydratorStep::KEY_ID_PRICE_TYPE)
+
+        $rowCount = count($productCollection);
+        $product = $this->dataFormatter->formatStringList($productCollection, $rowCount);
+        $orderKey = $this->dataFormatter->formatStringList(array_keys($productCollection), $rowCount);
+        $priceType = $this->dataFormatter->formatStringList(
+            $this->dataFormatter->getCollectionDataByKey(static::$productPriceTypeIdsCollection, ProductPriceHydratorStep::KEY_ID_PRICE_TYPE),
+            $rowCount
         );
 
         $selectProductPriceSql = $this->productPriceSql->selectProductPriceSQL(
@@ -209,6 +235,7 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
         );
 
         $priceProductAbstractProductParameters = [
+            $rowCount,
             $product,
             $priceType,
             $orderKey,
@@ -234,30 +261,40 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
         string $productFkKey
     ): void {
         $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productIds, $productIdKey);
-        $product = $this->dataFormatter->formatPostgresArray($productCollection);
-        $currency = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$productCurrencyIdsCollection, ProductPriceHydratorStep::KEY_ID_CURRENCY)
+
+        $rowCount = count($priceProductCollection);
+        $product = $this->dataFormatter->formatStringList($productCollection, $rowCount);
+        $currency = $this->dataFormatter->formatStringList(
+            $this->dataFormatter->getCollectionDataByKey(static::$productCurrencyIdsCollection, ProductPriceHydratorStep::KEY_ID_CURRENCY),
+            $rowCount
         );
-        $store = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$productStoreIdsCollection, ProductPriceHydratorStep::KEY_ID_STORE)
+        $store = $this->dataFormatter->formatStringList(
+            $this->dataFormatter->getCollectionDataByKey(static::$productStoreIdsCollection, ProductPriceHydratorStep::KEY_ID_STORE),
+            $rowCount
         );
-        $productPrice = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$priceProductIds, ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT)
+        $productPrice = $this->dataFormatter->formatStringList(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductIds, ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT),
+            $rowCount
         );
-        $grossPrice = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey($priceProductCollection, ProductPriceHydratorStep::KEY_PRICE_GROSS_DB)
+        $grossPrice = $this->dataFormatter->formatStringList(
+            $this->dataFormatter->getCollectionDataByKey($priceProductCollection, ProductPriceHydratorStep::KEY_PRICE_GROSS_DB),
+            $rowCount
         );
-        $netPrice = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey($priceProductCollection, ProductPriceHydratorStep::KEY_PRICE_NET_DB)
+        $netPrice = $this->dataFormatter->formatStringList(
+            $this->dataFormatter->getCollectionDataByKey($priceProductCollection, ProductPriceHydratorStep::KEY_PRICE_NET_DB),
+            $rowCount
         );
-        $priceData = $this->dataFormatter->formatPostgresPriceDataString(
-            $this->dataFormatter->getCollectionDataByKey($priceProductCollection, static::COLUMN_PRICE_DATA)
+        $priceData = $this->dataFormatter->formatPriceStringList(
+            $this->dataFormatter->getCollectionDataByKey($priceProductCollection, static::COLUMN_PRICE_DATA),
+            $rowCount
         );
-        $checksum = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey($priceProductCollection, static::COLUMN_PRICE_DATA_CHECKSUM)
+        $checksum = $this->dataFormatter->formatStringList(
+            $this->dataFormatter->getCollectionDataByKey($priceProductCollection, static::COLUMN_PRICE_DATA_CHECKSUM),
+            $rowCount
         );
 
         $priceProductConcreteStoreParameters = [
+            $rowCount,
             $store,
             $currency,
             $product,
@@ -286,16 +323,21 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
      */
     protected function persistPriceProductDefault(): void
     {
-        $priceProductStoreIds = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$priceProductStoreIds, ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT_STORE)
+        $priceProductStoreCollection = $this->dataFormatter->getCollectionDataByKey(
+            static::$priceProductStoreIds,
+            ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT_STORE
         );
 
+        $rowCount = count($priceProductStoreCollection);
+        $priceProductStoreIds = $this->dataFormatter->formatStringList($priceProductStoreCollection, $rowCount);
+
         $parameters = [
+            $rowCount,
             $priceProductStoreIds,
         ];
 
         $sql = $this->productPriceSql->createPriceProductDefaultSql();
 
-        $this->propelExecutor->execute($sql, $parameters);
+        $this->propelExecutor->execute($sql, $parameters, false);
     }
 }

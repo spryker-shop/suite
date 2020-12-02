@@ -118,4 +118,18 @@
       <code>'glob'</code>
     </InvalidArgument>
   </file>
+  <file src="src/Pyz/Zed/DataImport/Business/Model/ProductPrice/Writer/AbstractProductPriceBulkDataSetWriter.php">
+    <InvalidPropertyAssignmentValue occurrences="2">
+      <code>static::$priceProductIds</code>
+      <code>static::$priceProductIds</code>
+    </InvalidPropertyAssignmentValue>
+  </file>
+  <file src="src/Pyz/Zed/DataImport/Business/Model/ProductStock/Writer/AbstractProductStockBulkDataSetWriter.php">
+    <InvalidReturnStatement occurrences="1">
+        <code>$stockProducts</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="1">
+        <code>\Spryker\DecimalObject\Decimal[]</code>
+    </InvalidReturnType>
+  </file>
 </files>

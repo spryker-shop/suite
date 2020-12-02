@@ -12,6 +12,7 @@ use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInter
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
+use Spryker\Zed\DataImport\DataImportConfig;
 
 class CombinedProductConcreteBulkPdoDataSetWriter extends ProductConcreteBulkPdoDataSetWriter
 {
@@ -26,12 +27,14 @@ class CombinedProductConcreteBulkPdoDataSetWriter extends ProductConcreteBulkPdo
      * @param \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface $productConcreteSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
+     * @param \Spryker\Zed\DataImport\DataImportConfig $dataImportConfig
      */
     public function __construct(
         ProductConcreteSqlInterface $productConcreteSql,
         PropelExecutorInterface $propelExecutor,
-        DataImportDataFormatterInterface $dataFormatter
+        DataImportDataFormatterInterface $dataFormatter,
+        DataImportConfig $dataImportConfig
     ) {
-        parent::__construct($productConcreteSql, $propelExecutor, $dataFormatter);
+        parent::__construct($productConcreteSql, $propelExecutor, $dataFormatter, $dataImportConfig);
     }
 }

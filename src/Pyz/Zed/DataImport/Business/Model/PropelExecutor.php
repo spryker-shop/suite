@@ -16,14 +16,19 @@ class PropelExecutor implements PropelExecutorInterface
     /**
      * @param string $sql
      * @param array $parameters
+     * @param bool $fetch
      *
      * @return array|null
      */
-    public function execute(string $sql, array $parameters): ?array
+    public function execute(string $sql, array $parameters, bool $fetch = true): ?array
     {
         $connection = $this->getConnection();
         $stmt = $connection->prepare($sql);
         $stmt->execute($parameters);
+
+        if (!$fetch) {
+            return null;
+        }
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

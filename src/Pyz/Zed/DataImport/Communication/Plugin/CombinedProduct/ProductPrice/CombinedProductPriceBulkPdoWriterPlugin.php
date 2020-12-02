@@ -8,6 +8,7 @@
 namespace Pyz\Zed\DataImport\Communication\Plugin\CombinedProduct\ProductPrice;
 
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginApplicableAwareInterface;
 use Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
@@ -15,7 +16,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  * @method \Pyz\Zed\DataImport\Business\DataImportFacadeInterface getFacade()
  * @method \Pyz\Zed\DataImport\DataImportConfig getConfig()
  */
-class CombinedProductPriceBulkPdoWriterPlugin extends AbstractPlugin implements DataSetWriterPluginInterface
+class CombinedProductPriceBulkPdoWriterPlugin extends AbstractPlugin implements DataSetWriterPluginInterface, DataSetWriterPluginApplicableAwareInterface
 {
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -33,5 +34,13 @@ class CombinedProductPriceBulkPdoWriterPlugin extends AbstractPlugin implements 
     public function flush(): void
     {
         $this->getFacade()->flushCombinedProductPricePdoDataImporter();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function isApplicable(): bool
+    {
+        return $this->getConfig()->isBulkEnabled();
     }
 }
