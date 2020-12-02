@@ -12,6 +12,7 @@ use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInter
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStoreBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
+use Spryker\Zed\DataImport\DataImportConfig;
 
 class CombinedProductAbstractStoreBulkPdoDataSetWriter extends ProductAbstractStoreBulkPdoDataSetWriter
 {
@@ -22,12 +23,14 @@ class CombinedProductAbstractStoreBulkPdoDataSetWriter extends ProductAbstractSt
      * @param \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface $productAbstractStoreSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
+     * @param \Spryker\Zed\DataImport\DataImportConfig $dataImportConfig
      */
     public function __construct(
         ProductAbstractStoreSqlInterface $productAbstractStoreSql,
         PropelExecutorInterface $propelExecutor,
-        DataImportDataFormatterInterface $dataFormatter
+        DataImportDataFormatterInterface $dataFormatter,
+        DataImportConfig $dataImportConfig
     ) {
-        parent::__construct($productAbstractStoreSql, $propelExecutor, $dataFormatter);
+        parent::__construct($productAbstractStoreSql, $propelExecutor, $dataFormatter, $dataImportConfig);
     }
 }

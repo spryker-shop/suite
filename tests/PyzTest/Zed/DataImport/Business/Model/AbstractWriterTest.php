@@ -59,6 +59,7 @@ abstract class AbstractWriterTest extends Unit
             'getAvailabilityFacade' => $this->getAvailabilityFacade(),
             'getPriceProductFacade' => $this->getPriceProductFacade(),
             'getUtilEncodingService' => $this->getUtilEncodingService(),
+            'getConfig' => $this->getDataImportConfigStub(),
         ]);
 
         return $dataImportBusinessFactory;

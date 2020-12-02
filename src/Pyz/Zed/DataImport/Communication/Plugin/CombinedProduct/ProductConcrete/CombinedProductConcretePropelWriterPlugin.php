@@ -8,6 +8,7 @@
 namespace Pyz\Zed\DataImport\Communication\Plugin\CombinedProduct\ProductConcrete;
 
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginApplicableAwareInterface;
 use Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
@@ -19,7 +20,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  * @method \Pyz\Zed\DataImport\Business\DataImportFacadeInterface getFacade()
  * @method \Pyz\Zed\DataImport\DataImportConfig getConfig()
  */
-class CombinedProductConcretePropelWriterPlugin extends AbstractPlugin implements DataSetWriterPluginInterface
+class CombinedProductConcretePropelWriterPlugin extends AbstractPlugin implements DataSetWriterPluginInterface, DataSetWriterPluginApplicableAwareInterface
 {
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -37,5 +38,13 @@ class CombinedProductConcretePropelWriterPlugin extends AbstractPlugin implement
     public function flush(): void
     {
         $this->getFacade()->flushCombinedProductConcreteDataImporter();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function isApplicable(): bool
+    {
+        return !$this->getConfig()->isBulkEnabled();
     }
 }

@@ -11,14 +11,17 @@ use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInter
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\Sql\ProductAbstractSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
+use Spryker\Zed\DataImport\Business\Model\ApplicableDatabaseEngineAwareInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
+use Spryker\Zed\DataImport\DataImportConfig;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 use Spryker\Zed\ProductCategory\Dependency\ProductCategoryEvents;
+use Spryker\Zed\Propel\PropelConfig;
 use Spryker\Zed\Url\Dependency\UrlEvents;
 
-class ProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface
+class ProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface, ApplicableDatabaseEngineAwareInterface
 {
     protected const COLUMN_ABSTRACT_SKU = ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU;
     protected const COLUMN_NEW_FROM = ProductAbstractHydratorStep::COLUMN_NEW_FROM;
@@ -77,18 +80,34 @@ class ProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface
     protected $dataFormatter;
 
     /**
+     * @var \Spryker\Zed\DataImport\DataImportConfig
+     */
+    protected $dataImportConfig;
+
+    /**
      * @param \Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\Sql\ProductAbstractSqlInterface $productAbstractSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
+     * @param \Spryker\Zed\DataImport\DataImportConfig $dataImportConfig
      */
     public function __construct(
         ProductAbstractSqlInterface $productAbstractSql,
         PropelExecutorInterface $propelExecutor,
-        DataImportDataFormatterInterface $dataFormatter
+        DataImportDataFormatterInterface $dataFormatter,
+        DataImportConfig $dataImportConfig
     ) {
         $this->productAbstractSql = $productAbstractSql;
         $this->propelExecutor = $propelExecutor;
         $this->dataFormatter = $dataFormatter;
+        $this->dataImportConfig = $dataImportConfig;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isApplicable(): bool
+    {
+        return $this->dataImportConfig->getCurrentDatabaseEngine() === PropelConfig::DB_ENGINE_PGSQL;
     }
 
     /**

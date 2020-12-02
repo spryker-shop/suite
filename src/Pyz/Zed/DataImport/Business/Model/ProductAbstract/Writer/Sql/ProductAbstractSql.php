@@ -160,7 +160,7 @@ SELECT 1;";
     public function createAbstractProductCategoriesSQL(): string
     {
         $sql = "WITH records AS (
-    SELECT 
+    SELECT
         input.abstract_sku,
         input.productOrder,
         input.IdCategory,
@@ -174,7 +174,7 @@ SELECT 1;";
      ) input
       INNER JOIN spy_product_abstract ON spy_product_abstract.sku = input.abstract_sku
       LEFT JOIN spy_product_category ON (spy_product_category.fk_product_abstract = id_product_abstract and spy_product_category.fk_category = input.IdCategory)
-), 
+),
     updated AS (
         UPDATE spy_product_category
         SET
