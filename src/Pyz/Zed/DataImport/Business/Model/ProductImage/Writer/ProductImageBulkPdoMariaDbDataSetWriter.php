@@ -8,19 +8,23 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\PropelMariaDBVersionConstraintTrait;
 use Spryker\Zed\DataImport\Business\Model\ApplicableDatabaseEngineAwareInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\Propel\PropelConfig;
 
-class ProductImageBulkPdoDataSetWriter extends AbstractProductImageBulkDataSetWriter implements DataSetWriterInterface, ApplicableDatabaseEngineAwareInterface
+class ProductImageBulkPdoMariaDbDataSetWriter extends AbstractProductImageBulkDataSetWriter implements DataSetWriterInterface, ApplicableDatabaseEngineAwareInterface
 {
+    use PropelMariaDBVersionConstraintTrait;
+
     /**
      * @return bool
      */
     public function isApplicable(): bool
     {
-        return $this->dataImportConfig->getCurrentDatabaseEngine() === PropelConfig::DB_ENGINE_PGSQL;
+        return $this->dataImportConfig->getCurrentDatabaseEngine() === PropelConfig::DB_ENGINE_MYSQL
+            && $this->checkIsMariaDBSupportsBulkImport($this->propelExecutor);
     }
 
     /**
@@ -39,16 +43,20 @@ class ProductImageBulkPdoDataSetWriter extends AbstractProductImageBulkDataSetWr
             ProductImageHydratorStep::KEY_FK_PRODUCT
         );
 
+        $rowsCount = count($productImageSetNames);
+
         $queryParameters = [
-            $this->dataFormatter->formatPostgresArrayString($productImageSetNames),
-            $this->dataFormatter->formatPostgresArray($fkLocaleIds),
-            $this->dataFormatter->formatPostgresArray($fkProductConcreteIds),
-            $this->dataFormatter->formatPostgresArray($fkProductAbstractIds),
+            $rowsCount,
+            $this->dataFormatter->formatStringList($productImageSetNames, $rowsCount),
+            $this->dataFormatter->formatStringList($fkLocaleIds, $rowsCount),
+            $this->dataFormatter->formatStringList($fkProductConcreteIds, $rowsCount),
+            $this->dataFormatter->formatStringList($fkProductAbstractIds, $rowsCount),
         ];
 
         $this->propelExecutor->execute(
             $this->productImageSql->createProductImageSetSQL(),
-            $queryParameters
+            $queryParameters,
+            false
         );
     }
 
@@ -62,9 +70,10 @@ class ProductImageBulkPdoDataSetWriter extends AbstractProductImageBulkDataSetWr
         $productImageKeys = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, static::COLUMN_PRODUCT_IMAGE_KEY);
 
         $parameters = [
-            $this->dataFormatter->formatPostgresArrayString($externalUrlLargeCollection),
-            $this->dataFormatter->formatPostgresArrayString($externalUrlSmallCollection),
-            $this->dataFormatter->formatPostgresArrayString($productImageKeys),
+            count($externalUrlLargeCollection),
+            $this->dataFormatter->formatStringList($externalUrlLargeCollection),
+            $this->dataFormatter->formatStringList($externalUrlSmallCollection),
+            $this->dataFormatter->formatStringList($productImageKeys),
         ];
 
         $result = $this->propelExecutor->execute(
@@ -88,17 +97,19 @@ class ProductImageBulkPdoDataSetWriter extends AbstractProductImageBulkDataSetWr
         $productImageKeys = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, static::COLUMN_PRODUCT_IMAGE_KEY);
 
         $parameters = [
-            $this->dataFormatter->formatPostgresArrayString($productImageSetNames),
-            $this->dataFormatter->formatPostgresArray($fkLocaleIds),
-            $this->dataFormatter->formatPostgresArray($fkProductConcreteIds),
-            $this->dataFormatter->formatPostgresArray($fkProductAbstractIds),
-            $this->dataFormatter->formatPostgresArray($sortOrder),
-            $this->dataFormatter->formatPostgresArrayString($productImageKeys),
+            count($productImageSetNames),
+            $this->dataFormatter->formatStringList($productImageSetNames),
+            $this->dataFormatter->formatStringList($fkLocaleIds),
+            $this->dataFormatter->formatStringList($fkProductConcreteIds),
+            $this->dataFormatter->formatStringList($fkProductAbstractIds),
+            $this->dataFormatter->formatStringList($sortOrder),
+            $this->dataFormatter->formatStringList($productImageKeys),
         ];
 
         $this->propelExecutor->execute(
             $this->productImageSql->createProductImageSetRelationSQL(),
-            $parameters
+            $parameters,
+            false
         );
     }
 
@@ -110,7 +121,8 @@ class ProductImageBulkPdoDataSetWriter extends AbstractProductImageBulkDataSetWr
     protected function triggerEventsForUpdatedImageSets(array $touchedProductImages): void
     {
         $parameters = [
-            $this->dataFormatter->formatPostgresArray($touchedProductImages),
+            count($touchedProductImages),
+            $this->dataFormatter->formatStringList($touchedProductImages),
         ];
         $updatedProductImageSets = $this->propelExecutor->execute(
             $this->productImageSql->findProductImageSetsByProductImageIds(),

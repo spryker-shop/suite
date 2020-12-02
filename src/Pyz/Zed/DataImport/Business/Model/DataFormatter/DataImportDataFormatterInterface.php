@@ -59,4 +59,20 @@ interface DataImportDataFormatterInterface
      * @return string
      */
     public function formatPostgresPriceDataString(array $priceData): string;
+
+    /**
+     * @param array $values
+     * @param int|null $minimumLength
+     *
+     * @return string
+     */
+    public function formatStringList(array $values, ?int $minimumLength = null): string;
+
+    /**
+     * @param array $values
+     * @param int|null $minimumLength
+     *
+     * @return string
+     */
+    public function formatPriceStringList(array $values, ?int $minimumLength = null): string;
 }

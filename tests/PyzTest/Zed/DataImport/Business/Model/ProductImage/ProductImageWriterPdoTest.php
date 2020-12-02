@@ -8,9 +8,7 @@
 namespace PyzTest\Zed\DataImport\Business\Model\ProductImage;
 
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
-use Spryker\Shared\Config\Config;
-use Spryker\Shared\Propel\PropelConstants;
-use Spryker\Zed\Propel\PropelConfig;
+use Pyz\Zed\DataImport\Business\Model\PropelMariaDBVersionConstraintException;
 
 /**
  * Auto-generated group annotations
@@ -35,9 +33,9 @@ class ProductImageWriterPdoTest extends AbstractProductImageWriterTest
      */
     public function testProductImageWriter(): void
     {
-        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== PropelConfig::DB_ENGINE_PGSQL) {
-            $this->markTestSkipped('PostgreSQL related test');
-        }
+        $this->markTestSkipped('Need to implement MariaDB version check to decide whether we expect exception.');
+
+        $this->expectException(PropelMariaDBVersionConstraintException::class);
 
         $writer = $this->getDataImportBusinessFactoryStub()->createProductImageBulkPdoWriter();
 
@@ -61,9 +59,9 @@ class ProductImageWriterPdoTest extends AbstractProductImageWriterTest
      */
     public function testProductImagesWithSameUrlAreSavedSeparately(): void
     {
-        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== PropelConfig::DB_ENGINE_PGSQL) {
-            $this->markTestSkipped('PostgreSQL related test');
-        }
+        $this->markTestSkipped('Need to implement MariaDB version check to decide whether we expect exception.');
+
+        $this->expectException(PropelMariaDBVersionConstraintException::class);
 
         // Arrange
         $writer = $this->getDataImportBusinessFactoryStub()->createProductImageBulkPdoWriter();

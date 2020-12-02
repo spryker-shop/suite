@@ -12,6 +12,7 @@ use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInter
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
+use Spryker\Zed\DataImport\DataImportConfig;
 
 class CombinedProductImageBulkPdoDataSetWriter extends ProductImageBulkPdoDataSetWriter
 {
@@ -24,12 +25,14 @@ class CombinedProductImageBulkPdoDataSetWriter extends ProductImageBulkPdoDataSe
      * @param \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface $productImageSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
+     * @param \Spryker\Zed\DataImport\DataImportConfig $dataImportConfig
      */
     public function __construct(
         ProductImageSqlInterface $productImageSql,
         PropelExecutorInterface $propelExecutor,
-        DataImportDataFormatterInterface $dataFormatter
+        DataImportDataFormatterInterface $dataFormatter,
+        DataImportConfig $dataImportConfig
     ) {
-        parent::__construct($productImageSql, $propelExecutor, $dataFormatter);
+        parent::__construct($productImageSql, $propelExecutor, $dataFormatter, $dataImportConfig);
     }
 }

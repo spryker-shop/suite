@@ -8,18 +8,22 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
 use Generated\Shared\Transfer\StoreTransfer;
+use Pyz\Zed\DataImport\Business\Model\PropelMariaDBVersionConstraintTrait;
 use Spryker\Zed\DataImport\Business\Model\ApplicableDatabaseEngineAwareInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\Propel\PropelConfig;
 
-class ProductStockBulkPdoDataSetWriter extends AbstractProductStockBulkDataSetWriter implements DataSetWriterInterface, ApplicableDatabaseEngineAwareInterface
+class ProductStockBulkPdoMariaDBDataSetWriter extends AbstractProductStockBulkDataSetWriter implements DataSetWriterInterface, ApplicableDatabaseEngineAwareInterface
 {
+    use PropelMariaDBVersionConstraintTrait;
+
     /**
      * @return bool
      */
     public function isApplicable(): bool
     {
-        return $this->dataImportConfig->getCurrentDatabaseEngine() === PropelConfig::DB_ENGINE_PGSQL;
+        return $this->dataImportConfig->getCurrentDatabaseEngine() === PropelConfig::DB_ENGINE_MYSQL
+            && $this->checkIsMariaDBSupportsBulkImport($this->propelExecutor);
     }
 
     /**
@@ -29,13 +33,18 @@ class ProductStockBulkPdoDataSetWriter extends AbstractProductStockBulkDataSetWr
     {
         $names = $this->dataFormatter->getCollectionDataByKey(static::$stockCollection, static::COLUMN_NAME);
         $uniqueNames = array_unique($names);
-        $name = $this->dataFormatter->formatPostgresArrayString($uniqueNames);
+        $name = $this->dataFormatter->formatStringList($uniqueNames);
 
         $sql = $this->productStockSql->createStockSQL();
-        $parameters = [
-            $name,
-        ];
-        $this->propelExecutor->execute($sql, $parameters);
+
+        $this->propelExecutor->execute(
+            $sql,
+            [
+                count($uniqueNames),
+                $name,
+            ],
+            false
+        );
     }
 
     /**
@@ -43,21 +52,22 @@ class ProductStockBulkPdoDataSetWriter extends AbstractProductStockBulkDataSetWr
      */
     protected function persistStockProductEntities(): void
     {
-        $sku = $this->dataFormatter->formatPostgresArrayString(
+        $sku = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_CONCRETE_SKU)
         );
-        $stockName = $this->dataFormatter->formatPostgresArray(
+        $stockName = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$stockCollection, static::COLUMN_NAME)
         );
-        $quantity = $this->dataFormatter->formatPostgresArray(
+        $quantity = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_QUANTITY)
         );
-        $isNeverOutOfStock = $this->dataFormatter->formatPostgresArray(
+        $isNeverOutOfStock = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_IS_NEVER_OUT_OF_STOCK)
         );
 
         $sql = $this->productStockSql->createStockProductSQL();
         $parameters = [
+            count(static::$stockProductCollection),
             $sku,
             $stockName,
             $quantity,
@@ -103,25 +113,29 @@ class ProductStockBulkPdoDataSetWriter extends AbstractProductStockBulkDataSetWr
         array $reservationItems
     ): void {
         $stockProductsForStore = $this->getStockProductBySkusAndStore($skus, $storeTransfer);
-
         $concreteAvailabilityData = $this->prepareConcreteAvailabilityData($stockProductsForStore, $reservationItems);
-
         $abstractAvailabilityData = $this->prepareAbstractAvailabilityData($concreteAvailabilityData, $concreteSkusToAbstractMap);
 
         $abstractAvailabilityQueryParams = [
-            $this->dataFormatter->formatPostgresArrayString(array_column($abstractAvailabilityData, static::KEY_SKU)),
-            $this->dataFormatter->formatPostgresArray(array_column($abstractAvailabilityData, static::KEY_QUANTITY)),
-            $this->dataFormatter->formatPostgresArray(array_fill(0, count($abstractAvailabilityData), $storeTransfer->getIdStore())),
+            count($abstractAvailabilityData),
+            $this->dataFormatter->formatStringList(array_column($abstractAvailabilityData, static::KEY_SKU)),
+            $this->dataFormatter->formatStringList(array_column($abstractAvailabilityData, static::KEY_QUANTITY)),
+            $this->dataFormatter->formatStringList(array_fill(0, count($abstractAvailabilityData), $storeTransfer->getIdStore())),
         ];
 
-        $availabilityAbstractIds = $this->propelExecutor->execute($this->productStockSql->createAbstractAvailabilitySQL(), $abstractAvailabilityQueryParams);
+        $availabilityAbstractIds = $this->propelExecutor->execute(
+            $this->productStockSql->createAbstractAvailabilitySQL(),
+            $abstractAvailabilityQueryParams
+        );
+
         $this->collectAvailabilityAbstractIds($availabilityAbstractIds);
 
         $availabilityQueryParams = [
-            $this->dataFormatter->formatPostgresArrayString(array_column($concreteAvailabilityData, static::KEY_SKU)),
-            $this->dataFormatter->formatPostgresArray(array_column($concreteAvailabilityData, static::KEY_QUANTITY)),
-            $this->dataFormatter->formatPostgresArrayBoolean(array_column($concreteAvailabilityData, static::KEY_IS_NEVER_OUT_OF_STOCK)),
-            $this->dataFormatter->formatPostgresArray(array_fill(0, count($concreteAvailabilityData), $storeTransfer->getIdStore())),
+            count($concreteAvailabilityData),
+            $this->dataFormatter->formatStringList(array_column($concreteAvailabilityData, static::KEY_SKU)),
+            $this->dataFormatter->formatStringList(array_column($concreteAvailabilityData, static::KEY_QUANTITY)),
+            $this->dataFormatter->formatStringList(array_column($concreteAvailabilityData, static::KEY_IS_NEVER_OUT_OF_STOCK)),
+            $this->dataFormatter->formatStringList(array_fill(0, count($concreteAvailabilityData), $storeTransfer->getIdStore())),
         ];
 
         $this->propelExecutor->execute($this->productStockSql->createAvailabilitySQL(), $availabilityQueryParams);

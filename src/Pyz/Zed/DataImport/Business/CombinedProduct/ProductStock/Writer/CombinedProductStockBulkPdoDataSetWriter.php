@@ -12,6 +12,7 @@ use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInter
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
+use Spryker\Zed\DataImport\DataImportConfig;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 use Spryker\Zed\Stock\Business\StockFacadeInterface;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
@@ -33,6 +34,7 @@ class CombinedProductStockBulkPdoDataSetWriter extends ProductStockBulkPdoDataSe
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
      * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
+     * @param \Spryker\Zed\DataImport\DataImportConfig $dataImportConfig
      */
     public function __construct(
         StockFacadeInterface $stockFacade,
@@ -40,8 +42,9 @@ class CombinedProductStockBulkPdoDataSetWriter extends ProductStockBulkPdoDataSe
         ProductStockSqlInterface $productStockSql,
         PropelExecutorInterface $propelExecutor,
         StoreFacadeInterface $storeFacade,
-        DataImportDataFormatterInterface $dataFormatter
+        DataImportDataFormatterInterface $dataFormatter,
+        DataImportConfig $dataImportConfig
     ) {
-        parent::__construct($stockFacade, $productBundleFacade, $productStockSql, $propelExecutor, $storeFacade, $dataFormatter);
+        parent::__construct($stockFacade, $productBundleFacade, $productStockSql, $propelExecutor, $storeFacade, $dataFormatter, $dataImportConfig);
     }
 }
