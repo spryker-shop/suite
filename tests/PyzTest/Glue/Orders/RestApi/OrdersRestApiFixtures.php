@@ -30,7 +30,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     protected const TEST_USERNAME = 'test username';
-    protected const TEST_PASSWORD = 'test password';
+    protected const TEST_PASSWORD = 'change123';
 
     protected const TEST_GRAND_TOTAL = 1;
 

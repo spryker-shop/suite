@@ -29,7 +29,7 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     use CartsRestApiFixturesTrait;
 
     protected const TEST_USERNAME = 'UserCartsRestApiFixtures';
-    protected const TEST_PASSWORD = 'password';
+    protected const TEST_PASSWORD = 'change123';
 
     public const QUANTITY_FOR_ITEM_UPDATE = 33;
     public const STORE_DE = 'DE';
