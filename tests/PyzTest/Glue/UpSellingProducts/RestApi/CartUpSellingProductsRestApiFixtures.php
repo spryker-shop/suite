@@ -33,7 +33,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     protected const TEST_USERNAME = 'UserCartsUpSellingProductsRestApiFixtures';
-    protected const TEST_PASSWORD = 'password';
+    protected const TEST_PASSWORD = 'change123';
 
     /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
