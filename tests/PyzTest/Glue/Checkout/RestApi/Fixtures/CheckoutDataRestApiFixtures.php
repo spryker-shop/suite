@@ -31,7 +31,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     protected const TEST_USERNAME = 'CheckoutDataRestApiFixtures';
-    protected const TEST_PASSWORD = 'password';
+    protected const TEST_PASSWORD = 'change123';
 
     /**
      * @var \Generated\Shared\Transfer\CustomerTransfer

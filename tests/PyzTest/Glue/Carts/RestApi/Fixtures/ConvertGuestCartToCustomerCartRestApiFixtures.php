@@ -30,7 +30,7 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
     use CartsRestApiFixturesTrait;
 
     protected const TEST_USERNAME = 'UserConvertGuestCartToCustomerCartRestApiFixtures';
-    protected const TEST_PASSWORD = 'password';
+    protected const TEST_PASSWORD = 'change123';
     protected const ANONYMOUS_PREFIX = 'anonymous:';
 
     /**
