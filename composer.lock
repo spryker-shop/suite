@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b99f53c277b06883a6b5c9e6c5497fbb",
+    "content-hash": "76fe55a4188a7bd71a7d0bd2e85119ca",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -38487,20 +38487,20 @@
         },
         {
             "name": "spryker/product-packaging-unit",
-            "version": "4.5.0",
+            "version": "4.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-packaging-unit.git",
-                "reference": "074c30ef316efd2cdefd874007d036098872adba"
+                "reference": "9b76fa38192547d2b067a0a8d9e455c0cd268ac6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-packaging-unit/zipball/074c30ef316efd2cdefd874007d036098872adba",
-                "reference": "074c30ef316efd2cdefd874007d036098872adba",
+                "url": "https://api.github.com/repos/spryker/product-packaging-unit/zipball/9b76fa38192547d2b067a0a8d9e455c0cd268ac6",
+                "reference": "9b76fa38192547d2b067a0a8d9e455c0cd268ac6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/availability": "^9.0.0",
                 "spryker/cart-extension": "^2.0.0 || ^4.0.0",
                 "spryker/decimal-object": "^1.0.0",
@@ -38556,9 +38556,9 @@
             ],
             "description": "ProductPackagingUnit module",
             "support": {
-                "source": "https://github.com/spryker/product-packaging-unit/tree/master"
+                "source": "https://github.com/spryker/product-packaging-unit/tree/4.5.1"
             },
-            "time": "2020-08-18T09:02:36+00:00"
+            "time": "2020-11-24T14:49:31+00:00"
         },
         {
             "name": "spryker/product-packaging-unit-data-import",
@@ -38609,54 +38609,6 @@
                 "source": "https://github.com/spryker/product-packaging-unit-data-import/tree/2.0.0"
             },
             "time": "2019-11-21T16:04:38+00:00"
-        },
-        {
-            "name": "spryker/product-packaging-unit-gui",
-            "version": "0.1.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/product-packaging-unit-gui.git",
-                "reference": "b035d12eb99f974130ea3deab69a28de8e413ff6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-packaging-unit-gui/zipball/b035d12eb99f974130ea3deab69a28de8e413ff6",
-                "reference": "b035d12eb99f974130ea3deab69a28de8e413ff6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/gui": "^3.33.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/locale": "^3.0.0",
-                "spryker/product-packaging-unit": "^1.0.0 || ^3.0.0 || ^4.0.0",
-                "spryker/sales": "^8.5.0 || ^10.0.0 || ^11.0.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/util-text": "^1.2.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ProductPackagingUnitGui module",
-            "support": {
-                "source": "https://github.com/spryker/product-packaging-unit-gui/tree/master"
-            },
-            "time": "2020-07-02T12:08:29+00:00"
         },
         {
             "name": "spryker/product-packaging-unit-storage",
@@ -54486,22 +54438,22 @@
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
-            "version": "v0.7.0",
+            "version": "v0.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dealerdirect/phpcodesniffer-composer-installer.git",
-                "reference": "e8d808670b8f882188368faaf1144448c169c0b7"
+                "reference": "fe390591e0241955f22eb9ba327d137e501c771c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/e8d808670b8f882188368faaf1144448c169c0b7",
-                "reference": "e8d808670b8f882188368faaf1144448c169c0b7",
+                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/fe390591e0241955f22eb9ba327d137e501c771c",
+                "reference": "fe390591e0241955f22eb9ba327d137e501c771c",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0 || ^2.0",
                 "php": ">=5.3",
-                "squizlabs/php_codesniffer": "^2 || ^3 || 4.0.x-dev"
+                "squizlabs/php_codesniffer": "^2.0 || ^3.0 || ^4.0"
             },
             "require-dev": {
                 "composer/composer": "*",
@@ -54552,7 +54504,7 @@
                 "issues": "https://github.com/dealerdirect/phpcodesniffer-composer-installer/issues",
                 "source": "https://github.com/dealerdirect/phpcodesniffer-composer-installer"
             },
-            "time": "2020-06-25T14:57:39+00:00"
+            "time": "2020-12-07T18:04:37+00:00"
         },
         {
             "name": "dms/phpunit-arraysubset-asserts",
