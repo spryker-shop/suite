@@ -58279,21 +58279,83 @@
             "time": "2020-10-09T16:11:57+00:00"
         },
         {
+            "name": "spryker-sdk/brancho",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-sdk/brancho.git",
+                "reference": "768ac796068fc9800d1294cee88d42af693e4838"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/brancho/zipball/768ac796068fc9800d1294cee88d42af693e4838",
+                "reference": "768ac796068fc9800d1294cee88d42af693e4838",
+                "shasum": ""
+            },
+            "require": {
+                "chobie/jira-api-restclient": "^2.0@dev",
+                "cocur/slugify": "^4.0",
+                "laminas/laminas-filter": "^2.9",
+                "php": ">=7.3",
+                "symfony-cmf/slugifier-api": "^2.0",
+                "symfony/console": "^5.0",
+                "symfony/options-resolver": "^5.0",
+                "symfony/process": "^5.0",
+                "symfony/yaml": "^5.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "^4.1",
+                "codeception/module-asserts": "^1.1",
+                "codeception/module-phpbrowser": "^1.0.0",
+                "mikey179/vfsstream": "^1.6",
+                "phpstan/phpstan": "^0.12.18",
+                "slevomat/coding-standard": "^6.2",
+                "spryker/code-sniffer": "^0.15.6",
+                "squizlabs/php_codesniffer": "^3.5",
+                "symfony/var-dumper": "^5.0"
+            },
+            "default-branch": true,
+            "bin": [
+                "bin/brancho"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Brancho\\": "src/Brancho/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Builds nice branch names.",
+            "support": {
+                "issues": "https://github.com/spryker-sdk/brancho/issues",
+                "source": "https://github.com/spryker-sdk/brancho/tree/master"
+            },
+            "time": "2020-12-08T08:12:41+00:00"
+        },
+        {
             "name": "spryker-sdk/codeception-phantoman",
             "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/codeception-phantoman.git",
-                "reference": "256d9aae63efb5b373898cb891bbd9327f542e0d"
+                "reference": "f9c3b362dd1a9dfd4afcaf205d5cdbd7e7f71c7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/codeception-phantoman/zipball/256d9aae63efb5b373898cb891bbd9327f542e0d",
-                "reference": "256d9aae63efb5b373898cb891bbd9327f542e0d",
+                "url": "https://api.github.com/repos/spryker-sdk/codeception-phantoman/zipball/f9c3b362dd1a9dfd4afcaf205d5cdbd7e7f71c7b",
+                "reference": "f9c3b362dd1a9dfd4afcaf205d5cdbd7e7f71c7b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "require-dev": {
                 "codeception/codeception": "^4.0",
@@ -58320,7 +58382,7 @@
                 "issues": "https://github.com/spryker-sdk/codeception-phantoman/issues",
                 "source": "https://github.com/spryker-sdk/codeception-phantoman/tree/master"
             },
-            "time": "2020-01-17T11:44:46+00:00"
+            "time": "2020-12-08T10:23:50+00:00"
         },
         {
             "name": "spryker-sdk/composer-constrainer",
@@ -58716,12 +58778,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "9cacaae777d21391f531755677997506d378bd8a"
+                "reference": "15ddb63f62105a2f7b81b7edeb1f9b3919e8c1e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/9cacaae777d21391f531755677997506d378bd8a",
-                "reference": "9cacaae777d21391f531755677997506d378bd8a",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/15ddb63f62105a2f7b81b7edeb1f9b3919e8c1e6",
+                "reference": "15ddb63f62105a2f7b81b7edeb1f9b3919e8c1e6",
                 "shasum": ""
             },
             "require": {
@@ -58767,7 +58829,7 @@
                 "issues": "https://github.com/spryker/code-sniffer/issues",
                 "source": "https://github.com/spryker/code-sniffer"
             },
-            "time": "2020-12-04T12:10:43+00:00"
+            "time": "2020-12-08T12:35:34+00:00"
         },
         {
             "name": "spryker/development",
@@ -59098,6 +59160,56 @@
                 "source": "https://github.com/stecman/symfony-console-completion/tree/master"
             },
             "time": "2018-02-10T04:28:01+00:00"
+        },
+        {
+            "name": "symfony-cmf/slugifier-api",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony-cmf/slugifier-api.git",
+                "reference": "5132aff25ad950ee897df4ae98d4ae2a4bc25f52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony-cmf/slugifier-api/zipball/5132aff25ad950ee897df4ae98d4ae2a4bc25f52",
+                "reference": "5132aff25ad950ee897df4ae98d4ae2a4bc25f52",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Cmf\\Api\\Slugifier\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony CMF Community",
+                    "homepage": "https://github.com/symfony-cmf/slugifier-api/contributors"
+                }
+            ],
+            "description": "Provides a basic slugifier interface to transform text into strings suitable for URLs",
+            "homepage": "http://cmf.symfony.com",
+            "keywords": [
+                "slugify",
+                "urlize"
+            ],
+            "support": {
+                "issues": "https://github.com/symfony-cmf/slugifier-api/issues",
+                "source": "https://github.com/symfony-cmf/slugifier-api/tree/master"
+            },
+            "time": "2017-02-18T23:11:17+00:00"
         },
         {
             "name": "symfony/browser-kit",
