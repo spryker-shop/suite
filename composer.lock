@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.167.0",
+            "version": "3.168.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "c0206fba76e374b04ad4418e1122d57547e8ea28"
+                "reference": "842621099b1de31ec6efd7535b8b343397c6e0ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c0206fba76e374b04ad4418e1122d57547e8ea28",
-                "reference": "c0206fba76e374b04ad4418e1122d57547e8ea28",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/842621099b1de31ec6efd7535b8b343397c6e0ec",
+                "reference": "842621099b1de31ec6efd7535b8b343397c6e0ec",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.167.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.168.0"
             },
-            "time": "2020-12-07T22:12:19+00:00"
+            "time": "2020-12-08T19:17:21+00:00"
         },
         {
             "name": "brick/math",
@@ -49315,32 +49315,31 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v6.2.3",
+            "version": "v6.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "149cfdf118b169f7840bbe3ef0d4bc795d1780c9"
+                "reference": "56f0ab23f54c4ccbb0d5dcc67ff8552e0c98d59e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/149cfdf118b169f7840bbe3ef0d4bc795d1780c9",
-                "reference": "149cfdf118b169f7840bbe3ef0d4bc795d1780c9",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/56f0ab23f54c4ccbb0d5dcc67ff8552e0c98d59e",
+                "reference": "56f0ab23f54c4ccbb0d5dcc67ff8552e0c98d59e",
                 "shasum": ""
             },
             "require": {
-                "egulias/email-validator": "~2.0",
+                "egulias/email-validator": "^2.0",
                 "php": ">=7.0.0",
                 "symfony/polyfill-iconv": "^1.0",
                 "symfony/polyfill-intl-idn": "^1.10",
                 "symfony/polyfill-mbstring": "^1.0"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9.1",
-                "symfony/phpunit-bridge": "^3.4.19|^4.1.8"
+                "mockery/mockery": "^1.0",
+                "symfony/phpunit-bridge": "^4.4|^5.0"
             },
             "suggest": {
-                "ext-intl": "Needed to support internationalized email addresses",
-                "true/punycode": "Needed to support internationalized email addresses, if ext-intl is not installed"
+                "ext-intl": "Needed to support internationalized email addresses"
             },
             "type": "library",
             "extra": {
@@ -49375,9 +49374,19 @@
             ],
             "support": {
                 "issues": "https://github.com/swiftmailer/swiftmailer/issues",
-                "source": "https://github.com/swiftmailer/swiftmailer/tree/v6.2.3"
+                "source": "https://github.com/swiftmailer/swiftmailer/tree/v6.2.4"
             },
-            "time": "2019-11-12T09:31:26+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/swiftmailer/swiftmailer",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-12-08T18:02:06+00:00"
         },
         {
             "name": "symfony-cmf/routing",
@@ -58279,83 +58288,21 @@
             "time": "2020-10-09T16:11:57+00:00"
         },
         {
-            "name": "spryker-sdk/brancho",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-sdk/brancho.git",
-                "reference": "768ac796068fc9800d1294cee88d42af693e4838"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/brancho/zipball/768ac796068fc9800d1294cee88d42af693e4838",
-                "reference": "768ac796068fc9800d1294cee88d42af693e4838",
-                "shasum": ""
-            },
-            "require": {
-                "chobie/jira-api-restclient": "^2.0@dev",
-                "cocur/slugify": "^4.0",
-                "laminas/laminas-filter": "^2.9",
-                "php": ">=7.3",
-                "symfony-cmf/slugifier-api": "^2.0",
-                "symfony/console": "^5.0",
-                "symfony/options-resolver": "^5.0",
-                "symfony/process": "^5.0",
-                "symfony/yaml": "^5.0"
-            },
-            "require-dev": {
-                "codeception/codeception": "^4.1",
-                "codeception/module-asserts": "^1.1",
-                "codeception/module-phpbrowser": "^1.0.0",
-                "mikey179/vfsstream": "^1.6",
-                "phpstan/phpstan": "^0.12.18",
-                "slevomat/coding-standard": "^6.2",
-                "spryker/code-sniffer": "^0.15.6",
-                "squizlabs/php_codesniffer": "^3.5",
-                "symfony/var-dumper": "^5.0"
-            },
-            "default-branch": true,
-            "bin": [
-                "bin/brancho"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Brancho\\": "src/Brancho/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Builds nice branch names.",
-            "support": {
-                "issues": "https://github.com/spryker-sdk/brancho/issues",
-                "source": "https://github.com/spryker-sdk/brancho/tree/master"
-            },
-            "time": "2020-12-08T08:12:41+00:00"
-        },
-        {
             "name": "spryker-sdk/codeception-phantoman",
             "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/codeception-phantoman.git",
-                "reference": "f9c3b362dd1a9dfd4afcaf205d5cdbd7e7f71c7b"
+                "reference": "256d9aae63efb5b373898cb891bbd9327f542e0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/codeception-phantoman/zipball/f9c3b362dd1a9dfd4afcaf205d5cdbd7e7f71c7b",
-                "reference": "f9c3b362dd1a9dfd4afcaf205d5cdbd7e7f71c7b",
+                "url": "https://api.github.com/repos/spryker-sdk/codeception-phantoman/zipball/256d9aae63efb5b373898cb891bbd9327f542e0d",
+                "reference": "256d9aae63efb5b373898cb891bbd9327f542e0d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2"
+                "php": ">=7.1"
             },
             "require-dev": {
                 "codeception/codeception": "^4.0",
@@ -58382,7 +58329,7 @@
                 "issues": "https://github.com/spryker-sdk/codeception-phantoman/issues",
                 "source": "https://github.com/spryker-sdk/codeception-phantoman/tree/master"
             },
-            "time": "2020-12-08T10:23:50+00:00"
+            "time": "2020-01-17T11:44:46+00:00"
         },
         {
             "name": "spryker-sdk/composer-constrainer",
@@ -59160,56 +59107,6 @@
                 "source": "https://github.com/stecman/symfony-console-completion/tree/master"
             },
             "time": "2018-02-10T04:28:01+00:00"
-        },
-        {
-            "name": "symfony-cmf/slugifier-api",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony-cmf/slugifier-api.git",
-                "reference": "5132aff25ad950ee897df4ae98d4ae2a4bc25f52"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony-cmf/slugifier-api/zipball/5132aff25ad950ee897df4ae98d4ae2a4bc25f52",
-                "reference": "5132aff25ad950ee897df4ae98d4ae2a4bc25f52",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6|^7.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Cmf\\Api\\Slugifier\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Symfony CMF Community",
-                    "homepage": "https://github.com/symfony-cmf/slugifier-api/contributors"
-                }
-            ],
-            "description": "Provides a basic slugifier interface to transform text into strings suitable for URLs",
-            "homepage": "http://cmf.symfony.com",
-            "keywords": [
-                "slugify",
-                "urlize"
-            ],
-            "support": {
-                "issues": "https://github.com/symfony-cmf/slugifier-api/issues",
-                "source": "https://github.com/symfony-cmf/slugifier-api/tree/master"
-            },
-            "time": "2017-02-18T23:11:17+00:00"
         },
         {
             "name": "symfony/browser-kit",
