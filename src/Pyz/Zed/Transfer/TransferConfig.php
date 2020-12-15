@@ -71,4 +71,12 @@ class TransferConfig extends SprykerTransferConfig
     {
         return true;
     }
+
+    /**
+     * @return bool
+     */
+    public function isTransferXmlValidationEnabled(): bool
+    {
+        return true;
+    }
 }
