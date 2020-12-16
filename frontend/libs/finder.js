@@ -61,14 +61,6 @@ const mergeEntryPoints = async files => Object.values(files.reduce((map, file) =
 // find components entry points
 const findComponentEntryPoints = async settings => await findEntryPoints(settings);
 
-// find style entry points
-const findStyleEntryPoints = async settings => {
-    const coreFiles = await find(settings.core.dirs, settings.core.patterns,  [], settings.globSettings);
-    const nonCoreFiles = await find(settings.nonCore.dirs, settings.nonCore.patterns,  [], settings.globSettings);
-    const files = [...coreFiles, ...nonCoreFiles];
-    return mergeEntryPoints(files);
-};
-
 // find component styles
 const findComponentStyles = async settings =>
     await find(settings.dirs, settings.patterns, [], settings.globSettings);
@@ -87,7 +79,6 @@ const findAppEntryPoint = async (settings, file) => {
 
 module.exports = {
     findComponentEntryPoints,
-    findStyleEntryPoints,
     findComponentStyles,
     findAppEntryPoint,
 };
