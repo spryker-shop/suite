@@ -230,31 +230,6 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
                 fallbackPatterns: customThemeEntryPointPatterns(true)
             },
 
-            // style  entry point patterns (components)
-            stylesEntryPoints: {
-                core: {
-                    // absolute dirs in which look for
-                    dirs: [
-                        join(globalSettings.context, paths.core),
-                    ],
-                    // files/dirs patterns
-                    patterns: [`**/Theme/${namespaceConfig.defaultTheme}/**/style.scss`],
-                },
-                nonCore: {
-                    // absolute dirs in which look for
-                    dirs: [
-                        join(globalSettings.context, paths.eco),
-                        join(globalSettings.context, paths.project),
-                    ],
-                    // files/dirs patterns
-                    patterns: [
-                        `**/Theme/${namespaceConfig.defaultTheme}/components/**/*.scss`,
-                        `**/Theme/${namespaceConfig.defaultTheme}/templates/**/*.scss`,
-                        `**/Theme/${namespaceConfig.defaultTheme}/views/**/*.scss`,
-                    ],
-                },
-            },
-
             // core component styles finder settings
             // important: this part is used in shared scss environment
             // do not change unless necessary
