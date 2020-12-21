@@ -7,8 +7,6 @@
 
 namespace PyzTest\Zed\DataImport\Business\Model\ProductPrice;
 
-use Pyz\Zed\DataImport\Business\Model\PropelMariaDBVersionConstraintException;
-
 /**
  * Auto-generated group annotations
  *
@@ -32,9 +30,7 @@ class ProductPriceWriterPdoTest extends AbstractProductPriceWriterTest
      */
     public function testProductPriceWriter(): void
     {
-        $this->markTestSkipped('Need to implement MariaDB version check to decide whether we expect exception.');
-
-        $this->expectException(PropelMariaDBVersionConstraintException::class);
+        $this->markTestSkippedOnDatabaseConstraintsMismatch();
 
         $writer = $this->getDataImportBusinessFactoryStub()->createProductPriceBulkPdoWriter();
 

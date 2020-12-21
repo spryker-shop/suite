@@ -8,7 +8,6 @@
 namespace PyzTest\Zed\DataImport\Business\Model\ProductImage;
 
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
-use Pyz\Zed\DataImport\Business\Model\PropelMariaDBVersionConstraintException;
 
 /**
  * Auto-generated group annotations
@@ -33,9 +32,7 @@ class ProductImageWriterPdoTest extends AbstractProductImageWriterTest
      */
     public function testProductImageWriter(): void
     {
-        $this->markTestSkipped('Need to implement MariaDB version check to decide whether we expect exception.');
-
-        $this->expectException(PropelMariaDBVersionConstraintException::class);
+        $this->markTestSkippedOnDatabaseConstraintsMismatch();
 
         $writer = $this->getDataImportBusinessFactoryStub()->createProductImageBulkPdoWriter();
 
@@ -59,9 +56,7 @@ class ProductImageWriterPdoTest extends AbstractProductImageWriterTest
      */
     public function testProductImagesWithSameUrlAreSavedSeparately(): void
     {
-        $this->markTestSkipped('Need to implement MariaDB version check to decide whether we expect exception.');
-
-        $this->expectException(PropelMariaDBVersionConstraintException::class);
+        $this->markTestSkippedOnDatabaseConstraintsMismatch();
 
         // Arrange
         $writer = $this->getDataImportBusinessFactoryStub()->createProductImageBulkPdoWriter();

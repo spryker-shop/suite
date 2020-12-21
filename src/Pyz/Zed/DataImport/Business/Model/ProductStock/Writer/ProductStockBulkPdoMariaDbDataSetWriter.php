@@ -8,14 +8,14 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
 use Generated\Shared\Transfer\StoreTransfer;
-use Pyz\Zed\DataImport\Business\Model\PropelMariaDBVersionConstraintTrait;
+use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintTrait;
 use Spryker\Zed\DataImport\Business\Model\ApplicableDatabaseEngineAwareInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\Propel\PropelConfig;
 
-class ProductStockBulkPdoMariaDBDataSetWriter extends AbstractProductStockBulkDataSetWriter implements DataSetWriterInterface, ApplicableDatabaseEngineAwareInterface
+class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDataSetWriter implements DataSetWriterInterface, ApplicableDatabaseEngineAwareInterface
 {
-    use PropelMariaDBVersionConstraintTrait;
+    use PropelMariaDbVersionConstraintTrait;
 
     /**
      * @return bool

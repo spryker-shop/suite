@@ -12,6 +12,6 @@ use Exception;
 /**
  * @deprecated Will be removed after MariaDB 10.4 support is dropped.
  */
-class PropelMariaDBVersionConstraintException extends Exception
+class PropelMariaDbVersionConstraintException extends Exception
 {
 }

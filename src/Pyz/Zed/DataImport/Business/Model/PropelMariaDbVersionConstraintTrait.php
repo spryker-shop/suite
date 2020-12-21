@@ -10,30 +10,30 @@ namespace Pyz\Zed\DataImport\Business\Model;
 /**
  * @deprecated Will be removed after MariaDB 10.4 support is dropped.
  */
-trait PropelMariaDBVersionConstraintTrait
+trait PropelMariaDbVersionConstraintTrait
 {
     /**
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      *
-     * @throws \Pyz\Zed\DataImport\Business\Model\PropelMariaDBVersionConstraintException
+     * @throws \Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintException
      *
      * @return bool
      */
     protected function checkIsMariaDBSupportsBulkImport(PropelExecutorInterface $propelExecutor): bool
     {
-        $version = $propelExecutor->execute('SELECT VERSION() AS `version`', []);
+        $version = $propelExecutor->execute('SELECT VERSION() AS version', []);
 
         $version = explode('-', current(current($version)));
 
         if ($version[1] !== 'MariaDB') {
-            throw new PropelMariaDBVersionConstraintException(
+            throw new PropelMariaDbVersionConstraintException(
                 'Current database engine does not support bulk import.' .
                 ' Bulk import is supported on MariaDB server version >= 10.5.'
             );
         }
 
         if (version_compare($version[0], '10.5') < 0) {
-            throw new PropelMariaDBVersionConstraintException(
+            throw new PropelMariaDbVersionConstraintException(
                 'Current version of MariaDB does not support bulk import.' .
                 ' Please update your MariaDB server to version >= 10.5.'
             );

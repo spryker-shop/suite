@@ -8,14 +8,14 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\PropelMariaDBVersionConstraintTrait;
+use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintTrait;
 use Spryker\Zed\DataImport\Business\Model\ApplicableDatabaseEngineAwareInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\Propel\PropelConfig;
 
-class ProductPriceBulkPdoMariaDBDataSetWriter extends AbstractProductPriceBulkDataSetWriter implements DataSetWriterInterface, ApplicableDatabaseEngineAwareInterface
+class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDataSetWriter implements DataSetWriterInterface, ApplicableDatabaseEngineAwareInterface
 {
-    use PropelMariaDBVersionConstraintTrait;
+    use PropelMariaDbVersionConstraintTrait;
 
     /**
      * @return bool

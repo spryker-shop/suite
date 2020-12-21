@@ -30,7 +30,7 @@ class ProductStockPdoTest extends AbstractProductStockWriterTest
      */
     public function testProductStockWriter(): void
     {
-        $this->markTestSkipped('Assertion fails on availability count randomly. Hard to reproduce, but error is somewhere there.');
+        $this->markTestSkippedOnDatabaseConstraintsMismatch();
 
         $writer = $this->getDataImportBusinessFactoryStub()->createProductStockBulkPdoWriter();
 
