@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql;
 
-class ProductPriceMariaDBSql implements ProductPriceSqlInterface
+class ProductPriceMariaDbSql implements ProductPriceSqlInterface
 {
     /**
      * @param string $idProduct

@@ -11,6 +11,8 @@ use Codeception\Test\Unit;
 use Codeception\Util\Stub;
 use Propel\Runtime\Propel;
 use Pyz\Zed\DataImport\Business\DataImportBusinessFactory;
+use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintException;
+use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintTrait;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Spryker\Service\UtilEncoding\UtilEncodingService;
 use Spryker\Shared\Kernel\Store;
@@ -25,6 +27,7 @@ use Spryker\Zed\PriceProduct\Business\PriceProductFacade;
 use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacade;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
+use Spryker\Zed\Propel\PropelConfig;
 use Spryker\Zed\Stock\Business\StockFacade;
 use Spryker\Zed\Stock\Business\StockFacadeInterface;
 use Spryker\Zed\Store\Business\StoreFacade;
@@ -43,6 +46,8 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
  */
 abstract class AbstractWriterTest extends Unit
 {
+    use PropelMariaDbVersionConstraintTrait;
+
     /**
      * @return \Pyz\Zed\DataImport\Business\DataImportBusinessFactory
      */
@@ -63,6 +68,26 @@ abstract class AbstractWriterTest extends Unit
         ]);
 
         return $dataImportBusinessFactory;
+    }
+
+    /**
+     * @return void
+     */
+    protected function markTestSkippedOnDatabaseConstraintsMismatch(): void
+    {
+        $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
+
+        if ($dataImportBusinessFactory->getConfig()->getCurrentDatabaseEngine() === PropelConfig::DB_ENGINE_PGSQL) {
+            return;
+        }
+
+        try {
+            $this->checkIsMariaDBSupportsBulkImport(
+                $dataImportBusinessFactory->createPropelExecutor()
+            );
+        } catch (PropelMariaDbVersionConstraintException $exception) {
+            $this->markTestSkipped('Importer does not support current database engine or it\'s version.');
+        }
     }
 
     /**

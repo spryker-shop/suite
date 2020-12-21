@@ -9,12 +9,12 @@ namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\Writer;
 
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\CombinedProductPriceHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
-use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPriceBulkPdoMariaDBDataSetWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPriceBulkPdoMariaDbDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\DataImportConfig;
 
-class CombinedProductPriceBulkPdoMariaDBDataSetWriter extends ProductPriceBulkPdoMariaDBDataSetWriter
+class CombinedProductPriceBulkPdoMariaDbDataSetWriter extends ProductPriceBulkPdoMariaDbDataSetWriter
 {
     protected const BULK_SIZE = CombinedProductPriceHydratorStep::BULK_SIZE;
 
