@@ -34,6 +34,8 @@ class ProductPriceBulkPdoWriterPluginTest extends AbstractWriterPluginTest
      */
     public function testProductPricePdoImport(): void
     {
+        $this->markTestSkippedOnDatabaseConstraintsMismatch();
+
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
         $dataImport = $dataImportBusinessFactory->createProductPriceImporter($this->getDataImportConfigurationActionTransfer());
         $dataImporterReportTransfer = $dataImport->import();

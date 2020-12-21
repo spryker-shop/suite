@@ -207,34 +207,34 @@ class ProductImageMariaDbSql implements ProductImageSqlInterface
     public function findProductImageSetsByProductImageIds(): string
     {
         return 'WITH RECURSIVE
-    n(digit) AS (
-        SELECT 0 as digit
-        UNION ALL
-        SELECT 1 + digit
-        FROM n
-        WHERE digit < ?
-    ),
-    touched_product_images as (
-        SELECT input.idProductImage
-        FROM (
-                 SELECT DISTINCT NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.idProductImage, \',\', n.digit + 1), \',\', -1), \'\') as idProductImage
-                 FROM (
-                          SELECT ? AS idProductImage
-                      ) temp
-                          INNER JOIN n ON LENGTH(REPLACE(idProductImage, \',\', \'\')) <= LENGTH(idProductImage) - n.digit
-             ) input
-    )
-SELECT DISTINCT name,
-                fk_locale,
-                fk_product,
-                fk_product_abstract
-FROM spy_product_image_set
-         INNER JOIN spy_product_image_set_to_product_image ON
-    id_product_image_set = fk_product_image_set
-WHERE fk_product_image IN (
-    SELECT idProductImage
-    FROM touched_product_images
-)
-';
+            n(digit) AS (
+                SELECT 0 as digit
+                UNION ALL
+                SELECT 1 + digit
+                FROM n
+                WHERE digit < ?
+            ),
+            touched_product_images as (
+                SELECT input.idProductImage
+                FROM (
+                         SELECT DISTINCT NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.idProductImage, \',\', n.digit + 1), \',\', -1), \'\') as idProductImage
+                         FROM (
+                                  SELECT ? AS idProductImage
+                              ) temp
+                                  INNER JOIN n ON LENGTH(REPLACE(idProductImage, \',\', \'\')) <= LENGTH(idProductImage) - n.digit
+                     ) input
+            )
+            SELECT DISTINCT name,
+                            fk_locale,
+                            fk_product,
+                            fk_product_abstract
+            FROM spy_product_image_set
+                     INNER JOIN spy_product_image_set_to_product_image ON
+                id_product_image_set = fk_product_image_set
+            WHERE fk_product_image IN (
+                SELECT idProductImage
+                FROM touched_product_images
+            )
+        ';
     }
 }

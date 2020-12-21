@@ -60,7 +60,9 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                 ->build();
             $spyProductAbstractEntityTransfer
                 ->setFkTaxSet(1)
-                ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}');
+                ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}')
+                ->setNewFrom('2010-02-01 10:45:00')
+                ->setNewTo('2010-02-03 00:45:00');
             $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_TRANSFER] = $spyProductAbstractEntityTransfer;
 
             /**

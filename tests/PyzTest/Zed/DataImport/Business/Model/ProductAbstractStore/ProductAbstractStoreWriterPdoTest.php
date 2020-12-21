@@ -7,10 +7,6 @@
 
 namespace PyzTest\Zed\DataImport\Business\Model\ProductAbstractStore;
 
-use Spryker\Shared\Config\Config;
-use Spryker\Shared\Propel\PropelConstants;
-use Spryker\Zed\Propel\PropelConfig;
-
 /**
  * Auto-generated group annotations
  *
@@ -34,9 +30,7 @@ class ProductAbstractStoreWriterPdoTest extends AbstractProductAbstractStoreWrit
      */
     public function testProductAbstractStoreWriter(): void
     {
-        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== PropelConfig::DB_ENGINE_PGSQL) {
-            $this->markTestSkipped('PostgreSQL related test');
-        }
+        $this->markTestSkippedOnDatabaseConstraintsMismatch();
 
         $writer = $this->getDataImportBusinessFactoryStub()->createProductAbstractStoreBulkPdoWriter();
 

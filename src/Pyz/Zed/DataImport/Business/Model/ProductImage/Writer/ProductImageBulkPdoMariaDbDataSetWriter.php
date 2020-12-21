@@ -8,7 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\PropelMariaDBVersionConstraintTrait;
+use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintTrait;
 use Spryker\Zed\DataImport\Business\Model\ApplicableDatabaseEngineAwareInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
@@ -16,7 +16,7 @@ use Spryker\Zed\Propel\PropelConfig;
 
 class ProductImageBulkPdoMariaDbDataSetWriter extends AbstractProductImageBulkDataSetWriter implements DataSetWriterInterface, ApplicableDatabaseEngineAwareInterface
 {
-    use PropelMariaDBVersionConstraintTrait;
+    use PropelMariaDbVersionConstraintTrait;
 
     /**
      * @return bool

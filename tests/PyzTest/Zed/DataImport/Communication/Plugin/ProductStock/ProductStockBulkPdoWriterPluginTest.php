@@ -34,6 +34,8 @@ class ProductStockBulkPdoWriterPluginTest extends AbstractWriterPluginTest
      */
     public function testProductStockPropelWriterPlugin(): void
     {
+        $this->markTestSkippedOnDatabaseConstraintsMismatch();
+
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
         $dataImport = $dataImportBusinessFactory->createProductStockImporter($this->getDataImportConfigurationActionTransfer());
         $dataImporterReportTransfer = $dataImport->import();

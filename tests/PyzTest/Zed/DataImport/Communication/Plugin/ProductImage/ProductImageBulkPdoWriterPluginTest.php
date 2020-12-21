@@ -34,6 +34,8 @@ class ProductImageBulkPdoWriterPluginTest extends AbstractWriterPluginTest
      */
     public function testProductImagePropelWriterPlugin(): void
     {
+        $this->markTestSkippedOnDatabaseConstraintsMismatch();
+
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
         $dataImport = $dataImportBusinessFactory->createProductImageImporter($this->getDataImportConfigurationActionTransfer());
         $dataImporterReportTransfer = $dataImport->import();
