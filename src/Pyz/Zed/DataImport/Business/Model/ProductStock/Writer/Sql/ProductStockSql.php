@@ -68,7 +68,7 @@ SELECT updated.idStock FROM updated UNION ALL SELECT inserted.id_stock FROM inse
            SELECT
              unnest(? :: VARCHAR []) AS sku,
              unnest(? :: VARCHAR []) AS stockName,
-             unnest(? :: INTEGER []) AS quantity,
+             unnest(? :: NUMERIC []) AS quantity,
              unnest(? :: BOOLEAN []) AS is_never_out_of_stock
          ) input
       INNER JOIN spy_stock on spy_stock.name = stockName
