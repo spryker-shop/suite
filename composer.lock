@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.171.7",
+            "version": "3.171.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6c32f57bc381b46c783f70a20060fde1a95f4ab5"
+                "reference": "1f7f7c1db844f6c988c93008f902b352c7616da8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6c32f57bc381b46c783f70a20060fde1a95f4ab5",
-                "reference": "6c32f57bc381b46c783f70a20060fde1a95f4ab5",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1f7f7c1db844f6c988c93008f902b352c7616da8",
+                "reference": "1f7f7c1db844f6c988c93008f902b352c7616da8",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.171.7"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.171.8"
             },
-            "time": "2020-12-28T19:12:41+00:00"
+            "time": "2020-12-29T19:11:15+00:00"
         },
         {
             "name": "brick/math",
@@ -485,16 +485,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.24",
+            "version": "2.1.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "ca90a3291eee1538cd48ff25163240695bd95448"
+                "reference": "0dbf5d78455d4d6a41d186da50adc1122ec066f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ca90a3291eee1538cd48ff25163240695bd95448",
-                "reference": "ca90a3291eee1538cd48ff25163240695bd95448",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/0dbf5d78455d4d6a41d186da50adc1122ec066f4",
+                "reference": "0dbf5d78455d4d6a41d186da50adc1122ec066f4",
                 "shasum": ""
             },
             "require": {
@@ -541,7 +541,7 @@
             ],
             "support": {
                 "issues": "https://github.com/egulias/EmailValidator/issues",
-                "source": "https://github.com/egulias/EmailValidator/tree/2.1.24"
+                "source": "https://github.com/egulias/EmailValidator/tree/2.1.25"
             },
             "funding": [
                 {
@@ -549,7 +549,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-14T15:56:27+00:00"
+            "time": "2020-12-29T14:50:06+00:00"
         },
         {
             "name": "elasticsearch/elasticsearch",
@@ -4607,7 +4607,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "ffaed78f5a82a851582bdb93d1187c5466f3d3b1"
+                "reference": "78dfd0d9a6038bcff05d2faf5c874d6cae318894"
             },
             "require": {
                 "php": ">=7.3"
@@ -5263,6 +5263,8 @@
                 "spryker/search-elasticsearch-gui": "*",
                 "spryker/search-extension": "*",
                 "spryker/security": "*",
+                "spryker/security-blocker": "*",
+                "spryker/security-blocker-rest-api": "*",
                 "spryker/security-extension": "*",
                 "spryker/security-gui": "*",
                 "spryker/security-merchant-portal-gui": "*",
@@ -5393,7 +5395,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-12-29T13:29:57+00:00"
+            "time": "2020-12-30T10:53:50+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5401,7 +5403,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "857514c04456e69e7883fc30626597657a4268e7"
+                "reference": "f25094a5258d522908179ff6fbd93d4104ce6b5c"
             },
             "require": {
                 "php": ">=7.3"
@@ -5524,6 +5526,7 @@
                 "spryker-shop/sales-product-configuration-widget-extension": "*",
                 "spryker-shop/sales-return-page": "*",
                 "spryker-shop/sales-return-page-extension": "*",
+                "spryker-shop/security-blocker-page": "*",
                 "spryker-shop/shared-cart-page": "*",
                 "spryker-shop/shared-cart-widget": "*",
                 "spryker-shop/shop-application": "*",
@@ -5562,7 +5565,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-12-22T15:22:35+00:00"
+            "time": "2020-12-30T10:53:53+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",

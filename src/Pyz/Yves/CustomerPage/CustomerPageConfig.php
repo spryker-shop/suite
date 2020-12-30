@@ -32,4 +32,18 @@ class CustomerPageConfig extends SprykerCustomerPageConfig
     {
         return true;
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @deprecated Will be removed without replacement. If the future the locale-specific URL will be used.
+     *
+     * @return bool
+     */
+    public function isLocaleInLoginCheckPath(): bool
+    {
+        return true;
+    }
 }

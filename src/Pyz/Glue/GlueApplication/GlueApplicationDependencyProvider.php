@@ -191,6 +191,10 @@ use Spryker\Glue\SalesReturnsRestApi\Plugin\ReturnItemByReturnResourceRelationsh
 use Spryker\Glue\SalesReturnsRestApi\Plugin\ReturnReasonsResourceRoutePlugin;
 use Spryker\Glue\SalesReturnsRestApi\Plugin\ReturnsResourceRoutePlugin;
 use Spryker\Glue\SalesReturnsRestApi\SalesReturnsRestApiConfig;
+use Spryker\Glue\SecurityBlockerRestApi\Plugin\GlueApplication\SecurityBlockerAgentControllerAfterActionPlugin;
+use Spryker\Glue\SecurityBlockerRestApi\Plugin\GlueApplication\SecurityBlockerAgentRestRequestValidatorPlugin;
+use Spryker\Glue\SecurityBlockerRestApi\Plugin\GlueApplication\SecurityBlockerCustomerControllerAfterActionPlugin;
+use Spryker\Glue\SecurityBlockerRestApi\Plugin\GlueApplication\SecurityBlockerCustomerRestRequestValidatorPlugin;
 use Spryker\Glue\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartByCartIdResourceRelationshipPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartsResourceRoutePlugin;
@@ -328,6 +332,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     protected function getRestRequestValidatorPlugins(): array
     {
         return [
+            new SecurityBlockerCustomerRestRequestValidatorPlugin(),
+            new SecurityBlockerAgentRestRequestValidatorPlugin(),
             new AccessTokenRestRequestValidatorPlugin(),
             new AgentAccessTokenRestRequestValidatorPlugin(),
             new SimultaneousAuthenticationRestRequestValidatorPlugin(),
@@ -402,6 +408,17 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new SetCustomerBeforeActionPlugin(),
             new SetCurrencyBeforeActionPlugin(),
             new SetPriceModeBeforeActionPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ControllerAfterActionPluginInterface[]
+     */
+    protected function getControllerAfterActionPlugins(): array
+    {
+        return [
+            new SecurityBlockerCustomerControllerAfterActionPlugin(),
+            new SecurityBlockerAgentControllerAfterActionPlugin(),
         ];
     }
 
