@@ -122,7 +122,7 @@ jobs:
 
             - name: Install NPM packages
               run: |
-                  npm install speccy@0.11.0 -g
+                  npm install -g -unsafe-perm speccy@0.11.0
 
             - name: Speccy lint Glue specification
               run: speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
