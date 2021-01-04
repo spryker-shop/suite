@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "47d41f2557874a84a14f430919c67a67",
+    "content-hash": "ac0f2ae69437d6f63a2d6acadb59ae5a",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -44145,6 +44145,67 @@
                 "source": "https://github.com/spryker/security-merchant-portal-gui/tree/0.1.1"
             },
             "time": "2020-11-25T14:26:05+00:00"
+        },
+        {
+            "name": "spryker/security-oauth-user",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/security-oauth-user.git",
+                "reference": "c1bb77ca1fbd127ae1120910a96f75a640ee03b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/security-oauth-user/zipball/c1bb77ca1fbd127ae1120910a96f75a640ee03b9",
+                "reference": "c1bb77ca1fbd127ae1120910a96f75a640ee03b9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/acl": "^3.4.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/messenger": "^3.0.0",
+                "spryker/security-extension": "^1.0.0",
+                "spryker/security-oauth-user-extension": "^1.0.0",
+                "spryker/symfony": "^3.5.0",
+                "spryker/transfer": "^3.25.0",
+                "spryker/user": "^3.0.0",
+                "spryker/util-text": "^1.3.0"
+            },
+            "require-dev": {
+                "spryker/application": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/propel": "*",
+                "spryker/router": "*",
+                "spryker/security": "*",
+                "spryker/session": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "Add this module to use the Container."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SecurityOauthUser module",
+            "support": {
+                "source": "https://github.com/spryker/security-oauth-user/tree/1.0.0"
+            },
+            "time": "2020-12-29T11:30:00+00:00"
         },
         {
             "name": "spryker/security-oauth-user-extension",
