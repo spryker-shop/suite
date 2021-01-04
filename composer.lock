@@ -29185,16 +29185,16 @@
         },
         {
             "name": "spryker/merchant-user",
-            "version": "0.5.4",
+            "version": "0.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-user.git",
-                "reference": "0bc4b2ad21de8e5a6e8707075877516aebf0280e"
+                "reference": "6234ff96231144f39bab988bf7c8514accb07908"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-user/zipball/0bc4b2ad21de8e5a6e8707075877516aebf0280e",
-                "reference": "0bc4b2ad21de8e5a6e8707075877516aebf0280e",
+                "url": "https://api.github.com/repos/spryker/merchant-user/zipball/6234ff96231144f39bab988bf7c8514accb07908",
+                "reference": "6234ff96231144f39bab988bf7c8514accb07908",
                 "shasum": ""
             },
             "require": {
@@ -29205,6 +29205,8 @@
                 "spryker/merchant": "^3.0.0",
                 "spryker/merchant-extension": "^1.1.0",
                 "spryker/propel-orm": "^1.5.0",
+                "spryker/security-oauth-user-extension": "^1.0.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/user": "^3.9.0",
                 "spryker/user-password-reset": "^0.1.0",
                 "spryker/util-text": "^1.3.0"
@@ -29233,9 +29235,9 @@
             ],
             "description": "MerchantUser module",
             "support": {
-                "source": "https://github.com/spryker/merchant-user/tree/0.5.4"
+                "source": "https://github.com/spryker/merchant-user/tree/0.5.5"
             },
-            "time": "2020-11-19T08:09:46+00:00"
+            "time": "2020-12-22T09:48:34+00:00"
         },
         {
             "name": "spryker/merchant-user-gui",
@@ -43979,16 +43981,16 @@
         },
         {
             "name": "spryker/security-gui",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/security-gui.git",
-                "reference": "6fdf98a6f0e23f5382ebc9009b9eec9a9c644fa2"
+                "reference": "70d21e00dd2b97c31b8538d6add9d00b07d85918"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/security-gui/zipball/6fdf98a6f0e23f5382ebc9009b9eec9a9c644fa2",
-                "reference": "6fdf98a6f0e23f5382ebc9009b9eec9a9c644fa2",
+                "url": "https://api.github.com/repos/spryker/security-gui/zipball/70d21e00dd2b97c31b8538d6add9d00b07d85918",
+                "reference": "70d21e00dd2b97c31b8538d6add9d00b07d85918",
                 "shasum": ""
             },
             "require": {
@@ -43997,6 +43999,7 @@
                 "spryker/messenger": "^3.0.0",
                 "spryker/security": "^1.3.0",
                 "spryker/security-extension": "^1.0.0",
+                "spryker/security-gui-extension": "^1.0.0",
                 "spryker/symfony": "^3.5.0",
                 "spryker/user": "^3.0.0",
                 "spryker/user-password-reset": "^0.1.0"
@@ -44035,9 +44038,50 @@
             ],
             "description": "SecurityGui module",
             "support": {
-                "source": "https://github.com/spryker/security-gui/tree/0.1.0"
+                "source": "https://github.com/spryker/security-gui/tree/0.1.1"
             },
-            "time": "2020-11-16T12:12:48+00:00"
+            "time": "2020-12-24T16:03:39+00:00"
+        },
+        {
+            "name": "spryker/security-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/security-gui-extension.git",
+                "reference": "f0041309dbfd705f083a3713f558e9d0802d27ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/security-gui-extension/zipball/f0041309dbfd705f083a3713f558e9d0802d27ab",
+                "reference": "f0041309dbfd705f083a3713f558e9d0802d27ab",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SecurityGuiExtension module",
+            "support": {
+                "source": "https://github.com/spryker/security-gui-extension/tree/1.0.0"
+            },
+            "time": "2020-12-16T08:45:12+00:00"
         },
         {
             "name": "spryker/security-merchant-portal-gui",
@@ -44101,6 +44145,47 @@
                 "source": "https://github.com/spryker/security-merchant-portal-gui/tree/0.1.1"
             },
             "time": "2020-11-25T14:26:05+00:00"
+        },
+        {
+            "name": "spryker/security-oauth-user-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/security-oauth-user-extension.git",
+                "reference": "8a081c79a6018e911f64e4d903b582a2dc292819"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/security-oauth-user-extension/zipball/8a081c79a6018e911f64e4d903b582a2dc292819",
+                "reference": "8a081c79a6018e911f64e4d903b582a2dc292819",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SecurityOauthUserExtension module",
+            "support": {
+                "source": "https://github.com/spryker/security-oauth-user-extension/tree/1.0.0"
+            },
+            "time": "2020-12-03T13:12:06+00:00"
         },
         {
             "name": "spryker/security-system-user",
@@ -47798,16 +47883,16 @@
         },
         {
             "name": "spryker/user",
-            "version": "3.12.0",
+            "version": "3.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/user.git",
-                "reference": "89d538806f61b8983222520a2b25e922c4b55c54"
+                "reference": "eb943c395a9f3eb65c92b5470f677a78bb58c727"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/user/zipball/89d538806f61b8983222520a2b25e922c4b55c54",
-                "reference": "89d538806f61b8983222520a2b25e922c4b55c54",
+                "url": "https://api.github.com/repos/spryker/user/zipball/eb943c395a9f3eb65c92b5470f677a78bb58c727",
+                "reference": "eb943c395a9f3eb65c92b5470f677a78bb58c727",
                 "shasum": ""
             },
             "require": {
@@ -47863,9 +47948,9 @@
             ],
             "description": "User module",
             "support": {
-                "source": "https://github.com/spryker/user/tree/3.12.0"
+                "source": "https://github.com/spryker/user/tree/3.12.1"
             },
-            "time": "2020-11-10T09:23:12+00:00"
+            "time": "2020-12-11T07:40:38+00:00"
         },
         {
             "name": "spryker/user-extension",
@@ -54042,16 +54127,16 @@
         },
         {
             "name": "codeception/lib-innerbrowser",
-            "version": "1.3.4",
+            "version": "1.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-innerbrowser.git",
-                "reference": "fd921e089147057b456ca3660de72112167e40a4"
+                "reference": "956101b060a0d898a1ed8c106fd4d81adf25fd87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/fd921e089147057b456ca3660de72112167e40a4",
-                "reference": "fd921e089147057b456ca3660de72112167e40a4",
+                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/956101b060a0d898a1ed8c106fd4d81adf25fd87",
+                "reference": "956101b060a0d898a1ed8c106fd4d81adf25fd87",
                 "shasum": ""
             },
             "require": {
@@ -54096,9 +54181,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/lib-innerbrowser/issues",
-                "source": "https://github.com/Codeception/lib-innerbrowser/tree/1.3.4"
+                "source": "https://github.com/Codeception/lib-innerbrowser/tree/1.3.5"
             },
-            "time": "2020-10-22T05:45:03+00:00"
+            "time": "2021-01-02T18:59:34+00:00"
         },
         {
             "name": "codeception/module-asserts",
@@ -55329,16 +55414,16 @@
         },
         {
             "name": "nette/di",
-            "version": "v3.0.6",
+            "version": "v3.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "e639ccfbc0230e022ca08bf59c6b07df7caf2007"
+                "reference": "33b188dd8fce8de15795a19ac89bb34227dfb37a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/e639ccfbc0230e022ca08bf59c6b07df7caf2007",
-                "reference": "e639ccfbc0230e022ca08bf59c6b07df7caf2007",
+                "url": "https://api.github.com/repos/nette/di/zipball/33b188dd8fce8de15795a19ac89bb34227dfb37a",
+                "reference": "33b188dd8fce8de15795a19ac89bb34227dfb37a",
                 "shasum": ""
             },
             "require": {
@@ -55346,7 +55431,7 @@
                 "nette/neon": "^3.0",
                 "nette/php-generator": "^3.3.3",
                 "nette/robot-loader": "^3.2",
-                "nette/schema": "^1.0",
+                "nette/schema": "^1.1",
                 "nette/utils": "^3.1.4",
                 "php": ">=7.1 <8.1"
             },
@@ -55398,9 +55483,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/di/issues",
-                "source": "https://github.com/nette/di/tree/v3.0.6"
+                "source": "https://github.com/nette/di/tree/v3.0.7"
             },
-            "time": "2020-11-25T22:42:55+00:00"
+            "time": "2020-12-30T22:27:52+00:00"
         },
         {
             "name": "nette/finder",
