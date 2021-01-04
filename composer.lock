@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "47d41f2557874a84a14f430919c67a67",
+    "content-hash": "d84272d6ad63396a405a726f2534d471",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.171.8",
+            "version": "3.171.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1f7f7c1db844f6c988c93008f902b352c7616da8"
+                "reference": "ba12cbba6b7ae8f2aab741e5ac47e8bb30d3eac7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1f7f7c1db844f6c988c93008f902b352c7616da8",
-                "reference": "1f7f7c1db844f6c988c93008f902b352c7616da8",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ba12cbba6b7ae8f2aab741e5ac47e8bb30d3eac7",
+                "reference": "ba12cbba6b7ae8f2aab741e5ac47e8bb30d3eac7",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.171.8"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.171.10"
             },
-            "time": "2020-12-29T19:11:15+00:00"
+            "time": "2020-12-31T19:13:37+00:00"
         },
         {
             "name": "brick/math",
@@ -1323,22 +1323,22 @@
         },
         {
             "name": "laminas/laminas-filter",
-            "version": "2.9.4",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-filter.git",
-                "reference": "3c4476e772a062cef7531c6793377ae585d89c82"
+                "reference": "cfb40b104e92a0b52bee696b74f958798ad8faa4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/3c4476e772a062cef7531c6793377ae585d89c82",
-                "reference": "3c4476e772a062cef7531c6793377ae585d89c82",
+                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/cfb40b104e92a0b52bee696b74f958798ad8faa4",
+                "reference": "cfb40b104e92a0b52bee696b74f958798ad8faa4",
                 "shasum": ""
             },
             "require": {
-                "laminas/laminas-stdlib": "^2.7.7 || ^3.1",
+                "laminas/laminas-stdlib": "^3.3",
                 "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "^5.6 || ^7.0"
+                "php": "^7.3 || ~8.0.0"
             },
             "conflict": {
                 "laminas/laminas-validator": "<2.10.1"
@@ -1349,10 +1349,11 @@
             "require-dev": {
                 "laminas/laminas-coding-standard": "~1.0.0",
                 "laminas/laminas-crypt": "^3.2.1",
-                "laminas/laminas-servicemanager": "^2.7.8 || ^3.3",
+                "laminas/laminas-servicemanager": "^3.3",
                 "laminas/laminas-uri": "^2.6",
                 "pear/archive_tar": "^1.4.3",
-                "phpunit/phpunit": "^5.7.23 || ^6.4.3",
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpunit/phpunit": "^9.3",
                 "psr/http-factory": "^1.0"
             },
             "suggest": {
@@ -1364,10 +1365,6 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "2.9.x-dev",
-                    "dev-develop": "2.10.x-dev"
-                },
                 "laminas": {
                     "component": "Laminas\\Filter",
                     "config-provider": "Laminas\\Filter\\ConfigProvider"
@@ -1396,7 +1393,13 @@
                 "rss": "https://github.com/laminas/laminas-filter/releases.atom",
                 "source": "https://github.com/laminas/laminas-filter"
             },
-            "time": "2020-03-29T12:41:29+00:00"
+            "funding": [
+                {
+                    "url": "https://funding.communitybridge.org/projects/laminas-project",
+                    "type": "community_bridge"
+                }
+            ],
+            "time": "2021-01-01T14:37:45+00:00"
         },
         {
             "name": "laminas/laminas-servicemanager",
@@ -1604,16 +1607,16 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.3.3",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "c1123697f6a2ec29162b82f170dd4a491f524773"
+                "reference": "17cb82dd625ccb17c74bf8f38563d3b260306483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/c1123697f6a2ec29162b82f170dd4a491f524773",
-                "reference": "c1123697f6a2ec29162b82f170dd4a491f524773",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/17cb82dd625ccb17c74bf8f38563d3b260306483",
+                "reference": "17cb82dd625ccb17c74bf8f38563d3b260306483",
                 "shasum": ""
             },
             "require": {
@@ -1628,6 +1631,9 @@
                 "phpunit/phpunit": "^5.7 || ^7.3",
                 "squizlabs/php_codesniffer": "~2.3"
             },
+            "suggest": {
+                "lcobucci/clock": "*"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1637,7 +1643,12 @@
             "autoload": {
                 "psr-4": {
                     "Lcobucci\\JWT\\": "src"
-                }
+                },
+                "files": [
+                    "compat/class-aliases.php",
+                    "compat/json-exception-polyfill.php",
+                    "compat/lcobucci-clock-polyfill.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1657,7 +1668,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lcobucci/jwt/issues",
-                "source": "https://github.com/lcobucci/jwt/tree/3.3.3"
+                "source": "https://github.com/lcobucci/jwt/tree/3.4.2"
             },
             "funding": [
                 {
@@ -1669,7 +1680,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-08-20T13:22:28+00:00"
+            "time": "2020-12-03T13:43:45+00:00"
         },
         {
             "name": "league/csv",
@@ -2012,25 +2023,25 @@
         },
         {
             "name": "league/oauth2-server",
-            "version": "8.1.1",
+            "version": "8.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-server.git",
-                "reference": "09f22e8121fa1832962dba18213b80d4267ef8a3"
+                "reference": "622eaa1f28eb4a2dea0cfc7e4f5280fac794e83c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/09f22e8121fa1832962dba18213b80d4267ef8a3",
-                "reference": "09f22e8121fa1832962dba18213b80d4267ef8a3",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/622eaa1f28eb4a2dea0cfc7e4f5280fac794e83c",
+                "reference": "622eaa1f28eb4a2dea0cfc7e4f5280fac794e83c",
                 "shasum": ""
             },
             "require": {
                 "defuse/php-encryption": "^2.2.1",
                 "ext-json": "*",
                 "ext-openssl": "*",
-                "lcobucci/jwt": "^3.3.1",
+                "lcobucci/jwt": "^3.4 || ^4.0",
                 "league/event": "^2.2",
-                "php": ">=7.2.0",
+                "php": "^7.2 || ^8.0",
                 "psr/http-message": "^1.0.1"
             },
             "replace": {
@@ -2038,10 +2049,10 @@
                 "lncd/oauth2": "*"
             },
             "require-dev": {
-                "laminas/laminas-diactoros": "^2.3.0",
-                "phpstan/phpstan": "^0.11.19",
-                "phpstan/phpstan-phpunit": "^0.11.2",
-                "phpunit/phpunit": "^8.5.4 || ^9.1.3",
+                "laminas/laminas-diactoros": "^2.4.1",
+                "phpstan/phpstan": "^0.12.57",
+                "phpstan/phpstan-phpunit": "^0.12.16",
+                "phpunit/phpunit": "^8.5.13",
                 "roave/security-advisories": "dev-master"
             },
             "type": "library",
@@ -2087,7 +2098,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/oauth2-server/issues",
-                "source": "https://github.com/thephpleague/oauth2-server/tree/8.1.1"
+                "source": "https://github.com/thephpleague/oauth2-server/tree/8.2.4"
             },
             "funding": [
                 {
@@ -2095,7 +2106,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-01T11:33:50+00:00"
+            "time": "2020-12-10T11:35:44+00:00"
         },
         {
             "name": "moneyphp/money",
@@ -29182,16 +29193,16 @@
         },
         {
             "name": "spryker/merchant-user",
-            "version": "0.5.4",
+            "version": "0.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-user.git",
-                "reference": "0bc4b2ad21de8e5a6e8707075877516aebf0280e"
+                "reference": "6234ff96231144f39bab988bf7c8514accb07908"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-user/zipball/0bc4b2ad21de8e5a6e8707075877516aebf0280e",
-                "reference": "0bc4b2ad21de8e5a6e8707075877516aebf0280e",
+                "url": "https://api.github.com/repos/spryker/merchant-user/zipball/6234ff96231144f39bab988bf7c8514accb07908",
+                "reference": "6234ff96231144f39bab988bf7c8514accb07908",
                 "shasum": ""
             },
             "require": {
@@ -29202,6 +29213,8 @@
                 "spryker/merchant": "^3.0.0",
                 "spryker/merchant-extension": "^1.1.0",
                 "spryker/propel-orm": "^1.5.0",
+                "spryker/security-oauth-user-extension": "^1.0.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/user": "^3.9.0",
                 "spryker/user-password-reset": "^0.1.0",
                 "spryker/util-text": "^1.3.0"
@@ -29230,9 +29243,9 @@
             ],
             "description": "MerchantUser module",
             "support": {
-                "source": "https://github.com/spryker/merchant-user/tree/0.5.4"
+                "source": "https://github.com/spryker/merchant-user/tree/0.5.5"
             },
-            "time": "2020-11-19T08:09:46+00:00"
+            "time": "2020-12-22T09:48:34+00:00"
         },
         {
             "name": "spryker/merchant-user-gui",
@@ -43976,16 +43989,16 @@
         },
         {
             "name": "spryker/security-gui",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/security-gui.git",
-                "reference": "6fdf98a6f0e23f5382ebc9009b9eec9a9c644fa2"
+                "reference": "70d21e00dd2b97c31b8538d6add9d00b07d85918"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/security-gui/zipball/6fdf98a6f0e23f5382ebc9009b9eec9a9c644fa2",
-                "reference": "6fdf98a6f0e23f5382ebc9009b9eec9a9c644fa2",
+                "url": "https://api.github.com/repos/spryker/security-gui/zipball/70d21e00dd2b97c31b8538d6add9d00b07d85918",
+                "reference": "70d21e00dd2b97c31b8538d6add9d00b07d85918",
                 "shasum": ""
             },
             "require": {
@@ -43994,6 +44007,7 @@
                 "spryker/messenger": "^3.0.0",
                 "spryker/security": "^1.3.0",
                 "spryker/security-extension": "^1.0.0",
+                "spryker/security-gui-extension": "^1.0.0",
                 "spryker/symfony": "^3.5.0",
                 "spryker/user": "^3.0.0",
                 "spryker/user-password-reset": "^0.1.0"
@@ -44032,9 +44046,50 @@
             ],
             "description": "SecurityGui module",
             "support": {
-                "source": "https://github.com/spryker/security-gui/tree/0.1.0"
+                "source": "https://github.com/spryker/security-gui/tree/0.1.1"
             },
-            "time": "2020-11-16T12:12:48+00:00"
+            "time": "2020-12-24T16:03:39+00:00"
+        },
+        {
+            "name": "spryker/security-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/security-gui-extension.git",
+                "reference": "f0041309dbfd705f083a3713f558e9d0802d27ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/security-gui-extension/zipball/f0041309dbfd705f083a3713f558e9d0802d27ab",
+                "reference": "f0041309dbfd705f083a3713f558e9d0802d27ab",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SecurityGuiExtension module",
+            "support": {
+                "source": "https://github.com/spryker/security-gui-extension/tree/1.0.0"
+            },
+            "time": "2020-12-16T08:45:12+00:00"
         },
         {
             "name": "spryker/security-merchant-portal-gui",
@@ -44098,6 +44153,108 @@
                 "source": "https://github.com/spryker/security-merchant-portal-gui/tree/0.1.1"
             },
             "time": "2020-11-25T14:26:05+00:00"
+        },
+        {
+            "name": "spryker/security-oauth-user",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/security-oauth-user.git",
+                "reference": "c1bb77ca1fbd127ae1120910a96f75a640ee03b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/security-oauth-user/zipball/c1bb77ca1fbd127ae1120910a96f75a640ee03b9",
+                "reference": "c1bb77ca1fbd127ae1120910a96f75a640ee03b9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/acl": "^3.4.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/messenger": "^3.0.0",
+                "spryker/security-extension": "^1.0.0",
+                "spryker/security-oauth-user-extension": "^1.0.0",
+                "spryker/symfony": "^3.5.0",
+                "spryker/transfer": "^3.25.0",
+                "spryker/user": "^3.0.0",
+                "spryker/util-text": "^1.3.0"
+            },
+            "require-dev": {
+                "spryker/application": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/propel": "*",
+                "spryker/router": "*",
+                "spryker/security": "*",
+                "spryker/session": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "Add this module to use the Container."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SecurityOauthUser module",
+            "support": {
+                "source": "https://github.com/spryker/security-oauth-user/tree/1.0.0"
+            },
+            "time": "2020-12-29T11:30:00+00:00"
+        },
+        {
+            "name": "spryker/security-oauth-user-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/security-oauth-user-extension.git",
+                "reference": "8a081c79a6018e911f64e4d903b582a2dc292819"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/security-oauth-user-extension/zipball/8a081c79a6018e911f64e4d903b582a2dc292819",
+                "reference": "8a081c79a6018e911f64e4d903b582a2dc292819",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SecurityOauthUserExtension module",
+            "support": {
+                "source": "https://github.com/spryker/security-oauth-user-extension/tree/1.0.0"
+            },
+            "time": "2020-12-03T13:12:06+00:00"
         },
         {
             "name": "spryker/security-system-user",
@@ -47795,16 +47952,16 @@
         },
         {
             "name": "spryker/user",
-            "version": "3.12.0",
+            "version": "3.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/user.git",
-                "reference": "89d538806f61b8983222520a2b25e922c4b55c54"
+                "reference": "eb943c395a9f3eb65c92b5470f677a78bb58c727"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/user/zipball/89d538806f61b8983222520a2b25e922c4b55c54",
-                "reference": "89d538806f61b8983222520a2b25e922c4b55c54",
+                "url": "https://api.github.com/repos/spryker/user/zipball/eb943c395a9f3eb65c92b5470f677a78bb58c727",
+                "reference": "eb943c395a9f3eb65c92b5470f677a78bb58c727",
                 "shasum": ""
             },
             "require": {
@@ -47860,9 +48017,9 @@
             ],
             "description": "User module",
             "support": {
-                "source": "https://github.com/spryker/user/tree/3.12.0"
+                "source": "https://github.com/spryker/user/tree/3.12.1"
             },
-            "time": "2020-11-10T09:23:12+00:00"
+            "time": "2020-12-11T07:40:38+00:00"
         },
         {
             "name": "spryker/user-extension",
@@ -54039,16 +54196,16 @@
         },
         {
             "name": "codeception/lib-innerbrowser",
-            "version": "1.3.4",
+            "version": "1.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-innerbrowser.git",
-                "reference": "fd921e089147057b456ca3660de72112167e40a4"
+                "reference": "956101b060a0d898a1ed8c106fd4d81adf25fd87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/fd921e089147057b456ca3660de72112167e40a4",
-                "reference": "fd921e089147057b456ca3660de72112167e40a4",
+                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/956101b060a0d898a1ed8c106fd4d81adf25fd87",
+                "reference": "956101b060a0d898a1ed8c106fd4d81adf25fd87",
                 "shasum": ""
             },
             "require": {
@@ -54093,9 +54250,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/lib-innerbrowser/issues",
-                "source": "https://github.com/Codeception/lib-innerbrowser/tree/1.3.4"
+                "source": "https://github.com/Codeception/lib-innerbrowser/tree/1.3.5"
             },
-            "time": "2020-10-22T05:45:03+00:00"
+            "time": "2021-01-02T18:59:34+00:00"
         },
         {
             "name": "codeception/module-asserts",
@@ -55326,16 +55483,16 @@
         },
         {
             "name": "nette/di",
-            "version": "v3.0.6",
+            "version": "v3.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "e639ccfbc0230e022ca08bf59c6b07df7caf2007"
+                "reference": "33b188dd8fce8de15795a19ac89bb34227dfb37a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/e639ccfbc0230e022ca08bf59c6b07df7caf2007",
-                "reference": "e639ccfbc0230e022ca08bf59c6b07df7caf2007",
+                "url": "https://api.github.com/repos/nette/di/zipball/33b188dd8fce8de15795a19ac89bb34227dfb37a",
+                "reference": "33b188dd8fce8de15795a19ac89bb34227dfb37a",
                 "shasum": ""
             },
             "require": {
@@ -55343,7 +55500,7 @@
                 "nette/neon": "^3.0",
                 "nette/php-generator": "^3.3.3",
                 "nette/robot-loader": "^3.2",
-                "nette/schema": "^1.0",
+                "nette/schema": "^1.1",
                 "nette/utils": "^3.1.4",
                 "php": ">=7.1 <8.1"
             },
@@ -55395,9 +55552,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/di/issues",
-                "source": "https://github.com/nette/di/tree/v3.0.6"
+                "source": "https://github.com/nette/di/tree/v3.0.7"
             },
-            "time": "2020-11-25T22:42:55+00:00"
+            "time": "2020-12-30T22:27:52+00:00"
         },
         {
             "name": "nette/finder",
