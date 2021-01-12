@@ -176,7 +176,6 @@ jobs:
             - name: Run docker
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  cd docker && git checkout 700dc0 && cd ..
                   docker/sdk boot deploy.ci.api.mariadb.yml -v
                   docker/sdk up -t -v
                   docker/sdk testing codecept fixtures
@@ -208,7 +207,6 @@ jobs:
             - name: Run docker
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  cd docker && git checkout 700dc0 && cd ..
                   docker/sdk boot -v deploy.ci.acceptance.yml
                   docker/sdk up -t
                   docker/sdk testing console queue:worker:start --stop-when-empty
@@ -240,7 +238,6 @@ jobs:
             - name: Run docker
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  cd docker && git checkout 700dc0 && cd ..
                   docker/sdk boot -v deploy.ci.acceptance.yml
                   docker/sdk up -t
                   docker/sdk testing console queue:worker:start --stop-when-empty
@@ -271,7 +268,6 @@ jobs:
             - name: Run docker
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  cd docker && git checkout 700dc0 && cd ..
                   docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
                   docker/sdk up -t
                   docker/sdk testing console queue:worker:start --stop-when-empty
@@ -303,7 +299,6 @@ jobs:
             - name: Run docker
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  cd docker && git checkout 700dc0 && cd ..
                   docker/sdk boot deploy.ci.functional.mariadb.yml -v
                   docker/sdk up -t -v
                   docker/sdk testing codecept run -c codeception.functional.yml
@@ -334,7 +329,6 @@ jobs:
             - name: Run docker
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  cd docker && git checkout 700dc0 && cd ..
                   docker/sdk boot deploy.ci.functional.yml -v
                   docker/sdk up -t -v
                   docker/sdk testing codecept run -c codeception.functional.yml
@@ -365,7 +359,6 @@ jobs:
             - name: Run docker
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  cd docker && git checkout 700dc0 && cd ..
                   docker/sdk boot deploy.yml
                   SPRYKER_BUILD_HASH=myhash docker/sdk export images
                   docker run -i --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
