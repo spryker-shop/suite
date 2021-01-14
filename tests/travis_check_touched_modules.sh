@@ -12,6 +12,7 @@ validateModuleTransfers() {
               echo $output
               EXITCODE=1
           fi
+          echo $2.$module
       done
   wait
 }

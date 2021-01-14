@@ -2,16 +2,17 @@ const { join } = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const filePathFilter = require("@jsdevtools/file-path-filter");
+const filePathFilter = require('@jsdevtools/file-path-filter');
 const { findComponentEntryPoints, findComponentStyles, findAppEntryPoint } = require('../libs/finder');
 const { getAliasList } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/assets-configurator');
 const { buildVariantSettings } = require('../settings');
 
 let isImagesOptimizationEnabled = false;
+let imagesOptimization = null;
 
 try {
-    const imagesOptimization = require('../libs/images-optimization');
+    imagesOptimization = require('../libs/images-optimization');
     isImagesOptimizationEnabled = true;
 } catch (e) {
     console.info('Images optimization is disabled.');

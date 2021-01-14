@@ -323,7 +323,8 @@ _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
   - nvm install 12 && nvm use 12
   - npm install
   - node ./frontend/libs/stylelint
-  - node ./frontend/libs/tslint stylish
+  - node ./frontend/libs/tslint --format stylish
+  - node ./frontend/libs/formatter
 
 _BROWSER_TESTING_SCRIPT: &BROWSER_TESTING_SCRIPT
   - timeout 45m bash -c "${CHROMEDRIVER_BINARY} --port=4444 --whitelisted-ips= --url-base=/wd/hub --log-path=/tmp/chromedriver.log --log-level=DEBUG">/dev/null &
