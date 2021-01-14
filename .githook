@@ -13,3 +13,9 @@ preCommitFileCommands:
   - GitHook\Command\FileCommand\PreCommit\ArchitectureCheckCommand
   - GitHook\Command\FileCommand\PreCommit\DependencyViolationCheckCommand
   - GitHook\Command\FileCommand\PreCommit\StreamSpecific\Glue\CodeStyleCheckCommand
+  - GitHook\Command\FileCommand\PreCommit\StyleLintCommand
+  - GitHook\Command\FileCommand\PreCommit\TsLintCommand
+  - GitHook\Command\FileCommand\PreCommit\FrontendFormatterCommand
+
+preCommitRepositoryCommands:
+  - GitHook\Command\RepositoryCommand\PreCommit\GitAddCommand

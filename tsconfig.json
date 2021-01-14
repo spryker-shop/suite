@@ -1,17 +1,22 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
         "sourceMap": true,
         "noImplicitAny": false,
+        "declaration": false,
+        "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "noEmitHelpers": true,
+        "importHelpers": true,
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "removeComments": true,
         "target": "es2015",
+        "module": "esnext",
+        "typeRoots": ["node_modules/@types"],
         "lib": ["dom", "esnext"],
+        "baseUrl": ".",
+        "removeComments": true,
+        "rootDir": ".",
         "paths": {
             "@mp/zed-ui/*": [
                 "./vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/*"
@@ -27,11 +32,5 @@
         "./vendor/spryker-eco/**/*",
         "./src/Pyz/Yves/**/*"
     ],
-    "exclude": [
-        "**/node_modules/**",
-        "**/*.spec.ts",
-        "public",
-        "dist",
-        "**/dist/**"
-    ]
+    "exclude": ["**/node_modules/**", "**/*.spec.ts", "public", "dist", "**/dist/**"]
 }

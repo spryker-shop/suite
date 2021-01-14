@@ -1,20 +1,6 @@
 {
+    "extends": "./tsconfig.json",
     "compilerOptions": {
-        "sourceMap": true,
-        "declaration": false,
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "noEmitHelpers": true,
-        "importHelpers": true,
-        "skipLibCheck": true,
-        "skipDefaultLibCheck": true,
-        "target": "es2015",
-        "module": "esnext",
-        "typeRoots": ["node_modules/@types"],
-        "lib": ["esnext", "dom"],
-        "baseUrl": ".",
-        "rootDir": ".",
         "paths": {
             "@mp/zed-ui/*": [
                 "./vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/*"

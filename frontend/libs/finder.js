@@ -6,7 +6,7 @@ const defaultGlobSettings = {
     followSymlinkedDirectories: false,
     absolute: true,
     onlyFiles: true,
-    onlyDirectories: false
+    onlyDirectories: false,
 };
 
 // perform a search in a list of directories
@@ -25,7 +25,7 @@ const findFiles = (globDirs, globPatterns, globSettings) => (
         const rootConfiguration = {
             ...defaultGlobSettings,
             ...globSettings,
-            cwd: dir
+            cwd: dir,
         };
 
         const results = await resultsPromise;
@@ -51,12 +51,12 @@ const findEntryPoints = async settings => {
 
 // merge entry points
 const mergeEntryPoints = async files => Object.values(files.reduce((map, file) => {
-        const dir = path.dirname(file);
-        const name = path.basename(dir);
-        const type = path.basename(path.dirname(dir));
-        map[`${type}/${name}`] = file;
-        return map;
-    }, {}));
+    const dir = path.dirname(file);
+    const name = path.basename(dir);
+    const type = path.basename(path.dirname(dir));
+    map[`${type}/${name}`] = file;
+    return map;
+}, {}));
 
 // find components entry points
 const findComponentEntryPoints = async settings => await findEntryPoints(settings);
@@ -81,4 +81,5 @@ module.exports = {
     findComponentEntryPoints,
     findComponentStyles,
     findAppEntryPoint,
+    findFiles,
 };
