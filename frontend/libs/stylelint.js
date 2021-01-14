@@ -12,7 +12,8 @@ const defaultFilePaths = [`${globalSettings.paths.project}/**/*.scss`];
 const filePaths = commandLineParser.filePath ? [commandLineParser.filePath] : defaultFilePaths;
 
 stylelint.lint({
-    files: [`${globalSettings.paths.project}/**/*.scss`],
+    configFile: `${globalSettings.context}/node_modules/@spryker/frontend-config.stylelint/.stylelintrc.json`,
+    files: filePaths,
     syntax: "scss",
     formatter: "string",
     fix: isFixMode,
