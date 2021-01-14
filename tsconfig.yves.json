@@ -2,28 +2,8 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "paths": {
-            "*": [
-                "*"
-            ],
-            "ShopUi/*": [
-                "./vendor/spryker-shop/shop-ui/src/SprykerShop/Yves/ShopUi/Theme/default/*"
-            ]
+            "*": ["*"],
+            "ShopUi/*": ["./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/default/*"]
         }
-    },
-    "files": [
-        "./src/Pyz/Yves/ShopUi/Theme/default/app.ts",
-        "./src/Pyz/Yves/ShopUi/Theme/default/vendor.ts"
-    ],
-    "include": [
-        "./vendor/spryker-shop/**/*",
-        "./vendor/spryker-eco/**/*",
-        "./src/Pyz/Yves/**/*"
-    ],
-    "exclude": [
-        "**/node_modules/**",
-        "**/*.spec.ts",
-        "public",
-        "dist",
-        "**/dist/**"
-    ]
+    }
 }

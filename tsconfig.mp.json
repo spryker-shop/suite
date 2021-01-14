@@ -2,21 +2,12 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "paths": {
-            "@mp/zed-ui/*": [
-                "./vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/*"
-            ]
+            "@mp/zed-ui/*": ["./vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/*"]
         }
     },
     "include": [
-        "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/main.ts",
-        "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/polyfills.ts",
-        "vendor/spryker/*/src/Spryker/Zed/*/Presentation/Components/index.ts"
-    ],
-    "exclude": [
-        "**/node_modules/**",
-        "**/*.spec.ts",
-        "public",
-        "dist",
-        "**/dist/**"
+        "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/main.ts",
+        "vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/polyfills.ts",
+        "vendor/spryker/spryker/Bundles/*/src/Spryker/Zed/*/Presentation/Components/index.ts"
     ]
 }
