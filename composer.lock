@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0933f274faf0ec93f298b832e408f67",
+    "content-hash": "fda1e9e4b99f8b3ae27646734832cdd0",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -41439,6 +41439,56 @@
                 "source": "https://github.com/spryker/quote-request-extension/tree/master"
             },
             "time": "2019-05-08T09:24:12+00:00"
+        },
+        {
+            "name": "spryker/quote-requests-rest-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/quote-requests-rest-api.git",
+                "reference": "ba422865f4c25fcd2b25efda9eedc98de84144c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/quote-requests-rest-api/zipball/ba422865f4c25fcd2b25efda9eedc98de84144c3",
+                "reference": "ba422865f4c25fcd2b25efda9eedc98de84144c3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/carts-rest-api": "^5.7.0",
+                "spryker/glue-application": "^1.18.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/quote-request": "^2.0.0",
+                "spryker/shipment": "^8.6.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequestsRestApi module",
+            "support": {
+                "source": "https://github.com/spryker/quote-requests-rest-api/tree/0.1.0"
+            },
+            "time": "2021-01-15T16:17:50+00:00"
         },
         {
             "name": "spryker/rabbit-mq",
