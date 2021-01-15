@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.171.17",
+            "version": "3.171.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "f23f4871eceec8c92645f054186a83bba86c1f3e"
+                "reference": "9252e55e995492a65ec9b705a5a7fdcfcaef46ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f23f4871eceec8c92645f054186a83bba86c1f3e",
-                "reference": "f23f4871eceec8c92645f054186a83bba86c1f3e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9252e55e995492a65ec9b705a5a7fdcfcaef46ef",
+                "reference": "9252e55e995492a65ec9b705a5a7fdcfcaef46ef",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.171.17"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.171.18"
             },
-            "time": "2021-01-13T19:17:33+00:00"
+            "time": "2021-01-14T19:12:48+00:00"
         },
         {
             "name": "brick/math",
@@ -4611,7 +4611,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "4e27d587faf37418989e9c5eed5621e824a471d4"
+                "reference": "9334428cb05f722c63da69f5acd7b3a0ed6eb8a9"
             },
             "require": {
                 "php": ">=7.3"
@@ -5221,6 +5221,7 @@
                 "spryker/quote-request-agent": "*",
                 "spryker/quote-request-data-import": "*",
                 "spryker/quote-request-extension": "*",
+                "spryker/quote-requests-rest-api": "*",
                 "spryker/ramsey-uuid": "*",
                 "spryker/redis": "*",
                 "spryker/refund": "*",
@@ -5402,7 +5403,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-01-14T15:13:48+00:00"
+            "time": "2021-01-15T16:28:27+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -9811,26 +9812,25 @@
         },
         {
             "name": "webmozart/glob",
-            "version": "4.1.0",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/glob.git",
-                "reference": "3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe"
+                "reference": "d1561806559682928e91de5822cd407ec2ace181"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/glob/zipball/3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe",
-                "reference": "3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe",
+                "url": "https://api.github.com/repos/webmozarts/glob/zipball/d1561806559682928e91de5822cd407ec2ace181",
+                "reference": "d1561806559682928e91de5822cd407ec2ace181",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3|^7.0",
+                "php": "^7.3 || ^8.0.0",
                 "webmozart/path-util": "^2.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.6",
-                "sebastian/version": "^1.0.1",
-                "symfony/filesystem": "^2.5"
+                "phpunit/phpunit": "^8.0",
+                "symfony/filesystem": "^5.1"
             },
             "type": "library",
             "extra": {
@@ -9856,9 +9856,9 @@
             "description": "A PHP implementation of Ant's glob.",
             "support": {
                 "issues": "https://github.com/webmozarts/glob/issues",
-                "source": "https://github.com/webmozarts/glob/tree/4.1.0"
+                "source": "https://github.com/webmozarts/glob/tree/4.2.0"
             },
-            "time": "2015-12-29T11:14:33+00:00"
+            "time": "2021-01-14T18:11:58+00:00"
         },
         {
             "name": "webmozart/path-util",
@@ -13992,6 +13992,7 @@
                 "issues": "https://github.com/sensiolabs/security-checker/issues",
                 "source": "https://github.com/sensiolabs/security-checker/tree/master"
             },
+            "abandoned": "https://github.com/fabpot/local-php-security-checker",
             "time": "2019-11-01T13:20:14+00:00"
         },
         {

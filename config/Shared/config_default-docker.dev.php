@@ -39,6 +39,8 @@ use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
 
 // >>> Debug
 
+require 'common/config_oauth-devvm.php';
+
 $config[KernelConstants::RESOLVABLE_CLASS_NAMES_CACHE_ENABLED] = false;
 $config[KernelConstants::RESOLVED_INSTANCE_CACHE_ENABLED] = false;
 
