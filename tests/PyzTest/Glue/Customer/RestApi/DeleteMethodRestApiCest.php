@@ -8,7 +8,7 @@
 namespace PyzTest\Glue\Customer\RestApi;
 
 use Codeception\Util\HttpCode;
-use PyzTest\Glue\Carts\CartsApiTester;
+use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Glue\Customer\CustomerApiTester;
 
 /**
@@ -30,11 +30,11 @@ class DeleteMethodRestApiCest
     protected $fixtures;
 
     /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $i
+     * @param \PyzTest\Glue\Customer\CustomerApiTester $i
      *
      * @return void
      */
-    public function _before(CartsApiTester $i): void
+    public function _before(CustomerApiTester $i): void
     {
         /** @var \PyzTest\Glue\Customer\RestApi\CustomerRestApiFixtures $fixtures */
         $fixtures = $i->loadFixtures(CustomerRestApiFixtures::class);
@@ -52,20 +52,26 @@ class DeleteMethodRestApiCest
      */
     public function ensureDeleteRequestHasNoBody(CustomerApiTester $i): void
     {
-        $token = $i->haveAuthorizationToGlue(
-            $this->fixtures->getCustomerTransfer()
-        )->getAccessToken();
+        $customerTransfer = $i->haveCustomer(
+            [
+                CustomerTransfer::NEW_PASSWORD => 'change123',
+                CustomerTransfer::PASSWORD => 'change123',
+            ]
+        );
+        $i->confirmCustomer($customerTransfer);
+
+        $oauthResponseTransfer = $i->haveAuthorizationToGlue($customerTransfer);
 
         $headers = [
             'Accept: */*',
-            'Authorization: Bearer ' . $token,
+            'Authorization: Bearer ' . $oauthResponseTransfer->getAccessToken(),
             'Cache-Control: no-cache',
             'Content-Type: application/json',
         ];
 
         $url = $i->formatFullUrl(
             'customers/{CustomerReference}',
-            ['CustomerReference' => $this->fixtures->getCustomerTransfer()->getCustomerReference()]
+            ['CustomerReference' => $customerTransfer->getCustomerReference()]
         );
         $result = file_get_contents(
             $url,
