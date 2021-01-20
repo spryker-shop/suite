@@ -367,8 +367,13 @@ _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
     - sudo apt-get install --only-upgrade docker-ce -y
     - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     - sudo chmod +x /usr/local/bin/docker-compose
-  before_install: skip
-  before_script: skip
+  before_install:
+    - |
+        ./config/Shared/ci/travis/download-and-cache-file.sh  \
+          https://github.com/docker/docker-credential-helpers/releases/download/v0.6.3/docker-credential-pass-v0.6.3-amd64.tar.gz \
+          $HOME/other-download
+  before_script:
+    - ./config/Shared/ci/travis/docker-credentials.sh
   after_script: skip
 
 version: ~> 1.0
@@ -387,6 +392,8 @@ env:
     - AWS_DEFAULT_REGION=eu-west-1
     - POSTGRES_PORT="5432"
     - PGPORT="5432"
+    - secure: "C0grf6C5zvHayJK2OpdqLGyTmfX1MXvHciwtXHggToHKvsvuNgJmufAljF4h/+s/FBqq2ZFenx6SYJ7ZyF3TsUxx8d43r01C7F7XfjCVH0Pq9e55gADRCsLnrKMS+f9ifKwgb84svSFJn6CDxSlNFij5XDf4tXRwpw8mK+WXC3vFE1upbl+E5kizS8SuQbj0WOQ4nERH0Km+47AjiTIaux7d+8QkUUzvrbkqbCQ/eeTySkZyLO4t16DJXMYNgjskWCTVjnjK81Ovl9a8EmHZ31zFSSbM5OSNSTjo36yOlKgkvY7hQ/I5qfr3ZtN2gyIvYXCnUF2xyX8OP8VfUUgiMEXxo3qH8bxynEm9xgVq0yjRKgY5WC9VX0IoX8QYnZKbOVJIpgDIBCNm+A80ohgjWzr2MeZv/tnyIuVEldMJsS22RtM4Ml++a33cSsCIggMYUZzZv5rWaaJzd3mCcbLBp0Bij1hBG/jOybpMJa7ph1lD2BiyVdKOGEruukOWWvlkVEDQEir4/P/A4OK76hDZT7imILVQ3txCDcJsYXWVrRgnVh9ZV0vUK4lM3eTJsQeYmtFPfNBlxFXczx78slLWBDg6x1uUc6s8Ld4eDZJXUiYn27gqmzgUbJskNpvEuZfZBRJKJfzYwOyeqJEn8cc/N1xZ8LN+mFko9wciDodTxXE="
+    - secure: "SmjbeRZILMQoKXnU2pF8z6awbPgeQ+mIsRDbBuHG5djKo1temzZX54I5qknhHvr7LL1KDg0KIcznW2GrnjaqwDA/mdOSoubmw8nqa3jKwAtUu+Z/6tSdR2rsrpIvoMfcqQ2993MY9uba3vcseA5SnZHAh3Epfb6wGFdjIr06etwV/qs2jQgjrkMlAAUHWZQHkpENnSIEvTz6Znci5k7XbMDoyeaKqw6azBH2+xF9wXcrrxRyIAv92cxLuVdjfugera+BLGqnzydApHvYupCnugPJdMSVMQfJwLXG1PNlKlIur/dE4Y3CXBhEscrJjthwwhAQpA06qoMwxuXliY+cl4DrlJSrSSSVrHI1smpcgM1eXJzZpjCWb5jDe+bSdVLIbcddR+IcxjgwrOkPwcuff18+8VfrY/j49cst0nsjh1zfi0OR6ikfD/cLGagYGI8qR5PSPjSAVPTJybANqS/xLr/7an0T1kcAmw9zWhEp0Hj9hGBx8G8COOr0Yai3YiGSUizniIkSj5v9SL9gicTW99Uvi35UQJkH1AV8Bwlp3jzgFmUr4VHszYtZII6OtM4kKpF93xntrVZgdT/JV6+B9BKtXTV2xTf/IO50/A/orYXO6sRHIIkcuORsM/NXl7bEOzcMmLc+BZy21C1CK4V6DdPS/hwVAtj2wap3oQtQTdg="
 
 branches:
   only:
