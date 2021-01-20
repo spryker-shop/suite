@@ -314,6 +314,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new GuestConfiguredBundlesResourceRoutePlugin(),
             new QuoteRequestsResourceRoutePlugin(),
             new QuoteRequestCancelResourceRoutePlugin(),
+            new CustomerConfirmationResourceRoutePlugin(),
         ];
     }
 
