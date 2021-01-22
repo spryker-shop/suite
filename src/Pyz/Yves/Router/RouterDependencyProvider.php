@@ -18,6 +18,7 @@ use Spryker\Yves\Router\Plugin\RouterEnhancer\LanguagePrefixRouterEnhancerPlugin
 use Spryker\Yves\Router\Plugin\RouterEnhancer\StorePrefixRouterEnhancerPlugin;
 use Spryker\Yves\Router\RouterDependencyProvider as SprykerRouterDependencyProvider;
 use SprykerEco\Yves\Payone\Plugin\Router\PayoneRouteProviderPlugin;
+use SprykerSdk\Yves\LoadTesting\Plugin\Router\LoadTestingRouterProviderPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\Router\AgentPageRouteProviderPlugin;
 use SprykerShop\Yves\AgentWidget\Plugin\Router\AgentWidgetRouteProviderPlugin;
 use SprykerShop\Yves\AvailabilityNotificationPage\Plugin\Router\AvailabilityNotificationPageRouteProviderPlugin;
@@ -92,7 +93,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
      */
     protected function getRouteProvider(): array
     {
-        return [
+        $routeProviders = [
             new ErrorPageRouteProviderPlugin(),
             new HomePageRouteProviderPlugin(),
             new CheckoutPageRouteProviderPlugin(),
@@ -149,6 +150,12 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new PayoneRouteProviderPlugin(),
             new ProductConfiguratorGatewayPageRouteProviderPlugin(),
         ];
+
+        if (class_exists(LoadTestingRouterProviderPlugin::class)) {
+            $routeProviders[] = new LoadTestingRouterProviderPlugin();
+        }
+
+        return $routeProviders;
     }
 
     /**
