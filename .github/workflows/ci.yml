@@ -178,7 +178,7 @@ jobs:
 
             - name: Run docker
               run: |
-                  git clone --branch bugfix/sc-4632/master-adust-bash-output-stream https://github.com/spryker/docker-sdk.git ./docker
+                  git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.api.mariadb.yml -v
                   docker/sdk up -t -v
                   docker/sdk testing codecept fixtures
