@@ -156,7 +156,7 @@ jobs:
 
     php-74-mariadb-glue-alpine:
         name: "PHP 7.4 / MariaDB / Glue / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-18.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
