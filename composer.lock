@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7780b79f8cf2396de7d0b7d7d355cff",
+    "content-hash": "7980a3f92ce8a6b6f6ebd6dd3032742a",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -14557,6 +14557,54 @@
             "time": "2021-01-25T15:54:45+00:00"
         },
         {
+            "name": "spryker-sdk/security-checker",
+            "version": "dev-feature/te-8136/master-implement-sensiolab-static-security-check",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-sdk/security-checker.git",
+                "reference": "8c3f1bdfeeb0a7f15b919344d3e976fb3b4a428f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/security-checker/zipball/8c3f1bdfeeb0a7f15b919344d3e976fb3b4a428f",
+                "reference": "8c3f1bdfeeb0a7f15b919344d3e976fb3b4a428f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "symfony/console": "^4.0.0 || ^5.0.0",
+                "symfony/options-resolver": "^4.0.0 || ^5.0.0",
+                "symfony/process": "^4.0.0 || ^5.0.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.18",
+                "slevomat/coding-standard": "^6.2",
+                "spryker/code-sniffer": "^0.15.6",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SecurityChecker\\": "src/SecurityChecker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "A security checker for your composer.lock",
+            "support": {
+                "issues": "https://github.com/spryker-sdk/security-checker/issues",
+                "source": "https://github.com/spryker-sdk/security-checker/tree/feature/te-8136/master-implement-sensiolab-static-security-check"
+            },
+            "time": "2021-01-25T15:08:07+00:00"
+        },
+        {
             "name": "spryker-sdk/spryk",
             "version": "dev-master",
             "source": {
@@ -16225,7 +16273,8 @@
         "spryker-sdk/benchmark": 20,
         "spryker/docker-chromedriver": 20,
         "spryker-sdk/brancho": 20,
-        "spryker-sdk/load-testing": 20
+        "spryker-sdk/load-testing": 20,
+        "spryker-sdk/security-checker": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

@@ -326,6 +326,9 @@ _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
   - node ./frontend/libs/tslint --format stylish
   - node ./frontend/libs/formatter
 
+_SECURITY_CHECK_SCRIPT: &SECURITY_CHECK_SCRIPT
+  - vendor/bin/console security:check
+
 _BROWSER_TESTING_SCRIPT: &BROWSER_TESTING_SCRIPT
   - timeout 45m bash -c "${CHROMEDRIVER_BINARY} --port=4444 --whitelisted-ips= --url-base=/wd/hub --log-path=/tmp/chromedriver.log --log-level=DEBUG">/dev/null &
   - vendor/bin/codecept run -g EndToEnd -g Presentation -x DockerOnly --ext DotReporter
@@ -496,6 +499,19 @@ jobs:
         - *AWS_SYNC_UP_ES
       addons:
         mariadb: 10.3
+        <<: *ADDONS_BASE_INFRASTRUCTURE
+
+    - name: Security check
+      php: "7.4"
+      stage: Test
+      before_install:
+        - *AWS_SYNC_DOWN_POSTGRES
+        - *BEFORE_INSTALL_SCRIPT
+      install:
+        - *COMPOSER_INSTALL
+      script:
+        - *SECURITY_CHECK_SCRIPT
+      addons:
         <<: *ADDONS_BASE_INFRASTRUCTURE
 
     - name: JS Validation
