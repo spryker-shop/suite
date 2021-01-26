@@ -58929,6 +58929,54 @@
             "time": "2021-01-25T15:54:45+00:00"
         },
         {
+            "name": "spryker-sdk/security-checker",
+            "version": "dev-feature/te-8136/master-implement-sensiolab-static-security-check",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-sdk/security-checker.git",
+                "reference": "8c3f1bdfeeb0a7f15b919344d3e976fb3b4a428f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/security-checker/zipball/8c3f1bdfeeb0a7f15b919344d3e976fb3b4a428f",
+                "reference": "8c3f1bdfeeb0a7f15b919344d3e976fb3b4a428f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "symfony/console": "^4.0.0 || ^5.0.0",
+                "symfony/options-resolver": "^4.0.0 || ^5.0.0",
+                "symfony/process": "^4.0.0 || ^5.0.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.18",
+                "slevomat/coding-standard": "^6.2",
+                "spryker/code-sniffer": "^0.15.6",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SecurityChecker\\": "src/SecurityChecker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "A security checker for your composer.lock",
+            "support": {
+                "issues": "https://github.com/spryker-sdk/security-checker/issues",
+                "source": "https://github.com/spryker-sdk/security-checker/tree/feature/te-8136/master-implement-sensiolab-static-security-check"
+            },
+            "time": "2021-01-25T15:08:07+00:00"
+        },
+        {
             "name": "spryker-sdk/spryk",
             "version": "0.2.9",
             "source": {
