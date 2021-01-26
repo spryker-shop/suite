@@ -58863,6 +58863,59 @@
             "time": "2021-01-22T11:25:56+00:00"
         },
         {
+            "name": "spryker-sdk/load-testing",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-sdk/load-testing.git",
+                "reference": "5884ba766ef13f8324b6da30c39dbba7ba9a7ac6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/load-testing/zipball/5884ba766ef13f8324b6da30c39dbba7ba9a7ac6",
+                "reference": "5884ba766ef13f8324b6da30c39dbba7ba9a7ac6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/checkout": "^4.3.0 || ^6.0.0",
+                "spryker/kernel": "^3.54.0",
+                "spryker/quote": "^2.14.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/product": "*",
+                "spryker/product-attribute": "*",
+                "spryker/propel": "*",
+                "spryker/stock": "*",
+                "spryker/testify": "*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerSdk\\": "src/SprykerSdk/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "LoadTesting tool",
+            "support": {
+                "issues": "https://github.com/spryker-sdk/load-testing/issues",
+                "source": "https://github.com/spryker-sdk/load-testing/tree/0.1.0"
+            },
+            "time": "2021-01-22T11:25:56+00:00"
+        },
+        {
             "name": "spryker-sdk/phpstan-spryker",
             "version": "0.3.1",
             "source": {
