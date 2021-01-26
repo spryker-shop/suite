@@ -6,7 +6,7 @@ on: [
 
 jobs:
     validation:
-        name: "CS, ArchSniffer, PHPStan"
+        name: "CS, ArchSniffer, PHPStan, Security"
         runs-on: ubuntu-18.04
         strategy:
             fail-fast: false
@@ -152,6 +152,9 @@ jobs:
 
             - name: Run PHPStan
               run: vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/
+            
+            - name: Run Security check
+              run: vendor/bin/console security:check
 
 
     php-74-mariadb-glue-alpine:
