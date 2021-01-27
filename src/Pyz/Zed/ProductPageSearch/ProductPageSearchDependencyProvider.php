@@ -14,6 +14,7 @@ use Spryker\Shared\ProductListSearch\ProductListSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
 use Spryker\Shared\ProductReviewSearch\ProductReviewSearchConfig;
 use Spryker\Zed\Availability\Communication\Plugin\ProductPageSearch\AvailabilityProductAbstractAddToCartPlugin;
+use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\PageDataExpander\MerchantProductPageDataExpanderPlugin;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\PageDataLoader\MerchantProductPageDataLoaderPlugin;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\PageMapExpander\MerchantNamesProductAbstractMapExpanderPlugin;
@@ -50,6 +51,25 @@ use Spryker\Zed\ProductReviewSearch\Communication\Plugin\ProductPageSearch\Elast
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
     public const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
+
+    public const FACADE_PROPEL = 'FACADE_PROPEL';
+    public const SERVICE_SYNCHRONIZATION = 'SERVICE_SYNCHRONIZATION';
+    public const CLIENT_QUEUE = 'CLIENT_QUEUE';
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideBusinessLayerDependencies(Container $container)
+    {
+        $container = parent::provideBusinessLayerDependencies($container);
+        $container = $this->addPropelFacade($container);
+        $container = $this->addQueueClient($container);
+        $container = $this->addSynchronizationService($container);
+
+        return $container;
+    }
 
     /**
      * @return \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[]
@@ -137,5 +157,47 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductPackagingUnitProductAbstractAddToCartPlugin(),
             new AvailabilityProductAbstractAddToCartPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addPropelFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_PROPEL, function (Container $container) {
+            return $container->getLocator()->propel()->facade();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addSynchronizationService(Container $container): Container
+    {
+        $container->set(static::SERVICE_SYNCHRONIZATION, function (Container $container) {
+            return $container->getLocator()->synchronization()->service();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addQueueClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_QUEUE, function (Container $container) {
+            return $container->getLocator()->queue()->client();
+        });
+
+        return $container;
     }
 }

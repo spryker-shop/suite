@@ -12,6 +12,7 @@ use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Orm\Zed\PriceProductStorage\Persistence\SpyPriceProductConcreteStorage;
 use Propel\Runtime\Propel;
+use Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\PriceProductStorage\Business\Storage\PriceProductConcreteStorageWriter as SprykerPriceProductConcreteStorageWriter;
@@ -50,12 +51,18 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
     protected $synchronizedMessageCollection = [];
 
     /**
+     * @var \Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface
+     */
+    protected $priceProductConcreteStorageCte;
+
+    /**
      * @param \Spryker\Zed\PriceProductStorage\Dependency\Facade\PriceProductStorageToPriceProductFacadeInterface $priceProductFacade
      * @param \Spryker\Zed\PriceProductStorage\Dependency\Facade\PriceProductStorageToStoreFacadeInterface $storeFacade
      * @param \Spryker\Zed\PriceProductStorage\Persistence\PriceProductStorageQueryContainerInterface $queryContainer
      * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
+     * @param \Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface $priceProductConcreteStorageCte
      */
     public function __construct(
         PriceProductStorageToPriceProductFacadeInterface $priceProductFacade,
@@ -63,12 +70,14 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
         PriceProductStorageQueryContainerInterface $queryContainer,
         bool $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient
+        QueueClientInterface $queueClient,
+        PriceProductStorageCteInterface $priceProductConcreteStorageCte
     ) {
         parent::__construct($priceProductFacade, $storeFacade, $queryContainer, $isSendingToQueue);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
+        $this->priceProductConcreteStorageCte = $priceProductConcreteStorageCte;
     }
 
     /**
@@ -90,11 +99,10 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
                 unset($priceProductConcreteStorageMap[$idProductConcrete][$storeName]);
 
                 if ($this->hasProductConcretePrices($priceGroup)) {
-                    $this->storePriceProduct(
+                    $this->createPriceProductStorage(
                         $idProductConcrete,
                         $storeName,
-                        $priceGroup,
-                        $priceProductConcreteStorage
+                        $priceGroup
                     );
 
                     continue;
@@ -102,6 +110,12 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
 
                 $this->deletePriceProduct($priceProductConcreteStorage);
             }
+        }
+
+        $this->write();
+
+        if ($this->synchronizedMessageCollection !== []) {
+            $this->queueClient->sendMessages('sync.storage.price', $this->synchronizedMessageCollection);
         }
 
         array_walk_recursive($priceProductConcreteStorageMap, function (SpyPriceProductConcreteStorage $priceProductConcreteStorageEntity) {
@@ -234,134 +248,23 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
             return;
         }
 
-        $sql = $this->getSql();
-
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
-
-        $foreignKeys = $this->formatPostgresArray(array_column($this->synchronizedDataCollection, 'fk_product'));
-        $stores = $this->formatPostgresArrayString(array_column($this->synchronizedDataCollection, 'store'));
-        $data = $this->formatPostgresArrayFromJson(array_column($this->synchronizedDataCollection, 'data'));
-        $keys = $this->formatPostgresArrayString(array_column($this->synchronizedDataCollection, 'key'));
-
-        $params = [
-            $foreignKeys,
-            $stores,
-            $data,
-            $keys,
-        ];
-
-        $stmt->execute($params);
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArray(array $values): string
-    {
-        if (!$values) {
-            return '{null}';
-        }
-
-        $values = array_map(function ($value) {
-            return ($value === null || $value === '') ? 'NULL' : $value;
-        }, $values);
-
-        return sprintf(
-            '{%s}',
-            pg_escape_string(implode(',', $values))
-        );
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArrayString(array $values): string
-    {
-        return sprintf(
-            '{"%s"}',
-            pg_escape_string(implode('","', $values))
-        );
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArrayFromJson(array $values): string
-    {
-        return sprintf(
-            '[%s]',
-            pg_escape_string(implode(',', $values))
-        );
+        $stmt = Propel::getConnection()->prepare($this->getSql());
+        $stmt->execute($this->getParams());
     }
 
     /**
      * @return string
      */
-    protected function getSql()
+    protected function getSql(): string
     {
-        $sql = <<<SQL
-WITH records AS (
-    SELECT
-      input.fk_product,
-      input.store,
-      input.data,
-      input.key,
-      id_price_product_concrete_storage
-    FROM (
-           SELECT
-             unnest(? :: INTEGER []) AS fk_product,
-             unnest(? :: VARCHAR []) AS store,
-             json_array_elements(?) AS data,
-             unnest(? :: VARCHAR []) AS key
-         ) input
-      LEFT JOIN spy_price_product_concrete_storage ON spy_price_product_concrete_storage.key = input.key
-    ),
-    updated AS (
-    UPDATE spy_price_product_concrete_storage
-    SET
-      fk_product = records.fk_product,
-      store = records.store,
-      data = records.data,
-      key = records.key,
-      updated_at = now()
-    FROM records
-    WHERE records.key = spy_price_product_concrete_storage.key
-    RETURNING spy_price_product_concrete_storage.id_price_product_concrete_storage
-  ),
-    inserted AS (
-    INSERT INTO spy_price_product_concrete_storage(
-      id_price_product_concrete_storage,
-      fk_product,
-      store,
-      data,
-      key,
-      created_at,
-      updated_at
-    ) (
-      SELECT
-        nextval('spy_price_product_concrete_storage_pk_seq'),
-        fk_product,
-        store,
-        data,
-        key,
-        now(),
-        now()
-      FROM records
-      WHERE id_price_product_concrete_storage is null
-    ) RETURNING spy_price_product_concrete_storage.id_price_product_concrete_storage
-  )
-SELECT updated.id_price_product_concrete_storage FROM updated
-UNION ALL
-SELECT inserted.id_price_product_concrete_storage FROM inserted;
-SQL;
+        return $this->priceProductConcreteStorageCte->getSql();
+    }
 
-        return $sql;
+    /**
+     * @return array
+     */
+    protected function getParams(): array
+    {
+        return $this->priceProductConcreteStorageCte->buildParams($this->synchronizedDataCollection);
     }
 }

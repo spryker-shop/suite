@@ -12,6 +12,7 @@ use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Orm\Zed\PriceProductStorage\Persistence\SpyPriceProductAbstractStorage;
 use Propel\Runtime\Propel;
+use Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\PriceProductStorage\Business\Storage\PriceProductAbstractStorageWriter as SprykerPriceProductAbstractStorageWriter;
@@ -50,12 +51,18 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
     protected $synchronizedMessageCollection = [];
 
     /**
+     * @var \Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface
+     */
+    private $priceProductAbstractStorageCte;
+
+    /**
      * @param \Spryker\Zed\PriceProductStorage\Dependency\Facade\PriceProductStorageToPriceProductFacadeInterface $priceProductFacade
      * @param \Spryker\Zed\PriceProductStorage\Dependency\Facade\PriceProductStorageToStoreFacadeInterface $storeFacade
      * @param \Spryker\Zed\PriceProductStorage\Persistence\PriceProductStorageQueryContainerInterface $queryContainer
      * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
+     * @param \Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface $priceProductAbstractStorageCte
      */
     public function __construct(
         PriceProductStorageToPriceProductFacadeInterface $priceProductFacade,
@@ -63,12 +70,14 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
         PriceProductStorageQueryContainerInterface $queryContainer,
         bool $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient
+        QueueClientInterface $queueClient,
+        PriceProductStorageCteInterface $priceProductAbstractStorageCte
     ) {
         parent::__construct($priceProductFacade, $storeFacade, $queryContainer, $isSendingToQueue);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
+        $this->priceProductAbstractStorageCte = $priceProductAbstractStorageCte;
     }
 
     /**
@@ -239,134 +248,23 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
             return;
         }
 
-        $sql = $this->getSql();
-
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
-
-        $foreignKeys = $this->formatPostgresArray(array_column($this->synchronizedDataCollection, 'fk_product_abstract'));
-        $stores = $this->formatPostgresArrayString(array_column($this->synchronizedDataCollection, 'store'));
-        $data = $this->formatPostgresArrayFromJson(array_column($this->synchronizedDataCollection, 'data'));
-        $keys = $this->formatPostgresArrayString(array_column($this->synchronizedDataCollection, 'key'));
-
-        $params = [
-            $foreignKeys,
-            $stores,
-            $data,
-            $keys,
-        ];
-
-        $stmt->execute($params);
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArray(array $values): string
-    {
-        if (!$values) {
-            return '{null}';
-        }
-
-        $values = array_map(function ($value) {
-            return ($value === null || $value === '') ? 'NULL' : $value;
-        }, $values);
-
-        return sprintf(
-            '{%s}',
-            pg_escape_string(implode(',', $values))
-        );
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArrayString(array $values): string
-    {
-        return sprintf(
-            '{"%s"}',
-            pg_escape_string(implode('","', $values))
-        );
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArrayFromJson(array $values): string
-    {
-        return sprintf(
-            '[%s]',
-            pg_escape_string(implode(',', $values))
-        );
+        $stmt = Propel::getConnection()->prepare($this->getSql());
+        $stmt->execute($this->getParams());
     }
 
     /**
      * @return string
      */
-    protected function getSql()
+    protected function getSql(): string
     {
-        $sql = <<<SQL
-WITH records AS (
-    SELECT
-      input.fk_product_abstract,
-      input.store,
-      input.data,
-      input.key,
-      id_price_product_abstract_storage
-    FROM (
-           SELECT
-             unnest(? :: INTEGER []) AS fk_product_abstract,
-             unnest(? :: VARCHAR []) AS store,
-             json_array_elements(?) AS data,
-             unnest(? :: VARCHAR []) AS key
-         ) input
-      LEFT JOIN spy_price_product_abstract_storage ON spy_price_product_abstract_storage.key = input.key
-    ),
-    updated AS (
-    UPDATE spy_price_product_abstract_storage
-    SET
-      fk_product_abstract = records.fk_product_abstract,
-      store = records.store,
-      data = records.data,
-      key = records.key,
-      updated_at = now()
-    FROM records
-    WHERE records.key = spy_price_product_abstract_storage.key
-    RETURNING spy_price_product_abstract_storage.id_price_product_abstract_storage
-  ),
-    inserted AS (
-    INSERT INTO spy_price_product_abstract_storage(
-      id_price_product_abstract_storage,
-      fk_product_abstract,
-      store,
-      data,
-      key,
-      created_at,
-      updated_at
-    ) (
-      SELECT
-        nextval('spy_price_product_abstract_storage_pk_seq'),
-        fk_product_abstract,
-        store,
-        data,
-        key,
-        now(),
-        now()
-      FROM records
-      WHERE id_price_product_abstract_storage is null
-    ) RETURNING spy_price_product_abstract_storage.id_price_product_abstract_storage
-  )
-SELECT updated.id_price_product_abstract_storage FROM updated
-UNION ALL
-SELECT inserted.id_price_product_abstract_storage FROM inserted;
-SQL;
+        return $this->priceProductAbstractStorageCte->getSql();
+    }
 
-        return $sql;
+    /**
+     * @return array
+     */
+    protected function getParams(): array
+    {
+        return $this->priceProductAbstractStorageCte->buildParams($this->synchronizedDataCollection);
     }
 }
