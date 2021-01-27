@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\UrlStorage;
 
+use Pyz\Shared\Publisher\PublisherConstants;
 use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Shared\UrlStorage\UrlStorageConfig as SprykerSharedUrlStorageConfig;
 use Spryker\Zed\UrlStorage\UrlStorageConfig as SprykerUrlStorageConfig;
@@ -43,5 +44,13 @@ class UrlStorageConfig extends SprykerUrlStorageConfig
     public function getUrlRedirectEventQueueName(): ?string
     {
         return SprykerSharedUrlStorageConfig::PUBLISH_URL;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCteEnabled(): bool
+    {
+        return $this->get(PublisherConstants::IS_CTE_ENABLED, false);
     }
 }

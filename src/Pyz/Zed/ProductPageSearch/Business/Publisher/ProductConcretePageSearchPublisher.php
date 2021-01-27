@@ -14,6 +14,7 @@ use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Propel\Runtime\Propel;
+use Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\ProductPageSearch\Business\DataMapper\AbstractProductSearchDataMapper;
@@ -48,6 +49,11 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     protected $queueClient;
 
     /**
+     * @var \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface
+     */
+    protected $productConcretePagePublisherCte;
+
+    /**
      * @var array
      */
     protected $synchronizedDataCollection = [];
@@ -68,6 +74,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface[] $pageDataExpanderPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
+     * @param \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface $productConcretePagePublisherCte
      */
     public function __construct(
         ProductConcretePageSearchReaderInterface $productConcretePageSearchReader,
@@ -79,7 +86,8 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         ProductPageSearchConfig $productPageSearchConfig,
         array $pageDataExpanderPlugins,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient
+        QueueClientInterface $queueClient,
+        ProductPagePublisherCteInterface $productConcretePagePublisherCte
     ) {
         parent::__construct(
             $productConcretePageSearchReader,
@@ -94,6 +102,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
+        $this->productConcretePagePublisherCte = $productConcretePagePublisherCte;
     }
 
     /**
@@ -262,150 +271,14 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             return;
         }
 
-        $sql = $this->getSql();
-
         $con = Propel::getConnection();
+
+        $sql = $this->productConcretePagePublisherCte->getSql();
+
         $stmt = $con->prepare($sql);
 
-        $foreignKeys = $this->formatPostgresArray(array_column($this->synchronizedDataCollection, 'fk_product'));
-        $stores = $this->formatPostgresArrayString(array_column($this->synchronizedDataCollection, 'store'));
-        $locales = $this->formatPostgresArrayString(array_column($this->synchronizedDataCollection, 'locale'));
-        $data = $this->formatPostgresArrayFromJson(array_column($this->synchronizedDataCollection, 'data'));
-        $structuredData = $this->formatPostgresArrayFromJson(array_column($this->synchronizedDataCollection, 'structured_data'));
-        $keys = $this->formatPostgresArrayString(array_column($this->synchronizedDataCollection, 'key'));
-
-        $params = [
-            $foreignKeys,
-            $stores,
-            $locales,
-            $data,
-            $structuredData,
-            $keys,
-        ];
+        $params = $this->productConcretePagePublisherCte->buildParams($this->synchronizedDataCollection);
 
         $stmt->execute($params);
-
-        $this->synchronizedDataCollection = [];
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArray(array $values): string
-    {
-        if (!$values) {
-            return '{null}';
-        }
-
-        $values = array_map(function ($value) {
-            return ($value === null || $value === '') ? 'NULL' : $value;
-        }, $values);
-
-        return sprintf(
-            '{%s}',
-            pg_escape_string(implode(',', $values))
-        );
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArrayString(array $values): string
-    {
-        return sprintf(
-            '{"%s"}',
-            pg_escape_string(implode('","', $values))
-        );
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArrayFromJson(array $values): string
-    {
-        return sprintf(
-            '[%s]',
-            pg_escape_string(implode(',', $values))
-        );
-    }
-
-    /**
-     * @return string
-     */
-    protected function getSql()
-    {
-        $sql = <<<SQL
-WITH records AS (
-    SELECT
-      input.fk_product,
-      input.store,
-      input.locale,
-      input.data,
-      input.structured_data,
-      input.key,
-      id_product_concrete_page_search
-    FROM (
-           SELECT
-             unnest(? :: INTEGER []) AS fk_product,
-             unnest(? :: VARCHAR []) AS store,
-             unnest(? :: VARCHAR []) AS locale,
-             json_array_elements(?) AS data,
-             json_array_elements(?) AS structured_data,
-             unnest(? :: VARCHAR []) AS key
-         ) input
-      LEFT JOIN spy_product_concrete_page_search ON spy_product_concrete_page_search.key = input.key
-    ),
-    updated AS (
-    UPDATE spy_product_concrete_page_search
-    SET
-      fk_product = records.fk_product,
-      store = records.store,
-      locale = records.locale,
-      data = records.data,
-      structured_data = records.structured_data,
-      key = records.key,
-      updated_at = now()
-    FROM records
-    WHERE records.key = spy_product_concrete_page_search.key
-    RETURNING spy_product_concrete_page_search.id_product_concrete_page_search
-  ),
-    inserted AS (
-    INSERT INTO spy_product_concrete_page_search(
-      id_product_concrete_page_search,
-      fk_product,
-      store,
-      locale,
-      data,
-      structured_data,
-      key,
-      created_at,
-      updated_at
-    ) (
-      SELECT
-        nextval('spy_product_concrete_page_search_pk_seq'),
-        fk_product,
-        store,
-        locale,
-        data,
-        structured_data,
-        key,
-        now(),
-        now()
-      FROM records
-      WHERE id_product_concrete_page_search is null
-    ) RETURNING spy_product_concrete_page_search.id_product_concrete_page_search
-  )
-SELECT updated.id_product_concrete_page_search FROM updated
-UNION ALL
-SELECT inserted.id_product_concrete_page_search FROM inserted;
-SQL;
-
-        return $sql;
     }
 }

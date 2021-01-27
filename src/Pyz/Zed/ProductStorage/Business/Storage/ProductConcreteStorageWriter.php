@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Orm\Zed\ProductStorage\Persistence\SpyProductConcreteStorage;
 use Propel\Runtime\Propel;
+use Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\ProductStorage\Business\Storage\ProductConcreteStorageWriter as SprykerProductConcreteStorageWriter;
@@ -48,23 +49,31 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     protected $synchronizedMessageCollection = [];
 
     /**
+     * @var \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface
+     */
+    protected $productConcreteStorageCte;
+
+    /**
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterface $productFacade
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
      * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
+     * @param \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface $productConcreteStorageCte
      */
     public function __construct(
         ProductStorageToProductInterface $productFacade,
         ProductStorageQueryContainerInterface $queryContainer,
         $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient
+        QueueClientInterface $queueClient,
+        ProductStorageCteStrategyInterface $productConcreteStorageCte
     ) {
         parent::__construct($productFacade, $queryContainer, $isSendingToQueue);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
+        $this->productConcreteStorageCte = $productConcreteStorageCte;
     }
 
     /**
@@ -247,134 +256,23 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             return;
         }
 
-        $sql = $this->getSql();
-
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
-
-        $foreignKeys = $this->formatPostgresArray(array_column($this->synchronizedDataCollection, 'fk_product'));
-        $locales = $this->formatPostgresArrayString(array_column($this->synchronizedDataCollection, 'locale'));
-        $data = $this->formatPostgresArrayFromJson(array_column($this->synchronizedDataCollection, 'data'));
-        $keys = $this->formatPostgresArrayString(array_column($this->synchronizedDataCollection, 'key'));
-
-        $params = [
-            $foreignKeys,
-            $locales,
-            $data,
-            $keys,
-        ];
-
-        $stmt->execute($params);
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArray(array $values): string
-    {
-        if (!$values) {
-            return '{null}';
-        }
-
-        $values = array_map(function ($value) {
-            return ($value === null || $value === '') ? 'NULL' : $value;
-        }, $values);
-
-        return sprintf(
-            '{%s}',
-            pg_escape_string(implode(',', $values))
-        );
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArrayString(array $values): string
-    {
-        return sprintf(
-            '{"%s"}',
-            pg_escape_string(implode('","', $values))
-        );
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArrayFromJson(array $values): string
-    {
-        return sprintf(
-            '[%s]',
-            pg_escape_string(implode(',', $values))
-        );
+        $stmt = Propel::getConnection()->prepare($this->getSql());
+        $stmt->execute($this->getParams());
     }
 
     /**
      * @return string
      */
-    protected function getSql()
+    protected function getSql(): string
     {
-        $sql = <<<SQL
-WITH records AS (
-    SELECT
-      input.fk_product,
-      input.locale,
-      input.data,
-      input.key,
-      id_product_concrete_storage
-    FROM (
-           SELECT
-             unnest(? :: INTEGER []) AS fk_product,
-             unnest(? :: VARCHAR []) AS locale,
-             json_array_elements(?) AS data,
-             unnest(? :: VARCHAR []) AS key
-         ) input
-      LEFT JOIN spy_product_concrete_storage ON spy_product_concrete_storage.key = input.key
-    ),
-    updated AS (
-    UPDATE spy_product_concrete_storage
-    SET
-      fk_product = records.fk_product,
-      locale = records.locale,
-      data = records.data,
-      key = records.key,
-      updated_at = now()
-    FROM records
-    WHERE records.key = spy_product_concrete_storage.key
-    RETURNING spy_product_concrete_storage.id_product_concrete_storage
-  ),
-    inserted AS (
-    INSERT INTO spy_product_concrete_storage(
-      id_product_concrete_storage,
-      fk_product,
-      locale,
-      data,
-      key,
-      created_at,
-      updated_at
-    ) (
-      SELECT
-        nextval('spy_product_concrete_storage_pk_seq'),
-        fk_product,
-        locale,
-        data,
-        key,
-        now(),
-        now()
-      FROM records
-      WHERE id_product_concrete_storage is null
-    ) RETURNING spy_product_concrete_storage.id_product_concrete_storage
-  )
-SELECT updated.id_product_concrete_storage FROM updated
-UNION ALL
-SELECT inserted.id_product_concrete_storage FROM inserted;
-SQL;
+        return $this->productConcreteStorageCte->getSql();
+    }
 
-        return $sql;
+    /**
+     * @return string[]
+     */
+    protected function getParams(): array
+    {
+        return $this->productConcreteStorageCte->buildParams($this->synchronizedDataCollection);
     }
 }
