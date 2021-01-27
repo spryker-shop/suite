@@ -12,6 +12,7 @@ use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Generated\Shared\Transfer\UrlStorageTransfer;
 use Orm\Zed\UrlStorage\Persistence\SpyUrlStorage;
 use Propel\Runtime\Propel;
+use Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\UrlStorage\Business\Storage\UrlStorageWriter as SprykerUrlStorageWriter;
@@ -51,6 +52,11 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     protected $synchronizedMessageCollection = [];
 
     /**
+     * @var \Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface
+     */
+    protected $urlStorageCte;
+
+    /**
      * @param \Spryker\Zed\UrlStorage\Dependency\Service\UrlStorageToUtilSanitizeServiceInterface $utilSanitize
      * @param \Spryker\Zed\UrlStorage\Persistence\UrlStorageRepositoryInterface $urlStorageRepository
      * @param \Spryker\Zed\UrlStorage\Persistence\UrlStorageEntityManagerInterface $urlStorageEntityManager
@@ -58,6 +64,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
+     * @param \Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface $urlStorageCte
      */
     public function __construct(
         UrlStorageToUtilSanitizeServiceInterface $utilSanitize,
@@ -66,12 +73,14 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
         UrlStorageToStoreFacadeInterface $storeFacade,
         bool $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient
+        QueueClientInterface $queueClient,
+        UrlStorageCteInterface $urlStorageCte
     ) {
         parent::__construct($utilSanitize, $urlStorageRepository, $urlStorageEntityManager, $storeFacade, $isSendingToQueue);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
+        $this->urlStorageCte = $urlStorageCte;
     }
 
     /**
@@ -160,7 +169,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      *
      * @return string
      */
-    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName)
+    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName): string
     {
         $syncTransferData = new SynchronizationDataTransfer();
 
@@ -209,134 +218,23 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
             return;
         }
 
-        $sql = $this->getSql();
-
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
-
-        $foreignKeys = $this->formatPostgresArray(array_column($this->synchronizedDataCollection, 'fk_url'));
-        $urls = $this->formatPostgresArrayString(array_column($this->synchronizedDataCollection, 'url'));
-        $data = $this->formatPostgresArrayFromJson(array_column($this->synchronizedDataCollection, 'data'));
-        $keys = $this->formatPostgresArrayString(array_column($this->synchronizedDataCollection, 'key'));
-
-        $params = [
-            $foreignKeys,
-            $urls,
-            $data,
-            $keys,
-        ];
-
-        $stmt->execute($params);
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArray(array $values): string
-    {
-        if (!$values) {
-            return '{null}';
-        }
-
-        $values = array_map(function ($value) {
-            return ($value === null || $value === '') ? 'NULL' : $value;
-        }, $values);
-
-        return sprintf(
-            '{%s}',
-            pg_escape_string(implode(',', $values))
-        );
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArrayString(array $values): string
-    {
-        return sprintf(
-            '{"%s"}',
-            pg_escape_string(implode('","', $values))
-        );
-    }
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresArrayFromJson(array $values): string
-    {
-        return sprintf(
-            '[%s]',
-            pg_escape_string(implode(',', $values))
-        );
+        $stmt = Propel::getConnection()->prepare($this->getSql());
+        $stmt->execute($this->getParams());
     }
 
     /**
      * @return string
      */
-    protected function getSql()
+    protected function getSql(): string
     {
-        $sql = <<<SQL
-WITH records AS (
-    SELECT
-      input.fk_url,
-      input.url,
-      input.data,
-      input.key,
-      id_url_storage
-    FROM (
-           SELECT
-             unnest(? :: INTEGER []) AS fk_url,
-             unnest(? :: VARCHAR []) AS url,
-             json_array_elements(?) AS data,
-             unnest(? :: VARCHAR []) AS key
-         ) input
-      LEFT JOIN spy_url_storage ON spy_url_storage.key = input.key
-    ),
-    updated AS (
-    UPDATE spy_url_storage
-    SET
-      fk_url = records.fk_url,
-      url = records.url,
-      data = records.data,
-      key = records.key,
-      updated_at = now()
-    FROM records
-    WHERE records.key = spy_url_storage.key
-    RETURNING spy_url_storage.id_url_storage
-  ),
-    inserted AS (
-    INSERT INTO spy_url_storage(
-      id_url_storage,
-      fk_url,
-      url,
-      data,
-      key,
-      created_at,
-      updated_at
-    ) (
-      SELECT
-        nextval('spy_url_storage_pk_seq'),
-        fk_url,
-        url,
-        data,
-        key,
-        now(),
-        now()
-      FROM records
-      WHERE id_url_storage is null
-    ) RETURNING spy_url_storage.id_url_storage
-  )
-SELECT updated.id_url_storage FROM updated
-UNION ALL
-SELECT inserted.id_url_storage FROM inserted;
-SQL;
+        return $this->urlStorageCte->getSql();
+    }
 
-        return $sql;
+    /**
+     * @return array
+     */
+    protected function getParams(): array
+    {
+        return $this->urlStorageCte->buildParams($this->synchronizedDataCollection);
     }
 }

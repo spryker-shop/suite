@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductStorage;
 
+use Pyz\Shared\Publisher\PublisherConstants;
 use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Shared\ProductStorage\ProductStorageConfig as SprykerSharedProductStorageConfig;
 use Spryker\Zed\ProductStorage\ProductStorageConfig as SprykerProductStorageConfig;
@@ -51,5 +52,13 @@ class ProductStorageConfig extends SprykerProductStorageConfig
     public function isProductAttributesWithSingleValueIncluded(): bool
     {
         return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCteEnabled(): bool
+    {
+        return $this->get(PublisherConstants::IS_CTE_ENABLED, false);
     }
 }

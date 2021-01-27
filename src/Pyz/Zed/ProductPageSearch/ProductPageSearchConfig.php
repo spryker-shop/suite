@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductPageSearch;
 
+use Pyz\Shared\Publisher\PublisherConstants;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig as SprykerSharedProductPageSearchConfig;
 use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig as SprykerProductPageSearchConfig;
 
@@ -38,5 +39,15 @@ class ProductPageSearchConfig extends SprykerProductPageSearchConfig
     public function isProductAbstractAddToCartEnabled(): bool
     {
         return true;
+    }
+
+    /**
+     * @api
+     *
+     * @return bool
+     */
+    public function isCteEnabled(): bool
+    {
+        return $this->get(PublisherConstants::IS_CTE_ENABLED, false);
     }
 }
