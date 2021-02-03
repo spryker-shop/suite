@@ -1,4 +1,5 @@
 namespace: PyzTest\Yves\Application
+spryker_module: HomePage
 
 paths:
     tests: .
@@ -8,8 +9,14 @@ paths:
 
 coverage:
     enabled: true
-    remote: false
-    whitelist: { include: ['../../../../src/*'] }
+    remote: true
+    c3_url: 'http://yves.de.spryker.local'
+    cookie_domain: '.yves.de.spryker.local'
+    remote_config: '../../../tests/PyzTest/Yves/Application/codeception.yml'
+    xdebug_session: 'PHPSTORM'
+    whitelist:
+        include:
+            - '../../../../vendor/spryker/spryker-shop/Bundles/HomePage/src/*/Yves/*.php'
 
 suites:
     Controller:
