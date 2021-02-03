@@ -8,11 +8,8 @@ paths:
 
 coverage:
     enabled: true
-    remote: true
-    c3_url: 'http://yves.de.spryker.local'
-    cookie_domain: '.yves.de.spryker.local'
-    remote_config: '../../../tests/PyzTest/Yves/Cart/codeception.yml'
-    xdebug_session: 'PHPSTORM'
+    remote: false
+    whitelist: { include: ['../../../../src/*'] }
 
 suites:
     Controller:

@@ -9,14 +9,8 @@ paths:
 
 coverage:
     enabled: true
-    remote: true
-    c3_url: 'http://yves.de.spryker.local'
-    cookie_domain: '.yves.de.spryker.local'
-    remote_config: '../../../tests/PyzTest/Yves/Availability/codeception.yml'
-    xdebug_session: 'PHPSTORM'
-    whitelist:
-        include:
-            - '../../../../vendor/spryker/spryker-shop/Bundles/CartPage/src/*/Yves/*.php'
+    remote: false
+    whitelist: { include: ['../../../../src/*'] }
 
 suites:
     Presentation:

@@ -18,6 +18,12 @@ settings:
     memory_limit: 1024M
     log: true
 
+coverage:
+    enabled: true
+    remote: true
+    c3_url: 'http://zed.de.shop-suite.local'
+    whitelist: { include: ['src/Pyz/*.php'] }
+
 extensions:
     enabled:
         - \SprykerTest\Shared\Testify\Helper\WebDriverHelper

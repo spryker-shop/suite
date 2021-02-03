@@ -1,5 +1,4 @@
 namespace: PyzTest\Yves\Newsletter
-spryker_module: NewsletterWidget
 
 paths:
     tests: .
@@ -9,14 +8,8 @@ paths:
 
 coverage:
     enabled: true
-    remote: true
-    c3_url: 'http://yves.de.spryker.local'
-    cookie_domain: '.yves.de.spryker.local'
-    remote_config: '../../../tests/PyzTest/Yves/Newsletter/codeception.yml'
-    xdebug_session: 'PHPSTORM'
-    whitelist:
-      include:
-        - '../../../../vendor/spryker/spryker-shop/Bundles/NewsletterWidget/src/*.php'
+    remote: false
+    whitelist: { include: ['../../../../src/*'] }
 
 suites:
     Presentation:
