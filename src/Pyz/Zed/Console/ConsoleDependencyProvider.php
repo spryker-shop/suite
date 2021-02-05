@@ -110,6 +110,7 @@ use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\BuildRestApiValidationCacheConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\RemoveRestApiValidationCacheConsole;
 use Spryker\Zed\Router\Communication\Plugin\Console\RouterCacheWarmUpConsole;
+use Spryker\Zed\Router\Communication\Plugin\Console\RouterDebugZedConsole;
 use Spryker\Zed\SalesInvoice\Communication\Console\OrderInvoiceSendConsole;
 use Spryker\Zed\SalesOms\Communication\Console\ImportOrderItemsStatusConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerCleanConsole;
@@ -415,6 +416,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new EventTriggerListenerConsole();
             $commands[] = new CustomerPasswordResetConsole();
             $commands[] = new CustomerPasswordSetConsole();
+            $commands[] = new RouterDebugZedConsole();
 
             $commands[] = new SprykRunConsole();
             $commands[] = new SprykDumpConsole();
