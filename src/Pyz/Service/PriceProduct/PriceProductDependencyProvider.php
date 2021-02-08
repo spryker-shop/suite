@@ -24,9 +24,13 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     protected function getPriceProductDecisionPlugins(): array
     {
         return array_merge([
+            /**
+             * ProductOfferPriceProductFilterPlugin should be the first, otherwise other plugins might filter out the prices actually belonging to the offer.
+             */
+            new ProductOfferPriceProductFilterPlugin(),
+
             new ProductConfigurationPriceProductFilterPlugin(),
             new ProductConfigurationPriceProductVolumeFilterPlugin(),
-            new ProductOfferPriceProductFilterPlugin(),
             new PriceProductOfferVolumeFilterPlugin(),
             new PriceProductVolumeFilterPlugin(),
         ], parent::getPriceProductDecisionPlugins());
