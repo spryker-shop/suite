@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.173.6",
+            "version": "3.173.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "439a161e46895cd1f7b93b4c0295f95d6a17385e"
+                "reference": "854b9f827438d1d69df6550d9ada40deaa6d44fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/439a161e46895cd1f7b93b4c0295f95d6a17385e",
-                "reference": "439a161e46895cd1f7b93b4c0295f95d6a17385e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/854b9f827438d1d69df6550d9ada40deaa6d44fe",
+                "reference": "854b9f827438d1d69df6550d9ada40deaa6d44fe",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.173.6"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.173.7"
             },
-            "time": "2021-02-09T19:14:22+00:00"
+            "time": "2021-02-11T19:13:05+00:00"
         },
         {
             "name": "brick/math",
@@ -1245,23 +1245,23 @@
         },
         {
             "name": "laminas/laminas-config",
-            "version": "3.4.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-config.git",
-                "reference": "0bce6f5abab41dc673196741883b19018a2b5994"
+                "reference": "f91cd6fe79e82cbbcaa36485108a04e8ef1e679b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-config/zipball/0bce6f5abab41dc673196741883b19018a2b5994",
-                "reference": "0bce6f5abab41dc673196741883b19018a2b5994",
+                "url": "https://api.github.com/repos/laminas/laminas-config/zipball/f91cd6fe79e82cbbcaa36485108a04e8ef1e679b",
+                "reference": "f91cd6fe79e82cbbcaa36485108a04e8ef1e679b",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "laminas/laminas-stdlib": "^2.7.7 || ^3.1",
                 "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "^7.3 || ^8.0",
+                "php": "^7.3 || ~8.0.0",
                 "psr/container": "^1.0"
             },
             "conflict": {
@@ -1284,12 +1284,6 @@
                 "laminas/laminas-servicemanager": "^2.7.8 || ^3.3; if you need an extensible plugin manager for use with the Config Factory"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4.x-dev",
-                    "dev-develop": "3.5.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Laminas\\Config\\": "src/"
@@ -1319,7 +1313,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2020-08-25T11:56:37+00:00"
+            "time": "2021-02-11T15:06:51+00:00"
         },
         {
             "name": "laminas/laminas-filter",
@@ -47116,20 +47110,20 @@
         },
         {
             "name": "spryker/synchronization",
-            "version": "1.12.1",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization.git",
-                "reference": "ef50d21eb1608f68ca10cd5ac307ca8463595a29"
+                "reference": "60898a754d0aecc9d6f59de727b6baeeba831206"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization/zipball/ef50d21eb1608f68ca10cd5ac307ca8463595a29",
-                "reference": "ef50d21eb1608f68ca10cd5ac307ca8463595a29",
+                "url": "https://api.github.com/repos/spryker/synchronization/zipball/60898a754d0aecc9d6f59de727b6baeeba831206",
+                "reference": "60898a754d0aecc9d6f59de727b6baeeba831206",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/elastica": "^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
                 "spryker/kernel": "^3.49.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -47137,7 +47131,7 @@
                 "spryker/search": "^6.8.0 || ^7.0.0 || ^8.3.0",
                 "spryker/storage": "^3.4.1",
                 "spryker/symfony": "^3.1.0",
-                "spryker/synchronization-extension": "^1.1.0",
+                "spryker/synchronization-extension": "^1.2.0",
                 "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
@@ -47190,9 +47184,9 @@
             ],
             "description": "Synchronization module",
             "support": {
-                "source": "https://github.com/spryker/synchronization/tree/1.12.1"
+                "source": "https://github.com/spryker/synchronization/tree/1.13.0"
             },
-            "time": "2020-09-30T11:34:19+00:00"
+            "time": "2021-02-10T09:11:30+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -47250,25 +47244,24 @@
         },
         {
             "name": "spryker/synchronization-extension",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-extension.git",
-                "reference": "616ec4e3ba7c20492e95b785b9a31ab81d992147"
+                "reference": "3c2d2a776887039095d6a1535a14450f97bccfed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-extension/zipball/616ec4e3ba7c20492e95b785b9a31ab81d992147",
-                "reference": "616ec4e3ba7c20492e95b785b9a31ab81d992147",
+                "url": "https://api.github.com/repos/spryker/synchronization-extension/zipball/3c2d2a776887039095d6a1535a14450f97bccfed",
+                "reference": "3c2d2a776887039095d6a1535a14450f97bccfed",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.3"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/propel-orm": "*",
-                "spryker/testify": "*"
+                "spryker/propel-orm": "*"
             },
             "suggest": {
                 "spryker/propel-orm": "*"
@@ -47290,9 +47283,9 @@
             ],
             "description": "SynchronizationExtension module",
             "support": {
-                "source": "https://github.com/spryker/synchronization-extension/tree/master"
+                "source": "https://github.com/spryker/synchronization-extension/tree/1.2.0"
             },
-            "time": "2019-02-28T19:52:45+00:00"
+            "time": "2021-02-10T09:11:29+00:00"
         },
         {
             "name": "spryker/tax",
@@ -59331,12 +59324,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "31c75f30e3bef37d30bbf6468b0ed3a550fc5152"
+                "reference": "9efcf0a4bee544361429c0a4a34225923c91f9e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/31c75f30e3bef37d30bbf6468b0ed3a550fc5152",
-                "reference": "31c75f30e3bef37d30bbf6468b0ed3a550fc5152",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/9efcf0a4bee544361429c0a4a34225923c91f9e9",
+                "reference": "9efcf0a4bee544361429c0a4a34225923c91f9e9",
                 "shasum": ""
             },
             "require": {
@@ -59382,7 +59375,7 @@
                 "issues": "https://github.com/spryker/code-sniffer/issues",
                 "source": "https://github.com/spryker/code-sniffer"
             },
-            "time": "2021-02-05T10:59:25+00:00"
+            "time": "2021-02-11T15:50:41+00:00"
         },
         {
             "name": "spryker/development",
