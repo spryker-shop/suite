@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e58d44c1b4884e058481c9da6c59e416",
+    "content-hash": "fdc1b9d565e9242d1c94baba73bc5a6f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -13705,53 +13705,41 @@
         },
         {
             "name": "spryker/category",
-            "version": "4.21.0",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/category.git",
-                "reference": "5b091017d98e9a9cc134fc8e47bd72ebdf81b28d"
+                "reference": "da194f8dc4a59f1eee49c4a695a4dcfb6fe9449a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/category/zipball/5b091017d98e9a9cc134fc8e47bd72ebdf81b28d",
-                "reference": "5b091017d98e9a9cc134fc8e47bd72ebdf81b28d",
+                "url": "https://api.github.com/repos/spryker/category/zipball/da194f8dc4a59f1eee49c4a695a4dcfb6fe9449a",
+                "reference": "da194f8dc4a59f1eee49c4a695a4dcfb6fe9449a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
-                "spryker/category-extension": "^1.0.0",
-                "spryker/event": "^1.0.0 || ^2.0.0",
-                "spryker/graph": "^3.0.0",
-                "spryker/gui": "^3.0.0",
+                "spryker/category-extension": "^1.1.0",
+                "spryker/event": "^2.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/key-builder": "^1.0.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/storage": "^3.0.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/touch": "^3.0.0 || ^4.0.0",
-                "spryker/url": "^3.5.0",
-                "spryker/util-text": "^1.1.0"
+                "spryker/store": "^1.0.0",
+                "spryker/touch": "^4.0.0",
+                "spryker/transfer": "^3.25.0",
+                "spryker/url": "^3.5.0"
             },
             "require-dev": {
-                "spryker/application": "*",
                 "spryker/code-sniffer": "*",
-                "spryker/config": "*",
                 "spryker/container": "*",
-                "spryker/event-dispatcher": "*",
-                "spryker/form": "*",
                 "spryker/propel": "*",
-                "spryker/router": "*",
                 "spryker/silex": "*",
-                "spryker/testify": "*",
-                "spryker/twig": "*",
-                "spryker/validator": "*",
-                "spryker/zed-navigation": "*"
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0.x-dev"
+                    "dev-master": "5.0.x-dev"
                 }
             },
             "autoload": {
@@ -13767,9 +13755,9 @@
             ],
             "description": "Category module",
             "support": {
-                "source": "https://github.com/spryker/category/tree/4.21.0"
+                "source": "https://github.com/spryker/category/tree/5.0.0"
             },
-            "time": "2021-01-29T14:31:47+00:00"
+            "time": "2021-02-09T16:50:35+00:00"
         },
         {
             "name": "spryker/category-data-feed",
@@ -13820,28 +13808,30 @@
         },
         {
             "name": "spryker/category-data-import",
-            "version": "0.2.2",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/category-data-import.git",
-                "reference": "231db1da9e610ca9473a1567eff2871d23eb8710"
+                "reference": "8af807c4f04dcde7ea7b213c2ca525823893ee36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/category-data-import/zipball/231db1da9e610ca9473a1567eff2871d23eb8710",
-                "reference": "231db1da9e610ca9473a1567eff2871d23eb8710",
+                "url": "https://api.github.com/repos/spryker/category-data-import/zipball/8af807c4f04dcde7ea7b213c2ca525823893ee36",
+                "reference": "8af807c4f04dcde7ea7b213c2ca525823893ee36",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
-                "spryker/category": "^3.0.0 || ^4.0.0",
+                "php": ">=7.3",
+                "spryker/category": "^5.0.0",
                 "spryker/data-import": "^1.3.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.0.0",
+                "spryker/store": "^1.0.0",
                 "spryker/url": "^3.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -13861,9 +13851,9 @@
             ],
             "description": "CategoryDataImport module",
             "support": {
-                "source": "https://github.com/spryker/category-data-import/tree/master"
+                "source": "https://github.com/spryker/category-data-import/tree/0.3.0"
             },
-            "time": "2019-11-15T10:00:42+00:00"
+            "time": "2021-02-09T16:20:37+00:00"
         },
         {
             "name": "spryker/category-exporter",
@@ -13952,54 +13942,6 @@
             "description": "CategoryExtension module",
             "support": {
                 "source": "https://github.com/spryker/category-extension/tree/1.1.0"
-            },
-            "time": "2021-02-07T21:17:19+00:00"
-        },
-        {
-            "name": "spryker/category-gui",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/category-gui.git",
-                "reference": "8c1f32669b23ee12cde445141cbe2150e516dae0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/category-gui/zipball/8c1f32669b23ee12cde445141cbe2150e516dae0",
-                "reference": "8c1f32669b23ee12cde445141cbe2150e516dae0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.3",
-                "spryker/category": "^4.0.0",
-                "spryker/gui": "^3.0.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/locale": "^3.0.0",
-                "spryker/propel-orm": "^1.0.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/util-text": "^1.1.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CategoryGui module",
-            "support": {
-                "source": "https://github.com/spryker/category-gui/tree/1.0.3"
             },
             "time": "2021-02-07T21:17:19+00:00"
         },
@@ -14205,46 +14147,49 @@
         },
         {
             "name": "spryker/category-page-search",
-            "version": "1.7.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/category-page-search.git",
-                "reference": "97acb4f5973f79e7dbacd5f13ebfeccb16028037"
+                "reference": "75c2995ba8f47bdd9626e7bde4e2615367d2ec9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/category-page-search/zipball/97acb4f5973f79e7dbacd5f13ebfeccb16028037",
-                "reference": "97acb4f5973f79e7dbacd5f13ebfeccb16028037",
+                "url": "https://api.github.com/repos/spryker/category-page-search/zipball/75c2995ba8f47bdd9626e7bde4e2615367d2ec9a",
+                "reference": "75c2995ba8f47bdd9626e7bde4e2615367d2ec9a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
-                "spryker/category": "^4.3.0",
+                "spryker/category": "^5.0.0",
                 "spryker/event-behavior": "^1.1.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/locale": "^3.1.0",
-                "spryker/propel-orm": "^1.5.0",
+                "spryker/publisher-extension": "^1.0.0",
                 "spryker/store": "^1.12.0",
                 "spryker/synchronization-behavior": "^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0",
-                "spryker/url": "^3.3.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/event": "*",
                 "spryker/propel": "*",
+                "spryker/propel-orm": "*",
+                "spryker/queue": "*",
                 "spryker/search": "*",
-                "spryker/testify": "*"
+                "spryker/testify": "*",
+                "spryker/url": "*"
             },
             "suggest": {
                 "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0",
+                "spryker/propel-orm": "If you want to use transaction functionality, minimum required version: 1.3.0",
                 "spryker/search": "If you want to use Search mapping plugins, minimum required version: 7.0.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -14258,36 +14203,38 @@
             ],
             "description": "CategoryPageSearch module",
             "support": {
-                "source": "https://github.com/spryker/category-page-search/tree/1.7.0"
+                "source": "https://github.com/spryker/category-page-search/tree/2.0.0"
             },
-            "time": "2021-01-27T08:06:01+00:00"
+            "time": "2021-02-09T16:50:35+00:00"
         },
         {
             "name": "spryker/category-storage",
-            "version": "1.11.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/category-storage.git",
-                "reference": "937e98d0ddaaa3a95683bf54a367090a1b83bade"
+                "reference": "bd3fc73b5a8ab108495414380fb7fad07463d452"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/category-storage/zipball/937e98d0ddaaa3a95683bf54a367090a1b83bade",
-                "reference": "937e98d0ddaaa3a95683bf54a367090a1b83bade",
+                "url": "https://api.github.com/repos/spryker/category-storage/zipball/bd3fc73b5a8ab108495414380fb7fad07463d452",
+                "reference": "bd3fc73b5a8ab108495414380fb7fad07463d452",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
-                "spryker/category": "^4.3.0",
+                "spryker/category": "^5.0.0",
                 "spryker/event-behavior": "^1.6.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.1.0",
                 "spryker/propel-orm": "^1.5.0",
+                "spryker/publisher-extension": "^1.0.0",
                 "spryker/storage": "^3.4.0",
-                "spryker/synchronization": "^0.2.0 || ^1.0.0",
+                "spryker/store": "^1.4.0",
+                "spryker/synchronization": "^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0",
-                "spryker/url": "^3.3.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/util-sanitize": "^2.1.0"
             },
             "require-dev": {
@@ -14295,6 +14242,7 @@
                 "spryker/elastica": "*",
                 "spryker/event": "*",
                 "spryker/propel": "*",
+                "spryker/queue": "*",
                 "spryker/search-elasticsearch": "*",
                 "spryker/testify": "*",
                 "spryker/url-storage": "*"
@@ -14308,7 +14256,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -14322,9 +14270,9 @@
             ],
             "description": "CategoryStorage module",
             "support": {
-                "source": "https://github.com/spryker/category-storage/tree/1.11.0"
+                "source": "https://github.com/spryker/category-storage/tree/2.0.0"
             },
-            "time": "2021-01-26T07:55:47+00:00"
+            "time": "2021-02-08T15:11:54+00:00"
         },
         {
             "name": "spryker/chart",
@@ -34862,31 +34810,32 @@
         },
         {
             "name": "spryker/product-category-filter-gui",
-            "version": "1.3.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-category-filter-gui.git",
-                "reference": "efaac9efcae76221b20e8e5f68d80eaa26dc9f8f"
+                "reference": "e78d804a3f9c77f749de2352c6b81537ec107c86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-category-filter-gui/zipball/efaac9efcae76221b20e8e5f68d80eaa26dc9f8f",
-                "reference": "efaac9efcae76221b20e8e5f68d80eaa26dc9f8f",
+                "url": "https://api.github.com/repos/spryker/product-category-filter-gui/zipball/e78d804a3f9c77f749de2352c6b81537ec107c86",
+                "reference": "e78d804a3f9c77f749de2352c6b81537ec107c86",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
                 "spryker/catalog": "^5.0.0",
-                "spryker/category": "^4.21.0",
+                "spryker/category": "^5.0.0",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
-                "spryker/product": "^5.4.0 || ^6.0.0",
+                "spryker/product": "^6.0.0",
                 "spryker/product-category": "^4.0.0",
                 "spryker/product-category-filter": "^1.2.0",
                 "spryker/product-search": "^5.3.0",
-                "spryker/search": "^6.0.0 || ^7.0.0 || ^8.0.0",
+                "spryker/search": "^8.0.0",
                 "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
@@ -34895,7 +34844,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -34909,9 +34858,9 @@
             ],
             "description": "ProductCategoryFilterGui module",
             "support": {
-                "source": "https://github.com/spryker/product-category-filter-gui/tree/1.3.0"
+                "source": "https://github.com/spryker/product-category-filter-gui/tree/2.0.0"
             },
-            "time": "2021-01-28T10:27:44+00:00"
+            "time": "2021-02-09T12:49:49+00:00"
         },
         {
             "name": "spryker/product-category-filter-storage",
@@ -34972,37 +34921,41 @@
         },
         {
             "name": "spryker/product-category-storage",
-            "version": "1.9.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-category-storage.git",
-                "reference": "cad64dba4653bb183306f3a1816b240e1516bc2c"
+                "reference": "3f5059ab3a6859a78128e6fe7edc125bb6e361d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-category-storage/zipball/cad64dba4653bb183306f3a1816b240e1516bc2c",
-                "reference": "cad64dba4653bb183306f3a1816b240e1516bc2c",
+                "url": "https://api.github.com/repos/spryker/product-category-storage/zipball/3f5059ab3a6859a78128e6fe7edc125bb6e361d8",
+                "reference": "3f5059ab3a6859a78128e6fe7edc125bb6e361d8",
                 "shasum": ""
             },
             "require": {
-                "everon/collection": "^1.0.0",
                 "php": ">=7.3",
-                "spryker/category": "^4.3.0",
+                "spryker/category": "^5.0.0",
                 "spryker/event-behavior": "^1.10.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/product": "^5.5.0 || ^6.0.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/product": "^6.0.0",
                 "spryker/product-category": "^4.5.0",
                 "spryker/propel-orm": "^1.5.0",
+                "spryker/publisher-extension": "^1.0.0",
                 "spryker/storage": "^3.4.0",
-                "spryker/synchronization": "^0.2.0 || ^1.0.0",
+                "spryker/store": "^1.4.0",
+                "spryker/synchronization": "^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/url": "^3.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/event": "*",
                 "spryker/propel": "*",
+                "spryker/queue": "*",
                 "spryker/storage-redis": "^1.0.0",
                 "spryker/testify": "*"
             },
@@ -35012,7 +34965,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -35026,9 +34979,9 @@
             ],
             "description": "ProductCategoryStorage module",
             "support": {
-                "source": "https://github.com/spryker/product-category-storage/tree/1.9.0"
+                "source": "https://github.com/spryker/product-category-storage/tree/2.0.0"
             },
-            "time": "2021-01-26T07:55:47+00:00"
+            "time": "2021-02-09T16:20:37+00:00"
         },
         {
             "name": "spryker/product-configuration",
