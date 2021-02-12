@@ -2,10 +2,7 @@ namespace: PyzTest
 actor: Tester
 
 include:
-    - vendor/spryker/spryker/Bundles/*/*
-    - vendor/spryker/rabbit-mq/*/*
-    - vendor/spryker-sdk/composer-constrainer
-    - vendor/spryker-sdk/composer-replace/
+    - vendor/spryker/spryker/Bundles/*/*/SprykerTest/Glue/
 
 paths:
     tests: tests
@@ -25,11 +22,3 @@ coverage:
     remote: true
     c3_url: 'http://zed.de.shop-suite.local'
     whitelist: { include: ['src/Pyz/*.php'] }
-
-extensions:
-    enabled:
-        - \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper
-    config:
-        \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper:
-            inclusive:
-                - Glue
