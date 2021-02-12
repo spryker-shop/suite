@@ -8,6 +8,11 @@
 namespace Pyz\Zed\Publisher;
 
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
+use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Publisher\CategoryStore\CategoryStoreWriteForPublishingPublisherPlugin as CategoryStoreSearchWriteForPublishingPublisherPlugin;
+use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Publisher\CategoryStore\CategoryStoreWritePublisherPlugin as CategoryStoreSearchWritePublisherPlugin;
+use Spryker\Zed\CategoryStorage\Communication\Plugin\Publisher\CategoryStore\CategoryStoreWriteForPublishingPublisherPlugin as CategoryStoreStorageWriteForPublishingPublisherPlugin;
+use Spryker\Zed\CategoryStorage\Communication\Plugin\Publisher\CategoryStore\CategoryStoreWritePublisherPlugin as CategoryStoreStorageWritePublisherPlugin;
+use Spryker\Zed\CategoryStorage\Communication\Plugin\Publisher\CategoryTree\CategoryTreeWritePublisherPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryDeletePublisherPlugin as GlossaryKeyDeletePublisherPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryWritePublisherPlugin as GlossaryKeyWriterPublisherPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryPublisherTriggerPlugin;
@@ -27,6 +32,9 @@ use Spryker\Zed\ProductBundleStorage\Communication\Plugin\Publisher\ProductBundl
 use Spryker\Zed\ProductBundleStorage\Communication\Plugin\Publisher\ProductBundle\ProductBundleWritePublisherPlugin;
 use Spryker\Zed\ProductBundleStorage\Communication\Plugin\Publisher\ProductBundlePublisherTriggerPlugin;
 use Spryker\Zed\ProductBundleStorage\Communication\Plugin\Publisher\ProductConcrete\ProductBundleWritePublisherPlugin as ProductConcreteProductBundleWritePublisherPlugin;
+use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Publisher\Category\CategoryStoreDeletePublisherPlugin;
+use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Publisher\Category\CategoryStoreWriteForPublishingPublisherPlugin;
+use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Publisher\Category\CategoryStoreWritePublisherPlugin;
 use Spryker\Zed\ProductConfigurationStorage\Communication\Plugin\Publisher\ProductConfiguration\ProductConfigurationDeletePublisherPlugin;
 use Spryker\Zed\ProductConfigurationStorage\Communication\Plugin\Publisher\ProductConfiguration\ProductConfigurationWritePublisherPlugin;
 use Spryker\Zed\ProductConfigurationStorage\Communication\Plugin\Publisher\ProductConfigurationPublisherTriggerPlugin;
@@ -70,7 +78,10 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductBundleStoragePlugins(),
             $this->getMerchantProductSearchPlugins(),
             $this->getProductConfigurationStoragePlugins(),
-            $this->getMerchantSearchPlugins()
+            $this->getMerchantSearchPlugins(),
+            $this->getCategoryStoragePlugins(),
+            $this->getCategoryPageSearchPlugins(),
+            $this->getProductCategoryStoragePlugins()
         );
     }
 
@@ -229,6 +240,41 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
         return [
             new ProductConfigurationWritePublisherPlugin(),
             new ProductConfigurationDeletePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
+     */
+    protected function getCategoryStoragePlugins(): array
+    {
+        return [
+            new CategoryStoreStorageWritePublisherPlugin(),
+            new CategoryStoreStorageWriteForPublishingPublisherPlugin(),
+            new CategoryTreeWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
+     */
+    protected function getCategoryPageSearchPlugins(): array
+    {
+        return [
+            new CategoryStoreSearchWritePublisherPlugin(),
+            new CategoryStoreSearchWriteForPublishingPublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
+     */
+    protected function getProductCategoryStoragePlugins(): array
+    {
+        return [
+            new CategoryStoreWritePublisherPlugin(),
+            new CategoryStoreWriteForPublishingPublisherPlugin(),
+            new CategoryStoreDeletePublisherPlugin(),
         ];
     }
 }

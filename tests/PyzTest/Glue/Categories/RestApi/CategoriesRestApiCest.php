@@ -66,6 +66,8 @@ class CategoriesRestApiCest
     }
 
     /**
+     * @skip
+     *
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Categories\CategoriesRestApiTester $I

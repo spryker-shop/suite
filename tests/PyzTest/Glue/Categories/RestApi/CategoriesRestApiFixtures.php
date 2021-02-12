@@ -57,6 +57,13 @@ class CategoriesRestApiFixtures implements FixturesBuilderInterface, FixturesCon
      */
     protected function createCategory(CategoriesRestApiTester $I): void
     {
+        $storeTransfer = $I->getLocator()->store()->facade()->getCurrentStore();
+
         $this->categoryTransfer = $I->haveLocalizedCategory();
+
+        $I->haveCategoryStoreRelation(
+            $this->categoryTransfer->getIdCategory(),
+            $storeTransfer->getIdStore()
+        );
     }
 }

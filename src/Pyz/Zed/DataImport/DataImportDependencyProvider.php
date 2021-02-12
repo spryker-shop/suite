@@ -9,6 +9,7 @@ namespace Pyz\Zed\DataImport;
 
 use Spryker\Zed\BusinessOnBehalfDataImport\Communication\Plugin\DataImport\BusinessOnBehalfCompanyUserDataImportPlugin;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
+use Spryker\Zed\CategoryDataImport\Communication\Plugin\DataImport\CategoryStoreDataImportPlugin;
 use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageDataImportPlugin;
 use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageStoreDataImportPlugin;
 use Spryker\Zed\CmsSlotBlockDataImport\Communication\Plugin\CmsSlotBlockDataImportPlugin;
@@ -314,6 +315,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ContentNavigationDataImportPlugin(),
             new MerchantCategoryDataImportPlugin(),
             new ProductConfigurationDataImportPlugin(),
+            new CategoryStoreDataImportPlugin(),
         ];
     }
 
