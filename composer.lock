@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.173.7",
+            "version": "3.173.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "854b9f827438d1d69df6550d9ada40deaa6d44fe"
+                "reference": "e6d08cdc8206af55dd7bbb967a0350b41263018c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/854b9f827438d1d69df6550d9ada40deaa6d44fe",
-                "reference": "854b9f827438d1d69df6550d9ada40deaa6d44fe",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e6d08cdc8206af55dd7bbb967a0350b41263018c",
+                "reference": "e6d08cdc8206af55dd7bbb967a0350b41263018c",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.173.7"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.173.8"
             },
-            "time": "2021-02-11T19:13:05+00:00"
+            "time": "2021-02-12T19:15:02+00:00"
         },
         {
             "name": "brick/math",
@@ -2348,6 +2348,73 @@
             "time": "2020-07-31T21:01:56+00:00"
         },
         {
+            "name": "paragonie/constant_time_encoding",
+            "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/constant_time_encoding.git",
+                "reference": "f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c",
+                "reference": "f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7|^8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6|^7|^8|^9",
+                "vimeo/psalm": "^1|^2|^3|^4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ParagonIE\\ConstantTime\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Steve 'Sc00bz' Thomas",
+                    "email": "steve@tobtu.com",
+                    "homepage": "https://www.tobtu.com",
+                    "role": "Original Developer"
+                }
+            ],
+            "description": "Constant-time Implementations of RFC 4648 Encoding (Base-64, Base-32, Base-16)",
+            "keywords": [
+                "base16",
+                "base32",
+                "base32_decode",
+                "base32_encode",
+                "base64",
+                "base64_decode",
+                "base64_encode",
+                "bin2hex",
+                "encoding",
+                "hex",
+                "hex2bin",
+                "rfc4648"
+            ],
+            "support": {
+                "email": "info@paragonie.com",
+                "issues": "https://github.com/paragonie/constant_time_encoding/issues",
+                "source": "https://github.com/paragonie/constant_time_encoding"
+            },
+            "time": "2020-12-06T15:14:20+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v9.99.100",
             "source": {
@@ -2399,23 +2466,23 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "v2.12.1",
+            "version": "2.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "0eaaa9d5d45335f4342f69603288883388c2fe21"
+                "reference": "199f89c377df6e7a52d127af63b7c52b4e677c6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/0eaaa9d5d45335f4342f69603288883388c2fe21",
-                "reference": "0eaaa9d5d45335f4342f69603288883388c2fe21",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/199f89c377df6e7a52d127af63b7c52b4e677c6c",
+                "reference": "199f89c377df6e7a52d127af63b7c52b4e677c6c",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
                 "ext-sockets": "*",
-                "php": ">=5.6.3",
-                "phpseclib/phpseclib": "^2.0.0"
+                "php": ">=5.6.3,<8.0",
+                "phpseclib/phpseclib": "^2.0|^3.0"
             },
             "conflict": {
                 "php": "7.4.0 - 7.4.1"
@@ -2427,7 +2494,7 @@
                 "ext-curl": "*",
                 "nategood/httpful": "^0.2.20",
                 "phpunit/phpunit": "^5.7|^6.5|^7.0",
-                "squizlabs/php_codesniffer": "^2.5"
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
             "extra": {
@@ -2474,9 +2541,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-amqplib/php-amqplib/issues",
-                "source": "https://github.com/php-amqplib/php-amqplib/tree/v2.12.1"
+                "source": "https://github.com/php-amqplib/php-amqplib/tree/2.12.2"
             },
-            "time": "2020-09-25T18:34:58+00:00"
+            "time": "2021-02-12T17:50:22+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -2525,24 +2592,26 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.30",
+            "version": "3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "136b9ca7eebef78be14abf90d65c5e57b6bc5d36"
+                "reference": "7c751ea006577e4c2e83326d90c8b1e8c11b8ede"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/136b9ca7eebef78be14abf90d65c5e57b6bc5d36",
-                "reference": "136b9ca7eebef78be14abf90d65c5e57b6bc5d36",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/7c751ea006577e4c2e83326d90c8b1e8c11b8ede",
+                "reference": "7c751ea006577e4c2e83326d90c8b1e8c11b8ede",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "paragonie/constant_time_encoding": "^1|^2",
+                "paragonie/random_compat": "^1.4|^2.0|^9.99.99",
+                "php": ">=5.6.1"
             },
             "require-dev": {
                 "phing/phing": "~2.7",
-                "phpunit/phpunit": "^4.8.35|^5.7|^6.0|^9.4",
+                "phpunit/phpunit": "^5.7|^6.0|^9.4",
                 "squizlabs/php_codesniffer": "~2.0"
             },
             "suggest": {
@@ -2557,7 +2626,7 @@
                     "phpseclib/bootstrap.php"
                 ],
                 "psr-4": {
-                    "phpseclib\\": "phpseclib/"
+                    "phpseclib3\\": "phpseclib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2614,7 +2683,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpseclib/phpseclib/issues",
-                "source": "https://github.com/phpseclib/phpseclib/tree/2.0.30"
+                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.5"
             },
             "funding": [
                 {
@@ -2630,7 +2699,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-17T05:42:04+00:00"
+            "time": "2021-02-12T16:18:16+00:00"
         },
         {
             "name": "predis/predis",
@@ -27782,16 +27851,16 @@
         },
         {
             "name": "spryker/merchant-profile-data-import",
-            "version": "0.3.2",
+            "version": "0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-profile-data-import.git",
-                "reference": "793875fe7850cc429bcdaf7e2e42c7d55740063d"
+                "reference": "f7749ef53842190628480904009e17d9d68b4eb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-profile-data-import/zipball/793875fe7850cc429bcdaf7e2e42c7d55740063d",
-                "reference": "793875fe7850cc429bcdaf7e2e42c7d55740063d",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-data-import/zipball/f7749ef53842190628480904009e17d9d68b4eb3",
+                "reference": "f7749ef53842190628480904009e17d9d68b4eb3",
                 "shasum": ""
             },
             "require": {
@@ -27827,22 +27896,22 @@
             ],
             "description": "MerchantProfileDataImport module",
             "support": {
-                "source": "https://github.com/spryker/merchant-profile-data-import/tree/0.3.2"
+                "source": "https://github.com/spryker/merchant-profile-data-import/tree/0.3.3"
             },
-            "time": "2021-01-25T08:39:46+00:00"
+            "time": "2021-02-02T16:40:29+00:00"
         },
         {
             "name": "spryker/merchant-profile-gui",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-profile-gui.git",
-                "reference": "be91edf59366babecd735391430937430ebfca07"
+                "reference": "1b5a8c6bf41f62fcdefd32dfec923df14ee1c767"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-profile-gui/zipball/be91edf59366babecd735391430937430ebfca07",
-                "reference": "be91edf59366babecd735391430937430ebfca07",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-gui/zipball/1b5a8c6bf41f62fcdefd32dfec923df14ee1c767",
+                "reference": "1b5a8c6bf41f62fcdefd32dfec923df14ee1c767",
                 "shasum": ""
             },
             "require": {
@@ -27875,22 +27944,22 @@
             ],
             "description": "MerchantProfileGui module",
             "support": {
-                "source": "https://github.com/spryker/merchant-profile-gui/tree/0.3.0"
+                "source": "https://github.com/spryker/merchant-profile-gui/tree/0.3.1"
             },
-            "time": "2021-01-25T08:39:46+00:00"
+            "time": "2021-02-02T13:46:12+00:00"
         },
         {
             "name": "spryker/merchant-profile-merchant-portal-gui",
-            "version": "0.5.0",
+            "version": "0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-profile-merchant-portal-gui.git",
-                "reference": "bb30f44932c24e731309141a5cabb36996c165f6"
+                "reference": "bab6709fecba516d76608af5bbcdf4c2e754a58d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-profile-merchant-portal-gui/zipball/bb30f44932c24e731309141a5cabb36996c165f6",
-                "reference": "bb30f44932c24e731309141a5cabb36996c165f6",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-merchant-portal-gui/zipball/bab6709fecba516d76608af5bbcdf4c2e754a58d",
+                "reference": "bab6709fecba516d76608af5bbcdf4c2e754a58d",
                 "shasum": ""
             },
             "require": {
@@ -27926,9 +27995,9 @@
             ],
             "description": "MerchantProfileMerchantPortalGui module",
             "support": {
-                "source": "https://github.com/spryker/merchant-profile-merchant-portal-gui/tree/0.5.0"
+                "source": "https://github.com/spryker/merchant-profile-merchant-portal-gui/tree/0.5.1"
             },
-            "time": "2021-01-25T08:28:06+00:00"
+            "time": "2021-02-02T13:51:17+00:00"
         },
         {
             "name": "spryker/merchant-relationship",
@@ -37810,16 +37879,16 @@
         },
         {
             "name": "spryker/product-offer-merchant-portal-gui",
-            "version": "0.8.2",
+            "version": "0.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-offer-merchant-portal-gui.git",
-                "reference": "80618443c1a48a184a053d5d7a993c70958ec609"
+                "reference": "4a6a0c68c786e4b8844d33c9358882a4eba074a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-offer-merchant-portal-gui/zipball/80618443c1a48a184a053d5d7a993c70958ec609",
-                "reference": "80618443c1a48a184a053d5d7a993c70958ec609",
+                "url": "https://api.github.com/repos/spryker/product-offer-merchant-portal-gui/zipball/4a6a0c68c786e4b8844d33c9358882a4eba074a3",
+                "reference": "4a6a0c68c786e4b8844d33c9358882a4eba074a3",
                 "shasum": ""
             },
             "require": {
@@ -37873,9 +37942,9 @@
             ],
             "description": "ProductOfferMerchantPortalGui module",
             "support": {
-                "source": "https://github.com/spryker/product-offer-merchant-portal-gui/tree/0.8.2"
+                "source": "https://github.com/spryker/product-offer-merchant-portal-gui/tree/0.8.3"
             },
-            "time": "2021-01-15T02:21:34+00:00"
+            "time": "2021-02-02T11:20:10+00:00"
         },
         {
             "name": "spryker/product-offer-packaging-unit",
