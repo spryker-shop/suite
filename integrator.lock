@@ -1,0 +1,40 @@
+{
+  "SprykerEco.Payone": {
+    "configure-env": {
+      "80ba41671cd8541903ba682d1f15185670d18b59": {
+        "target": "\\Spryker\\Shared\\Sales\\SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING",
+        "value": {
+          "payoneCreditCard": "PayoneCreditCardPartialOperations",
+          "payoneInstantOnlineTransfer": "PayoneOnlineTransferPartialOperations"
+        }
+      },
+      "b141fe95311825598cead8a0dbe35f16b40c54f9": {
+        "target": "\\Spryker\\Shared\\Oms\\OmsConstants::ACTIVE_PROCESSES",
+        "value": [
+          "PayoneCreditCardPartialOperations",
+          "PayoneOnlineTransferPartialOperations"
+        ]
+      }
+    },
+    "wire-plugin": {
+      "b430d9e4f6e4aeb675fcbc4ab95788a47f34c5ab": {
+        "target": "\\Spryker\\Yves\\Router\\RouterDependencyProvider::getRouteProvider",
+        "source": "\\SprykerEco\\Yves\\Payone\\Plugin\\Router\\PayoneRouteProviderPlugin"
+      },
+      "949bf91885352f20c0b537ea6615e91bdbcd33a9": {
+        "target": "\\Spryker\\Zed\\Checkout\\CheckoutDependencyProvider::getCheckoutPostHooks",
+        "source": "\\SprykerEco\\Zed\\Payone\\Communication\\Plugin\\Checkout\\PayoneCheckoutPostSaveHookPlugin"
+      },
+      "960deeecfb47dcaf668eb26fc1eae28aca8606d0": {
+        "target": "\\Spryker\\Zed\\Payment\\PaymentDependencyProvider::getCheckoutPreCheckPlugins",
+        "key": "Payone",
+        "source": "\\SprykerEco\\Zed\\Payone\\Communication\\Plugin\\Checkout\\PayonePreCheckPlugin"
+      },
+      "9603dcc01d94c1603f81309d8b70c4521e9976c6": {
+        "target": "\\Spryker\\Zed\\Payment\\PaymentDependencyProvider::getCheckoutSaveOrderPlugins",
+        "key": "Payone",
+        "source": "\\SprykerEco\\Zed\\Payone\\Communication\\Plugin\\Checkout\\PayoneSaveOrderPlugin"
+      }
+    }
+  }
+}
