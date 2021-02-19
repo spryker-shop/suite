@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7bd6569d498f985b4703cce0c9f6e671",
+    "content-hash": "5987eab781aba8261d134bfeacf82a6b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -10443,11 +10443,17 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "dev-feature/deactivate-c3-call-in-localserver",
+            "version": "4.1.17",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker/Codeception.git",
-                "reference": "873955ddbca9df1ddab2ebc30fb2a3baa33451b7"
+                "url": "https://github.com/Codeception/Codeception.git",
+                "reference": "c153b1ab289b3e3109e685379aa8847c54ac2b68"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/c153b1ab289b3e3109e685379aa8847c54ac2b68",
+                "reference": "c153b1ab289b3e3109e685379aa8847c54ac2b68",
+                "shasum": ""
             },
             "require": {
                 "behat/gherkin": "^4.4.0",
@@ -10458,7 +10464,7 @@
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "guzzlehttp/psr7": "~1.4",
-                "php": ">=5.6.0 <8.0",
+                "php": ">=5.6.0 <9.0",
                 "symfony/console": ">=2.7 <6.0",
                 "symfony/css-selector": ">=2.7 <6.0",
                 "symfony/event-dispatcher": ">=2.7 <6.0",
@@ -10476,7 +10482,7 @@
                 "monolog/monolog": "~1.8",
                 "squizlabs/php_codesniffer": "~2.0",
                 "symfony/process": ">=2.7 <6.0",
-                "vlucas/phpdotenv": "^2.0 | ^3.0 | ^4.0"
+                "vlucas/phpdotenv": "^2.0 | ^3.0 | ^4.0 | ^5.0"
             },
             "suggest": {
                 "codeception/specify": "BDD-style code blocks",
@@ -10498,13 +10504,7 @@
                     "Codeception\\Extension\\": "ext"
                 }
             },
-            "autoload-dev": {
-                "classmap": [
-                    "tests/cli/_steps",
-                    "tests/data/DummyClass.php",
-                    "tests/data/claypit/tests/_data"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -10519,12 +10519,22 @@
             "homepage": "http://codeception.com/",
             "keywords": [
                 "BDD",
+                "TDD",
                 "acceptance testing",
                 "functional testing",
-                "tdd",
                 "unit testing"
             ],
-            "time": "2020-09-23T19:34:14+00:00"
+            "support": {
+                "issues": "https://github.com/Codeception/Codeception/issues",
+                "source": "https://github.com/Codeception/Codeception/tree/4.1.17"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/codeception",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2021-02-01T07:30:47+00:00"
         },
         {
             "name": "codeception/lib-asserts",
@@ -10582,18 +10592,24 @@
         },
         {
             "name": "codeception/lib-innerbrowser",
-            "version": "dev-feature/use-client-through-getter",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker-sdk/lib-innerbrowser.git",
-                "reference": "7fe5b3ffa440d28c361365bcb75c8737031ae3ee"
+                "url": "https://github.com/Codeception/lib-innerbrowser.git",
+                "reference": "b7406c710684c255d9b067d7795269a5585a0406"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/b7406c710684c255d9b067d7795269a5585a0406",
+                "reference": "b7406c710684c255d9b067d7795269a5585a0406",
+                "shasum": ""
             },
             "require": {
                 "codeception/codeception": "*@dev",
                 "ext-dom": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "php": ">=5.6.0 <8.0",
+                "php": ">=5.6.0 <9.0",
                 "symfony/browser-kit": ">=2.7 <6.0",
                 "symfony/dom-crawler": ">=2.7 <6.0"
             },
@@ -10609,11 +10625,7 @@
                     "src/"
                 ]
             },
-            "scripts": {
-                "test": [
-                    "codecept run --coverage-xml"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -10628,11 +10640,15 @@
                 }
             ],
             "description": "Parent library for all Codeception framework modules and PhpBrowser",
-            "homepage": "http://codeception.com/",
+            "homepage": "https://codeception.com/",
             "keywords": [
                 "codeception"
             ],
-            "time": "2020-07-07T08:01:35+00:00"
+            "support": {
+                "issues": "https://github.com/Codeception/lib-innerbrowser/issues",
+                "source": "https://github.com/Codeception/lib-innerbrowser/tree/1.4.0"
+            },
+            "time": "2021-01-29T18:17:25+00:00"
         },
         {
             "name": "codeception/module-asserts",
@@ -16531,18 +16547,6 @@
     ],
     "aliases": [
         {
-            "package": "codeception/codeception",
-            "version": "dev-feature/deactivate-c3-call-in-localserver",
-            "alias": "4.1.7",
-            "alias_normalized": "4.1.7.0"
-        },
-        {
-            "package": "codeception/lib-innerbrowser",
-            "version": "dev-feature/use-client-through-getter",
-            "alias": "1.3.2",
-            "alias_normalized": "1.3.2.0"
-        },
-        {
             "package": "spryker-sdk/spryk",
             "version": "9999999-dev",
             "alias": "0.2.9",
@@ -16594,8 +16598,6 @@
         "spryker-eco/new-relic": 20,
         "spryker-eco/payone": 20,
         "spryker/composer-merge-plugin": 20,
-        "codeception/codeception": 20,
-        "codeception/lib-innerbrowser": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/development-core": 20,
         "spryker/code-generator": 20,
