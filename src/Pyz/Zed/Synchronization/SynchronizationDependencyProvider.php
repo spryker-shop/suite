@@ -70,7 +70,9 @@ use Spryker\Zed\ProductStorage\Communication\Plugin\Synchronization\ProductAbstr
 use Spryker\Zed\ProductStorage\Communication\Plugin\Synchronization\ProductConcreteSynchronizationDataPlugin;
 use Spryker\Zed\SalesReturnSearch\Communication\Plugin\Synchronization\ReturnReasonSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ShoppingListStorage\Communication\Plugin\Synchronization\ShoppingListSynchronizationDataBulkPlugin;
+use Spryker\Zed\Synchronization\Communication\Plugin\Synchronization\SynchronizationDataQueryExpanderWhereBetweenStrategyPlugin;
 use Spryker\Zed\Synchronization\SynchronizationDependencyProvider as SprykerSynchronizationDependencyProvider;
+use Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataQueryExpanderStrategyPluginInterface;
 use Spryker\Zed\TaxProductStorage\Communication\Plugin\Synchronization\TaxProductSynchronizationDataPlugin;
 use Spryker\Zed\TaxStorage\Communication\Plugin\Synchronization\TaxSynchronizationDataPlugin;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Synchronization\UrlRedirectSynchronizationDataPlugin;
@@ -153,5 +155,13 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ProductConfigurationSynchronizationDataRepositoryPlugin(),
             new MerchantSynchronizationDataBulkRepositoryPlugin(),
         ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataQueryExpanderStrategyPluginInterface
+     */
+    protected function getSynchronizationDataQueryExpanderStrategyPlugin(): SynchronizationDataQueryExpanderStrategyPluginInterface
+    {
+        return new SynchronizationDataQueryExpanderWhereBetweenStrategyPlugin();
     }
 }

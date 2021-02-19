@@ -3,7 +3,7 @@
   "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-bugfix/te-7742-get-rid-of-branch-of-forked-codeception-module",
+    "spryker/spryker": "dev-master",
     "spryker/spryker-shop": "dev-master",
     "spryker/install": "dev-master",
     "spryker/rabbit-mq": "dev-master",
@@ -91,13 +91,12 @@
     "willdurand/negotiation": "^2.3",
     "laminas/laminas-config": "^2.5.1 || ^3.1.0",
     "laminas/laminas-filter": "^2.5.1",
-    "laminas/laminas-servicemanager": "^2.7.4 || ^3.3.0",
-    "lcobucci/jwt": "3.3.3"
+    "laminas/laminas-servicemanager": "^2.7.4 || ^3.3.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^8.5.0",
-    "codeception/codeception": "^4.1.7",
-    "codeception/lib-innerbrowser": "^1.3.2",
+    "phpunit/phpunit": "^8.5.0 || ^9.5.2",
+    "codeception/codeception": "dev-feature/deactivate-c3-call-in-localserver as 4.1.7",
+    "codeception/lib-innerbrowser": "dev-feature/use-client-through-getter as 1.3.2",
     "spryker/architecture-sniffer": "dev-master",
     "spryker/development-core": "dev-master",
     "spryker/code-generator": "dev-master",
@@ -106,7 +105,6 @@
     "pdepend/pdepend": "^2.2.2",
     "phpmd/phpmd": "^2.0.0",
     "composer/package-versions-deprecated": "^1.8.0",
-    "sensiolabs/security-checker": "*",
     "symfony/web-profiler-bundle": "^4.0.0 || ^5.0.0",
     "symfony/var-dumper": "*",
     "spryker-sdk/codeception-phantoman": "dev-master",
@@ -184,11 +182,23 @@
     },
     {
       "type": "git",
+      "url": "git@github.com:spryker-sdk/lib-innerbrowser.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:spryker/Codeception.git"
+    },
+    {
+      "type": "git",
       "url": "git@github.com:spryker/spryker-shop.git"
     },
     {
       "type": "git",
       "url": "git@github.com:spryker/development-core.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:spryker-eco/coremedia.git"
     }
   ],
   "scripts": {
