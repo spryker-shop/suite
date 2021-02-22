@@ -22233,16 +22233,16 @@
         },
         {
             "name": "spryker/customer-group",
-            "version": "2.5.5",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer-group.git",
-                "reference": "9f9a380881ba4f344ea85bcdd01cc395ef3e7650"
+                "reference": "cdf3efe94002500ffa186d4084dd34e7089ee59e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer-group/zipball/9f9a380881ba4f344ea85bcdd01cc395ef3e7650",
-                "reference": "9f9a380881ba4f344ea85bcdd01cc395ef3e7650",
+                "url": "https://api.github.com/repos/spryker/customer-group/zipball/cdf3efe94002500ffa186d4084dd34e7089ee59e",
+                "reference": "cdf3efe94002500ffa186d4084dd34e7089ee59e",
                 "shasum": ""
             },
             "require": {
@@ -22253,7 +22253,8 @@
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/util-date-time": "^1.0.0",
-                "spryker/util-encoding": "^2.0.0"
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/util-sanitize": "^2.0.0"
             },
             "require-dev": {
                 "spryker/application": "*",
@@ -22287,9 +22288,9 @@
             ],
             "description": "CustomerGroup module",
             "support": {
-                "source": "https://github.com/spryker/customer-group/tree/2.5.5"
+                "source": "https://github.com/spryker/customer-group/tree/2.6.0"
             },
-            "time": "2021-02-05T08:49:33+00:00"
+            "time": "2021-02-22T13:24:59+00:00"
         },
         {
             "name": "spryker/customer-group-discount-connector",
@@ -22533,20 +22534,20 @@
         },
         {
             "name": "spryker/customer-user-connector-gui",
-            "version": "1.2.3",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer-user-connector-gui.git",
-                "reference": "eb21bdb46ecd03d08c27b9b99ec08d72197a587f"
+                "reference": "23c1597fb95d34d0ffee76a1bae74a5c500369fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer-user-connector-gui/zipball/eb21bdb46ecd03d08c27b9b99ec08d72197a587f",
-                "reference": "eb21bdb46ecd03d08c27b9b99ec08d72197a587f",
+                "url": "https://api.github.com/repos/spryker/customer-user-connector-gui/zipball/23c1597fb95d34d0ffee76a1bae74a5c500369fd",
+                "reference": "23c1597fb95d34d0ffee76a1bae74a5c500369fd",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/customer": "^6.3.0 || ^7.0.0",
                 "spryker/customer-user-connector": "^1.0.0",
                 "spryker/gui": "^3.10.0",
@@ -22554,7 +22555,9 @@
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/user": "^3.0.0",
-                "spryker/user-extension": "^1.0.0"
+                "spryker/user-extension": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/util-sanitize": "^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -22580,9 +22583,9 @@
             ],
             "description": "CustomerUserConnectorGui module",
             "support": {
-                "source": "https://github.com/spryker/customer-user-connector-gui/tree/master"
+                "source": "https://github.com/spryker/customer-user-connector-gui/tree/1.3.0"
             },
-            "time": "2020-07-03T08:13:47+00:00"
+            "time": "2021-02-01T08:13:22+00:00"
         },
         {
             "name": "spryker/customers-rest-api",
