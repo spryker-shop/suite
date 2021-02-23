@@ -25,7 +25,7 @@ use Codeception\Actor;
  *
  * @SuppressWarnings(PHPMD)
  */
-class DataImportCommunicationTester extends Actor
+class DataImportBusinessTester extends Actor
 {
-    use _generated\DataImportCommunicationTesterActions;
+    use _generated\DataImportBusinessTesterActions;
 }

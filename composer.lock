@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5987eab781aba8261d134bfeacf82a6b",
+    "content-hash": "bf7dab798dcff4081d3baca39843e101",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4141,6 +4141,58 @@
             "time": "2021-02-15T10:32:48+00:00"
         },
         {
+            "name": "seld/signal-handler",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/signal-handler.git",
+                "reference": "0852a32d804c6a80f428f6e815eb383ff1c4c2fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/signal-handler/zipball/0852a32d804c6a80f428f6e815eb383ff1c4c2fd",
+                "reference": "0852a32d804c6a80f428f6e815eb383ff1c4c2fd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8",
+                "psr/log": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Seld\\Signal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                }
+            ],
+            "description": "Simple unix signal handler that silently fails on windows for easy cross-platform development",
+            "keywords": [
+                "posix",
+                "sigint",
+                "signal",
+                "sigterm",
+                "unix"
+            ],
+            "support": {
+                "issues": "https://github.com/Seldaek/signal-handler/issues",
+                "source": "https://github.com/Seldaek/signal-handler/tree/1.2.0"
+            },
+            "time": "2019-07-29T10:26:24+00:00"
+        },
+        {
             "name": "spryker-eco/loggly",
             "version": "dev-master",
             "source": {
@@ -4756,7 +4808,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "5c6b47f3fb08954de521d832b37d636c4a804d2d"
+                "reference": "ffb09926099524082434ee4c788ed4557e05f466"
             },
             "require": {
                 "php": ">=7.3"
@@ -5044,6 +5096,7 @@
                 "spryker/glossary-storage": "*",
                 "spryker/glue-application": "*",
                 "spryker/glue-application-extension": "*",
+                "spryker/graceful-runner": "*",
                 "spryker/graph": "*",
                 "spryker/graphviz": "*",
                 "spryker/gui": "*",
@@ -5554,7 +5607,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-02-23T12:52:59+00:00"
+            "time": "2021-02-23T14:56:42+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -12013,16 +12066,16 @@
         },
         {
             "name": "phar-io/version",
-            "version": "3.0.4",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phar-io/version.git",
-                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451"
+                "reference": "bae7c545bef187884426f042434e561ab1ddb182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phar-io/version/zipball/e4782611070e50613683d2b9a57730e9a3ba5451",
-                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451",
+                "url": "https://api.github.com/repos/phar-io/version/zipball/bae7c545bef187884426f042434e561ab1ddb182",
+                "reference": "bae7c545bef187884426f042434e561ab1ddb182",
                 "shasum": ""
             },
             "require": {
@@ -12058,9 +12111,9 @@
             "description": "Library for handling version information and constraints",
             "support": {
                 "issues": "https://github.com/phar-io/version/issues",
-                "source": "https://github.com/phar-io/version/tree/3.0.4"
+                "source": "https://github.com/phar-io/version/tree/3.1.0"
             },
-            "time": "2020-12-13T23:18:30+00:00"
+            "time": "2021-02-23T14:00:09+00:00"
         },
         {
             "name": "php-webdriver/webdriver",
