@@ -17,22 +17,23 @@ suites:
         class_name: DataImportCommunicationTester
         modules:
             enabled:
-                - Asserts
                 - \SprykerTest\Shared\Testify\Helper\Environment
                 - \SprykerTest\Shared\Testify\Helper\ConfigHelper
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
                     projectNamespaces: ['Pyz']
                 - \SprykerTest\Shared\Testify\Helper\DependencyHelper
                 - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \SprykerTest\Zed\Testify\Helper\Business\BusinessHelper
+                - \SprykerTest\Zed\Testify\Helper\Business\DependencyProviderHelper
+                - \SprykerTest\Zed\Testify\Helper\Communication\DependencyProviderHelper
     Business:
         path: Business
-        class_name: DataImportCommunicationTester
+        class_name: DataImportBusinessTester
         modules:
             enabled:
-            - Asserts
-            - \SprykerTest\Shared\Testify\Helper\Environment
-            - \SprykerTest\Shared\Testify\Helper\ConfigHelper
-            - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
-                  projectNamespaces: ['Pyz']
-            - \SprykerTest\Shared\Testify\Helper\DependencyHelper
-            - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                      projectNamespaces: ['Pyz']
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper

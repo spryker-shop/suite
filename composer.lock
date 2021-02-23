@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "61e7e649977ab17283349a06a8048ac1",
+    "content-hash": "8b5923b9bcb419e037a0806c298492a8",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3453,6 +3453,58 @@
                 "source": "https://github.com/ruflin/Elastica/tree/7.1.0"
             },
             "time": "2021-02-15T10:32:48+00:00"
+        },
+        {
+            "name": "seld/signal-handler",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/signal-handler.git",
+                "reference": "0852a32d804c6a80f428f6e815eb383ff1c4c2fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/signal-handler/zipball/0852a32d804c6a80f428f6e815eb383ff1c4c2fd",
+                "reference": "0852a32d804c6a80f428f6e815eb383ff1c4c2fd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8",
+                "psr/log": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Seld\\Signal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                }
+            ],
+            "description": "Simple unix signal handler that silently fails on windows for easy cross-platform development",
+            "keywords": [
+                "posix",
+                "sigint",
+                "signal",
+                "sigterm",
+                "unix"
+            ],
+            "support": {
+                "issues": "https://github.com/Seldaek/signal-handler/issues",
+                "source": "https://github.com/Seldaek/signal-handler/tree/1.2.0"
+            },
+            "time": "2019-07-29T10:26:24+00:00"
         },
         {
             "name": "spryker-eco/loggly",
@@ -22831,22 +22883,23 @@
         },
         {
             "name": "spryker/data-export",
-            "version": "0.1.2",
+            "version": "0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/data-export.git",
-                "reference": "cdff1b285163bf1d6e0065d1dadfa00e86f4428e"
+                "reference": "2f398fbe1a2023283cceef3dd9c1b0aaf7e5b5bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/data-export/zipball/cdff1b285163bf1d6e0065d1dadfa00e86f4428e",
-                "reference": "cdff1b285163bf1d6e0065d1dadfa00e86f4428e",
+                "url": "https://api.github.com/repos/spryker/data-export/zipball/2f398fbe1a2023283cceef3dd9c1b0aaf7e5b5bc",
+                "reference": "2f398fbe1a2023283cceef3dd9c1b0aaf7e5b5bc",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/csv": "^3.0.0",
                 "spryker/data-export-extension": "^0.1.0",
+                "spryker/graceful-runner": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.8.0",
@@ -22873,9 +22926,9 @@
             ],
             "description": "DataExport module",
             "support": {
-                "source": "https://github.com/spryker/data-export/tree/master"
+                "source": "https://github.com/spryker/data-export/tree/0.1.3"
             },
-            "time": "2020-07-21T14:51:17+00:00"
+            "time": "2021-02-17T09:10:22+00:00"
         },
         {
             "name": "spryker/data-export-extension",
@@ -22921,16 +22974,16 @@
         },
         {
             "name": "spryker/data-import",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/data-import.git",
-                "reference": "50ebb1a9db8a565487e2320a3e2f5648b3c7505f"
+                "reference": "e5038b93c05fb26312cddc9e40b21e078873d05b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/data-import/zipball/50ebb1a9db8a565487e2320a3e2f5648b3c7505f",
-                "reference": "50ebb1a9db8a565487e2320a3e2f5648b3c7505f",
+                "url": "https://api.github.com/repos/spryker/data-import/zipball/e5038b93c05fb26312cddc9e40b21e078873d05b",
+                "reference": "e5038b93c05fb26312cddc9e40b21e078873d05b",
                 "shasum": ""
             },
             "require": {
@@ -22939,6 +22992,7 @@
                 "spryker/data-import-extension": "^1.2.0",
                 "spryker/error-handler": "^2.1.0",
                 "spryker/event": "^2.3.0",
+                "spryker/graceful-runner": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^2.0.0 || ^3.0.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -22975,9 +23029,9 @@
             ],
             "description": "DataImport module",
             "support": {
-                "source": "https://github.com/spryker/data-import/tree/1.12.0"
+                "source": "https://github.com/spryker/data-import/tree/1.13.0"
             },
-            "time": "2020-12-02T08:18:32+00:00"
+            "time": "2021-02-17T09:10:22+00:00"
         },
         {
             "name": "spryker/data-import-extension",
@@ -25170,6 +25224,50 @@
                 "source": "https://github.com/spryker/glue-application-extension/tree/1.3.0"
             },
             "time": "2020-02-24T13:45:16+00:00"
+        },
+        {
+            "name": "spryker/graceful-runner",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/graceful-runner.git",
+                "reference": "a2462f9306d5b87c652d44bb2295193ed2ea63ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/graceful-runner/zipball/a2462f9306d5b87c652d44bb2295193ed2ea63ec",
+                "reference": "a2462f9306d5b87c652d44bb2295193ed2ea63ec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "seld/signal-handler": "^1.2.0",
+                "spryker/kernel": "^3.30.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "GracefulRunner module",
+            "support": {
+                "source": "https://github.com/spryker/graceful-runner/tree/1.0.0"
+            },
+            "time": "2021-02-17T09:10:21+00:00"
         },
         {
             "name": "spryker/graph",
@@ -43885,20 +43983,21 @@
         },
         {
             "name": "spryker/scheduler",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/scheduler.git",
-                "reference": "31a9f242ae1c16ae202d7e3dc86bf42b78b3d249"
+                "reference": "ba73b4b67699cc539a082a2954df88849a03ab69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/scheduler/zipball/31a9f242ae1c16ae202d7e3dc86bf42b78b3d249",
-                "reference": "31a9f242ae1c16ae202d7e3dc86bf42b78b3d249",
+                "url": "https://api.github.com/repos/spryker/scheduler/zipball/ba73b4b67699cc539a082a2954df88849a03ab69",
+                "reference": "ba73b4b67699cc539a082a2954df88849a03ab69",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
+                "spryker/graceful-runner": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/scheduler-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -43932,9 +44031,9 @@
             ],
             "description": "Scheduler module",
             "support": {
-                "source": "https://github.com/spryker/scheduler/tree/1.1.1"
+                "source": "https://github.com/spryker/scheduler/tree/1.2.0"
             },
-            "time": "2020-09-17T14:04:23+00:00"
+            "time": "2021-02-17T09:10:22+00:00"
         },
         {
             "name": "spryker/scheduler-extension",
@@ -56670,16 +56769,16 @@
         },
         {
             "name": "phar-io/version",
-            "version": "3.0.4",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phar-io/version.git",
-                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451"
+                "reference": "bae7c545bef187884426f042434e561ab1ddb182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phar-io/version/zipball/e4782611070e50613683d2b9a57730e9a3ba5451",
-                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451",
+                "url": "https://api.github.com/repos/phar-io/version/zipball/bae7c545bef187884426f042434e561ab1ddb182",
+                "reference": "bae7c545bef187884426f042434e561ab1ddb182",
                 "shasum": ""
             },
             "require": {
@@ -56715,9 +56814,9 @@
             "description": "Library for handling version information and constraints",
             "support": {
                 "issues": "https://github.com/phar-io/version/issues",
-                "source": "https://github.com/phar-io/version/tree/3.0.4"
+                "source": "https://github.com/phar-io/version/tree/3.1.0"
             },
-            "time": "2020-12-13T23:18:30+00:00"
+            "time": "2021-02-23T14:00:09+00:00"
         },
         {
             "name": "php-webdriver/webdriver",
@@ -59804,16 +59903,16 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.36.1",
+            "version": "3.36.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "cc82a902ae904df2935e39f1731601fdaf0261c9"
+                "reference": "c4128d87bacd3fae8386a4ee4016859a4ff88122"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/cc82a902ae904df2935e39f1731601fdaf0261c9",
-                "reference": "cc82a902ae904df2935e39f1731601fdaf0261c9",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/c4128d87bacd3fae8386a4ee4016859a4ff88122",
+                "reference": "c4128d87bacd3fae8386a4ee4016859a4ff88122",
                 "shasum": ""
             },
             "require": {
@@ -59870,9 +59969,9 @@
             ],
             "description": "Testify module",
             "support": {
-                "source": "https://github.com/spryker/testify/tree/3.36.1"
+                "source": "https://github.com/spryker/testify/tree/3.36.2"
             },
-            "time": "2021-01-21T13:41:12+00:00"
+            "time": "2021-02-17T09:10:20+00:00"
         },
         {
             "name": "spryker/web-profiler",

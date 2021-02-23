@@ -14,7 +14,6 @@ use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Generated\Shared\Transfer\DataImporterReaderConfigurationTransfer;
 use Propel\Runtime\Propel;
-use Pyz\Zed\DataImport\Business\DataImportBusinessFactory;
 use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintException;
 use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintTrait;
 use Pyz\Zed\DataImport\DataImportConfig;
@@ -42,6 +41,11 @@ abstract class AbstractWriterPluginTest extends Unit
     use PropelMariaDbVersionConstraintTrait;
 
     /**
+     * @var \PyzTest\Zed\DataImport\DataImportCommunicationTester
+     */
+    protected $tester;
+
+    /**
      * @return array
      */
     abstract public function getDataImportWriterPlugins(): array;
@@ -56,26 +60,24 @@ abstract class AbstractWriterPluginTest extends Unit
      */
     protected function getDataImportBusinessFactoryStub()
     {
-        /**
-         * @var \Pyz\Zed\DataImport\Business\DataImportBusinessFactory
-         */
-        $dataImportBusinessFactory = Stub::make(DataImportBusinessFactory::class, [
-            'createProductAbstractDataImportWriters' => $this->createDataImportWriters(),
-            'createProductAbstractStoreDataImportWriters' => $this->createDataImportWriters(),
-            'createProductPriceDataImportWriters' => $this->createDataImportWriters(),
-            'createProductConcreteDataImportWriters' => $this->createDataImportWriters(),
-            'createProductImageDataWriters' => $this->createDataImportWriters(),
-            'createProductStockDataImportWriters' => $this->createDataImportWriters(),
-            'getConfig' => $this->getDataImportConfigStub(),
-            'getPropelConnection' => $this->getPropelConnection(),
-            'getStore' => $this->getStore(),
-            'getPriceProductFacade' => new PriceProductFacade(),
-            'getUtilEncodingService' => new DataImportToUtilEncodingServiceBridge(
-                new UtilEncodingService()
-            ),
-        ]);
+        $this->tester->mockFactoryMethod('createProductAbstractDataImportWriters', $this->createDataImportWriters());
+        $this->tester->mockFactoryMethod('createProductAbstractStoreDataImportWriters', $this->createDataImportWriters());
+        $this->tester->mockFactoryMethod('createProductPriceDataImportWriters', $this->createDataImportWriters());
+        $this->tester->mockFactoryMethod('createProductConcreteDataImportWriters', $this->createDataImportWriters());
+        $this->tester->mockFactoryMethod('createProductImageDataWriters', $this->createDataImportWriters());
+        $this->tester->mockFactoryMethod('createProductStockDataImportWriters', $this->createDataImportWriters());
+        $this->tester->mockFactoryMethod('getConfig', $this->getDataImportConfigStub());
+        $this->tester->mockFactoryMethod('getPropelConnection', $this->getPropelConnection());
+        $this->tester->mockFactoryMethod('getStore', $this->getStore());
+        $this->tester->mockFactoryMethod('getPriceProductFacade', new PriceProductFacade());
+        $this->tester->mockFactoryMethod('getUtilEncodingService', new DataImportToUtilEncodingServiceBridge(
+            new UtilEncodingService()
+        ));
 
-        return $dataImportBusinessFactory;
+        /** @var \Pyz\Zed\DataImport\Business\DataImportBusinessFactory $factory */
+        $factory = $this->tester->getFactory();
+
+        return $factory;
     }
 
     /**
