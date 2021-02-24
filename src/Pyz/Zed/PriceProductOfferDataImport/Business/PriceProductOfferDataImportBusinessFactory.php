@@ -80,7 +80,7 @@ class PriceProductOfferDataImportBusinessFactory extends SprykerPriceProductOffe
         string $importType,
         DataReaderInterface $reader
     ): DataImporterConditional {
-        return new DataImporterConditional($importType, $reader);
+        return new DataImporterConditional($importType, $reader, $this->getGracefulRunnerFacade());
     }
 
     /**
