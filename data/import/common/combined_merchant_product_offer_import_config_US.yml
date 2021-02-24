@@ -1,0 +1,14 @@
+# Example of demo shop 'combined merchant product offer' data import.
+version: 0
+
+actions:
+  - data_entity: combined-merchant-product-offer
+    source: data/import/common/US/combined_merchant_product_offer.csv
+  - data_entity: combined-merchant-product-offer-store
+    source: data/import/common/US/combined_merchant_product_offer.csv
+  - data_entity: combined-product-offer-validity
+    source: data/import/common/US/combined_merchant_product_offer.csv
+  - data_entity: combined-product-offer-stock
+    source: data/import/common/US/combined_merchant_product_offer.csv
+  - data_entity: combined-price-product-offer
+    source: data/import/common/US/combined_merchant_product_offer.csv

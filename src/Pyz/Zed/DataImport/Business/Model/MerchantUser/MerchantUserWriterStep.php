@@ -16,7 +16,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class MerchantUserWriterStep implements DataImportStepInterface
 {
-    protected const MERCHANT_KEY = 'merchant_key';
+    protected const MERCHANT_REFERENCE = 'merchant_reference';
     protected const USERNAME = 'username';
 
     /**
@@ -24,7 +24,7 @@ class MerchantUserWriterStep implements DataImportStepInterface
      */
     public function execute(DataSetInterface $dataSet): void
     {
-        $idMerchant = $this->getIdMerchantByKey($dataSet[static::MERCHANT_KEY]);
+        $idMerchant = $this->getIdMerchantByReference($dataSet[static::MERCHANT_REFERENCE]);
         $idUser = $this->getIdUserByUsername($dataSet[static::USERNAME]);
 
         $merchantUserEntity = SpyMerchantUserQuery::create()
@@ -36,19 +36,19 @@ class MerchantUserWriterStep implements DataImportStepInterface
     }
 
     /**
-     * @param string $merchantKey
+     * @param string $merchantReference
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
      *
      * @return int
      */
-    protected function getIdMerchantByKey(string $merchantKey): int
+    protected function getIdMerchantByReference(string $merchantReference): int
     {
         $merchantEntity = SpyMerchantQuery::create()
-            ->findOneByMerchantKey($merchantKey);
+            ->findOneByMerchantReference($merchantReference);
 
         if (!$merchantEntity) {
-            throw new EntityNotFoundException(sprintf('Merchant with key "%s" is not found.', $merchantKey));
+            throw new EntityNotFoundException(sprintf('Merchant with reference "%s" is not found.', $merchantReference));
         }
 
         return $merchantEntity->getIdMerchant();

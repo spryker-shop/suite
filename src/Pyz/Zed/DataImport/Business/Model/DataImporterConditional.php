@@ -22,11 +22,13 @@ class DataImporterConditional extends DataImporter
     /**
      * @param \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface $dataSetCondition
      *
-     * @return void
+     * @return $this
      */
     public function setDataSetCondition(DataSetConditionInterface $dataSetCondition)
     {
         $this->dataSetCondition = $dataSetCondition;
+
+        return $this;
     }
 
     /**
