@@ -11,6 +11,7 @@ use Spryker\Glue\ConfigurableBundlesRestApi\Plugin\OrdersRestApi\SalesConfigured
 use Spryker\Glue\OmsRestApi\Plugin\OrdersRestApi\OmsRestOrderItemsAttributesMapperPlugin;
 use Spryker\Glue\OrdersRestApi\OrdersRestApiDependencyProvider as SprykerOrdersRestApiDependencyProvider;
 use Spryker\Glue\ProductBundlesRestApi\Plugin\OrdersRestApi\BundleItemRestOrderDetailsAttributesMapperPlugin;
+use Spryker\Glue\ProductConfigurationsRestApi\Plugin\OrdersRestApi\ProductConfigurationRestOrderItemsAttributesMapperPlugin;
 use Spryker\Glue\ProductMeasurementUnitsRestApi\Plugin\OrdersRestApi\SalesUnitRestOrderItemsAttributesMapperPlugin;
 use Spryker\Glue\ProductOptionsRestApi\Plugin\OrdersRestApi\ProductOptionRestOrderItemsAttributesMapperPlugin;
 use Spryker\Glue\ShipmentsRestApi\Plugin\OrdersRestApi\ShipmentRestOrderDetailsAttributesMapperPlugin;
@@ -27,6 +28,7 @@ class OrdersRestApiDependencyProvider extends SprykerOrdersRestApiDependencyProv
             new SalesUnitRestOrderItemsAttributesMapperPlugin(),
             new OmsRestOrderItemsAttributesMapperPlugin(),
             new SalesConfiguredBundleRestOrderItemsAttributesMapperPlugin(),
+            new ProductConfigurationRestOrderItemsAttributesMapperPlugin(),
         ];
     }
 
