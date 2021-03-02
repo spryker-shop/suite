@@ -3,13 +3,13 @@
 {% define data = {
     backUrl: _view.previousStepUrl,
     forms: {
-        payment: _view.paymentForm
+        payment: _view.paymentForm,
     },
     title: 'checkout.step.payment.title' | trans,
     customForms: {
         'Payone/credit_card': ['credit-card', 'payone'],
         'Payone/instant_online_transfer': ['instant-online-transfer', 'payone'],
-    }
+    },
 } %}
 
 {% block content %}
@@ -19,8 +19,8 @@
             form: data.forms.payment,
             options: {
                 attr: {
-                    id: 'payment-form'
-                }
+                    id: 'payment-form',
+                },
             },
             submit: {
                 enable: true,
@@ -31,10 +31,12 @@
             cancel: {
                 enable: true,
                 url: data.backUrl,
-                text: 'general.back.button' | trans
+                text: 'general.back.button' | trans,
             },
-            customForms: data.customForms
-        }
+        },
+        embed: {
+            customForms: data.customForms,
+        },
     } only %}
         {% block errors %}
             {{ parent() }}
@@ -53,12 +55,12 @@
                                     form: data.form[data.form.paymentSelection[key].vars.value],
                                     enableStart: false,
                                     enableEnd: false,
-                                    customForms: data.customForms
                                 },
                                 embed: {
+                                    customForms: embed.customForms,
                                     index: loop.index ~ '-' ~ paymentProviderIndex,
-                                    toggler: data.form.paymentSelection[key]
-                                }
+                                    toggler: data.form.paymentSelection[key],
+                                },
                             } only %}
                                 {% block fieldset %}
                                     {{ form_row(embed.toggler, {
@@ -70,11 +72,11 @@
                                     }) }}
                                     <div class="col col--sm-12 is-hidden js-payment-method-{{embed.index}}">
                                         <div class="col col--sm-12 col--md-6">
-                                            {% if data.customForms[data.form.vars.template_path] is not defined %}
+                                            {% if embed.customForms[data.form.vars.template_path] is not defined %}
                                                 {{ parent() }}
                                             {% else %}
-                                                {% set viewName = data.customForms[data.form.vars.template_path] | first %}
-                                                {% set moduleName = data.customForms[data.form.vars.template_path] | last %}
+                                                {% set viewName = embed.customForms[data.form.vars.template_path] | first %}
+                                                {% set moduleName = embed.customForms[data.form.vars.template_path] | last %}
                                                 {% include view(viewName, moduleName) ignore missing with {
                                                     form: data.form.parent
                                                 } only %}
