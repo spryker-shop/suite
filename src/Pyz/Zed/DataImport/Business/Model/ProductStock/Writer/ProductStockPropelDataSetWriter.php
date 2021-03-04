@@ -171,7 +171,6 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     protected function triggerAvailabilityPublishEvents(): void
     {
         $availabilityAbstractIds = $this->getAvailabilityAbstractIdsForCollectedAbstractSkus();
-
         foreach ($availabilityAbstractIds as $availabilityAbstractId) {
             DataImporterPublisher::addEvent(AvailabilityEvents::AVAILABILITY_ABSTRACT_PUBLISH, $availabilityAbstractId);
         }

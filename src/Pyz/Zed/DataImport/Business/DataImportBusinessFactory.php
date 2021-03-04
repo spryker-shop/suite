@@ -134,6 +134,8 @@ use Pyz\Zed\DataImport\Business\Model\ProductSearchAttributeMap\ProductSearchAtt
 use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetImageExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Reader\ProductStockReader;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Reader\ProductStockReaderInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoMariaDbDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockPropelDataSetWriter;
@@ -473,7 +475,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             $this->createPropelExecutor(),
             $this->getStoreFacade(),
             $this->createDataFormatter(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createProductStockReader()
         );
     }
 
@@ -489,7 +492,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             $this->createPropelExecutor(),
             $this->getStoreFacade(),
             $this->createDataFormatter(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createProductStockReader()
         );
     }
 
@@ -1490,7 +1494,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             $this->createPropelExecutor(),
             $this->getStoreFacade(),
             $this->createDataFormatter(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createProductStockReader()
         );
     }
 
@@ -1506,7 +1511,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             $this->createPropelExecutor(),
             $this->getStoreFacade(),
             $this->createDataFormatter(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createProductStockReader()
         );
     }
 
@@ -2766,5 +2772,13 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductStock\Reader\ProductStockReaderInterface
+     */
+    public function createProductStockReader(): ProductStockReaderInterface
+    {
+        return new ProductStockReader();
     }
 }

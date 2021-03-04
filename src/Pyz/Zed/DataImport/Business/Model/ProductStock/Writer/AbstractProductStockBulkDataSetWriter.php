@@ -19,6 +19,7 @@ use Orm\Zed\Stock\Persistence\Map\SpyStockTableMap;
 use Orm\Zed\Stock\Persistence\SpyStockProductQuery;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Reader\ProductStockReaderInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\DecimalObject\Decimal;
@@ -96,6 +97,11 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     protected $dataImportConfig;
 
     /**
+     * @var \Pyz\Zed\DataImport\Business\Model\ProductStock\Reader\ProductStockReaderInterface
+     */
+    protected $productStockReader;
+
+    /**
      * @param \Spryker\Zed\Stock\Business\StockFacadeInterface $stockFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface $productStockSql
@@ -103,6 +109,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
      * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
      * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
      * @param \Spryker\Zed\DataImport\DataImportConfig $dataImportConfig
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Reader\ProductStockReaderInterface $productStockReader
      */
     public function __construct(
         StockFacadeInterface $stockFacade,
@@ -111,7 +118,8 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
         PropelExecutorInterface $propelExecutor,
         StoreFacadeInterface $storeFacade,
         DataImportDataFormatterInterface $dataFormatter,
-        DataImportConfig $dataImportConfig
+        DataImportConfig $dataImportConfig,
+        ProductStockReaderInterface $productStockReader
     ) {
         $this->stockFacade = $stockFacade;
         $this->productBundleFacade = $productBundleFacade;
@@ -120,6 +128,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
         $this->storeFacade = $storeFacade;
         $this->dataFormatter = $dataFormatter;
         $this->dataImportConfig = $dataImportConfig;
+        $this->productStockReader = $productStockReader;
     }
 
     /**
@@ -389,8 +398,10 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
      */
     protected function triggerAvailabilityPublishEvents(): void
     {
-        foreach ($this->availabilityAbstractIds as $availabilityAbstractId) {
-            DataImporterPublisher::addEvent(AvailabilityEvents::AVAILABILITY_ABSTRACT_PUBLISH, $availabilityAbstractId);
+        $productAbstractIds = $this->productStockReader->getProductAbstractIdsByAvailabilityAbstractIds($this->availabilityAbstractIds);
+
+        foreach ($productAbstractIds as $productAbstractId) {
+            DataImporterPublisher::addEvent(AvailabilityEvents::AVAILABILITY_PRODUCT_ABSTRACT_PUBLISH, $productAbstractId);
         }
     }
 }
