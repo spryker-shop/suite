@@ -321,6 +321,31 @@ _VALIDATION_SCRIPT: &VALIDATION_SCRIPT
   - npm install speccy@0.11.0 -g
   - speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
 
+_VALIDATION_SCRIPT_PHP8: &VALIDATION_SCRIPT_PHP8
+  - echo "_VALIDATION_SCRIPT"
+  - chmod +x tests/*.sh
+  - vendor/bin/console code:propel:validate-abstract
+  - vendor/bin/console propel:schema:validate
+  - vendor/bin/console propel:schema:validate-xml-names
+  - vendor/bin/console transfer:validate
+  - tests/travis_check_touched_modules.sh
+  - tests/travis_check_untracked.sh
+  - vendor/bin/spryker-dev-console dev:validate-module-schemas
+  - vendor/bin/spryker-dev-console dev:validate-module-databuilders
+  - vendor/bin/console dev:composer:replace -d -v
+  - vendor/bin/spryker-dev-console dev:sync-composer -d
+  - vendor/bin/console dev:dependency:find
+  - vendor/bin/console dev:composer:update-json-files -d -v
+  - vendor/bin/console dev:composer:validate-json-files
+  - vendor/bin/console code:sniff:style
+  - vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/
+  - composer psalm
+
+  - nvm install 12 && nvm use 12
+  - npm install
+  - npm install speccy@0.11.0 -g
+  - speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
+
 _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
   - echo "_VALIDATION_FRONT_END_SCRIPT"
   - nvm install 12 && nvm use 12
@@ -558,7 +583,7 @@ jobs:
       install:
         - *COMPOSER_INSTALL
       script:
-        - vendor/bin/console code:phpstan -m Spryker.all
+        - vendor/bin/console code:phpstan -m Spryker.all -v
       addons:
         <<: *ADDONS_BASE_INFRASTRUCTURE
 
@@ -571,7 +596,7 @@ jobs:
       install:
         - *COMPOSER_PREFER_LOWEST
       script:
-        - vendor/bin/console code:phpstan -m Spryker.all
+        - vendor/bin/console code:phpstan -m Spryker.all -v
       addons:
         <<: *ADDONS_BASE_INFRASTRUCTURE
 
@@ -584,7 +609,7 @@ jobs:
       install:
         - *COMPOSER_INSTALL
       script:
-        - vendor/bin/console code:phpstan -m SprykerShop.all
+        - vendor/bin/console code:phpstan -m SprykerShop.all -v
       addons:
         <<: *ADDONS_BASE_INFRASTRUCTURE
 
@@ -597,7 +622,7 @@ jobs:
       install:
         - *COMPOSER_PREFER_LOWEST
       script:
-        - vendor/bin/console code:phpstan -m SprykerShop.all
+        - vendor/bin/console code:phpstan -m SprykerShop.all -v
       addons:
         <<: *ADDONS_BASE_INFRASTRUCTURE
 
@@ -894,6 +919,68 @@ jobs:
       addons:
         mariadb: 10.3
         <<: *ADDONS_BASE_INFRASTRUCTURE
+
+    - name: PHP8 Validation
+      php: "8.0"
+      stage: Test
+      before_install:
+          - *AWS_SYNC_DOWN_POSTGRES
+          - *BEFORE_INSTALL_SCRIPT
+      install:
+          - *COMPOSER_INSTALL
+      script:
+          - *VALIDATION_SCRIPT_PHP8
+      addons:
+          <<: *ADDONS_BASE_INFRASTRUCTURE
+
+    - name: PHP8 PHPStan spryker/spryker
+      php: "8.0"
+      stage: Test
+      before_install:
+          - *AWS_SYNC_DOWN_POSTGRES
+          - *BEFORE_INSTALL_SCRIPT
+      install:
+          - *COMPOSER_INSTALL
+      script:
+          - vendor/bin/console code:phpstan -m Spryker.all -v
+      addons:
+          <<: *ADDONS_BASE_INFRASTRUCTURE
+
+    - name: PHP8 PHPStan spryker/spryker-shop
+      php: "8.0"
+      stage: Test
+      before_install:
+          - *AWS_SYNC_DOWN_POSTGRES
+          - *BEFORE_INSTALL_SCRIPT
+      install:
+          - *COMPOSER_INSTALL
+      script:
+          - vendor/bin/console code:phpstan -m SprykerShop.all -v
+      addons:
+          <<: *ADDONS_BASE_INFRASTRUCTURE
+
+    - name: PHP 8.0 / MariaDB / Testing (Business, Communication, ...)
+      php: "8.0"
+      stage: Test
+      env:
+          - APPLICATION_ENV=ci.mysql
+      before_install:
+          - *AWS_SYNC_DOWN_MYSQL
+          - *BEFORE_INSTALL_SCRIPT
+      install:
+          - *COMPOSER_INSTALL
+          - COMPOSER_MEMORY_LIMIT=-1 composer u lcobucci/jwt -w --ignore-platform-reqs
+          - *INSTALL_SCRIPT
+          - *SETUP_WEB_INFRASTRUCTURE
+      before_script:
+          - *RESTORE_MYSQL_BACKUP
+      script:
+          - *TESTING_SCRIPT
+      after_script:
+          - *BROWSER_TESTING_AFTER_SCRIPT
+      addons:
+          mariadb: 10.3
+          <<: *ADDONS_BASE_INFRASTRUCTURE
 
     - name: Docker / Alpine / PHP 7.3 / MariaDB / Functional Tests
       <<: *DOCKER_BUILD_TEMPLATE
