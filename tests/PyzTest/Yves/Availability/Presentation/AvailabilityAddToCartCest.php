@@ -39,8 +39,9 @@ class AvailabilityAddToCartCest
 
         $i->click(ProductDetailPage::ADD_TO_CART_XPATH);
 
-        $i->see(CartListPage::CART_HEADER);
+        $i->seeInTitle(CartListPage::CART_HEADER);
 
+        $i->waitForElement(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH);
         $i->fillField(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 50);
         $i->click(CartListPage::FIRST_CART_ITEM_CHANGE_QUANTITY_BUTTON_XPATH);
 
