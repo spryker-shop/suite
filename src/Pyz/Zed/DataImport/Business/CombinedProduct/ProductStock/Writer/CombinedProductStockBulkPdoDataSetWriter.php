@@ -8,14 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductStock\Writer;
 
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductStock\CombinedProductStockHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoDataSetWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
-use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
-use Spryker\Zed\DataImport\DataImportConfig;
-use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
-use Spryker\Zed\Stock\Business\StockFacadeInterface;
-use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class CombinedProductStockBulkPdoDataSetWriter extends ProductStockBulkPdoDataSetWriter
 {
@@ -26,25 +19,4 @@ class CombinedProductStockBulkPdoDataSetWriter extends ProductStockBulkPdoDataSe
     protected const COLUMN_IS_BUNDLE = CombinedProductStockHydratorStep::COLUMN_IS_BUNDLE;
     protected const COLUMN_QUANTITY = CombinedProductStockHydratorStep::COLUMN_QUANTITY;
     protected const COLUMN_IS_NEVER_OUT_OF_STOCK = CombinedProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK;
-
-    /**
-     * @param \Spryker\Zed\Stock\Business\StockFacadeInterface $stockFacade
-     * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface $productStockSql
-     * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
-     * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
-     * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
-     * @param \Spryker\Zed\DataImport\DataImportConfig $dataImportConfig
-     */
-    public function __construct(
-        StockFacadeInterface $stockFacade,
-        ProductBundleFacadeInterface $productBundleFacade,
-        ProductStockSqlInterface $productStockSql,
-        PropelExecutorInterface $propelExecutor,
-        StoreFacadeInterface $storeFacade,
-        DataImportDataFormatterInterface $dataFormatter,
-        DataImportConfig $dataImportConfig
-    ) {
-        parent::__construct($stockFacade, $productBundleFacade, $productStockSql, $propelExecutor, $storeFacade, $dataFormatter, $dataImportConfig);
-    }
 }
