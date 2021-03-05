@@ -3597,6 +3597,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@spryker/jquery-query-builder@npm:~2.5.2-spryker.1":
+  version: 2.5.2
+  resolution: "@spryker/jquery-query-builder@npm:2.5.2"
+  dependencies:
+    "@spryker/sql-parser-mistic": ~1.2.3
+    bootstrap: ">=3.1.0 <4"
+    dot: ">=1.0.3"
+    jquery: ^3.3.1
+    jquery-extendext: ">=0.1.2"
+    moment: ^2.21.0
+  checksum: 2/f8db885d29ff8b89ff8738300aa720bd550a3921bb337bf958b4a6f5847888c1fa81bbff823c02623302dc8a273da0f766383843f6eb9e78b5576ac93c34b619
+  languageName: node
+  linkType: hard
+
 "@spryker/label@npm:^0.1.0-next.2":
   version: 0.1.0-next.2
   resolution: "@spryker/label@npm:0.1.0-next.2"
@@ -3699,6 +3713,13 @@ __metadata:
     "@spryker/styles": ^0.1.0-next.0
     "@spryker/utils": ^0.1.0-next.0
   checksum: 2/ccca44ff4bc6828628147b22451332d743d0059c51576827c41c22db099c7f39adcfa1ef01a6899bbc2b80c060c2d40c01ece01cae0ec861636b6abab78a3666
+  languageName: node
+  linkType: hard
+
+"@spryker/nestable@npm:~1.1.1":
+  version: 1.1.1
+  resolution: "@spryker/nestable@npm:1.1.1"
+  checksum: 2/e105188430339b693c68ad5cc182163bbfa502870b14452cee12c191b57b19cd67a530f22d5589603fdf3f8eacf303520bca93642f8d864e54ec18063b9df0d7
   languageName: node
   linkType: hard
 
@@ -3814,9 +3835,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/sass-resources-loader@github:spryker/sass-resources-loader":
+"@spryker/sass-resources-loader@npm:~2.0.1-spryker.0.1.0":
   version: 2.0.1-spryker.0.1.0
-  resolution: "@spryker/sass-resources-loader@github:spryker/sass-resources-loader#commit:47895bd87de48bb9aa0c4fcff93ca3c8b4aea926"
+  resolution: "@spryker/sass-resources-loader@npm:2.0.1-spryker.0.1.0"
   dependencies:
     "@babel/cli": ^7.7.4
     "@babel/preset-env": ^7.7.4
@@ -3825,7 +3846,7 @@ __metadata:
     chalk: ^2.4.2
     glob: ^7.1.1
     loader-utils: ^1.2.3
-  checksum: 2/5d5c3ef62429cfef691641d9c932bc6afe10ff72a64d9081b2595d3200d34afb5037aa9afdfe7cb822ff86122cfbca97e0259050e7b947c54dc44ab966cfc069
+  checksum: 2/f68998b0907d5f7668c7f0bb3b34ed9e4c0f01adda1ba228f65e8cf70eded300a48558c9070d084d4a740acf564590b83cd804553ba2cd92d93ec33dc65f88ad
   languageName: node
   linkType: hard
 
@@ -3862,6 +3883,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@spryker/sql-parser-mistic@npm:~1.2.3":
+  version: 1.2.3
+  resolution: "@spryker/sql-parser-mistic@npm:1.2.3"
+  checksum: 2/48e64543680ee6e02bec2848b8168f18cbd66f5285a8c056695a47934c7e4a38e78943d70f95f3790bb323b3923e92a3d645d18ffc74055a6cc26198c91e3fd1
+  languageName: node
+  linkType: hard
+
 "@spryker/styles@npm:^0.2.0-next.26":
   version: 0.2.0-next.26
   resolution: "@spryker/styles@npm:0.2.0-next.26"
@@ -3874,9 +3902,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/table.action-handler.form-overlay@npm:^0.0.2-next.1":
-  version: 0.0.2-next.1
-  resolution: "@spryker/table.action-handler.form-overlay@npm:0.0.2-next.1"
+"@spryker/table.action-handler.form-overlay@npm:^0.0.2-next.3":
+  version: 0.0.2-next.3
+  resolution: "@spryker/table.action-handler.form-overlay@npm:0.0.2-next.3"
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
@@ -3885,7 +3913,7 @@ __metadata:
     "@spryker/styles": ^0.2.0-next.0
     "@spryker/table": ^0.2.0-next.0
     "@spryker/utils": ^0.2.0-next.0
-  checksum: 2/58ef4f10c9a0a1f01433562f285cf7f8393833b7eb997e16648be3dceaa217147b66e6d98accf4f432441cd2c0b639d8d5dfe4950ef36ba777534b736d369dbd
+  checksum: 2/914d17ab04bca1ca639d659dbe959d3debde4206b0f5df2d561c811e31b70311aa0d12ad24022e1a748a58e073ad4663433fe5cd2368ab36d6ee49360fa7c50a
   languageName: node
   linkType: hard
 
@@ -5480,13 +5508,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"almond@npm:~0.3.1":
-  version: 0.3.3
-  resolution: "almond@npm:0.3.3"
-  checksum: 2/369f070a88b6e73487091d800d951d9d0af168bb9d96ccb981958ed8c052c4bcd2bc9794c521d1c85ca8f1556c2cad2643d61399cb3bcab9b36c43368060c3c9
-  languageName: node
-  linkType: hard
-
 "almost-equal@npm:^1.1.0":
   version: 1.1.0
   resolution: "almost-equal@npm:1.1.0"
@@ -6410,6 +6431,13 @@ __metadata:
   version: 3.4.1
   resolution: "bootstrap-sass@npm:3.4.1"
   checksum: 2/b8b1e356b25ca1679342fd5d24cf49d9f6d3324c2b1aeff04ef83cedf693211c932ebf6813b71c946abbd011f93eae736688f63953fadc8dacf5f0bf7e55f3fc
+  languageName: node
+  linkType: hard
+
+"bootstrap@npm:>=3.1.0 <4":
+  version: 3.4.1
+  resolution: "bootstrap@npm:3.4.1"
+  checksum: 2/5c1f8e5fc8971ee7eb88573777efea999c79cae98fadb521959d5996a678cabf9415d349c3739c3c8c8bbf965ae48aae8480b61719c70dd41c1335ea68a9af2e
   languageName: node
   linkType: hard
 
@@ -9182,7 +9210,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dot@npm:^1.1.3":
+"dot@npm:>=1.0.3":
   version: 1.1.3
   resolution: "dot@npm:1.1.3"
   bin:
@@ -13492,10 +13520,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jquery-extendext@https://github.com/mistic100/jQuery.extendext.git#0.1.1":
-  version: 0.1.1
-  resolution: "jquery-extendext@https://github.com/mistic100/jQuery.extendext.git#commit:98b26f2e2b0e5f5a97edb44539b95bb25676894f"
-  checksum: 2/720258b71d3a2b9c52ffdf0b36d7a440b637e6b3e6e766405aea52af1463b972b7890c9145d6226c742edf9e18b6dd5b5fb7c7cb20dfaf8173dd50eef2a9a578
+"jquery-extendext@npm:>=0.1.2, jquery-extendext@npm:~1.0.0":
+  version: 1.0.0
+  resolution: "jquery-extendext@npm:1.0.0"
+  dependencies:
+    jquery: ">=1.9.1"
+  checksum: 2/351fdb800fc201803c402f805074c2f532eb9b42887e9826608649e55467a56d75841c2c598668ed7d72b1487c619c66348a53df4130147b9ecdae3529bac25d
   languageName: node
   linkType: hard
 
@@ -13505,22 +13535,6 @@ fsevents@^1.2.7:
   peerDependencies:
     jquery: ">=3 <4"
   checksum: 2/541005ec8e9be48dba025aeddb7665e62d40e95d7da82cf0ec8ca0a46bf219c7374195c158500d11e83c66a5330f090f731ec0fa15359e42447d0a54fa2d6951
-  languageName: node
-  linkType: hard
-
-"jquery-mousewheel@npm:~3.1.13":
-  version: 3.1.13
-  resolution: "jquery-mousewheel@npm:3.1.13"
-  checksum: 2/212f62fe21d3bb3971d1cdc1da3a87828fa9aaff03c4d05a2fcee40bc3c5907ef590e385dbde8d1bc18ff179c7ea114b4dc53c2c0d8793b602c510c63b48de03
-  languageName: node
-  linkType: hard
-
-"jquery-query-builder@https://github.com/spryker/jquery-query-builder.git":
-  version: 2.3.3
-  resolution: "jquery-query-builder@https://github.com/spryker/jquery-query-builder.git#commit:72d9bd4c8a599fb210dd5eae87750f1b1e840c7b"
-  dependencies:
-    dot: ^1.1.3
-  checksum: 2/b106d51a687a07ff4540f3eb8ede435a0d84c6b4c2da14196526ac7befa538381af0785a3234868354bf84312a65abca496b654f1ad413727efdfce8003637f1
   languageName: node
   linkType: hard
 
@@ -13538,7 +13552,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jquery@npm:~3.5.1":
+"jquery@npm:^3.3.1, jquery@npm:~3.5.1":
   version: 3.5.1
   resolution: "jquery@npm:3.5.1"
   checksum: 2/c50818c84837902a60938c85786feb612f346a9918f7285409d605449460790b3815ad8aaf5806f19e89f1a79b27d327802b421ab354fe213f3fd1801e3562e6
@@ -14982,6 +14996,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"moment@npm:^2.21.0":
+  version: 2.29.1
+  resolution: "moment@npm:2.29.1"
+  checksum: 2/86729013febf7160de5b93da69273dd304d674b0224f9544b3abd09a87671ddd2cdd57598261ce57588910d63747ffd5590965e83c790d8bf327083c0e0a06e0
+  languageName: node
+  linkType: hard
+
 "moment@npm:~2.22.2":
   version: 2.22.2
   resolution: "moment@npm:2.22.2"
@@ -15418,13 +15439,6 @@ fsevents@^1.2.7:
   version: 2.6.2
   resolution: "neo-async@npm:2.6.2"
   checksum: 2/34a8f5309135be258a97082af810ea43700a3e0121e7b1ea31b3e22e2663d7c0d502cd949abb6d1ab8c11abfd04500ee61721ec5408b2d4bef8105241fd8a4c2
-  languageName: node
-  linkType: hard
-
-"nestable@https://github.com/ilmente/Nestable.git#v1.1.1":
-  version: 1.1.1
-  resolution: "nestable@https://github.com/ilmente/Nestable.git#commit:0baf37567b5bda0bcb80acc3dd0c0d0a13ba497d"
-  checksum: 2/9dc799e4449694a33f6f2aea15b130c0dcba70d0560141f2f771d39d3d7a94c608cb45764f49535df86647f00ab77d9fc20a41371b3f78c351210ee9c58a5b2e
   languageName: node
   linkType: hard
 
@@ -16440,10 +16454,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"pace@https://github.com/hubspot/pace.git#v1.0.2":
+"pace@npm:pace-js@~1.0.2":
   version: 1.0.2
-  resolution: "pace@https://github.com/hubspot/pace.git#commit:c6846cbf6b928e9903b569269fa9fbf32f2554f4"
-  checksum: 2/80d205c79e4a918d860540320e43cfbcb82ff837a029653b54c3590e1760a30aafd35be145f15e5af585b059f61015dcd861dc6f85020184bdfc6262fc40f406
+  resolution: "pace-js@npm:1.0.2"
+  checksum: 2/ff1f1f1adb2bd8489507fec9c059f9c651ebedbecf1705676d53316c0660b033329a090bdff508e27d9507b540b4cc590a3b5167d50ee598b363c39fdcf90ec3
   languageName: node
   linkType: hard
 
@@ -19246,13 +19260,10 @@ resolve@^0.6.1:
   languageName: node
   linkType: hard
 
-"select2@https://github.com/select2/select2.git#4.0.2":
-  version: 4.0.2
-  resolution: "select2@https://github.com/select2/select2.git#commit:622a619d25358b86a93c2335f88e1884acc9ccb8"
-  dependencies:
-    almond: ~0.3.1
-    jquery-mousewheel: ~3.1.13
-  checksum: 2/3dc0707254675acddeb5e3fff57c9bd064349b05005bfdc11a502489970c8a316c68da1d056420aa5a187e33c614c3be88ca00a7eb268709575cb0504055602c
+"select2@npm:~4.0.13":
+  version: 4.0.13
+  resolution: "select2@npm:4.0.13"
+  checksum: 2/680a5296c37bdb6992d8b50f8c44dfe92c0252aa227769577980a028dd363a6c413f15f540a871364a6c5323f1beee4ed9da30dab8879470a42206c45d838da1
   languageName: node
   linkType: hard
 
@@ -20025,7 +20036,7 @@ resolve@^0.6.1:
     "@spryker/frontend-config.stylelint": ~0.0.5
     "@spryker/frontend-config.tslint": ~0.0.5
     "@spryker/oryx-for-zed": ~2.9.1
-    "@spryker/sass-resources-loader": "github:spryker/sass-resources-loader"
+    "@spryker/sass-resources-loader": ~2.0.1-spryker.0.1.0
     "@types/jest": ~26.0.4
     "@types/node": ~12.11.1
     "@types/webpack": ~4.41.17
@@ -20143,9 +20154,8 @@ resolve@^0.6.1:
   version: 0.0.0-use.local
   resolution: "spryker-zed-discount@workspace:vendor/spryker/discount/assets/Zed"
   dependencies:
-    jquery-extendext: "https://github.com/mistic100/jQuery.extendext.git#0.1.1"
-    jquery-query-builder: "https://github.com/spryker/jquery-query-builder.git"
-    sql-parser: "https://github.com/spryker/spryker-sql-parser.git"
+    "@spryker/jquery-query-builder": ~2.5.2-spryker.1
+    "@spryker/sql-parser-mistic": ~1.2.3
   languageName: unknown
   linkType: soft
 
@@ -20153,6 +20163,7 @@ resolve@^0.6.1:
   version: 0.0.0-use.local
   resolution: "spryker-zed-gui@workspace:vendor/spryker/gui/assets/Zed"
   dependencies:
+    "@spryker/nestable": ~1.1.1
     animate.css: ~3.5.1
     bootstrap-sass: ~3.4.1
     codemirror: ~5.12.0
@@ -20171,9 +20182,8 @@ resolve@^0.6.1:
     jquery-ui: ~1.12.1
     jstree: ~3.3.3
     metismenu: ~2.0.2
-    nestable: "https://github.com/ilmente/Nestable.git#v1.1.1"
-    pace: "https://github.com/hubspot/pace.git#v1.0.2"
-    select2: "https://github.com/select2/select2.git#4.0.2"
+    pace: "npm:pace-js@~1.0.2"
+    select2: ~4.0.13
     summernote: ^0.8.11
     sweetalert: ~1.1.3
   languageName: unknown
@@ -20207,10 +20217,10 @@ resolve@^0.6.1:
   version: 0.0.0-use.local
   resolution: "spryker-zed-productrelations@workspace:vendor/spryker/product-relation-gui/assets/Zed"
   dependencies:
+    "@spryker/jquery-query-builder": ~2.5.2-spryker.1
+    "@spryker/sql-parser-mistic": ~1.2.3
     fs: ~0.0.2
-    jquery-extendext: "https://github.com/mistic100/jQuery.extendext.git#0.1.1"
-    jquery-query-builder: "https://github.com/spryker/jquery-query-builder.git"
-    sql-parser: "https://github.com/spryker/spryker-sql-parser.git"
+    jquery-extendext: ~1.0.0
   languageName: unknown
   linkType: soft
 
@@ -20233,13 +20243,6 @@ resolve@^0.6.1:
     drift-zoom: ~1.4.0
   languageName: unknown
   linkType: soft
-
-"sql-parser@https://github.com/spryker/spryker-sql-parser.git":
-  version: 1.0.0
-  resolution: "sql-parser@https://github.com/spryker/spryker-sql-parser.git#commit:8f851c5f6186997435a59569df4fe3236bf6898b"
-  checksum: 2/dee75dd5392936385c446b2aa4b552ba9c1e566ef13a08a56225e5c38686323f6b5677d9da19704d5f5492e874d945119069b42f9a13587a839b4cbec16926f6
-  languageName: node
-  linkType: hard
 
 "sshpk@npm:^1.7.0":
   version: 1.16.1
@@ -23236,7 +23239,7 @@ resolve@^0.6.1:
     "@spryker/sidebar": ^0.2.0-next.2
     "@spryker/styles": ^0.2.0-next.26
     "@spryker/table": ^0.2.0-next.32
-    "@spryker/table.action-handler.form-overlay": ^0.0.2-next.1
+    "@spryker/table.action-handler.form-overlay": ^0.0.2-next.3
     "@spryker/table.action-handler.html-overlay": ^0.0.2-next.0
     "@spryker/table.action-handler.url": ^0.0.2-next.0
     "@spryker/table.column.chip": ^0.0.2-next.1
