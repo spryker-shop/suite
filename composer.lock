@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "640102ea4278975e3b73ecc8f2cb4dfb",
+    "content-hash": "b0349fffc08ac6ee551e08bf06b26793",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -12140,6 +12140,54 @@
                 "source": "https://github.com/spryker/availability-gui-extension/tree/master"
             },
             "time": "2020-06-17T12:01:35+00:00"
+        },
+        {
+            "name": "spryker/availability-merchant-portal-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/availability-merchant-portal-gui.git",
+                "reference": "3896fb15c05a8c8221c07addb4a0b67025335a98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/availability-merchant-portal-gui/zipball/3896fb15c05a8c8221c07addb4a0b67025335a98",
+                "reference": "3896fb15c05a8c8221c07addb4a0b67025335a98",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/availability": "^9.8.0",
+                "spryker/decimal-object": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant-stock": "^0.2.2",
+                "spryker/merchant-user": "^0.6.0",
+                "spryker/product-merchant-portal-gui-extension": "^0.1.1",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AvailabilityMerchantPortalGui module",
+            "support": {
+                "source": "https://github.com/spryker/availability-merchant-portal-gui/tree/0.1.0"
+            },
+            "time": "2021-03-05T14:54:46+00:00"
         },
         {
             "name": "spryker/availability-notification",
@@ -37771,41 +37819,42 @@
         },
         {
             "name": "spryker/product-merchant-portal-gui",
-            "version": "0.3.1",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-merchant-portal-gui.git",
-                "reference": "b5f8bf6254d4d008c6ae077373022d17af96f2e4"
+                "reference": "2759b3c0a5b5b17eb0f535bebacb407c32f09b0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-merchant-portal-gui/zipball/b5f8bf6254d4d008c6ae077373022d17af96f2e4",
-                "reference": "b5f8bf6254d4d008c6ae077373022d17af96f2e4",
+                "url": "https://api.github.com/repos/spryker/product-merchant-portal-gui/zipball/2759b3c0a5b5b17eb0f535bebacb407c32f09b0b",
+                "reference": "2759b3c0a5b5b17eb0f535bebacb407c32f09b0b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
                 "spryker/category": "^4.21.0 || ^5.0.0",
                 "spryker/currency": "^3.0.0",
-                "spryker/gui-table": "^0.4.3",
+                "spryker/gui-table": "^0.4.4",
                 "spryker/kernel": "^3.51.0",
                 "spryker/laminas": "^1.0.0",
                 "spryker/locale": "^3.0.0",
-                "spryker/merchant-product": "^0.2.2",
+                "spryker/merchant-product": "^0.2.3",
                 "spryker/merchant-user": "^0.5.0 || ^0.6.0",
                 "spryker/money": "^1.0.0 || ^2.0.0",
                 "spryker/price-product": "^4.21.0",
                 "spryker/product": "^6.0.0",
                 "spryker/product-category": "^4.6.0",
                 "spryker/product-image": "^3.0.0",
-                "spryker/product-merchant-portal-gui-extension": "^0.1.0",
+                "spryker/product-merchant-portal-gui-extension": "^0.1.1",
+                "spryker/product-validity": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/store": "^1.1.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.25.0",
                 "spryker/translator": "^1.1.0",
                 "spryker/util-encoding": "^2.0.0",
-                "spryker/zed-ui": "^0.3.13"
+                "spryker/zed-ui": "^0.3.14"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -37827,9 +37876,9 @@
             ],
             "description": "ProductMerchantPortalGui module",
             "support": {
-                "source": "https://github.com/spryker/product-merchant-portal-gui/tree/0.3.1"
+                "source": "https://github.com/spryker/product-merchant-portal-gui/tree/0.4.0"
             },
-            "time": "2021-02-23T11:05:01+00:00"
+            "time": "2021-03-05T14:54:46+00:00"
         },
         {
             "name": "spryker/product-merchant-portal-gui-extension",
