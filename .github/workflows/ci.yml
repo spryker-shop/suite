@@ -71,6 +71,11 @@ jobs:
                   extensions: mbstring, intl, pdo_mysql
                   tools: composer:v2
 
+            - uses: shogo82148/actions-setup-redis@v1
+              with:
+                  redis-version: "5.x"
+            - run: redis-cli ping
+
             - name: Composer get cache directory
               id: composer-cache
               run: |
