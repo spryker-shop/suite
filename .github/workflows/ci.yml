@@ -75,7 +75,7 @@ jobs:
               uses: shivammathur/setup-php@v2
               with:
                   php-version: ${{ matrix.php-version }}
-                  extensions: mbstring, intl, pdo_mysql
+                  extensions: mbstring, intl, pdo_mysql, redis
                   tools: composer:v2
 
             - name: Composer get cache directory
