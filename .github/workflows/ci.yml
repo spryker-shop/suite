@@ -160,7 +160,7 @@ jobs:
               run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
 
             - name: Run PHPStan
-              run: vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/ --debug
+              run: vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/
 
             - name: Run Security check
               run: vendor/bin/console security:check
