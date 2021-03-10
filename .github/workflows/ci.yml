@@ -192,9 +192,8 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.api.mariadb.yml -v
                   docker/sdk up -t -v
-                  docker/sdk testing composer update "lcobucci/jwt:4.*" --ignore-platform-reqs
+                  docker/sdk testing composer require "lcobucci/jwt:4.*" --ignore-platform-reqs
                   docker/sdk testing composer dump-autoload --classmap-authoritative
-                  docker/sdk testing codecept fixtures
 
     php-80-mariadb-acceptance-alpine:
         name: "PHP 8.0 / MariaDB / Acceptance / Alpine"
