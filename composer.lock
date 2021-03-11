@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3924a62f70338178e14cc56ba2a6a4c1",
+    "content-hash": "e370b9bfee28fd2e640cf49f3b15eac4",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -25159,16 +25159,16 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.28.0",
+            "version": "1.28.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "1284ee20e3e6d295bcd3f82476756a4a3b240f37"
+                "reference": "02417e6a5213f8e594c8b055e5f0b1c16c9612d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/1284ee20e3e6d295bcd3f82476756a4a3b240f37",
-                "reference": "1284ee20e3e6d295bcd3f82476756a4a3b240f37",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/02417e6a5213f8e594c8b055e5f0b1c16c9612d2",
+                "reference": "02417e6a5213f8e594c8b055e5f0b1c16c9612d2",
                 "shasum": ""
             },
             "require": {
@@ -25185,7 +25185,7 @@
                 "spryker/store": "^1.7.0",
                 "spryker/symfony": "^3.5.0",
                 "spryker/util-encoding": "^2.0.0",
-                "willdurand/negotiation": "^2.3"
+                "willdurand/negotiation": "^2.3 || ^3.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -25216,10 +25216,7 @@
                 "proprietary"
             ],
             "description": "GlueApplication module",
-            "support": {
-                "source": "https://github.com/spryker/glue-application/tree/1.28.0"
-            },
-            "time": "2021-02-23T16:51:10+00:00"
+            "time": "2021-03-02T08:38:46+00:00"
         },
         {
             "name": "spryker/glue-application-extension",
@@ -54678,28 +54675,28 @@
         },
         {
             "name": "willdurand/negotiation",
-            "version": "v2.3.1",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/Negotiation.git",
-                "reference": "03436ededa67c6e83b9b12defac15384cb399dc9"
+                "reference": "04e14f38d4edfcc974114a07d2777d90c98f3d9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/03436ededa67c6e83b9b12defac15384cb399dc9",
-                "reference": "03436ededa67c6e83b9b12defac15384cb399dc9",
+                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/04e14f38d4edfcc974114a07d2777d90c98f3d9c",
+                "reference": "04e14f38d4edfcc974114a07d2777d90c98f3d9c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=7.1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.5"
+                "symfony/phpunit-bridge": "^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -54726,11 +54723,7 @@
                 "header",
                 "negotiation"
             ],
-            "support": {
-                "issues": "https://github.com/willdurand/Negotiation/issues",
-                "source": "https://github.com/willdurand/Negotiation/tree/2.x"
-            },
-            "time": "2017-05-14T17:21:12+00:00"
+            "time": "2020-09-25T08:01:41+00:00"
         }
     ],
     "packages-dev": [
