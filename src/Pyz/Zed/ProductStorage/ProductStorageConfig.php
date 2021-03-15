@@ -57,6 +57,14 @@ class ProductStorageConfig extends SprykerProductStorageConfig
     /**
      * @return bool
      */
+    public function isOptimizedAttributeVariantsMapEnabled(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
     public function isCteEnabled(): bool
     {
         return $this->get(PublisherConstants::IS_CTE_ENABLED, false);
