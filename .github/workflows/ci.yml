@@ -193,7 +193,7 @@ jobs:
                   docker/sdk boot deploy.ci.api.mariadb.yml -v
                   docker/sdk up -t -v
                   docker/sdk testing composer update "lcobucci/jwt:4.*" --ignore-platform-reqs
-                  docker exec -it spryker_ci_zed_eu_1 composer require "lcobucci/jwt" --ignore-platform-reqs
+                  docker exec -i spryker_ci_zed_eu_1 composer require "lcobucci/jwt" --ignore-platform-reqs
                   docker/sdk testing codecept fixtures
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
