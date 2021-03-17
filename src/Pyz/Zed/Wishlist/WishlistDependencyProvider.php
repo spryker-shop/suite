@@ -7,6 +7,10 @@
 
 namespace Pyz\Zed\Wishlist;
 
+use Spryker\Zed\MerchantProductOfferWishlist\Communication\Plugin\Wishlist\WishlistProductOfferPreAddItemPlugin;
+use Spryker\Zed\MerchantProductWishlist\Communication\Plugin\Wishlist\WishlistMerchantProductPreAddItemPlugin;
+use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Wishlist\SingleMerchantWishlistItemsValidatorPlugin;
+use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Wishlist\SingleMerchantWishlistReloadItemsPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Wishlist\ProductDiscontinuedAddItemPreCheckPlugin;
 use Spryker\Zed\Wishlist\WishlistDependencyProvider as SprykerWishlistDependencyProvider;
 
@@ -27,6 +31,37 @@ class WishlistDependencyProvider extends SprykerWishlistDependencyProvider
     {
         return [
             new ProductDiscontinuedAddItemPreCheckPlugin(), #ProductDiscontinuedFeature
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\WishlistExtension\Dependency\Plugin\WishlistReloadItemsPluginInterface[]
+     */
+    protected function getWishlistReloadItemsPlugins(): array
+    {
+        return [
+            new SingleMerchantWishlistReloadItemsPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\WishlistExtension\Dependency\Plugin\WishlistItemsValidatorPluginInterface[]
+     */
+    protected function getWishlistItemsValidatorPlugins(): array
+    {
+        return [
+            new SingleMerchantWishlistItemsValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\WishlistExtension\Dependency\Plugin\WishlistPreAddItemPluginInterface[]
+     */
+    protected function getWishlistPreAddItemPlugins(): array
+    {
+        return [
+            new WishlistMerchantProductPreAddItemPlugin(),
+            new WishlistProductOfferPreAddItemPlugin(),
         ];
     }
 }
