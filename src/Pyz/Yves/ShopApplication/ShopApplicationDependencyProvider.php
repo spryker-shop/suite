@@ -182,6 +182,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CompanyMenuItemWidget::class,
             CreateShoppingListFromCartWidget::class,
             CurrencyWidget::class,
+            CurrencyIsoCodeWidget::class,
             CustomerNavigationWidget::class,
             CustomerReorderItemCheckboxWidget::class,
             DisplayProductAbstractReviewWidget::class,
