@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.174.1",
+            "version": "3.174.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "b481fd0dab83b9ed6eab35279e1a43e3a875c87e"
+                "reference": "80cc136f47fa808032f411fff70e26f461852510"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b481fd0dab83b9ed6eab35279e1a43e3a875c87e",
-                "reference": "b481fd0dab83b9ed6eab35279e1a43e3a875c87e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/80cc136f47fa808032f411fff70e26f461852510",
+                "reference": "80cc136f47fa808032f411fff70e26f461852510",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.174.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.174.2"
             },
-            "time": "2021-03-16T18:18:56+00:00"
+            "time": "2021-03-17T18:13:11+00:00"
         },
         {
             "name": "brick/math",
@@ -6946,20 +6946,20 @@
         },
         {
             "name": "spryker-shop/money-widget",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/money-widget.git",
-                "reference": "9cf053a3a49b21a18a776f49429b92b00cd462ea"
+                "reference": "fd73527653f92685cf4dd695ccaad7df5260e6ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/money-widget/zipball/9cf053a3a49b21a18a776f49429b92b00cd462ea",
-                "reference": "9cf053a3a49b21a18a776f49429b92b00cd462ea",
+                "url": "https://api.github.com/repos/spryker-shop/money-widget/zipball/fd73527653f92685cf4dd695ccaad7df5260e6ea",
+                "reference": "fd73527653f92685cf4dd695ccaad7df5260e6ea",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker-shop/currency-widget": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -6994,9 +6994,9 @@
             ],
             "description": "MoneyWidget module",
             "support": {
-                "source": "https://github.com/spryker-shop/money-widget/tree/1.3.0"
+                "source": "https://github.com/spryker-shop/money-widget/tree/1.4.0"
             },
-            "time": "2020-10-23T12:49:10+00:00"
+            "time": "2021-03-18T14:21:09+00:00"
         },
         {
             "name": "spryker-shop/multi-cart-page",
@@ -7446,20 +7446,20 @@
         },
         {
             "name": "spryker-shop/price-product-volume-widget",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/price-product-volume-widget.git",
-                "reference": "4d1c1682d667321097131ab834c12f6033baafdd"
+                "reference": "c559ba39d73a8460c2bbbc69ad366b03777d7077"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/price-product-volume-widget/zipball/4d1c1682d667321097131ab834c12f6033baafdd",
-                "reference": "4d1c1682d667321097131ab834c12f6033baafdd",
+                "url": "https://api.github.com/repos/spryker-shop/price-product-volume-widget/zipball/c559ba39d73a8460c2bbbc69ad366b03777d7077",
+                "reference": "c559ba39d73a8460c2bbbc69ad366b03777d7077",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker-shop/shop-ui": "^1.31.1",
                 "spryker/currency": "^3.4.0",
                 "spryker/kernel": "^3.30.0",
@@ -7472,6 +7472,7 @@
                 "spryker/code-sniffer": "*"
             },
             "suggest": {
+                "spryker-shop/money-widget": "If you want to use widgets from module MoneyWidget",
                 "spryker-shop/product-detail-page": "Widget plugins are available for this module."
             },
             "type": "library",
@@ -7491,9 +7492,9 @@
             ],
             "description": "PriceProductVolumeWidget module",
             "support": {
-                "source": "https://github.com/spryker-shop/price-product-volume-widget/tree/1.5.0"
+                "source": "https://github.com/spryker-shop/price-product-volume-widget/tree/1.6.0"
             },
-            "time": "2020-10-23T12:49:10+00:00"
+            "time": "2021-03-18T14:21:09+00:00"
         },
         {
             "name": "spryker-shop/price-product-widget",
@@ -10525,16 +10526,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "1.50.1",
+            "version": "1.51.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "3b02c61caa59092fd59529ab6fef404c35dbc7bb"
+                "reference": "583d58b3e301dde0e4b576d99171a35d06abdce3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/3b02c61caa59092fd59529ab6fef404c35dbc7bb",
-                "reference": "3b02c61caa59092fd59529ab6fef404c35dbc7bb",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/583d58b3e301dde0e4b576d99171a35d06abdce3",
+                "reference": "583d58b3e301dde0e4b576d99171a35d06abdce3",
                 "shasum": ""
             },
             "require": {
@@ -10551,6 +10552,7 @@
                 "spryker/silex": "*"
             },
             "suggest": {
+                "spryker-shop/money-widget": "If you want to use widgets from module MoneyWidget",
                 "spryker-shop/newsletter-widget": "If you want to use components from module NewsletterWidget.",
                 "spryker-shop/product-group-widget": "If you want to use components from module ProductGroupColorWidget or ProductGroupWidget",
                 "spryker/container": "If you want to use Twig Plugins",
@@ -10573,9 +10575,9 @@
             ],
             "description": "ShopUi module",
             "support": {
-                "source": "https://github.com/spryker-shop/shop-ui/tree/1.50.1"
+                "source": "https://github.com/spryker-shop/shop-ui/tree/1.51.0"
             },
-            "time": "2021-01-27T09:57:33+00:00"
+            "time": "2021-03-18T14:21:09+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-note-widget",
@@ -57812,16 +57814,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.12.2",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "245710e971a030f42e08f4912863805570f23d39"
+                "reference": "be1996ed8adc35c3fd795488a653f4b518be70ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/245710e971a030f42e08f4912863805570f23d39",
-                "reference": "245710e971a030f42e08f4912863805570f23d39",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/be1996ed8adc35c3fd795488a653f4b518be70ea",
+                "reference": "be1996ed8adc35c3fd795488a653f4b518be70ea",
                 "shasum": ""
             },
             "require": {
@@ -57873,9 +57875,9 @@
             ],
             "support": {
                 "issues": "https://github.com/phpspec/prophecy/issues",
-                "source": "https://github.com/phpspec/prophecy/tree/1.12.2"
+                "source": "https://github.com/phpspec/prophecy/tree/1.13.0"
             },
-            "time": "2020-12-19T10:15:11+00:00"
+            "time": "2021-03-17T13:42:18+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",

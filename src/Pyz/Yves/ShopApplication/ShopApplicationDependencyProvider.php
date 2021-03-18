@@ -60,6 +60,7 @@ use SprykerShop\Yves\MerchantProductWidget\Widget\MerchantProductWidget;
 use SprykerShop\Yves\MerchantSalesOrderWidget\Widget\MerchantOrderReferenceForItemsWidget;
 use SprykerShop\Yves\MerchantSwitcherWidget\Widget\MerchantSwitcherSelectorFormWidget;
 use SprykerShop\Yves\MerchantWidget\Widget\SoldByMerchantWidget;
+use SprykerShop\Yves\MoneyWidget\Widget\CurrencyIsoCodeWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\AddToMultiCartWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\CartOperationsWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\MiniCartWidget;
@@ -182,6 +183,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CompanyMenuItemWidget::class,
             CreateShoppingListFromCartWidget::class,
             CurrencyWidget::class,
+            CurrencyIsoCodeWidget::class,
             CustomerNavigationWidget::class,
             CustomerReorderItemCheckboxWidget::class,
             DisplayProductAbstractReviewWidget::class,
