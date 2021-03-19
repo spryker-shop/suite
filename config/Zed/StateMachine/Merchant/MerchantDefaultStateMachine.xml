@@ -67,6 +67,14 @@
             <event name="cancel by merchant" manual="true"/>
         </events>
 
+        <subprocesses>
+            <process>MarketplaceReturn</process>
+            <process>MarketplaceRefund</process>
+        </subprocesses>
+
     </process>
+
+    <process name="MarketplaceReturn" file="MarketplaceSubprocess/MarketplaceReturn01"/>
+    <process name="MarketplaceRefund" file="MarketplaceSubprocess/MarketplaceRefund01"/>
 
 </statemachine>
