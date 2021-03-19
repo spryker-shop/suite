@@ -8,6 +8,8 @@
 namespace Pyz\Zed\MerchantOms;
 
 use Pyz\Zed\MerchantOms\Communication\Plugin\Oms\DeliverMarketplaceOrderItemCommandPlugin;
+use Pyz\Zed\MerchantOms\Communication\Plugin\Oms\MarketplaceRefundCommandPlugin;
+use Pyz\Zed\MerchantOms\Communication\Plugin\Oms\MarketplaceStartReturnCommandPlugin;
 use Pyz\Zed\MerchantOms\Communication\Plugin\Oms\ShipByMerchantMarketplaceOrderItemCommandPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantOms\MerchantOmsDependencyProvider as SprykerMerchantOmsDependencyProvider;
@@ -27,6 +29,8 @@ class MerchantOmsDependencyProvider extends SprykerMerchantOmsDependencyProvider
         return [
             'DummyMarketplacePayment/ShipOrderItem' => new ShipByMerchantMarketplaceOrderItemCommandPlugin(),
             'DummyMarketplacePayment/DeliverOrderItem' => new DeliverMarketplaceOrderItemCommandPlugin(),
+            'DummyMarketplacePayment/Refund' => new MarketplaceRefundCommandPlugin(),
+            'MarketplaceReturn/StartReturn' => new MarketplaceStartReturnCommandPlugin(),
         ];
     }
 
