@@ -213,8 +213,8 @@ $config[AclConstants::ACL_DEFAULT_CREDENTIALS] = [
 $config[AclConstants::ACL_DEFAULT_RULES] = [
     [
         'bundle' => 'security-merchant-portal-gui',
-        'controller' => 'login',
-        'action' => 'index',
+        'controller' => '*',
+        'action' => '*',
         'type' => 'allow',
     ],
     [
@@ -485,7 +485,7 @@ $backofficePort = (int)(getenv('SPRYKER_BE_PORT')) ?: 443;
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
     'https://%s%s',
     getenv('SPRYKER_BE_HOST') ?: 'not-configured-host',
-    $backofficePort !== 443 ? $backofficePort : ''
+    $backofficePort !== 443 ? ':' . $backofficePort : ''
 );
 
 // ----------------------------------------------------------------------------

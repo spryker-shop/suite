@@ -24,6 +24,7 @@ use Spryker\Zed\Mail\Business\Model\Provider\MailProviderCollectionAddInterface;
 use Spryker\Zed\Mail\Communication\Plugin\MailProviderPlugin;
 use Spryker\Zed\Mail\MailConfig;
 use Spryker\Zed\Mail\MailDependencyProvider as SprykerMailDependencyProvider;
+use Spryker\Zed\MerchantUserPasswordResetMail\Communication\Plugin\Mail\MerchantUserPasswordResetMailTypePlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterSubscribedMailTypePlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterUnsubscribedMailTypePlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Mail\OrderConfirmationMailTypePlugin;
@@ -58,6 +59,7 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
                 ->add(new AvailabilityNotificationSubscriptionMailTypePlugin())
                 ->add(new AvailabilityNotificationMailTypePlugin())
                 ->add(new UserPasswordResetMailTypePlugin())
+                ->add(new MerchantUserPasswordResetMailTypePlugin())
                 ->add(new GiftCardDeliveryMailTypePlugin()) #GiftCardFeature
                 ->add(new GiftCardUsageMailTypePlugin()) #GiftCardFeature
                 ->add(new OrderInvoiceMailTypePlugin());
