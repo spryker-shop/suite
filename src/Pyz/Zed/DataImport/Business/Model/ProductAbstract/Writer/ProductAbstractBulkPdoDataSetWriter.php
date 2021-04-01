@@ -44,10 +44,10 @@ class ProductAbstractBulkPdoDataSetWriter extends AbstractProductAbstractBulkPdo
             $colorCode = $this->dataFormatter->formatPostgresArrayString(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_COLOR_CODE)
             );
-            $newFrom = $this->dataFormatter->formatPostgresArrayString(
+            $newFrom = $this->dataFormatter->formatPostgresArray(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_NEW_FROM)
             );
-            $newTo = $this->dataFormatter->formatPostgresArrayString(
+            $newTo = $this->dataFormatter->formatPostgresArray(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_NEW_TO)
             );
 
