@@ -6032,21 +6032,21 @@
         },
         {
             "name": "spryker-shop/customer-reorder-widget",
-            "version": "6.10.2",
+            "version": "6.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-reorder-widget.git",
-                "reference": "16f1127bc6eb7060e3354dacdb7be31edcba2071"
+                "reference": "8523031250e46df89bdb43a88d9a68e0b6573822"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget/zipball/16f1127bc6eb7060e3354dacdb7be31edcba2071",
-                "reference": "16f1127bc6eb7060e3354dacdb7be31edcba2071",
+                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget/zipball/8523031250e46df89bdb43a88d9a68e0b6573822",
+                "reference": "8523031250e46df89bdb43a88d9a68e0b6573822",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
-                "spryker-shop/customer-reorder-widget-extension": "^1.0.0",
+                "spryker-shop/customer-reorder-widget-extension": "^1.1.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/application": "^3.0.0",
@@ -6092,30 +6092,29 @@
             ],
             "description": "CustomerReorderWidget module",
             "support": {
-                "source": "https://github.com/spryker-shop/customer-reorder-widget/tree/6.10.2"
+                "source": "https://github.com/spryker-shop/customer-reorder-widget/tree/6.11.0"
             },
-            "time": "2021-03-19T09:24:29+00:00"
+            "time": "2021-04-01T16:38:52+00:00"
         },
         {
             "name": "spryker-shop/customer-reorder-widget-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-reorder-widget-extension.git",
-                "reference": "60dc78b022e1d0c61c195f21137f5bb3ca331846"
+                "reference": "b9ad5844491a48daea8f8c58fd5603381501246b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget-extension/zipball/60dc78b022e1d0c61c195f21137f5bb3ca331846",
-                "reference": "60dc78b022e1d0c61c195f21137f5bb3ca331846",
+                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget-extension/zipball/b9ad5844491a48daea8f8c58fd5603381501246b",
+                "reference": "b9ad5844491a48daea8f8c58fd5603381501246b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2"
+                "php": ">=7.3"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "suggest": {
                 "spryker/symfony": "If you want to plugins with symfony components."
@@ -6137,9 +6136,9 @@
             ],
             "description": "CustomerReorderWidgetExtension module",
             "support": {
-                "source": "https://github.com/spryker-shop/customer-reorder-widget-extension/tree/1.0.0"
+                "source": "https://github.com/spryker-shop/customer-reorder-widget-extension/tree/1.1.0"
             },
-            "time": "2019-11-26T19:52:19+00:00"
+            "time": "2021-04-01T16:38:52+00:00"
         },
         {
             "name": "spryker-shop/date-time-configurator-page-example",
@@ -9817,24 +9816,25 @@
         },
         {
             "name": "spryker-shop/sales-product-configuration-widget",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/sales-product-configuration-widget.git",
-                "reference": "7ca2c184806fae35d9fa696db6b0268517ce6c23"
+                "reference": "725e37b41a0b9d43822251502dab3223293e1966"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/sales-product-configuration-widget/zipball/7ca2c184806fae35d9fa696db6b0268517ce6c23",
-                "reference": "7ca2c184806fae35d9fa696db6b0268517ce6c23",
+                "url": "https://api.github.com/repos/spryker-shop/sales-product-configuration-widget/zipball/725e37b41a0b9d43822251502dab3223293e1966",
+                "reference": "725e37b41a0b9d43822251502dab3223293e1966",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
+                "spryker-shop/customer-reorder-widget-extension": "^1.1.0",
                 "spryker-shop/sales-product-configuration-widget-extension": "^0.1.0",
                 "spryker-shop/shop-ui": "^1.40.0",
                 "spryker/kernel": "^3.33.0",
-                "spryker/sales-product-configuration": "^0.1.0"
+                "spryker/sales-product-configuration": "^0.1.1"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -9856,9 +9856,9 @@
             ],
             "description": "SalesProductConfigurationWidget module",
             "support": {
-                "source": "https://github.com/spryker-shop/sales-product-configuration-widget/tree/0.1.0"
+                "source": "https://github.com/spryker-shop/sales-product-configuration-widget/tree/0.1.1"
             },
-            "time": "2020-09-11T11:42:01+00:00"
+            "time": "2021-04-01T16:38:52+00:00"
         },
         {
             "name": "spryker-shop/sales-product-configuration-widget-extension",
@@ -43840,28 +43840,32 @@
         },
         {
             "name": "spryker/sales-product-configuration",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-product-configuration.git",
-                "reference": "52ec2aa05eb77ec76599f68871b3d8905acdb25e"
+                "reference": "5b5e1b44f72c35c445f808a5ab56c3beecb6810a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-product-configuration/zipball/52ec2aa05eb77ec76599f68871b3d8905acdb25e",
-                "reference": "52ec2aa05eb77ec76599f68871b3d8905acdb25e",
+                "url": "https://api.github.com/repos/spryker/sales-product-configuration/zipball/5b5e1b44f72c35c445f808a5ab56c3beecb6810a",
+                "reference": "5b5e1b44f72c35c445f808a5ab56c3beecb6810a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/kernel": "^3.33.0",
                 "spryker/product-configuration": "^0.1.0",
                 "spryker/propel-orm": "^1.5.0",
                 "spryker/sales": "^11.0.0",
-                "spryker/sales-extension": "^1.6.0"
+                "spryker/sales-extension": "^1.6.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -43880,9 +43884,9 @@
             ],
             "description": "SalesProductConfiguration module",
             "support": {
-                "source": "https://github.com/spryker/sales-product-configuration/tree/0.1.0"
+                "source": "https://github.com/spryker/sales-product-configuration/tree/0.1.1"
             },
-            "time": "2020-09-09T07:50:20+00:00"
+            "time": "2021-03-29T12:10:21+00:00"
         },
         {
             "name": "spryker/sales-product-configuration-gui",
