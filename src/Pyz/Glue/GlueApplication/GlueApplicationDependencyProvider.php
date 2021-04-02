@@ -797,6 +797,11 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ProductConcreteByConfigurableBundleTemplateSlotResourceRelationshipPlugin()
         );
 
+        $resourceRelationshipCollection->addRelationship(
+            SalesReturnsRestApiConfig::RESOURCE_RETURNS,
+            new MerchantByMerchantReferenceResourceRelationshipPlugin()
+        );
+
         return $resourceRelationshipCollection;
     }
 
