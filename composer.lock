@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "430a857687d5907822c543dc0f8292dc",
+    "content-hash": "3a0a18df38eb1b294a9c0f87ab9cd854",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -29384,23 +29384,23 @@
         },
         {
             "name": "spryker/merchant-sales-return",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-sales-return.git",
-                "reference": "69f2b6e220c5dfe49c5431adbb5db4fcb6572cce"
+                "reference": "5556cf1a2916212395733f5ed98da71b24b354f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-sales-return/zipball/69f2b6e220c5dfe49c5431adbb5db4fcb6572cce",
-                "reference": "69f2b6e220c5dfe49c5431adbb5db4fcb6572cce",
+                "url": "https://api.github.com/repos/spryker/merchant-sales-return/zipball/5556cf1a2916212395733f5ed98da71b24b354f4",
+                "reference": "5556cf1a2916212395733f5ed98da71b24b354f4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
                 "spryker/kernel": "^3.33.0",
                 "spryker/merchant-sales-order": "^0.8.1",
-                "spryker/sales-return-extension": "^1.0.0"
+                "spryker/sales-return-extension": "^1.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -29427,9 +29427,51 @@
             ],
             "description": "MerchantSalesReturn module",
             "support": {
-                "source": "https://github.com/spryker/merchant-sales-return/tree/0.1.0"
+                "source": "https://github.com/spryker/merchant-sales-return/tree/0.1.1"
             },
-            "time": "2021-03-17T19:53:55+00:00"
+            "time": "2021-04-02T09:54:31+00:00"
+        },
+        {
+            "name": "spryker/merchant-sales-returns-rest-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-sales-returns-rest-api.git",
+                "reference": "e0a47dcbf1ad6fecafd7dd329ce44bab6d6a534b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-sales-returns-rest-api/zipball/e0a47dcbf1ad6fecafd7dd329ce44bab6d6a534b",
+                "reference": "e0a47dcbf1ad6fecafd7dd329ce44bab6d6a534b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/merchant-sales-return": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantSalesReturnsRestApi module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-sales-returns-rest-api/tree/0.1.0"
+            },
+            "time": "2021-04-02T09:54:31+00:00"
         },
         {
             "name": "spryker/merchant-search",
@@ -39051,6 +39093,48 @@
             "time": "2020-02-10T11:36:56+00:00"
         },
         {
+            "name": "spryker/product-offer-sales-rest-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-sales-rest-api.git",
+                "reference": "5ebde168dd6aaaab53525623010c44397af29162"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-sales-rest-api/zipball/5ebde168dd6aaaab53525623010c44397af29162",
+                "reference": "5ebde168dd6aaaab53525623010c44397af29162",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/product-offer-sales": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferSalesRestApi module",
+            "support": {
+                "source": "https://github.com/spryker/product-offer-sales-rest-api/tree/0.1.0"
+            },
+            "time": "2021-04-02T09:54:31+00:00"
+        },
+        {
             "name": "spryker/product-offer-stock",
             "version": "0.4.1",
             "source": {
@@ -44176,16 +44260,16 @@
         },
         {
             "name": "spryker/sales-return",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-return.git",
-                "reference": "6a55c900837d3c51c0f5913da5f3b0ec367f6cf3"
+                "reference": "e13c2f8755a8fe780b6ccefd0a8d7a90daf88516"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-return/zipball/6a55c900837d3c51c0f5913da5f3b0ec367f6cf3",
-                "reference": "6a55c900837d3c51c0f5913da5f3b0ec367f6cf3",
+                "url": "https://api.github.com/repos/spryker/sales-return/zipball/e13c2f8755a8fe780b6ccefd0a8d7a90daf88516",
+                "reference": "e13c2f8755a8fe780b6ccefd0a8d7a90daf88516",
                 "shasum": ""
             },
             "require": {
@@ -44198,7 +44282,7 @@
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/sales": "^11.7.0",
                 "spryker/sales-extension": "^1.6.0",
-                "spryker/sales-return-extension": "^1.0.0",
+                "spryker/sales-return-extension": "^1.1.0",
                 "spryker/store": "^1.11.0",
                 "spryker/util-date-time": "^1.0.0",
                 "spryker/uuid-behavior": "^1.0.0",
@@ -44227,9 +44311,9 @@
             ],
             "description": "SalesReturn module",
             "support": {
-                "source": "https://github.com/spryker/sales-return/tree/1.1.0"
+                "source": "https://github.com/spryker/sales-return/tree/1.2.0"
             },
-            "time": "2021-03-17T19:50:55+00:00"
+            "time": "2021-04-02T09:54:31+00:00"
         },
         {
             "name": "spryker/sales-return-data-import",
@@ -44280,16 +44364,16 @@
         },
         {
             "name": "spryker/sales-return-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-return-extension.git",
-                "reference": "f11f36a8484a3ca05c5223eebbc6462abacc6fe8"
+                "reference": "7719c8f35bf61c725dff95c44985d5c357e19042"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-return-extension/zipball/f11f36a8484a3ca05c5223eebbc6462abacc6fe8",
-                "reference": "f11f36a8484a3ca05c5223eebbc6462abacc6fe8",
+                "url": "https://api.github.com/repos/spryker/sales-return-extension/zipball/7719c8f35bf61c725dff95c44985d5c357e19042",
+                "reference": "7719c8f35bf61c725dff95c44985d5c357e19042",
                 "shasum": ""
             },
             "require": {
@@ -44315,9 +44399,9 @@
             ],
             "description": "SalesReturnExtension module",
             "support": {
-                "source": "https://github.com/spryker/sales-return-extension/tree/1.0.0"
+                "source": "https://github.com/spryker/sales-return-extension/tree/1.1.0"
             },
-            "time": "2021-03-17T17:37:45+00:00"
+            "time": "2021-04-02T09:54:31+00:00"
         },
         {
             "name": "spryker/sales-return-gui",
@@ -44492,24 +44576,24 @@
         },
         {
             "name": "spryker/sales-returns-rest-api",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-returns-rest-api.git",
-                "reference": "ffd195a9f8e7fe2ec548144486477b292a335355"
+                "reference": "5b473029ee698f9bde5fe29b4bf89730d82551a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-returns-rest-api/zipball/ffd195a9f8e7fe2ec548144486477b292a335355",
-                "reference": "ffd195a9f8e7fe2ec548144486477b292a335355",
+                "url": "https://api.github.com/repos/spryker/sales-returns-rest-api/zipball/5b473029ee698f9bde5fe29b4bf89730d82551a7",
+                "reference": "5b473029ee698f9bde5fe29b4bf89730d82551a7",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/glue-application": "^1.0.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
-                "spryker/sales-return": "^1.0.0",
+                "spryker/sales-return": "^1.2.0",
                 "spryker/sales-return-search": "^1.0.0",
                 "spryker/symfony": "^3.0.0"
             },
@@ -44534,9 +44618,9 @@
             ],
             "description": "SalesReturnsRestApi module",
             "support": {
-                "source": "https://github.com/spryker/sales-returns-rest-api/tree/master"
+                "source": "https://github.com/spryker/sales-returns-rest-api/tree/1.1.0"
             },
-            "time": "2020-05-29T09:10:32+00:00"
+            "time": "2021-04-02T09:54:31+00:00"
         },
         {
             "name": "spryker/sales-split",
