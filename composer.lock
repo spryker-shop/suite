@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.176.6",
+            "version": "3.176.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "bd3dc3d86c6c041b7eb843b808b5e7baabd41203"
+                "reference": "776b944988167fa3d563d2cbc5fcb6763424a9f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/bd3dc3d86c6c041b7eb843b808b5e7baabd41203",
-                "reference": "bd3dc3d86c6c041b7eb843b808b5e7baabd41203",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/776b944988167fa3d563d2cbc5fcb6763424a9f0",
+                "reference": "776b944988167fa3d563d2cbc5fcb6763424a9f0",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.176.6"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.176.8"
             },
-            "time": "2021-04-01T18:14:21+00:00"
+            "time": "2021-04-05T18:16:29+00:00"
         },
         {
             "name": "brick/math",
@@ -3404,23 +3404,22 @@
         },
         {
             "name": "predis/predis",
-            "version": "v1.1.6",
+            "version": "v1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/predis/predis.git",
-                "reference": "9930e933c67446962997b05201c69c2319bf26de"
+                "reference": "b240daa106d4e02f0c5b7079b41e31ddf66fddf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/predis/predis/zipball/9930e933c67446962997b05201c69c2319bf26de",
-                "reference": "9930e933c67446962997b05201c69c2319bf26de",
+                "url": "https://api.github.com/repos/predis/predis/zipball/b240daa106d4e02f0c5b7079b41e31ddf66fddf8",
+                "reference": "b240daa106d4e02f0c5b7079b41e31ddf66fddf8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9"
             },
             "require-dev": {
-                "cweagans/composer-patches": "^1.6",
                 "phpunit/phpunit": "~4.8"
             },
             "suggest": {
@@ -3428,18 +3427,6 @@
                 "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
             },
             "type": "library",
-            "extra": {
-                "composer-exit-on-patch-failure": true,
-                "patches": {
-                    "phpunit/phpunit-mock-objects": {
-                        "Fix PHP 7 and 8 compatibility": "./tests/phpunit_mock_objects.patch"
-                    },
-                    "phpunit/phpunit": {
-                        "Fix PHP 7 compatibility": "./tests/phpunit_php7.patch",
-                        "Fix PHP 8 compatibility": "./tests/phpunit_php8.patch"
-                    }
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Predis\\": "src/"
@@ -3471,7 +3458,7 @@
             ],
             "support": {
                 "issues": "https://github.com/predis/predis/issues",
-                "source": "https://github.com/predis/predis/tree/v1.1.6"
+                "source": "https://github.com/predis/predis/tree/v1.1.7"
             },
             "funding": [
                 {
@@ -3479,7 +3466,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-11T19:18:05+00:00"
+            "time": "2021-04-04T19:34:46+00:00"
         },
         {
             "name": "propel/propel",
@@ -4807,7 +4794,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f2ea30c9c1e85d4de22df4ccf55c15c8e1b29ff9"
+                "reference": "611ca3274b784b674c59545c6d919c65f95d0153"
             },
             "require": {
                 "php": ">=7.3"
@@ -5618,7 +5605,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-04-02T09:54:31+00:00"
+            "time": "2021-04-06T09:40:39+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10603,16 +10590,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "4.1.19",
+            "version": "4.1.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "138dc9345a81ec994dcd6b9680c501a752a37b00"
+                "reference": "d8b16e13e1781dbc3a7ae8292117d520c89a9c5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/138dc9345a81ec994dcd6b9680c501a752a37b00",
-                "reference": "138dc9345a81ec994dcd6b9680c501a752a37b00",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/d8b16e13e1781dbc3a7ae8292117d520c89a9c5a",
+                "reference": "d8b16e13e1781dbc3a7ae8292117d520c89a9c5a",
                 "shasum": ""
             },
             "require": {
@@ -10686,7 +10673,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/Codeception/issues",
-                "source": "https://github.com/Codeception/Codeception/tree/4.1.19"
+                "source": "https://github.com/Codeception/Codeception/tree/4.1.20"
             },
             "funding": [
                 {
@@ -10694,7 +10681,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2021-03-28T13:26:08+00:00"
+            "time": "2021-04-02T16:41:51+00:00"
         },
         {
             "name": "codeception/lib-asserts",
@@ -10752,16 +10739,16 @@
         },
         {
             "name": "codeception/lib-innerbrowser",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-innerbrowser.git",
-                "reference": "693e116f81ef98eae98c43ef785a726faf87394e"
+                "reference": "4ffb91c18e4cacd073ff2914c07e5ccaf5efe449"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/693e116f81ef98eae98c43ef785a726faf87394e",
-                "reference": "693e116f81ef98eae98c43ef785a726faf87394e",
+                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/4ffb91c18e4cacd073ff2914c07e5ccaf5efe449",
+                "reference": "4ffb91c18e4cacd073ff2914c07e5ccaf5efe449",
                 "shasum": ""
             },
             "require": {
@@ -10806,9 +10793,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/lib-innerbrowser/issues",
-                "source": "https://github.com/Codeception/lib-innerbrowser/tree/1.4.1"
+                "source": "https://github.com/Codeception/lib-innerbrowser/tree/1.4.2"
             },
-            "time": "2021-03-02T08:01:54+00:00"
+            "time": "2021-04-06T05:26:49+00:00"
         },
         {
             "name": "codeception/module-asserts",
