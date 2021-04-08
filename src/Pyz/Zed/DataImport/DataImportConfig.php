@@ -59,6 +59,7 @@ use Spryker\Zed\SalesReturnDataImport\SalesReturnDataImportConfig;
 use Spryker\Zed\SharedCartDataImport\SharedCartDataImportConfig;
 use Spryker\Zed\ShipmentDataImport\ShipmentDataImportConfig;
 use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig;
+use Spryker\Zed\StockAddressDataImport\StockAddressDataImportConfig;
 use Spryker\Zed\StockDataImport\StockDataImportConfig;
 
 /**
@@ -293,6 +294,7 @@ class DataImportConfig extends SprykerDataImportConfig
             MerchantOmsDataImportConfig::IMPORT_TYPE_MERCHANT_OMS_PROCESS,
             SalesReturnDataImportConfig::IMPORT_TYPE_RETURN_REASON,
             static::IMPORT_TYPE_MERCHANT_USER,
+            StockAddressDataImportConfig::IMPORT_TYPE_STOCK_ADDRESS,
         ];
     }
 }
