@@ -357,7 +357,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new EntityTagRestRequestValidatorPlugin(),
             new CatalogSearchRequestParametersIntegerRestRequestValidatorPlugin(),
             new CartItemProductConfigurationRestRequestValidatorPlugin(),
-            new ValidateAccessTokenPlugin(),
         ];
     }
 
@@ -383,6 +382,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new PaginationParametersValidateHttpRequestPlugin(),
+            new ValidateAccessTokenPlugin(),
         ];
     }
 
