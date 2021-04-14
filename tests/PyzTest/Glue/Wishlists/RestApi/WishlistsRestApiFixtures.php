@@ -108,6 +108,8 @@ class WishlistsRestApiFixtures implements FixturesBuilderInterface, FixturesCont
             WishlistItemTransfer::WISHLIST_NAME => $this->wishlistTransfer->getName(),
             WishlistItemTransfer::SKU => $this->productConcreteTransfer->getSku(),
             WishlistItemTransfer::FK_CUSTOMER => $this->customerTransfer->getIdCustomer(),
+            WishlistItemTransfer::PRODUCT_OFFER_REFERENCE => null,
+            WishlistItemTransfer::MERCHANT_REFERENCE => null,
         ]);
     }
 }
