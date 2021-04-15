@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e865370f38d49f62bb4fc5d80c92b10",
+    "content-hash": "a530b70145160f057927567400dba1a6",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4789,11 +4789,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/glue-11427/dev-openid-callbacks-improvement",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c116d772b5766306833e7dbc9e429488a7546cd5"
+                "reference": "9e77bc3c00cb1f60796c0498c61e324a65f152f7"
             },
             "require": {
                 "php": ">=7.3"
@@ -5135,6 +5135,7 @@
                 "spryker/merchant-product-offer-storage": "*",
                 "spryker/merchant-product-offer-storage-extension": "*",
                 "spryker/merchant-product-offer-wishlist": "*",
+                "spryker/merchant-product-offer-wishlist-rest-api": "*",
                 "spryker/merchant-product-offers-rest-api": "*",
                 "spryker/merchant-product-search": "*",
                 "spryker/merchant-product-storage": "*",
@@ -5246,6 +5247,7 @@
                 "spryker/price-product-merchant-relationship-storage": "*",
                 "spryker/price-product-offer": "*",
                 "spryker/price-product-offer-data-import": "*",
+                "spryker/price-product-offer-extension": "*",
                 "spryker/price-product-offer-gui": "*",
                 "spryker/price-product-offer-storage": "*",
                 "spryker/price-product-offer-storage-extension": "*",
@@ -5516,6 +5518,8 @@
                 "spryker/step-engine": "*",
                 "spryker/step-engine-extension": "*",
                 "spryker/stock": "*",
+                "spryker/stock-address": "*",
+                "spryker/stock-address-data-import": "*",
                 "spryker/stock-data-import": "*",
                 "spryker/stock-extension": "*",
                 "spryker/stock-gui": "*",
@@ -5552,6 +5556,8 @@
                 "spryker/user-extension": "*",
                 "spryker/user-locale": "*",
                 "spryker/user-locale-gui": "*",
+                "spryker/user-merchant-portal-gui": "*",
+                "spryker/user-merchant-portal-gui-extension": "*",
                 "spryker/user-password-reset": "*",
                 "spryker/user-password-reset-extension": "*",
                 "spryker/user-password-reset-mail": "*",
@@ -5579,6 +5585,7 @@
                 "spryker/wishlist": "*",
                 "spryker/wishlist-extension": "*",
                 "spryker/wishlists-rest-api": "*",
+                "spryker/wishlists-rest-api-extension": "*",
                 "spryker/zed-navigation": "*",
                 "spryker/zed-navigation-extension": "*",
                 "spryker/zed-request": "*",
@@ -5588,6 +5595,7 @@
             "require-dev": {
                 "spryker/code-sniffer": "dev-master"
             },
+            "default-branch": true,
             "bin": [
                 "Bundles/Console/bin/console",
                 "Bundles/Console/bin/yves",
@@ -5603,7 +5611,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-04-14T16:10:26+00:00"
+            "time": "2021-04-15T13:30:31+00:00"
         },
         {
             "name": "spryker/spryker-shop",
