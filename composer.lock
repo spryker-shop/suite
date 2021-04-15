@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e865370f38d49f62bb4fc5d80c92b10",
+    "content-hash": "a530b70145160f057927567400dba1a6",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.176.8",
+            "version": "3.178.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "776b944988167fa3d563d2cbc5fcb6763424a9f0"
+                "reference": "fc3667c6054c941ae8cd8b8750f7c5c892d5a87b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/776b944988167fa3d563d2cbc5fcb6763424a9f0",
-                "reference": "776b944988167fa3d563d2cbc5fcb6763424a9f0",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fc3667c6054c941ae8cd8b8750f7c5c892d5a87b",
+                "reference": "fc3667c6054c941ae8cd8b8750f7c5c892d5a87b",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.176.8"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.178.4"
             },
-            "time": "2021-04-05T18:16:29+00:00"
+            "time": "2021-04-14T18:16:00+00:00"
         },
         {
             "name": "brick/math",
@@ -243,26 +243,25 @@
         },
         {
             "name": "defuse/php-encryption",
-            "version": "v2.2.1",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/defuse/php-encryption.git",
-                "reference": "0f407c43b953d571421e0020ba92082ed5fb7620"
+                "reference": "77880488b9954b7884c25555c2a0ea9e7053f9d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/defuse/php-encryption/zipball/0f407c43b953d571421e0020ba92082ed5fb7620",
-                "reference": "0f407c43b953d571421e0020ba92082ed5fb7620",
+                "url": "https://api.github.com/repos/defuse/php-encryption/zipball/77880488b9954b7884c25555c2a0ea9e7053f9d2",
+                "reference": "77880488b9954b7884c25555c2a0ea9e7053f9d2",
                 "shasum": ""
             },
             "require": {
                 "ext-openssl": "*",
                 "paragonie/random_compat": ">= 2",
-                "php": ">=5.4.0"
+                "php": ">=5.6.0"
             },
             "require-dev": {
-                "nikic/php-parser": "^2.0|^3.0|^4.0",
-                "phpunit/phpunit": "^4|^5"
+                "phpunit/phpunit": "^4|^5|^6|^7|^8|^9"
             },
             "bin": [
                 "bin/generate-defuse-key"
@@ -304,9 +303,9 @@
             ],
             "support": {
                 "issues": "https://github.com/defuse/php-encryption/issues",
-                "source": "https://github.com/defuse/php-encryption/tree/master"
+                "source": "https://github.com/defuse/php-encryption/tree/v2.3.1"
             },
-            "time": "2018-07-24T23:27:56+00:00"
+            "time": "2021-04-09T23:57:26+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -986,16 +985,16 @@
         },
         {
             "name": "galbar/jsonpath",
-            "version": "1.1",
+            "version": "1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Galbar/JsonPath-PHP.git",
-                "reference": "36d3ac57b1a62ff507d7751d797a9e03ffbd1385"
+                "reference": "2d166b0293f82f6bf3f96afa6729e317016ce3c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Galbar/JsonPath-PHP/zipball/36d3ac57b1a62ff507d7751d797a9e03ffbd1385",
-                "reference": "36d3ac57b1a62ff507d7751d797a9e03ffbd1385",
+                "url": "https://api.github.com/repos/Galbar/JsonPath-PHP/zipball/2d166b0293f82f6bf3f96afa6729e317016ce3c1",
+                "reference": "2d166b0293f82f6bf3f96afa6729e317016ce3c1",
                 "shasum": ""
             },
             "require": {
@@ -1032,9 +1031,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Galbar/JsonPath-PHP/issues",
-                "source": "https://github.com/Galbar/JsonPath-PHP/tree/1.1"
+                "source": "https://github.com/Galbar/JsonPath-PHP/tree/1.2"
             },
-            "time": "2020-06-01T15:18:22+00:00"
+            "time": "2021-04-07T17:10:18+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -4790,11 +4789,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/glue-11427/dev-openid-callbacks-improvement",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c116d772b5766306833e7dbc9e429488a7546cd5"
+                "reference": "4f3ab569a4987cb4b028ddd67f48fcfc7c709663"
             },
             "require": {
                 "php": ">=7.3"
@@ -5136,6 +5135,7 @@
                 "spryker/merchant-product-offer-storage": "*",
                 "spryker/merchant-product-offer-storage-extension": "*",
                 "spryker/merchant-product-offer-wishlist": "*",
+                "spryker/merchant-product-offer-wishlist-rest-api": "*",
                 "spryker/merchant-product-offers-rest-api": "*",
                 "spryker/merchant-product-search": "*",
                 "spryker/merchant-product-storage": "*",
@@ -5247,6 +5247,7 @@
                 "spryker/price-product-merchant-relationship-storage": "*",
                 "spryker/price-product-offer": "*",
                 "spryker/price-product-offer-data-import": "*",
+                "spryker/price-product-offer-extension": "*",
                 "spryker/price-product-offer-gui": "*",
                 "spryker/price-product-offer-storage": "*",
                 "spryker/price-product-offer-storage-extension": "*",
@@ -5517,6 +5518,8 @@
                 "spryker/step-engine": "*",
                 "spryker/step-engine-extension": "*",
                 "spryker/stock": "*",
+                "spryker/stock-address": "*",
+                "spryker/stock-address-data-import": "*",
                 "spryker/stock-data-import": "*",
                 "spryker/stock-extension": "*",
                 "spryker/stock-gui": "*",
@@ -5553,6 +5556,8 @@
                 "spryker/user-extension": "*",
                 "spryker/user-locale": "*",
                 "spryker/user-locale-gui": "*",
+                "spryker/user-merchant-portal-gui": "*",
+                "spryker/user-merchant-portal-gui-extension": "*",
                 "spryker/user-password-reset": "*",
                 "spryker/user-password-reset-extension": "*",
                 "spryker/user-password-reset-mail": "*",
@@ -5580,6 +5585,7 @@
                 "spryker/wishlist": "*",
                 "spryker/wishlist-extension": "*",
                 "spryker/wishlists-rest-api": "*",
+                "spryker/wishlists-rest-api-extension": "*",
                 "spryker/zed-navigation": "*",
                 "spryker/zed-navigation-extension": "*",
                 "spryker/zed-request": "*",
@@ -5589,6 +5595,7 @@
             "require-dev": {
                 "spryker/code-sniffer": "dev-master"
             },
+            "default-branch": true,
             "bin": [
                 "Bundles/Console/bin/console",
                 "Bundles/Console/bin/yves",
@@ -5604,7 +5611,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-04-14T16:10:26+00:00"
+            "time": "2021-04-15T12:20:53+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5612,7 +5619,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "00824148ee49d889c1e073aca675cfcb2e02e2e7"
+                "reference": "158640880450e01f6ba9cdfd88dbcfe99ea13bee"
             },
             "require": {
                 "php": ">=7.3"
@@ -5777,7 +5784,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2021-04-06T15:32:22+00:00"
+            "time": "2021-04-15T12:20:55+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11014,16 +11021,16 @@
         },
         {
             "name": "codeception/module-rest",
-            "version": "1.2.8",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-rest.git",
-                "reference": "4c8c6bd75f67a25ff91bdce0d6c135c5e7aa5e10"
+                "reference": "2cd9901c08a143dc80985696dcbe3cefc9f23ab9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/4c8c6bd75f67a25ff91bdce0d6c135c5e7aa5e10",
-                "reference": "4c8c6bd75f67a25ff91bdce0d6c135c5e7aa5e10",
+                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/2cd9901c08a143dc80985696dcbe3cefc9f23ab9",
+                "reference": "2cd9901c08a143dc80985696dcbe3cefc9f23ab9",
                 "shasum": ""
             },
             "require": {
@@ -11062,9 +11069,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/module-rest/issues",
-                "source": "https://github.com/Codeception/module-rest/tree/1.2.8"
+                "source": "https://github.com/Codeception/module-rest/tree/1.3.0"
             },
-            "time": "2021-03-02T06:47:59+00:00"
+            "time": "2021-04-08T08:23:09+00:00"
         },
         {
             "name": "codeception/module-webdriver",
@@ -15630,16 +15637,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.8",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4"
+                "reference": "ffced0d2c8fa8e6cdc4d695a743271fab6c38625"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/9d583721a7157ee997f235f327de038e7ea6dac4",
-                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/ffced0d2c8fa8e6cdc4d695a743271fab6c38625",
+                "reference": "ffced0d2c8fa8e6cdc4d695a743271fab6c38625",
                 "shasum": ""
             },
             "require": {
@@ -15682,7 +15689,7 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "time": "2020-10-23T02:01:07+00:00"
+            "time": "2021-04-09T00:54:41+00:00"
         },
         {
             "name": "stecman/symfony-console-completion",

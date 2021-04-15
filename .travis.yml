@@ -1,18 +1,15 @@
 _COMPOSER_INSTALL: &COMPOSER_INSTALL
   - echo "_COMPOSER_INSTALL"
-  - composer self-update 2.0.9
   - COMPOSER_MEMORY_LIMIT=-1 composer install --optimize-autoloader --no-interaction
 
 _COMPOSER_PREFER_MID: &COMPOSER_PREFER_MID
     - echo "_COMPOSER_PREFER_MID"
-    - composer self-update 2.0.9
     - COMPOSER_MEMORY_LIMIT=-1 composer install --no-interaction
     - COMPOSER_MEMORY_LIMIT=-1 composer prefer-mid
     - COMPOSER_MEMORY_LIMIT=-1 composer dumpautoload -o
 
 _COMPOSER_PREFER_LOWEST: &COMPOSER_PREFER_LOWEST
   - echo "_COMPOSER_PREFER_LOWEST"
-  - composer self-update 2.0.9
   - COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --optimize-autoloader --no-interaction
 
 _SETUP_WEB_INFRASTRUCTURE: &SETUP_WEB_INFRASTRUCTURE

@@ -32,6 +32,7 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\AmountAvailab
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Checkout\QuoteApprovalCheckoutPreConditionPlugin;
 use Spryker\Zed\QuoteRequest\Communication\Plugin\Checkout\CloseQuoteRequestCheckoutPostSaveHookPlugin;
 use Spryker\Zed\QuoteRequest\Communication\Plugin\Checkout\QuoteRequestPreCheckPlugin;
+use Spryker\Zed\Sales\Communication\Plugin\Checkout\DuplicateOrderCheckoutPreConditionPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\Checkout\SalesOrderSaverPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\SalesOrderExpanderPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Checkout\SalesOrderThresholdCheckoutPreConditionPlugin;
@@ -66,6 +67,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new SingleMerchantCheckoutPreConditionPlugin(),
             new PaymentMethodValidityCheckoutPreConditionPlugin(),
             new ProductConfigurationCheckoutPreConditionPlugin(),
+            new DuplicateOrderCheckoutPreConditionPlugin(),
         ];
     }
 
