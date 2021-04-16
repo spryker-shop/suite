@@ -4,12 +4,12 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
 
-    <process name="MerchantReturn">
+    <process name="MarketplaceReturn">
         <states>
-            <state name="waiting for return" display="oms.state.waiting-for-return"/>
-            <state name="returned" display="oms.state.returned"/>
-            <state name="return canceled" display="oms.state.return-canceled"/>
-            <state name="shipped to customer" display="oms.state.shipped-to-customer"/>
+            <state name="waiting for return"/>
+            <state name="returned"/>
+            <state name="return canceled"/>
+            <state name="shipped to customer"/>
         </states>
 
         <transitions>
@@ -46,16 +46,16 @@
             <transition>
                 <source>shipped to customer</source>
                 <target>delivered</target>
-                <event>delivery-return</event>
+                <event>deliver-return</event>
             </transition>
         </transitions>
 
         <events>
-            <event name="start-return" command="Return/StartReturn"/>
-            <event name="execute-return" manual="true"/>
-            <event name="cancel-return" manual="true"/>
-            <event name="ship-return" manual="true"/>
-            <event name="delivery-return" manual="true"/>
+            <event name="start-return" command="MerchantOms/ReturnOrderItem"/>
+            <event name="execute-return"/>
+            <event name="cancel-return"/>
+            <event name="ship-return"/>
+            <event name="deliver-return"/>
         </events>
     </process>
 
