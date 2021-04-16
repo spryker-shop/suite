@@ -32,13 +32,21 @@
                 <visible>1</visible>
             </order-list>
             <merchant-sales-order>
-                <label>My orders</label>
-                <title>My orders</title>
+                <label>My Orders</label>
+                <title>My Orders</title>
                 <bundle>merchant-sales-order-merchant-user-gui</bundle>
                 <controller>index</controller>
                 <action>index</action>
                 <visible>1</visible>
             </merchant-sales-order>
+            <merchant-sales-return>
+                <label>My Returns</label>
+                <title>My Returns</title>
+                <bundle>merchant-sales-return-merchant-user-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </merchant-sales-return>
             <sales-reclamations>
                 <label>Reclamations</label>
                 <title>Reclamations</title>
@@ -375,6 +383,14 @@
                 <controller>index</controller>
                 <action>index</action>
             </order-list>
+            <returns>
+                <label>Returns</label>
+                <title>Returns</title>
+                <bundle>sales-return-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </returns>
         </pages>
     </marketplace>
     <users>

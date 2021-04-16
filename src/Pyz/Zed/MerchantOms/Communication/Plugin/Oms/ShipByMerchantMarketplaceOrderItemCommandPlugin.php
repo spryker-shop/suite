@@ -7,49 +7,15 @@
 
 namespace Pyz\Zed\MerchantOms\Communication\Plugin\Oms;
 
-use Generated\Shared\Transfer\MerchantOrderItemCriteriaTransfer;
-use Generated\Shared\Transfer\StateMachineItemTransfer;
-use LogicException;
-use Spryker\Zed\Kernel\Communication\AbstractPlugin;
-use Spryker\Zed\StateMachine\Dependency\Plugin\CommandPluginInterface;
-
-/**
- * @method \Pyz\Zed\MerchantOms\Communication\MerchantOmsCommunicationFactory getFactory()
- * @method \Pyz\Zed\MerchantOms\MerchantOmsConfig getConfig()
- */
-class ShipByMerchantMarketplaceOrderItemCommandPlugin extends AbstractPlugin implements CommandPluginInterface
+class ShipByMerchantMarketplaceOrderItemCommandPlugin extends AbstractTriggerOmsEventCommandPlugin
 {
     protected const EVENT_SHIP_BY_MERCHANT = 'ship by merchant';
 
     /**
-     * {@inheritDoc}
-     * - Triggers 'ship' event on a marketplace order item.
-     *
-     * @api
-     *
-     * @param \Generated\Shared\Transfer\StateMachineItemTransfer $stateMachineItemTransfer
-     *
-     * @return void
+     * @return string
      */
-    public function run(StateMachineItemTransfer $stateMachineItemTransfer)
+    public function getEventName(): string
     {
-        $merchantOrderItemTransfer = $this->getFactory()->getMerchantSalesOrderFacade()->findMerchantOrderItem(
-            (new MerchantOrderItemCriteriaTransfer())
-                ->setIdMerchantOrderItem($stateMachineItemTransfer->getIdentifier())
-        );
-
-        if (!$merchantOrderItemTransfer) {
-            return;
-        }
-
-        $result = $this->getFactory()->getOmsFacade()->triggerEventForOneOrderItem(static::EVENT_SHIP_BY_MERCHANT, $merchantOrderItemTransfer->getIdOrderItem());
-
-        if ($result === null) {
-            throw new LogicException(sprintf(
-                'Sales Order Item #%s transition for event "%s" has not happened.',
-                $merchantOrderItemTransfer->getIdOrderItem(),
-                static::EVENT_SHIP_BY_MERCHANT
-            ));
-        }
+        return static::EVENT_SHIP_BY_MERCHANT;
     }
 }

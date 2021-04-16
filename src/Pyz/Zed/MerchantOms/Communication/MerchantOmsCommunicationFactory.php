@@ -10,6 +10,7 @@ namespace Pyz\Zed\MerchantOms\Communication;
 use Pyz\Zed\MerchantOms\MerchantOmsDependencyProvider;
 use Pyz\Zed\Oms\Business\OmsFacadeInterface;
 use Spryker\Zed\MerchantOms\Communication\MerchantOmsCommunicationFactory as SprykerMerchantOmsCommunicationFactory;
+use Spryker\Zed\SalesReturn\Business\SalesReturnFacadeInterface;
 
 /**
  * @method \Spryker\Zed\MerchantOms\MerchantOmsConfig getConfig()
@@ -24,5 +25,13 @@ class MerchantOmsCommunicationFactory extends SprykerMerchantOmsCommunicationFac
     public function getOmsFacade(): OmsFacadeInterface
     {
         return $this->getProvidedDependency(MerchantOmsDependencyProvider::FACADE_OMS);
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesReturn\Business\SalesReturnFacadeInterface
+     */
+    public function getSalesReturnFacade(): SalesReturnFacadeInterface
+    {
+        return $this->getProvidedDependency(MerchantOmsDependencyProvider::FACADE_SALES_RETURN);
     }
 }

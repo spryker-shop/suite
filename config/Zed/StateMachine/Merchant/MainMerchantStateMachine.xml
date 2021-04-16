@@ -84,13 +84,13 @@
         </events>
 
         <subprocesses>
-            <process>MarketplaceReturn</process>
-            <process>MarketplaceRefund</process>
+            <process>MerchantReturn</process>
+            <process>MerchantRefund</process>
         </subprocesses>
 
     </process>
 
-    <process name="MarketplaceReturn" file="MarketplaceSubprocess/MarketplaceReturn01"/>
-    <process name="MarketplaceRefund" file="MarketplaceSubprocess/MarketplaceRefund01"/>
+    <process name="MerchantReturn" file="Subprocess/MerchantReturn"/>
+    <process name="MerchantRefund" file="Subprocess/MerchantRefund"/>
 
 </statemachine>
