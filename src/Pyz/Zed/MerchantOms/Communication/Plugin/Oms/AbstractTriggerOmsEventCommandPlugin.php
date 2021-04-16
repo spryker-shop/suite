@@ -17,17 +17,22 @@ use Spryker\Zed\StateMachine\Dependency\Plugin\CommandPluginInterface;
  * @method \Pyz\Zed\MerchantOms\Communication\MerchantOmsCommunicationFactory getFactory()
  * @method \Pyz\Zed\MerchantOms\MerchantOmsConfig getConfig()
  */
-class MarketplaceStartReturnCommandPlugin extends AbstractPlugin implements CommandPluginInterface
+abstract class AbstractTriggerOmsEventCommandPlugin extends AbstractPlugin implements CommandPluginInterface
 {
-    protected const EVENT_START_RETURN = 'start-return';
+    /**
+     * @return string
+     */
+    abstract public function getEventName(): string;
 
     /**
      * {@inheritDoc}
-     * - Triggers 'refund' event on a marketplace order item.
+     * - Triggers event on a marketplace order item.
      *
      * @api
      *
      * @param \Generated\Shared\Transfer\StateMachineItemTransfer $stateMachineItemTransfer
+     *
+     * @throws \LogicException
      *
      * @return void
      */
@@ -42,13 +47,15 @@ class MarketplaceStartReturnCommandPlugin extends AbstractPlugin implements Comm
             return;
         }
 
-        $result = $this->getFactory()->getOmsFacade()->triggerEventForOneOrderItem(static::EVENT_START_RETURN, $merchantOrderItemTransfer->getIdOrderItem());
+        $result = $this->getFactory()
+            ->getOmsFacade()
+            ->triggerEventForOneOrderItem($this->getEventName(), $merchantOrderItemTransfer->getIdOrderItem());
 
         if ($result === null) {
             throw new LogicException(sprintf(
                 'Sales Order Item #%s transition for event "%s" has not happened.',
                 $merchantOrderItemTransfer->getIdOrderItem(),
-                static::EVENT_START_RETURN
+                $this->getEventName()
             ));
         }
     }

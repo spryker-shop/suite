@@ -4,9 +4,9 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
 
-    <process name="DummyRefund">
+    <process name="MarketplaceRefund">
         <states>
-            <state name="refunded" display="oms.state.refunded"/>
+            <state name="refunded"/>
         </states>
 
         <transitions>
@@ -24,7 +24,7 @@
         </transitions>
 
         <events>
-            <event name="refund" manual="true" command="DummyPayment/Refund"/>
+            <event name="refund" command="DummyPayment/Refund"/>
         </events>
     </process>
 
