@@ -17,9 +17,10 @@ use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\AbstractAlter
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\ConcreteAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlugin;
+use Spryker\Glue\AuthRestApi\Plugin\GlueApplication\AccessTokenRestRequestValidatorPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\GlueApplication\SimultaneousAuthenticationRestRequestValidatorPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\GlueApplication\TokenResourceRoutePlugin;
-use Spryker\Glue\AuthRestApi\Plugin\GlueApplication\ValidateAccessTokenPlugin;
+use Spryker\Glue\AuthRestApi\Plugin\GlueApplication\FormattedControllerBeforeActionValidateAccessTokenPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RestUserFinderByAccessTokenPlugin;
 use Spryker\Glue\AvailabilityNotificationsRestApi\Plugin\GlueApplication\AvailabilityNotificationsResourceRoutePlugin;
@@ -358,6 +359,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new EntityTagRestRequestValidatorPlugin(),
             new CatalogSearchRequestParametersIntegerRestRequestValidatorPlugin(),
             new CartItemProductConfigurationRestRequestValidatorPlugin(),
+            new AccessTokenRestRequestValidatorPlugin(),
         ];
     }
 
@@ -384,7 +386,18 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         return [
             new PaginationParametersValidateHttpRequestPlugin(),
             new HeadersValidateHttpRequestPlugin(),
-            new ValidateAccessTokenPlugin(),
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ValidateHttpRequestPluginInterface[]
+     */
+    protected function getValidateFormattedControllerBeforeActionHttpRequestPlugins(): array
+    {
+        return [
+            new FormattedControllerBeforeActionValidateAccessTokenPlugin(),
         ];
     }
 
