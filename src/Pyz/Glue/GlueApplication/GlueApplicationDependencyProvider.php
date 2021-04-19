@@ -394,7 +394,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
      *
      * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ValidateHttpRequestPluginInterface[]
      */
-    protected function getValidateFormattedControllerBeforeActionHttpRequestPlugins(): array
+    protected function getFormattedControllerBeforeActionTerminatePlugins(): array
     {
         return [
             new FormattedControllerBeforeActionValidateAccessTokenPlugin(),
