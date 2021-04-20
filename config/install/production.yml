@@ -41,6 +41,9 @@ sections:
                 - DE
 
     scheduler-start:
+        queue-setup:
+            command: "vendor/bin/console queue:setup"
+            stores: true
         scheduler-setup:
             command: "vendor/bin/console scheduler:setup -vvv --no-ansi"
             stores: true

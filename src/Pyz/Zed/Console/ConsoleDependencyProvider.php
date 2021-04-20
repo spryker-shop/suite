@@ -115,6 +115,7 @@ use Spryker\Zed\QuoteRequest\Communication\Console\CloseOutdatedQuoteRequestCons
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllExchangesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
+use Spryker\Zed\RabbitMq\Communication\Console\QueueSetupConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\BuildRestApiValidationCacheConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\RemoveRestApiValidationCacheConsole;
@@ -343,6 +344,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DeleteAllQueuesConsole(),
             new PurgeAllQueuesConsole(),
             new DeleteAllExchangesConsole(),
+            new QueueSetupConsole(),
             new SetUserPermissionsConsole(),
 
             new MaintenanceEnableConsole(),

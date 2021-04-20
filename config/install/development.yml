@@ -214,6 +214,10 @@ sections:
                 - US
                 - DE
 
+        queue-setup:
+            command: "vendor/bin/console queue:setup"
+            stores: true
+
         setup-search-create-sources:
             command: "vendor/bin/console search:setup:sources"
             stores: true
