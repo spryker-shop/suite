@@ -98,6 +98,8 @@ sections:
             command: "vendor/bin/console scheduler:clean"
 
     init-storages-per-store:
+        queue-setup:
+            command: "vendor/bin/console queue:setup"
         setup-search-create-sources:
             command: "vendor/bin/console search:setup:sources"
 

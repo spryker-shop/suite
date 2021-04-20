@@ -42905,21 +42905,21 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "2.12.0",
+            "version": "2.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "f449d32442fa838972c13f6b30767037fa9e8135"
+                "reference": "8ee4d8820e6b1853c6aec1f475a98cef04b853de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/f449d32442fa838972c13f6b30767037fa9e8135",
-                "reference": "f449d32442fa838972c13f6b30767037fa9e8135",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/8ee4d8820e6b1853c6aec1f475a98cef04b853de",
+                "reference": "8ee4d8820e6b1853c6aec1f475a98cef04b853de",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
-                "php-amqplib/php-amqplib": "^2.6.1",
+                "php": ">=7.3",
+                "php-amqplib/php-amqplib": "^2.10.0",
                 "spryker/guzzle": "^2.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^3.0.0",
@@ -42929,8 +42929,9 @@
                 "spryker/transfer": "^3.8.0"
             },
             "require-dev": {
+                "phpstan/phpstan": "^0.12.57",
                 "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/testify": "^3.35.0"
             },
             "type": "library",
             "extra": {
@@ -42968,7 +42969,7 @@
             "support": {
                 "source": "https://github.com/spryker/rabbit-mq"
             },
-            "time": "2020-10-06T09:24:05+00:00"
+            "time": "2021-04-20T13:18:59+00:00"
         },
         {
             "name": "spryker/ramsey-uuid",
