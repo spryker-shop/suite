@@ -393,6 +393,8 @@ $config[RabbitMqEnv::RABBITMQ_API_USERNAME] = getenv('SPRYKER_BROKER_API_USERNAM
 $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = getenv('SPRYKER_BROKER_API_PASSWORD');
 $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = getenv('SPRYKER_BROKER_NAMESPACE');
 
+$config[RabbitMqEnv::RABBITMQ_ENABLE_RUNTIME_SETTING_UP] = false;
+
 $rabbitConnections = json_decode(getenv('SPRYKER_BROKER_CONNECTIONS') ?: '[]', true);
 $defaultConnection = [
     RabbitMqEnv::RABBITMQ_HOST => getenv('SPRYKER_BROKER_HOST'),
