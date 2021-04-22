@@ -8,7 +8,7 @@
 namespace Pyz\Service\PriceProduct;
 
 use Spryker\Service\PriceProduct\PriceProductDependencyProvider as SprykerPriceProductDependencyProvider;
-use Spryker\Service\PriceProductOfferStorage\Plugin\PriceProduct\ProductOfferPriceProductFilterPlugin;
+use Spryker\Service\PriceProductOffer\Plugin\PriceProduct\PriceProductOfferPriceProductFilterPlugin;
 use Spryker\Service\PriceProductOfferVolume\Plugin\PriceProductOffer\PriceProductOfferVolumeFilterPlugin;
 use Spryker\Service\PriceProductVolume\Plugin\PriceProductExtension\PriceProductVolumeFilterPlugin;
 use Spryker\Service\ProductConfigurationStorage\Plugin\PriceProduct\ProductConfigurationPriceProductFilterPlugin;
@@ -27,7 +27,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
             /**
              * ProductOfferPriceProductFilterPlugin should be the first, otherwise other plugins might filter out the prices actually belonging to the offer.
              */
-            new ProductOfferPriceProductFilterPlugin(),
+            new PriceProductOfferPriceProductFilterPlugin(),
 
             new ProductConfigurationPriceProductFilterPlugin(),
             new ProductConfigurationPriceProductVolumeFilterPlugin(),

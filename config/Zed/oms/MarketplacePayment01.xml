@@ -82,7 +82,7 @@
             <event name="pay" manual="true"/>
             <event name="cancel" manual="true"/>
             <event name="refund" manual="true"/>
-            <event name="send to merchant" onEnter="true" timeout="1 second" command="MerchantSalesOrder/CreateOrders"/>
+            <event name="send to merchant" onEnter="true" command="MerchantSalesOrder/CreateOrders"/>
             <event name="ship by merchant"/>
             <event name="deliver"/>
             <event name="close" manual="true" command="MerchantOms/CloseOrderItem"/>

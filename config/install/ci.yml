@@ -35,6 +35,9 @@ sections:
             command: "vendor/bin/console translator:generate-cache"
 
     database-migrate:
+        queue-setup:
+            command: "vendor/bin/console queue:setup"
+
         propel-create:
             command: "vendor/bin/console propel:database:create"
 

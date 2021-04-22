@@ -32,6 +32,7 @@ use Spryker\Shared\OauthCryptography\OauthCryptographyConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\ProductConfiguration\ProductConfigurationConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
+use Spryker\Shared\ProductRelation\ProductRelationConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelQueryBuilder\PropelQueryBuilderConstants;
 use Spryker\Shared\Queue\QueueConfig;
@@ -392,6 +393,8 @@ $config[RabbitMqEnv::RABBITMQ_API_USERNAME] = getenv('SPRYKER_BROKER_API_USERNAM
 $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = getenv('SPRYKER_BROKER_API_PASSWORD');
 $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = getenv('SPRYKER_BROKER_NAMESPACE');
 
+$config[RabbitMqEnv::RABBITMQ_ENABLE_RUNTIME_SETTING_UP] = false;
+
 $rabbitConnections = json_decode(getenv('SPRYKER_BROKER_CONNECTIONS') ?: '[]', true);
 $defaultConnection = [
     RabbitMqEnv::RABBITMQ_HOST => getenv('SPRYKER_BROKER_HOST'),
@@ -589,6 +592,10 @@ $config[PayoneConstants::PAYONE] = [
 $config[ProductConfigurationConstants::SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY] = getenv('SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY') ?: 'change123';
 $config[ProductConfigurationConstants::SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR] = getenv('SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR') ?: '0c1ffefeebdab4a3d839d0e52590c9a2';
 $config[KernelConstants::DOMAIN_WHITELIST][] = getenv('SPRYKER_PRODUCT_CONFIGURATOR_HOST');
+
+// >>> Product Relation
+$config[ProductRelationConstants::PRODUCT_RELATION_READ_CHUNK] = 1000;
+$config[ProductRelationConstants::PRODUCT_RELATION_UPDATE_CHUNK] = 1000;
 
 // >>> Security Blocker
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_BLOCKING_TTL] = 600;
