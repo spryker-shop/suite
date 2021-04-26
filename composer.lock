@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f21249b0e54ec4498f5a8d62deb45034",
+    "content-hash": "8c61756951add4fe6e0e8c455ca5551f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -27614,16 +27614,16 @@
         },
         {
             "name": "spryker/merchant-product",
-            "version": "0.2.3",
+            "version": "0.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-product.git",
-                "reference": "385c04878b8962b5b277966ad16fe825aec68d18"
+                "reference": "d4f44ba5ce86bb5c8106377c4991115a43114a16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-product/zipball/385c04878b8962b5b277966ad16fe825aec68d18",
-                "reference": "385c04878b8962b5b277966ad16fe825aec68d18",
+                "url": "https://api.github.com/repos/spryker/merchant-product/zipball/d4f44ba5ce86bb5c8106377c4991115a43114a16",
+                "reference": "d4f44ba5ce86bb5c8106377c4991115a43114a16",
                 "shasum": ""
             },
             "require": {
@@ -27659,9 +27659,9 @@
             ],
             "description": "MerchantProduct module",
             "support": {
-                "source": "https://github.com/spryker/merchant-product/tree/0.2.3"
+                "source": "https://github.com/spryker/merchant-product/tree/0.2.4"
             },
-            "time": "2021-03-05T14:54:46+00:00"
+            "time": "2021-04-22T07:49:16+00:00"
         },
         {
             "name": "spryker/merchant-product-data-import",
@@ -33341,16 +33341,16 @@
         },
         {
             "name": "spryker/price-product",
-            "version": "4.22.0",
+            "version": "4.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product.git",
-                "reference": "e8757904f6e9c1ddd6c83c92cc6852faff38e8cc"
+                "reference": "42fee2004d3f51a691a76db7dc147d20f8a7c9d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product/zipball/e8757904f6e9c1ddd6c83c92cc6852faff38e8cc",
-                "reference": "e8757904f6e9c1ddd6c83c92cc6852faff38e8cc",
+                "url": "https://api.github.com/repos/spryker/price-product/zipball/42fee2004d3f51a691a76db7dc147d20f8a7c9d6",
+                "reference": "42fee2004d3f51a691a76db7dc147d20f8a7c9d6",
                 "shasum": ""
             },
             "require": {
@@ -33400,9 +33400,9 @@
             ],
             "description": "PriceProduct module",
             "support": {
-                "source": "https://github.com/spryker/price-product/tree/4.22.0"
+                "source": "https://github.com/spryker/price-product/tree/4.23.0"
             },
-            "time": "2021-04-14T08:07:12+00:00"
+            "time": "2021-04-20T19:08:46+00:00"
         },
         {
             "name": "spryker/price-product-data-import",
@@ -38534,31 +38534,34 @@
         },
         {
             "name": "spryker/product-merchant-portal-gui",
-            "version": "0.4.1",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-merchant-portal-gui.git",
-                "reference": "b1c3a13df3913126c8e313044b1a4c696196c897"
+                "reference": "6b626e78cf1ad592f390cdf177f21d3ee988aaef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-merchant-portal-gui/zipball/b1c3a13df3913126c8e313044b1a4c696196c897",
-                "reference": "b1c3a13df3913126c8e313044b1a4c696196c897",
+                "url": "https://api.github.com/repos/spryker/product-merchant-portal-gui/zipball/6b626e78cf1ad592f390cdf177f21d3ee988aaef",
+                "reference": "6b626e78cf1ad592f390cdf177f21d3ee988aaef",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
                 "spryker/category": "^4.21.0 || ^5.0.0",
                 "spryker/currency": "^3.0.0",
+                "spryker/decimal-object": "^1.0.0",
                 "spryker/gui-table": "^0.4.4",
                 "spryker/kernel": "^3.51.0",
                 "spryker/laminas": "^1.0.0",
                 "spryker/locale": "^3.0.0",
-                "spryker/merchant-product": "^0.2.3",
+                "spryker/merchant-product": "^0.2.4",
                 "spryker/merchant-user": "^0.5.0 || ^0.6.0 || ^0.7.0",
                 "spryker/money": "^1.0.0 || ^2.0.0",
-                "spryker/price-product": "^4.21.0",
+                "spryker/oms": "^11.7.0",
+                "spryker/price-product": "^4.23.0",
                 "spryker/product": "^6.0.0",
+                "spryker/product-attribute": "^1.8.0",
                 "spryker/product-category": "^4.6.0",
                 "spryker/product-image": "^3.0.0",
                 "spryker/product-merchant-portal-gui-extension": "^0.1.1",
@@ -38591,9 +38594,9 @@
             ],
             "description": "ProductMerchantPortalGui module",
             "support": {
-                "source": "https://github.com/spryker/product-merchant-portal-gui/tree/0.4.1"
+                "source": "https://github.com/spryker/product-merchant-portal-gui/tree/0.5.0"
             },
-            "time": "2021-03-23T11:27:15+00:00"
+            "time": "2021-04-22T15:48:18+00:00"
         },
         {
             "name": "spryker/product-merchant-portal-gui-extension",
