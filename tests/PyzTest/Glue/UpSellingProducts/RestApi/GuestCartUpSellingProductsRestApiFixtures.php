@@ -93,9 +93,9 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
      */
     public function buildFixtures(UpSellingProductsApiTester $I): FixturesContainerInterface
     {
-        // $this->createGuestQuoteWithProduct($I);
-        // $this->createUpSellingProduct($I);
-        // $this->createRelationBetweenProducts($I);
+        $this->createGuestQuoteWithProduct($I);
+        $this->createUpSellingProduct($I);
+        $this->createRelationBetweenProducts($I);
 
         return $this;
     }
