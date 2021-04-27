@@ -38,9 +38,9 @@ class GuestCartUpSellingProductsRestApiCest
     public function loadFixtures(UpSellingProductsApiTester $I): void
     {
         /** @var \PyzTest\Glue\UpSellingProducts\RestApi\GuestCartUpSellingProductsRestApiFixtures $fixtures */
-        $fixtures = $I->loadFixtures(GuestCartUpSellingProductsRestApiFixtures::class);
+        // $fixtures = $I->loadFixtures(GuestCartUpSellingProductsRestApiFixtures::class);
 
-        $this->fixtures = $fixtures;
+        // $this->fixtures = $fixtures;
     }
 
     /**
@@ -50,7 +50,7 @@ class GuestCartUpSellingProductsRestApiCest
      *
      * @return void
      */
-    public function requestGuestCartUpSellingProducts(UpSellingProductsApiTester $I): void
+    private function requestGuestCartUpSellingProducts(UpSellingProductsApiTester $I): void
     {
         // Arrange
         $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
@@ -91,7 +91,7 @@ class GuestCartUpSellingProductsRestApiCest
      *
      * @return void
      */
-    public function requestGuestCartUpSellingProductsByNotExistingCartUuid(UpSellingProductsApiTester $I): void
+    private function requestGuestCartUpSellingProductsByNotExistingCartUuid(UpSellingProductsApiTester $I): void
     {
         // Arrange
         $I->haveHttpHeader(
