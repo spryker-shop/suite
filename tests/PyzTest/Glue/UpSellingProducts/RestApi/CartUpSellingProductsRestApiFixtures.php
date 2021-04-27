@@ -81,9 +81,9 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
      */
     public function buildFixtures(UpSellingProductsApiTester $I): FixturesContainerInterface
     {
-        $this->createQuoteWithProduct($I);
-        $this->createUpSellingProductConcrete($I);
-        $this->createRelationBetweenProducts($I);
+        // $this->createQuoteWithProduct($I);
+        // $this->createUpSellingProductConcrete($I);
+        // $this->createRelationBetweenProducts($I);
 
         return $this;
     }

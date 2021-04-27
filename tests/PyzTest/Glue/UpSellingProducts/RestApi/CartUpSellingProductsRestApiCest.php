@@ -36,11 +36,10 @@ class CartUpSellingProductsRestApiCest
      */
     public function loadFixtures(UpSellingProductsApiTester $I): void
     {
-        return;
         /** @var \PyzTest\Glue\UpSellingProducts\RestApi\CartUpSellingProductsRestApiFixtures $fixtures */
-        $fixtures = $I->loadFixtures(CartUpSellingProductsRestApiFixtures::class);
+        // $fixtures = $I->loadFixtures(CartUpSellingProductsRestApiFixtures::class);
 
-        $this->fixtures = $fixtures;
+        // $this->fixtures = $fixtures;
     }
 
     /**
@@ -50,9 +49,8 @@ class CartUpSellingProductsRestApiCest
      *
      * @return void
      */
-    public function requestCartUpSellingProducts(UpSellingProductsApiTester $I): void
+    private function requestCartUpSellingProducts(UpSellingProductsApiTester $I): void
     {
-        /**
         // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
         $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
@@ -82,7 +80,6 @@ class CartUpSellingProductsRestApiCest
                 $this->fixtures->getUpSellingProductConcreteTransfer()->getAbstractSku(),
                 $I->buildProductAbstractUrl($this->fixtures->getUpSellingProductConcreteTransfer()->getAbstractSku())
             );
-         */
     }
 
     /**
@@ -92,9 +89,8 @@ class CartUpSellingProductsRestApiCest
      *
      * @return void
      */
-    public function requestCartUpSellingProductsByNotExistingCartUuid(UpSellingProductsApiTester $I): void
+    private function requestCartUpSellingProductsByNotExistingCartUuid(UpSellingProductsApiTester $I): void
     {
-        /**
         // Arrange
         $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getQuoteTransfer()->getCustomer());
         $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
@@ -106,6 +102,5 @@ class CartUpSellingProductsRestApiCest
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-        */
     }
 }
