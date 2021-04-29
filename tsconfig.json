@@ -18,7 +18,10 @@
         "removeComments": true,
         "rootDir": ".",
         "paths": {
-            "@mp/zed-ui/*": ["./vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/*"],
+            "@mp/*": ["./vendor/spryker/spryker/Bundles/*/mp.public-api.ts"],
+            "@mp/polyfills": [
+                "./vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/mp.polyfills.ts"
+            ],
             "*": ["*"],
             "ShopUi/*": ["./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/default/*"]
         }
@@ -27,7 +30,8 @@
         "./vendor/spryker/spryker/**/*",
         "./vendor/spryker/spryker-shop/**/*",
         "./vendor/spryker-eco/**/*",
-        "./src/Pyz/Yves/**/*"
+        "./src/Pyz/Yves/**/*",
+        "./src/Pyz/Zed/**/*"
     ],
     "exclude": ["**/node_modules/**", "**/*.spec.ts", "public", "dist", "**/dist/**"]
 }
