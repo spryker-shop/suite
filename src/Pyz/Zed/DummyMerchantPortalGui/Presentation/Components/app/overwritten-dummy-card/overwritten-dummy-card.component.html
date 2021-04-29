@@ -1,0 +1,12 @@
+<spy-card [spyTitle]="title">
+    Overwritten Dummy Card Like Angular Component
+    <br />
+    <br />
+    <br />
+    <br />
+    <ng-content></ng-content>
+</spy-card>
+
+<ng-template #title>
+    <ng-content select="[title]"></ng-content>
+</ng-template>
