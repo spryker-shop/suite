@@ -33,6 +33,7 @@ _ADDONS_ARTIFACTS: &ADDONS_ARTIFACTS
 _ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE: &ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE
   - sourceline: ppa:chris-lea/redis-server
   - sourceline: deb http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu bionic main
+    key_url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
   - sourceline: ppa:ondrej/php
 
 _ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE: &ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE
