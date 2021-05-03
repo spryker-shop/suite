@@ -21,9 +21,7 @@ jobs:
             PROJECT: suite
 
         steps:
-            - uses: actions/checkout@v1
-              with:
-                  fetch-depth: 1
+            - uses: actions/checkout@v2
 
             - name: Configure sysctl limits
               run: |
@@ -166,9 +164,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v1
-              with:
-                  fetch-depth: 1
+            - uses: actions/checkout@v2
 
             - name: Install apt-packages
               run: |
@@ -197,9 +193,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v1
-              with:
-                  fetch-depth: 1
+            - uses: actions/checkout@v2
 
             - name: Install apt-packages
               run: |
@@ -228,9 +222,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v1
-              with:
-                  fetch-depth: 1
+            - uses: actions/checkout@v2
 
             - name: Install apt-packages
               run: |
@@ -258,9 +250,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v1
-              with:
-                  fetch-depth: 1
+            - uses: actions/checkout@v2
 
             - name: Install apt-packages
               run: |
@@ -289,9 +279,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v1
-              with:
-                  fetch-depth: 1
+            - uses: actions/checkout@v2
 
             - name: Install apt-packages
               run: |
@@ -319,9 +307,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v1
-              with:
-                  fetch-depth: 1
+            - uses: actions/checkout@v2
 
             - name: Install apt-packages
               run: |
@@ -349,9 +335,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v1
-              with:
-                  fetch-depth: 1
+            - uses: actions/checkout@v2
 
             - name: Install apt-packages
               run: |
