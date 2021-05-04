@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "233b2e86ed562664f7927a797a7caf10",
+    "content-hash": "7bf9cae886dd47bc27a7351de52050c2",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4789,11 +4789,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-infra-format-fix",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "2c9c42792ce2626041eac0f483022d4a4c4b6c18"
+                "reference": "82a4458acea12d92c23f98f0a89bdeef5d60f2a4"
             },
             "require": {
                 "php": ">=7.3"
@@ -5599,6 +5599,7 @@
             "require-dev": {
                 "spryker/code-sniffer": "dev-master"
             },
+            "default-branch": true,
             "bin": [
                 "Bundles/Console/bin/console",
                 "Bundles/Console/bin/yves",
@@ -5614,15 +5615,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-05-04T13:30:22+00:00"
+            "time": "2021-05-04T14:01:09+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-infra-format-fix",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "9e71a696e7fd840bb3f5130f452e010ffe5559dd"
+                "reference": "2c5009a42d7871f48e799e7d8e1a2236b4f1bae1"
             },
             "require": {
                 "php": ">=7.3"
@@ -5777,6 +5778,7 @@
                 "spryker/code-sniffer": "dev-master",
                 "spryker/spryker": "dev-master"
             },
+            "default-branch": true,
             "type": "library",
             "scripts": {
                 "cs-check": [
@@ -5787,7 +5789,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2021-05-04T13:31:25+00:00"
+            "time": "2021-05-04T14:01:04+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
