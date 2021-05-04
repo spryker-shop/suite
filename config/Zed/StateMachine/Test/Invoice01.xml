@@ -2,7 +2,8 @@
 <statemachine
     xmlns="spryker:state-machine-01"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="spryker:state-machine-01 http://static.spryker.com/state-machine-01.xsd">
+    xsi:schemaLocation="spryker:state-machine-01 http://static.spryker.com/state-machine-01.xsd"
+>
     <!-- Used as example XML for Pyz\Zed\StateMachineExample implementation -->
 
     <process name="Invoice01" main="true">
@@ -34,7 +35,7 @@
             <event name="waiting for payment" onEnter="true"/>
             <event name="payment not received" timeout="1hour"/>
             <event name="payment received" manual="true"/>
-            <event name="ready for return"  onEnter="true"/>
+            <event name="ready for return" onEnter="true"/>
             <event name="item not returned" timeout="14days"/>
         </events>
 
