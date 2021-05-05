@@ -12,7 +12,7 @@ defaults:
             to: '2021-12-31 23:59:59+09:00'
 
 actions:
-#Merchant orders data export
+    #Merchant orders data export
     - data_entity: merchant-order-expense
       destination: 'merchants/{merchant_name}/merchant-orders/{data_entity}s_{store_name}_{timestamp}.csv'
       filter_criteria:

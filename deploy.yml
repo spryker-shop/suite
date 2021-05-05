@@ -1,4 +1,4 @@
-version: "0.1"
+version: '0.1'
 
 namespace: spryker_demo
 tag: '1.0'
@@ -142,16 +142,16 @@ services:
         engine: mysql
         version: mariadb-10.4
         root:
-            username: "root"
-            password: "secret"
+            username: 'root'
+            password: 'secret'
         endpoints:
             localhost:3306:
                 protocol: tcp
     broker:
         engine: rabbitmq
         api:
-            username: "spryker"
-            password: "secret"
+            username: 'spryker'
+            password: 'secret'
         endpoints:
             queue.spryker.local:
             localhost:5672:
@@ -187,7 +187,6 @@ services:
             spryker.local:
 
 docker:
-
     ssl:
         enabled: false
         redirect: true
