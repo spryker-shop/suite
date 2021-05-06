@@ -3136,6 +3136,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prettier/plugin-xml@npm:^0.13.1":
+  version: 0.13.1
+  resolution: "@prettier/plugin-xml@npm:0.13.1"
+  dependencies:
+    "@xml-tools/parser": ^1.0.2
+    prettier: ">=1.10"
+  checksum: ace6ff40b14e5e9a2518681013f59a2d3fb559d6aa6d00af84c483e4a2a722eb44e1a5da14b4939c5ba094641a7406fc37a3ac836caee177724045f567b1b8b3
+  languageName: node
+  linkType: hard
+
 "@schematics/angular@npm:9.1.11":
   version: 9.1.11
   resolution: "@schematics/angular@npm:9.1.11"
@@ -3485,10 +3495,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/frontend-config.prettier@npm:~0.0.2":
-  version: 0.0.2
-  resolution: "@spryker/frontend-config.prettier@npm:0.0.2"
-  checksum: 849f870becbdec1f2e2aa81c4aacd7f0eafbcce6a0dce4a927ee6e3454d4ff40c35979ea4f0ae5ea7a6ffcddb35911a93c326e6db22124cd766d2b5a21fb048c
+"@spryker/frontend-config.prettier@npm:~0.0.5":
+  version: 0.0.5
+  resolution: "@spryker/frontend-config.prettier@npm:0.0.5"
+  checksum: cdbd6bd704466b790d41f7211d95131efb683db74cf2a4db9b0dc65df09a41e7c0abb36898d583776ab8433a27f9246962c9054b7dd44e160bd4c4fa630cd8e7
   languageName: node
   linkType: hard
 
@@ -5263,6 +5273,15 @@ __metadata:
   version: 2.4.4
   resolution: "@webcomponents/webcomponentsjs@npm:2.4.4"
   checksum: 466730f9a127e29fb292c0ae152181bda04fa055c3b5a6a14dd191a001cbd1b874ee7c0865d5aded4cc69c06b4713aad1069d6aaf2cde6521064970faf82d9b7
+  languageName: node
+  linkType: hard
+
+"@xml-tools/parser@npm:^1.0.2":
+  version: 1.0.10
+  resolution: "@xml-tools/parser@npm:1.0.10"
+  dependencies:
+    chevrotain: 7.1.1
+  checksum: b238e7e7dcc543d947dc9aab5d104fb6609254b163ce1416e5e1f07250cb47eded0286c61409c1f53c5828b93ed4b080d93c93167bea75b45ac9caa4c74461fc
   languageName: node
   linkType: hard
 
@@ -7178,6 +7197,15 @@ __metadata:
   version: 0.7.0
   resolution: "chardet@npm:0.7.0"
   checksum: b71a4ee4648489291af86418b96247824a8c1ee4f4f95d6268967fb40e9fbf70500e72fb737d5186a23cf98c8a02b91d68cb2f426d7428e92883af9d31a037ec
+  languageName: node
+  linkType: hard
+
+"chevrotain@npm:7.1.1":
+  version: 7.1.1
+  resolution: "chevrotain@npm:7.1.1"
+  dependencies:
+    regexp-to-ast: 0.5.0
+  checksum: b942de3ed9d02d51e84ced5d873c1477e58acf46214aab2b86d1eeee81d9406ee4d87de9dc30240e3390543d7f978fe4f2befbd3ad3de993be291256137d1aee
   languageName: node
   linkType: hard
 
@@ -17681,7 +17709,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:~2.0.5":
+"prettier@npm:>=1.10, prettier@npm:~2.0.5":
   version: 2.0.5
   resolution: "prettier@npm:2.0.5"
   bin:
@@ -18321,6 +18349,13 @@ __metadata:
   version: 1.0.0
   resolution: "regex-regex@npm:1.0.0"
   checksum: 9cdbd5ee4ca6fda71bbeb0395d670a349eff79e63b14e0b33d5e1f1b2a76d4d447e176f485d7d90de48b983060229d8a7a9817acc2a230acda088dce03990cf3
+  languageName: node
+  linkType: hard
+
+"regexp-to-ast@npm:0.5.0":
+  version: 0.5.0
+  resolution: "regexp-to-ast@npm:0.5.0"
+  checksum: 48c7c8dc0f5017ae232d4d7f626ec9a2033c649d7146284d8d74cae9b6e552b142bb215e589581dc860b8642b4e402d4952baa2a36a8911b73ed2521f667c452
   languageName: node
   linkType: hard
 
@@ -20050,8 +20085,9 @@ resolve@^0.6.1:
     "@jsdevtools/file-path-filter": ~3.0.2
     "@nrwl/jest": ~9.4.4
     "@nrwl/workspace": ~9.4.4
+    "@prettier/plugin-xml": ^0.13.1
     "@spryker/frontend-config.eslint": ~0.0.2
-    "@spryker/frontend-config.prettier": ~0.0.2
+    "@spryker/frontend-config.prettier": ~0.0.5
     "@spryker/frontend-config.stylelint": ~0.0.5
     "@spryker/frontend-config.tslint": ~0.0.5
     "@spryker/oryx-for-zed": ~2.9.1

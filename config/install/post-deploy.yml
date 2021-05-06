@@ -1,11 +1,11 @@
 env:
-  NEW_RELIC_ENABLED: 0
+    NEW_RELIC_ENABLED: 0
 
 sections:
-  bechmark-cache-warmup:
-    bechmark-start:
-      command: 'console benchmark:run --path tests/Benchmark --iterations=5 2>/dev/null || true'
+    bechmark-cache-warmup:
+        bechmark-start:
+            command: 'console benchmark:run --path tests/Benchmark --iterations=5 2>/dev/null || true'
 
-  bechmark-report:
-    bechmark-start:
-      command: 'console benchmark:run --path tests/Benchmark --iterations=20'
+    bechmark-report:
+        bechmark-start:
+            command: 'console benchmark:run --path tests/Benchmark --iterations=20'

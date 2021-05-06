@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <statemachine
-        xmlns="spryker:oms-01"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd"
+>
 
     <process name="DummyPayment01" main="true">
         <subprocesses>
@@ -13,7 +14,7 @@
         </subprocesses>
 
         <states>
-            <state name="new" reserved="true" display="oms.state.new">
+            <state name="new" display="oms.state.new">
                 <flag>cancellable</flag>
             </state>
             <state name="payment pending" reserved="true" display="oms.state.payment-pending">
@@ -130,7 +131,7 @@
         </transitions>
 
         <events>
-            <event name="authorize" onEnter="true"/>
+            <event name="authorize" timeout="1 second"/>
             <event name="pay" manual="true" timeout="1 hour" timeoutProcessor="OmsTimeout/Initiation" command="DummyPayment/Pay"/>
             <event name="confirm" onEnter="true" manual="true" command="Oms/SendOrderConfirmation"/>
             <event name="skip timeout" manual="true" timeout="30 minute"/>
