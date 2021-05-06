@@ -1,4 +1,4 @@
-version: "0.1"
+version: '0.1'
 
 x-real-ip: &real-ip
     real-ip:
@@ -162,16 +162,16 @@ services:
         engine: mysql
         version: mariadb-10.4
         root:
-            username: "root"
-            password: "secret"
+            username: 'root'
+            password: 'secret'
         endpoints:
             localhost:3306:
                 protocol: tcp
     broker:
         engine: rabbitmq
         api:
-            username: "spryker"
-            password: "secret"
+            username: 'spryker'
+            password: 'secret'
         endpoints:
             queue.night-test.cloud.spryker.toys:
             localhost:5672:
@@ -199,7 +199,6 @@ services:
             mail.night-test.cloud.spryker.toys:
 
 docker:
-
     blackfire:
         enabled: true
 

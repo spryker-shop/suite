@@ -2,9 +2,9 @@
 version: 0
 
 actions:
-#1. Commerce Setup data import
+    #1. Commerce Setup data import
     - data_entity: store
-# Cannot have a source because we use store.php
+    # Cannot have a source because we use store.php
     - data_entity: currency
       source: data/import/common/common/currency.csv
     - data_entity: customer
@@ -15,7 +15,7 @@ actions:
       source: data/import/common/common/shipment.csv
     - data_entity: payment-method
       source: data/import/common/common/payment_method.csv
-#2. Catalog Setup data import
+    #2. Catalog Setup data import
     - data_entity: category-template
       source: data/import/common/common/category_template.csv
     - data_entity: category
