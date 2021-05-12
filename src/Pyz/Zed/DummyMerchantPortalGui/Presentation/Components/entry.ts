@@ -1,4 +1,4 @@
-import { registerNgModule } from '@mp/ZedUi';
+import { registerNgModule } from '@mp/zed-ui';
 
 import { ComponentsModule } from './app/components.module';
 
