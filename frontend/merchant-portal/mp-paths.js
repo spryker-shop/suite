@@ -2,7 +2,7 @@ const path = require("path");
 
 const ROOT_DIR = path.resolve(__dirname, "../..");
 
-const SPRYKER_CORE_DIR = "vendor/spryker/spryker/Bundles";
+const SPRYKER_CORE_DIR = "vendor/spryker";
 const SPRYKER_PROJECT_DIR = "src/Pyz/Zed";
 
 const ROOT_SPRYKER_CORE_DIR = path.join(ROOT_DIR, SPRYKER_CORE_DIR);

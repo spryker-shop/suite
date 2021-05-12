@@ -1,19 +1,11 @@
 const path = require("path");
-
-const ROOT_DIR = path.resolve(__dirname, "../..");
-
-const SPRYKER_CORE_DIR = path.join(ROOT_DIR, "vendor/spryker");
-
-const MP_CORE_ENTRY_POINT_FILE =
-    "*/src/Spryker/Zed/*/Presentation/Components/entry.ts";
-const MP_PROJECT_ENTRY_POINT_FILE =
-    "*/Presentation/Components/entry.ts";
-
-async function getMPEntryPoints(directory, entryPath) {
-    return glob(entryPath, {
-        cwd: directory,
-    });
-}
+const {
+    ROOT_SPRYKER_CORE_DIR,
+    MP_CORE_ENTRY_POINT_FILE,
+    ROOT_SPRYKER_PROJECT_DIR,
+    MP_PROJECT_ENTRY_POINT_FILE,
+} = require("./mp-paths");
+const { getMPEntryPoints, entryPointPathToName } = require("./utils");
 
 async function getMPEntryPointsMap() {
     const entryPointsMap = async (dir, entryPath) => {
