@@ -1,4 +1,4 @@
-version: "0.1"
+version: '0.1'
 
 namespace: spryker_ci
 tag: '1.0'
@@ -94,13 +94,13 @@ services:
     database:
         engine: postgres
         root:
-            username: "root"
-            password: "secret"
+            username: 'root'
+            password: 'secret'
     broker:
         engine: rabbitmq
         api:
-            username: "spryker"
-            password: "secret"
+            username: 'spryker'
+            password: 'secret'
     session:
         engine: redis
     key_value_store:
@@ -114,7 +114,6 @@ services:
         engine: mailhog
 
 docker:
-
     ssl:
         enabled: false
 

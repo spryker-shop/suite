@@ -16,7 +16,7 @@ coverage:
     xdebug_session: 'PHPSTORM'
     whitelist:
         include:
-          - '../../../../vendor/spryker/spryker-shop/Bundles/CustomerPage/src/*/Yves/*.php'
+            - '../../../../vendor/spryker/spryker-shop/Bundles/CustomerPage/src/*/Yves/*.php'
 
 suites:
     Presentation:
@@ -24,19 +24,19 @@ suites:
         class_name: CustomerPresentationTester
         modules:
             enabled:
-              - \PyzTest\Shared\Testify\Helper\Environment
-              - \SprykerTest\Shared\Propel\Helper\ConnectionHelper
-              - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
-                  projectNamespaces: ['Pyz']
-              - \SprykerTest\Shared\Testify\Helper\DependencyHelper
-              - \PyzTest\Yves\Customer\Helper\CustomerHelper
-              - \SprykerTest\Shared\Config\Helper\ConfigInit
-              - \SprykerTest\Shared\Propel\Helper\PropelInstallHelper
-              - WebDriver:
-                  url: ''
-                  browser: chrome
-                  window_size: 1920x1080
-                  host: 0.0.0.0
-                  restart: false
-              - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
-              - \SprykerTest\Shared\Application\Helper\YvesHelper
+                - \PyzTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Propel\Helper\ConnectionHelper
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                      projectNamespaces: ['Pyz']
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+                - \PyzTest\Yves\Customer\Helper\CustomerHelper
+                - \SprykerTest\Shared\Config\Helper\ConfigInit
+                - \SprykerTest\Shared\Propel\Helper\PropelInstallHelper
+                - WebDriver:
+                      url: ''
+                      browser: chrome
+                      window_size: 1920x1080
+                      host: 0.0.0.0
+                      restart: false
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Shared\Application\Helper\YvesHelper

@@ -2,54 +2,54 @@
 version: 0
 
 actions:
-  - data_entity: merchant
-    source: data/import/common/common/marketplace/merchant.csv
-  - data_entity: merchant-user
-    source: data/import/common/common/marketplace/merchant_user.csv
-  - data_entity: merchant-product
-    source: data/import/common/common/marketplace/merchant_product.csv
-  - data_entity: merchant-category
-    source: data/import/common/common/marketplace/merchant_category.csv
-  - data_entity: merchant-profile
-    source: data/import/common/common/marketplace/merchant_profile.csv
-  - data_entity: merchant-profile-address
-    source: data/import/common/common/marketplace/merchant_profile_address.csv
-  - data_entity: merchant-product-offer
-    source: data/import/common/common/marketplace/merchant_product_offer.csv
-  - data_entity: merchant-opening-hours-date-schedule
-    source: data/import/common/common/marketplace/merchant_open_hours_date_schedule.csv
-  - data_entity: merchant-opening-hours-weekday-schedule
-    source: data/import/common/common/marketplace/merchant_open_hours_week_day_schedule.csv
-  - data_entity: product-offer-validity
-    source: data/import/common/common/marketplace/product_offer_validity.csv
-  - data_entity: price-product-offer
-    source: data/import/common/DE/price_product_offer.csv
-  - data_entity: price-product-offer
-    source: data/import/common/AT/price_product_offer.csv
-  - data_entity: product-offer-stock
-    source: data/import/common/common/marketplace/product_offer_stock.csv
-  - data_entity: merchant-oms-process
-    source: data/import/common/common/marketplace/merchant_oms_process.csv
-  - data_entity: stock
-    source: data/import/common/common/marketplace/warehouse.csv
-  - data_entity: merchant-stock
-    source: data/import/common/common/marketplace/merchant_stock.csv
-  - data_entity: payment-method
-    source: data/import/common/common/marketplace/payment_method.csv
-  # Store relation
-  - data_entity: merchant-store
-    source: data/import/common/DE/merchant_store.csv
-  - data_entity: merchant-store
-    source: data/import/common/AT/merchant_store.csv
-  - data_entity: merchant-product-offer-store
-    source: data/import/common/DE/merchant_product_offer_store.csv
-  - data_entity: merchant-product-offer-store
-    source: data/import/common/AT/merchant_product_offer_store.csv
-  - data_entity: stock-store
-    source: data/import/common/DE/warehouse_store.csv
-  - data_entity: stock-store
-    source: data/import/common/AT/warehouse_store.csv
-  - data_entity: payment-method-store
-    source: data/import/common/DE/payment_method_store.csv
-  - data_entity: payment-method-store
-    source: data/import/common/AT/payment_method_store.csv
+    - data_entity: merchant
+      source: data/import/common/common/marketplace/merchant.csv
+    - data_entity: merchant-user
+      source: data/import/common/common/marketplace/merchant_user.csv
+    - data_entity: merchant-product
+      source: data/import/common/common/marketplace/merchant_product.csv
+    - data_entity: merchant-category
+      source: data/import/common/common/marketplace/merchant_category.csv
+    - data_entity: merchant-profile
+      source: data/import/common/common/marketplace/merchant_profile.csv
+    - data_entity: merchant-profile-address
+      source: data/import/common/common/marketplace/merchant_profile_address.csv
+    - data_entity: merchant-product-offer
+      source: data/import/common/common/marketplace/merchant_product_offer.csv
+    - data_entity: merchant-opening-hours-date-schedule
+      source: data/import/common/common/marketplace/merchant_open_hours_date_schedule.csv
+    - data_entity: merchant-opening-hours-weekday-schedule
+      source: data/import/common/common/marketplace/merchant_open_hours_week_day_schedule.csv
+    - data_entity: product-offer-validity
+      source: data/import/common/common/marketplace/product_offer_validity.csv
+    - data_entity: price-product-offer
+      source: data/import/common/DE/price_product_offer.csv
+    - data_entity: price-product-offer
+      source: data/import/common/AT/price_product_offer.csv
+    - data_entity: product-offer-stock
+      source: data/import/common/common/marketplace/product_offer_stock.csv
+    - data_entity: merchant-oms-process
+      source: data/import/common/common/marketplace/merchant_oms_process.csv
+    - data_entity: stock
+      source: data/import/common/common/marketplace/warehouse.csv
+    - data_entity: merchant-stock
+      source: data/import/common/common/marketplace/merchant_stock.csv
+    - data_entity: payment-method
+      source: data/import/common/common/marketplace/payment_method.csv
+    # Store relation
+    - data_entity: merchant-store
+      source: data/import/common/DE/merchant_store.csv
+    - data_entity: merchant-store
+      source: data/import/common/AT/merchant_store.csv
+    - data_entity: merchant-product-offer-store
+      source: data/import/common/DE/merchant_product_offer_store.csv
+    - data_entity: merchant-product-offer-store
+      source: data/import/common/AT/merchant_product_offer_store.csv
+    - data_entity: stock-store
+      source: data/import/common/DE/warehouse_store.csv
+    - data_entity: stock-store
+      source: data/import/common/AT/warehouse_store.csv
+    - data_entity: payment-method-store
+      source: data/import/common/DE/payment_method_store.csv
+    - data_entity: payment-method-store
+      source: data/import/common/AT/payment_method_store.csv

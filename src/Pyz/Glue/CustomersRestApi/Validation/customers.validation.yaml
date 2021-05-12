@@ -12,18 +12,18 @@ customers:
                   max: 64
     patch:
         password:
-            -   Optional:
-                    constraints:
-                        -   Length:
-                                min: 8
-                                max: 64
+            - Optional:
+                  constraints:
+                      - Length:
+                            min: 8
+                            max: 64
 
         confirmPassword:
-            -   Optional:
-                    constraints:
-                        -   Length:
-                                min: 8
-                                max: 64
+            - Optional:
+                  constraints:
+                      - Length:
+                            min: 8
+                            max: 64
 
 customer-password:
     patch:

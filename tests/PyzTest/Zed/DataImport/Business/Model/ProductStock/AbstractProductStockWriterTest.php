@@ -166,13 +166,21 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
     }
 
     /**
+     * @param string[] $skus
+     *
      * @return array
      */
-    protected function getWarehouses(): array
+    protected function getWarehouses(array $skus): array
     {
         return SpyStockQuery::create()
             ->limit(count(static::WAREHOUSES_QTY))
             ->select(SpyStockTableMap::COL_NAME)
+            ->useStockProductQuery()
+                ->useSpyProductQuery()
+                    ->filterBySku_In($skus)
+                    ->orderBySku()
+                ->endUse()
+            ->endUse()
             ->orderByIdStock()
             ->find()
             ->toArray();
