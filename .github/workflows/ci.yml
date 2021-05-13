@@ -120,6 +120,7 @@ jobs:
               run: |
                   vendor/bin/console frontend:project:install-dependencies
                   vendor/bin/console frontend:yves:install-dependencies
+                  vendor/bin/console frontend:mp:install-dependencies
 
             - name: Install NPM packages
               run: |
@@ -136,6 +137,12 @@ jobs:
 
             - name: Front-end Formatter
               run: node ./frontend/libs/formatter
+
+            - name: Front-end MP Unit Tests
+              run: yarn mp:test
+
+            - name: Front-end MP Build
+              run: yarn mp:build
 
             - name: Validate propel files
               run: |
