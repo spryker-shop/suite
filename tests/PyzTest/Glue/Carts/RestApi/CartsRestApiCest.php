@@ -576,6 +576,8 @@ class CartsRestApiCest
             $this->fixtures->getCustomerTransfer(),
             []
         );
+        $entityTag = $I->createCartResourceEntityTag($I, $quoteTransfer->getUuid(), $quoteTransfer->toArray());
+        $I->haveHttpHeader(RequestConstantsInterface::HEADER_IF_MATCH, $entityTag);
 
         // Act
         $I->sendPATCH(
