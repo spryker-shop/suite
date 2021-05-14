@@ -42147,16 +42147,16 @@
         },
         {
             "name": "spryker/propel",
-            "version": "3.30.0",
+            "version": "3.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel.git",
-                "reference": "ea905d9973fc5e1c4a6dadce0db7e45bf780085d"
+                "reference": "578e257f57b0af775930ada3acd4a4e9ca677198"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel/zipball/ea905d9973fc5e1c4a6dadce0db7e45bf780085d",
-                "reference": "ea905d9973fc5e1c4a6dadce0db7e45bf780085d",
+                "url": "https://api.github.com/repos/spryker/propel/zipball/578e257f57b0af775930ada3acd4a4e9ca677198",
+                "reference": "578e257f57b0af775930ada3acd4a4e9ca677198",
                 "shasum": ""
             },
             "require": {
@@ -42202,9 +42202,9 @@
             ],
             "description": "Propel module",
             "support": {
-                "source": "https://github.com/spryker/propel/tree/3.30.0"
+                "source": "https://github.com/spryker/propel/tree/3.31.0"
             },
-            "time": "2021-04-27T11:31:00+00:00"
+            "time": "2021-05-14T10:07:13+00:00"
         },
         {
             "name": "spryker/propel-orm",
@@ -57010,28 +57010,30 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "1.12.1",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "b17c5014ef81d212ac539f07a1001832df1b6d3b"
+                "reference": "03cb2123a67d4be806554fe670d0adc298199808"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/b17c5014ef81d212ac539f07a1001832df1b6d3b",
-                "reference": "b17c5014ef81d212ac539f07a1001832df1b6d3b",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/03cb2123a67d4be806554fe670d0adc298199808",
+                "reference": "03cb2123a67d4be806554fe670d0adc298199808",
                 "shasum": ""
             },
             "require": {
                 "doctrine/lexer": "1.*",
                 "ext-tokenizer": "*",
-                "php": "^7.1 || ^8.0"
+                "php": "^7.1 || ^8.0",
+                "psr/cache": "^1 || ^2 || ^3"
             },
             "require-dev": {
-                "doctrine/cache": "1.*",
+                "doctrine/cache": "^1.11 || ^2.0",
                 "doctrine/coding-standard": "^6.0 || ^8.1",
                 "phpstan/phpstan": "^0.12.20",
-                "phpunit/phpunit": "^7.5 || ^9.1.5"
+                "phpunit/phpunit": "^7.5 || ^9.1.5",
+                "symfony/cache": "^4.4 || ^5.2"
             },
             "type": "library",
             "autoload": {
@@ -57074,9 +57076,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/annotations/issues",
-                "source": "https://github.com/doctrine/annotations/tree/1.12.1"
+                "source": "https://github.com/doctrine/annotations/tree/1.13.0"
             },
-            "time": "2021-02-21T21:00:45+00:00"
+            "time": "2021-04-29T07:39:39+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -61179,12 +61181,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "f03dfed87c86ea4a7846fb9d3fcf6fff797d1f3c"
+                "reference": "a0f0bd428ff5712d9d0647cdd0dcab3602389703"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/f03dfed87c86ea4a7846fb9d3fcf6fff797d1f3c",
-                "reference": "f03dfed87c86ea4a7846fb9d3fcf6fff797d1f3c",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/a0f0bd428ff5712d9d0647cdd0dcab3602389703",
+                "reference": "a0f0bd428ff5712d9d0647cdd0dcab3602389703",
                 "shasum": ""
             },
             "require": {
@@ -61230,7 +61232,7 @@
                 "issues": "https://github.com/spryker/code-sniffer/issues",
                 "source": "https://github.com/spryker/code-sniffer"
             },
-            "time": "2021-05-05T11:37:41+00:00"
+            "time": "2021-05-13T17:40:38+00:00"
         },
         {
             "name": "spryker/development",
