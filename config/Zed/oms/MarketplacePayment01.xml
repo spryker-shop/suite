@@ -2,7 +2,8 @@
 <statemachine
     xmlns="spryker:oms-01"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd"
+>
 
     <process name="MarketplacePayment01" main="true">
         <states>
@@ -82,11 +83,20 @@
             <event name="pay" manual="true"/>
             <event name="cancel" manual="true"/>
             <event name="refund" manual="true"/>
-            <event name="send to merchant" onEnter="true" timeout="30 second" command="MerchantSalesOrder/CreateOrders"/>
+            <event name="send to merchant" onEnter="true" command="MerchantSalesOrder/CreateOrders"/>
             <event name="ship by merchant"/>
             <event name="deliver"/>
             <event name="close" manual="true" command="MerchantOms/CloseOrderItem"/>
         </events>
+
+        <subprocesses>
+            <process>MarketplaceReturn</process>
+            <process>MarketplaceRefund</process>
+        </subprocesses>
+
     </process>
+
+    <process name="MarketplaceReturn" file="MarketplaceSubprocess/MarketplaceReturn01.xml"/>
+    <process name="MarketplaceRefund" file="MarketplaceSubprocess/MarketplaceRefund01.xml"/>
 
 </statemachine>

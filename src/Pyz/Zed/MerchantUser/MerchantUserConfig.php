@@ -29,9 +29,11 @@ class MerchantUserConfig extends SprykerMerchantUserConfig
             'dashboard-merchant-portal-gui',
             'merchant-profile-merchant-portal-gui',
             'product-offer-merchant-portal-gui',
+            'product-merchant-portal-gui',
             'security-merchant-portal-gui',
             'sales-merchant-portal-gui',
-            'product-merchant-portal-gui',
+            'user-merchant-portal-gui',
+            'dummy-merchant-portal-gui',
         ];
 
         $ruleTransfers = [];

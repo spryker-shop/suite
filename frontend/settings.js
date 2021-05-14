@@ -36,7 +36,7 @@ const globalSettings = {
     },
 
     formatter: [
-        `**/*.(scss|css|less|js|ts|json|html)`,
+        `**/*.(scss|css|less|js|ts|json|html|yml|yaml|xml)`,
     ],
 
     expectedModeArgument: 2,

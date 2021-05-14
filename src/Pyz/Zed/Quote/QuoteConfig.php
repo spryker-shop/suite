@@ -29,6 +29,7 @@ class QuoteConfig extends SprykerQuoteConfig
             QuoteTransfer::QUOTE_REQUEST_VERSION_REFERENCE,
             QuoteTransfer::QUOTE_REQUEST_REFERENCE,
             QuoteTransfer::MERCHANT_REFERENCE,
+            QuoteTransfer::IS_ORDER_PLACED_SUCCESSFULLY,
         ]);
     }
 }

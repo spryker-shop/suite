@@ -1,18 +1,17 @@
 spryk: structure
-description: "Creates a new *module* structure."
+description: 'Creates a new *module* structure.'
 priority: 1
 
 arguments:
-  module:
-    type: NewModuleType
+    module:
+        type: NewModuleType
 
-  organization:
-    default: Spryker
+    organization:
+        default: Spryker
 
-  targetPath:
-    default: "%module%/"
+    targetPath:
+        default: '%module%/'
 
-  directories:
-    value:
-      - "src/%organization%/"
-
+    directories:
+        value:
+            - 'src/%organization%/'

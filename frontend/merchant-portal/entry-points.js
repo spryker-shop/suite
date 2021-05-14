@@ -1,37 +1,34 @@
-const { strings } = require("@angular-devkit/core");
-const glob = require("fast-glob");
 const path = require("path");
-
-const ROOT_DIR = path.resolve(__dirname, "../..");
-
-const SPRYKER_CORE_DIR = path.join(ROOT_DIR, "vendor/spryker");
-
-const MP_ENTRY_POINT_FILE =
-    "*/src/Spryker/Zed/*/Presentation/Components/index.ts";
-
-async function getMPEntryPoints() {
-    return glob(MP_ENTRY_POINT_FILE, {
-        cwd: SPRYKER_CORE_DIR,
-    });
-}
+const {
+    ROOT_SPRYKER_CORE_DIR,
+    MP_CORE_ENTRY_POINT_FILE,
+    ROOT_SPRYKER_PROJECT_DIR,
+    MP_PROJECT_ENTRY_POINT_FILE,
+} = require("./mp-paths");
+const { getMPEntryPoints, entryPointPathToName } = require("./utils");
 
 async function getMPEntryPointsMap() {
-    const entryPoints = await getMPEntryPoints();
+    const entryPointsMap = async (dir, entryPath) => {
+        const entryPoints = await getMPEntryPoints(dir, entryPath);
 
-    return entryPoints.reduce(
-        (acc, entryPoint) => ({
-            ...acc,
-            [entryPointPathToName(entryPoint)]: path.join(
-                SPRYKER_CORE_DIR,
-                entryPoint
-            ),
-        }),
-        {}
-    );
-}
+        return entryPoints.reduce(
+            (acc, entryPoint) => ({
+                ...acc,
+                [entryPointPathToName("spy/", entryPoint)]: path.join(
+                    dir,
+                    entryPoint
+                )
+            }),
+            {}
+        );
+    };
+    const coreEntryPoints = await entryPointsMap(ROOT_SPRYKER_CORE_DIR, MP_CORE_ENTRY_POINT_FILE);
+    const projectEntryPoints = await entryPointsMap(ROOT_SPRYKER_PROJECT_DIR, MP_PROJECT_ENTRY_POINT_FILE);
 
-function entryPointPathToName(path) {
-    return 'spy/' + strings.dasherize(path.split("/")[0]);
+    return {
+        ...coreEntryPoints,
+        ...projectEntryPoints,
+    };
 }
 
 module.exports = {

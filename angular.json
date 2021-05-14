@@ -20,19 +20,25 @@
                         "indexTransform": "./frontend/merchant-portal/html-transform.js",
                         "outputPath": "public/Zed/assets/js/mp",
                         "deployUrl": "/assets/js/mp/",
-                        "index": "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/index.html",
-                        "main": "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/main.ts",
-                        "polyfills": "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/polyfills.ts",
+                        "index": "src/Pyz/Zed/ZedUi/Presentation/Components/index.html",
+                        "main": "src/Pyz/Zed/ZedUi/Presentation/Components/main.ts",
+                        "polyfills": "src/Pyz/Zed/ZedUi/Presentation/Components/polyfills.ts",
                         "tsConfig": "tsconfig.mp.json",
                         "assets": [
                             {
                                 "glob": "*/src/Spryker/Zed/*/Presentation/Components/assets/**/*",
-                                "input": "vendor/spryker/spryker/Bundles",
+                                "input": "vendor/spryker",
+                                "output": "/assets/"
+                            },
+                            {
+                                "glob": "*/Presentation/Components/assets/**/*",
+                                "input": "src/Pyz/Zed",
                                 "output": "/assets/"
                             }
                         ],
                         "styles": [
-                            "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/styles.less"
+                            "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/styles.less",
+                            "src/Pyz/Zed/ZedUi/Presentation/Components/styles.less"
                         ],
                         "scripts": [],
                         "extractCss": true
@@ -41,8 +47,8 @@
                         "production": {
                             "fileReplacements": [
                                 {
-                                    "replace": "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/environment.ts",
-                                    "with": "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/environment.prod.ts"
+                                    "replace": "src/Pyz/Zed/ZedUi/Presentation/Components/environments/environment.ts",
+                                    "with": "src/Pyz/Zed/ZedUi/Presentation/Components/environments/environment.prod.ts"
                                 }
                             ],
                             "optimization": true,

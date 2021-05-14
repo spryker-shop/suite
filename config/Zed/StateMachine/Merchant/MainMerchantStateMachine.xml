@@ -2,7 +2,8 @@
 <statemachine
     xmlns="spryker:state-machine-01"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="spryker:state-machine-01 http://static.spryker.com/state-machine-01.xsd">
+    xsi:schemaLocation="spryker:state-machine-01 http://static.spryker.com/state-machine-01.xsd"
+>
 
     <process name="MainMerchantStateMachine" main="true">
 
@@ -83,6 +84,14 @@
             <event name="cancel" manual="true"/>
         </events>
 
+        <subprocesses>
+            <process>MerchantReturn</process>
+            <process>MerchantRefund</process>
+        </subprocesses>
+
     </process>
+
+    <process name="MerchantReturn" file="Subprocess/MerchantReturn"/>
+    <process name="MerchantRefund" file="Subprocess/MerchantRefund"/>
 
 </statemachine>

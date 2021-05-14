@@ -40,7 +40,7 @@ class ProductConcreteBulkPdoDataSetWriter extends AbstractProductConcreteBulkDat
         $warehouses = $this->dataFormatter->formatPostgresArrayString(
             $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_WAREHOUSES)
         );
-        $isActive = $this->dataFormatter->formatPostgresArray(
+        $isActive = $this->dataFormatter->formatPostgresArrayBoolean(
             $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_IS_ACTIVE)
         );
         $skuProductAbstract = $this->dataFormatter->formatPostgresArrayString(
