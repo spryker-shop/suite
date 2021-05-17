@@ -208,15 +208,15 @@ sections:
         generate-entity-transfer:
             command: 'vendor/bin/console transfer:entity:generate'
 
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
+            stores: true
+
         init-database:
             command: 'vendor/bin/console setup:init-db'
             stores:
                 - US
                 - DE
-
-        queue-setup:
-            command: 'vendor/bin/console queue:setup'
-            stores: true
 
         setup-search-create-sources:
             command: 'vendor/bin/console search:setup:sources'
