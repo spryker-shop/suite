@@ -85,6 +85,9 @@ sections:
         generate-entity-transfer:
             command: 'vendor/bin/console transfer:entity:generate'
 
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
+
         init-database:
             command: 'vendor/bin/console setup:init-db'
 
@@ -113,9 +116,6 @@ sections:
             command: 'vendor/bin/console code:fixtures'
 
     queue:
-        queue-setup:
-            command: 'vendor/bin/console queue:setup'
-            stores: true
         run-worker:
             command: 'vendor/bin/console queue:worker:start --stop-when-empty'
 
