@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.181.2",
+            "version": "3.182.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "ca4839367aa57de005d52593081eab777b87a6b0"
+                "reference": "998e5caf1b1bb52516a32fb8084eb7006ab5ae7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ca4839367aa57de005d52593081eab777b87a6b0",
-                "reference": "ca4839367aa57de005d52593081eab777b87a6b0",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/998e5caf1b1bb52516a32fb8084eb7006ab5ae7d",
+                "reference": "998e5caf1b1bb52516a32fb8084eb7006ab5ae7d",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.181.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.182.0"
             },
-            "time": "2021-05-14T18:16:31+00:00"
+            "time": "2021-05-17T18:14:44+00:00"
         },
         {
             "name": "brick/math",
@@ -57047,31 +57047,31 @@
         },
         {
             "name": "dms/phpunit-arraysubset-asserts",
-            "version": "v0.2.1",
+            "version": "v0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rdohms/phpunit-arraysubset-asserts.git",
-                "reference": "8e3673a70019a60df484e36fc3271d63cbdc40ea"
+                "reference": "8c5038a36860511ef579c48afd36d553b3f8c23f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rdohms/phpunit-arraysubset-asserts/zipball/8e3673a70019a60df484e36fc3271d63cbdc40ea",
-                "reference": "8e3673a70019a60df484e36fc3271d63cbdc40ea",
+                "url": "https://api.github.com/repos/rdohms/phpunit-arraysubset-asserts/zipball/8c5038a36860511ef579c48afd36d553b3f8c23f",
+                "reference": "8c5038a36860511ef579c48afd36d553b3f8c23f",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3|^8.0",
-                "phpunit/phpunit": "^9.0"
+                "php": "^5.4 || ^7.0 || ^8.0",
+                "phpunit/phpunit": "^4.8.36 || ^5.7.21 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
             },
             "require-dev": {
-                "dms/coding-standard": "^1.0",
+                "dms/coding-standard": "^8",
                 "squizlabs/php_codesniffer": "^3.4"
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "DMS\\PHPUnitExtensions\\ArraySubset\\": "src"
-                }
+                "files": [
+                    "assertarraysubset-autoload.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -57086,9 +57086,9 @@
             "description": "This package provides ArraySubset and related asserts once deprecated in PHPUnit 8",
             "support": {
                 "issues": "https://github.com/rdohms/phpunit-arraysubset-asserts/issues",
-                "source": "https://github.com/rdohms/phpunit-arraysubset-asserts/tree/v0.2.1"
+                "source": "https://github.com/rdohms/phpunit-arraysubset-asserts/tree/v0.3.0"
             },
-            "time": "2020-10-03T21:43:40+00:00"
+            "time": "2021-04-22T08:17:59+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -61571,21 +61571,21 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.37.1",
+            "version": "3.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "594669ea9dde971cb4cbd3b1e5f185dbf62a69b0"
+                "reference": "a7ad13c54b90faa8eb601b6d10beb6dacf4492b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/594669ea9dde971cb4cbd3b1e5f185dbf62a69b0",
-                "reference": "594669ea9dde971cb4cbd3b1e5f185dbf62a69b0",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/a7ad13c54b90faa8eb601b6d10beb6dacf4492b5",
+                "reference": "a7ad13c54b90faa8eb601b6d10beb6dacf4492b5",
                 "shasum": ""
             },
             "require": {
                 "codeception/codeception": "^2.3.5 || ^3.0.0 ||  ^4.0.0",
-                "dms/phpunit-arraysubset-asserts": "^0.1.0 || ^0.2.0",
+                "dms/phpunit-arraysubset-asserts": "^0.1.0 || ^0.2.0 || ^0.3.0",
                 "fzaninotto/faker": "^1.6.0",
                 "mikey179/vfsstream": "^1.6",
                 "php": ">=7.3",
@@ -61638,9 +61638,9 @@
             ],
             "description": "Testify module",
             "support": {
-                "source": "https://github.com/spryker/testify/tree/3.37.1"
+                "source": "https://github.com/spryker/testify/tree/3.38.0"
             },
-            "time": "2021-03-12T13:27:29+00:00"
+            "time": "2021-05-18T08:45:26+00:00"
         },
         {
             "name": "spryker/web-profiler",
