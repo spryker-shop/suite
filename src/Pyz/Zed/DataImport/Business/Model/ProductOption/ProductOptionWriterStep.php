@@ -51,6 +51,7 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
             ->filterByName($dataSet[self::KEY_GROUP_NAME_TRANSLATION_KEY])
             ->findOneOrCreate();
 
+        $productOptionGroupEntity->fromArray($dataSet->getArrayCopy());
         $productOptionGroupEntity
             ->setActive($this->isActive($dataSet, $productOptionGroupEntity))
             ->setFkTaxSet($dataSet[TaxSetNameToIdTaxSetStep::KEY_TARGET])
