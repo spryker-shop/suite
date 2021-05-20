@@ -78,6 +78,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         $productAbstractEntityTransfer->setSku($dataSet[static::COLUMN_ABSTRACT_SKU]);
 
         $productAbstractEntityTransfer
+            ->fromArray($dataSet->getArrayCopy(), true)
             ->setColorCode($dataSet[static::COLUMN_COLOR_CODE])
             ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
