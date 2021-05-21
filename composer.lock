@@ -4,8 +4,83 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48c00a1f3b1ae5e6afdbe3b7fb607702",
+    "content-hash": "7138be96229d74d46029f410b9fc2a35",
     "packages": [
+        {
+            "name": "avalara/avataxclient",
+            "version": "21.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avadev/AvaTax-REST-V2-PHP-SDK.git",
+                "reference": "2b5db436d7ac7f0a9f93bf073fdcaee630cd16ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/avadev/AvaTax-REST-V2-PHP-SDK/zipball/2b5db436d7ac7f0a9f93bf073fdcaee630cd16ab",
+                "reference": "2b5db436d7ac7f0a9f93bf073fdcaee630cd16ab",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ],
+                "exclude-from-classmap": [
+                    "src/AvaTaxClient.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Avalara Developer Relations",
+                    "homepage": "https://developer.avalara.com"
+                },
+                {
+                    "name": "Community Developer Forum",
+                    "homepage": "https://community.avalara.com"
+                },
+                {
+                    "name": "Ted Spence",
+                    "email": "ted.spence@avalara.com"
+                },
+                {
+                    "name": "Bob Maidens",
+                    "email": "bob.maidens@avalara.com"
+                },
+                {
+                    "name": "Genevieve Conty",
+                    "email": "genevieve.conty@avalara.com"
+                }
+            ],
+            "description": "Client library for Avalara's AvaTax suite of business tax calculation and processing services. Uses the REST v2 API.",
+            "homepage": "https://developer.avalara.com/",
+            "keywords": [
+                "AvaTax",
+                "avalara",
+                "ecommerce",
+                "sales compliance",
+                "tax",
+                "tax calculation",
+                "taxes"
+            ],
+            "support": {
+                "docs": "https://developer.avalara.com",
+                "forum": "https://community.avalara.com",
+                "issues": "https://github.com/avadev/AvaTax-REST-V2-PHP-SDK/issues",
+                "source": "https://github.com/avadev/AvaTax-REST-V2-PHP-SDK"
+            },
+            "time": "2021-04-01T22:10:45+00:00"
+        },
         {
             "name": "aws/aws-sdk-php",
             "version": "3.183.1",
@@ -966,44 +1041,37 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.3.0",
+            "version": "6.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "7008573787b430c1c1f650e3722d9bba59967628"
+                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/7008573787b430c1c1f650e3722d9bba59967628",
-                "reference": "7008573787b430c1c1f650e3722d9bba59967628",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
+                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^1.4",
-                "guzzlehttp/psr7": "^1.7 || ^2.0",
-                "php": "^7.2.5 || ^8.0",
-                "psr/http-client": "^1.0"
-            },
-            "provide": {
-                "psr/http-client-implementation": "1.0"
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.6.1",
+                "php": ">=5.5",
+                "symfony/polyfill-intl-idn": "^1.17.0"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.4.1",
                 "ext-curl": "*",
-                "php-http/client-integration-tests": "^3.0",
-                "phpunit/phpunit": "^8.5.5 || ^9.3.5",
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
                 "psr/log": "^1.1"
             },
             "suggest": {
-                "ext-curl": "Required for CURL handler support",
-                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "7.3-dev"
+                    "dev-master": "6.5-dev"
                 }
             },
             "autoload": {
@@ -1023,11 +1091,6 @@
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
-                },
-                {
-                    "name": "Márk Sági-Kazár",
-                    "email": "mark.sagikazar@gmail.com",
-                    "homepage": "https://sagikazarmark.hu"
                 }
             ],
             "description": "Guzzle is a PHP HTTP client library",
@@ -1038,34 +1101,14 @@
                 "framework",
                 "http",
                 "http client",
-                "psr-18",
-                "psr-7",
                 "rest",
                 "web service"
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.3.0"
+                "source": "https://github.com/guzzle/guzzle/tree/6.5"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/GrahamCampbell",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/Nyholm",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/alexeyshockov",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/gmponos",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-03-23T11:33:13+00:00"
+            "time": "2020-06-16T21:01:06+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -3079,58 +3122,6 @@
             "time": "2019-01-08T18:20:26+00:00"
         },
         {
-            "name": "psr/http-client",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-client.git",
-                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-client/zipball/2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
-                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0 || ^8.0",
-                "psr/http-message": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Client\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP clients",
-            "homepage": "https://github.com/php-fig/http-client",
-            "keywords": [
-                "http",
-                "http-client",
-                "psr",
-                "psr-18"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/http-client/tree/master"
-            },
-            "time": "2020-06-29T06:28:15+00:00"
-        },
-        {
             "name": "psr/http-message",
             "version": "1.0.1",
             "source": {
@@ -3614,6 +3605,222 @@
                 "source": "https://github.com/Seldaek/signal-handler/tree/1.2.0"
             },
             "time": "2019-07-29T10:26:24+00:00"
+        },
+        {
+            "name": "spryker-eco/avalara-tax",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-eco/avalara-tax.git",
+                "reference": "bf213309a1b62e5b95fec7946b5c178811fa1cbb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-eco/avalara-tax/zipball/bf213309a1b62e5b95fec7946b5c178811fa1cbb",
+                "reference": "bf213309a1b62e5b95fec7946b5c178811fa1cbb",
+                "shasum": ""
+            },
+            "require": {
+                "avalara/avataxclient": "^21.1.1",
+                "php": ">=7.3",
+                "spryker-eco/avalara-tax-extension": "^0.1.0",
+                "spryker/calculation-extension": "^1.0.0",
+                "spryker/cart-extension": "^4.2.0",
+                "spryker/checkout-extension": "^1.2.0",
+                "spryker/checkout-rest-api-extension": "^1.5.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/money": "^2.0.0",
+                "spryker/product": "^6.0.0",
+                "spryker/product-extension": "^1.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/sales": "^11.0.0",
+                "spryker/stock": "^8.3.0",
+                "spryker/store": "^1.0.0",
+                "spryker/transfer": "^3.25.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-eco/avalara-tax-product-option": "If you want to calculate product option taxes using Avalara tax provider.",
+                "spryker-eco/avalara-tax-shipment": "If you want to calculate shipment taxes using Avalara tax provider.",
+                "spryker/calculation": "If you want to use Calculation plugins.",
+                "spryker/cart": "If you want to use Cart plugins.",
+                "spryker/checkout": "If you want to use Checkout plugins.",
+                "spryker/checkout-rest-api": "If you want to use CheckoutRestApi plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerEco\\": "src/SprykerEco/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "AvalaraTax module",
+            "support": {
+                "issues": "https://github.com/spryker-eco/avalara-tax/issues",
+                "source": "https://github.com/spryker-eco/avalara-tax/tree/0.1.0"
+            },
+            "time": "2021-05-20T14:32:17+00:00"
+        },
+        {
+            "name": "spryker-eco/avalara-tax-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-eco/avalara-tax-extension.git",
+                "reference": "f69bff35113f159ca3846cc91963fc03bec16d8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-eco/avalara-tax-extension/zipball/f69bff35113f159ca3846cc91963fc03bec16d8d",
+                "reference": "f69bff35113f159ca3846cc91963fc03bec16d8d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "*",
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerEco\\": "src/SprykerEco/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "AvalaraTaxExtension module",
+            "support": {
+                "issues": "https://github.com/spryker-eco/avalara-tax-extension/issues",
+                "source": "https://github.com/spryker-eco/avalara-tax-extension/tree/0.1.0"
+            },
+            "time": "2021-05-20T14:32:19+00:00"
+        },
+        {
+            "name": "spryker-eco/avalara-tax-product-option",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-eco/avalara-tax-product-option.git",
+                "reference": "159d0c85c9bbc9da75544556d90f851757f03541"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-eco/avalara-tax-product-option/zipball/159d0c85c9bbc9da75544556d90f851757f03541",
+                "reference": "159d0c85c9bbc9da75544556d90f851757f03541",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker-eco/avalara-tax-extension": "^0.1.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/money": "^2.0.0",
+                "spryker/product-option": "^8.0.0",
+                "spryker/transfer": "^3.25.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/decimal-object": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerEco\\": "src/SprykerEco/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "AvalaraTaxProductOption module",
+            "support": {
+                "issues": "https://github.com/spryker-eco/avalara-tax-product-option/issues",
+                "source": "https://github.com/spryker-eco/avalara-tax-product-option/tree/0.1.0"
+            },
+            "time": "2021-05-20T14:32:20+00:00"
+        },
+        {
+            "name": "spryker-eco/avalara-tax-shipment",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-eco/avalara-tax-shipment.git",
+                "reference": "ea490094ef9536103396bd1841642d8b7666fab3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-eco/avalara-tax-shipment/zipball/ea490094ef9536103396bd1841642d8b7666fab3",
+                "reference": "ea490094ef9536103396bd1841642d8b7666fab3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker-eco/avalara-tax-extension": "^0.1.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/money": "^2.0.0",
+                "spryker/shipment": "^8.6.0",
+                "spryker/transfer": "^3.25.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/decimal-object": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerEco\\": "src/SprykerEco/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "AvalaraTaxShipment module",
+            "support": {
+                "issues": "https://github.com/spryker-eco/avalara-tax-shipment/issues",
+                "source": "https://github.com/spryker-eco/avalara-tax-shipment/tree/0.1.0"
+            },
+            "time": "2021-05-20T14:32:22+00:00"
         },
         {
             "name": "spryker-eco/loggly",
@@ -34700,16 +34907,16 @@
         },
         {
             "name": "spryker/product",
-            "version": "6.22.2",
+            "version": "6.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product.git",
-                "reference": "8f2e0a7b6e71ced6cb56c276677416c4aa2ea362"
+                "reference": "0c9761767e6644c16017ae25278547d5371dee23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product/zipball/8f2e0a7b6e71ced6cb56c276677416c4aa2ea362",
-                "reference": "8f2e0a7b6e71ced6cb56c276677416c4aa2ea362",
+                "url": "https://api.github.com/repos/spryker/product/zipball/0c9761767e6644c16017ae25278547d5371dee23",
+                "reference": "0c9761767e6644c16017ae25278547d5371dee23",
                 "shasum": ""
             },
             "require": {
@@ -34718,6 +34925,7 @@
                 "spryker/kernel": "^3.34.0",
                 "spryker/key-builder": "^1.0.0",
                 "spryker/locale": "^3.0.0",
+                "spryker/product-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/storage": "^3.0.0",
                 "spryker/store": "^1.1.0",
@@ -34750,9 +34958,9 @@
             ],
             "description": "Product module",
             "support": {
-                "source": "https://github.com/spryker/product/tree/6.22.2"
+                "source": "https://github.com/spryker/product/tree/6.23.0"
             },
-            "time": "2021-03-25T14:52:19+00:00"
+            "time": "2021-05-20T14:32:23+00:00"
         },
         {
             "name": "spryker/product-abstract-data-feed",
@@ -37139,6 +37347,47 @@
                 "source": "https://github.com/spryker/product-discount-connector/tree/5.0.2"
             },
             "time": "2020-05-29T13:08:37+00:00"
+        },
+        {
+            "name": "spryker/product-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-extension.git",
+                "reference": "6978a41a6ac4f1cbb163e42de5553dd45151cc5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-extension/zipball/6978a41a6ac4f1cbb163e42de5553dd45151cc5b",
+                "reference": "6978a41a6ac4f1cbb163e42de5553dd45151cc5b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductExtension module",
+            "support": {
+                "source": "https://github.com/spryker/product-extension/tree/1.0.0"
+            },
+            "time": "2021-05-20T14:32:23+00:00"
         },
         {
             "name": "spryker/product-group",
@@ -46812,20 +47061,20 @@
         },
         {
             "name": "spryker/shipment-data-import",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-data-import.git",
-                "reference": "ee5e87e82274df7755f7ea2b6d10e67813b3ea92"
+                "reference": "10923d3885c2914b254f234b61ad1e7cea7ed5ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-data-import/zipball/ee5e87e82274df7755f7ea2b6d10e67813b3ea92",
-                "reference": "ee5e87e82274df7755f7ea2b6d10e67813b3ea92",
+                "url": "https://api.github.com/repos/spryker/shipment-data-import/zipball/10923d3885c2914b254f234b61ad1e7cea7ed5ba",
+                "reference": "10923d3885c2914b254f234b61ad1e7cea7ed5ba",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.3",
                 "spryker/currency": "^3.0.0",
                 "spryker/data-import": "^1.4.3",
                 "spryker/kernel": "^3.33.0",
@@ -46855,9 +47104,9 @@
             ],
             "description": "ShipmentDataImport module",
             "support": {
-                "source": "https://github.com/spryker/shipment-data-import/tree/master"
+                "source": "https://github.com/spryker/shipment-data-import/tree/1.1.0"
             },
-            "time": "2019-11-13T09:19:04+00:00"
+            "time": "2021-05-20T14:32:23+00:00"
         },
         {
             "name": "spryker/shipment-discount-connector",
@@ -48005,16 +48254,16 @@
         },
         {
             "name": "spryker/stock",
-            "version": "8.2.0",
+            "version": "8.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/stock.git",
-                "reference": "46e4a90f4263c6d7dce779e1baba536f9c718108"
+                "reference": "3e521315fb6cfdbf07cf8da7c291a7e48789bd16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/stock/zipball/46e4a90f4263c6d7dce779e1baba536f9c718108",
-                "reference": "46e4a90f4263c6d7dce779e1baba536f9c718108",
+                "url": "https://api.github.com/repos/spryker/stock/zipball/3e521315fb6cfdbf07cf8da7c291a7e48789bd16",
+                "reference": "3e521315fb6cfdbf07cf8da7c291a7e48789bd16",
                 "shasum": ""
             },
             "require": {
@@ -48026,7 +48275,7 @@
                 "spryker/stock-extension": "^1.1.0",
                 "spryker/store": "^1.5.0",
                 "spryker/touch": "^3.0.0 || ^4.0.0",
-                "spryker/transfer": "^3.18.0"
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -48051,9 +48300,9 @@
             ],
             "description": "Stock module",
             "support": {
-                "source": "https://github.com/spryker/stock/tree/8.2.0"
+                "source": "https://github.com/spryker/stock/tree/8.3.0"
             },
-            "time": "2021-04-08T12:48:27+00:00"
+            "time": "2021-05-20T14:32:23+00:00"
         },
         {
             "name": "spryker/stock-address",
