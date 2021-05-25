@@ -16,7 +16,6 @@ use Spryker\Yves\DummyMarketplacePayment\Plugin\StepEngine\SubForm\DummyMarketpl
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\MerchantShipment\Plugin\CheckoutPage\MerchantShipmentCheckoutPageStepEnginePreRenderPlugin;
 use Spryker\Yves\Nopayment\Plugin\NopaymentHandlerPlugin;
-use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
@@ -131,16 +130,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     public function getProductBundleClient(Container $container): CheckoutPageToProductBundleClientInterface
     {
         return $container->get(static::CLIENT_PRODUCT_BUNDLE);
-    }
-
-    /**
-     * @return \Spryker\Yves\Checkout\Dependency\Plugin\Form\SubFormFilterPluginInterface[]
-     */
-    protected function getSubFormFilterPlugins(): array
-    {
-        return [
-            new PaymentFormFilterPlugin(),
-        ];
     }
 
     /**
