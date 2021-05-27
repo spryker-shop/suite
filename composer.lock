@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b97d6ec53097525d4ef41ec5a4952922",
+    "content-hash": "1e2454cbe39c62165be23ac95cca4c23",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -12109,16 +12109,16 @@
         },
         {
             "name": "spryker/availability",
-            "version": "9.9.0",
+            "version": "9.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/availability.git",
-                "reference": "3a166f781e4287c2ee280f4f3813ceeff145fb4f"
+                "reference": "658367aab26fbd63bf187417229e859b26fec0af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/availability/zipball/3a166f781e4287c2ee280f4f3813ceeff145fb4f",
-                "reference": "3a166f781e4287c2ee280f4f3813ceeff145fb4f",
+                "url": "https://api.github.com/repos/spryker/availability/zipball/658367aab26fbd63bf187417229e859b26fec0af",
+                "reference": "658367aab26fbd63bf187417229e859b26fec0af",
                 "shasum": ""
             },
             "require": {
@@ -12170,9 +12170,9 @@
             ],
             "description": "Availability module",
             "support": {
-                "source": "https://github.com/spryker/availability/tree/9.9.0"
+                "source": "https://github.com/spryker/availability/tree/9.9.1"
             },
-            "time": "2021-04-14T08:07:12+00:00"
+            "time": "2021-05-27T10:33:36+00:00"
         },
         {
             "name": "spryker/availability-cart-connector",
@@ -24471,16 +24471,16 @@
         },
         {
             "name": "spryker/event",
-            "version": "2.8.0",
+            "version": "2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event.git",
-                "reference": "ac3ac8d4c2c0ef6f7a0456d2be5a414d755f4c18"
+                "reference": "f2045ae75620914987011d9d032aa73747e2bfbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event/zipball/ac3ac8d4c2c0ef6f7a0456d2be5a414d755f4c18",
-                "reference": "ac3ac8d4c2c0ef6f7a0456d2be5a414d755f4c18",
+                "url": "https://api.github.com/repos/spryker/event/zipball/f2045ae75620914987011d9d032aa73747e2bfbb",
+                "reference": "f2045ae75620914987011d9d032aa73747e2bfbb",
                 "shasum": ""
             },
             "require": {
@@ -24496,6 +24496,7 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/propel": "^3.0.0",
+                "spryker/publisher": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -24506,7 +24507,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\Event\\Helper\\": "tests/SprykerTest/Zed/Event/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -24515,22 +24517,22 @@
             ],
             "description": "Event module",
             "support": {
-                "source": "https://github.com/spryker/event/tree/2.8.0"
+                "source": "https://github.com/spryker/event/tree/2.9.0"
             },
-            "time": "2021-04-23T13:56:10+00:00"
+            "time": "2021-05-27T10:33:36+00:00"
         },
         {
             "name": "spryker/event-behavior",
-            "version": "1.21.0",
+            "version": "1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "30db050b788f731353a19998313d0f670b0fb8c4"
+                "reference": "4f74082aafcf3b4e0b6df3a5303e4125bde757a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/30db050b788f731353a19998313d0f670b0fb8c4",
-                "reference": "30db050b788f731353a19998313d0f670b0fb8c4",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/4f74082aafcf3b4e0b6df3a5303e4125bde757a9",
+                "reference": "4f74082aafcf3b4e0b6df3a5303e4125bde757a9",
                 "shasum": ""
             },
             "require": {
@@ -24553,12 +24555,12 @@
                 "spryker/container": "^1.4.0",
                 "spryker/event-dispatcher": "^1.0.0",
                 "spryker/silex": "^2.0.0",
-                "spryker/testify": "*"
+                "spryker/testify": "^3.0.0"
             },
             "suggest": {
-                "spryker/console": "*",
-                "spryker/container": "Install this module when you want to use the EventBehaviorEventDispatcherPlugin",
-                "spryker/event-dispatcher": "Install this module when you want to use the EventBehaviorEventDispatcherPlugin",
+                "spryker/console": "If you want to execute console commands",
+                "spryker/container": "If you want to use the EventBehaviorEventDispatcherPlugin",
+                "spryker/event-dispatcher": "If you want to use the EventBehaviorEventDispatcherPlugin",
                 "spryker/silex": "^2.0.0"
             },
             "type": "propel-behavior",
@@ -24571,7 +24573,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\EventBehavior\\Helper\\": "tests/SprykerTest/Zed/EventBehavior/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -24585,7 +24588,7 @@
             "support": {
                 "source": "https://github.com/spryker/event-behavior"
             },
-            "time": "2021-02-09T15:00:47+00:00"
+            "time": "2021-05-27T10:33:34+00:00"
         },
         {
             "name": "spryker/event-dispatcher",
@@ -26419,16 +26422,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.59.0",
+            "version": "3.59.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "b401c63e84fcab4823c8bd3835ed8bce261b0bfa"
+                "reference": "49f0eb8ba9497dd0f2dd4b96f392eba32d3b6594"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/b401c63e84fcab4823c8bd3835ed8bce261b0bfa",
-                "reference": "b401c63e84fcab4823c8bd3835ed8bce261b0bfa",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/49f0eb8ba9497dd0f2dd4b96f392eba32d3b6594",
+                "reference": "49f0eb8ba9497dd0f2dd4b96f392eba32d3b6594",
                 "shasum": ""
             },
             "require": {
@@ -26474,9 +26477,9 @@
             ],
             "description": "Kernel module",
             "support": {
-                "source": "https://github.com/spryker/kernel/tree/3.59.0"
+                "source": "https://github.com/spryker/kernel/tree/3.59.1"
             },
-            "time": "2021-04-22T11:47:10+00:00"
+            "time": "2021-05-27T10:33:36+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -42295,16 +42298,16 @@
         },
         {
             "name": "spryker/propel",
-            "version": "3.31.0",
+            "version": "3.31.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel.git",
-                "reference": "578e257f57b0af775930ada3acd4a4e9ca677198"
+                "reference": "662f5c2f86b4a00178755cc06c7f26f231b2d6b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel/zipball/578e257f57b0af775930ada3acd4a4e9ca677198",
-                "reference": "578e257f57b0af775930ada3acd4a4e9ca677198",
+                "url": "https://api.github.com/repos/spryker/propel/zipball/662f5c2f86b4a00178755cc06c7f26f231b2d6b8",
+                "reference": "662f5c2f86b4a00178755cc06c7f26f231b2d6b8",
                 "shasum": ""
             },
             "require": {
@@ -42350,9 +42353,9 @@
             ],
             "description": "Propel module",
             "support": {
-                "source": "https://github.com/spryker/propel/tree/3.31.0"
+                "source": "https://github.com/spryker/propel/tree/3.31.1"
             },
-            "time": "2021-05-14T10:07:13+00:00"
+            "time": "2021-05-27T10:33:36+00:00"
         },
         {
             "name": "spryker/propel-orm",
@@ -42452,21 +42455,180 @@
             "time": "2020-10-29T08:43:55+00:00"
         },
         {
-            "name": "spryker/publisher",
-            "version": "1.1.1",
+            "name": "spryker/publish-and-synchronize-health-check",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/publisher.git",
-                "reference": "7bf646c67a5a7664c1552e8b7f0e758bfb58bb21"
+                "url": "https://github.com/spryker/publish-and-synchronize-health-check.git",
+                "reference": "59992d98c30a723f653fd11863bc527daeb3546a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/publisher/zipball/7bf646c67a5a7664c1552e8b7f0e758bfb58bb21",
-                "reference": "7bf646c67a5a7664c1552e8b7f0e758bfb58bb21",
+                "url": "https://api.github.com/repos/spryker/publish-and-synchronize-health-check/zipball/59992d98c30a723f653fd11863bc527daeb3546a",
+                "reference": "59992d98c30a723f653fd11863bc527daeb3546a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
+                "spryker/event-behavior": "^1.20.0",
+                "spryker/health-check-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PublishAndSynchronizeHealthCheck module",
+            "support": {
+                "issues": "https://github.com/spryker/publish-and-synchronize-health-check/issues",
+                "source": "https://github.com/spryker/publish-and-synchronize-health-check/tree/1.0.0"
+            },
+            "time": "2021-05-27T10:33:36+00:00"
+        },
+        {
+            "name": "spryker/publish-and-synchronize-health-check-search",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/publish-and-synchronize-health-check-search.git",
+                "reference": "09885a73567d459e84ba4621c27fef18dd3b55d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/publish-and-synchronize-health-check-search/zipball/09885a73567d459e84ba4621c27fef18dd3b55d0",
+                "reference": "09885a73567d459e84ba4621c27fef18dd3b55d0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/event-behavior": "^1.20.0",
+                "spryker/health-check-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/publish-and-synchronize-health-check": "^1.0.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/search": "^8.17.0",
+                "spryker/synchronization-behavior": "^1.8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/propel": "*",
+                "spryker/publish-and-synchronize-health-check-storage": "*",
+                "spryker/publisher": "*",
+                "spryker/queue": "*",
+                "spryker/synchronization": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\PublishAndSynchronizeHealthCheckSearch\\Helper\\": "tests/SprykerTest/Zed/PublishAndSynchronizeHealthCheckSearch/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PublishAndSynchronizeHealthCheckSearch module",
+            "support": {
+                "source": "https://github.com/spryker/publish-and-synchronize-health-check-search/tree/1.0.0"
+            },
+            "time": "2021-05-27T10:33:36+00:00"
+        },
+        {
+            "name": "spryker/publish-and-synchronize-health-check-storage",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/publish-and-synchronize-health-check-storage.git",
+                "reference": "250b92ed10460e91cd75c5628b80dff94d09d20b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/publish-and-synchronize-health-check-storage/zipball/250b92ed10460e91cd75c5628b80dff94d09d20b",
+                "reference": "250b92ed10460e91cd75c5628b80dff94d09d20b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/event-behavior": "^1.20.0",
+                "spryker/health-check-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/publish-and-synchronize-health-check": "^1.0.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/storage": "^3.16.0",
+                "spryker/synchronization-behavior": "^1.8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/propel": "*",
+                "spryker/publish-and-synchronize-health-check-search": "*",
+                "spryker/publisher": "*",
+                "spryker/queue": "*",
+                "spryker/synchronization": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\PublishAndSynchronizeHealthCheckStorage\\Helper\\": "tests/SprykerTest/Zed/PublishAndSynchronizeHealthCheckStorage/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PublishAndSynchronizeHealthCheckStorage module",
+            "support": {
+                "source": "https://github.com/spryker/publish-and-synchronize-health-check-storage/tree/1.0.0"
+            },
+            "time": "2021-05-27T10:33:36+00:00"
+        },
+        {
+            "name": "spryker/publisher",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/publisher.git",
+                "reference": "b95c5542f2e1356f1e45ef0b6dd35efe56403d81"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/publisher/zipball/b95c5542f2e1356f1e45ef0b6dd35efe56403d81",
+                "reference": "b95c5542f2e1356f1e45ef0b6dd35efe56403d81",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
                 "spryker/event": "^2.0.0",
                 "spryker/event-behavior": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -42485,7 +42647,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\Publisher\\Helper\\": "tests/SprykerTest/Zed/Publisher/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -42494,9 +42657,9 @@
             ],
             "description": "Publisher module",
             "support": {
-                "source": "https://github.com/spryker/publisher/tree/1.1.1"
+                "source": "https://github.com/spryker/publisher/tree/1.2.0"
             },
-            "time": "2020-09-25T05:35:53+00:00"
+            "time": "2021-05-27T10:33:36+00:00"
         },
         {
             "name": "spryker/publisher-extension",
@@ -42547,20 +42710,20 @@
         },
         {
             "name": "spryker/queue",
-            "version": "1.8.2",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/queue.git",
-                "reference": "524ae6cf332beba6ad4914d9c12598f5cb56ab6f"
+                "reference": "818aac4380279caf26152a6e6d2cd50c19ea5c8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/queue/zipball/524ae6cf332beba6ad4914d9c12598f5cb56ab6f",
-                "reference": "524ae6cf332beba6ad4914d9c12598f5cb56ab6f",
+                "url": "https://api.github.com/repos/spryker/queue/zipball/818aac4380279caf26152a6e6d2cd50c19ea5c8c",
+                "reference": "818aac4380279caf26152a6e6d2cd50c19ea5c8c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -42573,6 +42736,8 @@
                 "spryker/code-sniffer": "*",
                 "spryker/event": "*",
                 "spryker/propel": "*",
+                "spryker/ramsey-uuid": "*",
+                "spryker/synchronization": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -42586,7 +42751,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Client\\Queue\\Helper\\": "tests/SprykerTest/Client/Queue/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -42595,9 +42761,9 @@
             ],
             "description": "Queue module",
             "support": {
-                "source": "https://github.com/spryker/queue/tree/1.8.2"
+                "source": "https://github.com/spryker/queue/tree/1.9.0"
             },
-            "time": "2020-09-25T14:25:21+00:00"
+            "time": "2021-05-27T10:33:36+00:00"
         },
         {
             "name": "spryker/quick-order",
@@ -45527,16 +45693,16 @@
         },
         {
             "name": "spryker/search",
-            "version": "8.17.2",
+            "version": "8.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/search.git",
-                "reference": "b6ac225f6c48f2930ec481d91f8c2ad55e99c432"
+                "reference": "38889e02a7ccd421a9523a1106be42c0b04f9553"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/search/zipball/b6ac225f6c48f2930ec481d91f8c2ad55e99c432",
-                "reference": "b6ac225f6c48f2930ec481d91f8c2ad55e99c432",
+                "url": "https://api.github.com/repos/spryker/search/zipball/38889e02a7ccd421a9523a1106be42c0b04f9553",
+                "reference": "38889e02a7ccd421a9523a1106be42c0b04f9553",
                 "shasum": ""
             },
             "require": {
@@ -45576,7 +45742,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Client\\Search\\Helper\\": "tests/SprykerTest/Client/Search/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -45585,9 +45752,9 @@
             ],
             "description": "Search module",
             "support": {
-                "source": "https://github.com/spryker/search/tree/8.17.2"
+                "source": "https://github.com/spryker/search/tree/8.18.0"
             },
-            "time": "2021-03-02T08:38:46+00:00"
+            "time": "2021-05-27T10:33:36+00:00"
         },
         {
             "name": "spryker/search-elasticsearch",
@@ -48527,16 +48694,16 @@
         },
         {
             "name": "spryker/storage",
-            "version": "3.17.0",
+            "version": "3.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/storage.git",
-                "reference": "89ec1fa213b4696f35cbf3b5b0186f9d915ff4c5"
+                "reference": "a17c1c532d5761d4f4054aa07736b5ef2c273e25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/storage/zipball/89ec1fa213b4696f35cbf3b5b0186f9d915ff4c5",
-                "reference": "89ec1fa213b4696f35cbf3b5b0186f9d915ff4c5",
+                "url": "https://api.github.com/repos/spryker/storage/zipball/a17c1c532d5761d4f4054aa07736b5ef2c273e25",
+                "reference": "a17c1c532d5761d4f4054aa07736b5ef2c273e25",
                 "shasum": ""
             },
             "require": {
@@ -48558,6 +48725,7 @@
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
                 "spryker/event-dispatcher": "*",
+                "spryker/ramsey-uuid": "*",
                 "spryker/silex": "*",
                 "spryker/testify": "*"
             },
@@ -48585,9 +48753,9 @@
             ],
             "description": "Storage module",
             "support": {
-                "source": "https://github.com/spryker/storage/tree/3.17.0"
+                "source": "https://github.com/spryker/storage/tree/3.18.0"
             },
-            "time": "2021-01-26T09:05:22+00:00"
+            "time": "2021-05-27T10:33:36+00:00"
         },
         {
             "name": "spryker/storage-database",
@@ -61803,16 +61971,16 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.38.0",
+            "version": "3.39.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "a7ad13c54b90faa8eb601b6d10beb6dacf4492b5"
+                "reference": "e7b532ad6cf9b1b66573e6b52ac3b06fa1222f09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/a7ad13c54b90faa8eb601b6d10beb6dacf4492b5",
-                "reference": "a7ad13c54b90faa8eb601b6d10beb6dacf4492b5",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/e7b532ad6cf9b1b66573e6b52ac3b06fa1222f09",
+                "reference": "e7b532ad6cf9b1b66573e6b52ac3b06fa1222f09",
                 "shasum": ""
             },
             "require": {
@@ -61852,16 +62020,16 @@
                 "psr-4": {
                     "Spryker\\": "src/Spryker/",
                     "SprykerTest\\Client\\Testify\\Helper\\": "tests/SprykerTest/Client/Testify/_support/Helper/",
-                    "SprykerTest\\Shared\\Testify\\Helper\\": "tests/SprykerTest/Shared/Testify/_support/Helper/",
                     "SprykerTest\\Glue\\Testify\\Helper\\": "tests/SprykerTest/Glue/Testify/_support/Helper/",
                     "SprykerTest\\Glue\\Testify\\Tester\\": "tests/SprykerTest/Glue/Testify/_support/Tester/",
-                    "SprykerTest\\Yves\\Testify\\Helper\\": "tests/SprykerTest/Yves/Testify/_support/Helper/",
-                    "SprykerTest\\Zed\\Testify\\Helper\\": "tests/SprykerTest/Zed/Testify/_support/Helper/",
                     "SprykerTest\\Service\\Testify\\Helper\\": "tests/SprykerTest/Service/Testify/_support/Helper/",
+                    "SprykerTest\\Shared\\Testify\\Helper\\": "tests/SprykerTest/Shared/Testify/_support/Helper/",
                     "SprykerTest\\Shared\\Testify\\Fixtures\\": "tests/SprykerTest/Shared/Testify/_support/Fixtures/",
                     "SprykerTest\\Shared\\Testify\\Tester\\": "tests/SprykerTest/Shared/Testify/_support/Tester/",
                     "SprykerTest\\Shared\\Testify\\StepOverride\\": "tests/SprykerTest/Shared/Testify/_support/StepOverride/",
-                    "SprykerTest\\Shared\\Testify\\Filter\\": "tests/SprykerTest/Shared/Testify/_support/Filter/"
+                    "SprykerTest\\Shared\\Testify\\Filter\\": "tests/SprykerTest/Shared/Testify/_support/Filter/",
+                    "SprykerTest\\Yves\\Testify\\Helper\\": "tests/SprykerTest/Yves/Testify/_support/Helper/",
+                    "SprykerTest\\Zed\\Testify\\Helper\\": "tests/SprykerTest/Zed/Testify/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -61870,9 +62038,9 @@
             ],
             "description": "Testify module",
             "support": {
-                "source": "https://github.com/spryker/testify/tree/3.38.0"
+                "source": "https://github.com/spryker/testify/tree/3.39.0"
             },
-            "time": "2021-05-18T08:45:26+00:00"
+            "time": "2021-05-27T10:33:36+00:00"
         },
         {
             "name": "spryker/web-profiler",
