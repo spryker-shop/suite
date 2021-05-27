@@ -4512,12 +4512,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "2228de6d07681d71c26e2f784d699876d34296d9"
+                "reference": "4f74082aafcf3b4e0b6df3a5303e4125bde757a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/2228de6d07681d71c26e2f784d699876d34296d9",
-                "reference": "2228de6d07681d71c26e2f784d699876d34296d9",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/4f74082aafcf3b4e0b6df3a5303e4125bde757a9",
+                "reference": "4f74082aafcf3b4e0b6df3a5303e4125bde757a9",
                 "shasum": ""
             },
             "require": {
@@ -4559,7 +4559,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\EventBehavior\\Helper\\": "tests/SprykerTest/Zed/EventBehavior/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -4573,7 +4574,7 @@
             "support": {
                 "source": "https://github.com/spryker/event-behavior"
             },
-            "time": "2021-05-05T18:15:13+00:00"
+            "time": "2021-05-27T10:33:34+00:00"
         },
         {
             "name": "spryker/install",
@@ -4791,7 +4792,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3b259ba79da16c023e1d46dabc1cce6a1b44bb66"
+                "reference": "7a13c5aa8d6192345831fc534b11c2c70faa2e4a"
             },
             "require": {
                 "php": ">=7.3"
@@ -5411,6 +5412,9 @@
                 "spryker/propel": "*",
                 "spryker/propel-orm": "*",
                 "spryker/propel-query-builder": "*",
+                "spryker/publish-and-synchronize-health-check": "*",
+                "spryker/publish-and-synchronize-health-check-search": "*",
+                "spryker/publish-and-synchronize-health-check-storage": "*",
                 "spryker/publisher": "*",
                 "spryker/publisher-extension": "*",
                 "spryker/queue": "*",
@@ -5618,7 +5622,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-05-25T07:16:42+00:00"
+            "time": "2021-05-27T10:33:36+00:00"
         },
         {
             "name": "spryker/spryker-shop",
