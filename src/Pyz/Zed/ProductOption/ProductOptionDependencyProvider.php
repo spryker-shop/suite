@@ -8,6 +8,9 @@
 namespace Pyz\Zed\ProductOption;
 
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MerchantGui\Communication\Plugin\ProductOptionGui\MerchantProductOptionListActionViewDataExpanderPlugin;
+use Spryker\Zed\MerchantProductOption\Communication\Plugin\ProductOption\MerchantProductOptionGroupExpanderPlugin;
+use Spryker\Zed\MerchantProductOptionGui\Communication\Plugin\ProductOptionGui\MerchantProductOptionListTableQueryCriteriaExpanderPlugin;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyCollectionFormTypePlugin;
 use Spryker\Zed\ProductOption\ProductOptionDependencyProvider as SprykerProductOptionDependencyProvider;
 use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ProductOption\ShoppingListItemsProductOptionValuesPreRemovePlugin;
@@ -31,6 +34,36 @@ class ProductOptionDependencyProvider extends SprykerProductOptionDependencyProv
     {
         return [
             new ShoppingListItemsProductOptionValuesPreRemovePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductOptionGuiExtension\Dependency\Plugin\ProductOptionListActionViewDataExpanderPluginInterface[]
+     */
+    protected function getProductOptionListActionViewDataExpanderPlugins(): array
+    {
+        return [
+            new MerchantProductOptionListActionViewDataExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductOptionGuiExtension\Dependency\Plugin\ProductOptionListTableQueryCriteriaExpanderPluginInterface[]
+     */
+    protected function getProductOptionListTableQueryCriteriaExpanderPlugins(): array
+    {
+        return [
+            new MerchantProductOptionListTableQueryCriteriaExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductOptionExtension\Dependency\Plugin\ProductOptionGroupExpanderPluginInterface[]
+     */
+    protected function getProductOptionGroupExpanderPlugins(): array
+    {
+        return [
+            new MerchantProductOptionGroupExpanderPlugin(),
         ];
     }
 }

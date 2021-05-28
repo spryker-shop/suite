@@ -25,6 +25,7 @@ use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardMetadataExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Merchant\Communication\Plugin\Cart\MerchantCartPreCheckPlugin;
 use Spryker\Zed\MerchantProduct\Communication\Plugin\Cart\MerchantProductCartPreCheckPlugin;
+use Spryker\Zed\MerchantProductOption\Communication\Plugin\Cart\MerchantProductOptionCartPreCheckPlugin;
 use Spryker\Zed\MerchantShipment\Communication\Plugin\Cart\MerchantShipmentItemExpanderPlugin;
 use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Cart\SingleMerchantCartPreCheckPlugin;
 use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Cart\SingleMerchantPreReloadItemsPlugin;
@@ -166,6 +167,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new DiscountPromotionCartPreCheckPlugin(),
             new ProductOfferCartPreCheckPlugin(),
             new MerchantProductCartPreCheckPlugin(),
+            new MerchantProductOptionCartPreCheckPlugin(),
         ];
     }
 

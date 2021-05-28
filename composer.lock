@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f885485ec98153daed7210c5756adc2f",
+    "content-hash": "03c1d90ccbe758197eecc41d6a439fdb",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -27415,16 +27415,16 @@
         },
         {
             "name": "spryker/merchant-gui",
-            "version": "3.6.0",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-gui.git",
-                "reference": "d1f9d7f66205529cb4d927ebb7ef86ec0b99437e"
+                "reference": "255065dcac5a56f34f2cc0dd676adf766a92b8c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-gui/zipball/d1f9d7f66205529cb4d927ebb7ef86ec0b99437e",
-                "reference": "d1f9d7f66205529cb4d927ebb7ef86ec0b99437e",
+                "url": "https://api.github.com/repos/spryker/merchant-gui/zipball/255065dcac5a56f34f2cc0dd676adf766a92b8c0",
+                "reference": "255065dcac5a56f34f2cc0dd676adf766a92b8c0",
                 "shasum": ""
             },
             "require": {
@@ -27437,6 +27437,7 @@
                 "spryker/merchant-gui-extension": "^1.1.0",
                 "spryker/product-management-extension": "^1.4.0",
                 "spryker/product-offer-gui-extension": "^0.1.0",
+                "spryker/product-option-gui-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/store": "^1.1.0",
                 "spryker/symfony": "^3.0.0",
@@ -27467,9 +27468,9 @@
             ],
             "description": "MerchantGui module",
             "support": {
-                "source": "https://github.com/spryker/merchant-gui/tree/3.6.0"
+                "source": "https://github.com/spryker/merchant-gui/tree/3.7.0"
             },
-            "time": "2021-03-25T08:28:39+00:00"
+            "time": "2021-05-28T11:56:55+00:00"
         },
         {
             "name": "spryker/merchant-gui-extension",
@@ -28477,6 +28478,202 @@
                 "source": "https://github.com/spryker/merchant-product-offers-rest-api/tree/0.6.0"
             },
             "time": "2021-05-12T14:10:30+00:00"
+        },
+        {
+            "name": "spryker/merchant-product-option",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-product-option.git",
+                "reference": "50dd162d803dd7cc04e2d864eb112b80cc8885f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-product-option/zipball/50dd162d803dd7cc04e2d864eb112b80cc8885f6",
+                "reference": "50dd162d803dd7cc04e2d864eb112b80cc8885f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/cart-extension": "^4.0.0",
+                "spryker/checkout-extension": "^1.2.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0 || ^3.0.0",
+                "spryker/product-option": "^8.10.0",
+                "spryker/product-option-extension": "^1.1.0",
+                "spryker/propel-orm": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\MerchantProductOption\\Helper\\": "tests/SprykerTest/Shared/MerchantProductOption/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProductOption module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-product-option/tree/0.1.0"
+            },
+            "time": "2021-05-28T11:56:55+00:00"
+        },
+        {
+            "name": "spryker/merchant-product-option-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-product-option-data-import.git",
+                "reference": "35961b065c901a71a0851b0aaf3be140512d2cbf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-product-option-data-import/zipball/35961b065c901a71a0851b0aaf3be140512d2cbf",
+                "reference": "35961b065c901a71a0851b0aaf3be140512d2cbf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0 || ^3.0.0",
+                "spryker/merchant-product-option": "^0.1.0",
+                "spryker/product-option": "^8.10.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "MerchantProductOptionDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-product-option-data-import/tree/0.1.0"
+            },
+            "time": "2021-05-28T11:56:55+00:00"
+        },
+        {
+            "name": "spryker/merchant-product-option-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-product-option-gui.git",
+                "reference": "216abb48e08b1173612338898d2c015b863b83e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-product-option-gui/zipball/216abb48e08b1173612338898d2c015b863b83e3",
+                "reference": "216abb48e08b1173612338898d2c015b863b83e3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0 || ^3.0.0",
+                "spryker/merchant-product-option": "^0.1.0",
+                "spryker/product-option-gui-extension": "^1.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProductOptionGui module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-product-option-gui/tree/0.1.0"
+            },
+            "time": "2021-05-28T11:56:55+00:00"
+        },
+        {
+            "name": "spryker/merchant-product-option-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-product-option-storage.git",
+                "reference": "f5cbdeea744b4a7fff1eac603e0f08cf657c18d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-product-option-storage/zipball/f5cbdeea744b4a7fff1eac603e0f08cf657c18d2",
+                "reference": "f5cbdeea744b4a7fff1eac603e0f08cf657c18d2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant-product-option": "^0.1.0",
+                "spryker/product-option": "^8.10.0",
+                "spryker/product-option-storage": "^1.11.0",
+                "spryker/product-option-storage-extension": "^1.0.0",
+                "spryker/publisher-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProductOptionStorage module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-product-option-storage/tree/0.1.0"
+            },
+            "time": "2021-05-28T11:56:55+00:00"
         },
         {
             "name": "spryker/merchant-product-search",
@@ -40088,16 +40285,16 @@
         },
         {
             "name": "spryker/product-option",
-            "version": "8.9.2",
+            "version": "8.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-option.git",
-                "reference": "815ed59cc3a5d4d0023ea5351bad44fa5b2b89d2"
+                "reference": "7b8a0b964009311c204ea8ef45bef26e221e922a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-option/zipball/815ed59cc3a5d4d0023ea5351bad44fa5b2b89d2",
-                "reference": "815ed59cc3a5d4d0023ea5351bad44fa5b2b89d2",
+                "url": "https://api.github.com/repos/spryker/product-option/zipball/7b8a0b964009311c204ea8ef45bef26e221e922a",
+                "reference": "7b8a0b964009311c204ea8ef45bef26e221e922a",
                 "shasum": ""
             },
             "require": {
@@ -40114,7 +40311,8 @@
                 "spryker/money": "^2.4.0",
                 "spryker/price": "^5.0.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
-                "spryker/product-option-extension": "^1.0.0",
+                "spryker/product-option-extension": "^1.1.0",
+                "spryker/product-option-gui-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/sales": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/sales-extension": "^1.6.0",
@@ -40166,9 +40364,9 @@
             ],
             "description": "ProductOption module",
             "support": {
-                "source": "https://github.com/spryker/product-option/tree/8.9.2"
+                "source": "https://github.com/spryker/product-option/tree/8.10.0"
             },
-            "time": "2021-02-05T08:49:33+00:00"
+            "time": "2021-05-28T11:56:55+00:00"
         },
         {
             "name": "spryker/product-option-cart-connector",
@@ -40223,20 +40421,23 @@
         },
         {
             "name": "spryker/product-option-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-option-extension.git",
-                "reference": "702f78a8e83baf1afc601f0fc166a7311666428a"
+                "reference": "3caa7194182a4fff8c7340d93bf77a63cd8de876"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-option-extension/zipball/702f78a8e83baf1afc601f0fc166a7311666428a",
-                "reference": "702f78a8e83baf1afc601f0fc166a7311666428a",
+                "url": "https://api.github.com/repos/spryker/product-option-extension/zipball/3caa7194182a4fff8c7340d93bf77a63cd8de876",
+                "reference": "3caa7194182a4fff8c7340d93bf77a63cd8de876",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -40255,9 +40456,50 @@
             ],
             "description": "ProductOptionExtension module",
             "support": {
-                "source": "https://github.com/spryker/product-option-extension/tree/master"
+                "source": "https://github.com/spryker/product-option-extension/tree/1.1.0"
             },
-            "time": "2018-11-29T15:22:04+00:00"
+            "time": "2021-05-28T11:56:55+00:00"
+        },
+        {
+            "name": "spryker/product-option-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-option-gui-extension.git",
+                "reference": "72cc036b4c2ddff6cb663dda03e1018643a76170"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-option-gui-extension/zipball/72cc036b4c2ddff6cb663dda03e1018643a76170",
+                "reference": "72cc036b4c2ddff6cb663dda03e1018643a76170",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOptionGuiExtension module",
+            "support": {
+                "source": "https://github.com/spryker/product-option-gui-extension/tree/1.0.0"
+            },
+            "time": "2021-05-28T11:56:55+00:00"
         },
         {
             "name": "spryker/product-option-merchant-portal-gui",
@@ -40306,16 +40548,16 @@
         },
         {
             "name": "spryker/product-option-storage",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-option-storage.git",
-                "reference": "785ae44ebf19d30cf5d6c1dd227ccbafd54bae04"
+                "reference": "734106b223f9cdb4029984d751bd85ec9085cfb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-option-storage/zipball/785ae44ebf19d30cf5d6c1dd227ccbafd54bae04",
-                "reference": "785ae44ebf19d30cf5d6c1dd227ccbafd54bae04",
+                "url": "https://api.github.com/repos/spryker/product-option-storage/zipball/734106b223f9cdb4029984d751bd85ec9085cfb9",
+                "reference": "734106b223f9cdb4029984d751bd85ec9085cfb9",
                 "shasum": ""
             },
             "require": {
@@ -40326,6 +40568,7 @@
                 "spryker/price": "^5.1.0",
                 "spryker/product": "^5.5.0 || ^6.0.0",
                 "spryker/product-option": "^6.9.0 || ^8.1.0",
+                "spryker/product-option-storage-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.5.0",
                 "spryker/storage": "^3.4.0",
                 "spryker/store": "^1.7.0",
@@ -40361,9 +40604,50 @@
             ],
             "description": "ProductOptionStorage module",
             "support": {
-                "source": "https://github.com/spryker/product-option-storage/tree/1.10.0"
+                "source": "https://github.com/spryker/product-option-storage/tree/1.11.0"
             },
-            "time": "2021-01-28T16:21:13+00:00"
+            "time": "2021-05-28T11:56:55+00:00"
+        },
+        {
+            "name": "spryker/product-option-storage-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-option-storage-extension.git",
+                "reference": "b982e416ae368499b46a6be306ae986dc1e4adc8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-option-storage-extension/zipball/b982e416ae368499b46a6be306ae986dc1e4adc8",
+                "reference": "b982e416ae368499b46a6be306ae986dc1e4adc8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOptionStorageExtension module",
+            "support": {
+                "source": "https://github.com/spryker/product-option-storage-extension/tree/1.0.0"
+            },
+            "time": "2021-05-28T11:56:55+00:00"
         },
         {
             "name": "spryker/product-options-rest-api",
