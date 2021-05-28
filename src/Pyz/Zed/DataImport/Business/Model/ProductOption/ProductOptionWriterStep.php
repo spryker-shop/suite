@@ -33,6 +33,7 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
 
     public const KEY_ABSTRACT_PRODUCT_SKUS = 'abstract_product_skus';
     public const KEY_GROUP_NAME_TRANSLATION_KEY = 'group_name_translation_key';
+    public const KEY_PRODUCT_OPTION_GROUP_KEY = 'product_option_group_key';
     public const KEY_IS_ACTIVE = 'is_active';
     public const KEY_SKU = 'sku';
     public const KEY_OPTION_NAME_TRANSLATION_KEY = 'option_name_translation_key';
@@ -48,11 +49,12 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
     public function execute(DataSetInterface $dataSet)
     {
         $productOptionGroupEntity = SpyProductOptionGroupQuery::create()
-            ->filterByName($dataSet[self::KEY_GROUP_NAME_TRANSLATION_KEY])
+            ->filterByKey($dataSet[self::KEY_PRODUCT_OPTION_GROUP_KEY])
             ->findOneOrCreate();
 
         $productOptionGroupEntity->fromArray($dataSet->getArrayCopy());
         $productOptionGroupEntity
+            ->setName($dataSet[static::KEY_OPTION_NAME_TRANSLATION_KEY])
             ->setActive($this->isActive($dataSet, $productOptionGroupEntity))
             ->setFkTaxSet($dataSet[TaxSetNameToIdTaxSetStep::KEY_TARGET])
             ->save();
