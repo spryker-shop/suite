@@ -2,7 +2,25 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "paths": {
-            "@mp/*": ["./vendor/spryker/spryker/Bundles/*/mp.public-api.ts"],
+            "@mp/dashboard-merchant-portal-gui": [
+                "vendor/spryker/spryker/Bundles/DashboardMerchantPortalGui/mp.public-api.ts"
+            ],
+            "@mp/dummy-merchant-portal-gui": ["vendor/spryker/spryker/Bundles/DummyMerchantPortalGui/mp.public-api.ts"],
+            "@mp/merchant-profile-merchant-portal-gui": [
+                "vendor/spryker/spryker/Bundles/MerchantProfileMerchantPortalGui/mp.public-api.ts"
+            ],
+            "@mp/product-merchant-portal-gui": [
+                "vendor/spryker/spryker/Bundles/ProductMerchantPortalGui/mp.public-api.ts"
+            ],
+            "@mp/product-offer-merchant-portal-gui": [
+                "vendor/spryker/spryker/Bundles/ProductOfferMerchantPortalGui/mp.public-api.ts"
+            ],
+            "@mp/sales-merchant-portal-gui": ["vendor/spryker/spryker/Bundles/SalesMerchantPortalGui/mp.public-api.ts"],
+            "@mp/security-merchant-portal-gui": [
+                "vendor/spryker/spryker/Bundles/SecurityMerchantPortalGui/mp.public-api.ts"
+            ],
+            "@mp/user-merchant-portal-gui": ["vendor/spryker/spryker/Bundles/UserMerchantPortalGui/mp.public-api.ts"],
+            "@mp/zed-ui": ["vendor/spryker/spryker/Bundles/ZedUi/mp.public-api.ts"],
             "@mp/polyfills": [
                 "./vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/mp.polyfills.ts"
             ]
