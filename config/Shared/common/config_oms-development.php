@@ -20,11 +20,6 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
     ],
 ];
 $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
-    'Payment' => [
-        'DummyPayment',
-        GiftCardConfig::PROVIDER_NAME,
-        NopaymentConfig::PAYMENT_PROVIDER_NAME,
-    ],
     'Oms' => [
         'DummyPayment',
         GiftCardConfig::PROVIDER_NAME,
@@ -47,10 +42,10 @@ $config[OmsConstants::ACTIVE_PROCESSES] = array_merge([
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = array_replace(
     $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING],
     [
-    DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
-    DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
-    DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
-    NopaymentConfig::PAYMENT_PROVIDER_NAME => 'Nopayment01',
-    GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
+        DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
+        DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
+        DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
+        NopaymentConfig::PAYMENT_PROVIDER_NAME => 'Nopayment01',
+        GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
     ]
 );

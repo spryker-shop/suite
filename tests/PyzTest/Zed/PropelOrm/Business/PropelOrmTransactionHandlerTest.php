@@ -107,17 +107,17 @@ class PropelOrmTransactionHandlerTest extends Unit
      */
     public function testAddProductWithTransactionHandlingShouldRollbackAndThrowException()
     {
+        // Arrange
         $productManager = new ProductManagerStub(
             $this->productQueryContainer
         );
 
+        // Assert
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('DB error occurred');
 
+        // Act
         $productManager->addProductWithTransactionHandlingShouldRollbackAndThrowException(static::TEST_SKU, static::TEST_NAME);
-
-        $this->assertEntityCreatedWithinTransaction();
-        $this->assertEntityNotCreatedOutsideTransaction();
     }
 
     /**
