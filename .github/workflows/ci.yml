@@ -200,7 +200,7 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.api.mariadb.yml -v
                   docker/sdk up -t -v
-                  docker/sdk testing composer require lcobucci/jwt --ignore-platform-reqs.
+                  docker/sdk testing composer require lcobucci/jwt --ignore-platform-reqs
                   docker exec -i spryker_ci_zed_eu_1 composer require lcobucci/jwt --ignore-platform-reqs
                   docker exec -i spryker_ci_glue_eu_1 composer require lcobucci/jwt --ignore-platform-reqs
                   docker/sdk testing codecept fixtures
