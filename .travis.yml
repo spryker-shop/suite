@@ -6,6 +6,7 @@ _COMPOSER_PREFER_MID: &COMPOSER_PREFER_MID
     - echo "_COMPOSER_PREFER_MID"
     - COMPOSER_MEMORY_LIMIT=-1 composer install --no-interaction --prefer-install=auto
     - COMPOSER_MEMORY_LIMIT=-1 composer prefer-mid
+    - composer self-update 2.1.1
     - COMPOSER_MEMORY_LIMIT=-1 composer dumpautoload -o
 
 _COMPOSER_PREFER_LOWEST: &COMPOSER_PREFER_LOWEST
