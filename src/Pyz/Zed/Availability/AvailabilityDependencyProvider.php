@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Availability;
 
 use Spryker\Zed\Availability\AvailabilityDependencyProvider as SprykerAvailabilityDependencyProvider;
+use Spryker\Zed\Availability\Communication\Plugin\Cart\ProductConcreteBatchAvailabilityStrategyPlugin;
 use Spryker\Zed\ProductConfiguration\Communication\Plugin\Availability\ProductConfigurationCartItemQuantityCounterStrategyPlugin;
 use Spryker\Zed\ProductOfferAvailability\Communication\Plugin\Availability\ProductOfferAvailabilityStrategyPlugin;
 use SprykerShop\Zed\DateTimeConfiguratorPageExample\Communication\Plugin\Availability\ExampleDateTimeConfiguratorAvailabilityStrategyPlugin;
@@ -22,6 +23,19 @@ class AvailabilityDependencyProvider extends SprykerAvailabilityDependencyProvid
         return [
             new ExampleDateTimeConfiguratorAvailabilityStrategyPlugin(),
             new ProductOfferAvailabilityStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\AvailabilityExtension\Dependency\Plugin\BatchAvailabilityStrategyPluginInterface[]
+     */
+    protected function getBatchAvailabilityStrategyPlugins(): array
+    {
+        return [
+            /**
+             * ProductConcreteBatchAvailabilityStrategyPlugin needs to be after all other implementations.
+             */
+            new ProductConcreteBatchAvailabilityStrategyPlugin(),
         ];
     }
 
