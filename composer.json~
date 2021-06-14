@@ -1,0 +1,223 @@
+{
+    "name": "spryker/suite-nonsplit",
+    "description": "Spryker Suite (internal)",
+    "license": "MIT",
+    "require": {
+        "spryker/spryker": "dev-master",
+        "spryker/spryker-shop": "dev-master",
+        "spryker/install": "dev-master",
+        "spryker/rabbit-mq": "dev-master",
+        "spryker/event-behavior": "dev-master as 1.22.1",
+        "spryker/synchronization-behavior": "dev-master as 1.8.0",
+        "spryker/uuid-behavior": "dev-master as 1.2.0",
+        "spryker/silexphp": "dev-master as 0.3.3",
+        "spryker/checksum-generator": "dev-master as 1.0.0",
+        "spryker-eco/loggly": "dev-master",
+        "spryker-eco/new-relic": "dev-master",
+        "spryker-eco/payone": "dev-master",
+        "spryker/decimal-object": "^1.0.0",
+        "spryker/composer-merge-plugin": "dev-master",
+        "php": ">=7.3",
+        "ext-bcmath": "*",
+        "ext-curl": "*",
+        "ext-gd": "*",
+        "ext-gmp": "*",
+        "ext-intl": "*",
+        "ext-json": "*",
+        "ext-libxml": "*",
+        "ext-openssl": "*",
+        "ext-pdo_pgsql": "*",
+        "ext-pgsql": "*",
+        "ext-readline": "*",
+        "ext-redis": "*",
+        "codeitnowin/barcode": "^3.0.0",
+        "doctrine/inflector": "^1.0.0 || ^2.0.0",
+        "egulias/email-validator": "~2.1.22",
+        "everon/collection": "^1.0.0",
+        "everon/criteria-builder": "~1.1.6",
+        "everon/factory": "~1.1.4",
+        "filp/whoops": "^2.4",
+        "galbar/jsonpath": "^1.0",
+        "guzzlehttp/guzzle": "^6.3.0 || ^7.0.0",
+        "justinrainbow/json-schema": "^5.2",
+        "league/csv": "^9.2",
+        "league/flysystem": "^1.0.8",
+        "league/flysystem-aws-s3-v3": "^1.0.1",
+        "league/oauth2-server": "^8.0.0",
+        "mikey179/vfsstream": "^1.6",
+        "moneyphp/money": "^3.0.0",
+        "monolog/monolog": "^1.25.0 || ^2.0.0",
+        "nette/di": "^2.4.7 || ^3.0",
+        "phpdocumentor/graphviz": "^1.0.4",
+        "predis/predis": "^1.1.1",
+        "propel/propel": "2.0.0-alpha12",
+        "psr/container": "^1.0.0",
+        "psr/http-message": "^1.0.0",
+        "psr/log": "^1.0.0",
+        "ramsey/uuid": "^4.0.1",
+        "ruflin/elastica": "^6.0.0 || ^7.0.0",
+        "swiftmailer/swiftmailer": "^5.4.5 || ^6.1",
+        "symfony-cmf/routing": "^1.3.0 || ^2.0.0",
+        "symfony/config": "^3.4.0 || ^4.0.0 || ^5.0.0",
+        "symfony/console": "^3.4.0 || ^4.0.0 || ~5.2.0",
+        "symfony/debug": "^3.4.0 || ^4.0.0",
+        "symfony/error-handler": "^4.4.4 || ^5.0.4",
+        "symfony/event-dispatcher": "^5.1.0",
+        "symfony/filesystem": "^3.4.0 || ^4.1.0 || ^5.1.8",
+        "symfony/finder": "^3.4.0 || ^4.0.0 || ^5.0.0",
+        "symfony/form": "^3.4.20 || ^4.0.15 || ^5.0.0",
+        "symfony/http-client": "^4.4 || ^5.0",
+        "symfony/http-foundation": "^4.4.7 || ^5.0.7",
+        "symfony/http-kernel": "^4.4.13 || ^5.1.5",
+        "symfony/intl": "^3.4.0 || ^4.0.0 || ^5.0.0",
+        "symfony/mime": "^4.2.12 < 4.3.0 || ^4.3.8 || ^5.0.0",
+        "symfony/options-resolver": "^3.4.0 || ^4.0.0 || ^5.0.0",
+        "symfony/process": "^3.4.0 || ^4.0.0 || ^5.0.0",
+        "symfony/property-access": "^3.4.0 || ^4.0.0 || ^5.0.0",
+        "symfony/routing": "^4.3.0 || ^5.0.0",
+        "symfony/security-core": "^4.4.13 || ~5.2.8",
+        "symfony/security-http": "^4.4.13 || ^5.2.8",
+        "symfony/security-csrf": "^4.4.13 || ^5.0.0",
+        "symfony/security-guard": "^4.4.13 || ^5.2.8",
+        "symfony/serializer": "^3.4.0 || ^4.0.0 || ^5.0.0",
+        "symfony/stopwatch": "^3.4.0 || ^4.0.0 || ^5.0.0",
+        "symfony/translation": "^3.4.0 || ^4.4.0 || ^5.0.0",
+        "symfony/translation-contracts": "^2.0.0",
+        "symfony/twig-bridge": "^4.3.0 || ^5.0.0",
+        "symfony/validator": "^4.2.0 || ^5.0.0",
+        "symfony/yaml": "^3.4.0 || ^4.0.0 || ^5.0.0",
+        "twig/twig": "^1.43.1 || ^2.9.0 || ^3.0.0",
+        "voku/anti-xss": "^4.1.20",
+        "webmozart/glob": "^4.0.0",
+        "willdurand/negotiation": "^3.0",
+        "laminas/laminas-config": "^2.5.1 || ^3.1.0",
+        "laminas/laminas-filter": "^2.5.1",
+        "laminas/laminas-servicemanager": "^2.7.4 || ^3.3.0",
+        "seld/signal-handler": "^1.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5.0 || ^9.5.2",
+        "codeception/codeception": "^4.1.7",
+        "codeception/lib-innerbrowser": "^1.3.2",
+        "spryker/architecture-sniffer": "dev-master",
+        "spryker/development-core": "dev-master",
+        "spryker/code-generator": "dev-master",
+        "spryker/code-sniffer": "dev-master",
+        "spryker/git-hook": "dev-master",
+        "pdepend/pdepend": "^2.2.2",
+        "phpmd/phpmd": "^2.0.0",
+        "composer/package-versions-deprecated": "^1.8.0",
+        "symfony/web-profiler-bundle": "^4.0.0 || ^5.0.0",
+        "symfony/var-dumper": "*",
+        "spryker-sdk/codeception-phantoman": "dev-master",
+        "sllh/composer-versions-check": "^2.0.2",
+        "stecman/symfony-console-completion": "*",
+        "fzaninotto/faker": "^1.6.0",
+        "spryker-sdk/phpstan-spryker": "^0.3.0",
+        "spryker-sdk/composer-constrainer": "dev-master",
+        "spryker-sdk/composer-replace": "dev-master",
+        "spryker-sdk/spryk": "dev-master as 0.2.9",
+        "spryker-sdk/spryk-gui": "dev-master",
+        "dms/phpunit-arraysubset-asserts": "^0.1.0 || ^0.2.0 || ^0.3.0",
+        "codeception/phpunit-wrapper": "^8.1.2 || ^9.0.0",
+        "codeception/module-rest": "^1.0",
+        "codeception/module-phpbrowser": "^1.0.1",
+        "codeception/module-asserts": "^1.3.0",
+        "codeception/module-webdriver": "^1.1.0",
+        "codeception/module-cli": "^1.0.2",
+        "codeception/module-filesystem": "^1.0.2",
+        "codeception/stub": "^3.7.0",
+        "psalm/phar": "^4.3.1",
+        "sebastian/git": "*",
+        "sebastian/diff": "*",
+        "phpstan/phpstan": "0.12.88",
+        "roave/better-reflection": "~4.3.0",
+        "symfony/browser-kit": "^4.0.0 || ~5.1.8",
+        "nette/neon": "^3.2.1",
+        "spryker-sdk/benchmark": "dev-master",
+        "spryker/docker-chromedriver": "dev-master",
+        "spryker-sdk/brancho": "dev-master",
+        "spryker-sdk/load-testing": "dev-master",
+        "spryker-sdk/security-checker": "dev-master",
+        "codeception/c3": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Generated\\": "src/Generated/",
+            "Orm\\": "src/Orm/",
+            "Pyz\\": "src/Pyz/",
+            "SprykerConfig\\": "src/SprykerConfig"
+        },
+        "psr-0": {
+            "Pimple": "vendor/spryker/spryker/Bundles/Container/src/Spryker"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PyzTest\\": "tests/PyzTest/",
+            "Benchmark\\": "tests/Benchmark/"
+        },
+        "files": [
+            "test-autoload.php"
+        ],
+        "exclude-from-classmap": [
+            "vendor/flow/jsonpath/tests/"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "platform": {
+            "php": "7.3.15"
+        },
+        "use-include-path": true,
+        "process-timeout": 900,
+        "chromium-revision": 814168
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:spryker/spryker.git"
+        },
+        {
+            "type": "git",
+            "url": "git@github.com:spryker/spryker-shop.git"
+        },
+        {
+            "type": "git",
+            "url": "git@github.com:spryker/development-core.git"
+        },
+        {
+            "type": "git",
+            "url": "git@github.com:spryker-eco/coremedia.git"
+        }
+    ],
+    "scripts": {
+        "compile": [
+            "mkdir -p ./data/DE/logs/ZED"
+        ],
+        "post-install-cmd": [
+            "ChromedriverInstaller\\Installer::installChromedriver",
+            "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerHooks",
+            "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerShopHooks",
+            "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
+        ],
+        "post-update-cmd": [
+            "ChromedriverInstaller\\Installer::installChromedriver",
+            "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerHooks",
+            "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerShopHooks",
+            "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
+        ],
+        "phpstan": [
+            "php -d memory_limit=1024M vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/"
+        ],
+        "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate",
+        "psalm": "vendor/bin/psalm.phar --show-info=false",
+        "psalm-update-baseline": "vendor/bin/psalm.phar --update-baseline",
+        "psalm-set-baseline": "vendor/bin/psalm.phar --set-baseline=psalm-baseline.xml",
+        "psalm-update-report": "vendor/bin/psalm.phar --report=psalm-report.xml",
+        "prefer-mid": [
+            "COMPOSER_MEMORY_LIMIT=-1 composer require twig/twig:\"^2.9.0\""
+        ]
+    }
+}
