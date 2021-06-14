@@ -1,16 +1,16 @@
 _COMPOSER_INSTALL: &COMPOSER_INSTALL
     - echo "_COMPOSER_INSTALL"
-    - COMPOSER_MEMORY_LIMIT=-1 composer install --optimize-autoloader --no-interaction
+    - COMPOSER_MEMORY_LIMIT=-1 composer install --optimize-autoloader --no-interaction --prefer-install=auto
 
 _COMPOSER_PREFER_MID: &COMPOSER_PREFER_MID
     - echo "_COMPOSER_PREFER_MID"
-    - COMPOSER_MEMORY_LIMIT=-1 composer install --no-interaction
+    - COMPOSER_MEMORY_LIMIT=-1 composer install --no-interaction --prefer-install=auto
     - COMPOSER_MEMORY_LIMIT=-1 composer prefer-mid
     - COMPOSER_MEMORY_LIMIT=-1 composer dumpautoload -o
 
 _COMPOSER_PREFER_LOWEST: &COMPOSER_PREFER_LOWEST
     - echo "_COMPOSER_PREFER_LOWEST"
-    - COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --optimize-autoloader --no-interaction
+    - COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --optimize-autoloader --no-interaction --prefer-install=auto
 
 _SETUP_WEB_INFRASTRUCTURE: &SETUP_WEB_INFRASTRUCTURE
     - echo "_BROWSER_TESTING_BEFORE_INSTALL_SCRIPT"
@@ -257,6 +257,7 @@ _CHROMDRIVER_DOWNLOAD: &CHROMDRIVER_DOWNLOAD
 _BEFORE_INSTALL_SCRIPT: &BEFORE_INSTALL_SCRIPT
     - echo "_BEFORE_INSTALL_SCRIPT"
     - nvm install 12 > /dev/null
+    - nvm use 12
     - mkdir -p shared/data/common/jenkins
     - mkdir -p shared/data/common/jenkins/jobs
     - mkdir -p data/cache -m 0777
@@ -268,7 +269,6 @@ _BEFORE_INSTALL_SCRIPT: &BEFORE_INSTALL_SCRIPT
     - phpenv config-add config/Shared/ci/travis/travis.php.ini
     - phpenv config-rm xdebug.ini
     - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-    - *CHROMDRIVER_DOWNLOAD
 
 _INSTALL_CHROMEDRIVER: &INSTALL_CHROMEDRIVER
     - . $HOME/chromium-ecosystem/docker-chromedriver-master/chromium-installer $CHROMEDRIVER_REVISION $HOME/chromium-ecosystem false
@@ -309,7 +309,6 @@ _VALIDATION_SCRIPT: &VALIDATION_SCRIPT
     - vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/
     - composer psalm
 
-    - nvm install 12 && nvm use 12
     - npm install
     - npm install speccy@0.11.0 -g
     - speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
@@ -334,14 +333,12 @@ _VALIDATION_SCRIPT_PHP8: &VALIDATION_SCRIPT_PHP8
     - vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/
     - composer psalm
 
-    - nvm install 12 && nvm use 12
     - npm install
     - npm install speccy@0.11.0 -g
     - speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
 
 _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
     - echo "_VALIDATION_FRONT_END_SCRIPT"
-    - nvm install 12 && nvm use 12
     - npm install
     - node ./frontend/libs/stylelint
     - node ./frontend/libs/tslint --format stylish
@@ -501,7 +498,7 @@ jobs:
               mariadb: 10.3
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
-        - name: ES6.
+        - name: ElasticSearch 6.
           php: '7.4'
           stage: Build
           env:
@@ -628,6 +625,7 @@ jobs:
           before_install:
               - *AWS_SYNC_DOWN_MYSQL
               - *BEFORE_INSTALL_SCRIPT
+              - *CHROMDRIVER_DOWNLOAD
           install:
               - *COMPOSER_INSTALL
               - *INSTALL_SCRIPT
@@ -651,6 +649,7 @@ jobs:
           before_install:
               - *AWS_SYNC_DOWN_MYSQL
               - *BEFORE_INSTALL_SCRIPT
+              - *CHROMDRIVER_DOWNLOAD
           install:
               - *COMPOSER_PREFER_MID
               - *INSTALL_SCRIPT
@@ -674,6 +673,7 @@ jobs:
           before_install:
               - *AWS_SYNC_DOWN_MYSQL
               - *BEFORE_INSTALL_SCRIPT
+              - *CHROMDRIVER_DOWNLOAD
           install:
               - *COMPOSER_INSTALL
               - *INSTALL_SCRIPT
@@ -698,6 +698,7 @@ jobs:
               - *AWS_SYNC_DOWN_MYSQL
               - *AWS_SYNC_DOWN_ES6
               - *BEFORE_INSTALL_SCRIPT
+              - *CHROMDRIVER_DOWNLOAD
           install:
               - *COMPOSER_PREFER_LOWEST
               - *INSTALL_SCRIPT_PREFER_LOWEST
@@ -810,6 +811,7 @@ jobs:
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
+              - *CHROMDRIVER_DOWNLOAD
           install:
               - *COMPOSER_INSTALL
               - *INSTALL_SCRIPT
@@ -831,6 +833,7 @@ jobs:
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
+              - *CHROMDRIVER_DOWNLOAD
           install:
               - *COMPOSER_INSTALL
               - *INSTALL_SCRIPT
