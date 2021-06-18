@@ -29,6 +29,7 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleAvailab
 use Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleOrderSaverPlugin;
 use Spryker\Zed\ProductConfiguration\Communication\Plugin\Checkout\ProductConfigurationCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Checkout\ProductDiscontinuedCheckoutPreConditionPlugin;
+use Spryker\Zed\ProductOffer\Communication\Plugin\Checkout\ProductOfferCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Checkout\ProductOptionOrderSaverPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\AmountAvailabilityCheckoutPreConditionPlugin;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Checkout\QuoteApprovalCheckoutPreConditionPlugin;
@@ -79,6 +80,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new PaymentMethodValidityCheckoutPreConditionPlugin(),
             new ProductConfigurationCheckoutPreConditionPlugin(),
             new DuplicateOrderCheckoutPreConditionPlugin(),
+            new ProductOfferCheckoutPreConditionPlugin(),
             new MerchantProductOptionCheckoutPreConditionPlugin(),
         ];
     }
