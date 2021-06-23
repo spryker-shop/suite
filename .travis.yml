@@ -964,6 +964,7 @@ jobs:
           before_install:
               - *AWS_SYNC_DOWN_MYSQL
               - *BEFORE_INSTALL_SCRIPT
+              - *CHROMDRIVER_DOWNLOAD
           install:
               - *COMPOSER_INSTALL
               - COMPOSER_MEMORY_LIMIT=-1 composer u lcobucci/jwt -w --ignore-platform-reqs
