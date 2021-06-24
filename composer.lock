@@ -1565,16 +1565,16 @@
         },
         {
             "name": "laminas/laminas-zendframework-bridge",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-zendframework-bridge.git",
-                "reference": "6cccbddfcfc742eb02158d6137ca5687d92cee32"
+                "reference": "9aaa3fde4a184c53f893d938ea9d3f9375cd0622"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-zendframework-bridge/zipball/6cccbddfcfc742eb02158d6137ca5687d92cee32",
-                "reference": "6cccbddfcfc742eb02158d6137ca5687d92cee32",
+                "url": "https://api.github.com/repos/laminas/laminas-zendframework-bridge/zipball/9aaa3fde4a184c53f893d938ea9d3f9375cd0622",
+                "reference": "9aaa3fde4a184c53f893d938ea9d3f9375cd0622",
                 "shasum": ""
             },
             "require": {
@@ -1623,7 +1623,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-02-25T21:54:58+00:00"
+            "time": "2021-06-24T10:54:07+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -34770,20 +34770,20 @@
         },
         {
             "name": "spryker/price-product-schedule-gui",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-schedule-gui.git",
-                "reference": "81b0d89470ff1bea3ff1b4ad8f5c7667bd2bdc2c"
+                "reference": "345d767f0557a1203ea40e3ffa5827d47a19e897"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-schedule-gui/zipball/81b0d89470ff1bea3ff1b4ad8f5c7667bd2bdc2c",
-                "reference": "81b0d89470ff1bea3ff1b4ad8f5c7667bd2bdc2c",
+                "url": "https://api.github.com/repos/spryker/price-product-schedule-gui/zipball/345d767f0557a1203ea40e3ffa5827d47a19e897",
+                "reference": "345d767f0557a1203ea40e3ffa5827d47a19e897",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/currency": "^3.11.0",
                 "spryker/gui": "^3.25.0",
                 "spryker/kernel": "^3.33.0",
@@ -34800,7 +34800,11 @@
                 "spryker/util-text": "^1.2.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*",
+                "spryker/twig": "*"
             },
             "type": "library",
             "extra": {
@@ -34819,9 +34823,9 @@
             ],
             "description": "PriceProductScheduleGui module",
             "support": {
-                "source": "https://github.com/spryker/price-product-schedule-gui/tree/2.2.1"
+                "source": "https://github.com/spryker/price-product-schedule-gui/tree/2.2.2"
             },
-            "time": "2020-09-25T05:35:53+00:00"
+            "time": "2021-06-24T10:54:36+00:00"
         },
         {
             "name": "spryker/price-product-storage",
