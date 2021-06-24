@@ -43,8 +43,6 @@ use Spryker\Zed\Sales\Communication\Plugin\SalesOrderExpanderPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Checkout\SalesOrderThresholdCheckoutPreConditionPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Checkout\SalesOrderThresholdExpenseSavePlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Checkout\SalesPaymentCheckoutDoSaveOrderPlugin;
-use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\Checkout\ProductConfigurationOrderSaverPlugin;
-use Spryker\Zed\SalesProductConnector\Communication\Plugin\Checkout\ItemMetadataSaverPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\Checkout\SalesOrderShipmentSavePlugin;
 use Spryker\Zed\ShipmentCheckoutConnector\Communication\Plugin\Checkout\ShipmentCheckoutPreCheckPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Checkout\PayoneCheckoutDoSaveOrderPlugin;
@@ -107,10 +105,8 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new OrderTotalsSaverPlugin(),
             new SalesOrderShipmentSavePlugin(),
             new OrderItemsSaverPlugin(),
-            new ProductConfigurationOrderSaverPlugin(),
             new CartNoteSaverPlugin(), #CartNoteFeature
             new ProductOptionOrderSaverPlugin(),
-            new ItemMetadataSaverPlugin(),
             new DiscountOrderSavePlugin(),
             new ProductBundleOrderSaverPlugin(),
             new SalesPaymentCheckoutDoSaveOrderPlugin(),
