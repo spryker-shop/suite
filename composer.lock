@@ -21843,20 +21843,20 @@
         },
         {
             "name": "spryker/configurable-bundle-gui",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/configurable-bundle-gui.git",
-                "reference": "34fc275b739079c32a0c154a49ce6133ee14a630"
+                "reference": "cf063be709ec3a7181f9b5efcce52f44823602f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/configurable-bundle-gui/zipball/34fc275b739079c32a0c154a49ce6133ee14a630",
-                "reference": "34fc275b739079c32a0c154a49ce6133ee14a630",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-gui/zipball/cf063be709ec3a7181f9b5efcce52f44823602f5",
+                "reference": "cf063be709ec3a7181f9b5efcce52f44823602f5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/configurable-bundle": "^2.0.0",
                 "spryker/configurable-bundle-gui-extension": "^1.0.0",
                 "spryker/glossary": "^3.0.0",
@@ -21871,7 +21871,11 @@
                 "spryker/util-text": "^1.1.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*",
+                "spryker/twig": "*"
             },
             "type": "library",
             "extra": {
@@ -21890,9 +21894,9 @@
             ],
             "description": "ConfigurableBundleGui module",
             "support": {
-                "source": "https://github.com/spryker/configurable-bundle-gui/tree/master"
+                "source": "https://github.com/spryker/configurable-bundle-gui/tree/1.1.1"
             },
-            "time": "2020-07-08T08:09:21+00:00"
+            "time": "2021-06-25T14:09:48+00:00"
         },
         {
             "name": "spryker/configurable-bundle-gui-extension",
