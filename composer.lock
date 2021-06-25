@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "36743cf500e77233d8d623d1bc11d7c4",
+    "content-hash": "12286e30dad8f5f086aa129b51589752",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -15295,20 +15295,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "89de0477fb7c5813daa9b5f46b061ebb536c6f3b"
+                "reference": "c26d299b556640b187b0c1c2cb1ac308587280d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/89de0477fb7c5813daa9b5f46b061ebb536c6f3b",
-                "reference": "89de0477fb7c5813daa9b5f46b061ebb536c6f3b",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/c26d299b556640b187b0c1c2cb1ac308587280d5",
+                "reference": "c26d299b556640b187b0c1c2cb1ac308587280d5",
                 "shasum": ""
             },
             "require": {
+                "ext-dom": "*",
+                "ext-simplexml": "*",
                 "php": ">=7.3",
                 "roave/better-reflection": "^3.2 || ^4.0",
                 "spryker/config": "^3.0.0",
+                "spryker/console": "^3.0.0 || ^4.0.0",
                 "spryker/doctrine-inflector": "^1.1.0",
-                "spryker/glue-application-extension": "^1.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/laminas": "^1.0.0",
                 "symfony/console": "^3.4.0 || ^4.0.0 || ^5.0.0",
@@ -15321,10 +15323,33 @@
                 "codeception/codeception": "^4.0.0",
                 "phpstan/phpstan": "^0.12.0",
                 "phpunit/phpunit": "^7.0.0 || ^8.0.0",
+                "spryker/checkout-extension": "^1.3.0",
                 "spryker/code-sniffer": "*",
+                "spryker/data-import": "*",
+                "spryker/glue-application-extension": "^1.1.0",
+                "spryker/oms": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0",
+                "spryker/payment-extension": "*",
+                "spryker/router": "^1.1.0",
+                "spryker/sales-payment-extension": "*",
+                "spryker/step-engine": "*",
                 "spryker/testify": "^3.0.0"
             },
+            "suggest": {
+                "spryker/checkout-extension": "If you want to use Payment spryks, minimum required version: 1.3.0",
+                "spryker/data-import": "If you want to use DataImport spryks, minimum required version: 1.0.0",
+                "spryker/glue-application-extension": "If you want to use Glue spryks, minimum required version: 1.1.0",
+                "spryker/oms": "If you want to use Payment spryks, minimum required version: 4.0.0",
+                "spryker/payment-extension": "If you want to use Payment spryks, minimum required version: 1.0.0",
+                "spryker/router": "If you want to use Route spryks, minimum required version: 1.1.0",
+                "spryker/sales-payment-extension": "If you want to use Payment spryks, minimum required version: 1.0.0",
+                "spryker/step-engine": "If you want to use Payment spryks, minimum required version: 1.0.0"
+            },
             "default-branch": true,
+            "bin": [
+                "bin/spryk-run",
+                "bin/spryk-dump",
+                "bin/spryk-build"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -15345,7 +15370,7 @@
                 "issues": "https://github.com/spryker-sdk/spryk/issues",
                 "source": "https://github.com/spryker-sdk/spryk/tree/master"
             },
-            "time": "2021-06-01T10:37:31+00:00"
+            "time": "2021-06-25T12:49:23+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -15353,23 +15378,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk-gui.git",
-                "reference": "5b30d9f6e4751736a6db47205509ab999566da6f"
+                "reference": "327ec5caf2bb8cd21676b4dd8185c0a119c112c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/5b30d9f6e4751736a6db47205509ab999566da6f",
-                "reference": "5b30d9f6e4751736a6db47205509ab999566da6f",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/327ec5caf2bb8cd21676b4dd8185c0a119c112c6",
+                "reference": "327ec5caf2bb8cd21676b4dd8185c0a119c112c6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
                 "roave/better-reflection": "^4.3.0",
-                "spryker-sdk/spryk": "^0.2.6",
+                "spryker-sdk/spryk": "^0.3.0",
                 "spryker/development": "^3.12.0",
                 "spryker/graph": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/laminas": "^1.0.0",
-                "spryker/symfony": "^3.2.2"
+                "spryker/symfony": "^3.5.0"
             },
             "require-dev": {
                 "spryker/application": "*",
@@ -15406,7 +15431,7 @@
                 "issues": "https://github.com/spryker-sdk/spryk-gui/issues",
                 "source": "https://github.com/spryker-sdk/spryk-gui/tree/master"
             },
-            "time": "2021-05-18T10:36:54+00:00"
+            "time": "2021-06-25T12:49:25+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
@@ -16807,8 +16832,8 @@
         {
             "package": "spryker-sdk/spryk",
             "version": "9999999-dev",
-            "alias": "0.2.9",
-            "alias_normalized": "0.2.9.0"
+            "alias": "0.3.0",
+            "alias_normalized": "0.3.0.0"
         },
         {
             "package": "spryker/checksum-generator",
