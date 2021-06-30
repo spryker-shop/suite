@@ -5492,16 +5492,16 @@
         },
         {
             "name": "spryker-shop/cart-page",
-            "version": "3.26.0",
+            "version": "3.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-page.git",
-                "reference": "0836ddc5bd840363e207e1d6417043a0e9179b16"
+                "reference": "ce7952db61da0fa9bcd5aad4838fe5246554cb76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/0836ddc5bd840363e207e1d6417043a0e9179b16",
-                "reference": "0836ddc5bd840363e207e1d6417043a0e9179b16",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/ce7952db61da0fa9bcd5aad4838fe5246554cb76",
+                "reference": "ce7952db61da0fa9bcd5aad4838fe5246554cb76",
                 "shasum": ""
             },
             "require": {
@@ -5577,9 +5577,9 @@
             ],
             "description": "CartPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/cart-page/tree/3.26.0"
+                "source": "https://github.com/spryker-shop/cart-page/tree/3.27.0"
             },
-            "time": "2021-05-05T10:01:37+00:00"
+            "time": "2021-06-29T12:43:37+00:00"
         },
         {
             "name": "spryker-shop/cart-page-extension",
@@ -9412,16 +9412,16 @@
         },
         {
             "name": "spryker-shop/product-detail-page",
-            "version": "3.14.0",
+            "version": "3.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-detail-page.git",
-                "reference": "d3dc1a249a6f6a7b68bf916f8cb024de589218d3"
+                "reference": "e68c284f91e680e4ede8868907b0da2bc49bc5c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-detail-page/zipball/d3dc1a249a6f6a7b68bf916f8cb024de589218d3",
-                "reference": "d3dc1a249a6f6a7b68bf916f8cb024de589218d3",
+                "url": "https://api.github.com/repos/spryker-shop/product-detail-page/zipball/e68c284f91e680e4ede8868907b0da2bc49bc5c3",
+                "reference": "e68c284f91e680e4ede8868907b0da2bc49bc5c3",
                 "shasum": ""
             },
             "require": {
@@ -9445,6 +9445,7 @@
             },
             "suggest": {
                 "spryker-shop/availability-widget": "If you want to use components from module AvailabilityWidget or AvailabilityWidgetPlugin.",
+                "spryker-shop/cart-page": "Add the module if you want to use CartAddProductAsSeparateItemWidget.",
                 "spryker-shop/cms-block-widget": "If you want to use components from module CmsBlockWidget or ProductCmsBlockWidgetPlugin.",
                 "spryker-shop/product-configuration-widget": "Add the module if you want to use ProductConfigurationProductViewDisplayWidget or ProductConfigurationProductDetailPageButtonWidget.",
                 "spryker-shop/product-group-widget": "If you want to use components from module ProductGroupColorWidget or ProductGroupWidget",
@@ -9468,9 +9469,9 @@
             ],
             "description": "ProductDetailPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/product-detail-page/tree/3.14.0"
+                "source": "https://github.com/spryker-shop/product-detail-page/tree/3.15.0"
             },
-            "time": "2021-05-27T10:26:42+00:00"
+            "time": "2021-06-29T12:43:37+00:00"
         },
         {
             "name": "spryker-shop/product-discontinued-widget",
@@ -14471,16 +14472,16 @@
         },
         {
             "name": "spryker/cart",
-            "version": "7.9.1",
+            "version": "7.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cart.git",
-                "reference": "8c1227acb1b602f060f8c7fec2582192bc90ce58"
+                "reference": "910640917a7aff5ac90a56a882454e9fc909a9b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cart/zipball/8c1227acb1b602f060f8c7fec2582192bc90ce58",
-                "reference": "8c1227acb1b602f060f8c7fec2582192bc90ce58",
+                "url": "https://api.github.com/repos/spryker/cart/zipball/910640917a7aff5ac90a56a882454e9fc909a9b0",
+                "reference": "910640917a7aff5ac90a56a882454e9fc909a9b0",
                 "shasum": ""
             },
             "require": {
@@ -14490,6 +14491,8 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/messenger": "^3.1.0",
                 "spryker/quote": "^2.10.0",
+                "spryker/transfer": "^3.25.0",
+                "spryker/util-text": "^1.5.0",
                 "spryker/zed-request": "^3.6.0"
             },
             "require-dev": {
@@ -14524,9 +14527,9 @@
             ],
             "description": "Cart module",
             "support": {
-                "source": "https://github.com/spryker/cart/tree/7.9.1"
+                "source": "https://github.com/spryker/cart/tree/7.10.0"
             },
-            "time": "2021-03-25T13:49:54+00:00"
+            "time": "2021-06-29T12:43:36+00:00"
         },
         {
             "name": "spryker/cart-code",
@@ -52892,20 +52895,20 @@
         },
         {
             "name": "spryker/util-text",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/util-text.git",
-                "reference": "d665f70f8b4268a6525460df572c0d7591918991"
+                "reference": "1d48b33bd49b43b215f2d47a58960a21e580452c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/util-text/zipball/d665f70f8b4268a6525460df572c0d7591918991",
-                "reference": "d665f70f8b4268a6525460df572c0d7591918991",
+                "url": "https://api.github.com/repos/spryker/util-text/zipball/1d48b33bd49b43b215f2d47a58960a21e580452c",
+                "reference": "1d48b33bd49b43b215f2d47a58960a21e580452c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/kernel": "^3.30.0"
             },
             "require-dev": {
@@ -52931,9 +52934,9 @@
             ],
             "description": "UtilText module",
             "support": {
-                "source": "https://github.com/spryker/util-text/tree/1.4.0"
+                "source": "https://github.com/spryker/util-text/tree/1.5.0"
             },
-            "time": "2020-09-25T05:35:53+00:00"
+            "time": "2021-06-29T12:43:36+00:00"
         },
         {
             "name": "spryker/util-uuid-generator",
