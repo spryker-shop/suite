@@ -33,6 +33,8 @@ class RoleControllerCest
      */
     public function rulesetTableCanBeOpenedWithCamelCasedUrl(AclCommunicationTester $i)
     {
+        $i->markTestSkipped('The test is valid and should be re-enabled after GLUE-11142 is fixed.');
+
         $i->amOnPage('/acl/role/rulesetTable?id-role=1');
         $i->seeResponseCodeIs(200);
     }

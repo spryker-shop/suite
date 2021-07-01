@@ -17,6 +17,7 @@ suites:
         class_name: AclCommunicationTester
         modules:
             enabled:
+                - Asserts
                 - \SprykerTest\Shared\Testify\Helper\Environment
                 - \SprykerTest\Shared\Testify\Helper\ConfigHelper
                 - \PyzTest\Zed\Testify\Helper\LoginHelper

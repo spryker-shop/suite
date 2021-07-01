@@ -19,6 +19,7 @@ use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HeaderEventDispatcherP
 use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HstsHeaderEventDispatcher;
 use Spryker\Zed\Kernel\Communication\Plugin\AutoloaderCacheEventDispatcherPlugin;
 use Spryker\Zed\Locale\Communication\Plugin\EventDispatcher\LocaleEventDispatcherPlugin;
+use Spryker\Zed\Monitoring\Communication\Plugin\EventDispatcher\GatewayMonitoringRequestTransactionEventDispatcherPlugin;
 use Spryker\Zed\Monitoring\Communication\Plugin\EventDispatcher\MonitoringRequestTransactionEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RequestAttributesEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RouterListenerEventDispatcherPlugin;
@@ -39,7 +40,6 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
         return [
             new AccessControlEventDispatcherPlugin(),
             new EventBehaviorEventDispatcherPlugin(),
-            new GatewayControllerEventDispatcherPlugin(),
             new HeadersSecurityEventDispatcherPlugin(),
             new LocaleEventDispatcherPlugin(),
             new MonitoringRequestTransactionEventDispatcherPlugin(),
@@ -53,10 +53,37 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new TwigEventDispatcherPlugin(),
             new SessionEventDispatcherPlugin(),
             new SaveSessionEventDispatcherPlugin(),
-            new ApiControllerEventDispatcherPlugin(),
             new AutoloaderCacheEventDispatcherPlugin(),
             new RequestAttributesEventDispatcherPlugin(),
             new ResponseListenerEventDispatcherPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface[]
+     */
+    protected function getBackendGatewayEventDispatcherPlugins(): array
+    {
+        return [
+            new GatewayMonitoringRequestTransactionEventDispatcherPlugin(),
+            new GatewayControllerEventDispatcherPlugin(),
+            new RouterListenerEventDispatcherPlugin(),
+            new ResponseListenerEventDispatcherPlugin(),
+            new AutoloaderCacheEventDispatcherPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface[]
+     */
+    protected function getBackendApiEventDispatcherPlugins(): array
+    {
+        return [
+            new MonitoringRequestTransactionEventDispatcherPlugin(),
+            new RouterListenerEventDispatcherPlugin(),
+            new ResponseListenerEventDispatcherPlugin(),
+            new ApiControllerEventDispatcherPlugin(),
+            new AutoloaderCacheEventDispatcherPlugin(),
         ];
     }
 }

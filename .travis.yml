@@ -25,10 +25,6 @@ _ADDONS_ARTIFACTS: &ADDONS_ARTIFACTS
             - $(find ./tests/_output/* -not -empty | tr "\n" ":")
             - $(find ./tests/PyzTest/*/*/_output/* -not -empty | tr "\n" ":")
             - $(find ./vendor/spryker/spryker/Bundles/*/tests/_output/* -not -empty | tr "\n" ":")
-            - /tmp/chromedriver.log.gz
-            - /tmp/yves-error.log
-            - /tmp/glue-error.log
-            - /tmp/zed-error.log
 
 _ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE: &ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE
     - sourceline: ppa:chris-lea/redis-server
@@ -89,9 +85,11 @@ _ADDONS_BASE_INFRASTRUCTURE: &ADDONS_BASE_INFRASTRUCTURE
             - *ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE
 
     hosts:
-        - zed.de.spryker.test
-        - www.de.spryker.test
+        - backend-api.de.spryker.test
+        - backend-gateway.de.spryker.test
+        - backoffice.de.spryker.test
         - glue.de.spryker.test
+        - www.de.spryker.test
 
 _START_ELASTICSEARCH: &START_ELASTICSEARCH
     - /home/travis/elasticsearch/bin/elasticsearch --daemonize
@@ -271,6 +269,7 @@ _BEFORE_INSTALL_SCRIPT: &BEFORE_INSTALL_SCRIPT
     - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 _INSTALL_CHROMEDRIVER: &INSTALL_CHROMEDRIVER
+    - *CHROMDRIVER_DOWNLOAD
     - . $HOME/chromium-ecosystem/docker-chromedriver-master/chromium-installer $CHROMEDRIVER_REVISION $HOME/chromium-ecosystem false
 
 _INSTALL_MAILCATCHER: &INSTALL_MAILCATCHER
@@ -368,9 +367,11 @@ _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
     language: shell
     addons:
         hosts:
-            - yves.de.spryker.local
-            - zed.de.spryker.local
+            - backend-api.de.spryker.local
+            - backend-gateway.de.spryker.local
+            - backoffice.de.spryker.local
             - glue.de.spryker.local
+            - yves.de.spryker.local
         apt:
             packages:
                 - apache2-utils
@@ -381,7 +382,7 @@ _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
                 - pigz
                 - software-properties-common
             sources:
-                - sourceline: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
+                - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
                   key_url: https://download.docker.com/linux/ubuntu/gpg
     install:
         - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
@@ -453,7 +454,7 @@ jobs:
     fast_finish: true
     include:
         - name: Code generation, fill databases (PostgreSQL).
-          php: '7.4'
+          php: "7.4"
           stage: Build
           before_install:
               - *BEFORE_INSTALL_SCRIPT
@@ -475,7 +476,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: Code generation, fill databases (MySQL).
-          php: '7.4'
+          php: "7.4"
           stage: Build
           env:
               - APPLICATION_ENV=ci.mysql
@@ -499,7 +500,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: ElasticSearch 6.
-          php: '7.4'
+          php: "7.4"
           stage: Build
           env:
               - APPLICATION_ENV=ci.mysql
@@ -521,7 +522,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: Security check
-          php: '7.4'
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -534,13 +535,13 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: JS Validation
-          php: '7.4'
+          php: "7.4"
           stage: Test
           script:
               - *VALIDATION_FRONT_END_SCRIPT
 
         - name: PHP Validation
-          php: '7.4'
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -553,7 +554,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP Validation (prefer-lowest)
-          php: '7.3'
+          php: "7.3"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -566,7 +567,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker
-          php: '7.4'
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -579,7 +580,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker (prefer-lowest)
-          php: '7.3'
+          php: "7.3"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -592,7 +593,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker-shop
-          php: '7.4'
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -605,7 +606,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker-shop (prefer-lowest)
-          php: '7.3'
+          php: "7.3"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -618,7 +619,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 7.4 / MariaDB / Browser Testing (Presentation)
-          php: '7.4'
+          php: "7.4"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -642,7 +643,7 @@ jobs:
               <<: *ADDONS_ARTIFACTS
 
         - name: PHP 7.4 / MariaDB / Browser Testing (Presentation, prefer-mid)
-          php: '7.4'
+          php: "7.4"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -666,7 +667,7 @@ jobs:
               <<: *ADDONS_ARTIFACTS
 
         - name: PHP 7.3 / MariaDB / Browser Testing (Presentation)
-          php: '7.3'
+          php: "7.3"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -690,7 +691,7 @@ jobs:
               <<: *ADDONS_ARTIFACTS
 
         - name: PHP 7.3 / MariaDB / Browser Testing (Presentation, prefer-lowest)
-          php: '7.3'
+          php: "7.3"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -716,7 +717,7 @@ jobs:
               <<: *ADDONS_ARTIFACTS
 
         - name: PHP 7.4 / MariaDB / Testing (Business, Communication, ...)
-          php: '7.4'
+          php: "7.4"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -738,7 +739,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 7.4 / MariaDB / Testing (Business, Communication, ..., prefer-mid)
-          php: '7.4'
+          php: "7.4"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -760,7 +761,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 7.3 / MariaDB / Testing (Business, Communication, ...)
-          php: '7.3'
+          php: "7.3"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -782,7 +783,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 7.3 / MariaDB / Testing (Business, Communication, ..., prefer-lowest)
-          php: '7.3'
+          php: "7.3"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -806,7 +807,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 7.4 / PostgreSQL 9.6 / Testing (Presentation)
-          php: '7.4'
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -828,7 +829,7 @@ jobs:
               postgresql: 9.6
 
         - name: PHP 7.3 / PostgreSQL 9.6 / Testing (Presentation)
-          php: '7.3'
+          php: "7.3"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -850,7 +851,7 @@ jobs:
               postgresql: 9.6
 
         - name: PHP 7.4 / PostgreSQL 9.6 / Testing (Business, Communication, ...)
-          php: '7.4'
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -871,7 +872,7 @@ jobs:
               postgresql: 9.6
 
         - name: PHP 7.3 / PostgreSQL 9.6 / Testing (Business, Communication, ...)
-          php: '7.3'
+          php: "7.3"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -892,7 +893,7 @@ jobs:
               postgresql: 9.6
 
         - name: PHP 7.4 / MariaDB / MarketPlace Testing
-          php: '7.4'
+          php: "7.4"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -918,46 +919,49 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP8 Validation
-          php: '8.0'
+          php: "8.0"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
           install:
               - *COMPOSER_INSTALL
+              - COMPOSER_MEMORY_LIMIT=-1 composer update lcobucci/jwt -w --ignore-platform-req=php
           script:
               - *VALIDATION_SCRIPT_PHP8
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP8 PHPStan spryker/spryker
-          php: '8.0'
+          php: "8.0"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
           install:
               - *COMPOSER_INSTALL
+              - COMPOSER_MEMORY_LIMIT=-1 composer update lcobucci/jwt -w --ignore-platform-req=php
           script:
               - vendor/bin/console code:phpstan -m Spryker.all -v
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP8 PHPStan spryker/spryker-shop
-          php: '8.0'
+          php: "8.0"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
           install:
               - *COMPOSER_INSTALL
+              - COMPOSER_MEMORY_LIMIT=-1 composer update lcobucci/jwt -w --ignore-platform-req=php
           script:
               - vendor/bin/console code:phpstan -m SprykerShop.all -v
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.0 / MariaDB / Testing (Business, Communication, ...)
-          php: '8.0'
+          php: "8.0"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -967,7 +971,7 @@ jobs:
               - *CHROMDRIVER_DOWNLOAD
           install:
               - *COMPOSER_INSTALL
-              - COMPOSER_MEMORY_LIMIT=-1 composer u lcobucci/jwt -w --ignore-platform-reqs
+              - COMPOSER_MEMORY_LIMIT=-1 composer u lcobucci/jwt -w --ignore-platform-req=php
               - *INSTALL_SCRIPT
               - *SETUP_WEB_INFRASTRUCTURE
           before_script:
@@ -1068,7 +1072,7 @@ jobs:
           script:
               - docker/sdk boot -v deploy.yml
               - SPRYKER_BUILD_HASH=myhash docker/sdk export images
-              - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
+              - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
 
@@ -1082,7 +1086,7 @@ jobs:
           script:
               - docker/sdk boot -v deploy.yml
               - SPRYKER_BUILD_HASH=myhash docker/sdk export images
-              - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
+              - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
 services:
