@@ -38,6 +38,14 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
      */
     protected function getApplicationPlugins(): array
     {
+        return $this->getBackofficeApplicationPlugins();
+    }
+
+    /**
+     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
+     */
+    protected function getBackofficeApplicationPlugins(): array
+    {
         $applicationPlugins = [
             new SessionApplicationPlugin(),
             new TwigApplicationPlugin(),
