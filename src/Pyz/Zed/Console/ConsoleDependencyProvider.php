@@ -435,7 +435,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new EventTriggerListenerConsole();
             $commands[] = new CustomerPasswordResetConsole();
             $commands[] = new CustomerPasswordSetConsole();
-            $commands[] = new RouterDebugZedConsole();
+            $commands[] = new RouterDebugBackofficeConsole();
+            $commands[] = new RouterDebugBackendGatewayConsole();
+            $commands[] = new RouterDebugBackendApiConsole();
 
             $commands[] = new SprykRunConsole();
             $commands[] = new SprykDumpConsole();
