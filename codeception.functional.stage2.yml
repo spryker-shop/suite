@@ -1,0 +1,37 @@
+namespace: PyzTest
+actor: Tester
+
+include:
+    - vendor/spryker/spryker/Bundles/SearchElasticsearch/tests/SprykerTest/Client/*
+    - vendor/spryker/spryker/Bundles/SearchElasticsearch/tests/SprykerTest/Zed/*
+    - vendor/spryker/spryker/Bundles/SearchElasticsearch/tests/SprykerTest/Shared/*
+
+paths:
+    tests: tests
+    log: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+
+settings:
+    suite_class: \PHPUnit_Framework_TestSuite
+    colors: true
+    memory_limit: 1024M
+    log: true
+
+coverage:
+    enabled: true
+    remote: true
+    c3_url: 'http://backoffice.de.shop-suite.local'
+    whitelist: { include: ['src/Pyz/*.php'] }
+
+extensions:
+    enabled:
+        - \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper
+    config:
+        \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper:
+            exclusive:
+                - Presentation
+                - Glue
+                - Api
+                - ProductPageSearchListenerTest
