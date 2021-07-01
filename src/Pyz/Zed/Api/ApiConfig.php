@@ -80,4 +80,22 @@ class ApiConfig extends SprykerApiConfig
             'REQUEST_TIME',
         ];
     }
+
+    /**
+     * @api
+     *
+     * @return bool
+     */
+    public function isApiEnabled(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAllowedOrigin(): string
+    {
+        return '*';
+    }
 }

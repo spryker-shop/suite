@@ -201,7 +201,8 @@ jobs:
                   docker/sdk boot deploy.ci.api.mariadb.yml -v
                   docker/sdk up -t -v
                   docker/sdk testing composer require "lcobucci/jwt:4.0.0" --ignore-platform-reqs
-                  docker exec -i spryker_ci_zed_eu_1 composer require "lcobucci/jwt:4.0.0" --ignore-platform-reqs
+                  docker exec -i spryker_ci_backoffice_eu_1 composer require "lcobucci/jwt:4.0.0" --ignore-platform-reqs
+                  docker exec -i spryker_ci_backend_gateway_eu_1 composer require "lcobucci/jwt:4.0.0" --ignore-platform-reqs
                   docker exec -i spryker_ci_glue_eu_1 composer require "lcobucci/jwt:4.0.0" --ignore-platform-reqs
                   docker/sdk testing codecept fixtures
                   docker/sdk testing console queue:worker:start --stop-when-empty
@@ -464,6 +465,6 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.yml
                   SPRYKER_BUILD_HASH=myhash docker/sdk export images
-                  docker run -i --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
+                  docker run -i --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
                   docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
                   docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/

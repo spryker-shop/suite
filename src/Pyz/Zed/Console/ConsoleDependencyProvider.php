@@ -114,8 +114,11 @@ use Spryker\Zed\RabbitMq\Communication\Console\QueueSetupConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\BuildRestApiValidationCacheConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\RemoveRestApiValidationCacheConsole;
-use Spryker\Zed\Router\Communication\Plugin\Console\RouterCacheWarmUpConsole;
-use Spryker\Zed\Router\Communication\Plugin\Console\RouterDebugZedConsole;
+use Spryker\Zed\Router\Communication\Plugin\Console\BackendGatewayRouterCacheWarmUpConsole;
+use Spryker\Zed\Router\Communication\Plugin\Console\BackofficeRouterCacheWarmUpConsole;
+use Spryker\Zed\Router\Communication\Plugin\Console\RouterDebugBackendApiConsole;
+use Spryker\Zed\Router\Communication\Plugin\Console\RouterDebugBackendGatewayConsole;
+use Spryker\Zed\Router\Communication\Plugin\Console\RouterDebugBackofficeConsole;
 use Spryker\Zed\SalesInvoice\Communication\Console\OrderInvoiceSendConsole;
 use Spryker\Zed\SalesOms\Communication\Console\ImportOrderItemsStatusConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerCleanConsole;
@@ -371,7 +374,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SchedulerSuspendConsole(),
             new SchedulerResumeConsole(),
 
-            new RouterCacheWarmUpConsole(),
+            new BackofficeRouterCacheWarmUpConsole(),
+            new BackendGatewayRouterCacheWarmUpConsole(),
 
             new ResolvableClassCacheConsole(),
 
@@ -431,7 +435,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new EventTriggerListenerConsole();
             $commands[] = new CustomerPasswordResetConsole();
             $commands[] = new CustomerPasswordSetConsole();
-            $commands[] = new RouterDebugZedConsole();
+            $commands[] = new RouterDebugBackofficeConsole();
+            $commands[] = new RouterDebugBackendGatewayConsole();
+            $commands[] = new RouterDebugBackendApiConsole();
 
             $commands[] = new SprykRunConsole();
             $commands[] = new SprykDumpConsole();
