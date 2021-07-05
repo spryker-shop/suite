@@ -494,7 +494,7 @@ jobs:
           after_success:
               - *AWS_SYNC_UP_MYSQL
           addons:
-              mariadb: 10.3
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: ElasticSearch 6.
@@ -516,7 +516,7 @@ jobs:
           after_success:
               - *AWS_SYNC_UP_ES
           addons:
-              mariadb: 10.3
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: Security check
@@ -573,7 +573,7 @@ jobs:
           install:
               - *COMPOSER_PREFER_LOWEST
           script:
-              - vendor/bin/console code:phpstan -m Spryker.all -v -o 0,300
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 0,250
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
@@ -586,7 +586,7 @@ jobs:
           install:
               - *COMPOSER_PREFER_LOWEST
           script:
-              - vendor/bin/console code:phpstan -m Spryker.all -v -o 300,300
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 250,250
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
@@ -599,7 +599,7 @@ jobs:
           install:
               - *COMPOSER_PREFER_LOWEST
           script:
-              - vendor/bin/console code:phpstan -m Spryker.all -v -o 600
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 500
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
@@ -636,7 +636,7 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: 10.3
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
               <<: *ADDONS_ARTIFACTS
 
@@ -660,7 +660,7 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: 10.3
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
               <<: *ADDONS_ARTIFACTS
 
@@ -684,7 +684,7 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: 10.3
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
               <<: *ADDONS_ARTIFACTS
 
@@ -710,7 +710,7 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: 10.3
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
               <<: *ADDONS_ARTIFACTS
 
@@ -733,7 +733,7 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: 10.3
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 7.4 / MariaDB / Testing (Business, Communication, ..., prefer-mid)
@@ -755,7 +755,7 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: 10.3
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 7.3 / MariaDB / Testing (Business, Communication, ...)
@@ -777,7 +777,7 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: 10.3
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 7.3 / MariaDB / Testing (Business, Communication, ..., prefer-lowest)
@@ -801,7 +801,7 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: 10.3
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 7.4 / PostgreSQL 9.6 / Testing (Presentation)
@@ -913,7 +913,7 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: 10.3
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP8 Validation
@@ -940,7 +940,7 @@ jobs:
               - *COMPOSER_INSTALL
               - COMPOSER_MEMORY_LIMIT=-1 composer update lcobucci/jwt -w --ignore-platform-req=php
           script:
-              - vendor/bin/console code:phpstan -m Spryker.all -v -o 0,300
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 0,250
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
@@ -954,7 +954,7 @@ jobs:
               - *COMPOSER_INSTALL
               - COMPOSER_MEMORY_LIMIT=-1 composer update lcobucci/jwt -w --ignore-platform-req=php
           script:
-              - vendor/bin/console code:phpstan -m Spryker.all -v -o 300,300
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 250,250
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
@@ -968,7 +968,7 @@ jobs:
               - *COMPOSER_INSTALL
               - COMPOSER_MEMORY_LIMIT=-1 composer update lcobucci/jwt -w --ignore-platform-req=php
           script:
-              - vendor/bin/console code:phpstan -m Spryker.all -v -o 600
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 500
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
@@ -1007,7 +1007,7 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: 10.3
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: Docker / Alpine / PHP 7.3 / MariaDB / Functional Tests
