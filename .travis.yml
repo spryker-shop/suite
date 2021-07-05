@@ -436,8 +436,6 @@ cache:
 
 notifications:
     email: false
-    webhooks:
-        - https://release.spryker.com/ci-webhooks/add
 
 os: linux
 dist: bionic
@@ -566,7 +564,7 @@ jobs:
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
-        - name: PHPStan spryker/spryker (prefer-lowest)
+        - name: PHPStan spryker/spryker (prefer-lowest) [1/3]
           php: "7.3"
           stage: Test
           before_install:
@@ -575,7 +573,33 @@ jobs:
           install:
               - *COMPOSER_PREFER_LOWEST
           script:
-              - vendor/bin/console code:phpstan -m Spryker.all -v
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 0,300
+          addons:
+              <<: *ADDONS_BASE_INFRASTRUCTURE
+
+        - name: PHPStan spryker/spryker (prefer-lowest) [2/3]
+          php: "7.3"
+          stage: Test
+          before_install:
+              - *AWS_SYNC_DOWN_POSTGRES
+              - *BEFORE_INSTALL_SCRIPT
+          install:
+              - *COMPOSER_PREFER_LOWEST
+          script:
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 300,300
+          addons:
+              <<: *ADDONS_BASE_INFRASTRUCTURE
+
+        - name: PHPStan spryker/spryker (prefer-lowest) [3/3]
+          php: "7.3"
+          stage: Test
+          before_install:
+              - *AWS_SYNC_DOWN_POSTGRES
+              - *BEFORE_INSTALL_SCRIPT
+          install:
+              - *COMPOSER_PREFER_LOWEST
+          script:
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 600
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
@@ -906,7 +930,7 @@ jobs:
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
-        - name: PHP8 PHPStan spryker/spryker
+        - name: PHP8 PHPStan spryker/spryker [1/3]
           php: "8.0"
           stage: Test
           before_install:
@@ -916,7 +940,35 @@ jobs:
               - *COMPOSER_INSTALL
               - COMPOSER_MEMORY_LIMIT=-1 composer update lcobucci/jwt -w --ignore-platform-req=php
           script:
-              - vendor/bin/console code:phpstan -m Spryker.all -v
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 0,300
+          addons:
+              <<: *ADDONS_BASE_INFRASTRUCTURE
+
+        - name: PHP8 PHPStan spryker/spryker [2/3]
+          php: "8.0"
+          stage: Test
+          before_install:
+              - *AWS_SYNC_DOWN_POSTGRES
+              - *BEFORE_INSTALL_SCRIPT
+          install:
+              - *COMPOSER_INSTALL
+              - COMPOSER_MEMORY_LIMIT=-1 composer update lcobucci/jwt -w --ignore-platform-req=php
+          script:
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 300,300
+          addons:
+              <<: *ADDONS_BASE_INFRASTRUCTURE
+
+        - name: PHP8 PHPStan spryker/spryker [3/3]
+          php: "8.0"
+          stage: Test
+          before_install:
+              - *AWS_SYNC_DOWN_POSTGRES
+              - *BEFORE_INSTALL_SCRIPT
+          install:
+              - *COMPOSER_INSTALL
+              - COMPOSER_MEMORY_LIMIT=-1 composer update lcobucci/jwt -w --ignore-platform-req=php
+          script:
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 600
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
