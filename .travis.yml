@@ -566,19 +566,6 @@ jobs:
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
-        - name: PHPStan spryker/spryker
-          php: "7.4"
-          stage: Test
-          before_install:
-              - *AWS_SYNC_DOWN_POSTGRES
-              - *BEFORE_INSTALL_SCRIPT
-          install:
-              - *COMPOSER_INSTALL
-          script:
-              - vendor/bin/console code:phpstan -m Spryker.all -v
-          addons:
-              <<: *ADDONS_BASE_INFRASTRUCTURE
-
         - name: PHPStan spryker/spryker (prefer-lowest)
           php: "7.3"
           stage: Test
@@ -589,19 +576,6 @@ jobs:
               - *COMPOSER_PREFER_LOWEST
           script:
               - vendor/bin/console code:phpstan -m Spryker.all -v
-          addons:
-              <<: *ADDONS_BASE_INFRASTRUCTURE
-
-        - name: PHPStan spryker/spryker-shop
-          php: "7.4"
-          stage: Test
-          before_install:
-              - *AWS_SYNC_DOWN_POSTGRES
-              - *BEFORE_INSTALL_SCRIPT
-          install:
-              - *COMPOSER_INSTALL
-          script:
-              - vendor/bin/console code:phpstan -m SprykerShop.all -v
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
