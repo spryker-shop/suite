@@ -9,6 +9,7 @@ namespace Pyz\Zed\QuoteRequest;
 
 use Spryker\Zed\ProductConfiguration\Communication\Plugin\QuoteRequest\ProductConfigurationQuoteRequestUserValidatorPlugin;
 use Spryker\Zed\ProductConfiguration\Communication\Plugin\QuoteRequest\ProductConfigurationQuoteRequestValidatorPlugin;
+use Spryker\Zed\QuoteApproval\Communication\Plugin\QuoteRequest\QuoteApprovalQuoteRequestPreCreateCheckPlugin;
 use Spryker\Zed\QuoteRequest\QuoteRequestDependencyProvider as SprykerQuoteRequestDependencyProvider;
 
 class QuoteRequestDependencyProvider extends SprykerQuoteRequestDependencyProvider
@@ -30,6 +31,16 @@ class QuoteRequestDependencyProvider extends SprykerQuoteRequestDependencyProvid
     {
         return [
             new ProductConfigurationQuoteRequestUserValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\QuoteRequestExtension\Dependency\Plugin\QuoteRequestPreCreateCheckPluginInterface[]
+     */
+    protected function getQuoteRequestPreCreateCheckPlugins(): array
+    {
+        return [
+            new QuoteApprovalQuoteRequestPreCreateCheckPlugin(),
         ];
     }
 }
