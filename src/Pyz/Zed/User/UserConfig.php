@@ -55,6 +55,13 @@ class UserConfig extends SprykerUserConfig
                 'password' => 'change123',
                 'username' => 'michele@sony-experts.com',
             ],
+            [
+                'firstName' => 'Vitaliy',
+                'lastName' => 'Smith',
+                'password' => 'change123',
+                'username' => 'agent123@spryker.com',
+                'isAgent' => 1,
+            ],
         ];
     }
 }
