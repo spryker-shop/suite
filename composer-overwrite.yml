@@ -1,19 +1,9 @@
 # We remove packages as soon as possible again, the goal is to keep this list minimal/empty.
 packages:
-    symfony/console:
-        reason: "5.3 regression, fixed in master, pending release of 5.3.1"
-        constraint: ^3.4.0 || ^4.0.0 || ~5.2.0
-        original: ^3.4.0 || ^4.0.0 || ^5.2.0
-        date: 2020-06-01
     symfony/event-dispatcher:
         reason: "?"
         constraint: ^5.1.0
         original: ^4.3.0 || ^5.1.0
-        date: 2020-06-01
-    symfony/security-core:
-        reason: "5.3 regression, fixed in master, pending release of 5.3.1"
-        constraint: ^4.4.13 || ~5.2.8
-        original: ^4.4.13 || ~5.2.8
         date: 2020-06-01
 packages-dev:
     roave/better-reflection:
