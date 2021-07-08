@@ -289,17 +289,15 @@ _INSTALL_SCRIPT_PREFER_LOWEST: &INSTALL_SCRIPT_PREFER_LOWEST
 
 _VALIDATION_SCRIPT: &VALIDATION_SCRIPT
     - echo "_VALIDATION_SCRIPT"
-    - chmod +x tests/*.sh
     - vendor/bin/console code:propel:validate-abstract
     - vendor/bin/console propel:schema:validate
     - vendor/bin/console propel:schema:validate-xml-names
     - vendor/bin/console transfer:validate
-    - tests/travis_check_touched_modules.sh
-    - tests/travis_check_untracked.sh
     - vendor/bin/spryker-dev-console dev:validate-module-schemas
     - vendor/bin/spryker-dev-console dev:validate-module-databuilders
     - vendor/bin/console dev:composer:replace -d -v
     - vendor/bin/spryker-dev-console dev:sync-composer -d
+    - vendor/bin/spryker-dev-console dev:module-meta-files -d -v
     - vendor/bin/console dev:dependency:find
     - vendor/bin/console dev:composer:update-json-files -d -v
     - vendor/bin/console dev:composer:validate-json-files
@@ -314,27 +312,11 @@ _VALIDATION_SCRIPT: &VALIDATION_SCRIPT
 
 _VALIDATION_SCRIPT_PHP8: &VALIDATION_SCRIPT_PHP8
     - echo "_VALIDATION_SCRIPT"
+    - vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/
+
     - chmod +x tests/*.sh
-    - vendor/bin/console code:propel:validate-abstract
-    - vendor/bin/console propel:schema:validate
-    - vendor/bin/console propel:schema:validate-xml-names
-    - vendor/bin/console transfer:validate
     - tests/travis_check_touched_modules.sh
     - tests/travis_check_untracked.sh
-    - vendor/bin/spryker-dev-console dev:validate-module-schemas
-    - vendor/bin/spryker-dev-console dev:validate-module-databuilders
-    - vendor/bin/console dev:composer:replace -d -v
-    - vendor/bin/spryker-dev-console dev:sync-composer -d
-    - vendor/bin/console dev:dependency:find
-    - vendor/bin/console dev:composer:update-json-files -d -v
-    - vendor/bin/console dev:composer:validate-json-files
-    - vendor/bin/console code:sniff:style
-    - vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/
-    - composer psalm
-
-    - npm install
-    - npm install speccy@0.11.0 -g
-    - speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
 
 _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
     - echo "_VALIDATION_FRONT_END_SCRIPT"
