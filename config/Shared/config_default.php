@@ -8,6 +8,7 @@ use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
+use Spryker\Shared\Agent\AgentConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\Category\CategoryConstants;
@@ -623,3 +624,8 @@ $config[ProductLabelConstants::PRODUCT_LABEL_TO_DE_ASSIGN_CHUNK_SIZE] = 1000;
 // >>> Category
 $config[CategoryConstants::CATEGORY_READ_CHUNK] = 10000;
 $config[CategoryConstants::CATEGORY_IS_CLOSURE_TABLE_EVENTS_ENABLED] = false;
+
+// >>> Agent
+$config[AgentConstants::AGENT_ALLOWED_SECURED_PATTERN_LIST] = [
+    '|^(/en|/de)?/cart(?!/add)',
+];
