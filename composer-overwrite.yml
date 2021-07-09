@@ -1,18 +1,18 @@
 # We remove packages as soon as possible again, the goal is to keep this list minimal/empty.
 packages:
     symfony/event-dispatcher:
-        reason: "?"
+        reason: '?'
         constraint: ^5.1.0
         original: ^4.3.0 || ^5.1.0
         date: 2020-06-01
 packages-dev:
     roave/better-reflection:
-        reason: "PHP 7.4+ is not suitable for us (yet)"
+        reason: 'PHP 7.4+ is not suitable for us (yet)'
         constraint: ~4.3.0
         original: ^4.3.0
         date: 2020-03-01
     symfony/browser-kit:
-        reason: "?"
+        reason: '?'
         constraint: ^4.0.0 || ~5.1.8
         original: ^4.0.0 || ^5.1.8
         date: 2020-03-01
