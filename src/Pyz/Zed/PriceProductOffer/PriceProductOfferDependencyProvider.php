@@ -8,7 +8,9 @@
 namespace Pyz\Zed\PriceProductOffer;
 
 use Spryker\Zed\PriceProductOffer\PriceProductOfferDependencyProvider as SprykerPriceProductOfferDependencyProvider;
+use Spryker\Zed\PriceProductOfferVolume\Communication\Plugin\PriceProductOffer\PriceProductOfferVolumeExpanderPlugin;
 use Spryker\Zed\PriceProductOfferVolume\Communication\Plugin\PriceProductOffer\PriceProductOfferVolumeExtractorPlugin;
+use Spryker\Zed\PriceProductOfferVolume\Communication\Plugin\PriceProductOffer\PriceProductOfferVolumeValidatorPlugin;
 
 class PriceProductOfferDependencyProvider extends SprykerPriceProductOfferDependencyProvider
 {
@@ -19,6 +21,26 @@ class PriceProductOfferDependencyProvider extends SprykerPriceProductOfferDepend
     {
         return [
             new PriceProductOfferVolumeExtractorPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PriceProductOfferExtension\Dependency\Plugin\PriceProductOfferExpanderPluginInterface[]
+     */
+    protected function getPriceProductOfferExpanderPlugins(): array
+    {
+        return [
+            new PriceProductOfferVolumeExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PriceProductOfferExtension\Dependency\Plugin\PriceProductOfferValidatorPluginInterface[]
+     */
+    protected function getPriceProductOfferValidatorPlugins(): array
+    {
+        return [
+            new PriceProductOfferVolumeValidatorPlugin(),
         ];
     }
 }
