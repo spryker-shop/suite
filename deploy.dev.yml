@@ -73,6 +73,22 @@ groups:
     EU:
         region: EU
         applications:
+            merchant_portal_eu:
+                application: merchant-portal
+                endpoints:
+                    mp.de.spryker.local:
+                        entry-point: MerchantPortal
+                        store: DE
+                        primal: true
+                        services:
+                            session:
+                                namespace: 7
+                    mp.at.spryker.local:
+                        entry-point: MerchantPortal
+                        store: AT
+                        services:
+                            session:
+                                namespace: 8
             yves_eu:
                 application: yves
                 endpoints:
@@ -131,6 +147,15 @@ groups:
     US:
         region: US
         applications:
+            merchant_portal_us:
+                application: merchant-portal
+                endpoints:
+                    mp.us.spryker.local:
+                        entry-point: MerchantPortal
+                        store: US
+                        services:
+                            session:
+                                namespace: 9
             yves_us:
                 application: yves
                 endpoints:
