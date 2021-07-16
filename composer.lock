@@ -15273,16 +15273,16 @@
         },
         {
             "name": "spryker/catalog",
-            "version": "5.6.4",
+            "version": "5.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/catalog.git",
-                "reference": "ea996a34d504f04686281b4fec0b3e5f033c86f6"
+                "reference": "b53cf8f9093cf34e48de993fb1c336170cbb6ecc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/catalog/zipball/ea996a34d504f04686281b4fec0b3e5f033c86f6",
-                "reference": "ea996a34d504f04686281b4fec0b3e5f033c86f6",
+                "url": "https://api.github.com/repos/spryker/catalog/zipball/b53cf8f9093cf34e48de993fb1c336170cbb6ecc",
+                "reference": "b53cf8f9093cf34e48de993fb1c336170cbb6ecc",
                 "shasum": ""
             },
             "require": {
@@ -15319,9 +15319,9 @@
             ],
             "description": "Catalog module",
             "support": {
-                "source": "https://github.com/spryker/catalog/tree/5.6.4"
+                "source": "https://github.com/spryker/catalog/tree/5.7.0"
             },
-            "time": "2021-03-02T08:38:46+00:00"
+            "time": "2021-07-16T12:46:59+00:00"
         },
         {
             "name": "spryker/catalog-price-product-connector",
@@ -42292,16 +42292,16 @@
         },
         {
             "name": "spryker/product-page-search",
-            "version": "3.25.0",
+            "version": "3.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-page-search.git",
-                "reference": "ef28a319c8bf8c73910c1b5e173299f59e7036be"
+                "reference": "abfdbe66384824e4fc4062b8cb22e5ddaf8f4ed7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-page-search/zipball/ef28a319c8bf8c73910c1b5e173299f59e7036be",
-                "reference": "ef28a319c8bf8c73910c1b5e173299f59e7036be",
+                "url": "https://api.github.com/repos/spryker/product-page-search/zipball/abfdbe66384824e4fc4062b8cb22e5ddaf8f4ed7",
+                "reference": "abfdbe66384824e4fc4062b8cb22e5ddaf8f4ed7",
                 "shasum": ""
             },
             "require": {
@@ -42318,11 +42318,12 @@
                 "spryker/product": "^6.16.0",
                 "spryker/product-category": "^4.5.0",
                 "spryker/product-image": "^3.8.0",
-                "spryker/product-page-search-extension": "^1.4.0",
+                "spryker/product-page-search-extension": "^1.5.0",
                 "spryker/product-search": "^5.8.0",
                 "spryker/propel-orm": "^1.5.0",
                 "spryker/search": "^7.0.0 || ^8.0.0",
                 "spryker/store": "^1.7.0",
+                "spryker/symfony": "^3.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0",
                 "spryker/url": "^3.3.0",
@@ -42358,22 +42359,22 @@
             ],
             "description": "ProductPageSearch module",
             "support": {
-                "source": "https://github.com/spryker/product-page-search/tree/3.25.0"
+                "source": "https://github.com/spryker/product-page-search/tree/3.26.0"
             },
-            "time": "2021-05-21T07:57:52+00:00"
+            "time": "2021-07-16T12:46:59+00:00"
         },
         {
             "name": "spryker/product-page-search-extension",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-page-search-extension.git",
-                "reference": "f189e84ca3619581a6a204e927d39e852426268a"
+                "reference": "1de028b5af52cb7b21aca317a5ba335826805223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-page-search-extension/zipball/f189e84ca3619581a6a204e927d39e852426268a",
-                "reference": "f189e84ca3619581a6a204e927d39e852426268a",
+                "url": "https://api.github.com/repos/spryker/product-page-search-extension/zipball/1de028b5af52cb7b21aca317a5ba335826805223",
+                "reference": "1de028b5af52cb7b21aca317a5ba335826805223",
                 "shasum": ""
             },
             "require": {
@@ -42402,9 +42403,9 @@
             ],
             "description": "ProductPageSearchExtension module",
             "support": {
-                "source": "https://github.com/spryker/product-page-search-extension/tree/1.4.0"
+                "source": "https://github.com/spryker/product-page-search-extension/tree/1.5.0"
             },
-            "time": "2021-05-11T10:08:13+00:00"
+            "time": "2021-07-16T12:46:59+00:00"
         },
         {
             "name": "spryker/product-prices-rest-api",
@@ -46776,39 +46777,44 @@
         },
         {
             "name": "spryker/sales-product-connector",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-product-connector.git",
-                "reference": "398a7c35eba022385da0cc91585f467ea7442de6"
+                "reference": "8a8cfc6dc4a0b1a8e312f5e19e6fba36b3272cfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-product-connector/zipball/398a7c35eba022385da0cc91585f467ea7442de6",
-                "reference": "398a7c35eba022385da0cc91585f467ea7442de6",
+                "url": "https://api.github.com/repos/spryker/sales-product-connector/zipball/8a8cfc6dc4a0b1a8e312f5e19e6fba36b3272cfc",
+                "reference": "8a8cfc6dc4a0b1a8e312f5e19e6fba36b3272cfc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
                 "spryker/kernel": "^3.30.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
+                "spryker/product-page-search-extension": "^1.5.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/sales": "^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/sales-extension": "^1.9.0",
                 "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
+                "spryker/catalog": "*",
                 "spryker/checkout": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/customer": "*",
                 "spryker/oms": "*",
                 "spryker/product-image": "*",
+                "spryker/product-page-search": "*",
                 "spryker/propel": "*",
                 "spryker/store": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
-                "spryker/checkout": "If you want to save product specific information during checkout"
+                "spryker/catalog": "If you want to use Catalog plugins, minimum required version: 5.2.0.",
+                "spryker/checkout": "If you want to save product specific information during checkout",
+                "spryker/product-page-search": "If you want to use ProductPageSearch constants."
             },
             "type": "library",
             "extra": {
@@ -46827,9 +46833,9 @@
             ],
             "description": "SalesProductConnector module",
             "support": {
-                "source": "https://github.com/spryker/sales-product-connector/tree/1.5.0"
+                "source": "https://github.com/spryker/sales-product-connector/tree/1.6.0"
             },
-            "time": "2021-06-24T13:01:59+00:00"
+            "time": "2021-07-16T12:46:59+00:00"
         },
         {
             "name": "spryker/sales-quantity",
@@ -47654,16 +47660,16 @@
         },
         {
             "name": "spryker/search-elasticsearch",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/search-elasticsearch.git",
-                "reference": "12514a20c2e13241008a1e2b85b58fe3035d954c"
+                "reference": "69955b5095bff76db08c80fbcf2661a264004661"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/search-elasticsearch/zipball/12514a20c2e13241008a1e2b85b58fe3035d954c",
-                "reference": "12514a20c2e13241008a1e2b85b58fe3035d954c",
+                "url": "https://api.github.com/repos/spryker/search-elasticsearch/zipball/69955b5095bff76db08c80fbcf2661a264004661",
+                "reference": "69955b5095bff76db08c80fbcf2661a264004661",
                 "shasum": ""
             },
             "require": {
@@ -47710,9 +47716,9 @@
             ],
             "description": "SearchElasticsearch module",
             "support": {
-                "source": "https://github.com/spryker/search-elasticsearch/tree/1.12.0"
+                "source": "https://github.com/spryker/search-elasticsearch/tree/1.13.0"
             },
-            "time": "2021-07-14T15:05:29+00:00"
+            "time": "2021-07-16T12:46:59+00:00"
         },
         {
             "name": "spryker/search-elasticsearch-gui",

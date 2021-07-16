@@ -173,3 +173,11 @@ $jobs[] = [
     'enable' => true,
     'stores' => $allStores,
 ];
+
+$jobs[] = [
+    'name' => 'page-product-abstract-refresh',
+    'command' => '$PHP_BIN vendor/bin/console product-page-search:product-abstract-refresh',
+    'schedule' => '0 6 * * *',
+    'enable' => true,
+    'stores' => $allStores,
+];
