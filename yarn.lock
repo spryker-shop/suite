@@ -3191,109 +3191,146 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/actions.drawer@npm:^0.1.0-next.1":
+"@spryker/actions.close-drawer@npm:^0.1.0-next.1":
   version: 0.1.0-next.1
-  resolution: "@spryker/actions.drawer@npm:0.1.0-next.1"
+  resolution: "@spryker/actions.close-drawer@npm:0.1.0-next.1"
+  dependencies:
+    tslib: ^1.10.0
+  peerDependencies:
+    "@angular/common": ^9.1.12
+    "@angular/core": ^9.1.12
+    "@spryker/actions": ^0.1.0-next.0
+    "@spryker/drawer": ^0.2.0-next.9
+    "@spryker/unsaved-changes": ^0.1.0-next.3
+  checksum: 45932ab21bc04e3f5f44212cb9b97110d8e9081cb23755ecce9c8bd2afc86614818088735b3dcd2cc220b40a5f821f3b39b5ecfab9ae5cd1785aca12f77590ec
+  languageName: node
+  linkType: hard
+
+"@spryker/actions.drawer@npm:^0.1.0-next.3":
+  version: 0.1.0-next.3
+  resolution: "@spryker/actions.drawer@npm:0.1.0-next.3"
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
     "@spryker/actions": ^0.1.0-next.0
     "@spryker/drawer": ^0.2.0-next.0
     "@spryker/utils": ^0.2.0-next.0
-  checksum: 3a5d7c9278a70488541a6cad78429b62b8faa76ee8c33c3a87ef1d498c86f09530a1153fbc759c65073acd5d7fca91d72c5daef252bfc465edbc32cf650e5416
+  checksum: 11a99ac56a27213d95fe4b678041351889a4a1a896fd79deabcc1699f8ccfed82c72cf9dd7087a56320ea571801b25fe2f126fb993111aec1d4a855e9bd71947
   languageName: node
   linkType: hard
 
-"@spryker/actions@npm:^0.1.0-next.0":
-  version: 0.1.0-next.0
-  resolution: "@spryker/actions@npm:0.1.0-next.0"
-  peerDependencies:
-    "@angular/common": ^9.1.12
-    "@angular/core": ^9.1.12
-    "@spryker/utils": ^0.2.0-next.0
-  checksum: e5ada5f4cee3fb7bc5f21c40e6b2a1f087fc3b3fcbfa47f831a346c23f0aa440356e08af23da7813480025f7f1d7355764c11c4fe596fc021fb430943326fc79
-  languageName: node
-  linkType: hard
-
-"@spryker/ajax-action.post-action.close-overlay@npm:^0.1.0-next.2":
-  version: 0.1.0-next.2
-  resolution: "@spryker/ajax-action.post-action.close-overlay@npm:0.1.0-next.2"
-  peerDependencies:
-    "@angular/common": ^9.1.2
-    "@angular/core": ^9.1.2
-    "@spryker/ajax-action": ^0.1.0-next.0
-    "@spryker/drawer": ^0.1.0-next.0
-    "@spryker/unsaved-changes.monitor.form": ^0.1.0-next.0
-  checksum: a09abefbfff742d996bf5e6ff667bae119423772464b0fb4ec9a62b264ed6d3a032936c76c6a15e38777397ab4cf1f48199037cb2cda2019b26d054b6ebcbd1d
-  languageName: node
-  linkType: hard
-
-"@spryker/ajax-action.post-action.redirect@npm:^0.1.0-next.3":
-  version: 0.1.0-next.3
-  resolution: "@spryker/ajax-action.post-action.redirect@npm:0.1.0-next.3"
-  peerDependencies:
-    "@angular/common": ^9.1.2
-    "@angular/core": ^9.1.2
-    "@spryker/ajax-action": ^0.1.0-next.0
-    "@spryker/unsaved-changes.monitor.form": ^0.1.0-next.0
-    "@spryker/utils": ^0.1.0-next.0
-  checksum: 7d331925d24e6cf382351ba5ff8fc5e3890adda14351d6d2565c8593bd106521a08f6aabdea82d0aa9e6ace34565500981c814d31a62f863341a772c6e965601
-  languageName: node
-  linkType: hard
-
-"@spryker/ajax-action.post-action.refresh-drawer@npm:^0.1.0-next.0":
-  version: 0.1.0-next.0
-  resolution: "@spryker/ajax-action.post-action.refresh-drawer@npm:0.1.0-next.0"
-  peerDependencies:
-    "@angular/common": ^9.1.12
-    "@angular/core": ^9.1.12
-    "@spryker/ajax-action": ^0.1.0-next.0
-    "@spryker/drawer": ^0.1.0-next.0
-  checksum: 722c11972140e601a83ae7ffc9839d3a28dd9d33f7ee30514b897797813bca0e7e94218affc0bed63ecf9446d7ed3297e17ad23d3ea010e0933de7fcd6b31a5f
-  languageName: node
-  linkType: hard
-
-"@spryker/ajax-action.post-action.refresh-parent-table@npm:0.0.2-next.0":
-  version: 0.0.2-next.0
-  resolution: "@spryker/ajax-action.post-action.refresh-parent-table@npm:0.0.2-next.0"
+"@spryker/actions.http@npm:^0.1.0-next.1":
+  version: 0.1.0-next.1
+  resolution: "@spryker/actions.http@npm:0.1.0-next.1"
   dependencies:
     tslib: ^1.10.0
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
-    "@spryker/ajax-action": ^0.1.0-next.0
-    "@spryker/table": ^0.1.0-next.0
-  checksum: 41d27d161994478f21a8213ef288b0f1ad05767b21e22208018e484e8d66f0fe5313a137f828649531083d77616ec23a2c1cbdaac77eca7041e77443894c7193
+    "@spryker/actions": ^0.1.0-next.0
+    "@spryker/utils": ^0.2.0-next.17
+  checksum: 35aec7a84e04b4ef0f5a9119df5bf37d4b69abbd510c4a8fb9bcb6c01ec2ab77c9a1aaf1db78f56e1cd875bab0d05085f1eb7fc769ea86f3c8cdaa3418a70f49
   languageName: node
   linkType: hard
 
-"@spryker/ajax-action.post-action.refresh-table@npm:^0.1.0-next.1":
+"@spryker/actions.notification@npm:^0.1.0-next.1":
   version: 0.1.0-next.1
-  resolution: "@spryker/ajax-action.post-action.refresh-table@npm:0.1.0-next.1"
+  resolution: "@spryker/actions.notification@npm:0.1.0-next.1"
+  dependencies:
+    tslib: ^1.10.0
   peerDependencies:
-    "@angular/common": ^9.1.2
-    "@angular/core": ^9.1.2
-    "@spryker/ajax-action": ^0.1.0-next.0
-    "@spryker/table": ^0.1.0-next.0
-  checksum: 167ca39b3f92b01f98e1e161c3a38c9722bc6f927b4faef68a663442b71c4af2b406b1c4641d3dd67073d19f85422f52255567800d6881b06fc10a7a630a817b
+    "@angular/common": ^9.1.12
+    "@angular/core": ^9.1.12
+    "@spryker/actions": ^0.1.0-next.0
+    "@spryker/notification": ^0.2.0-next.5
+    "@spryker/utils": ^0.2.0-next.17
+  checksum: cfee9e6df00d8714397c15c466bf8821e46432618a07f5d8176149660ae39aa6ff35ddebfef2e8644fc07cf20cd42387af7ca6b8ee3328480536c70255a28849
   languageName: node
   linkType: hard
 
-"@spryker/ajax-action@npm:^0.2.0-next.2":
-  version: 0.2.0-next.2
-  resolution: "@spryker/ajax-action@npm:0.2.0-next.2"
+"@spryker/actions.redirect@npm:^0.1.0-next.1":
+  version: 0.1.0-next.1
+  resolution: "@spryker/actions.redirect@npm:0.1.0-next.1"
+  dependencies:
+    tslib: ^1.10.0
   peerDependencies:
-    "@angular/common": ^9.1.2
-    "@angular/core": ^9.1.2
-    "@spryker/notification": ^0.1.0-next.0
-    "@spryker/utils": ^0.1.0-next.0
-  checksum: 24bbcb25ccca5df195b34dee3132df959db397e90e3d500ad0e25c121bffb6699efbc3c6884a49644ef82aebf1fa17beee6e0929a0cf4cd9d4cb99afd49660cf
+    "@angular/common": ^9.1.12
+    "@angular/core": ^9.1.12
+    "@angular/platform-browser": ^9.1.12
+    "@spryker/actions": ^0.1.0-next.0
+    "@spryker/unsaved-changes": ^0.1.0-next.3
+    "@spryker/utils": ^0.2.0-next.17
+  checksum: dd0d26f8e2f77347dee8467cd32ece03e25af05604752bb4c2df5688d44919b711cae6c04810c258c69de90d80d189daaf839e4abed128a745b3bc100d2464d7
   languageName: node
   linkType: hard
 
-"@spryker/ajax-form@npm:^0.2.0-next.12":
-  version: 0.2.0-next.12
-  resolution: "@spryker/ajax-form@npm:0.2.0-next.12"
+"@spryker/actions.refresh-drawer@npm:^0.1.0-next.1":
+  version: 0.1.0-next.1
+  resolution: "@spryker/actions.refresh-drawer@npm:0.1.0-next.1"
+  dependencies:
+    tslib: ^1.10.0
+  peerDependencies:
+    "@angular/common": ^9.1.12
+    "@angular/core": ^9.1.12
+    "@spryker/actions": ^0.1.0-next.0
+    "@spryker/drawer": ^0.2.0-next.9
+  checksum: 957a046e3c90a45419139f24d527511f69846ce821f7e41c3c7f6f77509d96246fa9361656d28e55041e8567467ab4e1725a9fd3391aff657e939c254d557fee
+  languageName: node
+  linkType: hard
+
+"@spryker/actions.refresh-parent-table@npm:^0.1.0-next.1":
+  version: 0.1.0-next.1
+  resolution: "@spryker/actions.refresh-parent-table@npm:0.1.0-next.1"
+  dependencies:
+    tslib: ^1.10.0
+  peerDependencies:
+    "@angular/common": ^9.1.12
+    "@angular/core": ^9.1.12
+    "@spryker/actions": ^0.1.0-next.0
+    "@spryker/table": ^0.2.0-next.36
+  checksum: 9b72054930db7fc3cc7ebbc40a6395e0d51e40b33553b208d1f04df0257a66cdd67ba156981acd18b30caee35286038b7c2cea261a7f2e23b005444f1f38c64a
+  languageName: node
+  linkType: hard
+
+"@spryker/actions.refresh-table@npm:^0.1.0-next.1":
+  version: 0.1.0-next.1
+  resolution: "@spryker/actions.refresh-table@npm:0.1.0-next.1"
+  dependencies:
+    tslib: ^1.10.0
+  peerDependencies:
+    "@angular/common": ^9.1.12
+    "@angular/core": ^9.1.12
+    "@spryker/actions": ^0.1.0-next.0
+    "@spryker/table": ^0.2.0-next.36
+  checksum: 07cb2b4473d409f5534bfc583fbcc84948f3af62bbc77c4a535dae403eae4124c714dc25f909844a7ce5123f14052f948936774a38c4e66c6cdaa54765b663af
+  languageName: node
+  linkType: hard
+
+"@spryker/actions@npm:^0.1.0-next.2":
+  version: 0.1.0-next.2
+  resolution: "@spryker/actions@npm:0.1.0-next.2"
+  peerDependencies:
+    "@angular/common": ^9.1.12
+    "@angular/core": ^9.1.12
+    "@spryker/utils": ^0.2.0-next.0
+  checksum: 833d065b8c7df439b5c98072bbb07e977337af346d96c53fe1b4a5929ef4b1bb679548d2e24d73eb8f5a63cd281605f73a3194a25653ef4da191055d97498c8a
+  languageName: node
+  linkType: hard
+
+"@spryker/ajax-action@npm:^0.2.0-next.4":
+  version: 0.2.0-next.4
+  resolution: "@spryker/ajax-action@npm:0.2.0-next.4"
+  peerDependencies:
+    "@angular/common": ^9.1.2
+    "@angular/core": ^9.1.2
+    "@spryker/actions": ^0.1.0-next.0
+  checksum: 858db7df7b94182fffd0648557bd0f1c896484e27a88653093c1e2e54fe021ef12cde6a222774cf71d070418e8e04f0c4e2244909305291fe4786d0da0af81cd
+  languageName: node
+  linkType: hard
+
+"@spryker/ajax-form@npm:^0.2.0-next.14":
+  version: 0.2.0-next.14
+  resolution: "@spryker/ajax-form@npm:0.2.0-next.14"
   peerDependencies:
     "@angular/common": ^9.1.2
     "@angular/core": ^9.1.2
@@ -3305,7 +3342,7 @@ __metadata:
     "@spryker/notification": ^0.1.0-next.0
     "@spryker/unsaved-changes.monitor.form": ^0.1.0-next.0
     "@spryker/utils": ^0.1.0-next.0
-  checksum: 68d9afc3045cbe04490bf33bd0bca7683bcfc065ac31223122f54bdf12d76d033c97beebb96436f35ad75b842f0e85e0773c85d50b7a26e292de0db1962bb070
+  checksum: 0207aba147923bee88e54796d3c44b5aaacfc0bd7a1ea0ce5945980903ba9eebbd8d8301ec6a3799dfb1f11948d16eadec14e710ff30f68d4bae1961ef090496
   languageName: node
   linkType: hard
 
@@ -3409,26 +3446,6 @@ __metadata:
     "@spryker/utils": ^0.1.0-next.0
     "@spryker/web-components": ^0.2.0-next.0
   checksum: 2c79efb264c994df53898bb1c25b5acfbdb0bd3d57491a0e9a13243fddac62c90d05e858a9e040f4c57952104ef035255d404b48ce6f5780d4766d686af85a4e
-  languageName: node
-  linkType: hard
-
-"@spryker/checkbox@npm:0.2.0-next.1":
-  version: 0.2.0-next.1
-  resolution: "@spryker/checkbox@npm:0.2.0-next.1"
-  dependencies:
-    "@angular/cdk": ^9.2.3
-    "@angular/platform-browser": ^9.1.12
-    deepmerge: ^4.2.2
-    ng-zorro-antd: 9.3.0
-    rxjs: ^6.5.4
-    tslib: ^1.10.0
-  peerDependencies:
-    "@angular/common": ^9.0.0
-    "@angular/core": ^9.0.0
-    "@angular/forms": ^9.0.1
-    "@spryker/styles": ^0.1.0-next.0
-    "@spryker/utils": ^0.1.0-next.0
-  checksum: 6b324b49fa0cd0eb69a1a3f4f6a8073d83781d0585684d5d599db7427d87cb8875febbeae4dd3b500ff19a6614c25ceea904f46112bd3db81d17f42e17d1cb3b
   languageName: node
   linkType: hard
 
@@ -3884,28 +3901,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/html-renderer@npm:^0.1.0-next.5":
-  version: 0.1.0-next.5
-  resolution: "@spryker/html-renderer@npm:0.1.0-next.5"
+"@spryker/html-renderer@npm:^0.1.0-next.6":
+  version: 0.1.0-next.6
+  resolution: "@spryker/html-renderer@npm:0.1.0-next.6"
   peerDependencies:
     "@angular/common": ^9.1.2
     "@angular/core": ^9.1.2
+    "@angular/platform-browser": ^9.1.2
+    "@spryker/ajax-action": ^0.2.0-next.4
     "@spryker/web-components": ^0.2.0-next.0
-  checksum: 64408b569f39518b2742891b5fc8d0678ac933f62fa2496d2dad424fb5841754ba5788b68569ba25f99bca25e3cb470529117501d8bcdb78507d4824195b946f
-  languageName: node
-  linkType: hard
-
-"@spryker/icon@npm:0.2.0-next.3":
-  version: 0.2.0-next.3
-  resolution: "@spryker/icon@npm:0.2.0-next.3"
-  dependencies:
-    ng-zorro-antd: 9.3.0
-  peerDependencies:
-    "@angular/common": ^9.0.0
-    "@angular/core": ^9.0.0
-    "@spryker/styles": ^0.1.0-next.0
-    "@spryker/utils": ^0.1.0-next.0
-  checksum: e6e353f10ce6972e00b934bbe390a6fb7f7c4bdf10c35e3397cc37314b8e0ab1ac39e4d720b742fc830873d23ddb4e6545ac03ff33447de9f22688166bfec959
+  checksum: bbdd7469c75bd0289377b4cae0c10b6e4666e7a4ed1c4e2cb84a4b25cba6c8ada4b6cd412ae69812661520c1bacc3ec4b53018559437f2d433acb901fdb53958
   languageName: node
   linkType: hard
 
@@ -4004,19 +4009,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/locale@npm:0.2.0-next.5":
-  version: 0.2.0-next.5
-  resolution: "@spryker/locale@npm:0.2.0-next.5"
-  dependencies:
-    ng-zorro-antd: 9.3.0
-  peerDependencies:
-    "@angular/common": ^9.0.0
-    "@angular/core": ^9.0.0
-    "@spryker/utils": ^0.1.0-next.0
-  checksum: 963a057b4cd051b9e1612725547402f5211761e843636c9a6e2afcde78fef0ad53c7e821bd3bd331293934e56516b7e692a23c709566db1eca13e474b4aa020c
-  languageName: node
-  linkType: hard
-
 "@spryker/locale@npm:^0.2.0-next.11":
   version: 0.2.0-next.11
   resolution: "@spryker/locale@npm:0.2.0-next.11"
@@ -4098,9 +4090,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/oryx-for-zed@npm:~2.11.0":
-  version: 2.11.0
-  resolution: "@spryker/oryx-for-zed@npm:2.11.0"
+"@spryker/oryx-for-zed@npm:~2.11.2":
+  version: 2.11.2
+  resolution: "@spryker/oryx-for-zed@npm:2.11.2"
   dependencies:
     "@babel/core": ~7.12.3
     "@babel/preset-env": ~7.12.1
@@ -4111,6 +4103,7 @@ __metadata:
     css-loader: ~2.1.1
     es6-promise: ~4.0.5
     file-loader: ~1.1.11
+    fs-extra: ~10.0.0
     imports-loader: ~0.8.0
     mini-css-extract-plugin: ~0.4.0
     node-sass: ~4.14.1
@@ -4122,7 +4115,7 @@ __metadata:
     terser-webpack-plugin: ~4.2.2
     webpack: ~4.27.1
     yargs: ~13.3.0
-  checksum: bd08127c2bcee8f7a415f3936dfee44da22758bcdeec76b36fd444d3e393a7f25149f51502b743091e42e379ca489b39910ead747f92971b6dd00a37906ef423
+  checksum: 36814618b59819dea4bfd8b11f9af199371ee21e39ede2fb215f1768c2c64a96a8fdbbe864d577c2c6e52c38fa5741e1486a86f7236d2f484fe502b95819413a
   languageName: node
   linkType: hard
 
@@ -4165,20 +4158,6 @@ __metadata:
     "@angular/core": ^9.1.12
     "@spryker/utils": ^0.1.0-next.0
   checksum: af517a6c51364076b53ea4080d96701a9df9f4c048f5012c7b106a4f310cb16dd1582327c9c2fbf2ef8dfd93f872cd3dc3db3dc3dd21f4afdd0cc592dc110712
-  languageName: node
-  linkType: hard
-
-"@spryker/popover@npm:0.1.0-next.2":
-  version: 0.1.0-next.2
-  resolution: "@spryker/popover@npm:0.1.0-next.2"
-  dependencies:
-    "@angular/platform-browser": ^9.1.12
-    ng-zorro-antd: 9.3.0
-    tslib: ^1.10.0
-  peerDependencies:
-    "@angular/common": ^9.1.12
-    "@angular/core": ^9.1.12
-  checksum: aab3716e457c37b1dea5d139aa7a1e1f4c9a219ad7d7a5090d15914e46ea064b6bf7d3f40b89971c70f17fecb41e617a063d65017821a8a3ed02a04b9ff4027b
   languageName: node
   linkType: hard
 
@@ -4279,51 +4258,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/table.action-handler.form-overlay@npm:^0.0.2-next.3":
-  version: 0.0.2-next.4
-  resolution: "@spryker/table.action-handler.form-overlay@npm:0.0.2-next.4"
-  peerDependencies:
-    "@angular/common": ^9.1.12
-    "@angular/core": ^9.1.12
-    "@spryker/ajax-form": ^0.2.0-next.0
-    "@spryker/drawer": ^0.2.0-next.0
-    "@spryker/styles": ^0.2.0-next.0
-    "@spryker/table": ^0.2.0-next.0
-    "@spryker/utils": ^0.2.0-next.0
-  checksum: 27d77da19ab758abdaab9f633f46108ba00cb9cd8fc3747e03741c3316782e7b2a245b286e9c5257b5a61bfbc9d215ccabc8185036b449b87f2d6f68a40adb21
-  languageName: node
-  linkType: hard
-
-"@spryker/table.action-handler.html-overlay@npm:^0.0.2-next.0":
-  version: 0.0.2-next.0
-  resolution: "@spryker/table.action-handler.html-overlay@npm:0.0.2-next.0"
-  dependencies:
-    ng-zorro-antd: 9.3.0
-  peerDependencies:
-    "@angular/common": ^9.1.12
-    "@angular/core": ^9.1.12
-    "@spryker/ajax-action": ^0.2.0-next.0
-    "@spryker/drawer": ^0.2.0-next.0
-    "@spryker/html-renderer": ^0.1.0-next.0
-    "@spryker/styles": ^0.2.0-next.0
-    "@spryker/table": ^0.2.0-next.0
-  checksum: f9a25fb667a0a27219a0cd9736f6fc82b03abd578e6c0b6d6051ada1ec646ca514384e931b3c9f3fea73f6da08a1c7d2447dd57e0af5dd062e372f379a6d37a7
-  languageName: node
-  linkType: hard
-
-"@spryker/table.action-handler.url@npm:^0.0.2-next.0":
-  version: 0.0.2-next.0
-  resolution: "@spryker/table.action-handler.url@npm:0.0.2-next.0"
-  peerDependencies:
-    "@angular/common": ^9.1.12
-    "@angular/core": ^9.1.12
-    "@spryker/ajax-action": ^0.2.0-next.0
-    "@spryker/table": ^0.2.0-next.0
-  checksum: ce54b803641caca6a8e575435b28ed558d933e8ab53b26ba95776d42b66deeeae6200e4bb1e118dd045ce38cec249b460ee52d15ed77ce89bb52be85d6826594
-  languageName: node
-  linkType: hard
-
-"@spryker/table.column.autocomplete@npm:^0.1.0-next.1":
+"@spryker/table.column.autocomplete@npm:^0.1.0-next.2":
   version: 0.1.0-next.2
   resolution: "@spryker/table.column.autocomplete@npm:0.1.0-next.2"
   dependencies:
@@ -4415,7 +4350,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/table.column.select@npm:^0.1.0-next.2":
+"@spryker/table.column.select@npm:^0.1.0-next.3":
   version: 0.1.0-next.3
   resolution: "@spryker/table.column.select@npm:0.1.0-next.3"
   dependencies:
@@ -4447,21 +4382,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/table.datasource.http@npm:0.0.2-next.1":
-  version: 0.0.2-next.1
-  resolution: "@spryker/table.datasource.http@npm:0.0.2-next.1"
-  peerDependencies:
-    "@angular/common": ^9.1.12
-    "@angular/core": ^9.1.12
-    "@spryker/table": ^0.2.0-next.0
-    "@spryker/utils": ^0.2.0-next.0
-  checksum: adbb0f46af2ca2b41eb1ea57af588a677df7bb2865976209994b95887794b82e9d23157f37508c7cff8a51e43e1a4a5090e7d4ccefa73093d25af9e6b6701d5a
-  languageName: node
-  linkType: hard
-
-"@spryker/table.feature.batch-actions@npm:^0.0.2-next.0":
-  version: 0.0.2-next.0
-  resolution: "@spryker/table.feature.batch-actions@npm:0.0.2-next.0"
+"@spryker/table.feature.batch-actions@npm:^0.0.2-next.4":
+  version: 0.0.2-next.4
+  resolution: "@spryker/table.feature.batch-actions@npm:0.0.2-next.4"
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
@@ -4471,7 +4394,7 @@ __metadata:
     "@spryker/table": ^0.2.0-next.0
     "@spryker/table.feature.selectable": ^0.1.0-next.0
     "@spryker/utils": ^0.2.0-next.0
-  checksum: 24d585ff53873fc23013b053d27a623299c8765788fbe9125d718c28bb0a946e9a4020da1e061c3dbfda6854bc9c587c322233e4a52175d58f4fa2818f1efa33
+  checksum: 5d06546dd0128b5c45679e14b5530ff17f3834ad42c1cf2a087c7484d686205020e1d0a545196136014869b55c636e246577fced5cdf4d54d0271c6cdd72f8cf
   languageName: node
   linkType: hard
 
@@ -4497,9 +4420,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/table.feature.filters@npm:^0.0.2-next.3":
-  version: 0.0.2-next.3
-  resolution: "@spryker/table.feature.filters@npm:0.0.2-next.3"
+"@spryker/table.feature.filters@npm:^0.0.2-next.4":
+  version: 0.0.2-next.4
+  resolution: "@spryker/table.feature.filters@npm:0.0.2-next.4"
   dependencies:
     ng-dynamic-component: ^6.1.0
   peerDependencies:
@@ -4508,26 +4431,26 @@ __metadata:
     "@spryker/styles": ^0.2.0-next.0
     "@spryker/table": ^0.2.0-next.0
     "@spryker/utils": ^0.2.0-next.0
-  checksum: 0a7e1031e9f4288e0df0956b40bde0cd5448c3cf1794fe4902bda797c150a5f2341f1c004fab8f22420b2df630b0c02fcc4b7927f52908bbabc2e8e73980bf2a
+  checksum: 5ab853386fb178c4826449b4eef01e201aabd4955e13c5ca8af78c2931cc99c92ca104f9f851925a89559d99853f3f7628f3eb654a4e25edb8851d472daa0bca
   languageName: node
   linkType: hard
 
-"@spryker/table.feature.pagination@npm:^0.0.2-next.0":
-  version: 0.0.2-next.0
-  resolution: "@spryker/table.feature.pagination@npm:0.0.2-next.0"
+"@spryker/table.feature.pagination@npm:^0.0.2-next.2":
+  version: 0.0.2-next.2
+  resolution: "@spryker/table.feature.pagination@npm:0.0.2-next.2"
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
     "@spryker/pagination": ^0.2.0-next.0
     "@spryker/table": ^0.2.0-next.0
     "@spryker/utils": ^0.2.0-next.0
-  checksum: 3c3d6002cb6a5722eab82653402b8bc04fefcae835071f231845dc8933c631146a02c804962e88dc522753ee67dec8368e162a5d58648f160b8bfb00ea07b196
+  checksum: 5e862e68b0cf5a6b3ac8be95499d55dbfab5321fb09a402d851417a34e0dff78ba4e74224ba6fc40e036595edc76328dd1c1597b5feb9ea91485b7a732080f84
   languageName: node
   linkType: hard
 
-"@spryker/table.feature.row-actions@npm:^0.0.2-next.0":
-  version: 0.0.2-next.0
-  resolution: "@spryker/table.feature.row-actions@npm:0.0.2-next.0"
+"@spryker/table.feature.row-actions@npm:^0.0.2-next.4":
+  version: 0.0.2-next.4
+  resolution: "@spryker/table.feature.row-actions@npm:0.0.2-next.4"
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
@@ -4536,7 +4459,7 @@ __metadata:
     "@spryker/styles": ^0.2.0-next.0
     "@spryker/table": ^0.2.0-next.0
     "@spryker/utils": ^0.2.0-next.0
-  checksum: 28c64319ca910fd85242e3b809c2b0a7569fc9bcac9dd8bbf88330c895aff123b66a4c919d867b9bda86f674c78731063c7975ee8c0009c812743d1f49f34abb
+  checksum: f98fd3c37b27eec946a3adde43cffd80e821faef99c83a8da96ef2735fa45961fe64639a8bae89a3216d0ac4cab2822b8d03e6ccdf3faa5bcd65a5b55670a000
   languageName: node
   linkType: hard
 
@@ -4555,40 +4478,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/table.feature.selectable@npm:^0.0.2-next.2":
-  version: 0.0.2-next.2
-  resolution: "@spryker/table.feature.selectable@npm:0.0.2-next.2"
-  dependencies:
-    "@angular/cdk": ^9.2.3
-    "@angular/elements": ^9.1.12
-    "@angular/forms": ^9.1.12
-    "@angular/platform-browser": ^9.1.12
-    "@orchestrator/core": ^0.2.0
-    "@orchestrator/layout": ^0.1.0
-    "@spryker/checkbox": 0.2.0-next.1
-    "@spryker/icon": 0.2.0-next.3
-    "@spryker/locale": 0.2.0-next.5
-    "@spryker/popover": 0.1.0-next.2
-    "@spryker/table.datasource.http": 0.0.2-next.1
-    "@spryker/web-components": 0.2.1-next.3
-    deepmerge: ^4.2.2
-    ng-zorro-antd: 9.3.0
-    ngx-element-boundary: ^1.0.10
-    rxjs: ^6.5.4
-    tslib: ^1.10.0
+"@spryker/table.feature.selectable@npm:^0.0.2-next.3":
+  version: 0.0.2-next.3
+  resolution: "@spryker/table.feature.selectable@npm:0.0.2-next.3"
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
     "@spryker/styles": ^0.2.0-next.0
     "@spryker/table": ^0.2.0-next.0
     "@spryker/utils": ^0.2.0-next.0
-  checksum: d5c79b3de8a8fa269fe4361724aaf4d181ee80eb2e65f5926d221537c3bd82db623d2ee8ad77af270b39e7cfde9b6e644dbaa4d4f20e62577ffd781df1e3f77b
+  checksum: d3ebc5a6be29b9770ba1ebbe3e623994bcbb7c29370e18b23248c82ef28ba628ce1ec2209954772619d6319f48f5a129e630218361ce9c79ea82ade1a17aa2a9
   languageName: node
   linkType: hard
 
-"@spryker/table.feature.settings@npm:^0.0.2-next.7":
-  version: 0.0.2-next.7
-  resolution: "@spryker/table.feature.settings@npm:0.0.2-next.7"
+"@spryker/table.feature.settings@npm:^0.0.2-next.8":
+  version: 0.0.2-next.8
+  resolution: "@spryker/table.feature.settings@npm:0.0.2-next.8"
   peerDependencies:
     "@angular/cdk": ^9.2.3
     "@angular/common": ^9.1.12
@@ -4601,37 +4506,37 @@ __metadata:
     "@spryker/styles": ^0.2.0-next.0
     "@spryker/table": ^0.2.0-next.0
     "@spryker/utils": ^0.2.0-next.0
-  checksum: c09c2d6b12bf1ef637bc06cc5b00c13f093db7e32b5ee4f43ce57d9b3dd9f0202b67e65300d3f0a53394a7f25461c524d70cff158c55fae332aa384976db6453
+  checksum: 8533dcab961f356d35621f422a005dc811f0dc4bf9a8cd896593ee49f80d644a2190022399f4b20bed89e1e9f676d0cef6243e441a85affff2470331770cecbe
   languageName: node
   linkType: hard
 
-"@spryker/table.feature.sync-state@npm:^0.0.2-next.0":
-  version: 0.0.2-next.0
-  resolution: "@spryker/table.feature.sync-state@npm:0.0.2-next.0"
+"@spryker/table.feature.sync-state@npm:^0.0.2-next.1":
+  version: 0.0.2-next.1
+  resolution: "@spryker/table.feature.sync-state@npm:0.0.2-next.1"
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
     "@spryker/table": ^0.2.0-next.0
     "@spryker/utils": ^0.2.0-next.0
-  checksum: 1b358a5ce8ac5c5596be933c675ff6de8fe3eff28746fbb3e530a4b9a6b0c98bd6ab9d45eb28e18a8965934f350954dfc871f6e2b981e986fdfcebe46d71f356
+  checksum: 938032e5650e9de0f5b2c2edd4439c24c2695902f1676e1fcfb0055e3909976ae7c554194811c131978774f0f719787b9d7afca6a9b12ce268a6c419be0b9b09
   languageName: node
   linkType: hard
 
-"@spryker/table.feature.title@npm:^0.0.2-next.0":
-  version: 0.0.2-next.0
-  resolution: "@spryker/table.feature.title@npm:0.0.2-next.0"
+"@spryker/table.feature.title@npm:^0.0.2-next.2":
+  version: 0.0.2-next.2
+  resolution: "@spryker/table.feature.title@npm:0.0.2-next.2"
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
     "@spryker/styles": ^0.2.0-next.0
     "@spryker/table": ^0.2.0-next.0
-  checksum: c2740e6c812a20cf870403b5aa30f7c3618439b992e349a8f7cf3532d3e1a658618d774797124488ac9213c6fc2964296a2a56e7462942795deb48403906b71a
+  checksum: 94a4e59db1ea0fbac729a96d99298e73dc10ce88ffbe3cbb8f57f7aef8c84877eb71b2c03160ae212209f10c0b3d46654e119a31237e3dccbcfc1b18a0079f2b
   languageName: node
   linkType: hard
 
-"@spryker/table.feature.total@npm:^0.0.2-next.1":
-  version: 0.0.2-next.1
-  resolution: "@spryker/table.feature.total@npm:0.0.2-next.1"
+"@spryker/table.feature.total@npm:^0.0.2-next.6":
+  version: 0.0.2-next.6
+  resolution: "@spryker/table.feature.total@npm:0.0.2-next.6"
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
@@ -4640,13 +4545,13 @@ __metadata:
     "@spryker/styles": ^0.2.0-next.0
     "@spryker/table": ^0.2.0-next.0
     "@spryker/utils": ^0.2.0-next.0
-  checksum: ec8c701caab6517655d07c2d4f911693621597c629902af5434832c6e9ec65e4da2344c4bd601acc27f30090e4514e193526d075fbf1b0b7e43a74c6707e7218
+  checksum: 0b84a3a9ce6e019e7c799dfada250dff3c68b2150397ffa1ec33784235e1e5ba18337a6d5249e2ed70bcb91b8b294f5627089dea7ea30afd384cc73f720558d6
   languageName: node
   linkType: hard
 
-"@spryker/table.filter.date-range@npm:^0.0.2-next.1":
-  version: 0.0.2-next.1
-  resolution: "@spryker/table.filter.date-range@npm:0.0.2-next.1"
+"@spryker/table.filter.date-range@npm:^0.0.2-next.3":
+  version: 0.0.2-next.3
+  resolution: "@spryker/table.filter.date-range@npm:0.0.2-next.3"
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
@@ -4654,39 +4559,39 @@ __metadata:
     "@spryker/locale": ^0.2.0-next.0
     "@spryker/styles": ^0.2.0-next.0
     "@spryker/table.feature.filters": ^0.1.0-next.0
-  checksum: b8d25aff10e760571cdf79d6803b838e119e21a0cc1f0c696bba2a918cc21ac823bac4cf0c42382d0af738d40b90d4f3ea8c683dcfd1c55ae8d72deff2fb98ee
+  checksum: 5a9dfb1120e0970a5348be1decf2c82086cdbd3ea34c5e51233b094fe50c5581b5ccb4ecc89ed932372f45672c531e8fc42b1aef98a368eaaaaefbc9baf80e53
   languageName: node
   linkType: hard
 
-"@spryker/table.filter.select@npm:^0.0.2-next.1":
-  version: 0.0.2-next.1
-  resolution: "@spryker/table.filter.select@npm:0.0.2-next.1"
+"@spryker/table.filter.select@npm:^0.0.2-next.2":
+  version: 0.0.2-next.2
+  resolution: "@spryker/table.filter.select@npm:0.0.2-next.2"
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
     "@spryker/locale": ^0.2.0-next.0
     "@spryker/select": ^0.2.0-next.0
     "@spryker/table.feature.filters": ^0.1.0-next.0
-  checksum: 562b2f1663d6a3f272a29bab0741e39057aed374446cfedba7561c47d5bb4f4e6aa46911816e349906d9bcf2c1c828ff2df652379627cd2f263fe442f8eadfff
+  checksum: ae9dd8fb115a0b924471cf34fd1850809ba5a0c8e2799b157e9047b61e31c02028caabc8fb691f4037872c17121d38aa31eb6120d134cc431b9992de20b413da
   languageName: node
   linkType: hard
 
-"@spryker/table.filter.tree-select@npm:^0.0.2-next.1":
-  version: 0.0.2-next.1
-  resolution: "@spryker/table.filter.tree-select@npm:0.0.2-next.1"
+"@spryker/table.filter.tree-select@npm:^0.0.2-next.2":
+  version: 0.0.2-next.2
+  resolution: "@spryker/table.filter.tree-select@npm:0.0.2-next.2"
   peerDependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
     "@spryker/locale": ^0.2.0-next.0
     "@spryker/table.feature.filters": ^0.1.0-next.0
     "@spryker/tree-select": ^0.1.0-next.0
-  checksum: 83a97f57c90ecbd64340282d73700b8da54cf39b2d612a989384f726c99518424e137d3b4f5db5899c91be8eaf8d0c75131e909bbf39b15ac0c03f98e556e52c
+  checksum: af69cb95430d49f723b411c5cd8f633575d7658bf25ccf9592dfda3088d27bb1aa1a597f40416d54dab93c4793d17aad6eab8528cd04dce35cf0c8f8382fbaa8
   languageName: node
   linkType: hard
 
-"@spryker/table@npm:^0.2.0-next.36":
-  version: 0.2.0-next.36
-  resolution: "@spryker/table@npm:0.2.0-next.36"
+"@spryker/table@npm:^0.2.0-next.38":
+  version: 0.2.0-next.38
+  resolution: "@spryker/table@npm:0.2.0-next.38"
   dependencies:
     "@orchestrator/core": ^0.2.0
     "@orchestrator/layout": ^0.1.0
@@ -4696,13 +4601,14 @@ __metadata:
     "@angular/cdk": ^9.2.3
     "@angular/common": ^9.0.0
     "@angular/core": ^9.0.0
+    "@spryker/actions": ^0.1.0-next.1
     "@spryker/datasource": ^0.0.1-next.0
     "@spryker/icon": ^0.0.1-next.14
     "@spryker/locale": ^0.1.0-next.4
     "@spryker/popover": ^0.1.0-next.0
     "@spryker/styles": ^0.0.1-next.48
     "@spryker/utils": ^0.1.0-next.16
-  checksum: 71d841adfafa87406fec19bbdf8b2b0549426a1ade59babb1fc751014db2a25b26d28ec42288c7813b96b4f294a1cb2d75209f50c3daee553eae3c112b559aa4
+  checksum: ffaa44e8e4b8f4ea5856ee569bc32c185a9c5e6667a49a9d2d757cac11bb0f67403f498d71ef458251707941b4450033628195b433399a66449d90b4f00d75e6
   languageName: node
   linkType: hard
 
@@ -4719,25 +4625,6 @@ __metadata:
     "@spryker/utils": ^0.1.0-next.0
     "@spryker/web-components": ^0.2.0-next.0
   checksum: 13ccd9f64b3151ed2ce24e5b536100c3ee50ea9d55320209731963dee65c51bfda92cacad537ffe67b04bc54657a36b7d66a35a390dcc2468e7a78fcfdbabf59
-  languageName: node
-  linkType: hard
-
-"@spryker/textarea@npm:^0.2.0-next.1":
-  version: 0.2.0-next.1
-  resolution: "@spryker/textarea@npm:0.2.0-next.1"
-  dependencies:
-    "@angular/cdk": ^9.2.3
-    "@angular/platform-browser": ^9.1.12
-    deepmerge: ^4.2.2
-    ng-zorro-antd: 9.3.0
-    rxjs: ^6.5.4
-    tslib: ^1.10.0
-  peerDependencies:
-    "@angular/common": ^9.0.0
-    "@angular/core": ^9.0.0
-    "@spryker/styles": ^0.1.0-next.0
-    "@spryker/utils": ^0.1.0-next.0
-  checksum: 129225eca08b285eadca7a09c240cb2cd79c5fc71e7c7faae9b8cde747b1a23791eb3b31351b0b3a9eb0b8b6f663eaa048dcdd7080faf3f2b5f8e52b7106e2f1
   languageName: node
   linkType: hard
 
@@ -4896,22 +4783,6 @@ __metadata:
     "@angular/common": ^9.0.0
     "@angular/core": ^9.0.0
   checksum: 519f64d8493e35c58596b2f5ac7f797842200b6edcc040c7a3f98b504ff24d6cea10300965e9ea27d7a5f054ec01f05866b8be2c55ed47f906ef75743255aa6a
-  languageName: node
-  linkType: hard
-
-"@spryker/web-components@npm:0.2.1-next.3":
-  version: 0.2.1-next.3
-  resolution: "@spryker/web-components@npm:0.2.1-next.3"
-  dependencies:
-    ngx-element-boundary: ^1.0.10
-    rxjs: ^6.5.4
-    tslib: ^1.10.0
-  peerDependencies:
-    "@angular/cdk": ^9.0.0
-    "@angular/common": ^9.0.0
-    "@angular/core": ^9.0.0
-    "@angular/elements": ^9.0.0
-  checksum: 3edb8edc58884475cb98e4a811eb31c38270a6ed8b572b0779ab7a5cc1494cf8051da0bc205000c22f5ff037d66e681c4e10eae74f90811aba0dc81cc46e0ef0
   languageName: node
   linkType: hard
 
@@ -10901,6 +10772,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fs-extra@npm:~10.0.0":
+  version: 10.0.0
+  resolution: "fs-extra@npm:10.0.0"
+  dependencies:
+    graceful-fs: ^4.2.0
+    jsonfile: ^6.0.1
+    universalify: ^2.0.0
+  checksum: 84632d143fe3125b8c3c2b1fedbbdfcfb84fc3e087522b4e138cc07edf574619925713a6609f6d5e53ede2e31ab319c7d528ea4a4a770ba6622a16bf4447cd8b
+  languageName: node
+  linkType: hard
+
 "fs-minipass@npm:^1.2.5":
   version: 1.2.7
   resolution: "fs-minipass@npm:1.2.7"
@@ -11939,6 +11821,13 @@ __metadata:
   version: 4.2.4
   resolution: "graceful-fs@npm:4.2.4"
   checksum: d095ee4dc6eacc76814cd52d5d185b860119378a6fd4888e7d4e94983095c54d4f6369942a5e3d759cdbdd4e3ee7eaeb27a39ff938c6ee4610894fd9de46b6cb
+  languageName: node
+  linkType: hard
+
+"graceful-fs@npm:^4.2.0":
+  version: 4.2.6
+  resolution: "graceful-fs@npm:4.2.6"
+  checksum: 84d39c7756892553da990a9db7e45f844b3309b37b5a00174cbb4748476f2250c54f24594d4d252f64f085c65c2fdac7c809419bf6d55f0e6e42eb07ac0f5bf2
   languageName: node
   linkType: hard
 
@@ -14142,6 +14031,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jsonfile@npm:^6.0.1":
+  version: 6.1.0
+  resolution: "jsonfile@npm:6.1.0"
+  dependencies:
+    graceful-fs: ^4.1.6
+    universalify: ^2.0.0
+  dependenciesMeta:
+    graceful-fs:
+      optional: true
+  checksum: 9419c886abc6f8a5088cbb222b7bc17c76e8ee9f6c0e5c38781a4e09488166084f25247bc0b58e025b08c43064c82ae860ad89a992e35fc8cfae639323b7edbc
+  languageName: node
+  linkType: hard
+
 "jsonparse@npm:^1.2.0":
   version: 1.3.1
   resolution: "jsonparse@npm:1.3.1"
@@ -15527,6 +15429,38 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"mp-gui-table@workspace:vendor/spryker/spryker/Bundles/GuiTable":
+  version: 0.0.0-use.local
+  resolution: "mp-gui-table@workspace:vendor/spryker/spryker/Bundles/GuiTable"
+  dependencies:
+    "@angular/common": ^9.1.12
+    "@angular/core": ^9.1.12
+    "@spryker/table": ^0.2.0-next.38
+    "@spryker/table.column.autocomplete": ^0.1.0-next.2
+    "@spryker/table.column.chip": ^0.0.2-next.1
+    "@spryker/table.column.date": ^0.0.2-next.0
+    "@spryker/table.column.dynamic": ^0.1.0-next.2
+    "@spryker/table.column.image": ^0.0.2-next.0
+    "@spryker/table.column.input": ^0.1.0-next.0
+    "@spryker/table.column.select": ^0.1.0-next.3
+    "@spryker/table.column.text": ^0.0.2-next.0
+    "@spryker/table.feature.batch-actions": ^0.0.2-next.4
+    "@spryker/table.feature.editable": ^0.1.0-next.13
+    "@spryker/table.feature.filters": ^0.0.2-next.4
+    "@spryker/table.feature.pagination": ^0.0.2-next.2
+    "@spryker/table.feature.row-actions": ^0.0.2-next.4
+    "@spryker/table.feature.search": ^0.0.2-next.3
+    "@spryker/table.feature.selectable": ^0.0.2-next.3
+    "@spryker/table.feature.settings": ^0.0.2-next.8
+    "@spryker/table.feature.sync-state": ^0.0.2-next.1
+    "@spryker/table.feature.title": ^0.0.2-next.2
+    "@spryker/table.feature.total": ^0.0.2-next.6
+    "@spryker/table.filter.date-range": ^0.0.2-next.3
+    "@spryker/table.filter.select": ^0.0.2-next.2
+    "@spryker/table.filter.tree-select": ^0.0.2-next.2
+  languageName: unknown
+  linkType: soft
+
 "mp-login@workspace:vendor/spryker/spryker/Bundles/SecurityMerchantPortalGui":
   version: 0.0.0-use.local
   resolution: "mp-login@workspace:vendor/spryker/spryker/Bundles/SecurityMerchantPortalGui"
@@ -15571,9 +15505,9 @@ __metadata:
     "@spryker/radio": ^0.1.0-next.1
     "@spryker/select": ^0.2.0-next.14
     "@spryker/styles": ^0.2.0-next.37
-    "@spryker/table": ^0.2.0-next.36
+    "@spryker/table": ^0.2.0-next.38
     "@spryker/tabs": ^0.2.0-next.6
-    "@spryker/textarea": ^0.2.0-next.1
+    "@spryker/textarea": ^0.2.0-next.4
     "@spryker/toggle": ^0.2.0-next.4
     "@spryker/tree-select": ^0.1.0-next.13
     "@spryker/utils": ^0.2.0-next.17
@@ -15599,7 +15533,7 @@ __metadata:
     "@spryker/date-picker": ^0.2.0-next.2
     "@spryker/headline": ^0.2.0-next.1
     "@spryker/styles": ^0.2.0-next.37
-    "@spryker/table": ^0.2.0-next.36
+    "@spryker/table": ^0.2.0-next.38
     "@spryker/utils": ^0.2.0-next.17
     "@spryker/web-components": ^0.2.1-next.8
     rxjs: ^6.5.4
@@ -15646,10 +15580,10 @@ __metadata:
     "@spryker/chips": ^0.1.0-next.3
     "@spryker/collapsible": ^0.2.0-next.4
     "@spryker/headline": ^0.2.0-next.1
-    "@spryker/html-renderer": ^0.1.0-next.5
+    "@spryker/html-renderer": ^0.1.0-next.6
     "@spryker/icon": ^0.2.0-next.8
     "@spryker/styles": ^0.2.0-next.37
-    "@spryker/table": ^0.2.0-next.36
+    "@spryker/table": ^0.2.0-next.38
     "@spryker/tabs": ^0.2.0-next.6
     "@spryker/utils": ^0.2.0-next.17
     "@spryker/web-components": ^0.2.1-next.8
@@ -15663,7 +15597,7 @@ __metadata:
   dependencies:
     "@angular/common": ^9.1.12
     "@angular/core": ^9.1.12
-    "@spryker/actions": ^0.1.0-next.0
+    "@spryker/actions": ^0.1.0-next.2
     "@spryker/button": ^0.2.0-next.10
     "@spryker/button.action": ^0.1.0-next.2
     "@spryker/card": ^0.2.0-next.5
@@ -20455,7 +20389,7 @@ resolve@^0.6.1:
     "@spryker/frontend-config.prettier": ~0.0.5
     "@spryker/frontend-config.stylelint": ~0.0.5
     "@spryker/frontend-config.tslint": ~0.0.5
-    "@spryker/oryx-for-zed": ~2.11.0
+    "@spryker/oryx-for-zed": ~2.11.2
     "@spryker/sass-resources-loader": ~2.0.1-spryker.0.1.0
     "@types/jest": ~26.0.4
     "@types/node": ~12.11.1
@@ -22455,6 +22389,13 @@ resolve@^0.6.1:
   languageName: node
   linkType: hard
 
+"universalify@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "universalify@npm:2.0.0"
+  checksum: 36bfbdc97bd4b483596e66ea65e20663f5ab9ec3650157d99b075b7f97afcdefe46bbb23f89171dd75595d398cea3769a5b6d7130f5c66cae2a0f00904780f62
+  languageName: node
+  linkType: hard
+
 "unpipe@npm:1.0.0, unpipe@npm:~1.0.0":
   version: 1.0.0
   resolution: "unpipe@npm:1.0.0"
@@ -23631,15 +23572,17 @@ resolve@^0.6.1:
     "@angular/forms": ^9.1.12
     "@angular/platform-browser": ^9.1.12
     "@angular/router": ^9.1.12
-    "@spryker/actions": ^0.1.0-next.0
-    "@spryker/actions.drawer": ^0.1.0-next.1
-    "@spryker/ajax-action": ^0.2.0-next.2
-    "@spryker/ajax-action.post-action.close-overlay": ^0.1.0-next.2
-    "@spryker/ajax-action.post-action.redirect": ^0.1.0-next.3
-    "@spryker/ajax-action.post-action.refresh-drawer": ^0.1.0-next.0
-    "@spryker/ajax-action.post-action.refresh-parent-table": 0.0.2-next.0
-    "@spryker/ajax-action.post-action.refresh-table": ^0.1.0-next.1
-    "@spryker/ajax-form": ^0.2.0-next.12
+    "@spryker/actions": ^0.1.0-next.2
+    "@spryker/actions.close-drawer": ^0.1.0-next.1
+    "@spryker/actions.drawer": ^0.1.0-next.3
+    "@spryker/actions.http": ^0.1.0-next.1
+    "@spryker/actions.notification": ^0.1.0-next.1
+    "@spryker/actions.redirect": ^0.1.0-next.1
+    "@spryker/actions.refresh-drawer": ^0.1.0-next.1
+    "@spryker/actions.refresh-parent-table": ^0.1.0-next.1
+    "@spryker/actions.refresh-table": ^0.1.0-next.1
+    "@spryker/ajax-action": ^0.2.0-next.4
+    "@spryker/ajax-form": ^0.2.0-next.14
     "@spryker/autocomplete": ^0.1.0-next.2
     "@spryker/button": ^0.2.0-next.10
     "@spryker/cache": ^0.1.0-next.3
@@ -23670,7 +23613,7 @@ resolve@^0.6.1:
     "@spryker/form-item": ^0.2.0-next.6
     "@spryker/grid": ^0.1.0-next.1
     "@spryker/header": ^0.2.0-next.1
-    "@spryker/html-renderer": ^0.1.0-next.5
+    "@spryker/html-renderer": ^0.1.0-next.6
     "@spryker/icon": ^0.2.0-next.8
     "@spryker/input": ^0.2.0-next.6
     "@spryker/input.password": ^0.1.0-next.2
@@ -23687,32 +23630,6 @@ resolve@^0.6.1:
     "@spryker/select": ^0.2.0-next.14
     "@spryker/sidebar": ^0.2.0-next.4
     "@spryker/styles": ^0.2.0-next.37
-    "@spryker/table": ^0.2.0-next.36
-    "@spryker/table.action-handler.form-overlay": ^0.0.2-next.3
-    "@spryker/table.action-handler.html-overlay": ^0.0.2-next.0
-    "@spryker/table.action-handler.url": ^0.0.2-next.0
-    "@spryker/table.column.autocomplete": ^0.1.0-next.1
-    "@spryker/table.column.chip": ^0.0.2-next.1
-    "@spryker/table.column.date": ^0.0.2-next.0
-    "@spryker/table.column.dynamic": ^0.1.0-next.2
-    "@spryker/table.column.image": ^0.0.2-next.0
-    "@spryker/table.column.input": ^0.1.0-next.0
-    "@spryker/table.column.select": ^0.1.0-next.2
-    "@spryker/table.column.text": ^0.0.2-next.0
-    "@spryker/table.feature.batch-actions": ^0.0.2-next.0
-    "@spryker/table.feature.editable": ^0.1.0-next.13
-    "@spryker/table.feature.filters": ^0.0.2-next.3
-    "@spryker/table.feature.pagination": ^0.0.2-next.0
-    "@spryker/table.feature.row-actions": ^0.0.2-next.0
-    "@spryker/table.feature.search": ^0.0.2-next.3
-    "@spryker/table.feature.selectable": ^0.0.2-next.2
-    "@spryker/table.feature.settings": ^0.0.2-next.7
-    "@spryker/table.feature.sync-state": ^0.0.2-next.0
-    "@spryker/table.feature.title": ^0.0.2-next.0
-    "@spryker/table.feature.total": ^0.0.2-next.1
-    "@spryker/table.filter.date-range": ^0.0.2-next.1
-    "@spryker/table.filter.select": ^0.0.2-next.1
-    "@spryker/table.filter.tree-select": ^0.0.2-next.1
     "@spryker/textarea": ^0.2.0-next.4
     "@spryker/toggle": ^0.2.0-next.4
     "@spryker/tree-select": ^0.1.0-next.13
