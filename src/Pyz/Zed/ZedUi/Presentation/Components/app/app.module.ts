@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DefaultMerchantPortalConfigModule, RootMerchantPortalModule } from '@mp/zed-ui';
+import { DefaultTableConfigModule } from '@mp/gui-table';
 
 @NgModule({
     imports: [
@@ -12,6 +13,7 @@ import { DefaultMerchantPortalConfigModule, RootMerchantPortalModule } from '@mp
         HttpClientModule,
         RootMerchantPortalModule,
         DefaultMerchantPortalConfigModule,
+        DefaultTableConfigModule,
     ],
 })
 export class AppModule extends RootMerchantPortalModule {}
