@@ -2615,6 +2615,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fortawesome/fontawesome-free@npm:~5.15.3":
+  version: 5.15.3
+  resolution: "@fortawesome/fontawesome-free@npm:5.15.3"
+  checksum: aa299f7699d41787b86dab36996f12881096ee54a0c8ea73891177e14bd6edba9a790ec866fb871bdd9dc9927c7a56214fab8bf457dffb172433ea1747471811
+  languageName: node
+  linkType: hard
+
 "@istanbuljs/load-nyc-config@npm:^1.0.0":
   version: 1.1.0
   resolution: "@istanbuljs/load-nyc-config@npm:1.1.0"
@@ -10627,13 +10634,6 @@ __metadata:
   dependencies:
     css-font: ^1.0.0
   checksum: fbb130b72e29b5928500800c54a1d021f6ba7446e451db538aec1b96df0df13c818e10345d5200d6795f1f617bf030cb02607cac524d92e8b9ee3149f222730b
-  languageName: node
-  linkType: hard
-
-"font-awesome@npm:~4.7.0":
-  version: 4.7.0
-  resolution: "font-awesome@npm:4.7.0"
-  checksum: 332215ef40b90cb33be5a8b571e99388050976b626b40d79dfdfa8387bbcecde67d4d7d14f66f4263481761e6498d9885723e4a1263380cf4968df8f720ad06d
   languageName: node
   linkType: hard
 
@@ -20523,6 +20523,7 @@ resolve@^0.6.1:
   version: 0.0.0-use.local
   resolution: "spryker-zed-gui@workspace:vendor/spryker/spryker/Bundles/Gui/assets/Zed"
   dependencies:
+    "@fortawesome/fontawesome-free": ~5.15.3
     "@spryker/nestable": ~1.1.1
     animate.css: ~3.5.1
     bootstrap-sass: ~3.4.1
@@ -20536,7 +20537,6 @@ resolve@^0.6.1:
     datatables.net-select: ~1.3.0
     datatables.net-select-bs: ~1.3.0
     es6-promise: ~4.0.5
-    font-awesome: ~4.7.0
     get-root-node-polyfill: ~1.0.0
     jquery: ~3.5.1
     jquery-migrate: ~3.0.0
