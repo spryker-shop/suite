@@ -314,8 +314,12 @@ actions:
       source: data/import/common/common/marketplace/merchant_oms_process.csv
     - data_entity: stock
       source: data/import/common/common/marketplace/warehouse.csv
+    - data_entity: stock-address
+      source: data/import/common/common/marketplace/warehouse_address.csv
     - data_entity: merchant-stock
       source: data/import/common/common/marketplace/merchant_stock.csv
+    - data_entity: product-stock
+      source: data/import/common/common/marketplace/product_stock.csv
     # Store relation
     - data_entity: merchant-store
       source: data/import/common/DE/merchant_store.csv
@@ -325,3 +329,19 @@ actions:
       source: data/import/common/DE/merchant_product_offer_store.csv
     - data_entity: merchant-product-offer-store
       source: data/import/common/AT/merchant_product_offer_store.csv
+    - data_entity: stock-store
+      source: data/import/common/DE/marketplace/warehouse_store.csv
+    - data_entity: stock-store
+      source: data/import/common/AT/marketplace/warehouse_store.csv
+
+    # Acl import
+    - data_entity: acl-role
+      source: data/import/common/common/acl_role.csv
+
+    # AclEntity import
+    - data_entity: acl-entity-segment
+      source: data/import/common/common/acl_entity_segment.csv
+    - data_entity: acl-entity-rule
+      source: data/import/common/common/acl_entity_rule.csv
+    - data_entity: acl-entity-segment-connector
+      source: data/import/common/common/acl_entity_segment_connector.csv

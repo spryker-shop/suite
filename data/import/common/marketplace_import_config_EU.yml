@@ -32,6 +32,8 @@ actions:
       source: data/import/common/common/marketplace/merchant_oms_process.csv
     - data_entity: stock
       source: data/import/common/common/marketplace/warehouse.csv
+    - data_entity: stock-address
+      source: data/import/common/common/marketplace/warehouse_address.csv
     - data_entity: merchant-stock
       source: data/import/common/common/marketplace/merchant_stock.csv
     - data_entity: payment-method
@@ -46,9 +48,9 @@ actions:
     - data_entity: merchant-product-offer-store
       source: data/import/common/AT/merchant_product_offer_store.csv
     - data_entity: stock-store
-      source: data/import/common/DE/warehouse_store.csv
+      source: data/import/common/DE/marketplace/warehouse_store.csv
     - data_entity: stock-store
-      source: data/import/common/AT/warehouse_store.csv
+      source: data/import/common/AT/marketplace/warehouse_store.csv
     - data_entity: payment-method-store
       source: data/import/common/DE/payment_method_store.csv
     - data_entity: payment-method-store

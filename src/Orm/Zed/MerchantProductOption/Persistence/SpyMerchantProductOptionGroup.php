@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\MerchantProductOption\Persistence;
 
-use Spryker\Zed\MerchantProductOption\Persistence\Propel\AbstractSpyMerchantProductOptionGroup;
+use Spryker\Zed\MerchantProductOption\Persistence\Propel\AbstractSpyMerchantProductOptionGroup as BaseSpyMerchantProductOptionGroup;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_merchant_product_option_group' table.
@@ -18,6 +18,6 @@ use Spryker\Zed\MerchantProductOption\Persistence\Propel\AbstractSpyMerchantProd
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyMerchantProductOptionGroup extends AbstractSpyMerchantProductOptionGroup
+class SpyMerchantProductOptionGroup extends BaseSpyMerchantProductOptionGroup
 {
 }

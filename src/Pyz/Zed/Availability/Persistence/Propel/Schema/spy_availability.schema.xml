@@ -13,5 +13,6 @@
             <parameter name="spy_availability_quantity" column="quantity"/>
             <parameter name="spy_availability_sku" column="sku" keep-additional="true"/>
         </behavior>
+        <behavior name="\Spryker\Zed\AclEntity\Persistence\Propel\Behavior\AclEntityBehavior"/>
     </table>
 </database>

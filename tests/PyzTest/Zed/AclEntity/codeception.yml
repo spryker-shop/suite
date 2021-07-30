@@ -1,0 +1,36 @@
+namespace: PyzTest\Zed\AclEntity
+paths:
+    tests: .
+    data: _data
+    support: _support
+    log: _output
+coverage:
+    enabled: true
+    remote: false
+    whitelist:
+        include:
+            - '../../../../src/*'
+suites:
+    Persistence:
+        path: Persistence
+        class_name: AclQueryDirectorTester
+        modules:
+            enabled:
+                - Asserts
+                - \SprykerTest\Shared\User\Helper\UserDataHelper
+                - \SprykerTest\Shared\Product\Helper\ProductDataHelper
+                - \SprykerTest\Zed\ProductOffer\Helper\ProductOfferHelper
+                - \SprykerTest\Zed\Merchant\Helper\MerchantHelper
+                - \SprykerTest\Shared\MerchantProduct\Helper\MerchantProductHelper
+                - \SprykerTest\Shared\ProductImage\Helper\ProductImageDataHelper
+                - \SprykerTest\Zed\Acl\Helper\AclHelper
+                - \SprykerTest\Zed\AclEntity\Helper\AclEntityHelper
+                - \SprykerTest\Zed\Sales\Helper\BusinessHelper
+                - \SprykerTest\Shared\Propel\Helper\ConnectionHelper
+                - \SprykerTest\Shared\Propel\Helper\TableHelper
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Zed\Testify\Helper\Business\BusinessHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper

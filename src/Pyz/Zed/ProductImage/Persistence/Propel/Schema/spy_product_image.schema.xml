@@ -5,12 +5,14 @@
         <behavior name="event">
             <parameter name="spy_product_image_set_all" column="*"/>
         </behavior>
+        <behavior name="\Spryker\Zed\AclEntity\Persistence\Propel\Behavior\AclEntityBehavior"/>
     </table>
 
     <table name="spy_product_image">
         <behavior name="event">
             <parameter name="spy_product_image_all" column="*"/>
         </behavior>
+        <behavior name="\Spryker\Zed\AclEntity\Persistence\Propel\Behavior\AclEntityBehavior"/>
     </table>
 
     <table name="spy_product_image_set_to_product_image">
