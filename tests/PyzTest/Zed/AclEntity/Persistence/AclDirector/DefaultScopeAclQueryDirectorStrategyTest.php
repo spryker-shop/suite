@@ -20,6 +20,7 @@ use Orm\Zed\Merchant\Persistence\SpyMerchant;
 use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Orm\Zed\Store\Persistence\SpyStore;
+use Pyz\Zed\Merchant\MerchantDependencyProvider;
 use PyzTest\Zed\AclEntity\AclQueryDirectorTester;
 use Spryker\Shared\AclEntity\AclEntityConstants;
 use Spryker\Zed\AclEntity\Persistence\Exception\OperationNotAuthorizedException;
@@ -49,6 +50,8 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->tester->setDependency(MerchantDependencyProvider::PLUGINS_MERCHANT_POST_CREATE, []);
 
         $this->tester->deleteRoles(
             (new AclRoleCriteriaTransfer())->setNames([AclQueryDirectorTester::ACL_ROLE_1_NAME])
