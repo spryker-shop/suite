@@ -187,6 +187,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface;
 use Spryker\Zed\Discount\DiscountConfig;
+use Spryker\Zed\MerchantUser\Business\MerchantUserFacadeInterface;
 use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 use Spryker\Zed\Stock\Business\StockFacadeInterface;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
@@ -2766,7 +2767,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
-        $dataSetStepBroker->addStep(new MerchantUserWriterStep());
+        $dataSetStepBroker->addStep(new MerchantUserWriterStep(
+            $this->getMerchantUserFacade()
+        ));
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
@@ -2779,5 +2782,13 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductStockReader(): ProductStockReaderInterface
     {
         return new ProductStockReader();
+    }
+
+    /**
+     * @return \Spryker\Zed\MerchantUser\Business\MerchantUserFacadeInterface
+     */
+    public function getMerchantUserFacade(): MerchantUserFacadeInterface
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_MERCHANT_USER);
     }
 }

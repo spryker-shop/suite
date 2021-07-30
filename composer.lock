@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.186.1",
+            "version": "3.186.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "50f1ec9c1afa9c09512e1b0f8e03fcec9ea5e731"
+                "reference": "ce90f6e5c322f2ce600d818b7949dbfcbf192359"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/50f1ec9c1afa9c09512e1b0f8e03fcec9ea5e731",
-                "reference": "50f1ec9c1afa9c09512e1b0f8e03fcec9ea5e731",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ce90f6e5c322f2ce600d818b7949dbfcbf192359",
+                "reference": "ce90f6e5c322f2ce600d818b7949dbfcbf192359",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.186.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.186.2"
             },
-            "time": "2021-07-28T18:14:43+00:00"
+            "time": "2021-07-29T18:14:25+00:00"
         },
         {
             "name": "brick/math",
@@ -3841,16 +3841,16 @@
         },
         {
             "name": "ramsey/collection",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/collection.git",
-                "reference": "28a5c4ab2f5111db6a60b2b4ec84057e0f43b9c1"
+                "reference": "ab2237657ad99667a5143e32ba2683c8029563d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/collection/zipball/28a5c4ab2f5111db6a60b2b4ec84057e0f43b9c1",
-                "reference": "28a5c4ab2f5111db6a60b2b4ec84057e0f43b9c1",
+                "url": "https://api.github.com/repos/ramsey/collection/zipball/ab2237657ad99667a5143e32ba2683c8029563d4",
+                "reference": "ab2237657ad99667a5143e32ba2683c8029563d4",
                 "shasum": ""
             },
             "require": {
@@ -3902,7 +3902,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/collection/issues",
-                "source": "https://github.com/ramsey/collection/tree/1.1.3"
+                "source": "https://github.com/ramsey/collection/tree/1.1.4"
             },
             "funding": [
                 {
@@ -3914,7 +3914,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-21T17:40:04+00:00"
+            "time": "2021-07-30T00:58:27+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -4799,14 +4799,20 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b7e836dbac1992239a0a657262a8d03925a43dd5"
+                "reference": "c8829d3f3dd9823e0b62a033389125dfbc3c4c3d"
             },
             "require": {
                 "php": ">=7.3"
             },
             "replace": {
                 "spryker/acl": "*",
+                "spryker/acl-data-import": "*",
+                "spryker/acl-entity": "*",
+                "spryker/acl-entity-data-import": "*",
+                "spryker/acl-entity-dummy-product": "*",
+                "spryker/acl-entity-extension": "*",
                 "spryker/acl-extension": "*",
+                "spryker/acl-merchant-portal": "*",
                 "spryker/agent": "*",
                 "spryker/agent-auth-rest-api": "*",
                 "spryker/agent-extension": "*",
@@ -5190,6 +5196,7 @@
                 "spryker/merchant-storage": "*",
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
+                "spryker/merchant-user-extension": "*",
                 "spryker/merchant-user-gui": "*",
                 "spryker/merchant-user-password-reset-mail": "*",
                 "spryker/merchants-rest-api": "*",
@@ -5640,7 +5647,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-07-29T15:49:11+00:00"
+            "time": "2021-07-30T05:04:54+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -16986,5 +16993,5 @@
     "platform-overrides": {
         "php": "7.3.15"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

@@ -12,6 +12,12 @@ use Pyz\Zed\MerchantProductOfferDataImport\Communication\Plugin\CombinedMerchant
 use Pyz\Zed\PriceProductOfferDataImport\Communication\Plugin\CombinedPriceProductOfferDataImportPlugin;
 use Pyz\Zed\ProductOfferStockDataImport\Communication\Plugin\CombinedProductOfferStockDataImportPlugin;
 use Pyz\Zed\ProductOfferValidityDataImport\Communication\Plugin\CombinedProductOfferValidityDataImportPlugin;
+use Spryker\Zed\AclDataImport\Communication\Plugin\AclGroupDataImportPlugin;
+use Spryker\Zed\AclDataImport\Communication\Plugin\AclGroupRoleDataImportPlugin;
+use Spryker\Zed\AclDataImport\Communication\Plugin\AclRoleDataImportPlugin;
+use Spryker\Zed\AclEntityDataImport\Communication\Plugin\AclEntityRuleDataImportPlugin;
+use Spryker\Zed\AclEntityDataImport\Communication\Plugin\AclEntitySegmentConnectorDataImportPlugin;
+use Spryker\Zed\AclEntityDataImport\Communication\Plugin\AclEntitySegmentDataImportPlugin;
 use Spryker\Zed\BusinessOnBehalfDataImport\Communication\Plugin\DataImport\BusinessOnBehalfCompanyUserDataImportPlugin;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\DataImport\CategoryStoreDataImportPlugin;
@@ -113,6 +119,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     public const FACADE_PRODUCT_SEARCH = 'product search facade';
 
     public const FACADE_PRICE_PRODUCT = 'FACADE_PRICE_PRODUCT';
+    public const FACADE_MERCHANT_USER = 'FACADE_MERCHANT_USER';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -131,6 +138,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container = $this->addProductRelationFacade($container);
         $container = $this->addProductSearchFacade($container);
         $container = $this->addPriceProductFacade($container);
+        $container = $this->addMerchantUserFacade($container);
         $container = $this->addUtilEncodingService($container);
 
         return $container;
@@ -235,6 +243,20 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     }
 
     /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addMerchantUserFacade(Container $container)
+    {
+        $container->set(static::FACADE_MERCHANT_USER, function (Container $container) {
+            return $container->getLocator()->merchantUser()->facade();
+        });
+
+        return $container;
+    }
+
+    /**
      * @return array
      */
     protected function getDataImporterPlugins(): array
@@ -247,6 +269,12 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CmsSlotDataImportPlugin(),
             new CmsSlotBlockDataImportPlugin(),
             new CompanyDataImportPlugin(),
+            new AclGroupDataImportPlugin(),
+            new AclRoleDataImportPlugin(),
+            new AclGroupRoleDataImportPlugin(),
+            new AclEntityRuleDataImportPlugin(),
+            new AclEntitySegmentDataImportPlugin(),
+            new AclEntitySegmentConnectorDataImportPlugin(),
             new CompanyBusinessUnitDataImportPlugin(),
             new CompanyUnitAddressDataImportPlugin(),
             new CompanyUnitAddressLabelDataImportPlugin(),

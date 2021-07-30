@@ -7,15 +7,31 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\MerchantUser;
 
+use Generated\Shared\Transfer\MerchantUserCriteriaTransfer;
+use Generated\Shared\Transfer\MerchantUserTransfer;
+use Generated\Shared\Transfer\UserCriteriaTransfer;
 use Orm\Zed\Merchant\Persistence\SpyMerchantQuery;
-use Orm\Zed\MerchantUser\Persistence\SpyMerchantUserQuery;
 use Orm\Zed\User\Persistence\SpyUserQuery;
 use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\MerchantUser\Business\MerchantUserFacadeInterface;
 
 class MerchantUserWriterStep implements DataImportStepInterface
 {
+    /**
+     * @var \Spryker\Zed\MerchantUser\Business\MerchantUserFacadeInterface
+     */
+    protected $merchantUserFacade;
+
+    /**
+     * @param \Spryker\Zed\MerchantUser\Business\MerchantUserFacadeInterface $merchantUserFacade
+     */
+    public function __construct(MerchantUserFacadeInterface $merchantUserFacade)
+    {
+        $this->merchantUserFacade = $merchantUserFacade;
+    }
+
     protected const MERCHANT_REFERENCE = 'merchant_reference';
     protected const USERNAME = 'username';
 
@@ -27,12 +43,23 @@ class MerchantUserWriterStep implements DataImportStepInterface
         $idMerchant = $this->getIdMerchantByReference($dataSet[static::MERCHANT_REFERENCE]);
         $idUser = $this->getIdUserByUsername($dataSet[static::USERNAME]);
 
-        $merchantUserEntity = SpyMerchantUserQuery::create()
-            ->filterByFkMerchant($idMerchant)
-            ->filterByFkUser($idUser)
-            ->findOneOrCreate();
+        $merchantUserTransfer = $this->merchantUserFacade->findMerchantUser(
+            (new MerchantUserCriteriaTransfer())
+                ->setIdUser($idUser)
+                ->setIdMerchant($idMerchant)
+        );
 
-        $merchantUserEntity->save();
+        if (!$merchantUserTransfer) {
+            $userTransfer = $this->merchantUserFacade->findUser(
+                (new UserCriteriaTransfer())->setIdUser($idUser)
+            );
+
+            $this->merchantUserFacade->createMerchantUser(
+                (new MerchantUserTransfer())
+                    ->setIdMerchant($idMerchant)
+                    ->setUser($userTransfer)
+            );
+        }
     }
 
     /**

@@ -8,6 +8,8 @@
 namespace Pyz\Zed\DataImport;
 
 use Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer;
+use Spryker\Zed\AclDataImport\AclDataImportConfig;
+use Spryker\Zed\AclEntityDataImport\AclEntityDataImportConfig;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
 use Spryker\Zed\CmsPageDataImport\CmsPageDataImportConfig;
@@ -218,6 +220,12 @@ class DataImportConfig extends SprykerDataImportConfig
             CmsPageDataImportConfig::IMPORT_TYPE_CMS_PAGE_STORE,
             CmsPageDataImportConfig::IMPORT_TYPE_CMS_PAGE,
             CompanyDataImportConfig::IMPORT_TYPE_COMPANY,
+            AclDataImportConfig::IMPORT_TYPE_ACL_GROUP,
+            AclDataImportConfig::IMPORT_TYPE_ACL_ROLE,
+            AclDataImportConfig::IMPORT_TYPE_ACL_GROUP_ROLE,
+            AclEntityDataImportConfig::IMPORT_TYPE_ACL_ENTITY_RULE,
+            AclEntityDataImportConfig::IMPORT_TYPE_ACL_ENTITY_SEGMENT,
+            AclEntityDataImportConfig::IMPORT_TYPE_ACL_ENTITY_SEGMENT_CONNECTOR,
             CategoryDataImportConfig::IMPORT_TYPE_CATEGORY,
             MerchantDataImportConfig::IMPORT_TYPE_MERCHANT,
             MerchantDataImportConfig::IMPORT_TYPE_MERCHANT_STORE,

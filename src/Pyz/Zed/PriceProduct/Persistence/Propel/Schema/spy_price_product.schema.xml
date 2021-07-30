@@ -16,6 +16,7 @@
         <behavior name="event">
             <parameter name="spy_price_product_all" column="*"/>
         </behavior>
+        <behavior name="\Spryker\Zed\AclEntity\Persistence\Propel\Behavior\AclEntityBehavior"/>
     </table>
 
     <table name="spy_price_type">
@@ -28,6 +29,7 @@
         <behavior name="event">
             <parameter name="spy_price_product_store_all" column="*"/>
         </behavior>
+        <behavior name="\Spryker\Zed\AclEntity\Persistence\Propel\Behavior\AclEntityBehavior"/>
     </table>
 
     <table name="spy_price_product_default">
