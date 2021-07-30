@@ -1,5 +1,14 @@
 <?xml version="1.0"?>
 <database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\MerchantSalesOrder\Persistence" package="src.Orm.Zed.MerchantSalesOrder.Persistence">
+
+  <table name="spy_merchant_sales_order">
+    <behavior name="\Spryker\Zed\AclEntity\Persistence\Propel\Behavior\AclEntityBehavior"/>
+  </table>
+
+  <table name="spy_merchant_sales_order_totals">
+    <behavior name="\Spryker\Zed\AclEntity\Persistence\Propel\Behavior\AclEntityBehavior"/>
+  </table>
+
   <table name="spy_merchant_sales_order_item">
     <index name="index-spy_merchant_sales_order_item-fk_state_machine_item_state">
       <index-column name="fk_state_machine_item_state"/>
