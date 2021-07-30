@@ -21,6 +21,8 @@ use Orm\Zed\Product\Persistence\SpyProductAbstract;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductOffer\Persistence\SpyProductOffer;
 use Orm\Zed\ProductOffer\Persistence\SpyProductOfferQuery;
+use Pyz\Zed\Merchant\MerchantDependencyProvider;
+use Pyz\Zed\ProductOffer\ProductOfferDependencyProvider;
 use PyzTest\Zed\AclEntity\AclQueryDirectorTester;
 use Spryker\Shared\AclEntity\AclEntityConstants;
 use Spryker\Zed\AclEntity\Persistence\Exception\OperationNotAuthorizedException;
@@ -57,6 +59,9 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->tester->setDependency(MerchantDependencyProvider::PLUGINS_MERCHANT_POST_CREATE, []);
+        $this->tester->setDependency(ProductOfferDependencyProvider::PLUGINS_PRODUCT_OFFER_POST_CREATE, []);
 
         $this->tester->deleteTestData();
         $this->tester->deleteAclEntitySegments(
