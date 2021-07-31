@@ -49,6 +49,7 @@ class SegmentScopeAclQueryDirectorStrategyTest extends Unit
         parent::setUp();
 
         $this->tester->setDependency(MerchantDependencyProvider::PLUGINS_MERCHANT_POST_CREATE, []);
+
         $this->tester->deleteTestData();
     }
 
