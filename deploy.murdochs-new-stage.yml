@@ -46,10 +46,10 @@ image:
     environment:
         SPRYKER_DEFAULT_STORE: "US"
         SPRYKER_ACTIVE_STORES: "US"
-        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r US/pre-deploy -vvv"
+        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r pre-deploy -vvv"
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
-        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r US/production --no-ansi -vvv"
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r US/destructive --no-ansi -vvv"
+        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r production --no-ansi -vvv"
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r destructive --no-ansi -vvv"
         SPRYKER_REGISTRATION_CONFIRMATION_TOKEN_URL: "https://vue.murdochs-new-stage.cloud.spryker.toys"
         SPRYKER_IMPORT_FILE_ROOT_PATH: "data/import/common/US"
         MURDOCHS_MIDDLEWARE_SOURCE_IMPORT_FILE_SYSTEM_NAME: "murdochs-import-source-s3"
