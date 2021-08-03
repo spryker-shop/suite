@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.186.2",
+            "version": "3.186.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "ce90f6e5c322f2ce600d818b7949dbfcbf192359"
+                "reference": "887b9c15b8e55e139b9c697b040277a709b89582"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ce90f6e5c322f2ce600d818b7949dbfcbf192359",
-                "reference": "ce90f6e5c322f2ce600d818b7949dbfcbf192359",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/887b9c15b8e55e139b9c697b040277a709b89582",
+                "reference": "887b9c15b8e55e139b9c697b040277a709b89582",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.186.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.186.4"
             },
-            "time": "2021-07-29T18:14:25+00:00"
+            "time": "2021-08-02T18:18:03+00:00"
         },
         {
             "name": "brick/math",
@@ -4288,12 +4288,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/payone.git",
-                "reference": "40913a32d97f87ee4b57189da16e5dd81ef34df5"
+                "reference": "586a725fb6c6000809858488249768ad52505cd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/payone/zipball/40913a32d97f87ee4b57189da16e5dd81ef34df5",
-                "reference": "40913a32d97f87ee4b57189da16e5dd81ef34df5",
+                "url": "https://api.github.com/repos/spryker-eco/payone/zipball/586a725fb6c6000809858488249768ad52505cd7",
+                "reference": "586a725fb6c6000809858488249768ad52505cd7",
                 "shasum": ""
             },
             "require": {
@@ -4360,9 +4360,9 @@
             ],
             "description": "Payone module",
             "support": {
-                "source": "https://github.com/spryker-eco/payone/tree/4.4.0"
+                "source": "https://github.com/spryker-eco/payone/tree/4.4.1"
             },
-            "time": "2021-06-11T08:30:53+00:00"
+            "time": "2021-08-03T10:17:36+00:00"
         },
         {
             "name": "spryker/checksum-generator",
@@ -4463,16 +4463,16 @@
         },
         {
             "name": "spryker/decimal-object",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/decimal-object.git",
-                "reference": "4366191e7eb33dafa49661615c086b20abb5d380"
+                "reference": "782d76da687c5f54d2f235bdb6efe0fa1377d090"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/decimal-object/zipball/4366191e7eb33dafa49661615c086b20abb5d380",
-                "reference": "4366191e7eb33dafa49661615c086b20abb5d380",
+                "url": "https://api.github.com/repos/spryker/decimal-object/zipball/782d76da687c5f54d2f235bdb6efe0fa1377d090",
+                "reference": "782d76da687c5f54d2f235bdb6efe0fa1377d090",
                 "shasum": ""
             },
             "require": {
@@ -4509,9 +4509,9 @@
             "description": "PHP decimal handling as value object",
             "support": {
                 "issues": "https://github.com/spryker/decimal-object/issues",
-                "source": "https://github.com/spryker/decimal-object/tree/1.0.1"
+                "source": "https://github.com/spryker/decimal-object/tree/1.0.2"
             },
-            "time": "2020-11-05T10:31:54+00:00"
+            "time": "2021-07-30T15:32:04+00:00"
         },
         {
             "name": "spryker/event-behavior",
@@ -11572,21 +11572,21 @@
         },
         {
             "name": "composer/xdebug-handler",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "964adcdd3a28bf9ed5d9ac6450064e0d71ed7496"
+                "reference": "84674dd3a7575ba617f5a76d7e9e29a7d3891339"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/964adcdd3a28bf9ed5d9ac6450064e0d71ed7496",
-                "reference": "964adcdd3a28bf9ed5d9ac6450064e0d71ed7496",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/84674dd3a7575ba617f5a76d7e9e29a7d3891339",
+                "reference": "84674dd3a7575ba617f5a76d7e9e29a7d3891339",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.3.2 || ^7.0 || ^8.0",
-                "psr/log": "^1.0"
+                "psr/log": "^1 || ^2 || ^3"
             },
             "require-dev": {
                 "phpstan/phpstan": "^0.12.55",
@@ -11616,7 +11616,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/xdebug-handler/issues",
-                "source": "https://github.com/composer/xdebug-handler/tree/2.0.1"
+                "source": "https://github.com/composer/xdebug-handler/tree/2.0.2"
             },
             "funding": [
                 {
@@ -11632,7 +11632,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-05T19:37:51+00:00"
+            "time": "2021-07-31T17:03:58+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -13413,16 +13413,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.7",
+            "version": "9.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d0dc8b6999c937616df4fb046792004b33fd31c5"
+                "reference": "191768ccd5c85513b4068bdbe99bb6390c7d54fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d0dc8b6999c937616df4fb046792004b33fd31c5",
-                "reference": "d0dc8b6999c937616df4fb046792004b33fd31c5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/191768ccd5c85513b4068bdbe99bb6390c7d54fb",
+                "reference": "191768ccd5c85513b4068bdbe99bb6390c7d54fb",
                 "shasum": ""
             },
             "require": {
@@ -13434,7 +13434,7 @@
                 "ext-xml": "*",
                 "ext-xmlwriter": "*",
                 "myclabs/deep-copy": "^1.10.1",
-                "phar-io/manifest": "^2.0.1",
+                "phar-io/manifest": "^2.0.3",
                 "phar-io/version": "^3.0.2",
                 "php": ">=7.3",
                 "phpspec/prophecy": "^1.12.1",
@@ -13500,7 +13500,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.7"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.8"
             },
             "funding": [
                 {
@@ -13512,7 +13512,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-19T06:14:47+00:00"
+            "time": "2021-07-31T15:17:34+00:00"
         },
         {
             "name": "psalm/phar",
@@ -14617,7 +14617,6 @@
                     "type": "github"
                 }
             ],
-            "abandoned": true,
             "time": "2020-09-28T06:45:17+00:00"
         },
         {
