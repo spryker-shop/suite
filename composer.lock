@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.186.4",
+            "version": "3.187.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "887b9c15b8e55e139b9c697b040277a709b89582"
+                "reference": "1c7f307e0987bd8eacd2d99d78818a96b42511d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/887b9c15b8e55e139b9c697b040277a709b89582",
-                "reference": "887b9c15b8e55e139b9c697b040277a709b89582",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1c7f307e0987bd8eacd2d99d78818a96b42511d1",
+                "reference": "1c7f307e0987bd8eacd2d99d78818a96b42511d1",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.186.4"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.187.0"
             },
-            "time": "2021-08-02T18:18:03+00:00"
+            "time": "2021-08-03T18:18:03+00:00"
         },
         {
             "name": "brick/math",
@@ -616,23 +616,23 @@
         },
         {
             "name": "elasticsearch/elasticsearch",
-            "version": "v7.13.1",
+            "version": "v7.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "45e17adacd3319958d6135e4ee3a21dbbe36a24b"
+                "reference": "0f258961c36075e17a133fe0075b881035998d27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/45e17adacd3319958d6135e4ee3a21dbbe36a24b",
-                "reference": "45e17adacd3319958d6135e4ee3a21dbbe36a24b",
+                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/0f258961c36075e17a133fe0075b881035998d27",
+                "reference": "0f258961c36075e17a133fe0075b881035998d27",
                 "shasum": ""
             },
             "require": {
                 "ext-json": ">=1.3.7",
                 "ezimuel/ringphp": "^1.1.2",
                 "php": "^7.3 || ^8.0",
-                "psr/log": "~1.0"
+                "psr/log": "^1|^2"
             },
             "require-dev": {
                 "ext-yaml": "*",
@@ -676,9 +676,9 @@
             ],
             "support": {
                 "issues": "https://github.com/elastic/elasticsearch-php/issues",
-                "source": "https://github.com/elastic/elasticsearch-php/tree/v7.13.1"
+                "source": "https://github.com/elastic/elasticsearch-php/tree/v7.14.0"
             },
-            "time": "2021-06-15T18:36:52+00:00"
+            "time": "2021-08-03T16:26:31+00:00"
         },
         {
             "name": "everon/collection",
@@ -1620,24 +1620,23 @@
         },
         {
             "name": "laminas/laminas-stdlib",
-            "version": "3.4.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-stdlib.git",
-                "reference": "e89c2268c9cad25099f562f7f015c28c5dd383c9"
+                "reference": "c8ac6a76a133e682acfabc821d4a2ec646934b12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/e89c2268c9cad25099f562f7f015c28c5dd383c9",
-                "reference": "e89c2268c9cad25099f562f7f015c28c5dd383c9",
+                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/c8ac6a76a133e682acfabc821d4a2ec646934b12",
+                "reference": "c8ac6a76a133e682acfabc821d4a2ec646934b12",
                 "shasum": ""
             },
             "require": {
-                "laminas/laminas-zendframework-bridge": "^1.0",
                 "php": "^7.3 || ^8.0"
             },
-            "replace": {
-                "zendframework/zend-stdlib": "^3.2.1"
+            "conflict": {
+                "zendframework/zend-stdlib": "*"
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.3.0",
@@ -1676,7 +1675,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-06-28T21:37:31+00:00"
+            "time": "2021-08-03T13:40:40+00:00"
         },
         {
             "name": "laminas/laminas-zendframework-bridge",
@@ -41395,16 +41394,16 @@
         },
         {
             "name": "spryker/product-offer-merchant-portal-gui",
-            "version": "0.15.0",
+            "version": "0.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-offer-merchant-portal-gui.git",
-                "reference": "b2a376c0dfca981c609474768b433177901ccafc"
+                "reference": "42eb6d1955523a45c327b2b201f2781459fedb46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-offer-merchant-portal-gui/zipball/b2a376c0dfca981c609474768b433177901ccafc",
-                "reference": "b2a376c0dfca981c609474768b433177901ccafc",
+                "url": "https://api.github.com/repos/spryker/product-offer-merchant-portal-gui/zipball/42eb6d1955523a45c327b2b201f2781459fedb46",
+                "reference": "42eb6d1955523a45c327b2b201f2781459fedb46",
                 "shasum": ""
             },
             "require": {
@@ -41462,9 +41461,9 @@
             ],
             "description": "ProductOfferMerchantPortalGui module",
             "support": {
-                "source": "https://github.com/spryker/product-offer-merchant-portal-gui/tree/0.15.0"
+                "source": "https://github.com/spryker/product-offer-merchant-portal-gui/tree/0.15.1"
             },
-            "time": "2021-08-03T10:44:17+00:00"
+            "time": "2021-08-04T11:31:07+00:00"
         },
         {
             "name": "spryker/product-offer-packaging-unit",
@@ -63193,12 +63192,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "46386108c0c561be2ae17d288b4686834e8efe77"
+                "reference": "124eb7a3375a6599e1a2b6be8afe4bc7fb4d8d50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/46386108c0c561be2ae17d288b4686834e8efe77",
-                "reference": "46386108c0c561be2ae17d288b4686834e8efe77",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/124eb7a3375a6599e1a2b6be8afe4bc7fb4d8d50",
+                "reference": "124eb7a3375a6599e1a2b6be8afe4bc7fb4d8d50",
                 "shasum": ""
             },
             "require": {
@@ -63244,7 +63243,7 @@
                 "issues": "https://github.com/spryker/code-sniffer/issues",
                 "source": "https://github.com/spryker/code-sniffer"
             },
-            "time": "2021-07-05T10:27:34+00:00"
+            "time": "2021-08-03T12:30:41+00:00"
         },
         {
             "name": "spryker/docker-chromedriver",
