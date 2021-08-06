@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\AclEntity;
 
-use Spryker\Communication\Plugin\AclEntity\AclEntityEnablerPlugin;
 use Spryker\Zed\AclEntity\AclEntityDependencyProvider as SprykerAclEntityDependencyProvider;
 use Spryker\Zed\AclEntityDummyProduct\Communication\DummyProductAclEntityMetadataConfigExpanderPlugin;
 use Spryker\Zed\AclMerchantPortal\Communication\Plugin\AclEntity\MerchantPortalAclEntityMetadataConfigExpanderPlugin;
@@ -35,16 +34,6 @@ class AclEntityDependencyProvider extends SprykerAclEntityDependencyProvider
         return [
             new SecuritySystemUserAclEntityDisablerPlugin(),
             new ConsoleAclEntityDisablerPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\AclEntityExtension\Dependency\Plugin\AclEntityEnablerPluginInterface[]
-     */
-    protected function getAclEntityEnablerPlugins(): array
-    {
-        return [
-            new AclEntityEnablerPlugin(),
         ];
     }
 }
