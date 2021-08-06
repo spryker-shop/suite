@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7d6dcc21bb5d75cd8d864731b0b27255",
+    "content-hash": "846b7ffe4ff1345d671ffde0212d4240",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -13669,6 +13669,95 @@
             "time": "2019-09-25T13:31:36+00:00"
         },
         {
+            "name": "spryker/authorization",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/authorization.git",
+                "reference": "052579a1d4932d23d39c3e654c869827d128c8ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/authorization/zipball/052579a1d4932d23d39c3e654c869827d128c8ba",
+                "reference": "052579a1d4932d23d39c3e654c869827d128c8ba",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/authorization-extension": "^1.0.0",
+                "spryker/kernel": "^3.33.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/glue-application": "If you want to use the plugins.",
+                "spryker/symfony": "If you want to use the plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Authorization module",
+            "support": {
+                "source": "https://github.com/spryker/authorization/tree/1.0.0"
+            },
+            "time": "2021-08-06T12:09:29+00:00"
+        },
+        {
+            "name": "spryker/authorization-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/authorization-extension.git",
+                "reference": "10c790cef2f11909c2f3edfc3a00608dc0fdb88c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/authorization-extension/zipball/10c790cef2f11909c2f3edfc3a00608dc0fdb88c",
+                "reference": "10c790cef2f11909c2f3edfc3a00608dc0fdb88c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AuthorizationExtension module",
+            "support": {
+                "source": "https://github.com/spryker/authorization-extension/tree/1.0.0"
+            },
+            "time": "2021-08-06T12:09:29+00:00"
+        },
+        {
             "name": "spryker/availability",
             "version": "9.12.2",
             "source": {
@@ -23927,20 +24016,21 @@
         },
         {
             "name": "spryker/customer",
-            "version": "7.36.1",
+            "version": "7.37.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer.git",
-                "reference": "0f3ab6de89b7d9519b24e9b86dfe932db993caf8"
+                "reference": "81e0509ef18608754d16a264f6341f35d8948dea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer/zipball/0f3ab6de89b7d9519b24e9b86dfe932db993caf8",
-                "reference": "0f3ab6de89b7d9519b24e9b86dfe932db993caf8",
+                "url": "https://api.github.com/repos/spryker/customer/zipball/81e0509ef18608754d16a264f6341f35d8948dea",
+                "reference": "81e0509ef18608754d16a264f6341f35d8948dea",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
+                "spryker/authorization-extension": "^1.0.0",
                 "spryker/country": "^3.0.0",
                 "spryker/customer-extension": "^1.3.0",
                 "spryker/gui": "^3.39.0",
@@ -23996,9 +24086,9 @@
             ],
             "description": "Customer module",
             "support": {
-                "source": "https://github.com/spryker/customer/tree/7.36.1"
+                "source": "https://github.com/spryker/customer/tree/7.37.0"
             },
-            "time": "2021-08-03T10:33:59+00:00"
+            "time": "2021-08-06T12:09:29+00:00"
         },
         {
             "name": "spryker/customer-access",
@@ -27361,16 +27451,16 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.34.0",
+            "version": "1.35.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "e2ab94f10f767b2368c8d9a6aa3fc0b9492fa04d"
+                "reference": "6cf061e525ae737008fc875d9349629fa2e3668b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/e2ab94f10f767b2368c8d9a6aa3fc0b9492fa04d",
-                "reference": "e2ab94f10f767b2368c8d9a6aa3fc0b9492fa04d",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/6cf061e525ae737008fc875d9349629fa2e3668b",
+                "reference": "6cf061e525ae737008fc875d9349629fa2e3668b",
                 "shasum": ""
             },
             "require": {
@@ -27380,7 +27470,7 @@
                 "spryker/container": "^1.0.0",
                 "spryker/documentation-generator-rest-api-extension": "^1.0.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
-                "spryker/glue-application-extension": "^1.4.0",
+                "spryker/glue-application-extension": "^1.5.0",
                 "spryker/kernel": "^3.58.0",
                 "spryker/log": "^3.0.0",
                 "spryker/session": "^3.0.0 || ^4.0.0",
@@ -27419,22 +27509,110 @@
             ],
             "description": "GlueApplication module",
             "support": {
-                "source": "https://github.com/spryker/glue-application/tree/1.34.0"
+                "source": "https://github.com/spryker/glue-application/tree/1.35.0"
             },
-            "time": "2021-07-26T09:19:37+00:00"
+            "time": "2021-08-06T12:09:29+00:00"
         },
         {
-            "name": "spryker/glue-application-extension",
-            "version": "1.4.0",
+            "name": "spryker/glue-application-authorization-connector",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/glue-application-extension.git",
-                "reference": "2596846039c83ab6de0ae6c098fe3d2d0f32eaa1"
+                "url": "https://github.com/spryker/glue-application-authorization-connector.git",
+                "reference": "a9da748d84e2bd602b70d71d03a86de4e6390c7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application-extension/zipball/2596846039c83ab6de0ae6c098fe3d2d0f32eaa1",
-                "reference": "2596846039c83ab6de0ae6c098fe3d2d0f32eaa1",
+                "url": "https://api.github.com/repos/spryker/glue-application-authorization-connector/zipball/a9da748d84e2bd602b70d71d03a86de4e6390c7e",
+                "reference": "a9da748d84e2bd602b70d71d03a86de4e6390c7e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/authorization": "^1.0.0",
+                "spryker/glue-application": "^1.35.0",
+                "spryker/glue-application-authorization-connector-extension": "^1.0.0",
+                "spryker/glue-application-extension": "^1.5.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/symfony": "^3.5.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "GlueApplicationAuthorizationConnector module",
+            "support": {
+                "source": "https://github.com/spryker/glue-application-authorization-connector/tree/1.0.0"
+            },
+            "time": "2021-08-06T12:09:29+00:00"
+        },
+        {
+            "name": "spryker/glue-application-authorization-connector-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/glue-application-authorization-connector-extension.git",
+                "reference": "65313b896fdeccea2bdf3e517556586d694a7819"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/glue-application-authorization-connector-extension/zipball/65313b896fdeccea2bdf3e517556586d694a7819",
+                "reference": "65313b896fdeccea2bdf3e517556586d694a7819",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "GlueApplicationAuthorizationConnectorExtension module",
+            "support": {
+                "source": "https://github.com/spryker/glue-application-authorization-connector-extension/tree/1.0.0"
+            },
+            "time": "2021-08-06T12:09:29+00:00"
+        },
+        {
+            "name": "spryker/glue-application-extension",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/glue-application-extension.git",
+                "reference": "335057faef463495d1a459e33d4325c3efd34ea4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/glue-application-extension/zipball/335057faef463495d1a459e33d4325c3efd34ea4",
+                "reference": "335057faef463495d1a459e33d4325c3efd34ea4",
                 "shasum": ""
             },
             "require": {
@@ -27468,9 +27646,9 @@
             ],
             "description": "GlueApplicationExtension module",
             "support": {
-                "source": "https://github.com/spryker/glue-application-extension/tree/1.4.0"
+                "source": "https://github.com/spryker/glue-application-extension/tree/1.5.0"
             },
-            "time": "2021-05-11T17:48:47+00:00"
+            "time": "2021-08-06T12:09:29+00:00"
         },
         {
             "name": "spryker/graceful-runner",
@@ -34716,21 +34894,22 @@
         },
         {
             "name": "spryker/orders-rest-api",
-            "version": "4.9.0",
+            "version": "4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/orders-rest-api.git",
-                "reference": "4ea2f5c9ca60ff23ad0abcd0f0f178cf9fbc8871"
+                "reference": "49ebe9f26d256c8daa8c93a4bd9feb5f844be86c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/orders-rest-api/zipball/4ea2f5c9ca60ff23ad0abcd0f0f178cf9fbc8871",
-                "reference": "4ea2f5c9ca60ff23ad0abcd0f0f178cf9fbc8871",
+                "url": "https://api.github.com/repos/spryker/orders-rest-api/zipball/49ebe9f26d256c8daa8c93a4bd9feb5f844be86c",
+                "reference": "49ebe9f26d256c8daa8c93a4bd9feb5f844be86c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
                 "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-authorization-connector-extension": "^1.0.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/orders-rest-api-extension": "^1.1.0",
@@ -34760,9 +34939,9 @@
             ],
             "description": "OrdersRestApi module",
             "support": {
-                "source": "https://github.com/spryker/orders-rest-api/tree/4.9.0"
+                "source": "https://github.com/spryker/orders-rest-api/tree/4.10.0"
             },
-            "time": "2021-05-28T14:12:02+00:00"
+            "time": "2021-08-06T12:09:29+00:00"
         },
         {
             "name": "spryker/orders-rest-api-extension",
