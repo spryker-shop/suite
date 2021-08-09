@@ -4,41 +4,40 @@ env:
 command-timeout: 1200
 
 stores:
-    - DE
-    - AT
+    - US
 
 sections:
     clean-oms:
         clear-oms-locks:
             command: 'vendor/bin/console oms:clear-locks -vvv --no-ansi'
             stores:
-                - DE
+                - US
 
     diff:
         propel-migration-delete:
             command: 'vendor/bin/console propel:migration:delete -vvv --no-ansi'
             stores:
-                - DE
+                - US
 
         propel-diff:
             command: 'vendor/bin/console propel:diff -vvv --no-ansi'
             stores:
-                - DE
+                - US
 
         show_migrations:
             command: 'ls -al ./src/Orm/Propel/Migration_*/*.php 2>/dev/null || true'
             stores:
-                - DE
+                - US
 
         propel-migrate:
             command: 'vendor/bin/console propel:migrate -vvv --no-ansi'
             stores:
-                - DE
+                - US
 
         propel-migration-cleanup:
             command: 'vendor/bin/console propel:migration:delete -vvv --no-ansi'
             stores:
-                - DE
+                - US
 
     scheduler-start:
         queue-setup:
