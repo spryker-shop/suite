@@ -66,6 +66,7 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
     {
         return [
             new GatewayMonitoringRequestTransactionEventDispatcherPlugin(),
+            new RequestAttributesEventDispatcherPlugin(),
             new GatewayControllerEventDispatcherPlugin(),
             new RouterListenerEventDispatcherPlugin(),
             new ResponseListenerEventDispatcherPlugin(),
