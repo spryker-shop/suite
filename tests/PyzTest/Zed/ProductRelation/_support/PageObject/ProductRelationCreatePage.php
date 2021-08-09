@@ -11,5 +11,5 @@ class ProductRelationCreatePage
 {
     public const URL = '/product-relation-gui/create';
 
-    public const PRODUCT_SUCCESS_FULLY_CREATED_MESSAGE = 'Product relation successfully created';
+    public const EDIT_PRODUCT_RELATION_TEXT = 'Edit Product Relation:';
 }
