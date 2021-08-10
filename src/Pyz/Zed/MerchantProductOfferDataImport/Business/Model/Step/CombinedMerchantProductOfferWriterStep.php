@@ -15,6 +15,7 @@ class CombinedMerchantProductOfferWriterStep extends MerchantProductOfferWriterS
     protected const PRODUCT_OFFER_REFERENCE = CombinedMerchantProductOfferDataSetInterface::PRODUCT_OFFER_REFERENCE;
     protected const CONCRETE_SKU = CombinedMerchantProductOfferDataSetInterface::CONCRETE_SKU;
     protected const MERCHANT_SKU = CombinedMerchantProductOfferDataSetInterface::MERCHANT_SKU;
+    protected const MERCHANT_REFERENCE = CombinedMerchantProductOfferDataSetInterface::MERCHANT_REFERENCE;
     protected const IS_ACTIVE = CombinedMerchantProductOfferDataSetInterface::IS_ACTIVE;
     protected const APPROVAL_STATUS = CombinedMerchantProductOfferDataSetInterface::APPROVAL_STATUS;
 }
