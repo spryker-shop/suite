@@ -30,9 +30,7 @@ Build_and_Deploy_VJS_app_spryker-click-collect-dev
 ```
 
 ### Endpoints:
-basic auth: cloud/cloud
 
 https://backoffice.click-collect-dev.cloud.spryker.toys/
 
 https://glue.click-collect-dev.cloud.spryker.toys/
-
