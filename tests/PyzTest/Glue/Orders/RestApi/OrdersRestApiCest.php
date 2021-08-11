@@ -155,6 +155,63 @@ class OrdersRestApiCest
      *
      * @return void
      */
+    public function requestGetCustomerOrder(OrdersApiTester $I): void
+    {
+        $customerTransfer = $this->fixtures->getCustomerWithOrders();
+        //Arrange
+        $this->authorizeCustomer($I, $customerTransfer);
+
+        //Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{customer}/{customerReference}/{orders}',
+                [
+                    'customer' => OrdersRestApiConfig::RESOURCE_CUSTOMERS,
+                    'customerReference' => $customerTransfer->getCustomerReference(),
+                    'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
+                ]
+            )
+        );
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
+     *
+     * @return void
+     */
+    public function requestGetCustomerOrderAuthorizationError(OrdersApiTester $I): void
+    {
+        //Arrange
+        $this->authorizeCustomer($I, $this->fixtures->getCustomerWithOrders());
+
+        //Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{customer}/{customerReference}/{orders}',
+                [
+                    'customer' => OrdersRestApiConfig::RESOURCE_CUSTOMERS,
+                    'customerReference' => 'wrongCustomerReference',
+                    'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
+                ]
+            )
+        );
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
+     *
+     * @return void
+     */
     public function requestGetListOfOrderWithoutAuthorizationToken(OrdersApiTester $I): void
     {
         //Act
