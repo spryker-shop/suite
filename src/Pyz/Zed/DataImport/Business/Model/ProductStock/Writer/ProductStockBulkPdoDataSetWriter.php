@@ -92,7 +92,7 @@ class ProductStockBulkPdoDataSetWriter extends AbstractProductStockBulkDataSetWr
      * @param array $skus
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param array $concreteSkusToAbstractMap
-     * @param array $reservationItems
+     * @param \Spryker\DecimalObject\Decimal[] $reservationItems
      *
      * @return void
      */
