@@ -10,6 +10,7 @@ namespace PyzTest\Glue\Customer\RestApi;
 use Codeception\Util\HttpCode;
 use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Glue\Customer\CustomerApiTester;
+use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -89,5 +90,44 @@ class DeleteMethodRestApiCest
 
         $i->assertEquals(HttpCode::NO_CONTENT, $responseCode);
         $i->assertSame('', $result, 'Content in 204 response');
+    }
+
+    /**
+     * @param \PyzTest\Glue\Customer\CustomerApiTester $i
+     *
+     * @return void
+     */
+    public function ensureDeleteRequestForbidden(CustomerApiTester $i): void
+    {
+        $customerTransfer = $i->haveCustomer(
+            [
+                CustomerTransfer::NEW_PASSWORD => 'change123',
+                CustomerTransfer::PASSWORD => 'change123',
+            ]
+        );
+        $i->confirmCustomer($customerTransfer);
+
+        $oauthResponseTransfer = $i->haveAuthorizationToGlue($customerTransfer);
+
+        $i->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
+
+        $i->sendDelete(
+            $i->formatUrl(
+                '{resourceCustomers}/{customerReference}',
+                [
+                    'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
+                    'customerReference' => 'wrongReference',
+                ]
+            )
+        );
+
+        // Assert
+        $i->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $i->seeResponseIsJson();
+        $i->seeResponseMatchesOpenApiSchema();
+
+        $i->seeResponseErrorsHaveCode(CustomersRestApiConfig::RESPONSE_CODE_CUSTOMER_UNAUTHORIZED);
+        $i->seeResponseErrorsHaveStatus(HttpCode::FORBIDDEN);
+        $i->seeResponseErrorsHaveDetail(CustomersRestApiConfig::RESPONSE_DETAILS_CUSTOMER_UNAUTHORIZED);
     }
 }
