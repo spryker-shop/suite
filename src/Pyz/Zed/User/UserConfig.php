@@ -38,6 +38,12 @@ class UserConfig extends SprykerUserConfig
                 'username' => 'harald@spryker.com',
             ],
             [
+                'firstName' => 'Richard',
+                'lastName' => 'Gere',
+                'password' => 'change123',
+                'username' => 'richard@spryker.com',
+            ],
+            [
                 'firstName' => 'Martha',
                 'lastName' => 'Farmer',
                 'password' => 'change123',
