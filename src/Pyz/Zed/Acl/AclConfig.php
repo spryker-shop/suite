@@ -18,15 +18,6 @@ class AclConfig extends SprykerAclConfig
     protected const RULE_TYPE_DENY = 'deny';
 
     /**
-     * @uses \Spryker\Zed\AclMerchantPortal\AclMerchantPortalConfig::MAIN_MERCHANT_USER_GROUP_NAME
-     */
-    protected const MAIN_MERCHANT_USER_GROUP_NAME = 'Main Merchant';
-    /**
-     * @uses \Spryker\Zed\AclMerchantPortal\AclMerchantPortalConfig::MAIN_MERCHANT_USER_GROUP_REFERENCE
-     */
-    protected const MAIN_MERCHANT_USER_GROUP_REFERENCE = 'main_merchant';
-
-    /**
      * @return array
      */
     public function getInstallerRules()
@@ -47,6 +38,9 @@ class AclConfig extends SprykerAclConfig
                 'group' => AclConstants::ROOT_GROUP,
             ],
             'admin_de@spryker.com' => [
+                'group' => AclConstants::ROOT_GROUP,
+            ],
+            'richard@spryker.com' => [
                 'group' => AclConstants::ROOT_GROUP,
             ],
             'martha@video-king.nl' => [],
@@ -81,7 +75,7 @@ class AclConfig extends SprykerAclConfig
                 'controller' => AclConstants::VALIDATOR_WILDCARD,
                 'action' => AclConstants::VALIDATOR_WILDCARD,
                 'type' => static::RULE_TYPE_DENY,
-                'role' => static::MAIN_MERCHANT_USER_GROUP_REFERENCE,
+                'role' => AclConstants::ROOT_ROLE,
             ];
         }
 

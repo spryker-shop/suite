@@ -302,9 +302,9 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
 
     /**
      * @param array $stockProducts
-     * @param array $reservations
+     * @param \Spryker\DecimalObject\Decimal[] $reservations
      *
-     * @return \Spryker\DecimalObject\Decimal[]
+     * @return array
      */
     protected function prepareConcreteAvailabilityData(array $stockProducts, array $reservations): array
     {
@@ -319,7 +319,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
 
     /**
      * @param array $concreteAvailabilityData
-     * @param array $concreteSkusToAbstractMap
+     * @param string[] $concreteSkusToAbstractMap
      *
      * @return array
      */
