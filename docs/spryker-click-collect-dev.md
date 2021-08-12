@@ -34,3 +34,5 @@ Build_and_Deploy_VJS_app_spryker-click-collect-dev
 https://backoffice.click-collect-dev.cloud.spryker.toys/
 
 https://glue.click-collect-dev.cloud.spryker.toys/
+
+https://vue.click-collect-dev.cloud.spryker.toys/
