@@ -24,7 +24,7 @@ Pipelines:
 Build_and_Deploy_VJS_app_spryker-click-collect-dev
 
 ```
- "owner"          = "spryker-shop",
+ "owner"          = "spryker",
  "repo"           = "vsf-theme",
  "branch"         = "master"
 ```
