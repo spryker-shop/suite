@@ -15604,16 +15604,16 @@
         },
         {
             "name": "spryker/carts-rest-api",
-            "version": "5.16.0",
+            "version": "5.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/carts-rest-api.git",
-                "reference": "5ea75380845c286343aee7590348ceccc72528fe"
+                "reference": "1812320b87365eaf561c5f1bbbb8a491bda9cd67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/5ea75380845c286343aee7590348ceccc72528fe",
-                "reference": "5ea75380845c286343aee7590348ceccc72528fe",
+                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/1812320b87365eaf561c5f1bbbb8a491bda9cd67",
+                "reference": "1812320b87365eaf561c5f1bbbb8a491bda9cd67",
                 "shasum": ""
             },
             "require": {
@@ -15635,9 +15635,13 @@
                 "spryker/zed-request": "^3.6.0"
             },
             "require-dev": {
+                "spryker/calculation": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
                 "spryker/customer": "*",
+                "spryker/price-cart-connector": "*",
+                "spryker/price-product": "*",
+                "spryker/product": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
             },
@@ -15663,9 +15667,9 @@
             ],
             "description": "CartsRestApi module",
             "support": {
-                "source": "https://github.com/spryker/carts-rest-api/tree/5.16.0"
+                "source": "https://github.com/spryker/carts-rest-api/tree/5.17.0"
             },
-            "time": "2021-08-11T20:29:28+00:00"
+            "time": "2021-08-12T15:14:01+00:00"
         },
         {
             "name": "spryker/carts-rest-api-extension",
