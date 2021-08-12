@@ -11,6 +11,7 @@ use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Agent\AgentConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
+use Spryker\Shared\CartsRestApi\CartsRestApiConstants;
 use Spryker\Shared\Category\CategoryConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Customer\CustomerConstants;
@@ -637,3 +638,9 @@ $config[AgentConstants::AGENT_ALLOWED_SECURED_PATTERN_LIST] = [
     '|^(/en|/de)?/cart(?!/add)',
     '|^(/en|/de)?/checkout($|/)',
 ];
+
+// ----------------------------------------------------------------------------
+// ------------------------------ CART REST API -------------------------------
+// ----------------------------------------------------------------------------
+
+$config[CartsRestApiConstants::IS_QUOTE_RELOAD_ENABLED] = true;

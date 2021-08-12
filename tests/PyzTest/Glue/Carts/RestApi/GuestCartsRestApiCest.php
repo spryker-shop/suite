@@ -207,10 +207,11 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer()]
+            [$this->fixtures->getProductConcreteTransfer1()]
         );
+
         $guestCartItemGroupKey = $quoteTransfer->getItems()->offsetGet(0)->getGroupKey();
-        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransfer1()->getSku();
         $url = $I->buildGuestCartUrl(
             $quoteTransfer->getUuid(),
             [
