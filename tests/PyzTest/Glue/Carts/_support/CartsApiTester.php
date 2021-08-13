@@ -175,6 +175,24 @@ class CartsApiTester extends ApiEndToEndTester
     }
 
     /**
+     * @param string $customerReference
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildCustomerCartUrl(string $customerReference, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{customers}/{customerReference}/{resourceCarts}' . $this->formatQueryInclude($includes),
+            [
+                'customers' => CartsRestApiConfig::RESOURCE_CUSTOMERS,
+                'customerReference' => $customerReference,
+                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+            ]
+        );
+    }
+
+    /**
      * @param string $cartUuid
      * @param string[] $includes
      *

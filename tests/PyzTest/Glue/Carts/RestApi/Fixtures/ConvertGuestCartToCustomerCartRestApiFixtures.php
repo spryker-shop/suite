@@ -105,7 +105,7 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
      */
     protected function createGuestQuote(CartsApiTester $I): void
     {
-        $this->productConcreteTransfer = $I->haveFullProduct();
+        $this->productConcreteTransfer = $this->createProduct($I);
         $this->guestCustomerReference = $this->createGuestCustomerReference();
         $guestCustomerTransfer = (new CustomerTransfer())
             ->setCustomerReference(static::ANONYMOUS_PREFIX . $this->guestCustomerReference);
