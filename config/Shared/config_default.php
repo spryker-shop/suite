@@ -28,6 +28,7 @@ use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
+use Spryker\Shared\MerchantPortalApplication\MerchantPortalConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Oauth\OauthConstants;
@@ -510,6 +511,17 @@ $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
     'https://%s%s',
     $sprykerBackendHost,
     $backofficePort !== 443 ? ':' . $backofficePort : ''
+);
+
+// ----------------------------------------------------------------------------
+// ------------------------------ MERCHANT PORTAL -----------------------------
+// ----------------------------------------------------------------------------
+
+$merchantPortalPort = (int)(getenv('SPRYKER_MP_PORT')) ?: 443;
+$config[MerchantPortalConstants::BASE_URL_MP] = sprintf(
+    'http://%s%s',
+    getenv('SPRYKER_MP_HOST'),
+    $merchantPortalPort !== 80 ? ':' . $merchantPortalPort : ''
 );
 
 // ----------------------------------------------------------------------------

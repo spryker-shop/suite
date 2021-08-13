@@ -13,6 +13,7 @@ use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
+use Spryker\Shared\MerchantPortalApplication\MerchantPortalConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
@@ -106,6 +107,17 @@ if (!getenv('SPRYKER_SSL_ENABLE')) {
         'http://%s%s',
         getenv('SPRYKER_BE_HOST'),
         $backofficePort !== 80 ? ':' . $backofficePort : ''
+    );
+
+// ----------------------------------------------------------------------------
+// ------------------------------ MERCHANT PORTAL -----------------------------
+// ----------------------------------------------------------------------------
+
+    $merchantPortalPort = (int)(getenv('SPRYKER_MP_PORT')) ?: 80;
+    $config[MerchantPortalConstants::BASE_URL_MP] = sprintf(
+        'http://%s%s',
+        getenv('SPRYKER_MP_HOST'),
+        $merchantPortalPort !== 80 ? ':' . $merchantPortalPort : ''
     );
 
 // ----------------------------------------------------------------------------
