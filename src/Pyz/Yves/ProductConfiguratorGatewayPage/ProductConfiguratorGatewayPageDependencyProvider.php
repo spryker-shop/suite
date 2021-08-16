@@ -7,20 +7,46 @@
 
 namespace Pyz\Yves\ProductConfiguratorGatewayPage;
 
-use SprykerShop\Yves\CartPage\Plugin\ProductConfiguratorGatewayPage\CartPageGatewayBackUrlResolverStrategyPlugin;
-use SprykerShop\Yves\ProductConfiguratorGatewayPage\Plugin\ProductDetailPageGatewayBackUrlResolverStrategyPlugin;
+use SprykerShop\Yves\ProductConfigurationCartWidget\Plugin\ProductConfiguratorGatewayPage\CartPageProductConfiguratorRequestDataFormExpanderStrategyPlugin;
+use SprykerShop\Yves\ProductConfigurationCartWidget\Plugin\ProductConfiguratorGatewayPage\CartPageProductConfiguratorRequestStartegyPlugin;
+use SprykerShop\Yves\ProductConfigurationCartWidget\Plugin\ProductConfiguratorGatewayPage\CartPageProductConfiguratorResponseStrategyPlugin;
+use SprykerShop\Yves\ProductConfiguratorGatewayPage\Plugin\ProductConfiguratorGatewayPage\ProductDetailPageProductConfiguratorRequestDataFormExpanderStrategyPlugin;
+use SprykerShop\Yves\ProductConfiguratorGatewayPage\Plugin\ProductConfiguratorGatewayPage\ProductDetailPageProductConfiguratorRequestStrategyPlugin;
+use SprykerShop\Yves\ProductConfiguratorGatewayPage\Plugin\ProductConfiguratorGatewayPage\ProductDetailPageProductConfiguratorResponseStrategyPlugin;
 use SprykerShop\Yves\ProductConfiguratorGatewayPage\ProductConfiguratorGatewayPageDependencyProvider as SprykerProductConfiguratorGatewayPageDependencyProvider;
 
 class ProductConfiguratorGatewayPageDependencyProvider extends SprykerProductConfiguratorGatewayPageDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\ProductConfiguratorGatewayPageExtension\Dependency\Plugin\ProductConfiguratorGatewayBackUrlResolverStrategyPluginInterface[]
+     * @return \SprykerShop\Yves\ProductConfiguratorGatewayPageExtension\Dependency\Plugin\ProductConfiguratorRequestStrategyPluginInterface[]
      */
-    protected function getProductConfiguratorGatewayBackUrlResolverStrategyPlugins(): array
+    protected function getProductConfiguratorRequestPlugins(): array
     {
         return [
-            new ProductDetailPageGatewayBackUrlResolverStrategyPlugin(),
-            new CartPageGatewayBackUrlResolverStrategyPlugin(),
+            new ProductDetailPageProductConfiguratorRequestStrategyPlugin(),
+            new CartPageProductConfiguratorRequestStartegyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\ProductConfiguratorGatewayPageExtension\Dependency\Plugin\ProductConfiguratorResponseStrategyPluginInterface[]
+     */
+    protected function getProductConfiguratorResponsePlugins(): array
+    {
+        return [
+            new ProductDetailPageProductConfiguratorResponseStrategyPlugin(),
+            new CartPageProductConfiguratorResponseStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\ProductConfiguratorGatewayPageExtension\Dependency\Plugin\ProductConfiguratorRequestDataFormExpanderStrategyPluginInterface[]
+     */
+    protected function getProductConfiguratorRequestDataFormExpanderStrategyPlugins(): array
+    {
+        return [
+            new ProductDetailPageProductConfiguratorRequestDataFormExpanderStrategyPlugin(),
+            new CartPageProductConfiguratorRequestDataFormExpanderStrategyPlugin(),
         ];
     }
 }

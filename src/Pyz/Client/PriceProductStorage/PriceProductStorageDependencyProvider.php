@@ -12,7 +12,7 @@ use Spryker\Client\PriceProductOfferStorage\Plugin\PriceProductStorage\PriceProd
 use Spryker\Client\PriceProductOfferStorage\Plugin\PriceProductStorage\PriceProductOfferStorageFilterExpanderPlugin;
 use Spryker\Client\PriceProductStorage\PriceProductStorageDependencyProvider as SprykerPriceProductStorageDependencyProvider;
 use Spryker\Client\PriceProductVolume\Plugin\PriceProductStorageExtension\PriceProductVolumeExtractorPlugin;
-use Spryker\Client\ProductConfigurationStorage\Plugin\PriceProductStorage\ProductConfigurationPriceFilterExpanderPlugin;
+use Spryker\Client\ProductConfigurationStorage\Plugin\PriceProductStorage\ProductConfigurationPriceProductFilterExpanderPlugin;
 use Spryker\Client\ProductConfigurationStorage\Plugin\PriceProductStorage\ProductConfigurationStoragePriceDimensionPlugin;
 
 class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDependencyProvider
@@ -46,7 +46,7 @@ class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDe
     {
         return [
             new PriceProductOfferStorageFilterExpanderPlugin(),
-            new ProductConfigurationPriceFilterExpanderPlugin(),
+            new ProductConfigurationPriceProductFilterExpanderPlugin(),
         ];
     }
 }

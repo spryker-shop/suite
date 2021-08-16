@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\QuoteRequest;
 
-use Spryker\Zed\ProductConfiguration\Communication\Plugin\QuoteRequest\ProductConfigurationQuoteRequestUserValidatorPlugin;
-use Spryker\Zed\ProductConfiguration\Communication\Plugin\QuoteRequest\ProductConfigurationQuoteRequestValidatorPlugin;
+use Spryker\Zed\ProductConfigurationCart\Communication\Plugin\QuoteRequest\ProductConfigurationQuoteRequestUserValidatorPlugin;
+use Spryker\Zed\ProductConfigurationCart\Communication\Plugin\QuoteRequest\ProductConfigurationQuoteRequestValidatorPlugin;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\QuoteRequest\QuoteApprovalQuoteRequestPreCreateCheckPlugin;
 use Spryker\Zed\QuoteRequest\QuoteRequestDependencyProvider as SprykerQuoteRequestDependencyProvider;
 
