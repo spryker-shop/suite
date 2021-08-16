@@ -5,17 +5,17 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductConfiguration;
+namespace Pyz\Zed\ProductConfigurationCart;
 
 use Generated\Shared\Transfer\ItemTransfer;
-use Spryker\Zed\ProductConfiguration\ProductConfigurationConfig as SprykerProductConfigurationConfig;
+use Spryker\Zed\ProductConfigurationCart\ProductConfigurationCartConfig as SprykerProductConfigurationCartConfig;
 
-class ProductConfigurationConfig extends SprykerProductConfigurationConfig
+class ProductConfigurationCartConfig extends SprykerProductConfigurationCartConfig
 {
     /**
      * @return string[]
      */
-    public function getItemFieldsForIsSameItemComparison()
+    public function getItemFieldsForIsSameItemComparison(): array
     {
         return array_merge(parent::getItemFieldsForIsSameItemComparison(), [
             ItemTransfer::MERCHANT_REFERENCE,
