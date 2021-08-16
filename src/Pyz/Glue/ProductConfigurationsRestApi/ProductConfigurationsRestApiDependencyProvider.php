@@ -7,29 +7,29 @@
 
 namespace Pyz\Glue\ProductConfigurationsRestApi;
 
-use Spryker\Glue\ProductConfigurationsPriceProductVolumesRestApi\Plugin\ProductConfigurationsRestApi\ProductConfigurationVolumePriceCartItemProductConfigurationMapperPlugin;
-use Spryker\Glue\ProductConfigurationsPriceProductVolumesRestApi\Plugin\ProductConfigurationsRestApi\ProductConfigurationVolumePriceRestCartItemProductConfigurationMapperPlugin;
+use Spryker\Glue\ProductConfigurationsPriceProductVolumesRestApi\Plugin\ProductConfigurationsRestApi\ProductConfigurationVolumePriceProductConfigurationPriceMapperPlugin;
+use Spryker\Glue\ProductConfigurationsPriceProductVolumesRestApi\Plugin\ProductConfigurationsRestApi\ProductConfigurationVolumePriceRestProductConfigurationPriceMapperPlugin;
 use Spryker\Glue\ProductConfigurationsRestApi\ProductConfigurationsRestApiDependencyProvider as SprykerProductConfigurationsRestApiDependencyProvider;
 
 class ProductConfigurationsRestApiDependencyProvider extends SprykerProductConfigurationsRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\ProductConfigurationsRestApiExtension\Dependency\Plugin\CartItemProductConfigurationMapperPluginInterface[]
+     * @return \Spryker\Glue\ProductConfigurationsRestApiExtension\Dependency\Plugin\ProductConfigurationPriceMapperPluginInterface[]
      */
-    protected function getCartItemProductConfigurationMapperPlugins(): array
+    protected function getProductConfigurationPriceMapperPlugins(): array
     {
         return [
-            new ProductConfigurationVolumePriceCartItemProductConfigurationMapperPlugin(),
+            new ProductConfigurationVolumePriceProductConfigurationPriceMapperPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Glue\ProductConfigurationsRestApiExtension\Dependency\Plugin\RestCartItemProductConfigurationMapperPluginInterface[]
+     * @return \Spryker\Glue\ProductConfigurationsRestApiExtension\Dependency\Plugin\RestProductConfigurationPriceMapperPluginInterface[]
      */
-    protected function getRestCartItemProductConfigurationMapperPlugins(): array
+    protected function getRestProductConfigurationPriceMapperPlugins(): array
     {
         return [
-            new ProductConfigurationVolumePriceRestCartItemProductConfigurationMapperPlugin(),
+            new ProductConfigurationVolumePriceRestProductConfigurationPriceMapperPlugin(),
         ];
     }
 }
