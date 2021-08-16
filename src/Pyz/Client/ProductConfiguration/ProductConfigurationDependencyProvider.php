@@ -7,11 +7,8 @@
 
 namespace Pyz\Client\ProductConfiguration;
 
-use Spryker\Client\ProductConfiguration\Plugin\ProductConfiguratorAccessTokenRequestPlugin;
+use Spryker\Client\ProductConfiguration\Plugin\PriceProductVolumeProductConfigurationPriceExtractorPlugin;
 use Spryker\Client\ProductConfiguration\ProductConfigurationDependencyProvider as SprykerProductConfigurationDependencyProvider;
-use Spryker\Client\ProductConfigurationExtension\Dependency\Plugin\ProductConfiguratorRequestPluginInterface;
-use Spryker\Client\ProductConfigurationExtension\Dependency\Plugin\ProductConfiguratorResponsePluginInterface;
-use Spryker\Client\ProductConfigurationStorage\Plugin\ProductConfiguration\ProductConfiguratorCheckSumResponsePlugin;
 use SprykerShop\Client\DateTimeConfiguratorPageExample\Plugin\ProductConfiguration\ExampleDateTimeProductConfiguratorRequestExpanderPlugin;
 
 /**
@@ -20,28 +17,22 @@ use SprykerShop\Client\DateTimeConfiguratorPageExample\Plugin\ProductConfigurati
 class ProductConfigurationDependencyProvider extends SprykerProductConfigurationDependencyProvider
 {
     /**
-     * @return \Spryker\Client\ProductConfigurationExtension\Dependency\Plugin\ProductConfiguratorRequestPluginInterface
-     */
-    protected function getDefaultProductConfiguratorRequestPlugin(): ProductConfiguratorRequestPluginInterface
-    {
-        return new ProductConfiguratorAccessTokenRequestPlugin();
-    }
-
-    /**
-     * @return \Spryker\Client\ProductConfigurationExtension\Dependency\Plugin\ProductConfiguratorResponsePluginInterface
-     */
-    protected function getDefaultProductConfiguratorResponsePlugin(): ProductConfiguratorResponsePluginInterface
-    {
-        return new ProductConfiguratorCheckSumResponsePlugin();
-    }
-
-    /**
-     * @return \Spryker\Client\ProductConfigurationExtension\Dependency\Plugin\ProductConfiguratorRequestExpanderInterface[]
+     * @return \Spryker\Client\ProductConfigurationExtension\Dependency\Plugin\ProductConfiguratorRequestExpanderPluginInterface[]
      */
     protected function getProductConfigurationRequestExpanderPlugins(): array
     {
         return [
             new ExampleDateTimeProductConfiguratorRequestExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\ProductConfigurationExtension\Dependency\Plugin\ProductConfigurationPriceExtractorPluginInterface[]
+     */
+    protected function getProductConfigurationPriceExtractorPlugins(): array
+    {
+        return [
+            new PriceProductVolumeProductConfigurationPriceExtractorPlugin(),
         ];
     }
 }

@@ -12,8 +12,8 @@ use Spryker\Service\PriceProductMerchantRelationship\Plugin\PriceProduct\Merchan
 use Spryker\Service\PriceProductOffer\Plugin\PriceProduct\PriceProductOfferPriceProductFilterPlugin;
 use Spryker\Service\PriceProductOfferVolume\Plugin\PriceProductOffer\PriceProductOfferVolumeFilterPlugin;
 use Spryker\Service\PriceProductVolume\Plugin\PriceProductExtension\PriceProductVolumeFilterPlugin;
-use Spryker\Service\ProductConfigurationStorage\Plugin\PriceProduct\ProductConfigurationPriceProductFilterPlugin;
-use Spryker\Service\ProductConfigurationStorage\Plugin\PriceProduct\ProductConfigurationPriceProductVolumeFilterPlugin;
+use Spryker\Service\ProductConfiguration\Plugin\PriceProduct\ProductConfigurationPriceProductFilterPlugin;
+use Spryker\Service\ProductConfiguration\Plugin\PriceProduct\ProductConfigurationVolumePriceProductFilterPlugin;
 
 class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvider
 {
@@ -31,7 +31,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
             new PriceProductOfferPriceProductFilterPlugin(),
 
             new ProductConfigurationPriceProductFilterPlugin(),
-            new ProductConfigurationPriceProductVolumeFilterPlugin(),
+            new ProductConfigurationVolumePriceProductFilterPlugin(),
             new PriceProductOfferVolumeFilterPlugin(),
             new PriceProductVolumeFilterPlugin(),
             new MerchantRelationshipPriceProductFilterPlugin(),
