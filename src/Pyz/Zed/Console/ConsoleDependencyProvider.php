@@ -147,7 +147,6 @@ use Spryker\Zed\SetupFrontend\Communication\Console\InstallPackageManagerConsole
 use Spryker\Zed\SetupFrontend\Communication\Console\InstallProjectDependenciesConsole;
 use Spryker\Zed\SetupFrontend\Communication\Console\MerchantPortalBuildFrontendConsole;
 use Spryker\Zed\SetupFrontend\Communication\Console\MerchantPortalInstallDependenciesConsole;
-use Spryker\Zed\SetupFrontend\Communication\Console\Npm\RunnerConsole;
 use Spryker\Zed\SetupFrontend\Communication\Console\YvesBuildFrontendConsole;
 use Spryker\Zed\SetupFrontend\Communication\Console\YvesInstallDependenciesConsole;
 use Spryker\Zed\SetupFrontend\Communication\Console\ZedBuildFrontendConsole;
@@ -321,7 +320,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new ExportSynchronizedDataConsole(),
 
             // Setup commands
-            new RunnerConsole(),
             new DeployPreparePropelConsole(),
 
             new DatabaseDropConsole(),
