@@ -223,7 +223,8 @@ class AclQueryDirectorTester extends Actor
             $factory->createAclEntityMetadataReader($aclEntityMetadataCollectionTransfer),
             $factory->createRelationResolver($aclEntityMetadataCollectionTransfer),
             $userFacade,
-            $aclFacade
+            $aclFacade,
+            $factory->createAclEntityQueryMerger()
         );
     }
 
