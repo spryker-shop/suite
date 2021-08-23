@@ -25,7 +25,9 @@ use Pyz\Zed\Merchant\MerchantDependencyProvider;
 use Pyz\Zed\ProductOffer\ProductOfferDependencyProvider;
 use PyzTest\Zed\AclEntity\AclQueryDirectorTester;
 use Spryker\Shared\AclEntity\AclEntityConstants;
+use Spryker\Zed\AclEntity\AclEntityDependencyProvider;
 use Spryker\Zed\AclEntity\Persistence\Exception\OperationNotAuthorizedException;
+use Spryker\Zed\AclMerchantPortal\Communication\Plugin\AclEntity\MerchantPortalAclEntityMetadataConfigExpanderPlugin;
 use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -62,6 +64,10 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
 
         $this->tester->setDependency(MerchantDependencyProvider::PLUGINS_MERCHANT_POST_CREATE, []);
         $this->tester->setDependency(ProductOfferDependencyProvider::PLUGINS_PRODUCT_OFFER_POST_CREATE, []);
+        $this->tester->setDependency(
+            AclEntityDependencyProvider::PLUGINS_ACL_ENTITY_METADATA_COLLECTION_EXPANDER,
+            [new MerchantPortalAclEntityMetadataConfigExpanderPlugin()]
+        );
 
         $this->tester->deleteTestData();
         $this->tester->deleteAclEntitySegments(
