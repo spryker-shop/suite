@@ -552,27 +552,27 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "3.1.1",
+            "version": "2.1.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "c81f18a3efb941d8c4d2e025f6183b5c6d697307"
+                "reference": "0dbf5d78455d4d6a41d186da50adc1122ec066f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/c81f18a3efb941d8c4d2e025f6183b5c6d697307",
-                "reference": "c81f18a3efb941d8c4d2e025f6183b5c6d697307",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/0dbf5d78455d4d6a41d186da50adc1122ec066f4",
+                "reference": "0dbf5d78455d4d6a41d186da50adc1122ec066f4",
                 "shasum": ""
             },
             "require": {
-                "doctrine/lexer": "^1.2",
-                "php": ">=7.2",
-                "symfony/polyfill-intl-idn": "^1.15"
+                "doctrine/lexer": "^1.0.1",
+                "php": ">=5.5",
+                "symfony/polyfill-intl-idn": "^1.10"
             },
             "require-dev": {
-                "php-coveralls/php-coveralls": "^2.2",
-                "phpunit/phpunit": "^8.5.8|^9.3.3",
-                "vimeo/psalm": "^4"
+                "dominicsayers/isemail": "^3.0.7",
+                "phpunit/phpunit": "^4.8.36|^7.5.15",
+                "satooshi/php-coveralls": "^1.0.1"
             },
             "suggest": {
                 "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
@@ -580,7 +580,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -608,7 +608,7 @@
             ],
             "support": {
                 "issues": "https://github.com/egulias/EmailValidator/issues",
-                "source": "https://github.com/egulias/EmailValidator/tree/3.1.1"
+                "source": "https://github.com/egulias/EmailValidator/tree/2.1.25"
             },
             "funding": [
                 {
@@ -616,7 +616,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-01T18:37:14+00:00"
+            "time": "2020-12-29T14:50:06+00:00"
         },
         {
             "name": "elasticsearch/elasticsearch",
@@ -3352,37 +3352,31 @@
         },
         {
             "name": "phpdocumentor/graphviz",
-            "version": "2.0.0",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/GraphViz.git",
-                "reference": "929e97b4ab6765fc4eb2f944b091a4a02807ee5d"
+                "reference": "a906a90a9f230535f25ea31caf81b2323956283f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/GraphViz/zipball/929e97b4ab6765fc4eb2f944b091a4a02807ee5d",
-                "reference": "929e97b4ab6765fc4eb2f944b091a4a02807ee5d",
+                "url": "https://api.github.com/repos/phpDocumentor/GraphViz/zipball/a906a90a9f230535f25ea31caf81b2323956283f",
+                "reference": "a906a90a9f230535f25ea31caf81b2323956283f",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2 || 8.0.*"
+                "php": ">=5.3.3"
             },
             "require-dev": {
-                "ext-simplexml": "*",
-                "mockery/mockery": "^1.2",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8.2 || ^9.2"
+                "phpunit/phpunit": "~4.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                }
-            },
             "autoload": {
-                "psr-4": {
-                    "phpDocumentor\\GraphViz\\": "src/phpDocumentor/GraphViz",
-                    "phpDocumentor\\GraphViz\\PHPStan\\": "./src/phpDocumentor/PHPStan"
+                "psr-0": {
+                    "phpDocumentor": [
+                        "src/",
+                        "tests/unit"
+                    ]
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3395,12 +3389,11 @@
                     "email": "mike.vanriel@naenius.com"
                 }
             ],
-            "description": "Wrapper for Graphviz",
             "support": {
                 "issues": "https://github.com/phpDocumentor/GraphViz/issues",
-                "source": "https://github.com/phpDocumentor/GraphViz/tree/2.0.0"
+                "source": "https://github.com/phpDocumentor/GraphViz/tree/master"
             },
-            "time": "2021-02-02T20:48:43+00:00"
+            "time": "2016-02-02T13:00:08+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -26235,24 +26228,21 @@
         },
         {
             "name": "spryker/egulias",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/Egulias.git",
-                "reference": "154f30dd86390d29382936290b48c6891fef130f"
+                "url": "https://github.com/spryker/egulias.git",
+                "reference": "e1a98df121123082c3d8972ec309c246ec0c00c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Egulias/zipball/154f30dd86390d29382936290b48c6891fef130f",
-                "reference": "154f30dd86390d29382936290b48c6891fef130f",
+                "url": "https://api.github.com/repos/spryker/egulias/zipball/e1a98df121123082c3d8972ec309c246ec0c00c8",
+                "reference": "e1a98df121123082c3d8972ec309c246ec0c00c8",
                 "shasum": ""
             },
             "require": {
-                "egulias/email-validator": "~2.1.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "egulias/email-validator": "~2.1.2",
+                "php": ">=7.3"
             },
             "type": "library",
             "extra": {
@@ -26266,9 +26256,9 @@
             ],
             "description": "Egulias module",
             "support": {
-                "source": "https://github.com/spryker/Egulias/tree/1.0.0"
+                "source": "https://github.com/spryker/egulias/tree/1.1.0"
             },
-            "time": "2017-11-09T13:55:22+00:00"
+            "time": "2021-07-07T15:14:17+00:00"
         },
         {
             "name": "spryker/elastica",
@@ -27860,25 +27850,28 @@
         },
         {
             "name": "spryker/graph",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/Graph.git",
-                "reference": "9616836f46e536abcb93970497d25f0313da9547"
+                "url": "https://github.com/spryker/graph.git",
+                "reference": "7ca91bacb6ecc2b4d52d22975d696e6096180c77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Graph/zipball/9616836f46e536abcb93970497d25f0313da9547",
-                "reference": "9616836f46e536abcb93970497d25f0313da9547",
+                "url": "https://api.github.com/repos/spryker/graph/zipball/7ca91bacb6ecc2b4d52d22975d696e6096180c77",
+                "reference": "7ca91bacb6ecc2b4d52d22975d696e6096180c77",
                 "shasum": ""
             },
             "require": {
+                "php": ">=7.3",
                 "spryker/graphviz": "^2.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/util-text": "^1.1.0"
             },
             "require-dev": {
+                "spryker/application": "*",
                 "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -27888,36 +27881,36 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Spryker": "src/",
-                    "Function": "tests/"
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
-            "description": "Graph bundle",
+            "description": "Graph module",
             "support": {
-                "source": "https://github.com/spryker/Graph/tree/3.0.0"
+                "source": "https://github.com/spryker/graph/tree/3.0.1"
             },
-            "time": "2017-02-22T12:08:46+00:00"
+            "time": "2021-07-07T15:14:17+00:00"
         },
         {
             "name": "spryker/graphviz",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/Graphviz.git",
-                "reference": "0a90ede6aacfbd5e96f9fd61a52f4908f1b5e11d"
+                "url": "https://github.com/spryker/graphviz.git",
+                "reference": "a19c523bf359af98297e633819e5056e4063bdad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Graphviz/zipball/0a90ede6aacfbd5e96f9fd61a52f4908f1b5e11d",
-                "reference": "0a90ede6aacfbd5e96f9fd61a52f4908f1b5e11d",
+                "url": "https://api.github.com/repos/spryker/graphviz/zipball/a19c523bf359af98297e633819e5056e4063bdad",
+                "reference": "a19c523bf359af98297e633819e5056e4063bdad",
                 "shasum": ""
             },
             "require": {
+                "php": ">=7.3",
                 "phpdocumentor/graphviz": "^1.0.4"
             },
             "type": "library",
@@ -27932,9 +27925,9 @@
             ],
             "description": "Graphviz module",
             "support": {
-                "source": "https://github.com/spryker/Graphviz/tree/2.0.1"
+                "source": "https://github.com/spryker/graphviz/tree/2.0.2"
             },
-            "time": "2017-08-02T16:31:17+00:00"
+            "time": "2021-07-07T15:14:17+00:00"
         },
         {
             "name": "spryker/gui",
@@ -55210,16 +55203,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v5.3.4",
+            "version": "v5.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "5a825e4b386066167a8b55487091cb62beec74c2"
+                "reference": "a665946279f566d94ed5eb98999cfa65c6fa5a78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/5a825e4b386066167a8b55487091cb62beec74c2",
-                "reference": "5a825e4b386066167a8b55487091cb62beec74c2",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/a665946279f566d94ed5eb98999cfa65c6fa5a78",
+                "reference": "a665946279f566d94ed5eb98999cfa65c6fa5a78",
                 "shasum": ""
             },
             "require": {
@@ -55278,7 +55271,7 @@
             "description": "Allows you to standardize and centralize the way objects are constructed in your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/dependency-injection/tree/v5.3.4"
+                "source": "https://github.com/symfony/dependency-injection/tree/v5.3.7"
             },
             "funding": [
                 {
@@ -55294,7 +55287,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-23T15:55:36+00:00"
+            "time": "2021-08-02T16:16:27+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
