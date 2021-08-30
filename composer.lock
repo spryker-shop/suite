@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "77854d8f1821876d54a2e5ae7cfed726",
+    "content-hash": "7faaab49e5ec8a868d112c980fe927ad",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.191.6",
+            "version": "3.191.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "3b01e0c7c1d9858e5d2f0ee9aa216d621f731765"
+                "reference": "c8f220112b64fbd089efead939d4fc70e794616c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3b01e0c7c1d9858e5d2f0ee9aa216d621f731765",
-                "reference": "3b01e0c7c1d9858e5d2f0ee9aa216d621f731765",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c8f220112b64fbd089efead939d4fc70e794616c",
+                "reference": "c8f220112b64fbd089efead939d4fc70e794616c",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.191.6"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.191.7"
             },
-            "time": "2021-08-27T18:14:01+00:00"
+            "time": "2021-08-30T18:41:03+00:00"
         },
         {
             "name": "brick/math",
@@ -5678,7 +5678,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "2ef91419c8e550f0b171cd9968bee43c28293971"
+                "reference": "86e4cdc77c6acdb42dee52e1759a0f967157d953"
             },
             "require": {
                 "php": ">=7.3"
@@ -5846,7 +5846,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2021-08-30T11:12:29+00:00"
+            "time": "2021-08-30T16:28:25+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10974,20 +10974,20 @@
         },
         {
             "name": "codeception/lib-innerbrowser",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-innerbrowser.git",
-                "reference": "4b0d89b37fe454e060a610a85280a87ab4f534f1"
+                "reference": "31b4b56ad53c3464fcb2c0a14d55a51a201bd3c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/4b0d89b37fe454e060a610a85280a87ab4f534f1",
-                "reference": "4b0d89b37fe454e060a610a85280a87ab4f534f1",
+                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/31b4b56ad53c3464fcb2c0a14d55a51a201bd3c2",
+                "reference": "31b4b56ad53c3464fcb2c0a14d55a51a201bd3c2",
                 "shasum": ""
             },
             "require": {
-                "codeception/codeception": "*@dev",
+                "codeception/codeception": "4.*@dev",
                 "ext-dom": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
@@ -11028,9 +11028,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/lib-innerbrowser/issues",
-                "source": "https://github.com/Codeception/lib-innerbrowser/tree/1.5.0"
+                "source": "https://github.com/Codeception/lib-innerbrowser/tree/1.5.1"
             },
-            "time": "2021-04-23T06:18:29+00:00"
+            "time": "2021-08-30T15:21:42+00:00"
         },
         {
             "name": "codeception/module-asserts",
@@ -11972,24 +11972,26 @@
         },
         {
             "name": "jetbrains/phpstorm-stubs",
-            "version": "v2019.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "883b6facd78e01c0743b554af86fa590c2573f40"
+                "reference": "221eaf08f38173634154c88da9dde0892d8845b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/883b6facd78e01c0743b554af86fa590c2573f40",
-                "reference": "883b6facd78e01c0743b554af86fa590c2573f40",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/221eaf08f38173634154c88da9dde0892d8845b4",
+                "reference": "221eaf08f38173634154c88da9dde0892d8845b4",
                 "shasum": ""
             },
             "require-dev": {
-                "nikic/php-parser": "^4",
-                "php": "^7.1",
-                "phpdocumentor/reflection-docblock": "^4.3",
-                "phpunit/phpunit": "^7"
+                "friendsofphp/php-cs-fixer": "@stable",
+                "nikic/php-parser": "@stable",
+                "php": "^8.0",
+                "phpdocumentor/reflection-docblock": "@stable",
+                "phpunit/phpunit": "@stable"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
@@ -12015,7 +12017,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2019-12-05T16:56:26+00:00"
+            "time": "2021-08-30T14:51:56+00:00"
         },
         {
             "name": "lstrojny/functional-php",
@@ -12284,6 +12286,76 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.12.0"
             },
             "time": "2021-07-21T10:44:31+00:00"
+        },
+        {
+            "name": "ondrejmirtes/better-reflection",
+            "version": "4.3.67",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ondrejmirtes/BetterReflection.git",
+                "reference": "f14002eab57de1ec3d0116371cb5239d4415c432"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ondrejmirtes/BetterReflection/zipball/f14002eab57de1ec3d0116371cb5239d4415c432",
+                "reference": "f14002eab57de1ec3d0116371cb5239d4415c432",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "jetbrains/phpstorm-stubs": "dev-master#0a73df114cdea7f30c8b5f6fbfbf8e6839a89e88",
+                "nikic/php-parser": "^4.12.0",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.49",
+                "phpunit/phpunit": "^7.5.18"
+            },
+            "suggest": {
+                "composer/composer": "Required to use the ComposerSourceLocator"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PHPStan\\BetterReflection\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Titcumb",
+                    "email": "james@asgrim.com",
+                    "homepage": "https://github.com/asgrim"
+                },
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "https://ocramius.github.io/"
+                },
+                {
+                    "name": "Gary Hockin",
+                    "email": "gary@roave.com",
+                    "homepage": "https://github.com/geeh"
+                },
+                {
+                    "name": "Jaroslav Hanslík",
+                    "email": "kukulich@kukulich.cz",
+                    "homepage": "https://github.com/kukulich"
+                }
+            ],
+            "description": "Better Reflection - an improved code reflection API",
+            "support": {
+                "source": "https://github.com/ondrejmirtes/BetterReflection/tree/4.3.67"
+            },
+            "time": "2021-08-23T20:27:27+00:00"
         },
         {
             "name": "pdepend/pdepend",
@@ -14948,12 +15020,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/benchmark.git",
-                "reference": "95b491a64bdb0a9d207ec3540bad9c4ffb7c3e8e"
+                "reference": "4de74c9e7dd858eb552534bb9f4f3a800b4f5f8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/benchmark/zipball/95b491a64bdb0a9d207ec3540bad9c4ffb7c3e8e",
-                "reference": "95b491a64bdb0a9d207ec3540bad9c4ffb7c3e8e",
+                "url": "https://api.github.com/repos/spryker-sdk/benchmark/zipball/4de74c9e7dd858eb552534bb9f4f3a800b4f5f8a",
+                "reference": "4de74c9e7dd858eb552534bb9f4f3a800b4f5f8a",
                 "shasum": ""
             },
             "require": {
@@ -14988,9 +15060,9 @@
             "description": "Benchmark module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/benchmark/issues",
-                "source": "https://github.com/spryker-sdk/benchmark/tree/feature/te-9578/master-architecture-issues-in-core"
+                "source": "https://github.com/spryker-sdk/benchmark/tree/master"
             },
-            "time": "2021-05-18T10:27:09+00:00"
+            "time": "2021-08-30T13:54:15+00:00"
         },
         {
             "name": "spryker-sdk/brancho",
@@ -14998,12 +15070,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/brancho.git",
-                "reference": "76ba30b949b927a3118e50c52a53c16a0929e146"
+                "reference": "8ef525e2563bb73655c68d4407ec3ca8ff773db8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/brancho/zipball/76ba30b949b927a3118e50c52a53c16a0929e146",
-                "reference": "76ba30b949b927a3118e50c52a53c16a0929e146",
+                "url": "https://api.github.com/repos/spryker-sdk/brancho/zipball/8ef525e2563bb73655c68d4407ec3ca8ff773db8",
+                "reference": "8ef525e2563bb73655c68d4407ec3ca8ff773db8",
                 "shasum": ""
             },
             "require": {
@@ -15052,7 +15124,7 @@
                 "issues": "https://github.com/spryker-sdk/brancho/issues",
                 "source": "https://github.com/spryker-sdk/brancho/tree/master"
             },
-            "time": "2021-05-04T10:03:16+00:00"
+            "time": "2021-08-30T15:52:19+00:00"
         },
         {
             "name": "spryker-sdk/codeception-phantoman",
@@ -15105,22 +15177,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/composer-constrainer.git",
-                "reference": "0503a6eab8236741c537022ffb6cb6bd0f27fa97"
+                "reference": "4a2d5948fccfff7b9da13d225dbda7f9db37a7da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/0503a6eab8236741c537022ffb6cb6bd0f27fa97",
-                "reference": "0503a6eab8236741c537022ffb6cb6bd0f27fa97",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/4a2d5948fccfff7b9da13d225dbda7f9db37a7da",
+                "reference": "4a2d5948fccfff7b9da13d225dbda7f9db37a7da",
                 "shasum": ""
             },
             "require": {
+                "ondrejmirtes/better-reflection": "^4.3.0",
                 "php": ">=7.3",
-                "roave/better-reflection": "^4.3.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/laminas": "^1.0.0",
                 "spryker/symfony": "^3.2.2"
             },
             "require-dev": {
+                "codeception/module-asserts": "^1.3",
+                "phpstan/phpstan": "^0.12.0",
                 "spryker/code-sniffer": "*",
                 "spryker/console": "*",
                 "spryker/testify": "^3.15.0"
@@ -15144,9 +15218,9 @@
             "description": "ComposerConstrainer module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/composer-constrainer/issues",
-                "source": "https://github.com/spryker-sdk/composer-constrainer/tree/feature/te-9578/master-architecture-issues-in-core"
+                "source": "https://github.com/spryker-sdk/composer-constrainer/tree/master"
             },
-            "time": "2021-05-18T10:45:30+00:00"
+            "time": "2021-08-30T14:47:00+00:00"
         },
         {
             "name": "spryker-sdk/composer-replace",
@@ -15506,25 +15580,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "5533916ab3f43a6422dcd1ded4d77fd4d59bb63e"
+                "reference": "fa6e1f07b1c76c3e7090134ffe2947b222d23ecc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/5533916ab3f43a6422dcd1ded4d77fd4d59bb63e",
-                "reference": "5533916ab3f43a6422dcd1ded4d77fd4d59bb63e",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/fa6e1f07b1c76c3e7090134ffe2947b222d23ecc",
+                "reference": "fa6e1f07b1c76c3e7090134ffe2947b222d23ecc",
                 "shasum": ""
             },
             "require": {
+                "laminas/laminas-config": "^2.5.1 || ^3.1.0",
+                "laminas/laminas-filter": "^2.5.1",
+                "ondrejmirtes/better-reflection": "^4.3.0",
                 "php": ">=7.3",
                 "phpmd/phpmd": "^2.4.1",
-                "roave/better-reflection": "*",
-                "spryker/laminas": "*",
-                "symfony/finder": "*"
+                "symfony/finder": "^3.4.0 || ^4.0.0 || ^5.0.0"
             },
             "require-dev": {
-                "codeception/codeception": "^2.4",
+                "codeception/codeception": "^4.1",
+                "codeception/module-asserts": "^1.3",
                 "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^5.2",
                 "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "^4.0"
             },
@@ -15560,7 +15635,7 @@
                 "issues": "https://github.com/spryker/architecture-sniffer/issues",
                 "source": "https://github.com/spryker/architecture-sniffer"
             },
-            "time": "2021-05-04T10:12:10+00:00"
+            "time": "2021-08-30T15:19:20+00:00"
         },
         {
             "name": "spryker/code-generator",
@@ -16904,6 +16979,12 @@
     ],
     "aliases": [
         {
+            "package": "jetbrains/phpstorm-stubs",
+            "version": "9999999-dev",
+            "alias": "2019.3",
+            "alias_normalized": "2019.3.0.0"
+        },
+        {
             "package": "spryker-sdk/spryk",
             "version": "9999999-dev",
             "alias": "0.3.0",
@@ -16939,7 +17020,8 @@
         "spryker/docker-chromedriver": 20,
         "spryker-sdk/brancho": 20,
         "spryker-sdk/load-testing": 20,
-        "spryker-sdk/security-checker": 20
+        "spryker-sdk/security-checker": 20,
+        "jetbrains/phpstorm-stubs": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
