@@ -323,8 +323,6 @@ _VALIDATION_SCRIPT_PHP_LOWEST: &VALIDATION_SCRIPT_PHP_LOWEST
     - echo "_VALIDATION_SCRIPT"
     - vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/
 
-    - vendor/bin/console dev:dependency:find
-
 _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
     - echo "_VALIDATION_FRONT_END_SCRIPT"
     - npm install
