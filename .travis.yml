@@ -298,7 +298,6 @@ _VALIDATION_SCRIPT: &VALIDATION_SCRIPT
     - vendor/bin/console dev:composer:replace -d -v
     - vendor/bin/spryker-dev-console dev:sync-composer -d
     - vendor/bin/spryker-dev-console dev:module-meta-files -d -v
-    - vendor/bin/console dev:dependency:find
     - vendor/bin/console dev:composer:update-json-files -d -v
     - vendor/bin/console dev:composer:validate-json-files
     - vendor/bin/console code:sniff:style
@@ -314,9 +313,17 @@ _VALIDATION_SCRIPT_PHP8: &VALIDATION_SCRIPT_PHP8
     - echo "_VALIDATION_SCRIPT"
     - vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/
 
+    - vendor/bin/console dev:dependency:find
+
     - chmod +x tests/*.sh
     - tests/travis_check_touched_modules.sh
     - tests/travis_check_untracked.sh
+
+_VALIDATION_SCRIPT_PHP_LOWEST: &VALIDATION_SCRIPT_PHP_LOWEST
+    - echo "_VALIDATION_SCRIPT"
+    - vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/
+
+    - vendor/bin/console dev:dependency:find
 
 _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
     - echo "_VALIDATION_FRONT_END_SCRIPT"
@@ -543,7 +550,7 @@ jobs:
           install:
               - *COMPOSER_PREFER_LOWEST
           script:
-              - *VALIDATION_SCRIPT
+              - *VALIDATION_SCRIPT_PHP_LOWEST
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
