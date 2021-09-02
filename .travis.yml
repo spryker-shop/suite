@@ -384,6 +384,7 @@ _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
               $HOME/other-download
     before_script:
         - ./config/Shared/ci/travis/docker-credentials.sh
+        - dockerd
     after_script: skip
 
 version: ~> 1.0
