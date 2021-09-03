@@ -14,4 +14,6 @@ class CartListPage
 
     public const FIRST_CART_ITEM_QUANTITY_INPUT_XPATH = '[data-qa*="cart-quantity-input"] [data-qa="quantity-input"]';
     public const FIRST_CART_ITEM_CHANGE_QUANTITY_BUTTON_XPATH = '[data-qa*="cart-quantity-input"] [data-qa="quantity-input-submit"]';
+
+    public const FIRST_CART_ITEM_SKU = '[data-qa="cart-item-sku"]';
 }
