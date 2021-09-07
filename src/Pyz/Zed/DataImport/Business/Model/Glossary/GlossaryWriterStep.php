@@ -16,11 +16,26 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class GlossaryWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
+    /**
+     * @var int
+     */
     public const BULK_SIZE = 100;
 
+    /**
+     * @var string
+     */
     public const KEY_KEY = 'key';
+    /**
+     * @var string
+     */
     public const KEY_TRANSLATION = 'translation';
+    /**
+     * @var string
+     */
     public const KEY_ID_LOCALE = 'idLocale';
+    /**
+     * @var string
+     */
     public const KEY_LOCALE = 'locale';
 
     /**

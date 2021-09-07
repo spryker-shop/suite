@@ -9,7 +9,13 @@ namespace PyzTest\Zed\ProductRelation\PageObject;
 
 class ProductRelationCreatePage
 {
+    /**
+     * @var string
+     */
     public const URL = '/product-relation-gui/create';
 
+    /**
+     * @var string
+     */
     public const EDIT_PRODUCT_RELATION_TEXT = 'Edit Product Relation:';
 }

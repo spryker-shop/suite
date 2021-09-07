@@ -16,7 +16,13 @@ use SprykerSdk\Zed\Benchmark\Business\Request\RequestBuilderFactory;
 
 class HomeZedPageBench
 {
+    /**
+     * @var string
+     */
     protected const LOGIN_EMAIL = 'admin@spryker.com';
+    /**
+     * @var string
+     */
     protected const LOGIN_PASSWORD = 'change123';
 
     /**

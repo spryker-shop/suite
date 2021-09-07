@@ -20,6 +20,9 @@ use SprykerSdk\Shared\Benchmark\Request\RequestBuilderInterface;
 
 class CheckoutBench
 {
+    /**
+     * @var string
+     */
     protected const PRODUCT_SKU = '035_17360369';
 
     /**

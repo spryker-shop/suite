@@ -29,7 +29,13 @@ use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
  */
 class CheckoutRestApiCest
 {
+    /**
+     * @var string
+     */
     protected const RESPONSE_CODE_CART_IS_EMPTY = '1104';
+    /**
+     * @var string
+     */
     protected const RESPONSE_DETAILS_CART_IS_EMPTY = 'Cart is empty.';
 
     /**

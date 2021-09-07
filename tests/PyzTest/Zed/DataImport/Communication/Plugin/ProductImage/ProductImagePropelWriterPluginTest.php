@@ -26,7 +26,13 @@ use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
  */
 class ProductImagePropelWriterPluginTest extends AbstractWriterPluginTest
 {
+    /**
+     * @var string
+     */
     public const CSV_IMPORT_FILE = 'import/ProductImage/product_image.csv';
+    /**
+     * @var string
+     */
     public const DATA_IMPORTER_TYPE = 'product-image';
 
     /**

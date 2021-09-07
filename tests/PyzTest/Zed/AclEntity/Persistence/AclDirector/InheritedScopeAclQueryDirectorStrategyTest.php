@@ -43,11 +43,29 @@ use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
  */
 class InheritedScopeAclQueryDirectorStrategyTest extends Unit
 {
+    /**
+     * @var string
+     */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_1_NAME = 'segment merchant 1';
+    /**
+     * @var string
+     */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_1_REFERENCE = 'segment_1_reference';
+    /**
+     * @var string
+     */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_2_NAME = 'segment merchant 2';
+    /**
+     * @var string
+     */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_2_REFERENCE = 'segment_2_reference';
+    /**
+     * @var string
+     */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_3_NAME = 'segment merchant 3';
+    /**
+     * @var string
+     */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_3_REFERENCE = 'segment_3_reference';
 
     /**

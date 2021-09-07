@@ -18,15 +18,36 @@ use SprykerSdk\Zed\Benchmark\Business\Request\RequestBuilderFactory;
 
 class CategoryStoreAssignmentBench
 {
+    /**
+     * @var int
+     */
     protected const CATEGORY_ID = 1;
+    /**
+     * @var string
+     */
     protected const CATEGORY_KEY = 'demoshop';
 
+    /**
+     * @var string
+     */
     protected const LOGIN_EMAIL = 'admin@spryker.com';
+    /**
+     * @var string
+     */
     protected const LOGIN_PASSWORD = 'change123';
 
+    /**
+     * @var string
+     */
     protected const CATEGORY_CSRF_FORM_ELEMENT_ID = 'category__token';
 
+    /**
+     * @var int
+     */
     protected const ID_STORE_DE = 1;
+    /**
+     * @var int
+     */
     protected const ID_STORE_AT = 2;
 
     /**

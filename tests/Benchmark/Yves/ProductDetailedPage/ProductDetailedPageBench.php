@@ -15,6 +15,9 @@ use SprykerSdk\Yves\Benchmark\Request\RequestBuilderFactory;
 
 class ProductDetailedPageBench
 {
+    /**
+     * @var string
+     */
     protected const PRODUCT_ALIAS = 'samsung-galaxy-s5-mini-66';
 
     /**

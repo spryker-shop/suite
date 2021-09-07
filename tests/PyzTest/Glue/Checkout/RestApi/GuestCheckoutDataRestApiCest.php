@@ -25,6 +25,9 @@ use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
  */
 class GuestCheckoutDataRestApiCest
 {
+    /**
+     * @var string
+     */
     protected const HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID = 'X-Anonymous-Customer-Unique-Id';
 
     /**

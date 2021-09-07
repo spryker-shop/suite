@@ -20,8 +20,14 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductSearchAttributeWriter extends PublishAwareStep implements DataImportStepInterface
 {
+    /**
+     * @var int
+     */
     public const BULK_SIZE = 100;
 
+    /**
+     * @var string
+     */
     public const KEY = 'key';
 
     /**

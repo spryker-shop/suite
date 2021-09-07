@@ -12,6 +12,9 @@ use Spryker\Zed\PriceProductOfferDataImport\PriceProductOfferDataImportConfig as
 
 class PriceProductOfferDataImportConfig extends SprykerPriceProductOfferDataImportConfig
 {
+    /**
+     * @var string
+     */
     public const IMPORT_TYPE_COMBINED_PRICE_PRODUCT_OFFER = 'combined-price-product-offer';
 
     /**

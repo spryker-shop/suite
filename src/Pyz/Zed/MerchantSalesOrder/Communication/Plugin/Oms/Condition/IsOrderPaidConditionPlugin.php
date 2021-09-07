@@ -17,6 +17,9 @@ use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
  */
 class IsOrderPaidConditionPlugin extends AbstractPlugin implements ConditionInterface
 {
+    /**
+     * @var string
+     */
     protected const ITEM_STATE_PAID = 'paid';
 
     /**

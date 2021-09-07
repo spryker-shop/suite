@@ -34,6 +34,9 @@ use Spryker\Shared\AclEntity\AclEntityConstants;
  */
 class SegmentScopeAclQueryDirectorStrategyTest extends Unit
 {
+    /**
+     * @var string
+     */
     protected const MERCHANT_COL_UPDATED_AT = 'UpdatedAt';
 
     /**

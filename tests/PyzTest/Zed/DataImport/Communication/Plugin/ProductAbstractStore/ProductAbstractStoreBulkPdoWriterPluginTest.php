@@ -26,7 +26,13 @@ use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
  */
 class ProductAbstractStoreBulkPdoWriterPluginTest extends AbstractWriterPluginTest
 {
+    /**
+     * @var string
+     */
     public const CSV_IMPORT_FILE = 'import/ProductAbstractStore/product_abstract_store.csv';
+    /**
+     * @var string
+     */
     public const DATA_IMPORTER_TYPE = 'product-abstract-store';
 
     /**

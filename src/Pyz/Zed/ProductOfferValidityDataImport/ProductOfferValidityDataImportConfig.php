@@ -12,6 +12,9 @@ use Spryker\Zed\ProductOfferValidityDataImport\ProductOfferValidityDataImportCon
 
 class ProductOfferValidityDataImportConfig extends SprykerProductOfferValidityDataImportConfig
 {
+    /**
+     * @var string
+     */
     public const IMPORT_TYPE_COMBINED_PRODUCT_OFFER_VALIDITY = 'combined-product-offer-validity';
 
     /**

@@ -15,6 +15,9 @@ use SprykerSdk\Yves\Benchmark\Request\RequestBuilderFactory;
 
 class CatalogSearchBench
 {
+    /**
+     * @var string
+     */
     protected const SEARCH_QUERY = 'Acer';
 
     /**

@@ -34,6 +34,9 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInterface
 {
+    /**
+     * @var int
+     */
     public const BULK_SIZE = 2000;
 
     protected const COLUMN_NAME = ProductStockHydratorStep::COLUMN_NAME;
@@ -42,8 +45,17 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     protected const COLUMN_QUANTITY = ProductStockHydratorStep::COLUMN_QUANTITY;
     protected const COLUMN_IS_NEVER_OUT_OF_STOCK = ProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK;
 
+    /**
+     * @var string
+     */
     protected const KEY_SKU = 'sku';
+    /**
+     * @var string
+     */
     protected const KEY_QUANTITY = 'qty';
+    /**
+     * @var string
+     */
     protected const KEY_IS_NEVER_OUT_OF_STOCK = 'is_never_out_of_stock';
 
     /**

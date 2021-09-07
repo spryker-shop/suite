@@ -11,6 +11,7 @@ class CatalogPage
 {
     /**
      * @see \Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH_SUGGESTIONS
+     * @var string
      */
     public const ENDPOINT_CATALOG_SEARCH = '/catalog-search-suggestions?q=%s';
 }

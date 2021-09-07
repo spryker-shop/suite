@@ -29,8 +29,17 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
 {
     use CartsRestApiFixturesTrait;
 
+    /**
+     * @var string
+     */
     protected const TEST_USERNAME = 'UserConvertGuestCartToCustomerCartRestApiFixtures';
+    /**
+     * @var string
+     */
     protected const TEST_PASSWORD = 'change123';
+    /**
+     * @var string
+     */
     protected const ANONYMOUS_PREFIX = 'anonymous:';
 
     /**

@@ -23,7 +23,13 @@ use Spryker\Zed\MerchantOms\MerchantOmsDependencyProvider as SprykerMerchantOmsD
  */
 class MerchantOmsDependencyProvider extends SprykerMerchantOmsDependencyProvider
 {
+    /**
+     * @var string
+     */
     public const FACADE_OMS = 'FACADE_OMS';
+    /**
+     * @var string
+     */
     public const FACADE_SALES_RETURN = 'FACADE_SALES_RETURN';
 
     /**
