@@ -29,6 +29,9 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class GuestCheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    /**
+     * @var string
+     */
     protected const ANONYMOUS_PREFIX = 'anonymous:';
 
     /**

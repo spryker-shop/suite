@@ -30,7 +30,13 @@ use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionCustomer
 
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
+    /**
+     * @var string
+     */
     public const SALES_FACADE = 'sales facade';
+    /**
+     * @var string
+     */
     public const NEWSLETTER_FACADE = 'newsletter facade';
 
     /**

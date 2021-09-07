@@ -20,7 +20,13 @@ use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
 
 class CompanyRoleConfig extends SprykerCompanyRoleConfig
 {
+    /**
+     * @var string
+     */
     protected const BUYER_ROLE_NAME = 'Buyer';
+    /**
+     * @var string
+     */
     protected const APPROVER_ROLE_NAME = 'Approver';
 
     /**

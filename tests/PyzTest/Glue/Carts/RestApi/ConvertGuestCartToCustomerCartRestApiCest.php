@@ -25,6 +25,9 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
  */
 class ConvertGuestCartToCustomerCartRestApiCest
 {
+    /**
+     * @var string
+     */
     protected const ANONYMOUS_PREFIX = 'anonymous:';
 
     /**

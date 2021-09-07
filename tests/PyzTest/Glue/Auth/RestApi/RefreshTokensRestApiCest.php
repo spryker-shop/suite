@@ -24,6 +24,9 @@ use Spryker\Glue\AuthRestApi\AuthRestApiConfig;
  */
 class RefreshTokensRestApiCest
 {
+    /**
+     * @var string
+     */
     protected const INVALID_REFRESH_TOKEN = 'invalid refresh token';
 
     /**

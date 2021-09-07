@@ -12,6 +12,9 @@ use Spryker\Zed\ProductOfferStockDataImport\ProductOfferStockDataImportConfig as
 
 class ProductOfferStockDataImportConfig extends SprykerProductOfferStockDataImportConfig
 {
+    /**
+     * @var string
+     */
     public const IMPORT_TYPE_COMBINED_PRODUCT_OFFER_STOCK = 'combined-product-offer-stock';
 
     /**

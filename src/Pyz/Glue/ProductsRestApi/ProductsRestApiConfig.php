@@ -11,5 +11,8 @@ use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig as SprykerProductsRestApi
 
 class ProductsRestApiConfig extends SprykerProductsRestApiConfig
 {
+    /**
+     * @var bool
+     */
     public const ALLOW_PRODUCT_CONCRETE_EAGER_RELATIONSHIP = false;
 }

@@ -14,6 +14,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class OrderSourceWriterStep implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_ORDER_SOURCE_NAME = 'order_source_name';
 
     /**

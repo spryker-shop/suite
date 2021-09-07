@@ -12,12 +12,21 @@ use Spryker\Glue\ConfigurableBundleCartsRestApi\ConfigurableBundleCartsRestApiCo
 
 class CartsRestApiConfig extends SprykerCartsRestApiConfig
 {
+    /**
+     * @var array
+     */
     protected const GUEST_CART_RESOURCES = [
         self::RESOURCE_GUEST_CARTS,
         self::RESOURCE_GUEST_CARTS_ITEMS,
         ConfigurableBundleCartsRestApiConfig::RESOURCE_GUEST_CONFIGURED_BUNDLES,
     ];
 
+    /**
+     * @var bool
+     */
     protected const ALLOWED_CART_ITEM_EAGER_RELATIONSHIP = false;
+    /**
+     * @var bool
+     */
     protected const ALLOWED_GUEST_CART_ITEM_EAGER_RELATIONSHIP = false;
 }

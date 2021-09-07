@@ -11,6 +11,7 @@ class CategoryPage
 {
     /**
      * @see \Spryker\Zed\CategoryGui\Communication\Controller\EditController
+     * @var string
      */
     public const CATEGORY_PAGE_EDIT_URL = '/category-gui/edit?id-category=%s';
 }

@@ -29,9 +29,18 @@ use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
  */
 class GuestCheckoutRestApiCest
 {
+    /**
+     * @var string
+     */
     protected const HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID = 'X-Anonymous-Customer-Unique-Id';
 
+    /**
+     * @var string
+     */
     protected const RESPONSE_CODE_CART_IS_EMPTY = '1104';
+    /**
+     * @var string
+     */
     protected const RESPONSE_DETAILS_CART_IS_EMPTY = 'Cart is empty.';
 
     /**

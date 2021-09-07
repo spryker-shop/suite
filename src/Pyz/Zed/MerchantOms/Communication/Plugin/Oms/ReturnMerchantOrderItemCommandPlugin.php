@@ -23,6 +23,9 @@ use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByItemInterface;
  */
 class ReturnMerchantOrderItemCommandPlugin extends AbstractPlugin implements CommandByItemInterface
 {
+    /**
+     * @var string
+     */
     protected const EVENT_START_RETURN = 'start-return';
 
     /**

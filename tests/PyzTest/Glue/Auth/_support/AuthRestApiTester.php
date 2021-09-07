@@ -29,7 +29,13 @@ class AuthRestApiTester extends ApiEndToEndTester
 {
     use _generated\AuthRestApiTesterActions;
 
+    /**
+     * @var string
+     */
     private const ACCESS_TOKEN_JSON_PATH = '$.data.attributes.accessToken';
+    /**
+     * @var string
+     */
     private const REFRESH_TOKEN_JSON_PATH = '$.data.attributes.refreshToken';
 
     /**

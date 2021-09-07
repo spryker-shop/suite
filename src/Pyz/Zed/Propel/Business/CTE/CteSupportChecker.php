@@ -12,6 +12,9 @@ use Pyz\Zed\Propel\PropelConfig;
 
 class CteSupportChecker implements CteSupportCheckerInterface
 {
+    /**
+     * @var string
+     */
     protected const MARIA_DB_CTE_MINIMUM_VERSION = '10.5.0';
 
     /**
