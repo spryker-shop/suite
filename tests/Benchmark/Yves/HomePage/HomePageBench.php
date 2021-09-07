@@ -16,7 +16,13 @@ use SprykerSdk\Yves\Benchmark\Request\RequestBuilderFactory;
 
 class HomePageBench
 {
+    /**
+     * @var string
+     */
     protected const LOGIN_EMAIL = 'spencor.hopkin@spryker.com';
+    /**
+     * @var string
+     */
     protected const LOGIN_PASSWORD = 'change123';
 
     /**

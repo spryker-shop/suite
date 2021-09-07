@@ -12,8 +12,17 @@ use Spryker\Zed\UrlStorage\UrlStorageDependencyProvider as SprykerUrlStorageDepe
 
 class UrlStorageDependencyProvider extends SprykerUrlStorageDependencyProvider
 {
+    /**
+     * @var string
+     */
     public const SERVICE_SYNCHRONIZATION = 'SERVICE_SYNCHRONIZATION';
+    /**
+     * @var string
+     */
     public const CLIENT_QUEUE = 'CLIENT_QUEUE';
+    /**
+     * @var string
+     */
     public const FACADE_PROPEL = 'FACADE_PROPEL';
 
     /**

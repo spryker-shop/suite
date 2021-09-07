@@ -9,6 +9,12 @@ namespace PyzTest\Yves\CartItems\PageObject;
 
 class CartItemsPage
 {
+    /**
+     * @var string
+     */
     public const PRODUCT_PAGE = '/en/canon-powershot-sc620-32';
+    /**
+     * @var string
+     */
     public const PRODUCT_SKU = '032_32125551';
 }

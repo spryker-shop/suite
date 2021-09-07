@@ -39,9 +39,18 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductImageWriterTest extends AbstractWriterTest
 {
+    /**
+     * @var int
+     */
     protected const PRODUCTS_LIMIT = 2;
 
+    /**
+     * @var string
+     */
     protected const DEFAULT_EXTERNAL_URL_LARGE = '/large.png';
+    /**
+     * @var string
+     */
     protected const DEFAULT_EXTERNAL_URL_SMALL = '/small.png';
 
     /**

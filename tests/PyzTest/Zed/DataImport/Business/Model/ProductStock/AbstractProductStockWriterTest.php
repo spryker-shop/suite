@@ -37,6 +37,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductStockWriterTest extends AbstractWriterTest
 {
+    /**
+     * @var array
+     */
     protected const WAREHOUSES_QTY = [
         1234,
     ];

@@ -57,6 +57,9 @@ use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\TrueConditionPlugin
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
+    /**
+     * @var string
+     */
     public const FACADE_TRANSLATOR = 'FACADE_TRANSLATOR';
 
     /**

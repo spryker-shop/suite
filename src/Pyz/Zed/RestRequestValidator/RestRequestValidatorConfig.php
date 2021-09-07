@@ -13,6 +13,7 @@ class RestRequestValidatorConfig extends SprykerRestRequestValidatorConfig
 {
     /**
      * @project Only needed in internal nonsplit project, not in public split project.
+     * @var string
      */
     protected const PATH_PATTERN_CORE_VALIDATION = '/*/*/*/*/*/*/Glue/*/Validation';
 }

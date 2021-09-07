@@ -32,6 +32,9 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    /**
+     * @var string
+     */
     protected const ANONYMOUS_PREFIX = 'anonymous:';
 
     /**

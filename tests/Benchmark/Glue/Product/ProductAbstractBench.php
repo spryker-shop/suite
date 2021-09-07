@@ -15,6 +15,9 @@ use SprykerSdk\Shared\Benchmark\Request\RequestBuilderInterface;
 
 class ProductAbstractBench
 {
+    /**
+     * @var string
+     */
     protected const PRODUCT_SKU = '066';
 
     /**

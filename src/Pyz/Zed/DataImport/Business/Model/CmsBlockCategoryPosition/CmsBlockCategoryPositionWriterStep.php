@@ -13,6 +13,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CmsBlockCategoryPositionWriterStep implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_POSITION_NAME = 'cms_block_category_position_name';
 
     /**

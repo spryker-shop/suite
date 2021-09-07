@@ -12,7 +12,13 @@ use Spryker\Zed\MerchantProductOfferDataImport\MerchantProductOfferDataImportCon
 
 class MerchantProductOfferDataImportConfig extends SprykerMerchantProductOfferDataImportConfig
 {
+    /**
+     * @var string
+     */
     public const IMPORT_TYPE_COMBINED_MERCHANT_PRODUCT_OFFER = 'combined-merchant-product-offer';
+    /**
+     * @var string
+     */
     public const IMPORT_TYPE_COMBINED_MERCHANT_PRODUCT_OFFER_STORE = 'combined-merchant-product-offer-store';
 
     /**

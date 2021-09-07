@@ -11,6 +11,7 @@ class CheckoutPage
 {
     /**
      * @see \Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA
+     * @var string
      */
     public const ENDPOINT_CHECKOUT = '/checkout-data';
 }
