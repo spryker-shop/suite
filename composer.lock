@@ -7,20 +7,71 @@
     "content-hash": "7faaab49e5ec8a868d112c980fe927ad",
     "packages": [
         {
-            "name": "aws/aws-sdk-php",
-            "version": "3.191.10",
+            "name": "aws/aws-crt-php",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "b0e09d3ca2a42edd0b14b9da065376cd3bdd6838"
+                "url": "https://github.com/awslabs/aws-crt-php.git",
+                "reference": "3942776a8c99209908ee0b287746263725685732"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b0e09d3ca2a42edd0b14b9da065376cd3bdd6838",
-                "reference": "b0e09d3ca2a42edd0b14b9da065376cd3bdd6838",
+                "url": "https://api.github.com/repos/awslabs/aws-crt-php/zipball/3942776a8c99209908ee0b287746263725685732",
+                "reference": "3942776a8c99209908ee0b287746263725685732",
                 "shasum": ""
             },
             "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35|^5.4.3"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "AWS SDK Common Runtime Team",
+                    "email": "aws-sdk-common-runtime@amazon.com"
+                }
+            ],
+            "description": "AWS Common Runtime for PHP",
+            "homepage": "http://aws.amazon.com/sdkforphp",
+            "keywords": [
+                "amazon",
+                "aws",
+                "crt",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/awslabs/aws-crt-php/issues",
+                "source": "https://github.com/awslabs/aws-crt-php/tree/v1.0.2"
+            },
+            "time": "2021-09-03T22:57:30+00:00"
+        },
+        {
+            "name": "aws/aws-sdk-php",
+            "version": "3.192.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aws/aws-sdk-php.git",
+                "reference": "3f3026ecd3ef534701499ce98c8e3393604fca8b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3f3026ecd3ef534701499ce98c8e3393604fca8b",
+                "reference": "3f3026ecd3ef534701499ce98c8e3393604fca8b",
+                "shasum": ""
+            },
+            "require": {
+                "aws/aws-crt-php": "^1.0.1",
                 "ext-json": "*",
                 "ext-pcre": "*",
                 "ext-simplexml": "*",
@@ -92,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.191.10"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.192.0"
             },
-            "time": "2021-09-02T18:30:14+00:00"
+            "time": "2021-09-03T18:13:44+00:00"
         },
         {
             "name": "brick/math",
@@ -1643,23 +1694,23 @@
         },
         {
             "name": "laminas/laminas-zendframework-bridge",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-zendframework-bridge.git",
-                "reference": "13af2502d9bb6f7d33be2de4b51fb68c6cdb476e"
+                "reference": "bf180a382393e7db5c1e8d0f2ec0c4af9c724baf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-zendframework-bridge/zipball/13af2502d9bb6f7d33be2de4b51fb68c6cdb476e",
-                "reference": "13af2502d9bb6f7d33be2de4b51fb68c6cdb476e",
+                "url": "https://api.github.com/repos/laminas/laminas-zendframework-bridge/zipball/bf180a382393e7db5c1e8d0f2ec0c4af9c724baf",
+                "reference": "bf180a382393e7db5c1e8d0f2ec0c4af9c724baf",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3 || ^8.0"
+                "php": "^7.3 || ~8.0.0 || ~8.1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.1 || ^9.3",
+                "phpunit/phpunit": "^9.3",
                 "psalm/plugin-phpunit": "^0.15.1",
                 "squizlabs/php_codesniffer": "^3.5",
                 "vimeo/psalm": "^4.6"
@@ -1701,7 +1752,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-06-24T12:49:22+00:00"
+            "time": "2021-09-03T17:53:30+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -2709,21 +2760,21 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v3.5.4",
+            "version": "v3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "59bb35ed6e8da95854fbf7b7d47dce6156b42915"
+                "reference": "2f28a34203ea2e730371d913fc06ae45b6e9baaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/59bb35ed6e8da95854fbf7b7d47dce6156b42915",
-                "reference": "59bb35ed6e8da95854fbf7b7d47dce6156b42915",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/2f28a34203ea2e730371d913fc06ae45b6e9baaa",
+                "reference": "2f28a34203ea2e730371d913fc06ae45b6e9baaa",
                 "shasum": ""
             },
             "require": {
                 "nette/utils": "^3.1.2",
-                "php": ">=7.1"
+                "php": ">=7.2 <8.2"
             },
             "require-dev": {
                 "nette/tester": "^2.0",
@@ -2737,7 +2788,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.5-dev"
+                    "dev-master": "3.6-dev"
                 }
             },
             "autoload": {
@@ -2761,7 +2812,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 8.0 features.",
+            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 8.1 features.",
             "homepage": "https://nette.org",
             "keywords": [
                 "code",
@@ -2771,9 +2822,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/php-generator/issues",
-                "source": "https://github.com/nette/php-generator/tree/v3.5.4"
+                "source": "https://github.com/nette/php-generator/tree/v3.6.0"
             },
-            "time": "2021-07-05T12:02:42+00:00"
+            "time": "2021-08-29T15:43:46+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -4816,7 +4867,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c0af7eb38140d4f6b7a5e8a457ccd523da1b4cda"
+                "reference": "e9d2270d08a0fd174ed04d3fcf84fdc6e2943a00"
             },
             "require": {
                 "php": ">=7.3"
@@ -5670,7 +5721,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-09-03T16:43:04+00:00"
+            "time": "2021-09-07T11:08:48+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5678,7 +5729,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "0b48c037ec3419972136080ac249de07bb31f4cc"
+                "reference": "3cd957b18da00a6ed98fe45e878fb96a9ad2f09a"
             },
             "require": {
                 "php": ">=7.3"
@@ -5846,7 +5897,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2021-09-03T13:45:09+00:00"
+            "time": "2021-09-06T11:18:29+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11976,12 +12027,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "327ef50477f54488d84f02845daaa27494dd71bd"
+                "reference": "e8310b02436892908a71387e9f18957c7e787465"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/327ef50477f54488d84f02845daaa27494dd71bd",
-                "reference": "327ef50477f54488d84f02845daaa27494dd71bd",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/e8310b02436892908a71387e9f18957c7e787465",
+                "reference": "e8310b02436892908a71387e9f18957c7e787465",
                 "shasum": ""
             },
             "require-dev": {
@@ -12017,7 +12068,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2021-09-01T06:26:58+00:00"
+            "time": "2021-09-07T11:03:35+00:00"
         },
         {
             "name": "lstrojny/functional-php",
@@ -13613,16 +13664,16 @@
         },
         {
             "name": "psalm/phar",
-            "version": "4.9.3",
+            "version": "4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/phar.git",
-                "reference": "05aeae540e7567d7f5de77a0ce200e33e94295ca"
+                "reference": "79c5b2210e1a1cabeee671db1160c96869572d08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/05aeae540e7567d7f5de77a0ce200e33e94295ca",
-                "reference": "05aeae540e7567d7f5de77a0ce200e33e94295ca",
+                "url": "https://api.github.com/repos/psalm/phar/zipball/79c5b2210e1a1cabeee671db1160c96869572d08",
+                "reference": "79c5b2210e1a1cabeee671db1160c96869572d08",
                 "shasum": ""
             },
             "require": {
@@ -13642,9 +13693,9 @@
             "description": "Composer-based Psalm Phar",
             "support": {
                 "issues": "https://github.com/psalm/phar/issues",
-                "source": "https://github.com/psalm/phar/tree/4.9.3"
+                "source": "https://github.com/psalm/phar/tree/4.10.0"
             },
-            "time": "2021-08-15T01:17:47+00:00"
+            "time": "2021-09-05T00:07:08+00:00"
         },
         {
             "name": "psr/cache",
