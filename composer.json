@@ -209,7 +209,7 @@
             "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
         ],
         "phpstan": [
-            "php -d memory_limit=1024M vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/"
+            "php -d memory_limit=-1 vendor/bin/phpstan"
         ],
         "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate",
         "psalm": "vendor/bin/psalm.phar --show-info=false",
