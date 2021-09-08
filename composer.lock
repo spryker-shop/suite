@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7faaab49e5ec8a868d112c980fe927ad",
+    "content-hash": "c4a25fcd7df597548ff2004fbdddcf65",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -58,20 +58,20 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.192.0",
+            "version": "3.192.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "3f3026ecd3ef534701499ce98c8e3393604fca8b"
+                "reference": "60b618429c040b4a1f567cf9ee56b3d2d14fe54b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3f3026ecd3ef534701499ce98c8e3393604fca8b",
-                "reference": "3f3026ecd3ef534701499ce98c8e3393604fca8b",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/60b618429c040b4a1f567cf9ee56b3d2d14fe54b",
+                "reference": "60b618429c040b4a1f567cf9ee56b3d2d14fe54b",
                 "shasum": ""
             },
             "require": {
-                "aws/aws-crt-php": "^1.0.1",
+                "aws/aws-crt-php": "^1.0.2",
                 "ext-json": "*",
                 "ext-pcre": "*",
                 "ext-simplexml": "*",
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.192.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.192.1"
             },
-            "time": "2021-09-03T18:13:44+00:00"
+            "time": "2021-09-07T18:32:31+00:00"
         },
         {
             "name": "brick/math",
@@ -1392,30 +1392,27 @@
         },
         {
             "name": "laminas/laminas-config",
-            "version": "3.5.0",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-config.git",
-                "reference": "f91cd6fe79e82cbbcaa36485108a04e8ef1e679b"
+                "reference": "2f2273a6bdf966a9adf6042f8950b6c33199a3b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-config/zipball/f91cd6fe79e82cbbcaa36485108a04e8ef1e679b",
-                "reference": "f91cd6fe79e82cbbcaa36485108a04e8ef1e679b",
+                "url": "https://api.github.com/repos/laminas/laminas-config/zipball/2f2273a6bdf966a9adf6042f8950b6c33199a3b7",
+                "reference": "2f2273a6bdf966a9adf6042f8950b6c33199a3b7",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "laminas/laminas-stdlib": "^2.7.7 || ^3.1",
-                "laminas/laminas-zendframework-bridge": "^1.0",
                 "php": "^7.3 || ~8.0.0",
                 "psr/container": "^1.0"
             },
             "conflict": {
-                "container-interop/container-interop": "<1.2.0"
-            },
-            "replace": {
-                "zendframework/zend-config": "^3.3.0"
+                "container-interop/container-interop": "<1.2.0",
+                "zendframework/zend-config": "*"
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~1.0.0",
@@ -1460,7 +1457,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-02-11T15:06:51+00:00"
+            "time": "2021-09-08T09:58:39+00:00"
         },
         {
             "name": "laminas/laminas-filter",
@@ -3530,16 +3527,16 @@
         },
         {
             "name": "propel/propel",
-            "version": "2.0.0-alpha12",
+            "version": "2.0.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/propelorm/Propel2.git",
-                "reference": "540769c4f1feb3faccb4f40f8d9aa5d79fc2b28a"
+                "reference": "a88e6a8b401529568d6c8033cdb3ecb66a141910"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/540769c4f1feb3faccb4f40f8d9aa5d79fc2b28a",
-                "reference": "540769c4f1feb3faccb4f40f8d9aa5d79fc2b28a",
+                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/a88e6a8b401529568d6c8033cdb3ecb66a141910",
+                "reference": "a88e6a8b401529568d6c8033cdb3ecb66a141910",
                 "shasum": ""
             },
             "require": {
@@ -3599,9 +3596,9 @@
             ],
             "support": {
                 "issues": "https://github.com/propelorm/Propel2/issues",
-                "source": "https://github.com/propelorm/Propel2/tree/2.0.0-alpha12"
+                "source": "https://github.com/propelorm/Propel2/tree/2.0.0-beta1"
             },
-            "time": "2021-01-22T12:18:42+00:00"
+            "time": "2021-09-05T12:51:18+00:00"
         },
         {
             "name": "psr/container",
@@ -4867,7 +4864,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "e9170c292158b1fae65f20f1cf5727a085d4b611"
+                "reference": "cec2e66ad72dc079f2f2d66123da25d2b3f60e1b"
             },
             "require": {
                 "php": ">=7.3"
@@ -5721,7 +5718,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-09-07T15:12:59+00:00"
+            "time": "2021-09-08T16:37:24+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -12027,12 +12024,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "eb07bc65495e90df51160b27ff563597cd9e609a"
+                "reference": "9650042ecaa0e444565c504d0bbc851fe9c126ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/eb07bc65495e90df51160b27ff563597cd9e609a",
-                "reference": "eb07bc65495e90df51160b27ff563597cd9e609a",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/9650042ecaa0e444565c504d0bbc851fe9c126ab",
+                "reference": "9650042ecaa0e444565c504d0bbc851fe9c126ab",
                 "shasum": ""
             },
             "require-dev": {
@@ -12068,7 +12065,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2021-09-07T15:16:18+00:00"
+            "time": "2021-09-08T13:58:27+00:00"
         },
         {
             "name": "lstrojny/functional-php",
@@ -15122,12 +15119,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/brancho.git",
-                "reference": "8ef525e2563bb73655c68d4407ec3ca8ff773db8"
+                "reference": "fb45294e311bf946ad26ba7db103a67fe4fc5bcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/brancho/zipball/8ef525e2563bb73655c68d4407ec3ca8ff773db8",
-                "reference": "8ef525e2563bb73655c68d4407ec3ca8ff773db8",
+                "url": "https://api.github.com/repos/spryker-sdk/brancho/zipball/fb45294e311bf946ad26ba7db103a67fe4fc5bcb",
+                "reference": "fb45294e311bf946ad26ba7db103a67fe4fc5bcb",
                 "shasum": ""
             },
             "require": {
@@ -15147,9 +15144,7 @@
                 "codeception/module-phpbrowser": "^1.0.0",
                 "mikey179/vfsstream": "^1.6",
                 "phpstan/phpstan": "^0.12.18",
-                "slevomat/coding-standard": "^6.2",
-                "spryker/code-sniffer": "^0.15.6",
-                "squizlabs/php_codesniffer": "^3.5",
+                "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "^5.0"
             },
             "default-branch": true,
@@ -15176,7 +15171,7 @@
                 "issues": "https://github.com/spryker-sdk/brancho/issues",
                 "source": "https://github.com/spryker-sdk/brancho/tree/master"
             },
-            "time": "2021-08-30T15:52:19+00:00"
+            "time": "2021-09-07T16:03:09+00:00"
         },
         {
             "name": "spryker-sdk/codeception-phantoman",
