@@ -302,7 +302,7 @@ _VALIDATION_SCRIPT: &VALIDATION_SCRIPT
     - vendor/bin/console dev:composer:validate-json-files
     - vendor/bin/console code:sniff:style
     - vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
-    - vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/
+    - vendor/bin/phpstan analyze
     - composer psalm
 
     - npm install
@@ -311,7 +311,7 @@ _VALIDATION_SCRIPT: &VALIDATION_SCRIPT
 
 _VALIDATION_SCRIPT_PHP8: &VALIDATION_SCRIPT_PHP8
     - echo "_VALIDATION_SCRIPT"
-    - vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/
+    - vendor/bin/phpstan analyze
 
     - vendor/bin/console dev:dependency:find
 
@@ -321,7 +321,7 @@ _VALIDATION_SCRIPT_PHP8: &VALIDATION_SCRIPT_PHP8
 
 _VALIDATION_SCRIPT_PHP_LOWEST: &VALIDATION_SCRIPT_PHP_LOWEST
     - echo "_VALIDATION_SCRIPT"
-    - vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/
+    - vendor/bin/phpstan analyze
 
 _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
     - echo "_VALIDATION_FRONT_END_SCRIPT"

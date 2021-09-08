@@ -3,6 +3,10 @@ includes:
     - vendor/phpstan/phpstan/conf/bleedingEdge.neon
 
 parameters:
+    level: 6
+    paths:
+        - src/
+
     excludes_analyse:
         - '%rootDir%/../../../src/Generated/*'
         - '%rootDir%/../../../src/Orm/*'
@@ -16,6 +20,8 @@ parameters:
         - '#Call to an undefined method .+DataSetStepBrokerAwareInterface::addAfterImportHook\(\).#'
 
     reportUnmatchedIgnoredErrors: false
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
 
     dynamicConstantNames:
         - APPLICATION
