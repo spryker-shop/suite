@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.193.0",
+            "version": "3.193.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "418ff1173253b8d0fd8e50eeb9ca15b51ab24e4a"
+                "reference": "5294e06519479b9f41d6e18a88d077c4837a58ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/418ff1173253b8d0fd8e50eeb9ca15b51ab24e4a",
-                "reference": "418ff1173253b8d0fd8e50eeb9ca15b51ab24e4a",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5294e06519479b9f41d6e18a88d077c4837a58ff",
+                "reference": "5294e06519479b9f41d6e18a88d077c4837a58ff",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.193.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.193.1"
             },
-            "time": "2021-09-08T18:14:42+00:00"
+            "time": "2021-09-09T18:28:04+00:00"
         },
         {
             "name": "brick/math",
@@ -603,27 +603,27 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.25",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "0dbf5d78455d4d6a41d186da50adc1122ec066f4"
+                "reference": "c81f18a3efb941d8c4d2e025f6183b5c6d697307"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/0dbf5d78455d4d6a41d186da50adc1122ec066f4",
-                "reference": "0dbf5d78455d4d6a41d186da50adc1122ec066f4",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/c81f18a3efb941d8c4d2e025f6183b5c6d697307",
+                "reference": "c81f18a3efb941d8c4d2e025f6183b5c6d697307",
                 "shasum": ""
             },
             "require": {
-                "doctrine/lexer": "^1.0.1",
-                "php": ">=5.5",
-                "symfony/polyfill-intl-idn": "^1.10"
+                "doctrine/lexer": "^1.2",
+                "php": ">=7.2",
+                "symfony/polyfill-intl-idn": "^1.15"
             },
             "require-dev": {
-                "dominicsayers/isemail": "^3.0.7",
-                "phpunit/phpunit": "^4.8.36|^7.5.15",
-                "satooshi/php-coveralls": "^1.0.1"
+                "php-coveralls/php-coveralls": "^2.2",
+                "phpunit/phpunit": "^8.5.8|^9.3.3",
+                "vimeo/psalm": "^4"
             },
             "suggest": {
                 "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
@@ -631,7 +631,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1.x-dev"
+                    "dev-master": "3.0.x-dev"
                 }
             },
             "autoload": {
@@ -659,7 +659,7 @@
             ],
             "support": {
                 "issues": "https://github.com/egulias/EmailValidator/issues",
-                "source": "https://github.com/egulias/EmailValidator/tree/2.1.25"
+                "source": "https://github.com/egulias/EmailValidator/tree/3.1.1"
             },
             "funding": [
                 {
@@ -667,7 +667,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-12-29T14:50:06+00:00"
+            "time": "2021-04-01T18:37:14+00:00"
         },
         {
             "name": "elasticsearch/elasticsearch",
@@ -3400,31 +3400,37 @@
         },
         {
             "name": "phpdocumentor/graphviz",
-            "version": "1.0.4",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/GraphViz.git",
-                "reference": "a906a90a9f230535f25ea31caf81b2323956283f"
+                "reference": "929e97b4ab6765fc4eb2f944b091a4a02807ee5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/GraphViz/zipball/a906a90a9f230535f25ea31caf81b2323956283f",
-                "reference": "a906a90a9f230535f25ea31caf81b2323956283f",
+                "url": "https://api.github.com/repos/phpDocumentor/GraphViz/zipball/929e97b4ab6765fc4eb2f944b091a4a02807ee5d",
+                "reference": "929e97b4ab6765fc4eb2f944b091a4a02807ee5d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^7.2 || 8.0.*"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0"
+                "ext-simplexml": "*",
+                "mockery/mockery": "^1.2",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.2 || ^9.2"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "phpDocumentor": [
-                        "src/",
-                        "tests/unit"
-                    ]
+                "psr-4": {
+                    "phpDocumentor\\GraphViz\\": "src/phpDocumentor/GraphViz",
+                    "phpDocumentor\\GraphViz\\PHPStan\\": "./src/phpDocumentor/PHPStan"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3437,11 +3443,12 @@
                     "email": "mike.vanriel@naenius.com"
                 }
             ],
+            "description": "Wrapper for Graphviz",
             "support": {
                 "issues": "https://github.com/phpDocumentor/GraphViz/issues",
-                "source": "https://github.com/phpDocumentor/GraphViz/tree/master"
+                "source": "https://github.com/phpDocumentor/GraphViz/tree/2.0.0"
             },
-            "time": "2016-02-02T13:00:08+00:00"
+            "time": "2021-02-02T20:48:43+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -26275,20 +26282,20 @@
         },
         {
             "name": "spryker/egulias",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/egulias.git",
-                "reference": "e1a98df121123082c3d8972ec309c246ec0c00c8"
+                "reference": "4b9ce41e72b56f7c422bf03ada2d00521d15e569"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/egulias/zipball/e1a98df121123082c3d8972ec309c246ec0c00c8",
-                "reference": "e1a98df121123082c3d8972ec309c246ec0c00c8",
+                "url": "https://api.github.com/repos/spryker/egulias/zipball/4b9ce41e72b56f7c422bf03ada2d00521d15e569",
+                "reference": "4b9ce41e72b56f7c422bf03ada2d00521d15e569",
                 "shasum": ""
             },
             "require": {
-                "egulias/email-validator": "~2.1.2",
+                "egulias/email-validator": "^2.1.22 || ^3.1.1",
                 "php": ">=7.3"
             },
             "type": "library",
@@ -26303,9 +26310,9 @@
             ],
             "description": "Egulias module",
             "support": {
-                "source": "https://github.com/spryker/egulias/tree/1.1.0"
+                "source": "https://github.com/spryker/egulias/tree/1.1.1"
             },
-            "time": "2021-07-07T15:14:17+00:00"
+            "time": "2021-08-30T13:35:56+00:00"
         },
         {
             "name": "spryker/elastica",
@@ -27898,16 +27905,16 @@
         },
         {
             "name": "spryker/graph",
-            "version": "3.0.1",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/graph.git",
-                "reference": "7ca91bacb6ecc2b4d52d22975d696e6096180c77"
+                "reference": "abe511cad87246885d4d631b28e8d09191389b89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/graph/zipball/7ca91bacb6ecc2b4d52d22975d696e6096180c77",
-                "reference": "7ca91bacb6ecc2b4d52d22975d696e6096180c77",
+                "url": "https://api.github.com/repos/spryker/graph/zipball/abe511cad87246885d4d631b28e8d09191389b89",
+                "reference": "abe511cad87246885d4d631b28e8d09191389b89",
                 "shasum": ""
             },
             "require": {
@@ -27939,27 +27946,27 @@
             ],
             "description": "Graph module",
             "support": {
-                "source": "https://github.com/spryker/graph/tree/3.0.1"
+                "source": "https://github.com/spryker/graph/tree/3.0.3"
             },
-            "time": "2021-07-07T15:14:17+00:00"
+            "time": "2021-09-10T12:59:22+00:00"
         },
         {
             "name": "spryker/graphviz",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/graphviz.git",
-                "reference": "a19c523bf359af98297e633819e5056e4063bdad"
+                "reference": "e3d060a2fd83743054379f58fb4779621d2e0d69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/graphviz/zipball/a19c523bf359af98297e633819e5056e4063bdad",
-                "reference": "a19c523bf359af98297e633819e5056e4063bdad",
+                "url": "https://api.github.com/repos/spryker/graphviz/zipball/e3d060a2fd83743054379f58fb4779621d2e0d69",
+                "reference": "e3d060a2fd83743054379f58fb4779621d2e0d69",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
-                "phpdocumentor/graphviz": "^1.0.4"
+                "phpdocumentor/graphviz": "^1.0.4 || ^2.0.0"
             },
             "type": "library",
             "extra": {
@@ -27973,9 +27980,9 @@
             ],
             "description": "Graphviz module",
             "support": {
-                "source": "https://github.com/spryker/graphviz/tree/2.0.2"
+                "source": "https://github.com/spryker/graphviz/tree/2.0.3"
             },
-            "time": "2021-07-07T15:14:17+00:00"
+            "time": "2021-08-30T13:35:56+00:00"
         },
         {
             "name": "spryker/gui",
@@ -61328,33 +61335,33 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "be1996ed8adc35c3fd795488a653f4b518be70ea"
+                "reference": "d86dfc2e2a3cd366cee475e52c6bb3bbc371aa0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/be1996ed8adc35c3fd795488a653f4b518be70ea",
-                "reference": "be1996ed8adc35c3fd795488a653f4b518be70ea",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/d86dfc2e2a3cd366cee475e52c6bb3bbc371aa0e",
+                "reference": "d86dfc2e2a3cd366cee475e52c6bb3bbc371aa0e",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.2",
-                "php": "^7.2 || ~8.0, <8.1",
+                "php": "^7.2 || ~8.0, <8.2",
                 "phpdocumentor/reflection-docblock": "^5.2",
                 "sebastian/comparator": "^3.0 || ^4.0",
                 "sebastian/recursion-context": "^3.0 || ^4.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^6.0",
+                "phpspec/phpspec": "^6.0 || ^7.0",
                 "phpunit/phpunit": "^8.0 || ^9.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.11.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "autoload": {
@@ -61389,22 +61396,22 @@
             ],
             "support": {
                 "issues": "https://github.com/phpspec/prophecy/issues",
-                "source": "https://github.com/phpspec/prophecy/tree/1.13.0"
+                "source": "https://github.com/phpspec/prophecy/tree/1.14.0"
             },
-            "time": "2021-03-17T13:42:18+00:00"
+            "time": "2021-09-10T09:02:12+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "0.5.5",
+            "version": "0.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "ea0b17460ec38e20d7eb64e7ec49b5d44af5d28c"
+                "reference": "fac86158ffc7392e49636f77e63684c026df43b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/ea0b17460ec38e20d7eb64e7ec49b5d44af5d28c",
-                "reference": "ea0b17460ec38e20d7eb64e7ec49b5d44af5d28c",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/fac86158ffc7392e49636f77e63684c026df43b8",
+                "reference": "fac86158ffc7392e49636f77e63684c026df43b8",
                 "shasum": ""
             },
             "require": {
@@ -61438,9 +61445,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/0.5.5"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/0.5.6"
             },
-            "time": "2021-06-11T13:24:46+00:00"
+            "time": "2021-08-31T08:08:22+00:00"
         },
         {
             "name": "phpstan/phpstan",
@@ -62988,32 +62995,32 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "7.0.14",
+            "version": "7.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "15b2b4630c148775debea8e412bc7e128d9868a3"
+                "reference": "cc80e59f9b4ca642f02dc1b615c37a9afc2a0f80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/15b2b4630c148775debea8e412bc7e128d9868a3",
-                "reference": "15b2b4630c148775debea8e412bc7e128d9868a3",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/cc80e59f9b4ca642f02dc1b615c37a9afc2a0f80",
+                "reference": "cc80e59f9b4ca642f02dc1b615c37a9afc2a0f80",
                 "shasum": ""
             },
             "require": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2 || ^0.7",
                 "php": "^7.1 || ^8.0",
-                "phpstan/phpdoc-parser": "0.5.1 - 0.5.5",
+                "phpstan/phpdoc-parser": "0.5.1 - 0.5.6",
                 "squizlabs/php_codesniffer": "^3.6.0"
             },
             "require-dev": {
-                "phing/phing": "2.16.4",
+                "phing/phing": "2.17.0",
                 "php-parallel-lint/php-parallel-lint": "1.3.1",
-                "phpstan/phpstan": "0.12.96",
+                "phpstan/phpstan": "0.12.98",
                 "phpstan/phpstan-deprecation-rules": "0.12.6",
                 "phpstan/phpstan-phpunit": "0.12.22",
                 "phpstan/phpstan-strict-rules": "0.12.11",
-                "phpunit/phpunit": "7.5.20|8.5.5|9.5.8"
+                "phpunit/phpunit": "7.5.20|8.5.5|9.5.9"
             },
             "type": "phpcodesniffer-standard",
             "extra": {
@@ -63033,7 +63040,7 @@
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
             "support": {
                 "issues": "https://github.com/slevomat/coding-standard/issues",
-                "source": "https://github.com/slevomat/coding-standard/tree/7.0.14"
+                "source": "https://github.com/slevomat/coding-standard/tree/7.0.15"
             },
             "funding": [
                 {
@@ -63045,7 +63052,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-26T12:17:56+00:00"
+            "time": "2021-09-09T10:29:09+00:00"
         },
         {
             "name": "sllh/composer-versions-check",
@@ -63645,12 +63652,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "4c3a4a38697440c1e991dd752c387ef83354e59e"
+                "reference": "1901007935a510663a3f5e9654c1f2b5ac80ebf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/4c3a4a38697440c1e991dd752c387ef83354e59e",
-                "reference": "4c3a4a38697440c1e991dd752c387ef83354e59e",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/1901007935a510663a3f5e9654c1f2b5ac80ebf9",
+                "reference": "1901007935a510663a3f5e9654c1f2b5ac80ebf9",
                 "shasum": ""
             },
             "require": {
@@ -63696,7 +63703,7 @@
                 "issues": "https://github.com/spryker/code-sniffer/issues",
                 "source": "https://github.com/spryker/code-sniffer"
             },
-            "time": "2021-08-27T09:48:03+00:00"
+            "time": "2021-09-09T15:51:52+00:00"
         },
         {
             "name": "spryker/docker-chromedriver",
