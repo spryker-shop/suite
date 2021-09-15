@@ -29,8 +29,17 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
 {
     use CartsRestApiFixturesTrait;
 
+    /**
+     * @var string
+     */
     protected const TEST_USERNAME = 'UserConvertGuestCartToCustomerCartRestApiFixtures';
+    /**
+     * @var string
+     */
     protected const TEST_PASSWORD = 'change123';
+    /**
+     * @var string
+     */
     protected const ANONYMOUS_PREFIX = 'anonymous:';
 
     /**
@@ -105,7 +114,7 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
      */
     protected function createGuestQuote(CartsApiTester $I): void
     {
-        $this->productConcreteTransfer = $I->haveFullProduct();
+        $this->productConcreteTransfer = $this->createProduct($I);
         $this->guestCustomerReference = $this->createGuestCustomerReference();
         $guestCustomerTransfer = (new CustomerTransfer())
             ->setCustomerReference(static::ANONYMOUS_PREFIX . $this->guestCustomerReference);

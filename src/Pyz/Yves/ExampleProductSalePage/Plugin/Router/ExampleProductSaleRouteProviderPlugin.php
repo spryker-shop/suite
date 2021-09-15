@@ -14,8 +14,12 @@ class ExampleProductSaleRouteProviderPlugin extends AbstractRouteProviderPlugin
 {
     /**
      * @deprecated Use {@link \Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin::ROUTE_NAME_SALE} instead.
+     * @var string
      */
     public const ROUTE_SALE = 'sale';
+    /**
+     * @var string
+     */
     public const ROUTE_NAME_SALE = 'sale';
 
     /**

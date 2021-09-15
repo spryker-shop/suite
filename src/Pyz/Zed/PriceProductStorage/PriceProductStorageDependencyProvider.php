@@ -12,8 +12,17 @@ use Spryker\Zed\PriceProductStorage\PriceProductStorageDependencyProvider as Spr
 
 class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDependencyProvider
 {
+    /**
+     * @var string
+     */
     public const FACADE_PROPEL = 'FACADE_PROPEL';
+    /**
+     * @var string
+     */
     public const SERVICE_SYNCHRONIZATION = 'SERVICE_SYNCHRONIZATION';
+    /**
+     * @var string
+     */
     public const CLIENT_QUEUE = 'CLIENT_QUEUE';
 
     /**

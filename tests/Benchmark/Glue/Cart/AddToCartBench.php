@@ -15,6 +15,9 @@ use SprykerSdk\Shared\Benchmark\Request\RequestBuilderInterface;
 
 class AddToCartBench
 {
+    /**
+     * @var string
+     */
     protected const PRODUCT_SKU = '035_17360369';
 
     /**

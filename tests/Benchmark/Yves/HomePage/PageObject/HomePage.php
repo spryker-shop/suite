@@ -11,6 +11,7 @@ class HomePage
 {
     /**
      * @see \SprykerShop\Yves\HomePage\Plugin\Router\HomePageRouteProviderPlugin::ROUTE_HOME
+     * @var string
      */
     public const HOME_PAGE_URL = '/';
 }

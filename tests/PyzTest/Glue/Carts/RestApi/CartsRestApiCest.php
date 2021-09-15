@@ -1234,4 +1234,62 @@ class CartsRestApiCest
 
         $I->amBearerAuthenticated($token);
     }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCustomerCarts(CartsApiTester $I): void
+    {
+        // Arrange
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
+
+        $url = $I->buildCustomerCartUrl($quoteTransfer->getCustomer()->getCustomerReference());
+
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
+
+        // Act
+        $I->sendGET($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCustomerCartsAuthorizationError(CartsApiTester $I): void
+    {
+        // Arrange
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
+
+        $url = $I->buildCustomerCartUrl('wrongCustomerReference');
+
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
+
+        // Act
+        $I->sendGET($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->seeResponseMatchesOpenApiSchema();
+    }
 }

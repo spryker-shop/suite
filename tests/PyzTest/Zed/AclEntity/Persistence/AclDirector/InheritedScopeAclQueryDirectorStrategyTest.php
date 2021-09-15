@@ -25,7 +25,9 @@ use Pyz\Zed\Merchant\MerchantDependencyProvider;
 use Pyz\Zed\ProductOffer\ProductOfferDependencyProvider;
 use PyzTest\Zed\AclEntity\AclQueryDirectorTester;
 use Spryker\Shared\AclEntity\AclEntityConstants;
+use Spryker\Zed\AclEntity\AclEntityDependencyProvider;
 use Spryker\Zed\AclEntity\Persistence\Exception\OperationNotAuthorizedException;
+use Spryker\Zed\AclMerchantPortal\Communication\Plugin\AclEntity\MerchantPortalAclEntityMetadataConfigExpanderPlugin;
 use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -41,11 +43,29 @@ use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
  */
 class InheritedScopeAclQueryDirectorStrategyTest extends Unit
 {
+    /**
+     * @var string
+     */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_1_NAME = 'segment merchant 1';
+    /**
+     * @var string
+     */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_1_REFERENCE = 'segment_1_reference';
+    /**
+     * @var string
+     */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_2_NAME = 'segment merchant 2';
+    /**
+     * @var string
+     */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_2_REFERENCE = 'segment_2_reference';
+    /**
+     * @var string
+     */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_3_NAME = 'segment merchant 3';
+    /**
+     * @var string
+     */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_3_REFERENCE = 'segment_3_reference';
 
     /**
@@ -62,6 +82,10 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
 
         $this->tester->setDependency(MerchantDependencyProvider::PLUGINS_MERCHANT_POST_CREATE, []);
         $this->tester->setDependency(ProductOfferDependencyProvider::PLUGINS_PRODUCT_OFFER_POST_CREATE, []);
+        $this->tester->setDependency(
+            AclEntityDependencyProvider::PLUGINS_ACL_ENTITY_METADATA_COLLECTION_EXPANDER,
+            [new MerchantPortalAclEntityMetadataConfigExpanderPlugin()]
+        );
 
         $this->tester->deleteTestData();
         $this->tester->deleteAclEntitySegments(

@@ -29,9 +29,18 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    /**
+     * @var string
+     */
     protected const TEST_USERNAME = 'test username';
+    /**
+     * @var string
+     */
     protected const TEST_PASSWORD = 'change123';
 
+    /**
+     * @var int
+     */
     protected const TEST_GRAND_TOTAL = 1;
 
     /**

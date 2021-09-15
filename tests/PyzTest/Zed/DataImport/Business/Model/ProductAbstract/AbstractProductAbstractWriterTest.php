@@ -37,10 +37,19 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
 {
+    /**
+     * @var int
+     */
     protected const PRODUCT_ORDER = 16;
 
+    /**
+     * @var int
+     */
     protected const DATA_SET_COUNT = 2;
 
+    /**
+     * @var int
+     */
     protected const LOCALES_LIMIT = 2;
 
     /**

@@ -27,9 +27,21 @@ class GuestCartsRestApiFixtures implements FixturesBuilderInterface, FixturesCon
 {
     use CartsRestApiFixturesTrait;
 
+    /**
+     * @var int
+     */
     public const QUANTITY_FOR_ITEM_UPDATE = 33;
+    /**
+     * @var string
+     */
     public const TEST_GUEST_CART_NAME = 'Test guest cart name';
+    /**
+     * @var string
+     */
     public const CURRENCY_EUR = 'EUR';
+    /**
+     * @var string
+     */
     public const ANONYMOUS_PREFIX = 'anonymous:';
 
     /**

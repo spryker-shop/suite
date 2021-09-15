@@ -34,8 +34,14 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
 {
+    /**
+     * @var int
+     */
     protected const LOCALES_LIMIT = 2;
 
+    /**
+     * @var int
+     */
     protected const PRODUCTS_LIMIT = 2;
 
     /**

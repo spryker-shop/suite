@@ -32,7 +32,7 @@
         "ext-redis": "*",
         "codeitnowin/barcode": "^3.0.0",
         "doctrine/inflector": "^1.0.0 || ^2.0.0",
-        "egulias/email-validator": "~2.1.22",
+        "egulias/email-validator": "^2.1.22 || ^3.1.1",
         "everon/collection": "^1.0.0",
         "everon/criteria-builder": "~1.1.6",
         "everon/factory": "~1.1.4",
@@ -48,9 +48,9 @@
         "moneyphp/money": "^3.0.0",
         "monolog/monolog": "^1.25.0 || ^2.0.0",
         "nette/di": "^2.4.7 || ^3.0",
-        "phpdocumentor/graphviz": "^1.0.4",
+        "phpdocumentor/graphviz": "^2.0.0",
         "predis/predis": "^1.1.1",
-        "propel/propel": "2.0.0-alpha12",
+        "propel/propel": "2.0.0-beta1",
         "psr/container": "^1.0.0",
         "psr/http-message": "^1.0.0",
         "psr/log": "^1.0.0",
@@ -110,7 +110,6 @@
         "symfony/web-profiler-bundle": "^4.0.0 || ^5.0.0",
         "symfony/var-dumper": "*",
         "spryker-sdk/codeception-phantoman": "dev-master",
-        "sllh/composer-versions-check": "^2.0.2",
         "stecman/symfony-console-completion": "*",
         "fzaninotto/faker": "^1.6.0",
         "spryker-sdk/phpstan-spryker": "^0.3.0",
@@ -130,7 +129,7 @@
         "psalm/phar": "^4.3.1",
         "sebastian/git": "*",
         "sebastian/diff": "*",
-        "phpstan/phpstan": "0.12.93",
+        "phpstan/phpstan": "0.12.96",
         "roave/better-reflection": "~4.3.0",
         "symfony/browser-kit": "^4.0.0 || ~5.1.8",
         "nette/neon": "^3.2.1",
@@ -139,17 +138,18 @@
         "spryker-sdk/brancho": "dev-master",
         "spryker-sdk/load-testing": "dev-master",
         "spryker-sdk/security-checker": "dev-master",
-        "codeception/c3": "^2.6"
+        "codeception/c3": "^2.6",
+        "jetbrains/phpstorm-stubs": "dev-master as 2019.3"
     },
     "autoload": {
         "psr-4": {
             "Generated\\": "src/Generated/",
             "Orm\\": "src/Orm/",
             "Pyz\\": "src/Pyz/",
-            "SprykerConfig\\": "src/SprykerConfig"
+            "SprykerConfig\\": "src/SprykerConfig/"
         },
         "psr-0": {
-            "Pimple": "vendor/spryker/spryker/Bundles/Container/src/Spryker"
+            "Pimple": "vendor/spryker/spryker/Bundles/Container/src/Spryker/"
         }
     },
     "autoload-dev": {
@@ -209,7 +209,7 @@
             "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
         ],
         "phpstan": [
-            "php -d memory_limit=1024M vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/"
+            "php -d memory_limit=-1 vendor/bin/phpstan"
         ],
         "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate",
         "psalm": "vendor/bin/psalm.phar --show-info=false",

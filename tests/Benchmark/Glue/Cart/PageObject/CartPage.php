@@ -11,6 +11,7 @@ class CartPage
 {
     /**
      * @see \Spryker\Glue\CartsRestApi\CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS
+     * @var string
      */
     public const ENDPOINT_GUEST_CART = '/guest-cart-items';
 }

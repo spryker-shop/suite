@@ -22,7 +22,13 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    /**
+     * @var string
+     */
     public const PRODUCT_CONFIGURATION_INSTANCE_ATTRIBUTE_JSON_PATH = '.productConfigurationInstance';
+    /**
+     * @var array
+     */
     public const PRODUCT_CONFIGURATION_CART_ITEM_DATA = [
         'displayData' => '{"Preferred time of the day": "Afternoon", "Date": "9.09.2020"}',
         'configuration' => '{"time_of_day": "2"}',
@@ -60,11 +66,23 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
             ],
         ],
     ];
+    /**
+     * @var string
+     */
     public const PRODUCT_CONFIGURATION_INSTANCE_HASH = 'd3f1cc32c7cfe45608b80595e9f313c8';
 
+    /**
+     * @var string
+     */
     public const STORE_NAME_DE = 'DE';
 
+    /**
+     * @var string
+     */
     protected const TEST_USERNAME = 'UserProductConfigurationsRestApiFixtures';
+    /**
+     * @var string
+     */
     protected const TEST_PASSWORD = 'change123';
 
     /**

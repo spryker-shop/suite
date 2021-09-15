@@ -59,13 +59,34 @@ class AclQueryDirectorTester extends Actor
 {
     use _generated\AclQueryDirectorTesterActions;
 
+    /**
+     * @var string
+     */
     public const ACL_ENTITY_SEGMENT_1_NAME = 'segment 1';
+    /**
+     * @var string
+     */
     public const ACL_ENTITY_SEGMENT_2_NAME = 'segment 2';
+    /**
+     * @var string
+     */
     public const ACL_ENTITY_SEGMENT_1_REFERENCE = 'ref_segment_1';
+    /**
+     * @var string
+     */
     public const ACL_ENTITY_SEGMENT_2_REFERENCE = 'ref_segment_2';
 
+    /**
+     * @var string
+     */
     public const ACL_ROLE_1_NAME = 'role 1';
+    /**
+     * @var string
+     */
     public const ACL_ROLE_2_NAME = 'role 2';
+    /**
+     * @var string
+     */
     public const ACL_ROLE_3_NAME = 'role 3';
 
     /**
@@ -223,7 +244,8 @@ class AclQueryDirectorTester extends Actor
             $factory->createAclEntityMetadataReader($aclEntityMetadataCollectionTransfer),
             $factory->createRelationResolver($aclEntityMetadataCollectionTransfer),
             $userFacade,
-            $aclFacade
+            $aclFacade,
+            $factory->createAclEntityQueryMerger()
         );
     }
 

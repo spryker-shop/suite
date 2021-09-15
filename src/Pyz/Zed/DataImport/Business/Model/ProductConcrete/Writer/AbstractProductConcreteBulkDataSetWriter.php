@@ -18,6 +18,9 @@ use Spryker\Zed\DataImport\DataImportConfig;
 
 abstract class AbstractProductConcreteBulkDataSetWriter implements DataSetWriterInterface
 {
+    /**
+     * @var int
+     */
     public const BULK_SIZE = 3000;
 
     protected const COLUMN_NAME = ProductConcreteHydratorStep::COLUMN_NAME;

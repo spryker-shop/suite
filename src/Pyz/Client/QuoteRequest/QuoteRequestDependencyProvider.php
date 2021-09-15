@@ -7,7 +7,7 @@
 
 namespace Pyz\Client\QuoteRequest;
 
-use Spryker\Client\ProductConfiguration\Plugin\QuoteRequest\ProductConfigurationQuoteRequestQuoteCheckPlugin;
+use Spryker\Client\ProductConfigurationCart\Plugin\QuoteRequest\ProductConfigurationQuoteRequestQuoteCheckPlugin;
 use Spryker\Client\QuoteApproval\Plugin\QuoteRequest\QuoteApprovalQuoteRequestQuoteCheckPlugin;
 use Spryker\Client\QuoteRequest\QuoteRequestDependencyProvider as SprykerQuoteRequestDependencyProvider;
 

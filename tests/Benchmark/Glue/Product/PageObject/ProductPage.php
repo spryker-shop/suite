@@ -11,11 +11,13 @@ class ProductPage
 {
     /**
      * @see \Spryker\Glue\ProductsRestApi\ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS
+     * @var string
      */
     public const ENDPOINT_PRODUCT_ABSTRACT = '/abstract-products/%s';
 
     /**
      * @see \Spryker\Glue\ProductsRestApi\ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS
+     * @var string
      */
     public const ENDPOINT_PRODUCT_CONCRETE = '/concrete-products/%s';
 }

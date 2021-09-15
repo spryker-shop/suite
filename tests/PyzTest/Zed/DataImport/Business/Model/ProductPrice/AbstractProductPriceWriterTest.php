@@ -40,12 +40,21 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
 {
+    /**
+     * @var array
+     */
     protected const PRICE_TYPES = [
         'DATAIMPORT_TEST1',
         'DATAIMPORT_TEST2',
     ];
 
+    /**
+     * @var int
+     */
     protected const PRICE_MODE_CONFIGURATION = 2;
+    /**
+     * @var string
+     */
     protected const PRICE_DATA = '[{""quantity"":5,""net_price"":150,""gross_price"":165}]';
 
     /**
