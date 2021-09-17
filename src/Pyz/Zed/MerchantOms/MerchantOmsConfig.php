@@ -21,7 +21,7 @@ class MerchantOmsConfig extends SprykerMerchantOmsConfig
     protected const MAIN_MERCHANT_STATE_MACHINE_INITIAL_STATE = 'created';
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getMerchantProcessInitialStateMap(): array
     {
@@ -36,7 +36,7 @@ class MerchantOmsConfig extends SprykerMerchantOmsConfig
     /**
      * @api
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getMerchantOmsProcesses(): array
     {

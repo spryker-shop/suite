@@ -114,7 +114,7 @@ class ProductImageBulkPdoMariaDbDataSetWriter extends AbstractProductImageBulkDa
     }
 
     /**
-     * @param int[] $touchedProductImages
+     * @param array<int> $touchedProductImages
      *
      * @return void
      */

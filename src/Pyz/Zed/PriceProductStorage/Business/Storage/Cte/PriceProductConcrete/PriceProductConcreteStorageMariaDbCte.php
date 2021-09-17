@@ -104,7 +104,7 @@ class PriceProductConcreteStorageMariaDbCte implements PriceProductStorageCteInt
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getCompatibleEngines(): array
     {

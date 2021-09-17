@@ -169,7 +169,7 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
     }
 
     /**
-     * @param string[] $skus
+     * @param array<string> $skus
      *
      * @return array
      */

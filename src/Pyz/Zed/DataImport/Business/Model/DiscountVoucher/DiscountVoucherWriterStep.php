@@ -124,7 +124,7 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
      * @param int $quantity
      * @param string|null $customCode
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function generateCodes(int $length, int $quantity, ?string $customCode = null): array
     {

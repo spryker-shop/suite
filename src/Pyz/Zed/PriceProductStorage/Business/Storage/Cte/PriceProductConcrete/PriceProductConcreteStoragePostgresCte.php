@@ -98,7 +98,7 @@ class PriceProductConcreteStoragePostgresCte implements PriceProductStorageCteIn
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getCompatibleEngines(): array
     {

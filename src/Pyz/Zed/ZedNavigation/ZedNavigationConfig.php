@@ -14,7 +14,7 @@ class ZedNavigationConfig extends SprykerZedNavigationConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getNavigationSchemaPathPattern(): array
     {
@@ -27,9 +27,9 @@ class ZedNavigationConfig extends SprykerZedNavigationConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @param string[] $paths
+     * @param array<string> $paths
      *
-     * @return string[]
+     * @return array<string>
      */
     private function addSprykerFilePath($paths): array
     {

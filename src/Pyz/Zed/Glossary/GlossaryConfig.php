@@ -12,7 +12,7 @@ use Spryker\Zed\Glossary\GlossaryConfig as SprykerGlossaryConfig;
 class GlossaryConfig extends SprykerGlossaryConfig
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getGlossaryFilePaths()
     {
@@ -25,9 +25,9 @@ class GlossaryConfig extends SprykerGlossaryConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @param string[] $paths
+     * @param array<string> $paths
      *
-     * @return string[]
+     * @return array<string>
      */
     private function addSprykerFilePath($paths): array
     {
