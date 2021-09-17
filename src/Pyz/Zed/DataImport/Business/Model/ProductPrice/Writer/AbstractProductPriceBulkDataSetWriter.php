@@ -41,32 +41,32 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     protected static $priceProductConcreteCollection = [];
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected static $productCurrencyIdsCollection = [];
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected static $productStoreIdsCollection = [];
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected static $productPriceTypeIdsCollection = [];
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected static $productIds = [];
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected static $priceProductStoreIds = [];
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected static $priceProductIds = [];
 

@@ -51,7 +51,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     protected $synchronizedMessageCollection = [];
 
     /**
-     * @var \Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface[]
+     * @var array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface>
      */
     protected $productAbstractStorageExpanderPlugins = [];
 
@@ -66,7 +66,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToStoreFacadeInterface $storeFacade
      * @param bool $isSendingToQueue
-     * @param \Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface[] $productAbstractStorageExpanderPlugins
+     * @param array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface> $productAbstractStorageExpanderPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      * @param \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface $productAbstractStorageCte
@@ -98,7 +98,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
 
     /**
      * @param array $productAbstractLocalizedEntities
-     * @param \Orm\Zed\ProductStorage\Persistence\SpyProductAbstractStorage[] $productAbstractStorageEntities
+     * @param array<\Orm\Zed\ProductStorage\Persistence\SpyProductAbstractStorage> $productAbstractStorageEntities
      *
      * @return void
      */
@@ -283,7 +283,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getParams(): array
     {

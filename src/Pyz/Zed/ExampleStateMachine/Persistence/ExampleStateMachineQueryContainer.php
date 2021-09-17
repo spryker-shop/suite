@@ -16,7 +16,7 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 class ExampleStateMachineQueryContainer extends AbstractQueryContainer implements ExampleStateMachineQueryContainerInterface
 {
     /**
-     * @param int[] $stateIds
+     * @param array<int> $stateIds
      *
      * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
      */
@@ -28,7 +28,7 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
     }
 
     /**
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem[]|\Propel\Runtime\Collection\ObjectCollection
+     * @return \Propel\Runtime\Collection\ObjectCollection|array<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
     public function queryAllStateMachineItems()
     {

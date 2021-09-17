@@ -103,7 +103,7 @@ class ProductImageBulkPdoDataSetWriter extends AbstractProductImageBulkDataSetWr
     }
 
     /**
-     * @param int[] $touchedProductImages
+     * @param array<int> $touchedProductImages
      *
      * @return void
      */

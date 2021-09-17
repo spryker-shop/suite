@@ -104,7 +104,7 @@ class ProductAbstractStoragePostgresCte implements ProductStorageCteStrategyInte
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getCompatibleEngines(): array
     {

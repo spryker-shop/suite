@@ -16,7 +16,7 @@ use Spryker\Client\Wishlist\WishlistDependencyProvider as SprykerWishlistDepende
 class WishlistDependencyProvider extends SprykerWishlistDependencyProvider
 {
     /**
-     * @return \Spryker\Client\WishlistExtension\Dependency\Plugin\WishlistPostMoveToCartCollectionExpanderPluginInterface[]
+     * @return array<\Spryker\Client\WishlistExtension\Dependency\Plugin\WishlistPostMoveToCartCollectionExpanderPluginInterface>
      */
     protected function getWishlistPostMoveToCartCollectionExpanderPlugins(): array
     {
@@ -27,7 +27,7 @@ class WishlistDependencyProvider extends SprykerWishlistDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\WishlistExtension\Dependency\Plugin\WishlistCollectionToRemoveExpanderPluginInterface[]
+     * @return array<\Spryker\Client\WishlistExtension\Dependency\Plugin\WishlistCollectionToRemoveExpanderPluginInterface>
      */
     protected function getWishlistCollectionToRemoveExpanderPlugins(): array
     {

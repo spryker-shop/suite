@@ -13,7 +13,7 @@ use Spryker\Glue\MerchantsRestApi\MerchantsRestApiDependencyProvider as SprykerM
 class MerchantsRestApiDependencyProvider extends SprykerMerchantsRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\MerchantsRestApiExtension\Dependency\Plugin\MerchantRestAttributesMapperPluginInterface[]
+     * @return array<\Spryker\Glue\MerchantsRestApiExtension\Dependency\Plugin\MerchantRestAttributesMapperPluginInterface>
      */
     public function getMerchantRestAttributesMapperPlugins(): array
     {

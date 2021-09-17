@@ -92,7 +92,7 @@ class PriceProductStorageBusinessFactory extends SprykerPriceProductStorageBusin
     }
 
     /**
-     * @return \Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface[]
+     * @return array<\Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface>
      */
     public function createPriceProductAbstractStorageCteCollection(): array
     {
@@ -119,7 +119,7 @@ class PriceProductStorageBusinessFactory extends SprykerPriceProductStorageBusin
     }
 
     /**
-     * @return \Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface[]
+     * @return array<\Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface>
      */
     public function createPriceProductConcreteStorageCteCollection(): array
     {

@@ -113,7 +113,7 @@ abstract class ProductTestAbstract extends Unit
     public const CURRENCY_ISO_CODE = 'EUR';
 
     /**
-     * @var \Generated\Shared\Transfer\LocaleTransfer[]
+     * @var array<\Generated\Shared\Transfer\LocaleTransfer>
      */
     protected $locales;
 

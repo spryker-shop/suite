@@ -13,7 +13,7 @@ use Spryker\Zed\PriceCartConnector\PriceCartConnectorConfig as SprykerPriceCartC
 class PriceCartConnectorConfig extends SprykerPriceCartConnectorConfig
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getItemFieldsForIsSameItemComparison()
     {

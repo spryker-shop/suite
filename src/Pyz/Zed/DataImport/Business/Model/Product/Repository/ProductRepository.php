@@ -79,7 +79,7 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getSkuProductAbstractList(): array
     {
@@ -90,7 +90,7 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getSkuProductConcreteList(): array
     {

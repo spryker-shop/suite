@@ -13,7 +13,7 @@ use Spryker\Zed\ProductConfigurationCart\ProductConfigurationCartConfig as Spryk
 class ProductConfigurationCartConfig extends SprykerProductConfigurationCartConfig
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getItemFieldsForIsSameItemComparison(): array
     {
