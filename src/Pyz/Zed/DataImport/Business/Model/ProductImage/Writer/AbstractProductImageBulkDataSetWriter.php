@@ -115,7 +115,7 @@ abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInt
     abstract protected function persistProductImageSetRelations(): void;
 
     /**
-     * @param int[] $touchedProductImages
+     * @param array<int> $touchedProductImages
      *
      * @return void
      */

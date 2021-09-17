@@ -47,12 +47,12 @@ class ProductOptionPriceWriterStep extends PublishAwareStep implements DataImpor
     public const KEY_GROSS_AMOUNT = 'value_gross';
 
     /**
-     * @var int[] Keys are store names
+     * @var array<int> Keys are store names
      */
     protected static $idStoreBuffer = [];
 
     /**
-     * @var int[] Keys are currency codes.
+     * @var array<int> Keys are currency codes.
      */
     protected static $idCurrencyBuffer = [];
 

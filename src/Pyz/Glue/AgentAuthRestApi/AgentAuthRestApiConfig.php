@@ -17,7 +17,7 @@ class AgentAuthRestApiConfig extends SprykerAgentAuthRestApiConfig
      *
      * @api
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getAgentResources(): array
     {

@@ -15,7 +15,7 @@ class WebProfilerWidgetConfig extends SprykerWebProfilerWidgetConfig
     /**
      * @project Only needed in non-split projects.
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getWebProfilerTemplatePaths(): array
     {

@@ -28,7 +28,7 @@ use Spryker\Zed\ZedUi\Communication\Plugin\Application\ZedUiApplicationPlugin;
 class MerchantPortalApplicationDependencyProvider extends SprykerMerchantPortalApplicationDependencyProvider
 {
     /**
-     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
+     * @return array<\Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface>
      */
     protected function getMerchantPortalApplicationPlugins(): array
     {

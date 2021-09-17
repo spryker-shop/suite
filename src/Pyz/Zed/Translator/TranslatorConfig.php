@@ -14,7 +14,7 @@ class TranslatorConfig extends SprykerTranslatorConfig
     /**
      * * @project Only needed in non-split projects.
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getCoreTranslationFilePathPatterns(): array
     {

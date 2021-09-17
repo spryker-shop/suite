@@ -13,7 +13,7 @@ use Spryker\Zed\MerchantSearch\MerchantSearchDependencyProvider as SprykerMercha
 class MerchantSearchDependencyProvider extends SprykerMerchantSearchDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\MerchantSearchExtension\Dependency\Plugin\MerchantSearchDataExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\MerchantSearchExtension\Dependency\Plugin\MerchantSearchDataExpanderPluginInterface>
      */
     protected function getMerchantSearchDataExpanderPlugins(): array
     {

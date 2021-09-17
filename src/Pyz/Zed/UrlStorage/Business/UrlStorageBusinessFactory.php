@@ -55,7 +55,7 @@ class UrlStorageBusinessFactory extends SprykerUrlStorageBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface[]
+     * @return array<\Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface>
      */
     public function createUrlStorageCteCollection(): array
     {

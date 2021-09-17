@@ -18,7 +18,7 @@ use Spryker\Client\PriceProductOfferStorage\Plugin\MerchantProductOfferStorage\P
 class MerchantProductOfferStorageDependencyProvider extends SprykerMerchantProductOfferStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\MerchantProductOfferStorageExtension\Dependency\Plugin\ProductOfferReferenceStrategyPluginInterface[]
+     * @return array<\Spryker\Client\MerchantProductOfferStorageExtension\Dependency\Plugin\ProductOfferReferenceStrategyPluginInterface>
      */
     protected function getProductOfferReferenceStrategyPlugins(): array
     {
@@ -30,7 +30,7 @@ class MerchantProductOfferStorageDependencyProvider extends SprykerMerchantProdu
     }
 
     /**
-     * @return \Spryker\Client\MerchantProductOfferStorageExtension\Dependency\Plugin\ProductOfferStorageExpanderPluginInterface[]
+     * @return array<\Spryker\Client\MerchantProductOfferStorageExtension\Dependency\Plugin\ProductOfferStorageExpanderPluginInterface>
      */
     protected function getProductOfferStorageExpanderPlugins(): array
     {

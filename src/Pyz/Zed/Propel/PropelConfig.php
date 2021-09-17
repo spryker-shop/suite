@@ -14,7 +14,7 @@ class PropelConfig extends SprykerPropelConfig
     /**
      * @project Only needed in nonsplit projects.
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getCorePropelSchemaPathPatterns(): array
     {

@@ -13,7 +13,7 @@ use Spryker\Glue\EntityTagsRestApi\EntityTagsRestApiConfig as SprykerEntityTagsR
 class EntityTagsRestApiConfig extends SprykerEntityTagsRestApiConfig
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getEntityTagRequiredResources(): array
     {

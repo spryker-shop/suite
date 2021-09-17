@@ -15,7 +15,7 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
      * @project Only needed in Project, not in demoshop
      *
      * @phpstan-var array<string, string>
-     * @var string[]
+     * @var array<string>
      */
     protected const INTERNAL_NAMESPACES_TO_PATH_MAPPING = [
         self::NAMESPACE_SPRYKER => APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'vendor/spryker/spryker/Bundles/',
@@ -27,7 +27,7 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
      *
      * @phpstan-return array<string, string>
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getIdeAutoCompletionSourceDirectoryGlobPatterns(): array
     {
@@ -90,7 +90,7 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getPathsToInternalNamespace(): array
     {

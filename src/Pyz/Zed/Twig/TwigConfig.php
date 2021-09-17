@@ -14,9 +14,9 @@ class TwigConfig extends SprykerTwigConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @param string[] $paths
+     * @param array<string> $paths
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function addCoreTemplatePaths(array $paths): array
     {
@@ -29,7 +29,7 @@ class TwigConfig extends SprykerTwigConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getZedDirectoryPathPatterns(): array
     {
@@ -51,7 +51,7 @@ class TwigConfig extends SprykerTwigConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getYvesDirectoryPathPatterns(): array
     {

@@ -29,12 +29,12 @@ class DiscountStoreWriterStep implements DataImportStepInterface
     public const KEY_STORE_NAME = 'store_name';
 
     /**
-     * @var int[] Keys are discount keys, values are discount IDs.
+     * @var array<int> Keys are discount keys, values are discount IDs.
      */
     protected static $idDiscountBuffer = [];
 
     /**
-     * @var int[] Keys are store names, values are store ids.
+     * @var array<int> Keys are store names, values are store ids.
      */
     protected static $idStoreBuffer = [];
 
