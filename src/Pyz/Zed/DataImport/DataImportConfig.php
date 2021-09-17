@@ -326,7 +326,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getFullImportTypes(): array
     {

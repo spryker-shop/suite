@@ -14,7 +14,7 @@ use SprykerShop\Yves\SalesProductConfigurationWidget\Plugin\CustomerReorderWidge
 class CustomerReorderWidgetDependencyProvider extends SprykerCustomerReorderWidgetDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\CustomerReorderWidgetExtension\Dependency\Plugin\PostReorderPluginInterface[]
+     * @return array<\SprykerShop\Yves\CustomerReorderWidgetExtension\Dependency\Plugin\PostReorderPluginInterface>
      */
     protected function getPostReorderPlugins(): array
     {
@@ -24,7 +24,7 @@ class CustomerReorderWidgetDependencyProvider extends SprykerCustomerReorderWidg
     }
 
     /**
-     * @return \SprykerShop\Yves\CustomerReorderWidgetExtension\Dependency\Plugin\ReorderItemExpanderPluginInterface[]
+     * @return array<\SprykerShop\Yves\CustomerReorderWidgetExtension\Dependency\Plugin\ReorderItemExpanderPluginInterface>
      */
     protected function getReorderItemExpanderPlugins(): array
     {

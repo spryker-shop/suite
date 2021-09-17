@@ -49,7 +49,7 @@ class CartsApiTester extends ApiEndToEndTester
     /**
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
@@ -68,7 +68,7 @@ class CartsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
      * @return array
      */
@@ -129,7 +129,7 @@ class CartsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -144,7 +144,7 @@ class CartsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -160,7 +160,7 @@ class CartsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -176,7 +176,7 @@ class CartsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $customerReference
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -194,7 +194,7 @@ class CartsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $cartUuid
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -212,7 +212,7 @@ class CartsApiTester extends ApiEndToEndTester
     /**
      * @param string $cartUuid
      * @param string $cartItemGroupKey
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -230,7 +230,7 @@ class CartsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -246,7 +246,7 @@ class CartsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $guestCartUuid
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -264,7 +264,7 @@ class CartsApiTester extends ApiEndToEndTester
     /**
      * @param string $guestCartUuid
      * @param string $guestCartItemGroupKey
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */

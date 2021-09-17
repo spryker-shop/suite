@@ -14,7 +14,7 @@ use Spryker\Zed\WishlistsRestApi\WishlistsRestApiDependencyProvider as SprykerWi
 class WishlistsRestApiDependencyProvider extends SprykerWishlistsRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\WishlistsRestApiExtension\Dependency\Plugin\RestWishlistItemsAttributesDeleteStrategyPluginInterface[]
+     * @return array<\Spryker\Zed\WishlistsRestApiExtension\Dependency\Plugin\RestWishlistItemsAttributesDeleteStrategyPluginInterface>
      */
     protected function getRestWishlistItemsAttributesDeleteStrategyPlugins(): array
     {

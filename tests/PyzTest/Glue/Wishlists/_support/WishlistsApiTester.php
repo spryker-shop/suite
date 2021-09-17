@@ -33,7 +33,7 @@ class WishlistsApiTester extends ApiEndToEndTester
     use _generated\WishlistsApiTesterActions;
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -47,7 +47,7 @@ class WishlistsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -63,7 +63,7 @@ class WishlistsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $wishlistUuid
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -81,7 +81,7 @@ class WishlistsApiTester extends ApiEndToEndTester
     /**
      * @param string $wishlistUuid
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -100,7 +100,7 @@ class WishlistsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */

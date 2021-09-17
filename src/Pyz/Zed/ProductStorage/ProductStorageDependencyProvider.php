@@ -42,7 +42,7 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
     }
 
     /**
-     * @return \Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface>
      */
     protected function getProductAbstractStorageExpanderPlugins(): array
     {

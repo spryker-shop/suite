@@ -559,7 +559,7 @@ class NavigationGuiPresentationTester extends Actor
 
     /**
      * @param string $defaultSlug
-     * @param string[] $localizedSlugs
+     * @param array<string> $localizedSlugs
      *
      * @return array
      */

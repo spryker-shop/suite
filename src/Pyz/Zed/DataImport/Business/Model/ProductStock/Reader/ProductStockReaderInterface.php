@@ -10,9 +10,9 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Reader;
 interface ProductStockReaderInterface
 {
     /**
-     * @param int[] $availabilityAbstractIds
+     * @param array<int> $availabilityAbstractIds
      *
-     * @return int[]
+     * @return array<int>
      */
     public function getProductAbstractIdsByAvailabilityAbstractIds(array $availabilityAbstractIds): array;
 }

@@ -13,7 +13,7 @@ use Spryker\Zed\ProductOfferStockGui\ProductOfferStockGuiDependencyProvider as S
 class ProductOfferStockGuiDependencyProvider extends SprykerProductOfferStockGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ProductOfferStockGuiExtension\Dependeency\Plugin\ProductOfferStockTableExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductOfferStockGuiExtension\Dependeency\Plugin\ProductOfferStockTableExpanderPluginInterface>
      */
     protected function getProductOfferStockTableExpanderPlugins(): array
     {

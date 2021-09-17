@@ -18,7 +18,7 @@ use SprykerShop\Yves\ProductConfiguratorGatewayPage\ProductConfiguratorGatewayPa
 class ProductConfiguratorGatewayPageDependencyProvider extends SprykerProductConfiguratorGatewayPageDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\ProductConfiguratorGatewayPageExtension\Dependency\Plugin\ProductConfiguratorRequestStrategyPluginInterface[]
+     * @return array<\SprykerShop\Yves\ProductConfiguratorGatewayPageExtension\Dependency\Plugin\ProductConfiguratorRequestStrategyPluginInterface>
      */
     protected function getProductConfiguratorRequestPlugins(): array
     {
@@ -29,7 +29,7 @@ class ProductConfiguratorGatewayPageDependencyProvider extends SprykerProductCon
     }
 
     /**
-     * @return \SprykerShop\Yves\ProductConfiguratorGatewayPageExtension\Dependency\Plugin\ProductConfiguratorResponseStrategyPluginInterface[]
+     * @return array<\SprykerShop\Yves\ProductConfiguratorGatewayPageExtension\Dependency\Plugin\ProductConfiguratorResponseStrategyPluginInterface>
      */
     protected function getProductConfiguratorResponsePlugins(): array
     {
@@ -40,7 +40,7 @@ class ProductConfiguratorGatewayPageDependencyProvider extends SprykerProductCon
     }
 
     /**
-     * @return \SprykerShop\Yves\ProductConfiguratorGatewayPageExtension\Dependency\Plugin\ProductConfiguratorRequestDataFormExpanderStrategyPluginInterface[]
+     * @return array<\SprykerShop\Yves\ProductConfiguratorGatewayPageExtension\Dependency\Plugin\ProductConfiguratorRequestDataFormExpanderStrategyPluginInterface>
      */
     protected function getProductConfiguratorRequestDataFormExpanderStrategyPlugins(): array
     {

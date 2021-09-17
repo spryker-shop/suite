@@ -15,7 +15,7 @@ interface ProductPagePublisherCteInterface
     public function getSql(): string;
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getCompatibleEngines(): array;
 
