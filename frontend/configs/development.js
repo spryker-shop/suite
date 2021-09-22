@@ -183,7 +183,9 @@ const getConfiguration = async appSettings => {
                 }),
 
                 compiler => compiler.hooks.done.tap('webpack', compilationParams => {
-                    if (process.env.npm_lifecycle_event === 'yves:watch') {
+                    const watchLifecycleEventNames = ['yves:watch:esm', 'yves:watch:legacy'];
+
+                    if (watchLifecycleEventNames.includes(process.env.npm_lifecycle_event)) {
                         return;
                     }
 
