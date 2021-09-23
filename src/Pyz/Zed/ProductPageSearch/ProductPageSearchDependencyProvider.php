@@ -89,7 +89,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[]|\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface>|array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataExpanderPluginInterface>
      */
     protected function getDataExpanderPlugins()
     {
@@ -109,7 +109,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface>
      */
     protected function getDataLoaderPlugins()
     {
@@ -127,7 +127,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractCollectionRefreshPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractCollectionRefreshPluginInterface>
      */
     protected function getProductPageRefreshPlugins(): array
     {
@@ -137,7 +137,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageMapExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageMapExpanderPluginInterface>
      */
     protected function getConcreteProductMapExpanderPlugins(): array
     {
@@ -148,7 +148,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface>
      */
     protected function getProductConcretePageDataExpanderPlugins(): array
     {
@@ -159,7 +159,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractMapExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractMapExpanderPluginInterface>
      */
     protected function getProductAbstractMapExpanderPlugins(): array
     {
@@ -178,7 +178,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractAddToCartPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractAddToCartPluginInterface>
      */
     protected function getProductAbstractAddToCartPlugins(): array
     {

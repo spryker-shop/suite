@@ -78,7 +78,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
 
     /**
      * @param array $productConcreteLocalizedEntities
-     * @param \Orm\Zed\ProductStorage\Persistence\SpyProductConcreteStorage[] $productConcreteStorageEntities
+     * @param array<\Orm\Zed\ProductStorage\Persistence\SpyProductConcreteStorage> $productConcreteStorageEntities
      *
      * @return void
      */
@@ -269,7 +269,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getParams(): array
     {

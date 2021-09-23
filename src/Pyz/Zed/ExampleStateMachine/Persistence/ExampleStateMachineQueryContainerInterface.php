@@ -10,14 +10,14 @@ namespace Pyz\Zed\ExampleStateMachine\Persistence;
 interface ExampleStateMachineQueryContainerInterface
 {
     /**
-     * @param int[] $stateIds
+     * @param array<int> $stateIds
      *
      * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
      */
     public function queryStateMachineItemsByStateIds(array $stateIds = []);
 
     /**
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem[]|\Propel\Runtime\Collection\ObjectCollection
+     * @return \Propel\Runtime\Collection\ObjectCollection|array<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
     public function queryAllStateMachineItems();
 

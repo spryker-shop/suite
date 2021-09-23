@@ -23,7 +23,7 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
     /**
      * {@inheritDoc}
      *
-     * @return \Spryker\Yves\CmsContentWidget\Dependency\CmsContentWidgetPluginInterface[]
+     * @return array<\Spryker\Yves\CmsContentWidget\Dependency\CmsContentWidgetPluginInterface>
      */
     public function getCmsContentWidgetPlugins()
     {

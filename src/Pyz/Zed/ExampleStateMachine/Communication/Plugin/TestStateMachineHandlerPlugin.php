@@ -24,7 +24,7 @@ class TestStateMachineHandlerPlugin extends AbstractPlugin implements StateMachi
     /**
      * List of command plugins for this state machine for all processes.
      *
-     * @return \Spryker\Zed\StateMachine\Dependency\Plugin\CommandPluginInterface[]
+     * @return array<\Spryker\Zed\StateMachine\Dependency\Plugin\CommandPluginInterface>
      */
     public function getCommandPlugins()
     {
@@ -36,7 +36,7 @@ class TestStateMachineHandlerPlugin extends AbstractPlugin implements StateMachi
     /**
      * List of condition plugins for this state machine for all processes.
      *
-     * @return \Spryker\Zed\StateMachine\Dependency\Plugin\ConditionPluginInterface[]
+     * @return array<\Spryker\Zed\StateMachine\Dependency\Plugin\ConditionPluginInterface>
      */
     public function getConditionPlugins()
     {
@@ -58,7 +58,7 @@ class TestStateMachineHandlerPlugin extends AbstractPlugin implements StateMachi
     /**
      * List of active processes used for this state machine
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getActiveProcesses()
     {
@@ -109,7 +109,7 @@ class TestStateMachineHandlerPlugin extends AbstractPlugin implements StateMachi
      *
      * @param array $stateIds
      *
-     * @return \Generated\Shared\Transfer\StateMachineItemTransfer[]
+     * @return array<\Generated\Shared\Transfer\StateMachineItemTransfer>
      */
     public function getStateMachineItemsByStateIds(array $stateIds = [])
     {

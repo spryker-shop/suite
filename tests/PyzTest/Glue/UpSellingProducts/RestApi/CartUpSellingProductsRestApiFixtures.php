@@ -155,7 +155,7 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
     /**
      * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
@@ -173,7 +173,7 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
      * @return array
      */

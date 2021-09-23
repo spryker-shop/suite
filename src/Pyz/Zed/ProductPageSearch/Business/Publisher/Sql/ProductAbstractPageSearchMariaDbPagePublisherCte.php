@@ -42,7 +42,7 @@ class ProductAbstractPageSearchMariaDbPagePublisherCte implements ProductPagePub
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getCompatibleEngines(): array
     {

@@ -99,7 +99,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     protected $dataFormatter;
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected $availabilityAbstractIds = [];
 
@@ -269,9 +269,9 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param string[] $skus
+     * @param array<string> $skus
      *
-     * @return \Spryker\DecimalObject\Decimal[]
+     * @return array<\Spryker\DecimalObject\Decimal>
      */
     protected function getReservationsBySkus(array $skus): array
     {
@@ -314,7 +314,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
 
     /**
      * @param array $stockProducts
-     * @param \Spryker\DecimalObject\Decimal[] $reservations
+     * @param array<\Spryker\DecimalObject\Decimal> $reservations
      *
      * @return array
      */
@@ -331,7 +331,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
 
     /**
      * @param array $concreteAvailabilityData
-     * @param string[] $concreteSkusToAbstractMap
+     * @param array<string> $concreteSkusToAbstractMap
      *
      * @return array
      */
@@ -391,7 +391,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param int[] $availabilityAbstractIds
+     * @param array<int> $availabilityAbstractIds
      *
      * @return void
      */

@@ -189,7 +189,7 @@ class CalculationBusinessTester extends Actor
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
+     * @param array<\Generated\Shared\Transfer\ItemTransfer> $items
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer

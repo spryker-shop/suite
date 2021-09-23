@@ -33,7 +33,7 @@ class CustomerApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param string[] $restCustomersAttributesTransferData
+     * @param array<string> $restCustomersAttributesTransferData
      *
      * @return void
      */

@@ -14,7 +14,7 @@ use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\ProductOfferCartItemQuant
 class AvailabilityCartConnectorDependencyProvider extends SprykerAbstractBundleDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\AvailabilityCartConnectorExtension\Dependency\Plugin\CartItemQuantityCounterStrategyPluginInterface[]
+     * @return array<\Spryker\Zed\AvailabilityCartConnectorExtension\Dependency\Plugin\CartItemQuantityCounterStrategyPluginInterface>
      */
     public function getCartItemQuantityCounterStrategyPlugins(): array
     {

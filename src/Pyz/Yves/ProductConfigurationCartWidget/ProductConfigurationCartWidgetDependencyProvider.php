@@ -13,7 +13,7 @@ use SprykerShop\Yves\ProductConfigurationCartWidget\ProductConfigurationCartWidg
 class ProductConfigurationCartWidgetDependencyProvider extends SprykerProductConfigurationCartWidgetDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\ProductConfigurationCartWidgetExtension\Dependency\Plugin\CartProductConfigurationRenderStrategyPluginInterface[]
+     * @return array<\SprykerShop\Yves\ProductConfigurationCartWidgetExtension\Dependency\Plugin\CartProductConfigurationRenderStrategyPluginInterface>
      */
     protected function getCartProductConfigurationRenderStrategyPlugins(): array
     {

@@ -18,7 +18,7 @@ use Spryker\Client\ProductReview\ProductReviewDependencyProvider as SprykerProdu
 class ProductReviewDependencyProvider extends SprykerProductReviewDependencyProvider
 {
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface>
      */
     protected function getProductReviewsBulkQueryExpanderPlugins(): array
     {
@@ -30,7 +30,7 @@ class ProductReviewDependencyProvider extends SprykerProductReviewDependencyProv
     }
 
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
+     * @return array<\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface>|array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>
      */
     public function getProductReviewsBulkSearchResultFormatterPlugins(): array
     {

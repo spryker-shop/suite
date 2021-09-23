@@ -69,7 +69,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     protected const COL_STOCK_PRODUCT_TOTAL_QUANTITY = 'stockProductTotalQuantity';
 
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected static $productAbstractSkus = [];
 
@@ -198,7 +198,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     protected function getAvailabilityAbstractIdsForCollectedAbstractSkus(): array
     {
@@ -218,16 +218,16 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     protected function getStoreIds(): array
     {
         $storeTransfer = $this->storeFacade->getCurrentStore();
-        $storeIds = [$storeTransfer->getIdStore()];
+        $storeIds = [$storeTransfer->getIdStoreOrFail()];
 
         foreach ($storeTransfer->getStoresWithSharedPersistence() as $storeName) {
             $storeTransfer = $this->storeFacade->getStoreByName($storeName);
-            $storeIds[] = $storeTransfer->getIdStore();
+            $storeIds[] = $storeTransfer->getIdStoreOrFail();
         }
 
         return $storeIds;
@@ -316,7 +316,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param int $idProductConcrete
-     * @param string[] $stockNames
+     * @param array<string> $stockNames
      *
      * @return \Spryker\DecimalObject\Decimal
      */

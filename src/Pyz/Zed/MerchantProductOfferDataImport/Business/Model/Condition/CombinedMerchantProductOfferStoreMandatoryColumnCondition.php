@@ -13,7 +13,7 @@ use Pyz\Zed\MerchantProductOfferDataImport\Business\Model\DataSet\CombinedMercha
 class CombinedMerchantProductOfferStoreMandatoryColumnCondition extends CombinedProductMandatoryColumnCondition
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getMandatoryColumns(): array
     {

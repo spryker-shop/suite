@@ -33,7 +33,7 @@ class ProductLabelsApiTester extends ApiEndToEndTester
     use _generated\ProductLabelsApiTesterActions;
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -48,7 +48,7 @@ class ProductLabelsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $productAbstractSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -65,7 +65,7 @@ class ProductLabelsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -82,7 +82,7 @@ class ProductLabelsApiTester extends ApiEndToEndTester
 
     /**
      * @param int $idProductLabel
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */

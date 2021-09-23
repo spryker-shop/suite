@@ -56,7 +56,7 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     protected $customerTransferWithPersistedAddress;
 
     /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer[]
+     * @var array<\Generated\Shared\Transfer\ProductConcreteTransfer>
      */
     protected $productConcreteTransfers;
 
@@ -87,7 +87,7 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer[]
+     * @return array<\Generated\Shared\Transfer\ProductConcreteTransfer>
      */
     public function getProductConcreteTransfers(): array
     {
