@@ -953,7 +953,7 @@
         "spryker/util-sanitize-xss": "^1.0.0",
         "spryker/util-uuid-generator": "^1.0.0",
         "spryker/uuid": "^1.0.0",
-        "spryker/uuid-behavior": " ^1.0.0",
+        "spryker/uuid-behavior": "^1.0.0",
         "spryker/validator": "^1.0.0",
         "spryker/validator-extension": "^1.0.0",
         "spryker/vault": "^1.0.0",
@@ -986,7 +986,7 @@
         "filp/whoops": "^2.7",
         "fzaninotto/faker": "^1.6",
         "pdepend/pdepend": "^2.2.4",
-        "phpstan/phpstan": "0.12.78",
+        "phpstan/phpstan": "0.12.98",
         "phpunit/phpunit": "^9.0.0",
         "psalm/phar": "~4.3.1",
         "roave/better-reflection": "~4.3.0",
@@ -1058,7 +1058,7 @@
         "psalm-set-baseline": "vendor/bin/psalm.phar --set-baseline=psalm-baseline.xml",
         "psalm-update-report": "vendor/bin/psalm.phar --report=psalm-report.xml",
         "phpstan": [
-            "php -d memory_limit=1024M vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/"
+            "php -d memory_limit=1024M vendor/bin/phpstan analyze"
         ],
         "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
     }
