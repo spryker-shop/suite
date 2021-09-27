@@ -18,7 +18,7 @@ use Spryker\Client\ProductConfigurationStorage\Plugin\PriceProductStorage\Produc
 class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductStoragePriceDimensionPluginInterface[]
+     * @return array<\Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductStoragePriceDimensionPluginInterface>
      */
     public function getPriceDimensionStorageReaderPlugins(): array
     {
@@ -30,7 +30,7 @@ class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDe
     }
 
     /**
-     * @return \Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductStoragePricesExtractorPluginInterface[]
+     * @return array<\Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductStoragePricesExtractorPluginInterface>
      */
     protected function getPriceProductPricesExtractorPlugins(): array
     {
@@ -40,7 +40,7 @@ class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDe
     }
 
     /**
-     * @return \Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductFilterExpanderPluginInterface[]
+     * @return array<\Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductFilterExpanderPluginInterface>
      */
     protected function getPriceProductFilterExpanderPlugins(): array
     {

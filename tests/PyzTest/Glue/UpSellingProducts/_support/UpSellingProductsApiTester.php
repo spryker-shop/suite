@@ -34,7 +34,7 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
     use _generated\UpSellingProductsApiTesterActions;
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -49,7 +49,7 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $cartUuid
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -67,7 +67,7 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $cartUuid
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -85,7 +85,7 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $productAbstractSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */

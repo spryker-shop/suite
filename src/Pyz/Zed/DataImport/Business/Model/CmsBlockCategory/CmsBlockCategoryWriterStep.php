@@ -39,7 +39,7 @@ class CmsBlockCategoryWriterStep extends PublishAwareStep implements DataImportS
     public const KEY_CMS_BLOCK_CATEGORY_POSITION_NAME = 'cms_block_category_position_name';
 
     /**
-     * @var \Orm\Zed\CmsBlock\Persistence\SpyCmsBlock[]
+     * @var array<\Orm\Zed\CmsBlock\Persistence\SpyCmsBlock>
      */
     protected static $cmsBlockBuffer = [];
 

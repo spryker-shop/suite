@@ -15,7 +15,7 @@ use Spryker\Zed\SalesReturn\SalesReturnDependencyProvider as SprykerSalesReturnD
 class SalesReturnDependencyProvider extends SprykerSalesReturnDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\SalesReturnExtension\Dependency\Plugin\ReturnPreCreatePluginInterface[]
+     * @return array<\Spryker\Zed\SalesReturnExtension\Dependency\Plugin\ReturnPreCreatePluginInterface>
      */
     protected function getReturnPreCreatePlugins(): array
     {
@@ -25,7 +25,7 @@ class SalesReturnDependencyProvider extends SprykerSalesReturnDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\SalesReturnExtension\Dependency\Plugin\ReturnCreateRequestValidatorPluginInterface[]
+     * @return array<\Spryker\Zed\SalesReturnExtension\Dependency\Plugin\ReturnCreateRequestValidatorPluginInterface>
      */
     protected function getReturnCreateRequestValidatorPlugins(): array
     {
@@ -35,7 +35,7 @@ class SalesReturnDependencyProvider extends SprykerSalesReturnDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\SalesReturnExtension\Dependency\Plugin\ReturnExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\SalesReturnExtension\Dependency\Plugin\ReturnExpanderPluginInterface>
      */
     protected function getReturnExpanderPlugins(): array
     {

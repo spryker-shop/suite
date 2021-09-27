@@ -18,7 +18,7 @@ use Spryker\Glue\ShipmentsRestApi\Plugin\QuoteRequestsRestApi\ShipmentsRestQuote
 class QuoteRequestsRestApiDependencyProvider extends SprykerQuoteRequestsRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\QuoteRequestsRestApiExtension\Dependency\Plugin\RestQuoteRequestAttributesExpanderPluginInterface[]
+     * @return array<\Spryker\Glue\QuoteRequestsRestApiExtension\Dependency\Plugin\RestQuoteRequestAttributesExpanderPluginInterface>
      */
     protected function getRestQuoteRequestAttributesExpanderPlugins(): array
     {

@@ -101,7 +101,7 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
         if (!empty($dataSet[static::KEY_ABSTRACT_PRODUCT_SKUS])) {
             $abstractProductSkuCollection = explode(',', $dataSet[static::KEY_ABSTRACT_PRODUCT_SKUS]);
 
-            /** @var int[] $abstractProductIdCollection */
+            /** @var array<int> $abstractProductIdCollection */
             $abstractProductIdCollection = SpyProductAbstractQuery::create()
                 ->select([SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT])
                 ->filterBySku($abstractProductSkuCollection, Criteria::IN)

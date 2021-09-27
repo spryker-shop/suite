@@ -130,7 +130,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -145,7 +145,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -300,7 +300,7 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      * @param array $overrideShipment
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
@@ -450,7 +450,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
      * @return array
      */
@@ -532,7 +532,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */

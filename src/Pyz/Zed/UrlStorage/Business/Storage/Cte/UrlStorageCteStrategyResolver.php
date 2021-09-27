@@ -14,7 +14,7 @@ use Pyz\Zed\UrlStorage\Business\Exception\CteNotSupportedException;
 class UrlStorageCteStrategyResolver implements UrlStorageCteStrategyResolverInterface
 {
     /**
-     * @var \Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface[]
+     * @var array<\Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface>
      */
     protected $cteCollection;
 
@@ -24,7 +24,7 @@ class UrlStorageCteStrategyResolver implements UrlStorageCteStrategyResolverInte
     protected $propelFacade;
 
     /**
-     * @param \Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface[] $cteCollection
+     * @param array<\Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface> $cteCollection
      * @param \Pyz\Zed\Propel\Business\PropelFacadeInterface $propelFacade
      */
     public function __construct(array $cteCollection, PropelFacadeInterface $propelFacade)

@@ -14,7 +14,7 @@ use Spryker\Zed\ProductConfigurationCart\Communication\Plugin\PriceCartConnector
 class PriceCartConnectorDependencyProvider extends SprykerPriceCartConnectorDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\PriceCartConnectorExtension\Dependency\Plugin\PriceProductExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\PriceCartConnectorExtension\Dependency\Plugin\PriceProductExpanderPluginInterface>
      */
     protected function getPriceProductExpanderPlugins(): array
     {
@@ -24,7 +24,7 @@ class PriceCartConnectorDependencyProvider extends SprykerPriceCartConnectorDepe
     }
 
     /**
-     * @return \Spryker\Zed\PriceCartConnectorExtension\Dependency\Plugin\CartItemQuantityCounterStrategyPluginInterface[]
+     * @return array<\Spryker\Zed\PriceCartConnectorExtension\Dependency\Plugin\CartItemQuantityCounterStrategyPluginInterface>
      */
     protected function getCartItemQuantityCounterStrategyPlugins(): array
     {

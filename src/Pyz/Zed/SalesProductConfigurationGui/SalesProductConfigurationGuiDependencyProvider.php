@@ -13,7 +13,7 @@ use SprykerShop\Zed\DateTimeConfiguratorPageExample\Communication\Plugin\SalesPr
 class SalesProductConfigurationGuiDependencyProvider extends SprykerSalesProductConfigurationGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\SalesProductConfigurationGuiExtension\Dependency\Plugin\ProductConfigurationRenderStrategyPluginInterface[]
+     * @return array<\Spryker\Zed\SalesProductConfigurationGuiExtension\Dependency\Plugin\ProductConfigurationRenderStrategyPluginInterface>
      */
     protected function getProductConfigurationRenderStrategyPlugins(): array
     {

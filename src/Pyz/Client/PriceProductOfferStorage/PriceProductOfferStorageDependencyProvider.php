@@ -13,7 +13,7 @@ use Spryker\Client\PriceProductOfferVolume\Plugin\PriceProductOfferStorage\Price
 class PriceProductOfferStorageDependencyProvider extends SprykerPriceProductOfferStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\PriceProductOfferStorageExtension\Dependency\Plugin\PriceProductOfferStoragePriceExtractorPluginInterface[]
+     * @return array<\Spryker\Client\PriceProductOfferStorageExtension\Dependency\Plugin\PriceProductOfferStoragePriceExtractorPluginInterface>
      */
     protected function getPriceProductOfferStoragePriceExtractorPlugins(): array
     {

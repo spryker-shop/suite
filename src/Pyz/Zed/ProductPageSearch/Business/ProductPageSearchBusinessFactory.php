@@ -94,7 +94,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
     }
 
     /**
-     * @return \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface[]
+     * @return array<\Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface>
      */
     public function getProductAbstractPageCteCollection(): array
     {
@@ -105,7 +105,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
     }
 
     /**
-     * @return \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface[]
+     * @return array<\Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface>
      */
     public function getProductConcretePageCteCollection(): array
     {
