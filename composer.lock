@@ -53929,16 +53929,16 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v4.4.27",
+            "version": "v4.4.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "2f9160e92eb64c95da7368c867b663a8e34e980c"
+                "reference": "43ede438d4cb52cd589ae5dc070e9323866ba8e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/2f9160e92eb64c95da7368c867b663a8e34e980c",
-                "reference": "2f9160e92eb64c95da7368c867b663a8e34e980c",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/43ede438d4cb52cd589ae5dc070e9323866ba8e0",
+                "reference": "43ede438d4cb52cd589ae5dc070e9323866ba8e0",
                 "shasum": ""
             },
             "require": {
@@ -53977,7 +53977,7 @@
             "description": "Provides tools to ease debugging PHP code",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/debug/tree/v4.4.27"
+                "source": "https://github.com/symfony/debug/tree/v4.4.31"
             },
             "funding": [
                 {
@@ -53993,7 +53993,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-22T07:21:39+00:00"
+            "time": "2021-09-24T13:30:14+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -61574,6 +61574,122 @@
             "time": "2020-12-03T21:44:12+00:00"
         },
         {
+            "name": "roave/better-reflection",
+            "version": "4.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Roave/BetterReflection.git",
+                "reference": "aa017e698b47feed410721f3d20e2bacfcba59d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/aa017e698b47feed410721f3d20e2bacfcba59d5",
+                "reference": "aa017e698b47feed410721f3d20e2bacfcba59d5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "jetbrains/phpstorm-stubs": "2019.3",
+                "nikic/php-parser": "^4.4.0",
+                "php": ">=7.2.0,<7.5.0",
+                "phpdocumentor/reflection-docblock": "^5.1.0",
+                "phpdocumentor/type-resolver": "^1.1.0",
+                "roave/signature": "^1.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^7.0.2",
+                "phpstan/phpstan": "^0.12.25",
+                "phpunit/phpunit": "^8.5.4",
+                "vimeo/psalm": "3.11.2"
+            },
+            "suggest": {
+                "composer/composer": "Required to use the ComposerSourceLocator"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Roave\\BetterReflection\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Titcumb",
+                    "email": "james@asgrim.com",
+                    "homepage": "https://github.com/asgrim"
+                },
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "https://ocramius.github.io/"
+                },
+                {
+                    "name": "Gary Hockin",
+                    "email": "gary@roave.com",
+                    "homepage": "https://github.com/geeh"
+                },
+                {
+                    "name": "Jaroslav Hanslík",
+                    "email": "kukulich@kukulich.cz",
+                    "homepage": "https://github.com/kukulich"
+                }
+            ],
+            "description": "Better Reflection - an improved code reflection API",
+            "support": {
+                "issues": "https://github.com/Roave/BetterReflection/issues",
+                "source": "https://github.com/Roave/BetterReflection/tree/4.3.0"
+            },
+            "time": "2020-05-28T14:10:32+00:00"
+        },
+        {
+            "name": "roave/signature",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Roave/Signature.git",
+                "reference": "577ee14d2abaeb315a5cd2d86d7e3df46a7dac56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Roave/Signature/zipball/577ee14d2abaeb315a5cd2d86d7e3df46a7dac56",
+                "reference": "577ee14d2abaeb315a5cd2d86d7e3df46a7dac56",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3 || ^7.4"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^8.1",
+                "infection/infection": "^0.17.5",
+                "phpunit/phpunit": "^9.3",
+                "vimeo/psalm": "^3.16"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Roave\\Signature\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Sign and verify stuff",
+            "support": {
+                "issues": "https://github.com/Roave/Signature/issues",
+                "source": "https://github.com/Roave/Signature/tree/1.2.0"
+            },
+            "time": "2020-10-01T08:18:39+00:00"
+        },
+        {
             "name": "sebastian/cli-parser",
             "version": "1.0.1",
             "source": {
@@ -63048,8 +63164,8 @@
             "require": {
                 "ext-dom": "*",
                 "ext-simplexml": "*",
-                "ondrejmirtes/better-reflection": "^4.3.19",
                 "php": ">=7.3",
+                "roave/better-reflection": "^3.2 || ^4.0",
                 "spryker/config": "^3.0.0",
                 "spryker/console": "^3.0.0 || ^4.0.0",
                 "spryker/doctrine-inflector": "^1.1.0",
@@ -63063,24 +63179,24 @@
             },
             "require-dev": {
                 "codeception/codeception": "^4.0.0",
-                "phpstan/phpstan": "^0.12.98",
-                "phpunit/phpunit": "^9.5.0",
+                "phpstan/phpstan": "^0.12.0",
+                "phpunit/phpunit": "^7.0.0 || ^8.0.0",
                 "spryker/checkout-extension": "^1.3.0",
                 "spryker/code-sniffer": "*",
-                "spryker/data-import": "^1.1.0",
+                "spryker/data-import": "*",
                 "spryker/glue-application-extension": "^1.1.0",
-                "spryker/oms": "^10.0.0 || ^11.0.0",
-                "spryker/payment-extension": "^1.0.0",
+                "spryker/oms": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0",
+                "spryker/payment-extension": "*",
                 "spryker/router": "^1.1.0",
-                "spryker/sales-payment-extension": "^1.0.0",
-                "spryker/step-engine": "^3.3.0",
-                "spryker/testify": "^3.40.0"
+                "spryker/sales-payment-extension": "*",
+                "spryker/step-engine": "*",
+                "spryker/testify": "^3.0.0"
             },
             "suggest": {
                 "spryker/checkout-extension": "If you want to use Payment spryks, minimum required version: 1.3.0",
                 "spryker/data-import": "If you want to use DataImport spryks, minimum required version: 1.0.0",
                 "spryker/glue-application-extension": "If you want to use Glue spryks, minimum required version: 1.1.0",
-                "spryker/oms": "If you want to use Payment spryks, minimum required version: 6.0.0",
+                "spryker/oms": "If you want to use Payment spryks, minimum required version: 4.0.0",
                 "spryker/payment-extension": "If you want to use Payment spryks, minimum required version: 1.0.0",
                 "spryker/router": "If you want to use Route spryks, minimum required version: 1.1.0",
                 "spryker/sales-payment-extension": "If you want to use Payment spryks, minimum required version: 1.0.0",
@@ -63128,35 +63244,28 @@
                 "shasum": ""
             },
             "require": {
-                "ondrejmirtes/better-reflection": "^4.3.0",
                 "php": ">=7.3",
-                "spryker-sdk/spryk": "^0.3.1",
+                "roave/better-reflection": "^4.3.0",
+                "spryker-sdk/spryk": "^0.3.0",
                 "spryker/development": "^3.12.0",
                 "spryker/graph": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/laminas": "^1.0.0",
-                "spryker/symfony": "^3.5.0",
-                "spryker/transfer": "^3.25.0"
+                "spryker/symfony": "^3.5.0"
             },
             "require-dev": {
-                "codeception/module-asserts": "^1.3",
-                "codeception/module-phpbrowser": "^1.0",
-                "phpstan/phpstan": "^0.12.0",
-                "spryker/application": "^3.28.0",
+                "spryker/application": "*",
                 "spryker/code-sniffer": "*",
-                "spryker/config": "^3.5.0",
-                "spryker/container": "^1.4.2",
-                "spryker/event-dispatcher": "^1.2.0",
-                "spryker/form": "^1.0.0",
-                "spryker/gui": "^3.40.0",
-                "spryker/http": "^1.5.0",
-                "spryker/propel": "^3.30.0",
-                "spryker/router": "^1.12.0",
-                "spryker/testify": "^3.40.0",
-                "spryker/translator": "^1.8.0",
-                "spryker/twig": "^3.13.0",
-                "spryker/validator": "^1.1.0",
-                "spryker/zed-navigation": "^1.5.0"
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/form": "*",
+                "spryker/gui": "*",
+                "spryker/propel": "*",
+                "spryker/router": "*",
+                "spryker/testify": "*",
+                "spryker/twig": "*",
+                "spryker/validator": "*",
+                "spryker/zed-navigation": "*"
             },
             "type": "library",
             "extra": {
