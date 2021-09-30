@@ -981,6 +981,7 @@ jobs:
               - *CHROMDRIVER_DOWNLOAD
           install:
               - *COMPOSER_INSTALL
+              - COMPOSER_MEMORY_LIMIT=-1 composer u lcobucci/jwt -w --ignore-platform-req=php
               - *INSTALL_SCRIPT
               - *SETUP_WEB_INFRASTRUCTURE
           before_script:
