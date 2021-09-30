@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d8d2d6795f5df4582e35c3d34174e489",
+    "content-hash": "da57ebc715289e96f9528f70db6c03aa",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.195.1",
+            "version": "3.195.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7df429b9cae05b52991ae266e0f7f6756a9e7b4d"
+                "reference": "7e0cdfe30ee3cfa2a1494f8e3b4fa5277f118102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7df429b9cae05b52991ae266e0f7f6756a9e7b4d",
-                "reference": "7df429b9cae05b52991ae266e0f7f6756a9e7b4d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7e0cdfe30ee3cfa2a1494f8e3b4fa5277f118102",
+                "reference": "7e0cdfe30ee3cfa2a1494f8e3b4fa5277f118102",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.195.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.195.2"
             },
-            "time": "2021-09-28T18:16:45+00:00"
+            "time": "2021-09-29T18:17:19+00:00"
         },
         {
             "name": "brick/math",
@@ -2853,16 +2853,16 @@
         },
         {
             "name": "predis/predis",
-            "version": "v1.1.7",
+            "version": "v1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/predis/predis.git",
-                "reference": "b240daa106d4e02f0c5b7079b41e31ddf66fddf8"
+                "reference": "cf5c118a077fbab8b9af1482c20952173125c041"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/predis/predis/zipball/b240daa106d4e02f0c5b7079b41e31ddf66fddf8",
-                "reference": "b240daa106d4e02f0c5b7079b41e31ddf66fddf8",
+                "url": "https://api.github.com/repos/predis/predis/zipball/cf5c118a077fbab8b9af1482c20952173125c041",
+                "reference": "cf5c118a077fbab8b9af1482c20952173125c041",
                 "shasum": ""
             },
             "require": {
@@ -2907,7 +2907,7 @@
             ],
             "support": {
                 "issues": "https://github.com/predis/predis/issues",
-                "source": "https://github.com/predis/predis/tree/v1.1.7"
+                "source": "https://github.com/predis/predis/tree/v1.1.8"
             },
             "funding": [
                 {
@@ -2915,7 +2915,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-04T19:34:46+00:00"
+            "time": "2021-09-29T17:48:39+00:00"
         },
         {
             "name": "propel/propel",
@@ -27878,16 +27878,16 @@
         },
         {
             "name": "spryker/merchant",
-            "version": "3.3.2",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant.git",
-                "reference": "ff5f317d4ba30644ec9df988e1d7077fb065783d"
+                "reference": "069e25566e33727032a9acd00aea79c108532e34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant/zipball/ff5f317d4ba30644ec9df988e1d7077fb065783d",
-                "reference": "ff5f317d4ba30644ec9df988e1d7077fb065783d",
+                "url": "https://api.github.com/repos/spryker/merchant/zipball/069e25566e33727032a9acd00aea79c108532e34",
+                "reference": "069e25566e33727032a9acd00aea79c108532e34",
                 "shasum": ""
             },
             "require": {
@@ -27897,8 +27897,10 @@
                 "spryker/event": "^2.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/merchant-extension": "^1.1.0",
+                "spryker/price-product-merchant-relationship-storage-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/store": "^1.1.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/url": "^3.0.0",
                 "spryker/util-text": "^1.0.0"
             },
@@ -27925,9 +27927,9 @@
             ],
             "description": "Merchant module",
             "support": {
-                "source": "https://github.com/spryker/merchant/tree/3.3.2"
+                "source": "https://github.com/spryker/merchant/tree/3.4.0"
             },
-            "time": "2021-08-19T10:54:56+00:00"
+            "time": "2021-09-30T13:33:17+00:00"
         },
         {
             "name": "spryker/merchant-categories-rest-api",
@@ -29943,20 +29945,20 @@
         },
         {
             "name": "spryker/merchant-relationship",
-            "version": "1.8.1",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship.git",
-                "reference": "43b1b3f601f7589cc74c85252eb6bb46be753de9"
+                "reference": "cba4c4d9394ee7f89110f20ac03526033660b0ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship/zipball/43b1b3f601f7589cc74c85252eb6bb46be753de9",
-                "reference": "43b1b3f601f7589cc74c85252eb6bb46be753de9",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship/zipball/cba4c4d9394ee7f89110f20ac03526033660b0ee",
+                "reference": "cba4c4d9394ee7f89110f20ac03526033660b0ee",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
                 "spryker/company-user-extension": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
@@ -29988,9 +29990,9 @@
             ],
             "description": "MerchantRelationship module",
             "support": {
-                "source": "https://github.com/spryker/merchant-relationship/tree/1.8.1"
+                "source": "https://github.com/spryker/merchant-relationship/tree/1.9.0"
             },
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2021-09-30T13:33:17+00:00"
         },
         {
             "name": "spryker/merchant-relationship-data-import",
@@ -34897,16 +34899,16 @@
         },
         {
             "name": "spryker/price-product-merchant-relationship",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-merchant-relationship.git",
-                "reference": "47b827d1374ff5884c73cfb4789d6572971f97a0"
+                "reference": "6287ad6912fed6d35e7a9db63beb1b903a2f37f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-merchant-relationship/zipball/47b827d1374ff5884c73cfb4789d6572971f97a0",
-                "reference": "47b827d1374ff5884c73cfb4789d6572971f97a0",
+                "url": "https://api.github.com/repos/spryker/price-product-merchant-relationship/zipball/6287ad6912fed6d35e7a9db63beb1b903a2f37f6",
+                "reference": "6287ad6912fed6d35e7a9db63beb1b903a2f37f6",
                 "shasum": ""
             },
             "require": {
@@ -34918,7 +34920,8 @@
                 "spryker/price-product-extension": "^1.2.0",
                 "spryker/product": "^6.1.0",
                 "spryker/propel-orm": "^1.6.2",
-                "spryker/symfony": "^3.1.5"
+                "spryker/symfony": "^3.1.5",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -34949,9 +34952,9 @@
             ],
             "description": "PriceProductMerchantRelationship module",
             "support": {
-                "source": "https://github.com/spryker/price-product-merchant-relationship/tree/1.7.0"
+                "source": "https://github.com/spryker/price-product-merchant-relationship/tree/1.8.0"
             },
-            "time": "2021-07-09T08:14:41+00:00"
+            "time": "2021-09-30T13:33:17+00:00"
         },
         {
             "name": "spryker/price-product-merchant-relationship-data-import",
@@ -35056,16 +35059,16 @@
         },
         {
             "name": "spryker/price-product-merchant-relationship-storage",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-merchant-relationship-storage.git",
-                "reference": "9397aa79b537f243fd1e61855fdceb1591507ccb"
+                "reference": "ef373a311b09c7cf6961efb61460f1bd772c1cd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-merchant-relationship-storage/zipball/9397aa79b537f243fd1e61855fdceb1591507ccb",
-                "reference": "9397aa79b537f243fd1e61855fdceb1591507ccb",
+                "url": "https://api.github.com/repos/spryker/price-product-merchant-relationship-storage/zipball/ef373a311b09c7cf6961efb61460f1bd772c1cd0",
+                "reference": "ef373a311b09c7cf6961efb61460f1bd772c1cd0",
                 "shasum": ""
             },
             "require": {
@@ -35074,16 +35077,19 @@
                 "spryker/customer": "^7.10.0",
                 "spryker/event-behavior": "^1.1.0",
                 "spryker/kernel": "^3.37.0",
-                "spryker/merchant-relationship": "^1.0.0",
+                "spryker/merchant-relationship": "^1.9.0",
                 "spryker/price-product": "^2.11.0 || ^4.0.0",
                 "spryker/price-product-merchant-relationship": "^1.4.1",
+                "spryker/price-product-merchant-relationship-storage-extension": "^1.0.0",
                 "spryker/price-product-storage-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
+                "spryker/publisher-extension": "^1.0.0",
                 "spryker/storage": "^3.0.0",
                 "spryker/store": "^1.0.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
-                "spryker/synchronization-extension": "^1.1.0"
+                "spryker/synchronization-extension": "^1.1.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -35109,9 +35115,50 @@
             ],
             "description": "PriceProductMerchantRelationshipStorage module",
             "support": {
-                "source": "https://github.com/spryker/price-product-merchant-relationship-storage/tree/1.12.0"
+                "source": "https://github.com/spryker/price-product-merchant-relationship-storage/tree/1.13.0"
             },
-            "time": "2021-06-17T09:35:28+00:00"
+            "time": "2021-09-30T13:33:17+00:00"
+        },
+        {
+            "name": "spryker/price-product-merchant-relationship-storage-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/price-product-merchant-relationship-storage-extension.git",
+                "reference": "45202fa23f108743be13f15dd4866c50c4983864"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/price-product-merchant-relationship-storage-extension/zipball/45202fa23f108743be13f15dd4866c50c4983864",
+                "reference": "45202fa23f108743be13f15dd4866c50c4983864",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PriceProductMerchantRelationshipStorageExtension module",
+            "support": {
+                "source": "https://github.com/spryker/price-product-merchant-relationship-storage-extension/tree/1.0.0"
+            },
+            "time": "2021-09-30T13:33:17+00:00"
         },
         {
             "name": "spryker/price-product-offer",
@@ -59434,12 +59481,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "45cb2ea89ba3c7ac30d7813b69e8b9a446e66332"
+                "reference": "a02fe6e14ab3e811cf5af36c2fa0c0a0ccfbd7b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/45cb2ea89ba3c7ac30d7813b69e8b9a446e66332",
-                "reference": "45cb2ea89ba3c7ac30d7813b69e8b9a446e66332",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/a02fe6e14ab3e811cf5af36c2fa0c0a0ccfbd7b6",
+                "reference": "a02fe6e14ab3e811cf5af36c2fa0c0a0ccfbd7b6",
                 "shasum": ""
             },
             "require-dev": {
@@ -59475,7 +59522,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2021-09-28T12:32:54+00:00"
+            "time": "2021-09-29T16:10:26+00:00"
         },
         {
             "name": "lstrojny/functional-php",
@@ -59742,16 +59789,16 @@
         },
         {
             "name": "nette/di",
-            "version": "v3.0.9",
+            "version": "v3.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "310945023e8dc1bc7b641924f9a9d61b9399262d"
+                "reference": "4f0cb0b3f032a9106aa3fb29e33da381564716c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/310945023e8dc1bc7b641924f9a9d61b9399262d",
-                "reference": "310945023e8dc1bc7b641924f9a9d61b9399262d",
+                "url": "https://api.github.com/repos/nette/di/zipball/4f0cb0b3f032a9106aa3fb29e33da381564716c2",
+                "reference": "4f0cb0b3f032a9106aa3fb29e33da381564716c2",
                 "shasum": ""
             },
             "require": {
@@ -59760,7 +59807,7 @@
                 "nette/php-generator": "^3.3.3",
                 "nette/robot-loader": "^3.2",
                 "nette/schema": "^1.1",
-                "nette/utils": "^3.1.4",
+                "nette/utils": "^3.1.6",
                 "php": ">=7.1 <8.2"
             },
             "conflict": {
@@ -59811,9 +59858,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/di/issues",
-                "source": "https://github.com/nette/di/tree/v3.0.9"
+                "source": "https://github.com/nette/di/tree/v3.0.10"
             },
-            "time": "2021-08-31T09:32:59+00:00"
+            "time": "2021-09-29T15:39:33+00:00"
         },
         {
             "name": "nette/finder",

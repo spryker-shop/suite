@@ -30,11 +30,16 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
              */
             new PriceProductOfferPriceProductFilterPlugin(),
 
+            /**
+             * MerchantRelationshipPriceProductFilterPlugin should be at the beginning to filter non-active merchant prices
+             * and define right minimum price in next filter plugins like in `PriceProductVolumeFilterPlugin`.
+             */
+            new MerchantRelationshipPriceProductFilterPlugin(),
+
             new ProductConfigurationPriceProductFilterPlugin(),
             new ProductConfigurationVolumePriceProductFilterPlugin(),
             new PriceProductOfferVolumeFilterPlugin(),
             new PriceProductVolumeFilterPlugin(),
-            new MerchantRelationshipPriceProductFilterPlugin(),
         ], parent::getPriceProductDecisionPlugins());
     }
 }
