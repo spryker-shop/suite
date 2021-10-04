@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.196.0",
+            "version": "3.196.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "3128df6b0b68b1c4704321777332473642b749e0"
+                "reference": "2845899d05c66a00d88eabbf7cf5d3dbae2da58a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3128df6b0b68b1c4704321777332473642b749e0",
-                "reference": "3128df6b0b68b1c4704321777332473642b749e0",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2845899d05c66a00d88eabbf7cf5d3dbae2da58a",
+                "reference": "2845899d05c66a00d88eabbf7cf5d3dbae2da58a",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.196.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.196.1"
             },
-            "time": "2021-09-30T18:15:45+00:00"
+            "time": "2021-10-01T18:23:06+00:00"
         },
         {
             "name": "brick/math",
@@ -1321,22 +1321,22 @@
         },
         {
             "name": "laminas/laminas-config",
-            "version": "3.6.0",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-config.git",
-                "reference": "2f2273a6bdf966a9adf6042f8950b6c33199a3b7"
+                "reference": "e43d13dcfc273d4392812eb395ce636f73f34dfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-config/zipball/2f2273a6bdf966a9adf6042f8950b6c33199a3b7",
-                "reference": "2f2273a6bdf966a9adf6042f8950b6c33199a3b7",
+                "url": "https://api.github.com/repos/laminas/laminas-config/zipball/e43d13dcfc273d4392812eb395ce636f73f34dfd",
+                "reference": "e43d13dcfc273d4392812eb395ce636f73f34dfd",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "laminas/laminas-stdlib": "^2.7.7 || ^3.1",
-                "php": "^7.3 || ~8.0.0",
+                "laminas/laminas-stdlib": "^3.6",
+                "php": "^7.3 || ~8.0.0 || ~8.1.0",
                 "psr/container": "^1.0"
             },
             "conflict": {
@@ -1347,9 +1347,8 @@
                 "laminas/laminas-coding-standard": "~1.0.0",
                 "laminas/laminas-filter": "^2.7.2",
                 "laminas/laminas-i18n": "^2.10.3",
-                "laminas/laminas-servicemanager": "^3.4.1",
-                "malukenho/docheader": "^0.1.6",
-                "phpunit/phpunit": "^8.5.8"
+                "laminas/laminas-servicemanager": "^3.7",
+                "phpunit/phpunit": "^9.5.5"
             },
             "suggest": {
                 "laminas/laminas-filter": "^2.7.2; install if you want to use the Filter processor",
@@ -1386,7 +1385,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-09-08T09:58:39+00:00"
+            "time": "2021-10-01T16:07:46+00:00"
         },
         {
             "name": "laminas/laminas-filter",
@@ -2271,16 +2270,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "2.3.4",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "437e7a1c50044b92773b361af77620efb76fff59"
+                "reference": "fd4380d6fc37626e2f799f29d91195040137eba9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/437e7a1c50044b92773b361af77620efb76fff59",
-                "reference": "437e7a1c50044b92773b361af77620efb76fff59",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd4380d6fc37626e2f799f29d91195040137eba9",
+                "reference": "fd4380d6fc37626e2f799f29d91195040137eba9",
                 "shasum": ""
             },
             "require": {
@@ -2296,7 +2295,7 @@
                 "elasticsearch/elasticsearch": "^7",
                 "graylog2/gelf-php": "^1.4.2",
                 "mongodb/mongodb": "^1.8",
-                "php-amqplib/php-amqplib": "~2.4",
+                "php-amqplib/php-amqplib": "~2.4 || ^3",
                 "php-console/php-console": "^3.1.3",
                 "phpspec/prophecy": "^1.6.1",
                 "phpstan/phpstan": "^0.12.91",
@@ -2354,7 +2353,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/2.3.4"
+                "source": "https://github.com/Seldaek/monolog/tree/2.3.5"
             },
             "funding": [
                 {
@@ -2366,7 +2365,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-15T11:27:21+00:00"
+            "time": "2021-10-01T21:08:31+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -18909,16 +18908,16 @@
         },
         {
             "name": "spryker/company-business-unit",
-            "version": "2.13.0",
+            "version": "2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-business-unit.git",
-                "reference": "15f02215c2021f0a7d73caf0a5b5111ef70c65ab"
+                "reference": "ba6a2a703c7a025df80081cecf576d9755ec0f4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-business-unit/zipball/15f02215c2021f0a7d73caf0a5b5111ef70c65ab",
-                "reference": "15f02215c2021f0a7d73caf0a5b5111ef70c65ab",
+                "url": "https://api.github.com/repos/spryker/company-business-unit/zipball/ba6a2a703c7a025df80081cecf576d9755ec0f4c",
+                "reference": "ba6a2a703c7a025df80081cecf576d9755ec0f4c",
                 "shasum": ""
             },
             "require": {
@@ -18956,9 +18955,9 @@
             ],
             "description": "CompanyBusinessUnit module",
             "support": {
-                "source": "https://github.com/spryker/company-business-unit/tree/2.13.0"
+                "source": "https://github.com/spryker/company-business-unit/tree/2.14.0"
             },
-            "time": "2021-08-17T15:18:38+00:00"
+            "time": "2021-10-04T14:10:12+00:00"
         },
         {
             "name": "spryker/company-business-unit-addresses-rest-api",
@@ -57737,16 +57736,16 @@
         },
         {
             "name": "voku/anti-xss",
-            "version": "4.1.32",
+            "version": "4.1.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/anti-xss.git",
-                "reference": "159b49a50cf3f6cf72ee43b0dcf7c2580a0c12d1"
+                "reference": "dcd44ad3726e97e3ea924e4c7257cb33976b71a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/anti-xss/zipball/159b49a50cf3f6cf72ee43b0dcf7c2580a0c12d1",
-                "reference": "159b49a50cf3f6cf72ee43b0dcf7c2580a0c12d1",
+                "url": "https://api.github.com/repos/voku/anti-xss/zipball/dcd44ad3726e97e3ea924e4c7257cb33976b71a5",
+                "reference": "dcd44ad3726e97e3ea924e4c7257cb33976b71a5",
                 "shasum": ""
             },
             "require": {
@@ -57792,7 +57791,7 @@
             ],
             "support": {
                 "issues": "https://github.com/voku/anti-xss/issues",
-                "source": "https://github.com/voku/anti-xss/tree/4.1.32"
+                "source": "https://github.com/voku/anti-xss/tree/4.1.33"
             },
             "funding": [
                 {
@@ -57816,7 +57815,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-29T14:29:34+00:00"
+            "time": "2021-10-03T21:37:05+00:00"
         },
         {
             "name": "voku/portable-ascii",
@@ -59351,21 +59350,21 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.14.3",
+            "version": "2.14.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "89584ce67dd32307f1063cc43846674f4679feda"
+                "reference": "f056f1fe935d9ed86e698905a957334029899895"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/89584ce67dd32307f1063cc43846674f4679feda",
-                "reference": "89584ce67dd32307f1063cc43846674f4679feda",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/f056f1fe935d9ed86e698905a957334029899895",
+                "reference": "f056f1fe935d9ed86e698905a957334029899895",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.5.9 || ^7.0 || ^8.0",
-                "psr/log": "^1.0.1"
+                "psr/log": "^1.0.1 || ^2.0 || ^3.0"
             },
             "require-dev": {
                 "mockery/mockery": "^0.9 || ^1.0",
@@ -59410,7 +59409,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.14.3"
+                "source": "https://github.com/filp/whoops/tree/2.14.4"
             },
             "funding": [
                 {
@@ -59418,7 +59417,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-19T12:00:00+00:00"
+            "time": "2021-10-03T12:00:00+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -59481,12 +59480,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "a02fe6e14ab3e811cf5af36c2fa0c0a0ccfbd7b6"
+                "reference": "7bf7ddf0d337ce637310c2303145073ed4b706be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/a02fe6e14ab3e811cf5af36c2fa0c0a0ccfbd7b6",
-                "reference": "a02fe6e14ab3e811cf5af36c2fa0c0a0ccfbd7b6",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/7bf7ddf0d337ce637310c2303145073ed4b706be",
+                "reference": "7bf7ddf0d337ce637310c2303145073ed4b706be",
                 "shasum": ""
             },
             "require-dev": {
@@ -59522,7 +59521,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2021-09-29T16:10:26+00:00"
+            "time": "2021-10-04T09:49:13+00:00"
         },
         {
             "name": "lstrojny/functional-php",
@@ -60925,16 +60924,16 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "30f38bffc6f24293dadd1823936372dfa9e86e2f"
+                "reference": "a12f7e301eb7258bb68acd89d4aefa05c2906cae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/30f38bffc6f24293dadd1823936372dfa9e86e2f",
-                "reference": "30f38bffc6f24293dadd1823936372dfa9e86e2f",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/a12f7e301eb7258bb68acd89d4aefa05c2906cae",
+                "reference": "a12f7e301eb7258bb68acd89d4aefa05c2906cae",
                 "shasum": ""
             },
             "require": {
@@ -60969,9 +60968,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.5.0"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.5.1"
             },
-            "time": "2021-09-17T15:28:14+00:00"
+            "time": "2021-10-02T14:08:47+00:00"
         },
         {
             "name": "phpmd/phpmd",
