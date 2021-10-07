@@ -108,8 +108,10 @@ groups:
                 application: glue
                 endpoints:
                     glue.de.spryker.local:
+                        cors-allow-origin: '*'
                         store: DE
                     glue.at.spryker.local:
+                        cors-allow-origin: '*'
                         store: AT
             backoffice_eu:
                 application: backoffice
@@ -168,6 +170,7 @@ groups:
                 application: glue
                 endpoints:
                     glue.us.spryker.local:
+                        cors-allow-origin: '*'
                         store: US
             backoffice_us:
                 application: backoffice
