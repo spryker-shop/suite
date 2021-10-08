@@ -541,7 +541,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP Validation (prefer-lowest)
-          php: "7.3"
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -554,7 +554,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker (prefer-lowest) [1/3]
-          php: "7.3"
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -567,7 +567,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker (prefer-lowest) [2/3]
-          php: "7.3"
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -580,7 +580,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker (prefer-lowest) [3/3]
-          php: "7.3"
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -593,7 +593,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker-shop (prefer-lowest)
-          php: "7.3"
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -653,8 +653,8 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
               <<: *ADDONS_ARTIFACTS
 
-        - name: PHP 7.3 / MariaDB / Browser Testing (Presentation)
-          php: "7.3"
+        - name: PHP 7.4 / MariaDB / Browser Testing (Presentation)
+          php: "7.4"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -677,8 +677,8 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
               <<: *ADDONS_ARTIFACTS
 
-        - name: PHP 7.3 / MariaDB / Browser Testing (Presentation, prefer-lowest)
-          php: "7.3"
+        - name: PHP 7.4 / MariaDB / Browser Testing (Presentation, prefer-lowest)
+          php: "7.4"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -747,8 +747,8 @@ jobs:
               mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
-        - name: PHP 7.3 / MariaDB / Testing (Business, Communication, ...)
-          php: "7.3"
+        - name: PHP 7.4 / MariaDB / Testing (Business, Communication, ...)
+          php: "7.4"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -769,8 +769,8 @@ jobs:
               mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
-        - name: PHP 7.3 / MariaDB / Testing (Business, Communication, ..., prefer-lowest)
-          php: "7.3"
+        - name: PHP 7.4 / MariaDB / Testing (Business, Communication, ..., prefer-lowest)
+          php: "7.4"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -815,8 +815,8 @@ jobs:
               <<: *ADDONS_ARTIFACTS
               postgresql: 9.6
 
-        - name: PHP 7.3 / PostgreSQL 9.6 / Testing (Presentation)
-          php: "7.3"
+        - name: PHP 7.4 / PostgreSQL 9.6 / Testing (Presentation)
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -858,8 +858,8 @@ jobs:
               <<: *ADDONS_ARTIFACTS
               postgresql: 9.6
 
-        - name: PHP 7.3 / PostgreSQL 9.6 / Testing (Business, Communication, ...)
-          php: "7.3"
+        - name: PHP 7.4 / PostgreSQL 9.6 / Testing (Business, Communication, ...)
+          php: "7.4"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -981,7 +981,6 @@ jobs:
               - *CHROMDRIVER_DOWNLOAD
           install:
               - *COMPOSER_INSTALL
-              - COMPOSER_MEMORY_LIMIT=-1 composer u lcobucci/jwt -w --ignore-platform-req=php
               - *INSTALL_SCRIPT
               - *SETUP_WEB_INFRASTRUCTURE
           before_script:
@@ -994,12 +993,12 @@ jobs:
               mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
-        - name: Docker / Alpine / PHP 7.3 / MariaDB / Functional Tests
+        - name: Docker / Alpine / PHP 7.4 / MariaDB / Functional Tests
           <<: *DOCKER_BUILD_TEMPLATE
           stage: Test
           env:
               - PROGRESS_TYPE=plain
-              - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:7.4
               - TRAVIS=1
           script:
               - docker/sdk boot -v deploy.ci.functional.mariadb.yml
@@ -1018,12 +1017,12 @@ jobs:
               - docker/sdk up -t -v
               - docker/sdk testing codecept run -c codeception.ci.functional.yml
 
-        - name: Docker / Alpine / PHP 7.3 / MariaDB / Acceptance
+        - name: Docker / Alpine / PHP 7.4 / MariaDB / Acceptance
           <<: *DOCKER_BUILD_TEMPLATE
           stage: Test
           env:
               - PROGRESS_TYPE=plain
-              - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:7.4
               - TRAVIS=1
           script:
               - docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
@@ -1058,12 +1057,12 @@ jobs:
               - docker/sdk testing console queue:worker:start --stop-when-empty
               - docker/sdk testing codecept run -c codeception.api.yml
 
-        - name: Docker / Alpine / PHP 7.3 / MariaDB / Glue
+        - name: Docker / Alpine / PHP 7.4 / MariaDB / Glue
           <<: *DOCKER_BUILD_TEMPLATE
           stage: Test
           env:
               - PROGRESS_TYPE=plain
-              - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:7.4
               - TRAVIS=1
           script:
               - docker/sdk boot -v deploy.ci.api.mariadb.yml
@@ -1086,12 +1085,12 @@ jobs:
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
 
-        - name: Docker / Debian / PHP 7.3 / Frontend & Assets
+        - name: Docker / Debian / PHP 7.4 / Frontend & Assets
           <<: *DOCKER_BUILD_TEMPLATE
           stage: Test
           env:
               - PROGRESS_TYPE=plain
-              - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3-debian
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:7.4-debian
               - TRAVIS=1
           script:
               - docker/sdk boot -v deploy.yml
