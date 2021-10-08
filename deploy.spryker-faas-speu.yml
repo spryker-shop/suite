@@ -1,16 +1,16 @@
 version: '0.1'
 
 namespace: spryker
-tag: 'stage'
+tag: 'prod'
 
-environment: docker.stage
+environment: docker.prd
 image:
     tag: spryker/php:7.3
     php:
         enabled-extensions:
             - blackfire
     environment:
-        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.faas-suite-stage.cloud.spryker.toys
+        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.faas-suite-prod.cloud.spryker.toys
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
         SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
         SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR: '0c1ffefeebdab4a3d839d0e52590c9a2'
@@ -27,9 +27,9 @@ regions:
             mail:
                 sender:
                     name: Spryker No-Reply
-                    email: no-reply@faas-suite-stage.cloud.spryker.toys
+                    email: no-reply@faas-suite-prod.cloud.spryker.toys
             database:
-                database: spryker_faas_suite_stage
+                database: spryker_faas_speu
                 username: spryker
                 password: secret
 
@@ -50,143 +50,81 @@ regions:
                         namespace: 2
                     search:
                         namespace: at_search
-    US:
-        services:
-            mail:
-                sender:
-                    name: Spryker No-Reply
-                    email: no-reply@faas-suite-stage.cloud.spryker.toys
-            database:
-                database: us-docker
-                username: spryker
-                password: secret
-        stores:
-            US:
-                services:
-                    broker:
-                        namespace: us-docker
-                    key_value_store:
-                        namespace: 3
-                    search:
-                        namespace: us_search
 groups:
     EU:
         region: EU
         applications:
-            merchant_portal_eu:
+            merchant_portal:
                 application: merchant-portal
                 endpoints:
-                    mp.de.faas-suite-stage.cloud.spryker.toys:
+                    mp.de.faas-suite-prod.cloud.spryker.toys:
                         entry-point: MerchantPortal
                         store: DE
                         primal: true
                         services:
                             session:
-                                namespace: 7
-                    mp.at.faas-suite-stage.cloud.spryker.toys:
+                                namespace: 5
+                    mp.at.faas-suite-prod.cloud.spryker.toys:
                         entry-point: MerchantPortal
                         store: AT
                         services:
                             session:
-                                namespace: 8
-            yves_eu:
+                                namespace: 6
+            yves:
                 application: yves
                 endpoints:
-                    date-time-configurator-example.faas-suite-stage.cloud.spryker.toys:
+                    date-time-configurator-example.faas-suite-prod.cloud.spryker.toys:
                         entry-point: Configurator
-                    yves.de.faas-suite-stage.cloud.spryker.toys:
+                    yves.de.faas-suite-prod.cloud.spryker.toys:
                         store: DE
                         services:
                             session:
                                 namespace: 1
-                    yves.at.faas-suite-stage.cloud.spryker.toys:
+                    yves.at.faas-suite-prod.cloud.spryker.toys:
                         store: AT
                         services:
                             session:
                                 namespace: 2
-            glue_eu:
+            glue:
                 application: glue
                 endpoints:
-                    glue.de.faas-suite-stage.cloud.spryker.toys:
+                    glue.de.faas-suite-prod.cloud.spryker.toys:
                         store: DE
-                    glue.at.faas-suite-stage.cloud.spryker.toys:
+                    glue.at.faas-suite-prod.cloud.spryker.toys:
                         store: AT
-            backoffice_eu:
+            backoffice:
                 application: backoffice
                 endpoints:
-                    backoffice.de.faas-suite-stage.cloud.spryker.toys:
+                    backoffice.de.faas-suite-prod.cloud.spryker.toys:
                         store: DE
                         primal: true
                         services:
                             session:
                                 namespace: 3
-                    backoffice.at.faas-suite-stage.cloud.spryker.toys:
+                    backoffice.at.faas-suite-prod.cloud.spryker.toys:
                         store: AT
                         services:
                             session:
                                 namespace: 4
-            backend_gateway_eu:
+            backend_gateway:
                 application: backend-gateway
                 endpoints:
-                    backend-gateway.de.faas-suite-stage.cloud.spryker.toys:
+                    backend-gateway.de.faas-suite-prod.cloud.spryker.toys:
                         store: DE
                         primal: true
-                    backend-gateway.at.faas-suite-stage.cloud.spryker.toys:
+                    backend-gateway.at.faas-suite-prod.cloud.spryker.toys:
                         store: AT
                         primal: true
-            backend_api_eu:
+            backend_api:
                 application: zed
                 endpoints:
-                    backend-api.de.faas-suite-stage.cloud.spryker.toys:
+                    backend-api.de.faas-suite-prod.cloud.spryker.toys:
                         store: DE
                         entry-point: BackendApi
-                    backend-api.at.faas-suite-stage.cloud.spryker.toys:
+                    backend-api.at.faas-suite-prod.cloud.spryker.toys:
                         store: AT
                         entry-point: BackendApi
 
-    US:
-        region: US
-        applications:
-            merchant_portal_us:
-                application: merchant-portal
-                endpoints:
-                    mp.us.faas-suite-stage.cloud.spryker.toys:
-                        entry-point: MerchantPortal
-                        store: US
-                        services:
-                            session:
-                                namespace: 9
-            yves_us:
-                application: yves
-                endpoints:
-                    yves.us.faas-suite-stage.cloud.spryker.toys:
-                        store: US
-                        services:
-                            session:
-                                namespace: 5
-            glue_us:
-                application: glue
-                endpoints:
-                    glue.us.faas-suite-stage.cloud.spryker.toys:
-                        store: US
-            backoffice_us:
-                application: backoffice
-                endpoints:
-                    zed.us.faas-suite-stage.cloud.spryker.toys:
-                        store: US
-                        services:
-                            session:
-                                namespace: 6
-            backend_gateway_us:
-                application: backend-gateway
-                endpoints:
-                    backend-gateway.us.faas-suite-stage.cloud.spryker.toys:
-                        store: US
-            backend_api_us:
-                application: zed
-                endpoints:
-                    backend-api.us.faas-suite-stage.cloud.spryker.toys:
-                        store: US
 services:
     database:
         engine: mysql
@@ -203,7 +141,7 @@ services:
             username: 'spryker'
             password: 'secret'
         endpoints:
-            queue.faas-suite-stage.cloud.spryker.toys:
+            queue.faas-suite-prod.cloud.spryker.toys:
             localhost:5672:
                 protocol: tcp
     session:
@@ -222,23 +160,23 @@ services:
     scheduler:
         engine: jenkins
         endpoints:
-            scheduler.faas-suite-stage.cloud.spryker.toys:
+            scheduler.faas-suite-prod.cloud.spryker.toys:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.faas-suite-stage.cloud.spryker.toys:
+            mail.faas-suite-prod.cloud.spryker.toys:
     swagger:
         engine: swagger-ui
         endpoints:
-            swagger.faas-suite-stage.cloud.spryker.toys:
+            swagger.faas-suite-prod.cloud.spryker.toys:
     redis-gui:
         engine: redis-commander
         endpoints:
-            redis-commander.faas-suite-stage.cloud.spryker.toys:
+            redis-commander.faas-suite-prod.cloud.spryker.toys:
     dashboard:
         engine: dashboard
         endpoints:
-            faas-suite-stage.cloud.spryker.toys:
+            faas-suite-prod.cloud.spryker.toys:
 
 docker:
     ssl:
