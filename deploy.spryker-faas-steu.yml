@@ -54,7 +54,7 @@ groups:
     EU:
         region: EU
         applications:
-            merchant_portal:
+            mportal:
                 application: merchant-portal
                 endpoints:
                     mp.de.faas-suite-test.cloud.spryker.toys:
@@ -70,7 +70,7 @@ groups:
                         services:
                             session:
                                 namespace: 6
-            yves:
+            Yves:
                 application: yves
                 endpoints:
                     date-time-configurator-example.faas-suite-test.cloud.spryker.toys:
@@ -85,14 +85,14 @@ groups:
                         services:
                             session:
                                 namespace: 2
-            glue:
+            Glue:
                 application: glue
                 endpoints:
                     glue.de.faas-suite-test.cloud.spryker.toys:
                         store: DE
                     glue.at.faas-suite-test.cloud.spryker.toys:
                         store: AT
-            backoffice:
+            boffice:
                 application: backoffice
                 endpoints:
                     backoffice.de.faas-suite-test.cloud.spryker.toys:
@@ -106,7 +106,7 @@ groups:
                         services:
                             session:
                                 namespace: 4
-            backend_gateway:
+            backgw:
                 application: backend-gateway
                 endpoints:
                     backend-gateway.de.faas-suite-test.cloud.spryker.toys:
@@ -115,7 +115,7 @@ groups:
                     backend-gateway.at.faas-suite-test.cloud.spryker.toys:
                         store: AT
                         primal: true
-            backend_api:
+            backapi:
                 application: zed
                 endpoints:
                     backend-api.de.faas-suite-test.cloud.spryker.toys:
