@@ -10,7 +10,7 @@ on:
 jobs:
     validation:
         name: "CS, ArchSniffer, PHPStan, Security"
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-20.04
         strategy:
             fail-fast: false
             matrix:
@@ -175,7 +175,7 @@ jobs:
 
     php-80-mariadb-glue-alpine:
         name: "PHP 8.0 / MariaDB / Glue / Alpine"
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.0RC-alpine
@@ -198,17 +198,13 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.api.mariadb.yml -v
                   docker/sdk up -t -v
-                  docker/sdk testing composer require "lcobucci/jwt:4.0.0" --ignore-platform-reqs
-                  docker exec -i spryker_ci_backoffice_eu_1 composer require "lcobucci/jwt:4.0.0" --ignore-platform-reqs
-                  docker exec -i spryker_ci_backend_gateway_eu_1 composer require "lcobucci/jwt:4.0.0" --ignore-platform-reqs
-                  docker exec -i spryker_ci_glue_eu_1 composer require "lcobucci/jwt:4.0.0" --ignore-platform-reqs
                   docker/sdk testing codecept fixtures
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
     php-80-mariadb-acceptance-alpine:
         name: "PHP 8.0 / MariaDB / Acceptance / Alpine"
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.0RC-alpine
@@ -237,7 +233,7 @@ jobs:
 
     php-80-mariadb-functional-alpine:
         name: "PHP 8.0 / MariaDB / Functional / Alpine"
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.0RC-alpine
@@ -265,7 +261,7 @@ jobs:
 
     php-74-mariadb-glue-alpine:
         name: "PHP 7.4 / MariaDB / Glue / Alpine"
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
@@ -292,12 +288,12 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
-    php-73-postgresql-acceptance-alpine:
-        name: "PHP 7.3 / PostgreSQL / Acceptance / Alpine"
-        runs-on: ubuntu-18.04
+    php-74-postgresql-acceptance-alpine:
+        name: "PHP 7.4 / PostgreSQL / Acceptance / Alpine"
+        runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:7.3
+            SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
             TRAVIS: 1
 
         steps:
@@ -321,12 +317,12 @@ jobs:
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
 
-    php-73-postgresql-functional-alpine:
-        name: "PHP 7.3 / PostgreSQL / Functional / Alpine"
-        runs-on: ubuntu-18.04
+    php-74-postgresql-functional-alpine:
+        name: "PHP 7.4 / PostgreSQL / Functional / Alpine"
+        runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:7.3
+            SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
             TRAVIS: 1
 
         steps:
@@ -351,7 +347,7 @@ jobs:
 
     php-74-mariadb-acceptance-alpine:
         name: "PHP 7.4 / MariaDB / Acceptance / Alpine"
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
@@ -380,7 +376,7 @@ jobs:
 
     php-74-mariadb-functional-alpine:
         name: "PHP 7.4 / MariaDB / Functional / Alpine"
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
@@ -406,12 +402,12 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
 
-    php-73-postgres-functional-debian:
-        name: "PHP 7.3 / PostgreSQL / Functional / Debian"
-        runs-on: ubuntu-18.04
+    php-74-postgres-functional-debian:
+        name: "PHP 7.4 / PostgreSQL / Functional / Debian"
+        runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:7.3-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:7.4-debian
             TRAVIS: 1
 
         steps:
@@ -436,7 +432,7 @@ jobs:
 
     php-74-frontend-and-assets-alpine:
         name: "PHP 7.4 / Frontend & Assets / Alpine"
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
