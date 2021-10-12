@@ -54,6 +54,54 @@ groups:
     EU:
         region: EU
         applications:
+            Redirects:
+                application: static
+                endpoints:
+                    www.faas-suite-test.cloud.spryker.toys:
+                        store: DE
+                        redirect:
+                            code: 302
+                            url: yves.de.faas-suite-test.cloud.spryker.toys
+                    yves.faas-suite-test.cloud.spryker.toys:
+                        store: DE
+                        redirect:
+                            code: 302
+                            url: yves.de.faas-suite-test.cloud.spryker.toys
+                    www.yves.faas-suite-test.cloud.spryker.toys:
+                        store: DE
+                        redirect:
+                            code: 302
+                            url: yves.de.faas-suite-test.cloud.spryker.toys
+                    www.de.faas-suite-test.cloud.spryker.toys:
+                        store: DE
+                        redirect:
+                            code: 302
+                            url: yves.de.faas-suite-test.cloud.spryker.toys
+                    www.at.faas-suite-test.cloud.spryker.toys:
+                        store: AT
+                        redirect:
+                            code: 302
+                            url: yves.at.faas-suite-test.cloud.spryker.toys
+                    backoffice.faas-suite-test.cloud.spryker.toys:
+                        store: DE
+                        redirect:
+                            code: 302
+                            url: backoffice.de.faas-suite-test.cloud.spryker.toys
+                    os.faas-suite-test.cloud.spryker.toys:
+                        store: DE
+                        redirect:
+                            code: 302
+                            url: backoffice.de.faas-suite-test.cloud.spryker.toys
+                    os.de.faas-suite-test.cloud.spryker.toys:
+                        store: DE
+                        redirect:
+                            code: 302
+                            url: backoffice.de.faas-suite-test.cloud.spryker.toys
+                    mp.faas-suite-test.cloud.spryker.toys:
+                        store: DE
+                        redirect:
+                            code: 302
+                            url: mp.de.faas-suite-test.cloud.spryker.toys
             mportal:
                 application: merchant-portal
                 endpoints:
