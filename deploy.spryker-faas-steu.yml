@@ -15,11 +15,15 @@ image:
         SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
         SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR: '0c1ffefeebdab4a3d839d0e52590c9a2'
 composer:
-    mode: ''
-    autoload: ''
+    mode: --no-dev
+    autoload: --classmap-authoritative
 
 assets:
-    mode: developments
+    mode: production
+        compression:
+            gzip:
+                static: true
+                level: 5
 
 regions:
     EU:
@@ -235,9 +239,9 @@ docker:
         store: DE
 
     debug:
-        enabled: true
+        enabled: false
         xdebug:
-            enabled: true
+            enabled: false
 
     mount:
         native:
