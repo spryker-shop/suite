@@ -430,7 +430,7 @@ class CheckoutApiTester extends ApiEndToEndTester
         return $this->havePaymentMethod($paymentMethodOverrideData);
     }
 
-    /***
+    /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
