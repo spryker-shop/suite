@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * Notes:
  *
  * - jobs[]['name'] must not contains spaces or any other characters, that have to be urlencode()'d
