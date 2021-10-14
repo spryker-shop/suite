@@ -1,9 +1,9 @@
 <?php
 
-/**
+/*
  * Notes:
  *
- * - jobs[]['name'] must not contains spaces or any other characters, that have to be urlencode()'d
+ * - jobs[]['name'] must not contain spaces or any other characters, that have to be urlencode()'d
  * - jobs[]['role'] default value is 'admin'
  */
 
