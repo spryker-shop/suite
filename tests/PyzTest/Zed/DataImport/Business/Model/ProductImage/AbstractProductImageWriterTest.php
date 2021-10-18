@@ -90,9 +90,7 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
         $dataSet[ProductImageHydratorStep::COLUMN_LOCALE] = $locale->getLocaleName();
         $dataSet[ProductImageHydratorStep::COLUMN_SORT_ORDER] = 0;
         $dataSet[ProductImageHydratorStep::COLUMN_PRODUCT_IMAGE_KEY] = $productImageKey;
-        /**
-         * @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer
-         */
+        /** @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer $spyProductImageSetEntityTransfer */
         $spyProductImageSetEntityTransfer = (new SpyProductImageSetEntityBuilder())->build();
 
         $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $spyProductImageSetEntityTransfer
@@ -181,7 +179,6 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
         $this->assertCount(count($dataSets), $fetchedResult['productImageSets']);
         $this->assertNotEmpty($fetchedResult['productImages']);
 
-        /** @var \Orm\Zed\Product\Persistence\SpyProduct $productEntity */
         foreach ($fetchedResult['productImageSets'] as $productImageSet) {
             //Image Set
             /** @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer $dataSetProductImageSet */
