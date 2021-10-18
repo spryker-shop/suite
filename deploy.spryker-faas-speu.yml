@@ -138,8 +138,10 @@ groups:
                 endpoints:
                     glue.de.faas-suite-prod.cloud.spryker.toys:
                         store: DE
+                        cors-allow-origin: '*'
                     glue.at.faas-suite-prod.cloud.spryker.toys:
                         store: AT
+                        cors-allow-origin: '*'
             boffice:
                 application: backoffice
                 endpoints:
