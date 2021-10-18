@@ -60,9 +60,7 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
             $productTransfer = (new SpyProductEntityBuilder())->build();
             $dataSet[ProductConcreteHydratorStep::COLUMN_ABSTRACT_SKU] = $abstractSku;
             $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_TRANSFER] = $productTransfer;
-            /**
-             * @var \Generated\Shared\Transfer\SpyProductLocalizedAttributesEntityTransfer
-             */
+            /** @var \Generated\Shared\Transfer\SpyProductLocalizedAttributesEntityTransfer $spyProductLocalizedAttributesEntityTransfer */
             $spyProductLocalizedAttributesEntityTransfer = (new SpyProductLocalizedAttributesEntityBuilder())
                 ->build();
             $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER] = [

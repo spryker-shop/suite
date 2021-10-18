@@ -62,9 +62,7 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
         $locale = $this->getLocale();
         for ($i = 0; $i < static::DATA_SET_COUNT; $i++) {
             $dataSet = new DataSet();
-            /**
-             * @var \Generated\Shared\Transfer\SpyProductAbstractEntityTransfer
-             */
+            /** @var \Generated\Shared\Transfer\SpyProductAbstractEntityTransfer $spyProductAbstractEntityTransfer */
             $spyProductAbstractEntityTransfer = (new SpyProductAbstractEntityBuilder())
                 ->build();
             $spyProductAbstractEntityTransfer
@@ -74,9 +72,7 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                 ->setNewTo('2010-02-03 00:45:00');
             $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_TRANSFER] = $spyProductAbstractEntityTransfer;
 
-            /**
-             * @var \Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer
-             */
+            /** @var \Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer $productAbstractLocalizedAttributesEntityTransfer */
             $productAbstractLocalizedAttributesEntityTransfer = (new SpyProductAbstractLocalizedAttributesEntityBuilder())
                 ->build();
             $productAbstractLocalizedAttributesEntityTransfer
@@ -88,9 +84,7 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                     'localizedAttributeTransfer' => $productAbstractLocalizedAttributesEntityTransfer,
                 ],
             ];
-            /**
-             * @var \Generated\Shared\Transfer\SpyUrlEntityTransfer
-             */
+            /** @var \Generated\Shared\Transfer\SpyUrlEntityTransfer $urlEntityTransfer */
             $urlEntityTransfer = (new SpyUrlEntityBuilder())->build();
             $urlEntityTransfer
                 ->setFkLocale($locale->getIdLocale());

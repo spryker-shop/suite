@@ -104,7 +104,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new CustomerCatalogProductListQueryExpanderPlugin(),
             new MerchantReferenceQueryExpanderPlugin(),
 
-            /**
+            /*
              * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
              */
             new FacetQueryExpanderPlugin(),
