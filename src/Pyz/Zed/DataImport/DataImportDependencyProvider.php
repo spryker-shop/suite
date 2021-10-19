@@ -114,26 +114,32 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      * @var string
      */
     public const FACADE_CATEGORY = 'category facade';
+
     /**
      * @var string
      */
     public const FACADE_STORE = 'store facade';
+
     /**
      * @var string
      */
     public const FACADE_CURRENCY = 'currency facade';
+
     /**
      * @var string
      */
     public const FACADE_PRODUCT_BUNDLE = 'product bundle facade';
+
     /**
      * @var string
      */
     public const FACADE_PRODUCT_RELATION = 'product relation facade';
+
     /**
      * @var string
      */
     public const FACADE_STOCK = 'stock facade';
+
     /**
      * @var string
      */
@@ -143,6 +149,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      * @var string
      */
     public const FACADE_PRICE_PRODUCT = 'FACADE_PRICE_PRODUCT';
+
     /**
      * @var string
      */

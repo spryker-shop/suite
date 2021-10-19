@@ -24,6 +24,7 @@ class CombinedProductConcreteHydratorStep extends ProductConcreteHydratorStep
      * @var string
      */
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
+
     /**
      * @var string
      */
@@ -33,10 +34,12 @@ class CombinedProductConcreteHydratorStep extends ProductConcreteHydratorStep
      * @var string
      */
     public const COLUMN_IS_SEARCHABLE = 'product_concrete.is_searchable';
+
     /**
      * @var string
      */
     public const COLUMN_BUNDLES = 'product_concrete.bundled';
+
     /**
      * @var string
      */
@@ -46,6 +49,7 @@ class CombinedProductConcreteHydratorStep extends ProductConcreteHydratorStep
      * @var string
      */
     public const COLUMN_NAME = 'product.name';
+
     /**
      * @var string
      */
@@ -60,6 +64,7 @@ class CombinedProductConcreteHydratorStep extends ProductConcreteHydratorStep
      * @var string
      */
     protected const ASSIGNABLE_PRODUCT_TYPE_CONCRETE = 'concrete';
+
     /**
      * @var string
      */

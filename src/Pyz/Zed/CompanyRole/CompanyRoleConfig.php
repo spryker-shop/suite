@@ -24,6 +24,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
      * @var string
      */
     protected const BUYER_ROLE_NAME = 'Buyer';
+
     /**
      * @var string
      */

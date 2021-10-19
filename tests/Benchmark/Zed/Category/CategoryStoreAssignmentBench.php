@@ -22,6 +22,7 @@ class CategoryStoreAssignmentBench
      * @var int
      */
     protected const CATEGORY_ID = 1;
+
     /**
      * @var string
      */
@@ -31,6 +32,7 @@ class CategoryStoreAssignmentBench
      * @var string
      */
     protected const LOGIN_EMAIL = 'admin@spryker.com';
+
     /**
      * @var string
      */
@@ -45,6 +47,7 @@ class CategoryStoreAssignmentBench
      * @var int
      */
     protected const ID_STORE_DE = 1;
+
     /**
      * @var int
      */

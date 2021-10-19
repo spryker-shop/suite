@@ -19,6 +19,7 @@ class LocaleNameToIdLocaleStep implements DataImportStepInterface
      * @var string
      */
     public const KEY_SOURCE = 'localeName';
+
     /**
      * @var string
      */

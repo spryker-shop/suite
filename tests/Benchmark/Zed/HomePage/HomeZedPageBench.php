@@ -20,6 +20,7 @@ class HomeZedPageBench
      * @var string
      */
     protected const LOGIN_EMAIL = 'admin@spryker.com';
+
     /**
      * @var string
      */
@@ -60,7 +61,10 @@ class HomeZedPageBench
      */
     public function benchZedHomePageOpens(): ResponseInterface
     {
-        $headers[$this->loginHeader->getName()] = $this->loginHeader->getValue();
+        $headers = [
+            $this->loginHeader->getName() => $this->loginHeader->getValue(),
+        ];
+
         $request = $this->requestBuilder->buildRequest(
             RequestBuilder::METHOD_GET,
             HomePage::HOME_PAGE_URL,

@@ -462,7 +462,7 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
         /** @var \Spryker\Zed\AclEntity\AclEntityConfig $aclEntityConfig */
         $aclEntityConfig = $this->tester->mockConfigMethod(
             'getDefaultGlobalOperationMask',
-            AclEntityConstants::OPERATION_MASK_CREATE | AclEntityConstants::OPERATION_MASK_DELETE,
+            AclEntityConstants::OPERATION_MASK_CREATE | AclEntityConstants::OPERATION_MASK_DELETE
         );
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, null, $aclEntityConfig);
@@ -497,7 +497,7 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
         /** @var \Spryker\Zed\AclEntity\AclEntityConfig $config */
         $config = $this->tester->mockConfigMethod(
             'getDefaultGlobalOperationMask',
-            AclEntityConstants::OPERATION_MASK_READ | AclEntityConstants::OPERATION_MASK_DELETE,
+            AclEntityConstants::OPERATION_MASK_READ | AclEntityConstants::OPERATION_MASK_DELETE
         );
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);

@@ -18,6 +18,7 @@ class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
      * @var string
      */
     public const KEY_SOURCE = 'taxSetName';
+
     /**
      * @var string
      */

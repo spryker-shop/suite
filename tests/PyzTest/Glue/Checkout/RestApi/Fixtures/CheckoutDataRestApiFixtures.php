@@ -32,6 +32,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      * @var string
      */
     protected const TEST_USERNAME = 'CheckoutDataRestApiFixtures';
+
     /**
      * @var string
      */
