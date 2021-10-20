@@ -103,17 +103,17 @@ class CheckoutApiTester extends ApiEndToEndTester
 
         $this->assertNotEmpty(
             $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
-            'The returned resource attributes order reference should not be empty'
+            'The returned resource attributes order reference should not be empty',
         );
         $this->assertArrayHasKey(
             RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
             $attributes,
-            'The returned resource attributes should have an external redirect key'
+            'The returned resource attributes should have an external redirect key',
         );
         $this->assertArrayHasKey(
             RestCheckoutResponseTransfer::REDIRECT_URL,
             $attributes,
-            'The returned resource attributes should have a redirect URL key'
+            'The returned resource attributes should have a redirect URL key',
         );
     }
 
@@ -130,7 +130,7 @@ class CheckoutApiTester extends ApiEndToEndTester
 
         $this->assertEmpty(
             $attributes[RestCheckoutDataTransfer::ADDRESSES],
-            'The returned resource attributes addresses should be an empty array'
+            'The returned resource attributes addresses should be an empty array',
         );
     }
 
@@ -145,7 +145,7 @@ class CheckoutApiTester extends ApiEndToEndTester
             '{resourceCheckout}' . $this->formatQueryInclude($includes),
             [
                 'resourceCheckout' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
-            ]
+            ],
         );
     }
 
@@ -160,7 +160,7 @@ class CheckoutApiTester extends ApiEndToEndTester
             '{resourceCheckoutData}' . $this->formatQueryInclude($includes),
             [
                 'resourceCheckoutData' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
-            ]
+            ],
         );
     }
 

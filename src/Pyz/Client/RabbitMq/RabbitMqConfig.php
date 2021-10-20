@@ -76,7 +76,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
                 $this->get(LogConstants::LOG_QUEUE_NAME),
             ],
             $this->getPublishQueueConfiguration(),
-            $this->getSynchronizationQueueConfiguration()
+            $this->getSynchronizationQueueConfiguration(),
         );
     }
 

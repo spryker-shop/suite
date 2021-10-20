@@ -48,7 +48,7 @@ class CatalogSearchBench
     {
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_GET,
-            sprintf(CatalogPage::ENDPOINT_CATALOG_SEARCH, static::SEARCH_QUERY_VALUE)
+            sprintf(CatalogPage::ENDPOINT_CATALOG_SEARCH, static::SEARCH_QUERY_VALUE),
         );
 
         return $this->httpHelper->send($request);

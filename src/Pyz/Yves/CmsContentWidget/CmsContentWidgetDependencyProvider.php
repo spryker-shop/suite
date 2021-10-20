@@ -29,19 +29,19 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
     {
         return [
             CmsProductContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductContentWidgetPlugin(
-                new CmsProductContentWidgetConfigurationProvider()
+                new CmsProductContentWidgetConfigurationProvider(),
             ),
             CmsProductGroupContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductContentWidgetPlugin(
-                new CmsProductGroupContentWidgetConfigurationProvider()
+                new CmsProductGroupContentWidgetConfigurationProvider(),
             ),
             CmsProductSetContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductSetContentWidgetPlugin(
-                new CmsProductSetContentWidgetConfigurationProvider()
+                new CmsProductSetContentWidgetConfigurationProvider(),
             ),
             FileManagerWidgetConfigurationProvider::FUNCTION_NAME => new FileManagerWidgetPlugin(
-                new FileManagerWidgetConfigurationProvider()
+                new FileManagerWidgetConfigurationProvider(),
             ),
             CmsContentWidgetCmsBlockConnectorConfigurationProvider::FUNCTION_NAME => new CmsBlockContentWidgetPlugin(
-                new CmsContentWidgetCmsBlockConnectorConfigurationProvider()
+                new CmsContentWidgetCmsBlockConnectorConfigurationProvider(),
             ),
         ];
     }

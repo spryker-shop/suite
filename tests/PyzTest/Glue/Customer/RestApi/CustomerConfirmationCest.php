@@ -55,7 +55,7 @@ class CustomerConfirmationCest
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
                 CustomerTransfer::REGISTRATION_KEY => uniqid(),
-            ]
+            ],
         );
     }
 
@@ -76,7 +76,7 @@ class CustomerConfirmationCest
                     'type' => CustomersRestApiConfig::RESOURCE_CUSTOMER_CONFIRMATION,
                     'attributes' => $restCustomerConfirmationAttributesTransfer->modifiedToArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -103,7 +103,7 @@ class CustomerConfirmationCest
                     'type' => CustomersRestApiConfig::RESOURCE_CUSTOMER_CONFIRMATION,
                     'attributes' => $restCustomerConfirmationAttributesTransfer->modifiedToArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -133,7 +133,7 @@ class CustomerConfirmationCest
                     'type' => CustomersRestApiConfig::RESOURCE_CUSTOMER_CONFIRMATION,
                     'attributes' => $restCustomerConfirmationAttributesTransfer->modifiedToArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert

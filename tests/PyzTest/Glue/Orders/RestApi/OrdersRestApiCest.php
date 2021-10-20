@@ -56,7 +56,7 @@ class OrdersRestApiCest
 
         //Act
         $I->sendGET(
-            $I->formatUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
+            $I->formatUrl(OrdersRestApiConfig::RESOURCE_ORDERS),
         );
 
         //Assert
@@ -71,7 +71,7 @@ class OrdersRestApiCest
         $I->amSure('The returned resource has correct self-link')
             ->whenI()
             ->seeResponseLinksContainsSelfLink(
-                $I->formatFullUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
+                $I->formatFullUrl(OrdersRestApiConfig::RESOURCE_ORDERS),
             );
     }
 
@@ -87,7 +87,7 @@ class OrdersRestApiCest
 
         //Act
         $I->sendGET(
-            $I->formatUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
+            $I->formatUrl(OrdersRestApiConfig::RESOURCE_ORDERS),
         );
 
         //Assert
@@ -98,7 +98,7 @@ class OrdersRestApiCest
         $I->amSure('The returned resource has correct self-link')
             ->whenI()
             ->seeResponseLinksContainsSelfLink(
-                $I->formatFullUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
+                $I->formatFullUrl(OrdersRestApiConfig::RESOURCE_ORDERS),
             );
 
         $I->amSure('The returned resource has not empty collection')
@@ -132,8 +132,8 @@ class OrdersRestApiCest
                 [
                     'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
                     'customerOrderReference' => $orderReference,
-                ]
-            )
+                ],
+            ),
         );
 
         //Assert
@@ -169,8 +169,8 @@ class OrdersRestApiCest
                     'customer' => OrdersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $customerTransfer->getCustomerReference(),
                     'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
-                ]
-            )
+                ],
+            ),
         );
 
         //Assert
@@ -197,8 +197,8 @@ class OrdersRestApiCest
                     'customer' => OrdersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => 'wrongCustomerReference',
                     'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
-                ]
-            )
+                ],
+            ),
         );
 
         //Assert
@@ -216,7 +216,7 @@ class OrdersRestApiCest
     {
         //Act
         $I->sendGET(
-            $I->formatUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
+            $I->formatUrl(OrdersRestApiConfig::RESOURCE_ORDERS),
         );
 
         //Assert
@@ -242,8 +242,8 @@ class OrdersRestApiCest
                 [
                     'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
                     'customerOrderReference' => $orderReference,
-                ]
-            )
+                ],
+            ),
         );
 
         //Assert
@@ -269,8 +269,8 @@ class OrdersRestApiCest
                 [
                     'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
                     'customerOrderReference' => 'test',
-                ]
-            )
+                ],
+            ),
         );
 
         //Assert

@@ -56,7 +56,7 @@ class CustomerUpdateCest
             [
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
-            ]
+            ],
         );
         $I->confirmCustomer($this->customerTransfer);
 
@@ -81,7 +81,7 @@ class CustomerUpdateCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $this->customerTransfer->getCustomerReference(),
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -89,7 +89,7 @@ class CustomerUpdateCest
                     'id' => $this->customerTransfer->getCustomerReference(),
                     'attributes' => $restCustomersAttributesTransfer->modifiedToArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -103,8 +103,8 @@ class CustomerUpdateCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $this->customerTransfer->getCustomerReference(),
-                ]
-            )
+                ],
+            ),
         );
 
         $I->amSure(sprintf('Returned resource is of type %s', CustomersRestApiConfig::RESOURCE_CUSTOMERS))
@@ -120,7 +120,7 @@ class CustomerUpdateCest
             ->whenI()
             ->assertCustomersAttributes(
                 $this->customerTransfer->setFirstName($firstName),
-                $I->grabDataFromResponseByJsonPath('$.data.attributes')
+                $I->grabDataFromResponseByJsonPath('$.data.attributes'),
             );
     }
 
@@ -135,7 +135,7 @@ class CustomerUpdateCest
             [
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
-            ]
+            ],
         );
 
         $restCustomersAttributesTransfer = (new RestCustomersAttributesTransfer())
@@ -147,7 +147,7 @@ class CustomerUpdateCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $this->customerTransfer->getCustomerReference(),
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -155,7 +155,7 @@ class CustomerUpdateCest
                     'id' => $this->customerTransfer->getCustomerReference(),
                     'attributes' => $restCustomersAttributesTransfer->modifiedToArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -179,7 +179,7 @@ class CustomerUpdateCest
             [
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
-            ]
+            ],
         );
 
         $restCustomersAttributesTransfer = (new RestCustomersAttributesTransfer())
@@ -191,7 +191,7 @@ class CustomerUpdateCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $firstCustomerTransfer->getCustomerReference(),
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -199,7 +199,7 @@ class CustomerUpdateCest
                     'id' => $firstCustomerTransfer->getCustomerReference(),
                     'attributes' => $restCustomersAttributesTransfer->modifiedToArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -227,7 +227,7 @@ class CustomerUpdateCest
                 '{resourceCustomers}/',
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -235,7 +235,7 @@ class CustomerUpdateCest
                     'id' => $this->customerTransfer->getCustomerReference(),
                     'attributes' => $restCustomersAttributesTransfer->modifiedToArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -266,7 +266,7 @@ class CustomerUpdateCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $this->customerTransfer->getCustomerReference(),
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -274,7 +274,7 @@ class CustomerUpdateCest
                     'id' => $this->customerTransfer->getCustomerReference(),
                     'attributes' => $restCustomersAttributesTransfer->modifiedToArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -287,7 +287,7 @@ class CustomerUpdateCest
         $I->seeResponseErrorsHaveDetail(sprintf(
             CustomersRestApiConfig::RESPONSE_DETAILS_PASSWORDS_DONT_MATCH,
             RestCustomersAttributesTransfer::PASSWORD,
-            RestCustomersAttributesTransfer::CONFIRM_PASSWORD
+            RestCustomersAttributesTransfer::CONFIRM_PASSWORD,
         ));
     }
 
@@ -311,7 +311,7 @@ class CustomerUpdateCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $this->customerTransfer->getCustomerReference(),
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -319,7 +319,7 @@ class CustomerUpdateCest
                     'id' => $this->customerTransfer->getCustomerReference(),
                     'attributes' => $example['attributes'],
                 ],
-            ]
+            ],
         );
 
         // Assert

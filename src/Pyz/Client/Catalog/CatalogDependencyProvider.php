@@ -121,7 +121,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new SortedResultFormatterPlugin(),
             new PaginatedResultFormatterPlugin(),
             new CurrencyAwareCatalogSearchResultFormatterPlugin(
-                new RawCatalogSearchResultFormatterPlugin()
+                new RawCatalogSearchResultFormatterPlugin(),
             ),
             new SpellingSuggestionResultFormatterPlugin(),
             new CategoryTreeFilterPageSearchResultFormatterPlugin(),
@@ -154,7 +154,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
         return [
             new CompletionResultFormatterPlugin(),
             new CurrencyAwareSuggestionByTypeResultFormatter(
-                new SuggestionByTypeResultFormatterPlugin()
+                new SuggestionByTypeResultFormatterPlugin(),
             ),
         ];
     }

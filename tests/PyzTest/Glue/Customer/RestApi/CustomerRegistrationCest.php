@@ -72,7 +72,7 @@ class CustomerRegistrationCest
                     'type' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'attributes' => $restCustomersAttributesTransfer->toArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -86,8 +86,8 @@ class CustomerRegistrationCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $I->grabDataFromResponseByJsonPath('$.data')['id'],
-                ]
-            )
+                ],
+            ),
         );
 
         $I->amSure(sprintf('Returned resource is of type %s', CustomersRestApiConfig::RESOURCE_CUSTOMERS))
@@ -98,7 +98,7 @@ class CustomerRegistrationCest
             ->whenI()
             ->assertRegisteredCustomersAttributes(
                 $restCustomersAttributesTransfer,
-                $I->grabDataFromResponseByJsonPath('$.data.attributes')
+                $I->grabDataFromResponseByJsonPath('$.data.attributes'),
             );
     }
 
@@ -119,7 +119,7 @@ class CustomerRegistrationCest
             [
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
-            ]
+            ],
         );
         $I->confirmCustomer($customerTransfer);
 
@@ -132,7 +132,7 @@ class CustomerRegistrationCest
                     'type' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'attributes' => $restCustomersAttributesTransfer->toArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -162,7 +162,7 @@ class CustomerRegistrationCest
                     'type' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'attributes' => $example['attributes']->toArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -226,7 +226,7 @@ class CustomerRegistrationCest
                         RestErrorMessageTransfer::DETAIL => sprintf(
                             CustomersRestApiConfig::RESPONSE_DETAILS_PASSWORDS_DONT_MATCH,
                             RestCustomersAttributesTransfer::PASSWORD,
-                            RestCustomersAttributesTransfer::CONFIRM_PASSWORD
+                            RestCustomersAttributesTransfer::CONFIRM_PASSWORD,
                         ),
                     ],
                 ],

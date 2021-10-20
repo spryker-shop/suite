@@ -94,14 +94,14 @@ class RelatedProductsRestApiFixtures implements FixturesBuilderInterface, Fixtur
             $this->productConcreteTransfer->getFkProductAbstract(),
             uniqid('key-', false),
             ProductRelationTypes::TYPE_RELATED_PRODUCTS,
-            $storeRelationTransfer
+            $storeRelationTransfer,
         );
         $I->haveProductRelation(
             $this->productConcreteTransfer->getAbstractSku(),
             $this->anotherProductConcreteTransfer->getFkProductAbstract(),
             uniqid('key-', false),
             ProductRelationTypes::TYPE_RELATED_PRODUCTS,
-            $storeRelationTransfer
+            $storeRelationTransfer,
         );
     }
 }

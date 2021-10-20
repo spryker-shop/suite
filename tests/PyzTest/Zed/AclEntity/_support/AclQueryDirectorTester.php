@@ -101,14 +101,14 @@ class AclQueryDirectorTester extends Actor
     {
         $this->deleteRoles(
             (new AclRoleCriteriaTransfer())->setNames(
-                [static::ACL_ROLE_1_NAME, static::ACL_ROLE_2_NAME, static::ACL_ROLE_3_NAME]
-            )
+                [static::ACL_ROLE_1_NAME, static::ACL_ROLE_2_NAME, static::ACL_ROLE_3_NAME],
+            ),
         );
 
         $this->deleteAclEntitySegments(
             (new AclEntitySegmentCriteriaTransfer())
                 ->addReference(static::ACL_ENTITY_SEGMENT_1_REFERENCE)
-                ->addReference(static::ACL_ENTITY_SEGMENT_2_REFERENCE)
+                ->addReference(static::ACL_ENTITY_SEGMENT_2_REFERENCE),
         );
     }
 
@@ -130,10 +130,10 @@ class AclQueryDirectorTester extends Actor
                             (new AclEntityParentConnectionMetadataTransfer())
                                 ->setPivotEntityName(SpyProductImageSetToProductImage::class)
                                 ->setReference('fk_product_image')
-                                ->setReferencedColumn('fk_product_image_set')
-                        )
+                                ->setReferencedColumn('fk_product_image_set'),
+                        ),
                 )
-                ->setIsSubEntity(true)
+                ->setIsSubEntity(true),
         );
 
         $aclEntityMetadataCollectionTransfer->addAclEntityMetadata(
@@ -142,14 +142,14 @@ class AclQueryDirectorTester extends Actor
                 ->setEntityName(SpyProductImageSet::class)
                 ->setParent(
                     (new AclEntityParentMetadataTransfer())
-                        ->setEntityName(SpyProduct::class)
+                        ->setEntityName(SpyProduct::class),
                 )
-                ->setIsSubEntity(true)
+                ->setIsSubEntity(true),
         );
 
         $aclEntityMetadataCollectionTransfer->addAclEntityMetadata(
             SpyProduct::class,
-            (new AclEntityMetadataTransfer())->setEntityName(SpyProduct::class)
+            (new AclEntityMetadataTransfer())->setEntityName(SpyProduct::class),
         );
 
         return $aclEntityMetadataCollectionTransfer;
@@ -168,8 +168,8 @@ class AclQueryDirectorTester extends Actor
                 ->setEntityName(SpyProductAbstract::class)
                 ->setParent(
                     (new AclEntityParentMetadataTransfer())
-                        ->setEntityName(SpyMerchantProductAbstract::class)
-                )
+                        ->setEntityName(SpyMerchantProductAbstract::class),
+                ),
         );
 
         $aclEntityMetadataCollectionTransfer->addAclEntityMetadata(
@@ -178,15 +178,15 @@ class AclQueryDirectorTester extends Actor
                 ->setEntityName(SpyMerchantProductAbstract::class)
                 ->setParent(
                     (new AclEntityParentMetadataTransfer())
-                        ->setEntityName(SpyMerchant::class)
-                )
+                        ->setEntityName(SpyMerchant::class),
+                ),
         );
 
         $aclEntityMetadataCollectionTransfer->addAclEntityMetadata(
             SpyMerchant::class,
             (new AclEntityMetadataTransfer())
                 ->setEntityName(SpyMerchant::class)
-                ->setHasSegmentTable(true)
+                ->setHasSegmentTable(true),
         );
 
         return $aclEntityMetadataCollectionTransfer;
@@ -209,14 +209,14 @@ class AclQueryDirectorTester extends Actor
                         ->setConnection(
                             (new AclEntityParentConnectionMetadataTransfer())
                                 ->setReference('merchant_reference')
-                                ->setReferencedColumn('merchant_reference')
-                        )
-                )
+                                ->setReferencedColumn('merchant_reference'),
+                        ),
+                ),
         );
         $aclEntityMetadataCollectionTransfer->addAclEntityMetadata(
             SpyMerchant::class,
             (new AclEntityMetadataTransfer())
-                ->setEntityName(SpyMerchant::class)
+                ->setEntityName(SpyMerchant::class),
         );
 
         return $aclEntityMetadataCollectionTransfer;
@@ -250,7 +250,7 @@ class AclQueryDirectorTester extends Actor
             $factory->createRelationResolver($aclEntityMetadataCollectionTransfer),
             $userFacade,
             $aclFacade,
-            $factory->createAclEntityQueryMerger()
+            $factory->createAclEntityQueryMerger(),
         );
     }
 

@@ -117,7 +117,7 @@ class UrlsRestApiFixtures implements FixturesBuilderInterface, FixturesContainer
         $this->categoryUrlTransfer = (new UrlFacade())
             ->getResourceUrlByCategoryNodeIdAndLocale(
                 $categoryTransfer->getCategoryNode()->getIdCategoryNode(),
-                (new LocaleFacade())->getCurrentLocale()
+                (new LocaleFacade())->getCurrentLocale(),
             );
     }
 }

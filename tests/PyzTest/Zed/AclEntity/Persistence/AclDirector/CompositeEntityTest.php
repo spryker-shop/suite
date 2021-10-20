@@ -69,12 +69,12 @@ class CompositeEntityTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRoleOrFail(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CREATE,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy()
+            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
 
         // Act, Assert
@@ -97,7 +97,7 @@ class CompositeEntityTest extends Unit
             [
                 ProductImageSetTransfer::ID_PRODUCT => $productTransfer->getIdProductConcreteOrFail(),
                 ProductImageSetTransfer::ID_PRODUCT_ABSTRACT => $productTransfer->getFkProductAbstractOrFail(),
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -107,18 +107,18 @@ class CompositeEntityTest extends Unit
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRoleOrFail(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ
                     | AclEntityConstants::OPERATION_MASK_UPDATE,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy()
+            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
 
         // Act, Assert
         foreach ($productImageSetTransfer->getProductImages() as $productImageTransfer) {
             $aclQueryDirector->inspectUpdate(
-                $this->tester->findProductImageByIdProductImage($productImageTransfer->getIdProductImageOrFail())
+                $this->tester->findProductImageByIdProductImage($productImageTransfer->getIdProductImageOrFail()),
             );
         }
     }
@@ -139,7 +139,7 @@ class CompositeEntityTest extends Unit
             [
                 ProductImageSetTransfer::ID_PRODUCT => $productTransfer->getIdProductConcreteOrFail(),
                 ProductImageSetTransfer::ID_PRODUCT_ABSTRACT => $productTransfer->getFkProductAbstractOrFail(),
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -149,18 +149,18 @@ class CompositeEntityTest extends Unit
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRoleOrFail(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ
                     | AclEntityConstants::OPERATION_MASK_DELETE,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy()
+            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
 
         // Act, Assert
         foreach ($productImageSetTransfer->getProductImages() as $productImageTransfer) {
             $aclQueryDirector->inspectDelete(
-                $this->tester->findProductImageByIdProductImage($productImageTransfer->getIdProductImageOrFail())
+                $this->tester->findProductImageByIdProductImage($productImageTransfer->getIdProductImageOrFail()),
             );
         }
     }
@@ -175,7 +175,7 @@ class CompositeEntityTest extends Unit
         // Assert
         $this->expectException(OperationNotAuthorizedException::class);
         $this->expectExceptionMessage(
-            'Operation "create" is restricted for Orm\Zed\ProductImage\Persistence\SpyProductImage'
+            'Operation "create" is restricted for Orm\Zed\ProductImage\Persistence\SpyProductImage',
         );
 
         // Arrange
@@ -188,12 +188,12 @@ class CompositeEntityTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRoleOrFail(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy()
+            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
 
         // Act
@@ -210,7 +210,7 @@ class CompositeEntityTest extends Unit
         // Assert
         $this->expectException(OperationNotAuthorizedException::class);
         $this->expectExceptionMessage(
-            'Operation "update" is restricted for Orm\Zed\ProductImage\Persistence\SpyProductImage'
+            'Operation "update" is restricted for Orm\Zed\ProductImage\Persistence\SpyProductImage',
         );
 
         // Arrange
@@ -222,7 +222,7 @@ class CompositeEntityTest extends Unit
             [
                 ProductImageSetTransfer::ID_PRODUCT => $productTransfer->getIdProductConcreteOrFail(),
                 ProductImageSetTransfer::ID_PRODUCT_ABSTRACT => $productTransfer->getFkProductAbstractOrFail(),
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -231,18 +231,18 @@ class CompositeEntityTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRoleOrFail(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy()
+            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
         $productImageTransfer = $productImageSetTransfer->getProductImages()->offsetGet(0);
 
         // Act
         $aclQueryDirector->inspectUpdate(
-            $this->tester->findProductImageByIdProductImage($productImageTransfer->getIdProductImageOrFail())
+            $this->tester->findProductImageByIdProductImage($productImageTransfer->getIdProductImageOrFail()),
         );
     }
 
@@ -256,7 +256,7 @@ class CompositeEntityTest extends Unit
         // Assert
         $this->expectException(OperationNotAuthorizedException::class);
         $this->expectExceptionMessage(
-            'Operation "delete" is restricted for Orm\Zed\ProductImage\Persistence\SpyProductImage'
+            'Operation "delete" is restricted for Orm\Zed\ProductImage\Persistence\SpyProductImage',
         );
 
         // Arrange
@@ -268,7 +268,7 @@ class CompositeEntityTest extends Unit
             [
                 ProductImageSetTransfer::ID_PRODUCT => $productTransfer->getIdProductConcreteOrFail(),
                 ProductImageSetTransfer::ID_PRODUCT_ABSTRACT => $productTransfer->getFkProductAbstractOrFail(),
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -278,18 +278,18 @@ class CompositeEntityTest extends Unit
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRoleOrFail(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ
                     | AclEntityConstants::OPERATION_MASK_CREATE,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy()
+            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
         $productImageTransfer = $productImageSetTransfer->getProductImages()->offsetGet(0);
 
         // Act
         $aclQueryDirector->inspectDelete(
-            $this->tester->findProductImageByIdProductImage($productImageTransfer->getIdProductImageOrFail())
+            $this->tester->findProductImageByIdProductImage($productImageTransfer->getIdProductImageOrFail()),
         );
     }
 
@@ -309,7 +309,7 @@ class CompositeEntityTest extends Unit
             [
                 ProductImageSetTransfer::ID_PRODUCT => $productTransfer->getIdProductConcreteOrFail(),
                 ProductImageSetTransfer::ID_PRODUCT_ABSTRACT => $productTransfer->getFkProductAbstractOrFail(),
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -318,12 +318,12 @@ class CompositeEntityTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRoleOrFail(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy()
+            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
         $query = SpyProductImageQuery::create()->orderByIdProductImage();
 
@@ -333,7 +333,7 @@ class CompositeEntityTest extends Unit
         // Assert
         $this->assertStringNotContainsString(
             'id_product is null',
-            $this->tester->purify($query->toString())
+            $this->tester->purify($query->toString()),
         );
         $this->assertStringContainsString('join spy_product_image_set_to_product_image', strtolower($query->toString()));
         $this->assertStringContainsString('join spy_product_image_set', strtolower($query->toString()));
@@ -358,7 +358,7 @@ class CompositeEntityTest extends Unit
             [
                 ProductImageSetTransfer::ID_PRODUCT => $productTransfer->getIdProductConcreteOrFail(),
                 ProductImageSetTransfer::ID_PRODUCT_ABSTRACT => $productTransfer->getFkProductAbstractOrFail(),
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -368,12 +368,12 @@ class CompositeEntityTest extends Unit
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRoleOrFail(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CREATE
                     | AclEntityConstants::OPERATION_MASK_DELETE,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy()
+            $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
         $query = SpyProductImageQuery::create()->orderByIdProductImage();
 
@@ -383,7 +383,7 @@ class CompositeEntityTest extends Unit
         // Assert
         $this->assertStringContainsString(
             'id_product is null',
-            $this->tester->purify($query->toString())
+            $this->tester->purify($query->toString()),
         );
 
         $this->assertEmpty($query->count());
@@ -399,7 +399,7 @@ class CompositeEntityTest extends Unit
         // Assert
         $this->expectException(MissingRootMetadataException::class);
         $this->expectExceptionMessage(
-            'No root metadata definition found for Orm\Zed\ProductImage\Persistence\SpyProductImage'
+            'No root metadata definition found for Orm\Zed\ProductImage\Persistence\SpyProductImage',
         );
 
         // Arrange
@@ -414,12 +414,12 @@ class CompositeEntityTest extends Unit
                     ->setIsSubEntity(true)
                     ->setParent(
                         (new AclEntityParentMetadataTransfer())
-                            ->setEntityName(SpyProductImageSet::class)
-                    )
+                            ->setEntityName(SpyProductImageSet::class),
+                    ),
             )
             ->addAclEntityMetadata(
                 SpyProductImageSet::class,
-                (new AclEntityMetadataTransfer())->setEntityName(SpyProductImageSet::class)->setIsSubEntity(true)
+                (new AclEntityMetadataTransfer())->setEntityName(SpyProductImageSet::class)->setIsSubEntity(true),
             );
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
 

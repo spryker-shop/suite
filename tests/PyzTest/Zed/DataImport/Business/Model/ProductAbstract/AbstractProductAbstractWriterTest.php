@@ -146,11 +146,11 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
             $dataSetProduct = $dataSets[$abstractProductEntity->getSku()][ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_TRANSFER];
             $this->assertSame(
                 $dataSetProduct->getAttributes(),
-                $abstractProductEntity->getAttributes()
+                $abstractProductEntity->getAttributes(),
             );
             $this->assertSame(
                 $dataSetProduct->getColorCode(),
-                $abstractProductEntity->getColorCode()
+                $abstractProductEntity->getColorCode(),
             );
 
             //Localized
@@ -168,15 +168,15 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                     }
                     $this->assertSame(
                         $localizedAttributeTransfer->getName(),
-                        $localizedAttribute->getName()
+                        $localizedAttribute->getName(),
                     );
                     $this->assertSame(
                         $localizedAttributeTransfer->getDescription(),
-                        $localizedAttribute->getDescription()
+                        $localizedAttribute->getDescription(),
                     );
                     $this->assertSame(
                         $localizedAttributeTransfer->getMetaTitle(),
-                        $localizedAttribute->getMetaTitle()
+                        $localizedAttribute->getMetaTitle(),
                     );
                 }
             }

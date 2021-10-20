@@ -74,7 +74,7 @@ class GuestCheckoutRestApiCest
         $customerTransfer = $this->fixtures->getGuestCustomerTransfer();
         $I->haveHttpHeader(
             static::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReference()
+            $this->fixtures->getGuestCustomerReference(),
         );
 
         $quoteTransfer = $this->fixtures->getEmptyGuestQuoteTransfer();
@@ -130,13 +130,13 @@ class GuestCheckoutRestApiCest
         $customerTransfer = $this->fixtures->getGuestCustomerTransfer();
         $I->haveHttpHeader(
             static::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReference()
+            $this->fixtures->getGuestCustomerReference(),
         );
 
         $shipmentMethodTransfer = $this->fixtures->getShipmentMethodTransfer();
         $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $customerTransfer,
-            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfer(), $shipmentMethodTransfer, 10)]
+            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfer(), $shipmentMethodTransfer, 10)],
         );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
@@ -183,13 +183,13 @@ class GuestCheckoutRestApiCest
         $customerTransfer = $this->fixtures->getGuestCustomerTransfer();
         $I->haveHttpHeader(
             static::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReference()
+            $this->fixtures->getGuestCustomerReference(),
         );
 
         $shipmentMethodTransfer = $this->fixtures->getShipmentMethodTransfer();
         $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $customerTransfer,
-            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfer(), $shipmentMethodTransfer, 10)]
+            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfer(), $shipmentMethodTransfer, 10)],
         );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 

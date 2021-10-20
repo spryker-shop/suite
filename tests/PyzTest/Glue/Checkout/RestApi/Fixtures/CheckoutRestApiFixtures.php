@@ -152,7 +152,7 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
             ShipmentMethodDataHelper::DEFAULT_PRICE_LIST,
             [
                 $I->getStoreFacade()->getCurrentStore()->getIdStore(),
-            ]
+            ],
         );
 
         return $this;
