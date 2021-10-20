@@ -30,6 +30,7 @@ class ProductStockPropelWriterPluginTest extends AbstractWriterPluginTest
      * @var string
      */
     public const CSV_IMPORT_FILE = 'import/ProductStock/product_stock.csv';
+
     /**
      * @var string
      */

@@ -36,6 +36,7 @@ class MerchantUserWriterStep implements DataImportStepInterface
      * @var string
      */
     protected const MERCHANT_REFERENCE = 'merchant_reference';
+
     /**
      * @var string
      */

@@ -32,14 +32,17 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
      * @var string
      */
     protected const TEST_USERNAME = 'CheckoutRestApiFixtures';
+
     /**
      * @var string
      */
     protected const TEST_USERNAME_2 = 'CheckoutRestApiFixtures2';
+
     /**
      * @var string
      */
     protected const TEST_PASSWORD = 'change123';
+
     /**
      * @var int
      */

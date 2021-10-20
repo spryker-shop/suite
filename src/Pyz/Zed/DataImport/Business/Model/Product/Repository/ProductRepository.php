@@ -22,10 +22,12 @@ class ProductRepository implements ProductRepositoryInterface
      * @var string
      */
     public const ID_PRODUCT = 'idProduct';
+
     /**
      * @var string
      */
     public const ID_PRODUCT_ABSTRACT = 'idProductAbstract';
+
     /**
      * @var string
      */

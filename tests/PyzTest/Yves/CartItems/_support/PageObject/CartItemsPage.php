@@ -13,6 +13,7 @@ class CartItemsPage
      * @var string
      */
     public const PRODUCT_PAGE = '/en/canon-powershot-sc620-32';
+
     /**
      * @var string
      */

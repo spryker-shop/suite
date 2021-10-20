@@ -52,6 +52,7 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
      * @var int
      */
     protected const PRICE_MODE_CONFIGURATION = 2;
+
     /**
      * @var string
      */

@@ -16,6 +16,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      * @var string
      */
     public const QUERY_CONTAINER_PRODUCT_LABEL = 'QUERY_CONTAINER_PRODUCT_LABEL';
+
     /**
      * @var string
      */

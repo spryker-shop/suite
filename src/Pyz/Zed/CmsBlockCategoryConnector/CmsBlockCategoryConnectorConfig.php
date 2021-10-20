@@ -15,10 +15,12 @@ class CmsBlockCategoryConnectorConfig extends SprykerCmsBlockCategoryConnectorCo
      * @var string
      */
     public const CMS_BLOCK_CATEGORY_POSITION_TOP = 'Top';
+
     /**
      * @var string
      */
     public const CMS_BLOCK_CATEGORY_POSITION_MIDDLE = 'Middle';
+
     /**
      * @var string
      */

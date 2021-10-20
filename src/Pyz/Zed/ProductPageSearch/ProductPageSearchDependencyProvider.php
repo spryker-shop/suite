@@ -64,10 +64,12 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
      * @var string
      */
     public const FACADE_PROPEL = 'FACADE_PROPEL';
+
     /**
      * @var string
      */
     public const SERVICE_SYNCHRONIZATION = 'SERVICE_SYNCHRONIZATION';
+
     /**
      * @var string
      */

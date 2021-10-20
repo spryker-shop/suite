@@ -63,14 +63,17 @@ class AclQueryDirectorTester extends Actor
      * @var string
      */
     public const ACL_ENTITY_SEGMENT_1_NAME = 'segment 1';
+
     /**
      * @var string
      */
     public const ACL_ENTITY_SEGMENT_2_NAME = 'segment 2';
+
     /**
      * @var string
      */
     public const ACL_ENTITY_SEGMENT_1_REFERENCE = 'ref_segment_1';
+
     /**
      * @var string
      */
@@ -80,10 +83,12 @@ class AclQueryDirectorTester extends Actor
      * @var string
      */
     public const ACL_ROLE_1_NAME = 'role 1';
+
     /**
      * @var string
      */
     public const ACL_ROLE_2_NAME = 'role 2';
+
     /**
      * @var string
      */

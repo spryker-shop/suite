@@ -23,6 +23,7 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
      * @var string
      */
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
+
     /**
      * @var string
      */
@@ -32,26 +33,32 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
      * @var string
      */
     public const COLUMN_IMAGE_SET_NAME = 'product_image.image_set_name';
+
     /**
      * @var string
      */
     public const COLUMN_EXTERNAL_URL_LARGE = 'product_image.external_url_large';
+
     /**
      * @var string
      */
     public const COLUMN_EXTERNAL_URL_SMALL = 'product_image.external_url_small';
+
     /**
      * @var string
      */
     public const COLUMN_LOCALE = 'product_image.locale';
+
     /**
      * @var string
      */
     public const COLUMN_SORT_ORDER = 'product_image.sort_order';
+
     /**
      * @var string
      */
     public const COLUMN_PRODUCT_IMAGE_KEY = 'product_image.product_image_key';
+
     /**
      * @var string
      */
@@ -66,6 +73,7 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
      * @var string
      */
     protected const ASSIGNABLE_PRODUCT_TYPE_ABSTRACT = 'abstract';
+
     /**
      * @var string
      */

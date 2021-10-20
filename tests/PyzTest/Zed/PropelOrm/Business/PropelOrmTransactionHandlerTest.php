@@ -30,6 +30,7 @@ class PropelOrmTransactionHandlerTest extends Unit
      * @var string
      */
     public const TEST_SKU = 'foo';
+
     /**
      * @var string
      */
