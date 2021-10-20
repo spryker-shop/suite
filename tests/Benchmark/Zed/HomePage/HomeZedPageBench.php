@@ -68,7 +68,7 @@ class HomeZedPageBench
         $request = $this->requestBuilder->buildRequest(
             RequestBuilder::METHOD_GET,
             HomePage::HOME_PAGE_URL,
-            $headers
+            $headers,
         );
 
         return $this->httpHelper->send($request);

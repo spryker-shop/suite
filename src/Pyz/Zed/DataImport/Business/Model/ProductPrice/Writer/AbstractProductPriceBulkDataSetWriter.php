@@ -138,7 +138,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
             static::$priceProductAbstractCollection[] = array_merge(
                 $productPriceItem[static::COLUMN_PRICE_TYPE],
                 $productPriceItem[ProductPriceHydratorStep::KEY_SPY_PRODUCT_ABSTRACT],
-                $productPriceItem[ProductPriceHydratorStep::KEY_PRICE_PRODUCT_STORES][0]
+                $productPriceItem[ProductPriceHydratorStep::KEY_PRICE_PRODUCT_STORES][0],
             );
 
             return;
@@ -147,7 +147,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
         static::$priceProductConcreteCollection[] = array_merge(
             $productPriceItem[static::COLUMN_PRICE_TYPE],
             $productPriceItem[ProductPriceHydratorStep::KEY_PRODUCT],
-            $productPriceItem[ProductPriceHydratorStep::KEY_PRICE_PRODUCT_STORES][0]
+            $productPriceItem[ProductPriceHydratorStep::KEY_PRICE_PRODUCT_STORES][0],
         );
     }
 
@@ -251,7 +251,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
         $this->prepareProductIdsCollection(
             static::$priceProductAbstractCollection,
             SpyProductAbstractTableMap::TABLE_NAME,
-            ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT
+            ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT,
         );
     }
 
@@ -263,7 +263,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
         $this->prepareProductIdsCollection(
             static::$priceProductConcreteCollection,
             SpyProductTableMap::TABLE_NAME,
-            ProductPriceHydratorStep::KEY_ID_PRODUCT
+            ProductPriceHydratorStep::KEY_ID_PRODUCT,
         );
     }
 
@@ -288,7 +288,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
         $this->persistPriceProductEntities(
             ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT,
             ProductPriceHydratorStep::KEY_SPY_PRODUCT_ABSTRACT,
-            ProductPriceHydratorStep::KEY_FK_PRODUCT_ABSTRACT
+            ProductPriceHydratorStep::KEY_FK_PRODUCT_ABSTRACT,
         );
     }
 
@@ -300,7 +300,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
         $this->persistPriceProductEntities(
             ProductPriceHydratorStep::KEY_ID_PRODUCT,
             ProductPriceHydratorStep::KEY_SPY_PRODUCT,
-            ProductPriceHydratorStep::KEY_FK_PRODUCT
+            ProductPriceHydratorStep::KEY_FK_PRODUCT,
         );
     }
 
@@ -324,7 +324,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     {
         $result = $this->addPriceProductEvents(
             ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT,
-            ProductPriceHydratorStep::KEY_FK_PRODUCT_ABSTRACT
+            ProductPriceHydratorStep::KEY_FK_PRODUCT_ABSTRACT,
         );
 
         foreach ($result as $columns) {
@@ -341,7 +341,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     {
         $result = $this->addPriceProductEvents(
             ProductPriceHydratorStep::KEY_ID_PRODUCT,
-            ProductPriceHydratorStep::KEY_FK_PRODUCT
+            ProductPriceHydratorStep::KEY_FK_PRODUCT,
         );
 
         foreach ($result as $columns) {
@@ -367,7 +367,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
             static::$priceProductAbstractCollection,
             ProductPriceHydratorStep::KEY_SPY_PRODUCT_ABSTRACT,
             ProductPriceHydratorStep::KEY_FK_PRODUCT_ABSTRACT,
-            ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT
+            ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT,
         );
 
         static::$priceProductAbstractCollection = [];
@@ -382,7 +382,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
             static::$priceProductConcreteCollection,
             ProductPriceHydratorStep::KEY_SPY_PRODUCT,
             ProductPriceHydratorStep::KEY_FK_PRODUCT,
-            ProductPriceHydratorStep::KEY_ID_PRODUCT
+            ProductPriceHydratorStep::KEY_ID_PRODUCT,
         );
 
         static::$priceProductConcreteCollection = [];

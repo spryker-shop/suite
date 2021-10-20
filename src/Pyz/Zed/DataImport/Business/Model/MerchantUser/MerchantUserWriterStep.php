@@ -53,18 +53,18 @@ class MerchantUserWriterStep implements DataImportStepInterface
         $merchantUserTransfer = $this->merchantUserFacade->findMerchantUser(
             (new MerchantUserCriteriaTransfer())
                 ->setIdUser($idUser)
-                ->setIdMerchant($idMerchant)
+                ->setIdMerchant($idMerchant),
         );
 
         if (!$merchantUserTransfer) {
             $userTransfer = $this->merchantUserFacade->findUser(
-                (new UserCriteriaTransfer())->setIdUser($idUser)
+                (new UserCriteriaTransfer())->setIdUser($idUser),
             );
 
             $this->merchantUserFacade->createMerchantUser(
                 (new MerchantUserTransfer())
                     ->setIdMerchant($idMerchant)
-                    ->setUser($userTransfer)
+                    ->setUser($userTransfer),
             );
         }
     }

@@ -78,7 +78,7 @@ class CartUpSellingProductsRestApiCest
             ->whenI()
             ->seeResourceByIdHasSelfLink(
                 $this->fixtures->getUpSellingProductConcreteTransfer()->getAbstractSku(),
-                $I->buildProductAbstractUrl($this->fixtures->getUpSellingProductConcreteTransfer()->getAbstractSku())
+                $I->buildProductAbstractUrl($this->fixtures->getUpSellingProductConcreteTransfer()->getAbstractSku()),
             );
     }
 

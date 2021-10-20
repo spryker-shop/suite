@@ -99,7 +99,7 @@ class CategoryStoreAssignmentBench
     {
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_POST,
-            sprintf(CategoryPage::CATEGORY_PAGE_EDIT_URL, static::CATEGORY_ID)
+            sprintf(CategoryPage::CATEGORY_PAGE_EDIT_URL, static::CATEGORY_ID),
         );
 
         $options = [
@@ -119,7 +119,7 @@ class CategoryStoreAssignmentBench
     {
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_POST,
-            sprintf(CategoryPage::CATEGORY_PAGE_EDIT_URL, static::CATEGORY_ID)
+            sprintf(CategoryPage::CATEGORY_PAGE_EDIT_URL, static::CATEGORY_ID),
         );
 
         $options = [
@@ -139,7 +139,7 @@ class CategoryStoreAssignmentBench
     {
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_POST,
-            sprintf(CategoryPage::CATEGORY_PAGE_EDIT_URL, static::CATEGORY_ID)
+            sprintf(CategoryPage::CATEGORY_PAGE_EDIT_URL, static::CATEGORY_ID),
         );
 
         $options = [
@@ -159,7 +159,7 @@ class CategoryStoreAssignmentBench
     {
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_POST,
-            sprintf(CategoryPage::CATEGORY_PAGE_EDIT_URL, static::CATEGORY_ID)
+            sprintf(CategoryPage::CATEGORY_PAGE_EDIT_URL, static::CATEGORY_ID),
         );
 
         $options = [

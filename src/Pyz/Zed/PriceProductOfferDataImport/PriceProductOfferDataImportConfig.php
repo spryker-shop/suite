@@ -26,7 +26,7 @@ class PriceProductOfferDataImportConfig extends SprykerPriceProductOfferDataImpo
 
         return $this->buildImporterConfiguration(
             $moduleDataImportDirectory . 'combined_merchant_product_offer.csv',
-            static::IMPORT_TYPE_COMBINED_PRICE_PRODUCT_OFFER
+            static::IMPORT_TYPE_COMBINED_PRICE_PRODUCT_OFFER,
         );
     }
 }

@@ -58,8 +58,8 @@ class UrlsRestApiCest
                 [
                     'resource' => UrlsRestApiConfig::RESOURCE_URL_RESOLVER,
                     'url' => 'none',
-                ]
-            )
+                ],
+            ),
         );
 
         //assert
@@ -83,8 +83,8 @@ class UrlsRestApiCest
                 '{resource}',
                 [
                     'resource' => UrlsRestApiConfig::RESOURCE_URL_RESOLVER,
-                ]
-            )
+                ],
+            ),
         );
 
         //assert
@@ -116,8 +116,8 @@ class UrlsRestApiCest
                 [
                     'resource' => UrlsRestApiConfig::RESOURCE_URL_RESOLVER,
                     'url' => $localizedUrl,
-                ]
-            )
+                ],
+            ),
         );
 
         //assert
@@ -146,8 +146,8 @@ class UrlsRestApiCest
                 [
                     'resource' => UrlsRestApiConfig::RESOURCE_URL_RESOLVER,
                     'url' => $this->fixtures->getCategoryUrlTransfer()->getUrl(),
-                ]
-            )
+                ],
+            ),
         );
 
         //assert

@@ -115,11 +115,11 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
             $dataSetProduct = $dataSets[$productEntity->getSku()][ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_TRANSFER];
             $this->assertSame(
                 $dataSetProduct->getIsActive(),
-                $productEntity->getIsActive()
+                $productEntity->getIsActive(),
             );
             $this->assertSame(
                 $dataSetProduct->getIsQuantitySplittable(),
-                $productEntity->getIsQuantitySplittable()
+                $productEntity->getIsQuantitySplittable(),
             );
 
             //Localized
@@ -137,15 +137,15 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
                     }
                     $this->assertSame(
                         $localizedAttributeTransfer->getName(),
-                        $localizedAttribute->getName()
+                        $localizedAttribute->getName(),
                     );
                     $this->assertSame(
                         $localizedAttributeTransfer->getDescription(),
-                        $localizedAttribute->getDescription()
+                        $localizedAttribute->getDescription(),
                     );
                     $this->assertSame(
                         $localizedAttributeTransfer->getIsComplete(),
-                        $localizedAttribute->getIsComplete()
+                        $localizedAttribute->getIsComplete(),
                     );
                 }
             }

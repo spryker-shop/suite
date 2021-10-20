@@ -31,9 +31,9 @@ $config[TwigConstants::ZED_TWIG_OPTIONS] = [
             '%s/data/%s/cache/%s/twig',
             APPLICATION_ROOT_DIR,
             $CURRENT_STORE,
-            APPLICATION
+            APPLICATION,
         ),
-        FilesystemCache::FORCE_BYTECODE_INVALIDATION
+        FilesystemCache::FORCE_BYTECODE_INVALIDATION,
     ),
 ];
 
@@ -43,9 +43,9 @@ $config[TwigConstants::YVES_TWIG_OPTIONS] = [
             '%s/data/%s/cache/%s/twig',
             APPLICATION_ROOT_DIR,
             $CURRENT_STORE,
-            APPLICATION
+            APPLICATION,
         ),
-        FilesystemCache::FORCE_BYTECODE_INVALIDATION
+        FilesystemCache::FORCE_BYTECODE_INVALIDATION,
     ),
 ];
 

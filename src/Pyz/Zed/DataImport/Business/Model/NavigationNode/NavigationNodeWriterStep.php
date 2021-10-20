@@ -139,7 +139,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
 
         if (!empty($dataSet[static::KEY_PARENT_NODE_KEY])) {
             $navigationNodeEntity->setFkParentNavigationNode(
-                $this->getFkParentNavigationNode($dataSet[static::KEY_PARENT_NODE_KEY])
+                $this->getFkParentNavigationNode($dataSet[static::KEY_PARENT_NODE_KEY]),
             );
         }
 
@@ -162,7 +162,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
             if (
                 in_array(
                     $navigationNodeEntity->getNodeType(),
-                    [static::NODE_TYPE_CATEGORY, static::NODE_TYPE_CMS_PAGE, static::NODE_TYPE_MERCHANT]
+                    [static::NODE_TYPE_CATEGORY, static::NODE_TYPE_CMS_PAGE, static::NODE_TYPE_MERCHANT],
                 )
             ) {
                 $navigationNodeLocalizedAttributesEntity->setFkUrl($this->getFkUrl($navigationNodeLocalizedAttributesEntity, $localizedAttributes, $idLocale));
@@ -193,7 +193,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
         if (!$parentNavigationNodeEntity) {
             throw new NavigationNodeByKeyNotFoundException(sprintf(
                 'NavigationNode with key "%s" not found',
-                $nodeKey
+                $nodeKey,
             ));
         }
 

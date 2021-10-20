@@ -72,7 +72,7 @@ class AddToCartBench
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_POST,
             sprintf(CartPage::ADD_TO_CART_URL, static::PRODUCT_CONCRETE_SKU),
-            $headers
+            $headers,
         );
 
         return $this->httpHelper->send($request);

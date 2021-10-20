@@ -35,7 +35,7 @@ class PriceProductOfferDataImportBusinessFactory extends SprykerPriceProductOffe
     public function getCombinedPriceProductOfferDataImport(): DataImporterInterface
     {
         $dataImporter = $this->getConditionalCsvDataImporterFromConfig(
-            $this->getConfig()->getCombinedPriceProductOfferDataImporterConfiguration()
+            $this->getConfig()->getCombinedPriceProductOfferDataImporterConfiguration(),
         );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();

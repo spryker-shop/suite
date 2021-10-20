@@ -186,7 +186,7 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
             $dataSetProductImageSet = $dataSets[$productImageSet[SpyProductAbstractTableMap::COL_SKU]][ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER];
             $this->assertSame(
                 $dataSetProductImageSet->getName(),
-                $productImageSet[SpyProductImageSetTableMap::COL_NAME]
+                $productImageSet[SpyProductImageSetTableMap::COL_NAME],
             );
         }
     }

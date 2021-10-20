@@ -55,8 +55,8 @@ class CategoriesRestApiCest
                 'category-nodes/{CategoryNodeId}',
                 [
                     'CategoryNodeId' => $this->fixtures->getCategoryTransfer()->getCategoryNode()->getIdCategoryNode(),
-                ]
-            )
+                ],
+            ),
         );
 
         //assert

@@ -269,13 +269,13 @@ abstract class ProductTestAbstract extends Unit
             $touchBridge,
             $localeBridge,
             $this->productQueryContainer,
-            $urlGenerator
+            $urlGenerator,
         );
 
         $this->productManager = new ProductManager(
             $this->productAbstractManager,
             $this->productConcreteManager,
-            $this->productQueryContainer
+            $this->productQueryContainer,
         );
     }
 
@@ -380,15 +380,15 @@ abstract class ProductTestAbstract extends Unit
             ->setExternalUrlSmall(self::IMAGE_URL_SMALL);
 
         $imageSetTransfer->setProductImages(
-            new ArrayObject([$imageTransfer])
+            new ArrayObject([$imageTransfer]),
         );
 
         $this->productAbstractTransfer->setImageSets(
-            new ArrayObject([$imageSetTransfer])
+            new ArrayObject([$imageSetTransfer]),
         );
 
         $this->productConcreteTransfer->setImageSets(
-            new ArrayObject([$imageSetTransfer])
+            new ArrayObject([$imageSetTransfer]),
         );
     }
 

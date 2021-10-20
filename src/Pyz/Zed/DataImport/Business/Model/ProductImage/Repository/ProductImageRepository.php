@@ -157,7 +157,7 @@ class ProductImageRepository implements ProductImageRepositoryInterface
             $name,
             $localeId,
             $productAbstractId ?? 0,
-            $productConcreteId ?? 0
+            $productConcreteId ?? 0,
         );
     }
 
