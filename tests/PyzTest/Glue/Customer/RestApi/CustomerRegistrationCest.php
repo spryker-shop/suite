@@ -226,7 +226,7 @@ class CustomerRegistrationCest
                         RestErrorMessageTransfer::DETAIL => sprintf(
                             CustomersRestApiConfig::RESPONSE_DETAILS_PASSWORDS_DONT_MATCH,
                             RestCustomersAttributesTransfer::PASSWORD,
-                            RestCustomersAttributesTransfer::CONFIRM_PASSWORD,
+                            RestCustomersAttributesTransfer::CONFIRM_PASSWORD
                         ),
                     ],
                 ],

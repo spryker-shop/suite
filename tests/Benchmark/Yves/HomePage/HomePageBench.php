@@ -20,6 +20,7 @@ class HomePageBench
      * @var string
      */
     protected const LOGIN_EMAIL = 'spencor.hopkin@spryker.com';
+
     /**
      * @var string
      */
@@ -78,7 +79,10 @@ class HomePageBench
      */
     public function benchHomePageOpensForLoggedCustomer(): ResponseInterface
     {
-        $headers[$this->loginHeader->getName()] = $this->loginHeader->getValue();
+        $headers = [
+            $this->loginHeader->getName() => $this->loginHeader->getValue(),
+        ];
+
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_GET,
             HomePage::HOME_PAGE_URL,

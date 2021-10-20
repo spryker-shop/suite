@@ -15,6 +15,7 @@ class MerchantOmsConfig extends SprykerMerchantOmsConfig
      * @var string
      */
     protected const MAIN_MERCHANT_OMS_PROCESS_NAME = 'MainMerchantStateMachine';
+
     /**
      * @var string
      */

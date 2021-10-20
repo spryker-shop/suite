@@ -20,10 +20,12 @@ class ProductSearchAttributeMapWriter implements DataImportStepInterface
      * @var string
      */
     public const KEY_TARGET_FIELD = 'target_field';
+
     /**
      * @var string
      */
     public const KEY_ATTRIBUTE_KEY = 'attribute_key';
+
     /**
      * @var string
      */

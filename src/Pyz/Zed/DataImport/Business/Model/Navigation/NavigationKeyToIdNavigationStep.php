@@ -19,6 +19,7 @@ class NavigationKeyToIdNavigationStep implements DataImportStepInterface
      * @var string
      */
     public const KEY_SOURCE = 'navigationKey';
+
     /**
      * @var string
      */

@@ -17,14 +17,17 @@ class CategoryRepository implements CategoryRepositoryInterface
      * @var string
      */
     public const ID_CATEGORY_NODE = 'id_category_node';
+
     /**
      * @var string
      */
     public const ID_LOCALE = 'idLocale';
+
     /**
      * @var string
      */
     public const URL = 'url';
+
     /**
      * @var string
      */

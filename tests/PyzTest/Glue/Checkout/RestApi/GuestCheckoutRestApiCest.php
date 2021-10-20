@@ -38,6 +38,7 @@ class GuestCheckoutRestApiCest
      * @var string
      */
     protected const RESPONSE_CODE_CART_IS_EMPTY = '1104';
+
     /**
      * @var string
      */

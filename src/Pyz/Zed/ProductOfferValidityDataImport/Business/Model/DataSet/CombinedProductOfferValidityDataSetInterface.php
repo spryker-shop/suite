@@ -13,10 +13,12 @@ interface CombinedProductOfferValidityDataSetInterface
      * @var string
      */
     public const PRODUCT_OFFER_REFERENCE = 'product_offer_reference';
+
     /**
      * @var string
      */
     public const VALID_FROM = 'product_offer_validity.valid_from';
+
     /**
      * @var string
      */

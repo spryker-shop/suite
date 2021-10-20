@@ -20,6 +20,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
      * @var string
      */
     protected const PRICE_TYPE_ORIGINAL = 'ORIGINAL';
+
     /**
      * @var string
      */

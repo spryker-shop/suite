@@ -16,6 +16,7 @@ class MerchantProductOfferDataImportConfig extends SprykerMerchantProductOfferDa
      * @var string
      */
     public const IMPORT_TYPE_COMBINED_MERCHANT_PRODUCT_OFFER = 'combined-merchant-product-offer';
+
     /**
      * @var string
      */
