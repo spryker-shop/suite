@@ -29,7 +29,7 @@ class ProductOfferValidityDataImportBusinessFactory extends SprykerProductOfferV
     public function getCombinedProductOfferValidityDataImporter(): DataImporterInterface
     {
         $dataImporter = $this->getConditionalCsvDataImporterFromConfig(
-            $this->getConfig()->getCombinedProductOfferValidityDataImporterConfiguration()
+            $this->getConfig()->getCombinedProductOfferValidityDataImporterConfiguration(),
         );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
@@ -76,7 +76,7 @@ class ProductOfferValidityDataImportBusinessFactory extends SprykerProductOfferV
     public function createCombinedProductOfferReferenceToIdProductOfferStep(): DataImportStepInterface
     {
         return new CombinedProductOfferReferenceToIdProductOfferStep(
-            $this->getProductOfferFacade()
+            $this->getProductOfferFacade(),
         );
     }
 

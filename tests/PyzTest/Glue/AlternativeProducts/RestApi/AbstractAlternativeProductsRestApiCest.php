@@ -54,7 +54,7 @@ class AbstractAlternativeProductsRestApiCest
         // Arrange
         $productAbstractSku = $this->fixtures->getAlternativeProductConcreteTransfer()->getAbstractSku();
         $url = $I->buildAbstractAlternativeProductsUrl(
-            $this->fixtures->getProductConcreteTransfer()->getSku()
+            $this->fixtures->getProductConcreteTransfer()->getSku(),
         );
 
         // Act

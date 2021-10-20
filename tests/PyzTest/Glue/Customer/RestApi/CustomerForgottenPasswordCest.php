@@ -57,7 +57,7 @@ class CustomerForgottenPasswordCest
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
                 CustomerTransfer::RESTORE_PASSWORD_KEY => uniqid(),
-            ]
+            ],
         );
         $I->confirmCustomer($this->customerTransfer);
     }
@@ -81,7 +81,7 @@ class CustomerForgottenPasswordCest
                     'type' => CustomersRestApiConfig::RESOURCE_FORGOTTEN_PASSWORD,
                     'attributes' => $restCustomerForgottenPasswordAttributesTransfer->modifiedToArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -105,7 +105,7 @@ class CustomerForgottenPasswordCest
                     'type' => CustomersRestApiConfig::RESOURCE_FORGOTTEN_PASSWORD,
                     'attributes' => $example['attributes'],
                 ],
-            ]
+            ],
         );
 
         // Assert

@@ -40,7 +40,7 @@ abstract class AbstractTriggerOmsEventCommandPlugin extends AbstractPlugin imple
     {
         $merchantOrderItemTransfer = $this->getFactory()->getMerchantSalesOrderFacade()->findMerchantOrderItem(
             (new MerchantOrderItemCriteriaTransfer())
-                ->setIdMerchantOrderItem($stateMachineItemTransfer->getIdentifier())
+                ->setIdMerchantOrderItem($stateMachineItemTransfer->getIdentifier()),
         );
 
         if (!$merchantOrderItemTransfer) {
@@ -55,7 +55,7 @@ abstract class AbstractTriggerOmsEventCommandPlugin extends AbstractPlugin imple
             throw new LogicException(sprintf(
                 'Sales Order Item #%s transition for event "%s" has not happened.',
                 $merchantOrderItemTransfer->getIdOrderItem(),
-                $this->getEventName()
+                $this->getEventName(),
             ));
         }
     }

@@ -79,7 +79,7 @@ class CheckoutBench
                         'quantity' => 1,
                     ],
                 ],
-            ]
+            ],
         );
 
         $response = $this->httpHelper->send($request, [], 201);
@@ -131,7 +131,7 @@ class CheckoutBench
             [
                 'X-Anonymous-Customer-Unique-Id' => $this->customerId,
             ],
-            $this->requestData
+            $this->requestData,
         );
 
         return $this->httpHelper->send($request);

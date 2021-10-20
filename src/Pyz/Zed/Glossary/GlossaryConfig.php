@@ -33,7 +33,7 @@ class GlossaryConfig extends SprykerGlossaryConfig
     {
         $paths = array_merge(
             $paths,
-            glob(APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/Spryker/*/*/Resources/glossary.yml')
+            glob(APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/Spryker/*/*/Resources/glossary.yml'),
         );
 
         return $paths;

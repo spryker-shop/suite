@@ -56,7 +56,7 @@ class ProductPriceSql implements ProductPriceSqlInterface
   ) SELECT 1",
             $idProduct,
             $productTable,
-            $productFkKey
+            $productFkKey,
         );
 
         return $sql;

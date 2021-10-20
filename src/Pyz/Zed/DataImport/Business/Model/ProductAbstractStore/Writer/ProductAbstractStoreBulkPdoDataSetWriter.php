@@ -26,10 +26,10 @@ class ProductAbstractStoreBulkPdoDataSetWriter extends AbstractProductAbstractSt
     protected function persistAbstractProductStoreEntities(): void
     {
         $abstractSku = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractStoreCollection, static::COLUMN_ABSTRACT_SKU)
+            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractStoreCollection, static::COLUMN_ABSTRACT_SKU),
         );
         $storeName = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractStoreCollection, static::COLUMN_STORE_NAME)
+            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractStoreCollection, static::COLUMN_STORE_NAME),
         );
 
         $sql = $this->productAbstractStoreSql->createAbstractProductStoreSQL();

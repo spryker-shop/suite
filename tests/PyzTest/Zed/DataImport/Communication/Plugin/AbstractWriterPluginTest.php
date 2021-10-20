@@ -71,7 +71,7 @@ abstract class AbstractWriterPluginTest extends Unit
         $this->tester->mockFactoryMethod('getStore', $this->getStore());
         $this->tester->mockFactoryMethod('getPriceProductFacade', new PriceProductFacade());
         $this->tester->mockFactoryMethod('getUtilEncodingService', new DataImportToUtilEncodingServiceBridge(
-            new UtilEncodingService()
+            new UtilEncodingService(),
         ));
 
         /** @var \Pyz\Zed\DataImport\Business\DataImportBusinessFactory $factory */
@@ -93,7 +93,7 @@ abstract class AbstractWriterPluginTest extends Unit
 
         try {
             $this->checkIsMariaDBSupportsBulkImport(
-                $dataImportBusinessFactory->createPropelExecutor()
+                $dataImportBusinessFactory->createPropelExecutor(),
             );
         } catch (PropelMariaDbVersionConstraintException $exception) {
             $this->markTestSkipped('Importer does not support current database engine or it\'s version.');

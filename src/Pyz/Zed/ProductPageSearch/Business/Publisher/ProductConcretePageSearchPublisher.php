@@ -97,7 +97,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             $productConcreteSearchDataMapper,
             $storeFacade,
             $productPageSearchConfig,
-            $pageDataExpanderPlugins
+            $pageDataExpanderPlugins,
         );
 
         $this->synchronizationService = $synchronizationService;
@@ -120,7 +120,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
                 $this->syncProductConcretePageSearchPerStore(
                     $productConcreteTransfer,
                     $storeTransfer,
-                    $productConcretePageSearchTransfers[$productConcreteTransfer->getIdProductConcrete()][$storeTransfer->getName()] ?? []
+                    $productConcretePageSearchTransfers[$productConcreteTransfer->getIdProductConcrete()][$storeTransfer->getName()] ?? [],
                 );
             }
         }
@@ -165,7 +165,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             $productConcreteTransfer,
             $storeTransfer,
             $productConcretePageSearchTransfer,
-            $localizedAttributesTransfer
+            $localizedAttributesTransfer,
         );
 
         $this->add($productConcretePageSearchTransfer);

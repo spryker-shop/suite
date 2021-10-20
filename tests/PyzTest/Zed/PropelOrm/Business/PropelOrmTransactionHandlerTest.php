@@ -72,7 +72,7 @@ class PropelOrmTransactionHandlerTest extends Unit
     {
         self::markTestSkipped();
         $productManager = new ProductManagerStub(
-            $this->productQueryContainer
+            $this->productQueryContainer,
         );
 
         $idProductAbstract = $productManager->addProductWithoutTransactionHandling(static::TEST_SKU, static::TEST_NAME);
@@ -94,7 +94,7 @@ class PropelOrmTransactionHandlerTest extends Unit
     public function testAddProductWithoutTransactionHandlingShouldThrowException()
     {
         $productManager = new ProductManagerStub(
-            $this->productQueryContainer
+            $this->productQueryContainer,
         );
 
         try {
@@ -116,7 +116,7 @@ class PropelOrmTransactionHandlerTest extends Unit
     {
         // Arrange
         $productManager = new ProductManagerStub(
-            $this->productQueryContainer
+            $this->productQueryContainer,
         );
 
         // Assert
@@ -135,7 +135,7 @@ class PropelOrmTransactionHandlerTest extends Unit
     public function testAddProductWithTransactionHandlingShouldCommitAndReturnValue()
     {
         $productManager = new ProductManagerStub(
-            $this->productQueryContainer
+            $this->productQueryContainer,
         );
 
         $localizedAttributeEntity = $productManager->addProductWithTransactionHandlingShouldCommitAndReturnValue(static::TEST_SKU, static::TEST_NAME);

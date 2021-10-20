@@ -63,7 +63,7 @@ class CategoriesRestApiFixtures implements FixturesBuilderInterface, FixturesCon
 
         $I->haveCategoryStoreRelation(
             $this->categoryTransfer->getIdCategory(),
-            $storeTransfer->getIdStore()
+            $storeTransfer->getIdStore(),
         );
     }
 }

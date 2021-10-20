@@ -60,7 +60,7 @@ class AddToCartBench
                         'quantity' => 1,
                     ],
                 ],
-            ]
+            ],
         );
 
         return $this->httpHelper->send($request, [], 201);

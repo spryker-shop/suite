@@ -306,7 +306,7 @@ class NavigationGuiPresentationTester extends Actor
         $this->waitForElement(sprintf(
             self::NODE_CHILD_SELECTOR,
             $idParentNavigationNode,
-            $idChildNavigationNode
+            $idChildNavigationNode,
         ), 1);
     }
 
@@ -321,7 +321,7 @@ class NavigationGuiPresentationTester extends Actor
         $this->seeElement(sprintf(
             self::NODE_NAME_CHILD_SELECTOR,
             $idParentNavigationNode,
-            $childNavigationNodeName
+            $childNavigationNodeName,
         ));
     }
 
@@ -335,7 +335,7 @@ class NavigationGuiPresentationTester extends Actor
     {
         $this->dragAndDrop(
             sprintf(self::CHILD_NODE_ANCHOR_SELECTOR, $idNavigationNode),
-            sprintf(self::CHILD_NODE_ANCHOR_SELECTOR, $idTargetNavigationNode)
+            sprintf(self::CHILD_NODE_ANCHOR_SELECTOR, $idTargetNavigationNode),
         );
     }
 
@@ -567,7 +567,7 @@ class NavigationGuiPresentationTester extends Actor
                     ->joinWithSpyNavigationNodeLocalizedAttributes()
                 ->endUse()
             ->findByName(
-                $navigationTransfer->getName()
+                $navigationTransfer->getName(),
             )->getFirst();
 
         return $navigationEntity;

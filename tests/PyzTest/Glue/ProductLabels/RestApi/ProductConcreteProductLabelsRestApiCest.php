@@ -57,7 +57,7 @@ class ProductConcreteProductLabelsRestApiCest
             $this->fixtures->getProductConcreteTransferWithLabel()->getSku(),
             [
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
+            ],
         );
 
         // Act
@@ -72,14 +72,14 @@ class ProductConcreteProductLabelsRestApiCest
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
+                $idProductLabel,
             );
 
         $I->amSure('The returned resource has product-labels include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
+                $idProductLabel,
             );
 
         $I->amSure('The include has correct self-link')
@@ -87,7 +87,7 @@ class ProductConcreteProductLabelsRestApiCest
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $idProductLabel,
-                $I->buildProductLabelUrl($idProductLabel)
+                $I->buildProductLabelUrl($idProductLabel),
             );
     }
 
@@ -105,7 +105,7 @@ class ProductConcreteProductLabelsRestApiCest
             $this->fixtures->getProductConcreteTransfer()->getSku(),
             [
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
+            ],
         );
 
         // Act
@@ -135,7 +135,7 @@ class ProductConcreteProductLabelsRestApiCest
             $this->fixtures->getProductConcreteTransferWithLabel()->getSku(),
             [
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
+            ],
         );
 
         // Act
@@ -160,7 +160,7 @@ class ProductConcreteProductLabelsRestApiCest
             $this->fixtures->getProductConcreteTransferWithLabel()->getSku(),
             [
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
+            ],
         );
 
         // Act

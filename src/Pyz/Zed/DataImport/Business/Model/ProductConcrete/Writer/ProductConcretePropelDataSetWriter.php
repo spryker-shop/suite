@@ -55,7 +55,7 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
 
         $this->productRepository->addProductConcrete(
             $productConcreteEntity,
-            $dataSet[static::COLUMN_ABSTRACT_SKU]
+            $dataSet[static::COLUMN_ABSTRACT_SKU],
         );
 
         $this->createOrUpdateProductConcreteLocalizedAttributesEntities($dataSet, $productConcreteEntity->getIdProduct());

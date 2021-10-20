@@ -101,12 +101,12 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
             ShipmentMethodDataHelper::DEFAULT_PRICE_LIST,
             [
                 $I->getStoreFacade()->getCurrentStore()->getIdStore(),
-            ]
+            ],
         );
 
         $this->quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $this->customerTransfer,
-            [$I->getQuoteItemOverrideData($I->haveProductWithStock(), $this->shipmentMethodTransfer, 10)]
+            [$I->getQuoteItemOverrideData($I->haveProductWithStock(), $this->shipmentMethodTransfer, 10)],
         );
 
         return $this;

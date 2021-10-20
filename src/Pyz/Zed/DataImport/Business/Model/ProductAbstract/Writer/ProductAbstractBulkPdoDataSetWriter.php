@@ -33,22 +33,22 @@ class ProductAbstractBulkPdoDataSetWriter extends AbstractProductAbstractBulkPdo
     {
         if (!empty(static::$productAbstractCollection)) {
             $abstractSkus = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_SKU)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_SKU),
             );
             $attributes = $this->dataFormatter->formatPostgresArrayFromJson(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES),
             );
             $fkTaxSets = $this->dataFormatter->formatPostgresArray(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_FK_TAX_SET)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_FK_TAX_SET),
             );
             $colorCode = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_COLOR_CODE)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_COLOR_CODE),
             );
             $newFrom = $this->dataFormatter->formatPostgresArray(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_NEW_FROM)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_NEW_FROM),
             );
             $newTo = $this->dataFormatter->formatPostgresArray(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_NEW_TO)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_NEW_TO),
             );
 
             $sql = $this->productAbstractSql->createAbstractProductSQL();
@@ -77,28 +77,28 @@ class ProductAbstractBulkPdoDataSetWriter extends AbstractProductAbstractBulkPdo
     {
         if (!empty(static::$productAbstractLocalizedAttributesCollection)) {
             $abstractSkus = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_ABSTRACT_SKU)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_ABSTRACT_SKU),
             );
             $idLocale = $this->dataFormatter->formatPostgresArray(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE),
             );
             $name = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_NAME)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_NAME),
             );
             $description = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_DESCRIPTION)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_DESCRIPTION),
             );
             $metaTitle = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_META_TITLE)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_META_TITLE),
             );
             $metaDescription = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_META_DESCRIPTION)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_META_DESCRIPTION),
             );
             $metaKeywords = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_META_KEYWORDS)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_META_KEYWORDS),
             );
             $attributes = $this->dataFormatter->formatPostgresArrayFromJson(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES),
             );
 
             $sql = $this->productAbstractSql->createAbstractProductLocalizedAttributesSQL();
@@ -126,13 +126,13 @@ class ProductAbstractBulkPdoDataSetWriter extends AbstractProductAbstractBulkPdo
     {
         if (!empty(static::$productCategoryCollection)) {
             $abstractSkus = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, static::COLUMN_ABSTRACT_SKU)
+                $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, static::COLUMN_ABSTRACT_SKU),
             );
             $productOrder = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_PRODUCT_ORDER)
+                $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_PRODUCT_ORDER),
             );
             $idCategory = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_FK_CATEGORY)
+                $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_FK_CATEGORY),
             );
 
             $sql = $this->productAbstractSql->createAbstractProductCategoriesSQL();
@@ -158,13 +158,13 @@ class ProductAbstractBulkPdoDataSetWriter extends AbstractProductAbstractBulkPdo
     {
         if (!empty(static::$productUrlCollection)) {
             $abstractSkus = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, static::COLUMN_ABSTRACT_SKU)
+                $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, static::COLUMN_ABSTRACT_SKU),
             );
             $idLocale = $this->dataFormatter->formatPostgresArray(
-                $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE)
+                $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE),
             );
             $url = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, static::COLUMN_URL)
+                $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, static::COLUMN_URL),
             );
 
             $sql = $this->productAbstractSql->createAbstractProductUrlsSQL();

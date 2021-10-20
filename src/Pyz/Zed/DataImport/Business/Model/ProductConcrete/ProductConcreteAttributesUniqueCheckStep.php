@@ -123,7 +123,7 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
                     $this->utilEncodingService->encodeJson($dataSetProductConcreteAttributes),
                     $dataSetProductConcreteSku,
                     $this->utilEncodingService->encodeJson($productConcreteAttributes),
-                    $productConcreteSku
+                    $productConcreteSku,
                 ));
             }
         }

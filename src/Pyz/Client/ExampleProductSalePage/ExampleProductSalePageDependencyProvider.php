@@ -155,7 +155,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
                 new SortedResultFormatterPlugin(),
                 new PaginatedResultFormatterPlugin(),
                 new CurrencyAwareCatalogSearchResultFormatterPlugin(
-                    new RawCatalogSearchResultFormatterPlugin()
+                    new RawCatalogSearchResultFormatterPlugin(),
                 ),
             ];
         });

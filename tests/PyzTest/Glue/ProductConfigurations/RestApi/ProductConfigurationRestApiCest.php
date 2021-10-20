@@ -62,7 +62,7 @@ class ProductConfigurationRestApiCest
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $this->fixtures->getProductConcreteTransfer()->getSkuOrFail(),
-            ]
+            ],
         ));
 
         // Assert
@@ -113,7 +113,7 @@ class ProductConfigurationRestApiCest
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $quoteUuid,
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -124,7 +124,7 @@ class ProductConfigurationRestApiCest
                         'productConfigurationInstance' => $this->fixtures::PRODUCT_CONFIGURATION_CART_ITEM_DATA,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -143,14 +143,14 @@ class ProductConfigurationRestApiCest
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $expectedItemResourceId
+                $expectedItemResourceId,
             );
 
         $I->amSure('Included resource has product configuration instance')
             ->whenI()
             ->seeCartItemContainsProductConfigurationInstance(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $expectedItemResourceId
+                $expectedItemResourceId,
             );
 
         $I->seeSingleResourceHasSelfLink(
@@ -159,8 +159,8 @@ class ProductConfigurationRestApiCest
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $I->grabDataFromResponseByJsonPath('$.data')['id'],
-                ]
-            )
+                ],
+            ),
         );
     }
 
@@ -182,8 +182,8 @@ class ProductConfigurationRestApiCest
                 [
                     'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
                     'customerOrderReference' => $orderReference,
-                ]
-            )
+                ],
+            ),
         );
 
         //Assert

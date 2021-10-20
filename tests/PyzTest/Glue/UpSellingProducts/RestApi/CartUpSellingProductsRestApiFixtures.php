@@ -149,7 +149,7 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
             $this->productConcreteTransfer->getFkProductAbstract(),
             uniqid('test-', false),
             'up-selling',
-            $storeRelationTransfer
+            $storeRelationTransfer,
         );
     }
 

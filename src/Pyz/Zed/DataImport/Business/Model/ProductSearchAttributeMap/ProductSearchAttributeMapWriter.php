@@ -47,7 +47,7 @@ class ProductSearchAttributeMapWriter implements DataImportStepInterface
             throw new InvalidArgumentException(sprintf(
                 'Invalid target field "%s" for attribute "%s"',
                 $dataSet[static::KEY_TARGET_FIELD],
-                $dataSet[static::KEY_ATTRIBUTE_KEY]
+                $dataSet[static::KEY_ATTRIBUTE_KEY],
             ));
         }
 

@@ -132,7 +132,7 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
             throw new DataKeyNotFoundInDataSetException(sprintf(
                 '"%s" must be defined in the data set. Given: "%s"',
                 static::COLUMN_ASSIGNED_PRODUCT_TYPE,
-                implode(', ', array_keys($dataSet->getArrayCopy()))
+                implode(', ', array_keys($dataSet->getArrayCopy())),
             ));
         }
 
@@ -141,7 +141,7 @@ class CombinedProductImageHydratorStep extends ProductImageHydratorStep
                 '"%s" must have one of the following values: %s. Given: "%s"',
                 static::COLUMN_ASSIGNED_PRODUCT_TYPE,
                 implode(', ', static::ASSIGNABLE_PRODUCT_TYPES),
-                $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE]
+                $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE],
             ));
         }
     }
