@@ -17,18 +17,22 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      * @var string
      */
     public const CLIENT_SEARCH = 'CLIENT_SEARCH';
+
     /**
      * @var string
      */
     public const CLIENT_URL_STORAGE = 'CLIENT_URL_STORAGE';
+
     /**
      * @var string
      */
     public const STORE = 'STORE';
+
     /**
      * @var string
      */
     public const PLUGIN_PRODUCT_SALE_PAGE_WIDGETS = 'PLUGIN_PRODUCT_SALE_PAGE_WIDGETS';
+
     /**
      * @var string
      */

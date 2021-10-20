@@ -124,7 +124,7 @@ class ProductConfigurationRestApiCest
                         'productConfigurationInstance' => $this->fixtures::PRODUCT_CONFIGURATION_CART_ITEM_DATA,
                     ],
                 ],
-            ],
+            ]
         );
 
         // Assert

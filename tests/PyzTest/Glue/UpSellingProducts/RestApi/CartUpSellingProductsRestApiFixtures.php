@@ -36,6 +36,7 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
      * @var string
      */
     protected const TEST_USERNAME = 'UserCartsUpSellingProductsRestApiFixtures';
+
     /**
      * @var string
      */

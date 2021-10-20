@@ -83,30 +83,37 @@ abstract class ProductTestAbstract extends Unit
      * @var string
      */
     public const ABSTRACT_SKU = 'foo';
+
     /**
      * @var string
      */
     public const CONCRETE_SKU = 'foo-concrete';
+
     /**
      * @var string
      */
     public const IMAGE_SET_NAME = 'Default';
+
     /**
      * @var string
      */
     public const IMAGE_URL_LARGE = 'large';
+
     /**
      * @var string
      */
     public const IMAGE_URL_SMALL = 'small';
+
     /**
      * @var int
      */
     public const PRICE = 1234;
+
     /**
      * @var int
      */
     public const STOCK_QUANTITY = 99;
+
     /**
      * @var string
      */

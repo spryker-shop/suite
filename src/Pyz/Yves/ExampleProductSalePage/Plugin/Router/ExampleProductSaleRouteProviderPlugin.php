@@ -17,6 +17,7 @@ class ExampleProductSaleRouteProviderPlugin extends AbstractRouteProviderPlugin
      * @var string
      */
     public const ROUTE_SALE = 'sale';
+
     /**
      * @var string
      */

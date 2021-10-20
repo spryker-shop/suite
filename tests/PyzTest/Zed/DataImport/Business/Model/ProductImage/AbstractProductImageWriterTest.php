@@ -48,6 +48,7 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
      * @var string
      */
     protected const DEFAULT_EXTERNAL_URL_LARGE = '/large.png';
+
     /**
      * @var string
      */

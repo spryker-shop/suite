@@ -25,6 +25,7 @@ class AddToCartBench
      * @var string
      */
     protected const LOGIN_EMAIL = 'spencor.hopkin@spryker.com';
+
     /**
      * @var string
      */
@@ -64,7 +65,9 @@ class AddToCartBench
      */
     public function benchAddingOneItemToCart(): ResponseInterface
     {
-        $headers[$this->loginHeader->getName()] = $this->loginHeader->getValue();
+        $headers = [
+            $this->loginHeader->getName() => $this->loginHeader->getValue(),
+        ];
 
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_POST,

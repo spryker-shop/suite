@@ -22,10 +22,12 @@ class CmsBlockStoreWriterStep extends PublishAwareStep implements DataImportStep
      * @var int
      */
     public const BULK_SIZE = 100;
+
     /**
      * @var string
      */
     public const KEY_BLOCK_KEY = 'block_key';
+
     /**
      * @var string
      */

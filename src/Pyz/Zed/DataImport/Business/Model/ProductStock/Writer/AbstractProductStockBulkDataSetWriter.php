@@ -49,10 +49,12 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
      * @var string
      */
     protected const KEY_SKU = 'sku';
+
     /**
      * @var string
      */
     protected const KEY_QUANTITY = 'qty';
+
     /**
      * @var string
      */

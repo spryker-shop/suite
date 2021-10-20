@@ -33,6 +33,7 @@ class CompanyUserAuthRestApiTester extends ApiEndToEndTester
      * @var string
      */
     private const ACCESS_TOKEN_JSON_PATH = '$.data.attributes.accessToken';
+
     /**
      * @var string
      */
