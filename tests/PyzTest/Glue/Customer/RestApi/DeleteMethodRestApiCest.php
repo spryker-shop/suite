@@ -57,7 +57,7 @@ class DeleteMethodRestApiCest
             [
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
-            ]
+            ],
         );
         $i->confirmCustomer($customerTransfer);
 
@@ -72,7 +72,7 @@ class DeleteMethodRestApiCest
 
         $url = $i->formatFullUrl(
             'customers/{CustomerReference}',
-            ['CustomerReference' => $customerTransfer->getCustomerReference()]
+            ['CustomerReference' => $customerTransfer->getCustomerReference()],
         );
         $result = file_get_contents(
             $url,
@@ -83,8 +83,8 @@ class DeleteMethodRestApiCest
                         'method' => 'DELETE',
                         'header' => implode("\r\n", $headers),
                     ],
-                ]
-            )
+                ],
+            ),
         );
         $responseCode = substr($http_response_header[0], 9, 3);
 
@@ -103,7 +103,7 @@ class DeleteMethodRestApiCest
             [
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
-            ]
+            ],
         );
         $i->confirmCustomer($customerTransfer);
 
@@ -117,8 +117,8 @@ class DeleteMethodRestApiCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => 'wrongReference',
-                ]
-            )
+                ],
+            ),
         );
 
         // Assert

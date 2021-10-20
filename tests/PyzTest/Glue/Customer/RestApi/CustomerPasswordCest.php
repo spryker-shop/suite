@@ -56,7 +56,7 @@ class CustomerPasswordCest
             [
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
-            ]
+            ],
         );
         $I->confirmCustomer($this->customerTransfer);
 
@@ -82,7 +82,7 @@ class CustomerPasswordCest
                 [
                     'resourceCustomerPassword' => CustomersRestApiConfig::RESOURCE_CUSTOMER_PASSWORD,
                     'customerReference' => $this->customerTransfer->getCustomerReference(),
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -90,7 +90,7 @@ class CustomerPasswordCest
                     'id' => $this->customerTransfer->getCustomerReference(),
                     'attributes' => $restCustomerPasswordAttributesTransfer->modifiedToArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -108,7 +108,7 @@ class CustomerPasswordCest
             [
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
-            ]
+            ],
         );
         $I->confirmCustomer($firstCustomerTransfer);
 
@@ -123,7 +123,7 @@ class CustomerPasswordCest
                 [
                     'resourceCustomerPassword' => CustomersRestApiConfig::RESOURCE_CUSTOMER_PASSWORD,
                     'customerReference' => $firstCustomerTransfer->getCustomerReference(),
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -131,7 +131,7 @@ class CustomerPasswordCest
                     'id' => $firstCustomerTransfer->getCustomerReference(),
                     'attributes' => $restCustomerPasswordAttributesTransfer->modifiedToArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -160,7 +160,7 @@ class CustomerPasswordCest
                 [
                     'resourceCustomerPassword' => CustomersRestApiConfig::RESOURCE_CUSTOMER_PASSWORD,
                     'customerReference' => $this->customerTransfer->getCustomerReference(),
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -168,7 +168,7 @@ class CustomerPasswordCest
                     'id' => $this->customerTransfer->getCustomerReference(),
                     'attributes' => $example['attributes'],
                 ],
-            ]
+            ],
         );
 
         // Assert

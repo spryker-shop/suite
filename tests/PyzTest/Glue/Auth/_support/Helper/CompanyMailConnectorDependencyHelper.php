@@ -37,7 +37,7 @@ class CompanyMailConnectorDependencyHelper extends Module
         $this->getDependencyHelper()->setDependency(
             CompanyMailConnectorDependencyProvider::FACADE_MAIL,
             $companyMailConnectorToMailFacadeBridge,
-            CompanyMailConnectorBusinessFactory::class
+            CompanyMailConnectorBusinessFactory::class,
         );
     }
 }

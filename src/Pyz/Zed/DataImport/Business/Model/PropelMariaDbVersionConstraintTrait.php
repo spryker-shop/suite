@@ -28,14 +28,14 @@ trait PropelMariaDbVersionConstraintTrait
         if ($version[1] !== 'MariaDB') {
             throw new PropelMariaDbVersionConstraintException(
                 'Current database engine does not support bulk import.' .
-                ' Bulk import is supported on MariaDB server version >= 10.5.'
+                ' Bulk import is supported on MariaDB server version >= 10.5.',
             );
         }
 
         if (version_compare($version[0], '10.5') < 0) {
             throw new PropelMariaDbVersionConstraintException(
                 'Current version of MariaDB does not support bulk import.' .
-                ' Please update your MariaDB server to version >= 10.5.'
+                ' Please update your MariaDB server to version >= 10.5.',
             );
         }
 

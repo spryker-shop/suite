@@ -93,7 +93,7 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
                 $priceProductConcreteStorage = $this->getRelatedPriceProductConcreteStorageEntity(
                     $priceProductConcreteStorageMap,
                     $idProductConcrete,
-                    $storeName
+                    $storeName,
                 );
 
                 unset($priceProductConcreteStorageMap[$idProductConcrete][$storeName]);
@@ -102,7 +102,7 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
                     $this->createPriceProductStorage(
                         $idProductConcrete,
                         $storeName,
-                        $priceGroup
+                        $priceGroup,
                     );
 
                     continue;

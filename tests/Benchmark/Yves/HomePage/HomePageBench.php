@@ -86,7 +86,7 @@ class HomePageBench
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_GET,
             HomePage::HOME_PAGE_URL,
-            $headers
+            $headers,
         );
 
         return $this->httpHelper->send($request);

@@ -203,9 +203,9 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
             $this->createQuoteTransfer(
                 $this->customerTransfer,
                 $this->productConcreteTransfer,
-                $productConfigurationInstanceTransfer
+                $productConfigurationInstanceTransfer,
             ),
-            $this->createStateMachine($I)
+            $this->createStateMachine($I),
         );
     }
 

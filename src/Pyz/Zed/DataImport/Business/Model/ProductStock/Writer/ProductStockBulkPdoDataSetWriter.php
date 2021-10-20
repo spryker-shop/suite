@@ -44,16 +44,16 @@ class ProductStockBulkPdoDataSetWriter extends AbstractProductStockBulkDataSetWr
     protected function persistStockProductEntities(): void
     {
         $sku = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_CONCRETE_SKU)
+            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_CONCRETE_SKU),
         );
         $stockName = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$stockCollection, static::COLUMN_NAME)
+            $this->dataFormatter->getCollectionDataByKey(static::$stockCollection, static::COLUMN_NAME),
         );
         $quantity = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_QUANTITY)
+            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_QUANTITY),
         );
         $isNeverOutOfStock = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_IS_NEVER_OUT_OF_STOCK)
+            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_IS_NEVER_OUT_OF_STOCK),
         );
 
         $sql = $this->productStockSql->createStockProductSQL();

@@ -88,7 +88,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
             $queryContainer,
             $storeFacade,
             $isSendingToQueue,
-            $productAbstractStorageExpanderPlugins
+            $productAbstractStorageExpanderPlugins,
         );
 
         $this->synchronizationService = $synchronizationService;
@@ -106,12 +106,12 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     {
         $pairedEntities = $this->pairProductAbstractLocalizedEntitiesWithProductAbstractStorageEntities(
             $productAbstractLocalizedEntities,
-            $productAbstractStorageEntities
+            $productAbstractStorageEntities,
         );
 
         $attributeMapBulk = $this->attributeMap->generateAttributeMapBulk(
             array_column($productAbstractLocalizedEntities, static::COL_FK_PRODUCT_ABSTRACT),
-            array_column($productAbstractLocalizedEntities, static::COL_FK_LOCALE)
+            array_column($productAbstractLocalizedEntities, static::COL_FK_LOCALE),
         );
 
         foreach ($pairedEntities as $pair) {
@@ -128,7 +128,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
                 $productAbstractLocalizedEntity,
                 $pair[static::STORE_NAME],
                 $pair[static::LOCALE_NAME],
-                $attributeMapBulk
+                $attributeMapBulk,
             );
         }
 
@@ -156,7 +156,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         $productAbstractStorageTransfer = $this->mapToProductAbstractStorageTransfer(
             $productAbstractLocalizedEntity,
             new ProductAbstractStorageTransfer(),
-            $attributeMapBulk
+            $attributeMapBulk,
         );
 
         $productAbstractStorageData = [

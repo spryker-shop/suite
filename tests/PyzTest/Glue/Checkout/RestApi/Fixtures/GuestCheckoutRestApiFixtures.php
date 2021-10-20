@@ -125,7 +125,7 @@ class GuestCheckoutRestApiFixtures implements FixturesBuilderInterface, Fixtures
             ShipmentMethodDataHelper::DEFAULT_PRICE_LIST,
             [
                 $I->getStoreFacade()->getCurrentStore()->getIdStore(),
-            ]
+            ],
         );
 
         return $this;

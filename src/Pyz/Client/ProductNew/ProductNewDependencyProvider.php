@@ -53,7 +53,7 @@ class ProductNewDependencyProvider extends SprykerProductNewDependencyProvider
             new SortedResultFormatterPlugin(),
             new PaginatedResultFormatterPlugin(),
             new CurrencyAwareCatalogSearchResultFormatterPlugin(
-                new RawCatalogSearchResultFormatterPlugin()
+                new RawCatalogSearchResultFormatterPlugin(),
             ),
         ];
     }

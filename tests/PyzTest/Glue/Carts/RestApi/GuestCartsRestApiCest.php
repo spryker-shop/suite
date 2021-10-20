@@ -60,13 +60,13 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $quoteUuid = $quoteTransfer->getUuid();
         $url = $I->buildGuestCartUrl($quoteUuid);
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
 
         // Act
@@ -104,12 +104,12 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $quoteUuid = $quoteTransfer->getUuid();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
 
         // Act
@@ -147,19 +147,19 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $quoteUuid = $quoteTransfer->getUuid();
         $guestCartItemGroupKey = $quoteTransfer->getItems()->offsetGet(0)->getGroupKey();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
         $url = $I->buildGuestCartUrl(
             $quoteUuid,
             [
                 CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            ]
+            ],
         );
 
         // Act
@@ -174,14 +174,14 @@ class GuestCartsRestApiCest
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                $guestCartItemGroupKey
+                $guestCartItemGroupKey,
             );
 
         $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                $guestCartItemGroupKey
+                $guestCartItemGroupKey,
             );
 
         $I->amSure('The include has correct self-link')
@@ -189,7 +189,7 @@ class GuestCartsRestApiCest
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                 $guestCartItemGroupKey,
-                $I->buildGuestCartItemUrl($quoteUuid, $guestCartItemGroupKey)
+                $I->buildGuestCartItemUrl($quoteUuid, $guestCartItemGroupKey),
             );
     }
 
@@ -207,7 +207,7 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
 
         $guestCartItemGroupKey = $quoteTransfer->getItems()->offsetGet(0)->getGroupKey();
@@ -217,11 +217,11 @@ class GuestCartsRestApiCest
             [
                 CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            ]
+            ],
         );
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
 
         // Act
@@ -238,14 +238,14 @@ class GuestCartsRestApiCest
                 CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                 $guestCartItemGroupKey,
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku
+                $productConcreteSku,
             );
 
         $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku
+                $productConcreteSku,
             );
 
         $I->amSure('The include has correct self-link')
@@ -253,7 +253,7 @@ class GuestCartsRestApiCest
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 $productConcreteSku,
-                $I->buildProductConcreteUrl($productConcreteSku)
+                $I->buildProductConcreteUrl($productConcreteSku),
             );
     }
 
@@ -269,7 +269,7 @@ class GuestCartsRestApiCest
         // Arrange
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            'NotExistingReference'
+            'NotExistingReference',
         );
 
         // Act
@@ -304,7 +304,7 @@ class GuestCartsRestApiCest
                         'quantity' => 1,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -321,8 +321,8 @@ class GuestCartsRestApiCest
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $I->grabDataFromResponseByJsonPath('$.data')['id'],
-                ]
-            )
+                ],
+            ),
         );
     }
 
@@ -346,7 +346,7 @@ class GuestCartsRestApiCest
                         'quantity' => 1,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -365,7 +365,7 @@ class GuestCartsRestApiCest
     {
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $I->createGuestCustomerReference()
+            $I->createGuestCustomerReference(),
         );
 
         // Act
@@ -378,7 +378,7 @@ class GuestCartsRestApiCest
                         'quantity' => 1,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -397,7 +397,7 @@ class GuestCartsRestApiCest
     {
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $I->createGuestCustomerReference()
+            $I->createGuestCustomerReference(),
         );
 
         // Act
@@ -410,7 +410,7 @@ class GuestCartsRestApiCest
                         'sku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -433,8 +433,8 @@ class GuestCartsRestApiCest
                 '{resourceGuestCarts}',
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                ]
-            )
+                ],
+            ),
         );
 
         // Assert
@@ -455,12 +455,12 @@ class GuestCartsRestApiCest
         $guestCustomerReference = $I->createGuestCustomerReference();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            []
+            [],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
         $formattedUrl = $I->formatUrl(
@@ -468,7 +468,7 @@ class GuestCartsRestApiCest
             [
                 'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                 'guestCartUuid' => $guestQuoteUuid,
-            ]
+            ],
         );
 
         // Act
@@ -483,7 +483,7 @@ class GuestCartsRestApiCest
                         'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -504,8 +504,8 @@ class GuestCartsRestApiCest
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $guestQuoteUuid,
-                ]
-            )
+                ],
+            ),
         );
     }
 
@@ -523,13 +523,13 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
 
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
 
         // Act
@@ -539,7 +539,7 @@ class GuestCartsRestApiCest
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $guestQuoteUuid,
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -550,7 +550,7 @@ class GuestCartsRestApiCest
                         'priceMode' => CalculationPriceMode::PRICE_MODE_NET,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -570,7 +570,7 @@ class GuestCartsRestApiCest
         // Arrange
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $I->createGuestCustomerReference()
+            $I->createGuestCustomerReference(),
         );
 
         // Act
@@ -585,7 +585,7 @@ class GuestCartsRestApiCest
                         'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -606,7 +606,7 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $I->createGuestCustomerReference()),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
 
@@ -617,7 +617,7 @@ class GuestCartsRestApiCest
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $guestQuoteUuid,
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -628,7 +628,7 @@ class GuestCartsRestApiCest
                         'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -649,12 +649,12 @@ class GuestCartsRestApiCest
         $guestCustomerReference = $I->createGuestCustomerReference();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            []
+            [],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
 
@@ -666,7 +666,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -676,7 +676,7 @@ class GuestCartsRestApiCest
                         'quantity' => 1,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -697,8 +697,8 @@ class GuestCartsRestApiCest
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $guestQuoteUuid,
-                ]
-            )
+                ],
+            ),
         );
     }
 
@@ -715,7 +715,7 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $I->createGuestCustomerReference()),
-            []
+            [],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
 
@@ -727,7 +727,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -737,7 +737,7 @@ class GuestCartsRestApiCest
                         'quantity' => 1,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -759,13 +759,13 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
 
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
 
         // Act
@@ -776,7 +776,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -785,7 +785,7 @@ class GuestCartsRestApiCest
                         'quantity' => 1,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -807,12 +807,12 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
 
         // Act
@@ -823,7 +823,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -832,7 +832,7 @@ class GuestCartsRestApiCest
                         'sku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -853,12 +853,12 @@ class GuestCartsRestApiCest
         $guestCustomerReference = $I->createGuestCustomerReference();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
 
@@ -871,7 +871,7 @@ class GuestCartsRestApiCest
                     'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -880,7 +880,7 @@ class GuestCartsRestApiCest
                         'quantity' => $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -894,7 +894,7 @@ class GuestCartsRestApiCest
         $I->seeCartItemQuantityEqualsToQuantityInRequest(
             $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
             CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            $this->fixtures->getProductConcreteTransfer1()->getSku()
+            $this->fixtures->getProductConcreteTransfer1()->getSku(),
         );
 
         $I->seeSingleResourceHasSelfLink(
@@ -903,8 +903,8 @@ class GuestCartsRestApiCest
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $guestQuoteUuid,
-                ]
-            )
+                ],
+            ),
         );
     }
 
@@ -920,7 +920,7 @@ class GuestCartsRestApiCest
         // Arrange
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $I->createGuestCustomerReference()
+            $I->createGuestCustomerReference(),
         );
 
         // Act
@@ -931,7 +931,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'guestCartItemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -940,7 +940,7 @@ class GuestCartsRestApiCest
                         'quantity' => $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -961,7 +961,7 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $I->createGuestCustomerReference()),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
 
@@ -974,7 +974,7 @@ class GuestCartsRestApiCest
                     'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -983,7 +983,7 @@ class GuestCartsRestApiCest
                         'quantity' => $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -1005,12 +1005,12 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
 
         // Act
@@ -1022,7 +1022,7 @@ class GuestCartsRestApiCest
                     'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -1030,7 +1030,7 @@ class GuestCartsRestApiCest
                     'attributes' => [
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -1052,12 +1052,12 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
 
         // Act
@@ -1068,7 +1068,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -1077,7 +1077,7 @@ class GuestCartsRestApiCest
                         'quantity' => $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
                     ],
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -1099,12 +1099,12 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
 
         // Act
@@ -1116,8 +1116,8 @@ class GuestCartsRestApiCest
                     'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
-                ]
-            )
+                ],
+            ),
         );
 
         // Assert
@@ -1136,7 +1136,7 @@ class GuestCartsRestApiCest
         // Arrange
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $I->createGuestCustomerReference()
+            $I->createGuestCustomerReference(),
         );
 
         // Act
@@ -1147,8 +1147,8 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
-                ]
-            )
+                ],
+            ),
         );
 
         // Assert
@@ -1169,7 +1169,7 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $I->createGuestCustomerReference()),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
 
@@ -1182,8 +1182,8 @@ class GuestCartsRestApiCest
                     'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
-                ]
-            )
+                ],
+            ),
         );
 
         // Assert
@@ -1205,12 +1205,12 @@ class GuestCartsRestApiCest
         $quoteTransfer = $I->createPersistentQuote(
             $I,
             (new CustomerTransfer())->setCustomerReference(GuestCartsRestApiFixtures::ANONYMOUS_PREFIX . $guestCustomerReference),
-            [$this->fixtures->getProductConcreteTransfer1()]
+            [$this->fixtures->getProductConcreteTransfer1()],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $guestCustomerReference
+            $guestCustomerReference,
         );
 
         // Act
@@ -1221,8 +1221,8 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                ]
-            )
+                ],
+            ),
         );
 
         // Assert

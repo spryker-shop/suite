@@ -101,7 +101,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             $blockPrefix,
             CustomerCheckoutForm::class,
             null,
-            [CustomerCheckoutForm::SUB_FORM_CUSTOMER => $subForm]
+            [CustomerCheckoutForm::SUB_FORM_CUSTOMER => $subForm],
         );
     }
 
@@ -174,7 +174,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             $paymentMethodHandler->add(new NopaymentHandlerPlugin(), NopaymentConfig::PAYMENT_PROVIDER_NAME);
             $paymentMethodHandler->add(
                 new DummyMarketplacePaymentHandlerPlugin(),
-                DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE
+                DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE,
             );
 
             // --- Payone

@@ -51,7 +51,7 @@ class CustomerReadCest
             [
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
-            ]
+            ],
         );
         $I->confirmCustomer($this->customerTransfer);
 
@@ -80,8 +80,8 @@ class CustomerReadCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $this->customerTransfer->getCustomerReference(),
-                ]
-            )
+                ],
+            ),
         );
 
         $I->amSure(sprintf('Returned resource is of type %s', CustomersRestApiConfig::RESOURCE_CUSTOMERS))
@@ -96,7 +96,7 @@ class CustomerReadCest
             ->whenI()
             ->assertCustomersAttributes(
                 $this->customerTransfer,
-                $I->grabDataFromResponseByJsonPath('$.data[0].attributes')
+                $I->grabDataFromResponseByJsonPath('$.data[0].attributes'),
             );
     }
 
@@ -113,8 +113,8 @@ class CustomerReadCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $this->customerTransfer->getCustomerReference(),
-                ]
-            )
+                ],
+            ),
         );
 
         // Assert
@@ -128,8 +128,8 @@ class CustomerReadCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $this->customerTransfer->getCustomerReference(),
-                ]
-            )
+                ],
+            ),
         );
 
         $I->amSure(sprintf('Returned resource is of type %s', CustomersRestApiConfig::RESOURCE_CUSTOMERS))
@@ -144,7 +144,7 @@ class CustomerReadCest
             ->whenI()
             ->assertCustomersAttributes(
                 $this->customerTransfer,
-                $I->grabDataFromResponseByJsonPath('$.data.attributes')
+                $I->grabDataFromResponseByJsonPath('$.data.attributes'),
             );
     }
 
@@ -159,7 +159,7 @@ class CustomerReadCest
             [
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
-            ]
+            ],
         );
         $I->confirmCustomer($firstCustomerTransfer);
 
@@ -169,8 +169,8 @@ class CustomerReadCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $firstCustomerTransfer->getCustomerReference(),
-                ]
-            )
+                ],
+            ),
         );
 
         // Assert

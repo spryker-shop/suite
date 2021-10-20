@@ -103,14 +103,14 @@ class ProductConcreteRestApiCest
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
-                $productConcreteSku
+                $productConcreteSku,
             );
 
         $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
-                $productConcreteSku
+                $productConcreteSku,
             );
 
         $I->amSure('The include has correct self-link')
@@ -118,7 +118,7 @@ class ProductConcreteRestApiCest
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
                 $productConcreteSku,
-                $I->buildProductConcretePricesUrl($productConcreteSku)
+                $I->buildProductConcretePricesUrl($productConcreteSku),
             );
     }
 

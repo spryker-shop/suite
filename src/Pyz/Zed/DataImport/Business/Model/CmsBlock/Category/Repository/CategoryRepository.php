@@ -65,7 +65,7 @@ class CategoryRepository implements CategoryRepositoryInterface
         if (!$this->categoryKeys->offsetExists($categoryKey)) {
             throw new CategoryByKeyNotFoundException(sprintf(
                 'Category by key "%s" not found. Maybe you have a typo in the category key.',
-                $categoryKey
+                $categoryKey,
             ));
         }
 

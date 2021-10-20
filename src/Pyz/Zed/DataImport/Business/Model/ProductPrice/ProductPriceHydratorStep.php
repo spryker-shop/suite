@@ -244,7 +244,7 @@ class ProductPriceHydratorStep implements DataImportStepInterface
                 'One of "%s" or "%s" must be in the data set. Given: "%s"',
                 $dataSet[static::COLUMN_ABSTRACT_SKU],
                 $dataSet[static::COLUMN_ABSTRACT_SKU],
-                implode(', ', array_keys($dataSet->getArrayCopy()))
+                implode(', ', array_keys($dataSet->getArrayCopy())),
             ));
         }
 
@@ -394,8 +394,8 @@ class ProductPriceHydratorStep implements DataImportStepInterface
             throw new InvalidPriceDataKeyException(
                 sprintf(
                     'Price data key "%s" has invalid format. Should be in following format: "price_data.some_key"',
-                    $key
-                )
+                    $key,
+                ),
             );
         }
 
