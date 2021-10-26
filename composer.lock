@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.199.1",
+            "version": "3.199.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1033abba14fd7cb6667f60aaa085bc0d2c61afe4"
+                "reference": "132a1148ebb63d04023837bcf9a36f49b308a0bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1033abba14fd7cb6667f60aaa085bc0d2c61afe4",
-                "reference": "1033abba14fd7cb6667f60aaa085bc0d2c61afe4",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/132a1148ebb63d04023837bcf9a36f49b308a0bd",
+                "reference": "132a1148ebb63d04023837bcf9a36f49b308a0bd",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.199.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.199.3"
             },
-            "time": "2021-10-21T18:33:01+00:00"
+            "time": "2021-10-25T18:17:28+00:00"
         },
         {
             "name": "brick/math",
@@ -364,34 +364,30 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "9cf661f4eb38f7c881cac67c75ea9b00bf97b210"
+                "reference": "8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/9cf661f4eb38f7c881cac67c75ea9b00bf97b210",
-                "reference": "9cf661f4eb38f7c881cac67c75ea9b00bf97b210",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89",
+                "reference": "8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^7.0",
-                "phpstan/phpstan": "^0.11",
-                "phpstan/phpstan-phpunit": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11",
-                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
+                "doctrine/coding-standard": "^8.2",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
+                "vimeo/psalm": "^4.10"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Inflector\\": "lib/Doctrine/Inflector"
@@ -439,7 +435,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/2.0.x"
+                "source": "https://github.com/doctrine/inflector/tree/2.0.4"
             },
             "funding": [
                 {
@@ -455,7 +451,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-29T15:13:26+00:00"
+            "time": "2021-10-22T20:16:43+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -1142,16 +1138,16 @@
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "136a635e2b4a49b9d79e9c8fee267ffb257fdba0"
+                "reference": "fe752aedc9fd8fcca3fe7ad05d419d32998a06da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/136a635e2b4a49b9d79e9c8fee267ffb257fdba0",
-                "reference": "136a635e2b4a49b9d79e9c8fee267ffb257fdba0",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/fe752aedc9fd8fcca3fe7ad05d419d32998a06da",
+                "reference": "fe752aedc9fd8fcca3fe7ad05d419d32998a06da",
                 "shasum": ""
             },
             "require": {
@@ -1206,7 +1202,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/1.5.0"
+                "source": "https://github.com/guzzle/promises/tree/1.5.1"
             },
             "funding": [
                 {
@@ -1222,7 +1218,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-07T13:05:22+00:00"
+            "time": "2021-10-22T20:56:57+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -1479,16 +1475,16 @@
         },
         {
             "name": "laminas/laminas-filter",
-            "version": "2.11.1",
+            "version": "2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-filter.git",
-                "reference": "671724e163aa75c210e94d12b77a0f3f8240d4b2"
+                "reference": "0fc5dcd27dc22dba1a2544123684c67768fc5f88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/671724e163aa75c210e94d12b77a0f3f8240d4b2",
-                "reference": "671724e163aa75c210e94d12b77a0f3f8240d4b2",
+                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/0fc5dcd27dc22dba1a2544123684c67768fc5f88",
+                "reference": "0fc5dcd27dc22dba1a2544123684c67768fc5f88",
                 "shasum": ""
             },
             "require": {
@@ -1557,7 +1553,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-05-24T18:29:02+00:00"
+            "time": "2021-10-24T21:01:15+00:00"
         },
         {
             "name": "laminas/laminas-servicemanager",
@@ -2685,21 +2681,21 @@
         },
         {
             "name": "nette/di",
-            "version": "v3.0.10",
+            "version": "v3.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "4f0cb0b3f032a9106aa3fb29e33da381564716c2"
+                "reference": "6d6264183816d4f95acfc8019dc9645df7f1afb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/4f0cb0b3f032a9106aa3fb29e33da381564716c2",
-                "reference": "4f0cb0b3f032a9106aa3fb29e33da381564716c2",
+                "url": "https://api.github.com/repos/nette/di/zipball/6d6264183816d4f95acfc8019dc9645df7f1afb1",
+                "reference": "6d6264183816d4f95acfc8019dc9645df7f1afb1",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
-                "nette/neon": "^3.0",
+                "nette/neon": "^3.3",
                 "nette/php-generator": "^3.3.3",
                 "nette/robot-loader": "^3.2",
                 "nette/schema": "^1.1",
@@ -2754,9 +2750,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/di/issues",
-                "source": "https://github.com/nette/di/tree/v3.0.10"
+                "source": "https://github.com/nette/di/tree/v3.0.11"
             },
-            "time": "2021-09-29T15:39:33+00:00"
+            "time": "2021-10-26T09:23:19+00:00"
         },
         {
             "name": "nette/finder",
@@ -2892,16 +2888,16 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v3.6.3",
+            "version": "v3.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "fa374ae7b36be45241fd0b5acd49479a6d1227a3"
+                "reference": "b8375ac20760c62b6816f8c2eaeabbbca305eed7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/fa374ae7b36be45241fd0b5acd49479a6d1227a3",
-                "reference": "fa374ae7b36be45241fd0b5acd49479a6d1227a3",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/b8375ac20760c62b6816f8c2eaeabbbca305eed7",
+                "reference": "b8375ac20760c62b6816f8c2eaeabbbca305eed7",
                 "shasum": ""
             },
             "require": {
@@ -2954,9 +2950,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/php-generator/issues",
-                "source": "https://github.com/nette/php-generator/tree/v3.6.3"
+                "source": "https://github.com/nette/php-generator/tree/v3.6.4"
             },
-            "time": "2021-10-14T22:12:56+00:00"
+            "time": "2021-10-15T10:28:31+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -3352,22 +3348,22 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "v3.0.0",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "c0a8eade209b7e43d6a405303d8de716dfd02749"
+                "reference": "c8812f783fe8714a8a8e387003fb297aded7f974"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/c0a8eade209b7e43d6a405303d8de716dfd02749",
-                "reference": "c0a8eade209b7e43d6a405303d8de716dfd02749",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/c8812f783fe8714a8a8e387003fb297aded7f974",
+                "reference": "c8812f783fe8714a8a8e387003fb297aded7f974",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
                 "ext-sockets": "*",
-                "php": "^7.0|~8.0.0",
+                "php": "^7.1||^8.0",
                 "phpseclib/phpseclib": "^2.0|^3.0"
             },
             "conflict": {
@@ -3379,8 +3375,8 @@
             "require-dev": {
                 "ext-curl": "*",
                 "nategood/httpful": "^0.2.20",
-                "phpunit/phpunit": "^6.5|^7.0|^9.5",
-                "squizlabs/php_codesniffer": "^3.5"
+                "phpunit/phpunit": "^7.5|^9.5",
+                "squizlabs/php_codesniffer": "^3.6"
             },
             "type": "library",
             "extra": {
@@ -3427,9 +3423,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-amqplib/php-amqplib/issues",
-                "source": "https://github.com/php-amqplib/php-amqplib/tree/v3.0.0"
+                "source": "https://github.com/php-amqplib/php-amqplib/tree/v3.1.0"
             },
-            "time": "2021-03-16T15:00:23+00:00"
+            "time": "2021-10-22T16:37:06+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -5056,7 +5052,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3edab929e0cec459c5dc7e8b8fecfc80d7358365"
+                "reference": "f2e046902a21c02d3f99d72f9aafd37f649170f2"
             },
             "require": {
                 "php": ">=7.4"
@@ -5912,7 +5908,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-10-21T12:10:34+00:00"
+            "time": "2021-10-26T10:08:16+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5920,7 +5916,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "b2fbf0306211f6237c535e49ce0806a383071130"
+                "reference": "32acd34795d85c47ad7f5f18d269250496efca58"
             },
             "require": {
                 "php": ">=7.4"
@@ -6088,7 +6084,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2021-10-20T22:36:32+00:00"
+            "time": "2021-10-26T09:02:14+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11690,16 +11686,16 @@
         },
         {
             "name": "composer/semver",
-            "version": "3.2.5",
+            "version": "3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "31f3ea725711245195f62e54ffa402d8ef2fdba9"
+                "reference": "83e511e247de329283478496f7a1e114c9517506"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/31f3ea725711245195f62e54ffa402d8ef2fdba9",
-                "reference": "31f3ea725711245195f62e54ffa402d8ef2fdba9",
+                "url": "https://api.github.com/repos/composer/semver/zipball/83e511e247de329283478496f7a1e114c9517506",
+                "reference": "83e511e247de329283478496f7a1e114c9517506",
                 "shasum": ""
             },
             "require": {
@@ -11751,7 +11747,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/semver/issues",
-                "source": "https://github.com/composer/semver/tree/3.2.5"
+                "source": "https://github.com/composer/semver/tree/3.2.6"
             },
             "funding": [
                 {
@@ -11767,7 +11763,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-24T12:41:47+00:00"
+            "time": "2021-10-25T11:34:17+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -13733,16 +13729,16 @@
         },
         {
             "name": "psalm/phar",
-            "version": "4.10.0",
+            "version": "4.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/phar.git",
-                "reference": "79c5b2210e1a1cabeee671db1160c96869572d08"
+                "reference": "ec8acfd8cb0332e68fc57bfb2a57942a3e028d4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/79c5b2210e1a1cabeee671db1160c96869572d08",
-                "reference": "79c5b2210e1a1cabeee671db1160c96869572d08",
+                "url": "https://api.github.com/repos/psalm/phar/zipball/ec8acfd8cb0332e68fc57bfb2a57942a3e028d4e",
+                "reference": "ec8acfd8cb0332e68fc57bfb2a57942a3e028d4e",
                 "shasum": ""
             },
             "require": {
@@ -13762,9 +13758,9 @@
             "description": "Composer-based Psalm Phar",
             "support": {
                 "issues": "https://github.com/psalm/phar/issues",
-                "source": "https://github.com/psalm/phar/tree/4.10.0"
+                "source": "https://github.com/psalm/phar/tree/4.11.1"
             },
-            "time": "2021-09-05T00:07:08+00:00"
+            "time": "2021-10-24T13:47:38+00:00"
         },
         {
             "name": "psr/cache",
@@ -14708,7 +14704,6 @@
                     "type": "github"
                 }
             ],
-            "abandoned": true,
             "time": "2020-09-28T06:45:17+00:00"
         },
         {
@@ -15694,12 +15689,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "277339f0ac2257a3472ca9b6c7e07080b14fb667"
+                "reference": "d1b66f772d4a5d08c8508a5d8bc351d6faf1f602"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/277339f0ac2257a3472ca9b6c7e07080b14fb667",
-                "reference": "277339f0ac2257a3472ca9b6c7e07080b14fb667",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/d1b66f772d4a5d08c8508a5d8bc351d6faf1f602",
+                "reference": "d1b66f772d4a5d08c8508a5d8bc351d6faf1f602",
                 "shasum": ""
             },
             "require": {
@@ -15745,7 +15740,7 @@
                 "issues": "https://github.com/spryker/code-sniffer/issues",
                 "source": "https://github.com/spryker/code-sniffer"
             },
-            "time": "2021-10-19T12:09:08+00:00"
+            "time": "2021-10-25T09:21:56+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -15753,7 +15748,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "3c037d74e9045202b145e1c5cefe408bf76bf05b"
+                "reference": "49f2ceceb869b7dab9b870756a048ec4c818a69c"
             },
             "require": {
                 "composer/semver": "^1.0.0 || ^2.0.0 || ^3.0.0",
@@ -15806,7 +15801,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2021-10-13T08:44:16+00:00"
+            "time": "2021-10-26T06:05:15+00:00"
         },
         {
             "name": "spryker/docker-chromedriver",
