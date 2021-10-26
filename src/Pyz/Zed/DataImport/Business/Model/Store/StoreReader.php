@@ -44,6 +44,7 @@ class StoreReader implements DataReaderInterface
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         ++$this->position;
@@ -58,6 +59,7 @@ class StoreReader implements DataReaderInterface
      *
      * @return mixed scalar on success, or null on failure.
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->position;
@@ -73,6 +75,7 @@ class StoreReader implements DataReaderInterface
      * @return bool The return value will be casted to boolean and then evaluated.
      * Returns true on success or false on failure.
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return isset($this->dataSet[$this->position]);
@@ -87,6 +90,7 @@ class StoreReader implements DataReaderInterface
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->position = 0;
