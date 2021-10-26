@@ -15,6 +15,7 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
      * @project Only needed in Project, not in demoshop
      *
      * @phpstan-var array<string, string>
+     *
      * @var array<string>
      */
     protected const INTERNAL_NAMESPACES_TO_PATH_MAPPING = [

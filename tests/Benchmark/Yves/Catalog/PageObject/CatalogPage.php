@@ -11,6 +11,7 @@ class CatalogPage
 {
     /**
      * @see \SprykerShop\Yves\CatalogPage\Plugin\Router\CatalogPageRouteProviderPlugin::ROUTE_SEARCH
+     *
      * @var string
      */
     public const CATALOG_PAGE_SEARCH = '/en/search?q=%s';
