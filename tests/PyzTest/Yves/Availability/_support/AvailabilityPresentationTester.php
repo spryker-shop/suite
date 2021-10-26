@@ -53,6 +53,7 @@ class AvailabilityPresentationTester extends Actor
     /**
      * @uses \Spryker\Zed\AvailabilityCartConnector\Business\Cart\CheckCartAvailability::CART_PRE_CHECK_AVAILABILITY_FAILED
      * @uses \Spryker\Zed\ProductBundle\Business\ProductBundle\Availability\PreCheck\ProductBundleCartAvailabilityCheck::CART_PRE_CHECK_ITEM_AVAILABILITY_FAILED
+     *
      * @var string
      */
     public const CART_PRE_CHECK_AVAILABILITY_ERROR_MESSAGE = 'Item 119_29804808 only has availability of 10.';
