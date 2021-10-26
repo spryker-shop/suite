@@ -11,6 +11,7 @@ class CartPage
 {
     /**
      * @see \SprykerShop\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin::ROUTE_CART_ADD
+     *
      * @var string
      */
     public const ADD_TO_CART_URL = '/en/cart/add/%s';

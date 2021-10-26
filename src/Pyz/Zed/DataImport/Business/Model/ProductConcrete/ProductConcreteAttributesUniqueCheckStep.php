@@ -32,18 +32,21 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
 
     /**
      * @uses \Orm\Zed\Product\Persistence\Map\SpyProductTableMap::COL_ATTRIBUTES
+     *
      * @var string
      */
     protected const PRODUCT_COL_ATTRIBUTES = 'spy_product.attributes';
 
     /**
      * @uses \Orm\Zed\Product\Persistence\Map\SpyProductTableMap::COL_SKU
+     *
      * @var string
      */
     protected const PRODUCT_COL_SKU = 'spy_product.sku';
 
     /**
      * @uses \Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap::COL_SKU
+     *
      * @var string
      */
     protected const PRODUCT_ABSTRACT_COL_SKU = 'spy_product_abstract.sku';
