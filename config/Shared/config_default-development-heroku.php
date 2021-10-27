@@ -70,7 +70,7 @@ $ELASTICA_AUTH_HEADER = str_pad(
     $ELASTICA_BASIC_AUTH,
     strlen($ELASTICA_BASIC_AUTH) + strlen($ELASTICA_BASIC_AUTH) % 4,
     '=',
-    STR_PAD_RIGHT
+    STR_PAD_RIGHT,
 );
 $ELASTICA_PORT = ($ENV_ELASTICA_CONNECTION_DATA['scheme'] == 'https' ? 443 : 80);
 $config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER]
@@ -121,12 +121,12 @@ $config[ApplicationConstants::BASE_URL_YVES] = sprintf(
     '%s%s%s',
     $ENV_PROTOCOL_YVES,
     $config[ApplicationConstants::HOST_YVES],
-    $config[ApplicationConstants::PORT_YVES]
+    $config[ApplicationConstants::PORT_YVES],
 );
 $config[ApplicationConstants::BASE_URL_SSL_YVES] = sprintf(
     'https://%s%s',
     $config[ApplicationConstants::HOST_YVES],
-    $config[ApplicationConstants::PORT_SSL_YVES]
+    $config[ApplicationConstants::PORT_SSL_YVES],
 );
 $config[ProductManagementConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
 $config[NewsletterConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
@@ -143,12 +143,12 @@ $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
     '%s%s%s',
     $ENV_PROTOCOL_ZED,
     $config[ApplicationConstants::HOST_ZED],
-    $config[ApplicationConstants::PORT_ZED]
+    $config[ApplicationConstants::PORT_ZED],
 );
 $config[ApplicationConstants::BASE_URL_SSL_ZED] = sprintf(
     'https://%s%s',
     $config[ApplicationConstants::HOST_ZED],
-    $config[ApplicationConstants::PORT_SSL_ZED]
+    $config[ApplicationConstants::PORT_SSL_ZED],
 );
 $config[ZedRequestConstants::BASE_URL_ZED_API] = $config[ApplicationConstants::BASE_URL_ZED];
 $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = $config[ApplicationConstants::BASE_URL_SSL_ZED];
