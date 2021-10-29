@@ -11,6 +11,8 @@ use Spryker\Client\MerchantProductOfferWishlist\Plugin\Wishlist\WishlistProductO
 use Spryker\Client\MerchantProductOfferWishlist\Plugin\Wishlist\WishlistProductOfferPostMoveToCartCollectionExpanderPlugin;
 use Spryker\Client\MerchantProductWishlist\Plugin\Wishlist\WishlistMerchantProductCollectionToRemoveExpanderPlugin;
 use Spryker\Client\MerchantProductWishlist\Plugin\Wishlist\WishlistMerchantProductPostMoveToCartCollectionExpanderPlugin;
+use Spryker\Client\ProductConfigurationWishlist\Plugin\Wishlist\ProductConfigurationWishlistCollectionToRemoveExpanderPlugin;
+use Spryker\Client\ProductConfigurationWishlist\Plugin\Wishlist\ProductConfigurationWishlistPostMoveToCartCollectionExpanderPlugin;
 use Spryker\Client\Wishlist\WishlistDependencyProvider as SprykerWishlistDependencyProvider;
 
 class WishlistDependencyProvider extends SprykerWishlistDependencyProvider
@@ -23,6 +25,7 @@ class WishlistDependencyProvider extends SprykerWishlistDependencyProvider
         return [
             new WishlistProductOfferPostMoveToCartCollectionExpanderPlugin(),
             new WishlistMerchantProductPostMoveToCartCollectionExpanderPlugin(),
+            new ProductConfigurationWishlistPostMoveToCartCollectionExpanderPlugin(),
         ];
     }
 
@@ -34,6 +37,7 @@ class WishlistDependencyProvider extends SprykerWishlistDependencyProvider
         return [
             new WishlistProductOfferCollectionToRemoveExpanderPlugin(),
             new WishlistMerchantProductCollectionToRemoveExpanderPlugin(),
+            new ProductConfigurationWishlistCollectionToRemoveExpanderPlugin(),
         ];
     }
 }
