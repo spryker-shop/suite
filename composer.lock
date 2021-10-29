@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "204a96d8d52b63055e32ddedc8d30413",
+    "content-hash": "6db1a9a0891a9aaafaacd1b129aa6d52",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -8508,6 +8508,56 @@
             "time": "2020-09-03T09:53:08+00:00"
         },
         {
+            "name": "spryker-shop/product-configuration-wishlist-widget",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-configuration-wishlist-widget.git",
+                "reference": "6193bc7c968a74c8106b4d49ffc2d8bdfe08c2be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-configuration-wishlist-widget/zipball/6193bc7c968a74c8106b4d49ffc2d8bdfe08c2be",
+                "reference": "6193bc7c968a74c8106b4d49ffc2d8bdfe08c2be",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "spryker-shop/product-configuration-wishlist-widget-extension": "^0.1.0",
+                "spryker-shop/product-configurator-gateway-page-extension": "^0.2.0",
+                "spryker-shop/shop-ui": "^1.54.0",
+                "spryker-shop/wishlist-page-extension": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-configuration-wishlist": "^0.1.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductConfigurationWishlistWidget module",
+            "support": {
+                "source": "https://github.com/spryker-shop/product-configuration-wishlist-widget/tree/0.1.0"
+            },
+            "time": "2021-10-29T06:02:33+00:00"
+        },
+        {
             "name": "spryker-shop/product-configuration-wishlist-widget-extension",
             "version": "0.1.0",
             "source": {
@@ -8550,20 +8600,20 @@
         },
         {
             "name": "spryker-shop/product-configurator-gateway-page",
-            "version": "0.4.0",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-configurator-gateway-page.git",
-                "reference": "8bc2580f7ad254a3bcd5908b1265105d5b8726d7"
+                "reference": "ba7caf5f7e8c7f2fbb959c6ffe1c2222bfd3b3ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-configurator-gateway-page/zipball/8bc2580f7ad254a3bcd5908b1265105d5b8726d7",
-                "reference": "8bc2580f7ad254a3bcd5908b1265105d5b8726d7",
+                "url": "https://api.github.com/repos/spryker-shop/product-configurator-gateway-page/zipball/ba7caf5f7e8c7f2fbb959c6ffe1c2222bfd3b3ec",
+                "reference": "ba7caf5f7e8c7f2fbb959c6ffe1c2222bfd3b3ec",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker-shop/product-configurator-gateway-page-extension": "^0.2.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker/application": "^3.8.0",
@@ -8607,9 +8657,9 @@
             ],
             "description": "ProductConfiguratorGatewayPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/product-configurator-gateway-page/tree/0.4.0"
+                "source": "https://github.com/spryker-shop/product-configurator-gateway-page/tree/0.5.0"
             },
-            "time": "2021-08-16T08:44:35+00:00"
+            "time": "2021-10-29T06:02:33+00:00"
         },
         {
             "name": "spryker-shop/product-configurator-gateway-page-extension",
@@ -37904,20 +37954,20 @@
         },
         {
             "name": "spryker/product-configuration",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-configuration.git",
-                "reference": "afb7930889deca83736db24c8f856e7b883a4980"
+                "reference": "fe828c6eafdd5fe9a7d2e25092343ab5a0a24432"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-configuration/zipball/afb7930889deca83736db24c8f856e7b883a4980",
-                "reference": "afb7930889deca83736db24c8f856e7b883a4980",
+                "url": "https://api.github.com/repos/spryker/product-configuration/zipball/fe828c6eafdd5fe9a7d2e25092343ab5a0a24432",
+                "reference": "fe828c6eafdd5fe9a7d2e25092343ab5a0a24432",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "psr/http-message": "^1.0.0",
                 "spryker/checksum-generator": "^1.0.0",
                 "spryker/currency": "^3.2.0",
@@ -37942,6 +37992,7 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/propel": "*",
+                "spryker/session": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -37962,26 +38013,26 @@
             ],
             "description": "ProductConfiguration module",
             "support": {
-                "source": "https://github.com/spryker/product-configuration/tree/0.2.0"
+                "source": "https://github.com/spryker/product-configuration/tree/0.2.1"
             },
-            "time": "2021-08-16T08:44:33+00:00"
+            "time": "2021-10-29T06:02:31+00:00"
         },
         {
             "name": "spryker/product-configuration-cart",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-configuration-cart.git",
-                "reference": "59ee7ffb422e950dd0a3a588b7ac98f3452096d4"
+                "reference": "29382403a84b8a2e909df658b6591d4dfd49f13c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-configuration-cart/zipball/59ee7ffb422e950dd0a3a588b7ac98f3452096d4",
-                "reference": "59ee7ffb422e950dd0a3a588b7ac98f3452096d4",
+                "url": "https://api.github.com/repos/spryker/product-configuration-cart/zipball/29382403a84b8a2e909df658b6591d4dfd49f13c",
+                "reference": "29382403a84b8a2e909df658b6591d4dfd49f13c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker/availability-cart-connector-extension": "^1.0.0",
                 "spryker/availability-extension": "^1.1.0",
                 "spryker/cart": "^7.8.0",
@@ -37990,7 +38041,7 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^3.7.0",
                 "spryker/price-cart-connector-extension": "^1.1.0",
-                "spryker/product-configuration": "^0.2.0",
+                "spryker/product-configuration": "^0.2.1",
                 "spryker/product-configuration-storage": "^0.2.0",
                 "spryker/quote": "^2.0.0",
                 "spryker/quote-request-extension": "^1.1.0",
@@ -38023,9 +38074,9 @@
             ],
             "description": "ProductConfigurationCart module",
             "support": {
-                "source": "https://github.com/spryker/product-configuration-cart/tree/0.1.0"
+                "source": "https://github.com/spryker/product-configuration-cart/tree/0.1.1"
             },
-            "time": "2021-08-16T08:44:33+00:00"
+            "time": "2021-10-29T06:02:31+00:00"
         },
         {
             "name": "spryker/product-configuration-data-import",
@@ -38272,6 +38323,113 @@
                 "source": "https://github.com/spryker/product-configuration-storage/tree/0.2.0"
             },
             "time": "2021-08-16T08:44:33+00:00"
+        },
+        {
+            "name": "spryker/product-configuration-wishlist",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-configuration-wishlist.git",
+                "reference": "a92c6731e59ec35fd4b24462c8db504c28bc24fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-configuration-wishlist/zipball/a92c6731e59ec35fd4b24462c8db504c28bc24fc",
+                "reference": "a92c6731e59ec35fd4b24462c8db504c28bc24fc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "spryker/kernel": "^3.30.0",
+                "spryker/log": "^3.7.0",
+                "spryker/price-product-storage-extension": "^1.3.0",
+                "spryker/product-configuration": "^0.2.1",
+                "spryker/product-configuration-storage": "^0.2.0",
+                "spryker/transfer": "^3.25.0",
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/wishlist": "^8.6.0",
+                "spryker/wishlist-extension": "^1.3.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/quote": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductConfigurationWishlist module",
+            "support": {
+                "source": "https://github.com/spryker/product-configuration-wishlist/tree/0.1.0"
+            },
+            "time": "2021-10-29T06:02:31+00:00"
+        },
+        {
+            "name": "spryker/product-configuration-wishlists-rest-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-configuration-wishlists-rest-api.git",
+                "reference": "b8cd6c3d9f3748a66e78a97a9e48161229f91c28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-configuration-wishlists-rest-api/zipball/b8cd6c3d9f3748a66e78a97a9e48161229f91c28",
+                "reference": "b8cd6c3d9f3748a66e78a97a9e48161229f91c28",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-configuration": "^0.2.0",
+                "spryker/product-configuration-wishlists-rest-api-extension": "^0.1.0",
+                "spryker/transfer": "^3.25.0",
+                "spryker/wishlist": "^8.6.0",
+                "spryker/wishlists-rest-api-extension": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/product": "*",
+                "spryker/product-configuration-wishlist": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductConfigurationWishlistsRestApi module",
+            "support": {
+                "source": "https://github.com/spryker/product-configuration-wishlists-rest-api/tree/0.1.0"
+            },
+            "time": "2021-10-29T06:02:31+00:00"
         },
         {
             "name": "spryker/product-configuration-wishlists-rest-api-extension",
