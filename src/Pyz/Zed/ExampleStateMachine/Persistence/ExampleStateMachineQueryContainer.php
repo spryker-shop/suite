@@ -28,7 +28,7 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
     }
 
     /**
-     * @return \Propel\Runtime\Collection\ObjectCollection|array<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
+     * @return \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem[]
      */
     public function queryAllStateMachineItems()
     {
