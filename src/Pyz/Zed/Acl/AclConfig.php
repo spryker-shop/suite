@@ -55,9 +55,9 @@ class AclConfig extends SprykerAclConfig
     }
 
     /**
-     * @param array<string[]> $installerRules
+     * @param array<array<string, string>> $installerRules
      *
-     * @return array<string[]>
+     * @return array<array<string, string>>
      */
     protected function addMerchantPortalInstallerRules(array $installerRules): array
     {
@@ -86,7 +86,7 @@ class AclConfig extends SprykerAclConfig
     }
 
     /**
-     * @return array
+     * @return array<int, array<string, mixed>>
      */
     public function getInstallerRoles(): array
     {
