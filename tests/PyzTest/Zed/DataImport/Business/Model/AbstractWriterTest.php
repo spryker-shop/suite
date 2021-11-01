@@ -83,7 +83,7 @@ abstract class AbstractWriterTest extends Unit
 
         try {
             $this->checkIsMariaDBSupportsBulkImport(
-                $dataImportBusinessFactory->createPropelExecutor()
+                $dataImportBusinessFactory->createPropelExecutor(),
             );
         } catch (PropelMariaDbVersionConstraintException $exception) {
             $this->markTestSkipped('Importer does not support current database engine or it\'s version.');
@@ -171,7 +171,7 @@ abstract class AbstractWriterTest extends Unit
     protected function getUtilEncodingService(): DataImportToUtilEncodingServiceInterface
     {
         return new DataImportToUtilEncodingServiceBridge(
-            new UtilEncodingService()
+            new UtilEncodingService(),
         );
     }
 }

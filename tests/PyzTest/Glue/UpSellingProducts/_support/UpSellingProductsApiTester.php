@@ -61,7 +61,7 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
                 'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                 'resourceUpSellingProducts' => UpSellingProductsRestApiConfig::RELATIONSHIP_NAME_UP_SELLING_PRODUCTS,
                 'cartUuid' => $cartUuid,
-            ]
+            ],
         );
     }
 
@@ -79,7 +79,7 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
                 'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                 'resourceUpSellingProducts' => UpSellingProductsRestApiConfig::RELATIONSHIP_NAME_UP_SELLING_PRODUCTS,
                 'cartUuid' => $cartUuid,
-            ]
+            ],
         );
     }
 
@@ -96,7 +96,7 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
             [
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
-            ]
+            ],
         );
     }
 }

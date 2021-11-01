@@ -46,35 +46,35 @@ class CustomerApiTester extends ApiEndToEndTester
 
         $this->assertSame(
             $customerTransfer->getEmail(),
-            $restCustomersAttributesTransfer->getEmail()
+            $restCustomersAttributesTransfer->getEmail(),
         );
         $this->assertSame(
             $customerTransfer->getFirstName(),
-            $restCustomersAttributesTransfer->getFirstName()
+            $restCustomersAttributesTransfer->getFirstName(),
         );
         $this->assertSame(
             $customerTransfer->getLastName(),
-            $restCustomersAttributesTransfer->getLastName()
+            $restCustomersAttributesTransfer->getLastName(),
         );
         $this->assertSame(
             substr($customerTransfer->getCreatedAt(), 0, 19),
-            substr($restCustomersAttributesTransfer->getCreatedAt(), 0, 19)
+            substr($restCustomersAttributesTransfer->getCreatedAt(), 0, 19),
         );
         $this->assertSame(
             substr($customerTransfer->getUpdatedAt(), 0, 19),
-            substr($restCustomersAttributesTransfer->getUpdatedAt(), 0, 19)
+            substr($restCustomersAttributesTransfer->getUpdatedAt(), 0, 19),
         );
         $this->assertSame(
             $customerTransfer->getDateOfBirth(),
-            $restCustomersAttributesTransfer->getDateOfBirth()
+            $restCustomersAttributesTransfer->getDateOfBirth(),
         );
         $this->assertSame(
             $customerTransfer->getGender(),
-            $restCustomersAttributesTransfer->getGender()
+            $restCustomersAttributesTransfer->getGender(),
         );
         $this->assertSame(
             $customerTransfer->getSalutation(),
-            $restCustomersAttributesTransfer->getSalutation()
+            $restCustomersAttributesTransfer->getSalutation(),
         );
     }
 
@@ -93,27 +93,27 @@ class CustomerApiTester extends ApiEndToEndTester
 
         $this->assertSame(
             $expectedRestCustomersAttributesTransfer->getEmail(),
-            $restCustomersAttributesTransfer->getEmail()
+            $restCustomersAttributesTransfer->getEmail(),
         );
         $this->assertSame(
             $expectedRestCustomersAttributesTransfer->getFirstName(),
-            $restCustomersAttributesTransfer->getFirstName()
+            $restCustomersAttributesTransfer->getFirstName(),
         );
         $this->assertSame(
             $expectedRestCustomersAttributesTransfer->getLastName(),
-            $restCustomersAttributesTransfer->getLastName()
+            $restCustomersAttributesTransfer->getLastName(),
         );
         $this->assertSame(
             $expectedRestCustomersAttributesTransfer->getDateOfBirth(),
-            $restCustomersAttributesTransfer->getDateOfBirth()
+            $restCustomersAttributesTransfer->getDateOfBirth(),
         );
         $this->assertSame(
             $expectedRestCustomersAttributesTransfer->getGender(),
-            $restCustomersAttributesTransfer->getGender()
+            $restCustomersAttributesTransfer->getGender(),
         );
         $this->assertSame(
             $expectedRestCustomersAttributesTransfer->getSalutation(),
-            $restCustomersAttributesTransfer->getSalutation()
+            $restCustomersAttributesTransfer->getSalutation(),
         );
     }
 }

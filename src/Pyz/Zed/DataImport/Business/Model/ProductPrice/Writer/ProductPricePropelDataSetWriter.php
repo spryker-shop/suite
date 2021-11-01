@@ -122,7 +122,7 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
                 'One of "%s" or "%s" must be in the data set. Given: "%s"',
                 static::COLUMN_ABSTRACT_SKU,
                 static::COLUMN_CONCRETE_SKU,
-                implode(', ', array_keys($dataSet->getArrayCopy()))
+                implode(', ', array_keys($dataSet->getArrayCopy())),
             ));
         }
 

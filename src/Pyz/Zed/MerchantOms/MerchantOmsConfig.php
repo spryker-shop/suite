@@ -15,6 +15,7 @@ class MerchantOmsConfig extends SprykerMerchantOmsConfig
      * @var string
      */
     protected const MAIN_MERCHANT_OMS_PROCESS_NAME = 'MainMerchantStateMachine';
+
     /**
      * @var string
      */
@@ -29,7 +30,7 @@ class MerchantOmsConfig extends SprykerMerchantOmsConfig
             parent::getMerchantProcessInitialStateMap(),
             [
                 static::MAIN_MERCHANT_OMS_PROCESS_NAME => static::MAIN_MERCHANT_STATE_MACHINE_INITIAL_STATE,
-            ]
+            ],
         );
     }
 
@@ -44,7 +45,7 @@ class MerchantOmsConfig extends SprykerMerchantOmsConfig
             parent::getMerchantOmsProcesses(),
             [
                 static::MAIN_MERCHANT_OMS_PROCESS_NAME,
-            ]
+            ],
         );
     }
 }

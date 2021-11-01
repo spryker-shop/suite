@@ -24,7 +24,7 @@ class GlueApplicationConfig extends SprykerGlueApplicationConfig
     {
         return array_merge(
             parent::getCorsAllowedHeaders(),
-            [CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID]
+            [CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID],
         );
     }
 

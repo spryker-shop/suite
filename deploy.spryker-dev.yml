@@ -42,7 +42,7 @@ tag: '1.0'
 
 environment: docker.dev
 image:
-    tag: spryker/php:7.3
+    tag: spryker/php:7.4
     environment:
         SPRYKER_HOOK_BEFORE_DEPLOY: 'vendor/bin/install -r pre-deploy -vvv'
         SPRYKER_HOOK_AFTER_DEPLOY: 'true'

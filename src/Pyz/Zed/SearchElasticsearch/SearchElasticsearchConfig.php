@@ -14,7 +14,7 @@ class SearchElasticsearchConfig extends SprykerSearchElasticsearchConfig
     /**
      * @project Only needed in internal nonsplit project, not in public split project.
      *
-     * @return array
+     * @return array<string>
      */
     public function getJsonSchemaDefinitionDirectories(): array
     {

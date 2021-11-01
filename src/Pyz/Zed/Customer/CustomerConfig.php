@@ -15,6 +15,7 @@ class CustomerConfig extends SprykerCustomerConfig
      * @var int
      */
     protected const MIN_LENGTH_CUSTOMER_PASSWORD = 8;
+
     /**
      * @var int
      */

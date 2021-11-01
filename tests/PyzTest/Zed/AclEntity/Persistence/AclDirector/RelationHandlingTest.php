@@ -75,7 +75,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CREATE,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -83,7 +83,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CREATE,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
@@ -105,7 +105,7 @@ class RelationHandlingTest extends Unit
         // Assert
         $this->expectException(OperationNotAuthorizedException::class);
         $this->expectExceptionMessage(
-            'Operation "create" is restricted for Orm\Zed\Product\Persistence\SpyProductAbstract'
+            'Operation "create" is restricted for Orm\Zed\Product\Persistence\SpyProductAbstract',
         );
 
         // Arrange
@@ -119,7 +119,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ
                     | AclEntityConstants::OPERATION_MASK_CREATE,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -127,7 +127,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
@@ -159,7 +159,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CREATE,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -167,13 +167,13 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_UPDATE,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
 
         $productAbstractEntity = $this->tester->findProductAbstractByIdProductAbstract(
-            $productAbstractTransfer->getIdProductAbstractOrFail()
+            $productAbstractTransfer->getIdProductAbstractOrFail(),
         );
         $productAbstractEntity->setSku($productAbstractEntity->getSku() . time());
         $newProductConcreteEntity = new SpyProduct();
@@ -194,7 +194,7 @@ class RelationHandlingTest extends Unit
         // Assert
         $this->expectException(OperationNotAuthorizedException::class);
         $this->expectExceptionMessage(
-            'Operation "update" is restricted for Orm\Zed\Product\Persistence\SpyProductAbstract'
+            'Operation "update" is restricted for Orm\Zed\Product\Persistence\SpyProductAbstract',
         );
 
         // Arrange
@@ -209,7 +209,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CREATE,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -217,13 +217,13 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CREATE,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
 
         $productAbstractEntity = $this->tester->findProductAbstractByIdProductAbstract(
-            $productAbstractTransfer->getIdProductAbstractOrFail()
+            $productAbstractTransfer->getIdProductAbstractOrFail(),
         );
         $productAbstractEntity->setSku($productAbstractEntity->getSku() . time());
         $newProductConcreteEntity = new SpyProduct();
@@ -252,7 +252,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_UPDATE,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -260,7 +260,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_UPDATE,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
@@ -268,7 +268,7 @@ class RelationHandlingTest extends Unit
         $productEntity = $this->tester->findProductConcreteByIdProduct($productTransfer->getIdProductConcreteOrFail());
         $productEntity->setSku($productEntity->getSku() . time());
         $productAbstractEntity = $this->tester->findProductAbstractByIdProductAbstract(
-            $productTransfer->getFkProductAbstractOrFail()
+            $productTransfer->getFkProductAbstractOrFail(),
         );
         $productAbstractEntity->setSku($productAbstractEntity->getSku() . time());
 
@@ -286,7 +286,7 @@ class RelationHandlingTest extends Unit
         // Assert
         $this->expectException(OperationNotAuthorizedException::class);
         $this->expectExceptionMessage(
-            'Operation "update" is restricted for Orm\Zed\Product\Persistence\SpyProductAbstract'
+            'Operation "update" is restricted for Orm\Zed\Product\Persistence\SpyProductAbstract',
         );
 
         // Arrange
@@ -301,7 +301,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_UPDATE,
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -310,7 +310,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
@@ -319,7 +319,7 @@ class RelationHandlingTest extends Unit
         $productEntity->setSku($productEntity->getSku() . time());
 
         $productAbstractEntity = $this->tester->findProductAbstractByIdProductAbstract(
-            $productTransfer->getFkProductAbstractOrFail()
+            $productTransfer->getFkProductAbstractOrFail(),
         );
         $productAbstractEntity->setSku($productAbstractEntity->getSku() . time());
 
@@ -347,7 +347,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_UPDATE,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -355,13 +355,13 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CREATE,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
 
         $productAbstractEntity = $this->tester->findProductAbstractByIdProductAbstract(
-            $productAbstractTransfer->getIdProductAbstract()
+            $productAbstractTransfer->getIdProductAbstract(),
         );
         $productAbstractEntity->setSku($productAbstractEntity->getSku() . time());
         $productAbstractEntity->addSpyProduct(new SpyProduct());
@@ -381,7 +381,7 @@ class RelationHandlingTest extends Unit
         // Assert
         $this->expectException(OperationNotAuthorizedException::class);
         $this->expectExceptionMessage(
-            'Operation "create" is restricted for Orm\Zed\Product\Persistence\SpyProduct'
+            'Operation "create" is restricted for Orm\Zed\Product\Persistence\SpyProduct',
         );
 
         // Arrange
@@ -396,7 +396,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_UPDATE,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -404,13 +404,13 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
 
         $productAbstractEntity = $this->tester->findProductAbstractByIdProductAbstract(
-            $productAbstractTransfer->getIdProductAbstract()
+            $productAbstractTransfer->getIdProductAbstract(),
         );
         $productAbstractEntity->setSku($productAbstractEntity->getSku() . time());
         $productAbstractEntity->addSpyProduct(new SpyProduct());
@@ -436,7 +436,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -444,7 +444,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
 
@@ -457,7 +457,7 @@ class RelationHandlingTest extends Unit
         $this->assertSame(1, count($query->getWith()));
         $this->assertStringContainsString(
             'join ' . SpyProductAbstractTableMap::TABLE_NAME,
-            $this->tester->purify($query->toString())
+            $this->tester->purify($query->toString()),
         );
         $this->assertStringContainsString(SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT, $query->toString());
         $this->assertStringContainsString(SpyProductAbstractTableMap::COL_FK_TAX_SET, $query->toString());
@@ -489,7 +489,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProduct::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -497,7 +497,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => 0,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
@@ -511,7 +511,7 @@ class RelationHandlingTest extends Unit
         $this->assertEmpty(count($query->getWith()));
         $this->assertStringContainsString(
             'join ' . SpyProductAbstractTableMap::TABLE_NAME,
-            $this->tester->purify($query->toString())
+            $this->tester->purify($query->toString()),
         );
         $this->assertStringNotContainsString(SpyProductAbstractTableMap::COL_FK_TAX_SET, $query->toString());
         $this->assertStringNotContainsString(SpyProductAbstractTableMap::COL_ATTRIBUTES, $query->toString());
@@ -542,7 +542,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
         $segmentTransfer = $this->tester->haveAclEntitySegment(
             [
@@ -550,7 +550,7 @@ class RelationHandlingTest extends Unit
                 AclEntitySegmentRequestTransfer::REFERENCE => AclQueryDirectorTester::ACL_ENTITY_SEGMENT_1_REFERENCE,
                 AclEntitySegmentRequestTransfer::ENTITY => SpyMerchant::class,
                 AclEntitySegmentRequestTransfer::ENTITY_IDS => [$merchantTransfer->getIdMerchantOrFail()],
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -559,7 +559,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::ID_ACL_ENTITY_SEGMENT => $segmentTransfer->getIdAclEntitySegmentOrFail(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
@@ -595,7 +595,7 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $aclQueryDirector = $this->tester->createAclQueryDirector(
@@ -605,8 +605,8 @@ class RelationHandlingTest extends Unit
                     SpyMerchant::class,
                     (new AclEntityMetadataTransfer())
                         ->setEntityName(SpyMerchant::class)
-                        ->setDefaultGlobalOperationMask(0)
-                )
+                        ->setDefaultGlobalOperationMask(0),
+                ),
         );
 
         $query = SpyMerchantProductAbstractQuery::create()->leftJoinWithMerchant();
@@ -638,14 +638,14 @@ class RelationHandlingTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $aclEntityMetadataCollectionTransfer = (new AclEntityMetadataCollectionTransfer())->addAclEntityMetadata(
             SpyMerchant::class,
             (new AclEntityMetadataTransfer())
                 ->setEntityName(SpyMerchant::class)
-                ->setDefaultGlobalOperationMask(AclEntityConstants::OPERATION_MASK_READ)
+                ->setDefaultGlobalOperationMask(AclEntityConstants::OPERATION_MASK_READ),
         );
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
 

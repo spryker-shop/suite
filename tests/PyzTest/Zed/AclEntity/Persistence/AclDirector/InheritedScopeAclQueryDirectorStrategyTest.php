@@ -47,22 +47,27 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
      * @var string
      */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_1_NAME = 'segment merchant 1';
+
     /**
      * @var string
      */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_1_REFERENCE = 'segment_1_reference';
+
     /**
      * @var string
      */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_2_NAME = 'segment merchant 2';
+
     /**
      * @var string
      */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_2_REFERENCE = 'segment_2_reference';
+
     /**
      * @var string
      */
     protected const ACL_ENTITY_SEGMENT_MERCHANT_3_NAME = 'segment merchant 3';
+
     /**
      * @var string
      */
@@ -84,7 +89,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
         $this->tester->setDependency(ProductOfferDependencyProvider::PLUGINS_PRODUCT_OFFER_POST_CREATE, []);
         $this->tester->setDependency(
             AclEntityDependencyProvider::PLUGINS_ACL_ENTITY_METADATA_COLLECTION_EXPANDER,
-            [new MerchantPortalAclEntityMetadataConfigExpanderPlugin()]
+            [new MerchantPortalAclEntityMetadataConfigExpanderPlugin()],
         );
 
         $this->tester->deleteTestData();
@@ -95,8 +100,8 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                         static::ACL_ENTITY_SEGMENT_MERCHANT_1_REFERENCE,
                         static::ACL_ENTITY_SEGMENT_MERCHANT_2_REFERENCE,
                         static::ACL_ENTITY_SEGMENT_MERCHANT_3_REFERENCE,
-                    ]
-                )
+                    ],
+                ),
         );
     }
 
@@ -116,7 +121,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CREATE,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -125,7 +130,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ
                     | AclEntityConstants::OPERATION_MASK_CREATE,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -133,13 +138,13 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductAbstractMerchantMetadataHierarchy()
+            $this->tester->createProductAbstractMerchantMetadataHierarchy(),
         );
 
         // Act, Assert
@@ -162,7 +167,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
             [
                 MerchantProductTransfer::ID_MERCHANT => $merchantTransfer->getIdMerchantOrFail(),
                 MerchantProductTransfer::ID_PRODUCT_ABSTRACT => $productAbstractTransfer->getIdProductAbstractOrFail(),
-            ]
+            ],
         );
 
         $aclEntitySegmentTransfer = $this->tester->haveAclEntitySegment(
@@ -171,7 +176,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntitySegmentRequestTransfer::REFERENCE => static::ACL_ENTITY_SEGMENT_MERCHANT_1_REFERENCE,
                 AclEntitySegmentRequestTransfer::ENTITY => SpyMerchant::class,
                 AclEntitySegmentRequestTransfer::ENTITY_IDS => [$merchantTransfer->getIdMerchantOrFail()],
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -180,7 +185,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_UPDATE,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -188,7 +193,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -198,20 +203,20 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::ID_ACL_ENTITY_SEGMENT => $aclEntitySegmentTransfer->getIdAclEntitySegment(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductAbstractMerchantMetadataHierarchy()
+            $this->tester->createProductAbstractMerchantMetadataHierarchy(),
         );
 
         // Act, Assert
         $aclQueryDirector->inspectUpdate(
             $this->tester->findProductAbstractByIdProductAbstract(
-                $productAbstractTransfer->getIdProductAbstractOrFail()
-            )
+                $productAbstractTransfer->getIdProductAbstractOrFail(),
+            ),
         );
     }
 
@@ -231,7 +236,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
             [
                 MerchantProductTransfer::ID_MERCHANT => $merchantTransfer->getIdMerchantOrFail(),
                 MerchantProductTransfer::ID_PRODUCT_ABSTRACT => $productAbstractTransfer->getIdProductAbstractOrFail(),
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -240,7 +245,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_DELETE,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -248,7 +253,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -257,20 +262,20 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductAbstractMerchantMetadataHierarchy()
+            $this->tester->createProductAbstractMerchantMetadataHierarchy(),
         );
 
         // Act, Assert
         $aclQueryDirector->inspectDelete(
             $this->tester->findProductAbstractByIdProductAbstract(
-                $productAbstractTransfer->getIdProductAbstractOrFail()
-            )
+                $productAbstractTransfer->getIdProductAbstractOrFail(),
+            ),
         );
     }
 
@@ -290,7 +295,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
             [
                 MerchantProductTransfer::ID_MERCHANT => $merchantTransfer->getIdMerchantOrFail(),
                 MerchantProductTransfer::ID_PRODUCT_ABSTRACT => $productAbstractTransfer->getIdProductAbstractOrFail(),
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -299,7 +304,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -307,7 +312,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -316,13 +321,13 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductAbstractMerchantMetadataHierarchy()
+            $this->tester->createProductAbstractMerchantMetadataHierarchy(),
         );
         // Act
         $query = $aclQueryDirector->applyAclRuleOnSelectQuery(SpyProductAbstractQuery::create());
@@ -347,7 +352,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductOffer::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CREATE,
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -356,13 +361,13 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductOfferMetadataHierarchy()
+            $this->tester->createProductOfferMetadataHierarchy(),
         );
 
         // Act, Assert
@@ -381,7 +386,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
 
         $merchantTransfer = $this->tester->haveMerchant();
         $productOfferTransfer = $this->tester->haveProductOffer(
-            [ProductOfferTransfer::MERCHANT_REFERENCE => $merchantTransfer->getMerchantReference()]
+            [ProductOfferTransfer::MERCHANT_REFERENCE => $merchantTransfer->getMerchantReference()],
         );
 
         $this->tester->haveAclEntityRule(
@@ -390,7 +395,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductOffer::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_UPDATE,
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -399,18 +404,18 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductOfferMetadataHierarchy()
+            $this->tester->createProductOfferMetadataHierarchy(),
         );
 
         // Act, Assert
         $aclQueryDirector->inspectUpdate(
-            $this->tester->findProductOfferByIdProductOffer($productOfferTransfer->getIdProductOfferOrFail())
+            $this->tester->findProductOfferByIdProductOffer($productOfferTransfer->getIdProductOfferOrFail()),
         );
     }
 
@@ -426,7 +431,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
 
         $merchantTransfer = $this->tester->haveMerchant();
         $productOfferTransfer = $this->tester->haveProductOffer(
-            [ProductOfferTransfer::MERCHANT_REFERENCE => $merchantTransfer->getMerchantReference()]
+            [ProductOfferTransfer::MERCHANT_REFERENCE => $merchantTransfer->getMerchantReference()],
         );
 
         $this->tester->haveAclEntityRule(
@@ -435,7 +440,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductOffer::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_DELETE,
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -444,18 +449,18 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductOfferMetadataHierarchy()
+            $this->tester->createProductOfferMetadataHierarchy(),
         );
 
         // Act, Assert
         $aclQueryDirector->inspectDelete(
-            $this->tester->findProductOfferByIdProductOffer($productOfferTransfer->getIdProductOfferOrFail())
+            $this->tester->findProductOfferByIdProductOffer($productOfferTransfer->getIdProductOfferOrFail()),
         );
     }
 
@@ -471,7 +476,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
 
         $merchantTransfer = $this->tester->haveMerchant();
         $this->tester->haveProductOffer(
-            [ProductOfferTransfer::MERCHANT_REFERENCE => $merchantTransfer->getMerchantReference()]
+            [ProductOfferTransfer::MERCHANT_REFERENCE => $merchantTransfer->getMerchantReference()],
         );
 
         $this->tester->haveAclEntityRule(
@@ -480,7 +485,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductOffer::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -489,13 +494,13 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
                 AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductOfferMetadataHierarchy()
+            $this->tester->createProductOfferMetadataHierarchy(),
         );
 
         $query = SpyProductOfferQuery::create()->filterByCreatedAt(time(), Criteria::LESS_THAN);
@@ -525,13 +530,13 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
         $productOfferMerchant1 = $this->tester->haveProductOffer(
             [
                 ProductOfferTransfer::MERCHANT_REFERENCE => $merchant1Transfer->getMerchantReference(),
-            ]
+            ],
         );
         $productOfferMerchant2 = $this->tester->haveProductOffer(
-            [ProductOfferTransfer::MERCHANT_REFERENCE => $merchant2Transfer->getMerchantReference()]
+            [ProductOfferTransfer::MERCHANT_REFERENCE => $merchant2Transfer->getMerchantReference()],
         );
         $productOfferMerchant3 = $this->tester->haveProductOffer(
-            [ProductOfferTransfer::MERCHANT_REFERENCE => $merchant3Transfer->getMerchantReference()]
+            [ProductOfferTransfer::MERCHANT_REFERENCE => $merchant3Transfer->getMerchantReference()],
         );
 
         $segmentMerchant1Transfer = $this->tester->haveAclEntitySegment(
@@ -540,7 +545,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntitySegmentRequestTransfer::REFERENCE => static::ACL_ENTITY_SEGMENT_MERCHANT_1_REFERENCE,
                 AclEntitySegmentRequestTransfer::ENTITY => SpyMerchant::class,
                 AclEntitySegmentRequestTransfer::ENTITY_IDS => [$merchant1Transfer->getIdMerchantOrFail()],
-            ]
+            ],
         );
         $segmentMerchant2Transfer = $this->tester->haveAclEntitySegment(
             [
@@ -548,7 +553,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntitySegmentRequestTransfer::REFERENCE => static::ACL_ENTITY_SEGMENT_MERCHANT_2_REFERENCE,
                 AclEntitySegmentRequestTransfer::ENTITY => SpyMerchant::class,
                 AclEntitySegmentRequestTransfer::ENTITY_IDS => [$merchant2Transfer->getIdMerchantOrFail()],
-            ]
+            ],
         );
         $segmentMerchant3Transfer = $this->tester->haveAclEntitySegment(
             [
@@ -556,7 +561,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntitySegmentRequestTransfer::REFERENCE => static::ACL_ENTITY_SEGMENT_MERCHANT_3_REFERENCE,
                 AclEntitySegmentRequestTransfer::ENTITY => SpyMerchant::class,
                 AclEntitySegmentRequestTransfer::ENTITY_IDS => [$merchant3Transfer->getIdMerchantOrFail()],
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -565,7 +570,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductOffer::class,
                 AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_INHERITED,
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CRUD,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -574,7 +579,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_SEGMENT,
                 AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -583,7 +588,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_SEGMENT,
                 AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -592,7 +597,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_SEGMENT,
                 AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
 
         $rolesTransfer = (new RolesTransfer())
@@ -601,7 +606,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
             ->addRole($merchant3RoleTransfer);
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductOfferMetadataHierarchy()
+            $this->tester->createProductOfferMetadataHierarchy(),
         );
 
         $query = SpyProductOfferQuery::create()->orderByIdProductOffer();
@@ -633,13 +638,13 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
             [
                 ProductOfferTransfer::FK_MERCHANT => $merchant1Transfer->getIdMerchantOrFail(),
                 ProductOfferTransfer::MERCHANT_REFERENCE => $merchant1Transfer->getMerchantReference(),
-            ]
+            ],
         );
         $merchant2ProductOffer = $this->tester->haveProductOffer(
             [
                 ProductOfferTransfer::FK_MERCHANT => $merchant2Transfer->getIdMerchantOrFail(),
                 ProductOfferTransfer::MERCHANT_REFERENCE => $merchant2Transfer->getMerchantReference(),
-            ]
+            ],
         );
         $aclEntitySegmentMerchant1 = $this->tester->haveAclEntitySegment(
             [
@@ -647,7 +652,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntitySegmentRequestTransfer::REFERENCE => AclQueryDirectorTester::ACL_ENTITY_SEGMENT_1_REFERENCE,
                 AclEntitySegmentRequestTransfer::ENTITY => SpyMerchant::class,
                 AclEntitySegmentRequestTransfer::ENTITY_IDS => [$merchant1Transfer->getIdMerchantOrFail()],
-            ]
+            ],
         );
         $aclEntitySegmentMerchant2 = $this->tester->haveAclEntitySegment(
             [
@@ -655,7 +660,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntitySegmentRequestTransfer::REFERENCE => AclQueryDirectorTester::ACL_ENTITY_SEGMENT_2_REFERENCE,
                 AclEntitySegmentRequestTransfer::ENTITY => SpyMerchant::class,
                 AclEntitySegmentRequestTransfer::ENTITY_IDS => [$merchant2Transfer->getIdMerchantOrFail()],
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -664,7 +669,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductOffer::class,
                 AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_INHERITED,
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CRUD,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -674,7 +679,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
                 AclEntityRuleTransfer::ID_ACL_ENTITY_SEGMENT => $aclEntitySegmentMerchant1
                     ->getIdAclEntitySegmentOrFail(),
-            ]
+            ],
         );
 
         $this->tester->haveAclEntityRule(
@@ -683,7 +688,7 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::ENTITY => SpyProductOffer::class,
                 AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_INHERITED,
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ]
+            ],
         );
         $this->tester->haveAclEntityRule(
             [
@@ -693,21 +698,21 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
                 AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
                 AclEntityRuleTransfer::ID_ACL_ENTITY_SEGMENT => $aclEntitySegmentMerchant2
                     ->getIdAclEntitySegmentOrFail(),
-            ]
+            ],
         );
 
         $rolesTransfer = (new RolesTransfer())->addRole($roleMerchant1Manager)->addRole($roleMerchant2Viewer);
 
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
-            $this->tester->createProductOfferMetadataHierarchy()
+            $this->tester->createProductOfferMetadataHierarchy(),
         );
 
         $merchant1ProductOfferEntity = $this->tester->findProductOfferByIdProductOffer(
-            $merchant1ProductOffer->getIdProductOfferOrFail()
+            $merchant1ProductOffer->getIdProductOfferOrFail(),
         );
         $merchant2ProductOfferEntity = $this->tester->findProductOfferByIdProductOffer(
-            $merchant2ProductOffer->getIdProductOfferOrFail()
+            $merchant2ProductOffer->getIdProductOfferOrFail(),
         );
 
         // Act, Assert
@@ -716,15 +721,15 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
         $aclQueryDirector->inspectDelete($merchant1ProductOfferEntity);
         $query = $aclQueryDirector->applyAclRuleOnSelectQuery(
             SpyProductOfferQuery::create()->filterByIdProductOffer_In(
-                [$merchant1ProductOffer->getIdProductOfferOrFail(), $merchant2ProductOffer->getIdProductOfferOrFail()]
-            )
+                [$merchant1ProductOffer->getIdProductOfferOrFail(), $merchant2ProductOffer->getIdProductOfferOrFail()],
+            ),
         );
         $this->assertSame(2, $query->count());
 
         // User can't manage merchant2 ProductOffer
         $this->expectException(OperationNotAuthorizedException::class);
         $this->expectExceptionMessage(
-            'Operation "update" is restricted for Orm\Zed\ProductOffer\Persistence\SpyProductOffer'
+            'Operation "update" is restricted for Orm\Zed\ProductOffer\Persistence\SpyProductOffer',
         );
         $aclQueryDirector->inspectUpdate($merchant2ProductOfferEntity);
     }

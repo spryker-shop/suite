@@ -11,6 +11,7 @@ class HomePage
 {
     /**
      * @see \Spryker\Zed\Application\Communication\Controller\IndexController
+     *
      * @var string
      */
     public const HOME_PAGE_URL = '/';

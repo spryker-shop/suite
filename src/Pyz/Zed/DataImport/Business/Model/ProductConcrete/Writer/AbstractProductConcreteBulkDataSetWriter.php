@@ -184,7 +184,7 @@ abstract class AbstractProductConcreteBulkDataSetWriter implements DataSetWriter
             $localizedAttributeArray[static::COLUMN_DESCRIPTION] = str_replace(
                 '"',
                 '',
-                $localizedAttributeArray[static::COLUMN_DESCRIPTION]
+                $localizedAttributeArray[static::COLUMN_DESCRIPTION],
             );
 
             static::$productLocalizedAttributesCollection[] = $localizedAttributeArray;

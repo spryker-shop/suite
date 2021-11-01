@@ -36,6 +36,7 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
      * @var string
      */
     protected const TEST_USERNAME = 'UserCartsUpSellingProductsRestApiFixtures';
+
     /**
      * @var string
      */
@@ -148,7 +149,7 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
             $this->productConcreteTransfer->getFkProductAbstract(),
             uniqid('test-', false),
             'up-selling',
-            $storeRelationTransfer
+            $storeRelationTransfer,
         );
     }
 

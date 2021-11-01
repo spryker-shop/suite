@@ -19,10 +19,12 @@ class DiscountStoreWriterStep implements DataImportStepInterface
      * @var int
      */
     public const BULK_SIZE = 100;
+
     /**
      * @var string
      */
     public const KEY_DISCOUNT_KEY = 'discount_key';
+
     /**
      * @var string
      */

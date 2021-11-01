@@ -23,7 +23,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
         return $this->getSearchClient()->expandQuery(
             $saleQueryPlugin,
             $this->getSaleSearchQueryExpanderPlugins(),
-            $requestParameters
+            $requestParameters,
         );
     }
 

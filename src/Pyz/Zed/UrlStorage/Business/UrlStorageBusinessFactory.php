@@ -42,7 +42,7 @@ class UrlStorageBusinessFactory extends SprykerUrlStorageBusinessFactory
             $this->getConfig()->isSendingToQueue(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createUrlStorageCteStrategyResolver()->resolve()
+            $this->createUrlStorageCteStrategyResolver()->resolve(),
         );
     }
 

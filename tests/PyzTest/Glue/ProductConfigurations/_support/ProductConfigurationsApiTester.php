@@ -54,12 +54,12 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
         $productConfigurationData = $this->grabProductConfigurationInstanceDataFromConcreteProductsResource();
         $restProductConfigurationInstanceAttributesTransfer = $this->mapProductConfigurationTransferToRestProductConfigurationInstanceAttributesTransfer(
             $productConfigurationTransfer,
-            new RestProductConfigurationInstanceAttributesTransfer()
+            new RestProductConfigurationInstanceAttributesTransfer(),
         );
 
         $this->assertEqualsCanonicalizing(
             $productConfigurationData,
-            $restProductConfigurationInstanceAttributesTransfer->toArray()
+            $restProductConfigurationInstanceAttributesTransfer->toArray(),
         );
     }
 
@@ -73,12 +73,12 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
         $productConfigurationData = $this->grabProductConfigurationInstanceDataFromOrdersResource();
         $restProductConfigurationInstanceAttributesTransfer = $this->mapProductConfigurationTransferToRestProductConfigurationInstanceAttributesTransfer(
             $productConfigurationTransfer,
-            new RestProductConfigurationInstanceAttributesTransfer()
+            new RestProductConfigurationInstanceAttributesTransfer(),
         );
 
         $this->assertEqualsCanonicalizing(
             $productConfigurationData,
-            $restProductConfigurationInstanceAttributesTransfer->toArray()
+            $restProductConfigurationInstanceAttributesTransfer->toArray(),
         );
     }
 

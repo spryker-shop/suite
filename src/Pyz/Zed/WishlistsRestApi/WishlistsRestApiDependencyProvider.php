@@ -7,8 +7,9 @@
 
 namespace Pyz\Zed\WishlistsRestApi;
 
-use Spryker\Zed\MerchantProductOfferWishlistRestApi\Communication\Plugin\EmptyProductOfferRestWishlistItemsAttributesDeleteStrategyPlugin;
 use Spryker\Zed\MerchantProductOfferWishlistRestApi\Communication\Plugin\ProductOfferRestWishlistItemsAttributesDeleteStrategyPlugin;
+use Spryker\Zed\ProductConfigurationWishlistsRestApi\Communication\Plugin\WishlistsRestApi\ProductConfigurationRestWishlistItemsAttributesDeleteStrategyPlugin;
+use Spryker\Zed\ProductConfigurationWishlistsRestApi\Communication\Plugin\WishlistsRestApi\ProductConfigurationRestWishlistItemsAttributesUpdateStrategyPlugin;
 use Spryker\Zed\WishlistsRestApi\WishlistsRestApiDependencyProvider as SprykerWishlistsRestApiDependencyProvider;
 
 class WishlistsRestApiDependencyProvider extends SprykerWishlistsRestApiDependencyProvider
@@ -19,8 +20,18 @@ class WishlistsRestApiDependencyProvider extends SprykerWishlistsRestApiDependen
     protected function getRestWishlistItemsAttributesDeleteStrategyPlugins(): array
     {
         return [
+            new ProductConfigurationRestWishlistItemsAttributesDeleteStrategyPlugin(),
             new ProductOfferRestWishlistItemsAttributesDeleteStrategyPlugin(),
-            new EmptyProductOfferRestWishlistItemsAttributesDeleteStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\WishlistsRestApiExtension\Dependency\Plugin\RestWishlistItemsAttributesUpdateStrategyPluginInterface>
+     */
+    protected function getRestWishlistItemsAttributesUpdateStrategyPlugins(): array
+    {
+        return [
+            new ProductConfigurationRestWishlistItemsAttributesUpdateStrategyPlugin(),
         ];
     }
 }

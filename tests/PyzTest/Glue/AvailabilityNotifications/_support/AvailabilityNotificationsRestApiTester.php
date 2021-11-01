@@ -43,7 +43,7 @@ class AvailabilityNotificationsRestApiTester extends ApiEndToEndTester
                 'customers' => AvailabilityNotificationsRestApiConfig::RESOURCE_CUSTOMERS,
                 'customerReference' => $customerReference,
                 'availabilityNotifications' => AvailabilityNotificationsRestApiConfig::RESOURCE_AVAILABILITY_NOTIFICATIONS,
-            ]
+            ],
         );
     }
 }

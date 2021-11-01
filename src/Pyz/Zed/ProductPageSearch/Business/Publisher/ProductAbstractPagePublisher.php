@@ -93,7 +93,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             $productPageSearchWriter,
             $productPageSearchConfig,
             $storeFacade,
-            $addToCartSkuReader
+            $addToCartSkuReader,
         );
 
         $this->synchronizationService = $synchronizationService;
@@ -120,7 +120,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         $pairedEntities = $this->pairProductAbstractLocalizedEntitiesWithProductAbstractPageSearchEntities(
             $productAbstractLocalizedEntities,
             $productAbstractPageSearchEntities,
-            $productPageLoadTransfer
+            $productPageLoadTransfer,
         );
 
         foreach ($pairedEntities as $pairedEntity) {
@@ -139,7 +139,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
                 $pairedEntity[static::STORE_NAME],
                 $pairedEntity[static::LOCALE_NAME],
                 $pageDataExpanderPlugins,
-                $isRefresh
+                $isRefresh,
             );
         }
 
@@ -172,7 +172,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         $productPageSearchTransfer = $this->getProductPageSearchTransfer(
             $productAbstractLocalizedEntity,
             $productAbstractPageSearchEntity,
-            $isRefresh
+            $isRefresh,
         );
 
         $productPageSearchTransfer->setStore($storeName);

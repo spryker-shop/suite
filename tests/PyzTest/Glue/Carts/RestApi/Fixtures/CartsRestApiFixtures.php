@@ -32,6 +32,7 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
      * @var string
      */
     protected const TEST_USERNAME = 'UserCartsRestApiFixtures';
+
     /**
      * @var string
      */
@@ -41,14 +42,17 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
      * @var int
      */
     public const QUANTITY_FOR_ITEM_UPDATE = 33;
+
     /**
      * @var string
      */
     public const STORE_DE = 'DE';
+
     /**
      * @var string
      */
     public const TEST_CART_NAME = 'Test cart name';
+
     /**
      * @var string
      */

@@ -57,7 +57,7 @@ class WishlistsApiTester extends ApiEndToEndTester
             '{resourceWishlists}' . $this->formatQueryInclude($includes),
             [
                 'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
-            ]
+            ],
         );
     }
 
@@ -74,7 +74,7 @@ class WishlistsApiTester extends ApiEndToEndTester
             [
                 'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
                 'wishlistUuid' => $wishlistUuid,
-            ]
+            ],
         );
     }
 
@@ -94,7 +94,7 @@ class WishlistsApiTester extends ApiEndToEndTester
                 'wishlistUuid' => $wishlistUuid,
                 'resourceWishlistItems' => WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 
@@ -111,7 +111,7 @@ class WishlistsApiTester extends ApiEndToEndTester
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 }

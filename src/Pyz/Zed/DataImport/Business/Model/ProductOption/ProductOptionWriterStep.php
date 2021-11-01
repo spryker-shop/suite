@@ -38,34 +38,42 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
      * @var string
      */
     public const KEY_ABSTRACT_PRODUCT_SKUS = 'abstract_product_skus';
+
     /**
      * @var string
      */
     public const KEY_GROUP_NAME_TRANSLATION_KEY = 'group_name_translation_key';
+
     /**
      * @var string
      */
     public const KEY_PRODUCT_OPTION_GROUP_KEY = 'product_option_group_key';
+
     /**
      * @var string
      */
     public const KEY_IS_ACTIVE = 'is_active';
+
     /**
      * @var string
      */
     public const KEY_SKU = 'sku';
+
     /**
      * @var string
      */
     public const KEY_OPTION_NAME_TRANSLATION_KEY = 'option_name_translation_key';
+
     /**
      * @var string
      */
     public const KEY_OPTION_NAME = 'option_name';
+
     /**
      * @var string
      */
     public const KEY_GROUP_NAME = 'group_name';
+
     /**
      * @var string
      */

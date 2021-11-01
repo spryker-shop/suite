@@ -1,6 +1,6 @@
 # Spryker Suite
 [![Build Status](https://github.com/spryker-shop/suite/workflows/CI/badge.svg)](https://github.com/spryker-shop/suite/actions?query=workflow%3ACI)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
 
 Suite (internal)
 [![Build Status](https://travis-ci.com/spryker/suite-nonsplit.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/spryker/suite-nonsplit)
@@ -26,7 +26,7 @@ If you encounter any issues during or after the installation, see [Troubleshooti
 
 For detailed installation instructions of Spryker in Docker, see [Getting Started with Docker](https://documentation.spryker.com/docs/getting-started-with-docker).
 
-For troubleshooting of Docker based instanaces, see [Troubleshooting](https://documentation.spryker.com/docs/spryker-in-docker-troubleshooting).
+For troubleshooting of Docker based instances, see [Troubleshooting](https://documentation.spryker.com/docs/spryker-in-docker-troubleshooting).
 
 ### Prerequisites
 

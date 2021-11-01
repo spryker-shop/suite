@@ -51,7 +51,7 @@ class ExampleStateMachineItemReader
     }
 
     /**
-     * @param \Propel\Runtime\Collection\ObjectCollection|array<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem> $exampleStateMachineItems
+     * @param \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem[] $exampleStateMachineItems
      *
      * @return array<\Generated\Shared\Transfer\StateMachineItemTransfer>
      */

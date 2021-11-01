@@ -14,6 +14,7 @@ class PublisherConstants
      *  - If value is true, P&S will use CTEs for data handling.
      *
      * @api
+     *
      * @var string
      */
     public const IS_CTE_ENABLED = 'PUBLISHER:IS_CTE_ENABLED';

@@ -210,7 +210,7 @@ class CalculationBusinessTester extends Actor
                 new RefundableAmountCalculatorPlugin(),
                 new RefundTotalCalculatorPlugin(),
                 new GrandTotalCalculatorPlugin(),
-            ]
+            ],
         );
 
         return $calculationFacade->recalculateQuote($quoteTransfer);

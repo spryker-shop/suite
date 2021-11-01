@@ -26,6 +26,7 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
      * @var string
      */
     public const PRODUCT_CONFIGURATION_INSTANCE_ATTRIBUTE_JSON_PATH = '.productConfigurationInstance';
+
     /**
      * @var array
      */
@@ -66,6 +67,7 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
             ],
         ],
     ];
+
     /**
      * @var string
      */
@@ -80,6 +82,7 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
      * @var string
      */
     protected const TEST_USERNAME = 'UserProductConfigurationsRestApiFixtures';
+
     /**
      * @var string
      */
@@ -200,9 +203,9 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
             $this->createQuoteTransfer(
                 $this->customerTransfer,
                 $this->productConcreteTransfer,
-                $productConfigurationInstanceTransfer
+                $productConfigurationInstanceTransfer,
             ),
-            $this->createStateMachine($I)
+            $this->createStateMachine($I),
         );
     }
 

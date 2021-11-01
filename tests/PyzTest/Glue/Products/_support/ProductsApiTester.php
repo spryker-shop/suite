@@ -59,7 +59,7 @@ class ProductsApiTester extends ApiEndToEndTester
             [
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
-            ]
+            ],
         );
     }
 
@@ -77,7 +77,7 @@ class ProductsApiTester extends ApiEndToEndTester
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
                 'resourceAbstractProductPrices' => ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
-            ]
+            ],
         );
     }
 
@@ -94,7 +94,7 @@ class ProductsApiTester extends ApiEndToEndTester
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 
@@ -112,7 +112,7 @@ class ProductsApiTester extends ApiEndToEndTester
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
                 'resourceConcreteProductPrices' => ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
-            ]
+            ],
         );
     }
 }

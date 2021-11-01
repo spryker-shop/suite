@@ -92,6 +92,9 @@ use SprykerShop\Yves\ProductConfigurationCartWidget\Widget\ProductConfigurationC
 use SprykerShop\Yves\ProductConfigurationCartWidget\Widget\ProductConfigurationQuoteValidatorWidget;
 use SprykerShop\Yves\ProductConfigurationWidget\Widget\ProductConfigurationProductDetailPageButtonWidget;
 use SprykerShop\Yves\ProductConfigurationWidget\Widget\ProductConfigurationProductViewDisplayWidget;
+use SprykerShop\Yves\ProductConfigurationWishlistWidget\Widget\ProductConfigurationWishlistFormWidget;
+use SprykerShop\Yves\ProductConfigurationWishlistWidget\Widget\ProductConfigurationWishlistItemDisplayWidget;
+use SprykerShop\Yves\ProductConfigurationWishlistWidget\Widget\ProductConfigurationWishlistPageButtonWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedNoteWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedWidget;
 use SprykerShop\Yves\ProductGroupWidget\Widget\ProductGroupColorWidget;
@@ -286,6 +289,9 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConfigurationQuoteValidatorWidget::class,
             MerchantSalesReturnCreateFormWidget::class,
             CartAddProductAsSeparateItemWidget::class,
+            ProductConfigurationWishlistFormWidget::class,
+            ProductConfigurationWishlistItemDisplayWidget::class,
+            ProductConfigurationWishlistPageButtonWidget::class,
         ];
     }
 

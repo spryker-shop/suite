@@ -36,11 +36,11 @@ class ProductImageBulkPdoMariaDbDataSetWriter extends AbstractProductImageBulkDa
         $fkLocaleIds = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE);
         $fkProductAbstractIds = $this->dataFormatter->getCollectionDataByKey(
             static::$productImageDataCollection,
-            ProductImageHydratorStep::KEY_FK_PRODUCT_ABSTRACT
+            ProductImageHydratorStep::KEY_FK_PRODUCT_ABSTRACT,
         );
         $fkProductConcreteIds = $this->dataFormatter->getCollectionDataByKey(
             static::$productImageDataCollection,
-            ProductImageHydratorStep::KEY_FK_PRODUCT
+            ProductImageHydratorStep::KEY_FK_PRODUCT,
         );
 
         $rowsCount = count($productImageSetNames);
@@ -56,7 +56,7 @@ class ProductImageBulkPdoMariaDbDataSetWriter extends AbstractProductImageBulkDa
         $this->propelExecutor->execute(
             $this->productImageSql->createProductImageSetSQL(),
             $queryParameters,
-            false
+            false,
         );
     }
 
@@ -78,7 +78,7 @@ class ProductImageBulkPdoMariaDbDataSetWriter extends AbstractProductImageBulkDa
 
         $result = $this->propelExecutor->execute(
             $this->productImageSql->createOrUpdateProductImageSQL(),
-            $parameters
+            $parameters,
         );
 
         return $this->dataFormatter->getCollectionDataByKey($result, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE);
@@ -109,7 +109,7 @@ class ProductImageBulkPdoMariaDbDataSetWriter extends AbstractProductImageBulkDa
         $this->propelExecutor->execute(
             $this->productImageSql->createProductImageSetRelationSQL(),
             $parameters,
-            false
+            false,
         );
     }
 
@@ -126,7 +126,7 @@ class ProductImageBulkPdoMariaDbDataSetWriter extends AbstractProductImageBulkDa
         ];
         $updatedProductImageSets = $this->propelExecutor->execute(
             $this->productImageSql->findProductImageSetsByProductImageIds(),
-            $parameters
+            $parameters,
         );
 
         $this->addProductImageSetChangeEvent($updatedProductImageSets);

@@ -21,7 +21,7 @@ class AclConfig extends SprykerAclConfig
     protected const RULE_TYPE_DENY = 'deny';
 
     /**
-     * @return array
+     * @return array<array<string, mixed>>
      */
     public function getInstallerRules()
     {
@@ -32,7 +32,7 @@ class AclConfig extends SprykerAclConfig
     }
 
     /**
-     * @return array
+     * @return array<string, array>
      */
     public function getInstallerUsers()
     {
@@ -55,9 +55,9 @@ class AclConfig extends SprykerAclConfig
     }
 
     /**
-     * @param array<string[]> $installerRules
+     * @param array<array<string, mixed>> $installerRules
      *
-     * @return array<string[]>
+     * @return array<array<string, mixed>>
      */
     protected function addMerchantPortalInstallerRules(array $installerRules): array
     {
@@ -86,7 +86,7 @@ class AclConfig extends SprykerAclConfig
     }
 
     /**
-     * @return array
+     * @return array<int, array<string, mixed>>
      */
     public function getInstallerRoles(): array
     {

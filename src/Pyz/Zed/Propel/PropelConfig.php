@@ -20,7 +20,7 @@ class PropelConfig extends SprykerPropelConfig
     {
         return array_merge(
             parent::getCorePropelSchemaPathPatterns(),
-            [APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/*/Zed/*/Persistence/Propel/Schema/']
+            [APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/*/Zed/*/Persistence/Propel/Schema/'],
         );
     }
 }

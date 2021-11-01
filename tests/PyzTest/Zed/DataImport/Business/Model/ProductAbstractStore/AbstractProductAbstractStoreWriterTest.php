@@ -90,7 +90,7 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
             $this->assertNotEmpty($productAbstractStoreDataSet);
             $this->assertSame(
                 $productAbstractStoreDataSet[ProductAbstractStoreHydratorStep::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER]->getStoreName(),
-                $productAbstractStore[SpyStoreTableMap::COL_NAME]
+                $productAbstractStore[SpyStoreTableMap::COL_NAME],
             );
         }
     }

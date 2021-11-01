@@ -14,6 +14,7 @@ use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\WishlistPage\MerchantProd
 use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\WishlistPage\MerchantProductOfferWishlistItemRequestExpanderPlugin;
 use SprykerShop\Yves\MerchantProductWidget\Plugin\WishlistPage\MerchantProductWishlistItemMetaFormExpanderPlugin;
 use SprykerShop\Yves\MerchantProductWidget\Plugin\WishlistPage\MerchantProductWishlistItemRequestExpanderPlugin;
+use SprykerShop\Yves\ProductConfigurationWishlistWidget\Plugin\WishlistPage\ProductConfigurationWishlistItemRequestExpanderPlugin;
 use SprykerShop\Yves\WishlistPage\WishlistPageDependencyProvider as SprykerWishlistPageDependencyProvider;
 
 class WishlistPageDependencyProvider extends SprykerWishlistPageDependencyProvider
@@ -38,6 +39,7 @@ class WishlistPageDependencyProvider extends SprykerWishlistPageDependencyProvid
         return [
             new MerchantProductWishlistItemRequestExpanderPlugin(),
             new MerchantProductOfferWishlistItemRequestExpanderPlugin(),
+            new ProductConfigurationWishlistItemRequestExpanderPlugin(),
         ];
     }
 

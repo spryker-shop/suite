@@ -29,18 +29,22 @@ class ProductOptionPriceWriterStep extends PublishAwareStep implements DataImpor
      * @var string
      */
     public const KEY_PRODUCT_OPTION_SKU = 'product_option_sku';
+
     /**
      * @var string
      */
     public const KEY_STORE = 'store';
+
     /**
      * @var string
      */
     public const KEY_CURRENCY = 'currency';
+
     /**
      * @var string
      */
     public const KEY_NET_AMOUNT = 'value_net';
+
     /**
      * @var string
      */
@@ -70,7 +74,7 @@ class ProductOptionPriceWriterStep extends PublishAwareStep implements DataImpor
 
         if ($productOptionValueEntity === null) {
             throw new InvalidDataException(
-                sprintf('Product option SKU (%s) not found in permanent storage.', $dataSet[static::KEY_PRODUCT_OPTION_SKU])
+                sprintf('Product option SKU (%s) not found in permanent storage.', $dataSet[static::KEY_PRODUCT_OPTION_SKU]),
             );
         }
 

@@ -131,7 +131,7 @@ class WishlistRestApiCest
             $wishlistUuid,
             [
                 WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-            ]
+            ],
         );
 
         // Act
@@ -146,14 +146,14 @@ class WishlistRestApiCest
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-                $productConcreteSku
+                $productConcreteSku,
             );
 
         $I->amSure('returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-                $productConcreteSku
+                $productConcreteSku,
             );
 
         $I->amSure('include has correct self-link')
@@ -161,7 +161,7 @@ class WishlistRestApiCest
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
                 $productConcreteSku,
-                $I->buildWishlistItemUrl($wishlistUuid, $productConcreteSku)
+                $I->buildWishlistItemUrl($wishlistUuid, $productConcreteSku),
             );
     }
 
@@ -183,7 +183,7 @@ class WishlistRestApiCest
             [
                 WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            ]
+            ],
         );
 
         // Act
@@ -200,14 +200,14 @@ class WishlistRestApiCest
                 WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
                 $productConcreteSku,
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku
+                $productConcreteSku,
             );
 
         $I->amSure('returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku
+                $productConcreteSku,
             );
 
         $I->amSure('include has correct self-link')
@@ -215,7 +215,7 @@ class WishlistRestApiCest
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 $productConcreteSku,
-                $I->buildProductConcreteUrl($productConcreteSku)
+                $I->buildProductConcreteUrl($productConcreteSku),
             );
     }
 

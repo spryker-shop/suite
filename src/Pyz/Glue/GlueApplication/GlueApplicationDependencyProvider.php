@@ -482,383 +482,383 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     ): ResourceRelationshipCollectionInterface {
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new AbstractProductsProductImageSetsResourceRelationshipPlugin()
+            new AbstractProductsProductImageSetsResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            new ConcreteProductsProductImageSetsResourceRelationshipPlugin()
+            new ConcreteProductsProductImageSetsResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            new ConcreteProductBySkuResourceRelationshipPlugin()
+            new ConcreteProductBySkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            new ConcreteProductBySkuResourceRelationshipPlugin()
+            new ConcreteProductBySkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-            new ConcreteProductBySkuResourceRelationshipPlugin()
+            new ConcreteProductBySkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-            new MerchantByMerchantReferenceResourceRelationshipPlugin()
+            new MerchantByMerchantReferenceResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH,
-            new CatalogSearchAbstractProductsResourceRelationshipPlugin()
+            new CatalogSearchAbstractProductsResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH_SUGGESTIONS,
-            new CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin()
+            new CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new AbstractProductAvailabilitiesByResourceIdResourceRelationshipPlugin()
+            new AbstractProductAvailabilitiesByResourceIdResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            new ConcreteProductAvailabilitiesByResourceIdResourceRelationshipPlugin()
+            new ConcreteProductAvailabilitiesByResourceIdResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new AbstractProductPricesByResourceIdResourceRelationshipPlugin()
+            new AbstractProductPricesByResourceIdResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            new ConcreteProductPricesByResourceIdResourceRelationshipPlugin()
+            new ConcreteProductPricesByResourceIdResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new AbstractProductsCategoriesResourceRelationshipPlugin()
+            new AbstractProductsCategoriesResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new ProductTaxSetByProductAbstractSkuResourceRelationshipPlugin()
+            new ProductTaxSetByProductAbstractSkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CustomersRestApiConfig::RESOURCE_CUSTOMERS,
-            new CustomersToAddressesRelationshipPlugin()
+            new CustomersToAddressesRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CustomersRestApiConfig::RESOURCE_CUSTOMERS,
-            new WishlistRelationshipByResourceIdPlugin()
+            new WishlistRelationshipByResourceIdPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new ProductLabelsRelationshipByResourceIdPlugin()
+            new ProductLabelsRelationshipByResourceIdPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            new ProductLabelByProductConcreteSkuResourceRelationshipPlugin()
+            new ProductLabelByProductConcreteSkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CheckoutRestApiConfig::RESOURCE_CHECKOUT,
-            new OrderRelationshipByOrderReferencePlugin()
+            new OrderRelationshipByOrderReferencePlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CompanyUsersRestApiConfig::RESOURCE_COMPANY_USERS,
-            new CompanyByCompanyUserResourceRelationshipPlugin()
+            new CompanyByCompanyUserResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CompanyUsersRestApiConfig::RESOURCE_COMPANY_USERS,
-            new CompanyBusinessUnitByCompanyUserResourceRelationshipPlugin()
+            new CompanyBusinessUnitByCompanyUserResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CompanyUsersRestApiConfig::RESOURCE_COMPANY_USERS,
-            new CompanyRoleByCompanyUserResourceRelationshipPlugin()
+            new CompanyRoleByCompanyUserResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             NavigationsRestApiConfig::RESOURCE_NAVIGATIONS,
-            new CategoryNodeByResourceIdResourceRelationshipPlugin()
+            new CategoryNodeByResourceIdResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new ConcreteProductsByProductConcreteIdsResourceRelationshipPlugin()
+            new ConcreteProductsByProductConcreteIdsResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CompanyRolesRestApiConfig::RESOURCE_COMPANY_ROLES,
-            new CompanyByCompanyRoleResourceRelationshipPlugin()
+            new CompanyByCompanyRoleResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CompanyBusinessUnitsRestApiConfig::RESOURCE_COMPANY_BUSINESS_UNITS,
-            new CompanyByCompanyBusinessUnitResourceRelationshipPlugin()
+            new CompanyByCompanyBusinessUnitResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CompanyBusinessUnitsRestApiConfig::RESOURCE_COMPANY_BUSINESS_UNITS,
-            new CompanyBusinessUnitAddressesByCompanyBusinessUnitResourceRelationshipPlugin()
+            new CompanyBusinessUnitAddressesByCompanyBusinessUnitResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CompanyUsersRestApiConfig::RESOURCE_COMPANY_USERS,
-            new CustomerByCompanyUserResourceRelationshipPlugin()
+            new CustomerByCompanyUserResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
-            new CartPermissionGroupByQuoteResourceRelationshipPlugin()
+            new CartPermissionGroupByQuoteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
-            new CartItemsByQuoteResourceRelationshipPlugin()
+            new CartItemsByQuoteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
-            new SharedCartByCartIdResourceRelationshipPlugin()
+            new SharedCartByCartIdResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             SharedCartsRestApiConfig::RESOURCE_SHARED_CARTS,
-            new CartPermissionGroupByShareDetailResourceRelationshipPlugin()
+            new CartPermissionGroupByShareDetailResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             SharedCartsRestApiConfig::RESOURCE_SHARED_CARTS,
-            new CompanyUserByShareDetailResourceRelationshipPlugin()
+            new CompanyUserByShareDetailResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
-            new VoucherByQuoteResourceRelationshipPlugin()
+            new VoucherByQuoteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new VoucherByQuoteResourceRelationshipPlugin()
+            new VoucherByQuoteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
-            new GiftCardByQuoteResourceRelationshipPlugin()
+            new GiftCardByQuoteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new GiftCardByQuoteResourceRelationshipPlugin()
+            new GiftCardByQuoteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
-            new CartRuleByQuoteResourceRelationshipPlugin()
+            new CartRuleByQuoteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new CartRuleByQuoteResourceRelationshipPlugin()
+            new CartRuleByQuoteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new ProductOptionsByProductAbstractSkuResourceRelationshipPlugin()
+            new ProductOptionsByProductAbstractSkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            new ProductOptionsByProductConcreteSkuResourceRelationshipPlugin()
+            new ProductOptionsByProductConcreteSkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new ProductReviewsRelationshipByProductAbstractSkuPlugin()
+            new ProductReviewsRelationshipByProductAbstractSkuPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new MerchantByMerchantReferenceResourceRelationshipPlugin()
+            new MerchantByMerchantReferenceResourceRelationshipPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            new ProductReviewsRelationshipByProductConcreteSkuPlugin()
+            new ProductReviewsRelationshipByProductConcreteSkuPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LIST_ITEMS,
-            new ConcreteProductBySkuResourceRelationshipPlugin()
+            new ConcreteProductBySkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LISTS,
-            new ShoppingListItemByShoppingListResourceRelationshipPlugin()
+            new ShoppingListItemByShoppingListResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
-            new ShipmentsByCheckoutDataResourceRelationshipPlugin()
+            new ShipmentsByCheckoutDataResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ShipmentsRestApiConfig::RESOURCE_SHIPMENTS,
-            new ShipmentMethodsByShipmentResourceRelationshipPlugin()
+            new ShipmentMethodsByShipmentResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
-            new PaymentMethodsByCheckoutDataResourceRelationshipPlugin()
+            new PaymentMethodsByCheckoutDataResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
-            new CompanyBusinessUnitAddressByCheckoutDataResourceRelationshipPlugin()
+            new CompanyBusinessUnitAddressByCheckoutDataResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
-            new AddressByCheckoutDataResourceRelationshipPlugin()
+            new AddressByCheckoutDataResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
-            new PromotionItemByQuoteTransferResourceRelationshipPlugin()
+            new PromotionItemByQuoteTransferResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new PromotionItemByQuoteTransferResourceRelationshipPlugin()
+            new PromotionItemByQuoteTransferResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             DiscountPromotionsRestApiConfig::RESOURCE_PROMOTIONAL_ITEMS,
-            new ProductAbstractBySkuResourceRelationshipPlugin()
+            new ProductAbstractBySkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            new ProductMeasurementUnitsByProductConcreteResourceRelationshipPlugin()
+            new ProductMeasurementUnitsByProductConcreteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            new SalesUnitsByProductConcreteResourceRelationshipPlugin()
+            new SalesUnitsByProductConcreteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductMeasurementUnitsRestApiConfig::RESOURCE_SALES_UNITS,
-            new ProductMeasurementUnitsBySalesUnitResourceRelationshipPlugin()
+            new ProductMeasurementUnitsBySalesUnitResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            new SalesUnitsByCartItemResourceRelationshipPlugin()
+            new SalesUnitsByCartItemResourceRelationshipPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            new MerchantByMerchantReferenceResourceRelationshipPlugin()
+            new MerchantByMerchantReferenceResourceRelationshipPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            new SalesUnitsByCartItemResourceRelationshipPlugin()
+            new SalesUnitsByCartItemResourceRelationshipPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            new MerchantByMerchantReferenceResourceRelationshipPlugin()
+            new MerchantByMerchantReferenceResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             SalesReturnsRestApiConfig::RESOURCE_RETURNS,
-            new ReturnItemByReturnResourceRelationshipPlugin()
+            new ReturnItemByReturnResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             SalesReturnsRestApiConfig::RESOURCE_RETURN_ITEMS,
-            new OrderItemByResourceIdResourceRelationshipPlugin()
+            new OrderItemByResourceIdResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             MerchantsRestApiConfig::RESOURCE_MERCHANTS,
-            new MerchantOpeningHoursByMerchantReferenceResourceRelationshipPlugin()
+            new MerchantOpeningHoursByMerchantReferenceResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             MerchantsRestApiConfig::RESOURCE_MERCHANTS,
-            new MerchantAddressByMerchantReferenceResourceRelationshipPlugin()
+            new MerchantAddressByMerchantReferenceResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             OrdersRestApiConfig::RESOURCE_ORDERS,
-            new MerchantsByOrderResourceRelationshipPlugin()
+            new MerchantsByOrderResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            new ProductOffersByProductConcreteSkuResourceRelationshipPlugin()
+            new ProductOffersByProductConcreteSkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             MerchantProductOffersRestApiConfig::RESOURCE_PRODUCT_OFFERS,
-            new ProductOfferAvailabilitiesByProductOfferReferenceResourceRelationshipPlugin()
+            new ProductOfferAvailabilitiesByProductOfferReferenceResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             MerchantProductOffersRestApiConfig::RESOURCE_PRODUCT_OFFERS,
-            new ProductOfferPriceByProductOfferReferenceResourceRelationshipPlugin()
+            new ProductOfferPriceByProductOfferReferenceResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             MerchantProductOffersRestApiConfig::RESOURCE_PRODUCT_OFFERS,
-            new MerchantByMerchantReferenceResourceRelationshipPlugin()
+            new MerchantByMerchantReferenceResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CmsPagesRestApiConfig::RESOURCE_CMS_PAGES,
-            new ContentBannerByCmsPageResourceRelationshipPlugin()
+            new ContentBannerByCmsPageResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CmsPagesRestApiConfig::RESOURCE_CMS_PAGES,
-            new ContentProductAbstractListByCmsPageResourceRelationshipPlugin()
+            new ContentProductAbstractListByCmsPageResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ContentProductAbstractListsRestApiConfig::RESOURCE_CONTENT_PRODUCT_ABSTRACT_LISTS,
-            new ProductAbstractByContentProductAbstractListResourceRelationshipPlugin()
+            new ProductAbstractByContentProductAbstractListResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            new ProductAbstractByProductAbstractSkuResourceRelationshipPlugin()
+            new ProductAbstractByProductAbstractSkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductBundlesRestApiConfig::RESOURCE_BUNDLED_PRODUCTS,
-            new ConcreteProductBySkuResourceRelationshipPlugin()
+            new ConcreteProductBySkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            new BundledProductByProductConcreteSkuResourceRelationshipPlugin()
+            new BundledProductByProductConcreteSkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
-            new BundleItemByQuoteResourceRelationshipPlugin()
+            new BundleItemByQuoteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new GuestBundleItemByQuoteResourceRelationshipPlugin()
+            new GuestBundleItemByQuoteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductBundleCartsRestApiConfig::RESOURCE_BUNDLE_ITEMS,
-            new BundledItemByQuoteResourceRelationshipPlugin()
+            new BundledItemByQuoteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductBundleCartsRestApiConfig::RESOURCE_BUNDLE_ITEMS,
-            new ConcreteProductBySkuResourceRelationshipPlugin()
+            new ConcreteProductBySkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             ProductBundleCartsRestApiConfig::RESOURCE_BUNDLED_ITEMS,
-            new ConcreteProductBySkuResourceRelationshipPlugin()
+            new ConcreteProductBySkuResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new GuestCartItemsByQuoteResourceRelationshipPlugin()
+            new GuestCartItemsByQuoteResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             OrdersRestApiConfig::RESOURCE_ORDERS,
-            new OrderShipmentByOrderResourceRelationshipPlugin()
+            new OrderShipmentByOrderResourceRelationshipPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(
             ConfigurableBundlesRestApiConfig::RESOURCE_CONFIGURABLE_BUNDLE_TEMPLATES,
-            new ConfigurableBundleTemplateSlotByConfigurableBundleTemplateResourceRelationshipPlugin()
+            new ConfigurableBundleTemplateSlotByConfigurableBundleTemplateResourceRelationshipPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(
             ConfigurableBundlesRestApiConfig::RESOURCE_CONFIGURABLE_BUNDLE_TEMPLATES,
-            new ConfigurableBundleTemplateImageSetByConfigurableBundleTemplateResourceRelationshipPlugin()
+            new ConfigurableBundleTemplateImageSetByConfigurableBundleTemplateResourceRelationshipPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(
             ConfigurableBundlesProductsResourceRelationshipConfig::RESOURCE_CONFIGURABLE_BUNDLE_TEMPLATE_SLOTS,
-            new ProductConcreteByConfigurableBundleTemplateSlotResourceRelationshipPlugin()
+            new ProductConcreteByConfigurableBundleTemplateSlotResourceRelationshipPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(
             SalesReturnsRestApiConfig::RESOURCE_RETURNS,
-            new MerchantByMerchantReferenceResourceRelationshipPlugin()
+            new MerchantByMerchantReferenceResourceRelationshipPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(
             QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUESTS,
-            new CompanyUserByQuoteRequestResourceRelationshipPlugin()
+            new CompanyUserByQuoteRequestResourceRelationshipPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(
             QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUESTS,
-            new CompanyByQuoteRequestResourceRelationshipPlugin()
+            new CompanyByQuoteRequestResourceRelationshipPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(
             QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUESTS,
-            new CompanyBusinessUnitByQuoteRequestResourceRelationshipPlugin()
+            new CompanyBusinessUnitByQuoteRequestResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUESTS,
-            new CustomerByQuoteRequestResourceRelationshipPlugin()
+            new CustomerByQuoteRequestResourceRelationshipPlugin(),
         );
         $resourceRelationshipCollection->addRelationship(
             QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUESTS,
-            new ConcreteProductByQuoteRequestResourceRelationshipPlugin()
+            new ConcreteProductByQuoteRequestResourceRelationshipPlugin(),
         );
 
         return $resourceRelationshipCollection;

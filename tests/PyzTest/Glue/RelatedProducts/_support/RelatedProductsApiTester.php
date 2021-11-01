@@ -60,7 +60,7 @@ class RelatedProductsApiTester extends ApiEndToEndTester
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'resourceRelatedProducts' => RelatedProductsRestApiConfig::CONTROLLER_RELATED_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
-            ]
+            ],
         );
     }
 
@@ -77,7 +77,7 @@ class RelatedProductsApiTester extends ApiEndToEndTester
             [
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
-            ]
+            ],
         );
     }
 }

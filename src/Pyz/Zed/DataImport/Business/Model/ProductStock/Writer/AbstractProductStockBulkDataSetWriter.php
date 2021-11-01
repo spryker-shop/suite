@@ -49,10 +49,12 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
      * @var string
      */
     protected const KEY_SKU = 'sku';
+
     /**
      * @var string
      */
     protected const KEY_QUANTITY = 'qty';
+
     /**
      * @var string
      */
@@ -308,7 +310,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
 
         return array_combine(
             array_column($abstractProducts, SpyProductTableMap::COL_SKU),
-            array_column($abstractProducts, SpyProductAbstractTableMap::COL_SKU)
+            array_column($abstractProducts, SpyProductAbstractTableMap::COL_SKU),
         );
     }
 
@@ -399,7 +401,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     {
         $availabilityAbstractIds = array_merge(
             $this->availabilityAbstractIds,
-            array_column($availabilityAbstractIds, SpyAvailabilityAbstractTableMap::COL_ID_AVAILABILITY_ABSTRACT)
+            array_column($availabilityAbstractIds, SpyAvailabilityAbstractTableMap::COL_ID_AVAILABILITY_ABSTRACT),
         );
 
         $this->availabilityAbstractIds = array_unique($availabilityAbstractIds);

@@ -35,12 +35,12 @@ class TwigConfig extends SprykerTwigConfig
     {
         $directories = array_merge(
             glob('vendor/spryker/spryker/Bundles/*/src/*/Zed/*/Presentation', GLOB_NOSORT | GLOB_ONLYDIR),
-            glob('vendor/spryker/spryker-shop/Bundles/*/src/*/Zed/*/Presentation', GLOB_NOSORT | GLOB_ONLYDIR)
+            glob('vendor/spryker/spryker-shop/Bundles/*/src/*/Zed/*/Presentation', GLOB_NOSORT | GLOB_ONLYDIR),
         );
 
         $directories = array_merge(
             $directories,
-            parent::getZedDirectoryPathPatterns()
+            parent::getZedDirectoryPathPatterns(),
         );
 
         sort($directories);
@@ -60,7 +60,7 @@ class TwigConfig extends SprykerTwigConfig
 
         $directories = array_merge(
             $directories,
-            parent::getYvesDirectoryPathPatterns()
+            parent::getYvesDirectoryPathPatterns(),
         );
 
         return $directories;

@@ -106,7 +106,7 @@ class CartsApiTester extends ApiEndToEndTester
         return $I->haveEntityTag(
             CartsRestApiConfig::RESOURCE_CARTS,
             $cartUuid,
-            $attributes
+            $attributes,
         );
     }
 
@@ -155,7 +155,7 @@ class CartsApiTester extends ApiEndToEndTester
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 
@@ -170,7 +170,7 @@ class CartsApiTester extends ApiEndToEndTester
             '{resourceCarts}' . $this->formatQueryInclude($includes),
             [
                 'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-            ]
+            ],
         );
     }
 
@@ -188,7 +188,7 @@ class CartsApiTester extends ApiEndToEndTester
                 'customers' => CartsRestApiConfig::RESOURCE_CUSTOMERS,
                 'customerReference' => $customerReference,
                 'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-            ]
+            ],
         );
     }
 
@@ -205,7 +205,7 @@ class CartsApiTester extends ApiEndToEndTester
             [
                 'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                 'cartUuid' => $cartUuid,
-            ]
+            ],
         );
     }
 
@@ -225,7 +225,7 @@ class CartsApiTester extends ApiEndToEndTester
                 'cartUuid' => $cartUuid,
                 'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 'cartItemGroupKey' => $cartItemGroupKey,
-            ]
+            ],
         );
     }
 
@@ -240,7 +240,7 @@ class CartsApiTester extends ApiEndToEndTester
             '{resourceGuestCarts}' . $this->formatQueryInclude($includes),
             [
                 'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            ]
+            ],
         );
     }
 
@@ -257,7 +257,7 @@ class CartsApiTester extends ApiEndToEndTester
             [
                 'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                 'guestCartUuid' => $guestCartUuid,
-            ]
+            ],
         );
     }
 
@@ -280,7 +280,7 @@ class CartsApiTester extends ApiEndToEndTester
                 'guestCartUuid' => $guestCartUuid,
                 'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                 'guestCartItemGroupKey' => $guestCartItemGroupKey,
-            ]
+            ],
         );
     }
 }

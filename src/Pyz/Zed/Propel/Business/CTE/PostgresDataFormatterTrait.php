@@ -26,7 +26,7 @@ trait PostgresDataFormatterTrait
 
         return sprintf(
             '{%s}',
-            pg_escape_string(implode(',', $values))
+            pg_escape_string(implode(',', $values)),
         );
     }
 
@@ -39,7 +39,7 @@ trait PostgresDataFormatterTrait
     {
         return sprintf(
             '{"%s"}',
-            pg_escape_string(implode('","', $values))
+            pg_escape_string(implode('","', $values)),
         );
     }
 
@@ -52,7 +52,7 @@ trait PostgresDataFormatterTrait
     {
         return sprintf(
             '[%s]',
-            pg_escape_string(implode(',', $values))
+            pg_escape_string(implode(',', $values)),
         );
     }
 }

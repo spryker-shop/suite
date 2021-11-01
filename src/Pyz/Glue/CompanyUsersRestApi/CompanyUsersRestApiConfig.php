@@ -14,7 +14,7 @@ use Spryker\Glue\ShoppingListsRestApi\ShoppingListsRestApiConfig;
 class CompanyUsersRestApiConfig extends SprykerCompanyUsersRestApiConfig
 {
     /**
-     * @var array
+     * @var array<string>
      */
     protected const COMPANY_USER_RESOURCES = [
         ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LISTS,

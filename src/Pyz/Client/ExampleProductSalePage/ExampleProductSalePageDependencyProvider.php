@@ -31,22 +31,27 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      * @var string
      */
     public const CLIENT_SEARCH = 'CLIENT_SEARCH';
+
     /**
      * @var string
      */
     public const CLIENT_PRODUCT_LABEL_STORAGE = 'CLIENT_PRODUCT_LABEL';
+
     /**
      * @var string
      */
     public const SALE_SEARCH_QUERY_PLUGIN = 'SALE_SEARCH_QUERY_PLUGIN';
+
     /**
      * @var string
      */
     public const SALE_SEARCH_QUERY_EXPANDER_PLUGINS = 'SALE_SEARCH_QUERY_EXPANDER_PLUGINS';
+
     /**
      * @var string
      */
     public const SALE_SEARCH_RESULT_FORMATTER_PLUGINS = 'SALE_SEARCH_RESULT_FORMATTER_PLUGINS';
+
     /**
      * @var string
      */
@@ -127,7 +132,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
                 new PaginatedQueryExpanderPlugin(),
                 new ProductListQueryExpanderPlugin(),
 
-                /**
+                /*
                  * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
                  */
                 new FacetQueryExpanderPlugin(),
@@ -150,7 +155,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
                 new SortedResultFormatterPlugin(),
                 new PaginatedResultFormatterPlugin(),
                 new CurrencyAwareCatalogSearchResultFormatterPlugin(
-                    new RawCatalogSearchResultFormatterPlugin()
+                    new RawCatalogSearchResultFormatterPlugin(),
                 ),
             ];
         });

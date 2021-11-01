@@ -86,7 +86,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     {
         $pairedEntities = $this->pairProductConcreteLocalizedEntitiesWithProductConcreteStorageEntities(
             $productConcreteLocalizedEntities,
-            $productConcreteStorageEntities
+            $productConcreteStorageEntities,
         );
 
         foreach ($pairedEntities as $pair) {
@@ -102,7 +102,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             $this->storeProductConcreteStorageEntity(
                 $productConcreteLocalizedEntity,
                 $productConcreteStorageEntity,
-                $pair[static::LOCALE_NAME]
+                $pair[static::LOCALE_NAME],
             );
         }
 

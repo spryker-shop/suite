@@ -34,6 +34,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
      * @var string
      */
     public const SALES_FACADE = 'sales facade';
+
     /**
      * @var string
      */

@@ -46,7 +46,7 @@ class ProductAbstractManagerTest extends ProductTestAbstract
 
         foreach ($this->productAbstractTransfer->getLocalizedAttributes() as $localizedAttribute) {
             $localizedAttribute->setName(
-                self::UPDATED_PRODUCT_ABSTRACT_NAME[$localizedAttribute->getLocale()->getLocaleName()]
+                self::UPDATED_PRODUCT_ABSTRACT_NAME[$localizedAttribute->getLocale()->getLocaleName()],
             );
         }
 
@@ -64,7 +64,7 @@ class ProductAbstractManagerTest extends ProductTestAbstract
         $this->setupDefaultProducts();
 
         $productAbstract = $this->productAbstractManager->findProductAbstractById(
-            $this->productAbstractTransfer->getIdProductAbstract()
+            $this->productAbstractTransfer->getIdProductAbstract(),
         );
 
         $this->assertReadProductAbstract($productAbstract);

@@ -132,7 +132,7 @@ class ProductAbstractRestApiCest
             $productConcreteTransfer->getAbstractSku(),
             [
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            ]
+            ],
         );
 
         // Act
@@ -147,14 +147,14 @@ class ProductAbstractRestApiCest
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteTransfer->getSku()
+                $productConcreteTransfer->getSku(),
             );
 
         $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteTransfer->getSku()
+                $productConcreteTransfer->getSku(),
             );
 
         $I->amSure('The include has correct self-link')
@@ -162,7 +162,7 @@ class ProductAbstractRestApiCest
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 $productConcreteTransfer->getSku(),
-                $I->buildProductConcreteUrl($productConcreteTransfer->getSku())
+                $I->buildProductConcreteUrl($productConcreteTransfer->getSku()),
             );
     }
 
@@ -191,14 +191,14 @@ class ProductAbstractRestApiCest
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
-                $productAbstractSku
+                $productAbstractSku,
             );
 
         $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
-                $productAbstractSku
+                $productAbstractSku,
             );
 
         $I->amSure('The include has correct self-link')
@@ -206,7 +206,7 @@ class ProductAbstractRestApiCest
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
                 $productAbstractSku,
-                $I->buildProductAbstractPricesUrl($productAbstractSku)
+                $I->buildProductAbstractPricesUrl($productAbstractSku),
             );
     }
 }

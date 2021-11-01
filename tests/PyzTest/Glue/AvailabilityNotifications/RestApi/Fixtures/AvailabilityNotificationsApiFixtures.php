@@ -29,6 +29,7 @@ class AvailabilityNotificationsApiFixtures implements FixturesBuilderInterface, 
      * @var string
      */
     protected const TEST_USERNAME = 'UserRestApiFixtures';
+
     /**
      * @var string
      */

@@ -60,7 +60,7 @@ class GuestCheckoutDataRestApiCest
         $quoteTransfer = $this->fixtures->getGuestQuoteTransfer();
         $I->haveHttpHeader(
             static::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReference()
+            $this->fixtures->getGuestCustomerReference(),
         );
 
         $url = $I->buildCheckoutDataUrl();
@@ -101,7 +101,7 @@ class GuestCheckoutDataRestApiCest
         $quoteTransfer = $this->fixtures->getGuestQuoteTransfer();
         $I->haveHttpHeader(
             static::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReference()
+            $this->fixtures->getGuestCustomerReference(),
         );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
@@ -145,7 +145,7 @@ class GuestCheckoutDataRestApiCest
         $quoteTransfer = $this->fixtures->getGuestQuoteTransfer();
         $I->haveHttpHeader(
             static::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReference()
+            $this->fixtures->getGuestCustomerReference(),
         );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
@@ -190,7 +190,7 @@ class GuestCheckoutDataRestApiCest
         $quoteTransfer = $this->fixtures->getGuestQuoteTransfer();
         $I->haveHttpHeader(
             static::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReference()
+            $this->fixtures->getGuestCustomerReference(),
         );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
         $idShipmentMethod = $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod();
@@ -236,7 +236,7 @@ class GuestCheckoutDataRestApiCest
         $quoteTransfer = $this->fixtures->getGuestQuoteTransfer();
         $I->haveHttpHeader(
             static::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReference()
+            $this->fixtures->getGuestCustomerReference(),
         );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
@@ -281,7 +281,7 @@ class GuestCheckoutDataRestApiCest
         $quoteTransfer = $this->fixtures->getGuestQuoteTransfer();
         $I->haveHttpHeader(
             static::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReference()
+            $this->fixtures->getGuestCustomerReference(),
         );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
         $idShipmentMethod = $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod();
