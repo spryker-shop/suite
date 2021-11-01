@@ -12,7 +12,7 @@ use Spryker\Zed\SalesReturn\SalesReturnConfig as SprykerSalesReturnConfig;
 class SalesReturnConfig extends SprykerSalesReturnConfig
 {
     /**
-     * @var array
+     * @var array<string>
      */
     protected const RETURNABLE_STATE_NAMES = [
         'shipped',
