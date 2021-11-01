@@ -13,7 +13,7 @@ use Spryker\Glue\ConfigurableBundleCartsRestApi\ConfigurableBundleCartsRestApiCo
 class CartsRestApiConfig extends SprykerCartsRestApiConfig
 {
     /**
-     * @var array
+     * @var array<string>
      */
     protected const GUEST_CART_RESOURCES = [
         self::RESOURCE_GUEST_CARTS,
