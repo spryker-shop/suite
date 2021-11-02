@@ -46,7 +46,7 @@ $config[PropelConstants::ZED_DB_USERNAME] = $ENV_DB_CONNECTION_DATA['user'];
 $config[PropelConstants::ZED_DB_PASSWORD] = $ENV_DB_CONNECTION_DATA['pass'];
 $config[PropelConstants::ZED_DB_DATABASE] = ltrim($ENV_DB_CONNECTION_DATA['path'], '/');
 $config[PropelConstants::ZED_DB_HOST] = $ENV_DB_CONNECTION_DATA['host'];
-$config[PropelConstants::ZED_DB_PORT] = isset($ENV_DB_CONNECTION_DATA['port']) ? $ENV_DB_CONNECTION_DATA['port'] : 5432;
+$config[PropelConstants::ZED_DB_PORT] = $ENV_DB_CONNECTION_DATA['port'] ?? 5432;
 
 // ---------- Redis
 $ENV_REDIS_CONNECTION_DATA = parse_url(getenv(getenv('REDIS_URL_NAME') ?: 'REDIS_URL'));
