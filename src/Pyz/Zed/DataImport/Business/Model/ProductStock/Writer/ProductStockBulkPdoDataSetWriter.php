@@ -75,14 +75,14 @@ class ProductStockBulkPdoDataSetWriter extends AbstractProductStockBulkDataSetWr
         $storeTransfer = $this->storeFacade->getCurrentStore();
 
         $concreteSkusToAbstractMap = $this->mapConcreteSkuToAbstractSku($skus);
-        $reservationItems = $this->getReservationsBySkus($skus);
+        $reservations = $this->getReservationsBySkus($skus);
 
-        $this->updateAvailability($skus, $storeTransfer, $concreteSkusToAbstractMap, $reservationItems);
+        $this->updateAvailability($skus, $storeTransfer, $concreteSkusToAbstractMap, $reservations);
 
         $sharedStores = $storeTransfer->getStoresWithSharedPersistence();
         foreach ($sharedStores as $storeName) {
             $storeTransfer = $this->storeFacade->getStoreByName($storeName);
-            $this->updateAvailability($skus, $storeTransfer, $concreteSkusToAbstractMap, $reservationItems);
+            $this->updateAvailability($skus, $storeTransfer, $concreteSkusToAbstractMap, $reservations);
         }
 
         $this->updateBundleAvailability();
@@ -92,7 +92,7 @@ class ProductStockBulkPdoDataSetWriter extends AbstractProductStockBulkDataSetWr
      * @param array $skus
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param array $concreteSkusToAbstractMap
-     * @param array<\Spryker\DecimalObject\Decimal> $reservationItems
+     * @param array<\Spryker\DecimalObject\Decimal> $reservations
      *
      * @return void
      */
@@ -100,11 +100,11 @@ class ProductStockBulkPdoDataSetWriter extends AbstractProductStockBulkDataSetWr
         array $skus,
         StoreTransfer $storeTransfer,
         array $concreteSkusToAbstractMap,
-        array $reservationItems
+        array $reservations
     ): void {
         $stockProductsForStore = $this->getStockProductBySkusAndStore($skus, $storeTransfer);
 
-        $concreteAvailabilityData = $this->prepareConcreteAvailabilityData($stockProductsForStore, $reservationItems);
+        $concreteAvailabilityData = $this->prepareConcreteAvailabilityData($stockProductsForStore, $reservations);
 
         $abstractAvailabilityData = $this->prepareAbstractAvailabilityData($concreteAvailabilityData, $concreteSkusToAbstractMap);
 

@@ -164,7 +164,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
      * @param array $skus
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param array $concreteSkusToAbstractMap
-     * @param array $reservationItems
+     * @param array<\Spryker\DecimalObject\Decimal> $reservations
      *
      * @return void
      */
@@ -172,7 +172,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
         array $skus,
         StoreTransfer $storeTransfer,
         array $concreteSkusToAbstractMap,
-        array $reservationItems
+        array $reservations
     ): void;
 
     /**
@@ -224,7 +224,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
      * @param array $skus
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getStockProductBySkusAndStore(array $skus, StoreTransfer $storeTransfer): array
     {
@@ -249,7 +249,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
      * @param array $stockProducts
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function mapStockProducts(array $stockProducts, StoreTransfer $storeTransfer): array
     {
@@ -315,16 +315,16 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $stockProducts
+     * @param array<string, mixed> $stockProducts
      * @param array<\Spryker\DecimalObject\Decimal> $reservations
      *
-     * @return array
+     * @return array<string, array<string, mixed>>
      */
     protected function prepareConcreteAvailabilityData(array $stockProducts, array $reservations): array
     {
-        foreach ($stockProducts as $stock) {
-            $sku = $stock[static::KEY_SKU];
-            $quantity = (new Decimal($stock[static::KEY_QUANTITY]))->subtract($reservations[$sku] ?? 0);
+        foreach ($stockProducts as $stockProduct) {
+            $sku = $stockProduct[static::KEY_SKU];
+            $quantity = (new Decimal($stockProduct[static::KEY_QUANTITY]))->subtract($reservations[$sku] ?? 0);
             $stockProducts[$sku][static::KEY_QUANTITY] = $quantity->greatherThanOrEquals(0) ? $quantity : new Decimal(0);
         }
 
@@ -332,10 +332,10 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $concreteAvailabilityData
-     * @param array<string> $concreteSkusToAbstractMap
+     * @param array<string, array<string, mixed>> $concreteAvailabilityData
+     * @param array<string, string> $concreteSkusToAbstractMap
      *
-     * @return array
+     * @return array<string, array<string, mixed>>
      */
     protected function prepareAbstractAvailabilityData(
         array $concreteAvailabilityData,

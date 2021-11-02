@@ -102,7 +102,7 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
      * @param array $skus
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param array $concreteSkusToAbstractMap
-     * @param array $reservationItems
+     * @param array<\Spryker\DecimalObject\Decimal> $reservations
      *
      * @return void
      */
@@ -110,10 +110,10 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
         array $skus,
         StoreTransfer $storeTransfer,
         array $concreteSkusToAbstractMap,
-        array $reservationItems
+        array $reservations
     ): void {
         $stockProductsForStore = $this->getStockProductBySkusAndStore($skus, $storeTransfer);
-        $concreteAvailabilityData = $this->prepareConcreteAvailabilityData($stockProductsForStore, $reservationItems);
+        $concreteAvailabilityData = $this->prepareConcreteAvailabilityData($stockProductsForStore, $reservations);
         $abstractAvailabilityData = $this->prepareAbstractAvailabilityData($concreteAvailabilityData, $concreteSkusToAbstractMap);
 
         $abstractAvailabilityQueryParams = [
