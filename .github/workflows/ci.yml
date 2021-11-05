@@ -161,17 +161,17 @@ jobs:
             - name: Validate transfer files
               run: vendor/bin/console transfer:validate
 
-            - name: Run CodeStyle checks
-              run: vendor/bin/console code:sniff:style
+            - name: Run PHPStan
+              run: vendor/bin/phpstan analyze
 
             - name: Run Architecture rules
               run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
 
-            - name: Run PHPStan
-              run: vendor/bin/phpstan analyze
-
             - name: Run Security check
               run: vendor/bin/console security:check
+
+            - name: Run CodeStyle checks
+              run: vendor/bin/console code:sniff:style
 
     php-80-mariadb-glue-alpine:
         name: "PHP 8.0 / MariaDB / Glue / Alpine"
