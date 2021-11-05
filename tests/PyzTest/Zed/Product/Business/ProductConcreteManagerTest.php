@@ -174,7 +174,7 @@ class ProductConcreteManagerTest extends ProductTestAbstract
      */
     protected function assertProductImages(ProductConcreteTransfer $productConcreteTransfer)
     {
-        /** @var \Generated\Shared\Transfer\ProductImageSetTransfer $imageSet */
+        /** @var array<\Generated\Shared\Transfer\ProductImageSetTransfer> $imageSetCollection */
         $imageSetCollection = (array)$productConcreteTransfer->getImageSets();
         $this->assertNotEmpty($imageSetCollection);
         $imageSet = $imageSetCollection[0];
@@ -182,10 +182,10 @@ class ProductConcreteManagerTest extends ProductTestAbstract
         $this->assertNotNull($imageSet->getIdProductImageSet());
         $this->assertSame($productConcreteTransfer->getIdProductConcrete(), $imageSet->getIdProduct());
 
+        /** @var array<\Generated\Shared\Transfer\ProductImageTransfer> $productImageCollection */
         $productImageCollection = (array)$imageSet->getProductImages();
         $this->assertNotEmpty($imageSetCollection);
 
-        /** @var \Generated\Shared\Transfer\ProductImageTransfer $productImage */
         $productImage = $productImageCollection[0];
         $this->assertInstanceOf(ProductImageTransfer::class, $productImage);
         $this->assertSame(self::IMAGE_URL_LARGE, $productImage->getExternalUrlLarge());

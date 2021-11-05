@@ -84,7 +84,6 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
     {
         $this->assertCount(count($dataSets), $productAbstractStores);
 
-        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstract $abstractProductEntity */
         foreach ($productAbstractStores as $productAbstractStore) {
             $productAbstractStoreDataSet = $dataSets[$productAbstractStore[SpyProductAbstractTableMap::COL_SKU]];
             $this->assertNotEmpty($productAbstractStoreDataSet);
