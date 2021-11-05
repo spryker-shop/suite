@@ -140,7 +140,7 @@ class ProductAbstractManagerTest extends ProductTestAbstract
      */
     protected function assertProductImages(ProductAbstractTransfer $productAbstractTransfer)
     {
-        /** @var \Generated\Shared\Transfer\ProductImageSetTransfer $imageSet */
+        /** @var array<\Generated\Shared\Transfer\ProductImageSetTransfer> $imageSetCollection */
         $imageSetCollection = (array)$productAbstractTransfer->getImageSets();
         $this->assertNotEmpty($imageSetCollection);
         $imageSet = $imageSetCollection[0];
