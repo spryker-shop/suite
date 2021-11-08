@@ -136,8 +136,30 @@ groups:
                         store: US
                         redirect:
                             code: 302
-                            url: www.us.69-new.demo-spryker.com                                                        
-            Yves:
+                            url: www.us.69-new.demo-spryker.com
+            mportal:
+                application: merchant-portal
+                endpoints:
+                    mp.de.69-new.demo-spryker.com:
+                        entry-point: MerchantPortal
+                        store: DE
+                        primal: true
+                        services:
+                            session:
+                                namespace: 7
+                    mp.at.69-new.demo-spryker.com:
+                        entry-point: MerchantPortal
+                        store: AT
+                        services:
+                            session:
+                                namespace: 8   
+                    mp.us.69-new.demo-spryker.com:
+                        entry-point: MerchantPortal
+                        store: US
+                        services:
+                            session:
+                                namespace: 9                                                                                                                 
+            yves:
                 application: yves
                 endpoints:
                     demo-date-time-configurator.69-new.demo-spryker.com:
@@ -151,7 +173,7 @@ groups:
                     www.us.69-new.demo-spryker.com:
                         store: US
                         <<: *frontend-auth
-            backoffice:
+            boffice:
                 application: backoffice
                 endpoints:
                     backoffice.de.69-new.demo-spryker.com:
@@ -161,30 +183,30 @@ groups:
                         store: AT
                     backoffice.us.69-new.demo-spryker.com:
                         store: US
-            backend_gateway:
+            backgw:
                 application: backend-gateway
                 endpoints:
-                    backend_gateway.de.69-new.demo-spryker.com:
+                    backend-gateway.de.69-new.demo-spryker.com:
                         store: DE
                         primal: true
-                    backend_gateway.at.69-new.demo-spryker.com:
+                    backend-gateway.at.69-new.demo-spryker.com:
                         store: AT
-                    backend_gateway.us.69-new.demo-spryker.com:
+                    backend-gateway.us.69-new.demo-spryker.com:
                         store: US
-            backend_api:
+            backapi:
                 application: zed
                 endpoints:
-                    backend_api.de.69-new.demo-spryker.com:
+                    backend-api.de.69-new.demo-spryker.com:
                         store: DE
                         entry-point: BackendApi
                         primal: true
-                    backend_api.at.69-new.demo-spryker.com:
+                    backend-api.at.69-new.demo-spryker.com:
                         store: AT
                         entry-point: BackendApi
-                    backend_pi.us.69-new.demo-spryker.com:
+                    backend-api.us.69-new.demo-spryker.com:
                         store: US
                         entry-point: BackendApi                                              
-            Glue:
+            glue:
                 application: glue
                 endpoints:
                     glue.de.69-new.demo-spryker.com:
