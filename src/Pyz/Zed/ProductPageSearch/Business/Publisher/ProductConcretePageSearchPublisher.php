@@ -216,7 +216,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     protected function generateResourceKey(
         ProductConcretePageSearchTransfer $productPageSearchTransfer,
         string $resourceName
-    ) {
+    ): string {
         $syncTransferData = new SynchronizationDataTransfer();
         $syncTransferData->setStore($productPageSearchTransfer->getStore());
         $syncTransferData->setLocale($productPageSearchTransfer->getLocale());
@@ -265,7 +265,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     /**
      * @return void
      */
-    public function write()
+    public function write(): void
     {
         if (empty($this->synchronizedDataCollection)) {
             return;

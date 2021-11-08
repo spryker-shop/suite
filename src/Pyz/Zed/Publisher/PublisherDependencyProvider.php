@@ -272,7 +272,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     /**
      * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
      */
-    protected function getMerchantProductSearchPlugins()
+    protected function getMerchantProductSearchPlugins(): array
     {
         return [
             new MerchantMerchantProductSearchWritePublisherPlugin(),
@@ -295,7 +295,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     /**
      * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
      */
-    protected function getProductConfigurationStoragePlugins()
+    protected function getProductConfigurationStoragePlugins(): array
     {
         return [
             new ProductConfigurationWritePublisherPlugin(),

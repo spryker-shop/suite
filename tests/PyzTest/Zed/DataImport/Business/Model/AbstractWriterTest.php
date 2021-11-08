@@ -51,7 +51,7 @@ abstract class AbstractWriterTest extends Unit
     /**
      * @return \Pyz\Zed\DataImport\Business\DataImportBusinessFactory
      */
-    protected function getDataImportBusinessFactoryStub()
+    protected function getDataImportBusinessFactoryStub(): DataImportBusinessFactory
     {
         /** @var \Pyz\Zed\DataImport\Business\DataImportBusinessFactory $dataImportBusinessFactory */
         $dataImportBusinessFactory = Stub::make(DataImportBusinessFactory::class, [
@@ -93,7 +93,7 @@ abstract class AbstractWriterTest extends Unit
     /**
      * @return \Pyz\Zed\DataImport\DataImportConfig
      */
-    public function getDataImportConfigStub()
+    public function getDataImportConfigStub(): DataImportConfig
     {
         /** @var \Pyz\Zed\DataImport\DataImportConfig $dataImportConfig */
         $dataImportConfig = Stub::make(DataImportConfig::class);

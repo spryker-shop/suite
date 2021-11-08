@@ -102,7 +102,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      *
      * @return void
      */
-    protected function storeData(array $productAbstractLocalizedEntities, array $productAbstractStorageEntities)
+    protected function storeData(array $productAbstractLocalizedEntities, array $productAbstractStorageEntities): void
     {
         $pairedEntities = $this->pairProductAbstractLocalizedEntitiesWithProductAbstractStorageEntities(
             $productAbstractLocalizedEntities,
@@ -208,7 +208,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      *
      * @return string
      */
-    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName)
+    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName): string
     {
         $syncTransferData = new SynchronizationDataTransfer();
         if (isset($data['store'])) {
@@ -264,7 +264,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     /**
      * @return void
      */
-    public function write()
+    public function write(): void
     {
         if (empty($this->synchronizedDataCollection)) {
             return;

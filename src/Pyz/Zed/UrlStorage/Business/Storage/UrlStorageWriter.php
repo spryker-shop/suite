@@ -89,7 +89,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      *
      * @return void
      */
-    protected function storeData(array $urlStorageTransfers, array $urlStorageEntities)
+    protected function storeData(array $urlStorageTransfers, array $urlStorageEntities): void
     {
         foreach ($urlStorageTransfers as $urlStorageTransfer) {
             $urlStorageEntity = $urlStorageEntities[$urlStorageTransfer->getIdUrl()] ?? null;
@@ -110,7 +110,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      *
      * @return void
      */
-    protected function storeDataSet(UrlStorageTransfer $urlStorageTransfer, ?SpyUrlStorage $urlStorageEntity = null)
+    protected function storeDataSet(UrlStorageTransfer $urlStorageTransfer, ?SpyUrlStorage $urlStorageEntity = null): void
     {
         $resource = $this->findResourceArguments($urlStorageTransfer->toArray());
 
@@ -212,7 +212,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     /**
      * @return void
      */
-    public function write()
+    public function write(): void
     {
         if (empty($this->synchronizedDataCollection)) {
             return;

@@ -38,7 +38,7 @@ if (!function_exists('opcache_invalidate')) {
      *
      * @return void
      */
-    function opcache_invalidate($script, $force = false)
+    function opcache_invalidate($script, $force = false): void
     {
     }
 }

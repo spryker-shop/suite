@@ -23,7 +23,7 @@ class CmsBlockCategoryPositionWriterStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $cmsBlockCategoryPositionEntity = SpyCmsBlockCategoryPositionQuery::create()
             ->filterByName($dataSet[static::KEY_POSITION_NAME])

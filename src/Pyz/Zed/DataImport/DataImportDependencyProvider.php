@@ -160,7 +160,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideBusinessLayerDependencies(Container $container)
+    public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
 
@@ -183,7 +183,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addCurrencyFacade(Container $container)
+    protected function addCurrencyFacade(Container $container): Container
     {
         $container->set(static::FACADE_CURRENCY, function (Container $container) {
             return $container->getLocator()->currency()->facade();
@@ -197,7 +197,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addStoreFacade(Container $container)
+    protected function addStoreFacade(Container $container): Container
     {
         $container->set(static::FACADE_STORE, function (Container $container) {
             return $container->getLocator()->store()->facade();
@@ -211,7 +211,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addStockFacade(Container $container)
+    protected function addStockFacade(Container $container): Container
     {
         $container->set(static::FACADE_STOCK, function (Container $container) {
             return $container->getLocator()->stock()->facade();
@@ -225,7 +225,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addCategoryFacade(Container $container)
+    protected function addCategoryFacade(Container $container): Container
     {
         $container->set(static::FACADE_CATEGORY, function (Container $container) {
             return $container->getLocator()->category()->facade();
@@ -239,7 +239,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addProductBundleFacade(Container $container)
+    protected function addProductBundleFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT_BUNDLE, function (Container $container) {
             return $container->getLocator()->productBundle()->facade();
@@ -253,7 +253,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addProductSearchFacade(Container $container)
+    protected function addProductSearchFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT_SEARCH, function (Container $container) {
             return $container->getLocator()->productSearch()->facade();
@@ -267,7 +267,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addProductRelationFacade(Container $container)
+    protected function addProductRelationFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT_RELATION, function (Container $container) {
             return $container->getLocator()->productRelation()->facade();
@@ -281,7 +281,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addMerchantUserFacade(Container $container)
+    protected function addMerchantUserFacade(Container $container): Container
     {
         $container->set(static::FACADE_MERCHANT_USER, function (Container $container) {
             return $container->getLocator()->merchantUser()->facade();
