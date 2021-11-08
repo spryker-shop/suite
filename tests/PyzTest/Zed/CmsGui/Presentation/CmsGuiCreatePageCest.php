@@ -31,7 +31,7 @@ class CmsGuiCreatePageCest
      *
      * @return void
      */
-    public function testICanCreateCmsPageWithTranslatedPlaceholders(CmsGuiPresentationTester $i)
+    public function testICanCreateCmsPageWithTranslatedPlaceholders(CmsGuiPresentationTester $i): void
     {
         $i->wantTo('Create cms page with multiple translations');
         $i->expect('Page is persisted in Zed, exported to Yves and is accessible.');

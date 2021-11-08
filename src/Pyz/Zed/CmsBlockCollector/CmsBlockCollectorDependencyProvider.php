@@ -17,7 +17,7 @@ class CmsBlockCollectorDependencyProvider extends SprykerCmsBlockCollectorDepend
      *
      * @return array<\Spryker\Zed\CmsBlockCollector\Dependency\Plugin\CmsBlockCollectorDataExpanderPluginInterface>
      */
-    protected function getCollectorDataExpanderPlugins()
+    protected function getCollectorDataExpanderPlugins(): array
     {
         return [
              new CmsBlockCollectorParameterMapExpanderPlugin(),

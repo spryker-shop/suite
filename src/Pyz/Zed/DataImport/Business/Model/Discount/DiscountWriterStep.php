@@ -13,6 +13,7 @@ use Orm\Zed\Discount\Persistence\SpyDiscountQuery;
 use Orm\Zed\Discount\Persistence\SpyDiscountVoucherPoolQuery;
 use Orm\Zed\DiscountPromotion\Persistence\SpyDiscountPromotionQuery;
 use Orm\Zed\Shipment\Persistence\SpyShipmentCarrierQuery;
+use Orm\Zed\Shipment\Persistence\SpyShipmentMethod;
 use Orm\Zed\Shipment\Persistence\SpyShipmentMethodQuery;
 use Spryker\Shared\Discount\DiscountConstants;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
@@ -100,7 +101,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $discountEntity = SpyDiscountQuery::create()
             ->filterByDiscountKey($dataSet[static::KEY_DISCOUNT_KEY])
@@ -141,7 +142,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return string
      */
-    protected function processQueryString($queryString)
+    protected function processQueryString($queryString): string
     {
         $queryString = $this->convertShipmentCarrierNameToId($queryString);
         $queryString = $this->convertShipmentMethodNameToId($queryString);
@@ -154,7 +155,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return string
      */
-    protected function convertShipmentMethodNameToId($queryString)
+    protected function convertShipmentMethodNameToId($queryString): string
     {
         $shipmentConditionValues = $this->extractConditionValuesWithShipmentCarrierMethodNames($queryString);
 
@@ -171,7 +172,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return string
      */
-    protected function convertShipmentCarrierNameToId($queryString)
+    protected function convertShipmentCarrierNameToId($queryString): string
     {
         $shipmentCarrierNames = $this->extractConditionValueWithShipmentCarrierNames($queryString);
 
@@ -191,7 +192,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return array<string>
      */
-    protected function extractConditionValuesWithShipmentCarrierMethodNames($queryString)
+    protected function extractConditionValuesWithShipmentCarrierMethodNames($queryString): array
     {
         $shipmentMethodNames = [];
         preg_match_all('/shipment-method = "([\w \(\)]*)"/', $queryString, $shipmentMethodNames);
@@ -205,7 +206,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return array<string>
      */
-    protected function extractConditionValueWithShipmentCarrierNames($queryString)
+    protected function extractConditionValueWithShipmentCarrierNames($queryString): array
     {
         $shipmentCarrierNames = [];
         preg_match_all('/shipment-carrier = "([\w \(\)]*)"/', $queryString, $shipmentCarrierNames);
@@ -219,7 +220,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return \Orm\Zed\Shipment\Persistence\SpyShipmentMethod
      */
-    protected function findShipmentMethodByConditionValue($conditionValue)
+    protected function findShipmentMethodByConditionValue($conditionValue): SpyShipmentMethod
     {
         $shipmentCarrierNameMatches = [];
         preg_match_all('/([\w ]+)\(([\w ]+)\)/', $conditionValue, $shipmentCarrierNameMatches);
@@ -243,7 +244,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return void
      */
-    protected function saveDiscountPromotion(DataSetInterface $dataSet, SpyDiscount $discountEntity)
+    protected function saveDiscountPromotion(DataSetInterface $dataSet, SpyDiscount $discountEntity): void
     {
         if (!isset($dataSet[static::KEY_PROMOTION_SKU]) || empty($dataSet[static::KEY_PROMOTION_SKU])) {
             return;

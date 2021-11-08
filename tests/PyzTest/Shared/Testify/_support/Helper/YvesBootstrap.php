@@ -23,7 +23,7 @@ class YvesBootstrap extends Framework
     /**
      * @return void
      */
-    public function _initialize()
+    public function _initialize(): void
     {
         $this->loadApplication();
     }
@@ -33,7 +33,7 @@ class YvesBootstrap extends Framework
      *
      * @return void
      */
-    public function _beforeSuite($settings = [])
+    public function _beforeSuite($settings = []): void
     {
         $this->client = new HttpKernelBrowser($this->yvesBootstrap->boot());
     }
@@ -43,7 +43,7 @@ class YvesBootstrap extends Framework
      *
      * @return void
      */
-    protected function loadApplication()
+    protected function loadApplication(): void
     {
         $this->yvesBootstrap = new PyzYvesBootstrap();
 

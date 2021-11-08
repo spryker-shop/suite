@@ -35,7 +35,7 @@ class WishlistDependencyProvider extends SprykerWishlistDependencyProvider
     /**
      * @return array<\Spryker\Zed\Wishlist\Dependency\Plugin\ItemExpanderPluginInterface>
      */
-    protected function getItemExpanderPlugins()
+    protected function getItemExpanderPlugins(): array
     {
         return [
             new ProductConfigurationItemExpanderPlugin(),

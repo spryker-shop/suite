@@ -28,7 +28,7 @@ class ProductRelationCreateRelationCest
      *
      * @return void
      */
-    public function testICanCreateProductRelation(ProductRelationPresentationTester $i)
+    public function testICanCreateProductRelation(ProductRelationPresentationTester $i): void
     {
         $i->wantTo('I want to create up selling relation');
         $i->expect('relation is persisted, exported to yves and carousel component is visible');

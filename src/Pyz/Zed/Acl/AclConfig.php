@@ -23,7 +23,7 @@ class AclConfig extends SprykerAclConfig
     /**
      * @return array<array<string, mixed>>
      */
-    public function getInstallerRules()
+    public function getInstallerRules(): array
     {
         $installerRules = parent::getInstallerRules();
         $installerRules = $this->addMerchantPortalInstallerRules($installerRules);
@@ -34,7 +34,7 @@ class AclConfig extends SprykerAclConfig
     /**
      * @return array<string, array>
      */
-    public function getInstallerUsers()
+    public function getInstallerUsers(): array
     {
         return [
             'admin@spryker.com' => [

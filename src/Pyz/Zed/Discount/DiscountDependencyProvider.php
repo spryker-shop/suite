@@ -21,6 +21,7 @@ use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotio
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionViewBlockProviderPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\PromotionCollectedDiscountGroupingStrategyPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardDiscountableItemFilterPlugin;
+use Spryker\Zed\Kernel\Communication\Form\FormTypeInterface;
 use Spryker\Zed\ProductDiscountConnector\Communication\Plugin\Collector\ProductAttributeCollectorPlugin;
 use Spryker\Zed\ProductDiscountConnector\Communication\Plugin\DecisionRule\ProductAttributeDecisionRulePlugin;
 use Spryker\Zed\ProductLabelDiscountConnector\Communication\Plugin\Collector\ProductLabelCollectorPlugin;
@@ -39,7 +40,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     /**
      * @return array<\Spryker\Zed\Discount\Dependency\Plugin\DecisionRulePluginInterface>
      */
-    protected function getDecisionRulePlugins()
+    protected function getDecisionRulePlugins(): array
     {
         return array_merge(parent::getDecisionRulePlugins(), [
             new ShipmentCarrierDecisionRulePlugin(),
@@ -54,7 +55,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     /**
      * @return array<\Spryker\Zed\Discount\Dependency\Plugin\CollectorPluginInterface>
      */
-    protected function getCollectorPlugins()
+    protected function getCollectorPlugins(): array
     {
         return array_merge(parent::getCollectorPlugins(), [
             new ProductLabelCollectorPlugin(),
@@ -68,7 +69,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     /**
      * @return array
      */
-    protected function getDiscountableItemFilterPlugins()
+    protected function getDiscountableItemFilterPlugins(): array
     {
         return [
             new DiscountPromotionFilterCollectedItemsPlugin(),
@@ -99,7 +100,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     /**
      * @return array<\Spryker\Zed\Discount\Dependency\Plugin\CollectorStrategyPluginInterface>
      */
-    protected function getCollectorStrategyPlugins()
+    protected function getCollectorStrategyPlugins(): array
     {
         return [
             new DiscountPromotionCollectorStrategyPlugin(),
@@ -109,7 +110,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     /**
      * @return array<\Spryker\Zed\Discount\Dependency\Plugin\DiscountPostCreatePluginInterface>
      */
-    protected function getDiscountPostCreatePlugins()
+    protected function getDiscountPostCreatePlugins(): array
     {
         return [
             new DiscountPromotionPostCreatePlugin(),
@@ -119,7 +120,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     /**
      * @return array<\Spryker\Zed\Discount\Dependency\Plugin\DiscountPostUpdatePluginInterface>
      */
-    protected function getDiscountPostUpdatePlugins()
+    protected function getDiscountPostUpdatePlugins(): array
     {
         return [
             new DiscountPromotionPostUpdatePlugin(),
@@ -130,7 +131,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     /**
      * @return array<\Spryker\Zed\Discount\Dependency\Plugin\DiscountConfigurationExpanderPluginInterface>
      */
-    protected function getDiscountConfigurationExpanderPlugins()
+    protected function getDiscountConfigurationExpanderPlugins(): array
     {
         return [
             new DiscountPromotionConfigurationExpanderPlugin(),
@@ -140,7 +141,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     /**
      * @return array<\Spryker\Zed\Discount\Dependency\Plugin\Form\DiscountFormExpanderPluginInterface>
      */
-    protected function getDiscountFormExpanderPlugins()
+    protected function getDiscountFormExpanderPlugins(): array
     {
         return [
             new DiscountPromotionCalculationFormExpanderPlugin(),
@@ -150,7 +151,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     /**
      * @return array<\Spryker\Zed\Discount\Dependency\Plugin\Form\DiscountFormDataProviderExpanderPluginInterface>
      */
-    protected function getDiscountFormDataProviderExpanderPlugins()
+    protected function getDiscountFormDataProviderExpanderPlugins(): array
     {
         return [
             new DiscountPromotionCalculationFormDataExpanderPlugin(),
@@ -160,7 +161,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     /**
      * @return array<\Spryker\Zed\Discount\Dependency\Plugin\DiscountViewBlockProviderPluginInterface>
      */
-    protected function getDiscountViewTemplateProviderPlugins()
+    protected function getDiscountViewTemplateProviderPlugins(): array
     {
         return [
             new DiscountPromotionViewBlockProviderPlugin(),
@@ -170,7 +171,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     /**
      * @return array<\Spryker\Zed\Discount\Dependency\Plugin\DiscountApplicableFilterPluginInterface>
      */
-    protected function getDiscountApplicableFilterPlugins()
+    protected function getDiscountApplicableFilterPlugins(): array
     {
         return [
            new DiscountPromotionFilterApplicableItemsPlugin(),
@@ -180,7 +181,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     /**
      * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
      */
-    protected function getStoreRelationFormTypePlugin()
+    protected function getStoreRelationFormTypePlugin(): FormTypeInterface
     {
         return new StoreRelationToggleFormTypePlugin();
     }

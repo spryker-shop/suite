@@ -8,6 +8,10 @@
 namespace Pyz\Client\ExampleProductSalePage;
 
 use Spryker\Client\Kernel\AbstractFactory;
+use Spryker\Client\ProductLabelStorage\ProductLabelStorageClientInterface;
+use Spryker\Client\Search\SearchClientInterface;
+use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
+use Spryker\Shared\Kernel\Store;
 
 class ExampleProductSalePageFactory extends AbstractFactory
 {
@@ -16,7 +20,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
      *
      * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
      */
-    public function getSaleSearchQueryPlugin(array $requestParameters = [])
+    public function getSaleSearchQueryPlugin(array $requestParameters = []): QueryInterface
     {
         $saleQueryPlugin = $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::SALE_SEARCH_QUERY_PLUGIN);
 
@@ -30,7 +34,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     /**
      * @return \Spryker\Client\ProductLabelStorage\ProductLabelStorageClientInterface
      */
-    public function getProductLabelStorageClient()
+    public function getProductLabelStorageClient(): ProductLabelStorageClientInterface
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_PRODUCT_LABEL_STORAGE);
     }
@@ -38,7 +42,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     /**
      * @return \Spryker\Shared\Kernel\Store
      */
-    public function getStore()
+    public function getStore(): Store
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::STORE);
     }
@@ -46,7 +50,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     /**
      * @return \Pyz\Client\ExampleProductSalePage\ExampleProductSalePageConfig
      */
-    public function getConfig()
+    public function getConfig(): ExampleProductSalePageConfig
     {
         /** @var \Pyz\Client\ExampleProductSalePage\ExampleProductSalePageConfig $config */
         $config = parent::getConfig();
@@ -57,7 +61,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     /**
      * @return \Spryker\Client\Search\SearchClientInterface
      */
-    public function getSearchClient()
+    public function getSearchClient(): SearchClientInterface
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_SEARCH);
     }
@@ -65,7 +69,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     /**
      * @return array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface>
      */
-    protected function getSaleSearchQueryExpanderPlugins()
+    protected function getSaleSearchQueryExpanderPlugins(): array
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::SALE_SEARCH_QUERY_EXPANDER_PLUGINS);
     }
@@ -73,7 +77,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     /**
      * @return array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>
      */
-    public function getSaleSearchResultFormatterPlugins()
+    public function getSaleSearchResultFormatterPlugins(): array
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::SALE_SEARCH_RESULT_FORMATTER_PLUGINS);
     }

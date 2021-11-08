@@ -45,7 +45,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideCommunicationLayerDependencies(Container $container)
+    public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
 
@@ -63,7 +63,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return array<\Spryker\Zed\Customer\Dependency\Plugin\CustomerAnonymizerPluginInterface>
      */
-    protected function getCustomerAnonymizerPlugins()
+    protected function getCustomerAnonymizerPlugins(): array
     {
         return [
             new CustomerUnsubscribePlugin([
@@ -77,7 +77,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return array<\Spryker\Zed\Customer\Dependency\Plugin\CustomerTransferExpanderPluginInterface>
      */
-    protected function getCustomerTransferExpanderPlugins()
+    protected function getCustomerTransferExpanderPlugins(): array
     {
         return [
             new CustomerTransferUsernameExpanderPlugin(),

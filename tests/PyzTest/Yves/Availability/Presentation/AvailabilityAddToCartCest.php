@@ -28,7 +28,7 @@ class AvailabilityAddToCartCest
      *
      * @return void
      */
-    public function testAddToCartWhenBiggerQuantityIsUsed(AvailabilityPresentationTester $i)
+    public function testAddToCartWhenBiggerQuantityIsUsed(AvailabilityPresentationTester $i): void
     {
         $i->wantTo('Open product page, and add item to cart with larger quantity than available');
         $i->expectTo('Display error message');

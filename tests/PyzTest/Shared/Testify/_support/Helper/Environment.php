@@ -21,7 +21,7 @@ class Environment extends Module
     /**
      * @return void
      */
-    public function _initialize()
+    public function _initialize(): void
     {
         $rootDir = realpath(__DIR__ . '/../../../../../../');
         $applicationEnv = $this->getApplicationEnv();

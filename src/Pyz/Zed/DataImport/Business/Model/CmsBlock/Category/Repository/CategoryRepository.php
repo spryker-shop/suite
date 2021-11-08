@@ -56,7 +56,7 @@ class CategoryRepository implements CategoryRepositoryInterface
      *
      * @return int
      */
-    public function getIdCategoryByCategoryKey($categoryKey)
+    public function getIdCategoryByCategoryKey($categoryKey): int
     {
         if ($this->categoryKeys->count() === 0) {
             $this->loadCategoryKeys();
@@ -75,7 +75,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     /**
      * @return void
      */
-    private function loadCategoryKeys()
+    private function loadCategoryKeys(): void
     {
         $categoryEntityCollection = SpyCategoryQuery::create()
             ->joinWithNode()

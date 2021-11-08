@@ -14,7 +14,7 @@ class UserConfig extends SprykerUserConfig
     /**
      * @return array<array>
      */
-    public function getInstallerUsers()
+    public function getInstallerUsers(): array
     {
         return [
             [

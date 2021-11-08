@@ -21,7 +21,7 @@ class SalesConfig extends SprykerSalesConfig
      *
      * @return string
      */
-    public function determineProcessForOrderItem(QuoteTransfer $quoteTransfer, ItemTransfer $itemTransfer)
+    public function determineProcessForOrderItem(QuoteTransfer $quoteTransfer, ItemTransfer $itemTransfer): string
     {
         $paymentMethodStatemachineMapping = $this->getPaymentMethodStatemachineMapping();
 
@@ -44,7 +44,7 @@ class SalesConfig extends SprykerSalesConfig
      *
      * @return array<string>
      */
-    public function getSalesDetailExternalBlocksUrls()
+    public function getSalesDetailExternalBlocksUrls(): array
     {
         $projectExternalBlocks = [
             'cart_note' => '/cart-note/sales/list', #CartNoteFeature

@@ -15,7 +15,7 @@ class CategoryConfig extends CategoryCategoryConfig
     /**
      * @return array<string>
      */
-    public function getTemplateList()
+    public function getTemplateList(): array
     {
         $templateList = [
             CmsBlockCategoryConnectorConfig::CATEGORY_TEMPLATE_ONLY_CMS_BLOCK => '@CatalogPage/views/simple-cms-block/simple-cms-block.twig',

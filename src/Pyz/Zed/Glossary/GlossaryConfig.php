@@ -14,7 +14,7 @@ class GlossaryConfig extends SprykerGlossaryConfig
     /**
      * @return array<string>
      */
-    public function getGlossaryFilePaths()
+    public function getGlossaryFilePaths(): array
     {
         $paths = parent::getGlossaryFilePaths();
         $paths = $this->addSprykerFilePath($paths);

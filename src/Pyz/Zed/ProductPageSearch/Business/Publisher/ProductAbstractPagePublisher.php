@@ -116,7 +116,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         array $pageDataExpanderPlugins,
         ProductPageLoadTransfer $productPageLoadTransfer,
         $isRefresh = 0
-    ) {
+    ): void {
         $pairedEntities = $this->pairProductAbstractLocalizedEntitiesWithProductAbstractPageSearchEntities(
             $productAbstractLocalizedEntities,
             $productAbstractPageSearchEntities,
@@ -167,7 +167,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         $localeName,
         array $pageDataExpanderPlugins,
         $isRefresh = 0
-    ) {
+    ): void {
         $isRefresh = filter_var($isRefresh, FILTER_VALIDATE_BOOLEAN);
         $productPageSearchTransfer = $this->getProductPageSearchTransfer(
             $productAbstractLocalizedEntity,
@@ -228,7 +228,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      *
      * @return string
      */
-    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName)
+    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName): string
     {
         $syncTransferData = new SynchronizationDataTransfer();
         if (isset($data['store'])) {
@@ -284,7 +284,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     /**
      * @return void
      */
-    public function write()
+    public function write(): void
     {
         if (empty($this->synchronizedDataCollection)) {
             return;
