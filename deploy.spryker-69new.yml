@@ -72,7 +72,7 @@ assets:
             level: 5
 
 regions:
-    DE:
+    EU:
         services:
             mail:
                 sender:
@@ -116,9 +116,27 @@ regions:
                         namespace: 6
 
 groups:
-    DE:
-        region: DE
+    EU:
+        region: EU
         applications:
+            Redirects:
+                application: static
+                endpoints:
+                    de.69-new.demo-spryker.com:
+                        store: DE
+                        redirect:
+                            code: 302
+                            url: www.de.69-new.demo-spryker.com
+                    at.69-new.demo-spryker.com:
+                        store: AT
+                        redirect:
+                            code: 302
+                            url: www.at.69-new.demo-spryker.com
+                    us.69-new.demo-spryker.com:
+                        store: US
+                        redirect:
+                            code: 302
+                            url: www.us.69-new.demo-spryker.com                                                        
             Yves:
                 application: yves
                 endpoints:
@@ -127,23 +145,14 @@ groups:
                     www.de.69-new.demo-spryker.com:
                         store: DE
                         <<: *frontend-auth
-                    de.69-new.demo-spryker.com:
-                        store: DE
-                        <<: *frontend-auth
                     www.at.69-new.demo-spryker.com:
-                        store: AT
-                        <<: *frontend-auth
-                    at.69-new.demo-spryker.com:
                         store: AT
                         <<: *frontend-auth
                     www.us.69-new.demo-spryker.com:
                         store: US
                         <<: *frontend-auth
-                    us.69-new.demo-spryker.com:
-                        store: US
-                        <<: *frontend-auth
-            Zed:
-                application: zed
+            backoffice:
+                application: backoffice
                 endpoints:
                     backoffice.de.69-new.demo-spryker.com:
                         store: DE
@@ -152,6 +161,29 @@ groups:
                         store: AT
                     backoffice.us.69-new.demo-spryker.com:
                         store: US
+            backend_gateway:
+                application: backend-gateway
+                endpoints:
+                    backend_gateway.de.69-new.demo-spryker.com:
+                        store: DE
+                        primal: true
+                    backend_gateway.at.69-new.demo-spryker.com:
+                        store: AT
+                    backend_gateway.us.69-new.demo-spryker.com:
+                        store: US
+            backend_api:
+                application: zed
+                endpoints:
+                    backend_api.de.69-new.demo-spryker.com:
+                        store: DE
+                        entry-point: BackendApi
+                        primal: true
+                    backend_api.at.69-new.demo-spryker.com:
+                        store: AT
+                        entry-point: BackendApi
+                    backend_pi.us.69-new.demo-spryker.com:
+                        store: US
+                        entry-point: BackendApi                                              
             Glue:
                 application: glue
                 endpoints:
