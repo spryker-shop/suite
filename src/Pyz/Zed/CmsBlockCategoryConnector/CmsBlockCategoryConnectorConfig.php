@@ -29,7 +29,7 @@ class CmsBlockCategoryConnectorConfig extends SprykerCmsBlockCategoryConnectorCo
     /**
      * @return array<string>
      */
-    public function getCmsBlockCategoryPositionList()
+    public function getCmsBlockCategoryPositionList(): array
     {
         return [
             static::CMS_BLOCK_CATEGORY_POSITION_TOP,

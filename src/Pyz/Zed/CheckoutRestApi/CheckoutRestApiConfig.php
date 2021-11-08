@@ -14,7 +14,7 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
     /**
      * @return bool
      */
-    public function deleteCartAfterOrderCreation()
+    public function deleteCartAfterOrderCreation(): bool
     {
         return false;
     }

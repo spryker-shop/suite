@@ -79,7 +79,7 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $discountEntity = SpyDiscountQuery::create()
             ->findOneByDiscountKey($dataSet[static::KEY_DISCOUNT_KEY]);
@@ -116,7 +116,7 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
      *
      * @return bool
      */
-    protected function voucherBatchExists(SpyDiscount $discountEntity, $voucherBatch)
+    protected function voucherBatchExists(SpyDiscount $discountEntity, $voucherBatch): bool
     {
         $query = SpyDiscountVoucherQuery::create()
             ->filterByFkDiscountVoucherPool($discountEntity->getFkDiscountVoucherPool())

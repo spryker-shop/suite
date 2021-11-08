@@ -45,7 +45,7 @@ class StoreReader implements DataReaderInterface
      * @return void
      */
     #[\ReturnTypeWillChange]
-    public function next()
+    public function next(): void
     {
         ++$this->position;
     }
@@ -76,7 +76,7 @@ class StoreReader implements DataReaderInterface
      * Returns true on success or false on failure.
      */
     #[\ReturnTypeWillChange]
-    public function valid()
+    public function valid(): bool
     {
         return isset($this->dataSet[$this->position]);
     }
@@ -91,7 +91,7 @@ class StoreReader implements DataReaderInterface
      * @return void
      */
     #[\ReturnTypeWillChange]
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
     }
@@ -99,7 +99,7 @@ class StoreReader implements DataReaderInterface
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface
      */
-    public function current()
+    public function current(): DataSetInterface
     {
         return $this->dataSet;
     }

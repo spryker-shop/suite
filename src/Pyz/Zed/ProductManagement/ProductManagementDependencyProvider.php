@@ -8,6 +8,7 @@
 namespace Pyz\Zed\ProductManagement;
 
 use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbstractBlockListViewPlugin;
+use Spryker\Zed\Kernel\Communication\Form\FormTypeInterface;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantGui\Communication\Plugin\ProductManagement\MerchantProductAbstractListActionViewDataExpanderPlugin;
 use Spryker\Zed\MerchantProductGui\Communication\Plugin\ProductManagement\MerchantProductProductAbstractViewActionViewDataExpanderPlugin;
@@ -36,7 +37,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     /**
      * @return array<\Spryker\Zed\ProductManagement\Communication\Plugin\ProductAbstractViewPluginInterface>
      */
-    protected function getProductAbstractViewPlugins()
+    protected function getProductAbstractViewPlugins(): array
     {
         return [
             new CmsBlockProductAbstractBlockListViewPlugin(),
@@ -46,7 +47,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     /**
      * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
      */
-    protected function getStoreRelationFormTypePlugin()
+    protected function getStoreRelationFormTypePlugin(): FormTypeInterface
     {
         return new StoreRelationToggleFormTypePlugin();
     }
@@ -56,7 +57,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
      *
      * @return \Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin
      */
-    protected function createMoneyFormTypePlugin(Container $container)
+    protected function createMoneyFormTypePlugin(Container $container): MoneyFormTypePlugin
     {
         return new MoneyFormTypePlugin();
     }

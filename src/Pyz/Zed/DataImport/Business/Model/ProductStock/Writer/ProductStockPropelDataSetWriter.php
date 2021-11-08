@@ -150,7 +150,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      *
      * @return \Orm\Zed\Stock\Persistence\SpyStock
      */
-    protected function createOrUpdateStock(DataSetInterface $dataSet)
+    protected function createOrUpdateStock(DataSetInterface $dataSet): SpyStock
     {
         $stockTransfer = $dataSet[ProductStockHydratorStep::STOCK_ENTITY_TRANSFER];
         $stockEntity = SpyStockQuery::create()

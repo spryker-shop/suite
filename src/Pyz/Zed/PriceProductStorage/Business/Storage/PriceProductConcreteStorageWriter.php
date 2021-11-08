@@ -86,7 +86,7 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
      *
      * @return void
      */
-    protected function storeData(array $priceGroups, array $priceProductConcreteStorageMap)
+    protected function storeData(array $priceGroups, array $priceProductConcreteStorageMap): void
     {
         foreach ($priceGroups as $idProductConcrete => $storePriceGroups) {
             foreach ($storePriceGroups as $storeName => $priceGroup) {
@@ -118,7 +118,7 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
             $this->queueClient->sendMessages('sync.storage.price', $this->synchronizedMessageCollection);
         }
 
-        array_walk_recursive($priceProductConcreteStorageMap, function (SpyPriceProductConcreteStorage $priceProductConcreteStorageEntity) {
+        array_walk_recursive($priceProductConcreteStorageMap, function (SpyPriceProductConcreteStorage $priceProductConcreteStorageEntity): void {
             $priceProductConcreteStorageEntity->delete();
         });
     }
@@ -134,7 +134,7 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
         $idProductConcrete,
         $storeName,
         array $priceGroup
-    ) {
+    ): void {
         $priceProductStorageTransfer = (new PriceProductStorageTransfer())
             ->setPrices($priceGroup);
 
@@ -186,7 +186,7 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
      *
      * @return string
      */
-    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName)
+    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName): string
     {
         $syncTransferData = new SynchronizationDataTransfer();
         if (isset($data['store'])) {
@@ -242,7 +242,7 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
     /**
      * @return void
      */
-    public function write()
+    public function write(): void
     {
         if (empty($this->synchronizedDataCollection)) {
             return;

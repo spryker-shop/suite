@@ -160,7 +160,7 @@ abstract class AbstractProductConcreteBulkDataSetWriter implements DataSetWriter
      *
      * @return bool
      */
-    protected function isSkuAlreadyCollected(DataSetInterface $dataSet)
+    protected function isSkuAlreadyCollected(DataSetInterface $dataSet): bool
     {
         $collectedSkus = array_column(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_SKU);
         $dataSetSku = $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_TRANSFER]->getSku();
