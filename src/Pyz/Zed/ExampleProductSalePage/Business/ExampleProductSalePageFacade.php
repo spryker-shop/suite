@@ -17,7 +17,7 @@ class ExampleProductSalePageFacade extends SprykerProductFacade implements Examp
     /**
      * @return array<\Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer>
      */
-    public function findProductLabelProductAbstractRelationChanges()
+    public function findProductLabelProductAbstractRelationChanges(): array
     {
         return $this->getFactory()
             ->createProductAbstractRelationReader()

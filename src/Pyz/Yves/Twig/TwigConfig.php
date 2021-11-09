@@ -18,7 +18,7 @@ class TwigConfig extends SprykerTwigConfig
      *
      * @return array<string>
      */
-    protected function addCoreTemplatePaths(array $paths)
+    protected function addCoreTemplatePaths(array $paths): array
     {
         $paths = parent::addCoreTemplatePaths($paths);
 

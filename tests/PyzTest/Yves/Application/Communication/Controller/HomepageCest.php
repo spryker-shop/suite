@@ -28,7 +28,7 @@ class HomepageCest
      *
      * @return void
      */
-    public function testICanOpenHomepage(ApplicationCommunicationTester $i)
+    public function testICanOpenHomepage(ApplicationCommunicationTester $i): void
     {
         $i->wantTo('See that i can open the homepage');
         $i->amOnPage(Homepage::URL);

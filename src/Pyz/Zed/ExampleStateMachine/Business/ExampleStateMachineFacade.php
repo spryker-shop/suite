@@ -20,7 +20,7 @@ class ExampleStateMachineFacade extends AbstractFacade implements ExampleStateMa
      *
      * @return bool
      */
-    public function itemStateUpdate(StateMachineItemTransfer $stateMachineItemTransfer)
+    public function itemStateUpdate(StateMachineItemTransfer $stateMachineItemTransfer): bool
     {
         return $this->getFactory()->createStateMachineSaver()->itemStateUpdate($stateMachineItemTransfer);
     }
@@ -30,7 +30,7 @@ class ExampleStateMachineFacade extends AbstractFacade implements ExampleStateMa
      *
      * @return array<\Generated\Shared\Transfer\StateMachineItemTransfer>
      */
-    public function getExampleStateMachineItemsByStateIds(array $stateIds = [])
+    public function getExampleStateMachineItemsByStateIds(array $stateIds = []): array
     {
         return $this->getFactory()->createExampleStateMachineItemReader()->getStateMachineItemTransferByItemStateIds($stateIds);
     }
@@ -38,7 +38,7 @@ class ExampleStateMachineFacade extends AbstractFacade implements ExampleStateMa
     /**
      * @return array<\Generated\Shared\Transfer\StateMachineItemTransfer>
      */
-    public function getStateMachineItems()
+    public function getStateMachineItems(): array
     {
         return $this->getFactory()->createExampleStateMachineItemReader()->getStateMachineItems();
     }
@@ -46,7 +46,7 @@ class ExampleStateMachineFacade extends AbstractFacade implements ExampleStateMa
     /**
      * @return bool
      */
-    public function createExampleItem()
+    public function createExampleItem(): bool
     {
         return $this->getFactory()->createStateMachineSaver()->createExampleItem();
     }

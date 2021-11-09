@@ -42,6 +42,7 @@ use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckoutWo
 use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteWithCustomShipmentPriceCheckoutWorkflowStepResolverStrategyPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\Form\FormInterface;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
@@ -96,7 +97,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      *
      * @return \Symfony\Component\Form\FormInterface
      */
-    protected function getCustomerCheckoutForm($subForm, $blockPrefix)
+    protected function getCustomerCheckoutForm($subForm, $blockPrefix): FormInterface
     {
         return $this->getFormFactory()->createNamed(
             $blockPrefix,

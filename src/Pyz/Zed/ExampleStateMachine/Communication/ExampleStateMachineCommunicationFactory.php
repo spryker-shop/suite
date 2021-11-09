@@ -9,6 +9,7 @@ namespace Pyz\Zed\ExampleStateMachine\Communication;
 
 use Pyz\Zed\ExampleStateMachine\ExampleStateMachineDependencyProvider;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
+use Spryker\Zed\StateMachine\Business\StateMachineFacade;
 
 /**
  * @method \Pyz\Zed\ExampleStateMachine\Persistence\ExampleStateMachineQueryContainer getQueryContainer()
@@ -19,7 +20,7 @@ class ExampleStateMachineCommunicationFactory extends AbstractCommunicationFacto
     /**
      * @return \Spryker\Zed\StateMachine\Business\StateMachineFacade
      */
-    public function getStateMachineFacade()
+    public function getStateMachineFacade(): StateMachineFacade
     {
         return $this->getProvidedDependency(ExampleStateMachineDependencyProvider::FACADE_STATE_MACHINE);
     }

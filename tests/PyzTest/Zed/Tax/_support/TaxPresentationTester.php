@@ -49,7 +49,7 @@ class TaxPresentationTester extends Actor
      *
      * @return void
      */
-    public function createTaxRate($taxRateName)
+    public function createTaxRate($taxRateName): void
     {
         $i = $this;
 
@@ -62,7 +62,7 @@ class TaxPresentationTester extends Actor
      *
      * @return void
      */
-    protected function fillTaxRateForm($taxRateName)
+    protected function fillTaxRateForm($taxRateName): void
     {
         $i = $this;
 
@@ -81,7 +81,7 @@ class TaxPresentationTester extends Actor
      *
      * @return void
      */
-    public function createTaxRateWithoutSaving($taxRateName)
+    public function createTaxRateWithoutSaving($taxRateName): void
     {
         $i = $this;
         $i->fillTaxRateForm($taxRateName);
@@ -92,7 +92,7 @@ class TaxPresentationTester extends Actor
      *
      * @return void
      */
-    public function searchForTaxRate($taxRateName)
+    public function searchForTaxRate($taxRateName): void
     {
         $i = $this;
 
@@ -104,7 +104,7 @@ class TaxPresentationTester extends Actor
      *
      * @return void
      */
-    public function deleteTaxRate($taxRateName)
+    public function deleteTaxRate($taxRateName): void
     {
         $i = $this;
         $i->amOnPage(TaxRateListPage::URL);
@@ -116,7 +116,7 @@ class TaxPresentationTester extends Actor
     /**
      * @return void
      */
-    public function seeErrorMessages()
+    public function seeErrorMessages(): void
     {
         $i = $this;
 
@@ -130,7 +130,7 @@ class TaxPresentationTester extends Actor
      *
      * @return void
      */
-    public function createOneAndTheSameTaxRate($taxRateName)
+    public function createOneAndTheSameTaxRate($taxRateName): void
     {
         $i = $this;
 
@@ -161,7 +161,7 @@ class TaxPresentationTester extends Actor
      *
      * @return void
      */
-    public function editTaxRateWithValidData($taxRateName)
+    public function editTaxRateWithValidData($taxRateName): void
     {
         $i = $this;
 
@@ -175,7 +175,7 @@ class TaxPresentationTester extends Actor
     /**
      * @return void
      */
-    public function deleteTaxRateFromEditForm()
+    public function deleteTaxRateFromEditForm(): void
     {
         $i = $this;
 
@@ -187,7 +187,7 @@ class TaxPresentationTester extends Actor
      *
      * @return void
      */
-    public function removeTaxRateFromDatabase($taxRateName)
+    public function removeTaxRateFromDatabase($taxRateName): void
     {
         $taxRateQuery = new SpyTaxRateQuery();
         $taxRateEntity = $taxRateQuery->findOneByName(TaxRateCreatePage::$taxRateData[$taxRateName]['name']);

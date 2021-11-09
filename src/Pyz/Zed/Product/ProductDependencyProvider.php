@@ -138,7 +138,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      *
      * @return array<\Spryker\Zed\Product\Dependency\Plugin\ProductConcretePluginUpdateInterface>
      */
-    protected function getProductConcreteBeforeUpdatePlugins(Container $container)
+    protected function getProductConcreteBeforeUpdatePlugins(Container $container): array
     {
         return [
             new ProductAlternativeGuiProductConcretePluginUpdate(), #ProductAlternativeFeature
@@ -150,7 +150,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      *
      * @return array<\Spryker\Zed\Product\Dependency\Plugin\ProductConcretePluginUpdateInterface>
      */
-    protected function getProductConcreteAfterUpdatePlugins(Container $container)
+    protected function getProductConcreteAfterUpdatePlugins(Container $container): array
     {
         return [
             new ImageSetProductConcreteAfterUpdatePlugin(),

@@ -20,6 +20,8 @@ use Generated\Shared\Transfer\ProductImageSetTransfer;
 use Generated\Shared\Transfer\ProductImageTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
+use Orm\Zed\Product\Persistence\SpyProduct;
+use Orm\Zed\Product\Persistence\SpyProductAbstract;
 use Orm\Zed\Stock\Persistence\SpyStock;
 use Orm\Zed\Tax\Persistence\SpyTaxRate;
 use Orm\Zed\Tax\Persistence\SpyTaxSet;
@@ -282,7 +284,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupLocales()
+    protected function setupLocales(): void
     {
         $this->locales['de_DE'] = new LocaleTransfer();
         $this->locales['de_DE']->setIdLocale(46)->setIsActive(true)->setLocaleName('de_DE');
@@ -294,7 +296,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupProductAbstract()
+    protected function setupProductAbstract(): void
     {
         $this->productAbstractTransfer = new ProductAbstractTransfer();
         $this->productAbstractTransfer->setSku(self::ABSTRACT_SKU);
@@ -315,7 +317,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupProductConcrete()
+    protected function setupProductConcrete(): void
     {
         $this->productConcreteTransfer = new ProductConcreteTransfer();
         $this->productConcreteTransfer->setSku(self::CONCRETE_SKU);
@@ -334,7 +336,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupTaxes()
+    protected function setupTaxes(): void
     {
         $taxSet = new SpyTaxSet();
         $taxSet->setName('DEFAULT');
@@ -354,7 +356,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupStocks()
+    protected function setupStocks(): void
     {
         $stockEntity = new SpyStock();
         $stockEntity->setName('TEST');
@@ -370,7 +372,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupPluginImages()
+    protected function setupPluginImages(): void
     {
         $imageSetTransfer = (new ProductImageSetTransfer())
             ->setName(self::IMAGE_SET_NAME);
@@ -395,7 +397,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupPluginPrices()
+    protected function setupPluginPrices(): void
     {
         $currencyTransfer = $this->currencyFacade->fromIsoCode(static::CURRENCY_ISO_CODE);
         $storeTransfer = $this->storeFacade->getCurrentStore();
@@ -428,7 +430,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupAbstractPluginData()
+    protected function setupAbstractPluginData(): void
     {
         $this->setupTaxes();
     }
@@ -436,7 +438,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupConcretePluginData()
+    protected function setupConcretePluginData(): void
     {
         $this->setupStocks();
     }
@@ -444,7 +446,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupDefaultProducts()
+    protected function setupDefaultProducts(): void
     {
         $this->productManager->addProduct($this->productAbstractTransfer, [$this->productConcreteTransfer]);
     }
@@ -454,7 +456,7 @@ abstract class ProductTestAbstract extends Unit
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
      */
-    protected function getProductAbstractEntityById($idProductAbstract)
+    protected function getProductAbstractEntityById($idProductAbstract): SpyProductAbstract
     {
         return $this->productQueryContainer
             ->queryProductAbstract()
@@ -467,7 +469,7 @@ abstract class ProductTestAbstract extends Unit
      *
      * @return \Orm\Zed\Product\Persistence\SpyProduct
      */
-    protected function getProductConcreteEntityByAbstractId($idProductAbstract)
+    protected function getProductConcreteEntityByAbstractId($idProductAbstract): SpyProduct
     {
         return $this->productQueryContainer
             ->queryProduct()
