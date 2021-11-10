@@ -58,8 +58,8 @@ image:
             - newrelic
 
 composer:
-    mode: --no-dev
-    autoload: --classmap-authoritative
+    mode: ''
+    autoload: ''
 
 assets:
     image: fholzer/nginx-brotli:v1.18.0
@@ -267,7 +267,7 @@ docker:
         store: DE
 
     debug:
-        enabled: true
+        enabled: false
         xdebug:
             enabled: false
 
