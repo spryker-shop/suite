@@ -48,7 +48,7 @@ image:
         SPRYKER_HOOK_AFTER_DEPLOY: 'true'
         SPRYKER_HOOK_INSTALL: 'vendor/bin/install -r production --no-ansi -vvv'
         SPRYKER_HOOK_DESTRUCTIVE_INSTALL: 'vendor/bin/install -r destructive --no-ansi -vvv'
-        SPRYKER_PRODUCT_CONFIGURATOR_HOST: demo-date-time-configurator.69-new.demo-spryker.com
+        SPRYKER_PRODUCT_CONFIGURATOR_HOST: demo-date-time-configurator.suite-nonsplit.demo-spryker.com
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
         SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
         SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR: '0c1ffefeebdab4a3d839d0e52590c9a2'
@@ -77,9 +77,9 @@ regions:
             mail:
                 sender:
                     name: Spryker No-Reply
-                    email: no-reply@69-new.demo-spryker.com
+                    email: no-reply@suite-nonsplit.demo-spryker.com
             database:
-                database: spryker_69new
+                database: spryker_sns
                 username: spryker
                 password: secret
 
@@ -122,38 +122,38 @@ groups:
             Redirects:
                 application: static
                 endpoints:
-                    de.69-new.demo-spryker.com:
+                    de.suite-nonsplit.demo-spryker.com:
                         store: DE
                         redirect:
                             code: 302
-                            url: www.de.69-new.demo-spryker.com
-                    at.69-new.demo-spryker.com:
+                            url: www.de.suite-nonsplit.demo-spryker.com
+                    at.suite-nonsplit.demo-spryker.com:
                         store: AT
                         redirect:
                             code: 302
-                            url: www.at.69-new.demo-spryker.com
-                    us.69-new.demo-spryker.com:
+                            url: www.at.suite-nonsplit.demo-spryker.com
+                    us.suite-nonsplit.demo-spryker.com:
                         store: US
                         redirect:
                             code: 302
-                            url: www.us.69-new.demo-spryker.com
+                            url: www.us.suite-nonsplit.demo-spryker.com
             mportal:
                 application: merchant-portal
                 endpoints:
-                    mp.de.69-new.demo-spryker.com:
+                    mp.de.suite-nonsplit.demo-spryker.com:
                         entry-point: MerchantPortal
                         store: DE
                         primal: true
                         services:
                             session:
                                 namespace: 7
-                    mp.at.69-new.demo-spryker.com:
+                    mp.at.suite-nonsplit.demo-spryker.com:
                         entry-point: MerchantPortal
                         store: AT
                         services:
                             session:
                                 namespace: 8   
-                    mp.us.69-new.demo-spryker.com:
+                    mp.us.suite-nonsplit.demo-spryker.com:
                         entry-point: MerchantPortal
                         store: US
                         services:
@@ -162,58 +162,58 @@ groups:
             Yves:
                 application: yves
                 endpoints:
-                    demo-date-time-configurator.69-new.demo-spryker.com:
+                    demo-date-time-configurator.suite-nonsplit.demo-spryker.com:
                         entry-point: Configurator
-                    www.de.69-new.demo-spryker.com:
+                    www.de.suite-nonsplit.demo-spryker.com:
                         store: DE
                         <<: *frontend-auth
-                    www.at.69-new.demo-spryker.com:
+                    www.at.suite-nonsplit.demo-spryker.com:
                         store: AT
                         <<: *frontend-auth
-                    www.us.69-new.demo-spryker.com:
+                    www.us.suite-nonsplit.demo-spryker.com:
                         store: US
                         <<: *frontend-auth
             boffice:
                 application: backoffice
                 endpoints:
-                    backoffice.de.69-new.demo-spryker.com:
+                    backoffice.de.suite-nonsplit.demo-spryker.com:
                         store: DE
                         primal: true
-                    backoffice.at.69-new.demo-spryker.com:
+                    backoffice.at.suite-nonsplit.demo-spryker.com:
                         store: AT
-                    backoffice.us.69-new.demo-spryker.com:
+                    backoffice.us.suite-nonsplit.demo-spryker.com:
                         store: US
             backgw:
                 application: backend-gateway
                 endpoints:
-                    backend-gateway.de.69-new.demo-spryker.com:
+                    backend-gateway.de.suite-nonsplit.demo-spryker.com:
                         store: DE
                         primal: true
-                    backend-gateway.at.69-new.demo-spryker.com:
+                    backend-gateway.at.suite-nonsplit.demo-spryker.com:
                         store: AT
-                    backend-gateway.us.69-new.demo-spryker.com:
+                    backend-gateway.us.suite-nonsplit.demo-spryker.com:
                         store: US
             backapi:
                 application: zed
                 endpoints:
-                    backend-api.de.69-new.demo-spryker.com:
+                    backend-api.de.suite-nonsplit.demo-spryker.com:
                         store: DE
                         entry-point: BackendApi
                         primal: true
-                    backend-api.at.69-new.demo-spryker.com:
+                    backend-api.at.suite-nonsplit.demo-spryker.com:
                         store: AT
                         entry-point: BackendApi
-                    backend-api.us.69-new.demo-spryker.com:
+                    backend-api.us.suite-nonsplit.demo-spryker.com:
                         store: US
                         entry-point: BackendApi                                              
             Glue:
                 application: glue
                 endpoints:
-                    glue.de.69-new.demo-spryker.com:
+                    glue.de.suite-nonsplit.demo-spryker.com:
                         store: DE
-                    glue.at.69-new.demo-spryker.com:
+                    glue.at.suite-nonsplit.demo-spryker.com:
                         store: AT
-                    glue.us.69-new.demo-spryker.com:
+                    glue.us.suite-nonsplit.demo-spryker.com:
                         store: US
 services:
     database:
@@ -231,7 +231,7 @@ services:
             username: 'spryker'
             password: 'secret'
         endpoints:
-            queue.69-new.demo-spryker.com:
+            queue.suite-nonsplit.demo-spryker.com:
             localhost:5672:
                 protocol: tcp
     session:
@@ -250,11 +250,11 @@ services:
     scheduler:
         engine: jenkins
         endpoints:
-            scheduler.69-new.demo-spryker.com:
+            scheduler.suite-nonsplit.demo-spryker.com:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.69-new.demo-spryker.com:
+            mail.suite-nonsplit.demo-spryker.com:
 
 docker:
     blackfire:
