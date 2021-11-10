@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.200.1",
+            "version": "3.201.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "41ffdb283c524c6632610ec43d89ba7f6094b575"
+                "reference": "d2bb0296a3fe62fbc975075d7b06c41002a6517d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/41ffdb283c524c6632610ec43d89ba7f6094b575",
-                "reference": "41ffdb283c524c6632610ec43d89ba7f6094b575",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d2bb0296a3fe62fbc975075d7b06c41002a6517d",
+                "reference": "d2bb0296a3fe62fbc975075d7b06c41002a6517d",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.200.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.201.0"
             },
-            "time": "2021-11-05T19:19:45+00:00"
+            "time": "2021-11-09T19:28:28+00:00"
         },
         {
             "name": "brick/math",
@@ -1643,16 +1643,16 @@
         },
         {
             "name": "laminas/laminas-stdlib",
-            "version": "3.6.0",
+            "version": "3.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-stdlib.git",
-                "reference": "c53d8537f108fac3fae652677a19735db730ba46"
+                "reference": "db581851a092246ad99e12d4fddf105184924c71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/c53d8537f108fac3fae652677a19735db730ba46",
-                "reference": "c53d8537f108fac3fae652677a19735db730ba46",
+                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/db581851a092246ad99e12d4fddf105184924c71",
+                "reference": "db581851a092246ad99e12d4fddf105184924c71",
                 "shasum": ""
             },
             "require": {
@@ -1698,7 +1698,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-09-02T16:11:32+00:00"
+            "time": "2021-11-10T11:33:52+00:00"
         },
         {
             "name": "laminas/laminas-zendframework-bridge",
@@ -2823,16 +2823,16 @@
         },
         {
             "name": "nette/neon",
-            "version": "v3.3.0",
+            "version": "v3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/neon.git",
-                "reference": "33d262a0c4fb6c6371385f6dc8532f4e32c20ebc"
+                "reference": "1f4e5f6a30bf45b6c2c932be7396ea70692ee607"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/neon/zipball/33d262a0c4fb6c6371385f6dc8532f4e32c20ebc",
-                "reference": "33d262a0c4fb6c6371385f6dc8532f4e32c20ebc",
+                "url": "https://api.github.com/repos/nette/neon/zipball/1f4e5f6a30bf45b6c2c932be7396ea70692ee607",
+                "reference": "1f4e5f6a30bf45b6c2c932be7396ea70692ee607",
                 "shasum": ""
             },
             "require": {
@@ -2842,8 +2842,11 @@
             "require-dev": {
                 "nette/tester": "^2.0",
                 "phpstan/phpstan": "^0.12",
-                "tracy/tracy": "^2.3"
+                "tracy/tracy": "^2.8.8"
             },
+            "bin": [
+                "bin/neon-lint"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2882,9 +2885,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/neon/issues",
-                "source": "https://github.com/nette/neon/tree/v3.3.0"
+                "source": "https://github.com/nette/neon/tree/v3.3.1"
             },
-            "time": "2021-10-19T22:11:22+00:00"
+            "time": "2021-11-09T01:00:15+00:00"
         },
         {
             "name": "nette/php-generator",
@@ -4436,23 +4439,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/loggly.git",
-                "reference": "cb564fd7d39f4b69aebfcc67d8e2ab3522a7b8e6"
+                "reference": "70d976acd568e3f909d7b8faadd92af4d1838168"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/cb564fd7d39f4b69aebfcc67d8e2ab3522a7b8e6",
-                "reference": "cb564fd7d39f4b69aebfcc67d8e2ab3522a7b8e6",
+                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/70d976acd568e3f909d7b8faadd92af4d1838168",
+                "reference": "70d976acd568e3f909d7b8faadd92af4d1838168",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
-                "spryker/kernel": "^3.30.0"
+                "php": ">=7.4",
+                "spryker/kernel": "^3.49.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "^0.12",
-                "spryker/code-sniffer": "*",
-                "spryker/monolog": "*",
-                "spryker/queue": "*"
+                "phpstan/phpstan": "^1.0.0",
+                "spryker/code-sniffer": "^0.17.1",
+                "spryker/monolog": "^2.0.4",
+                "spryker/queue": "^1.5.0",
+                "spryker/testify": "^3.40.0",
+                "spryker/transfer": "^3.25.0"
             },
             "suggest": {
                 "spryker/monolog": "Needed to send messages to loggly via Curl helper",
@@ -4477,9 +4482,9 @@
             "description": "Loggly module",
             "support": {
                 "issues": "https://github.com/spryker-eco/loggly/issues",
-                "source": "https://github.com/spryker-eco/loggly/tree/master"
+                "source": "https://github.com/spryker-eco/loggly/tree/0.1.1"
             },
-            "time": "2021-08-30T12:02:30+00:00"
+            "time": "2021-11-10T11:57:20+00:00"
         },
         {
             "name": "spryker-eco/new-relic",
@@ -4772,12 +4777,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "30b070168850a0f4de436babbe62be57a8d791e6"
+                "reference": "5dac4f72cd8599bf7f46ab1dcd374e8980d527e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/30b070168850a0f4de436babbe62be57a8d791e6",
-                "reference": "30b070168850a0f4de436babbe62be57a8d791e6",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/5dac4f72cd8599bf7f46ab1dcd374e8980d527e1",
+                "reference": "5dac4f72cd8599bf7f46ab1dcd374e8980d527e1",
                 "shasum": ""
             },
             "require": {
@@ -4793,13 +4798,14 @@
             },
             "require-dev": {
                 "codeception/module-asserts": "^1.3.0",
-                "spryker/code-sniffer": "*",
-                "spryker/config": "^3.1.0",
+                "spryker/code-sniffer": "@stable",
+                "spryker/config": "^3.5.0",
                 "spryker/console": "^3.2.0 || ^4.0.0",
                 "spryker/container": "^1.4.0",
                 "spryker/event-dispatcher": "^1.0.0",
                 "spryker/silex": "^2.0.0",
-                "spryker/testify": "^3.0.0"
+                "spryker/testify": "^3.42.0",
+                "spryker/transfer": "^3.25.0"
             },
             "suggest": {
                 "spryker/console": "If you want to execute console commands",
@@ -4833,7 +4839,7 @@
             "support": {
                 "source": "https://github.com/spryker/event-behavior"
             },
-            "time": "2021-11-08T12:31:36+00:00"
+            "time": "2021-11-10T09:12:46+00:00"
         },
         {
             "name": "spryker/install",
@@ -4894,29 +4900,30 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "576936543b279db455fbcf2b24cfdb11a5bee0a4"
+                "reference": "88df52664fd416805bf7d66e7d0f3474dac45f87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/576936543b279db455fbcf2b24cfdb11a5bee0a4",
-                "reference": "576936543b279db455fbcf2b24cfdb11a5bee0a4",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/88df52664fd416805bf7d66e7d0f3474dac45f87",
+                "reference": "88df52664fd416805bf7d66e7d0f3474dac45f87",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "php-amqplib/php-amqplib": "^3.1.0",
-                "spryker/guzzle": "^2.0.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/log": "^3.0.0",
-                "spryker/queue": "^1.4.0",
-                "spryker/store": "^1.9.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/transfer": "^3.8.0"
+                "spryker/guzzle": "^2.1.0",
+                "spryker/kernel": "^3.56.0",
+                "spryker/log": "^3.7.0",
+                "spryker/queue": "^1.5.0",
+                "spryker/store": "^1.10.0",
+                "spryker/symfony": "^3.5.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "^0.12.57",
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "^3.35.0"
+                "codeception/module-asserts": "^1.3.0",
+                "codeception/stub": "^3.6.1",
+                "spryker/code-sniffer": "^0.17.1",
+                "spryker/testify": "^3.40.0"
             },
             "default-branch": true,
             "type": "library",
@@ -4955,7 +4962,7 @@
             "support": {
                 "source": "https://github.com/spryker/rabbit-mq"
             },
-            "time": "2021-10-27T16:29:14+00:00"
+            "time": "2021-11-10T09:37:47+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -6272,21 +6279,21 @@
         },
         {
             "name": "symfony-cmf/routing",
-            "version": "2.3.3",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing.git",
-                "reference": "3c97e7b7709b313cecfb76d691ad4cc22acbf3f5"
+                "reference": "bbcdf2f6301d740454ba9ebb8adaefd436c36a6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/3c97e7b7709b313cecfb76d691ad4cc22acbf3f5",
-                "reference": "3c97e7b7709b313cecfb76d691ad4cc22acbf3f5",
+                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/bbcdf2f6301d740454ba9ebb8adaefd436c36a6b",
+                "reference": "bbcdf2f6301d740454ba9ebb8adaefd436c36a6b",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0",
-                "psr/log": "^1.0",
+                "psr/log": "^1.0 || ^2.0 || ^3.0",
                 "symfony/http-kernel": "^4.4 || ^5.0",
                 "symfony/routing": "^4.4 || ^5.0"
             },
@@ -6329,9 +6336,9 @@
             ],
             "support": {
                 "issues": "https://github.com/symfony-cmf/Routing/issues",
-                "source": "https://github.com/symfony-cmf/Routing/tree/2.3.3"
+                "source": "https://github.com/symfony-cmf/Routing/tree/2.3.4"
             },
-            "time": "2020-10-06T10:15:37+00:00"
+            "time": "2021-11-08T16:33:10+00:00"
         },
         {
             "name": "symfony/config",
@@ -10814,21 +10821,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chobie/jira-api-restclient.git",
-                "reference": "9e55fa0515da8b2e7d702fd0b6708be02428afe9"
+                "reference": "1b7381415372b2a1e5b8fb12fd420d167580fd7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chobie/jira-api-restclient/zipball/9e55fa0515da8b2e7d702fd0b6708be02428afe9",
-                "reference": "9e55fa0515da8b2e7d702fd0b6708be02428afe9",
+                "url": "https://api.github.com/repos/chobie/jira-api-restclient/zipball/1b7381415372b2a1e5b8fb12fd420d167580fd7c",
+                "reference": "1b7381415372b2a1e5b8fb12fd420d167580fd7c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.4.0"
             },
             "require-dev": {
                 "aik099/coding-standard": "dev-master",
-                "phpunit/phpunit": "^4.1|^5.0|^6.0",
-                "squizlabs/php_codesniffer": "3.*"
+                "squizlabs/php_codesniffer": "^2.6",
+                "yoast/phpunit-polyfills": "^1.0"
             },
             "default-branch": true,
             "type": "library",
@@ -10863,7 +10870,7 @@
                 "issues": "https://github.com/chobie/jira-api-restclient/issues",
                 "source": "https://github.com/chobie/jira-api-restclient/tree/master"
             },
-            "time": "2019-02-14T17:32:28+00:00"
+            "time": "2021-11-07T18:03:15+00:00"
         },
         {
             "name": "cocur/slugify",
@@ -15692,12 +15699,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "fb609f8ba5a3aae291dafd8b59e48634f103b6d2"
+                "reference": "29ce974e371bca2a4603efeca8fae2d1976b2ec5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/fb609f8ba5a3aae291dafd8b59e48634f103b6d2",
-                "reference": "fb609f8ba5a3aae291dafd8b59e48634f103b6d2",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/29ce974e371bca2a4603efeca8fae2d1976b2ec5",
+                "reference": "29ce974e371bca2a4603efeca8fae2d1976b2ec5",
                 "shasum": ""
             },
             "require": {
@@ -15742,7 +15749,7 @@
                 "issues": "https://github.com/spryker/code-sniffer/issues",
                 "source": "https://github.com/spryker/code-sniffer"
             },
-            "time": "2021-11-08T11:34:21+00:00"
+            "time": "2021-11-08T17:50:05+00:00"
         },
         {
             "name": "spryker/development-core",
