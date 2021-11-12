@@ -12,6 +12,9 @@ use Spryker\Zed\ProductOfferValidityDataImport\ProductOfferValidityDataImportCon
 
 class ProductOfferValidityDataImportConfig extends SprykerProductOfferValidityDataImportConfig
 {
+    /**
+     * @var string
+     */
     public const IMPORT_TYPE_COMBINED_PRODUCT_OFFER_VALIDITY = 'combined-product-offer-validity';
 
     /**
@@ -23,7 +26,7 @@ class ProductOfferValidityDataImportConfig extends SprykerProductOfferValidityDa
 
         return $this->buildImporterConfiguration(
             $moduleDataImportDirectory . 'combined_merchant_product_offer.csv',
-            static::IMPORT_TYPE_COMBINED_PRODUCT_OFFER_VALIDITY
+            static::IMPORT_TYPE_COMBINED_PRODUCT_OFFER_VALIDITY,
         );
     }
 }

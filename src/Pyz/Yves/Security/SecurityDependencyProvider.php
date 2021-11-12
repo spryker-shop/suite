@@ -15,7 +15,7 @@ use SprykerShop\Yves\CustomerPage\Plugin\Security\CustomerPageSecurityPlugin;
 class SecurityDependencyProvider extends SprykerSecurityDependencyProvider
 {
     /**
-     * @return \Spryker\Shared\SecurityExtension\Dependency\Plugin\SecurityPluginInterface[]
+     * @return array<\Spryker\Shared\SecurityExtension\Dependency\Plugin\SecurityPluginInterface>
      */
     protected function getSecurityPlugins(): array
     {

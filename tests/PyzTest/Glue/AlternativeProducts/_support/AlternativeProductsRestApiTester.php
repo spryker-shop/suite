@@ -33,7 +33,7 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
     use _generated\AlternativeProductsRestApiTesterActions;
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -48,7 +48,7 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
 
     /**
      * @param string $productAbstractSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -59,13 +59,13 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
             [
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -76,13 +76,13 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -94,13 +94,13 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'resourceAbstractAlternativeProducts' => AlternativeProductsRestApiConfig::RELATIONSHIP_NAME_ABSTRACT_ALTERNATIVE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -112,7 +112,7 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'resourceConcreteAlternativeProducts' => AlternativeProductsRestApiConfig::RELATIONSHIP_NAME_CONCRETE_ALTERNATIVE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 }

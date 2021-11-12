@@ -116,7 +116,7 @@ class ProductLabelsRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
         $I->haveProductLabelToAbstractProductRelation(
             $this->productLabelTransfer->getIdProductLabel(),
-            $this->productConcreteTransferWithLabel->getFkProductAbstract()
+            $this->productConcreteTransferWithLabel->getFkProductAbstract(),
         );
     }
 }

@@ -1,8 +1,13 @@
 includes:
     - vendor/spryker-sdk/phpstan-spryker/extension.neon
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
 
 parameters:
-    excludes_analyse:
+    level: 6
+    paths:
+        - src/
+
+    excludePaths:
         - '%rootDir%/../../../src/Generated/*'
         - '%rootDir%/../../../src/Orm/*'
 
@@ -15,6 +20,8 @@ parameters:
         - '#Call to an undefined method .+DataSetStepBrokerAwareInterface::addAfterImportHook\(\).#'
 
     reportUnmatchedIgnoredErrors: false
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
 
     dynamicConstantNames:
         - APPLICATION

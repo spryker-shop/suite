@@ -62,10 +62,10 @@
 
         <events>
             <event name="initiate" onEnter="true"/>
-            <event name="ship" manual="true" command="DummyMarketplacePayment/ShipOrderItem"/>
-            <event name="deliver" manual="true" command="DummyMarketplacePayment/DeliverOrderItem"/>
+            <event name="ship" manual="true" command="MarketplaceOrder/ShipOrderItem"/>
+            <event name="deliver" manual="true" command="MarketplaceOrder/DeliverOrderItem"/>
             <event name="close"/>
-            <event name="cancel by merchant" manual="true"/>
+            <event name="cancel by merchant" manual="true" command="MarketplaceOrder/CancelOrderItem"/>
         </events>
 
         <subprocesses>

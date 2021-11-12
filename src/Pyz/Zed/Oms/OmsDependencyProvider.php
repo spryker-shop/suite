@@ -57,6 +57,9 @@ use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\TrueConditionPlugin
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
+    /**
+     * @var string
+     */
     public const FACADE_TRANSLATOR = 'FACADE_TRANSLATOR';
 
     /**
@@ -169,7 +172,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
      *
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Oms\Dependency\Plugin\ReservationHandlerPluginInterface[]
+     * @return array<\Spryker\Zed\Oms\Dependency\Plugin\ReservationHandlerPluginInterface>
      */
     protected function getReservationHandlerPlugins(Container $container): array
     {
@@ -183,7 +186,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\OmsOrderMailExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\OmsExtension\Dependency\Plugin\OmsOrderMailExpanderPluginInterface>
      */
     protected function getOmsOrderMailExpanderPlugins(Container $container): array
     {
@@ -195,7 +198,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\OmsManualEventGrouperPluginInterface[]
+     * @return array<\Spryker\Zed\OmsExtension\Dependency\Plugin\OmsManualEventGrouperPluginInterface>
      */
     protected function getOmsManualEventGrouperPlugins(Container $container): array
     {
@@ -205,7 +208,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\OmsReservationAggregationPluginInterface[]
+     * @return array<\Spryker\Zed\OmsExtension\Dependency\Plugin\OmsReservationAggregationPluginInterface>
      */
     protected function getOmsReservationAggregationPlugins(): array
     {
@@ -217,7 +220,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\OmsReservationWriterStrategyPluginInterface[]
+     * @return array<\Spryker\Zed\OmsExtension\Dependency\Plugin\OmsReservationWriterStrategyPluginInterface>
      */
     protected function getOmsReservationWriterStrategyPlugins(): array
     {
@@ -227,7 +230,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\ReservationPostSaveTerminationAwareStrategyPluginInterface[]
+     * @return array<\Spryker\Zed\OmsExtension\Dependency\Plugin\ReservationPostSaveTerminationAwareStrategyPluginInterface>
      */
     protected function getReservationPostSaveTerminationAwareStrategyPlugins(): array
     {
@@ -240,7 +243,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\OmsReservationReaderStrategyPluginInterface[]
+     * @return array<\Spryker\Zed\OmsExtension\Dependency\Plugin\OmsReservationReaderStrategyPluginInterface>
      */
     protected function getOmsReservationReaderStrategyPlugins(): array
     {
@@ -250,7 +253,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\TimeoutProcessorPluginInterface[]
+     * @return array<\Spryker\Zed\OmsExtension\Dependency\Plugin\TimeoutProcessorPluginInterface>
      */
     protected function getTimeoutProcessorPlugins(): array
     {

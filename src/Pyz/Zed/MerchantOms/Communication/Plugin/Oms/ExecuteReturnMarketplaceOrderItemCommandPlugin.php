@@ -9,6 +9,9 @@ namespace Pyz\Zed\MerchantOms\Communication\Plugin\Oms;
 
 class ExecuteReturnMarketplaceOrderItemCommandPlugin extends AbstractTriggerOmsEventCommandPlugin
 {
+    /**
+     * @var string
+     */
     protected const EVENT_EXECUTE_RETURN = 'execute-return';
 
     /**

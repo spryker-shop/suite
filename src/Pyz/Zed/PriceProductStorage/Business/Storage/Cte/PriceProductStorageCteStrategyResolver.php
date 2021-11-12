@@ -14,7 +14,7 @@ use Pyz\Zed\Propel\Business\PropelFacadeInterface;
 class PriceProductStorageCteStrategyResolver implements PriceProductStorageCteStrategyResolverInterface
 {
     /**
-     * @var \Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface[]
+     * @var array<\Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface>
      */
     protected $cteCollection;
 
@@ -24,7 +24,7 @@ class PriceProductStorageCteStrategyResolver implements PriceProductStorageCteSt
     protected $propelFacade;
 
     /**
-     * @param \Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface[] $cteCollection
+     * @param array<\Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface> $cteCollection
      * @param \Pyz\Zed\Propel\Business\PropelFacadeInterface $propelFacade
      */
     public function __construct(array $cteCollection, PropelFacadeInterface $propelFacade)

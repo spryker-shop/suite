@@ -17,6 +17,9 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class PriceProductVolumesRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    /**
+     * @var array
+     */
     public const VOLUME_PRICE_DATA = [
         [
             PriceProductVolumeConfig::VOLUME_PRICE_QUANTITY => 5,
@@ -35,6 +38,9 @@ class PriceProductVolumesRestApiFixtures implements FixturesBuilderInterface, Fi
         ],
     ];
 
+    /**
+     * @var string
+     */
     public const VOLUME_PRICE_ATTRIBUTE_JSON_PATH = '.prices[0].volumePrices';
 
     /**

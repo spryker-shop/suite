@@ -52,7 +52,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
 
         return sprintf(
             '{%s}',
-            pg_escape_string(implode(',', $values))
+            pg_escape_string(implode(',', $values)),
         );
     }
 
@@ -65,7 +65,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     {
         return sprintf(
             '{"%s"}',
-            pg_escape_string(implode('","', $values))
+            pg_escape_string(implode('","', $values)),
         );
     }
 
@@ -82,7 +82,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
 
         return sprintf(
             '{%s}',
-            pg_escape_string(implode(',', $values))
+            pg_escape_string(implode(',', $values)),
         );
     }
 
@@ -95,7 +95,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     {
         return sprintf(
             '[%s]',
-            pg_escape_string(implode(',', $values))
+            pg_escape_string(implode(',', $values)),
         );
     }
 
@@ -164,7 +164,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
         }
 
         $values = array_map(function ($value) {
-            return str_replace(',', '|', $value) ?? '';
+            return str_replace(',', '|', $value);
         }, $values);
 
         return implode(',', $values);

@@ -18,6 +18,9 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    /**
+     * @var string
+     */
     protected const TEST_PASSWORD = 'change123';
 
     /**

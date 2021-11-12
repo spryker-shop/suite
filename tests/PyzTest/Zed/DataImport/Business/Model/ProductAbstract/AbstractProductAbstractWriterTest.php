@@ -37,10 +37,19 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
 {
+    /**
+     * @var int
+     */
     protected const PRODUCT_ORDER = 16;
 
+    /**
+     * @var int
+     */
     protected const DATA_SET_COUNT = 2;
 
+    /**
+     * @var int
+     */
     protected const LOCALES_LIMIT = 2;
 
     /**
@@ -53,9 +62,7 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
         $locale = $this->getLocale();
         for ($i = 0; $i < static::DATA_SET_COUNT; $i++) {
             $dataSet = new DataSet();
-            /**
-             * @var \Generated\Shared\Transfer\SpyProductAbstractEntityTransfer
-             */
+            /** @var \Generated\Shared\Transfer\SpyProductAbstractEntityTransfer $spyProductAbstractEntityTransfer */
             $spyProductAbstractEntityTransfer = (new SpyProductAbstractEntityBuilder())
                 ->build();
             $spyProductAbstractEntityTransfer
@@ -65,9 +72,7 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                 ->setNewTo('2010-02-03 00:45:00');
             $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_TRANSFER] = $spyProductAbstractEntityTransfer;
 
-            /**
-             * @var \Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer
-             */
+            /** @var \Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer $productAbstractLocalizedAttributesEntityTransfer */
             $productAbstractLocalizedAttributesEntityTransfer = (new SpyProductAbstractLocalizedAttributesEntityBuilder())
                 ->build();
             $productAbstractLocalizedAttributesEntityTransfer
@@ -79,9 +84,7 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                     'localizedAttributeTransfer' => $productAbstractLocalizedAttributesEntityTransfer,
                 ],
             ];
-            /**
-             * @var \Generated\Shared\Transfer\SpyUrlEntityTransfer
-             */
+            /** @var \Generated\Shared\Transfer\SpyUrlEntityTransfer $urlEntityTransfer */
             $urlEntityTransfer = (new SpyUrlEntityBuilder())->build();
             $urlEntityTransfer
                 ->setFkLocale($locale->getIdLocale());
@@ -143,11 +146,11 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
             $dataSetProduct = $dataSets[$abstractProductEntity->getSku()][ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_TRANSFER];
             $this->assertSame(
                 $dataSetProduct->getAttributes(),
-                $abstractProductEntity->getAttributes()
+                $abstractProductEntity->getAttributes(),
             );
             $this->assertSame(
                 $dataSetProduct->getColorCode(),
-                $abstractProductEntity->getColorCode()
+                $abstractProductEntity->getColorCode(),
             );
 
             //Localized
@@ -165,15 +168,15 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                     }
                     $this->assertSame(
                         $localizedAttributeTransfer->getName(),
-                        $localizedAttribute->getName()
+                        $localizedAttribute->getName(),
                     );
                     $this->assertSame(
                         $localizedAttributeTransfer->getDescription(),
-                        $localizedAttribute->getDescription()
+                        $localizedAttribute->getDescription(),
                     );
                     $this->assertSame(
                         $localizedAttributeTransfer->getMetaTitle(),
-                        $localizedAttribute->getMetaTitle()
+                        $localizedAttribute->getMetaTitle(),
                     );
                 }
             }

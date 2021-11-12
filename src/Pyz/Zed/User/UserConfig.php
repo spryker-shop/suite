@@ -12,9 +12,9 @@ use Spryker\Zed\User\UserConfig as SprykerUserConfig;
 class UserConfig extends SprykerUserConfig
 {
     /**
-     * @return array
+     * @return array<array>
      */
-    public function getInstallerUsers()
+    public function getInstallerUsers(): array
     {
         return [
             [
@@ -36,6 +36,12 @@ class UserConfig extends SprykerUserConfig
                 'lastName' => 'Schmidt',
                 'password' => 'change123',
                 'username' => 'harald@spryker.com',
+            ],
+            [
+                'firstName' => 'Richard',
+                'lastName' => 'Gere',
+                'password' => 'change123',
+                'username' => 'richard@spryker.com',
             ],
             [
                 'firstName' => 'Martha',

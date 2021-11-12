@@ -13,12 +13,15 @@ use Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface;
 
 class Environment extends Module
 {
+    /**
+     * @var string
+     */
     protected const TESTING_APPLICATION_ENV_NAME = 'devtest';
 
     /**
      * @return void
      */
-    public function _initialize()
+    public function _initialize(): void
     {
         $rootDir = realpath(__DIR__ . '/../../../../../../');
         $applicationEnv = $this->getApplicationEnv();

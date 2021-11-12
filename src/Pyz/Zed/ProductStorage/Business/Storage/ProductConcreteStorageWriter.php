@@ -78,15 +78,15 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
 
     /**
      * @param array $productConcreteLocalizedEntities
-     * @param \Orm\Zed\ProductStorage\Persistence\SpyProductConcreteStorage[] $productConcreteStorageEntities
+     * @param array<\Orm\Zed\ProductStorage\Persistence\SpyProductConcreteStorage> $productConcreteStorageEntities
      *
      * @return void
      */
-    protected function storeData(array $productConcreteLocalizedEntities, array $productConcreteStorageEntities)
+    protected function storeData(array $productConcreteLocalizedEntities, array $productConcreteStorageEntities): void
     {
         $pairedEntities = $this->pairProductConcreteLocalizedEntitiesWithProductConcreteStorageEntities(
             $productConcreteLocalizedEntities,
-            $productConcreteStorageEntities
+            $productConcreteStorageEntities,
         );
 
         foreach ($pairedEntities as $pair) {
@@ -102,7 +102,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             $this->storeProductConcreteStorageEntity(
                 $productConcreteLocalizedEntity,
                 $productConcreteStorageEntity,
-                $pair[static::LOCALE_NAME]
+                $pair[static::LOCALE_NAME],
             );
         }
 
@@ -124,7 +124,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
         array $productConcreteLocalizedEntity,
         SpyProductConcreteStorage $productConcreteStorageEntity,
         $localeName
-    ) {
+    ): void {
         $productConcreteStorageTransfer = $this->mapToProductConcreteStorageTransfer($productConcreteLocalizedEntity);
         $productConcreteStorageData = [
             'fk_product' => $productConcreteLocalizedEntity[static::COL_FK_PRODUCT],
@@ -138,7 +138,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     /**
      * @return void
      */
-    protected function loadSuperAttributes()
+    protected function loadSuperAttributes(): void
     {
         $superAttributes = $this->queryContainer
             ->queryProductAttributeKey()
@@ -194,7 +194,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
      *
      * @return string
      */
-    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName)
+    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName): string
     {
         $syncTransferData = new SynchronizationDataTransfer();
         if (isset($data['store'])) {
@@ -250,7 +250,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     /**
      * @return void
      */
-    public function write()
+    public function write(): void
     {
         if (empty($this->synchronizedDataCollection)) {
             return;
@@ -269,7 +269,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getParams(): array
     {

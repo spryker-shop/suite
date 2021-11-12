@@ -55,10 +55,24 @@ use Spryker\Zed\SalesProductConnector\Communication\Plugin\ProductPageSearch\Pro
 
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
+    /**
+     * @var string
+     */
     public const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
 
+    /**
+     * @var string
+     */
     public const FACADE_PROPEL = 'FACADE_PROPEL';
+
+    /**
+     * @var string
+     */
     public const SERVICE_SYNCHRONIZATION = 'SERVICE_SYNCHRONIZATION';
+
+    /**
+     * @var string
+     */
     public const CLIENT_QUEUE = 'CLIENT_QUEUE';
 
     /**
@@ -66,7 +80,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideBusinessLayerDependencies(Container $container)
+    public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
         $container = $this->addPropelFacade($container);
@@ -77,9 +91,9 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[]|\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface>|array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataExpanderPluginInterface>
      */
-    protected function getDataExpanderPlugins()
+    protected function getDataExpanderPlugins(): array
     {
         $dataExpanderPlugins = [];
 
@@ -97,9 +111,9 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface>
      */
-    protected function getDataLoaderPlugins()
+    protected function getDataLoaderPlugins(): array
     {
         return [
             new ImagePageDataLoaderPlugin(),
@@ -115,7 +129,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractCollectionRefreshPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractCollectionRefreshPluginInterface>
      */
     protected function getProductPageRefreshPlugins(): array
     {
@@ -125,7 +139,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageMapExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageMapExpanderPluginInterface>
      */
     protected function getConcreteProductMapExpanderPlugins(): array
     {
@@ -136,7 +150,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface>
      */
     protected function getProductConcretePageDataExpanderPlugins(): array
     {
@@ -147,7 +161,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractMapExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractMapExpanderPluginInterface>
      */
     protected function getProductAbstractMapExpanderPlugins(): array
     {
@@ -166,7 +180,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractAddToCartPluginInterface[]
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractAddToCartPluginInterface>
      */
     protected function getProductAbstractAddToCartPlugins(): array
     {

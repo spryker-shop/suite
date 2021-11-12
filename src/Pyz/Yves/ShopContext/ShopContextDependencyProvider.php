@@ -13,7 +13,7 @@ use SprykerShop\Yves\MerchantSwitcherWidget\Plugin\ShopApplication\MerchantShopC
 class ShopContextDependencyProvider extends SprykerShopContextDependencyProvider
 {
     /**
-     * @return \Spryker\Shared\ShopContextExtension\Dependency\Plugin\ShopContextExpanderPluginInterface[]
+     * @return array<\Spryker\Shared\ShopContextExtension\Dependency\Plugin\ShopContextExpanderPluginInterface>
      */
     protected function getShopContextExpanderPlugins(): array
     {

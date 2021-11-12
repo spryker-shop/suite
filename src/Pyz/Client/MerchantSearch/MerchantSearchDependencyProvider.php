@@ -16,7 +16,7 @@ use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\StoreQueryExpanderPl
 class MerchantSearchDependencyProvider extends SprykerMerchantSearchDependencyProvider
 {
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
+     * @return array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>
      */
     protected function getMerchantSearchResultFormatterPlugins(): array
     {
@@ -26,7 +26,7 @@ class MerchantSearchDependencyProvider extends SprykerMerchantSearchDependencyPr
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface>
      */
     protected function getMerchantSearchQueryExpanderPlugins(): array
     {

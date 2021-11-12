@@ -8,13 +8,13 @@
 namespace Pyz\Zed\PriceCartConnector;
 
 use Spryker\Zed\PriceCartConnector\PriceCartConnectorDependencyProvider as SprykerPriceCartConnectorDependencyProvider;
-use Spryker\Zed\ProductConfiguration\Communication\Plugin\PriceCartConnector\ProductConfigurationCartItemQuantityCounterStrategyPlugin;
-use Spryker\Zed\ProductConfiguration\Communication\Plugin\PriceCartConnector\ProductConfigurationPriceProductExpanderPlugin;
+use Spryker\Zed\ProductConfigurationCart\Communication\Plugin\PriceCartConnector\ProductConfigurationCartItemQuantityCounterStrategyPlugin;
+use Spryker\Zed\ProductConfigurationCart\Communication\Plugin\PriceCartConnector\ProductConfigurationPriceProductExpanderPlugin;
 
 class PriceCartConnectorDependencyProvider extends SprykerPriceCartConnectorDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\PriceCartConnectorExtension\Dependency\Plugin\PriceProductExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\PriceCartConnectorExtension\Dependency\Plugin\PriceProductExpanderPluginInterface>
      */
     protected function getPriceProductExpanderPlugins(): array
     {
@@ -24,7 +24,7 @@ class PriceCartConnectorDependencyProvider extends SprykerPriceCartConnectorDepe
     }
 
     /**
-     * @return \Spryker\Zed\PriceCartConnectorExtension\Dependency\Plugin\CartItemQuantityCounterStrategyPluginInterface[]
+     * @return array<\Spryker\Zed\PriceCartConnectorExtension\Dependency\Plugin\CartItemQuantityCounterStrategyPluginInterface>
      */
     protected function getCartItemQuantityCounterStrategyPlugins(): array
     {

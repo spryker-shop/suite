@@ -20,6 +20,8 @@ use Generated\Shared\Transfer\ProductImageSetTransfer;
 use Generated\Shared\Transfer\ProductImageTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
+use Orm\Zed\Product\Persistence\SpyProduct;
+use Orm\Zed\Product\Persistence\SpyProductAbstract;
 use Orm\Zed\Stock\Persistence\SpyStock;
 use Orm\Zed\Tax\Persistence\SpyTaxRate;
 use Orm\Zed\Tax\Persistence\SpyTaxSet;
@@ -47,37 +49,80 @@ use Spryker\Zed\Url\Business\UrlFacade;
 
 abstract class ProductTestAbstract extends Unit
 {
+    /**
+     * @var array
+     */
     public const PRODUCT_ABSTRACT_NAME = [
         'en_US' => 'Product name en_US',
         'de_DE' => 'Product name de_DE',
     ];
 
+    /**
+     * @var array
+     */
     public const PRODUCT_CONCRETE_NAME = [
         'en_US' => 'Product concrete name en_US',
         'de_DE' => 'Product concrete name de_DE',
     ];
 
+    /**
+     * @var array
+     */
     public const UPDATED_PRODUCT_ABSTRACT_NAME = [
         'en_US' => 'Updated Product name en_US',
         'de_DE' => 'Updated Product name de_DE',
     ];
 
+    /**
+     * @var array
+     */
     public const UPDATED_PRODUCT_CONCRETE_NAME = [
         'en_US' => 'Updated Product concrete name en_US',
         'de_DE' => 'Updated Product concrete name de_DE',
     ];
 
+    /**
+     * @var string
+     */
     public const ABSTRACT_SKU = 'foo';
+
+    /**
+     * @var string
+     */
     public const CONCRETE_SKU = 'foo-concrete';
+
+    /**
+     * @var string
+     */
     public const IMAGE_SET_NAME = 'Default';
+
+    /**
+     * @var string
+     */
     public const IMAGE_URL_LARGE = 'large';
+
+    /**
+     * @var string
+     */
     public const IMAGE_URL_SMALL = 'small';
+
+    /**
+     * @var int
+     */
     public const PRICE = 1234;
+
+    /**
+     * @var int
+     */
     public const STOCK_QUANTITY = 99;
+
+    /**
+     * @var string
+     */
     public const CURRENCY_ISO_CODE = 'EUR';
 
     /**
-     * @var \Generated\Shared\Transfer\LocaleTransfer[]
+     * @var array<\Generated\Shared\Transfer\LocaleTransfer>
      */
     protected $locales;
 
@@ -226,20 +271,20 @@ abstract class ProductTestAbstract extends Unit
             $touchBridge,
             $localeBridge,
             $this->productQueryContainer,
-            $urlGenerator
+            $urlGenerator,
         );
 
         $this->productManager = new ProductManager(
             $this->productAbstractManager,
             $this->productConcreteManager,
-            $this->productQueryContainer
+            $this->productQueryContainer,
         );
     }
 
     /**
      * @return void
      */
-    protected function setupLocales()
+    protected function setupLocales(): void
     {
         $this->locales['de_DE'] = new LocaleTransfer();
         $this->locales['de_DE']->setIdLocale(46)->setIsActive(true)->setLocaleName('de_DE');
@@ -251,7 +296,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupProductAbstract()
+    protected function setupProductAbstract(): void
     {
         $this->productAbstractTransfer = new ProductAbstractTransfer();
         $this->productAbstractTransfer->setSku(self::ABSTRACT_SKU);
@@ -272,7 +317,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupProductConcrete()
+    protected function setupProductConcrete(): void
     {
         $this->productConcreteTransfer = new ProductConcreteTransfer();
         $this->productConcreteTransfer->setSku(self::CONCRETE_SKU);
@@ -291,7 +336,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupTaxes()
+    protected function setupTaxes(): void
     {
         $taxSet = new SpyTaxSet();
         $taxSet->setName('DEFAULT');
@@ -311,7 +356,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupStocks()
+    protected function setupStocks(): void
     {
         $stockEntity = new SpyStock();
         $stockEntity->setName('TEST');
@@ -327,7 +372,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupPluginImages()
+    protected function setupPluginImages(): void
     {
         $imageSetTransfer = (new ProductImageSetTransfer())
             ->setName(self::IMAGE_SET_NAME);
@@ -337,22 +382,22 @@ abstract class ProductTestAbstract extends Unit
             ->setExternalUrlSmall(self::IMAGE_URL_SMALL);
 
         $imageSetTransfer->setProductImages(
-            new ArrayObject([$imageTransfer])
+            new ArrayObject([$imageTransfer]),
         );
 
         $this->productAbstractTransfer->setImageSets(
-            new ArrayObject([$imageSetTransfer])
+            new ArrayObject([$imageSetTransfer]),
         );
 
         $this->productConcreteTransfer->setImageSets(
-            new ArrayObject([$imageSetTransfer])
+            new ArrayObject([$imageSetTransfer]),
         );
     }
 
     /**
      * @return void
      */
-    protected function setupPluginPrices()
+    protected function setupPluginPrices(): void
     {
         $currencyTransfer = $this->currencyFacade->fromIsoCode(static::CURRENCY_ISO_CODE);
         $storeTransfer = $this->storeFacade->getCurrentStore();
@@ -385,7 +430,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupAbstractPluginData()
+    protected function setupAbstractPluginData(): void
     {
         $this->setupTaxes();
     }
@@ -393,7 +438,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupConcretePluginData()
+    protected function setupConcretePluginData(): void
     {
         $this->setupStocks();
     }
@@ -401,7 +446,7 @@ abstract class ProductTestAbstract extends Unit
     /**
      * @return void
      */
-    protected function setupDefaultProducts()
+    protected function setupDefaultProducts(): void
     {
         $this->productManager->addProduct($this->productAbstractTransfer, [$this->productConcreteTransfer]);
     }
@@ -411,7 +456,7 @@ abstract class ProductTestAbstract extends Unit
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
      */
-    protected function getProductAbstractEntityById($idProductAbstract)
+    protected function getProductAbstractEntityById($idProductAbstract): SpyProductAbstract
     {
         return $this->productQueryContainer
             ->queryProductAbstract()
@@ -424,7 +469,7 @@ abstract class ProductTestAbstract extends Unit
      *
      * @return \Orm\Zed\Product\Persistence\SpyProduct
      */
-    protected function getProductConcreteEntityByAbstractId($idProductAbstract)
+    protected function getProductConcreteEntityByAbstractId($idProductAbstract): SpyProduct
     {
         return $this->productQueryContainer
             ->queryProduct()

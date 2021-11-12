@@ -13,7 +13,7 @@ use Spryker\Client\Customer\Plugin\Authorization\CustomerReferenceMatchingEntity
 class AuthorizationDependencyProvider extends SprykerAuthorizationDependencyProvider
 {
     /**
-     * @return \Spryker\Client\AuthorizationExtension\Dependency\Plugin\AuthorizationStrategyPluginInterface[]
+     * @return array<\Spryker\Client\AuthorizationExtension\Dependency\Plugin\AuthorizationStrategyPluginInterface>
      */
     protected function getAuthorizationStrategyPlugins(): array
     {

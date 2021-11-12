@@ -21,13 +21,28 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CmsBlockCategoryWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_BLOCK_KEY = 'block_key';
+
+    /**
+     * @var string
+     */
     public const KEY_CATEGORY_KEY = 'category_key';
+
+    /**
+     * @var string
+     */
     public const KEY_CATEGORY_TEMPLATE_NAME = 'category_template_name';
+
+    /**
+     * @var string
+     */
     public const KEY_CMS_BLOCK_CATEGORY_POSITION_NAME = 'cms_block_category_position_name';
 
     /**
-     * @var \Orm\Zed\CmsBlock\Persistence\SpyCmsBlock[]
+     * @var array<\Orm\Zed\CmsBlock\Persistence\SpyCmsBlock>
      */
     protected static $cmsBlockBuffer = [];
 

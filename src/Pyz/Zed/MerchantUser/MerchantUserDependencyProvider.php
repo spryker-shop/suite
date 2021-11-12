@@ -13,7 +13,7 @@ use Spryker\Zed\MerchantUser\MerchantUserDependencyProvider as SprykerMerchantUs
 class MerchantUserDependencyProvider extends SprykerMerchantUserDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\MerchantUserExtension\Dependency\Plugin\MerchantUserPostCreatePluginInterface[]
+     * @return array<\Spryker\Zed\MerchantUserExtension\Dependency\Plugin\MerchantUserPostCreatePluginInterface>
      */
     protected function getMerchantUserPostCreatePlugins(): array
     {

@@ -20,11 +20,18 @@ use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
 
 class CompanyRoleConfig extends SprykerCompanyRoleConfig
 {
+    /**
+     * @var string
+     */
     protected const BUYER_ROLE_NAME = 'Buyer';
+
+    /**
+     * @var string
+     */
     protected const APPROVER_ROLE_NAME = 'Approver';
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getAdminRolePermissionKeys(): array
     {
@@ -36,7 +43,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getBuyerRolePermissionKeys(): array
     {
@@ -49,7 +56,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getApproverRolePermissionKeys(): array
     {
@@ -59,7 +66,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CompanyRoleTransfer[]
+     * @return array<\Generated\Shared\Transfer\CompanyRoleTransfer>
      */
     public function getPredefinedCompanyRoles(): array
     {
@@ -78,7 +85,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
         return (new CompanyRoleTransfer())
             ->setName(static::BUYER_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getBuyerRolePermissionKeys()
+                $this->getBuyerRolePermissionKeys(),
             ));
     }
 
@@ -90,7 +97,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
         return (new CompanyRoleTransfer())
             ->setName(static::APPROVER_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getApproverRolePermissionKeys()
+                $this->getApproverRolePermissionKeys(),
             ));
     }
 }

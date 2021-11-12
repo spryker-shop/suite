@@ -15,8 +15,19 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class GiftCardConcreteConfigurationWriterStep implements DataImportStepInterface
 {
+    /**
+     * @var int
+     */
     public const BULK_SIZE = 100;
+
+    /**
+     * @var string
+     */
     public const COL_VALUE = 'value';
+
+    /**
+     * @var string
+     */
     public const COL_SKU = 'sku';
 
     /**
@@ -37,7 +48,7 @@ class GiftCardConcreteConfigurationWriterStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $value = $dataSet[static::COL_VALUE];
         $concreteSku = $dataSet[static::COL_SKU];

@@ -15,6 +15,7 @@ use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
+use Spryker\Shared\MerchantPortalApplication\MerchantPortalConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Queue\QueueConfig;
@@ -40,6 +41,7 @@ $stores = array_combine(Store::getInstance()->getAllowedStores(), Store::getInst
 $yvesHost = 'www.de.spryker.test';
 $glueHost = 'glue.de.spryker.test';
 $backofficeHost = 'backoffice.de.spryker.test';
+$merchantPortalHost = 'mp.de.spryker.test';
 $backendGatewayHost = 'backend-gateway.de.spryker.test';
 $backendApiHost = 'backend-api.de.spryker.test';
 
@@ -194,11 +196,11 @@ $config[SessionConstants::ZED_SESSION_COOKIE_NAME]
 
 $config[ZedRequestConstants::BASE_URL_ZED_API] = sprintf(
     'http://%s',
-    $backendGatewayHost
+    $backendGatewayHost,
 );
 $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
     'https://%s',
-    $backendGatewayHost
+    $backendGatewayHost,
 );
 
 // ----------------------------------------------------------------------------
@@ -207,7 +209,16 @@ $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
 
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
     'http://%s',
-    $backofficeHost
+    $backofficeHost,
+);
+
+// ----------------------------------------------------------------------------
+// ------------------------------ MERCHANT PORTAL -----------------------------
+// ----------------------------------------------------------------------------
+
+$config[MerchantPortalConstants::BASE_URL_MP] = sprintf(
+    'http://%s',
+    $merchantPortalHost,
 );
 
 // ----------------------------------------------------------------------------
@@ -225,7 +236,7 @@ $config[ApplicationConstants::BASE_URL_YVES]
     = $config[NewsletterConstants::BASE_URL_YVES]
     = sprintf(
         'http://%s',
-        $yvesHost
+        $yvesHost,
     );
 
 // ----------------------------------------------------------------------------
@@ -235,7 +246,7 @@ $config[ApplicationConstants::BASE_URL_YVES]
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN]
     = sprintf(
         'http://%s',
-        $glueHost
+        $glueHost,
     );
 
 if (class_exists(TestifyConstants::class)) {

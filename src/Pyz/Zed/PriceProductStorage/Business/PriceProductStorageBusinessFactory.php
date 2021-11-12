@@ -45,7 +45,7 @@ class PriceProductStorageBusinessFactory extends SprykerPriceProductStorageBusin
             $this->getConfig()->isSendingToQueue(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createPriceProductAbstractStorageCteStrategyResolver()->resolve()
+            $this->createPriceProductAbstractStorageCteStrategyResolver()->resolve(),
         );
     }
 
@@ -65,7 +65,7 @@ class PriceProductStorageBusinessFactory extends SprykerPriceProductStorageBusin
             $this->getConfig()->isSendingToQueue(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createPriceProductConcreteStorageCteStrategyResolver()->resolve()
+            $this->createPriceProductConcreteStorageCteStrategyResolver()->resolve(),
         );
     }
 
@@ -76,7 +76,7 @@ class PriceProductStorageBusinessFactory extends SprykerPriceProductStorageBusin
     {
         return new PriceProductStorageCteStrategyResolver(
             $this->createPriceProductAbstractStorageCteCollection(),
-            $this->getPropelFacade()
+            $this->getPropelFacade(),
         );
     }
 
@@ -87,12 +87,12 @@ class PriceProductStorageBusinessFactory extends SprykerPriceProductStorageBusin
     {
         return new PriceProductStorageCteStrategyResolver(
             $this->createPriceProductConcreteStorageCteCollection(),
-            $this->getPropelFacade()
+            $this->getPropelFacade(),
         );
     }
 
     /**
-     * @return \Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface[]
+     * @return array<\Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface>
      */
     public function createPriceProductAbstractStorageCteCollection(): array
     {
@@ -119,7 +119,7 @@ class PriceProductStorageBusinessFactory extends SprykerPriceProductStorageBusin
     }
 
     /**
-     * @return \Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface[]
+     * @return array<\Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface>
      */
     public function createPriceProductConcreteStorageCteCollection(): array
     {

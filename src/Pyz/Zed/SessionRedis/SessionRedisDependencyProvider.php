@@ -13,7 +13,7 @@ use Spryker\Zed\SessionRedis\SessionRedisDependencyProvider as SprykerSessionRed
 class SessionRedisDependencyProvider extends SprykerSessionRedisDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\SessionRedisExtension\Dependency\Plugin\SessionRedisLifeTimeCalculatorPluginInterface[]
+     * @return array<\Spryker\Zed\SessionRedisExtension\Dependency\Plugin\SessionRedisLifeTimeCalculatorPluginInterface>
      */
     protected function getSessionRedisLifeTimeCalculatorPlugins(): array
     {

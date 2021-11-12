@@ -1,0 +1,39 @@
+namespace: PyzTest\Yves\CartUpSellingProducts
+spryker_module: CartUpSellingProducts
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    log: _output
+
+
+coverage:
+    enabled: true
+    remote: true
+    c3_url: 'http://yves.de.spryker.local'
+    cookie_domain: '.yves.de.spryker.local'
+    remote_config: '../../../tests/PyzTest/Yves/CartUpSellingProducts/codeception.yml'
+    xdebug_session: 'PHPSTORM'
+    whitelist:
+        include:
+            - '../../../../vendor/spryker/spryker-shop/Bundles/CartPage/src/*/Yves/*.php'
+
+suites:
+    Presentation:
+        path: Presentation
+        class_name: CartUpSellingProductsPresentationTester
+        modules:
+            enabled:
+                - Asserts
+                - \PyzTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Application\Helper\YvesHelper
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                      projectNamespaces: ['Pyz']
+                - WebDriver:
+                      url: ''
+                      browser: chrome
+                      window_size: 1920x1080
+                      host: 0.0.0.0
+                      restart: false
+

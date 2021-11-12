@@ -29,6 +29,9 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class GuestCheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    /**
+     * @var string
+     */
     protected const ANONYMOUS_PREFIX = 'anonymous:';
 
     /**
@@ -122,7 +125,7 @@ class GuestCheckoutRestApiFixtures implements FixturesBuilderInterface, Fixtures
             ShipmentMethodDataHelper::DEFAULT_PRICE_LIST,
             [
                 $I->getStoreFacade()->getCurrentStore()->getIdStore(),
-            ]
+            ],
         );
 
         return $this;

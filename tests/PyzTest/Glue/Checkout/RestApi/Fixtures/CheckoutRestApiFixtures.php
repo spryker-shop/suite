@@ -28,9 +28,24 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    /**
+     * @var string
+     */
     protected const TEST_USERNAME = 'CheckoutRestApiFixtures';
+
+    /**
+     * @var string
+     */
     protected const TEST_USERNAME_2 = 'CheckoutRestApiFixtures2';
+
+    /**
+     * @var string
+     */
     protected const TEST_PASSWORD = 'change123';
+
+    /**
+     * @var int
+     */
     protected const PRODUCT_CONCRETES_GENERATE_NUMBER = 100;
 
     /**
@@ -44,7 +59,7 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     protected $customerTransferWithPersistedAddress;
 
     /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer[]
+     * @var array<\Generated\Shared\Transfer\ProductConcreteTransfer>
      */
     protected $productConcreteTransfers;
 
@@ -75,7 +90,7 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer[]
+     * @return array<\Generated\Shared\Transfer\ProductConcreteTransfer>
      */
     public function getProductConcreteTransfers(): array
     {
@@ -137,7 +152,7 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
             ShipmentMethodDataHelper::DEFAULT_PRICE_LIST,
             [
                 $I->getStoreFacade()->getCurrentStore()->getIdStore(),
-            ]
+            ],
         );
 
         return $this;

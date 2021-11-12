@@ -43,7 +43,7 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
                 count($uniqueNames),
                 $name,
             ],
-            false
+            false,
         );
     }
 
@@ -53,16 +53,16 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
     protected function persistStockProductEntities(): void
     {
         $sku = $this->dataFormatter->formatStringList(
-            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_CONCRETE_SKU)
+            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_CONCRETE_SKU),
         );
         $stockName = $this->dataFormatter->formatStringList(
-            $this->dataFormatter->getCollectionDataByKey(static::$stockCollection, static::COLUMN_NAME)
+            $this->dataFormatter->getCollectionDataByKey(static::$stockCollection, static::COLUMN_NAME),
         );
         $quantity = $this->dataFormatter->formatStringList(
-            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_QUANTITY)
+            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_QUANTITY),
         );
         $isNeverOutOfStock = $this->dataFormatter->formatStringList(
-            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_IS_NEVER_OUT_OF_STOCK)
+            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_IS_NEVER_OUT_OF_STOCK),
         );
 
         $sql = $this->productStockSql->createStockProductSQL();
@@ -102,7 +102,7 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
      * @param array $skus
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param array $concreteSkusToAbstractMap
-     * @param array $reservationItems
+     * @param array<\Spryker\DecimalObject\Decimal> $reservations
      *
      * @return void
      */
@@ -110,10 +110,10 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
         array $skus,
         StoreTransfer $storeTransfer,
         array $concreteSkusToAbstractMap,
-        array $reservationItems
+        array $reservations
     ): void {
         $stockProductsForStore = $this->getStockProductBySkusAndStore($skus, $storeTransfer);
-        $concreteAvailabilityData = $this->prepareConcreteAvailabilityData($stockProductsForStore, $reservationItems);
+        $concreteAvailabilityData = $this->prepareConcreteAvailabilityData($stockProductsForStore, $reservations);
         $abstractAvailabilityData = $this->prepareAbstractAvailabilityData($concreteAvailabilityData, $concreteSkusToAbstractMap);
 
         $abstractAvailabilityQueryParams = [
@@ -125,7 +125,7 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
 
         $availabilityAbstractIds = $this->propelExecutor->execute(
             $this->productStockSql->createAbstractAvailabilitySQL(),
-            $abstractAvailabilityQueryParams
+            $abstractAvailabilityQueryParams,
         );
 
         $this->collectAvailabilityAbstractIds($availabilityAbstractIds);

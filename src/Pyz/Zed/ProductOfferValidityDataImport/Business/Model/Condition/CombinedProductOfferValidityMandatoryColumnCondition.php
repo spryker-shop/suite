@@ -13,7 +13,7 @@ use Pyz\Zed\ProductOfferValidityDataImport\Business\Model\DataSet\CombinedProduc
 class CombinedProductOfferValidityMandatoryColumnCondition extends CombinedProductMandatoryColumnCondition
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getMandatoryColumns(): array
     {

@@ -60,11 +60,34 @@ class CheckoutApiTester extends ApiEndToEndTester
 {
     use _generated\CheckoutApiTesterActions;
 
+    /**
+     * @var string
+     */
     protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'Invoice';
+
+    /**
+     * @var string
+     */
     protected const REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT = 'DummyPayment';
+
+    /**
+     * @var string
+     */
     protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
+
+    /**
+     * @var string
+     */
     protected const QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT = 'shipment';
+
+    /**
+     * @var string
+     */
     protected const QUOTE_ITEM_OVERRIDE_DATA_QUANTITY = 'quantity';
+
+    /**
+     * @var int
+     */
     protected const DEFAULT_QUOTE_ITEM_QUANTITY = 10;
 
     /**
@@ -80,17 +103,17 @@ class CheckoutApiTester extends ApiEndToEndTester
 
         $this->assertNotEmpty(
             $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
-            'The returned resource attributes order reference should not be empty'
+            'The returned resource attributes order reference should not be empty',
         );
         $this->assertArrayHasKey(
             RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
             $attributes,
-            'The returned resource attributes should have an external redirect key'
+            'The returned resource attributes should have an external redirect key',
         );
         $this->assertArrayHasKey(
             RestCheckoutResponseTransfer::REDIRECT_URL,
             $attributes,
-            'The returned resource attributes should have a redirect URL key'
+            'The returned resource attributes should have a redirect URL key',
         );
     }
 
@@ -107,12 +130,12 @@ class CheckoutApiTester extends ApiEndToEndTester
 
         $this->assertEmpty(
             $attributes[RestCheckoutDataTransfer::ADDRESSES],
-            'The returned resource attributes addresses should be an empty array'
+            'The returned resource attributes addresses should be an empty array',
         );
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -122,12 +145,12 @@ class CheckoutApiTester extends ApiEndToEndTester
             '{resourceCheckout}' . $this->formatQueryInclude($includes),
             [
                 'resourceCheckout' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
-            ]
+            ],
         );
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -137,7 +160,7 @@ class CheckoutApiTester extends ApiEndToEndTester
             '{resourceCheckoutData}' . $this->formatQueryInclude($includes),
             [
                 'resourceCheckoutData' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
-            ]
+            ],
         );
     }
 
@@ -282,7 +305,7 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      * @param array $overrideShipment
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
@@ -412,7 +435,7 @@ class CheckoutApiTester extends ApiEndToEndTester
         return $this->havePaymentMethod($paymentMethodOverrideData);
     }
 
-    /***
+    /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
@@ -432,7 +455,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
      * @return array
      */
@@ -514,7 +537,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */

@@ -16,7 +16,7 @@ use Spryker\Client\MultiCart\Plugin\ReorderPersistentCartChangeExpanderPlugin;
 use Spryker\Client\MultiCart\Plugin\SaveCustomerQuotesQuoteUpdatePlugin;
 use Spryker\Client\PersistentCart\PersistentCartDependencyProvider as SprykerPersistentCartDependencyProvider;
 use Spryker\Client\PersistentCartExtension\Dependency\Plugin\QuotePersistPluginInterface;
-use Spryker\Client\ProductConfigurationStorage\Plugin\PersistentCart\ProductConfigurationPersistentCartRequestExpanderPlugin;
+use Spryker\Client\ProductConfigurationPersistentCart\Plugin\PersistentCart\ProductConfigurationPersistentCartRequestExpanderPlugin;
 use Spryker\Client\ProductMeasurementUnit\Plugin\PersistentCart\SingleItemQuantitySalesUnitPersistentCartChangeExpanderPlugin;
 use Spryker\Client\ProductPackagingUnit\Plugin\PersistentCartExtension\ProductPackagingUnitAmountPersistentCartChangeExpanderPlugin;
 use Spryker\Client\SharedCart\Plugin\PermissionUpdateQuoteUpdatePlugin;
@@ -26,7 +26,7 @@ use Spryker\Client\SharedCart\Plugin\SharedCartsUpdateQuoteUpdatePlugin;
 class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyProvider
 {
     /**
-     * @return \Spryker\Client\PersistentCartExtension\Dependency\Plugin\QuoteUpdatePluginInterface[]
+     * @return array<\Spryker\Client\PersistentCartExtension\Dependency\Plugin\QuoteUpdatePluginInterface>
      */
     protected function getQuoteUpdatePlugins(): array
     {
@@ -39,7 +39,7 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
     }
 
     /**
-     * @return \Spryker\Client\PersistentCartExtension\Dependency\Plugin\PersistentCartChangeExpanderPluginInterface[]
+     * @return array<\Spryker\Client\PersistentCartExtension\Dependency\Plugin\PersistentCartChangeExpanderPluginInterface>
      */
     protected function getChangeRequestExtendPlugins(): array
     {

@@ -42,7 +42,7 @@ class UrlStorageBusinessFactory extends SprykerUrlStorageBusinessFactory
             $this->getConfig()->isSendingToQueue(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createUrlStorageCteStrategyResolver()->resolve()
+            $this->createUrlStorageCteStrategyResolver()->resolve(),
         );
     }
 
@@ -55,7 +55,7 @@ class UrlStorageBusinessFactory extends SprykerUrlStorageBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface[]
+     * @return array<\Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface>
      */
     public function createUrlStorageCteCollection(): array
     {

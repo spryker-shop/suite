@@ -15,7 +15,7 @@ use SprykerShop\Yves\ProductBundleWidget\Plugin\CartPage\ProductBundleCartItemTr
 class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface[]
+     * @return array<\SprykerShop\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface>
      */
     protected function getCartItemTransformerPlugins(): array
     {
@@ -25,7 +25,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     }
 
     /**
-     * @return \SprykerShop\Yves\CartPageExtension\Dependency\Plugin\PreAddToCartPluginInterface[]
+     * @return array<\SprykerShop\Yves\CartPageExtension\Dependency\Plugin\PreAddToCartPluginInterface>
      */
     protected function getPreAddToCartPlugins(): array
     {

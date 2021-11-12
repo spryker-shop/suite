@@ -15,6 +15,9 @@ use SprykerSdk\Shared\Benchmark\Request\RequestBuilderInterface;
 
 class CatalogSearchBench
 {
+    /**
+     * @var string
+     */
     protected const SEARCH_QUERY_VALUE = 'Acer';
 
     /**
@@ -45,7 +48,7 @@ class CatalogSearchBench
     {
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_GET,
-            sprintf(CatalogPage::ENDPOINT_CATALOG_SEARCH, static::SEARCH_QUERY_VALUE)
+            sprintf(CatalogPage::ENDPOINT_CATALOG_SEARCH, static::SEARCH_QUERY_VALUE),
         );
 
         return $this->httpHelper->send($request);

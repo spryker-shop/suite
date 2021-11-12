@@ -56,7 +56,7 @@ class GuestCartUpSellingProductsRestApiCest
         $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReference()
+            $this->fixtures->getGuestCustomerReference(),
         );
         $url = $I->buildGuestCartUpSellingProductsUrl($this->fixtures->getGuestQuoteTransfer()->getUuid());
 
@@ -80,7 +80,7 @@ class GuestCartUpSellingProductsRestApiCest
             ->whenI()
             ->seeResourceByIdHasSelfLink(
                 $this->fixtures->getUpSellingProductConcreteTransfer()->getAbstractSku(),
-                $I->buildProductAbstractUrl($this->fixtures->getUpSellingProductConcreteTransfer()->getAbstractSku())
+                $I->buildProductAbstractUrl($this->fixtures->getUpSellingProductConcreteTransfer()->getAbstractSku()),
             );
     }
 
@@ -96,7 +96,7 @@ class GuestCartUpSellingProductsRestApiCest
         // Arrange
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            'NotExistingReference'
+            'NotExistingReference',
         );
 
         // Act

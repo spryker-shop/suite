@@ -11,12 +11,11 @@ use Spryker\Zed\AclEntity\AclEntityDependencyProvider as SprykerAclEntityDepende
 use Spryker\Zed\AclEntityDummyProduct\Communication\DummyProductAclEntityMetadataConfigExpanderPlugin;
 use Spryker\Zed\AclMerchantPortal\Communication\Plugin\AclEntity\MerchantPortalAclEntityMetadataConfigExpanderPlugin;
 use Spryker\Zed\Console\Communication\Plugin\AclEntity\ConsoleAclEntityDisablerPlugin;
-use Spryker\Zed\SecuritySystemUser\Communication\Plugin\AclEntity\SecuritySystemUserAclEntityDisablerPlugin;
 
 class AclEntityDependencyProvider extends SprykerAclEntityDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\AclEntityExtension\Dependency\Plugin\AclEntityMetadataConfigExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\AclEntityExtension\Dependency\Plugin\AclEntityMetadataConfigExpanderPluginInterface>
      */
     protected function getAclEntityMetadataCollectionExpanderPlugins(): array
     {
@@ -27,12 +26,11 @@ class AclEntityDependencyProvider extends SprykerAclEntityDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\AclEntityExtension\Dependency\Plugin\AclEntityDisablerPluginInterface[]
+     * @return array<\Spryker\Zed\AclEntityExtension\Dependency\Plugin\AclEntityDisablerPluginInterface>
      */
     protected function getAclEntityDisablerPlugins(): array
     {
         return [
-            new SecuritySystemUserAclEntityDisablerPlugin(),
             new ConsoleAclEntityDisablerPlugin(),
         ];
     }

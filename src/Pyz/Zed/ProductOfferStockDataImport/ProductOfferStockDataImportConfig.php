@@ -12,6 +12,9 @@ use Spryker\Zed\ProductOfferStockDataImport\ProductOfferStockDataImportConfig as
 
 class ProductOfferStockDataImportConfig extends SprykerProductOfferStockDataImportConfig
 {
+    /**
+     * @var string
+     */
     public const IMPORT_TYPE_COMBINED_PRODUCT_OFFER_STOCK = 'combined-product-offer-stock';
 
     /**
@@ -23,7 +26,7 @@ class ProductOfferStockDataImportConfig extends SprykerProductOfferStockDataImpo
 
         return $this->buildImporterConfiguration(
             $moduleDataImportDirectory . 'combined_merchant_product_offer.csv',
-            static::IMPORT_TYPE_COMBINED_PRODUCT_OFFER_STOCK
+            static::IMPORT_TYPE_COMBINED_PRODUCT_OFFER_STOCK,
         );
     }
 }

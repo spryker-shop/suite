@@ -35,7 +35,7 @@ class ShipmentGuiDependencyProvider extends SprykerShipmentGuiDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\ShipmentGuiExtension\Dependency\Plugin\ShipmentOrderItemTemplatePluginInterface[]
+     * @return array<\Spryker\Zed\ShipmentGuiExtension\Dependency\Plugin\ShipmentOrderItemTemplatePluginInterface>
      */
     protected function getShipmentOrderItemTemplatePlugins(): array
     {

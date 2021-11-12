@@ -11,6 +11,7 @@ use Spryker\Shared\Http\Plugin\EventDispatcher\ResponseListenerEventDispatcherPl
 use Spryker\Zed\Acl\Communication\Plugin\EventDispatcher\AccessControlEventDispatcherPlugin;
 use Spryker\Zed\Api\Communication\Plugin\EventDispatcher\ApiControllerEventDispatcherPlugin;
 use Spryker\Zed\Application\Communication\Plugin\EventDispatcher\HeadersSecurityEventDispatcherPlugin;
+use Spryker\Zed\ErrorHandler\Communication\Plugin\EventDispatcher\ErrorPageEventDispatcherPlugin;
 use Spryker\Zed\EventBehavior\Communication\Plugin\EventDispatcher\EventBehaviorEventDispatcherPlugin;
 use Spryker\Zed\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
 use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\CookieEventDispatcherPlugin;
@@ -33,7 +34,7 @@ use Spryker\Zed\ZedRequest\Communication\Plugin\EventDispatcher\GatewayControlle
 class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependencyProvider
 {
     /**
-     * @return \Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface[]
+     * @return array<\Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface>
      */
     protected function getEventDispatcherPlugins(): array
     {
@@ -56,16 +57,18 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new AutoloaderCacheEventDispatcherPlugin(),
             new RequestAttributesEventDispatcherPlugin(),
             new ResponseListenerEventDispatcherPlugin(),
+            new ErrorPageEventDispatcherPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface[]
+     * @return array<\Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface>
      */
     protected function getBackendGatewayEventDispatcherPlugins(): array
     {
         return [
             new GatewayMonitoringRequestTransactionEventDispatcherPlugin(),
+            new RequestAttributesEventDispatcherPlugin(),
             new GatewayControllerEventDispatcherPlugin(),
             new RouterListenerEventDispatcherPlugin(),
             new ResponseListenerEventDispatcherPlugin(),
@@ -74,7 +77,7 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
     }
 
     /**
-     * @return \Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface[]
+     * @return array<\Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface>
      */
     protected function getBackendApiEventDispatcherPlugins(): array
     {

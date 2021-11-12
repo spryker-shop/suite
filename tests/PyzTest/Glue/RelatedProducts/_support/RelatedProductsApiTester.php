@@ -33,7 +33,7 @@ class RelatedProductsApiTester extends ApiEndToEndTester
     use _generated\RelatedProductsApiTesterActions;
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -48,7 +48,7 @@ class RelatedProductsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $productAbstractSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -60,13 +60,13 @@ class RelatedProductsApiTester extends ApiEndToEndTester
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'resourceRelatedProducts' => RelatedProductsRestApiConfig::CONTROLLER_RELATED_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $productAbstractSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -77,7 +77,7 @@ class RelatedProductsApiTester extends ApiEndToEndTester
             [
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
-            ]
+            ],
         );
     }
 }

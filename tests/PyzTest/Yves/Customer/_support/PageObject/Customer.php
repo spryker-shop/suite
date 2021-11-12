@@ -11,7 +11,14 @@ use Generated\Shared\Transfer\CustomerTransfer;
 
 class Customer
 {
+    /**
+     * @var string
+     */
     public const NEW_CUSTOMER_EMAIL = 'new-customer@spryker.com';
+
+    /**
+     * @var string
+     */
     public const REGISTERED_CUSTOMER_EMAIL = 'registered-customer@spryker.com';
 
     /**
@@ -39,7 +46,7 @@ class Customer
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    public static function getCustomerData($email)
+    public static function getCustomerData($email): CustomerTransfer
     {
         $customerTransfer = new CustomerTransfer();
         $customerTransfer->fromArray(self::$customer[$email]);

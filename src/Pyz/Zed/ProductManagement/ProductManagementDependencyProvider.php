@@ -8,6 +8,7 @@
 namespace Pyz\Zed\ProductManagement;
 
 use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbstractBlockListViewPlugin;
+use Spryker\Zed\Kernel\Communication\Form\FormTypeInterface;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantGui\Communication\Plugin\ProductManagement\MerchantProductAbstractListActionViewDataExpanderPlugin;
 use Spryker\Zed\MerchantProductGui\Communication\Plugin\ProductManagement\MerchantProductProductAbstractViewActionViewDataExpanderPlugin;
@@ -34,9 +35,9 @@ use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugi
 class ProductManagementDependencyProvider extends SprykerProductManagementDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ProductManagement\Communication\Plugin\ProductAbstractViewPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagement\Communication\Plugin\ProductAbstractViewPluginInterface>
      */
-    protected function getProductAbstractViewPlugins()
+    protected function getProductAbstractViewPlugins(): array
     {
         return [
             new CmsBlockProductAbstractBlockListViewPlugin(),
@@ -46,7 +47,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     /**
      * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
      */
-    protected function getStoreRelationFormTypePlugin()
+    protected function getStoreRelationFormTypePlugin(): FormTypeInterface
     {
         return new StoreRelationToggleFormTypePlugin();
     }
@@ -56,13 +57,13 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
      *
      * @return \Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin
      */
-    protected function createMoneyFormTypePlugin(Container $container)
+    protected function createMoneyFormTypePlugin(Container $container): MoneyFormTypePlugin
     {
         return new MoneyFormTypePlugin();
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormEditTabsExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormEditTabsExpanderPluginInterface>
      */
     protected function getProductConcreteFormEditTabsExpanderPlugins(): array
     {
@@ -74,7 +75,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractFormEditTabsExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractFormEditTabsExpanderPluginInterface>
      */
     protected function getProductAbstractFormEditTabsExpanderPlugins(): array
     {
@@ -84,7 +85,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractEditViewExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractEditViewExpanderPluginInterface>
      */
     protected function getProductAbstractEditViewExpanderPlugins(): array
     {
@@ -94,7 +95,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteEditViewExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteEditViewExpanderPluginInterface>
      */
     protected function getProductConcreteEditViewExpanderPlugins(): array
     {
@@ -104,7 +105,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteEditFormExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteEditFormExpanderPluginInterface>
      */
     protected function getProductConcreteEditFormExpanderPlugins(): array
     {
@@ -115,7 +116,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormEditDataProviderExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormEditDataProviderExpanderPluginInterface>
      */
     protected function getProductConcreteFormEditDataProviderExpanderPlugins(): array
     {
@@ -126,7 +127,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductFormTransferMapperExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductFormTransferMapperExpanderPluginInterface>
      */
     protected function getProductFormTransferMapperExpanderPlugins(): array
     {
@@ -137,7 +138,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractFormExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractFormExpanderPluginInterface>
      */
     protected function getProductAbstractFormExpanderPlugins(): array
     {
@@ -147,7 +148,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormExpanderPluginInterface>
      */
     protected function getProductConcreteFormExpanderPlugins(): array
     {
@@ -157,7 +158,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractListActionViewDataExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractListActionViewDataExpanderPluginInterface>
      */
     protected function getProductAbstractListActionViewDataExpanderPlugins(): array
     {
@@ -167,7 +168,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractViewActionViewDataExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractViewActionViewDataExpanderPluginInterface>
      */
     protected function getProductAbstractViewActionViewDataExpanderPlugins(): array
     {
@@ -177,7 +178,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductTableQueryCriteriaExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductTableQueryCriteriaExpanderPluginInterface>
      */
     protected function getProductTableQueryCriteriaExpanderPluginInterfaces(): array
     {
@@ -187,7 +188,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductTableDataExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductTableDataExpanderPluginInterface>
      */
     protected function getProductTableDataExpanderPlugins(): array
     {

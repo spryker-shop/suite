@@ -16,10 +16,13 @@ use Spryker\Zed\Queue\QueueConfig as SprykerQueueConfig;
 
 class QueueConfig extends SprykerQueueConfig
 {
+    /**
+     * @var string
+     */
     public const RABBITMQ = 'rabbitmq';
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     public function getSignalsForGracefulWorkerShutdown(): array
     {

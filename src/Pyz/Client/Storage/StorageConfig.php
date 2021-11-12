@@ -12,7 +12,7 @@ use Spryker\Client\Storage\StorageConfig as SprykerStorageClientConfig;
 class StorageConfig extends SprykerStorageClientConfig
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getAllowedGetParametersList(): array
     {

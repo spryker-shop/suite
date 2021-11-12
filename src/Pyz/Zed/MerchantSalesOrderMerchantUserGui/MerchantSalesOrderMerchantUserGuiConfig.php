@@ -12,7 +12,7 @@ use Spryker\Zed\MerchantSalesOrderMerchantUserGui\MerchantSalesOrderMerchantUser
 class MerchantSalesOrderMerchantUserGuiConfig extends SprykerMerchantSalesOrderMerchantUserGuiConfig
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getMerchantSalesOrderDetailExternalBlocksUrls(): array
     {

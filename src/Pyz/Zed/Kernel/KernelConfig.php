@@ -12,7 +12,7 @@ use Spryker\Zed\Kernel\KernelConfig as SprykerKernelConfig;
 class KernelConfig extends SprykerKernelConfig
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getPathsToCoreModules(): array
     {

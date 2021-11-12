@@ -27,7 +27,7 @@ class GenerateBundleCest
      *
      * @return void
      */
-    public function generateZedBundle(ConsoleConsoleTester $i)
+    public function generateZedBundle(ConsoleConsoleTester $i): void
     {
         $i->runSprykerCommand('code:generate:module:zed Acme -vvv');
         $i->seeInShellOutput('Generated: Pyz/Zed/Acme/AcmeConfig.php');

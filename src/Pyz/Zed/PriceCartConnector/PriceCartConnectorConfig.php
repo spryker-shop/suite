@@ -13,9 +13,9 @@ use Spryker\Zed\PriceCartConnector\PriceCartConnectorConfig as SprykerPriceCartC
 class PriceCartConnectorConfig extends SprykerPriceCartConnectorConfig
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
-    public function getItemFieldsForIsSameItemComparison()
+    public function getItemFieldsForIsSameItemComparison(): array
     {
         return array_merge(parent::getItemFieldsForIsSameItemComparison(), [
             ItemTransfer::MERCHANT_REFERENCE,

@@ -25,7 +25,7 @@ class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements Comman
      *
      * @api
      *
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $orderItems
+     * @param array<\Orm\Zed\Sales\Persistence\SpySalesOrderItem> $orderItems
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $orderEntity
      * @param \Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject $data
      *
@@ -35,7 +35,7 @@ class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements Comman
     {
         $merchantOrderTransfer = $this->getFacade()->findMerchantOrder(
             (new MerchantOrderCriteriaTransfer())
-                ->setIdOrder($orderEntity->getIdSalesOrder())
+                ->setIdOrder($orderEntity->getIdSalesOrder()),
         );
 
         // Check if merchant order is already exists, because command is running for each order item.

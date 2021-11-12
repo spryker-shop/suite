@@ -15,6 +15,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class AddProductAbstractSkusStep implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_PRODUCT_ABSTRACT_SKUS = 'productAbstractSkus';
 
     /**
@@ -27,7 +30,7 @@ class AddProductAbstractSkusStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         if (empty($this->productAbstractSkus)) {
             $query = SpyProductAbstractQuery::create();

@@ -49,7 +49,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
             $this->createAddToCartSkuReader(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createProductAbstractPageCteStrategyResolver()->resolve()
+            $this->createProductAbstractPageCteStrategyResolver()->resolve(),
         );
     }
 
@@ -73,7 +73,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
             $this->getProductConcretePageDataExpanderPlugins(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createProductConcretePageCteStrategyResolver()->resolve()
+            $this->createProductConcretePageCteStrategyResolver()->resolve(),
         );
     }
 
@@ -94,7 +94,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
     }
 
     /**
-     * @return \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface[]
+     * @return array<\Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface>
      */
     public function getProductAbstractPageCteCollection(): array
     {
@@ -105,7 +105,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
     }
 
     /**
-     * @return \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface[]
+     * @return array<\Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface>
      */
     public function getProductConcretePageCteCollection(): array
     {

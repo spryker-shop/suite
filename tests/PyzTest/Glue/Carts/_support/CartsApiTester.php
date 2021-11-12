@@ -49,7 +49,7 @@ class CartsApiTester extends ApiEndToEndTester
     /**
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
@@ -68,7 +68,7 @@ class CartsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
      * @return array
      */
@@ -106,7 +106,7 @@ class CartsApiTester extends ApiEndToEndTester
         return $I->haveEntityTag(
             CartsRestApiConfig::RESOURCE_CARTS,
             $cartUuid,
-            $attributes
+            $attributes,
         );
     }
 
@@ -129,7 +129,7 @@ class CartsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -144,7 +144,7 @@ class CartsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -155,12 +155,12 @@ class CartsApiTester extends ApiEndToEndTester
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -170,13 +170,31 @@ class CartsApiTester extends ApiEndToEndTester
             '{resourceCarts}' . $this->formatQueryInclude($includes),
             [
                 'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-            ]
+            ],
+        );
+    }
+
+    /**
+     * @param string $customerReference
+     * @param array<string> $includes
+     *
+     * @return string
+     */
+    public function buildCustomerCartUrl(string $customerReference, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{customers}/{customerReference}/{resourceCarts}' . $this->formatQueryInclude($includes),
+            [
+                'customers' => CartsRestApiConfig::RESOURCE_CUSTOMERS,
+                'customerReference' => $customerReference,
+                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+            ],
         );
     }
 
     /**
      * @param string $cartUuid
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -187,14 +205,14 @@ class CartsApiTester extends ApiEndToEndTester
             [
                 'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                 'cartUuid' => $cartUuid,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $cartUuid
      * @param string $cartItemGroupKey
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -207,12 +225,12 @@ class CartsApiTester extends ApiEndToEndTester
                 'cartUuid' => $cartUuid,
                 'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 'cartItemGroupKey' => $cartItemGroupKey,
-            ]
+            ],
         );
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -222,13 +240,13 @@ class CartsApiTester extends ApiEndToEndTester
             '{resourceGuestCarts}' . $this->formatQueryInclude($includes),
             [
                 'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $guestCartUuid
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -239,14 +257,14 @@ class CartsApiTester extends ApiEndToEndTester
             [
                 'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                 'guestCartUuid' => $guestCartUuid,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $guestCartUuid
      * @param string $guestCartItemGroupKey
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -262,7 +280,7 @@ class CartsApiTester extends ApiEndToEndTester
                 'guestCartUuid' => $guestCartUuid,
                 'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                 'guestCartItemGroupKey' => $guestCartItemGroupKey,
-            ]
+            ],
         );
     }
 }

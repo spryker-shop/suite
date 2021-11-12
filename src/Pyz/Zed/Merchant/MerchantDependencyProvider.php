@@ -20,7 +20,7 @@ use Spryker\Zed\MerchantUser\Communication\Plugin\Merchant\SyncMerchantUsersStat
 class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostCreatePluginInterface[]
+     * @return array<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostCreatePluginInterface>
      */
     protected function getMerchantPostCreatePlugins(): array
     {
@@ -32,7 +32,7 @@ class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostUpdatePluginInterface[]
+     * @return array<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostUpdatePluginInterface>
      */
     protected function getMerchantPostUpdatePlugins(): array
     {
@@ -43,7 +43,7 @@ class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantExpanderPluginInterface>
      */
     protected function getMerchantExpanderPlugins(): array
     {

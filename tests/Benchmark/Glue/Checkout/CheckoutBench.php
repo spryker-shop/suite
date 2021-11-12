@@ -20,6 +20,9 @@ use SprykerSdk\Shared\Benchmark\Request\RequestBuilderInterface;
 
 class CheckoutBench
 {
+    /**
+     * @var string
+     */
     protected const PRODUCT_SKU = '035_17360369';
 
     /**
@@ -76,7 +79,7 @@ class CheckoutBench
                         'quantity' => 1,
                     ],
                 ],
-            ]
+            ],
         );
 
         $response = $this->httpHelper->send($request, [], 201);
@@ -128,7 +131,7 @@ class CheckoutBench
             [
                 'X-Anonymous-Customer-Unique-Id' => $this->customerId,
             ],
-            $this->requestData
+            $this->requestData,
         );
 
         return $this->httpHelper->send($request);

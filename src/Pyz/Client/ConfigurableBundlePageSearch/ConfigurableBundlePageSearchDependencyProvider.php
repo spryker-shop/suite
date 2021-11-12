@@ -14,7 +14,7 @@ use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\LocalizedQueryExpan
 class ConfigurableBundlePageSearchDependencyProvider extends SprykerConfigurableBundlePageSearchDependencyProvider
 {
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]
+     * @return array<\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface>
      */
     protected function getConfigurableBundleTemplatePageSearchResultFormatterPlugins(): array
     {
@@ -24,7 +24,7 @@ class ConfigurableBundlePageSearchDependencyProvider extends SprykerConfigurable
     }
 
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return array<\Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface>
      */
     protected function getConfigurableBundleTemplatePageSearchQueryExpanderPlugins(): array
     {

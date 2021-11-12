@@ -61,8 +61,8 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
 
     /**
      * @param \Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchQueryContainerInterface $queryContainer
-     * @param \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[] $pageDataExpanderPlugins
-     * @param \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface[] $productPageDataLoaderPlugins
+     * @param array<\Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface> $pageDataExpanderPlugins
+     * @param array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface> $productPageDataLoaderPlugins
      * @param \Spryker\Zed\ProductPageSearch\Business\Mapper\ProductPageSearchMapperInterface $productPageSearchMapper
      * @param \Spryker\Zed\ProductPageSearch\Business\Model\ProductPageSearchWriterInterface $productPageSearchWriter
      * @param \Spryker\Zed\ProductPageSearch\ProductPageSearchConfig $productPageSearchConfig
@@ -93,7 +93,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             $productPageSearchWriter,
             $productPageSearchConfig,
             $storeFacade,
-            $addToCartSkuReader
+            $addToCartSkuReader,
         );
 
         $this->synchronizationService = $synchronizationService;
@@ -103,10 +103,10 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
 
     /**
      * @param array $productAbstractLocalizedEntities
-     * @param \Orm\Zed\ProductPageSearch\Persistence\SpyProductAbstractPageSearch[] $productAbstractPageSearchEntities
-     * @param \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[] $pageDataExpanderPlugins
+     * @param array<\Orm\Zed\ProductPageSearch\Persistence\SpyProductAbstractPageSearch> $productAbstractPageSearchEntities
+     * @param array<\Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface> $pageDataExpanderPlugins
      * @param \Generated\Shared\Transfer\ProductPageLoadTransfer $productPageLoadTransfer
-     * @param bool|int $isRefresh
+     * @param int|bool $isRefresh
      *
      * @return void
      */
@@ -116,11 +116,11 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         array $pageDataExpanderPlugins,
         ProductPageLoadTransfer $productPageLoadTransfer,
         $isRefresh = 0
-    ) {
+    ): void {
         $pairedEntities = $this->pairProductAbstractLocalizedEntitiesWithProductAbstractPageSearchEntities(
             $productAbstractLocalizedEntities,
             $productAbstractPageSearchEntities,
-            $productPageLoadTransfer
+            $productPageLoadTransfer,
         );
 
         foreach ($pairedEntities as $pairedEntity) {
@@ -139,7 +139,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
                 $pairedEntity[static::STORE_NAME],
                 $pairedEntity[static::LOCALE_NAME],
                 $pageDataExpanderPlugins,
-                $isRefresh
+                $isRefresh,
             );
         }
 
@@ -155,8 +155,8 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      * @param \Orm\Zed\ProductPageSearch\Persistence\SpyProductAbstractPageSearch $productAbstractPageSearchEntity
      * @param string $storeName
      * @param string $localeName
-     * @param \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[] $pageDataExpanderPlugins
-     * @param bool|int $isRefresh
+     * @param array<\Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface> $pageDataExpanderPlugins
+     * @param int|bool $isRefresh
      *
      * @return void
      */
@@ -167,12 +167,12 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         $localeName,
         array $pageDataExpanderPlugins,
         $isRefresh = 0
-    ) {
+    ): void {
         $isRefresh = filter_var($isRefresh, FILTER_VALIDATE_BOOLEAN);
         $productPageSearchTransfer = $this->getProductPageSearchTransfer(
             $productAbstractLocalizedEntity,
             $productAbstractPageSearchEntity,
-            $isRefresh
+            $isRefresh,
         );
 
         $productPageSearchTransfer->setStore($storeName);
@@ -228,7 +228,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      *
      * @return string
      */
-    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName)
+    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName): string
     {
         $syncTransferData = new SynchronizationDataTransfer();
         if (isset($data['store'])) {
@@ -284,7 +284,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     /**
      * @return void
      */
-    public function write()
+    public function write(): void
     {
         if (empty($this->synchronizedDataCollection)) {
             return;

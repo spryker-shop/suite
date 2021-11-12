@@ -18,7 +18,7 @@ use Spryker\Zed\ProductApi\Communication\Plugin\Api\ProductApiValidatorPlugin;
 class ApiDependencyProvider extends SprykerApiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\Api\Dependency\Plugin\ApiResourcePluginInterface[]
+     * @return array<\Spryker\Zed\Api\Dependency\Plugin\ApiResourcePluginInterface>
      */
     protected function getApiResourcePluginCollection(): array
     {
@@ -29,7 +29,7 @@ class ApiDependencyProvider extends SprykerApiDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\Api\Dependency\Plugin\ApiValidatorPluginInterface[]
+     * @return array<\Spryker\Zed\Api\Dependency\Plugin\ApiValidatorPluginInterface>
      */
     protected function getApiValidatorPluginCollection(): array
     {
@@ -40,7 +40,7 @@ class ApiDependencyProvider extends SprykerApiDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\Api\Communication\Plugin\ApiRequestTransferFilterPluginInterface[]
+     * @return array<\Spryker\Zed\Api\Communication\Plugin\ApiRequestTransferFilterPluginInterface>
      */
     protected function getApiRequestTransferFilterPluginCollection(): array
     {

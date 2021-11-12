@@ -24,7 +24,7 @@ use Spryker\Zed\OfferGui\Communication\Plugin\ManualOrderEntryGui\OfferQuoteExpa
 class ManualOrderEntryGuiDependencyProvider extends SprykerManualOrderEntryGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ManualOrderEntryGuiExtension\Dependency\Plugin\PaymentSubFormPluginInterface[]
+     * @return array<\Spryker\Zed\ManualOrderEntryGuiExtension\Dependency\Plugin\PaymentSubFormPluginInterface>
      */
     protected function getPaymentSubFormPlugins(): array
     {
@@ -44,7 +44,7 @@ class ManualOrderEntryGuiDependencyProvider extends SprykerManualOrderEntryGuiDe
     }
 
     /**
-     * @return \Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\ManualOrderEntryFormPluginInterface[]
+     * @return array<\Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\ManualOrderEntryFormPluginInterface>
      */
     protected function getManualOrderEntryFormPlugins(): array
     {

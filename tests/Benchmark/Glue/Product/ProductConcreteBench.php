@@ -15,6 +15,9 @@ use SprykerSdk\Shared\Benchmark\Request\RequestBuilderInterface;
 
 class ProductConcreteBench
 {
+    /**
+     * @var string
+     */
     protected const PRODUCT_CONCRETE_SKU = '066_23294028';
 
     /**
@@ -45,7 +48,7 @@ class ProductConcreteBench
     {
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_GET,
-            sprintf(ProductPage::ENDPOINT_PRODUCT_CONCRETE, static::PRODUCT_CONCRETE_SKU)
+            sprintf(ProductPage::ENDPOINT_PRODUCT_CONCRETE, static::PRODUCT_CONCRETE_SKU),
         );
 
         return $this->httpHelper->send($request);

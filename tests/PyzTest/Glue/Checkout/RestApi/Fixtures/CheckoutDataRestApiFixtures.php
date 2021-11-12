@@ -28,7 +28,14 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    /**
+     * @var string
+     */
     protected const TEST_USERNAME = 'CheckoutDataRestApiFixtures';
+
+    /**
+     * @var string
+     */
     protected const TEST_PASSWORD = 'change123';
 
     /**
@@ -94,12 +101,12 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
             ShipmentMethodDataHelper::DEFAULT_PRICE_LIST,
             [
                 $I->getStoreFacade()->getCurrentStore()->getIdStore(),
-            ]
+            ],
         );
 
         $this->quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $this->customerTransfer,
-            [$I->getQuoteItemOverrideData($I->haveProductWithStock(), $this->shipmentMethodTransfer, 10)]
+            [$I->getQuoteItemOverrideData($I->haveProductWithStock(), $this->shipmentMethodTransfer, 10)],
         );
 
         return $this;

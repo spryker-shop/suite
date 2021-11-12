@@ -33,7 +33,7 @@ class ProductLabelsApiTester extends ApiEndToEndTester
     use _generated\ProductLabelsApiTesterActions;
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -48,7 +48,7 @@ class ProductLabelsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $productAbstractSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -59,13 +59,13 @@ class ProductLabelsApiTester extends ApiEndToEndTester
             [
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -76,13 +76,13 @@ class ProductLabelsApiTester extends ApiEndToEndTester
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 
     /**
      * @param int $idProductLabel
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -93,7 +93,7 @@ class ProductLabelsApiTester extends ApiEndToEndTester
             [
                 'resourceProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 'idProductLabel' => $idProductLabel,
-            ]
+            ],
         );
     }
 }

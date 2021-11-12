@@ -34,7 +34,7 @@ class MerchantProductOfferDataImportBusinessFactory extends SprykerMerchantProdu
     public function getCombinedMerchantProductOfferDataImporter(): DataImporterInterface
     {
         $dataImporter = $this->getConditionalCsvDataImporterFromConfig(
-            $this->getConfig()->getCombinedMerchantProductOfferDataImporterConfiguration()
+            $this->getConfig()->getCombinedMerchantProductOfferDataImporterConfiguration(),
         );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
@@ -58,7 +58,7 @@ class MerchantProductOfferDataImportBusinessFactory extends SprykerMerchantProdu
     public function getCombinedMerchantProductOfferStoreDataImporter(): DataImporterInterface
     {
         $dataImporter = $this->getConditionalCsvDataImporterFromConfig(
-            $this->getConfig()->getCombinedMerchantProductOfferStoreDataImporterConfiguration()
+            $this->getConfig()->getCombinedMerchantProductOfferStoreDataImporterConfiguration(),
         );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();

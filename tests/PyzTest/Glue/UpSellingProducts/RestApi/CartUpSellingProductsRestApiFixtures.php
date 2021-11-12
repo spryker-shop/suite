@@ -32,7 +32,14 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    /**
+     * @var string
+     */
     protected const TEST_USERNAME = 'UserCartsUpSellingProductsRestApiFixtures';
+
+    /**
+     * @var string
+     */
     protected const TEST_PASSWORD = 'change123';
 
     /**
@@ -142,14 +149,14 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
             $this->productConcreteTransfer->getFkProductAbstract(),
             uniqid('test-', false),
             'up-selling',
-            $storeRelationTransfer
+            $storeRelationTransfer,
         );
     }
 
     /**
      * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
@@ -167,7 +174,7 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
      * @return array
      */

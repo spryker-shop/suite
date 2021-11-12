@@ -39,7 +39,7 @@ class ProductConcretePageSearchPostgresPagePublisherCte implements ProductPagePu
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getCompatibleEngines(): array
     {

@@ -21,6 +21,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductManagementAttributeWriter extends PublishAwareStep implements DataImportStepInterface
 {
+    /**
+     * @var int
+     */
     public const BULK_SIZE = 100;
 
     /**
@@ -28,7 +31,7 @@ class ProductManagementAttributeWriter extends PublishAwareStep implements DataI
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $productManagementAttributeEntity = SpyProductManagementAttributeQuery::create()
             ->filterByFkProductAttributeKey($dataSet[AddProductAttributeKeysStep::KEY_TARGET][$dataSet['key']])

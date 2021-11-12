@@ -15,21 +15,15 @@ use Spryker\Zed\Acl\AclConfig as SprykerAclConfig;
 
 class AclConfig extends SprykerAclConfig
 {
+    /**
+     * @var string
+     */
     protected const RULE_TYPE_DENY = 'deny';
 
     /**
-     * @uses \Spryker\Zed\AclMerchantPortal\AclMerchantPortalConfig::MAIN_MERCHANT_USER_GROUP_NAME
+     * @return array<array<string, mixed>>
      */
-    protected const MAIN_MERCHANT_USER_GROUP_NAME = 'Main Merchant';
-    /**
-     * @uses \Spryker\Zed\AclMerchantPortal\AclMerchantPortalConfig::MAIN_MERCHANT_USER_GROUP_REFERENCE
-     */
-    protected const MAIN_MERCHANT_USER_GROUP_REFERENCE = 'main_merchant';
-
-    /**
-     * @return array
-     */
-    public function getInstallerRules()
+    public function getInstallerRules(): array
     {
         $installerRules = parent::getInstallerRules();
         $installerRules = $this->addMerchantPortalInstallerRules($installerRules);
@@ -38,15 +32,18 @@ class AclConfig extends SprykerAclConfig
     }
 
     /**
-     * @return array
+     * @return array<string, array>
      */
-    public function getInstallerUsers()
+    public function getInstallerUsers(): array
     {
         return [
             'admin@spryker.com' => [
                 'group' => AclConstants::ROOT_GROUP,
             ],
             'admin_de@spryker.com' => [
+                'group' => AclConstants::ROOT_GROUP,
+            ],
+            'richard@spryker.com' => [
                 'group' => AclConstants::ROOT_GROUP,
             ],
             'martha@video-king.nl' => [],
@@ -58,9 +55,9 @@ class AclConfig extends SprykerAclConfig
     }
 
     /**
-     * @param string[][] $installerRules
+     * @param array<array<string, mixed>> $installerRules
      *
-     * @return string[][]
+     * @return array<array<string, mixed>>
      */
     protected function addMerchantPortalInstallerRules(array $installerRules): array
     {
@@ -81,7 +78,7 @@ class AclConfig extends SprykerAclConfig
                 'controller' => AclConstants::VALIDATOR_WILDCARD,
                 'action' => AclConstants::VALIDATOR_WILDCARD,
                 'type' => static::RULE_TYPE_DENY,
-                'role' => static::MAIN_MERCHANT_USER_GROUP_REFERENCE,
+                'role' => AclConstants::ROOT_ROLE,
             ];
         }
 
@@ -89,7 +86,7 @@ class AclConfig extends SprykerAclConfig
     }
 
     /**
-     * @return array
+     * @return array<int, array<string, mixed>>
      */
     public function getInstallerRoles(): array
     {

@@ -11,6 +11,7 @@ use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Agent\AgentConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
+use Spryker\Shared\CartsRestApi\CartsRestApiConstants;
 use Spryker\Shared\Category\CategoryConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Customer\CustomerConstants;
@@ -27,6 +28,7 @@ use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
+use Spryker\Shared\MerchantPortalApplication\MerchantPortalConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Oauth\OauthConstants;
@@ -181,14 +183,14 @@ $config[LogConstants::LOG_SANITIZE_FIELDS] = [
 $config[OauthConstants::PRIVATE_KEY_PATH] = str_replace(
     '__LINE__',
     PHP_EOL,
-    getenv('SPRYKER_OAUTH_KEY_PRIVATE') ?: ''
+    getenv('SPRYKER_OAUTH_KEY_PRIVATE') ?: '',
 ) ?: null;
 $config[OauthConstants::PUBLIC_KEY_PATH]
     = $config[OauthCryptographyConstants::PUBLIC_KEY_PATH]
     = str_replace(
         '__LINE__',
         PHP_EOL,
-        getenv('SPRYKER_OAUTH_KEY_PUBLIC') ?: ''
+        getenv('SPRYKER_OAUTH_KEY_PUBLIC') ?: '',
     ) ?: null;
 $config[OauthConstants::ENCRYPTION_KEY] = getenv('SPRYKER_OAUTH_ENCRYPTION_KEY') ?: null;
 $config[OauthConstants::OAUTH_CLIENT_IDENTIFIER] = getenv('SPRYKER_OAUTH_CLIENT_IDENTIFIER') ?: null;
@@ -444,7 +446,7 @@ $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
             '%s://%s:%s/',
             getenv('SPRYKER_SCHEDULER_PROTOCOL') ?: 'http',
             getenv('SPRYKER_SCHEDULER_HOST'),
-            getenv('SPRYKER_SCHEDULER_PORT')
+            getenv('SPRYKER_SCHEDULER_PORT'),
         ),
     ],
 ];
@@ -489,15 +491,15 @@ $zedPort = ((int)getenv('SPRYKER_ZED_PORT')) ?: $backofficeDefaultPort;
 $config[ZedRequestConstants::HOST_ZED_API] = sprintf(
     '%s%s',
     getenv('SPRYKER_ZED_HOST') ?: 'not-configured-host',
-    $zedPort !== $backofficeDefaultPort ? ':' . $zedPort : ''
+    $zedPort !== $backofficeDefaultPort ? ':' . $zedPort : '',
 );
 $config[ZedRequestConstants::BASE_URL_ZED_API] = sprintf(
     'http://%s',
-    $config[ZedRequestConstants::HOST_ZED_API]
+    $config[ZedRequestConstants::HOST_ZED_API],
 );
 $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
     'https://%s',
-    $config[ZedRequestConstants::HOST_ZED_API]
+    $config[ZedRequestConstants::HOST_ZED_API],
 );
 
 // ----------------------------------------------------------------------------
@@ -508,7 +510,18 @@ $backofficePort = (int)(getenv('SPRYKER_BE_PORT')) ?: 443;
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
     'https://%s%s',
     $sprykerBackendHost,
-    $backofficePort !== 443 ? ':' . $backofficePort : ''
+    $backofficePort !== 443 ? ':' . $backofficePort : '',
+);
+
+// ----------------------------------------------------------------------------
+// ------------------------------ MERCHANT PORTAL -----------------------------
+// ----------------------------------------------------------------------------
+
+$merchantPortalPort = (int)(getenv('SPRYKER_MP_PORT')) ?: 443;
+$config[MerchantPortalConstants::BASE_URL_MP] = sprintf(
+    'http://%s%s',
+    getenv('SPRYKER_MP_HOST'),
+    $merchantPortalPort !== 80 ? ':' . $merchantPortalPort : '',
 );
 
 // ----------------------------------------------------------------------------
@@ -525,7 +538,7 @@ $config[ApplicationConstants::BASE_URL_YVES]
     = sprintf(
         'https://%s%s',
         $yvesHost,
-        $yvesPort !== 443 ? ':' . $yvesPort : ''
+        $yvesPort !== 443 ? ':' . $yvesPort : '',
     );
 
 $config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = '/assets/' . (getenv('SPRYKER_BUILD_HASH') ?: 'current') . '/%theme%/';
@@ -540,7 +553,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN]
     = sprintf(
         'https://%s%s',
         $glueHost,
-        $gluePort !== 443 ? ':' . $gluePort : ''
+        $gluePort !== 443 ? ':' . $gluePort : '',
     );
 
 if (class_exists(TestifyConstants::class)) {
@@ -597,15 +610,15 @@ $config[PayoneConstants::PAYONE] = [
     PayoneConstants::HOST_YVES => $config[ApplicationConstants::BASE_URL_YVES],
     PayoneConstants::PAYONE_REDIRECT_SUCCESS_URL => sprintf(
         '%s/payone/payment-success',
-        $config[ApplicationConstants::BASE_URL_YVES]
+        $config[ApplicationConstants::BASE_URL_YVES],
     ),
     PayoneConstants::PAYONE_REDIRECT_ERROR_URL => sprintf(
         '%s/payone/payment-failure',
-        $config[ApplicationConstants::BASE_URL_YVES]
+        $config[ApplicationConstants::BASE_URL_YVES],
     ),
     PayoneConstants::PAYONE_REDIRECT_BACK_URL => sprintf(
         '%s/payone/regular-redirect-payment-cancellation',
-        $config[ApplicationConstants::BASE_URL_YVES]
+        $config[ApplicationConstants::BASE_URL_YVES],
     ),
 ];
 // >>> Product Configuration
@@ -637,3 +650,9 @@ $config[AgentConstants::AGENT_ALLOWED_SECURED_PATTERN_LIST] = [
     '|^(/en|/de)?/cart(?!/add)',
     '|^(/en|/de)?/checkout($|/)',
 ];
+
+// ----------------------------------------------------------------------------
+// ------------------------------ CART REST API -------------------------------
+// ----------------------------------------------------------------------------
+
+$config[CartsRestApiConstants::IS_QUOTE_RELOAD_ENABLED] = true;

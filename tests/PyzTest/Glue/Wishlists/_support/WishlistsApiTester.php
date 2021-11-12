@@ -33,7 +33,7 @@ class WishlistsApiTester extends ApiEndToEndTester
     use _generated\WishlistsApiTesterActions;
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -47,7 +47,7 @@ class WishlistsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -57,13 +57,13 @@ class WishlistsApiTester extends ApiEndToEndTester
             '{resourceWishlists}' . $this->formatQueryInclude($includes),
             [
                 'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $wishlistUuid
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -74,14 +74,14 @@ class WishlistsApiTester extends ApiEndToEndTester
             [
                 'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
                 'wishlistUuid' => $wishlistUuid,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $wishlistUuid
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -94,13 +94,13 @@ class WishlistsApiTester extends ApiEndToEndTester
                 'wishlistUuid' => $wishlistUuid,
                 'resourceWishlistItems' => WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -111,7 +111,7 @@ class WishlistsApiTester extends ApiEndToEndTester
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 }

@@ -15,6 +15,9 @@ use SprykerSdk\Yves\Benchmark\Request\RequestBuilderFactory;
 
 class ProductDetailedPageBench
 {
+    /**
+     * @var string
+     */
     protected const PRODUCT_ALIAS = 'samsung-galaxy-s5-mini-66';
 
     /**
@@ -45,7 +48,7 @@ class ProductDetailedPageBench
     {
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_GET,
-            sprintf(ProductDetailedPage::PRODUCT_DETAILED_PAGE_URL, static::PRODUCT_ALIAS)
+            sprintf(ProductDetailedPage::PRODUCT_DETAILED_PAGE_URL, static::PRODUCT_ALIAS),
         );
 
         return $this->httpHelper->send($request);

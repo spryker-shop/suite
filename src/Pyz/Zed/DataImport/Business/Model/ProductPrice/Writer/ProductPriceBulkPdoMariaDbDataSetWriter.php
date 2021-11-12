@@ -193,7 +193,7 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
         $product = $this->dataFormatter->formatStringList($productCollection, $rowCount);
         $priceType = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$productPriceTypeIdsCollection, ProductPriceHydratorStep::KEY_ID_PRICE_TYPE),
-            $rowCount
+            $rowCount,
         );
 
         $priceProductAbstractParameters = [
@@ -205,7 +205,7 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
         $sql = $this->productPriceSql->createPriceProductSQL(
             $productIdKey,
             $productTable,
-            $productFkKey
+            $productFkKey,
         );
 
         $this->propelExecutor->execute($sql, $priceProductAbstractParameters, false);
@@ -226,12 +226,12 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
         $orderKey = $this->dataFormatter->formatStringList(array_keys($productCollection), $rowCount);
         $priceType = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$productPriceTypeIdsCollection, ProductPriceHydratorStep::KEY_ID_PRICE_TYPE),
-            $rowCount
+            $rowCount,
         );
 
         $selectProductPriceSql = $this->productPriceSql->selectProductPriceSQL(
             $productIdKey,
-            $productFkKey
+            $productFkKey,
         );
 
         $priceProductAbstractProductParameters = [
@@ -266,31 +266,31 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
         $product = $this->dataFormatter->formatStringList($productCollection, $rowCount);
         $currency = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$productCurrencyIdsCollection, ProductPriceHydratorStep::KEY_ID_CURRENCY),
-            $rowCount
+            $rowCount,
         );
         $store = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$productStoreIdsCollection, ProductPriceHydratorStep::KEY_ID_STORE),
-            $rowCount
+            $rowCount,
         );
         $productPrice = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$priceProductIds, ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT),
-            $rowCount
+            $rowCount,
         );
         $grossPrice = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey($priceProductCollection, ProductPriceHydratorStep::KEY_PRICE_GROSS_DB),
-            $rowCount
+            $rowCount,
         );
         $netPrice = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey($priceProductCollection, ProductPriceHydratorStep::KEY_PRICE_NET_DB),
-            $rowCount
+            $rowCount,
         );
         $priceData = $this->dataFormatter->formatPriceStringList(
             $this->dataFormatter->getCollectionDataByKey($priceProductCollection, static::COLUMN_PRICE_DATA),
-            $rowCount
+            $rowCount,
         );
         $checksum = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey($priceProductCollection, static::COLUMN_PRICE_DATA_CHECKSUM),
-            $rowCount
+            $rowCount,
         );
 
         $priceProductConcreteStoreParameters = [
@@ -308,7 +308,7 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
         $sql = $this->productPriceSql->createPriceProductStoreSql(
             $productTableName,
             $productFkKey,
-            $productIdKey
+            $productIdKey,
         );
 
         $priceProductStoreIds = $this->propelExecutor->execute($sql, $priceProductConcreteStoreParameters);
@@ -325,7 +325,7 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
     {
         $priceProductStoreCollection = $this->dataFormatter->getCollectionDataByKey(
             static::$priceProductStoreIds,
-            ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT_STORE
+            ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT_STORE,
         );
 
         $rowCount = count($priceProductStoreCollection);

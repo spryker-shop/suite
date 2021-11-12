@@ -18,7 +18,7 @@ use Spryker\Zed\ProductOfferValidityGui\Communication\Plugin\ProductOfferGui\Pro
 class ProductOfferGuiDependencyProvider extends SprykerProductOfferGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ProductOfferGuiExtension\Dependency\Plugin\ProductOfferListActionViewDataExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductOfferGuiExtension\Dependency\Plugin\ProductOfferListActionViewDataExpanderPluginInterface>
      */
     protected function getProductOfferListActionViewDataExpanderPlugins(): array
     {
@@ -28,7 +28,7 @@ class ProductOfferGuiDependencyProvider extends SprykerProductOfferGuiDependency
     }
 
     /**
-     * @return \Spryker\Zed\ProductOfferGuiExtension\Dependency\Plugin\ProductOfferTableExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductOfferGuiExtension\Dependency\Plugin\ProductOfferTableExpanderPluginInterface>
      */
     protected function getProductOfferTableExpanderPlugins(): array
     {
@@ -38,7 +38,7 @@ class ProductOfferGuiDependencyProvider extends SprykerProductOfferGuiDependency
     }
 
     /**
-     * @return \Spryker\Zed\ProductOfferGuiExtension\Dependency\Plugin\ProductOfferViewSectionPluginInterface[]
+     * @return array<\Spryker\Zed\ProductOfferGuiExtension\Dependency\Plugin\ProductOfferViewSectionPluginInterface>
      */
     public function getProductOfferViewSectionPlugins(): array
     {

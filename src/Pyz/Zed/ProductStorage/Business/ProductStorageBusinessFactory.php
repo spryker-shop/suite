@@ -47,7 +47,7 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
             $this->getProductAbstractStorageExpanderPlugins(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createProductAbstractStorageCteStrategyResolver()->resolve()
+            $this->createProductAbstractStorageCteStrategyResolver()->resolve(),
         );
     }
 
@@ -60,7 +60,7 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface[]
+     * @return array<\Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface>
      */
     public function createProductAbstractStorageCteCollection(): array
     {
@@ -101,7 +101,7 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
             $this->getConfig()->isSendingToQueue(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createProductConcreteStorageCteStrategyResolver()->resolve()
+            $this->createProductConcreteStorageCteStrategyResolver()->resolve(),
         );
     }
 
@@ -114,7 +114,7 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface[]
+     * @return array<\Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface>
      */
     public function createProductConcreteStorageCteCollection(): array
     {

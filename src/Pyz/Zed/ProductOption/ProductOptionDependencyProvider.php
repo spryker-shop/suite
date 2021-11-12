@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductOption;
 
+use Spryker\Zed\Kernel\Communication\Form\FormTypeInterface;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantGui\Communication\Plugin\ProductOptionGui\MerchantProductOptionListActionViewDataExpanderPlugin;
 use Spryker\Zed\MerchantProductOption\Communication\Plugin\ProductOption\MerchantProductOptionGroupExpanderPlugin;
@@ -22,13 +23,13 @@ class ProductOptionDependencyProvider extends SprykerProductOptionDependencyProv
      *
      * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
      */
-    protected function createMoneyCollectionFormTypePlugin(Container $container)
+    protected function createMoneyCollectionFormTypePlugin(Container $container): FormTypeInterface
     {
         return new MoneyCollectionFormTypePlugin();
     }
 
     /**
-     * @return \Spryker\Zed\ProductOptionExtension\Dependency\Plugin\ProductOptionValuesPreRemovePluginInterface[]
+     * @return array<\Spryker\Zed\ProductOptionExtension\Dependency\Plugin\ProductOptionValuesPreRemovePluginInterface>
      */
     protected function getProductOptionValuesPreRemovePlugins(): array
     {
@@ -38,7 +39,7 @@ class ProductOptionDependencyProvider extends SprykerProductOptionDependencyProv
     }
 
     /**
-     * @return \Spryker\Zed\ProductOptionGuiExtension\Dependency\Plugin\ProductOptionListActionViewDataExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductOptionGuiExtension\Dependency\Plugin\ProductOptionListActionViewDataExpanderPluginInterface>
      */
     protected function getProductOptionListActionViewDataExpanderPlugins(): array
     {
@@ -48,7 +49,7 @@ class ProductOptionDependencyProvider extends SprykerProductOptionDependencyProv
     }
 
     /**
-     * @return \Spryker\Zed\ProductOptionGuiExtension\Dependency\Plugin\ProductOptionListTableQueryCriteriaExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductOptionGuiExtension\Dependency\Plugin\ProductOptionListTableQueryCriteriaExpanderPluginInterface>
      */
     protected function getProductOptionListTableQueryCriteriaExpanderPlugins(): array
     {
@@ -58,7 +59,7 @@ class ProductOptionDependencyProvider extends SprykerProductOptionDependencyProv
     }
 
     /**
-     * @return \Spryker\Zed\ProductOptionExtension\Dependency\Plugin\ProductOptionGroupExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductOptionExtension\Dependency\Plugin\ProductOptionGroupExpanderPluginInterface>
      */
     protected function getProductOptionGroupExpanderPlugins(): array
     {

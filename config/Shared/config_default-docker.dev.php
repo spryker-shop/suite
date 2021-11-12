@@ -7,12 +7,15 @@ use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
+use Spryker\Shared\ErrorHandler\ErrorRenderer\ApiDebugErrorRenderer;
+use Spryker\Shared\ErrorHandler\ErrorRenderer\ApiErrorRenderer;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
+use Spryker\Shared\MerchantPortalApplication\MerchantPortalConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
@@ -64,6 +67,7 @@ $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('D
 
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[ErrorHandlerConstants::ERROR_RENDERER] = getenv('SPRYKER_DEBUG_ENABLED') ? WebExceptionErrorRenderer::class : WebHtmlErrorRenderer::class;
+$config[ErrorHandlerConstants::API_ERROR_RENDERER] = getenv('SPRYKER_DEBUG_ENABLED') ? ApiDebugErrorRenderer::class : ApiErrorRenderer::class;
 $config[ErrorHandlerConstants::IS_PRETTY_ERROR_HANDLER_ENABLED] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 $config[ErrorHandlerConstants::ERROR_LEVEL] = getenv('SPRYKER_DEBUG_DEPRECATIONS_ENABLED') ? E_ALL : $config[ErrorHandlerConstants::ERROR_LEVEL];
 
@@ -105,7 +109,18 @@ if (!getenv('SPRYKER_SSL_ENABLE')) {
     $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
         'http://%s%s',
         getenv('SPRYKER_BE_HOST'),
-        $backofficePort !== 80 ? ':' . $backofficePort : ''
+        $backofficePort !== 80 ? ':' . $backofficePort : '',
+    );
+
+// ----------------------------------------------------------------------------
+// ------------------------------ MERCHANT PORTAL -----------------------------
+// ----------------------------------------------------------------------------
+
+    $merchantPortalPort = (int)(getenv('SPRYKER_MP_PORT')) ?: 80;
+    $config[MerchantPortalConstants::BASE_URL_MP] = sprintf(
+        'http://%s%s',
+        getenv('SPRYKER_MP_HOST'),
+        $merchantPortalPort !== 80 ? ':' . $merchantPortalPort : '',
     );
 
 // ----------------------------------------------------------------------------
@@ -121,7 +136,7 @@ if (!getenv('SPRYKER_SSL_ENABLE')) {
         = sprintf(
             'http://%s%s',
             $yvesHost,
-            $yvesPort !== 80 ? ':' . $yvesPort : ''
+            $yvesPort !== 80 ? ':' . $yvesPort : '',
         );
 
 // ----------------------------------------------------------------------------
@@ -133,7 +148,7 @@ if (!getenv('SPRYKER_SSL_ENABLE')) {
     $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf(
         'http://%s%s',
         $glueHost,
-        $gluePort !== 80 ? ':' . $gluePort : ''
+        $gluePort !== 80 ? ':' . $gluePort : '',
     );
 
     if (class_exists(TestifyConstants::class, true)) {

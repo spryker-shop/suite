@@ -12,29 +12,34 @@ use Spryker\Service\PriceProductMerchantRelationship\Plugin\PriceProduct\Merchan
 use Spryker\Service\PriceProductOffer\Plugin\PriceProduct\PriceProductOfferPriceProductFilterPlugin;
 use Spryker\Service\PriceProductOfferVolume\Plugin\PriceProductOffer\PriceProductOfferVolumeFilterPlugin;
 use Spryker\Service\PriceProductVolume\Plugin\PriceProductExtension\PriceProductVolumeFilterPlugin;
-use Spryker\Service\ProductConfigurationStorage\Plugin\PriceProduct\ProductConfigurationPriceProductFilterPlugin;
-use Spryker\Service\ProductConfigurationStorage\Plugin\PriceProduct\ProductConfigurationPriceProductVolumeFilterPlugin;
+use Spryker\Service\ProductConfiguration\Plugin\PriceProduct\ProductConfigurationPriceProductFilterPlugin;
+use Spryker\Service\ProductConfiguration\Plugin\PriceProduct\ProductConfigurationVolumePriceProductFilterPlugin;
 
 class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvider
 {
     /**
      * {@inheritDoc}
      *
-     * @return \Spryker\Service\PriceProductExtension\Dependency\Plugin\PriceProductFilterPluginInterface[]
+     * @return array<\Spryker\Service\PriceProductExtension\Dependency\Plugin\PriceProductFilterPluginInterface>
      */
     protected function getPriceProductDecisionPlugins(): array
     {
         return array_merge([
-            /**
+            /*
              * ProductOfferPriceProductFilterPlugin should be the first, otherwise other plugins might filter out the prices actually belonging to the offer.
              */
             new PriceProductOfferPriceProductFilterPlugin(),
 
+            /*
+             * MerchantRelationshipPriceProductFilterPlugin should be at the beginning to filter non-active merchant prices
+             * and define right minimum price in next filter plugins like in `PriceProductVolumeFilterPlugin`.
+             */
+            new MerchantRelationshipPriceProductFilterPlugin(),
+
             new ProductConfigurationPriceProductFilterPlugin(),
-            new ProductConfigurationPriceProductVolumeFilterPlugin(),
+            new ProductConfigurationVolumePriceProductFilterPlugin(),
             new PriceProductOfferVolumeFilterPlugin(),
             new PriceProductVolumeFilterPlugin(),
-            new MerchantRelationshipPriceProductFilterPlugin(),
         ], parent::getPriceProductDecisionPlugins());
     }
 }

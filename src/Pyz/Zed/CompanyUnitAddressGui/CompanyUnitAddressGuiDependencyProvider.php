@@ -13,7 +13,7 @@ use Spryker\Zed\CompanyUnitAddressLabel\Communication\Plugin\CompanyUnitAddressE
 class CompanyUnitAddressGuiDependencyProvider extends SprykerCompanyUnitAddressGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\CompanyUnitAddressGuiExtension\Dependency\Plugin\CompanyUnitAddressEditFormExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\CompanyUnitAddressGuiExtension\Dependency\Plugin\CompanyUnitAddressEditFormExpanderPluginInterface>
      */
     protected function getCompanyUnitAddressFormPlugins(): array
     {
@@ -23,7 +23,7 @@ class CompanyUnitAddressGuiDependencyProvider extends SprykerCompanyUnitAddressG
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUnitAddressGuiExtension\Dependency\Plugin\CompanyUnitAddressTableConfigExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\CompanyUnitAddressGuiExtension\Dependency\Plugin\CompanyUnitAddressTableConfigExpanderPluginInterface>
      */
     protected function getCompanyUnitAddressTableConfigExpanderPlugins(): array
     {
@@ -32,7 +32,7 @@ class CompanyUnitAddressGuiDependencyProvider extends SprykerCompanyUnitAddressG
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUnitAddressGuiExtension\Dependency\Plugin\CompanyUnitAddressTableHeaderExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\CompanyUnitAddressGuiExtension\Dependency\Plugin\CompanyUnitAddressTableHeaderExpanderPluginInterface>
      */
     protected function getCompanyUnitAddressTableHeaderExpanderPlugins(): array
     {
@@ -41,7 +41,7 @@ class CompanyUnitAddressGuiDependencyProvider extends SprykerCompanyUnitAddressG
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUnitAddressGuiExtension\Dependency\Plugin\CompanyUnitAddressTableDataExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\CompanyUnitAddressGuiExtension\Dependency\Plugin\CompanyUnitAddressTableDataExpanderPluginInterface>
      */
     protected function getCompanyUnitAddressTableDataExpanderPlugins(): array
     {

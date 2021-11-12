@@ -31,6 +31,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
 {
+    /**
+     * @var int
+     */
     protected const PRODUCTS_LIMIT = 2;
 
     /**
@@ -81,13 +84,12 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
     {
         $this->assertCount(count($dataSets), $productAbstractStores);
 
-        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstract $abstractProductEntity */
         foreach ($productAbstractStores as $productAbstractStore) {
             $productAbstractStoreDataSet = $dataSets[$productAbstractStore[SpyProductAbstractTableMap::COL_SKU]];
             $this->assertNotEmpty($productAbstractStoreDataSet);
             $this->assertSame(
                 $productAbstractStoreDataSet[ProductAbstractStoreHydratorStep::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER]->getStoreName(),
-                $productAbstractStore[SpyStoreTableMap::COL_NAME]
+                $productAbstractStore[SpyStoreTableMap::COL_NAME],
             );
         }
     }

@@ -15,6 +15,9 @@ use SprykerSdk\Shared\Benchmark\Request\RequestBuilderInterface;
 
 class AddToCartBench
 {
+    /**
+     * @var string
+     */
     protected const PRODUCT_SKU = '035_17360369';
 
     /**
@@ -57,7 +60,7 @@ class AddToCartBench
                         'quantity' => 1,
                     ],
                 ],
-            ]
+            ],
         );
 
         return $this->httpHelper->send($request, [], 201);

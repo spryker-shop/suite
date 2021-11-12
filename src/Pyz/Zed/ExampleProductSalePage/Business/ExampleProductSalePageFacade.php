@@ -15,9 +15,9 @@ use Spryker\Zed\Product\Business\ProductFacade as SprykerProductFacade;
 class ExampleProductSalePageFacade extends SprykerProductFacade implements ExampleProductSalePageFacadeInterface
 {
     /**
-     * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer[]
+     * @return array<\Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer>
      */
-    public function findProductLabelProductAbstractRelationChanges()
+    public function findProductLabelProductAbstractRelationChanges(): array
     {
         return $this->getFactory()
             ->createProductAbstractRelationReader()

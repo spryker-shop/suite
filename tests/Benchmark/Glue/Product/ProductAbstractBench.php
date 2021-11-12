@@ -15,6 +15,9 @@ use SprykerSdk\Shared\Benchmark\Request\RequestBuilderInterface;
 
 class ProductAbstractBench
 {
+    /**
+     * @var string
+     */
     protected const PRODUCT_SKU = '066';
 
     /**
@@ -45,7 +48,7 @@ class ProductAbstractBench
     {
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_GET,
-            sprintf(ProductPage::ENDPOINT_PRODUCT_ABSTRACT, static::PRODUCT_SKU)
+            sprintf(ProductPage::ENDPOINT_PRODUCT_ABSTRACT, static::PRODUCT_SKU),
         );
 
         return $this->httpHelper->send($request);

@@ -147,7 +147,6 @@ use Spryker\Zed\SetupFrontend\Communication\Console\InstallPackageManagerConsole
 use Spryker\Zed\SetupFrontend\Communication\Console\InstallProjectDependenciesConsole;
 use Spryker\Zed\SetupFrontend\Communication\Console\MerchantPortalBuildFrontendConsole;
 use Spryker\Zed\SetupFrontend\Communication\Console\MerchantPortalInstallDependenciesConsole;
-use Spryker\Zed\SetupFrontend\Communication\Console\Npm\RunnerConsole;
 use Spryker\Zed\SetupFrontend\Communication\Console\YvesBuildFrontendConsole;
 use Spryker\Zed\SetupFrontend\Communication\Console\YvesInstallDependenciesConsole;
 use Spryker\Zed\SetupFrontend\Communication\Console\ZedBuildFrontendConsole;
@@ -189,12 +188,15 @@ use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
  */
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
+    /**
+     * @var string
+     */
     protected const COMMAND_SEPARATOR = ':';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Symfony\Component\Console\Command\Command[]
+     * @return array<\Symfony\Component\Console\Command\Command>
      */
     protected function getConsoleCommands(Container $container): array
     {
@@ -321,7 +323,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new ExportSynchronizedDataConsole(),
 
             // Setup commands
-            new RunnerConsole(),
             new DeployPreparePropelConsole(),
 
             new DatabaseDropConsole(),
@@ -473,7 +474,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
      *
      * @return array
      */
-    public function getConsolePostRunHookPlugins(Container $container)
+    public function getConsolePostRunHookPlugins(Container $container): array
     {
         return [
             new EventBehaviorPostHookPlugin(),
@@ -483,7 +484,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
+     * @return array<\Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface>
      */
     public function getApplicationPlugins(Container $container): array
     {
@@ -497,7 +498,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin[]
+     * @return array<\Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin>
      */
     public function getEventSubscriber(Container $container): array
     {

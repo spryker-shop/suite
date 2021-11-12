@@ -51,7 +51,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     protected $synchronizedMessageCollection = [];
 
     /**
-     * @var \Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface[]
+     * @var array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface>
      */
     protected $productAbstractStorageExpanderPlugins = [];
 
@@ -66,7 +66,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToStoreFacadeInterface $storeFacade
      * @param bool $isSendingToQueue
-     * @param \Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface[] $productAbstractStorageExpanderPlugins
+     * @param array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface> $productAbstractStorageExpanderPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      * @param \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface $productAbstractStorageCte
@@ -88,7 +88,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
             $queryContainer,
             $storeFacade,
             $isSendingToQueue,
-            $productAbstractStorageExpanderPlugins
+            $productAbstractStorageExpanderPlugins,
         );
 
         $this->synchronizationService = $synchronizationService;
@@ -98,20 +98,20 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
 
     /**
      * @param array $productAbstractLocalizedEntities
-     * @param \Orm\Zed\ProductStorage\Persistence\SpyProductAbstractStorage[] $productAbstractStorageEntities
+     * @param array<\Orm\Zed\ProductStorage\Persistence\SpyProductAbstractStorage> $productAbstractStorageEntities
      *
      * @return void
      */
-    protected function storeData(array $productAbstractLocalizedEntities, array $productAbstractStorageEntities)
+    protected function storeData(array $productAbstractLocalizedEntities, array $productAbstractStorageEntities): void
     {
         $pairedEntities = $this->pairProductAbstractLocalizedEntitiesWithProductAbstractStorageEntities(
             $productAbstractLocalizedEntities,
-            $productAbstractStorageEntities
+            $productAbstractStorageEntities,
         );
 
         $attributeMapBulk = $this->attributeMap->generateAttributeMapBulk(
             array_column($productAbstractLocalizedEntities, static::COL_FK_PRODUCT_ABSTRACT),
-            array_column($productAbstractLocalizedEntities, static::COL_FK_LOCALE)
+            array_column($productAbstractLocalizedEntities, static::COL_FK_LOCALE),
         );
 
         foreach ($pairedEntities as $pair) {
@@ -128,7 +128,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
                 $productAbstractLocalizedEntity,
                 $pair[static::STORE_NAME],
                 $pair[static::LOCALE_NAME],
-                $attributeMapBulk
+                $attributeMapBulk,
             );
         }
 
@@ -156,7 +156,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         $productAbstractStorageTransfer = $this->mapToProductAbstractStorageTransfer(
             $productAbstractLocalizedEntity,
             new ProductAbstractStorageTransfer(),
-            $attributeMapBulk
+            $attributeMapBulk,
         );
 
         $productAbstractStorageData = [
@@ -208,7 +208,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      *
      * @return string
      */
-    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName)
+    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName): string
     {
         $syncTransferData = new SynchronizationDataTransfer();
         if (isset($data['store'])) {
@@ -264,7 +264,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     /**
      * @return void
      */
-    public function write()
+    public function write(): void
     {
         if (empty($this->synchronizedDataCollection)) {
             return;
@@ -283,7 +283,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getParams(): array
     {

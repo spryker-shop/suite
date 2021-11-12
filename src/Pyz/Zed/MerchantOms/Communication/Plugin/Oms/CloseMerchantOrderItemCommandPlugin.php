@@ -22,6 +22,9 @@ use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByItemInterface;
  */
 class CloseMerchantOrderItemCommandPlugin extends AbstractPlugin implements CommandByItemInterface
 {
+    /**
+     * @var string
+     */
     protected const EVENT_CLOSE = 'close';
 
     /**
@@ -39,7 +42,7 @@ class CloseMerchantOrderItemCommandPlugin extends AbstractPlugin implements Comm
     {
         $merchantOrderItemTransfer = $this->getFactory()->getMerchantSalesOrderFacade()->findMerchantOrderItem(
             (new MerchantOrderItemCriteriaTransfer())
-                ->setIdOrderItem($orderItem->getIdSalesOrderItem())
+                ->setIdOrderItem($orderItem->getIdSalesOrderItem()),
         );
 
         if (!$merchantOrderItemTransfer) {
@@ -55,7 +58,7 @@ class CloseMerchantOrderItemCommandPlugin extends AbstractPlugin implements Comm
             throw new LogicException(sprintf(
                 'Merchant Order Item #%s transition for event "%s" has not happened.',
                 $merchantOrderItemTransfer->getIdMerchantOrderItem(),
-                static::EVENT_CLOSE
+                static::EVENT_CLOSE,
             ));
         }
 

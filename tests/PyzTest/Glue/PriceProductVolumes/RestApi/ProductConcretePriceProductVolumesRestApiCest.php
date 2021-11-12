@@ -59,7 +59,7 @@ class ProductConcretePriceProductVolumesRestApiCest
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'resourceConcreteProductPrices' => ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
                 'productConcreteSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
-            ]
+            ],
         ));
 
         // Assert

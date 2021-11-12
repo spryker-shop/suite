@@ -34,8 +34,14 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
 {
+    /**
+     * @var int
+     */
     protected const LOCALES_LIMIT = 2;
 
+    /**
+     * @var int
+     */
     protected const PRODUCTS_LIMIT = 2;
 
     /**
@@ -54,9 +60,7 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
             $productTransfer = (new SpyProductEntityBuilder())->build();
             $dataSet[ProductConcreteHydratorStep::COLUMN_ABSTRACT_SKU] = $abstractSku;
             $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_TRANSFER] = $productTransfer;
-            /**
-             * @var \Generated\Shared\Transfer\SpyProductLocalizedAttributesEntityTransfer
-             */
+            /** @var \Generated\Shared\Transfer\SpyProductLocalizedAttributesEntityTransfer $spyProductLocalizedAttributesEntityTransfer */
             $spyProductLocalizedAttributesEntityTransfer = (new SpyProductLocalizedAttributesEntityBuilder())
                 ->build();
             $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER] = [
@@ -111,11 +115,11 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
             $dataSetProduct = $dataSets[$productEntity->getSku()][ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_TRANSFER];
             $this->assertSame(
                 $dataSetProduct->getIsActive(),
-                $productEntity->getIsActive()
+                $productEntity->getIsActive(),
             );
             $this->assertSame(
                 $dataSetProduct->getIsQuantitySplittable(),
-                $productEntity->getIsQuantitySplittable()
+                $productEntity->getIsQuantitySplittable(),
             );
 
             //Localized
@@ -133,15 +137,15 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
                     }
                     $this->assertSame(
                         $localizedAttributeTransfer->getName(),
-                        $localizedAttribute->getName()
+                        $localizedAttribute->getName(),
                     );
                     $this->assertSame(
                         $localizedAttributeTransfer->getDescription(),
-                        $localizedAttribute->getDescription()
+                        $localizedAttribute->getDescription(),
                     );
                     $this->assertSame(
                         $localizedAttributeTransfer->getIsComplete(),
-                        $localizedAttribute->getIsComplete()
+                        $localizedAttribute->getIsComplete(),
                     );
                 }
             }

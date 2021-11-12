@@ -14,7 +14,7 @@ use Pyz\Zed\Propel\Business\PropelFacadeInterface;
 class ProductPageSearchCteStrategyResolver implements SqlResolverInterface
 {
     /**
-     * @var \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface[]
+     * @var array<\Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface>
      */
     protected $cteCollection;
 
@@ -24,7 +24,7 @@ class ProductPageSearchCteStrategyResolver implements SqlResolverInterface
     protected $propelFacade;
 
     /**
-     * @param \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface[] $cteCollection
+     * @param array<\Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface> $cteCollection
      * @param \Pyz\Zed\Propel\Business\PropelFacadeInterface $propelFacade
      */
     public function __construct(array $cteCollection, PropelFacadeInterface $propelFacade)

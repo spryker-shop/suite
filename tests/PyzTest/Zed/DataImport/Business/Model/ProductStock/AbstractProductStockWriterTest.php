@@ -37,6 +37,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductStockWriterTest extends AbstractWriterTest
 {
+    /**
+     * @var array
+     */
     protected const WAREHOUSES_QTY = [
         1234,
     ];
@@ -132,7 +135,7 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
 
             $this->assertSame(
                 $dataSetStock->getName(),
-                $stockProduct[SpyStockTableMap::COL_NAME]
+                $stockProduct[SpyStockTableMap::COL_NAME],
             );
 
             /** @var \Generated\Shared\Transfer\SpyProductOfferStockEntityTransfer $dataSetProductStock */
@@ -140,7 +143,7 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
 
             $this->assertEquals(
                 $dataSetProductStock->getQuantity(),
-                $stockProduct[SpyStockProductTableMap::COL_QUANTITY]
+                $stockProduct[SpyStockProductTableMap::COL_QUANTITY],
             );
         }
 
@@ -148,7 +151,7 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
             $dataSetProductStock = $dataSets[$availability[SpyAvailabilityTableMap::COL_SKU]][ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER];
             $this->assertEquals(
                 $dataSetProductStock->getQuantity(),
-                $availability[SpyAvailabilityTableMap::COL_QUANTITY]
+                $availability[SpyAvailabilityTableMap::COL_QUANTITY],
             );
         }
     }
@@ -166,7 +169,7 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
     }
 
     /**
-     * @param string[] $skus
+     * @param array<string> $skus
      *
      * @return array
      */

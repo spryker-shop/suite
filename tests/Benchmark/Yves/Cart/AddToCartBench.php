@@ -16,9 +16,19 @@ use SprykerSdk\Yves\Benchmark\Request\RequestBuilderFactory;
 
 class AddToCartBench
 {
+    /**
+     * @var string
+     */
     protected const PRODUCT_CONCRETE_SKU = '066_23294028';
 
+    /**
+     * @var string
+     */
     protected const LOGIN_EMAIL = 'spencor.hopkin@spryker.com';
+
+    /**
+     * @var string
+     */
     protected const LOGIN_PASSWORD = 'change123';
 
     /**
@@ -55,12 +65,14 @@ class AddToCartBench
      */
     public function benchAddingOneItemToCart(): ResponseInterface
     {
-        $headers[$this->loginHeader->getName()] = $this->loginHeader->getValue();
+        $headers = [
+            $this->loginHeader->getName() => $this->loginHeader->getValue(),
+        ];
 
         $request = $this->requestBuilder->buildRequest(
             RequestBuilderInterface::METHOD_POST,
             sprintf(CartPage::ADD_TO_CART_URL, static::PRODUCT_CONCRETE_SKU),
-            $headers
+            $headers,
         );
 
         return $this->httpHelper->send($request);

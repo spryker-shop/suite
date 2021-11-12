@@ -39,23 +39,23 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
 
         $attributes = $this->dataFormatter->formatPriceStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_ATTRIBUTES),
-            $rowsCount
+            $rowsCount,
         );
         $discount = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_DISCOUNT),
-            $rowsCount
+            $rowsCount,
         );
         $warehouses = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_WAREHOUSES),
-            $rowsCount
+            $rowsCount,
         );
         $isActive = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_IS_ACTIVE),
-            $rowsCount
+            $rowsCount,
         );
         $skuProductAbstract = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, static::COLUMN_ABSTRACT_SKU),
-            $rowsCount
+            $rowsCount,
         );
 
         $sql = $this->productConcreteSql->createConcreteProductSQL();
@@ -88,23 +88,23 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
 
             $idLocale = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_FK_LOCALE),
-                $rowsCount
+                $rowsCount,
             );
             $name = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, static::COLUMN_NAME),
-                $rowsCount
+                $rowsCount,
             );
             $isComplete = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_IS_COMPLETE),
-                $rowsCount
+                $rowsCount,
             );
             $description = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, static::COLUMN_DESCRIPTION),
-                $rowsCount
+                $rowsCount,
             );
             $attributes = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_ATTRIBUTES),
-                $rowsCount
+                $rowsCount,
             );
 
             $sql = $this->productConcreteSql->createConcreteProductLocalizedAttributesSQL();
@@ -135,11 +135,11 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
 
             $isSearchable = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productSearchCollection, static::COLUMN_IS_SEARCHABLE),
-                $rowsCount
+                $rowsCount,
             );
             $sku = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productSearchCollection, ProductConcreteHydratorStep::KEY_SKU),
-                $rowsCount
+                $rowsCount,
             );
 
             $sql = $this->productConcreteSql->createConcreteProductSearchSQL();
@@ -167,11 +167,11 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
 
             $sku = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productBundleCollection, ProductConcreteHydratorStep::KEY_SKU),
-                $rowsCount
+                $rowsCount,
             );
             $quantity = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productBundleCollection, ProductConcreteHydratorStep::KEY_QUANTITY),
-                $rowsCount
+                $rowsCount,
             );
 
             $sql = $this->productConcreteSql->createConcreteProductBundleSQL();

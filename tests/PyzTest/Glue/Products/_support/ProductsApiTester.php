@@ -33,7 +33,7 @@ class ProductsApiTester extends ApiEndToEndTester
     use _generated\ProductsApiTesterActions;
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -48,7 +48,7 @@ class ProductsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $productAbstractSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -59,13 +59,13 @@ class ProductsApiTester extends ApiEndToEndTester
             [
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $productAbstractSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -77,13 +77,13 @@ class ProductsApiTester extends ApiEndToEndTester
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
                 'resourceAbstractProductPrices' => ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -94,13 +94,13 @@ class ProductsApiTester extends ApiEndToEndTester
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $productConcreteSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -112,7 +112,7 @@ class ProductsApiTester extends ApiEndToEndTester
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
                 'resourceConcreteProductPrices' => ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
-            ]
+            ],
         );
     }
 }

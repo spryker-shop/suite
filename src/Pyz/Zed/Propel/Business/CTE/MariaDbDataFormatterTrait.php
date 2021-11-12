@@ -49,7 +49,7 @@ trait MariaDbDataFormatterTrait
         }
 
         $values = array_map(function ($value) {
-            return str_replace(',', '|', $value) ?? '';
+            return str_replace(',', '|', $value);
         }, $values);
 
         return implode(',', $values);

@@ -104,7 +104,7 @@ class ProductConcreteStorageMariaDbCte implements ProductStorageCteStrategyInter
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getCompatibleEngines(): array
     {

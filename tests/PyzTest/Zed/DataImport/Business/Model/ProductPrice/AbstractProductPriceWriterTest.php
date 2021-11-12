@@ -40,12 +40,22 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
 {
+    /**
+     * @var array
+     */
     protected const PRICE_TYPES = [
         'DATAIMPORT_TEST1',
         'DATAIMPORT_TEST2',
     ];
 
+    /**
+     * @var int
+     */
     protected const PRICE_MODE_CONFIGURATION = 2;
+
+    /**
+     * @var string
+     */
     protected const PRICE_DATA = '[{""quantity"":5,""net_price"":150,""gross_price"":165}]';
 
     /**
@@ -55,9 +65,7 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
     {
         $result = [];
 
-        /**
-         * @var \Generated\Shared\Transfer\SpyPriceProductStoreEntityTransfer
-         */
+        /** @var \Generated\Shared\Transfer\SpyPriceProductStoreEntityTransfer $spyPriceProductStoreEntityTransfer */
         $spyPriceProductStoreEntityTransfer = (new SpyPriceProductStoreEntityBuilder())->build();
         $priceProductStore = $spyPriceProductStoreEntityTransfer
             ->setCurrency((new SpyCurrencyEntityTransfer())->setName($this->getCurrency()->getCode()))
@@ -136,18 +144,18 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
             $dataSetPrice = $dataSets[$productPrice[SpyProductAbstractTableMap::COL_SKU]][ProductPriceHydratorStep::PRICE_PRODUCT_TRANSFER];
             $this->assertSame(
                 $dataSetPrice->getPriceType()->getName(),
-                $productPrice[SpyPriceTypeTableMap::COL_NAME]
+                $productPrice[SpyPriceTypeTableMap::COL_NAME],
             );
             $spyPriceProductStore = $dataSetPrice->getSpyPriceProductStores()[0];
             // TODO: Fix to assertSame() once true ints are returned from also MySQL
             $this->assertEquals(
                 $spyPriceProductStore->getNetPrice(),
-                $productPrice[SpyPriceProductStoreTableMap::COL_NET_PRICE]
+                $productPrice[SpyPriceProductStoreTableMap::COL_NET_PRICE],
             );
             // TODO: Fix to assertSame() once true ints are returned from also MySQL
             $this->assertEquals(
                 $spyPriceProductStore->getGrossPrice(),
-                $productPrice[SpyPriceProductStoreTableMap::COL_GROSS_PRICE]
+                $productPrice[SpyPriceProductStoreTableMap::COL_GROSS_PRICE],
             );
         }
     }

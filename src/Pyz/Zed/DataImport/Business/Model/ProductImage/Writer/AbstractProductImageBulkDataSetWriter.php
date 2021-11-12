@@ -115,7 +115,7 @@ abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInt
     abstract protected function persistProductImageSetRelations(): void;
 
     /**
-     * @param int[] $touchedProductImages
+     * @param array<int> $touchedProductImages
      *
      * @return void
      */
@@ -132,16 +132,16 @@ abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInt
             if (!empty($productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT])) {
                 DataImporterPublisher::addEvent(
                     ProductImageEvents::PRODUCT_IMAGE_PRODUCT_ABSTRACT_PUBLISH,
-                    $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]
+                    $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT],
                 );
                 DataImporterPublisher::addEvent(
                     ProductEvents::PRODUCT_ABSTRACT_PUBLISH,
-                    $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]
+                    $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT],
                 );
             } elseif (!empty($productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT])) {
                 DataImporterPublisher::addEvent(
                     ProductImageEvents::PRODUCT_IMAGE_PRODUCT_CONCRETE_PUBLISH,
-                    $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT]
+                    $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT],
                 );
             }
         }

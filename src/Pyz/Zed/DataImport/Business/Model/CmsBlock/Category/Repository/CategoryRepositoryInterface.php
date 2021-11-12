@@ -16,5 +16,5 @@ interface CategoryRepositoryInterface
      *
      * @return int
      */
-    public function getIdCategoryByCategoryKey($categoryKey);
+    public function getIdCategoryByCategoryKey($categoryKey): int;
 }

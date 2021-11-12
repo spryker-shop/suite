@@ -71,7 +71,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Spryker\Zed\ProductPageSearch\Business\DataMapper\AbstractProductSearchDataMapper $productConcreteSearchDataMapper
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface $storeFacade
      * @param \Spryker\Zed\ProductPageSearch\ProductPageSearchConfig $productPageSearchConfig
-     * @param \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface[] $pageDataExpanderPlugins
+     * @param array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface> $pageDataExpanderPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      * @param \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface $productConcretePagePublisherCte
@@ -97,7 +97,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             $productConcreteSearchDataMapper,
             $storeFacade,
             $productPageSearchConfig,
-            $pageDataExpanderPlugins
+            $pageDataExpanderPlugins,
         );
 
         $this->synchronizationService = $synchronizationService;
@@ -106,8 +106,8 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
-     * @param \Generated\Shared\Transfer\ProductConcretePageSearchTransfer[] $productConcretePageSearchTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcretePageSearchTransfer> $productConcretePageSearchTransfers
      *
      * @return void
      */
@@ -120,7 +120,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
                 $this->syncProductConcretePageSearchPerStore(
                     $productConcreteTransfer,
                     $storeTransfer,
-                    $productConcretePageSearchTransfers[$productConcreteTransfer->getIdProductConcrete()][$storeTransfer->getName()] ?? []
+                    $productConcretePageSearchTransfers[$productConcreteTransfer->getIdProductConcrete()][$storeTransfer->getName()] ?? [],
                 );
             }
         }
@@ -165,7 +165,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             $productConcreteTransfer,
             $storeTransfer,
             $productConcretePageSearchTransfer,
-            $localizedAttributesTransfer
+            $localizedAttributesTransfer,
         );
 
         $this->add($productConcretePageSearchTransfer);
@@ -216,7 +216,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     protected function generateResourceKey(
         ProductConcretePageSearchTransfer $productPageSearchTransfer,
         string $resourceName
-    ) {
+    ): string {
         $syncTransferData = new SynchronizationDataTransfer();
         $syncTransferData->setStore($productPageSearchTransfer->getStore());
         $syncTransferData->setLocale($productPageSearchTransfer->getLocale());
@@ -265,7 +265,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     /**
      * @return void
      */
-    public function write()
+    public function write(): void
     {
         if (empty($this->synchronizedDataCollection)) {
             return;

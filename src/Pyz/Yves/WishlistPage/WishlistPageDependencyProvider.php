@@ -14,14 +14,15 @@ use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\WishlistPage\MerchantProd
 use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\WishlistPage\MerchantProductOfferWishlistItemRequestExpanderPlugin;
 use SprykerShop\Yves\MerchantProductWidget\Plugin\WishlistPage\MerchantProductWishlistItemMetaFormExpanderPlugin;
 use SprykerShop\Yves\MerchantProductWidget\Plugin\WishlistPage\MerchantProductWishlistItemRequestExpanderPlugin;
+use SprykerShop\Yves\ProductConfigurationWishlistWidget\Plugin\WishlistPage\ProductConfigurationWishlistItemRequestExpanderPlugin;
 use SprykerShop\Yves\WishlistPage\WishlistPageDependencyProvider as SprykerWishlistPageDependencyProvider;
 
 class WishlistPageDependencyProvider extends SprykerWishlistPageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\ProductStorage\Dependency\Plugin\ProductViewExpanderPluginInterface[]
+     * @return array<\Spryker\Client\ProductStorage\Dependency\Plugin\ProductViewExpanderPluginInterface>
      */
-    protected function getWishlistItemExpanderPlugins()
+    protected function getWishlistItemExpanderPlugins(): array
     {
         return [
             new ProductViewPriceExpanderPlugin(),
@@ -31,18 +32,19 @@ class WishlistPageDependencyProvider extends SprykerWishlistPageDependencyProvid
     }
 
     /**
-     * @return \SprykerShop\Yves\WishlistPageExtension\Dependency\Plugin\WishlistItemRequestExpanderPluginInterface[]
+     * @return array<\SprykerShop\Yves\WishlistPageExtension\Dependency\Plugin\WishlistItemRequestExpanderPluginInterface>
      */
     protected function getWishlistItemRequestExpanderPlugins(): array
     {
         return [
             new MerchantProductWishlistItemRequestExpanderPlugin(),
             new MerchantProductOfferWishlistItemRequestExpanderPlugin(),
+            new ProductConfigurationWishlistItemRequestExpanderPlugin(),
         ];
     }
 
     /**
-     * @return \SprykerShop\Yves\WishlistPageExtension\Dependency\Plugin\WishlistItemMetaFormExpanderPluginInterface[]
+     * @return array<\SprykerShop\Yves\WishlistPageExtension\Dependency\Plugin\WishlistItemMetaFormExpanderPluginInterface>
      */
     protected function getWishlistItemMetaFormExpanderPlugins(): array
     {

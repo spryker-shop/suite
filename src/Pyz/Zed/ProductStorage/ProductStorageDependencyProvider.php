@@ -13,8 +13,19 @@ use Spryker\Zed\ProductStorage\ProductStorageDependencyProvider as SprykerProduc
 
 class ProductStorageDependencyProvider extends SprykerProductStorageDependencyProvider
 {
+    /**
+     * @var string
+     */
     public const SERVICE_SYNCHRONIZATION = 'SERVICE_SYNCHRONIZATION';
+
+    /**
+     * @var string
+     */
     public const CLIENT_QUEUE = 'CLIENT_QUEUE';
+
+    /**
+     * @var string
+     */
     public const FACADE_PROPEL = 'FACADE_PROPEL';
 
     /**
@@ -33,7 +44,7 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
     }
 
     /**
-     * @return \Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface>
      */
     protected function getProductAbstractStorageExpanderPlugins(): array
     {

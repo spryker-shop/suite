@@ -13,7 +13,7 @@ use Spryker\Zed\ProductOptionStorage\ProductOptionStorageDependencyProvider as S
 class ProductOptionStorageDependencyProvider extends SprykerProductOptionStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ProductOptionStorageExtension\Dependency\Plugin\ProductOptionCollectionFilterPluginInterface[]
+     * @return array<\Spryker\Zed\ProductOptionStorageExtension\Dependency\Plugin\ProductOptionCollectionFilterPluginInterface>
      */
     protected function getProductOptionCollectionFilterPlugins(): array
     {

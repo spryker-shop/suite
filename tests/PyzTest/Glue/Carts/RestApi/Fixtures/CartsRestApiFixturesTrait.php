@@ -46,7 +46,7 @@ trait CartsRestApiFixturesTrait
     /**
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
@@ -65,7 +65,7 @@ trait CartsRestApiFixturesTrait
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
      *
      * @return array
      */

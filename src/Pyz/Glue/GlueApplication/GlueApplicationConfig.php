@@ -12,16 +12,19 @@ use Spryker\Glue\GlueApplication\GlueApplicationConfig as SprykerGlueApplication
 
 class GlueApplicationConfig extends SprykerGlueApplicationConfig
 {
+    /**
+     * @var bool
+     */
     public const VALIDATE_REQUEST_HEADERS = false;
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getCorsAllowedHeaders(): array
     {
         return array_merge(
             parent::getCorsAllowedHeaders(),
-            [CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID]
+            [CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID],
         );
     }
 

@@ -14,7 +14,7 @@ use Spryker\Zed\SalesMerchantPortalGui\Communication\Plugin\DashboardMerchantPor
 class DashboardMerchantPortalGuiDependencyProvider extends SprykerDashboardMerchantPortalGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\DashboardMerchantPortalGuiExtension\Dependency\Plugin\MerchantDashboardCardPluginInterface[]
+     * @return array<\Spryker\Zed\DashboardMerchantPortalGuiExtension\Dependency\Plugin\MerchantDashboardCardPluginInterface>
      */
     protected function getDashboardCardPlugins(): array
     {

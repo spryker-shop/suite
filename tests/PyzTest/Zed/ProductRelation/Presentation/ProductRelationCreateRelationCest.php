@@ -28,7 +28,7 @@ class ProductRelationCreateRelationCest
      *
      * @return void
      */
-    public function testICanCreateProductRelation(ProductRelationPresentationTester $i)
+    public function testICanCreateProductRelation(ProductRelationPresentationTester $i): void
     {
         $i->wantTo('I want to create up selling relation');
         $i->expect('relation is persisted, exported to yves and carousel component is visible');
@@ -36,7 +36,8 @@ class ProductRelationCreateRelationCest
         $i->amLoggedInUser();
 
         $i->amOnPage(ProductRelationCreatePage::URL);
-        $i->fillField('//*[@id="product_relation_productRelationKey"]', uniqid('key-', false));
+        $key = uniqid('key-', false);
+        $i->fillField('//*[@id="product_relation_productRelationKey"]', $key);
 
         $i->selectRelationType(ProductRelationTypes::TYPE_RELATED_PRODUCTS);
         $i->filterProductsByName('Samsung Bundle');
@@ -49,6 +50,6 @@ class ProductRelationCreateRelationCest
 
         $i->clickSaveButton();
 
-        $i->seeInPageSource(ProductRelationCreatePage::PRODUCT_SUCCESS_FULLY_CREATED_MESSAGE);
+        $i->seeInPageSource(sprintf('%s %s', ProductRelationCreatePage::EDIT_PRODUCT_RELATION_TEXT, $key));
     }
 }

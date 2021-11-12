@@ -11,6 +11,8 @@ class ProductDetailedPage
 {
     /**
      * @see \SprykerShop\Yves\StorageRouter\Plugin\Router\StorageRouterPlugin
+     *
+     * @var string
      */
     public const PRODUCT_DETAILED_PAGE_URL = '/en/%s';
 }

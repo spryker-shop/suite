@@ -12,13 +12,14 @@ use Spryker\Client\PriceProductOfferStorage\Plugin\PriceProductStorage\PriceProd
 use Spryker\Client\PriceProductOfferStorage\Plugin\PriceProductStorage\PriceProductOfferStorageFilterExpanderPlugin;
 use Spryker\Client\PriceProductStorage\PriceProductStorageDependencyProvider as SprykerPriceProductStorageDependencyProvider;
 use Spryker\Client\PriceProductVolume\Plugin\PriceProductStorageExtension\PriceProductVolumeExtractorPlugin;
-use Spryker\Client\ProductConfigurationStorage\Plugin\PriceProductStorage\ProductConfigurationPriceFilterExpanderPlugin;
+use Spryker\Client\ProductConfigurationStorage\Plugin\PriceProductStorage\ProductConfigurationPriceProductFilterExpanderPlugin;
 use Spryker\Client\ProductConfigurationStorage\Plugin\PriceProductStorage\ProductConfigurationStoragePriceDimensionPlugin;
+use Spryker\Client\ProductConfigurationWishlist\Plugin\PriceProductStorage\ProductConfigurationWishlistItemPriceProductExpanderPlugin;
 
 class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductStoragePriceDimensionPluginInterface[]
+     * @return array<\Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductStoragePriceDimensionPluginInterface>
      */
     public function getPriceDimensionStorageReaderPlugins(): array
     {
@@ -30,7 +31,7 @@ class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDe
     }
 
     /**
-     * @return \Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductStoragePricesExtractorPluginInterface[]
+     * @return array<\Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductStoragePricesExtractorPluginInterface>
      */
     protected function getPriceProductPricesExtractorPlugins(): array
     {
@@ -40,13 +41,23 @@ class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDe
     }
 
     /**
-     * @return \Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductFilterExpanderPluginInterface[]
+     * @return array<\Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductFilterExpanderPluginInterface>
      */
     protected function getPriceProductFilterExpanderPlugins(): array
     {
         return [
             new PriceProductOfferStorageFilterExpanderPlugin(),
-            new ProductConfigurationPriceFilterExpanderPlugin(),
+            new ProductConfigurationPriceProductFilterExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductExpanderPluginInterface>
+     */
+    protected function getPriceProductExpanderPlugins(): array
+    {
+        return [
+            new ProductConfigurationWishlistItemPriceProductExpanderPlugin(),
         ];
     }
 }

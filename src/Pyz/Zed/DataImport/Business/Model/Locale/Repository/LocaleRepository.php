@@ -13,7 +13,7 @@ use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
 class LocaleRepository implements LocaleRepositoryInterface
 {
     /**
-     * @var array
+     * @var array<string, int>
      */
     protected static $localeMap;
 
@@ -22,7 +22,7 @@ class LocaleRepository implements LocaleRepositoryInterface
      *
      * @return int
      */
-    public function getIdLocaleByLocale($locale)
+    public function getIdLocaleByLocale($locale): int
     {
         if (!static::$localeMap) {
             $this->loadLocaleMap();
@@ -34,7 +34,7 @@ class LocaleRepository implements LocaleRepositoryInterface
     /**
      * @return void
      */
-    private function loadLocaleMap()
+    private function loadLocaleMap(): void
     {
         /** @var array $localeCollection */
         $localeCollection = SpyLocaleQuery::create()

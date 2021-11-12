@@ -34,7 +34,7 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
     use _generated\UpSellingProductsApiTesterActions;
 
     /**
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -49,7 +49,7 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $cartUuid
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -61,13 +61,13 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
                 'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                 'resourceUpSellingProducts' => UpSellingProductsRestApiConfig::RELATIONSHIP_NAME_UP_SELLING_PRODUCTS,
                 'cartUuid' => $cartUuid,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $cartUuid
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -79,13 +79,13 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
                 'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                 'resourceUpSellingProducts' => UpSellingProductsRestApiConfig::RELATIONSHIP_NAME_UP_SELLING_PRODUCTS,
                 'cartUuid' => $cartUuid,
-            ]
+            ],
         );
     }
 
     /**
      * @param string $productAbstractSku
-     * @param string[] $includes
+     * @param array<string> $includes
      *
      * @return string
      */
@@ -96,7 +96,7 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
             [
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
-            ]
+            ],
         );
     }
 }

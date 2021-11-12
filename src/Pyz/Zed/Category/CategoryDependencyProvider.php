@@ -25,7 +25,7 @@ use Spryker\Zed\ProductCategory\Communication\Plugin\UpdateProductCategoryRelati
 class CategoryDependencyProvider extends SprykerDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryRelationDeletePluginInterface[]
+     * @return array<\Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryRelationDeletePluginInterface>
      */
     protected function getRelationDeletePluginStack(): array
     {
@@ -35,14 +35,14 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
                 new RemoveCategoryImageSetRelationPlugin(),
                 new RemoveMerchantCategoryRelationPlugin(),
             ],
-            parent::getRelationDeletePluginStack()
+            parent::getRelationDeletePluginStack(),
         );
 
         return $deletePlugins;
     }
 
     /**
-     * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryRelationUpdatePluginInterface[]
+     * @return array<\Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryRelationUpdatePluginInterface>
      */
     protected function getRelationUpdatePluginStack(): array
     {
@@ -53,12 +53,12 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
                 new UpdateNavigationRelationPlugin(),
                 new CmsBlockCategoryCategoryRelationPlugin(),
             ],
-            parent::getRelationUpdatePluginStack()
+            parent::getRelationUpdatePluginStack(),
         );
     }
 
     /**
-     * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryTransferExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryTransferExpanderPluginInterface>
      */
     protected function getCategoryPostReadPlugins(): array
     {
@@ -68,7 +68,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryUrlPathPluginInterface[]
+     * @return array<\Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryUrlPathPluginInterface>
      */
     protected function getCategoryUrlPathPlugins(): array
     {
@@ -78,7 +78,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryUpdateAfterPluginInterface[]
+     * @return array<\Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryUpdateAfterPluginInterface>
      */
     protected function getCategoryPostUpdatePlugins(): array
     {
@@ -88,7 +88,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryCreateAfterPluginInterface[]
+     * @return array<\Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryCreateAfterPluginInterface>
      */
     protected function getCategoryPostCreatePlugins(): array
     {
