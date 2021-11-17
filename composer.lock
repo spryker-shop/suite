@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.202.2",
+            "version": "3.203.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "4460481cd63446454869534c69ddaf00cffa45be"
+                "reference": "63be45bbf3d2a325017f92fcad6764ebd98bb266"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4460481cd63446454869534c69ddaf00cffa45be",
-                "reference": "4460481cd63446454869534c69ddaf00cffa45be",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/63be45bbf3d2a325017f92fcad6764ebd98bb266",
+                "reference": "63be45bbf3d2a325017f92fcad6764ebd98bb266",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.202.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.203.1"
             },
-            "time": "2021-11-12T19:15:25+00:00"
+            "time": "2021-11-16T19:23:28+00:00"
         },
         {
             "name": "brick/math",
@@ -908,16 +908,16 @@
         },
         {
             "name": "ezimuel/ringphp",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezimuel/ringphp.git",
-                "reference": "0b78f89d8e0bb9e380046c31adfa40347e9f663b"
+                "reference": "92b8161404ab1ad84059ebed41d9f757e897ce74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezimuel/ringphp/zipball/0b78f89d8e0bb9e380046c31adfa40347e9f663b",
-                "reference": "0b78f89d8e0bb9e380046c31adfa40347e9f663b",
+                "url": "https://api.github.com/repos/ezimuel/ringphp/zipball/92b8161404ab1ad84059ebed41d9f757e897ce74",
+                "reference": "92b8161404ab1ad84059ebed41d9f757e897ce74",
                 "shasum": ""
             },
             "require": {
@@ -925,9 +925,12 @@
                 "php": ">=5.4.0",
                 "react/promise": "~2.0"
             },
+            "replace": {
+                "guzzlehttp/ringphp": "self.version"
+            },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "~9.0"
             },
             "suggest": {
                 "ext-curl": "Guzzle will use specific adapters if cURL is present"
@@ -956,9 +959,9 @@
             ],
             "description": "Fork of guzzle/RingPHP (abandoned) to be used with elasticsearch-php",
             "support": {
-                "source": "https://github.com/ezimuel/ringphp/tree/1.1.2"
+                "source": "https://github.com/ezimuel/ringphp/tree/1.2.0"
             },
-            "time": "2020-02-14T23:51:21+00:00"
+            "time": "2021-11-16T11:51:30+00:00"
         },
         {
             "name": "galbar/jsonpath",
@@ -4779,12 +4782,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "5dac4f72cd8599bf7f46ab1dcd374e8980d527e1"
+                "reference": "d8155ab291ac765ff90e743a832d034b32010314"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/5dac4f72cd8599bf7f46ab1dcd374e8980d527e1",
-                "reference": "5dac4f72cd8599bf7f46ab1dcd374e8980d527e1",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/d8155ab291ac765ff90e743a832d034b32010314",
+                "reference": "d8155ab291ac765ff90e743a832d034b32010314",
                 "shasum": ""
             },
             "require": {
@@ -4841,7 +4844,7 @@
             "support": {
                 "source": "https://github.com/spryker/event-behavior"
             },
-            "time": "2021-11-10T09:12:46+00:00"
+            "time": "2021-11-17T13:17:26+00:00"
         },
         {
             "name": "spryker/install",
@@ -5060,7 +5063,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "0d7eca8f20ed4711b61ad629d5bc5fbcf47d779f"
+                "reference": "cffe4462be136b88438d479795dffe8fd4597c94"
             },
             "require": {
                 "php": ">=7.4"
@@ -5919,7 +5922,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-11-15T12:09:24+00:00"
+            "time": "2021-11-17T13:55:38+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5927,7 +5930,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "89f09d7ccbe4f901f17a7a17d560e35c8b630d49"
+                "reference": "9ba50e349003ce6d3b3387a564aba3af01fcf0c6"
             },
             "require": {
                 "php": ">=7.4"
@@ -6097,7 +6100,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2021-11-11T12:35:42+00:00"
+            "time": "2021-11-17T13:53:34+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11432,16 +11435,16 @@
         },
         {
             "name": "codeception/module-rest",
-            "version": "1.3.2",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-rest.git",
-                "reference": "2f35e75d4a5a7fd1fe77d7f5bd56a9123c453e3b"
+                "reference": "14e638e6a66f6910ce0b8fb4cc83bb8ada680933"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/2f35e75d4a5a7fd1fe77d7f5bd56a9123c453e3b",
-                "reference": "2f35e75d4a5a7fd1fe77d7f5bd56a9123c453e3b",
+                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/14e638e6a66f6910ce0b8fb4cc83bb8ada680933",
+                "reference": "14e638e6a66f6910ce0b8fb4cc83bb8ada680933",
                 "shasum": ""
             },
             "require": {
@@ -11480,9 +11483,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/module-rest/issues",
-                "source": "https://github.com/Codeception/module-rest/tree/1.3.2"
+                "source": "https://github.com/Codeception/module-rest/tree/1.4.1"
             },
-            "time": "2021-10-08T09:33:46+00:00"
+            "time": "2021-11-17T12:05:51+00:00"
         },
         {
             "name": "codeception/module-webdriver",
@@ -12473,16 +12476,16 @@
         },
         {
             "name": "pdepend/pdepend",
-            "version": "2.10.1",
+            "version": "2.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "30452fdabb3dfca89f4bf977abc44adc5391e062"
+                "reference": "c8c1d2af43fb8c2b5387d50e9c42a9c56de13686"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/30452fdabb3dfca89f4bf977abc44adc5391e062",
-                "reference": "30452fdabb3dfca89f4bf977abc44adc5391e062",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/c8c1d2af43fb8c2b5387d50e9c42a9c56de13686",
+                "reference": "c8c1d2af43fb8c2b5387d50e9c42a9c56de13686",
                 "shasum": ""
             },
             "require": {
@@ -12518,7 +12521,7 @@
             "description": "Official version of pdepend to be handled with Composer",
             "support": {
                 "issues": "https://github.com/pdepend/pdepend/issues",
-                "source": "https://github.com/pdepend/pdepend/tree/2.10.1"
+                "source": "https://github.com/pdepend/pdepend/tree/2.10.2"
             },
             "funding": [
                 {
@@ -12526,7 +12529,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-11T12:15:18+00:00"
+            "time": "2021-11-16T20:05:32+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -15759,7 +15762,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "73ca3356b62d1464f50587878923e6ce7c7d0b42"
+                "reference": "cfd82d0c91c96a4ecfd847db8ccfebe000069514"
             },
             "require": {
                 "composer/semver": "^1.0.0 || ^2.0.0 || ^3.0.0",
@@ -15812,7 +15815,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2021-11-08T02:37:15+00:00"
+            "time": "2021-11-17T13:03:29+00:00"
         },
         {
             "name": "spryker/docker-chromedriver",
