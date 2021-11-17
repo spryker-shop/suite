@@ -10,6 +10,7 @@ validateModuleTransfers() {
           output=`vendor/bin/spryker-dev-console dev:validate-module-transfers -v -m $2.$module`
           if [ $? -ne 0 ]; then
               echo $output
+              echo "\n"
               EXITCODE=1
           fi
           echo $2.$module
