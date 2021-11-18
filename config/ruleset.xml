@@ -21,6 +21,8 @@
     <exclude-pattern>./data/US/cache/*</exclude-pattern>
     <exclude-pattern>*/node_modules/*</exclude-pattern>
 
+    <rule ref="vendor/spryker/code-sniffer/Spryker/ruleset.xml"/>
+
     <!-- Define your own sniffs here -->
 
     <rule ref="Spryker.Internal.SprykerDisallowFunctions">
