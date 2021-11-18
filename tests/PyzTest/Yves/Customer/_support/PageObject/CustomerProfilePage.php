@@ -45,7 +45,7 @@ class CustomerProfilePage extends Customer
     public const FORM_FIELD_SELECTOR_PASSWORD_CONFIRM = 'profileForm[password][confirm]';
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     public const BUTTON_PROFILE_FORM_SUBMIT_SELECTOR = ['name' => 'profileForm'];
 

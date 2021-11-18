@@ -50,7 +50,7 @@ class CustomerLoginPage extends Customer
     public const FORM_NAME_LOGIN_FORM = 'loginForm';
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     public const LOGOUT_LINK = ['id' => 'logout-link'];
 }
