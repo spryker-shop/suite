@@ -24,6 +24,7 @@ use Pyz\Zed\AclEntity\AclEntityDependencyProvider;
 use PyzTest\Zed\AclEntity\AclQueryDirectorTester;
 use Spryker\Zed\AclEntity\Persistence\Exception\OperationNotAuthorizedException;
 use Spryker\Zed\AclMerchantPortal\Communication\Plugin\AclEntity\MerchantPortalAclEntityMetadataConfigExpanderPlugin;
+use Spryker\Zed\Merchant\MerchantDependencyProvider;
 
 /**
  * Auto-generated group annotations
@@ -53,6 +54,11 @@ class AclQueryDirectorTest extends Unit
         $this->tester->setDependency(
             AclEntityDependencyProvider::PLUGINS_ACL_ENTITY_METADATA_COLLECTION_EXPANDER,
             [new MerchantPortalAclEntityMetadataConfigExpanderPlugin()],
+        );
+
+        $this->tester->setDependency(
+            MerchantDependencyProvider::PLUGINS_MERCHANT_POST_CREATE,
+            [],
         );
 
         $this->tester->deleteTestData();
