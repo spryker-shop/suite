@@ -26,7 +26,6 @@ use Pyz\Zed\ProductOffer\ProductOfferDependencyProvider;
 use PyzTest\Zed\AclEntity\AclQueryDirectorTester;
 use Spryker\Shared\AclEntity\AclEntityConstants;
 use Spryker\Zed\AclEntity\AclEntityDependencyProvider;
-use Spryker\Zed\AclEntity\Persistence\Exception\OperationNotAuthorizedException;
 use Spryker\Zed\AclMerchantPortal\Communication\Plugin\AclEntity\MerchantPortalAclEntityMetadataConfigExpanderPlugin;
 use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
 
@@ -616,121 +615,5 @@ class InheritedScopeAclQueryDirectorStrategyTest extends Unit
 
         // Assert
         $this->assertSame(3, $query->count());
-    }
-
-    /**
-     * @group AclEntityUpdate
-     * @group AclEntityDelete
-     * @group AclEntityApplyAclRules
-     *
-     * @return void
-     */
-    public function testOneRoleRulesDontInfluenceOtherRole(): void
-    {
-        // Arrange
-        $roleMerchant1Manager = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
-        $roleMerchant2Viewer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_2_NAME]);
-
-        $merchant1Transfer = $this->tester->haveMerchant();
-        $merchant2Transfer = $this->tester->haveMerchant();
-
-        $merchant1ProductOffer = $this->tester->haveProductOffer(
-            [
-                ProductOfferTransfer::FK_MERCHANT => $merchant1Transfer->getIdMerchantOrFail(),
-                ProductOfferTransfer::MERCHANT_REFERENCE => $merchant1Transfer->getMerchantReference(),
-            ],
-        );
-        $merchant2ProductOffer = $this->tester->haveProductOffer(
-            [
-                ProductOfferTransfer::FK_MERCHANT => $merchant2Transfer->getIdMerchantOrFail(),
-                ProductOfferTransfer::MERCHANT_REFERENCE => $merchant2Transfer->getMerchantReference(),
-            ],
-        );
-        $aclEntitySegmentMerchant1 = $this->tester->haveAclEntitySegment(
-            [
-                AclEntitySegmentRequestTransfer::NAME => AclQueryDirectorTester::ACL_ENTITY_SEGMENT_1_NAME,
-                AclEntitySegmentRequestTransfer::REFERENCE => AclQueryDirectorTester::ACL_ENTITY_SEGMENT_1_REFERENCE,
-                AclEntitySegmentRequestTransfer::ENTITY => SpyMerchant::class,
-                AclEntitySegmentRequestTransfer::ENTITY_IDS => [$merchant1Transfer->getIdMerchantOrFail()],
-            ],
-        );
-        $aclEntitySegmentMerchant2 = $this->tester->haveAclEntitySegment(
-            [
-                AclEntitySegmentRequestTransfer::NAME => AclQueryDirectorTester::ACL_ENTITY_SEGMENT_2_NAME,
-                AclEntitySegmentRequestTransfer::REFERENCE => AclQueryDirectorTester::ACL_ENTITY_SEGMENT_2_REFERENCE,
-                AclEntitySegmentRequestTransfer::ENTITY => SpyMerchant::class,
-                AclEntitySegmentRequestTransfer::ENTITY_IDS => [$merchant2Transfer->getIdMerchantOrFail()],
-            ],
-        );
-
-        $this->tester->haveAclEntityRule(
-            [
-                AclEntityRuleTransfer::ID_ACL_ROLE => $roleMerchant1Manager->getIdAclRoleOrFail(),
-                AclEntityRuleTransfer::ENTITY => SpyProductOffer::class,
-                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_INHERITED,
-                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_CRUD,
-            ],
-        );
-        $this->tester->haveAclEntityRule(
-            [
-                AclEntityRuleTransfer::ID_ACL_ROLE => $roleMerchant1Manager->getIdAclRoleOrFail(),
-                AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
-                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_SEGMENT,
-                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-                AclEntityRuleTransfer::ID_ACL_ENTITY_SEGMENT => $aclEntitySegmentMerchant1
-                    ->getIdAclEntitySegmentOrFail(),
-            ],
-        );
-
-        $this->tester->haveAclEntityRule(
-            [
-                AclEntityRuleTransfer::ID_ACL_ROLE => $roleMerchant2Viewer->getIdAclRoleOrFail(),
-                AclEntityRuleTransfer::ENTITY => SpyProductOffer::class,
-                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_INHERITED,
-                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-            ],
-        );
-        $this->tester->haveAclEntityRule(
-            [
-                AclEntityRuleTransfer::ID_ACL_ROLE => $roleMerchant2Viewer->getIdAclRoleOrFail(),
-                AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
-                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_SEGMENT,
-                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
-                AclEntityRuleTransfer::ID_ACL_ENTITY_SEGMENT => $aclEntitySegmentMerchant2
-                    ->getIdAclEntitySegmentOrFail(),
-            ],
-        );
-
-        $rolesTransfer = (new RolesTransfer())->addRole($roleMerchant1Manager)->addRole($roleMerchant2Viewer);
-
-        $aclQueryDirector = $this->tester->createAclQueryDirector(
-            $rolesTransfer,
-            $this->tester->createProductOfferMetadataHierarchy(),
-        );
-
-        $merchant1ProductOfferEntity = $this->tester->findProductOfferByIdProductOffer(
-            $merchant1ProductOffer->getIdProductOfferOrFail(),
-        );
-        $merchant2ProductOfferEntity = $this->tester->findProductOfferByIdProductOffer(
-            $merchant2ProductOffer->getIdProductOfferOrFail(),
-        );
-
-        // Act, Assert
-        // User can manage merchant1 and view merchant2 ProductOffer
-        $aclQueryDirector->inspectUpdate($merchant1ProductOfferEntity);
-        $aclQueryDirector->inspectDelete($merchant1ProductOfferEntity);
-        $query = $aclQueryDirector->applyAclRuleOnSelectQuery(
-            SpyProductOfferQuery::create()->filterByIdProductOffer_In(
-                [$merchant1ProductOffer->getIdProductOfferOrFail(), $merchant2ProductOffer->getIdProductOfferOrFail()],
-            ),
-        );
-        $this->assertSame(2, $query->count());
-
-        // User can't manage merchant2 ProductOffer
-        $this->expectException(OperationNotAuthorizedException::class);
-        $this->expectExceptionMessage(
-            'Operation "update" is restricted for Orm\Zed\ProductOffer\Persistence\SpyProductOffer',
-        );
-        $aclQueryDirector->inspectUpdate($merchant2ProductOfferEntity);
     }
 }
