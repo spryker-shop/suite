@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\Discount;
 
+use Spryker\Zed\CategoryDiscountConnector\Communication\Plugin\Discount\CategoryDecisionRulePlugin;
+use Spryker\Zed\CategoryDiscountConnector\Communication\Plugin\Discount\CategoryDiscountableItemCollectorPlugin;
 use Spryker\Zed\CustomerGroupDiscountConnector\Communication\Plugin\DecisionRule\CustomerGroupDecisionRulePlugin;
 use Spryker\Zed\Discount\DiscountDependencyProvider as SprykerDiscountDependencyProvider;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCalculationFormDataExpanderPlugin;
@@ -38,7 +40,7 @@ use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugi
 class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
 {
     /**
-     * @return array<\Spryker\Zed\Discount\Dependency\Plugin\DecisionRulePluginInterface>
+     * @return array<\Spryker\Zed\DiscountExtension\Dependency\Plugin\DecisionRulePluginInterface>
      */
     protected function getDecisionRulePlugins(): array
     {
@@ -49,11 +51,12 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
             new CustomerGroupDecisionRulePlugin(),
             new ProductLabelDecisionRulePlugin(),
             new ProductAttributeDecisionRulePlugin(),
+            new CategoryDecisionRulePlugin(),
         ]);
     }
 
     /**
-     * @return array<\Spryker\Zed\Discount\Dependency\Plugin\CollectorPluginInterface>
+     * @return array<\Spryker\Zed\DiscountExtension\Dependency\Plugin\DiscountableItemCollectorPluginInterface>
      */
     protected function getCollectorPlugins(): array
     {
@@ -63,6 +66,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
             new ItemByShipmentMethodPlugin(),
             new ItemByShipmentPricePlugin(),
             new ProductAttributeCollectorPlugin(),
+            new CategoryDiscountableItemCollectorPlugin(),
         ]);
     }
 
