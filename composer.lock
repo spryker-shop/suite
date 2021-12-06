@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9ed429077baa62adb9d56f0800219bc",
+    "content-hash": "1a1d037c50e36789c1a0fabc2793064a",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -15130,20 +15130,20 @@
         },
         {
             "name": "spryker/category",
-            "version": "5.2.0",
+            "version": "5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/category.git",
-                "reference": "3ccc1c3e31b2bbd6d8dc766bcae0ebf062ecfd6f"
+                "reference": "3cad0686fbb9527700aee017e4953100cf553bef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/category/zipball/3ccc1c3e31b2bbd6d8dc766bcae0ebf062ecfd6f",
-                "reference": "3ccc1c3e31b2bbd6d8dc766bcae0ebf062ecfd6f",
+                "url": "https://api.github.com/repos/spryker/category/zipball/3cad0686fbb9527700aee017e4953100cf553bef",
+                "reference": "3cad0686fbb9527700aee017e4953100cf553bef",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker/category-extension": "^1.2.0",
                 "spryker/event": "^2.3.0",
                 "spryker/kernel": "^3.30.0",
@@ -15180,9 +15180,9 @@
             ],
             "description": "Category module",
             "support": {
-                "source": "https://github.com/spryker/category/tree/5.2.0"
+                "source": "https://github.com/spryker/category/tree/5.3.0"
             },
-            "time": "2021-05-27T12:30:34+00:00"
+            "time": "2021-12-06T13:29:28+00:00"
         },
         {
             "name": "spryker/category-data-feed",
@@ -15279,6 +15279,57 @@
                 "source": "https://github.com/spryker/category-data-import/tree/0.3.0"
             },
             "time": "2021-02-09T16:20:37+00:00"
+        },
+        {
+            "name": "spryker/category-discount-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/category-discount-connector.git",
+                "reference": "d601f4021ac6229a0768bbdd52815da4d7613007"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/category-discount-connector/zipball/d601f4021ac6229a0768bbdd52815da4d7613007",
+                "reference": "d601f4021ac6229a0768bbdd52815da4d7613007",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "spryker/category": "^5.3.0",
+                "spryker/discount": "^9.0.0",
+                "spryker/discount-extension": "^1.2.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/product-category": "^4.13.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CategoryDiscountConnector module",
+            "support": {
+                "source": "https://github.com/spryker/category-discount-connector/tree/1.0.0"
+            },
+            "time": "2021-12-06T13:29:28+00:00"
         },
         {
             "name": "spryker/category-exporter",
@@ -24544,16 +24595,16 @@
         },
         {
             "name": "spryker/discount",
-            "version": "9.21.0",
+            "version": "9.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount.git",
-                "reference": "fa09a02b818903a3076b52d1d395028cb9ccdb28"
+                "reference": "7c65b830beb5b18bfd2f802d9030533ce2c9b869"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount/zipball/fa09a02b818903a3076b52d1d395028cb9ccdb28",
-                "reference": "fa09a02b818903a3076b52d1d395028cb9ccdb28",
+                "url": "https://api.github.com/repos/spryker/discount/zipball/7c65b830beb5b18bfd2f802d9030533ce2c9b869",
+                "reference": "7c65b830beb5b18bfd2f802d9030533ce2c9b869",
                 "shasum": ""
             },
             "require": {
@@ -24561,7 +24612,7 @@
                 "spryker/cart-code-extension": "^1.1.0",
                 "spryker/cart-extension": "^1.0.0 || ^2.0.0 || ^4.0.0",
                 "spryker/currency": "^3.1.0",
-                "spryker/discount-extension": "^1.1.0",
+                "spryker/discount-extension": "^1.2.0",
                 "spryker/gui": "^3.41.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^3.0.0",
@@ -24614,9 +24665,9 @@
             ],
             "description": "Discount module",
             "support": {
-                "source": "https://github.com/spryker/discount/tree/9.21.0"
+                "source": "https://github.com/spryker/discount/tree/9.22.0"
             },
-            "time": "2021-12-06T12:30:44+00:00"
+            "time": "2021-12-06T13:29:28+00:00"
         },
         {
             "name": "spryker/discount-calculation-connector",
@@ -24668,24 +24719,23 @@
         },
         {
             "name": "spryker/discount-extension",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount-extension.git",
-                "reference": "14b3dbfad0641c7b6fbf65867628cbac10f6c4e9"
+                "reference": "db01b70e1148748be36d6c124177cd1120a5a1c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount-extension/zipball/14b3dbfad0641c7b6fbf65867628cbac10f6c4e9",
-                "reference": "14b3dbfad0641c7b6fbf65867628cbac10f6c4e9",
+                "url": "https://api.github.com/repos/spryker/discount-extension/zipball/db01b70e1148748be36d6c124177cd1120a5a1c1",
+                "reference": "db01b70e1148748be36d6c124177cd1120a5a1c1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.4"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -24704,9 +24754,9 @@
             ],
             "description": "DiscountExtension module",
             "support": {
-                "source": "https://github.com/spryker/discount-extension/tree/master"
+                "source": "https://github.com/spryker/discount-extension/tree/1.2.0"
             },
-            "time": "2019-07-18T15:47:16+00:00"
+            "time": "2021-12-06T13:29:28+00:00"
         },
         {
             "name": "spryker/discount-merchant-sales-order",
@@ -37435,20 +37485,20 @@
         },
         {
             "name": "spryker/product-category",
-            "version": "4.12.1",
+            "version": "4.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-category.git",
-                "reference": "04d97f16793aec855a5a74d1d6ee29edffacc39f"
+                "reference": "004fbe57093b9af9c2b347e7193fb3d59bb7ac72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-category/zipball/04d97f16793aec855a5a74d1d6ee29edffacc39f",
-                "reference": "04d97f16793aec855a5a74d1d6ee29edffacc39f",
+                "url": "https://api.github.com/repos/spryker/product-category/zipball/004fbe57093b9af9c2b347e7193fb3d59bb7ac72",
+                "reference": "004fbe57093b9af9c2b347e7193fb3d59bb7ac72",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker/category": "^3.3.0 || ^4.14.0 || ^5.0.0",
                 "spryker/category-gui-extension": "^1.0.0",
                 "spryker/event": "^1.0.0 || ^2.0.0",
@@ -37488,9 +37538,9 @@
             ],
             "description": "ProductCategory module",
             "support": {
-                "source": "https://github.com/spryker/product-category/tree/4.12.1"
+                "source": "https://github.com/spryker/product-category/tree/4.13.0"
             },
-            "time": "2021-06-10T11:12:22+00:00"
+            "time": "2021-12-06T13:29:28+00:00"
         },
         {
             "name": "spryker/product-category-filter",
