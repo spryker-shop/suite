@@ -68,7 +68,7 @@ assets:
             level: 5
 
 regions:
-    DE:
+    EU:
         services:
             mail:
                 sender:
@@ -112,10 +112,10 @@ regions:
                         namespace: 2
 
 groups:
-    DE-1:
-        region: DE
+    EU:
+        region: EU
         applications:
-            Yves:
+            yves_eu:
                 application: yves
                 endpoints:
                     demo-date-time-configurator.night-test.cloud.spryker.toys:
@@ -138,8 +138,8 @@ groups:
                     us.night-test.cloud.spryker.toys:
                         store: US
                         <<: *frontend-auth
-            Zed:
-                application: zed
+            backoffice_eu:
+                application: backoffice
                 endpoints:
                     backoffice.de.night-test.cloud.spryker.toys:
                         store: DE
@@ -148,7 +148,31 @@ groups:
                         store: AT
                     backoffice.us.night-test.cloud.spryker.toys:
                         store: US
-            Glue:
+            backend_gateway_eu:
+                application: backend-gateway
+                endpoints:
+                    backend-gateway.de.night-test.cloud.spryker.toys:
+                        store: DE
+                        primal: true
+                    backend-gateway.at.night-test.cloud.spryker.toys:
+                        store: AT
+                        primal: true
+                    backend-gateway.us.night-test.cloud.spryker.toys:
+                        store: US
+                        primal: true
+            backend_api_eu:
+                application: zed
+                endpoints:
+                    backend-api.de.night-test.cloud.spryker.toys:
+                        store: DE
+                        entry-point: BackendApi
+                    backend-api.at.night-test.cloud.spryker.toys:
+                        store: AT
+                        entry-point: BackendApi
+                    backend-api.us.night-test.cloud.spryker.toys:
+                        store: US
+                        entry-point: BackendApi
+            glue_eu:
                 application: glue
                 endpoints:
                     glue.de.night-test.cloud.spryker.toys:

@@ -73,7 +73,7 @@ assets:
             level: 5
 
 regions:
-    DE:
+    EU:
         services:
             mail:
                 sender:
@@ -117,8 +117,8 @@ regions:
                         namespace: 2
 
 groups:
-    DE-1:
-        region: DE
+    EU:
+        region: EU
         applications:
             Yves:
                 application: yves
@@ -143,16 +143,6 @@ groups:
                     us.staging.cloud.spryker.toys:
                         store: US
                         <<: *frontend-auth
-            Zed:
-                application: zed
-                endpoints:
-                    backoffice.de.staging.cloud.spryker.toys:
-                        store: DE
-                        primal: true
-                    backoffice.at.staging.cloud.spryker.toys:
-                        store: AT
-                    backoffice.us.staging.cloud.spryker.toys:
-                        store: US
             Glue:
                 application: glue
                 endpoints:
@@ -162,6 +152,40 @@ groups:
                         store: AT
                     glue.us.staging.cloud.spryker.toys:
                         store: US
+            boffice:
+                application: backoffice
+                endpoints:
+                    backoffice.de.staging.cloud.spryker.toys:
+                        store: DE
+                        primal: true
+                    backoffice.at.staging.cloud.spryker.toys:
+                        store: AT
+                    backoffice.us.staging.cloud.spryker.toys:
+                        store: US
+            backgw:
+                application: backend-gateway
+                endpoints:
+                    backend-gateway.de.staging.cloud.spryker.toys:
+                        store: DE
+                        primal: true
+                    backend-gateway.at.staging.cloud.spryker.toys:
+                        store: AT
+                        primal: true
+                    backend-gateway.us.staging.cloud.spryker.toys:
+                        store: US
+                        primal: true
+            backapi:
+                application: zed
+                endpoints:
+                    backend-api.de.staging.cloud.spryker.toys:
+                        store: DE
+                        entry-point: BackendApi
+                    backend-api.at.staging.cloud.spryker.toys:
+                        store: AT
+                        entry-point: BackendApi
+                    backend-api.us.staging.cloud.spryker.toys:
+                        store: US
+                        entry-point: BackendApi
 services:
     database:
         engine: mysql
@@ -204,11 +228,13 @@ services:
             mail.staging.cloud.spryker.toys:
 
 docker:
+
     blackfire:
         enabled: true
 
     ssl:
         enabled: true
+        redirect: true
 
     debug:
         enabled: false
