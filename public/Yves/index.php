@@ -12,7 +12,7 @@ defined('APPLICATION_ROOT_DIR') || define('APPLICATION_ROOT_DIR', dirname(__DIR_
 require_once APPLICATION_ROOT_DIR . '/vendor/autoload.php';
 
 Environment::initialize();
-
+#comment test thomas
 $errorHandlerEnvironment = new ErrorHandlerEnvironment();
 $errorHandlerEnvironment->initialize();
 
