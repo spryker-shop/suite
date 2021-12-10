@@ -79,8 +79,8 @@ class ProductRelationPresentationTester extends Actor
     {
         $buttonElementId = sprintf('//*[@id="select-product-%s"]', $sku);
 
-        $this->waitForElementNotVisible('//*[@id="product-table_processing"]', 5);
-        $this->waitForElement($buttonElementId, 5);
+        $this->waitForElementNotVisible('//*[@id="product-table_processing"]', 15);
+        $this->waitForElement($buttonElementId, 15);
 
         $this->click($buttonElementId);
 

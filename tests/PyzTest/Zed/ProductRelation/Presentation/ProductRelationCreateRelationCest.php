@@ -41,15 +41,17 @@ class ProductRelationCreateRelationCest
 
         $i->selectRelationType(ProductRelationTypes::TYPE_RELATED_PRODUCTS);
         $i->filterProductsByName('Samsung Bundle');
-        $i->wait(5);
-        $i->selectProduct(214);
+        $i->wait(20);
+        $i->selectProduct('214');
 
         $i->switchToAssignProductsTab();
-
+        $i->wait(20);
         $i->selectProductRule('product_sku', 'equal', '123');
 
         $i->clickSaveButton();
 
-        $i->seeInPageSource(sprintf('%s %s', ProductRelationCreatePage::EDIT_PRODUCT_RELATION_TEXT, $key));
+        $i->waitForText(sprintf('%s %s', ProductRelationCreatePage::EDIT_PRODUCT_RELATION_TEXT, $key), 20);
+
+        $i->canSee(sprintf('%s %s', ProductRelationCreatePage::EDIT_PRODUCT_RELATION_TEXT, $key));
     }
 }
