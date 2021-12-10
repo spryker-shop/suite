@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\MerchantUser;
 
+use Spryker\Zed\AclMerchantPortal\Communication\Plugin\MerchantUser\AclMerchantPortalMerchantUserRoleFilterPreConditionPlugin;
 use Spryker\Zed\AclMerchantPortal\Communication\Plugin\MerchantUser\MerchantAclMerchantUserPostCreatePlugin;
 use Spryker\Zed\MerchantUser\MerchantUserDependencyProvider as SprykerMerchantUserDependencyProvider;
 
@@ -19,6 +20,16 @@ class MerchantUserDependencyProvider extends SprykerMerchantUserDependencyProvid
     {
         return [
             new MerchantAclMerchantUserPostCreatePlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\MerchantUserExtension\Dependency\Plugin\MerchantUserRoleFilterPreConditionPluginInterface>
+     */
+    protected function getMerchantUserRoleFilterPreConditionPlugins(): array
+    {
+        return [
+            new AclMerchantPortalMerchantUserRoleFilterPreConditionPlugin(),
         ];
     }
 }
