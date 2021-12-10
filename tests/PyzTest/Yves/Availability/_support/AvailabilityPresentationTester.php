@@ -9,6 +9,7 @@ namespace PyzTest\Yves\Availability;
 
 use Codeception\Actor;
 use Codeception\Scenario;
+use Pyz\Yves\CartPage\CartPageConfig;
 
 /**
  * Inherited Methods
@@ -74,5 +75,13 @@ class AvailabilityPresentationTester extends Actor
     public function processCheckout(): void
     {
         $this->processAllCheckoutSteps();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCartItemsViaAjaxLoadEnabled(): bool
+    {
+        return (new CartPageConfig())->isCartCartItemsViaAjaxLoadEnabled();
     }
 }

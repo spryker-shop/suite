@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7968ddaad0eb40ece1e89dc26b6d9a4",
+    "content-hash": "4efa0b223525d9688a8662197c4e0f1f",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4999,7 +4999,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "eba0a0defe9d7541aa7819b30baf1e78a0dd5268"
+                "reference": "45011c725df591a8d7e94809264dec91b8aace82"
             },
             "require": {
                 "php": ">=7.4"
@@ -5859,7 +5859,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-12-10T09:14:37+00:00"
+            "time": "2021-12-10T11:10:29+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10778,137 +10778,6 @@
             "time": "2021-10-12T13:05:09+00:00"
         },
         {
-            "name": "chobie/jira-api-restclient",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/chobie/jira-api-restclient.git",
-                "reference": "1b7381415372b2a1e5b8fb12fd420d167580fd7c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/chobie/jira-api-restclient/zipball/1b7381415372b2a1e5b8fb12fd420d167580fd7c",
-                "reference": "1b7381415372b2a1e5b8fb12fd420d167580fd7c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "aik099/coding-standard": "dev-master",
-                "squizlabs/php_codesniffer": "^2.6",
-                "yoast/phpunit-polyfills": "^1.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "chobie\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Shuhei Tanuma",
-                    "email": "chobieeee@php.net",
-                    "homepage": "http://chobie.github.io/"
-                }
-            ],
-            "description": "JIRA REST API Client",
-            "keywords": [
-                "api",
-                "jira",
-                "rest"
-            ],
-            "support": {
-                "issues": "https://github.com/chobie/jira-api-restclient/issues",
-                "source": "https://github.com/chobie/jira-api-restclient/tree/master"
-            },
-            "time": "2021-11-07T18:03:15+00:00"
-        },
-        {
-            "name": "cocur/slugify",
-            "version": "v4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cocur/slugify.git",
-                "reference": "3f1ffc300f164f23abe8b64ffb3f92d35cec8307"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/3f1ffc300f164f23abe8b64ffb3f92d35cec8307",
-                "reference": "3f1ffc300f164f23abe8b64ffb3f92d35cec8307",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": ">=7.0"
-            },
-            "conflict": {
-                "symfony/config": "<3.4 || >=4,<4.3",
-                "symfony/dependency-injection": "<3.4 || >=4,<4.3",
-                "symfony/http-kernel": "<3.4 || >=4,<4.3",
-                "twig/twig": "<2.12.1"
-            },
-            "require-dev": {
-                "laravel/framework": "~5.1",
-                "latte/latte": "~2.2",
-                "league/container": "^2.2.0",
-                "mikey179/vfsstream": "~1.6.8",
-                "mockery/mockery": "^1.3",
-                "nette/di": "~2.4",
-                "phpunit/phpunit": "^5.7.27",
-                "pimple/pimple": "~1.1",
-                "plumphp/plum": "~0.1",
-                "symfony/config": "^3.4 || ^4.3 || ^5.0",
-                "symfony/dependency-injection": "^3.4 || ^4.3 || ^5.0",
-                "symfony/http-kernel": "^3.4 || ^4.3 || ^5.0",
-                "twig/twig": "^2.12.1 || ~3.0",
-                "zendframework/zend-modulemanager": "~2.2",
-                "zendframework/zend-servicemanager": "~2.2",
-                "zendframework/zend-view": "~2.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Cocur\\Slugify\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florian Eckerstorfer",
-                    "email": "florian@eckerstorfer.co",
-                    "homepage": "https://florian.ec"
-                },
-                {
-                    "name": "Ivo Bathke",
-                    "email": "ivo.bathke@gmail.com"
-                }
-            ],
-            "description": "Converts a string into a slug.",
-            "keywords": [
-                "slug",
-                "slugify"
-            ],
-            "support": {
-                "issues": "https://github.com/cocur/slugify/issues",
-                "source": "https://github.com/cocur/slugify/tree/master"
-            },
-            "time": "2019-12-14T13:04:14+00:00"
-        },
-        {
             "name": "codeception/c3",
             "version": "2.6.4",
             "source": {
@@ -15100,66 +14969,6 @@
             "time": "2021-10-13T18:35:39+00:00"
         },
         {
-            "name": "spryker-sdk/brancho",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-sdk/brancho.git",
-                "reference": "c27f4d60dec5fe203ce490caa806a586485280fa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/brancho/zipball/c27f4d60dec5fe203ce490caa806a586485280fa",
-                "reference": "c27f4d60dec5fe203ce490caa806a586485280fa",
-                "shasum": ""
-            },
-            "require": {
-                "chobie/jira-api-restclient": "^2.0@dev",
-                "cocur/slugify": "^4.0",
-                "laminas/laminas-filter": "^2.9",
-                "php": ">=7.3",
-                "symfony-cmf/slugifier-api": "^2.0",
-                "symfony/console": "^5.0",
-                "symfony/options-resolver": "^5.0",
-                "symfony/process": "^5.0",
-                "symfony/yaml": "^5.0"
-            },
-            "require-dev": {
-                "codeception/codeception": "^4.1",
-                "codeception/module-asserts": "^1.1",
-                "codeception/module-phpbrowser": "^1.0.0",
-                "mikey179/vfsstream": "^1.6",
-                "phpstan/phpstan": "^0.12.18",
-                "spryker/code-sniffer": "*",
-                "symfony/var-dumper": "^5.0"
-            },
-            "default-branch": true,
-            "bin": [
-                "bin/brancho"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Brancho\\": "src/Brancho/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Builds nice branch names.",
-            "support": {
-                "issues": "https://github.com/spryker-sdk/brancho/issues",
-                "source": "https://github.com/spryker-sdk/brancho/tree/master"
-            },
-            "time": "2021-12-08T09:43:14+00:00"
-        },
-        {
             "name": "spryker-sdk/codeception-phantoman",
             "version": "dev-master",
             "source": {
@@ -16046,59 +15855,6 @@
                 "source": "https://github.com/stecman/symfony-console-completion/tree/0.11.0"
             },
             "time": "2019-11-24T17:03:06+00:00"
-        },
-        {
-            "name": "symfony-cmf/slugifier-api",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony-cmf/slugifier-api.git",
-                "reference": "64e0b48bce38fb7e6b1bf284d4574fa183d1cc94"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony-cmf/slugifier-api/zipball/64e0b48bce38fb7e6b1bf284d4574fa183d1cc94",
-                "reference": "64e0b48bce38fb7e6b1bf284d4574fa183d1cc94",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6|^7.0|^8.0"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "^5.2"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Cmf\\Api\\Slugifier\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Symfony CMF Community",
-                    "homepage": "https://github.com/symfony-cmf/slugifier-api/contributors"
-                }
-            ],
-            "description": "Provides a basic slugifier interface to transform text into strings suitable for URLs",
-            "homepage": "http://cmf.symfony.com",
-            "keywords": [
-                "slugify",
-                "urlize"
-            ],
-            "support": {
-                "issues": "https://github.com/symfony-cmf/slugifier-api/issues",
-                "source": "https://github.com/symfony-cmf/slugifier-api/tree/2.1.0"
-            },
-            "time": "2021-01-22T09:05:45+00:00"
         },
         {
             "name": "symfony/browser-kit",
@@ -17056,7 +16812,6 @@
         "spryker-sdk/spryk-gui": 20,
         "spryker-sdk/benchmark": 20,
         "spryker/docker-chromedriver": 20,
-        "spryker-sdk/brancho": 20,
         "spryker-sdk/load-testing": 20,
         "spryker-sdk/security-checker": 20
     },
