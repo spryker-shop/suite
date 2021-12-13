@@ -2695,16 +2695,16 @@
         },
         {
             "name": "nette/finder",
-            "version": "v2.5.2",
+            "version": "v2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/finder.git",
-                "reference": "4ad2c298eb8c687dd0e74ae84206a4186eeaed50"
+                "reference": "64dc25b7929b731e72a1bc84a9e57727f5d5d3e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/finder/zipball/4ad2c298eb8c687dd0e74ae84206a4186eeaed50",
-                "reference": "4ad2c298eb8c687dd0e74ae84206a4186eeaed50",
+                "url": "https://api.github.com/repos/nette/finder/zipball/64dc25b7929b731e72a1bc84a9e57727f5d5d3e8",
+                "reference": "64dc25b7929b731e72a1bc84a9e57727f5d5d3e8",
                 "shasum": ""
             },
             "require": {
@@ -2733,8 +2733,8 @@
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
+                "GPL-2.0-only",
+                "GPL-3.0-only"
             ],
             "authors": [
                 {
@@ -2756,9 +2756,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/finder/issues",
-                "source": "https://github.com/nette/finder/tree/v2.5.2"
+                "source": "https://github.com/nette/finder/tree/v2.5.3"
             },
-            "time": "2020-01-03T20:35:40+00:00"
+            "time": "2021-12-12T17:43:24+00:00"
         },
         {
             "name": "nette/neon",
@@ -3290,16 +3290,16 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "v3.1.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "c8812f783fe8714a8a8e387003fb297aded7f974"
+                "reference": "1d8e724c1de8ac5a4322f26ba735695880514874"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/c8812f783fe8714a8a8e387003fb297aded7f974",
-                "reference": "c8812f783fe8714a8a8e387003fb297aded7f974",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/1d8e724c1de8ac5a4322f26ba735695880514874",
+                "reference": "1d8e724c1de8ac5a4322f26ba735695880514874",
                 "shasum": ""
             },
             "require": {
@@ -3365,9 +3365,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-amqplib/php-amqplib/issues",
-                "source": "https://github.com/php-amqplib/php-amqplib/tree/v3.1.0"
+                "source": "https://github.com/php-amqplib/php-amqplib/tree/v3.1.1"
             },
-            "time": "2021-10-22T16:37:06+00:00"
+            "time": "2021-12-03T14:55:21+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -4999,7 +4999,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "45011c725df591a8d7e94809264dec91b8aace82"
+                "reference": "a38cf13412edd4e0481851e7ebeefadc5d98280d"
             },
             "require": {
                 "php": ">=7.4"
@@ -5859,7 +5859,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-12-10T11:10:29+00:00"
+            "time": "2021-12-13T12:55:51+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10836,16 +10836,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "4.1.22",
+            "version": "4.1.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "9777ec3690ceedc4bce2ed13af7af4ca4ee3088f"
+                "reference": "27d18cd5d5a1d77d3f1b01ea776238676faf5dcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/9777ec3690ceedc4bce2ed13af7af4ca4ee3088f",
-                "reference": "9777ec3690ceedc4bce2ed13af7af4ca4ee3088f",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/27d18cd5d5a1d77d3f1b01ea776238676faf5dcc",
+                "reference": "27d18cd5d5a1d77d3f1b01ea776238676faf5dcc",
                 "shasum": ""
             },
             "require": {
@@ -10895,7 +10895,10 @@
                 "psr-4": {
                     "Codeception\\": "src/Codeception",
                     "Codeception\\Extension\\": "ext"
-                }
+                },
+                "files": [
+                    "functions.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -10919,7 +10922,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/Codeception/issues",
-                "source": "https://github.com/Codeception/Codeception/tree/4.1.22"
+                "source": "https://github.com/Codeception/Codeception/tree/4.1.23"
             },
             "funding": [
                 {
@@ -10927,7 +10930,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2021-08-06T17:15:34+00:00"
+            "time": "2021-12-11T18:05:26+00:00"
         },
         {
             "name": "codeception/lib-asserts",
@@ -12710,16 +12713,16 @@
         },
         {
             "name": "phpbench/phpbench",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpbench/phpbench.git",
-                "reference": "ac12203f1733493a0611333b81ac3f47f517d850"
+                "reference": "0799479fcb4d4bf01d2320c2ea051c04e55adf39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpbench/phpbench/zipball/ac12203f1733493a0611333b81ac3f47f517d850",
-                "reference": "ac12203f1733493a0611333b81ac3f47f517d850",
+                "url": "https://api.github.com/repos/phpbench/phpbench/zipball/0799479fcb4d4bf01d2320c2ea051c04e55adf39",
+                "reference": "0799479fcb4d4bf01d2320c2ea051c04e55adf39",
                 "shasum": ""
             },
             "require": {
@@ -12770,8 +12773,7 @@
                 ],
                 "psr-4": {
                     "PhpBench\\": "lib/",
-                    "PhpBench\\Extensions\\XDebug\\": "extensions/xdebug/lib/",
-                    "PhpBench\\Extensions\\Reports\\": "extensions/reports/lib/"
+                    "PhpBench\\Extensions\\XDebug\\": "extensions/xdebug/lib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -12787,7 +12789,7 @@
             "description": "PHP Benchmarking Framework",
             "support": {
                 "issues": "https://github.com/phpbench/phpbench/issues",
-                "source": "https://github.com/phpbench/phpbench/tree/1.2.1"
+                "source": "https://github.com/phpbench/phpbench/tree/1.2.2"
             },
             "funding": [
                 {
@@ -12795,7 +12797,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-04T12:25:52+00:00"
+            "time": "2021-12-11T20:52:22+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -15753,16 +15755,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.6.1",
+            "version": "3.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "f268ca40d54617c6e06757f83f699775c9b3ff2e"
+                "reference": "5e4e71592f69da17871dba6e80dd51bce74a351a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/f268ca40d54617c6e06757f83f699775c9b3ff2e",
-                "reference": "f268ca40d54617c6e06757f83f699775c9b3ff2e",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5e4e71592f69da17871dba6e80dd51bce74a351a",
+                "reference": "5e4e71592f69da17871dba6e80dd51bce74a351a",
                 "shasum": ""
             },
             "require": {
@@ -15805,7 +15807,7 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "time": "2021-10-11T04:00:11+00:00"
+            "time": "2021-12-12T21:44:58+00:00"
         },
         {
             "name": "stecman/symfony-console-completion",
