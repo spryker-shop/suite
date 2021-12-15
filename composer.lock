@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4efa0b223525d9688a8662197c4e0f1f",
+    "content-hash": "c930d7276f5d1e47f7b21a560c9a05c6",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -5000,7 +5000,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b979ebb49548a252f839476726f49e84fb1436cd"
+                "reference": "0ec8a9d50dc8278ab2dec80fb2516dfcd1b92ece"
             },
             "require": {
                 "php": ">=7.4"
@@ -5860,7 +5860,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-12-15T11:26:41+00:00"
+            "time": "2021-12-15T15:02:47+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5868,7 +5868,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "ccb1035fbc0ffa80ce55bc9f2f1c372189625363"
+                "reference": "36d5452b39b4fffbb2589cefcbd16c331574b923"
             },
             "require": {
                 "php": ">=7.4"
@@ -6038,7 +6038,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2021-12-01T17:41:53+00:00"
+            "time": "2021-12-15T15:02:49+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -13161,16 +13161,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.98",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "3bb7cc246c057405dd5e290c3ecc62ab51d57e00"
+                "reference": "cbe085f9fdead5b6d62e4c022ca52dc9427a10ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/3bb7cc246c057405dd5e290c3ecc62ab51d57e00",
-                "reference": "3bb7cc246c057405dd5e290c3ecc62ab51d57e00",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/cbe085f9fdead5b6d62e4c022ca52dc9427a10ee",
+                "reference": "cbe085f9fdead5b6d62e4c022ca52dc9427a10ee",
                 "shasum": ""
             },
             "require": {
@@ -13186,7 +13186,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.12-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -13201,7 +13201,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.98"
+                "source": "https://github.com/phpstan/phpstan/tree/1.2.0"
             },
             "funding": [
                 {
@@ -13221,7 +13221,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-02T12:33:01+00:00"
+            "time": "2021-11-18T14:09:01+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -15166,29 +15166,30 @@
         },
         {
             "name": "spryker-sdk/phpstan-spryker",
-            "version": "0.3.1",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/phpstan-spryker.git",
-                "reference": "1e22d8a53b0e4b7038a1eb16480bb6c26769d92f"
+                "reference": "302b6813c5d17464be8648e74c87b693b650e5df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/phpstan-spryker/zipball/1e22d8a53b0e4b7038a1eb16480bb6c26769d92f",
-                "reference": "1e22d8a53b0e4b7038a1eb16480bb6c26769d92f",
+                "url": "https://api.github.com/repos/spryker-sdk/phpstan-spryker/zipball/302b6813c5d17464be8648e74c87b693b650e5df",
+                "reference": "302b6813c5d17464be8648e74c87b693b650e5df",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
-                "phpstan/phpstan": "^0.12.4"
+                "php": ">=7.3",
+                "phpstan/phpstan": "^1.0.0",
+                "phpunit/phpunit": "^9.5"
             },
             "require-dev": {
                 "ergebnis/composer-normalize": "^2.1.1",
                 "jakub-onderka/php-parallel-lint": "^1.0",
                 "phing/phing": "^2.16.0",
-                "phpstan/phpstan-strict-rules": "^0.12.0",
-                "spryker/code-sniffer": "^0.14",
-                "squizlabs/php_codesniffer": "^3.3.1"
+                "phpstan/phpstan-strict-rules": "^1.0.0",
+                "spryker/code-sniffer": "*",
+                "squizlabs/php_codesniffer": "^3.6.0"
             },
             "type": "library",
             "extra": {
@@ -15203,7 +15204,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "PHPStan\\": "src/"
+                    "SprykerSdk\\PHPStanSpryker\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -15226,7 +15227,7 @@
                 "issues": "https://github.com/spryker-sdk/phpstan-spryker/issues",
                 "source": "https://github.com/spryker-sdk/phpstan-spryker"
             },
-            "time": "2021-01-25T15:54:45+00:00"
+            "time": "2021-12-10T14:07:19+00:00"
         },
         {
             "name": "spryker-sdk/security-checker",
@@ -15604,7 +15605,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "c8cde2eb7940548f4e9637ce78a1f31ea36325d7"
+                "reference": "7f53bafeff83e3adaed9419493dea96500b46895"
             },
             "require": {
                 "composer/semver": "^1.0.0 || ^2.0.0 || ^3.0.0",
@@ -15621,7 +15622,7 @@
                 "spryker/twig": "^3.0.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "*",
+                "phpstan/phpstan": "^1.0.0",
                 "spryker/code-sniffer": "dev-master"
             },
             "default-branch": true,
@@ -15648,16 +15649,13 @@
                 ],
                 "stan": [
                     "phpstan analyse -c phpstan.neon -l 5 src/"
-                ],
-                "stan-setup": [
-                    "cp composer.json composer.backup && composer require --dev phpstan/phpstan:^0.12 && mv composer.backup composer.json"
                 ]
             },
             "license": [
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2021-11-22T15:05:42+00:00"
+            "time": "2021-12-15T13:34:59+00:00"
         },
         {
             "name": "spryker/docker-chromedriver",
