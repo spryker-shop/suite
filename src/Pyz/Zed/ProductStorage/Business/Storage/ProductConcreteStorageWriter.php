@@ -144,7 +144,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             ->queryProductAttributeKey()
             ->find();
 
-        if (empty($superAttributes->getData())) {
+        if (!$superAttributes->getData()) {
             $this->superAttributeKeyBuffer[] = null;
 
             return;
@@ -252,7 +252,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
      */
     public function write(): void
     {
-        if (empty($this->synchronizedDataCollection)) {
+        if (!$this->synchronizedDataCollection) {
             return;
         }
 
