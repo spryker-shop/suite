@@ -35,7 +35,7 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
      */
     protected function persistAbstractProductEntities(): void
     {
-        if (!empty(static::$productAbstractCollection)) {
+        if (static::$productAbstractCollection) {
             $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_SKU);
             $abstractSkus = $this->dataFormatter->formatStringList($rawAbstractSkus);
             $rowsCount = count($rawAbstractSkus);
@@ -86,7 +86,7 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
      */
     protected function persistAbstractProductLocalizedAttributesEntities(): void
     {
-        if (!empty(static::$productAbstractLocalizedAttributesCollection)) {
+        if (static::$productAbstractLocalizedAttributesCollection) {
             $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_ABSTRACT_SKU);
             $abstractSkus = $this->dataFormatter->formatStringList($rawAbstractSkus);
             $rowsCount = count($rawAbstractSkus);
@@ -144,7 +144,7 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
      */
     protected function persistAbstractProductCategoryEntities(): void
     {
-        if (!empty(static::$productCategoryCollection)) {
+        if (static::$productCategoryCollection) {
             $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, static::COLUMN_ABSTRACT_SKU);
             $abstractSkus = $this->dataFormatter->formatStringList($rawAbstractSkus);
             $rowsCount = count($rawAbstractSkus);
@@ -179,7 +179,7 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
      */
     protected function persistAbstractProductUrlEntities(): void
     {
-        if (!empty(static::$productUrlCollection)) {
+        if (static::$productUrlCollection) {
             $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, static::COLUMN_ABSTRACT_SKU);
             $abstractSkus = $this->dataFormatter->formatStringList($rawAbstractSkus);
             $rowsCount = count($rawAbstractSkus);
