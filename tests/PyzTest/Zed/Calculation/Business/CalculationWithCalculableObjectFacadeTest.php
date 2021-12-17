@@ -119,7 +119,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
         $quoteTransfer = $this->createFixtureDataForCalculation();
         $quoteTransfer->setPriceMode(CalculationPriceMode::PRICE_MODE_GROSS);
 
-        $voucherEntity = $this->tester->createDiscounts($discountAmount, DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED);
+        $voucherEntity = $this->tester->createVoucherDiscount($discountAmount, DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED);
 
         $voucherDiscountTransfer = new DiscountTransfer();
         $voucherDiscountTransfer->setVoucherCode($voucherEntity->getCode());
@@ -184,7 +184,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
         $quoteTransfer->setPriceMode(CalculationPriceMode::PRICE_MODE_NET);
 
         $discountAmount = 20;
-        $voucherEntity = $this->tester->createDiscounts($discountAmount, DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED);
+        $voucherEntity = $this->tester->createVoucherDiscount($discountAmount, DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED);
 
         $voucherDiscountTransfer = new DiscountTransfer();
         $voucherDiscountTransfer->setVoucherCode($voucherEntity->getCode());
@@ -376,7 +376,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
         $productOptionTransfer->setQuantity(1);
         $itemTransfer->addProductOption($productOptionTransfer);
 
-        $voucherEntity = $this->tester->createDiscounts(20, DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED);
+        $voucherEntity = $this->tester->createVoucherDiscount(20, DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED);
 
         $voucherDiscountTransfer = new DiscountTransfer();
         $voucherDiscountTransfer->setVoucherCode($voucherEntity->getCode());
