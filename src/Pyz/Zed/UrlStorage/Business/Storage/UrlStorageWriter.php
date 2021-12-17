@@ -214,7 +214,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      */
     public function write(): void
     {
-        if (empty($this->synchronizedDataCollection)) {
+        if (!$this->synchronizedDataCollection) {
             return;
         }
 

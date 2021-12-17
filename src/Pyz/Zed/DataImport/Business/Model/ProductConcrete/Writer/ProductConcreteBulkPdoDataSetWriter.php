@@ -67,7 +67,7 @@ class ProductConcreteBulkPdoDataSetWriter extends AbstractProductConcreteBulkDat
      */
     protected function persistConcreteProductLocalizedAttributesEntities(): void
     {
-        if (!empty(static::$productLocalizedAttributesCollection)) {
+        if (static::$productLocalizedAttributesCollection) {
             $sku = $this->dataFormatter->formatPostgresArrayString(
                 $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_SKU),
             );
@@ -105,7 +105,7 @@ class ProductConcreteBulkPdoDataSetWriter extends AbstractProductConcreteBulkDat
      */
     protected function persistConcreteProductSearchEntities(): void
     {
-        if (!empty(static::$productSearchCollection)) {
+        if (static::$productSearchCollection) {
             $idLocale = $this->dataFormatter->formatPostgresArray(
                 $this->dataFormatter->getCollectionDataByKey(static::$productSearchCollection, ProductConcreteHydratorStep::KEY_FK_LOCALE),
             );
@@ -131,7 +131,7 @@ class ProductConcreteBulkPdoDataSetWriter extends AbstractProductConcreteBulkDat
      */
     protected function persistConcreteProductBundleEntities(): void
     {
-        if (!empty(static::$productBundleCollection)) {
+        if (static::$productBundleCollection) {
             $bundledProductSku = $this->dataFormatter->formatPostgresArrayString(
                 $this->dataFormatter->getCollectionDataByKey(static::$productBundleCollection, ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_SKU),
             );

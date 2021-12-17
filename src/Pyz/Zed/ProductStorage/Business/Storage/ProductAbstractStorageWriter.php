@@ -266,7 +266,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      */
     public function write(): void
     {
-        if (empty($this->synchronizedDataCollection)) {
+        if (!$this->synchronizedDataCollection) {
             return;
         }
 
