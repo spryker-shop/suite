@@ -9,12 +9,19 @@ namespace PyzTest\Zed\Calculation;
 
 use Codeception\Actor;
 use DateTime;
+use Generated\Shared\DataBuilder\ItemBuilder;
 use Generated\Shared\Transfer\CurrencyTransfer;
+use Generated\Shared\Transfer\DiscountGeneralTransfer;
+use Generated\Shared\Transfer\DiscountPromotionTransfer;
 use Generated\Shared\Transfer\DiscountTransfer;
+use Generated\Shared\Transfer\DiscountVoucherTransfer;
 use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\ProductAbstractTransfer;
+use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ProductOptionTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Orm\Zed\Country\Persistence\SpyCountryQuery;
 use Orm\Zed\Currency\Persistence\SpyCurrency;
@@ -55,6 +62,7 @@ use Spryker\Zed\Kernel\Container;
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
+ * @method \Spryker\Zed\Calculation\Business\CalculationFacadeInterface getFacade()
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
  *
  * @SuppressWarnings(PHPMD)
@@ -62,6 +70,64 @@ use Spryker\Zed\Kernel\Container;
 class CalculationBusinessTester extends Actor
 {
     use _generated\CalculationBusinessTesterActions;
+
+    /**
+     * @var string
+     */
+    public const DISCOUNT_AMOUNTS_KEY = 'DISCOUNT_AMOUNT_KEY';
+
+    /**
+     * @uses \Spryker\Shared\Discount\DiscountConstants::TYPE_CART_RULE
+     *
+     * @var string
+     */
+    public const TYPE_CART_RULE = 'cart_rule';
+
+    /**
+     * @uses \Spryker\Shared\Discount\DiscountConstants::TYPE_VOUCHER
+     *
+     * @var string
+     */
+    public const TYPE_VOUCHER = 'voucher';
+
+    /**
+     * @uses \Spryker\Zed\Discount\DiscountDependencyProvider::PLUGIN_CALCULATOR_PERCENTAGE
+     *
+     * @var string
+     */
+    public const PLUGIN_CALCULATOR_PERCENTAGE = 'PLUGIN_CALCULATOR_PERCENTAGE';
+
+    /**
+     * @uses \Spryker\Zed\Discount\DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED
+     *
+     * @var string
+     */
+    public const PLUGIN_CALCULATOR_FIXED = 'PLUGIN_CALCULATOR_FIXED';
+
+    /**
+     * @var int
+     */
+    public const TEST_PRODUCT_QUANTITY = 1;
+
+    /**
+     * @var string
+     */
+    protected const STORE_DE = 'DE';
+
+    /**
+     * @var string
+     */
+    protected const CURRENCY_EUR = 'EUR';
+
+    /**
+     * @var string
+     */
+    protected const PRICE_MODE_GROSS = 'GROSS_MODE';
+
+    /**
+     * @var int
+     */
+    protected const DEFAULT_ITEM_DISCOUNT_AMOUNT_SUM = 0;
 
     /**
      * @var int
@@ -75,7 +141,7 @@ class CalculationBusinessTester extends Actor
      *
      * @return \Orm\Zed\Discount\Persistence\SpyDiscountVoucher
      */
-    public function createDiscounts(int $discountAmount, string $calculatorType, string $sku = '*'): SpyDiscountVoucher
+    public function createVoucherDiscount(int $discountAmount, string $calculatorType, string $sku = '*'): SpyDiscountVoucher
     {
         $discountVoucherPoolEntity = new SpyDiscountVoucherPool();
         $discountVoucherPoolEntity->setName('test-pool' . $this->getIncrementNumber());
@@ -118,6 +184,47 @@ class CalculationBusinessTester extends Actor
         $pool->getDiscountVouchers();
 
         return $discountVoucherEntity;
+    }
+
+    /**
+     * @param array<string, mixed> $discountsData
+     *
+     * @return array<\Generated\Shared\Transfer\DiscountTransfer>
+     */
+    public function createDiscounts(array $discountsData): array
+    {
+        $discountTransfers = [];
+
+        foreach ($discountsData as $discountData) {
+            $discountAmount = $discountData[static::DISCOUNT_AMOUNTS_KEY] ?? [];
+            $skuPromotionalProductAbstract = $discountData[DiscountPromotionTransfer::ABSTRACT_SKU] ?? '';
+
+            $discountGeneralTransfer = $this->haveDiscount($discountData, $discountAmount);
+            $discountTransfer = (new DiscountTransfer())
+                ->fromArray($discountData, true)
+                ->setIdDiscount($discountGeneralTransfer->getIdDiscount());
+
+            if ($skuPromotionalProductAbstract) {
+                $discountTransfer->setDiscountPromotion($this->createAvailablePromotionalProduct(
+                    $discountGeneralTransfer,
+                    $skuPromotionalProductAbstract,
+                ));
+            }
+
+            if ($discountTransfer->getDiscountType() !== static::TYPE_VOUCHER) {
+                $discountTransfers[] = $discountTransfer;
+
+                continue;
+            }
+
+            $discountVoucherTransfer = $this->haveGeneratedVoucherCodes([
+                DiscountVoucherTransfer::ID_DISCOUNT => $discountGeneralTransfer->getIdDiscount(),
+            ]);
+
+            $discountTransfers[] = $discountTransfer->setVoucherCode($discountVoucherTransfer->getCode());
+        }
+
+        return $discountTransfers;
     }
 
     /**
@@ -224,7 +331,7 @@ class CalculationBusinessTester extends Actor
      */
     public function createDiscountTransfer(int $discountAmount, string $sku): DiscountTransfer
     {
-        $voucherEntity = $this->createDiscounts($discountAmount, DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED, $sku);
+        $voucherEntity = $this->createVoucherDiscount($discountAmount, DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED, $sku);
 
         return (new DiscountTransfer())
             ->setVoucherCode($voucherEntity->getCode());
@@ -245,8 +352,41 @@ class CalculationBusinessTester extends Actor
      */
     public function createCurrencyTransfer(): CurrencyTransfer
     {
+        $currencyEntity = SpyCurrencyQuery::create()->findOneByCode(static::CURRENCY_EUR);
+
+        if ($currencyEntity) {
+            return (new CurrencyTransfer())->fromArray($currencyEntity->toArray());
+        }
+
+        $idCurrency = $this->haveCurrency([CurrencyTransfer::CODE => static::CURRENCY_EUR]);
+
         return (new CurrencyTransfer())
-            ->setCode('EUR');
+            ->setIdCurrency($idCurrency)
+            ->setCode(static::CURRENCY_EUR);
+    }
+
+    /**
+     * @param array $itemsData
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function createQuoteTransferWithItems(array $itemsData = []): QuoteTransfer
+    {
+        $quoteTransfer = new QuoteTransfer();
+
+        $quoteTransfer->setStore($this->haveStore([
+            StoreTransfer::NAME => static::STORE_DE,
+        ]));
+
+        $quoteTransfer->setCurrency($this->createCurrencyTransfer())
+        ->setPriceMode(static::PRICE_MODE_GROSS);
+
+        foreach ($itemsData as $itemData) {
+            $itemTransfer = (new ItemBuilder($itemData))->build();
+            $quoteTransfer->addItem($itemTransfer);
+        }
+
+        return $quoteTransfer;
     }
 
     /**
@@ -352,6 +492,145 @@ class CalculationBusinessTester extends Actor
         $abstractProductEntity = $this->createAbstractProduct($taxSetEntity);
 
         return $abstractProductEntity;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param array<\Generated\Shared\Transfer\DiscountTransfer> $discountTransfers
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function addIdDiscountPromotionToQuoteItems(QuoteTransfer $quoteTransfer, array $discountTransfers): QuoteTransfer
+    {
+        $discountPromotionTransfers = $this->getDiscountPromotionTransfersIndexedByAbstractSku($discountTransfers);
+
+        foreach ($quoteTransfer->getItems() as $itemTransfer) {
+            if (!isset($discountPromotionTransfers[$itemTransfer->getAbstractSku()])) {
+                continue;
+            }
+
+            $itemTransfer->setIdDiscountPromotion($discountPromotionTransfers[$itemTransfer->getAbstractSku()]->getIdDiscountPromotion());
+        }
+
+        return $quoteTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param array<\Generated\Shared\Transfer\DiscountTransfer> $discountTransfers
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function addVoucherDiscountsToQuote(QuoteTransfer $quoteTransfer, array $discountTransfers): QuoteTransfer
+    {
+        foreach ($discountTransfers as $discountTransfer) {
+            if ($discountTransfer->getVoucherCode()) {
+                $quoteTransfer->addVoucherDiscount($discountTransfer);
+            }
+        }
+
+        return $quoteTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param array<string, int> $expectedItemsDiscountAmountIndexedByItemSku
+     *
+     * @return void
+     */
+    public function assertQuoteItemsHaveExpectedDiscountAmount(
+        QuoteTransfer $quoteTransfer,
+        array $expectedItemsDiscountAmountIndexedByItemSku
+    ): void {
+        foreach ($quoteTransfer->getItems() as $itemTransfer) {
+            $itemDiscountAmountSum = $this->calculateItemDiscountAmountSum($itemTransfer);
+            $expectedItemDiscountAmount = $expectedItemsDiscountAmountIndexedByItemSku[$itemTransfer->getSku()];
+
+            $this->assertSame($expectedItemDiscountAmount, $itemDiscountAmountSum);
+        }
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return int
+     */
+    protected function calculateItemDiscountAmountSum(ItemTransfer $itemTransfer): int
+    {
+        $itemDiscountAmountSum = static::DEFAULT_ITEM_DISCOUNT_AMOUNT_SUM;
+
+        foreach ($itemTransfer->getCalculatedDiscounts() as $calculatedDiscountTransfer) {
+            $itemDiscountAmountSum += $calculatedDiscountTransfer->getUnitAmount();
+        }
+
+        return $itemDiscountAmountSum;
+    }
+
+    /**
+     * @param array<\Generated\Shared\Transfer\DiscountTransfer> $discountTransfers
+     *
+     * @return array<\Generated\Shared\Transfer\DiscountPromotionTransfer>
+     */
+    protected function getDiscountPromotionTransfersIndexedByAbstractSku(array $discountTransfers): array
+    {
+        $discountPromotionTransfers = [];
+
+        foreach ($discountTransfers as $discountTransfer) {
+            $discountPromotionTransfer = $discountTransfer->getDiscountPromotion();
+            if ($discountPromotionTransfer) {
+                $discountPromotionTransfers[$discountPromotionTransfer->getAbstractSku()] = $discountPromotionTransfer;
+            }
+        }
+
+        return $discountPromotionTransfers;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DiscountGeneralTransfer $discountGeneralTransfer
+     * @param string $skuPromotionalProductAbstract
+     *
+     * @return \Generated\Shared\Transfer\DiscountPromotionTransfer
+     */
+    protected function createAvailablePromotionalProduct(
+        DiscountGeneralTransfer $discountGeneralTransfer,
+        string $skuPromotionalProductAbstract
+    ): DiscountPromotionTransfer {
+        $discountPromotionTransfer = $this->haveDiscountPromotion([
+            DiscountPromotionTransfer::FK_DISCOUNT => $discountGeneralTransfer->getIdDiscount(),
+            DiscountPromotionTransfer::ABSTRACT_SKU => $skuPromotionalProductAbstract,
+        ]);
+
+        $productFacade = $this->getLocator()->product()->facade();
+
+        if ($productFacade->findProductAbstractIdBySku($skuPromotionalProductAbstract)) {
+            return $discountPromotionTransfer;
+        }
+
+        $storeTransfer = (new StoreTransfer())->setIdStore($discountGeneralTransfer->getStoreRelation()->getIdStores()[0]);
+
+        $this->haveProductAvailable($skuPromotionalProductAbstract, $storeTransfer);
+
+        return $discountPromotionTransfer;
+    }
+
+    /**
+     * @param string $skuPromotionalProductAbstract
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
+     * @return void
+     */
+    protected function haveProductAvailable(string $skuPromotionalProductAbstract, StoreTransfer $storeTransfer): void
+    {
+        $productConcreteTransfer = $this->haveProduct([], [ProductAbstractTransfer::SKU => $skuPromotionalProductAbstract]);
+
+        $this->haveProductInStockForStore(
+            $storeTransfer,
+            [
+                ProductConcreteTransfer::SKU => $productConcreteTransfer->getSku(),
+                StockProductTransfer::IS_NEVER_OUT_OF_STOCK => true,
+            ],
+        );
+        $this->haveAvailabilityConcrete($productConcreteTransfer->getSku());
     }
 
     /**
