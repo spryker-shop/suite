@@ -7,11 +7,11 @@
 
 namespace Pyz\Glue\GlueApplication\Bootstrap;
 
-use Spryker\Glue\GlueApplication\Bootstrap\GlueBootstrap as SprykerGlueBootstrap;
-use Spryker\Glue\GlueApplication\Plugin\GlueApplication\FallbackStorefrontApiGlueApplicationBootstrapPlugin;
+use Spryker\Glue\GlueApplication\Bootstrap\GlueBootstrap;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\BackendApiGlueApplicationBootstrapPlugin;
 use Spryker\Shared\Application\ApplicationInterface;
 
-class GlueBootstrap extends SprykerGlueBootstrap
+class GlueBackendApiBootstrap extends GlueBootstrap
 {
     /**
      * @param array $glueApplicationBootstrapPluginClassNames
@@ -20,6 +20,6 @@ class GlueBootstrap extends SprykerGlueBootstrap
      */
     public function boot(array $glueApplicationBootstrapPluginClassNames = []): ApplicationInterface
     {
-        return parent::boot([FallbackStorefrontApiGlueApplicationBootstrapPlugin::class]);
+        return parent::boot([BackendApiGlueApplicationBootstrapPlugin::class]);
     }
 }
