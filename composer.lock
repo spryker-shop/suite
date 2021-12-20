@@ -60874,23 +60874,23 @@
         },
         {
             "name": "pdepend/pdepend",
-            "version": "2.10.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "c8c1d2af43fb8c2b5387d50e9c42a9c56de13686"
+                "reference": "203754f5bfcb92bec9c38ce8b9e3d6875584c940"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/c8c1d2af43fb8c2b5387d50e9c42a9c56de13686",
-                "reference": "c8c1d2af43fb8c2b5387d50e9c42a9c56de13686",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/203754f5bfcb92bec9c38ce8b9e3d6875584c940",
+                "reference": "203754f5bfcb92bec9c38ce8b9e3d6875584c940",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.7",
-                "symfony/config": "^2.3.0|^3|^4|^5",
-                "symfony/dependency-injection": "^2.3.0|^3|^4|^5",
-                "symfony/filesystem": "^2.3.0|^3|^4|^5"
+                "symfony/config": "^2.3.0|^3|^4|^5|^6.0",
+                "symfony/dependency-injection": "^2.3.0|^3|^4|^5|^6.0",
+                "symfony/filesystem": "^2.3.0|^3|^4|^5|^6.0"
             },
             "require-dev": {
                 "easy-doc/easy-doc": "0.0.0|^1.2.3",
@@ -60898,6 +60898,7 @@
                 "phpunit/phpunit": "^4.8.36|^5.7.27",
                 "squizlabs/php_codesniffer": "^2.0.0"
             },
+            "default-branch": true,
             "bin": [
                 "src/bin/pdepend"
             ],
@@ -60919,7 +60920,7 @@
             "description": "Official version of pdepend to be handled with Composer",
             "support": {
                 "issues": "https://github.com/pdepend/pdepend/issues",
-                "source": "https://github.com/pdepend/pdepend/tree/2.10.2"
+                "source": "https://github.com/pdepend/pdepend/tree/master"
             },
             "funding": [
                 {
@@ -60927,7 +60928,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-16T20:05:32+00:00"
+            "time": "2021-12-14T12:41:32+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -63382,16 +63383,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/benchmark.git",
-                "reference": "f81809189fba2cb4a3f107efa3a358dd0412976f"
+                "reference": "98ed8d74da8c1886255801183ba240e40b6d9e14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/benchmark/zipball/f81809189fba2cb4a3f107efa3a358dd0412976f",
-                "reference": "f81809189fba2cb4a3f107efa3a358dd0412976f",
+                "url": "https://api.github.com/repos/spryker-sdk/benchmark/zipball/98ed8d74da8c1886255801183ba240e40b6d9e14",
+                "reference": "98ed8d74da8c1886255801183ba240e40b6d9e14",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "phpbench/phpbench": "^1.0.0",
                 "psr/http-message": "^1.0.0",
                 "spryker/guzzle": "^2.1.0",
@@ -63421,9 +63422,9 @@
             "description": "Benchmark module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/benchmark/issues",
-                "source": "https://github.com/spryker-sdk/benchmark/tree/0.2.2"
+                "source": "https://github.com/spryker-sdk/benchmark/tree/master"
             },
-            "time": "2021-10-13T18:35:39+00:00"
+            "time": "2021-12-20T14:51:17+00:00"
         },
         {
             "name": "spryker-sdk/codeception-phantoman",
@@ -63475,12 +63476,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/composer-constrainer.git",
-                "reference": "9162283d7b2295c9ca2a247f46b16853f4881cb9"
+                "reference": "cab4ae9c3485211d65569dfbfb74e4f27a6aefb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/9162283d7b2295c9ca2a247f46b16853f4881cb9",
-                "reference": "9162283d7b2295c9ca2a247f46b16853f4881cb9",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/cab4ae9c3485211d65569dfbfb74e4f27a6aefb9",
+                "reference": "cab4ae9c3485211d65569dfbfb74e4f27a6aefb9",
                 "shasum": ""
             },
             "require": {
@@ -63517,9 +63518,9 @@
             "description": "ComposerConstrainer module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/composer-constrainer/issues",
-                "source": "https://github.com/spryker-sdk/composer-constrainer/tree/0.2.5"
+                "source": "https://github.com/spryker-sdk/composer-constrainer/tree/master"
             },
-            "time": "2021-09-07T14:56:28+00:00"
+            "time": "2021-12-20T16:18:28+00:00"
         },
         {
             "name": "spryker-sdk/load-testing",
@@ -63784,7 +63785,7 @@
             },
             "require": {
                 "ondrejmirtes/better-reflection": "^4.3.0",
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker-sdk/spryk": "^0.3.1",
                 "spryker/development": "^3.12.0",
                 "spryker/graph": "^3.0.0",
@@ -63916,7 +63917,7 @@
             "require-dev": {
                 "codeception/codeception": "^4.1",
                 "codeception/module-asserts": "^1.3",
-                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan": "^1.0.0",
                 "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "^4.0"
             },
@@ -63968,7 +63969,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker/kernel": "^3.30.0",
                 "spryker/laminas": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
