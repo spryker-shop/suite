@@ -167,6 +167,14 @@
         "platform": {
             "php": "7.4.15"
         },
+        "preferred-install": {
+            "spryker/*": "source",
+            "spryker-shop/*": "source",
+            "spryker-eco/*": "source",
+            "spryker-middleware/*": "source",
+            "spryker-sdk/*": "source",
+            "*": "dist"
+        },
         "use-include-path": true,
         "process-timeout": 900,
         "chromium-revision": 814168
