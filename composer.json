@@ -839,6 +839,7 @@
         "spryker/sales-order-threshold-data-import": "^0.1.0",
         "spryker/sales-order-threshold-extension": "^1.0.0",
         "spryker/sales-order-threshold-gui": "^1.0.0",
+        "spryker/sales-order-thresholds-rest-api": "^1.0.0",
         "spryker/sales-payment": "^1.0.0",
         "spryker/sales-payment-extension": "^1.0.0",
         "spryker/sales-payment-gui": "^1.0.0",
@@ -1038,6 +1039,14 @@
         "preferred-install": "dist",
         "platform": {
             "php": "7.4.15"
+        },
+        "preferred-install": {
+            "spryker/*": "source",
+            "spryker-shop/*": "source",
+            "spryker-eco/*": "source",
+            "spryker-middleware/*": "source",
+            "spryker-sdk/*": "source",
+            "*": "dist"
         },
         "use-include-path": true,
         "sort-packages": true,

@@ -93,6 +93,8 @@ class GuestCartsRestApiFixtures implements FixturesBuilderInterface, FixturesCon
      */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
+        $I->truncateSalesOrderThresholds();
+
         $this->productConcreteTransfer = $I->haveFullProduct();
         $this->productConcreteTransfer1 = $this->createProduct($I);
         $this->productConcreteTransfer2 = $this->createProduct($I);

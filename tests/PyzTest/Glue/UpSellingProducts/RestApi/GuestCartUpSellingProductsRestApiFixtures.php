@@ -96,6 +96,8 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
      */
     public function buildFixtures(UpSellingProductsApiTester $I): FixturesContainerInterface
     {
+        $I->truncateSalesOrderThresholds();
+
         $this->createGuestQuoteWithProduct($I);
         $this->createUpSellingProduct($I);
         $this->createRelationBetweenProducts($I);
@@ -170,7 +172,9 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     ): QuoteTransfer {
         return $I->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,
-            QuoteTransfer::TOTALS => (new TotalsTransfer())->setPriceToPay(random_int(1000, 10000)),
+            QuoteTransfer::TOTALS => (new TotalsTransfer())
+                ->setSubtotal(random_int(1000, 10000))
+                ->setPriceToPay(random_int(1000, 10000)),
             QuoteTransfer::ITEMS => $this->mapProductConcreteTransfersToQuoteTransferItems($productConcreteTransfers),
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
         ]);
