@@ -103,6 +103,8 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
      */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
+        $I->truncateSalesOrderThresholds();
+
         $this->createGuestQuote($I);
         $this->createCustomer($I);
 
