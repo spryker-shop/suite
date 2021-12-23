@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d31a4d730c5eaa915744d50f5d0968fb",
+    "content-hash": "4fe8057aadf5b5787277b45fccf6ffa2",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -14723,23 +14723,23 @@
         },
         {
             "name": "spryker/carts-rest-api",
-            "version": "5.17.0",
+            "version": "5.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/carts-rest-api.git",
-                "reference": "1812320b87365eaf561c5f1bbbb8a491bda9cd67"
+                "reference": "7b3d44e8d5d93f7c30e37717a1d06baf28bd6311"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/1812320b87365eaf561c5f1bbbb8a491bda9cd67",
-                "reference": "1812320b87365eaf561c5f1bbbb8a491bda9cd67",
+                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/7b3d44e8d5d93f7c30e37717a1d06baf28bd6311",
+                "reference": "7b3d44e8d5d93f7c30e37717a1d06baf28bd6311",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker/auth-rest-api-extension": "^1.1.0",
                 "spryker/cart": "^7.0.0",
-                "spryker/carts-rest-api-extension": "^1.6.0",
+                "spryker/carts-rest-api-extension": "^1.7.0",
                 "spryker/customers-rest-api-extension": "^1.2.0",
                 "spryker/glue-application": "^1.18.0",
                 "spryker/glue-application-authorization-connector-extension": "^1.0.0",
@@ -14750,6 +14750,7 @@
                 "spryker/quote": "^2.5.0",
                 "spryker/store": "^1.9.0",
                 "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/uuid-behavior": "^1.0.0",
                 "spryker/zed-request": "^3.6.0"
             },
@@ -14786,26 +14787,26 @@
             ],
             "description": "CartsRestApi module",
             "support": {
-                "source": "https://github.com/spryker/carts-rest-api/tree/5.17.0"
+                "source": "https://github.com/spryker/carts-rest-api/tree/5.18.0"
             },
-            "time": "2021-08-12T15:14:01+00:00"
+            "time": "2021-12-23T07:29:07+00:00"
         },
         {
             "name": "spryker/carts-rest-api-extension",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/carts-rest-api-extension.git",
-                "reference": "26d847fc66cde0f3df9619636f2db44a4699178b"
+                "reference": "1b2d780ff6a6337eb172f7f1b78b2a6030cede97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/carts-rest-api-extension/zipball/26d847fc66cde0f3df9619636f2db44a4699178b",
-                "reference": "26d847fc66cde0f3df9619636f2db44a4699178b",
+                "url": "https://api.github.com/repos/spryker/carts-rest-api-extension/zipball/1b2d780ff6a6337eb172f7f1b78b2a6030cede97",
+                "reference": "1b2d780ff6a6337eb172f7f1b78b2a6030cede97",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2"
+                "php": ">=7.4"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -14831,9 +14832,9 @@
             ],
             "description": "CartsRestApiExtension module",
             "support": {
-                "source": "https://github.com/spryker/carts-rest-api-extension/tree/1.6.0"
+                "source": "https://github.com/spryker/carts-rest-api-extension/tree/1.7.0"
             },
-            "time": "2020-09-24T11:46:20+00:00"
+            "time": "2021-12-23T07:29:07+00:00"
         },
         {
             "name": "spryker/catalog",
@@ -46460,16 +46461,16 @@
         },
         {
             "name": "spryker/sales-order-threshold",
-            "version": "1.5.1",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-order-threshold.git",
-                "reference": "fc978ad8a6fcaf2073b870effeecfa3a4e7979ac"
+                "reference": "54074fd6f830886d1f9d85c3b4175b0eaadc48d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-order-threshold/zipball/fc978ad8a6fcaf2073b870effeecfa3a4e7979ac",
-                "reference": "fc978ad8a6fcaf2073b870effeecfa3a4e7979ac",
+                "url": "https://api.github.com/repos/spryker/sales-order-threshold/zipball/54074fd6f830886d1f9d85c3b4175b0eaadc48d7",
+                "reference": "54074fd6f830886d1f9d85c3b4175b0eaadc48d7",
                 "shasum": ""
             },
             "require": {
@@ -46486,13 +46487,15 @@
                 "spryker/sales": "^8.16.0 || ^10.0.0 || ^11.0.0",
                 "spryker/sales-order-threshold-extension": "^1.0.0",
                 "spryker/store": "^1.2.0",
-                "spryker/tax": "^5.0.0"
+                "spryker/tax": "^5.0.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/checkout": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/country": "*",
                 "spryker/installer": "*",
+                "spryker/merchant-relationship-sales-order-threshold": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
             },
@@ -46520,9 +46523,9 @@
             ],
             "description": "SalesOrderThreshold module",
             "support": {
-                "source": "https://github.com/spryker/sales-order-threshold/tree/1.5.1"
+                "source": "https://github.com/spryker/sales-order-threshold/tree/1.6.0"
             },
-            "time": "2021-12-15T15:02:47+00:00"
+            "time": "2021-12-23T07:29:07+00:00"
         },
         {
             "name": "spryker/sales-order-threshold-data-import",
@@ -46711,6 +46714,54 @@
                 "source": "https://github.com/spryker/sales-order-threshold-gui-extension/tree/master"
             },
             "time": "2019-02-06T10:10:03+00:00"
+        },
+        {
+            "name": "spryker/sales-order-thresholds-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-order-thresholds-rest-api.git",
+                "reference": "f5f0fd9f88e37157d93085f888b16eb3a6b469ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-order-thresholds-rest-api/zipball/f5f0fd9f88e37157d93085f888b16eb3a6b469ec",
+                "reference": "f5f0fd9f88e37157d93085f888b16eb3a6b469ec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "spryker/carts-rest-api-extension": "^1.7.0",
+                "spryker/checkout-rest-api-extension": "^1.5.0",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/sales-order-threshold": "^1.6.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesOrderThresholdsRestApi module",
+            "support": {
+                "source": "https://github.com/spryker/sales-order-thresholds-rest-api/tree/1.0.0"
+            },
+            "time": "2021-12-23T07:29:07+00:00"
         },
         {
             "name": "spryker/sales-payment",
@@ -60103,12 +60154,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "6146eb5541086ddef32fe29dd604da2d6839f3be"
+                "reference": "a16fcfe3700fad80201660c614b44cee548723d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/6146eb5541086ddef32fe29dd604da2d6839f3be",
-                "reference": "6146eb5541086ddef32fe29dd604da2d6839f3be",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/a16fcfe3700fad80201660c614b44cee548723d1",
+                "reference": "a16fcfe3700fad80201660c614b44cee548723d1",
                 "shasum": ""
             },
             "require-dev": {
@@ -60144,7 +60195,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2021-12-18T21:24:00+00:00"
+            "time": "2021-12-22T16:04:39+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -60257,22 +60308,22 @@
         },
         {
             "name": "nette/di",
-            "version": "v3.0.11",
+            "version": "v3.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "942e406f63b88b57cb4e095ae0fd95c103d12c5b"
+                "reference": "11c236b9f7bbfc5a95e7b24742ad8847936feeb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/942e406f63b88b57cb4e095ae0fd95c103d12c5b",
-                "reference": "942e406f63b88b57cb4e095ae0fd95c103d12c5b",
+                "url": "https://api.github.com/repos/nette/di/zipball/11c236b9f7bbfc5a95e7b24742ad8847936feeb5",
+                "reference": "11c236b9f7bbfc5a95e7b24742ad8847936feeb5",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
                 "nette/neon": "^3.3",
-                "nette/php-generator": "^3.3.3",
+                "nette/php-generator": "^3.5.4",
                 "nette/robot-loader": "^3.2",
                 "nette/schema": "^1.1",
                 "nette/utils": "^3.1.6",
@@ -60326,9 +60377,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/di/issues",
-                "source": "https://github.com/nette/di/tree/v3.0.11"
+                "source": "https://github.com/nette/di/tree/v3.0.12"
             },
-            "time": "2021-10-26T11:44:44+00:00"
+            "time": "2021-12-15T21:05:11+00:00"
         },
         {
             "name": "nette/finder",
