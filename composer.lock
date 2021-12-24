@@ -1479,16 +1479,16 @@
         },
         {
             "name": "laminas/laminas-filter",
-            "version": "2.13.0",
+            "version": "2.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-filter.git",
-                "reference": "67d88c471cb7016f495aeb1d3fd03edaa9bd9e70"
+                "reference": "79e8baa62035397044087907e89034726b3056a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/67d88c471cb7016f495aeb1d3fd03edaa9bd9e70",
-                "reference": "67d88c471cb7016f495aeb1d3fd03edaa9bd9e70",
+                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/79e8baa62035397044087907e89034726b3056a0",
+                "reference": "79e8baa62035397044087907e89034726b3056a0",
                 "shasum": ""
             },
             "require": {
@@ -1554,7 +1554,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-12-02T14:12:59+00:00"
+            "time": "2021-12-23T12:46:20+00:00"
         },
         {
             "name": "laminas/laminas-servicemanager",
@@ -12207,9 +12207,6 @@
             "require": {
                 "php": "^7.1 || ^8.0"
             },
-            "replace": {
-                "myclabs/deep-copy": "self.version"
-            },
             "require-dev": {
                 "doctrine/collections": "^1.0",
                 "doctrine/common": "^2.6",
@@ -12719,16 +12716,16 @@
         },
         {
             "name": "phpbench/phpbench",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpbench/phpbench.git",
-                "reference": "0799479fcb4d4bf01d2320c2ea051c04e55adf39"
+                "reference": "31750c45791a3e0bb7311aebfd1a4ed6f8f3fc86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpbench/phpbench/zipball/0799479fcb4d4bf01d2320c2ea051c04e55adf39",
-                "reference": "0799479fcb4d4bf01d2320c2ea051c04e55adf39",
+                "url": "https://api.github.com/repos/phpbench/phpbench/zipball/31750c45791a3e0bb7311aebfd1a4ed6f8f3fc86",
+                "reference": "31750c45791a3e0bb7311aebfd1a4ed6f8f3fc86",
                 "shasum": ""
             },
             "require": {
@@ -12742,7 +12739,7 @@
                 "php": "^7.3 || ^8.0",
                 "phpbench/container": "^2.1",
                 "phpbench/dom": "~0.3.1",
-                "psr/log": "^1.1",
+                "psr/log": "^1.1 || ^2.0 || ^3.0",
                 "seld/jsonlint": "^1.1",
                 "symfony/console": "^4.2 || ^5.0  || ^6.0",
                 "symfony/filesystem": "^4.2 || ^5.0 || ^6.0",
@@ -12795,7 +12792,7 @@
             "description": "PHP Benchmarking Framework",
             "support": {
                 "issues": "https://github.com/phpbench/phpbench/issues",
-                "source": "https://github.com/phpbench/phpbench/tree/1.2.2"
+                "source": "https://github.com/phpbench/phpbench/tree/1.2.3"
             },
             "funding": [
                 {
@@ -12803,7 +12800,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-11T20:52:22+00:00"
+            "time": "2021-12-24T10:09:29+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -16849,5 +16846,5 @@
     "platform-overrides": {
         "php": "7.4.15"
     },
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }

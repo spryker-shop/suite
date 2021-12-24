@@ -177,7 +177,13 @@
         },
         "use-include-path": true,
         "process-timeout": 900,
-        "chromium-revision": 814168
+        "chromium-revision": 814168,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/package-versions-deprecated": true,
+            "codeception/c3": true,
+            "spryker/composer-merge-plugin": true
+        }
     },
     "repositories": [
         {
