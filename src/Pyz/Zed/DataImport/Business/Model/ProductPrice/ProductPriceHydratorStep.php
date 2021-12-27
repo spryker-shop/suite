@@ -411,7 +411,7 @@ class ProductPriceHydratorStep implements DataImportStepInterface
      */
     protected function addPriceDataValue(array $priceData, string $key, string $value): array
     {
-        if (empty($value)) {
+        if (!$value) {
             return $priceData;
         }
 

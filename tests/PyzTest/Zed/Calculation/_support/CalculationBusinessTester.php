@@ -259,7 +259,7 @@ class CalculationBusinessTester extends Actor
      */
     public function createCalculationFacade(array $calculatorPlugins = []): CalculationFacade
     {
-        if (empty($calculatorPlugins)) {
+        if (!$calculatorPlugins) {
             return new CalculationFacade();
         }
 
