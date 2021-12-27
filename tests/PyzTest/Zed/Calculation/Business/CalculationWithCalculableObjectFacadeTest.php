@@ -565,7 +565,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
      *
      * @return void
      */
-    public function testCalculationTotalQuoteValues($priceMode, $items, $expense, $results): void
+    public function testCalculationTotalQuoteValues(string $priceMode, array $items, array $expense, array $results): void
     {
         $calculationFacade = $this->tester->createCalculationFacade();
         $quoteTransfer = $this->createFixtureDataForTestCases($priceMode, $items, $expense);
@@ -588,7 +588,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    protected function createFixtureDataForTestCases($priceMode, $items, $expense): QuoteTransfer
+    protected function createFixtureDataForTestCases(string $priceMode, array $items, array $expense): QuoteTransfer
     {
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->setStore($this->tester->getCurrentStoreTransfer());
@@ -609,7 +609,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
             $quoteTransfer->addItem($itemTransfer);
         }
 
-        if (!empty($expense)) {
+        if ($expense) {
             $quoteTransfer->addExpense($this->tester->createExpenseTransfer($expense[0], $priceMode, $expense[2], $expense[1]));
         }
 
