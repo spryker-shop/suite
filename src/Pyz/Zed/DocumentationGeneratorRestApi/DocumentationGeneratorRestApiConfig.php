@@ -22,4 +22,20 @@ class DocumentationGeneratorRestApiConfig extends SprykerDocumentationGeneratorR
             APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/%1$s/src/Spryker/Glue/%1$s/Controller/',
         ];
     }
+
+    /**
+     * @return string
+     */
+    public function getPathVersionPrefix(): string
+    {
+        return 'v';
+    }
+
+    /**
+     * @return bool
+     */
+    public function getPathVersionResolving(): bool
+    {
+        return true;
+    }
 }
