@@ -25005,20 +25005,20 @@
         },
         {
             "name": "spryker/documentation-generator-rest-api",
-            "version": "1.12.1",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/documentation-generator-rest-api.git",
-                "reference": "c1642b651baa6b48b413805700c9d20a919e824b"
+                "reference": "d16a2a6872d3a148909b466a6b291a59c813d67e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/documentation-generator-rest-api/zipball/c1642b651baa6b48b413805700c9d20a919e824b",
-                "reference": "c1642b651baa6b48b413805700c9d20a919e824b",
+                "url": "https://api.github.com/repos/spryker/documentation-generator-rest-api/zipball/d16a2a6872d3a148909b466a6b291a59c813d67e",
+                "reference": "d16a2a6872d3a148909b466a6b291a59c813d67e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker/doctrine-inflector": "^1.0.0 || ^2.0.0",
                 "spryker/documentation-generator-rest-api-extension": "^1.0.0",
                 "spryker/glue-application": "^1.3.0",
@@ -25049,9 +25049,9 @@
             ],
             "description": "DocumentationGeneratorRestApi module",
             "support": {
-                "source": "https://github.com/spryker/documentation-generator-rest-api/tree/1.12.1"
+                "source": "https://github.com/spryker/documentation-generator-rest-api/tree/1.13.0"
             },
-            "time": "2021-03-26T16:57:26+00:00"
+            "time": "2021-12-29T12:28:37+00:00"
         },
         {
             "name": "spryker/documentation-generator-rest-api-extension",
@@ -26680,16 +26680,16 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.37.0",
+            "version": "1.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "c67a693f559a19719982280186c9f4725a1d9af9"
+                "reference": "1bd92f91ad87571c5ec540d8e58adda1711e620c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/c67a693f559a19719982280186c9f4725a1d9af9",
-                "reference": "c67a693f559a19719982280186c9f4725a1d9af9",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/1bd92f91ad87571c5ec540d8e58adda1711e620c",
+                "reference": "1bd92f91ad87571c5ec540d8e58adda1711e620c",
                 "shasum": ""
             },
             "require": {
@@ -26739,9 +26739,9 @@
             ],
             "description": "GlueApplication module",
             "support": {
-                "source": "https://github.com/spryker/glue-application/tree/1.37.0"
+                "source": "https://github.com/spryker/glue-application/tree/1.38.0"
             },
-            "time": "2021-12-17T16:52:03+00:00"
+            "time": "2021-12-29T12:28:37+00:00"
         },
         {
             "name": "spryker/glue-application-authorization-connector",
@@ -60265,6 +60265,9 @@
             "require": {
                 "php": "^7.1 || ^8.0"
             },
+            "replace": {
+                "myclabs/deep-copy": "self.version"
+            },
             "require-dev": {
                 "doctrine/collections": "^1.0",
                 "doctrine/common": "^2.6",
@@ -64056,12 +64059,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "83bdaf07000c4061997ddbcd91ca6b05a948ebda"
+                "reference": "4c50d58e6649626e6c31b0a7cf0151230e0129d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/83bdaf07000c4061997ddbcd91ca6b05a948ebda",
-                "reference": "83bdaf07000c4061997ddbcd91ca6b05a948ebda",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/4c50d58e6649626e6c31b0a7cf0151230e0129d7",
+                "reference": "4c50d58e6649626e6c31b0a7cf0151230e0129d7",
                 "shasum": ""
             },
             "require": {
@@ -64106,7 +64109,7 @@
                 "issues": "https://github.com/spryker/code-sniffer/issues",
                 "source": "https://github.com/spryker/code-sniffer"
             },
-            "time": "2021-12-27T10:59:37+00:00"
+            "time": "2021-12-28T14:39:02+00:00"
         },
         {
             "name": "spryker/development",
@@ -65391,5 +65394,5 @@
     "platform-overrides": {
         "php": "7.4.15"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.1.0"
 }
