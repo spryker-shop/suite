@@ -3959,9 +3959,9 @@
             ],
             "description": "Payone module",
             "support": {
-                "source": "https://github.com/spryker-eco/payone/tree/4.4.2"
+                "source": "https://github.com/spryker-eco/payone/tree/master"
             },
-            "time": "2021-08-18T11:38:10+00:00"
+            "time": "2021-12-28T13:56:55+00:00"
         },
         {
             "name": "spryker-shop/agent-page",
@@ -60730,6 +60730,9 @@
             "conflict": {
                 "nette/di": "<3.0.6"
             },
+            "replace": {
+                "myclabs/deep-copy": "self.version"
+            },
             "require-dev": {
                 "nette/tester": "~2.0",
                 "phpstan/phpstan": "^1.0",
@@ -65391,5 +65394,5 @@
     "platform-overrides": {
         "php": "7.4.15"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.1.0"
 }
