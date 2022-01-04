@@ -19,7 +19,6 @@ use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintException;
 use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintTrait;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Spryker\Service\UtilEncoding\UtilEncodingService;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterCollection;
 use Spryker\Zed\DataImport\Dependency\Propel\DataImportToPropelConnectionBridge;
 use Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceBridge;
@@ -69,7 +68,6 @@ abstract class AbstractWriterPluginTest extends Unit
         $this->tester->mockFactoryMethod('createProductStockDataImportWriters', $this->createDataImportWriters());
         $this->tester->mockFactoryMethod('getConfig', $this->getDataImportConfigStub());
         $this->tester->mockFactoryMethod('getPropelConnection', $this->getPropelConnection());
-        $this->tester->mockFactoryMethod('getStore', $this->getStore());
         $this->tester->mockFactoryMethod('getPriceProductFacade', new PriceProductFacade());
         $this->tester->mockFactoryMethod('getUtilEncodingService', new DataImportToUtilEncodingServiceBridge(
             new UtilEncodingService(),
@@ -145,13 +143,5 @@ abstract class AbstractWriterPluginTest extends Unit
     public function getPropelConnection(): DataImportToPropelConnectionBridge
     {
         return new DataImportToPropelConnectionBridge(Propel::getConnection());
-    }
-
-    /**
-     * @return \Spryker\Shared\Kernel\Store
-     */
-    public function getStore(): Store
-    {
-        return Store::getInstance();
     }
 }

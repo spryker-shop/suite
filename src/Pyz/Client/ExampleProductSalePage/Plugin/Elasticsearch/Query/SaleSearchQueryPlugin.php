@@ -133,7 +133,8 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
      */
     protected function createSaleProductsQuery(): BoolQuery
     {
-        $store = $this->getFactory()->getStore();
+        $storeName = $this->getFactory()->getStoreClient()->getCurrentStore()->getNameOrFail();
+        $locale = $this->getFactory()->getLocaleClient()->getCurrentLocale();
 
         $labelName = $this->getFactory()
             ->getConfig()
@@ -141,7 +142,7 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
 
         $storageProductLabelTransfer = $this->getFactory()
             ->getProductLabelStorageClient()
-            ->findLabelByName($labelName, $store->getCurrentLocale(), $store->getStoreName());
+            ->findLabelByName($labelName, $locale, $storeName);
 
         $labelId = $storageProductLabelTransfer ? $storageProductLabelTransfer->getIdProductLabel() : 0;
 

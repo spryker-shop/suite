@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ExampleProductSalePage;
 
-use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 
@@ -26,7 +25,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     /**
      * @var string
      */
-    public const STORE = 'STORE';
+    public const CLIENT_LOCALE = 'CLIENT_LOCALE';
 
     /**
      * @var string
@@ -47,7 +46,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     {
         $container = $this->addSearchClient($container);
         $container = $this->addUrlStorageClient($container);
-        $container = $this->addStore($container);
+        $container = $this->addLocaleClient($container);
         $container = $this->addProductSalePageWidgetPlugins($container);
         $container = $this->addCatalogClient($container);
 
@@ -87,10 +86,10 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addStore($container): Container
+    protected function addLocaleClient(Container $container): Container
     {
-        $container->set(static::STORE, function () {
-            return Store::getInstance();
+        $container->set(static::CLIENT_LOCALE, function (Container $container) {
+            return $container->getLocator()->locale()->client();
         });
 
         return $container;

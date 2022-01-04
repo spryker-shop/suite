@@ -15,7 +15,6 @@ use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintException;
 use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintTrait;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Spryker\Service\UtilEncoding\UtilEncodingService;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Availability\Business\AvailabilityFacade;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
 use Spryker\Zed\Currency\Business\CurrencyFacade;
@@ -56,7 +55,6 @@ abstract class AbstractWriterTest extends Unit
         /** @var \Pyz\Zed\DataImport\Business\DataImportBusinessFactory $dataImportBusinessFactory */
         $dataImportBusinessFactory = Stub::make(DataImportBusinessFactory::class, [
             'getPropelConnection' => $this->getPropelConnection(),
-            'getStore' => $this->getStore(),
             'getStoreFacade' => $this->getStoreFacade(),
             'getCurrencyFacade' => $this->getCurrencyFacade(),
             'getStockFacade' => $this->getStockFacade(),
@@ -107,14 +105,6 @@ abstract class AbstractWriterTest extends Unit
     public function getPropelConnection(): DataImportToPropelConnectionBridge
     {
         return new DataImportToPropelConnectionBridge(Propel::getConnection());
-    }
-
-    /**
-     * @return \Spryker\Shared\Kernel\Store
-     */
-    public function getStore(): Store
-    {
-        return Store::getInstance();
     }
 
     /**

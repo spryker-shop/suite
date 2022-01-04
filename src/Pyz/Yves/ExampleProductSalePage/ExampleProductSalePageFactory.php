@@ -8,8 +8,8 @@
 namespace Pyz\Yves\ExampleProductSalePage;
 
 use Spryker\Client\Catalog\CatalogClientInterface;
+use Spryker\Client\Locale\LocaleClientInterface;
 use Spryker\Client\UrlStorage\UrlStorageClientInterface;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractFactory;
 
 class ExampleProductSalePageFactory extends AbstractFactory
@@ -31,11 +31,11 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Shared\Kernel\Store
+     * @return \Spryker\Client\Locale\LocaleClientInterface
      */
-    public function getStore(): Store
+    public function getLocaleClient(): LocaleClientInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::STORE);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_LOCALE);
     }
 
     /**

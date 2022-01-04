@@ -20,7 +20,6 @@ use Orm\Zed\Stock\Persistence\SpyStockProductQuery;
 use Orm\Zed\Stock\Persistence\SpyStockQuery;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use PyzTest\Zed\DataImport\Business\Model\AbstractWriterTest;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 
 /**
@@ -37,6 +36,11 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductStockWriterTest extends AbstractWriterTest
 {
+    /**
+     * @var string
+     */
+    protected const DEFAULT_STORE_NAME = 'DE';
+
     /**
      * @var array
      */
@@ -107,7 +111,7 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
                 SpyAvailabilityAbstractTableMap::COL_QUANTITY,
             ])
             ->useStoreQuery()
-                ->filterByName(Store::getDefaultStore())
+                ->filterByName(static::DEFAULT_STORE_NAME)
             ->endUse()
             ->find()
             ->toArray();
