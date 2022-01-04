@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.208.7",
+            "version": "3.208.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "41a800dd7cf5c4ac0ef9bf8db01e838ab6a3698c"
+                "reference": "1fe99375c5a9012d8f99dbbe59fff8e7131a9703"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/41a800dd7cf5c4ac0ef9bf8db01e838ab6a3698c",
-                "reference": "41a800dd7cf5c4ac0ef9bf8db01e838ab6a3698c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1fe99375c5a9012d8f99dbbe59fff8e7131a9703",
+                "reference": "1fe99375c5a9012d8f99dbbe59fff8e7131a9703",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.208.7"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.208.8"
             },
-            "time": "2021-12-21T19:16:39+00:00"
+            "time": "2022-01-03T19:22:28+00:00"
         },
         {
             "name": "brick/math",
@@ -1838,31 +1838,31 @@
         },
         {
             "name": "league/csv",
-            "version": "9.7.4",
+            "version": "9.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/csv.git",
-                "reference": "002f55f649e7511710dc7154ff44c7be32c8195c"
+                "reference": "9d2e0265c5d90f5dd601bc65ff717e05cec19b47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/csv/zipball/002f55f649e7511710dc7154ff44c7be32c8195c",
-                "reference": "002f55f649e7511710dc7154ff44c7be32c8195c",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/9d2e0265c5d90f5dd601bc65ff717e05cec19b47",
+                "reference": "9d2e0265c5d90f5dd601bc65ff717e05cec19b47",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "php": "^7.3 || ^8.0"
+                "php": "^7.4 || ^8.0"
             },
             "require-dev": {
                 "ext-curl": "*",
                 "ext-dom": "*",
-                "friendsofphp/php-cs-fixer": "^3.0",
-                "phpstan/phpstan": "^1.0",
+                "friendsofphp/php-cs-fixer": "^v3.4.0",
+                "phpstan/phpstan": "^1.3.0",
                 "phpstan/phpstan-phpunit": "^1.0.0",
-                "phpstan/phpstan-strict-rules": "^1.0",
-                "phpunit/phpunit": "^9.5"
+                "phpstan/phpstan-strict-rules": "^1.1.0",
+                "phpunit/phpunit": "^9.5.11"
             },
             "suggest": {
                 "ext-dom": "Required to use the XMLConverter and or the HTMLConverter classes",
@@ -1895,7 +1895,7 @@
                 }
             ],
             "description": "CSV data manipulation made easy in PHP",
-            "homepage": "http://csv.thephpleague.com",
+            "homepage": "https://csv.thephpleague.com",
             "keywords": [
                 "convert",
                 "csv",
@@ -1918,7 +1918,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-11-30T07:09:34+00:00"
+            "time": "2022-01-04T00:13:07+00:00"
         },
         {
             "name": "league/event",
@@ -5000,7 +5000,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3a32315b124d4f0c85a58f68d737d39d5dd3ef7c"
+                "reference": "3828905d9d84710fe9d4aec55c8da8397fb623f3"
             },
             "require": {
                 "php": ">=7.4"
@@ -5864,7 +5864,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2021-12-30T15:17:49+00:00"
+            "time": "2022-01-04T12:43:20+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5872,7 +5872,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "ffc91d03ceea29eeb9e1c95ab3308f12d4653033"
+                "reference": "7f2ec4f8b614ed8512b92e583d1139372fd6142e"
             },
             "require": {
                 "php": ">=7.4"
@@ -6042,7 +6042,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2021-12-30T15:17:51+00:00"
+            "time": "2022-01-04T12:43:22+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10173,16 +10173,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.3.4",
+            "version": "v3.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "65cb6f0b956485e1664f13d023c55298a4bb59ca"
+                "reference": "8f168c6ffa3ce76d1786b3cd52275424a3fc675b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/65cb6f0b956485e1664f13d023c55298a4bb59ca",
-                "reference": "65cb6f0b956485e1664f13d023c55298a4bb59ca",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/8f168c6ffa3ce76d1786b3cd52275424a3fc675b",
+                "reference": "8f168c6ffa3ce76d1786b3cd52275424a3fc675b",
                 "shasum": ""
             },
             "require": {
@@ -10233,7 +10233,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.3.4"
+                "source": "https://github.com/twigphp/Twig/tree/v3.3.7"
             },
             "funding": [
                 {
@@ -10245,7 +10245,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-25T13:46:55+00:00"
+            "time": "2022-01-03T21:15:37+00:00"
         },
         {
             "name": "voku/anti-xss",
@@ -11607,16 +11607,16 @@
         },
         {
             "name": "composer/semver",
-            "version": "3.2.6",
+            "version": "3.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "83e511e247de329283478496f7a1e114c9517506"
+                "reference": "deac27056b57e46faf136fae7b449eeaa71661ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/83e511e247de329283478496f7a1e114c9517506",
-                "reference": "83e511e247de329283478496f7a1e114c9517506",
+                "url": "https://api.github.com/repos/composer/semver/zipball/deac27056b57e46faf136fae7b449eeaa71661ee",
+                "reference": "deac27056b57e46faf136fae7b449eeaa71661ee",
                 "shasum": ""
             },
             "require": {
@@ -11668,7 +11668,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/semver/issues",
-                "source": "https://github.com/composer/semver/tree/3.2.6"
+                "source": "https://github.com/composer/semver/tree/3.2.7"
             },
             "funding": [
                 {
@@ -11684,7 +11684,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-25T11:34:17+00:00"
+            "time": "2022-01-04T09:57:54+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -12385,12 +12385,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "203754f5bfcb92bec9c38ce8b9e3d6875584c940"
+                "reference": "3f533ec606c107973c96675b84b5f1334df0a101"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/203754f5bfcb92bec9c38ce8b9e3d6875584c940",
-                "reference": "203754f5bfcb92bec9c38ce8b9e3d6875584c940",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/3f533ec606c107973c96675b84b5f1334df0a101",
+                "reference": "3f533ec606c107973c96675b84b5f1334df0a101",
                 "shasum": ""
             },
             "require": {
@@ -12435,7 +12435,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-14T12:41:32+00:00"
+            "time": "2022-01-01T15:35:42+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -13649,16 +13649,16 @@
         },
         {
             "name": "psalm/phar",
-            "version": "4.16.1",
+            "version": "4.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/phar.git",
-                "reference": "943b66f777f7ecaac6843088a27c64365a1e8922"
+                "reference": "8e968d791ffbb253901afc4b3512445d96cb1c51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/943b66f777f7ecaac6843088a27c64365a1e8922",
-                "reference": "943b66f777f7ecaac6843088a27c64365a1e8922",
+                "url": "https://api.github.com/repos/psalm/phar/zipball/8e968d791ffbb253901afc4b3512445d96cb1c51",
+                "reference": "8e968d791ffbb253901afc4b3512445d96cb1c51",
                 "shasum": ""
             },
             "require": {
@@ -13678,9 +13678,9 @@
             "description": "Composer-based Psalm Phar",
             "support": {
                 "issues": "https://github.com/psalm/phar/issues",
-                "source": "https://github.com/psalm/phar/tree/4.16.1"
+                "source": "https://github.com/psalm/phar/tree/4.17.0"
             },
-            "time": "2021-12-26T08:31:45+00:00"
+            "time": "2022-01-01T19:35:43+00:00"
         },
         {
             "name": "psr/cache",
@@ -15287,12 +15287,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "ade2c3c8622557b993a09e4f292615c63fa701a1"
+                "reference": "3b84913605da52d1483a2ea2f747f9462003a444"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/ade2c3c8622557b993a09e4f292615c63fa701a1",
-                "reference": "ade2c3c8622557b993a09e4f292615c63fa701a1",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/3b84913605da52d1483a2ea2f747f9462003a444",
+                "reference": "3b84913605da52d1483a2ea2f747f9462003a444",
                 "shasum": ""
             },
             "require": {
@@ -15360,9 +15360,9 @@
             "description": "Spryk module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/spryk/issues",
-                "source": "https://github.com/spryker-sdk/spryk/tree/master"
+                "source": "https://github.com/spryker-sdk/spryk/tree/0.3.3"
             },
-            "time": "2021-12-28T13:36:04+00:00"
+            "time": "2021-12-31T09:49:51+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -15608,7 +15608,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "8f78b8533f9de89923220c64bb642b4a1f9960b1"
+                "reference": "fa19ef744a9929d4cd578eb40ae3d1b9d2600fe9"
             },
             "require": {
                 "composer/semver": "^1.0.0 || ^2.0.0 || ^3.0.0",
@@ -15658,7 +15658,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2021-12-27T17:50:16+00:00"
+            "time": "2022-01-03T11:58:10+00:00"
         },
         {
             "name": "spryker/docker-chromedriver",

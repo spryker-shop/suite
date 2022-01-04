@@ -23,7 +23,6 @@ use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
 use PyzTest\Zed\DataImport\Business\Model\AbstractWriterTest;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 
 /**
@@ -69,7 +68,7 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
         $spyPriceProductStoreEntityTransfer = (new SpyPriceProductStoreEntityBuilder())->build();
         $priceProductStore = $spyPriceProductStoreEntityTransfer
             ->setCurrency((new SpyCurrencyEntityTransfer())->setName($this->getCurrency()->getCode()))
-            ->setStore((new SpyStoreEntityTransfer())->setName(Store::getDefaultStore()))
+            ->setStore((new SpyStoreEntityTransfer())->setName($this->getDefaultStore()))
             ->setPriceData(static::PRICE_DATA);
 
         $priceProductStores = new ArrayObject();
@@ -178,5 +177,13 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
             ->limit(count(static::PRICE_TYPES))
             ->find()
             ->toArray();
+    }
+
+    /**
+     * @return string
+     */
+    protected function getDefaultStore(): string
+    {
+        return $this->getStoreFacade()->getAllStores()[0]->getNameOrFail();
     }
 }

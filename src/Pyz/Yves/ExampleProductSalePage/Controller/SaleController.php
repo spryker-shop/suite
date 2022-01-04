@@ -62,7 +62,7 @@ class SaleController extends AbstractController
      */
     protected function getCategoryNode($categoryPath): array
     {
-        $categoryPathPrefix = '/' . $this->getFactory()->getStore()->getCurrentLanguage();
+        $categoryPathPrefix = '/' . $this->getFactory()->getLocaleClient()->getCurrentLanguage();
         $fullCategoryPath = $categoryPathPrefix . '/' . ltrim($categoryPath, '/');
 
         $categoryNode = $this->getFactory()

@@ -14,7 +14,6 @@ use Orm\Zed\Product\Persistence\SpyProductAbstractStoreQuery;
 use Orm\Zed\Store\Persistence\Map\SpyStoreTableMap;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreHydratorStep;
 use PyzTest\Zed\DataImport\Business\Model\AbstractWriterTest;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 
 /**
@@ -32,6 +31,11 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
 {
     /**
+     * @var string
+     */
+    protected const DEFAULT_STORE_NAME = 'DE';
+
+    /**
      * @var int
      */
     protected const PRODUCTS_LIMIT = 2;
@@ -47,7 +51,7 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
             $dataSet = new DataSet();
             $dataSet[ProductAbstractStoreHydratorStep::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER] = (new ProductAbstractStoreTransfer())
                 ->setProductAbstractSku($abstractProductSku)
-                ->setStoreName(Store::getDefaultStore());
+                ->setStoreName(static::DEFAULT_STORE_NAME);
 
             $result[$abstractProductSku] = $dataSet;
         }
@@ -67,7 +71,7 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
                 ->filterBySku_In($skus)
             ->endUse()
             ->useSpyStoreQuery()
-                ->filterByName(Store::getDefaultStore())
+                ->filterByName(static::DEFAULT_STORE_NAME)
             ->endUse()
             ->select([SpyProductAbstractTableMap::COL_SKU, SpyStoreTableMap::COL_NAME])
             ->find()

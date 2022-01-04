@@ -66,7 +66,6 @@ use Pyz\Zed\DataImport\Business\Model\DiscountVoucher\DiscountVoucherWriterStep;
 use Pyz\Zed\DataImport\Business\Model\GiftCard\GiftCardAbstractConfigurationWriterStep;
 use Pyz\Zed\DataImport\Business\Model\GiftCard\GiftCardConcreteConfigurationWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Glossary\GlossaryWriterStep;
-use Pyz\Zed\DataImport\Business\Model\Locale\AddLocalesStep;
 use Pyz\Zed\DataImport\Business\Model\Locale\LocaleNameToIdLocaleStep;
 use Pyz\Zed\DataImport\Business\Model\Locale\Repository\LocaleRepository;
 use Pyz\Zed\DataImport\Business\Model\Locale\Repository\LocaleRepositoryInterface;
@@ -2791,14 +2790,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function getPriceProductFacade(): PriceProductFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_PRICE_PRODUCT);
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
-    protected function createAddLocalesStep(): DataImportStepInterface
-    {
-        return new AddLocalesStep($this->getStore());
     }
 
     /**
