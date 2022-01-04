@@ -16,7 +16,7 @@ jobs:
             matrix:
                 php-version: [
                     '7.4',
-                    '8.0'
+                    '8.1'
                 ]
 
         env:
@@ -174,11 +174,11 @@ jobs:
               run: vendor/bin/console code:sniff:style
 
     php-80-mariadb-glue-alpine:
-        name: "PHP 8.0 / MariaDB / Glue / Alpine"
+        name: "PHP 8.1 / MariaDB / Glue"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.0RC-alpine
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.1-tmp-ci
             TRAVIS: 1
 
         steps:
@@ -203,11 +203,11 @@ jobs:
                   docker/sdk testing codecept run -c codeception.api.yml
 
     php-80-mariadb-acceptance-alpine:
-        name: "PHP 8.0 / MariaDB / Acceptance / Alpine"
+        name: "PHP 8.1 / MariaDB / Acceptance"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.0RC-alpine
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.1-tmp-ci
             TRAVIS: 1
 
         steps:
@@ -232,11 +232,11 @@ jobs:
 
 
     php-80-mariadb-functional-alpine:
-        name: "PHP 8.0 / MariaDB / Functional / Alpine"
+        name: "PHP 8.0 / MariaDB / Functional"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.0RC-alpine
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.1-tmp-ci
             TRAVIS: 1
 
         steps:
