@@ -23,7 +23,6 @@ use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\StoreQueryExpanderPl
 use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\FacetResultFormatterPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\PaginatedResultFormatterPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\SortedResultFormatterPlugin;
-use Spryker\Shared\Kernel\Store;
 
 class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvider
 {
@@ -31,6 +30,16 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      * @var string
      */
     public const CLIENT_SEARCH = 'CLIENT_SEARCH';
+
+    /**
+     * @var string
+     */
+    public const CLIENT_STORE = 'CLIENT_STORE';
+
+    /**
+     * @var string
+     */
+    public const CLIENT_LOCALE = 'CLIENT_LOCALE';
 
     /**
      * @var string
@@ -53,11 +62,6 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
     public const SALE_SEARCH_RESULT_FORMATTER_PLUGINS = 'SALE_SEARCH_RESULT_FORMATTER_PLUGINS';
 
     /**
-     * @var string
-     */
-    public const STORE = 'STORE';
-
-    /**
      * @param \Spryker\Client\Kernel\Container $container
      *
      * @return \Spryker\Client\Kernel\Container
@@ -69,7 +73,8 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
         $container = $this->addSaleSearchQueryPlugin($container);
         $container = $this->addSaleSearchQueryExpanderPlugins($container);
         $container = $this->addSaleSearchResultFormatterPlugins($container);
-        $container = $this->addStore($container);
+        $container = $this->addStoreClient($container);
+        $container = $this->addLocaleClient($container);
 
         return $container;
     }
@@ -168,10 +173,24 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    protected function addStore(Container $container): Container
+    protected function addStoreClient(Container $container): Container
     {
-        $container->set(static::STORE, function () {
-            return Store::getInstance();
+        $container->set(static::CLIENT_STORE, function (Container $container) {
+            return $container->getLocator()->store()->client();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Client\Kernel\Container $container
+     *
+     * @return \Spryker\Client\Kernel\Container
+     */
+    protected function addLocaleClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_LOCALE, function (Container $container) {
+            return $container->getLocator()->locale()->client();
         });
 
         return $container;
