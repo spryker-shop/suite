@@ -1,6 +1,5 @@
 _COMPOSER_INSTALL: &COMPOSER_INSTALL
     - echo "_COMPOSER_INSTALL"
-    - composer self-update 2.1.14
     - COMPOSER_MEMORY_LIMIT=-1 composer install --optimize-autoloader --no-interaction --prefer-install=auto
 
 _COMPOSER_PREFER_MID: &COMPOSER_PREFER_MID
