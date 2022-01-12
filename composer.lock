@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.208.10",
+            "version": "3.209.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "a7802ac9289e0c4de2c76cfe0ea0f11f72955754"
+                "reference": "1c351046d8fd46961f4d020d38624d46065134cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a7802ac9289e0c4de2c76cfe0ea0f11f72955754",
-                "reference": "a7802ac9289e0c4de2c76cfe0ea0f11f72955754",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1c351046d8fd46961f4d020d38624d46065134cf",
+                "reference": "1c351046d8fd46961f4d020d38624d46065134cf",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.208.10"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.3"
             },
-            "time": "2022-01-05T19:19:54+00:00"
+            "time": "2022-01-11T19:13:42+00:00"
         },
         {
             "name": "brick/math",
@@ -455,32 +455,28 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "e864bbf5904cb8f5bb334f99209b48018522f042"
+                "reference": "9c50f840f257bbb941e6f4a0e94ccf5db5c3f76c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/e864bbf5904cb8f5bb334f99209b48018522f042",
-                "reference": "e864bbf5904cb8f5bb334f99209b48018522f042",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/9c50f840f257bbb941e6f4a0e94ccf5db5c3f76c",
+                "reference": "9c50f840f257bbb941e6f4a0e94ccf5db5c3f76c",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2 || ^8.0"
+                "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^6.0",
-                "phpstan/phpstan": "^0.11.8",
-                "phpunit/phpunit": "^8.2"
+                "doctrine/coding-standard": "^9.0",
+                "phpstan/phpstan": "1.3",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "vimeo/psalm": "^4.11"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.2.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Common\\Lexer\\": "lib/Doctrine/Common/Lexer"
@@ -515,7 +511,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/lexer/issues",
-                "source": "https://github.com/doctrine/lexer/tree/1.2.1"
+                "source": "https://github.com/doctrine/lexer/tree/1.2.2"
             },
             "funding": [
                 {
@@ -531,7 +527,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-25T17:44:05+00:00"
+            "time": "2022-01-12T08:27:12+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -1644,16 +1640,16 @@
         },
         {
             "name": "laminas/laminas-stdlib",
-            "version": "3.6.4",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-stdlib.git",
-                "reference": "830a36d93aeaf06e540e90ec031babb3c6eafadb"
+                "reference": "cba75fad2053bb5dc8d3e7f5e62b61d75eecfaf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/830a36d93aeaf06e540e90ec031babb3c6eafadb",
-                "reference": "830a36d93aeaf06e540e90ec031babb3c6eafadb",
+                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/cba75fad2053bb5dc8d3e7f5e62b61d75eecfaf1",
+                "reference": "cba75fad2053bb5dc8d3e7f5e62b61d75eecfaf1",
                 "shasum": ""
             },
             "require": {
@@ -1664,8 +1660,8 @@
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.3.0",
-                "phpbench/phpbench": "^0.17.1",
-                "phpunit/phpunit": "~9.3.7",
+                "phpbench/phpbench": "^1.0",
+                "phpunit/phpunit": "^9.3.7",
                 "psalm/plugin-phpunit": "^0.16.0",
                 "vimeo/psalm": "^4.7"
             },
@@ -1699,7 +1695,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-12-29T14:33:01+00:00"
+            "time": "2022-01-10T11:18:55+00:00"
         },
         {
             "name": "lcobucci/clock",
@@ -24574,16 +24570,16 @@
         },
         {
             "name": "spryker/discount",
-            "version": "9.23.0",
+            "version": "9.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount.git",
-                "reference": "f627b226b711f87e4f3e490d426d9b4ea4b5b8a3"
+                "reference": "b76c191f6d49bcd059b3a1594955013e38e20edd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount/zipball/f627b226b711f87e4f3e490d426d9b4ea4b5b8a3",
-                "reference": "f627b226b711f87e4f3e490d426d9b4ea4b5b8a3",
+                "url": "https://api.github.com/repos/spryker/discount/zipball/b76c191f6d49bcd059b3a1594955013e38e20edd",
+                "reference": "b76c191f6d49bcd059b3a1594955013e38e20edd",
                 "shasum": ""
             },
             "require": {
@@ -24644,33 +24640,39 @@
             ],
             "description": "Discount module",
             "support": {
-                "source": "https://github.com/spryker/discount/tree/9.23.0"
+                "source": "https://github.com/spryker/discount/tree/9.24.0"
             },
-            "time": "2021-12-30T14:58:49+00:00"
+            "time": "2022-01-12T14:30:13+00:00"
         },
         {
             "name": "spryker/discount-calculation-connector",
-            "version": "5.2.0",
+            "version": "5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount-calculation-connector.git",
-                "reference": "dbc7b5bd9613c6241fe628095b74519e78237ba4"
+                "reference": "f03859b254c4a5a5ba6793774255f3238a00feef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount-calculation-connector/zipball/dbc7b5bd9613c6241fe628095b74519e78237ba4",
-                "reference": "dbc7b5bd9613c6241fe628095b74519e78237ba4",
+                "url": "https://api.github.com/repos/spryker/discount-calculation-connector/zipball/f03859b254c4a5a5ba6793774255f3238a00feef",
+                "reference": "f03859b254c4a5a5ba6793774255f3238a00feef",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.4",
                 "spryker/calculation-extension": "^1.0.0",
                 "spryker/discount": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^9.0.0",
-                "spryker/kernel": "^3.30.0"
+                "spryker/kernel": "^3.30.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/calculation": "*",
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/currency": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/store": "*",
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/calculation": "If you want to use Calculation plugins."
@@ -24692,9 +24694,9 @@
             ],
             "description": "DiscountCalculationConnector module",
             "support": {
-                "source": "https://github.com/spryker/discount-calculation-connector/tree/5.2.0"
+                "source": "https://github.com/spryker/discount-calculation-connector/tree/5.3.0"
             },
-            "time": "2020-09-09T10:48:04+00:00"
+            "time": "2022-01-12T14:30:13+00:00"
         },
         {
             "name": "spryker/discount-extension",
@@ -60151,16 +60153,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.14.4",
+            "version": "2.14.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "f056f1fe935d9ed86e698905a957334029899895"
+                "reference": "a63e5e8f26ebbebf8ed3c5c691637325512eb0dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/f056f1fe935d9ed86e698905a957334029899895",
-                "reference": "f056f1fe935d9ed86e698905a957334029899895",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/a63e5e8f26ebbebf8ed3c5c691637325512eb0dc",
+                "reference": "a63e5e8f26ebbebf8ed3c5c691637325512eb0dc",
                 "shasum": ""
             },
             "require": {
@@ -60210,7 +60212,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.14.4"
+                "source": "https://github.com/filp/whoops/tree/2.14.5"
             },
             "funding": [
                 {
@@ -60218,7 +60220,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-03T12:00:00+00:00"
+            "time": "2022-01-07T12:00:00+00:00"
         },
         {
             "name": "jetbrains/phpstorm-stubs",
@@ -60226,12 +60228,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "b475de05d2bc6b6f048c62c9f4bfc9c32ffb2944"
+                "reference": "79d98cfda93f5c03d345d4b91fd9075509442338"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/b475de05d2bc6b6f048c62c9f4bfc9c32ffb2944",
-                "reference": "b475de05d2bc6b6f048c62c9f4bfc9c32ffb2944",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/79d98cfda93f5c03d345d4b91fd9075509442338",
+                "reference": "79d98cfda93f5c03d345d4b91fd9075509442338",
                 "shasum": ""
             },
             "require-dev": {
@@ -60267,7 +60269,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2022-01-05T14:35:03+00:00"
+            "time": "2022-01-11T16:12:52+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -62262,16 +62264,16 @@
         },
         {
             "name": "psalm/phar",
-            "version": "4.17.0",
+            "version": "4.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/phar.git",
-                "reference": "8e968d791ffbb253901afc4b3512445d96cb1c51"
+                "reference": "2c5140c62d897982d7f623d8dbb25ab802557c5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/8e968d791ffbb253901afc4b3512445d96cb1c51",
-                "reference": "8e968d791ffbb253901afc4b3512445d96cb1c51",
+                "url": "https://api.github.com/repos/psalm/phar/zipball/2c5140c62d897982d7f623d8dbb25ab802557c5f",
+                "reference": "2c5140c62d897982d7f623d8dbb25ab802557c5f",
                 "shasum": ""
             },
             "require": {
@@ -62291,9 +62293,9 @@
             "description": "Composer-based Psalm Phar",
             "support": {
                 "issues": "https://github.com/psalm/phar/issues",
-                "source": "https://github.com/psalm/phar/tree/4.17.0"
+                "source": "https://github.com/psalm/phar/tree/4.18.1"
             },
-            "time": "2022-01-01T19:35:43+00:00"
+            "time": "2022-01-08T21:49:33+00:00"
         },
         {
             "name": "psr/cache",
@@ -64014,16 +64016,16 @@
         },
         {
             "name": "spryker/architecture-sniffer",
-            "version": "0.5.2",
+            "version": "0.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "cb9e1b29ba8e6b039c33d58fda08e6344934bf78"
+                "reference": "e91fd742c2626fe3a74288747efe57dbc28a4ac6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/cb9e1b29ba8e6b039c33d58fda08e6344934bf78",
-                "reference": "cb9e1b29ba8e6b039c33d58fda08e6344934bf78",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/e91fd742c2626fe3a74288747efe57dbc28a4ac6",
+                "reference": "e91fd742c2626fe3a74288747efe57dbc28a4ac6",
                 "shasum": ""
             },
             "require": {
@@ -64037,7 +64039,7 @@
             "require-dev": {
                 "codeception/codeception": "^4.1",
                 "codeception/module-asserts": "^1.3",
-                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan": "^1.0.0",
                 "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "^4.0"
             },
@@ -64072,7 +64074,7 @@
                 "issues": "https://github.com/spryker/architecture-sniffer/issues",
                 "source": "https://github.com/spryker/architecture-sniffer"
             },
-            "time": "2021-09-02T15:02:07+00:00"
+            "time": "2022-01-06T12:50:40+00:00"
         },
         {
             "name": "spryker/code-generator",
