@@ -38,11 +38,11 @@ class UrlStorageBusinessFactory extends SprykerUrlStorageBusinessFactory
             $this->getUtilSanitizeService(),
             $this->getRepository(),
             $this->getEntityManager(),
-            $this->getStoreFacade(),
             $this->getConfig()->isSendingToQueue(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
             $this->createUrlStorageCteStrategyResolver()->resolve(),
+            $this->getStoreFacade(),
         );
     }
 

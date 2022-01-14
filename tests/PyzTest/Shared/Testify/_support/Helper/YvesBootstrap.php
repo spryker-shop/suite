@@ -55,7 +55,7 @@ class YvesBootstrap extends Framework
         };
         Request::setFactory($requestFactory);
 
-        if (!isset($this->yvesBootstrap)) {
+        if ($this->yvesBootstrap === null) {
             throw new ModuleConfigException(self::class, 'Application instance was not received from bootstrap file');
         }
     }

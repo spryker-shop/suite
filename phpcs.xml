@@ -7,11 +7,6 @@
         All sniffs in ./Sniffs will be auto loaded
     </description>
 
-    <rule ref="vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml">
-        <exclude name="SprykerStrict.TypeHints.ParameterTypeHint"/>
-        <exclude name="SprykerStrict.TypeHints.PropertyTypeHint"/>
-    </rule>
-
     <exclude-pattern>*/src/Generated/*</exclude-pattern>
     <exclude-pattern>*/src/Orm/*/Base/</exclude-pattern>
     <exclude-pattern>*/src/Orm/*/Map/</exclude-pattern>
@@ -24,7 +19,15 @@
     <exclude-pattern>./data/DE/cache/*</exclude-pattern>
     <exclude-pattern>./data/AT/cache/*</exclude-pattern>
     <exclude-pattern>./data/US/cache/*</exclude-pattern>
+    <exclude-pattern>./data/development-core/*</exclude-pattern>
     <exclude-pattern>*/node_modules/*</exclude-pattern>
+
+    <rule ref="vendor/spryker/code-sniffer/Spryker/ruleset.xml"/>
+
+    <rule ref="vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml">
+        <exclude name="SprykerStrict.TypeHints.ParameterTypeHint"/>
+        <exclude name="SprykerStrict.TypeHints.PropertyTypeHint"/>
+    </rule>
 
     <!-- Define your own sniffs here -->
 

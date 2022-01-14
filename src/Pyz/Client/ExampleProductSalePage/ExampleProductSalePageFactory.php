@@ -8,10 +8,11 @@
 namespace Pyz\Client\ExampleProductSalePage;
 
 use Spryker\Client\Kernel\AbstractFactory;
+use Spryker\Client\Locale\LocaleClientInterface;
 use Spryker\Client\ProductLabelStorage\ProductLabelStorageClientInterface;
 use Spryker\Client\Search\SearchClientInterface;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
-use Spryker\Shared\Kernel\Store;
+use Spryker\Client\Store\StoreClientInterface;
 
 class ExampleProductSalePageFactory extends AbstractFactory
 {
@@ -40,11 +41,19 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Shared\Kernel\Store
+     * @return \Spryker\Client\Store\StoreClientInterface
      */
-    public function getStore(): Store
+    public function getStoreClient(): StoreClientInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::STORE);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_STORE);
+    }
+
+    /**
+     * @return \Spryker\Client\Locale\LocaleClient
+     */
+    public function getLocaleClient(): LocaleClientInterface
+    {
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_LOCALE);
     }
 
     /**

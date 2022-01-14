@@ -16,7 +16,6 @@
         "ext-pgsql": "*",
         "ext-readline": "*",
         "ext-redis": "*",
-        "psr/cache": "^1.0.1",
         "spryker-eco/loggly": "^0.1.0",
         "spryker-eco/payone": "^4.0.0",
         "spryker-shop/agent-page": "^1.10.0",
@@ -235,6 +234,7 @@
         "spryker/category": "^5.0.0",
         "spryker/category-data-feed": "^0.2.0",
         "spryker/category-data-import": "^0.3.0",
+        "spryker/category-discount-connector": "^1.0.0",
         "spryker/category-exporter": "^3.0.0",
         "spryker/category-extension": "^1.0.0",
         "spryker/category-gui": "^2.0.0",
@@ -456,6 +456,9 @@
         "spryker/glue-application-authorization-connector": "^1.0.0",
         "spryker/glue-application-authorization-connector-extension": "^1.0.0",
         "spryker/glue-application-extension": "^1.0.0",
+        "spryker/glue-backend-api-application": "^0.1.0",
+        "spryker/glue-http": "^0.1.0",
+        "spryker/glue-storefront-api-application": "^0.1.0",
         "spryker/graceful-runner": "^1.0.0",
         "spryker/graph": "^3.0.0",
         "spryker/graphviz": "^2.0.0",
@@ -625,7 +628,7 @@
         "spryker/price-product-merchant-relationship": "^1.7.0",
         "spryker/price-product-merchant-relationship-data-import": "^0.2.0",
         "spryker/price-product-merchant-relationship-gui": "^1.0.0",
-        "spryker/price-product-merchant-relationship-storage": "^1.12.0",
+        "spryker/price-product-merchant-relationship-storage": "^1.13.0",
         "spryker/price-product-merchant-relationship-storage-extension": "^1.0.0",
         "spryker/price-product-offer": "^1.0.0",
         "spryker/price-product-offer-data-import": "^0.7.0",
@@ -836,6 +839,7 @@
         "spryker/sales-order-threshold-data-import": "^0.1.0",
         "spryker/sales-order-threshold-extension": "^1.0.0",
         "spryker/sales-order-threshold-gui": "^1.0.0",
+        "spryker/sales-order-thresholds-rest-api": "^1.0.0",
         "spryker/sales-payment": "^1.0.0",
         "spryker/sales-payment-extension": "^1.0.0",
         "spryker/sales-payment-gui": "^1.0.0",
@@ -974,8 +978,7 @@
         "spryker/zed-request-extension": "^1.0.0",
         "spryker/zed-ui": "^1.0.0",
         "symfony/console": "^4.10.0 || ^5.2.0",
-        "symfony/security-core": "^4.4.13 || ^5.2.8",
-        "willdurand/negotiation": "^3.0"
+        "symfony/security-core": "^4.4.13 || ^5.2.8"
     },
     "require-dev": {
         "codeception/codeception": "^4.1.8",
@@ -988,19 +991,17 @@
         "codeception/phpunit-wrapper": "^8.1.2 || ^9.0.0",
         "codeception/stub": "^3.7.0",
         "composer/package-versions-deprecated": "^1.8.0",
-        "doctrine/lexer": "^1.0.2",
         "filp/whoops": "^2.7",
-        "fzaninotto/faker": "^1.6.0",
+        "jetbrains/phpstorm-stubs":  "dev-master",
         "pdepend/pdepend": "^2.2.4",
-        "phpstan/phpstan": "0.12.98",
+        "phpstan/phpstan": "~1.2.0",
         "phpunit/phpunit": "^9.5.0",
         "psalm/phar": "^4.3.1",
-        "roave/signature": "~1.2.0",
         "spryker-sdk/benchmark": "^0.2.0",
         "spryker-sdk/codeception-phantoman": "^0.1.0",
         "spryker-sdk/composer-constrainer": "^0.2.0",
         "spryker-sdk/load-testing": "^0.1.0",
-        "spryker-sdk/phpstan-spryker": "^0.3.0",
+        "spryker-sdk/phpstan-spryker": "^0.4.0",
         "spryker-sdk/security-checker": "^0.1.0",
         "spryker-sdk/spryk": "^0.3.0",
         "spryker-sdk/spryk-gui": "^0.2.0",
@@ -1035,9 +1036,16 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "preferred-install": "dist",
         "platform": {
             "php": "7.4.15"
+        },
+        "preferred-install": {
+            "spryker/*": "source",
+            "spryker-shop/*": "source",
+            "spryker-eco/*": "source",
+            "spryker-middleware/*": "source",
+            "spryker-sdk/*": "source",
+            "*": "dist"
         },
         "use-include-path": true,
         "sort-packages": true,
@@ -1045,7 +1053,11 @@
             "https"
         ],
         "process-timeout": 900,
-        "chromium-revision": 814168
+        "chromium-revision": 814168,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/package-versions-deprecated": true
+        }
     },
     "scripts": {
         "compile": [

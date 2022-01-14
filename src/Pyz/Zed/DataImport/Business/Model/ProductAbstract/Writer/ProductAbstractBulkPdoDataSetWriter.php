@@ -31,7 +31,7 @@ class ProductAbstractBulkPdoDataSetWriter extends AbstractProductAbstractBulkPdo
      */
     protected function persistAbstractProductEntities(): void
     {
-        if (!empty(static::$productAbstractCollection)) {
+        if (static::$productAbstractCollection) {
             $abstractSkus = $this->dataFormatter->formatPostgresArrayString(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_SKU),
             );
@@ -75,7 +75,7 @@ class ProductAbstractBulkPdoDataSetWriter extends AbstractProductAbstractBulkPdo
      */
     protected function persistAbstractProductLocalizedAttributesEntities(): void
     {
-        if (!empty(static::$productAbstractLocalizedAttributesCollection)) {
+        if (static::$productAbstractLocalizedAttributesCollection) {
             $abstractSkus = $this->dataFormatter->formatPostgresArrayString(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_ABSTRACT_SKU),
             );
@@ -124,7 +124,7 @@ class ProductAbstractBulkPdoDataSetWriter extends AbstractProductAbstractBulkPdo
      */
     protected function persistAbstractProductCategoryEntities(): void
     {
-        if (!empty(static::$productCategoryCollection)) {
+        if (static::$productCategoryCollection) {
             $abstractSkus = $this->dataFormatter->formatPostgresArrayString(
                 $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, static::COLUMN_ABSTRACT_SKU),
             );
@@ -156,7 +156,7 @@ class ProductAbstractBulkPdoDataSetWriter extends AbstractProductAbstractBulkPdo
      */
     protected function persistAbstractProductUrlEntities(): void
     {
-        if (!empty(static::$productUrlCollection)) {
+        if (static::$productUrlCollection) {
             $abstractSkus = $this->dataFormatter->formatPostgresArrayString(
                 $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, static::COLUMN_ABSTRACT_SKU),
             );

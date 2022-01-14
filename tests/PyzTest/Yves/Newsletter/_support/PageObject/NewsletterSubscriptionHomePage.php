@@ -20,7 +20,7 @@ class NewsletterSubscriptionHomePage
     public const EXISTING_EMAIL = 'bar@foo.com';
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     public const FORM_SELECTOR = ['id' => 'newsletterSubscriptionWidgetForm_subscribe'];
 

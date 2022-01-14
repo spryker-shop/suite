@@ -106,6 +106,8 @@ class GuestCheckoutRestApiFixtures implements FixturesBuilderInterface, Fixtures
      */
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {
+        $I->truncateSalesOrderThresholds();
+
         $this->guestCustomerReference = $I->createGuestCustomerReference();
         $this->productConcreteTransfer = $I->haveProductWithStock();
         $this->guestCustomerTransfer = $I->createCustomerTransfer([

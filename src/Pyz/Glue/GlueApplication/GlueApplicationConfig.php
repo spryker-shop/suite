@@ -35,4 +35,20 @@ class GlueApplicationConfig extends SprykerGlueApplicationConfig
     {
         return false;
     }
+
+    /**
+     * @return bool
+     */
+    public function getPathVersionResolving(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPathVersionPrefix(): string
+    {
+        return 'v';
+    }
 }

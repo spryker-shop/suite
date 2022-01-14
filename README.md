@@ -13,10 +13,6 @@ If you encounter any issues during or after the installation, see [Troubleshooti
 
 ## Docker installation
 
-* [Troubleshooting](https://academy.spryker.com/getting_started/troubleshooting.html)
-
-## Docker installation
-
 For detailed installation instructions of Spryker in Docker, see [Getting Started with Docker](https://documentation.spryker.com/docs/getting-started-with-docker).
 
 For troubleshooting of Docker based instances, see [Troubleshooting](https://documentation.spryker.com/docs/spryker-in-docker-troubleshooting).

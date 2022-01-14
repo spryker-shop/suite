@@ -267,7 +267,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      */
     public function write(): void
     {
-        if (empty($this->synchronizedDataCollection)) {
+        if (!$this->synchronizedDataCollection) {
             return;
         }
 

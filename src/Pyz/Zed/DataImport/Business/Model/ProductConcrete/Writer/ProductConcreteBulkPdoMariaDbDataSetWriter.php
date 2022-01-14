@@ -79,7 +79,7 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
      */
     protected function persistConcreteProductLocalizedAttributesEntities(): void
     {
-        if (!empty(static::$productLocalizedAttributesCollection)) {
+        if (static::$productLocalizedAttributesCollection) {
             $rawSku = $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_SKU);
 
             $sku = $this->dataFormatter->formatStringList($rawSku);
@@ -126,7 +126,7 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
      */
     protected function persistConcreteProductSearchEntities(): void
     {
-        if (!empty(static::$productSearchCollection)) {
+        if (static::$productSearchCollection) {
             $rawIdLocale = $this->dataFormatter->getCollectionDataByKey(static::$productSearchCollection, ProductConcreteHydratorStep::KEY_FK_LOCALE);
 
             $idLocale = $this->dataFormatter->formatStringList($rawIdLocale);
@@ -158,7 +158,7 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
      */
     protected function persistConcreteProductBundleEntities(): void
     {
-        if (!empty(static::$productBundleCollection)) {
+        if (static::$productBundleCollection) {
             $rawBundledProductSku = $this->dataFormatter->getCollectionDataByKey(static::$productBundleCollection, ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_SKU);
 
             $bundledProductSku = $this->dataFormatter->formatPostgresArrayString($rawBundledProductSku);

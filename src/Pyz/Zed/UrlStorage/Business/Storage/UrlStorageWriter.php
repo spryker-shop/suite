@@ -60,23 +60,29 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      * @param \Spryker\Zed\UrlStorage\Dependency\Service\UrlStorageToUtilSanitizeServiceInterface $utilSanitize
      * @param \Spryker\Zed\UrlStorage\Persistence\UrlStorageRepositoryInterface $urlStorageRepository
      * @param \Spryker\Zed\UrlStorage\Persistence\UrlStorageEntityManagerInterface $urlStorageEntityManager
-     * @param \Spryker\Zed\UrlStorage\Dependency\Facade\UrlStorageToStoreFacadeInterface $storeFacade
      * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      * @param \Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface $urlStorageCte
+     * @param \Spryker\Zed\UrlStorage\Dependency\Facade\UrlStorageToStoreFacadeInterface $storeFacade
      */
     public function __construct(
         UrlStorageToUtilSanitizeServiceInterface $utilSanitize,
         UrlStorageRepositoryInterface $urlStorageRepository,
         UrlStorageEntityManagerInterface $urlStorageEntityManager,
-        UrlStorageToStoreFacadeInterface $storeFacade,
         bool $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
-        UrlStorageCteInterface $urlStorageCte
+        UrlStorageCteInterface $urlStorageCte,
+        UrlStorageToStoreFacadeInterface $storeFacade
     ) {
-        parent::__construct($utilSanitize, $urlStorageRepository, $urlStorageEntityManager, $storeFacade, $isSendingToQueue);
+        parent::__construct(
+            $utilSanitize,
+            $urlStorageRepository,
+            $urlStorageEntityManager,
+            $storeFacade,
+            $isSendingToQueue,
+        );
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
@@ -214,7 +220,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      */
     public function write(): void
     {
-        if (empty($this->synchronizedDataCollection)) {
+        if (!$this->synchronizedDataCollection) {
             return;
         }
 
