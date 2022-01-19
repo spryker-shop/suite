@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fe8057aadf5b5787277b45fccf6ffa2",
+    "content-hash": "325910dfced13c18f41fa32afd4f5f2b",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -24831,20 +24831,20 @@
         },
         {
             "name": "spryker/discount-promotion",
-            "version": "4.2.2",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount-promotion.git",
-                "reference": "8dc5466c0e54ee909145eae562acceb37e914973"
+                "reference": "46407f9d02711a04c80e43427a45324b513a9b73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount-promotion/zipball/8dc5466c0e54ee909145eae562acceb37e914973",
-                "reference": "8dc5466c0e54ee909145eae562acceb37e914973",
+                "url": "https://api.github.com/repos/spryker/discount-promotion/zipball/46407f9d02711a04c80e43427a45324b513a9b73",
+                "reference": "46407f9d02711a04c80e43427a45324b513a9b73",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker/availability": "^9.0.0",
                 "spryker/cart-extension": "^1.5.0 || ^2.1.0 || ^4.0.0",
                 "spryker/discount": "^7.2.4 || ^9.0.0",
@@ -24852,6 +24852,7 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/persistent-cart-extension": "^1.0.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
+                "spryker/sales-quantity-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.18.0"
             },
@@ -24886,9 +24887,9 @@
             ],
             "description": "DiscountPromotion module",
             "support": {
-                "source": "https://github.com/spryker/discount-promotion/tree/4.2.2"
+                "source": "https://github.com/spryker/discount-promotion/tree/4.3.0"
             },
-            "time": "2021-06-11T12:21:39+00:00"
+            "time": "2022-01-19T14:41:20+00:00"
         },
         {
             "name": "spryker/discount-promotions-rest-api",
@@ -47163,24 +47164,25 @@
         },
         {
             "name": "spryker/sales-quantity",
-            "version": "3.1.1",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-quantity.git",
-                "reference": "0905957d6bc74fef42600e10fedcdd7959fa2633"
+                "reference": "ea85a5b3aec289d93998fb6fdded19570dba974b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-quantity/zipball/0905957d6bc74fef42600e10fedcdd7959fa2633",
-                "reference": "0905957d6bc74fef42600e10fedcdd7959fa2633",
+                "url": "https://api.github.com/repos/spryker/sales-quantity/zipball/ea85a5b3aec289d93998fb6fdded19570dba974b",
+                "reference": "ea85a5b3aec289d93998fb6fdded19570dba974b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.4",
                 "spryker/discount-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/product": "^6.0.0",
-                "spryker/sales-extension": "^1.0.0"
+                "spryker/sales-extension": "^1.0.0",
+                "spryker/sales-quantity-extension": "^1.0.0"
             },
             "require-dev": {
                 "spryker/cart": "*",
@@ -47208,9 +47210,50 @@
             ],
             "description": "SalesQuantity module",
             "support": {
-                "source": "https://github.com/spryker/sales-quantity/tree/3.1.1"
+                "source": "https://github.com/spryker/sales-quantity/tree/3.2.0"
             },
-            "time": "2020-06-16T13:43:22+00:00"
+            "time": "2022-01-19T14:41:20+00:00"
+        },
+        {
+            "name": "spryker/sales-quantity-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-quantity-extension.git",
+                "reference": "a95f8fac72154d8900d477ede58b7b50ffe29a30"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-quantity-extension/zipball/a95f8fac72154d8900d477ede58b7b50ffe29a30",
+                "reference": "a95f8fac72154d8900d477ede58b7b50ffe29a30",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesQuantityExtension module",
+            "support": {
+                "source": "https://github.com/spryker/sales-quantity-extension/tree/1.0.0"
+            },
+            "time": "2022-01-19T14:41:20+00:00"
         },
         {
             "name": "spryker/sales-reclamation",
