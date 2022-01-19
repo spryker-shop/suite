@@ -72,13 +72,13 @@ class CompositeEntityTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector(
+        $aclModelDirector = $this->tester->createAclModelDirector(
             $rolesTransfer,
             $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
 
         // Act, Assert
-        $aclQueryDirector->inspectCreate(new SpyProductImage());
+        $aclModelDirector->inspectCreate(new SpyProductImage());
     }
 
     /**
@@ -110,14 +110,14 @@ class CompositeEntityTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector(
+        $aclModelDirector = $this->tester->createAclModelDirector(
             $rolesTransfer,
             $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
 
         // Act, Assert
         foreach ($productImageSetTransfer->getProductImages() as $productImageTransfer) {
-            $aclQueryDirector->inspectUpdate(
+            $aclModelDirector->inspectUpdate(
                 $this->tester->findProductImageByIdProductImage($productImageTransfer->getIdProductImageOrFail()),
             );
         }
@@ -152,14 +152,14 @@ class CompositeEntityTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector(
+        $aclModelDirector = $this->tester->createAclModelDirector(
             $rolesTransfer,
             $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
 
         // Act, Assert
         foreach ($productImageSetTransfer->getProductImages() as $productImageTransfer) {
-            $aclQueryDirector->inspectDelete(
+            $aclModelDirector->inspectDelete(
                 $this->tester->findProductImageByIdProductImage($productImageTransfer->getIdProductImageOrFail()),
             );
         }
@@ -191,13 +191,13 @@ class CompositeEntityTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector(
+        $aclModelDirector = $this->tester->createAclModelDirector(
             $rolesTransfer,
             $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
 
         // Act
-        $aclQueryDirector->inspectCreate(new SpyProductImage());
+        $aclModelDirector->inspectCreate(new SpyProductImage());
     }
 
     /**
@@ -234,14 +234,14 @@ class CompositeEntityTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector(
+        $aclModelDirector = $this->tester->createAclModelDirector(
             $rolesTransfer,
             $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
         $productImageTransfer = $productImageSetTransfer->getProductImages()->offsetGet(0);
 
         // Act
-        $aclQueryDirector->inspectUpdate(
+        $aclModelDirector->inspectUpdate(
             $this->tester->findProductImageByIdProductImage($productImageTransfer->getIdProductImageOrFail()),
         );
     }
@@ -281,14 +281,14 @@ class CompositeEntityTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector(
+        $aclModelDirector = $this->tester->createAclModelDirector(
             $rolesTransfer,
             $this->tester->createProductImageProductCompositeEntityMetadataHierarchy(),
         );
         $productImageTransfer = $productImageSetTransfer->getProductImages()->offsetGet(0);
 
         // Act
-        $aclQueryDirector->inspectDelete(
+        $aclModelDirector->inspectDelete(
             $this->tester->findProductImageByIdProductImage($productImageTransfer->getIdProductImageOrFail()),
         );
     }
@@ -331,13 +331,6 @@ class CompositeEntityTest extends Unit
         $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
 
         // Assert
-        $this->assertStringNotContainsString(
-            'id_product is null',
-            $this->tester->purify($query->toString()),
-        );
-        $this->assertStringContainsString('join spy_product_image_set_to_product_image', strtolower($query->toString()));
-        $this->assertStringContainsString('join spy_product_image_set', strtolower($query->toString()));
-        $this->assertStringContainsString('join spy_product', strtolower($query->toString()));
 
         $this->assertGreaterThan(0, $query->count());
     }
@@ -421,9 +414,9 @@ class CompositeEntityTest extends Unit
                 SpyProductImageSet::class,
                 (new AclEntityMetadataTransfer())->setEntityName(SpyProductImageSet::class)->setIsSubEntity(true),
             );
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
 
         // Act
-        $aclQueryDirector->inspectCreate(new SpyProductImage());
+        $aclModelDirector->inspectCreate(new SpyProductImage());
     }
 }

@@ -29,10 +29,10 @@ use Spryker\Shared\AclEntity\AclEntityConstants;
  * @group AclEntity
  * @group Persistence
  * @group AclDirector
- * @group SegmentScopeAclQueryDirectorStrategyTest
+ * @group SegmentAclQueryScopeTest
  * Add your own group annotations below this line
  */
-class SegmentScopeAclQueryDirectorStrategyTest extends Unit
+class SegmentAclQueryScopeTest extends Unit
 {
     /**
      * @var string
@@ -88,10 +88,10 @@ class SegmentScopeAclQueryDirectorStrategyTest extends Unit
         );
 
         $rolesTransfer = (new RolesTransfer())->setRoles(new ArrayObject([$roleTransfer]));
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         // Act, Assert
-        $aclQueryDirector->inspectUpdate(
+        $aclModelDirector->inspectUpdate(
             $this->tester->findMerchantByIdMerchant($merchantTransfer->getIdMerchantOrFail()),
         );
     }
@@ -128,10 +128,10 @@ class SegmentScopeAclQueryDirectorStrategyTest extends Unit
         );
 
         $rolesTransfer = (new RolesTransfer())->setRoles(new ArrayObject([$roleTransfer]));
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         // Act, Assert
-        $aclQueryDirector->inspectDelete(
+        $aclModelDirector->inspectDelete(
             $this->tester->findMerchantByIdMerchant($merchantTransfer->getIdMerchantOrFail()),
         );
     }
@@ -168,10 +168,10 @@ class SegmentScopeAclQueryDirectorStrategyTest extends Unit
         );
 
         $rolesTransfer = (new RolesTransfer())->setRoles(new ArrayObject([$roleTransfer]));
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         // Act, Assert
-        $aclQueryDirector->inspectUpdate(
+        $aclModelDirector->inspectUpdate(
             $this->tester->findMerchantByIdMerchant($merchantTransfer->getIdMerchantOrFail()),
         );
     }
@@ -208,10 +208,10 @@ class SegmentScopeAclQueryDirectorStrategyTest extends Unit
         );
 
         $rolesTransfer = (new RolesTransfer())->setRoles(new ArrayObject([$roleTransfer]));
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         // Act, Assert
-        $aclQueryDirector->inspectDelete(
+        $aclModelDirector->inspectDelete(
             $this->tester->findMerchantByIdMerchant($merchantTransfer->getIdMerchantOrFail()),
         );
     }
