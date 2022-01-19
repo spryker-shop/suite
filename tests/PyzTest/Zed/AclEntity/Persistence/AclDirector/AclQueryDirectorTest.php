@@ -131,7 +131,6 @@ class AclQueryDirectorTest extends Unit
 
     /**
      * @group AclEntityApplyAclRules
-     * @group foo
      *
      * @return void
      */
@@ -223,6 +222,10 @@ class AclQueryDirectorTest extends Unit
             $rolesTransfer,
             $this->tester->createProductOfferMetadataHierarchy(),
         );
+        $aclModelDirector = $this->tester->createAclModelDirector(
+            $rolesTransfer,
+            $this->tester->createProductOfferMetadataHierarchy(),
+        );
 
         $merchant1ProductOfferEntity = $this->tester->findProductOfferByIdProductOffer(
             $merchant1ProductOfferTransfer->getIdProductOfferOrFail(),
@@ -233,8 +236,8 @@ class AclQueryDirectorTest extends Unit
 
         // Act, Assert
         // User can manage merchant1 and view merchant2 ProductOffer
-        $aclQueryDirector->inspectUpdate($merchant1ProductOfferEntity);
-        $aclQueryDirector->inspectDelete($merchant1ProductOfferEntity);
+        $aclModelDirector->inspectUpdate($merchant1ProductOfferEntity);
+        $aclModelDirector->inspectDelete($merchant1ProductOfferEntity);
         $query = $aclQueryDirector->applyAclRuleOnSelectQuery(
             SpyProductOfferQuery::create()->filterByIdProductOffer_In(
                 [$merchant1ProductOfferTransfer->getIdProductOfferOrFail(), $merchant2ProductOfferTransfer->getIdProductOfferOrFail()],
@@ -247,6 +250,6 @@ class AclQueryDirectorTest extends Unit
         $this->expectExceptionMessage(
             'Operation "update" is restricted for Orm\Zed\ProductOffer\Persistence\SpyProductOffer',
         );
-        $aclQueryDirector->inspectUpdate($merchant2ProductOfferEntity);
+        $aclModelDirector->inspectUpdate($merchant2ProductOfferEntity);
     }
 }

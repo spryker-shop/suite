@@ -24,7 +24,6 @@ use Pyz\Zed\Merchant\MerchantDependencyProvider;
 use PyzTest\Zed\AclEntity\AclQueryDirectorTester;
 use Spryker\Shared\AclEntity\AclEntityConstants;
 use Spryker\Zed\AclEntity\Persistence\Exception\OperationNotAuthorizedException;
-use Spryker\Zed\AclEntity\Persistence\Propel\AclDirector\Strategy\AclQueryDirectorStrategyInterface;
 
 /**
  * Auto-generated group annotations
@@ -34,10 +33,10 @@ use Spryker\Zed\AclEntity\Persistence\Propel\AclDirector\Strategy\AclQueryDirect
  * @group AclEntity
  * @group Persistence
  * @group AclDirector
- * @group DefaultScopeAclQueryDirectorStrategyTest
+ * @group DefaultAclQueryScopeTest
  * Add your own group annotations below this line
  */
-class DefaultScopeAclQueryDirectorStrategyTest extends Unit
+class DefaultAclQueryScopeTest extends Unit
 {
     /**
      * @var \PyzTest\Zed\AclEntity\AclQueryDirectorTester
@@ -92,10 +91,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
         );
 
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         // Act, Assert
-        $aclQueryDirector->inspectUpdate(
+        $aclModelDirector->inspectUpdate(
             $this->tester->findMerchantByIdMerchant($merchantTransfer->getIdMerchantOrFail()),
         );
     }
@@ -127,10 +126,6 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
 
         // Assert
         $this->assertSame(1, $query->count());
-        $this->assertStringNotContainsString(
-            AclQueryDirectorStrategyInterface::CONDITION_EMPTY_COLLECTION,
-            $query->toString(),
-        );
     }
 
     /**
@@ -153,10 +148,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
                         AclEntityConstants::OPERATION_MASK_READ | AclEntityConstants::OPERATION_MASK_CREATE,
                     ),
             );
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
 
         // Act, Assert
-        $aclQueryDirector->inspectCreate(new SpyProduct());
+        $aclModelDirector->inspectCreate(new SpyProduct());
     }
 
     /**
@@ -178,10 +173,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
                     ->setEntityName(SpyProduct::class)
                     ->setDefaultGlobalOperationMask(AclEntityConstants::OPERATION_MASK_UPDATE),
             );
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
 
         // Act, Assert
-        $aclQueryDirector->inspectUpdate(
+        $aclModelDirector->inspectUpdate(
             $this->tester->findProductConcreteByIdProduct($productTransfer->getIdProductConcreteOrFail()),
         );
     }
@@ -207,10 +202,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
                         AclEntityConstants::OPERATION_MASK_READ | AclEntityConstants::OPERATION_MASK_DELETE,
                     ),
             );
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
 
         // Act, Assert
-        $aclQueryDirector->inspectDelete(
+        $aclModelDirector->inspectDelete(
             $this->tester->findProductConcreteByIdProduct($productTransfer->getIdProductConcreteOrFail()),
         );
     }
@@ -241,10 +236,6 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
 
         // Assert
         $this->assertSame(1, $query->count());
-        $this->assertStringNotContainsString(
-            AclQueryDirectorStrategyInterface::CONDITION_EMPTY_COLLECTION,
-            $query->toString(),
-        );
     }
 
     /**
@@ -263,10 +254,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
             AclEntityConstants::OPERATION_MASK_CREATE,
         );
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, null, $aclEntityConfig);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer, null, $aclEntityConfig);
 
         // Act, Assert
-        $aclQueryDirector->inspectCreate(new SpyProduct());
+        $aclModelDirector->inspectCreate(new SpyProduct());
     }
 
     /**
@@ -286,10 +277,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
             AclEntityConstants::OPERATION_MASK_READ | AclEntityConstants::OPERATION_MASK_UPDATE,
         );
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, null, $aclEntityConfig);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer, null, $aclEntityConfig);
 
         // Act, Assert
-        $aclQueryDirector->inspectUpdate(
+        $aclModelDirector->inspectUpdate(
             $this->tester->findProductConcreteByIdProduct($productTransfer->getIdProductConcreteOrFail()),
         );
     }
@@ -311,10 +302,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
             AclEntityConstants::OPERATION_MASK_READ | AclEntityConstants::OPERATION_MASK_DELETE,
         );
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, null, $aclEntityConfig);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer, null, $aclEntityConfig);
 
         // Act, Assert
-        $aclQueryDirector->inspectDelete(
+        $aclModelDirector->inspectDelete(
             $this->tester->findProductConcreteByIdProduct($productTransfer->getIdProductConcreteOrFail()),
         );
     }
@@ -378,10 +369,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
                         AclEntityConstants::OPERATION_MASK_READ | AclEntityConstants::OPERATION_MASK_DELETE,
                     ),
             );
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
 
         // Act
-        $aclQueryDirector->inspectCreate(new SpyProduct());
+        $aclModelDirector->inspectCreate(new SpyProduct());
     }
 
     /**
@@ -407,10 +398,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
                     ->setEntityName(SpyProduct::class)
                     ->setDefaultGlobalOperationMask(AclEntityConstants::OPERATION_MASK_READ),
             );
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
 
         // Act
-        $aclQueryDirector->inspectUpdate(
+        $aclModelDirector->inspectUpdate(
             $this->tester->findProductConcreteByIdProduct($productTransfer->getIdProductConcreteOrFail()),
         );
     }
@@ -440,10 +431,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
                         AclEntityConstants::OPERATION_MASK_CREATE | AclEntityConstants::OPERATION_MASK_READ,
                     ),
             );
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
 
         // Act
-        $aclQueryDirector->inspectDelete(
+        $aclModelDirector->inspectDelete(
             $this->tester->findProductConcreteByIdProduct($productTransfer->getIdProductConcreteOrFail()),
         );
     }
@@ -500,10 +491,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
             AclEntityConstants::OPERATION_MASK_READ | AclEntityConstants::OPERATION_MASK_DELETE,
         );
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         // Act
-        $aclQueryDirector->inspectCreate(new SpyProduct());
+        $aclModelDirector->inspectCreate(new SpyProduct());
     }
 
     /**
@@ -527,10 +518,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
             AclEntityConstants::OPERATION_MASK_READ,
         );
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, null, $aclEntityConfig);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer, null, $aclEntityConfig);
 
         // Act
-        $aclQueryDirector->inspectUpdate(
+        $aclModelDirector->inspectUpdate(
             $this->tester->findProductConcreteByIdProduct($productTransfer->getIdProductConcreteOrFail()),
         );
     }
@@ -556,10 +547,10 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
             AclEntityConstants::OPERATION_MASK_CREATE | AclEntityConstants::OPERATION_MASK_READ,
         );
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         // Act
-        $aclQueryDirector->inspectDelete(
+        $aclModelDirector->inspectDelete(
             $this->tester->findProductConcreteByIdProduct($productTransfer->getIdProductConcreteOrFail()),
         );
     }
@@ -596,9 +587,9 @@ class DefaultScopeAclQueryDirectorStrategyTest extends Unit
                         AclEntityConstants::OPERATION_MASK_READ | AclEntityConstants::OPERATION_MASK_DELETE,
                     ),
             );
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
 
         // Act, Assert
-        $aclQueryDirector->inspectCreate(new SpyProduct());
+        $aclModelDirector->inspectCreate(new SpyProduct());
     }
 }
