@@ -20,5 +20,8 @@ class CompanyUsersRestApiConfig extends SprykerCompanyUsersRestApiConfig
         ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LISTS,
         ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LIST_ITEMS,
         QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUESTS,
+        QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUEST_CANCEL,
+        QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUEST_REVISE,
+        QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUEST_SEND_TO_CUSTOMER,
     ];
 }
