@@ -206,8 +206,13 @@ use Spryker\Glue\ProductsRestApi\Plugin\GlueApplication\ProductAbstractBySkuReso
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\ProductTaxSetsRestApi\Plugin\GlueApplication\ProductTaxSetByProductAbstractSkuResourceRelationshipPlugin;
 use Spryker\Glue\ProductTaxSetsRestApi\Plugin\GlueApplication\ProductTaxSetsResourceRoutePlugin;
+use Spryker\Glue\QuoteRequestAgentsRestApi\Plugin\GlueApplication\QuoteRequestAgentCancelResourceRoutePlugin;
+use Spryker\Glue\QuoteRequestAgentsRestApi\Plugin\GlueApplication\QuoteRequestAgentReviseResourceRoutePlugin;
+use Spryker\Glue\QuoteRequestAgentsRestApi\Plugin\GlueApplication\QuoteRequestAgentSendResourceRoutePlugin;
 use Spryker\Glue\QuoteRequestAgentsRestApi\Plugin\GlueApplication\QuoteRequestAgentsResourceRoutePlugin;
 use Spryker\Glue\QuoteRequestsRestApi\Plugin\GlueApplication\QuoteRequestCancelResourceRoutePlugin;
+use Spryker\Glue\QuoteRequestsRestApi\Plugin\GlueApplication\QuoteRequestReviseResourceRoutePlugin;
+use Spryker\Glue\QuoteRequestsRestApi\Plugin\GlueApplication\QuoteRequestSendResourceRoutePlugin;
 use Spryker\Glue\QuoteRequestsRestApi\Plugin\GlueApplication\QuoteRequestsResourceRoutePlugin;
 use Spryker\Glue\QuoteRequestsRestApi\QuoteRequestsRestApiConfig;
 use Spryker\Glue\RelatedProductsRestApi\Plugin\GlueApplication\RelatedProductsResourceRoutePlugin;
@@ -337,7 +342,12 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new GuestConfiguredBundlesResourceRoutePlugin(),
             new QuoteRequestsResourceRoutePlugin(),
             new QuoteRequestAgentsResourceRoutePlugin(),
+            new QuoteRequestAgentCancelResourceRoutePlugin(),
+            new QuoteRequestAgentReviseResourceRoutePlugin(),
+            new QuoteRequestAgentSendResourceRoutePlugin(),
             new QuoteRequestCancelResourceRoutePlugin(),
+            new QuoteRequestReviseResourceRoutePlugin(),
+            new QuoteRequestSendResourceRoutePlugin(),
             new CustomerConfirmationResourceRoutePlugin(),
             new TokenResourceRoutePlugin(),
             new CustomerCartsResourceRoutePlugin(),
