@@ -25,6 +25,9 @@ class AgentAuthRestApiConfig extends SprykerAgentAuthRestApiConfig
             static::RESOURCE_AGENT_CUSTOMER_IMPERSONATION_ACCESS_TOKENS,
             static::RESOURCE_AGENT_CUSTOMER_SEARCH,
             QuoteRequestAgentsRestApiConfig::RESOURCE_AGENT_QUOTE_REQUESTS,
+            QuoteRequestAgentsRestApiConfig::RESOURCE_AGENT_QUOTE_REQUEST_SEND_TO_CUSTOMER,
+            QuoteRequestAgentsRestApiConfig::RESOURCE_AGENT_QUOTE_REQUEST_REVISE,
+            QuoteRequestAgentsRestApiConfig::RESOURCE_AGENT_QUOTE_REQUEST_CANCEL,
         ];
     }
 }
