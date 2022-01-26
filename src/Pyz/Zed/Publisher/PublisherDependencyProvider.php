@@ -41,6 +41,7 @@ use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryPublisher
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryTranslation\GlossaryWritePublisherPlugin as GlossaryTranslationWritePublisherPlugin;
 use Spryker\Zed\MerchantCategory\Communication\Plugin\Publisher\Category\CategoryWritePublisherPlugin;
 use Spryker\Zed\MerchantOpeningHoursStorage\Communication\Plugin\Publisher\MerchantOpeningHours\MerchantOpeningHoursWritePublisherPlugin;
+use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Publisher\Merchant\MerchantProductOfferWritePublisherPlugin;
 use Spryker\Zed\MerchantProductOptionStorage\Communication\Plugin\Publisher\MerchantProductOption\MerchantProductOptionGroupWritePublisherPlugin;
 use Spryker\Zed\MerchantProductSearch\Communication\Plugin\Publisher\Merchant\MerchantProductSearchWritePublisherPlugin as MerchantMerchantProductSearchWritePublisherPlugin;
 use Spryker\Zed\MerchantProductSearch\Communication\Plugin\Publisher\MerchantProduct\MerchantProductSearchWritePublisherPlugin;
@@ -125,6 +126,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getMerchantProductOptionStoragePlugins(),
             $this->getPriceProductOfferStoragePlugins(),
             $this->getPriceProductMerchantRelationshipStoragePlugins(),
+            $this->getMerchantProductOfferStoragePlugins(),
         );
     }
 
@@ -402,6 +404,16 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     {
         return [
             new PriceProductMerchantWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getMerchantProductOfferStoragePlugins(): array
+    {
+        return [
+            new MerchantProductOfferWritePublisherPlugin(),
         ];
     }
 }
