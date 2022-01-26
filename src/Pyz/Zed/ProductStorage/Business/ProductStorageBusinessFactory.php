@@ -99,6 +99,7 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
             $this->getProductFacade(),
             $this->getQueryContainer(),
             $this->getConfig()->isSendingToQueue(),
+            $this->getProductConcreteStorageCollectionExpanderPlugins(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
             $this->createProductConcreteStorageCteStrategyResolver()->resolve(),

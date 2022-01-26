@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductStorage\Business\Storage;
 
+use Generated\Shared\Transfer\ProductConcreteStorageTransfer;
 use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Orm\Zed\ProductStorage\Persistence\SpyProductConcreteStorage;
@@ -57,6 +58,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterface $productFacade
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
      * @param bool $isSendingToQueue
+     * @param array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductConcreteStorageCollectionExpanderPluginInterface> $productConcreteStorageCollectionExpanderPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      * @param \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface $productConcreteStorageCte
@@ -65,11 +67,12 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
         ProductStorageToProductInterface $productFacade,
         ProductStorageQueryContainerInterface $queryContainer,
         $isSendingToQueue,
+        array $productConcreteStorageCollectionExpanderPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
         ProductStorageCteStrategyInterface $productConcreteStorageCte
     ) {
-        parent::__construct($productFacade, $queryContainer, $isSendingToQueue);
+        parent::__construct($productFacade, $queryContainer, $isSendingToQueue, $productConcreteStorageCollectionExpanderPlugins);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
@@ -89,7 +92,11 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             $productConcreteStorageEntities,
         );
 
-        foreach ($pairedEntities as $pair) {
+        $productConcreteStorageTransfers = $this->getProductConcreteStorageTransfers($pairedEntities);
+
+        $this->expandProductConcreteStorageCollection($productConcreteStorageTransfers);
+
+        foreach ($pairedEntities as $index => $pair) {
             $productConcreteLocalizedEntity = $pair[static::PRODUCT_CONCRETE_LOCALIZED_ENTITY];
             $productConcreteStorageEntity = $pair[static::PRODUCT_CONCRETE_STORAGE_ENTITY];
 
@@ -100,7 +107,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             }
 
             $this->storeProductConcreteStorageEntity(
-                $productConcreteLocalizedEntity,
+                $productConcreteStorageTransfers[$index],
                 $productConcreteStorageEntity,
                 $pair[static::LOCALE_NAME],
             );
@@ -114,20 +121,19 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     }
 
     /**
-     * @param array $productConcreteLocalizedEntity
+     * @param \Generated\Shared\Transfer\ProductConcreteStorageTransfer $productConcreteStorageTransfer
      * @param \Orm\Zed\ProductStorage\Persistence\SpyProductConcreteStorage $productConcreteStorageEntity
      * @param string $localeName
      *
      * @return void
      */
     protected function storeProductConcreteStorageEntity(
-        array $productConcreteLocalizedEntity,
+        ProductConcreteStorageTransfer $productConcreteStorageTransfer,
         SpyProductConcreteStorage $productConcreteStorageEntity,
         $localeName
     ): void {
-        $productConcreteStorageTransfer = $this->mapToProductConcreteStorageTransfer($productConcreteLocalizedEntity);
         $productConcreteStorageData = [
-            'fk_product' => $productConcreteLocalizedEntity[static::COL_FK_PRODUCT],
+            'fk_product' => $productConcreteStorageTransfer->getIdProductConcrete(),
             'data' => $productConcreteStorageTransfer->toArray(),
             'locale' => $localeName,
         ];

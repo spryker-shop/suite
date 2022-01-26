@@ -50,6 +50,7 @@ use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfi
 use Spryker\Zed\ProductLabelDataImport\ProductLabelDataImportConfig;
 use Spryker\Zed\ProductListDataImport\ProductListDataImportConfig;
 use Spryker\Zed\ProductMeasurementUnitDataImport\ProductMeasurementUnitDataImportConfig;
+use Spryker\Zed\ProductOfferShoppingListDataImport\ProductOfferShoppingListDataImportConfig;
 use Spryker\Zed\ProductOfferStockDataImport\ProductOfferStockDataImportConfig;
 use Spryker\Zed\ProductOfferValidityDataImport\ProductOfferValidityDataImportConfig;
 use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportConfig;
@@ -505,6 +506,7 @@ class DataImportConfig extends SprykerDataImportConfig
             SalesReturnDataImportConfig::IMPORT_TYPE_RETURN_REASON,
             static::IMPORT_TYPE_MERCHANT_USER,
             StockAddressDataImportConfig::IMPORT_TYPE_STOCK_ADDRESS,
+            ProductOfferShoppingListDataImportConfig::IMPORT_TYPE_PRODUCT_OFFER_SHOPPING_LIST_ITEM,
         ];
     }
 }
