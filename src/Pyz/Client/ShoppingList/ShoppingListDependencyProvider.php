@@ -7,6 +7,9 @@
 
 namespace Pyz\Client\ShoppingList;
 
+use Spryker\Client\Merchant\Plugin\ShoppingList\MerchantShoppingListItemToItemMapperPlugin;
+use Spryker\Client\ProductOfferShoppingList\Plugin\ShoppingList\ProductOfferShoppingListItemMapperPlugin;
+use Spryker\Client\ProductOfferShoppingList\Plugin\ShoppingList\ProductOfferShoppingListItemToItemMapperPlugin;
 use Spryker\Client\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingListDependencyProvider;
 use Spryker\Client\ShoppingListNote\Plugin\ShoppingListItemNoteToItemCartNoteMapperPlugin;
 use Spryker\Client\ShoppingListProductOptionConnector\ShoppingList\ProductOptionQuoteItemToItemMapperPlugin;
@@ -22,6 +25,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     {
         return [
             new ShoppingListItemProductOptionRequestMapperPlugin(),
+            new ProductOfferShoppingListItemMapperPlugin(),
         ];
     }
 
@@ -33,6 +37,8 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
         return [
             new ShoppingListItemNoteToItemCartNoteMapperPlugin(),
             new ShoppingListItemProductOptionToItemProductOptionMapperPlugin(),
+            new ProductOfferShoppingListItemToItemMapperPlugin(),
+            new MerchantShoppingListItemToItemMapperPlugin(),
         ];
     }
 
