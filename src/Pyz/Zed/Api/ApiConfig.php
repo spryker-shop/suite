@@ -12,6 +12,26 @@ use Spryker\Zed\Api\ApiConfig as SprykerApiConfig;
 class ApiConfig extends SprykerApiConfig
 {
     /**
+     * @api
+     *
+     * @return bool
+     */
+    public function isApiEnabled(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @api
+     *
+     * @return string|null
+     */
+    public function getAllowedOrigin(): ?string
+    {
+        return '*';
+    }
+
+    /**
      * @return array<string>
      */
     public function getSafeHeaderDataKeys(): array
@@ -79,23 +99,5 @@ class ApiConfig extends SprykerApiConfig
             'REQUEST_TIME_FLOAT',
             'REQUEST_TIME',
         ];
-    }
-
-    /**
-     * @api
-     *
-     * @return bool
-     */
-    public function isApiEnabled(): bool
-    {
-        return true;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAllowedOrigin(): string
-    {
-        return '*';
     }
 }
