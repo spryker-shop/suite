@@ -12,6 +12,8 @@ use Spryker\Zed\Api\Communication\Plugin\ApiRequestTransferFilterHeaderDataPlugi
 use Spryker\Zed\Api\Communication\Plugin\ApiRequestTransferFilterServerDataPlugin;
 use Spryker\Zed\CustomerApi\Communication\Plugin\Api\CustomerApiResourcePlugin;
 use Spryker\Zed\CustomerApi\Communication\Plugin\Api\CustomerApiValidatorPlugin;
+use Spryker\Zed\MerchantRelationshipApi\Communication\Plugin\Api\MerchantRelationshipApiResourcePlugin;
+use Spryker\Zed\MerchantRelationshipApi\Communication\Plugin\Api\MerchantRelationshipApiValidatorPlugin;
 use Spryker\Zed\ProductApi\Communication\Plugin\Api\ProductApiResourcePlugin;
 use Spryker\Zed\ProductApi\Communication\Plugin\Api\ProductApiValidatorPlugin;
 
@@ -25,17 +27,19 @@ class ApiDependencyProvider extends SprykerApiDependencyProvider
         return [
             new CustomerApiResourcePlugin(),
             new ProductApiResourcePlugin(),
+            new MerchantRelationshipApiResourcePlugin(),
         ];
     }
 
     /**
-     * @return array<\Spryker\Zed\Api\Dependency\Plugin\ApiValidatorPluginInterface>
+     * @return array<\Spryker\Zed\ApiExtension\Dependency\Plugin\ApiValidatorPluginInterface>
      */
     protected function getApiValidatorPluginCollection(): array
     {
         return [
             new CustomerApiValidatorPlugin(),
             new ProductApiValidatorPlugin(),
+            new MerchantRelationshipApiValidatorPlugin(),
         ];
     }
 

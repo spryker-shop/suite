@@ -8,8 +8,11 @@
 namespace Pyz\Zed\MerchantRelationship;
 
 use Spryker\Zed\MerchantRelationship\MerchantRelationshipDependencyProvider as SprykerMerchantRelationshipDependencyProvider;
+use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipCreateValidatorPlugin;
+use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipExpanderPlugin;
 use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipPostCreatePlugin;
 use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipPostUpdatePlugin;
+use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipUpdateValidatorPlugin;
 use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListRelationshipMerchantRelationshipPreDeletePlugin;
 
 class MerchantRelationshipDependencyProvider extends SprykerMerchantRelationshipDependencyProvider
@@ -41,6 +44,36 @@ class MerchantRelationshipDependencyProvider extends SprykerMerchantRelationship
     {
         return [
             new ProductListMerchantRelationshipPostUpdatePlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\MerchantRelationshipExtension\Dependency\Plugin\MerchantRelationshipCreateValidatorPluginInterface>
+     */
+    protected function getMerchantRelationshipCreateValidatorPlugins(): array
+    {
+        return [
+            new ProductListMerchantRelationshipCreateValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\MerchantRelationshipExtension\Dependency\Plugin\MerchantRelationshipUpdateValidatorPluginInterface>
+     */
+    protected function getMerchantRelationshipUpdateValidatorPlugins(): array
+    {
+        return [
+            new ProductListMerchantRelationshipUpdateValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\MerchantRelationshipExtension\Dependency\Plugin\MerchantRelationshipExpanderPluginInterface>
+     */
+    protected function getMerchantRelationshipExpanderPlugins(): array
+    {
+        return [
+            new ProductListMerchantRelationshipExpanderPlugin(),
         ];
     }
 }
