@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.209.14",
+            "version": "3.209.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "19121a960102f871b23233b8e91fb198b46498be"
+                "reference": "8656babb2e58ea3e7c9a40724e8a545ce40bb622"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/19121a960102f871b23233b8e91fb198b46498be",
-                "reference": "19121a960102f871b23233b8e91fb198b46498be",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8656babb2e58ea3e7c9a40724e8a545ce40bb622",
+                "reference": "8656babb2e58ea3e7c9a40724e8a545ce40bb622",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.14"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.15"
             },
-            "time": "2022-01-27T19:16:39+00:00"
+            "time": "2022-01-28T19:14:57+00:00"
         },
         {
             "name": "brick/math",
@@ -1972,16 +1972,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "2.4.0",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "4a6f9f7d7b97c938f2fd25aeb9ff9a6a34c79f2f"
+                "reference": "ca8e4c10535be5c59c03f491310b60b9d6a60e24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4a6f9f7d7b97c938f2fd25aeb9ff9a6a34c79f2f",
-                "reference": "4a6f9f7d7b97c938f2fd25aeb9ff9a6a34c79f2f",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/ca8e4c10535be5c59c03f491310b60b9d6a60e24",
+                "reference": "ca8e4c10535be5c59c03f491310b60b9d6a60e24",
                 "shasum": ""
             },
             "require": {
@@ -1998,6 +1998,7 @@
                 "aws/aws-sdk-php": "^3.132.4",
                 "composer/semver": "^3.0",
                 "ext-fileinfo": "*",
+                "ext-ftp": "*",
                 "friendsofphp/php-cs-fixer": "^3.2",
                 "google/cloud-storage": "^1.23",
                 "phpseclib/phpseclib": "^2.0",
@@ -2037,7 +2038,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/2.4.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/2.4.2"
             },
             "funding": [
                 {
@@ -2053,7 +2054,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-04T17:09:29+00:00"
+            "time": "2022-01-31T19:40:25+00:00"
         },
         {
             "name": "league/flysystem-aws-s3-v3",
@@ -2112,16 +2113,16 @@
         },
         {
             "name": "league/flysystem-ftp",
-            "version": "2.3.2",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-ftp.git",
-                "reference": "39bbf1cf363c7742e419e3ae8c6ee310cdc15822"
+                "reference": "a49dd4c4f0b7af88fe118218a6995609d1570f93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-ftp/zipball/39bbf1cf363c7742e419e3ae8c6ee310cdc15822",
-                "reference": "39bbf1cf363c7742e419e3ae8c6ee310cdc15822",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-ftp/zipball/a49dd4c4f0b7af88fe118218a6995609d1570f93",
+                "reference": "a49dd4c4f0b7af88fe118218a6995609d1570f93",
                 "shasum": ""
             },
             "require": {
@@ -2156,7 +2157,7 @@
                 "ftpd"
             ],
             "support": {
-                "source": "https://github.com/thephpleague/flysystem-ftp/tree/2.3.2"
+                "source": "https://github.com/thephpleague/flysystem-ftp/tree/2.4.2"
             },
             "funding": [
                 {
@@ -2172,7 +2173,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-28T20:10:26+00:00"
+            "time": "2022-01-31T19:07:20+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -2877,16 +2878,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "3.0.12",
+            "version": "3.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "89bfb45bd8b1abc3b37e910d57f5dbd3174f40fb"
+                "reference": "1443ab79364eea48665fa8c09ac67f37d1025f7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/89bfb45bd8b1abc3b37e910d57f5dbd3174f40fb",
-                "reference": "89bfb45bd8b1abc3b37e910d57f5dbd3174f40fb",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/1443ab79364eea48665fa8c09ac67f37d1025f7e",
+                "reference": "1443ab79364eea48665fa8c09ac67f37d1025f7e",
                 "shasum": ""
             },
             "require": {
@@ -2968,7 +2969,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpseclib/phpseclib/issues",
-                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.12"
+                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.13"
             },
             "funding": [
                 {
@@ -2984,7 +2985,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-28T23:46:03+00:00"
+            "time": "2022-01-30T08:50:05+00:00"
         },
         {
             "name": "predis/predis",
@@ -4495,21 +4496,21 @@
         },
         {
             "name": "spryker-shop/cart-page",
-            "version": "3.29.1",
+            "version": "3.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-page.git",
-                "reference": "bcdee862906c61dc3d5fbf57e9d277b678ef87c2"
+                "reference": "43399f8f7c92b5975399ebd039d083170bf88faa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/bcdee862906c61dc3d5fbf57e9d277b678ef87c2",
-                "reference": "bcdee862906c61dc3d5fbf57e9d277b678ef87c2",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/43399f8f7c92b5975399ebd039d083170bf88faa",
+                "reference": "43399f8f7c92b5975399ebd039d083170bf88faa",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4",
-                "spryker-shop/cart-page-extension": "^1.0.0",
+                "spryker-shop/cart-page-extension": "^1.1.0",
                 "spryker-shop/comment-widget-extension": "^1.0.0",
                 "spryker-shop/product-configurator-gateway-page-extension": "^0.1.0 || ^0.2.0",
                 "spryker-shop/product-group-widget-extension": "^1.0.0",
@@ -4580,30 +4581,29 @@
             ],
             "description": "CartPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/cart-page/tree/3.29.1"
+                "source": "https://github.com/spryker-shop/cart-page/tree/3.30.0"
             },
-            "time": "2021-11-19T10:30:27+00:00"
+            "time": "2022-02-01T08:28:45+00:00"
         },
         {
             "name": "spryker-shop/cart-page-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-page-extension.git",
-                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8"
+                "reference": "d96f527c830dba824b229c9f61bf678d3877733f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page-extension/zipball/fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
-                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page-extension/zipball/d96f527c830dba824b229c9f61bf678d3877733f",
+                "reference": "d96f527c830dba824b229c9f61bf678d3877733f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2"
+                "php": ">=7.4"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -4622,9 +4622,9 @@
             ],
             "description": "CartPageExtension module",
             "support": {
-                "source": "https://github.com/spryker-shop/cart-page-extension/tree/master"
+                "source": "https://github.com/spryker-shop/cart-page-extension/tree/1.1.0"
             },
-            "time": "2019-12-27T20:41:07+00:00"
+            "time": "2022-02-01T08:28:45+00:00"
         },
         {
             "name": "spryker-shop/catalog-page",
@@ -6534,26 +6534,28 @@
         },
         {
             "name": "spryker-shop/discount-promotion-widget",
-            "version": "3.4.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/discount-promotion-widget.git",
-                "reference": "71ab1f46922f23066034feb35c472b23eec9e9bb"
+                "reference": "f0964611982427b1a7f602833a3948cd74037a55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/discount-promotion-widget/zipball/71ab1f46922f23066034feb35c472b23eec9e9bb",
-                "reference": "71ab1f46922f23066034feb35c472b23eec9e9bb",
+                "url": "https://api.github.com/repos/spryker-shop/discount-promotion-widget/zipball/f0964611982427b1a7f602833a3948cd74037a55",
+                "reference": "f0964611982427b1a7f602833a3948cd74037a55",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4",
+                "spryker-shop/cart-page-extension": "^1.1.0",
                 "spryker-shop/shop-application-extension": "^1.2.0",
                 "spryker-shop/shop-ui": "^1.27.0",
                 "spryker/discount": "^9.19.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/product-storage": "^1.14.0",
-                "spryker/symfony": "^3.1.0"
+                "spryker/symfony": "^3.1.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker-shop/cart-page": "*",
@@ -6579,9 +6581,9 @@
             ],
             "description": "DiscountPromotionWidget module",
             "support": {
-                "source": "https://github.com/spryker-shop/discount-promotion-widget/tree/3.4.0"
+                "source": "https://github.com/spryker-shop/discount-promotion-widget/tree/3.5.0"
             },
-            "time": "2021-11-11T12:35:42+00:00"
+            "time": "2022-02-01T08:28:45+00:00"
         },
         {
             "name": "spryker-shop/discount-widget",
@@ -24959,16 +24961,16 @@
         },
         {
             "name": "spryker/discount-promotion",
-            "version": "4.3.0",
+            "version": "4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount-promotion.git",
-                "reference": "46407f9d02711a04c80e43427a45324b513a9b73"
+                "reference": "87353c2cb291dbd76387ee8612c1663f148bef08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount-promotion/zipball/46407f9d02711a04c80e43427a45324b513a9b73",
-                "reference": "46407f9d02711a04c80e43427a45324b513a9b73",
+                "url": "https://api.github.com/repos/spryker/discount-promotion/zipball/87353c2cb291dbd76387ee8612c1663f148bef08",
+                "reference": "87353c2cb291dbd76387ee8612c1663f148bef08",
                 "shasum": ""
             },
             "require": {
@@ -24979,10 +24981,12 @@
                 "spryker/discount-extension": "^1.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/persistent-cart-extension": "^1.0.0",
-                "spryker/product": "^5.0.0 || ^6.0.0",
+                "spryker/product": "^5.10.0 || ^6.19.0",
+                "spryker/propel-orm": "^1.0.0",
                 "spryker/sales-quantity-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/transfer": "^3.18.0"
+                "spryker/transfer": "^3.25.0",
+                "spryker/translator": "^1.1.0"
             },
             "require-dev": {
                 "spryker/calculation": "*",
@@ -25015,33 +25019,33 @@
             ],
             "description": "DiscountPromotion module",
             "support": {
-                "source": "https://github.com/spryker/discount-promotion/tree/4.3.0"
+                "source": "https://github.com/spryker/discount-promotion/tree/4.4.0"
             },
-            "time": "2022-01-19T14:41:20+00:00"
+            "time": "2022-02-01T08:28:42+00:00"
         },
         {
             "name": "spryker/discount-promotions-rest-api",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount-promotions-rest-api.git",
-                "reference": "a97fa0a07c32243f5834a2633860cf20cc1a90f6"
+                "reference": "25dfc46d9ee32e095dfc7de9ba2ff08ce4b62693"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount-promotions-rest-api/zipball/a97fa0a07c32243f5834a2633860cf20cc1a90f6",
-                "reference": "a97fa0a07c32243f5834a2633860cf20cc1a90f6",
+                "url": "https://api.github.com/repos/spryker/discount-promotions-rest-api/zipball/25dfc46d9ee32e095dfc7de9ba2ff08ce4b62693",
+                "reference": "25dfc46d9ee32e095dfc7de9ba2ff08ce4b62693",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.4",
                 "spryker/cart-codes-rest-api-extension": "^1.0.0",
                 "spryker/carts-rest-api-extension": "^1.5.0",
-                "spryker/discount-promotion": "^4.1.0",
+                "spryker/discount-promotion": "^4.4.0",
                 "spryker/glue-application": "^1.15.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/transfer": "^3.18.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/uuid-behavior": "^1.0.0"
             },
             "require-dev": {
@@ -25067,9 +25071,9 @@
             ],
             "description": "DiscountPromotionsRestApi module",
             "support": {
-                "source": "https://github.com/spryker/discount-promotions-rest-api/tree/1.3.0"
+                "source": "https://github.com/spryker/discount-promotions-rest-api/tree/1.4.0"
             },
-            "time": "2020-04-17T06:17:03+00:00"
+            "time": "2022-02-01T08:28:42+00:00"
         },
         {
             "name": "spryker/discounts-rest-api",
@@ -55848,16 +55852,16 @@
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v5.4.3",
+            "version": "v5.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "936ca1ba7fb197c9e100a68d7e963b93d99db26e"
+                "reference": "49f40347228c773688a0488feea0175aa7f4d268"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/936ca1ba7fb197c9e100a68d7e963b93d99db26e",
-                "reference": "936ca1ba7fb197c9e100a68d7e963b93d99db26e",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/49f40347228c773688a0488feea0175aa7f4d268",
+                "reference": "49f40347228c773688a0488feea0175aa7f4d268",
                 "shasum": ""
             },
             "require": {
@@ -55940,7 +55944,7 @@
             "description": "Provides a structured process for converting a Request into a Response",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-kernel/tree/v5.4.3"
+                "source": "https://github.com/symfony/http-kernel/tree/v5.4.4"
             },
             "funding": [
                 {
@@ -55956,7 +55960,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-28T11:06:03+00:00"
+            "time": "2022-01-29T18:08:07+00:00"
         },
         {
             "name": "symfony/intl",
@@ -58958,16 +58962,16 @@
         },
         {
             "name": "voku/portable-utf8",
-            "version": "6.0.2",
+            "version": "6.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "17fc93430f64873ba7812893deb24e7644d31b71"
+                "reference": "82a714b5a4973974c1113e97b11c1044a8b8cb85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/17fc93430f64873ba7812893deb24e7644d31b71",
-                "reference": "17fc93430f64873ba7812893deb24e7644d31b71",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/82a714b5a4973974c1113e97b11c1044a8b8cb85",
+                "reference": "82a714b5a4973974c1113e97b11c1044a8b8cb85",
                 "shasum": ""
             },
             "require": {
@@ -59029,7 +59033,7 @@
             ],
             "support": {
                 "issues": "https://github.com/voku/portable-utf8/issues",
-                "source": "https://github.com/voku/portable-utf8/tree/6.0.2"
+                "source": "https://github.com/voku/portable-utf8/tree/6.0.3"
             },
             "funding": [
                 {
@@ -59053,7 +59057,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-24T19:06:57+00:00"
+            "time": "2022-01-30T05:20:24+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -59216,16 +59220,16 @@
         },
         {
             "name": "willdurand/negotiation",
-            "version": "3.0.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/Negotiation.git",
-                "reference": "04e14f38d4edfcc974114a07d2777d90c98f3d9c"
+                "reference": "68e9ea0553ef6e2ee8db5c1d98829f111e623ec2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/04e14f38d4edfcc974114a07d2777d90c98f3d9c",
-                "reference": "04e14f38d4edfcc974114a07d2777d90c98f3d9c",
+                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/68e9ea0553ef6e2ee8db5c1d98829f111e623ec2",
+                "reference": "68e9ea0553ef6e2ee8db5c1d98829f111e623ec2",
                 "shasum": ""
             },
             "require": {
@@ -59266,9 +59270,9 @@
             ],
             "support": {
                 "issues": "https://github.com/willdurand/Negotiation/issues",
-                "source": "https://github.com/willdurand/Negotiation/tree/3.0.0"
+                "source": "https://github.com/willdurand/Negotiation/tree/3.1.0"
             },
-            "time": "2020-09-25T08:01:41+00:00"
+            "time": "2022-01-30T20:08:53+00:00"
         }
     ],
     "packages-dev": [
@@ -59337,16 +59341,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "4.1.28",
+            "version": "4.1.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "e9bc22a3819f9d356068c0e372193ebcc9b06014"
+                "reference": "f8dec8f2bf5347cc596aaf141753f4fb2504c17c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/e9bc22a3819f9d356068c0e372193ebcc9b06014",
-                "reference": "e9bc22a3819f9d356068c0e372193ebcc9b06014",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/f8dec8f2bf5347cc596aaf141753f4fb2504c17c",
+                "reference": "f8dec8f2bf5347cc596aaf141753f4fb2504c17c",
                 "shasum": ""
             },
             "require": {
@@ -59423,7 +59427,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/Codeception/issues",
-                "source": "https://github.com/Codeception/Codeception/tree/4.1.28"
+                "source": "https://github.com/Codeception/Codeception/tree/4.1.29"
             },
             "funding": [
                 {
@@ -59431,7 +59435,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-01-05T16:41:25+00:00"
+            "time": "2022-01-29T16:56:03+00:00"
         },
         {
             "name": "codeception/lib-asserts",
@@ -60564,12 +60568,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "e93b378879509fcab4cf15455d90d373130f41c3"
+                "reference": "419389d409990c0e4cdd1f5f5c560f0a8ea333d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/e93b378879509fcab4cf15455d90d373130f41c3",
-                "reference": "e93b378879509fcab4cf15455d90d373130f41c3",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/419389d409990c0e4cdd1f5f5c560f0a8ea333d1",
+                "reference": "419389d409990c0e4cdd1f5f5c560f0a8ea333d1",
                 "shasum": ""
             },
             "require-dev": {
@@ -60605,7 +60609,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2022-01-25T17:55:24+00:00"
+            "time": "2022-01-28T15:10:07+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -65801,5 +65805,5 @@
     "platform-overrides": {
         "php": "7.4.15"
     },
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
