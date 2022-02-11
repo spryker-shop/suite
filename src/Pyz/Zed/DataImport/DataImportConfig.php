@@ -32,6 +32,7 @@ use Spryker\Zed\FileManagerDataImport\FileManagerDataImportConfig;
 use Spryker\Zed\MerchantDataImport\MerchantDataImportConfig;
 use Spryker\Zed\MerchantOmsDataImport\MerchantOmsDataImportConfig;
 use Spryker\Zed\MerchantOpeningHoursDataImport\MerchantOpeningHoursDataImportConfig;
+use Spryker\Zed\MerchantProductApprovalDataImport\MerchantProductApprovalDataImportConfig;
 use Spryker\Zed\MerchantProductDataImport\MerchantProductDataImportConfig;
 use Spryker\Zed\MerchantProductOfferDataImport\MerchantProductOfferDataImportConfig;
 use Spryker\Zed\MerchantProfileDataImport\MerchantProfileDataImportConfig;
@@ -46,6 +47,7 @@ use Spryker\Zed\PriceProductMerchantRelationshipDataImport\PriceProductMerchantR
 use Spryker\Zed\PriceProductOfferDataImport\PriceProductOfferDataImportConfig;
 use Spryker\Zed\PriceProductScheduleDataImport\PriceProductScheduleDataImportConfig;
 use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig;
+use Spryker\Zed\ProductApprovalDataImport\ProductApprovalDataImportConfig;
 use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfig;
 use Spryker\Zed\ProductLabelDataImport\ProductLabelDataImportConfig;
 use Spryker\Zed\ProductListDataImport\ProductListDataImportConfig;
@@ -507,6 +509,8 @@ class DataImportConfig extends SprykerDataImportConfig
             static::IMPORT_TYPE_MERCHANT_USER,
             StockAddressDataImportConfig::IMPORT_TYPE_STOCK_ADDRESS,
             ProductOfferShoppingListDataImportConfig::IMPORT_TYPE_PRODUCT_OFFER_SHOPPING_LIST_ITEM,
+            MerchantProductApprovalDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_APPROVAL_STATUS_DEFAULT,
+            ProductApprovalDataImportConfig::IMPORT_TYPE_PRODUCT_APPROVAL_STATUS,
         ];
     }
 }
