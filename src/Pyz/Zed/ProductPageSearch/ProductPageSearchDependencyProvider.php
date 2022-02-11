@@ -23,6 +23,8 @@ use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\ProductPageSearc
 use Spryker\Zed\MerchantProductSearch\Communication\Plugin\ProductPageSearch\MerchantProductAbstractMapExpanderPlugin;
 use Spryker\Zed\MerchantProductSearch\Communication\Plugin\ProductPageSearch\MerchantProductPageDataExpanderPlugin as MerchantMerchantProductPageDataExpanderPlugin;
 use Spryker\Zed\MerchantProductSearch\Communication\Plugin\ProductPageSearch\MerchantProductPageDataLoaderPlugin as MerchantMerchantProductPageDataLoaderPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductConcreteCollectionFilterPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\ProductPageSearch\ProductApprovalProductPageSearchCollectionFilterPlugin;
 use Spryker\Zed\ProductCategorySearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductCategoryMapExpanderPlugin;
 use Spryker\Zed\ProductCategorySearch\Communication\Plugin\ProductPageSearch\ProductCategoryPageDataExpanderPlugin;
 use Spryker\Zed\ProductCategorySearch\Communication\Plugin\ProductPageSearch\ProductCategoryPageDataLoaderPlugin;
@@ -188,6 +190,26 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductMeasurementUnitProductAbstractAddToCartPlugin(),
             new ProductPackagingUnitProductAbstractAddToCartPlugin(),
             new AvailabilityProductAbstractAddToCartPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageSearchCollectionFilterPluginInterface>
+     */
+    protected function getProductPageSearchCollectionFilterPlugins(): array
+    {
+        return [
+            new ProductApprovalProductPageSearchCollectionFilterPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcreteCollectionFilterPluginInterface>
+     */
+    protected function getProductConcreteCollectionFilterPlugins(): array
+    {
+        return [
+            new ProductApprovalProductConcreteCollectionFilterPlugin(),
         ];
     }
 

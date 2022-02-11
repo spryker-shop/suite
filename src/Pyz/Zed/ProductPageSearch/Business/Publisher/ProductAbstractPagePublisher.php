@@ -63,6 +63,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      * @param \Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchQueryContainerInterface $queryContainer
      * @param array<\Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface> $pageDataExpanderPlugins
      * @param array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface> $productPageDataLoaderPlugins
+     * @param array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageSearchCollectionFilterPluginInterface> $productPageSearchCollectionFilterPlugins
      * @param \Spryker\Zed\ProductPageSearch\Business\Mapper\ProductPageSearchMapperInterface $productPageSearchMapper
      * @param \Spryker\Zed\ProductPageSearch\Business\Model\ProductPageSearchWriterInterface $productPageSearchWriter
      * @param \Spryker\Zed\ProductPageSearch\ProductPageSearchConfig $productPageSearchConfig
@@ -76,6 +77,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         ProductPageSearchQueryContainerInterface $queryContainer,
         array $pageDataExpanderPlugins,
         array $productPageDataLoaderPlugins,
+        array $productPageSearchCollectionFilterPlugins,
         ProductPageSearchMapperInterface $productPageSearchMapper,
         ProductPageSearchWriterInterface $productPageSearchWriter,
         ProductPageSearchConfig $productPageSearchConfig,
@@ -89,6 +91,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             $queryContainer,
             $pageDataExpanderPlugins,
             $productPageDataLoaderPlugins,
+            $productPageSearchCollectionFilterPlugins,
             $productPageSearchMapper,
             $productPageSearchWriter,
             $productPageSearchConfig,
@@ -123,11 +126,28 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             $productPageLoadTransfer,
         );
 
+        $productPageSearchTransfers = $this->mapPairedEntitiesToProductPageSearchTransfers(
+            $pairedEntities,
+            $isRefresh,
+        );
+        $productPageSearchTransfers = $this->executeProductPageSearchCollectionFilterPlugins($productPageSearchTransfers);
+        $indexedProductAbstractPageSearchTransfers = $this->indexProductPageSearchTransfersByLocaleAndIdProductAbstract(
+            $productPageSearchTransfers,
+        );
+
         foreach ($pairedEntities as $pairedEntity) {
             $productAbstractLocalizedEntity = $pairedEntity[static::PRODUCT_ABSTRACT_LOCALIZED_ENTITY];
             $productAbstractPageSearchEntity = $pairedEntity[static::PRODUCT_ABSTRACT_PAGE_SEARCH_ENTITY];
+            $store = $pairedEntity[static::STORE_NAME];
+            $locale = $pairedEntity[static::LOCALE_NAME];
 
-            if ($productAbstractLocalizedEntity === null || !$this->isActual($productAbstractLocalizedEntity)) {
+            $productPageSearchTransfer = $indexedProductAbstractPageSearchTransfers[$locale][$productAbstractLocalizedEntity['fk_product_abstract']] ?? null;
+
+            if (
+                $productAbstractLocalizedEntity === null
+                || $productPageSearchTransfer === null
+                || !$this->isActual($productAbstractLocalizedEntity)
+            ) {
                 $this->deleteProductAbstractPageSearchEntity($productAbstractPageSearchEntity);
 
                 continue;
@@ -136,10 +156,10 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             $this->storeProductAbstractPageSearchEntity(
                 $productAbstractLocalizedEntity,
                 $productAbstractPageSearchEntity,
-                $pairedEntity[static::STORE_NAME],
-                $pairedEntity[static::LOCALE_NAME],
+                $productPageSearchTransfer,
+                $store,
+                $locale,
                 $pageDataExpanderPlugins,
-                $isRefresh,
             );
         }
 
@@ -153,28 +173,21 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     /**
      * @param array $productAbstractLocalizedEntity
      * @param \Orm\Zed\ProductPageSearch\Persistence\SpyProductAbstractPageSearch $productAbstractPageSearchEntity
+     * @param \Generated\Shared\Transfer\ProductPageSearchTransfer $productPageSearchTransfer
      * @param string $storeName
      * @param string $localeName
      * @param array<\Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface> $pageDataExpanderPlugins
-     * @param int|bool $isRefresh
      *
      * @return void
      */
     protected function storeProductAbstractPageSearchEntity(
         array $productAbstractLocalizedEntity,
         SpyProductAbstractPageSearch $productAbstractPageSearchEntity,
-        $storeName,
-        $localeName,
-        array $pageDataExpanderPlugins,
-        $isRefresh = 0
+        ProductPageSearchTransfer $productPageSearchTransfer,
+        string $storeName,
+        string $localeName,
+        array $pageDataExpanderPlugins
     ): void {
-        $isRefresh = filter_var($isRefresh, FILTER_VALIDATE_BOOLEAN);
-        $productPageSearchTransfer = $this->getProductPageSearchTransfer(
-            $productAbstractLocalizedEntity,
-            $productAbstractPageSearchEntity,
-            $isRefresh,
-        );
-
         $productPageSearchTransfer->setStore($storeName);
         $productPageSearchTransfer->setLocale($localeName);
 

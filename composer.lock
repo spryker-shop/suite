@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.209.19",
+            "version": "3.209.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "8ad887dc242150d2f3b72e867ca74c7c1e3baa19"
+                "reference": "2f8a8c885daf45fe9f919312a66a68115d6733b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8ad887dc242150d2f3b72e867ca74c7c1e3baa19",
-                "reference": "8ad887dc242150d2f3b72e867ca74c7c1e3baa19",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2f8a8c885daf45fe9f919312a66a68115d6733b5",
+                "reference": "2f8a8c885daf45fe9f919312a66a68115d6733b5",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.19"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.22"
             },
-            "time": "2022-02-07T19:14:57+00:00"
+            "time": "2022-02-10T19:14:07+00:00"
         },
         {
             "name": "brick/math",
@@ -4202,23 +4202,23 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.8.0",
+            "version": "v2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "f3cff96a19736714524ca0dd1d4130de73dbbbc4"
+                "reference": "234f8fd1023c9158e2314fa9d7d0e6a83db42910"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/f3cff96a19736714524ca0dd1d4130de73dbbbc4",
-                "reference": "f3cff96a19736714524ca0dd1d4130de73dbbbc4",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/234f8fd1023c9158e2314fa9d7d0e6a83db42910",
+                "reference": "234f8fd1023c9158e2314fa9d7d0e6a83db42910",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.0 || ^6.5 || ^5.7 || ^4.8.36"
+                "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.36"
             },
             "type": "library",
             "autoload": {
@@ -4236,7 +4236,23 @@
             "authors": [
                 {
                     "name": "Jan Sorgalla",
-                    "email": "jsorgalla@gmail.com"
+                    "email": "jsorgalla@gmail.com",
+                    "homepage": "https://sorgalla.com/"
+                },
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@clue.engineering",
+                    "homepage": "https://clue.engineering/"
+                },
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "reactphp@ceesjankiewiet.nl",
+                    "homepage": "https://wyrihaximus.net/"
+                },
+                {
+                    "name": "Chris Boden",
+                    "email": "cboden@gmail.com",
+                    "homepage": "https://cboden.dev/"
                 }
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
@@ -4246,9 +4262,19 @@
             ],
             "support": {
                 "issues": "https://github.com/reactphp/promise/issues",
-                "source": "https://github.com/reactphp/promise/tree/v2.8.0"
+                "source": "https://github.com/reactphp/promise/tree/v2.9.0"
             },
-            "time": "2020-05-12T15:16:56+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/clue",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-11T10:27:51+00:00"
         },
         {
             "name": "ruflin/elastica",
@@ -4997,7 +5023,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "70d5430cbb1dc723f1d5a27066a6688720bfd7dc"
+                "reference": "fe1026c8d0a8b8c53f3f2e6b730fdce694fe824d"
             },
             "require": {
                 "php": ">=7.4"
@@ -5351,6 +5377,8 @@
                 "spryker/merchant-opening-hours-storage": "*",
                 "spryker/merchant-portal-application": "*",
                 "spryker/merchant-product": "*",
+                "spryker/merchant-product-approval": "*",
+                "spryker/merchant-product-approval-data-import": "*",
                 "spryker/merchant-product-data-import": "*",
                 "spryker/merchant-product-gui": "*",
                 "spryker/merchant-product-offer": "*",
@@ -5507,6 +5535,9 @@
                 "spryker/product-alternative-storage": "*",
                 "spryker/product-alternative-storage-extension": "*",
                 "spryker/product-api": "*",
+                "spryker/product-approval": "*",
+                "spryker/product-approval-data-import": "*",
+                "spryker/product-approval-gui": "*",
                 "spryker/product-attribute": "*",
                 "spryker/product-attribute-gui": "*",
                 "spryker/product-attributes-rest-api": "*",
@@ -5590,6 +5621,7 @@
                 "spryker/product-offer-gui": "*",
                 "spryker/product-offer-gui-extension": "*",
                 "spryker/product-offer-merchant-portal-gui": "*",
+                "spryker/product-offer-merchant-portal-gui-extension": "*",
                 "spryker/product-offer-packaging-unit": "*",
                 "spryker/product-offer-prices-rest-api": "*",
                 "spryker/product-offer-prices-rest-api-extension": "*",
@@ -5866,7 +5898,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2022-02-08T11:41:46+00:00"
+            "time": "2022-02-11T12:49:43+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10454,12 +10486,12 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "voku\\": "src/voku/"
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "voku\\": "src/voku/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -12406,12 +12438,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "17e4ca871249f447fe8bc52cdee83ceade36052e"
+                "reference": "4d924c4a24b5d001d818f9463004195a40d6238f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/17e4ca871249f447fe8bc52cdee83ceade36052e",
-                "reference": "17e4ca871249f447fe8bc52cdee83ceade36052e",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/4d924c4a24b5d001d818f9463004195a40d6238f",
+                "reference": "4d924c4a24b5d001d818f9463004195a40d6238f",
                 "shasum": ""
             },
             "require": {
@@ -12456,7 +12488,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-02-03T15:19:13+00:00"
+            "time": "2022-02-10T10:18:20+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -14298,16 +14330,16 @@
         },
         {
             "name": "sebastian/global-state",
-            "version": "5.0.3",
+            "version": "5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
-                "reference": "23bd5951f7ff26f12d4e3242864df3e08dec4e49"
+                "reference": "19c519631c5a511b7ed0ad64a6713fdb3fd25fe4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/23bd5951f7ff26f12d4e3242864df3e08dec4e49",
-                "reference": "23bd5951f7ff26f12d4e3242864df3e08dec4e49",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/19c519631c5a511b7ed0ad64a6713fdb3fd25fe4",
+                "reference": "19c519631c5a511b7ed0ad64a6713fdb3fd25fe4",
                 "shasum": ""
             },
             "require": {
@@ -14350,7 +14382,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
-                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.3"
+                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.4"
             },
             "funding": [
                 {
@@ -14358,7 +14390,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-11T13:31:12+00:00"
+            "time": "2022-02-10T07:01:19+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
@@ -15571,12 +15603,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "489fc77344682f9357c2ba4a09281fa741ea67cf"
+                "reference": "369b6fe0ff22c44e5834f7335f93e104c5e4866a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/489fc77344682f9357c2ba4a09281fa741ea67cf",
-                "reference": "489fc77344682f9357c2ba4a09281fa741ea67cf",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/369b6fe0ff22c44e5834f7335f93e104c5e4866a",
+                "reference": "369b6fe0ff22c44e5834f7335f93e104c5e4866a",
                 "shasum": ""
             },
             "require": {
@@ -15621,7 +15653,7 @@
                 "issues": "https://github.com/spryker/code-sniffer/issues",
                 "source": "https://github.com/spryker/code-sniffer"
             },
-            "time": "2022-01-28T11:32:24+00:00"
+            "time": "2022-02-10T15:43:41+00:00"
         },
         {
             "name": "spryker/development-core",

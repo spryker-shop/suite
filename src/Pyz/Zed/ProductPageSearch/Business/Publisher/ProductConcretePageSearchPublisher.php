@@ -72,6 +72,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface $storeFacade
      * @param \Spryker\Zed\ProductPageSearch\ProductPageSearchConfig $productPageSearchConfig
      * @param array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface> $pageDataExpanderPlugins
+     * @param array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcreteCollectionFilterPluginInterface> $productConcreteCollectionFilterPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      * @param \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface $productConcretePagePublisherCte
@@ -85,6 +86,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         ProductPageSearchToStoreFacadeInterface $storeFacade,
         ProductPageSearchConfig $productPageSearchConfig,
         array $pageDataExpanderPlugins,
+        array $productConcreteCollectionFilterPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
         ProductPagePublisherCteInterface $productConcretePagePublisherCte
@@ -98,6 +100,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             $storeFacade,
             $productPageSearchConfig,
             $pageDataExpanderPlugins,
+            $productConcreteCollectionFilterPlugins,
         );
 
         $this->synchronizationService = $synchronizationService;
@@ -115,12 +118,16 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         array $productConcreteTransfers,
         array $productConcretePageSearchTransfers
     ): void {
+        $filteredProductConcreteTransfers = $this->executeProductConcreteCollectionFilterPlugins($productConcreteTransfers);
+        $filteredProductIds = $this->getProductIdsListFromProductConcreteTransfers($filteredProductConcreteTransfers);
+
         foreach ($productConcreteTransfers as $productConcreteTransfer) {
             foreach ($productConcreteTransfer->getStores() as $storeTransfer) {
                 $this->syncProductConcretePageSearchPerStore(
                     $productConcreteTransfer,
                     $storeTransfer,
                     $productConcretePageSearchTransfers[$productConcreteTransfer->getIdProductConcrete()][$storeTransfer->getName()] ?? [],
+                    $filteredProductIds,
                 );
             }
         }
@@ -138,6 +145,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param \Generated\Shared\Transfer\ProductConcretePageSearchTransfer $productConcretePageSearchTransfer
      * @param \Generated\Shared\Transfer\LocalizedAttributesTransfer $localizedAttributesTransfer
+     * @param array<int> $filteredProductIds
      *
      * @return void
      */
@@ -145,8 +153,17 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         ProductConcreteTransfer $productConcreteTransfer,
         StoreTransfer $storeTransfer,
         ProductConcretePageSearchTransfer $productConcretePageSearchTransfer,
-        LocalizedAttributesTransfer $localizedAttributesTransfer
+        LocalizedAttributesTransfer $localizedAttributesTransfer,
+        array $filteredProductIds
     ): void {
+        if (!in_array($productConcreteTransfer->getIdProductConcrete(), $filteredProductIds)) {
+            if ($productConcretePageSearchTransfer->getIdProductConcretePageSearch() !== null) {
+                $this->deleteProductConcretePageSearch($productConcretePageSearchTransfer);
+            }
+
+            return;
+        }
+
         if (!$productConcreteTransfer->getIsActive() && $productConcretePageSearchTransfer->getIdProductConcretePageSearch() !== null) {
             $this->deleteProductConcretePageSearch($productConcretePageSearchTransfer);
 
