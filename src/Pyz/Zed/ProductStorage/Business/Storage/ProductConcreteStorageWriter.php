@@ -59,6 +59,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
      * @param bool $isSendingToQueue
      * @param array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductConcreteStorageCollectionExpanderPluginInterface> $productConcreteStorageCollectionExpanderPlugins
+     * @param array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductConcreteStorageCollectionFilterPluginInterface> $productConcreteStorageCollectionFilterPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      * @param \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface $productConcreteStorageCte
@@ -68,11 +69,18 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
         ProductStorageQueryContainerInterface $queryContainer,
         $isSendingToQueue,
         array $productConcreteStorageCollectionExpanderPlugins,
+        array $productConcreteStorageCollectionFilterPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
         ProductStorageCteStrategyInterface $productConcreteStorageCte
     ) {
-        parent::__construct($productFacade, $queryContainer, $isSendingToQueue, $productConcreteStorageCollectionExpanderPlugins);
+        parent::__construct(
+            $productFacade,
+            $queryContainer,
+            $isSendingToQueue,
+            $productConcreteStorageCollectionExpanderPlugins,
+            $productConcreteStorageCollectionFilterPlugins,
+        );
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;

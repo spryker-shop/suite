@@ -10,6 +10,8 @@ namespace Pyz\Zed\ProductStorage;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantProductStorage\Communication\Plugin\ProductStorage\MerchantProductAbstractStorageExpanderPlugin;
 use Spryker\Zed\MerchantProductStorage\Communication\Plugin\ProductStorage\MerchantProductConcreteStorageCollectionExpanderPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\ProductStorage\ProductApprovalProductAbstractStorageCollectionFilterPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\ProductStorage\ProductApprovalProductConcreteStorageCollectionFilterPlugin;
 use Spryker\Zed\ProductStorage\ProductStorageDependencyProvider as SprykerProductStorageDependencyProvider;
 
 class ProductStorageDependencyProvider extends SprykerProductStorageDependencyProvider
@@ -61,6 +63,26 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
     {
         return [
             new MerchantProductConcreteStorageCollectionExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageCollectionFilterPluginInterface>
+     */
+    protected function getProductAbstractStorageCollectionFilterPlugins(): array
+    {
+        return [
+            new ProductApprovalProductAbstractStorageCollectionFilterPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductConcreteStorageCollectionFilterPluginInterface>
+     */
+    protected function getProductConcreteStorageCollectionFilterPlugins(): array
+    {
+        return [
+            new ProductApprovalProductConcreteStorageCollectionFilterPlugin(),
         ];
     }
 

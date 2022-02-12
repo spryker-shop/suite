@@ -9,6 +9,7 @@ namespace Pyz\Zed\Product;
 
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantProduct\Communication\Plugin\Product\MerchantProductProductAbstractPostCreatePlugin;
+use Spryker\Zed\MerchantProductApproval\Communication\Plugin\Product\MerchantProductApprovalProductAbstractPreCreatePlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\Product\PriceProductAbstractPostCreatePlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\Product\PriceProductProductAbstractExpanderPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\ProductAbstract\PriceProductAbstractAfterUpdatePlugin;
@@ -17,6 +18,7 @@ use Spryker\Zed\PriceProduct\Communication\Plugin\ProductConcrete\PriceProductCo
 use Spryker\Zed\PriceProduct\Communication\Plugin\ProductConcrete\PriceProductConcreteAfterUpdatePlugin;
 use Spryker\Zed\Product\ProductDependencyProvider as SprykerProductDependencyProvider;
 use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\Product\ProductConcretePluginUpdate as ProductAlternativeGuiProductConcretePluginUpdate;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Product\ProductApprovalProductAbstractPreCreatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleDeactivatorProductConcreteAfterUpdatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteAfterCreatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteAfterUpdatePlugin;
@@ -162,6 +164,19 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
             new SaveDiscontinuedNotesProductConcretePluginUpdate(),
             new DiscontinuedProductConcreteAfterUpdatePlugin(),
             new ProductBundleDeactivatorProductConcreteAfterUpdatePlugin(),
+        ];
+    }
+
+    /**
+     * The order of execution is important for expanding with correct product approval statuses.
+     *
+     * @return array<\Spryker\Zed\ProductExtension\Dependency\Plugin\ProductAbstractPreCreatePluginInterface>
+     */
+    protected function getProductAbstractPreCreatePlugins(): array
+    {
+        return [
+            new MerchantProductApprovalProductAbstractPreCreatePlugin(),
+            new ProductApprovalProductAbstractPreCreatePlugin(),
         ];
     }
 }
