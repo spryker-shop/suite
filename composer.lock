@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.209.22",
+            "version": "3.209.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "2f8a8c885daf45fe9f919312a66a68115d6733b5"
+                "reference": "6082f5df05e5c725a44a310649a922b32bbeec54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2f8a8c885daf45fe9f919312a66a68115d6733b5",
-                "reference": "2f8a8c885daf45fe9f919312a66a68115d6733b5",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6082f5df05e5c725a44a310649a922b32bbeec54",
+                "reference": "6082f5df05e5c725a44a310649a922b32bbeec54",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.22"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.23"
             },
-            "time": "2022-02-10T19:14:07+00:00"
+            "time": "2022-02-11T19:13:32+00:00"
         },
         {
             "name": "brick/math",
@@ -1056,12 +1056,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\": "src/"
-                },
                 "files": [
                     "src/functions_include.php"
-                ]
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2586,12 +2586,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "JmesPath\\": "src/"
-                },
                 "files": [
                     "src/JmesPath.php"
-                ]
+                ],
+                "psr-4": {
+                    "JmesPath\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4278,16 +4278,16 @@
         },
         {
             "name": "ruflin/elastica",
-            "version": "7.1.3",
+            "version": "7.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ruflin/Elastica.git",
-                "reference": "2ee1f63b9222eb56a1294288fde99089a86491c9"
+                "reference": "6594f0e4c27e3b1cc573ed6f83769d6d3b420cf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/2ee1f63b9222eb56a1294288fde99089a86491c9",
-                "reference": "2ee1f63b9222eb56a1294288fde99089a86491c9",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/6594f0e4c27e3b1cc573ed6f83769d6d3b420cf3",
+                "reference": "6594f0e4c27e3b1cc573ed6f83769d6d3b420cf3",
                 "shasum": ""
             },
             "require": {
@@ -4296,7 +4296,7 @@
                 "nyholm/dsn": "^2.0.0",
                 "php": "^7.2 || ^8.0",
                 "psr/log": "^1.0 || ^2.0 || ^3.0",
-                "symfony/deprecation-contracts": "^2.2",
+                "symfony/deprecation-contracts": "^2.2 || ^3.0",
                 "symfony/polyfill-php73": "^1.19"
             },
             "require-dev": {
@@ -4340,9 +4340,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ruflin/Elastica/issues",
-                "source": "https://github.com/ruflin/Elastica/tree/7.1.3"
+                "source": "https://github.com/ruflin/Elastica/tree/7.1.4"
             },
-            "time": "2021-12-09T08:28:09+00:00"
+            "time": "2022-02-14T07:19:04+00:00"
         },
         {
             "name": "seld/signal-handler",
@@ -4742,12 +4742,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "e9f1da2accd5fb1ff4e6fba18fb7a8d5c2aaebd5"
+                "reference": "673e29fe51a649c03fb68b0f7f034c6e3c79bc5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/e9f1da2accd5fb1ff4e6fba18fb7a8d5c2aaebd5",
-                "reference": "e9f1da2accd5fb1ff4e6fba18fb7a8d5c2aaebd5",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/673e29fe51a649c03fb68b0f7f034c6e3c79bc5f",
+                "reference": "673e29fe51a649c03fb68b0f7f034c6e3c79bc5f",
                 "shasum": ""
             },
             "require": {
@@ -4804,7 +4804,7 @@
             "support": {
                 "source": "https://github.com/spryker/event-behavior"
             },
-            "time": "2022-01-31T13:46:55+00:00"
+            "time": "2022-02-14T12:14:31+00:00"
         },
         {
             "name": "spryker/install",
@@ -4865,12 +4865,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "230190825532d73c42dd36bc4fab8229cb1cca7c"
+                "reference": "279385e079a323875d3961ef06c2f9576af615f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/230190825532d73c42dd36bc4fab8229cb1cca7c",
-                "reference": "230190825532d73c42dd36bc4fab8229cb1cca7c",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/279385e079a323875d3961ef06c2f9576af615f4",
+                "reference": "279385e079a323875d3961ef06c2f9576af615f4",
                 "shasum": ""
             },
             "require": {
@@ -4927,7 +4927,7 @@
             "support": {
                 "source": "https://github.com/spryker/rabbit-mq"
             },
-            "time": "2022-01-06T17:18:36+00:00"
+            "time": "2022-02-14T12:14:53+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -5023,7 +5023,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "fe1026c8d0a8b8c53f3f2e6b730fdce694fe824d"
+                "reference": "437d6664a7eead1a66180f07acbade8154aa93ec"
             },
             "require": {
                 "php": ">=7.4"
@@ -5898,7 +5898,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2022-02-11T12:49:43+00:00"
+            "time": "2022-02-14T12:17:53+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5906,7 +5906,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "544dddbc82efa8875f037b001418cef8515a6454"
+                "reference": "23672b2705e25c91bc097dae0f497956a297901f"
             },
             "require": {
                 "php": ">=7.4"
@@ -6078,7 +6078,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2022-02-08T11:06:40+00:00"
+            "time": "2022-02-14T12:20:21+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8303,12 +8303,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Mbstring\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -14330,16 +14330,16 @@
         },
         {
             "name": "sebastian/global-state",
-            "version": "5.0.4",
+            "version": "5.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
-                "reference": "19c519631c5a511b7ed0ad64a6713fdb3fd25fe4"
+                "reference": "0ca8db5a5fc9c8646244e629625ac486fa286bf2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/19c519631c5a511b7ed0ad64a6713fdb3fd25fe4",
-                "reference": "19c519631c5a511b7ed0ad64a6713fdb3fd25fe4",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/0ca8db5a5fc9c8646244e629625ac486fa286bf2",
+                "reference": "0ca8db5a5fc9c8646244e629625ac486fa286bf2",
                 "shasum": ""
             },
             "require": {
@@ -14382,7 +14382,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
-                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.4"
+                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.5"
             },
             "funding": [
                 {
@@ -14390,7 +14390,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-02-10T07:01:19+00:00"
+            "time": "2022-02-14T08:28:10+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
@@ -15491,12 +15491,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "6941181b86f38480b0c28dc955fb1b2d54be91ef"
+                "reference": "69857a799a9fd75f30f6de6ec9d30423b9d071b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/6941181b86f38480b0c28dc955fb1b2d54be91ef",
-                "reference": "6941181b86f38480b0c28dc955fb1b2d54be91ef",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/69857a799a9fd75f30f6de6ec9d30423b9d071b4",
+                "reference": "69857a799a9fd75f30f6de6ec9d30423b9d071b4",
                 "shasum": ""
             },
             "require": {
@@ -15546,7 +15546,7 @@
                 "issues": "https://github.com/spryker/architecture-sniffer/issues",
                 "source": "https://github.com/spryker/architecture-sniffer"
             },
-            "time": "2022-02-03T14:54:07+00:00"
+            "time": "2022-02-14T12:08:27+00:00"
         },
         {
             "name": "spryker/code-generator",
