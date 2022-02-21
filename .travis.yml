@@ -577,7 +577,7 @@ jobs:
           install:
               - *COMPOSER_PREFER_LOWEST
           script:
-              - vendor/bin/console code:phpstan -m Spryker.all -v -o 300,600
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 300,300
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
@@ -942,7 +942,7 @@ jobs:
           install:
               - *COMPOSER_INSTALL
           script:
-              - vendor/bin/console code:phpstan -m Spryker.all -v -o 300,600
+              - vendor/bin/console code:phpstan -m Spryker.all -v -o 300,300
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
