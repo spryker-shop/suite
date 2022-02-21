@@ -11,11 +11,17 @@ use ArrayObject;
 use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CurrencyTransfer;
+use Generated\Shared\Transfer\DiscountCalculatorTransfer;
+use Generated\Shared\Transfer\DiscountConfiguratorTransfer;
+use Generated\Shared\Transfer\DiscountGeneralTransfer;
 use Generated\Shared\Transfer\DiscountTransfer;
 use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\MoneyValueTransfer;
 use Generated\Shared\Transfer\ProductOptionTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\StoreRelationTransfer;
+use PyzTest\Zed\Calculation\CalculationBusinessTester;
 use Spryker\Shared\Calculation\CalculationPriceMode;
 use Spryker\Zed\Discount\DiscountDependencyProvider;
 
@@ -171,6 +177,99 @@ class CalculationWithCalculableObjectFacadeTest extends Test
         $this->assertSame(100, $totalsTransfer->getExpenseTotal());
         $this->assertSame(330, $totalsTransfer->getGrandTotal());
         $this->assertSame(53, $totalsTransfer->getTaxTotal()->getAmount());
+    }
+
+    /**
+     * @return void
+     */
+    public function testCalculatorStackWithGrossPriceModeAfterDiscountsWithQuantityBasedCollectorRule(): void
+    {
+        // Arrange
+        $calculationFacade = $this->tester->createCalculationFacade();
+
+        $discountAmount = 20;
+        $quoteTransfer = $this->createFixtureDataForCalculation();
+        $quoteTransfer->setPriceMode(CalculationPriceMode::PRICE_MODE_GROSS);
+
+        $itemTransfer = $quoteTransfer->getItems()->getIterator()->current();
+        $quoteTransfer->setItems(new ArrayObject([
+            (new ItemTransfer())->fromArray($itemTransfer->toArray())->setQuantity(1),
+            (new ItemTransfer())->fromArray($itemTransfer->toArray())->setQuantity(1),
+        ]));
+
+        $this->tester->haveDiscount([
+            DiscountConfiguratorTransfer::DISCOUNT_GENERAL => [
+                DiscountGeneralTransfer::IS_EXCLUSIVE => false,
+                DiscountGeneralTransfer::IS_ACTIVE => true,
+                DiscountGeneralTransfer::DISPLAY_NAME => 'Test Discount ' . uniqid(),
+                DiscountGeneralTransfer::STORE_RELATION => [
+                    StoreRelationTransfer::ID_STORES => [$quoteTransfer->getStore()->getIdStore()],
+                ],
+                DiscountGeneralTransfer::DISCOUNT_TYPE => CalculationBusinessTester::TYPE_CART_RULE,
+            ],
+            DiscountConfiguratorTransfer::DISCOUNT_CALCULATOR => [
+                DiscountCalculatorTransfer::CALCULATOR_PLUGIN => CalculationBusinessTester::PLUGIN_CALCULATOR_FIXED,
+                DiscountCalculatorTransfer::COLLECTOR_QUERY_STRING => 'item-quantity = "2"',
+                DiscountCalculatorTransfer::AMOUNT => 0,
+                DiscountCalculatorTransfer::MONEY_VALUE_COLLECTION => [
+                    [
+                        MoneyValueTransfer::FK_CURRENCY => $this->tester->haveCurrency([
+                            CurrencyTransfer::CODE => $quoteTransfer->getCurrency()->getCode(),
+                        ]),
+                        MoneyValueTransfer::GROSS_AMOUNT => $discountAmount,
+                    ],
+                ],
+            ],
+        ]);
+
+        // Act
+        $recalculatedQuoteTransfer = $calculationFacade->recalculateQuote($quoteTransfer);
+
+        // Assert
+        //item totals
+        $itemTransfer = $recalculatedQuoteTransfer->getItems()[0];
+
+        $this->assertSame(19.0, $itemTransfer->getTaxRate());
+        $this->assertSame(14, $itemTransfer->getUnitTaxAmount());
+        $this->assertSame(14, $itemTransfer->getSumTaxAmount());
+        $this->assertSame(18, $itemTransfer->getUnitTaxAmountFullAggregation());
+        $this->assertSame(22, $itemTransfer->getSumTaxAmountFullAggregation());
+
+        $this->assertSame(100, $itemTransfer->getUnitGrossPrice());
+        $this->assertSame(100, $itemTransfer->getSumGrossPrice());
+
+        $this->assertSame(100, $itemTransfer->getUnitPrice());
+        $this->assertSame(100, $itemTransfer->getSumPrice());
+
+        $this->assertSame(125, $itemTransfer->getUnitSubtotalAggregation());
+        $this->assertSame(150, $itemTransfer->getSumSubtotalAggregation());
+
+        $this->assertSame(115, $itemTransfer->getUnitPriceToPayAggregation());
+        $this->assertSame(140, $itemTransfer->getSumPriceToPayAggregation());
+
+        $this->assertSame(10, $itemTransfer->getUnitDiscountAmountAggregation());
+        $this->assertSame(10, $itemTransfer->getSumDiscountAmountAggregation());
+
+        $this->assertSame(10, $itemTransfer->getUnitDiscountAmountFullAggregation());
+        $this->assertSame(10, $itemTransfer->getSumDiscountAmountFullAggregation());
+
+        //expenses
+        $expenseTransfer = $quoteTransfer->getExpenses()[0];
+
+        $this->assertSame(16, $expenseTransfer->getUnitTaxAmount());
+        $this->assertSame(16, $expenseTransfer->getSumTaxAmount());
+
+        $this->assertSame(100, $expenseTransfer->getUnitPriceToPayAggregation());
+        $this->assertSame(100, $expenseTransfer->getSumPriceToPayAggregation());
+
+        //order totals
+        $totalsTransfer = $recalculatedQuoteTransfer->getTotals();
+
+        $this->assertSame(300, $totalsTransfer->getSubtotal());
+        $this->assertSame($discountAmount, $totalsTransfer->getDiscountTotal());
+        $this->assertSame(100, $totalsTransfer->getExpenseTotal());
+        $this->assertSame(380, $totalsTransfer->getGrandTotal());
+        $this->assertSame(61, $totalsTransfer->getTaxTotal()->getAmount());
     }
 
     /**
@@ -448,6 +547,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
 
         $itemTransfer = new ItemTransfer();
         $itemTransfer->setSku('test1');
+        $itemTransfer->setGroupKey('test1');
         $itemTransfer->setTaxRate(19.0);
         $itemTransfer->setQuantity(2);
         $itemTransfer->setUnitGrossPrice(100);
