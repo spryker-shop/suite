@@ -5025,7 +5025,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f99017e94c29d9f72cdfa3d8355ed7c4f816a317"
+                "reference": "d8c5d6a21c32c3f16f01e26256764d197a44f61f"
             },
             "require": {
                 "php": ">=7.4"
@@ -5636,6 +5636,8 @@
                 "spryker/product-offer-stock-data-import": "*",
                 "spryker/product-offer-stock-gui": "*",
                 "spryker/product-offer-stock-gui-extension": "*",
+                "spryker/product-offer-storage": "*",
+                "spryker/product-offer-storage-extension": "*",
                 "spryker/product-offer-validity": "*",
                 "spryker/product-offer-validity-data-import": "*",
                 "spryker/product-offer-validity-gui": "*",
@@ -5900,7 +5902,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2022-02-23T20:58:33+00:00"
+            "time": "2022-02-24T16:37:46+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5908,7 +5910,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "205597af47a8fd06d8da8b597265a61db0542e3a"
+                "reference": "f54c0d0467b3d6403bc3c84c46aa0206f365fe70"
             },
             "require": {
                 "php": ">=7.4"
@@ -6080,7 +6082,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2022-02-22T15:55:46+00:00"
+            "time": "2022-02-24T16:37:48+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -12642,12 +12644,12 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Facebook\\WebDriver\\": "lib/"
-                },
                 "files": [
                     "lib/Exception/TimeoutException.php"
-                ]
+                ],
+                "psr-4": {
+                    "Facebook\\WebDriver\\": "lib/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -15133,23 +15135,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/composer-replace.git",
-                "reference": "7ef128ea3daef1cd6e24a8d2e421b700e0307c6b"
+                "reference": "517e6a0ba2ddc40ae34a54327f52c01e05f21ff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/composer-replace/zipball/7ef128ea3daef1cd6e24a8d2e421b700e0307c6b",
-                "reference": "7ef128ea3daef1cd6e24a8d2e421b700e0307c6b",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-replace/zipball/517e6a0ba2ddc40ae34a54327f52c01e05f21ff6",
+                "reference": "517e6a0ba2ddc40ae34a54327f52c01e05f21ff6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
-                "spryker/kernel": "^3.42",
                 "spryker/symfony": "^3.3.2"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/testify": "*",
-                "spryker/transfer": "^3.21.0"
+                "spryker/testify": "*"
             },
             "default-branch": true,
             "type": "library",
@@ -15167,7 +15167,7 @@
                 "issues": "https://github.com/spryker-sdk/composer-replace/issues",
                 "source": "https://github.com/spryker-sdk/composer-replace/tree/master"
             },
-            "time": "2022-01-28T11:01:14+00:00"
+            "time": "2022-02-24T08:49:47+00:00"
         },
         {
             "name": "spryker-sdk/load-testing",
