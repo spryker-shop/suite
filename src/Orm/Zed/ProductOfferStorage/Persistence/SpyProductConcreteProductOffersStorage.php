@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\MerchantProductOfferStorage\Persistence;
+namespace Orm\Zed\ProductOfferStorage\Persistence;
 
-use Spryker\Zed\MerchantProductOfferStorage\Persistence\Propel\AbstractSpyProductOfferStorageQuery;
+use Spryker\Zed\ProductOfferStorage\Persistence\Propel\AbstractSpyProductConcreteProductOffersStorage;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_product_offer_storage' table.
+ * Skeleton subclass for representing a row from the 'spy_product_concrete_product_offers_storage' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\MerchantProductOfferStorage\Persistence\Propel\AbstractSpyProduc
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductOfferStorageQuery extends AbstractSpyProductOfferStorageQuery
+class SpyProductConcreteProductOffersStorage extends AbstractSpyProductConcreteProductOffersStorage
 {
 }
