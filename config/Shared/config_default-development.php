@@ -10,6 +10,9 @@ use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
+use Spryker\Shared\GlueBackendApiApplication\GlueBackendApiApplicationConstants;
+use Spryker\Shared\GlueJsonApiConvention\GlueJsonApiConventionConstants;
+use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
 use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
@@ -47,6 +50,8 @@ $backofficeHost = sprintf('backoffice.%s.%s.local', $storeLowerCase, $domain);
 $merchantPortalHost = sprintf('mp.%s.%s.local', $storeLowerCase, $domain);
 $backendApiHost = sprintf('backend-api.%s.%s.local', $storeLowerCase, $domain);
 $backendGatewayHost = sprintf('backend-gateway.%s.%s.local', $storeLowerCase, $domain);
+$glueBackendHost = sprintf('gluebackend.%s.%s.local', $storeLowerCase, $domain);
+$glueStorefrontHost = sprintf('gluestorefront.%s.%s.local', $storeLowerCase, $domain);
 
 // ----------------------------------------------------------------------------
 // ------------------------------ CODEBASE ------------------------------------
@@ -240,3 +245,22 @@ require 'common/config_oms-development.php';
 // >>> PAYONE
 
 require 'common/config_payone-development.php';
+
+// ----------------------------------------------------------------------------
+// ------------------------------ Glue Backend API -------------------------------
+// ----------------------------------------------------------------------------
+$config[GlueBackendApiApplicationConstants::GLUE_BACKEND_API_HOST] = $glueBackendHost;
+$config[GlueBackendApiApplicationConstants::PROJECT_NAMESPACES] = [
+    'Pyz',
+];
+
+// ----------------------------------------------------------------------------
+// ------------------------------ Glue Storefront API -------------------------------
+// ----------------------------------------------------------------------------
+$config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $glueStorefrontHost;
+
+$config[GlueJsonApiConventionConstants::GLUE_DOMAIN]
+    = sprintf(
+        'https://%s',
+        $glueStorefrontHost,
+    );
