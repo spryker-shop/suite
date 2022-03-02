@@ -167,6 +167,8 @@ use SprykerShop\Yves\WishlistWidget\Widget\WishlistMenuItemWidget;
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
 {
     /**
+     * @phpstan-return array<class-string<\Spryker\Yves\Kernel\Widget\AbstractWidget>>
+     *
      * @return array<string>
      */
     protected function getGlobalWidgets(): array
