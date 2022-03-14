@@ -186,6 +186,7 @@ use Spryker\Glue\ProductOfferAvailabilitiesRestApi\Plugin\GlueApplication\Produc
 use Spryker\Glue\ProductOfferAvailabilitiesRestApi\Plugin\GlueApplication\ProductOfferAvailabilitiesResourceRoutePlugin;
 use Spryker\Glue\ProductOfferPricesRestApi\Plugin\GlueApplication\ProductOfferPriceByProductOfferReferenceResourceRelationshipPlugin;
 use Spryker\Glue\ProductOfferPricesRestApi\Plugin\GlueApplication\ProductOfferPricesResourceRoutePlugin;
+use Spryker\Glue\ProductOffersRestApi\Plugin\GlueApplication\ProductOffersByProductOfferReferenceResourceRelationshipPlugin;
 use Spryker\Glue\ProductOptionsRestApi\Plugin\GlueApplication\ProductOptionsByProductAbstractSkuResourceRelationshipPlugin;
 use Spryker\Glue\ProductOptionsRestApi\Plugin\GlueApplication\ProductOptionsByProductConcreteSkuResourceRelationshipPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\AbstractProductPricesRoutePlugin;
@@ -899,6 +900,25 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUESTS,
             new ConcreteProductByQuoteRequestResourceRelationshipPlugin(),
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LIST_ITEMS,
+            new MerchantByMerchantReferenceResourceRelationshipPlugin(),
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LIST_ITEMS,
+            new ProductOfferAvailabilitiesByProductOfferReferenceResourceRelationshipPlugin(),
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LIST_ITEMS,
+            new ProductOffersByProductOfferReferenceResourceRelationshipPlugin(),
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LIST_ITEMS,
+            new ProductOfferPriceByProductOfferReferenceResourceRelationshipPlugin(),
         );
 
         return $resourceRelationshipCollection;
