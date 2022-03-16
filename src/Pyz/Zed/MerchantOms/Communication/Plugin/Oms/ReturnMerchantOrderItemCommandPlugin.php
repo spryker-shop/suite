@@ -43,7 +43,7 @@ class ReturnMerchantOrderItemCommandPlugin extends AbstractPlugin implements Com
     {
         $merchantOrderItemTransfer = $this->getFactory()->getMerchantSalesOrderFacade()->findMerchantOrderItem(
             (new MerchantOrderItemCriteriaTransfer())
-                ->setIdOrderItem($orderItem->getIdSalesOrderItem())
+                ->setIdOrderItem($orderItem->getIdSalesOrderItem()),
         );
 
         if (!$merchantOrderItemTransfer) {
@@ -60,7 +60,7 @@ class ReturnMerchantOrderItemCommandPlugin extends AbstractPlugin implements Com
             throw new LogicException(sprintf(
                 'Merchant Order Item #%s transition for event "%s" has not happened.',
                 $merchantOrderItemTransfer->getIdMerchantOrderItem(),
-                static::EVENT_START_RETURN
+                static::EVENT_START_RETURN,
             ));
         }
 

@@ -13,13 +13,14 @@ class NewsletterSubscriptionHomePage
      * @var string
      */
     public const NEW_EMAIL = 'foo@bar.com';
+
     /**
      * @var string
      */
     public const EXISTING_EMAIL = 'bar@foo.com';
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     public const FORM_SELECTOR = ['id' => 'newsletterSubscriptionWidgetForm_subscribe'];
 
@@ -27,6 +28,7 @@ class NewsletterSubscriptionHomePage
      * @var string
      */
     public const ERROR_MESSAGE = 'You are already subscribed to the newsletter';
+
     /**
      * @var string
      */

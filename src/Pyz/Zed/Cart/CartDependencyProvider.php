@@ -34,6 +34,8 @@ use Spryker\Zed\PriceCartConnector\Communication\Plugin\Cart\SanitizeSourcePrice
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePreCheckPlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\FilterItemsWithoutPricePlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Cart\ProductApprovalCartPreCheckPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Cart\ProductApprovalPreReloadItemsPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\BundleItemPriceQuoteChangeObserverPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleActivePreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleAvailabilityPreCheckPlugin;
@@ -81,6 +83,7 @@ use Spryker\Zed\ProductQuantity\Communication\Plugin\CartExtension\ProductQuanti
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Cart\SanitizeQuoteApprovalQuoteLockPreResetPlugin;
 use Spryker\Zed\QuoteRequest\Communication\Plugin\Cart\SanitizeQuoteRequestQuoteLockPreResetPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Cart\AddThresholdMessagesCartPostReloadItemsPlugin;
+use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Cart\SalesOrderThresholdCartTerminationPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentCartOperationPostSavePlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
@@ -168,6 +171,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductOfferCartPreCheckPlugin(),
             new MerchantProductCartPreCheckPlugin(),
             new MerchantProductOptionCartPreCheckPlugin(),
+            new ProductApprovalCartPreCheckPlugin(),
         ];
     }
 
@@ -206,6 +210,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new FilterItemsWithoutPricePlugin(),
             new ConfiguredBundleQuantityPerSlotPreReloadItemsPlugin(),
             new SingleMerchantPreReloadItemsPlugin(),
+            new ProductApprovalPreReloadItemsPlugin(),
         ];
     }
 
@@ -230,6 +235,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new ConfiguredBundleQuantityCartTerminationPlugin(),
+            new SalesOrderThresholdCartTerminationPlugin(),
         ];
     }
 

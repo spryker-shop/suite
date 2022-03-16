@@ -31,7 +31,7 @@ class NavigationCRUDCest
      *
      * @return void
      */
-    public function testICanCreateReadUpdateAndDeleteNavigation(NavigationGuiPresentationTester $i)
+    public function testICanCreateReadUpdateAndDeleteNavigation(NavigationGuiPresentationTester $i): void
     {
         $i->amOnPage(NavigationCreatePage::URL);
 
@@ -52,7 +52,7 @@ class NavigationCRUDCest
      *
      * @return int
      */
-    protected function create(NavigationGuiPresentationTester $i)
+    protected function create(NavigationGuiPresentationTester $i): int
     {
         $i->wantTo('Create navigation.');
         $i->expect('Navigation is persisted in Zed.');
@@ -72,7 +72,7 @@ class NavigationCRUDCest
      *
      * @return void
      */
-    protected function read(NavigationGuiPresentationTester $i)
+    protected function read(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('See navigation list.');
         $i->expect('Navigation table is shown and not empty');
@@ -86,7 +86,7 @@ class NavigationCRUDCest
      *
      * @return void
      */
-    protected function update(NavigationGuiPresentationTester $i, $idNavigation)
+    protected function update(NavigationGuiPresentationTester $i, $idNavigation): void
     {
         $i->wantTo('Update existing navigation.');
         $i->expect('Navigation is persisted in Zed');
@@ -105,7 +105,7 @@ class NavigationCRUDCest
      *
      * @return void
      */
-    protected function delete(NavigationGuiPresentationTester $i, int $idNavigation)
+    protected function delete(NavigationGuiPresentationTester $i, int $idNavigation): void
     {
         $i->wantTo('Delete navigation.');
         $i->expect('Navigation is removed from Zed.');

@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ExampleProductSalePage;
 
-use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 
@@ -17,18 +16,22 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      * @var string
      */
     public const CLIENT_SEARCH = 'CLIENT_SEARCH';
+
     /**
      * @var string
      */
     public const CLIENT_URL_STORAGE = 'CLIENT_URL_STORAGE';
+
     /**
      * @var string
      */
-    public const STORE = 'STORE';
+    public const CLIENT_LOCALE = 'CLIENT_LOCALE';
+
     /**
      * @var string
      */
     public const PLUGIN_PRODUCT_SALE_PAGE_WIDGETS = 'PLUGIN_PRODUCT_SALE_PAGE_WIDGETS';
+
     /**
      * @var string
      */
@@ -39,11 +42,11 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    public function provideDependencies(Container $container)
+    public function provideDependencies(Container $container): Container
     {
         $container = $this->addSearchClient($container);
         $container = $this->addUrlStorageClient($container);
-        $container = $this->addStore($container);
+        $container = $this->addLocaleClient($container);
         $container = $this->addProductSalePageWidgetPlugins($container);
         $container = $this->addCatalogClient($container);
 
@@ -55,7 +58,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addSearchClient(Container $container)
+    protected function addSearchClient(Container $container): Container
     {
         $container->set(static::CLIENT_SEARCH, function (Container $container) {
             return $container->getLocator()->search()->client();
@@ -69,7 +72,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addUrlStorageClient(Container $container)
+    protected function addUrlStorageClient(Container $container): Container
     {
         $container->set(static::CLIENT_URL_STORAGE, function (Container $container) {
             return $container->getLocator()->urlStorage()->client();
@@ -83,10 +86,10 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addStore($container)
+    protected function addLocaleClient(Container $container): Container
     {
-        $container->set(static::STORE, function () {
-            return Store::getInstance();
+        $container->set(static::CLIENT_LOCALE, function (Container $container) {
+            return $container->getLocator()->locale()->client();
         });
 
         return $container;
@@ -97,7 +100,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addCatalogClient(Container $container)
+    protected function addCatalogClient(Container $container): Container
     {
         $container->set(static::CLIENT_CATALOG, function (Container $container) {
             return $container->getLocator()->catalog()->client();
@@ -111,7 +114,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addProductSalePageWidgetPlugins($container)
+    protected function addProductSalePageWidgetPlugins($container): Container
     {
         $container->set(static::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS, function () {
             return [];

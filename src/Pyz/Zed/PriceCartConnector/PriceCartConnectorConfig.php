@@ -15,7 +15,7 @@ class PriceCartConnectorConfig extends SprykerPriceCartConnectorConfig
     /**
      * @return array<string>
      */
-    public function getItemFieldsForIsSameItemComparison()
+    public function getItemFieldsForIsSameItemComparison(): array
     {
         return array_merge(parent::getItemFieldsForIsSameItemComparison(), [
             ItemTransfer::MERCHANT_REFERENCE,

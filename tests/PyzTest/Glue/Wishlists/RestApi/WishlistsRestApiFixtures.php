@@ -32,6 +32,7 @@ class WishlistsRestApiFixtures implements FixturesBuilderInterface, FixturesCont
      * @var string
      */
     protected const TEST_USERNAME = 'UserWishlistsRestApiFixtures';
+
     /**
      * @var string
      */

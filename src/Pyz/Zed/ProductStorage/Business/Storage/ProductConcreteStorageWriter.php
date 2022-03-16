@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductStorage\Business\Storage;
 
+use Generated\Shared\Transfer\ProductConcreteStorageTransfer;
 use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Orm\Zed\ProductStorage\Persistence\SpyProductConcreteStorage;
@@ -57,6 +58,8 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterface $productFacade
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
      * @param bool $isSendingToQueue
+     * @param array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductConcreteStorageCollectionExpanderPluginInterface> $productConcreteStorageCollectionExpanderPlugins
+     * @param array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductConcreteStorageCollectionFilterPluginInterface> $productConcreteStorageCollectionFilterPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      * @param \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface $productConcreteStorageCte
@@ -65,11 +68,19 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
         ProductStorageToProductInterface $productFacade,
         ProductStorageQueryContainerInterface $queryContainer,
         $isSendingToQueue,
+        array $productConcreteStorageCollectionExpanderPlugins,
+        array $productConcreteStorageCollectionFilterPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
         ProductStorageCteStrategyInterface $productConcreteStorageCte
     ) {
-        parent::__construct($productFacade, $queryContainer, $isSendingToQueue);
+        parent::__construct(
+            $productFacade,
+            $queryContainer,
+            $isSendingToQueue,
+            $productConcreteStorageCollectionExpanderPlugins,
+            $productConcreteStorageCollectionFilterPlugins,
+        );
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
@@ -82,14 +93,18 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
      *
      * @return void
      */
-    protected function storeData(array $productConcreteLocalizedEntities, array $productConcreteStorageEntities)
+    protected function storeData(array $productConcreteLocalizedEntities, array $productConcreteStorageEntities): void
     {
         $pairedEntities = $this->pairProductConcreteLocalizedEntitiesWithProductConcreteStorageEntities(
             $productConcreteLocalizedEntities,
-            $productConcreteStorageEntities
+            $productConcreteStorageEntities,
         );
 
-        foreach ($pairedEntities as $pair) {
+        $productConcreteStorageTransfers = $this->getProductConcreteStorageTransfers($pairedEntities);
+
+        $this->expandProductConcreteStorageCollection($productConcreteStorageTransfers);
+
+        foreach ($pairedEntities as $index => $pair) {
             $productConcreteLocalizedEntity = $pair[static::PRODUCT_CONCRETE_LOCALIZED_ENTITY];
             $productConcreteStorageEntity = $pair[static::PRODUCT_CONCRETE_STORAGE_ENTITY];
 
@@ -100,9 +115,9 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             }
 
             $this->storeProductConcreteStorageEntity(
-                $productConcreteLocalizedEntity,
+                $productConcreteStorageTransfers[$index],
                 $productConcreteStorageEntity,
-                $pair[static::LOCALE_NAME]
+                $pair[static::LOCALE_NAME],
             );
         }
 
@@ -114,20 +129,19 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     }
 
     /**
-     * @param array $productConcreteLocalizedEntity
+     * @param \Generated\Shared\Transfer\ProductConcreteStorageTransfer $productConcreteStorageTransfer
      * @param \Orm\Zed\ProductStorage\Persistence\SpyProductConcreteStorage $productConcreteStorageEntity
      * @param string $localeName
      *
      * @return void
      */
     protected function storeProductConcreteStorageEntity(
-        array $productConcreteLocalizedEntity,
+        ProductConcreteStorageTransfer $productConcreteStorageTransfer,
         SpyProductConcreteStorage $productConcreteStorageEntity,
         $localeName
-    ) {
-        $productConcreteStorageTransfer = $this->mapToProductConcreteStorageTransfer($productConcreteLocalizedEntity);
+    ): void {
         $productConcreteStorageData = [
-            'fk_product' => $productConcreteLocalizedEntity[static::COL_FK_PRODUCT],
+            'fk_product' => $productConcreteStorageTransfer->getIdProductConcrete(),
             'data' => $productConcreteStorageTransfer->toArray(),
             'locale' => $localeName,
         ];
@@ -138,13 +152,13 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     /**
      * @return void
      */
-    protected function loadSuperAttributes()
+    protected function loadSuperAttributes(): void
     {
         $superAttributes = $this->queryContainer
             ->queryProductAttributeKey()
             ->find();
 
-        if (empty($superAttributes->getData())) {
+        if (!$superAttributes->getData()) {
             $this->superAttributeKeyBuffer[] = null;
 
             return;
@@ -194,7 +208,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
      *
      * @return string
      */
-    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName)
+    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName): string
     {
         $syncTransferData = new SynchronizationDataTransfer();
         if (isset($data['store'])) {
@@ -250,9 +264,9 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     /**
      * @return void
      */
-    public function write()
+    public function write(): void
     {
-        if (empty($this->synchronizedDataCollection)) {
+        if (!$this->synchronizedDataCollection) {
             return;
         }
 

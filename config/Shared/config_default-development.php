@@ -10,6 +10,9 @@ use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
+use Spryker\Shared\GlueBackendApiApplication\GlueBackendApiApplicationConstants;
+use Spryker\Shared\GlueJsonApiConvention\GlueJsonApiConventionConstants;
+use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
 use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
@@ -47,6 +50,8 @@ $backofficeHost = sprintf('backoffice.%s.%s.local', $storeLowerCase, $domain);
 $merchantPortalHost = sprintf('mp.%s.%s.local', $storeLowerCase, $domain);
 $backendApiHost = sprintf('backend-api.%s.%s.local', $storeLowerCase, $domain);
 $backendGatewayHost = sprintf('backend-gateway.%s.%s.local', $storeLowerCase, $domain);
+$glueBackendHost = sprintf('gluebackend.%s.%s.local', $storeLowerCase, $domain);
+$glueStorefrontHost = sprintf('gluestorefront.%s.%s.local', $storeLowerCase, $domain);
 
 // ----------------------------------------------------------------------------
 // ------------------------------ CODEBASE ------------------------------------
@@ -168,11 +173,11 @@ $config[SessionConstants::ZED_SESSION_COOKIE_NAME]
 
 $config[ZedRequestConstants::BASE_URL_ZED_API] = sprintf(
     'http://%s',
-    $backendGatewayHost
+    $backendGatewayHost,
 );
 $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
     'https://%s',
-    $backendGatewayHost
+    $backendGatewayHost,
 );
 
 // ----------------------------------------------------------------------------
@@ -181,7 +186,7 @@ $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
 
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
     'http://%s',
-    $backofficeHost
+    $backofficeHost,
 );
 
 // ----------------------------------------------------------------------------
@@ -190,7 +195,7 @@ $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
 
 $config[MerchantPortalConstants::BASE_URL_MP] = sprintf(
     'http://%s',
-    $merchantPortalHost
+    $merchantPortalHost,
 );
 
 // ----------------------------------------------------------------------------
@@ -208,7 +213,7 @@ $config[ApplicationConstants::BASE_URL_YVES]
     = $config[NewsletterConstants::BASE_URL_YVES]
     = sprintf(
         'http://%s',
-        $yvesHost
+        $yvesHost,
     );
 
 // ----------------------------------------------------------------------------
@@ -218,7 +223,7 @@ $config[ApplicationConstants::BASE_URL_YVES]
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN]
     = sprintf(
         'http://%s',
-        $glueHost
+        $glueHost,
     );
 
 if (class_exists(TestifyConstants::class)) {
@@ -240,3 +245,22 @@ require 'common/config_oms-development.php';
 // >>> PAYONE
 
 require 'common/config_payone-development.php';
+
+// ----------------------------------------------------------------------------
+// ------------------------------ Glue Backend API -------------------------------
+// ----------------------------------------------------------------------------
+$config[GlueBackendApiApplicationConstants::GLUE_BACKEND_API_HOST] = $glueBackendHost;
+$config[GlueBackendApiApplicationConstants::PROJECT_NAMESPACES] = [
+    'Pyz',
+];
+
+// ----------------------------------------------------------------------------
+// ------------------------------ Glue Storefront API -------------------------------
+// ----------------------------------------------------------------------------
+$config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $glueStorefrontHost;
+
+$config[GlueJsonApiConventionConstants::GLUE_DOMAIN]
+    = sprintf(
+        'https://%s',
+        $glueStorefrontHost,
+    );

@@ -57,7 +57,7 @@ class CustomerRestorePasswordCest
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
                 CustomerTransfer::RESTORE_PASSWORD_KEY => uniqid(),
-            ]
+            ],
         );
         $I->confirmCustomer($this->customerTransfer);
     }
@@ -81,7 +81,7 @@ class CustomerRestorePasswordCest
                 '{resourceCustomerPasswordRestore}/1',
                 [
                     'resourceCustomerPasswordRestore' => CustomersRestApiConfig::RESOURCE_CUSTOMER_RESTORE_PASSWORD,
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -89,7 +89,7 @@ class CustomerRestorePasswordCest
                     'id' => '1',
                     'attributes' => $restCustomerRestorePasswordAttributesTransfer->modifiedToArray(true, true),
                 ],
-            ]
+            ],
         );
 
         // Assert
@@ -114,7 +114,7 @@ class CustomerRestorePasswordCest
             $example['attributes'],
             [
                 RestCustomerRestorePasswordAttributesTransfer::RESTORE_PASSWORD_KEY => $this->customerTransfer->getRestorePasswordKey(),
-            ]
+            ],
         );
 
         $I->sendPatch(
@@ -122,7 +122,7 @@ class CustomerRestorePasswordCest
                 '{resourceCustomerPasswordRestore}/1',
                 [
                     'resourceCustomerPasswordRestore' => CustomersRestApiConfig::RESOURCE_CUSTOMER_RESTORE_PASSWORD,
-                ]
+                ],
             ),
             [
                 'data' => [
@@ -130,7 +130,7 @@ class CustomerRestorePasswordCest
                     'id' => '1',
                     'attributes' => $attributes,
                 ],
-            ]
+            ],
         );
 
         // Assert

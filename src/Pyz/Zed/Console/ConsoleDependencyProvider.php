@@ -42,6 +42,7 @@ use Spryker\Zed\Development\Communication\Console\CodePhpstanConsole;
 use Spryker\Zed\Development\Communication\Console\CodeStyleSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodeTestConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateClientIdeAutoCompletionConsole;
+use Spryker\Zed\Development\Communication\Console\GenerateGlueBackendIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateGlueIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateServiceIdeAutoCompletionConsole;
@@ -49,6 +50,7 @@ use Spryker\Zed\Development\Communication\Console\GenerateYvesIdeAutoCompletionC
 use Spryker\Zed\Development\Communication\Console\GenerateZedIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveClientIdeAutoCompletionConsole;
+use Spryker\Zed\Development\Communication\Console\RemoveGlueBackendIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveGlueIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveServiceIdeAutoCompletionConsole;
@@ -68,6 +70,7 @@ use Spryker\Zed\Maintenance\Communication\Console\MaintenanceDisableConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceEnableConsole;
 use Spryker\Zed\MerchantOms\Communication\Console\TriggerEventFromCsvFileConsole;
 use Spryker\Zed\MerchantOpeningHoursDataImport\MerchantOpeningHoursDataImportConfig;
+use Spryker\Zed\MerchantProductApprovalDataImport\MerchantProductApprovalDataImportConfig;
 use Spryker\Zed\MerchantProfileDataImport\MerchantProfileDataImportConfig;
 use Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin;
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
@@ -83,12 +86,14 @@ use Spryker\Zed\PriceProductSchedule\Communication\Console\PriceProductScheduleA
 use Spryker\Zed\PriceProductSchedule\Communication\Console\PriceProductScheduleCleanupConsole;
 use Spryker\Zed\PriceProductScheduleDataImport\PriceProductScheduleDataImportConfig;
 use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig;
+use Spryker\Zed\ProductApprovalDataImport\ProductApprovalDataImportConfig;
 use Spryker\Zed\ProductConfigurationDataImport\ProductConfigurationDataImportConfig;
 use Spryker\Zed\ProductDiscontinued\Communication\Console\DeactivateDiscontinuedProductsConsole;
 use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfig;
 use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelRelationUpdaterConsole;
 use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelValidityConsole;
 use Spryker\Zed\ProductLabelDataImport\ProductLabelDataImportConfig;
+use Spryker\Zed\ProductOfferShoppingListDataImport\ProductOfferShoppingListDataImportConfig;
 use Spryker\Zed\ProductOfferValidity\Communication\Console\ProductOfferValidityConsole;
 use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportConfig;
 use Spryker\Zed\ProductPageSearch\Communication\Console\ProductPageProductAbstractRefreshConsole;
@@ -290,6 +295,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_ITEM),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . ProductOfferShoppingListDataImportConfig::IMPORT_TYPE_PRODUCT_OFFER_SHOPPING_LIST_ITEM),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_COMPANY_USER),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_COMPANY_BUSINESS_UNIT),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT),
@@ -316,6 +322,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . AclEntityDataImportConfig::IMPORT_TYPE_ACL_ENTITY_RULE),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . AclEntityDataImportConfig::IMPORT_TYPE_ACL_ENTITY_SEGMENT),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . AclEntityDataImportConfig::IMPORT_TYPE_ACL_ENTITY_SEGMENT_CONNECTOR),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . MerchantProductApprovalDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_APPROVAL_STATUS_DEFAULT),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . ProductApprovalDataImportConfig::IMPORT_TYPE_PRODUCT_APPROVAL_STATUS),
 
             // Publish and Synchronization
             new EventBehaviorTriggerTimeoutConsole(),
@@ -433,7 +441,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new GenerateIdeAutoCompletionConsole();
             $commands[] = new RemoveIdeAutoCompletionConsole();
             $commands[] = new GenerateGlueIdeAutoCompletionConsole();
+            $commands[] = new GenerateGlueBackendIdeAutoCompletionConsole();
             $commands[] = new RemoveGlueIdeAutoCompletionConsole();
+            $commands[] = new RemoveGlueBackendIdeAutoCompletionConsole();
             $commands[] = new DataBuilderGeneratorConsole();
             $commands[] = new RemoveDataBuilderConsole();
             $commands[] = new CompletionCommand();
@@ -474,7 +484,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
      *
      * @return array
      */
-    public function getConsolePostRunHookPlugins(Container $container)
+    public function getConsolePostRunHookPlugins(Container $container): array
     {
         return [
             new EventBehaviorPostHookPlugin(),

@@ -9,6 +9,8 @@ namespace Pyz\Glue\WishlistsRestApi;
 
 use Spryker\Glue\MerchantProductOfferWishlistRestApi\Plugin\Wishlist\ProductOfferRestWishlistItemsAttributesMapperPlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\Wishlist\ProductAvailabilityRestWishlistItemsAttributesMapperPlugin;
+use Spryker\Glue\ProductConfigurationWishlistsRestApi\Plugin\WishlistsRestApi\ProductConfigurationRestWishlistItemsAttributesMapperPlugin;
+use Spryker\Glue\ProductConfigurationWishlistsRestApi\Plugin\WishlistsRestApi\ProductConfigurationWishlistItemRequestMapperPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\Wishlist\ProductPriceRestWishlistItemsAttributesMapperPlugin;
 use Spryker\Glue\WishlistsRestApi\WishlistsRestApiDependencyProvider as SprykerWishlistsRestApiDependencyProvider;
 
@@ -23,6 +25,17 @@ class WishlistsRestApiDependencyProvider extends SprykerWishlistsRestApiDependen
             new ProductPriceRestWishlistItemsAttributesMapperPlugin(),
             new ProductAvailabilityRestWishlistItemsAttributesMapperPlugin(),
             new ProductOfferRestWishlistItemsAttributesMapperPlugin(),
+            new ProductConfigurationRestWishlistItemsAttributesMapperPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Glue\WishlistsRestApiExtension\Dependency\Plugin\WishlistItemRequestMapperPluginInterface>
+     */
+    protected function getWishlistItemRequestMapperPlugins(): array
+    {
+        return [
+            new ProductConfigurationWishlistItemRequestMapperPlugin(),
         ];
     }
 }

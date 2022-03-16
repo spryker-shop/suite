@@ -36,6 +36,7 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
      * @var string
      */
     protected const TEST_USERNAME = 'UserCartsUpSellingProductsRestApiFixtures';
+
     /**
      * @var string
      */
@@ -87,6 +88,8 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
      */
     public function buildFixtures(UpSellingProductsApiTester $I): FixturesContainerInterface
     {
+        $I->truncateSalesOrderThresholds();
+
         $this->createQuoteWithProduct($I);
         $this->createUpSellingProductConcrete($I);
         $this->createRelationBetweenProducts($I);
@@ -148,7 +151,7 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
             $this->productConcreteTransfer->getFkProductAbstract(),
             uniqid('test-', false),
             'up-selling',
-            $storeRelationTransfer
+            $storeRelationTransfer,
         );
     }
 
@@ -166,7 +169,9 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
     ): QuoteTransfer {
         return $I->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,
-            QuoteTransfer::TOTALS => (new TotalsTransfer())->setPriceToPay(random_int(1000, 10000)),
+            QuoteTransfer::TOTALS => (new TotalsTransfer())
+                ->setSubtotal(random_int(1000, 10000))
+                ->setPriceToPay(random_int(1000, 10000)),
             QuoteTransfer::ITEMS => $this->mapProductConcreteTransfersToQuoteTransferItems($productConcreteTransfers),
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
         ]);

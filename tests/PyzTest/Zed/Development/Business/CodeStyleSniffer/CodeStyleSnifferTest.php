@@ -105,9 +105,9 @@ class CodeStyleSnifferTest extends Unit
             ->method('runSnifferCommand')
             ->with(
                 $expectedPathToRunCommandWith,
-                $this->callback(function ($subject) use ($codingStandard) {
-                    return is_callable([$subject, 'getCodingStandard']) && $subject->getCodingStandard() === $codingStandard;
-                })
+                $this->callback(function ($subject) use ($codingStandard, $expectedPathToRunCommandWith) {
+                    return is_callable([$subject, 'getCodingStandard']) && $subject->getCodingStandard($expectedPathToRunCommandWith) === $codingStandard;
+                }),
             );
 
         return $codeStyleSnifferMock;

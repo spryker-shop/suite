@@ -30,6 +30,7 @@ class ProductAbstractStoreBulkPdoWriterPluginTest extends AbstractWriterPluginTe
      * @var string
      */
     public const CSV_IMPORT_FILE = 'import/ProductAbstractStore/product_abstract_store.csv';
+
     /**
      * @var string
      */

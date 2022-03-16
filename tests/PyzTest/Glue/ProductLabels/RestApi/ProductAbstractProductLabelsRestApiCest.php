@@ -57,7 +57,7 @@ class ProductAbstractProductLabelsRestApiCest
             $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku(),
             [
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
+            ],
         );
 
         // Act
@@ -72,14 +72,14 @@ class ProductAbstractProductLabelsRestApiCest
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
+                $idProductLabel,
             );
 
         $I->amSure('The returned resource has product-labels include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
+                $idProductLabel,
             );
 
         $I->amSure('The include has correct self-link')
@@ -87,7 +87,7 @@ class ProductAbstractProductLabelsRestApiCest
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $idProductLabel,
-                $I->buildProductLabelUrl($idProductLabel)
+                $I->buildProductLabelUrl($idProductLabel),
             );
     }
 
@@ -105,7 +105,7 @@ class ProductAbstractProductLabelsRestApiCest
             $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
             [
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
+            ],
         );
 
         // Act
@@ -135,7 +135,7 @@ class ProductAbstractProductLabelsRestApiCest
             $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku(),
             [
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
+            ],
         );
 
         // Act
@@ -160,7 +160,7 @@ class ProductAbstractProductLabelsRestApiCest
             $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku(),
             [
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
+            ],
         );
 
         // Act

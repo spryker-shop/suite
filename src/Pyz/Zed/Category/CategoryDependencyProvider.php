@@ -35,7 +35,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
                 new RemoveCategoryImageSetRelationPlugin(),
                 new RemoveMerchantCategoryRelationPlugin(),
             ],
-            parent::getRelationDeletePluginStack()
+            parent::getRelationDeletePluginStack(),
         );
 
         return $deletePlugins;
@@ -53,7 +53,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
                 new UpdateNavigationRelationPlugin(),
                 new CmsBlockCategoryCategoryRelationPlugin(),
             ],
-            parent::getRelationUpdatePluginStack()
+            parent::getRelationUpdatePluginStack(),
         );
     }
 

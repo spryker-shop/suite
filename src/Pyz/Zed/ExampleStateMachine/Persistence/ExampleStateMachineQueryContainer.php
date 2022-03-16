@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ExampleStateMachine\Persistence;
 
+use Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 
@@ -20,7 +21,7 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
      *
      * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
      */
-    public function queryStateMachineItemsByStateIds(array $stateIds = [])
+    public function queryStateMachineItemsByStateIds(array $stateIds = []): PyzExampleStateMachineItemQuery
     {
           return $this->getFactory()
               ->createExampleStateMachineQuery()
@@ -28,7 +29,7 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
     }
 
     /**
-     * @return \Propel\Runtime\Collection\ObjectCollection|array<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
+     * @return \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem[]
      */
     public function queryAllStateMachineItems()
     {
@@ -42,8 +43,9 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
      *
      * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
      */
-    public function queryExampleStateMachineItemByIdStateMachineItem($idStateMachineItem)
-    {
+    public function queryExampleStateMachineItemByIdStateMachineItem(
+        $idStateMachineItem
+    ): PyzExampleStateMachineItemQuery {
         return $this->getFactory()
             ->createExampleStateMachineQuery()
             ->filterByIdExampleStateMachineItem($idStateMachineItem);

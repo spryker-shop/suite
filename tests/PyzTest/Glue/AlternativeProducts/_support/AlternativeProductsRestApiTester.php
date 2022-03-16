@@ -59,7 +59,7 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
             [
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
-            ]
+            ],
         );
     }
 
@@ -76,7 +76,7 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 
@@ -94,7 +94,7 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'resourceAbstractAlternativeProducts' => AlternativeProductsRestApiConfig::RELATIONSHIP_NAME_ABSTRACT_ALTERNATIVE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 
@@ -112,7 +112,7 @@ class AlternativeProductsRestApiTester extends ApiEndToEndTester
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'resourceConcreteAlternativeProducts' => AlternativeProductsRestApiConfig::RELATIONSHIP_NAME_CONCRETE_ALTERNATIVE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 }

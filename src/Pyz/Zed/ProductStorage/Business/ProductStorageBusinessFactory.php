@@ -45,9 +45,10 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
             $this->getStoreFacade(),
             $this->getConfig()->isSendingToQueue(),
             $this->getProductAbstractStorageExpanderPlugins(),
+            $this->getProductAbstractStorageCollectionFilterPlugins(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createProductAbstractStorageCteStrategyResolver()->resolve()
+            $this->createProductAbstractStorageCteStrategyResolver()->resolve(),
         );
     }
 
@@ -99,9 +100,11 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
             $this->getProductFacade(),
             $this->getQueryContainer(),
             $this->getConfig()->isSendingToQueue(),
+            $this->getProductConcreteStorageCollectionExpanderPlugins(),
+            $this->getProductConcreteStorageCollectionFilterPlugins(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createProductConcreteStorageCteStrategyResolver()->resolve()
+            $this->createProductConcreteStorageCteStrategyResolver()->resolve(),
         );
     }
 

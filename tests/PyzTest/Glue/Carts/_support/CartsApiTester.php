@@ -60,7 +60,9 @@ class CartsApiTester extends ApiEndToEndTester
     ): QuoteTransfer {
         return $I->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,
-            QuoteTransfer::TOTALS => (new TotalsTransfer())->setPriceToPay(random_int(1000, 10000)),
+            QuoteTransfer::TOTALS => (new TotalsTransfer())
+                ->setSubtotal(random_int(1000, 10000))
+                ->setPriceToPay(random_int(1000, 10000)),
             QuoteTransfer::ITEMS => $this->mapProductConcreteTransfersToQuoteTransferItems($productConcreteTransfers),
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
             QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
@@ -106,7 +108,7 @@ class CartsApiTester extends ApiEndToEndTester
         return $I->haveEntityTag(
             CartsRestApiConfig::RESOURCE_CARTS,
             $cartUuid,
-            $attributes
+            $attributes,
         );
     }
 
@@ -155,7 +157,7 @@ class CartsApiTester extends ApiEndToEndTester
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
+            ],
         );
     }
 
@@ -170,7 +172,7 @@ class CartsApiTester extends ApiEndToEndTester
             '{resourceCarts}' . $this->formatQueryInclude($includes),
             [
                 'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-            ]
+            ],
         );
     }
 
@@ -188,7 +190,7 @@ class CartsApiTester extends ApiEndToEndTester
                 'customers' => CartsRestApiConfig::RESOURCE_CUSTOMERS,
                 'customerReference' => $customerReference,
                 'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-            ]
+            ],
         );
     }
 
@@ -205,7 +207,7 @@ class CartsApiTester extends ApiEndToEndTester
             [
                 'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                 'cartUuid' => $cartUuid,
-            ]
+            ],
         );
     }
 
@@ -225,7 +227,7 @@ class CartsApiTester extends ApiEndToEndTester
                 'cartUuid' => $cartUuid,
                 'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 'cartItemGroupKey' => $cartItemGroupKey,
-            ]
+            ],
         );
     }
 
@@ -240,7 +242,7 @@ class CartsApiTester extends ApiEndToEndTester
             '{resourceGuestCarts}' . $this->formatQueryInclude($includes),
             [
                 'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            ]
+            ],
         );
     }
 
@@ -257,7 +259,7 @@ class CartsApiTester extends ApiEndToEndTester
             [
                 'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                 'guestCartUuid' => $guestCartUuid,
-            ]
+            ],
         );
     }
 
@@ -280,7 +282,7 @@ class CartsApiTester extends ApiEndToEndTester
                 'guestCartUuid' => $guestCartUuid,
                 'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                 'guestCartItemGroupKey' => $guestCartItemGroupKey,
-            ]
+            ],
         );
     }
 }

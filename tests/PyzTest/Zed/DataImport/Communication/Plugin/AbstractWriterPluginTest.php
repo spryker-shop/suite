@@ -14,11 +14,11 @@ use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Generated\Shared\Transfer\DataImporterReaderConfigurationTransfer;
 use Propel\Runtime\Propel;
+use Pyz\Zed\DataImport\Business\DataImportBusinessFactory;
 use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintException;
 use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintTrait;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Spryker\Service\UtilEncoding\UtilEncodingService;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterCollection;
 use Spryker\Zed\DataImport\Dependency\Propel\DataImportToPropelConnectionBridge;
 use Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceBridge;
@@ -58,7 +58,7 @@ abstract class AbstractWriterPluginTest extends Unit
     /**
      * @return \Pyz\Zed\DataImport\Business\DataImportBusinessFactory
      */
-    protected function getDataImportBusinessFactoryStub()
+    protected function getDataImportBusinessFactoryStub(): DataImportBusinessFactory
     {
         $this->tester->mockFactoryMethod('createProductAbstractDataImportWriters', $this->createDataImportWriters());
         $this->tester->mockFactoryMethod('createProductAbstractStoreDataImportWriters', $this->createDataImportWriters());
@@ -68,10 +68,9 @@ abstract class AbstractWriterPluginTest extends Unit
         $this->tester->mockFactoryMethod('createProductStockDataImportWriters', $this->createDataImportWriters());
         $this->tester->mockFactoryMethod('getConfig', $this->getDataImportConfigStub());
         $this->tester->mockFactoryMethod('getPropelConnection', $this->getPropelConnection());
-        $this->tester->mockFactoryMethod('getStore', $this->getStore());
         $this->tester->mockFactoryMethod('getPriceProductFacade', new PriceProductFacade());
         $this->tester->mockFactoryMethod('getUtilEncodingService', new DataImportToUtilEncodingServiceBridge(
-            new UtilEncodingService()
+            new UtilEncodingService(),
         ));
 
         /** @var \Pyz\Zed\DataImport\Business\DataImportBusinessFactory $factory */
@@ -93,7 +92,7 @@ abstract class AbstractWriterPluginTest extends Unit
 
         try {
             $this->checkIsMariaDBSupportsBulkImport(
-                $dataImportBusinessFactory->createPropelExecutor()
+                $dataImportBusinessFactory->createPropelExecutor(),
             );
         } catch (PropelMariaDbVersionConstraintException $exception) {
             $this->markTestSkipped('Importer does not support current database engine or it\'s version.');
@@ -103,7 +102,7 @@ abstract class AbstractWriterPluginTest extends Unit
     /**
      * @return \Pyz\Zed\DataImport\DataImportConfig
      */
-    public function getDataImportConfigStub()
+    public function getDataImportConfigStub(): DataImportConfig
     {
         /** @var \Pyz\Zed\DataImport\DataImportConfig $dataImportConfig */
         $dataImportConfig = Stub::make(DataImportConfig::class, [
@@ -144,13 +143,5 @@ abstract class AbstractWriterPluginTest extends Unit
     public function getPropelConnection(): DataImportToPropelConnectionBridge
     {
         return new DataImportToPropelConnectionBridge(Propel::getConnection());
-    }
-
-    /**
-     * @return \Spryker\Shared\Kernel\Store
-     */
-    public function getStore(): Store
-    {
-        return Store::getInstance();
     }
 }

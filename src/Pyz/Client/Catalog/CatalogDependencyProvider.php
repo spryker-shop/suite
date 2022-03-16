@@ -29,6 +29,7 @@ use Spryker\Client\ProductListSearch\Plugin\Search\ProductListQueryExpanderPlugi
 use Spryker\Client\ProductReview\Plugin\RatingFacetConfigTransferBuilderPlugin;
 use Spryker\Client\ProductReview\Plugin\RatingSortConfigTransferBuilderPlugin;
 use Spryker\Client\SalesProductConnector\Plugin\PopularitySortConfigTransferBuilderPlugin;
+use Spryker\Client\Search\Dependency\Plugin\QueryInterface;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\CompletionQueryExpanderPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\FacetQueryExpanderPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\FuzzyQueryExpanderPlugin;
@@ -53,7 +54,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     /**
      * @return array<\Spryker\Client\Catalog\Dependency\Plugin\FacetConfigTransferBuilderPluginInterface>
      */
-    protected function getFacetConfigTransferBuilderPlugins()
+    protected function getFacetConfigTransferBuilderPlugins(): array
     {
         return [
             new CategoryFacetConfigTransferBuilderPlugin(),
@@ -66,7 +67,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     /**
      * @return array<\Spryker\Client\Catalog\Dependency\Plugin\SortConfigTransferBuilderPluginInterface>
      */
-    protected function getSortConfigTransferBuilderPlugins()
+    protected function getSortConfigTransferBuilderPlugins(): array
     {
         return [
             new RatingSortConfigTransferBuilderPlugin(),
@@ -81,7 +82,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     /**
      * @return \Spryker\Client\Search\Dependency\Plugin\QueryInterface
      */
-    protected function createCatalogSearchQueryPlugin()
+    protected function createCatalogSearchQueryPlugin(): QueryInterface
     {
         return new ProductCatalogSearchQueryPlugin();
     }
@@ -89,7 +90,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     /**
      * @return array<\Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface>|array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface>
      */
-    protected function createCatalogSearchQueryExpanderPlugins()
+    protected function createCatalogSearchQueryExpanderPlugins(): array
     {
         return [
             new StoreQueryExpanderPlugin(),
@@ -104,7 +105,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new CustomerCatalogProductListQueryExpanderPlugin(),
             new MerchantReferenceQueryExpanderPlugin(),
 
-            /**
+            /*
              * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
              */
             new FacetQueryExpanderPlugin(),
@@ -121,7 +122,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new SortedResultFormatterPlugin(),
             new PaginatedResultFormatterPlugin(),
             new CurrencyAwareCatalogSearchResultFormatterPlugin(
-                new RawCatalogSearchResultFormatterPlugin()
+                new RawCatalogSearchResultFormatterPlugin(),
             ),
             new SpellingSuggestionResultFormatterPlugin(),
             new CategoryTreeFilterPageSearchResultFormatterPlugin(),
@@ -131,7 +132,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     /**
      * @return array<\Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface>|array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface>
      */
-    protected function createSuggestionQueryExpanderPlugins()
+    protected function createSuggestionQueryExpanderPlugins(): array
     {
         return [
             new FuzzyQueryExpanderPlugin(),
@@ -154,7 +155,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
         return [
             new CompletionResultFormatterPlugin(),
             new CurrencyAwareSuggestionByTypeResultFormatter(
-                new SuggestionByTypeResultFormatterPlugin()
+                new SuggestionByTypeResultFormatterPlugin(),
             ),
         ];
     }

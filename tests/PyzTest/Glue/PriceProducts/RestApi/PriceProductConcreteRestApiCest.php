@@ -91,8 +91,8 @@ class PriceProductConcreteRestApiCest
                 'concrete-products/{ProductConcreteSku}/concrete-product-prices',
                 [
                     'ProductConcreteSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
-                ]
-            )
+                ],
+            ),
         );
 
         //assert

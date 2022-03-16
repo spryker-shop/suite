@@ -56,6 +56,11 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     protected $productAbstractStorageExpanderPlugins = [];
 
     /**
+     * @var array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageCollectionFilterPluginInterface>
+     */
+    protected $productAbstractStorageCollectionFilterPlugins = [];
+
+    /**
      * @var \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface
      */
     protected $productAbstractStorageCte;
@@ -67,6 +72,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToStoreFacadeInterface $storeFacade
      * @param bool $isSendingToQueue
      * @param array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface> $productAbstractStorageExpanderPlugins
+     * @param array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageCollectionFilterPluginInterface> $productAbstractStorageCollectionFilterPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      * @param \Pyz\Zed\ProductStorage\Business\Storage\Cte\ProductStorageCteStrategyInterface $productAbstractStorageCte
@@ -78,6 +84,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         ProductStorageToStoreFacadeInterface $storeFacade,
         $isSendingToQueue,
         array $productAbstractStorageExpanderPlugins,
+        array $productAbstractStorageCollectionFilterPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
         ProductStorageCteStrategyInterface $productAbstractStorageCte
@@ -88,7 +95,8 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
             $queryContainer,
             $storeFacade,
             $isSendingToQueue,
-            $productAbstractStorageExpanderPlugins
+            $productAbstractStorageExpanderPlugins,
+            $productAbstractStorageCollectionFilterPlugins,
         );
 
         $this->synchronizationService = $synchronizationService;
@@ -102,23 +110,36 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      *
      * @return void
      */
-    protected function storeData(array $productAbstractLocalizedEntities, array $productAbstractStorageEntities)
+    protected function storeData(array $productAbstractLocalizedEntities, array $productAbstractStorageEntities): void
     {
         $pairedEntities = $this->pairProductAbstractLocalizedEntitiesWithProductAbstractStorageEntities(
             $productAbstractLocalizedEntities,
-            $productAbstractStorageEntities
+            $productAbstractStorageEntities,
         );
 
         $attributeMapBulk = $this->attributeMap->generateAttributeMapBulk(
             array_column($productAbstractLocalizedEntities, static::COL_FK_PRODUCT_ABSTRACT),
-            array_column($productAbstractLocalizedEntities, static::COL_FK_LOCALE)
+            array_column($productAbstractLocalizedEntities, static::COL_FK_LOCALE),
         );
+
+        $productAbstractStorageTransfers = $this->mapProductAbstractLocalizedEntitiesToProductAbstractStorageTransfers(
+            $productAbstractLocalizedEntities,
+            $attributeMapBulk,
+        );
+        $productAbstractStorageTransfers = $this->executeProductAbstractStorageFilterPlugins($productAbstractStorageTransfers);
+        $indexedProductAbstractStorageTransfers = $this->indexProductAbstractStorageTransfersByIdProductAbstract($productAbstractStorageTransfers);
 
         foreach ($pairedEntities as $pair) {
             $productAbstractLocalizedEntity = $pair[static::PRODUCT_ABSTRACT_LOCALIZED_ENTITY];
             $productAbstractStorageEntity = $pair[static::PRODUCT_ABSTRACT_STORAGE_ENTITY];
 
-            if ($productAbstractLocalizedEntity === null || !$this->isActive($productAbstractLocalizedEntity)) {
+            $productAbstractStorageTransfer = $indexedProductAbstractStorageTransfers[$productAbstractLocalizedEntity[static::COL_FK_PRODUCT_ABSTRACT]] ?? null;
+
+            if (
+                $productAbstractLocalizedEntity === null
+                || $productAbstractStorageTransfer === null
+                || !$this->isActive($productAbstractLocalizedEntity)
+            ) {
                 $this->deleteProductAbstractStorageEntity($productAbstractStorageEntity);
 
                 continue;
@@ -128,7 +149,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
                 $productAbstractLocalizedEntity,
                 $pair[static::STORE_NAME],
                 $pair[static::LOCALE_NAME],
-                $attributeMapBulk
+                $attributeMapBulk,
             );
         }
 
@@ -156,7 +177,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         $productAbstractStorageTransfer = $this->mapToProductAbstractStorageTransfer(
             $productAbstractLocalizedEntity,
             new ProductAbstractStorageTransfer(),
-            $attributeMapBulk
+            $attributeMapBulk,
         );
 
         $productAbstractStorageData = [
@@ -208,7 +229,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      *
      * @return string
      */
-    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName)
+    protected function generateResourceKey(array $data, string $keySuffix, string $resourceName): string
     {
         $syncTransferData = new SynchronizationDataTransfer();
         if (isset($data['store'])) {
@@ -264,9 +285,9 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     /**
      * @return void
      */
-    public function write()
+    public function write(): void
     {
-        if (empty($this->synchronizedDataCollection)) {
+        if (!$this->synchronizedDataCollection) {
             return;
         }
 

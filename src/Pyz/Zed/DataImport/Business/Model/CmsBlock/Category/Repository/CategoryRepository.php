@@ -17,14 +17,17 @@ class CategoryRepository implements CategoryRepositoryInterface
      * @var string
      */
     public const ID_CATEGORY_NODE = 'id_category_node';
+
     /**
      * @var string
      */
     public const ID_LOCALE = 'idLocale';
+
     /**
      * @var string
      */
     public const URL = 'url';
+
     /**
      * @var string
      */
@@ -53,7 +56,7 @@ class CategoryRepository implements CategoryRepositoryInterface
      *
      * @return int
      */
-    public function getIdCategoryByCategoryKey($categoryKey)
+    public function getIdCategoryByCategoryKey($categoryKey): int
     {
         if ($this->categoryKeys->count() === 0) {
             $this->loadCategoryKeys();
@@ -62,7 +65,7 @@ class CategoryRepository implements CategoryRepositoryInterface
         if (!$this->categoryKeys->offsetExists($categoryKey)) {
             throw new CategoryByKeyNotFoundException(sprintf(
                 'Category by key "%s" not found. Maybe you have a typo in the category key.',
-                $categoryKey
+                $categoryKey,
             ));
         }
 
@@ -72,7 +75,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     /**
      * @return void
      */
-    private function loadCategoryKeys()
+    private function loadCategoryKeys(): void
     {
         $categoryEntityCollection = SpyCategoryQuery::create()
             ->joinWithNode()

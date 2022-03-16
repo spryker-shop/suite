@@ -175,7 +175,7 @@ interface DataImportFacadeInterface
     /**
      * @return void
      */
-    public function flushCombinedProductPriceDataImporter();
+    public function flushCombinedProductPriceDataImporter(): void;
 
     /**
      * @return void

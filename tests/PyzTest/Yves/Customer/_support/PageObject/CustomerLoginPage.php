@@ -28,6 +28,7 @@ class CustomerLoginPage extends Customer
      * @var string
      */
     public const TITLE_LOGIN = 'Access your account';
+
     /**
      * @var string
      */
@@ -37,6 +38,7 @@ class CustomerLoginPage extends Customer
      * @var string
      */
     public const FORM_FIELD_SELECTOR_EMAIL = 'loginForm[email]';
+
     /**
      * @var string
      */
@@ -48,7 +50,7 @@ class CustomerLoginPage extends Customer
     public const FORM_NAME_LOGIN_FORM = 'loginForm';
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     public const LOGOUT_LINK = ['id' => 'logout-link'];
 }

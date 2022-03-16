@@ -16,6 +16,7 @@ class MerchantProductOfferDataImportConfig extends SprykerMerchantProductOfferDa
      * @var string
      */
     public const IMPORT_TYPE_COMBINED_MERCHANT_PRODUCT_OFFER = 'combined-merchant-product-offer';
+
     /**
      * @var string
      */
@@ -28,7 +29,7 @@ class MerchantProductOfferDataImportConfig extends SprykerMerchantProductOfferDa
     {
         return $this->buildImporterConfiguration(
             $this->getCombinedMerchantProductOfferFilePath(),
-            static::IMPORT_TYPE_COMBINED_MERCHANT_PRODUCT_OFFER
+            static::IMPORT_TYPE_COMBINED_MERCHANT_PRODUCT_OFFER,
         );
     }
 
@@ -39,7 +40,7 @@ class MerchantProductOfferDataImportConfig extends SprykerMerchantProductOfferDa
     {
         return $this->buildImporterConfiguration(
             $this->getCombinedMerchantProductOfferFilePath(),
-            static::IMPORT_TYPE_COMBINED_MERCHANT_PRODUCT_OFFER_STORE
+            static::IMPORT_TYPE_COMBINED_MERCHANT_PRODUCT_OFFER_STORE,
         );
     }
 

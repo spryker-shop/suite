@@ -33,10 +33,12 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
      * @var string
      */
     protected const TEST_USERNAME = 'UserConvertGuestCartToCustomerCartRestApiFixtures';
+
     /**
      * @var string
      */
     protected const TEST_PASSWORD = 'change123';
+
     /**
      * @var string
      */
@@ -101,6 +103,8 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
      */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
+        $I->truncateSalesOrderThresholds();
+
         $this->createGuestQuote($I);
         $this->createCustomer($I);
 

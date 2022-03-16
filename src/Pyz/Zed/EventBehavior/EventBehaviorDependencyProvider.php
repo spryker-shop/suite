@@ -53,7 +53,7 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
     /**
      * @return array<\Spryker\Zed\EventBehavior\Dependency\Plugin\EventResourcePluginInterface>
      */
-    protected function getEventTriggerResourcePlugins()
+    protected function getEventTriggerResourcePlugins(): array
     {
         return [
             new CmsPageEventResourceQueryContainerPlugin(),

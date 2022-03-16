@@ -5,7 +5,7 @@ tag: 'dev'
 
 environment: docker.dev
 image:
-    tag: spryker/php:7.3
+    tag: spryker/php:7.4
     php:
         enabled-extensions:
             - blackfire
@@ -103,13 +103,27 @@ groups:
                         store: AT
                         services:
                             session:
-                                namespace: 2
+                                namespace:
             glue_eu:
                 application: glue
                 endpoints:
                     glue.de.spryker.local:
                         store: DE
                     glue.at.spryker.local:
+                        store: AT
+            glue_storefront_eu:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.de.spryker.local:
+                        store: DE
+                    glue-storefront.at.spryker.local:
+                        store: AT
+            glue_backend_eu:
+                application: glue-backend
+                endpoints:
+                    glue-backend.de.spryker.local:
+                        store: DE
+                    glue-backend.at.spryker.local:
                         store: AT
             backoffice_eu:
                 application: backoffice
@@ -169,6 +183,16 @@ groups:
                 endpoints:
                     glue.us.spryker.local:
                         store: US
+            glue_storefront_us:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.us.spryker.local:
+                        store: US
+            glue_backend_us:
+                application: glue-backend
+                endpoints:
+                    glue-backend.us.spryker.local:
+                        store: US
             backoffice_us:
                 application: backoffice
                 endpoints:
@@ -215,7 +239,7 @@ services:
                 protocol: tcp
     search:
         engine: elastic
-        version: 7.6
+        version: '7.10'
         endpoints:
             localhost:9200:
                 protocol: tcp

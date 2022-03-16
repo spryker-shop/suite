@@ -62,6 +62,9 @@ sections:
         merchant-portal-install-dependencies:
             command: 'console frontend:mp:install-dependencies | tail -100 && echo "Output trimmed, only last 100 lines shown."'
 
+        zed-install-dependencies:
+            command: 'vendor/bin/console frontend:zed:install-dependencies'
+
     build-static-production:
         excluded: true
         yves-build-frontend:

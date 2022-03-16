@@ -24,6 +24,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
      * @var string
      */
     protected const BUYER_ROLE_NAME = 'Buyer';
+
     /**
      * @var string
      */
@@ -84,7 +85,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
         return (new CompanyRoleTransfer())
             ->setName(static::BUYER_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getBuyerRolePermissionKeys()
+                $this->getBuyerRolePermissionKeys(),
             ));
     }
 
@@ -96,7 +97,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
         return (new CompanyRoleTransfer())
             ->setName(static::APPROVER_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getApproverRolePermissionKeys()
+                $this->getApproverRolePermissionKeys(),
             ));
     }
 }

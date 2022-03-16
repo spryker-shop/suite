@@ -35,30 +35,30 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
      */
     protected function persistAbstractProductEntities(): void
     {
-        if (!empty(static::$productAbstractCollection)) {
+        if (static::$productAbstractCollection) {
             $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_SKU);
             $abstractSkus = $this->dataFormatter->formatStringList($rawAbstractSkus);
             $rowsCount = count($rawAbstractSkus);
 
             $attributes = $this->dataFormatter->formatPriceStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES),
-                $rowsCount
+                $rowsCount,
             );
             $fkTaxSets = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_FK_TAX_SET),
-                $rowsCount
+                $rowsCount,
             );
             $colorCode = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_COLOR_CODE),
-                $rowsCount
+                $rowsCount,
             );
             $newFrom = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_NEW_FROM),
-                $rowsCount
+                $rowsCount,
             );
             $newTo = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_NEW_TO),
-                $rowsCount
+                $rowsCount,
             );
 
             $sql = $this->productAbstractSql->createAbstractProductSQL();
@@ -86,38 +86,38 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
      */
     protected function persistAbstractProductLocalizedAttributesEntities(): void
     {
-        if (!empty(static::$productAbstractLocalizedAttributesCollection)) {
+        if (static::$productAbstractLocalizedAttributesCollection) {
             $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_ABSTRACT_SKU);
             $abstractSkus = $this->dataFormatter->formatStringList($rawAbstractSkus);
             $rowsCount = count($rawAbstractSkus);
             $idLocale = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE),
-                $rowsCount
+                $rowsCount,
             );
             $name = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_NAME),
-                $rowsCount
+                $rowsCount,
             );
             $description = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_DESCRIPTION),
-                $rowsCount
+                $rowsCount,
             );
             $metaTitle = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_META_TITLE),
-                $rowsCount
+                $rowsCount,
             );
             $metaDescription = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_META_DESCRIPTION),
-                $rowsCount
+                $rowsCount,
             );
             $metaKeywords = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_META_KEYWORDS),
-                $rowsCount
+                $rowsCount,
             );
 
             $attributes = $this->dataFormatter->formatPriceStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES),
-                $rowsCount
+                $rowsCount,
             );
 
             $sql = $this->productAbstractSql->createAbstractProductLocalizedAttributesSQL();
@@ -144,17 +144,17 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
      */
     protected function persistAbstractProductCategoryEntities(): void
     {
-        if (!empty(static::$productCategoryCollection)) {
+        if (static::$productCategoryCollection) {
             $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, static::COLUMN_ABSTRACT_SKU);
             $abstractSkus = $this->dataFormatter->formatStringList($rawAbstractSkus);
             $rowsCount = count($rawAbstractSkus);
             $productOrder = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_PRODUCT_ORDER),
-                $rowsCount
+                $rowsCount,
             );
             $idCategory = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_FK_CATEGORY),
-                $rowsCount
+                $rowsCount,
             );
 
             $sql = $this->productAbstractSql->createAbstractProductCategoriesSQL();
@@ -179,17 +179,17 @@ class ProductAbstractBulkPdoMariaDbDataSetWriter extends AbstractProductAbstract
      */
     protected function persistAbstractProductUrlEntities(): void
     {
-        if (!empty(static::$productUrlCollection)) {
+        if (static::$productUrlCollection) {
             $rawAbstractSkus = $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, static::COLUMN_ABSTRACT_SKU);
             $abstractSkus = $this->dataFormatter->formatStringList($rawAbstractSkus);
             $rowsCount = count($rawAbstractSkus);
             $idLocale = $this->dataFormatter->formatPriceStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE),
-                $rowsCount
+                $rowsCount,
             );
             $url = $this->dataFormatter->formatStringList(
                 $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, static::COLUMN_URL),
-                $rowsCount
+                $rowsCount,
             );
 
             $sql = $this->productAbstractSql->createAbstractProductUrlsSQL();

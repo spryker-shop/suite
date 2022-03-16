@@ -25,7 +25,6 @@ use Spryker\Shared\FileManagerStorage\FileManagerStorageConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\MerchantOpeningHoursStorage\MerchantOpeningHoursStorageConfig;
-use Spryker\Shared\MerchantProductOfferStorage\MerchantProductOfferStorageConfig;
 use Spryker\Shared\MerchantSearch\MerchantSearchConfig;
 use Spryker\Shared\MerchantStorage\MerchantStorageConfig;
 use Spryker\Shared\PriceProductOfferStorage\PriceProductOfferStorageConfig;
@@ -34,6 +33,7 @@ use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
 use Spryker\Shared\ProductConfigurationStorage\ProductConfigurationStorageConfig;
 use Spryker\Shared\ProductImageStorage\ProductImageStorageConfig;
 use Spryker\Shared\ProductOfferAvailabilityStorage\ProductOfferAvailabilityStorageConfig;
+use Spryker\Shared\ProductOfferStorage\ProductOfferStorageConfig;
 use Spryker\Shared\ProductPackagingUnitStorage\ProductPackagingUnitStorageConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
@@ -76,7 +76,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
                 $this->get(LogConstants::LOG_QUEUE_NAME),
             ],
             $this->getPublishQueueConfiguration(),
-            $this->getSynchronizationQueueConfiguration()
+            $this->getSynchronizationQueueConfiguration(),
         );
     }
 
@@ -135,7 +135,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             TaxStorageConfig::TAX_SET_SYNC_STORAGE_QUEUE,
             MerchantStorageConfig::MERCHANT_SYNC_STORAGE_QUEUE,
             MerchantOpeningHoursStorageConfig::MERCHANT_OPENING_HOURS_SYNC_STORAGE_QUEUE,
-            MerchantProductOfferStorageConfig::MERCHANT_PRODUCT_OFFER_SYNC_STORAGE_QUEUE,
+            ProductOfferStorageConfig::PRODUCT_OFFER_SYNC_STORAGE_QUEUE,
             PriceProductOfferStorageConfig::PRICE_PRODUCT_OFFER_OFFER_SYNC_STORAGE_QUEUE,
             ProductOfferAvailabilityStorageConfig::PRODUCT_OFFER_AVAILABILITY_SYNC_STORAGE_QUEUE,
             SalesReturnSearchConfig::SYNC_SEARCH_RETURN,

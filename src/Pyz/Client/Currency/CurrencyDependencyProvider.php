@@ -10,6 +10,9 @@ namespace Pyz\Client\Currency;
 use Spryker\Client\CartCurrencyConnector\CurrencyChange\CartUpdateCurrencyOnCurrencyChangePlugin;
 use Spryker\Client\Currency\CurrencyDependencyProvider as SprykerCurrencyDependencyProvider;
 
+/**
+ * @method \Spryker\Client\Currency\CurrencyClientInterface getClient()
+ */
 class CurrencyDependencyProvider extends SprykerCurrencyDependencyProvider
 {
     /**

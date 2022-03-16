@@ -42,18 +42,22 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      * @var string
      */
     protected const KEY_AVAILABILITY_SKU = 'KEY_AVAILABILITY_SKU';
+
     /**
      * @var string
      */
     protected const KEY_AVAILABILITY_QUANTITY = 'KEY_AVAILABILITY_QUANTITY';
+
     /**
      * @var string
      */
     protected const KEY_AVAILABILITY_ID_STORE = 'KEY_AVAILABILITY_ID_STORE';
+
     /**
      * @var string
      */
     protected const KEY_AVAILABILITY_IS_NEVER_OUT_OF_STOCK = 'KEY_AVAILABILITY_IS_NEVER_OUT_OF_STOCK';
+
     /**
      * @var string
      */
@@ -63,6 +67,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      * @var string
      */
     protected const COL_AVAILABILITY_TOTAL_QUANTITY = 'availabilityTotalQuantity';
+
     /**
      * @var string
      */
@@ -145,7 +150,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      *
      * @return \Orm\Zed\Stock\Persistence\SpyStock
      */
-    protected function createOrUpdateStock(DataSetInterface $dataSet)
+    protected function createOrUpdateStock(DataSetInterface $dataSet): SpyStock
     {
         $stockTransfer = $dataSet[ProductStockHydratorStep::STOCK_ENTITY_TRANSFER];
         $stockEntity = SpyStockQuery::create()

@@ -31,14 +31,17 @@ class GuestCartsRestApiFixtures implements FixturesBuilderInterface, FixturesCon
      * @var int
      */
     public const QUANTITY_FOR_ITEM_UPDATE = 33;
+
     /**
      * @var string
      */
     public const TEST_GUEST_CART_NAME = 'Test guest cart name';
+
     /**
      * @var string
      */
     public const CURRENCY_EUR = 'EUR';
+
     /**
      * @var string
      */
@@ -90,6 +93,8 @@ class GuestCartsRestApiFixtures implements FixturesBuilderInterface, FixturesCon
      */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
+        $I->truncateSalesOrderThresholds();
+
         $this->productConcreteTransfer = $I->haveFullProduct();
         $this->productConcreteTransfer1 = $this->createProduct($I);
         $this->productConcreteTransfer2 = $this->createProduct($I);

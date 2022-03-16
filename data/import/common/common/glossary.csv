@@ -27,6 +27,8 @@ cart.discounts,Rabatte,de_DE
 cart.discounts,Discounts,en_US
 cart.sales-order-threshold,Mindestbestellwert,de_DE
 cart.sales-order-threshold,Minimum Order Value,en_US
+cart.title.available_discounts,Verfügbare Rabatte,de_DE
+cart.title.available_discounts,Available discounts,en_US
 cart_widget.add_product.separate,Add as separate item,en_US
 cart_widget.add_product.separate,Als separaten Artikel hinzufügen,de_DE
 checkout.sales-order-threshold,Mindestbestellwert,de_DE
@@ -779,6 +781,8 @@ checkout.step.success.title,Your order has been placed successfully!,en_US
 checkout.step.success.title,Ihre Bestellung wurde erfolgreich durchgeführt!,de_DE
 checkout.step.success.text,Thank you for shopping with us!,en_US
 checkout.step.success.text,Danke für ihren Einkauf!,de_DE
+checkout.step.error.no-product-permission,"You are not allowed to buy the following products from your cart",en_US
+checkout.step.error.no-product-permission,"Sie dürfen nicht die folgende Produkte aus Ihrem Warenkorb kaufen",de_DE
 checkout.step.error.title,Your order has not been placed.,en_US
 checkout.step.error.title,Ihre Bestellung konnte leider nicht durchgeführt werden.,de_DE
 checkout.step.error.text,Something went wrong. Sorry.,en_US
@@ -1259,12 +1263,16 @@ product-cart.validation.error.abstract-product-exists,"Product ""sku"" not found
 product-cart.validation.error.abstract-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
 product-cart.validation.error.concrete-product-exists,"Product ""sku"" not found",en_US
 product-cart.validation.error.concrete-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
+product-cart.validation.error.no-product-permission,"Sorry, You are not allowed to buy this product.",en_US
+product-cart.validation.error.no-product-permission,"Entschuldigung, Sie dürfen dieses Produkt nicht kaufen.",de_DE
 cart.item.option.pre.check.validation.error.exists,"Product option of %name% is not available anymore.",en_US
 cart.item.option.pre.check.validation.error.exists,"Produktoption von %name% ist nicht mehr verfügbar.",de_DE
 product-cart.validation.error.product-option-value-price-exists,Product option price not found for product '%sku%'.,en_US
 product-cart.validation.error.product-option-value-price-exists,Produktoptionspreis nicht gefunden für Produkt '%sku%'.,de_DE
 product-cart.validation.error.concrete-product-inactive,Product sku is not active.,en_US
 product-cart.validation.error.concrete-product-inactive,Produkt sku ist nicht aktiv.,de_DE
+product-approval.message.not-approved,Product sku %sku% is not active.,en_US
+product-approval.message.not-approved,Produkt sku %sku% ist nicht aktiv.,de_DE
 product-cart.info.concrete-product-inactive.removed,Inactive item %sku% was removed from your shopping cart.,en_US
 product-cart.info.concrete-product-inactive.removed,Der inaktive Artikel %sku% wurde aus Ihrem Warenkorb entfernt.,de_DE
 product-offer.info.product-offer-inactive.removed,Inactive item %sku% was removed from your shopping cart.,en_US
@@ -2647,6 +2655,10 @@ wishlist.validation.error.name.wrong_format,"Please enter name using only letter
 wishlist.validation.error.name.wrong_format,"Bitte geben Sie Ihren Namen nur mit Buchstaben, Zahlen, Unterstriche, Leerzeichen oder Bindestriche ein.",de_DE
 wishlist.validation.error.name.already_exists,A wishlist with the same name already exists.,en_US
 wishlist.validation.error.name.already_exists,Eine Wunschliste mit dem gleichen Namen existiert schon.,de_DE
+wishlist.validation.error.wishlist_item_not_found,Wishlist item not found.,en_US
+wishlist.validation.error.wishlist_item_not_found,Wunschliste Artikel nicht gefunden.,de_DE
+wishlist.validation.error.wishlist_item_cannot_be_updated,Wishlist item cannot be updated.,en_US
+wishlist.validation.error.wishlist_item_cannot_be_updated,Wunschliste kann nicht aktualisiert werden.,de_DE
 global.search.pages,Seiten,de_DE
 global.search.pages,Pages,en_US
 global.search.results.view,Ansehen,de_DE
@@ -2897,6 +2909,10 @@ quote_request.validation.error.company_user_not_found,Company User not found.,en
 quote_request.validation.error.company_user_not_found,Firmenbenutzer nicht gefunden.,de_DE
 quote_request.validation.error.empty_cart,Quote request can't be created from empty cart.,en_US
 quote_request.validation.error.empty_cart,Angebotsanfrage kann nicht aus leerem Einkaufswagen erstellt werden.,de_DE
+quote_request.validation.error.is_not_applicable,Quote request is not applicable for the given quote.,en_US
+quote_request.validation.error.is_not_applicable,Die Angebotsanfrage gilt nicht für das angegebene Angebot.,de_DE
+quote_request.validation.error.cart_is_empty,The cart is empty.,en_US
+quote_request.validation.error.cart_is_empty,Der Warenkorb ist leer.,de_DE
 quote_request.checkout.validation.error.version_not_found,Quote Request Version not found.,en_US
 quote_request.checkout.validation.error.version_not_found,Angebotsanforderung Version nicht gefunden.,de_DE
 quote_request.checkout.validation.error.not_found,Quote Request not found.,en_US
@@ -3773,6 +3789,10 @@ product_configurator_gateway_page.quantity_required,"Quantity is required parame
 product_configurator_gateway_page.quantity_required,"Menge ist Parameter erforderlich",de_DE
 product_configurator_gateway_page.item_group_key_required,"Group Key is required parameter",en_US
 product_configurator_gateway_page.item_group_key_required,"Gruppenschlüssel ist erforderlicher Parameter",de_DE
+product_configurator_gateway_page.wishlist_item_id_required,"Wishlist item ID is required parameter.",en_US
+product_configurator_gateway_page.wishlist_item_id_required,"Die ID des Wunschartikels ist ein erforderlicher Parameter.",de_DE
+product_configurator_gateway_page.configurator_key_is_not_supported,"Configurator key is not supported.",en_US
+product_configurator_gateway_page.configurator_key_is_not_supported,"Konfiguratorschlüssel wird nicht unterstützt.",de_DE
 password.weak,Weak,en_US
 password.weak,Schwach,de_DE
 password.medium,Medium,en_US
@@ -3809,7 +3829,23 @@ product_configuration.response.validation.error,Failed to validate product confi
 product_configuration.response.validation.error,Die Antwort vom Produktkonfigurator konnte nicht validiret werden.,de_DE
 product_configuration.error.configuration_not_found,Product configuration was not found for product '%sku%'.,en_US
 product_configuration.error.configuration_not_found,Produktkonfiguration wurde nicht für Produkt '%sku%' gefunden.,de_DE
+product_configuration_wishlist.error.configuration_not_found,"Product configuration was not found for wishlist item '%id%'.",en_US
+product_configuration_wishlist.error.configuration_not_found,"Für den Wunschlistenartikel '%id%' wurde keine Produktkonfiguration gefunden.",de_DE
 error.429,Zu viele Anfragen,de_DE
 error.429,Too Many Requests,en_US
 security_blocker_page.error.account_blocked,"Too many log in attempts from your address. Please wait %minutes% minutes before trying again.",en_US
 security_blocker_page.error.account_blocked,"Warten Sie bitte %minutes% Minuten, bevor Sie es erneut versuchen.",de_DE
+shopping_list.pre.check.product_offer,Product Offer is not found.,en_US
+shopping_list.pre.check.product_offer,Produktangebot wurde nicht gefunden.,de_DE
+shopping_list.pre.check.product_offer.approved,Product Offer is not approved.,en_US
+shopping_list.pre.check.product_offer.approved,Product Offer ist nicht genehmigt.,de_DE
+shopping_list.pre.check.product_offer.is_active,Product Offer is not active.,en_US
+shopping_list.pre.check.product_offer.is_active,Produktangebot ist inaktiv.,de_DE
+shopping_list.pre.check.product_merchant_inactive,Merchant is inactive.,en_US
+shopping_list.pre.check.product_merchant_inactive,Der Händler ist nicht aktiv.,de_DE
+shopping_list.pre.check.product_merchant_not_approved,Merchant is not approved.,en_US
+shopping_list.pre.check.product_merchant_not_approved,Der Händler ist nicht bestätigt.,de_DE
+shopping_list.pre.check.product_offer.store_invalid,Product Offer is not equal to the current Store.,en_US
+shopping_list.pre.check.product_offer.store_invalid,Das Angebot gleicht nicht dem aktuellen Shop.,de_DE
+shopping_list.pre.check.product.store_invalid,Product is not equal to the current Store.,en_US
+shopping_list.pre.check.product.store_invalid,Das Produkt gleicht nicht dem aktuellen Shop.,de_DE

@@ -33,6 +33,7 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
      * @var string
      */
     protected const TEST_USERNAME = 'test username';
+
     /**
      * @var string
      */

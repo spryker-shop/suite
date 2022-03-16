@@ -1,6 +1,6 @@
 # Spryker Suite
 [![Build Status](https://github.com/spryker-shop/suite/workflows/CI/badge.svg)](https://github.com/spryker-shop/suite/actions?query=workflow%3ACI)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
 
 License: [MIT](LICENSE)
 
@@ -13,17 +13,13 @@ If you encounter any issues during or after the installation, see [Troubleshooti
 
 ## Docker installation
 
-* [Troubleshooting](https://academy.spryker.com/getting_started/troubleshooting.html)
-
-## Docker installation
-
-For detailed installation instructions of Spryker in Docker, see [Getting Started with Docker](https://documentation.spryker.com/docs/getting-started-with-docker).
+For detailed installation instructions of Spryker in Docker, see [Getting Started with Docker](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/installing-spryker-with-docker.html).
 
 For troubleshooting of Docker based instances, see [Troubleshooting](https://documentation.spryker.com/docs/spryker-in-docker-troubleshooting).
 
 ### Prerequisites
 
-For the installation prerequisites, see [Docker Installation Prerequisites](https://documentation.spryker.com/docs/docker-installation-prerequisites).
+For the installation prerequisites, see [Docker Installation Prerequisites](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/installing-spryker-with-docker.html).
 
 Recommended system requirements for MacOS:
 

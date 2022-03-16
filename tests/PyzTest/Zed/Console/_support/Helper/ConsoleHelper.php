@@ -17,6 +17,7 @@ class ConsoleHelper extends Module
      * @var string
      */
     public const RUNNER = 'console_runner.php';
+
     /**
      * @var string
      */
@@ -34,7 +35,7 @@ class ConsoleHelper extends Module
      *
      * @return void
      */
-    public function _after(TestInterface $test)
+    public function _after(TestInterface $test): void
     {
         foreach ($this->config['cleanup_dirs'] as $dir) {
             $dir = codecept_data_dir() . self::SANDBOX_DIR . $dir;
@@ -48,7 +49,7 @@ class ConsoleHelper extends Module
      *
      * @return void
      */
-    public function runSprykerCommand($command)
+    public function runSprykerCommand($command): void
     {
         $command = 'php ' . codecept_data_dir() . self::RUNNER . " $command";
         $this->getCli()->runShellCommand($command);

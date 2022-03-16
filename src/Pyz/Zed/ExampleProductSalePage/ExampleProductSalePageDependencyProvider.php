@@ -16,6 +16,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      * @var string
      */
     public const QUERY_CONTAINER_PRODUCT_LABEL = 'QUERY_CONTAINER_PRODUCT_LABEL';
+
     /**
      * @var string
      */
@@ -26,7 +27,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function providePersistenceLayerDependencies(Container $container)
+    public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = $this->addProductLabelQueryContainer($container);
         $container = $this->addProductQueryContainer($container);
@@ -39,7 +40,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addProductLabelQueryContainer(Container $container)
+    protected function addProductLabelQueryContainer(Container $container): Container
     {
         $container->set(static::QUERY_CONTAINER_PRODUCT_LABEL, function (Container $container) {
             return $container->getLocator()->productLabel()->queryContainer();
@@ -53,7 +54,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addProductQueryContainer(Container $container)
+    protected function addProductQueryContainer(Container $container): Container
     {
         $container->set(static::QUERY_CONTAINER_PRODUCT, function (Container $container) {
             return $container->getLocator()->product()->queryContainer();

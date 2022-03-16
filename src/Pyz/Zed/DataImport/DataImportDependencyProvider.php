@@ -56,6 +56,7 @@ use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantStoreDataImportP
 use Spryker\Zed\MerchantOmsDataImport\Communication\Plugin\DataImport\MerchantOmsProcessDataImportPlugin;
 use Spryker\Zed\MerchantOpeningHoursDataImport\Communication\Plugin\MerchantOpeningHoursDateScheduleDataImportPlugin;
 use Spryker\Zed\MerchantOpeningHoursDataImport\Communication\Plugin\MerchantOpeningHoursWeekdayScheduleDataImportPlugin;
+use Spryker\Zed\MerchantProductApprovalDataImport\Communication\Plugin\DataImport\MerchantProductApprovalStatusDefaultDataImportPlugin;
 use Spryker\Zed\MerchantProductDataImport\Communication\Plugin\MerchantProductDataImportPlugin;
 use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\DataImport\MerchantProductOfferDataImportPlugin;
 use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\DataImport\MerchantProductOfferStoreDataImportPlugin;
@@ -74,6 +75,7 @@ use Spryker\Zed\PriceProductMerchantRelationshipDataImport\Communication\Plugin\
 use Spryker\Zed\PriceProductOfferDataImport\Communication\Plugin\PriceProductOfferDataImportPlugin;
 use Spryker\Zed\PriceProductScheduleDataImport\Communication\Plugin\PriceProductScheduleDataImportPlugin;
 use Spryker\Zed\ProductAlternativeDataImport\Communication\Plugin\ProductAlternativeDataImportPlugin;
+use Spryker\Zed\ProductApprovalDataImport\Communication\Plugin\DataImport\ProductAbstractApprovalStatusDataImportPlugin;
 use Spryker\Zed\ProductConfigurationDataImport\Communication\Plugin\ProductConfigurationDataImportPlugin;
 use Spryker\Zed\ProductDiscontinuedDataImport\Communication\Plugin\ProductDiscontinuedDataImportPlugin;
 use Spryker\Zed\ProductLabelDataImport\Communication\Plugin\ProductLabelDataImportPlugin;
@@ -85,6 +87,7 @@ use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMea
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitDataImportPlugin;
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitStoreDataImportPlugin;
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementUnitDataImportPlugin;
+use Spryker\Zed\ProductOfferShoppingListDataImport\Communication\Plugin\DataImport\ProductOfferShoppingListItemDataImportPlugin;
 use Spryker\Zed\ProductOfferStockDataImport\Communication\Plugin\ProductOfferStockDataImportPlugin;
 use Spryker\Zed\ProductOfferValidityDataImport\Communication\DataImport\ProductOfferValidityDataImportPlugin;
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitDataImportPlugin;
@@ -114,26 +117,32 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      * @var string
      */
     public const FACADE_CATEGORY = 'category facade';
+
     /**
      * @var string
      */
     public const FACADE_STORE = 'store facade';
+
     /**
      * @var string
      */
     public const FACADE_CURRENCY = 'currency facade';
+
     /**
      * @var string
      */
     public const FACADE_PRODUCT_BUNDLE = 'product bundle facade';
+
     /**
      * @var string
      */
     public const FACADE_PRODUCT_RELATION = 'product relation facade';
+
     /**
      * @var string
      */
     public const FACADE_STOCK = 'stock facade';
+
     /**
      * @var string
      */
@@ -143,6 +152,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      * @var string
      */
     public const FACADE_PRICE_PRODUCT = 'FACADE_PRICE_PRODUCT';
+
     /**
      * @var string
      */
@@ -153,7 +163,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideBusinessLayerDependencies(Container $container)
+    public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
 
@@ -176,7 +186,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addCurrencyFacade(Container $container)
+    protected function addCurrencyFacade(Container $container): Container
     {
         $container->set(static::FACADE_CURRENCY, function (Container $container) {
             return $container->getLocator()->currency()->facade();
@@ -190,7 +200,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addStoreFacade(Container $container)
+    protected function addStoreFacade(Container $container): Container
     {
         $container->set(static::FACADE_STORE, function (Container $container) {
             return $container->getLocator()->store()->facade();
@@ -204,7 +214,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addStockFacade(Container $container)
+    protected function addStockFacade(Container $container): Container
     {
         $container->set(static::FACADE_STOCK, function (Container $container) {
             return $container->getLocator()->stock()->facade();
@@ -218,7 +228,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addCategoryFacade(Container $container)
+    protected function addCategoryFacade(Container $container): Container
     {
         $container->set(static::FACADE_CATEGORY, function (Container $container) {
             return $container->getLocator()->category()->facade();
@@ -232,7 +242,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addProductBundleFacade(Container $container)
+    protected function addProductBundleFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT_BUNDLE, function (Container $container) {
             return $container->getLocator()->productBundle()->facade();
@@ -246,7 +256,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addProductSearchFacade(Container $container)
+    protected function addProductSearchFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT_SEARCH, function (Container $container) {
             return $container->getLocator()->productSearch()->facade();
@@ -260,7 +270,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addProductRelationFacade(Container $container)
+    protected function addProductRelationFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT_RELATION, function (Container $container) {
             return $container->getLocator()->productRelation()->facade();
@@ -274,7 +284,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addMerchantUserFacade(Container $container)
+    protected function addMerchantUserFacade(Container $container): Container
     {
         $container->set(static::FACADE_MERCHANT_USER, function (Container $container) {
             return $container->getLocator()->merchantUser()->facade();
@@ -348,6 +358,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new SharedCartDataImportPlugin(),
             new ShoppingListDataImportPlugin(),
             new ShoppingListItemDataImportPlugin(),
+            new ProductOfferShoppingListItemDataImportPlugin(),
             new ShoppingListCompanyUserDataImportPlugin(),
             new ShoppingListCompanyBusinessUnitDataImportPlugin(),
             new QuoteRequestDataImportPlugin(),
@@ -385,6 +396,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CombinedProductOfferValidityDataImportPlugin(),
             new CombinedProductOfferStockDataImportPlugin(),
             new StockAddressDataImportPlugin(),
+            new MerchantProductApprovalStatusDefaultDataImportPlugin(),
+            new ProductAbstractApprovalStatusDataImportPlugin(),
         ];
     }
 

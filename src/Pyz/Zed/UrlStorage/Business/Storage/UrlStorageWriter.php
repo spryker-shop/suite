@@ -60,23 +60,29 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      * @param \Spryker\Zed\UrlStorage\Dependency\Service\UrlStorageToUtilSanitizeServiceInterface $utilSanitize
      * @param \Spryker\Zed\UrlStorage\Persistence\UrlStorageRepositoryInterface $urlStorageRepository
      * @param \Spryker\Zed\UrlStorage\Persistence\UrlStorageEntityManagerInterface $urlStorageEntityManager
-     * @param \Spryker\Zed\UrlStorage\Dependency\Facade\UrlStorageToStoreFacadeInterface $storeFacade
      * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      * @param \Pyz\Zed\UrlStorage\Business\Storage\Cte\UrlStorageCteInterface $urlStorageCte
+     * @param \Spryker\Zed\UrlStorage\Dependency\Facade\UrlStorageToStoreFacadeInterface $storeFacade
      */
     public function __construct(
         UrlStorageToUtilSanitizeServiceInterface $utilSanitize,
         UrlStorageRepositoryInterface $urlStorageRepository,
         UrlStorageEntityManagerInterface $urlStorageEntityManager,
-        UrlStorageToStoreFacadeInterface $storeFacade,
         bool $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
-        UrlStorageCteInterface $urlStorageCte
+        UrlStorageCteInterface $urlStorageCte,
+        UrlStorageToStoreFacadeInterface $storeFacade
     ) {
-        parent::__construct($utilSanitize, $urlStorageRepository, $urlStorageEntityManager, $storeFacade, $isSendingToQueue);
+        parent::__construct(
+            $utilSanitize,
+            $urlStorageRepository,
+            $urlStorageEntityManager,
+            $storeFacade,
+            $isSendingToQueue,
+        );
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
@@ -89,7 +95,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      *
      * @return void
      */
-    protected function storeData(array $urlStorageTransfers, array $urlStorageEntities)
+    protected function storeData(array $urlStorageTransfers, array $urlStorageEntities): void
     {
         foreach ($urlStorageTransfers as $urlStorageTransfer) {
             $urlStorageEntity = $urlStorageEntities[$urlStorageTransfer->getIdUrl()] ?? null;
@@ -110,7 +116,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      *
      * @return void
      */
-    protected function storeDataSet(UrlStorageTransfer $urlStorageTransfer, ?SpyUrlStorage $urlStorageEntity = null)
+    protected function storeDataSet(UrlStorageTransfer $urlStorageTransfer, ?SpyUrlStorage $urlStorageEntity = null): void
     {
         $resource = $this->findResourceArguments($urlStorageTransfer->toArray());
 
@@ -212,9 +218,9 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     /**
      * @return void
      */
-    public function write()
+    public function write(): void
     {
-        if (empty($this->synchronizedDataCollection)) {
+        if (!$this->synchronizedDataCollection) {
             return;
         }
 

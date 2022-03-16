@@ -30,6 +30,7 @@ class ProductConcretePropelWriterPluginTest extends AbstractWriterPluginTest
      * @var string
      */
     public const CSV_IMPORT_FILE = 'import/ProductConcrete/product_concrete.csv';
+
     /**
      * @var string
      */

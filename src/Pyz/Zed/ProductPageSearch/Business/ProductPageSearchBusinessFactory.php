@@ -42,6 +42,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
             $this->getQueryContainer(),
             $this->getProductPageDataExpanderPlugins(),
             $this->getProductPageDataLoaderPlugins(),
+            $this->getProductPageSearchCollectionFilterPlugins(),
             $this->createProductPageMapper(),
             $this->createProductPageWriter(),
             $this->getConfig(),
@@ -49,7 +50,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
             $this->createAddToCartSkuReader(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createProductAbstractPageCteStrategyResolver()->resolve()
+            $this->createProductAbstractPageCteStrategyResolver()->resolve(),
         );
     }
 
@@ -71,9 +72,10 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
             $this->getStoreFacade(),
             $this->getConfig(),
             $this->getProductConcretePageDataExpanderPlugins(),
+            $this->getProductConcreteCollectionFilterPlugins(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
-            $this->createProductConcretePageCteStrategyResolver()->resolve()
+            $this->createProductConcretePageCteStrategyResolver()->resolve(),
         );
     }
 

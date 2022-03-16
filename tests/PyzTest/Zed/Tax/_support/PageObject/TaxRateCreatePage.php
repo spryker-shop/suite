@@ -18,6 +18,7 @@ class TaxRateCreatePage
      * @var string
      */
     public const HEADER = 'Create new tax rate';
+
     /**
      * @var string
      */
@@ -27,22 +28,27 @@ class TaxRateCreatePage
      * @var string
      */
     public const MESSAGE_SUCCESSFUL_ALERT_CREATION = '/Tax rate [0-9]+ was created successfully\\./';
+
     /**
      * @var string
      */
     public const ERROR_MESSAGE_NAME_SHOULD_NOT_BE_BLANK = 'This value should not be blank.';
+
     /**
      * @var string
      */
     public const ERROR_MESSAGE_COUNTRY_SHOULD_NOT_BE_BLANK = 'Select country.';
+
     /**
      * @var string
      */
     public const ERROR_MESSAGE_PERCENTAGE_SHOULD_BE_VALID_NUMBER = 'This value should be a valid number.';
+
     /**
      * @var string
      */
     public const ERROR_MESSAGE_TAX_RATE_ALREADY_EXISTS = 'Tax rate with provided name, percentage and country already exists.';
+
     /**
      * @var string
      */
@@ -52,14 +58,17 @@ class TaxRateCreatePage
      * @var string
      */
     public const SELECTOR_NAME = '#tax_rate_name';
+
     /**
      * @var string
      */
     public const SELECTOR_COUNTRY = '#tax_rate_fkCountry';
+
     /**
      * @var string
      */
     public const SELECTOR_PERCENTAGE = '#tax_rate_rate';
+
     /**
      * @var string
      */
@@ -79,14 +88,17 @@ class TaxRateCreatePage
      * @var string
      */
     public const TAX_RATE_VALID = 'validTaxRate';
+
     /**
      * @var string
      */
     public const TAX_RATE_INVALID = 'invalidTaxRate';
+
     /**
      * @var string
      */
     public const TAX_RATE_VALID_NOT_CREATED = 'validTaxRateNotCreated';
+
     /**
      * @var string
      */

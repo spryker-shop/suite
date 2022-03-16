@@ -35,7 +35,7 @@ class ProductAbstractStoreBulkPdoMariaDbDataSetWriter extends AbstractProductAbs
 
         $storeName = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$productAbstractStoreCollection, static::COLUMN_STORE_NAME),
-            $rowsCount
+            $rowsCount,
         );
 
         $sql = $this->productAbstractStoreSql->createAbstractProductStoreSQL();

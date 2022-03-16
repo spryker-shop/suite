@@ -15,10 +15,12 @@ class CmsBlockCategoryConnectorConfig extends SprykerCmsBlockCategoryConnectorCo
      * @var string
      */
     public const CMS_BLOCK_CATEGORY_POSITION_TOP = 'Top';
+
     /**
      * @var string
      */
     public const CMS_BLOCK_CATEGORY_POSITION_MIDDLE = 'Middle';
+
     /**
      * @var string
      */
@@ -27,7 +29,7 @@ class CmsBlockCategoryConnectorConfig extends SprykerCmsBlockCategoryConnectorCo
     /**
      * @return array<string>
      */
-    public function getCmsBlockCategoryPositionList()
+    public function getCmsBlockCategoryPositionList(): array
     {
         return [
             static::CMS_BLOCK_CATEGORY_POSITION_TOP,

@@ -23,7 +23,6 @@ use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
 use PyzTest\Zed\DataImport\Business\Model\AbstractWriterTest;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 
 /**
@@ -52,6 +51,7 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
      * @var int
      */
     protected const PRICE_MODE_CONFIGURATION = 2;
+
     /**
      * @var string
      */
@@ -64,13 +64,11 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
     {
         $result = [];
 
-        /**
-         * @var \Generated\Shared\Transfer\SpyPriceProductStoreEntityTransfer
-         */
+        /** @var \Generated\Shared\Transfer\SpyPriceProductStoreEntityTransfer $spyPriceProductStoreEntityTransfer */
         $spyPriceProductStoreEntityTransfer = (new SpyPriceProductStoreEntityBuilder())->build();
         $priceProductStore = $spyPriceProductStoreEntityTransfer
             ->setCurrency((new SpyCurrencyEntityTransfer())->setName($this->getCurrency()->getCode()))
-            ->setStore((new SpyStoreEntityTransfer())->setName(Store::getDefaultStore()))
+            ->setStore((new SpyStoreEntityTransfer())->setName($this->getDefaultStore()))
             ->setPriceData(static::PRICE_DATA);
 
         $priceProductStores = new ArrayObject();
@@ -145,18 +143,18 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
             $dataSetPrice = $dataSets[$productPrice[SpyProductAbstractTableMap::COL_SKU]][ProductPriceHydratorStep::PRICE_PRODUCT_TRANSFER];
             $this->assertSame(
                 $dataSetPrice->getPriceType()->getName(),
-                $productPrice[SpyPriceTypeTableMap::COL_NAME]
+                $productPrice[SpyPriceTypeTableMap::COL_NAME],
             );
             $spyPriceProductStore = $dataSetPrice->getSpyPriceProductStores()[0];
             // TODO: Fix to assertSame() once true ints are returned from also MySQL
             $this->assertEquals(
                 $spyPriceProductStore->getNetPrice(),
-                $productPrice[SpyPriceProductStoreTableMap::COL_NET_PRICE]
+                $productPrice[SpyPriceProductStoreTableMap::COL_NET_PRICE],
             );
             // TODO: Fix to assertSame() once true ints are returned from also MySQL
             $this->assertEquals(
                 $spyPriceProductStore->getGrossPrice(),
-                $productPrice[SpyPriceProductStoreTableMap::COL_GROSS_PRICE]
+                $productPrice[SpyPriceProductStoreTableMap::COL_GROSS_PRICE],
             );
         }
     }
@@ -179,5 +177,13 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
             ->limit(count(static::PRICE_TYPES))
             ->find()
             ->toArray();
+    }
+
+    /**
+     * @return string
+     */
+    protected function getDefaultStore(): string
+    {
+        return $this->getStoreFacade()->getAllStores()[0]->getNameOrFail();
     }
 }

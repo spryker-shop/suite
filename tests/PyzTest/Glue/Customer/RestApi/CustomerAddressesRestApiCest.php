@@ -52,7 +52,7 @@ class CustomerAddressesRestApiCest
             [
                 CustomerTransfer::NEW_PASSWORD => 'change123',
                 CustomerTransfer::PASSWORD => 'change123',
-            ]
+            ],
         );
         $I->confirmCustomer($this->customerTransfer);
 
@@ -74,8 +74,8 @@ class CustomerAddressesRestApiCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => $this->customerTransfer->getCustomerReference(),
-                ]
-            )
+                ],
+            ),
         );
 
         // Assert
@@ -98,8 +98,8 @@ class CustomerAddressesRestApiCest
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                     'customerReference' => 'wrongCustomerReference',
-                ]
-            )
+                ],
+            ),
         );
 
         // Assert

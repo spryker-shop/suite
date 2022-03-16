@@ -62,6 +62,7 @@ use SprykerShop\Yves\MerchantSalesOrderWidget\Widget\MerchantOrderReferenceForIt
 use SprykerShop\Yves\MerchantSalesReturnWidget\Plugin\MerchantSalesReturnCreateFormWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerShop\Yves\MerchantSalesReturnWidget\Widget\MerchantSalesReturnCreateFormWidget;
 use SprykerShop\Yves\MerchantSwitcherWidget\Widget\MerchantSwitcherSelectorFormWidget;
+use SprykerShop\Yves\MerchantWidget\Widget\ShoppingListMerchantWidget;
 use SprykerShop\Yves\MerchantWidget\Widget\SoldByMerchantWidget;
 use SprykerShop\Yves\MoneyWidget\Widget\CurrencyIsoCodeWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\AddToMultiCartWidget;
@@ -92,6 +93,9 @@ use SprykerShop\Yves\ProductConfigurationCartWidget\Widget\ProductConfigurationC
 use SprykerShop\Yves\ProductConfigurationCartWidget\Widget\ProductConfigurationQuoteValidatorWidget;
 use SprykerShop\Yves\ProductConfigurationWidget\Widget\ProductConfigurationProductDetailPageButtonWidget;
 use SprykerShop\Yves\ProductConfigurationWidget\Widget\ProductConfigurationProductViewDisplayWidget;
+use SprykerShop\Yves\ProductConfigurationWishlistWidget\Widget\ProductConfigurationWishlistFormWidget;
+use SprykerShop\Yves\ProductConfigurationWishlistWidget\Widget\ProductConfigurationWishlistItemDisplayWidget;
+use SprykerShop\Yves\ProductConfigurationWishlistWidget\Widget\ProductConfigurationWishlistPageButtonWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedNoteWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedWidget;
 use SprykerShop\Yves\ProductGroupWidget\Widget\ProductGroupColorWidget;
@@ -100,6 +104,8 @@ use SprykerShop\Yves\ProductLabelWidget\Widget\ProductAbstractLabelWidget;
 use SprykerShop\Yves\ProductLabelWidget\Widget\ProductConcreteLabelWidget;
 use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\CartProductMeasurementUnitQuantitySelectorWidget;
 use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\ManageProductMeasurementUnitWidget;
+use SprykerShop\Yves\ProductOfferShoppingListWidget\Widget\ProductOfferShoppingListWidget;
+use SprykerShop\Yves\ProductOfferWidget\Widget\ShoppingListProductOfferWidget;
 use SprykerShop\Yves\ProductOptionWidget\Widget\ProductOptionConfiguratorWidget;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Widget\ProductPackagingUnitWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\SimilarProductsWidget;
@@ -161,6 +167,8 @@ use SprykerShop\Yves\WishlistWidget\Widget\WishlistMenuItemWidget;
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
 {
     /**
+     * @phpstan-return array<class-string<\Spryker\Yves\Kernel\Widget\AbstractWidget>>
+     *
      * @return array<string>
      */
     protected function getGlobalWidgets(): array
@@ -286,6 +294,12 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConfigurationQuoteValidatorWidget::class,
             MerchantSalesReturnCreateFormWidget::class,
             CartAddProductAsSeparateItemWidget::class,
+            ProductConfigurationWishlistFormWidget::class,
+            ProductConfigurationWishlistItemDisplayWidget::class,
+            ProductConfigurationWishlistPageButtonWidget::class,
+            ShoppingListMerchantWidget::class,
+            ShoppingListProductOfferWidget::class,
+            ProductOfferShoppingListWidget::class,
         ];
     }
 

@@ -15,7 +15,6 @@ use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintException;
 use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintTrait;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Spryker\Service\UtilEncoding\UtilEncodingService;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Availability\Business\AvailabilityFacade;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
 use Spryker\Zed\Currency\Business\CurrencyFacade;
@@ -51,12 +50,11 @@ abstract class AbstractWriterTest extends Unit
     /**
      * @return \Pyz\Zed\DataImport\Business\DataImportBusinessFactory
      */
-    protected function getDataImportBusinessFactoryStub()
+    protected function getDataImportBusinessFactoryStub(): DataImportBusinessFactory
     {
         /** @var \Pyz\Zed\DataImport\Business\DataImportBusinessFactory $dataImportBusinessFactory */
         $dataImportBusinessFactory = Stub::make(DataImportBusinessFactory::class, [
             'getPropelConnection' => $this->getPropelConnection(),
-            'getStore' => $this->getStore(),
             'getStoreFacade' => $this->getStoreFacade(),
             'getCurrencyFacade' => $this->getCurrencyFacade(),
             'getStockFacade' => $this->getStockFacade(),
@@ -83,7 +81,7 @@ abstract class AbstractWriterTest extends Unit
 
         try {
             $this->checkIsMariaDBSupportsBulkImport(
-                $dataImportBusinessFactory->createPropelExecutor()
+                $dataImportBusinessFactory->createPropelExecutor(),
             );
         } catch (PropelMariaDbVersionConstraintException $exception) {
             $this->markTestSkipped('Importer does not support current database engine or it\'s version.');
@@ -93,7 +91,7 @@ abstract class AbstractWriterTest extends Unit
     /**
      * @return \Pyz\Zed\DataImport\DataImportConfig
      */
-    public function getDataImportConfigStub()
+    public function getDataImportConfigStub(): DataImportConfig
     {
         /** @var \Pyz\Zed\DataImport\DataImportConfig $dataImportConfig */
         $dataImportConfig = Stub::make(DataImportConfig::class);
@@ -107,14 +105,6 @@ abstract class AbstractWriterTest extends Unit
     public function getPropelConnection(): DataImportToPropelConnectionBridge
     {
         return new DataImportToPropelConnectionBridge(Propel::getConnection());
-    }
-
-    /**
-     * @return \Spryker\Shared\Kernel\Store
-     */
-    public function getStore(): Store
-    {
-        return Store::getInstance();
     }
 
     /**
@@ -171,7 +161,7 @@ abstract class AbstractWriterTest extends Unit
     protected function getUtilEncodingService(): DataImportToUtilEncodingServiceInterface
     {
         return new DataImportToUtilEncodingServiceBridge(
-            new UtilEncodingService()
+            new UtilEncodingService(),
         );
     }
 }

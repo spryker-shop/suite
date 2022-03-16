@@ -9,6 +9,7 @@ namespace Pyz\Yves\ExampleProductSalePage\Controller;
 
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
 use Spryker\Yves\Kernel\Controller\AbstractController;
+use Spryker\Yves\Kernel\View\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -24,7 +25,7 @@ class SaleController extends AbstractController
      *
      * @return \Spryker\Yves\Kernel\View\View
      */
-    public function indexAction($categoryPath, Request $request)
+    public function indexAction($categoryPath, Request $request): View
     {
         $parameters = $request->query->all();
 
@@ -48,7 +49,7 @@ class SaleController extends AbstractController
         return $this->view(
             $searchResults,
             $this->getFactory()->getExampleProductSalePageWidgetPlugins(),
-            '@ExampleProductSalePage/views/sale-example/sale-example.twig'
+            '@ExampleProductSalePage/views/sale-example/sale-example.twig',
         );
     }
 
@@ -61,7 +62,7 @@ class SaleController extends AbstractController
      */
     protected function getCategoryNode($categoryPath): array
     {
-        $categoryPathPrefix = '/' . $this->getFactory()->getStore()->getCurrentLanguage();
+        $categoryPathPrefix = '/' . $this->getFactory()->getLocaleClient()->getCurrentLanguage();
         $fullCategoryPath = $categoryPathPrefix . '/' . ltrim($categoryPath, '/');
 
         $categoryNode = $this->getFactory()
@@ -72,7 +73,7 @@ class SaleController extends AbstractController
             throw new NotFoundHttpException(sprintf(
                 'Category not found by path %s (full path %s)',
                 $categoryPath,
-                $fullCategoryPath
+                $fullCategoryPath,
             ));
         }
 

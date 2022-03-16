@@ -60,7 +60,7 @@ class ProductAbstractPriceProductVolumesRestApiCest
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'resourceAbstractProductPrices' => ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
                 'productAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
-            ]
+            ],
         ));
 
         // Assert

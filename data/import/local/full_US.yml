@@ -58,6 +58,8 @@ actions:
       source: data/import/common/US/product_price_schedule.csv
     - data_entity: product-stock
       source: data/import/common/common/product_stock.csv
+    - data_entity: product-approval-status
+      source: data/import/common/common/product_abstract_approval_status.csv
     # Store relation
     - data_entity: product-abstract-store
       source: data/import/common/US/product_abstract_store.csv
@@ -251,6 +253,8 @@ actions:
       source: data/import/common/common/marketplace/merchant_profile_address.csv
     - data_entity: merchant-product-offer
       source: data/import/common/common/marketplace/merchant_product_offer.csv
+    - data_entity: product-offer-shopping-list-item
+      source: data/import/common/common/marketplace/product_offer_shopping_list_item.csv
     - data_entity: merchant-product-option-group
       source: data/import/common/common/marketplace/merchant_product_option_group.csv
     - data_entity: merchant-opening-hours-date-schedule
@@ -273,6 +277,8 @@ actions:
       source: data/import/common/common/marketplace/merchant_stock.csv
     - data_entity: product-stock
       source: data/import/common/common/marketplace/product_stock.csv
+    - data_entity: merchant-product-approval-status-default
+      source: data/import/common/common/marketplace/merchant_product_approval_status_default.csv
     # Store relation
     - data_entity: merchant-store
       source: data/import/common/US/merchant_store.csv

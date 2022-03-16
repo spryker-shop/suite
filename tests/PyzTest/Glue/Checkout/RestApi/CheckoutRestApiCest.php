@@ -33,6 +33,7 @@ class CheckoutRestApiCest
      * @var string
      */
     protected const RESPONSE_CODE_CART_IS_EMPTY = '1104';
+
     /**
      * @var string
      */
@@ -124,7 +125,7 @@ class CheckoutRestApiCest
         $shipmentMethodTransfer = $this->fixtures->getShipmentMethodTransfer();
         $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $customerTransfer,
-            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[0], $shipmentMethodTransfer, 10)]
+            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[0], $shipmentMethodTransfer, 10)],
         );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
@@ -183,7 +184,7 @@ class CheckoutRestApiCest
 
         $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $customerTransfer,
-            $quoteItemOverrideData
+            $quoteItemOverrideData,
         );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
@@ -233,7 +234,7 @@ class CheckoutRestApiCest
         $shipmentMethodTransfer = $this->fixtures->getShipmentMethodTransfer();
         $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $customerTransfer,
-            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[0], $shipmentMethodTransfer, 10)]
+            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[0], $shipmentMethodTransfer, 10)],
         );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
@@ -283,7 +284,7 @@ class CheckoutRestApiCest
         $shipmentMethodTransfer = $this->fixtures->getShipmentMethodTransfer();
         $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $customerTransfer,
-            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[0], $shipmentMethodTransfer, 10)]
+            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[0], $shipmentMethodTransfer, 10)],
         );
         $persistedAddressTransfer = $customerTransfer->getAddresses()->getAddresses()[0];
 

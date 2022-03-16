@@ -32,6 +32,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      * @var string
      */
     protected const TEST_USERNAME = 'CheckoutDataRestApiFixtures';
+
     /**
      * @var string
      */
@@ -83,6 +84,8 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      */
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {
+        $I->truncateSalesOrderThresholds();
+
         $customerTransfer = $I->haveCustomer([
             CustomerTransfer::USERNAME => static::TEST_USERNAME,
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
@@ -100,12 +103,12 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
             ShipmentMethodDataHelper::DEFAULT_PRICE_LIST,
             [
                 $I->getStoreFacade()->getCurrentStore()->getIdStore(),
-            ]
+            ],
         );
 
         $this->quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $this->customerTransfer,
-            [$I->getQuoteItemOverrideData($I->haveProductWithStock(), $this->shipmentMethodTransfer, 10)]
+            [$I->getQuoteItemOverrideData($I->haveProductWithStock(), $this->shipmentMethodTransfer, 10)],
         );
 
         return $this;

@@ -45,7 +45,7 @@ class InitiationTimeoutProcessorPlugin extends AbstractPlugin implements Timeout
     {
         return sprintf(
             $this->getFactory()->getTranslatorFacade()->trans('Starts when defined timeout (%s) is over.'),
-            $omsEventTransfer->getTimeout()
+            $omsEventTransfer->getTimeout(),
         );
     }
 

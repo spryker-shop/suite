@@ -23,7 +23,7 @@ class ExampleProductSalePageClient extends AbstractClient implements ExampleProd
      *
      * @return array
      */
-    public function saleSearch(array $requestParameters = [])
+    public function saleSearch(array $requestParameters = []): array
     {
         $searchQuery = $this->getFactory()->getSaleSearchQueryPlugin($requestParameters);
         $resultFormatters = $this->getFactory()->getSaleSearchResultFormatterPlugins();

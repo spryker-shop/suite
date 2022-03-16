@@ -114,10 +114,18 @@ class UrlsRestApiFixtures implements FixturesBuilderInterface, FixturesContainer
     protected function createCategoryUrl(UrlsRestApiTester $I): void
     {
         $categoryTransfer = $I->haveLocalizedCategory();
+
+        $storeTransfer = $I->getLocator()->store()->facade()->getCurrentStore();
+
+        $I->haveCategoryStoreRelation(
+            $categoryTransfer->getIdCategory(),
+            $storeTransfer->getIdStore(),
+        );
+
         $this->categoryUrlTransfer = (new UrlFacade())
             ->getResourceUrlByCategoryNodeIdAndLocale(
                 $categoryTransfer->getCategoryNode()->getIdCategoryNode(),
-                (new LocaleFacade())->getCurrentLocale()
+                (new LocaleFacade())->getCurrentLocale(),
             );
     }
 }

@@ -35,7 +35,7 @@ class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements Comman
     {
         $merchantOrderTransfer = $this->getFacade()->findMerchantOrder(
             (new MerchantOrderCriteriaTransfer())
-                ->setIdOrder($orderEntity->getIdSalesOrder())
+                ->setIdOrder($orderEntity->getIdSalesOrder()),
         );
 
         // Check if merchant order is already exists, because command is running for each order item.

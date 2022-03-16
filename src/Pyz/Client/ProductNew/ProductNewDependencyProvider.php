@@ -26,7 +26,7 @@ class ProductNewDependencyProvider extends SprykerProductNewDependencyProvider
     /**
      * @return array<\Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface>|array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface>
      */
-    protected function getNewProductsQueryExpanderPlugins()
+    protected function getNewProductsQueryExpanderPlugins(): array
     {
         return [
             new StoreQueryExpanderPlugin(),
@@ -36,7 +36,7 @@ class ProductNewDependencyProvider extends SprykerProductNewDependencyProvider
             new PaginatedQueryExpanderPlugin(),
             new ProductListQueryExpanderPlugin(),
 
-            /**
+            /*
              * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
              */
             new FacetQueryExpanderPlugin(),
@@ -53,7 +53,7 @@ class ProductNewDependencyProvider extends SprykerProductNewDependencyProvider
             new SortedResultFormatterPlugin(),
             new PaginatedResultFormatterPlugin(),
             new CurrencyAwareCatalogSearchResultFormatterPlugin(
-                new RawCatalogSearchResultFormatterPlugin()
+                new RawCatalogSearchResultFormatterPlugin(),
             ),
         ];
     }

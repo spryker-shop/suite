@@ -42,11 +42,13 @@ use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckoutWo
 use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteWithCustomShipmentPriceCheckoutWorkflowStepResolverStrategyPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\Form\FormInterface;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
     /**
      * @uses \Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin::SERVICE_FORM_FACTORY
+     *
      * @var string
      */
     protected const SERVICE_FORM_FACTORY = 'form.factory';
@@ -95,13 +97,13 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      *
      * @return \Symfony\Component\Form\FormInterface
      */
-    protected function getCustomerCheckoutForm($subForm, $blockPrefix)
+    protected function getCustomerCheckoutForm($subForm, $blockPrefix): FormInterface
     {
         return $this->getFormFactory()->createNamed(
             $blockPrefix,
             CustomerCheckoutForm::class,
             null,
-            [CustomerCheckoutForm::SUB_FORM_CUSTOMER => $subForm]
+            [CustomerCheckoutForm::SUB_FORM_CUSTOMER => $subForm],
         );
     }
 
@@ -174,7 +176,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             $paymentMethodHandler->add(new NopaymentHandlerPlugin(), NopaymentConfig::PAYMENT_PROVIDER_NAME);
             $paymentMethodHandler->add(
                 new DummyMarketplacePaymentHandlerPlugin(),
-                DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE
+                DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE,
             );
 
             // --- Payone

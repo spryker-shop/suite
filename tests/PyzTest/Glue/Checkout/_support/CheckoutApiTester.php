@@ -12,7 +12,6 @@ use Generated\Shared\DataBuilder\CustomerBuilder;
 use Generated\Shared\DataBuilder\ItemBuilder;
 use Generated\Shared\DataBuilder\ShipmentBuilder;
 use Generated\Shared\DataBuilder\StoreRelationBuilder;
-use Generated\Shared\DataBuilder\TotalsBuilder;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
@@ -32,6 +31,7 @@ use Generated\Shared\Transfer\ShipmentTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
+use Generated\Shared\Transfer\TotalsTransfer;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 use Spryker\Shared\Price\PriceConfig;
@@ -64,22 +64,27 @@ class CheckoutApiTester extends ApiEndToEndTester
      * @var string
      */
     protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'Invoice';
+
     /**
      * @var string
      */
     protected const REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT = 'DummyPayment';
+
     /**
      * @var string
      */
     protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
+
     /**
      * @var string
      */
     protected const QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT = 'shipment';
+
     /**
      * @var string
      */
     protected const QUOTE_ITEM_OVERRIDE_DATA_QUANTITY = 'quantity';
+
     /**
      * @var int
      */
@@ -98,17 +103,17 @@ class CheckoutApiTester extends ApiEndToEndTester
 
         $this->assertNotEmpty(
             $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
-            'The returned resource attributes order reference should not be empty'
+            'The returned resource attributes order reference should not be empty',
         );
         $this->assertArrayHasKey(
             RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
             $attributes,
-            'The returned resource attributes should have an external redirect key'
+            'The returned resource attributes should have an external redirect key',
         );
         $this->assertArrayHasKey(
             RestCheckoutResponseTransfer::REDIRECT_URL,
             $attributes,
-            'The returned resource attributes should have a redirect URL key'
+            'The returned resource attributes should have a redirect URL key',
         );
     }
 
@@ -125,7 +130,7 @@ class CheckoutApiTester extends ApiEndToEndTester
 
         $this->assertEmpty(
             $attributes[RestCheckoutDataTransfer::ADDRESSES],
-            'The returned resource attributes addresses should be an empty array'
+            'The returned resource attributes addresses should be an empty array',
         );
     }
 
@@ -140,7 +145,7 @@ class CheckoutApiTester extends ApiEndToEndTester
             '{resourceCheckout}' . $this->formatQueryInclude($includes),
             [
                 'resourceCheckout' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
-            ]
+            ],
         );
     }
 
@@ -155,7 +160,7 @@ class CheckoutApiTester extends ApiEndToEndTester
             '{resourceCheckoutData}' . $this->formatQueryInclude($includes),
             [
                 'resourceCheckoutData' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
-            ]
+            ],
         );
     }
 
@@ -316,7 +321,9 @@ class CheckoutApiTester extends ApiEndToEndTester
 
         return $this->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,
-            QuoteTransfer::TOTALS => (new TotalsBuilder())->build(),
+            QuoteTransfer::TOTALS => (new TotalsTransfer())
+                ->setSubtotal(random_int(1000, 10000))
+                ->setPriceToPay(random_int(1000, 10000)),
             QuoteTransfer::ITEMS => $this->mapProductConcreteTransfersToQuoteTransferItems($productConcreteTransfers),
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
             QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
@@ -335,7 +342,9 @@ class CheckoutApiTester extends ApiEndToEndTester
     {
         return $this->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,
-            QuoteTransfer::TOTALS => (new TotalsBuilder())->build(),
+            QuoteTransfer::TOTALS => (new TotalsTransfer())
+                ->setSubtotal(random_int(1000, 10000))
+                ->setPriceToPay(random_int(1000, 10000)),
             QuoteTransfer::ITEMS => $this->mapProductConcreteTransfersToQuoteTransferItemsWithItemLevelShipment($overrideItems),
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
             QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
@@ -430,7 +439,7 @@ class CheckoutApiTester extends ApiEndToEndTester
         return $this->havePaymentMethod($paymentMethodOverrideData);
     }
 
-    /***
+    /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer

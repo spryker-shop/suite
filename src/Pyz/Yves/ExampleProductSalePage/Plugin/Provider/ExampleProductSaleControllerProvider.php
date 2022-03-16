@@ -22,7 +22,7 @@ class ExampleProductSaleControllerProvider extends AbstractYvesControllerProvide
      *
      * @return void
      */
-    protected function defineControllers(Application $app)
+    protected function defineControllers(Application $app): void
     {
         $allowedLocalesPattern = $this->getAllowedLocalesPattern();
 

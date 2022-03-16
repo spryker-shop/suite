@@ -14,11 +14,14 @@ use Spryker\Glue\ShoppingListsRestApi\ShoppingListsRestApiConfig;
 class CompanyUsersRestApiConfig extends SprykerCompanyUsersRestApiConfig
 {
     /**
-     * @var array
+     * @var array<string>
      */
     protected const COMPANY_USER_RESOURCES = [
         ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LISTS,
         ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LIST_ITEMS,
         QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUESTS,
+        QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUEST_CANCEL,
+        QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUEST_REVISE,
+        QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUEST_SEND_TO_CUSTOMER,
     ];
 }
