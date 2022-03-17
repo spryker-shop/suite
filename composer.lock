@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5613203e6ef2c9fc9629738e36fb2ede",
+    "content-hash": "238dc3df9572650f57cbabe72790ce0c",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -28272,16 +28272,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.66.0",
+            "version": "3.67.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "e74294707aa4bf51c39f7ff3286b605a44c96d01"
+                "reference": "2c0a203cbbc74568ea11e1baf2ab992ddfe86e8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/e74294707aa4bf51c39f7ff3286b605a44c96d01",
-                "reference": "e74294707aa4bf51c39f7ff3286b605a44c96d01",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/2c0a203cbbc74568ea11e1baf2ab992ddfe86e8e",
+                "reference": "2c0a203cbbc74568ea11e1baf2ab992ddfe86e8e",
                 "shasum": ""
             },
             "require": {
@@ -28327,9 +28327,9 @@
             ],
             "description": "Kernel module",
             "support": {
-                "source": "https://github.com/spryker/kernel/tree/3.66.0"
+                "source": "https://github.com/spryker/kernel/tree/3.67.0"
             },
-            "time": "2022-03-01T14:38:47+00:00"
+            "time": "2022-03-16T18:12:37+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -45670,16 +45670,16 @@
         },
         {
             "name": "spryker/propel-orm",
-            "version": "1.14.1",
+            "version": "1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel-orm.git",
-                "reference": "98247f9cc07c9d36117e4c9bba9d7f838c9ce786"
+                "reference": "7842e38d1e17743ea4d7277a3a8b001145c91c04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/98247f9cc07c9d36117e4c9bba9d7f838c9ce786",
-                "reference": "98247f9cc07c9d36117e4c9bba9d7f838c9ce786",
+                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/7842e38d1e17743ea4d7277a3a8b001145c91c04",
+                "reference": "7842e38d1e17743ea4d7277a3a8b001145c91c04",
                 "shasum": ""
             },
             "require": {
@@ -45687,7 +45687,8 @@
                 "propel/propel": "2.0.0-beta1",
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.0.0",
-                "spryker/kernel": "^3.49.0",
+                "spryker/kernel": "^3.67.0",
+                "spryker/propel-orm-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
@@ -45713,9 +45714,50 @@
             ],
             "description": "PropelOrm module",
             "support": {
-                "source": "https://github.com/spryker/propel-orm/tree/1.14.1"
+                "source": "https://github.com/spryker/propel-orm/tree/1.15.0"
             },
-            "time": "2021-12-13T15:47:30+00:00"
+            "time": "2022-03-16T18:12:37+00:00"
+        },
+        {
+            "name": "spryker/propel-orm-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/propel-orm-extension.git",
+                "reference": "583d0d339f94e16581e0042bdbd8d99411f1cd2a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/propel-orm-extension/zipball/583d0d339f94e16581e0042bdbd8d99411f1cd2a",
+                "reference": "583d0d339f94e16581e0042bdbd8d99411f1cd2a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PropelOrmExtension module",
+            "support": {
+                "source": "https://github.com/spryker/propel-orm-extension/tree/1.0.0"
+            },
+            "time": "2022-03-16T18:12:37+00:00"
         },
         {
             "name": "spryker/propel-query-builder",
@@ -45764,6 +45806,50 @@
                 "source": "https://github.com/spryker/propel-query-builder/tree/0.3.6"
             },
             "time": "2020-10-29T08:43:55+00:00"
+        },
+        {
+            "name": "spryker/propel-replication-cache",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/propel-replication-cache.git",
+                "reference": "9df2fadaf2b88db5f18cf0c5293392d21913fbba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/propel-replication-cache/zipball/9df2fadaf2b88db5f18cf0c5293392d21913fbba",
+                "reference": "9df2fadaf2b88db5f18cf0c5293392d21913fbba",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "spryker/kernel": "^3.67.0",
+                "spryker/propel-orm-extension": "^1.0.0",
+                "spryker/storage-redis": "^1.3.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PropelReplicationCache module",
+            "support": {
+                "source": "https://github.com/spryker/propel-replication-cache/tree/1.0.0"
+            },
+            "time": "2022-03-16T18:16:26+00:00"
         },
         {
             "name": "spryker/publish-and-synchronize-health-check",
@@ -61716,12 +61802,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "9d68370f56653d7f42ad621eb7001ab01d648d3d"
+                "reference": "ecd1c9e9a8930e197342a618c2730a2fb9922071"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/9d68370f56653d7f42ad621eb7001ab01d648d3d",
-                "reference": "9d68370f56653d7f42ad621eb7001ab01d648d3d",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/ecd1c9e9a8930e197342a618c2730a2fb9922071",
+                "reference": "ecd1c9e9a8930e197342a618c2730a2fb9922071",
                 "shasum": ""
             },
             "require-dev": {
@@ -61757,7 +61843,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2022-03-15T15:15:58+00:00"
+            "time": "2022-03-16T16:51:53+00:00"
         },
         {
             "name": "mikey179/vfsstream",
