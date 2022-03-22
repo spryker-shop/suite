@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8d9913bf5a26d85f21cd454a2db1ea5",
+    "content-hash": "b51f43d603411eb666e9f85d1b4af7cc",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -47178,16 +47178,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "11.29.0",
+            "version": "11.29.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "0855e93f1d5e441573ec2219044c19504b453615"
+                "reference": "aa351a98df781b7b97582f9d0d7aa9e5ab6bf72a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/0855e93f1d5e441573ec2219044c19504b453615",
-                "reference": "0855e93f1d5e441573ec2219044c19504b453615",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/aa351a98df781b7b97582f9d0d7aa9e5ab6bf72a",
+                "reference": "aa351a98df781b7b97582f9d0d7aa9e5ab6bf72a",
                 "shasum": ""
             },
             "require": {
@@ -47250,9 +47250,9 @@
             ],
             "description": "Sales module",
             "support": {
-                "source": "https://github.com/spryker/sales/tree/11.29.0"
+                "source": "https://github.com/spryker/sales/tree/11.29.1"
             },
-            "time": "2022-02-22T13:01:19+00:00"
+            "time": "2022-03-22T12:48:21+00:00"
         },
         {
             "name": "spryker/sales-configurable-bundle",
@@ -61478,6 +61478,58 @@
             "time": "2022-01-07T12:00:00+00:00"
         },
         {
+            "name": "galbar/jsonpath",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Galbar/JsonPath-PHP.git",
+                "reference": "38fdd37420626671394bb7e258d3b1be3724537b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Galbar/JsonPath-PHP/zipball/38fdd37420626671394bb7e258d3b1be3724537b",
+                "reference": "38fdd37420626671394bb7e258d3b1be3724537b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "sami/sami": ">=3.3.0",
+                "satooshi/php-coveralls": ">=1.0.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JsonPath\\": "src/Galbar/JsonPath",
+                    "Utilities\\": "src/Galbar/Utilities"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alessio Linares",
+                    "email": "alessio@alessio.cc",
+                    "role": "Software Engineer"
+                }
+            ],
+            "description": "JSONPath implementation for querying and updating JSON objects",
+            "keywords": [
+                "json",
+                "jsonpath",
+                "path"
+            ],
+            "support": {
+                "issues": "https://github.com/Galbar/JsonPath-PHP/issues",
+                "source": "https://github.com/Galbar/JsonPath-PHP/tree/1.3.1"
+            },
+            "time": "2021-08-19T20:18:48+00:00"
+        },
+        {
             "name": "jetbrains/phpstorm-stubs",
             "version": "dev-master",
             "source": {
@@ -65604,6 +65656,204 @@
                 "source": "https://github.com/spryker/docker-chromedriver/tree/master"
             },
             "time": "2020-10-07T09:58:21+00:00"
+        },
+        {
+            "name": "spryker/json-path",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/json-path.git",
+                "reference": "589bc1de92b115354553e9d779ee3c152696b8c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/json-path/zipball/589bc1de92b115354553e9d779ee3c152696b8c1",
+                "reference": "589bc1de92b115354553e9d779ee3c152696b8c1",
+                "shasum": ""
+            },
+            "require": {
+                "galbar/jsonpath": "^1.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "JsonPath module",
+            "support": {
+                "source": "https://github.com/spryker/json-path/tree/1.0.0"
+            },
+            "time": "2019-07-03T10:48:06+00:00"
+        },
+        {
+            "name": "spryker/json-schema",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/json-schema.git",
+                "reference": "ecba5bba9e87fe066ccd850ca54aeb65f02c5569"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/json-schema/zipball/ecba5bba9e87fe066ccd850ca54aeb65f02c5569",
+                "reference": "ecba5bba9e87fe066ccd850ca54aeb65f02c5569",
+                "shasum": ""
+            },
+            "require": {
+                "justinrainbow/json-schema": "^5.2",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "JsonSchema module",
+            "support": {
+                "source": "https://github.com/spryker/json-schema/tree/1.0.0"
+            },
+            "time": "2019-07-03T10:48:06+00:00"
+        },
+        {
+            "name": "spryker/silex",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/silex.git",
+                "reference": "5c234b59046fc48efbb244683be82004cff947ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/silex/zipball/5c234b59046fc48efbb244683be82004cff947ac",
+                "reference": "5c234b59046fc48efbb244683be82004cff947ac",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/silexphp": "^0.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Silex module",
+            "support": {
+                "source": "https://github.com/spryker/silex/tree/2.2.1"
+            },
+            "abandoned": true,
+            "time": "2020-07-24T04:44:33+00:00"
+        },
+        {
+            "name": "spryker/silexphp",
+            "version": "0.3.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/silexphp.git",
+                "reference": "613902fa873cf2778336cc1b67c8190fa4ff9339"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/613902fa873cf2778336cc1b67c8190fa4ff9339",
+                "reference": "613902fa873cf2778336cc1b67c8190fa4ff9339",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/container": "^1.1.0",
+                "symfony/event-dispatcher": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/http-kernel": "^4.3.0 || ^5.0.0",
+                "symfony/routing": "^3.0.0 || ^4.0.0 || ^5.0.0"
+            },
+            "conflict": {
+                "silexphp/silex": "<3.0.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "~2.2",
+                "monolog/monolog": "^1.4.1 || ^2.0.0",
+                "phpstan/phpstan": "^0.12.35",
+                "phpunit/phpunit": "^8.0.0 || ^9.0.0",
+                "sllh/composer-versions-check": "^2.0",
+                "swiftmailer/swiftmailer": "^5.0.0 || ^6.0.0",
+                "symfony/browser-kit": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/config": "^4.2.0 || ^5.0.0",
+                "symfony/css-selector": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/debug": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/dom-crawler": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/finder": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/form": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/intl": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/monolog-bridge": "^3.4.0 || ^4.0.0 || ^5.0.0",
+                "symfony/options-resolver": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/process": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/security-core": "^4.2.7 < 4.4.0 || ^4.4.7 || ^5.0.0",
+                "symfony/security-csrf": "^4.2.7 < 4.4.0 || ^4.4.7 || ^5.0.0",
+                "symfony/security-guard": "^4.2.7 < 4.4.0 || ^4.4.7 || ^5.0.0",
+                "symfony/security-http": "^4.2.7 < 4.4.0 || ^4.4.7 || ^5.0.0",
+                "symfony/serializer": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/translation": "^4.2.0 || ^5.0.0",
+                "symfony/twig-bridge": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/validator": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "twig/twig": "^1.41 || ^2.0.0 || ^3.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Silex\\": "src/Silex"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch"
+                }
+            ],
+            "description": "The PHP micro-framework based on the Symfony Components",
+            "homepage": "http://silex.sensiolabs.org",
+            "keywords": [
+                "microframework"
+            ],
+            "support": {
+                "source": "https://github.com/spryker/silexphp/tree/0.3.10"
+            },
+            "time": "2020-10-06T09:24:08+00:00"
         },
         {
             "name": "spryker/testify",
