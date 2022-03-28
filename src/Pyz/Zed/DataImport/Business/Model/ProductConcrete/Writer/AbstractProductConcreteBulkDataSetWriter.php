@@ -24,8 +24,11 @@ abstract class AbstractProductConcreteBulkDataSetWriter implements DataSetWriter
     public const BULK_SIZE = 3000;
 
     protected const COLUMN_NAME = ProductConcreteHydratorStep::COLUMN_NAME;
+
     protected const COLUMN_DESCRIPTION = ProductConcreteHydratorStep::COLUMN_DESCRIPTION;
+
     protected const COLUMN_IS_SEARCHABLE = ProductConcreteHydratorStep::COLUMN_IS_SEARCHABLE;
+
     protected const COLUMN_ABSTRACT_SKU = ProductConcreteHydratorStep::COLUMN_ABSTRACT_SKU;
 
     /**

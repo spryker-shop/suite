@@ -19,8 +19,11 @@ class CombinedProductConcreteBulkPdoDataSetWriter extends ProductConcreteBulkPdo
     public const BULK_SIZE = CombinedProductConcreteHydratorStep::BULK_SIZE;
 
     protected const COLUMN_NAME = CombinedProductConcreteHydratorStep::COLUMN_NAME;
+
     protected const COLUMN_DESCRIPTION = CombinedProductConcreteHydratorStep::COLUMN_DESCRIPTION;
+
     protected const COLUMN_IS_SEARCHABLE = CombinedProductConcreteHydratorStep::COLUMN_IS_SEARCHABLE;
+
     protected const COLUMN_ABSTRACT_SKU = CombinedProductConcreteHydratorStep::COLUMN_ABSTRACT_SKU;
 
     /**

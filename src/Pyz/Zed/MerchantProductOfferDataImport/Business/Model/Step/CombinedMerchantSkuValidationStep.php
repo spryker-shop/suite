@@ -13,5 +13,6 @@ use Spryker\Zed\MerchantProductOfferDataImport\Business\Model\Step\MerchantSkuVa
 class CombinedMerchantSkuValidationStep extends MerchantSkuValidationStep
 {
     protected const MERCHANT_SKU = CombinedMerchantProductOfferDataSetInterface::MERCHANT_SKU;
+
     protected const MERCHANT_REFERENCE = CombinedMerchantProductOfferDataSetInterface::MERCHANT_REFERENCE;
 }
