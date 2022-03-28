@@ -13,5 +13,6 @@ use Spryker\Zed\ProductOfferStockDataImport\Business\Step\StockNameToIdStockStep
 class CombinedStockNameToIdStockStep extends StockNameToIdStockStep
 {
     protected const PRODUCT_STOCK_NAME = CombinedProductOfferStockDataSetInterface::STOCK_NAME;
+
     protected const STORE_NAME = CombinedProductOfferStockDataSetInterface::STORE_NAME;
 }

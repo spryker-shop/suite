@@ -21,8 +21,11 @@ use Spryker\Zed\ProductImage\Dependency\ProductImageEvents;
 abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInterface
 {
     protected const COLUMN_EXTERNAL_URL_LARGE = ProductImageHydratorStep::COLUMN_EXTERNAL_URL_LARGE;
+
     protected const COLUMN_EXTERNAL_URL_SMALL = ProductImageHydratorStep::COLUMN_EXTERNAL_URL_SMALL;
+
     protected const COLUMN_PRODUCT_IMAGE_KEY = ProductImageHydratorStep::COLUMN_PRODUCT_IMAGE_KEY;
+
     protected const COLUMN_SORT_ORDER = ProductImageHydratorStep::COLUMN_SORT_ORDER;
 
     /**

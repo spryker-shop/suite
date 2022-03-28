@@ -17,6 +17,7 @@ use Spryker\Zed\DataImport\DataImportConfig;
 class CombinedProductAbstractStoreBulkPdoDataSetWriter extends ProductAbstractStoreBulkPdoDataSetWriter
 {
     public const COLUMN_ABSTRACT_SKU = CombinedProductAbstractStoreHydratorStep::COLUMN_ABSTRACT_SKU;
+
     public const COLUMN_STORE_NAME = CombinedProductAbstractStoreHydratorStep::COLUMN_STORE_NAME;
 
     /**
