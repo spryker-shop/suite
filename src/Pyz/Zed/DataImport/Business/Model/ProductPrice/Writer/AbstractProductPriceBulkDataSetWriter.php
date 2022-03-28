@@ -25,9 +25,13 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     protected const BULK_SIZE = ProductPriceHydratorStep::BULK_SIZE;
 
     protected const COLUMN_PRICE_TYPE = ProductPriceHydratorStep::COLUMN_PRICE_TYPE;
+
     protected const COLUMN_PRICE_DATA = ProductPriceHydratorStep::COLUMN_PRICE_DATA;
+
     protected const COLUMN_PRICE_DATA_CHECKSUM = ProductPriceHydratorStep::COLUMN_PRICE_DATA_CHECKSUM;
+
     protected const COLUMN_STORE = ProductPriceHydratorStep::COLUMN_STORE;
+
     protected const COLUMN_CURRENCY = ProductPriceHydratorStep::COLUMN_CURRENCY;
 
     /**
