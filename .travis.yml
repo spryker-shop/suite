@@ -899,7 +899,7 @@ jobs:
               - unset CHROME_BIN && export CHROME_BIN=${CHROMIUM_BINARY}
               # Install npm packages
               - export YARN_CACHE_FOLDER=$HOME/.yarn/cache && vendor/bin/console frontend:mp:install-dependencies -vvv
-              - vendor/bin/console frontend:mp:build
+              - yarn mp:build:production
               - yarn mp:test
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT

@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.216.1",
+            "version": "3.216.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "00176c97319448c9520176d7c7d107b04b35406d"
+                "reference": "9e09386c3a5b313eeb324490beff4eb843ed339d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/00176c97319448c9520176d7c7d107b04b35406d",
-                "reference": "00176c97319448c9520176d7c7d107b04b35406d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9e09386c3a5b313eeb324490beff4eb843ed339d",
+                "reference": "9e09386c3a5b313eeb324490beff4eb843ed339d",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.216.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.216.2"
             },
-            "time": "2022-03-24T18:15:20+00:00"
+            "time": "2022-03-25T18:17:03+00:00"
         },
         {
             "name": "brick/math",
@@ -5025,7 +5025,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f2b68a86e82a8a9ce8ef95b34f97e0c47a8635cf"
+                "reference": "200ac1a69d76bf9a31cea91bba841c04953e843f"
             },
             "require": {
                 "php": ">=7.4"
@@ -5919,7 +5919,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2022-03-25T11:03:23+00:00"
+            "time": "2022-03-28T12:53:35+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -13194,35 +13194,30 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.2.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "dbc093d7af60eff5cd575d2ed761b15ed40bd08e"
+                "reference": "aa111aa1fecbc436f01e5439d88906bd3b612027"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/dbc093d7af60eff5cd575d2ed761b15ed40bd08e",
-                "reference": "dbc093d7af60eff5cd575d2ed761b15ed40bd08e",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/aa111aa1fecbc436f01e5439d88906bd3b612027",
+                "reference": "aa111aa1fecbc436f01e5439d88906bd3b612027",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0"
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan": "^1.5",
                 "phpstan/phpstan-strict-rules": "^1.0",
                 "phpunit/phpunit": "^9.5",
                 "symfony/process": "^5.2"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "PHPStan\\PhpDocParser\\": [
@@ -13237,9 +13232,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.2.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.4.0"
             },
-            "time": "2021-09-16T20:46:02+00:00"
+            "time": "2022-03-28T10:52:48+00:00"
         },
         {
             "name": "phpstan/phpstan",
@@ -15358,12 +15353,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker-sdk/spryk.git",
+                "url": "https://github.com/spryker-sdk/spryk-src.git",
                 "reference": "cdf612a4efe7be27c9a7f3f344f99b19e81cd965"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/cdf612a4efe7be27c9a7f3f344f99b19e81cd965",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-src/zipball/cdf612a4efe7be27c9a7f3f344f99b19e81cd965",
                 "reference": "cdf612a4efe7be27c9a7f3f344f99b19e81cd965",
                 "shasum": ""
             },
@@ -15431,8 +15426,8 @@
             ],
             "description": "Spryk module",
             "support": {
-                "issues": "https://github.com/spryker-sdk/spryk/issues",
-                "source": "https://github.com/spryker-sdk/spryk/tree/master"
+                "issues": "https://github.com/spryker-sdk/spryk-src/issues",
+                "source": "https://github.com/spryker-sdk/spryk-src/tree/master"
             },
             "time": "2022-03-15T06:21:31+00:00"
         },
