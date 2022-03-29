@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99415551d8645f2c9bbf4506ec0f8978",
+    "content-hash": "6dd4c5f5081e5988e2fca2694e055b1f",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -15353,71 +15353,29 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker-sdk/spryk-src.git",
-                "reference": "cdf612a4efe7be27c9a7f3f344f99b19e81cd965"
+                "url": "https://github.com/spryker-sdk/spryk.git",
+                "reference": "c99cf4e684a13f893d11ae40e353ab9b35ce856a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk-src/zipball/cdf612a4efe7be27c9a7f3f344f99b19e81cd965",
-                "reference": "cdf612a4efe7be27c9a7f3f344f99b19e81cd965",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/c99cf4e684a13f893d11ae40e353ab9b35ce856a",
+                "reference": "c99cf4e684a13f893d11ae40e353ab9b35ce856a",
                 "shasum": ""
             },
             "require": {
-                "ext-dom": "*",
-                "ext-simplexml": "*",
-                "ondrejmirtes/better-reflection": "^4.3.19",
-                "php": ">=7.4",
-                "spryker/config": "^3.0.0",
-                "spryker/console": "^3.0.0 || ^4.0.0",
-                "spryker/doctrine-inflector": "^1.1.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/laminas": "^1.0.0",
-                "symfony/console": "^3.4.0 || ^4.0.0 || ^5.0.0",
-                "symfony/filesystem": "^3.4.0 || ^4.0.0 || ^5.0.0",
-                "symfony/finder": "^3.4.0 || ^4.0.0 || ^5.0.0",
-                "symfony/yaml": "^3.4.9 || ^4.0.0 || ^5.0.0",
-                "twig/twig": "^1.41 || ^2.0.0 || ^3.0.0"
-            },
-            "require-dev": {
-                "codeception/codeception": "^4.0.0",
-                "phpstan/phpstan": "^0.12.98",
-                "phpunit/phpunit": "^9.5.0",
-                "spryker/checkout-extension": "^1.3.0",
-                "spryker/code-sniffer": "*",
-                "spryker/data-import": "^1.1.0",
-                "spryker/glue-application-extension": "^1.1.0",
-                "spryker/oms": "^10.0.0 || ^11.0.0",
-                "spryker/payment-extension": "^1.0.0",
-                "spryker/router": "^1.1.0",
-                "spryker/sales-payment-extension": "^1.0.0",
-                "spryker/step-engine": "^3.3.0",
-                "spryker/testify": "^3.40.0"
-            },
-            "suggest": {
-                "spryker/checkout-extension": "If you want to use Payment spryks, minimum required version: 1.3.0",
-                "spryker/data-import": "If you want to use DataImport spryks, minimum required version: 1.0.0",
-                "spryker/glue-application-extension": "If you want to use Glue spryks, minimum required version: 1.1.0",
-                "spryker/oms": "If you want to use Payment spryks, minimum required version: 6.0.0",
-                "spryker/payment-extension": "If you want to use Payment spryks, minimum required version: 1.0.0",
-                "spryker/router": "If you want to use Route spryks, minimum required version: 1.1.0",
-                "spryker/sales-payment-extension": "If you want to use Payment spryks, minimum required version: 1.0.0",
-                "spryker/step-engine": "If you want to use Payment spryks, minimum required version: 1.0.0"
+                "php": ">=7.4"
             },
             "default-branch": true,
             "bin": [
-                "bin/spryk-run",
-                "bin/spryk-dump",
-                "bin/spryk-build"
+                "spryk-build",
+                "spryk-dump",
+                "spryk-run",
+                "spryk.phar"
             ],
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerSdk\\": "src/SprykerSdk/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -15426,78 +15384,10 @@
             ],
             "description": "Spryk module",
             "support": {
-                "issues": "https://github.com/spryker-sdk/spryk-src/issues",
-                "source": "https://github.com/spryker-sdk/spryk-src/tree/master"
+                "issues": "https://github.com/spryker-sdk/spryk/issues",
+                "source": "https://github.com/spryker-sdk/spryk/tree/master"
             },
-            "time": "2022-03-15T06:21:31+00:00"
-        },
-        {
-            "name": "spryker-sdk/spryk-gui",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-sdk/spryk-gui.git",
-                "reference": "b1781d3d9d06792c3bf77eb57b719314e9478b60"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/b1781d3d9d06792c3bf77eb57b719314e9478b60",
-                "reference": "b1781d3d9d06792c3bf77eb57b719314e9478b60",
-                "shasum": ""
-            },
-            "require": {
-                "ondrejmirtes/better-reflection": "^4.3.0",
-                "php": ">=7.4",
-                "spryker-sdk/spryk": "^0.3.1",
-                "spryker/development": "^3.12.0",
-                "spryker/graph": "^3.0.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/laminas": "^1.0.0",
-                "spryker/symfony": "^3.5.0",
-                "spryker/transfer": "^3.25.0"
-            },
-            "require-dev": {
-                "codeception/module-asserts": "^1.3",
-                "codeception/module-phpbrowser": "^1.0",
-                "phpstan/phpstan": "^0.12.0",
-                "spryker/application": "^3.28.0",
-                "spryker/code-sniffer": "*",
-                "spryker/config": "^3.5.0",
-                "spryker/container": "^1.4.2",
-                "spryker/event-dispatcher": "^1.2.0",
-                "spryker/form": "^1.0.0",
-                "spryker/gui": "^3.40.0",
-                "spryker/http": "^1.5.0",
-                "spryker/propel": "^3.30.0",
-                "spryker/router": "^1.12.0",
-                "spryker/testify": "^3.40.0",
-                "spryker/translator": "^1.8.0",
-                "spryker/twig": "^3.13.0",
-                "spryker/validator": "^1.1.0",
-                "spryker/zed-navigation": "^1.5.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerSdk\\": "src/SprykerSdk/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "SprykGui module",
-            "support": {
-                "issues": "https://github.com/spryker-sdk/spryk-gui/issues",
-                "source": "https://github.com/spryker-sdk/spryk-gui/tree/master"
-            },
-            "time": "2022-02-16T17:35:59+00:00"
+            "time": "2022-03-29T10:40:29+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
@@ -16850,12 +16740,6 @@
             "version": "9999999-dev",
             "alias": "2.11.0",
             "alias_normalized": "2.11.0.0"
-        },
-        {
-            "package": "spryker-sdk/spryk",
-            "version": "9999999-dev",
-            "alias": "0.3.1",
-            "alias_normalized": "0.3.1.0"
         }
     ],
     "minimum-stability": "dev",
@@ -16883,7 +16767,6 @@
         "spryker-sdk/composer-constrainer": 20,
         "spryker-sdk/composer-replace": 20,
         "spryker-sdk/spryk": 20,
-        "spryker-sdk/spryk-gui": 20,
         "spryker-sdk/benchmark": 20,
         "spryker/docker-chromedriver": 20,
         "spryker-sdk/load-testing": 20,
@@ -16910,5 +16793,5 @@
     "platform-overrides": {
         "php": "7.4.15"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.1.0"
 }
