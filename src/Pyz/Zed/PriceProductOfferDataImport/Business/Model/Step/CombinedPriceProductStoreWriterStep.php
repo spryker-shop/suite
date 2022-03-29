@@ -13,5 +13,6 @@ use Spryker\Zed\PriceProductOfferDataImport\Business\Step\PriceProductStoreWrite
 class CombinedPriceProductStoreWriterStep extends PriceProductStoreWriterStep
 {
     protected const VALUE_NET = CombinedPriceProductOfferDataSetInterface::VALUE_NET;
+
     protected const VALUE_GROSS = CombinedPriceProductOfferDataSetInterface::VALUE_GROSS;
 }

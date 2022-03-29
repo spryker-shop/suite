@@ -40,9 +40,13 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     public const BULK_SIZE = 2000;
 
     protected const COLUMN_NAME = ProductStockHydratorStep::COLUMN_NAME;
+
     protected const COLUMN_CONCRETE_SKU = ProductStockHydratorStep::COLUMN_CONCRETE_SKU;
+
     protected const COLUMN_IS_BUNDLE = ProductStockHydratorStep::COLUMN_IS_BUNDLE;
+
     protected const COLUMN_QUANTITY = ProductStockHydratorStep::COLUMN_QUANTITY;
+
     protected const COLUMN_IS_NEVER_OUT_OF_STOCK = ProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK;
 
     /**

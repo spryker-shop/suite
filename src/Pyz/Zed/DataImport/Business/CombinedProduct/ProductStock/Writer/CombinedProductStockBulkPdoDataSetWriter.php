@@ -15,8 +15,12 @@ class CombinedProductStockBulkPdoDataSetWriter extends ProductStockBulkPdoDataSe
     public const BULK_SIZE = CombinedProductStockHydratorStep::BULK_SIZE;
 
     protected const COLUMN_NAME = CombinedProductStockHydratorStep::COLUMN_NAME;
+
     protected const COLUMN_CONCRETE_SKU = CombinedProductStockHydratorStep::COLUMN_CONCRETE_SKU;
+
     protected const COLUMN_IS_BUNDLE = CombinedProductStockHydratorStep::COLUMN_IS_BUNDLE;
+
     protected const COLUMN_QUANTITY = CombinedProductStockHydratorStep::COLUMN_QUANTITY;
+
     protected const COLUMN_IS_NEVER_OUT_OF_STOCK = CombinedProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK;
 }
