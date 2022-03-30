@@ -23,8 +23,6 @@ jobs:
             APPLICATION_ENV: devtest
             APPLICATION_STORE: DE
             PROJECT: suite
-            ACTIONS_RUNNER_DEBUG: true
-            ACTIONS_STEP_DEBUG: true
 
         services:
             redis:
@@ -129,6 +127,7 @@ jobs:
 
             - name: Frontend install-dependencies
               run: |
+                  vendor/bin/console frontend:project:install-dependencies
                   vendor/bin/console frontend:mp:install-dependencies
 
             - name: Install NPM packages
@@ -151,7 +150,7 @@ jobs:
               run: yarn mp:test
 
             - name: Front-end MP Build
-              run: yarn mp:build:production
+              run: yarn mp:build
 
             - name: Validate propel files
               run: |
