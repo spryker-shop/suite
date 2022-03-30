@@ -458,10 +458,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new RouterDebugBackofficeConsole();
             $commands[] = new RouterDebugBackendGatewayConsole();
             $commands[] = new RouterDebugBackendApiConsole();
-
-            $commands[] = new SprykRunConsole();
-            $commands[] = new SprykDumpConsole();
-            $commands[] = new SprykBuildConsole();
             $commands[] = new ComposerConstraintConsole();
 
             if (class_exists(SecurityCheckerCommand::class)) {
