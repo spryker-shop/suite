@@ -1,9 +1,5 @@
 <?xml version="1.0"?>
-<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" name="zed"
-          namespace="Orm\Zed\Vault\Persistence"
-          package="src.Orm.Zed.Vault.Persistence"
->
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" name="zed" namespace="Orm\Zed\Vault\Persistence" package="src.Orm.Zed.Vault.Persistence">
 
     <table name="spy_vault_deposit" idMethod="native" allowPkInsert="true" phpName="SpyVaultDeposit">
         <column name="id_vault_deposit" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>

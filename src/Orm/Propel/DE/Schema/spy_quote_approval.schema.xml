@@ -1,15 +1,11 @@
 <?xml version="1.0"?>
-<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" name="zed"
-          namespace="Orm\Zed\QuoteApproval\Persistence"
-          package="src.Orm.Zed.QuoteApproval.Persistence"
->
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" name="zed" namespace="Orm\Zed\QuoteApproval\Persistence" package="src.Orm.Zed.QuoteApproval.Persistence">
 
     <table name="spy_quote_approval" idMethod="native" allowPkInsert="true" phpName="SpyQuoteApproval">
         <column name="id_quote_approval" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
         <column name="fk_quote" required="true" type="INTEGER"/>
         <column name="fk_company_user" required="true" type="INTEGER"/>
-        <column name="status" required="true" type="VARCHAR" size="255" />
+        <column name="status" required="true" type="VARCHAR" size="255"/>
         <column name="uuid" required="false" type="VARCHAR" size="36"/>
 
         <id-method-parameter value="id_quote_approval_pk_seq"/>

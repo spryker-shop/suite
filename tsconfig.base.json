@@ -1,6 +1,22 @@
 {
-    "extends": "./tsconfig.base.json",
     "compilerOptions": {
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "noEmitHelpers": true,
+        "importHelpers": true,
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "target": "es2015",
+        "module": "esnext",
+        "typeRoots": ["node_modules/@types"],
+        "lib": ["dom", "esnext"],
+        "baseUrl": ".",
+        "removeComments": true,
+        "rootDir": ".",
         "paths": {
             "@mp/dashboard-merchant-portal-gui": ["vendor/spryker/dashboard-merchant-portal-gui/mp.public-api.ts"],
             "@mp/dummy-merchant-portal-gui": ["vendor/spryker/dummy-merchant-portal-gui/mp.public-api.ts"],
@@ -16,13 +32,17 @@
             "@mp/user-merchant-portal-gui": ["vendor/spryker/user-merchant-portal-gui/mp.public-api.ts"],
             "@mp/zed-ui": ["vendor/spryker/zed-ui/mp.public-api.ts"],
             "@mp/*": ["vendor/spryker/*/mp.public-api.ts"],
-            "@mp/polyfills": ["./vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/mp.polyfills.ts"]
+            "@mp/polyfills": ["./vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/mp.polyfills.ts"],
+            "*": ["*"],
+            "ShopUi/*": ["./vendor/spryker-shop/shop-ui/src/SprykerShop/Yves/ShopUi/Theme/default/*"]
         }
     },
     "include": [
-        "src/Pyz/Zed/ZedUi/Presentation/Components/main.ts",
-        "src/Pyz/Zed/ZedUi/Presentation/Components/polyfills.ts",
-        "vendor/spryker/*/src/Spryker/Zed/*/Presentation/Components/entry.ts",
-        "src/Pyz/Zed/*/Presentation/Components/entry.ts"
-    ]
+        "./vendor/spryker/**/*",
+        "./vendor/spryker-shop/**/*",
+        "./vendor/spryker-eco/**/*",
+        "./src/Pyz/Yves/**/*",
+        "./src/Pyz/Zed/**/*"
+    ],
+    "exclude": ["**/node_modules/**", "**/*.spec.ts", "public", "dist", "**/dist/**"]
 }

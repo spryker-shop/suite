@@ -1,5 +1,12 @@
 <?xml version="1.0"?>
-<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\ProductPackagingUnitStorage\Persistence" package="src.Orm.Zed.ProductPackagingUnitStorage.Persistence">
+<database
+    xmlns="spryker:schema-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    name="zed"
+    xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd"
+    namespace="Orm\Zed\ProductPackagingUnitStorage\Persistence"
+    package="src.Orm.Zed.ProductPackagingUnitStorage.Persistence"
+>
     <table name="spy_product_abstract_packaging_storage" idMethod="native" identifierQuoting="true">
         <column name="id_product_abstract_packaging_storage" type="BIGINT" autoIncrement="true" primaryKey="true"/>
         <column name="fk_product_abstract" type="INTEGER" required="true"/>
