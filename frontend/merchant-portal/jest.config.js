@@ -1,11 +1,14 @@
 module.exports = {
-    name: "merchant-portal",
-    roots: ["<rootDir>/../../vendor/spryker"],
-    testRegex: ["\/src\/Spryker\/Zed\/.+\/Presentation\/Components\/.+\\.(test|spec)\\.[jt]sx?$"],
-    transform: {
-        "^.+\\.(ts|js|html)$": "ts-jest",
+    displayName: 'merchant-portal',
+    preset: './jest.preset.js',
+    setupFilesAfterEnv: ['<rootDir>/test-setup.ts'],
+    globals: {
+        'ts-jest': {
+            stringifyContentPathRegex: '\\.(html|svg)$',
+            tsconfig: '<rootDir>/tsconfig.spec.json',
+        },
     },
-    roots: ['<rootDir>/../../vendor/spryker/spryker/Bundles'],
+    roots: ["<rootDir>/../../vendor/spryker"],
     testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
     resolver: '@nrwl/jest/plugins/resolver',
     moduleFileExtensions: ['ts', 'js', 'html'],
