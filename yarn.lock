@@ -19292,6 +19292,39 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"mp-gui-table@workspace:vendor/spryker/gui-table":
+  version: 0.0.0-use.local
+  resolution: "mp-gui-table@workspace:vendor/spryker/gui-table"
+  dependencies:
+    "@angular/common": ^12.2.16
+    "@angular/core": ^12.2.16
+    "@spryker/table": ^0.5.0
+    "@spryker/table.column.autocomplete": ^0.2.0
+    "@spryker/table.column.chip": ^0.1.0
+    "@spryker/table.column.date": ^0.1.0
+    "@spryker/table.column.dynamic": ^0.3.0
+    "@spryker/table.column.image": ^0.2.0
+    "@spryker/table.column.input": ^0.2.0
+    "@spryker/table.column.select": ^0.2.0
+    "@spryker/table.column.text": ^0.2.0
+    "@spryker/table.feature.batch-actions": ^0.2.0
+    "@spryker/table.feature.editable": ^0.3.0
+    "@spryker/table.feature.filters": ^0.2.0
+    "@spryker/table.feature.pagination": ^0.1.0
+    "@spryker/table.feature.row-actions": ^0.2.0
+    "@spryker/table.feature.search": ^0.2.0
+    "@spryker/table.feature.selectable": ^0.2.0
+    "@spryker/table.feature.settings": ^0.2.0
+    "@spryker/table.feature.sync-state": ^0.1.0
+    "@spryker/table.feature.title": ^0.2.0
+    "@spryker/table.feature.total": ^0.2.0
+    "@spryker/table.filter.date-range": ^0.2.0
+    "@spryker/table.filter.select": ^0.1.0
+    "@spryker/table.filter.tree-select": ^0.1.0
+    rxjs: ~7.4.0
+  languageName: unknown
+  linkType: soft
+
 "mp-login@workspace:vendor/spryker/security-merchant-portal-gui":
   version: 0.0.0-use.local
   resolution: "mp-login@workspace:vendor/spryker/security-merchant-portal-gui"
@@ -19315,29 +19348,36 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mp-product-list@workspace:vendor/spryker/product-merchant-portal-gui"
   dependencies:
-    "@angular/animations": ^9.1.12
-    "@angular/cdk": ^9.2.0
-    "@angular/common": ^9.1.12
-    "@angular/core": ^9.1.12
-    "@angular/elements": ^9.1.12
-    "@angular/forms": ^9.1.12
-    "@angular/platform-browser": ^9.1.12
-    "@spryker/card": ^0.2.0-next.5
-    "@spryker/checkbox": ^0.2.0-next.4
-    "@spryker/chips": ^0.1.3-next.1
-    "@spryker/date-picker": ^0.2.0-next.2
-    "@spryker/form-item": ^0.2.0-next.6
-    "@spryker/headline": ^0.2.0-next.1
-    "@spryker/styles": ^0.2.0-next.37
-    "@spryker/table": ^0.2.0-next.38
-    "@spryker/tabs": ^0.2.0-next.6
-    "@spryker/textarea": ^0.2.0-next.4
-    "@spryker/toggle": ^0.2.0-next.4
-    "@spryker/tree-select": ^0.1.1-next.0
-    "@spryker/unsaved-changes.monitor.form": ^0.1.3-next.0
-    "@spryker/utils": ^0.2.0-next.17
-    "@spryker/web-components": ^0.2.1-next.8
-    rxjs: ^6.5.4
+    "@angular/animations": ^12.2.16
+    "@angular/cdk": ^12.2.13
+    "@angular/common": ^12.2.16
+    "@angular/core": ^12.2.16
+    "@angular/elements": ^12.2.16
+    "@angular/forms": ^12.2.16
+    "@angular/platform-browser": ^12.2.16
+    "@spryker/button": ^0.5.0
+    "@spryker/button.action": ^0.2.0
+    "@spryker/button.icon": ^0.3.0
+    "@spryker/card": ^0.5.0
+    "@spryker/checkbox": ^0.4.0
+    "@spryker/chips": ^0.3.0
+    "@spryker/date-picker": ^0.4.0
+    "@spryker/form-item": ^0.4.0
+    "@spryker/headline": ^0.4.0
+    "@spryker/icon": ^0.4.0
+    "@spryker/input": ^0.4.0
+    "@spryker/radio": ^0.3.0
+    "@spryker/select": ^0.4.0
+    "@spryker/styles": ^0.6.0
+    "@spryker/table": ^0.5.0
+    "@spryker/tabs": ^0.4.0
+    "@spryker/textarea": ^0.4.0
+    "@spryker/toggle": ^0.4.0
+    "@spryker/tree-select": ^0.3.0
+    "@spryker/unsaved-changes.monitor.form": ^0.2.0
+    "@spryker/utils": ^0.3.0
+    "@spryker/web-components": ^0.3.0
+    rxjs: ~7.4.0
   languageName: unknown
   linkType: soft
 
@@ -19434,9 +19474,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"mp-zed-ui@workspace:vendor/spryker/spryker/Bundles/ZedUi":
+"mp-zed-ui@workspace:vendor/spryker/zed-ui":
   version: 0.0.0-use.local
-  resolution: "mp-zed-ui@workspace:vendor/spryker/spryker/Bundles/ZedUi"
+  resolution: "mp-zed-ui@workspace:vendor/spryker/zed-ui"
   dependencies:
     "@angular/animations": ^12.2.16
     "@angular/cdk": ^12.2.13
@@ -28545,94 +28585,12 @@ resolve@^0.6.1:
   languageName: node
   linkType: hard
 
-"zed-ui@workspace:vendor/spryker/zed-ui":
-  version: 0.0.0-use.local
-  resolution: "zed-ui@workspace:vendor/spryker/zed-ui"
-  dependencies:
-    "@angular/animations": ^9.1.12
-    "@angular/cdk": ^9.2.0
-    "@angular/common": ^9.1.12
-    "@angular/core": ^9.1.12
-    "@angular/elements": ^9.1.12
-    "@angular/forms": ^9.1.12
-    "@angular/platform-browser": ^9.1.12
-    "@angular/router": ^9.1.12
-    "@spryker/actions": ^0.1.0-next.2
-    "@spryker/actions.close-drawer": ^0.1.0-next.1
-    "@spryker/actions.drawer": ^0.1.0-next.3
-    "@spryker/actions.http": ^0.1.0-next.1
-    "@spryker/actions.notification": ^0.1.0-next.1
-    "@spryker/actions.redirect": ^0.1.0-next.1
-    "@spryker/actions.refresh-drawer": ^0.1.0-next.1
-    "@spryker/actions.refresh-parent-table": ^0.1.0-next.1
-    "@spryker/actions.refresh-table": ^0.1.0-next.1
-    "@spryker/ajax-action": ^0.2.0-next.4
-    "@spryker/ajax-form": ^0.2.0-next.14
-    "@spryker/autocomplete": ^0.1.0-next.2
-    "@spryker/button": ^0.2.0-next.10
-    "@spryker/cache": ^0.1.0-next.3
-    "@spryker/cache.static": ^0.1.0-next.0
-    "@spryker/checkbox": ^0.2.0-next.4
-    "@spryker/chips": ^0.1.3-next.1
-    "@spryker/data-serializer": ^0.0.2-next.0
-    "@spryker/data-transformer": ^0.1.0-next.2
-    "@spryker/data-transformer.array-map": ^0.1.0-next.1
-    "@spryker/data-transformer.chain": ^0.1.0-next.1
-    "@spryker/data-transformer.collate": ^0.1.0-next.1
-    "@spryker/data-transformer.configurator.table": ^0.1.0-next.0
-    "@spryker/data-transformer.date-parse": ^0.1.0-next.0
-    "@spryker/data-transformer.date-serialize": ^0.1.0-next.0
-    "@spryker/data-transformer.filter.equals": ^0.1.0-next.0
-    "@spryker/data-transformer.filter.range": ^0.1.0-next.0
-    "@spryker/data-transformer.filter.text": ^0.1.0-next.0
-    "@spryker/data-transformer.lens": ^0.1.0-next.0
-    "@spryker/data-transformer.object-map": ^0.1.0-next.0
-    "@spryker/data-transformer.pluck": ^0.1.0-next.0
-    "@spryker/datasource": ^0.1.0-next.1
-    "@spryker/datasource.http": ^0.1.0-next.1
-    "@spryker/datasource.inline": ^0.1.0-next.1
-    "@spryker/datasource.inline.table": ^0.1.0-next.0
-    "@spryker/date-picker": ^0.2.0-next.2
-    "@spryker/drawer": ^0.2.0-next.9
-    "@spryker/dropdown": ^0.2.0-next.1
-    "@spryker/form-item": ^0.2.0-next.6
-    "@spryker/grid": ^0.1.0-next.1
-    "@spryker/header": ^0.2.0-next.1
-    "@spryker/html-renderer": ^0.1.0-next.6
-    "@spryker/icon": ^0.2.0-next.8
-    "@spryker/input": ^0.2.0-next.6
-    "@spryker/input.password": ^0.1.0-next.2
-    "@spryker/interception": ^0.1.0-next.4
-    "@spryker/layout": ^0.2.0-next.2
-    "@spryker/locale": ^0.2.0-next.11
-    "@spryker/logo": ^0.2.0-next.3
-    "@spryker/modal": ^0.0.2-next.3
-    "@spryker/navigation": ^0.2.0-next.5
-    "@spryker/notification": ^0.2.3-next.1
-    "@spryker/pagination": ^0.2.0-next.3
-    "@spryker/persistence": ^0.1.0-next.2
-    "@spryker/popover": ^0.1.0-next.5
-    "@spryker/select": ^0.2.0-next.14
-    "@spryker/sidebar": ^0.2.0-next.4
-    "@spryker/styles": ^0.2.0-next.37
-    "@spryker/textarea": ^0.2.0-next.4
-    "@spryker/toggle": ^0.2.0-next.4
-    "@spryker/tree-select": ^0.1.1-next.0
-    "@spryker/unsaved-changes": ^0.1.0-next.3
-    "@spryker/unsaved-changes.guard.browser": ^0.1.0-next.2
-    "@spryker/unsaved-changes.guard.drawer": ^0.1.0-next.2
-    "@spryker/unsaved-changes.guard.navigation": ^0.1.0-next.1
-    "@spryker/unsaved-changes.monitor.form": ^0.1.3-next.0
-    "@spryker/user-menu": ^0.1.0-next.0
-    "@spryker/utils": ^0.2.0-next.17
-    "@spryker/utils.date.adapter.date-fns": ^0.1.0-next.0
-    "@spryker/web-components": ^0.2.1-next.8
-    classlist.js: ^1.1.20150312
-    css-vars-ponyfill: ^2.2.1
-    rxjs: ^6.5.4
-    url-search-params-polyfill: ^8.0.0
-  languageName: unknown
-  linkType: soft
+"yocto-queue@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "yocto-queue@npm:0.1.0"
+  checksum: 096c3b40beb2804659539be1605a35c58eb0c85285f94b77b3e924f42ee265c1a40bf9f4153770039517146b469a964d51742395f35ca8135fc9f7e4982b785d
+  languageName: node
+  linkType: hard
 
 "zero-crossings@npm:^1.0.0":
   version: 1.0.1
