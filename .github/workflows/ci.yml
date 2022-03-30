@@ -23,6 +23,8 @@ jobs:
             APPLICATION_ENV: devtest
             APPLICATION_STORE: DE
             PROJECT: suite
+            ACTIONS_RUNNER_DEBUG: true
+            ACTIONS_STEP_DEBUG: true
 
         services:
             redis:
@@ -127,8 +129,6 @@ jobs:
 
             - name: Frontend install-dependencies
               run: |
-                  vendor/bin/console frontend:project:install-dependencies
-                  vendor/bin/console frontend:yves:install-dependencies
                   vendor/bin/console frontend:mp:install-dependencies
 
             - name: Install NPM packages
