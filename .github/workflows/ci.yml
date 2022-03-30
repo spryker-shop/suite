@@ -127,9 +127,8 @@ jobs:
 
             - name: Frontend install-dependencies
               run: |
-                  vendor/bin/console frontend:project:install-dependencies
-                  vendor/bin/console frontend:yves:install-dependencies
                   vendor/bin/console frontend:mp:install-dependencies
+                  vendor/bin/console frontend:zed:install-dependencies
 
             - name: Install NPM packages
               run: |

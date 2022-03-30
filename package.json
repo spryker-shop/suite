@@ -38,7 +38,8 @@
         "mp:lint": "ng lint",
         "mp:clean": "run-s mp:clean:*",
         "mp:clean:dist": "rimraf public/MerchantPortal/assets/js",
-        "mp:update:paths": "node ./frontend/merchant-portal/update-config-paths"
+        "mp:update:paths": "node ./frontend/merchant-portal/update-config-paths",
+        "postinstall": "npm run mp:update:paths && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points --async"
     },
     "engines": {
         "node": ">=12.0.0"
