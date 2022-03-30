@@ -1,9 +1,5 @@
 <?xml version="1.0"?>
-<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          name="zed"
-          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
-          namespace="Orm\Zed\PriceProductSchedule\Persistence"
-          package="src.Orm.Zed.PriceProductSchedule.Persistence">
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\PriceProductSchedule\Persistence" package="src.Orm.Zed.PriceProductSchedule.Persistence">
 
     <table name="spy_price_product_schedule" phpName="SpyPriceProductSchedule">
         <column name="id_price_product_schedule" type="BIGINT" required="true" primaryKey="true" autoIncrement="true"/>
@@ -22,35 +18,27 @@
 
         <behavior name="timestampable"/>
 
-        <foreign-key name="spy_price_product_schedule-fk_product" foreignTable="spy_product" phpName="Product"
-                     refPhpName="PriceProductSchedule">
+        <foreign-key name="spy_price_product_schedule-fk_product" foreignTable="spy_product" phpName="Product" refPhpName="PriceProductSchedule">
             <reference local="fk_product" foreign="id_product"/>
         </foreign-key>
 
-        <foreign-key name="spy_price_product_schedule-fk_product_abstract" foreignTable="spy_product_abstract"
-                     phpName="ProductAbstract" refPhpName="PriceProductSchedule">
+        <foreign-key name="spy_price_product_schedule-fk_product_abstract" foreignTable="spy_product_abstract" phpName="ProductAbstract" refPhpName="PriceProductSchedule">
             <reference local="fk_product_abstract" foreign="id_product_abstract"/>
         </foreign-key>
 
-        <foreign-key name="spy_price_product_schedule-fk_currency" foreignTable="spy_currency" phpName="Currency"
-                     refPhpName="PriceProductSchedule">
+        <foreign-key name="spy_price_product_schedule-fk_currency" foreignTable="spy_currency" phpName="Currency" refPhpName="PriceProductSchedule">
             <reference local="fk_currency" foreign="id_currency"/>
         </foreign-key>
 
-        <foreign-key name="spy_price_product_schedule-fk_store" foreignTable="spy_store" phpName="Store"
-                     refPhpName="PriceProductSchedule">
+        <foreign-key name="spy_price_product_schedule-fk_store" foreignTable="spy_store" phpName="Store" refPhpName="PriceProductSchedule">
             <reference local="fk_store" foreign="id_store"/>
         </foreign-key>
 
-        <foreign-key name="spy_price_product_schedule-fk_price_type" foreignTable="spy_price_type" phpName="PriceType"
-                     refPhpName="PriceProductSchedule">
+        <foreign-key name="spy_price_product_schedule-fk_price_type" foreignTable="spy_price_type" phpName="PriceType" refPhpName="PriceProductSchedule">
             <reference local="fk_price_type" foreign="id_price_type"/>
         </foreign-key>
 
-        <foreign-key name="spy_price_product_schedule-fk_price_product_schedule_list"
-                     foreignTable="spy_price_product_schedule_list"
-                     phpName="PriceProductScheduleList"
-                     refPhpName="PriceProductSchedule">
+        <foreign-key name="spy_price_product_schedule-fk_price_product_schedule_list" foreignTable="spy_price_product_schedule_list" phpName="PriceProductScheduleList" refPhpName="PriceProductSchedule">
             <reference local="fk_price_product_schedule_list" foreign="id_price_product_schedule_list"/>
         </foreign-key>
 
@@ -77,16 +65,14 @@
     </table>
 
     <table name="spy_price_product_schedule_list">
-        <column name="id_price_product_schedule_list" type="BIGINT" required="true" primaryKey="true"
-                autoIncrement="true"/>
+        <column name="id_price_product_schedule_list" type="BIGINT" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" required="true" size="255" type="VARCHAR"/>
         <column name="is_active" type="BOOLEAN" required="false" defaultValue="false"/>
         <column name="fk_user" type="INTEGER"/>
 
         <behavior name="timestampable"/>
 
-        <foreign-key name="spy_price_product_schedule_list-fk_user" foreignTable="spy_user" phpName="User"
-                     refPhpName="PriceProductScheduleList">
+        <foreign-key name="spy_price_product_schedule_list-fk_user" foreignTable="spy_user" phpName="User" refPhpName="PriceProductScheduleList">
             <reference local="fk_user" foreign="id_user"/>
         </foreign-key>
 
