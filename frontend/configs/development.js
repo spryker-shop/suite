@@ -136,7 +136,10 @@ const getConfiguration = async appSettings => {
                                     ]
                                 }
                             }, {
-                                loader: 'sass-loader'
+                                loader: 'sass-loader',
+                                options: {
+                                    implementation: require('sass'),
+                                }
                             }, {
                                 loader: '@spryker/sass-resources-loader',
                                 options: {
