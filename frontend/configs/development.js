@@ -113,7 +113,9 @@ const getConfiguration = async appSettings => {
                             ],
                             plugins: [
                                 ...(!isES6Module ? ['@babel/plugin-transform-runtime'] : []),
-                                ['@babel/plugin-proposal-class-properties'],
+                                ['@babel/plugin-proposal-class-properties', {
+                                    loose: true,
+                                }],
                             ]
                         }
                     },
@@ -136,7 +138,10 @@ const getConfiguration = async appSettings => {
                                     ]
                                 }
                             }, {
-                                loader: 'sass-loader'
+                                loader: 'sass-loader',
+                                options: {
+                                    implementation: require('sass'),
+                                }
                             }, {
                                 loader: '@spryker/sass-resources-loader',
                                 options: {
