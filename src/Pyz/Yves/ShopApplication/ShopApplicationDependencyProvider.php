@@ -56,11 +56,13 @@ use SprykerShop\Yves\DiscountPromotionWidget\Plugin\ShopApplication\CartDiscount
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
 use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
 use SprykerShop\Yves\MerchantOpeningHoursWidget\Widget\MerchantOpeningHoursWidget;
+use SprykerShop\Yves\MerchantProductOfferWidget\Widget\MerchantProductOffersSelectWidget;
 use SprykerShop\Yves\MerchantProductOfferWidget\Widget\MerchantProductOfferWidget;
 use SprykerShop\Yves\MerchantProductWidget\Widget\MerchantProductWidget;
 use SprykerShop\Yves\MerchantSalesOrderWidget\Widget\MerchantOrderReferenceForItemsWidget;
 use SprykerShop\Yves\MerchantSalesReturnWidget\Plugin\MerchantSalesReturnCreateFormWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerShop\Yves\MerchantSalesReturnWidget\Widget\MerchantSalesReturnCreateFormWidget;
+use SprykerShop\Yves\MerchantSearchWidget\Widget\MerchantSearchWidget;
 use SprykerShop\Yves\MerchantSwitcherWidget\Widget\MerchantSwitcherSelectorFormWidget;
 use SprykerShop\Yves\MerchantWidget\Widget\ShoppingListMerchantWidget;
 use SprykerShop\Yves\MerchantWidget\Widget\SoldByMerchantWidget;
@@ -300,6 +302,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ShoppingListMerchantWidget::class,
             ShoppingListProductOfferWidget::class,
             ProductOfferShoppingListWidget::class,
+            MerchantProductOffersSelectWidget::class,
+            MerchantSearchWidget::class,
         ];
     }
 

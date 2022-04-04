@@ -41,6 +41,8 @@ use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryPublisher
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryTranslation\GlossaryWritePublisherPlugin as GlossaryTranslationWritePublisherPlugin;
 use Spryker\Zed\MerchantCategory\Communication\Plugin\Publisher\Category\CategoryWritePublisherPlugin;
 use Spryker\Zed\MerchantOpeningHoursStorage\Communication\Plugin\Publisher\MerchantOpeningHours\MerchantOpeningHoursWritePublisherPlugin;
+use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\Publisher\ProductOffer\ProductConcreteWritePublisherPlugin as ProductOfferProductConcreteWritePublisherPlugin;
+use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\Publisher\ProductOfferStore\ProductConcreteWritePublisherPlugin as ProductOfferStoreProductConcreteWritePublisherPlugin;
 use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Publisher\Merchant\MerchantProductOfferWritePublisherPlugin;
 use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Publisher\ProductConcreteProductOffer\MerchantProductConcreteProductOfferWritePublisherPlugin;
 use Spryker\Zed\MerchantProductOptionStorage\Communication\Plugin\Publisher\MerchantProductOption\MerchantProductOptionGroupWritePublisherPlugin;
@@ -134,6 +136,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductOfferStoragePlugins(),
             $this->getMerchantProductOfferStoragePlugins(),
             $this->getMerchantProductOfferStoragePlugins(),
+            $this->getMerchantProductOfferSearchPlugins(),
         );
     }
 
@@ -435,6 +438,17 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
         return [
             new MerchantProductConcreteProductOfferWritePublisherPlugin(),
             new MerchantProductOfferWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getMerchantProductOfferSearchPlugins(): array
+    {
+        return [
+            new ProductOfferProductConcreteWritePublisherPlugin(),
+            new ProductOfferStoreProductConcreteWritePublisherPlugin(),
         ];
     }
 }
