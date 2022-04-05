@@ -315,7 +315,8 @@ _VALIDATION_SCRIPT_PHP8: &VALIDATION_SCRIPT_PHP8
     - vendor/bin/phpstan analyze
 
     - vendor/bin/console dev:dependency:find
-    -
+    - vendor/bin/spryker-dev-console dev:deprecation-links:check
+
     - chmod +x tests/*.sh
     - tests/travis_check_touched_modules.sh
     - tests/travis_check_untracked.sh
