@@ -30,6 +30,8 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
     }
 
     /**
+     * @psalm-suppress TooManyTemplateParams
+     *
      * @return \Propel\Runtime\Collection\ObjectCollection<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
     public function queryAllStateMachineItems(): ObjectCollection

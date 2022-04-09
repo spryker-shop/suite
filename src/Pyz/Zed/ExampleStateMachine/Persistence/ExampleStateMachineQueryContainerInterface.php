@@ -20,6 +20,8 @@ interface ExampleStateMachineQueryContainerInterface
     public function queryStateMachineItemsByStateIds(array $stateIds = []): PyzExampleStateMachineItemQuery;
 
     /**
+     * @psalm-suppress TooManyTemplateParams
+     *
      * @return \Propel\Runtime\Collection\ObjectCollection<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
     public function queryAllStateMachineItems(): ObjectCollection;
