@@ -8,11 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\Writer;
 
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\CombinedProductPriceHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPriceBulkPdoMariaDbDataSetWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface;
-use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
-use Spryker\Zed\DataImport\DataImportConfig;
 
 class CombinedProductPriceBulkPdoMariaDbDataSetWriter extends ProductPriceBulkPdoMariaDbDataSetWriter
 {
@@ -27,19 +23,4 @@ class CombinedProductPriceBulkPdoMariaDbDataSetWriter extends ProductPriceBulkPd
     protected const COLUMN_STORE = CombinedProductPriceHydratorStep::COLUMN_STORE;
 
     protected const COLUMN_CURRENCY = CombinedProductPriceHydratorStep::COLUMN_CURRENCY;
-
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface $productPriceSql
-     * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
-     * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
-     * @param \Spryker\Zed\DataImport\DataImportConfig $dataImportConfig
-     */
-    public function __construct(
-        ProductPriceSqlInterface $productPriceSql,
-        PropelExecutorInterface $propelExecutor,
-        DataImportDataFormatterInterface $dataFormatter,
-        DataImportConfig $dataImportConfig
-    ) {
-        parent::__construct($productPriceSql, $propelExecutor, $dataFormatter, $dataImportConfig);
-    }
 }

@@ -80,6 +80,11 @@ use Spryker\Zed\MerchantOms\Communication\Console\TriggerEventFromCsvFileConsole
 use Spryker\Zed\MerchantOpeningHoursDataImport\MerchantOpeningHoursDataImportConfig;
 use Spryker\Zed\MerchantProductApprovalDataImport\MerchantProductApprovalDataImportConfig;
 use Spryker\Zed\MerchantProfileDataImport\MerchantProfileDataImportConfig;
+use Spryker\Zed\MessageBroker\Communication\Plugin\Console\MessageBrokerDebugConsole;
+use Spryker\Zed\MessageBroker\Communication\Plugin\Console\MessageBrokerWorkerConsole;
+use Spryker\Zed\MessageBrokerAws\Communication\Console\MessageBrokerAwsSnsTopicsCreatorConsole;
+use Spryker\Zed\MessageBrokerAws\Communication\Console\MessageBrokerAwsSqsQueuesCreatorConsole;
+use Spryker\Zed\MessageBrokerAws\Communication\Console\MessageBrokerSqsToSnsSubscriberConsole;
 use Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin;
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
 use Spryker\Zed\Oauth\Communication\Console\OauthTokenConsole;
@@ -415,6 +420,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new CustomerPasswordSetConsole(),
 
             new OrderInvoiceSendConsole(),
+
+            new MessageBrokerWorkerConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
@@ -473,6 +480,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new EventTriggerListenerConsole();
             $commands[] = new ComposerConstraintConsole();
             $commands[] = new CleanOutputConsole();
+            $commands[] = new MessageBrokerDebugConsole();
+            $commands[] = new MessageBrokerAwsSqsQueuesCreatorConsole();
+            $commands[] = new MessageBrokerAwsSnsTopicsCreatorConsole();
+            $commands[] = new MessageBrokerSqsToSnsSubscriberConsole();
 
             if (class_exists(SecurityCheckerCommand::class)) {
                 $commands[] = new SecurityCheckerCommand();

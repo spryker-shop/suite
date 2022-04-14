@@ -11,6 +11,9 @@ use Pyz\Zed\Oms\Business\Calculator\InitiationTimeoutCalculator;
 use Pyz\Zed\Oms\Business\Calculator\TimeoutProcessorTimeoutCalculatorInterface;
 use Spryker\Zed\Oms\Business\OmsBusinessFactory as SprykerOmsBusinessFactory;
 
+/**
+ * @method \Pyz\Zed\Oms\OmsConfig getConfig()
+ */
 class OmsBusinessFactory extends SprykerOmsBusinessFactory
 {
     /**

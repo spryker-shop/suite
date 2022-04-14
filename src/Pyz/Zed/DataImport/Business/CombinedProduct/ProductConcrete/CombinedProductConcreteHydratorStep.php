@@ -8,7 +8,6 @@
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductConcrete;
 
 use Pyz\Zed\DataImport\Business\Exception\InvalidDataException;
-use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -77,14 +76,6 @@ class CombinedProductConcreteHydratorStep extends ProductConcreteHydratorStep
         self::ASSIGNABLE_PRODUCT_TYPE_CONCRETE,
         self::ASSIGNABLE_PRODUCT_TYPE_BOTH,
     ];
-
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     */
-    public function __construct(ProductRepository $productRepository)
-    {
-        parent::__construct($productRepository);
-    }
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
