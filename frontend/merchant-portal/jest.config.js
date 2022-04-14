@@ -8,7 +8,7 @@ module.exports = {
             tsconfig: '<rootDir>/tsconfig.spec.json',
         },
     },
-    roots: ['<rootDir>/../../vendor/spryker/spryker/Bundles'],
+    roots: ["<rootDir>/../../vendor/spryker"],
     testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
     resolver: '@nrwl/jest/plugins/resolver',
     moduleFileExtensions: ['ts', 'js', 'html'],

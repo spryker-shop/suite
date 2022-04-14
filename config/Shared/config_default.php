@@ -92,7 +92,7 @@ use Symfony\Component\HttpFoundation\Cookie;
 $sprykerBackendHost = getenv('SPRYKER_BE_HOST') ?: 'not-configured-host';
 $sprykerFrontendHost = getenv('SPRYKER_FE_HOST') ?: 'not-configured-host';
 
-$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
+$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
 
 $config[KernelConstants::RESOLVABLE_CLASS_NAMES_CACHE_ENABLED] = true;
 $config[KernelConstants::RESOLVED_INSTANCE_CACHE_ENABLED] = true;

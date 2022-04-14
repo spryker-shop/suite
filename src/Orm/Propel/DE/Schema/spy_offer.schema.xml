@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\Offer\Persistence" package="src.Orm.Zed.Offer.Persistence">
+    <table name="spy_offer" phpName="SpyOffer">
+        <column name="id_offer" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_user" type="INTEGER" required="false"/>
+        <column name="contact_date" type="TIMESTAMP" required="false"/>
+        <column name="contact_person" type="VARCHAR" size="255" required="false"/>
+        <column name="customer_reference" type="VARCHAR" size="255" required="false"/>
+        <column name="note" type="LONGVARCHAR" required="false"/>
+        <column name="quote_data" type="LONGVARCHAR" required="true"/>
+        <column name="status" type="enum" valueSet="Pending, On overview, Sent to customer, Confirmed by customer, Close" defaultValue="Pending"/>
+        <foreign-key name="spy_offer-fk_user" foreignTable="spy_user" phpName="User">
+            <reference local="fk_user" foreign="id_user"/>
+        </foreign-key>
+        <index name="spy_offer-customer_reference">
+            <index-column name="customer_reference"/>
+        </index>
+        <index name="index-spy_offer-fk_user">
+            <index-column name="fk_user"/>
+        </index>
+        <id-method-parameter value="spy_offer_pk_seq"/>
+        <behavior name="timestampable"/>
+    </table>
+</database>

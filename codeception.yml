@@ -3,8 +3,6 @@ actor: Tester
 
 include:
     - tests/PyzTest/*/*
-    - vendor/spryker/spryker/Bundles/*/*
-    - vendor/spryker/spryker-shop/Bundles/*/*
 
 paths:
     tests: tests
@@ -22,7 +20,7 @@ settings:
 coverage:
     enabled: true
     remote: true
-    c3_url: 'http://backoffice.de.shop-suite.local'
+    c3_url: 'http://zed.de.suite.local'
     whitelist: { include: ['src/Pyz/*.php'] }
 
 extensions:

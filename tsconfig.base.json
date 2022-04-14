@@ -18,36 +18,28 @@
         "removeComments": true,
         "rootDir": ".",
         "paths": {
-            "@mp/dashboard-merchant-portal-gui": [
-                "vendor/spryker/spryker/Bundles/DashboardMerchantPortalGui/mp.public-api.ts"
-            ],
-            "@mp/dummy-merchant-portal-gui": ["vendor/spryker/spryker/Bundles/DummyMerchantPortalGui/mp.public-api.ts"],
+            "@mp/dashboard-merchant-portal-gui": ["vendor/spryker/dashboard-merchant-portal-gui/mp.public-api.ts"],
+            "@mp/dummy-merchant-portal-gui": ["vendor/spryker/dummy-merchant-portal-gui/mp.public-api.ts"],
             "@mp/merchant-profile-merchant-portal-gui": [
-                "vendor/spryker/spryker/Bundles/MerchantProfileMerchantPortalGui/mp.public-api.ts"
+                "vendor/spryker/merchant-profile-merchant-portal-gui/mp.public-api.ts"
             ],
-            "@mp/product-merchant-portal-gui": [
-                "vendor/spryker/spryker/Bundles/ProductMerchantPortalGui/mp.public-api.ts"
-            ],
+            "@mp/product-merchant-portal-gui": ["vendor/spryker/product-merchant-portal-gui/mp.public-api.ts"],
             "@mp/product-offer-merchant-portal-gui": [
-                "vendor/spryker/spryker/Bundles/ProductOfferMerchantPortalGui/mp.public-api.ts"
+                "vendor/spryker/product-offer-merchant-portal-gui/mp.public-api.ts"
             ],
-            "@mp/sales-merchant-portal-gui": ["vendor/spryker/spryker/Bundles/SalesMerchantPortalGui/mp.public-api.ts"],
-            "@mp/security-merchant-portal-gui": [
-                "vendor/spryker/spryker/Bundles/SecurityMerchantPortalGui/mp.public-api.ts"
-            ],
-            "@mp/user-merchant-portal-gui": ["vendor/spryker/spryker/Bundles/UserMerchantPortalGui/mp.public-api.ts"],
-            "@mp/zed-ui": ["vendor/spryker/spryker/Bundles/ZedUi/mp.public-api.ts"],
+            "@mp/sales-merchant-portal-gui": ["vendor/spryker/sales-merchant-portal-gui/mp.public-api.ts"],
+            "@mp/security-merchant-portal-gui": ["vendor/spryker/security-merchant-portal-gui/mp.public-api.ts"],
+            "@mp/user-merchant-portal-gui": ["vendor/spryker/user-merchant-portal-gui/mp.public-api.ts"],
+            "@mp/zed-ui": ["vendor/spryker/zed-ui/mp.public-api.ts"],
+            "@mp/*": ["vendor/spryker/*/mp.public-api.ts"],
+            "@mp/polyfills": ["./vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/mp.polyfills.ts"],
             "*": ["*"],
-            "@mp/gui-table": ["vendor/spryker/spryker/Bundles/GuiTable/mp.public-api.ts"],
-            "@mp/polyfills": [
-                "./vendor/spryker/spryker/Bundles/ZedUi/src/Spryker/Zed/ZedUi/Presentation/Components/mp.polyfills.ts"
-            ],
-            "ShopUi/*": ["./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/default/*"]
+            "ShopUi/*": ["./vendor/spryker-shop/shop-ui/src/SprykerShop/Yves/ShopUi/Theme/default/*"]
         }
     },
     "include": [
-        "./vendor/spryker/spryker/**/*",
-        "./vendor/spryker/spryker-shop/**/*",
+        "./vendor/spryker/**/*",
+        "./vendor/spryker-shop/**/*",
         "./vendor/spryker-eco/**/*",
         "./src/Pyz/Yves/**/*",
         "./src/Pyz/Zed/**/*"

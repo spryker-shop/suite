@@ -93,16 +93,16 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
      */
     protected function getTwigLoaderPlugins(): array
     {
-        $plugins = [
+        $twigLoaderPlugins = [
             new FilesystemTwigLoaderPlugin(),
             new FormFilesystemTwigLoaderPlugin(),
             new ShopApplicationFormTwigLoaderPlugin(),
         ];
 
         if (class_exists(WebProfilerTwigLoaderPlugin::class)) {
-            $plugins[] = new WebProfilerTwigLoaderPlugin();
+            $twigLoaderPlugins[] = new WebProfilerTwigLoaderPlugin();
         }
 
-        return $plugins;
+        return $twigLoaderPlugins;
     }
 }

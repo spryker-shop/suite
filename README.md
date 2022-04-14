@@ -2,21 +2,10 @@
 [![Build Status](https://github.com/spryker-shop/suite/workflows/CI/badge.svg)](https://github.com/spryker-shop/suite/actions?query=workflow%3ACI)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
 
-Suite (internal)
-[![Build Status](https://app.travis-ci.com/spryker/suite-nonsplit.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/github/spryker/suite-nonsplit)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker/suite-nonsplit/badges/quality-score.png?b=master&s=bd1f64c27e30a53590063d808335d7957af612d0)](https://scrutinizer-ci.com/g/spryker/suite-nonsplit/?branch=master)
-
-Core (internal)
-[![Build Status](https://app.travis-ci.com/spryker/spryker.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/github/spryker/spryker)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker/spryker/badges/quality-score.png?b=master&s=25d80f2c1a93b3ae4d907ea8e75800a87469f088)](https://scrutinizer-ci.com/g/spryker/spryker/?branch=master)
-
-Shop (internal)
-[![Build Status](https://app.travis-ci.com/spryker/spryker-shop.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/github/spryker/spryker-shop)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker/spryker-shop/badges/quality-score.png?b=master&s=714e779da63d6a6fc0c8844cbfb252c66e286b96)](https://scrutinizer-ci.com/g/spryker/spryker-shop/?branch=master)
-
 License: [MIT](LICENSE)
 
-## Installation
+## Vagrant Installation
+In order to install the Shop Suite on your machine, you can follow the instructions described in the link below:
 
 For DevVM based installation instructions, see [About the Installation Guides](https://documentation.spryker.com/docs/about-installation).
 
@@ -41,17 +30,66 @@ Recommended system requirements for MacOS:
 
 ### Installation
 
-Run the command:
+Run the commands:
 ```bash
-git submodule update --init --force docker
+mkdir suite && cd suite
+git clone https://github.com/spryker-shop/suite.git ./
+git clone git@github.com:spryker/docker-sdk.git docker
+```
+
+### Production-like environment
+
+1. Run the following commands right after cloning the repository:
+
+```bash
+docker/sdk boot -s
+```
+
+> Please, follow the recommendations in output in order to prepare the environment.
+
+```bash
+docker/sdk up
+```
+
+2. Git checkout with assets and importing data:
+
+```bash
+git checkout your_branch
+docker/sdk boot -s
+docker/sdk up --assets --data
+```
+
+> Optional `up` command arguments:
+>
+> - `--assets` - build assets
+> - `--data` - get new demo data
+
+3. Light git checkout:
+
+```bash
+git checkout your_branch
+docker/sdk boot -s
+
+docker/sdk up
+```
+
+4. Reload all the data:
+
+```bash
+docker/sdk clean-data && docker/sdk up && docker/sdk console q:w:s -v -s
 ```
 
 ### Developer environment
 
-1. Run the command right after cloning the repository:
+1. Run the commands right after cloning the repository:
 
 ```bash
 docker/sdk boot deploy.dev.yml
+```
+
+> Please, follow the recommendations in output in order to prepare the environment.
+
+```bash
 docker/sdk up
 ```
 
@@ -59,10 +97,10 @@ docker/sdk up
 
 ```bash
 git checkout your_branch
-git submodule update --init --force docker && docker/sdk boot -s deploy.dev.yml
-
+docker/sdk boot -s deploy.dev.yml
 docker/sdk up --build --assets --data
 ```
+
 > Optional `up` command arguments:
 >
 > - `--build` - update composer, generate transfer objects, etc.
@@ -81,8 +119,7 @@ docker/sdk up --build --assets --data
     3. Restrart file sync and re-build the codebase:
     ```bash
     docker/sdk trouble
-    rm -rf ./docker && git submodule update --init --force docker && docker/sdk boot -s deploy.dev.yml
-
+    docker/sdk boot -s deploy.dev.yml
     docker/sdk up --build --assets
     ```
 
@@ -93,48 +130,9 @@ docker/sdk up --build --assets --data
     2. If the queue is empty but the issue persists, reload the demo data:
     ```bash
     docker/sdk trouble
-    rm -rf ./docker && git submodule update --init --force docker && docker/sdk boot -s deploy.dev.yml
-
+    docker/sdk boot -s deploy.dev.yml
     docker/sdk up --build --assets --data
     ```
-
-### Production-like environment
-
-1. Run the following command right after cloning the repository:
-
-```bash
-docker/sdk boot -s
-docker/sdk up
-```
-
-2. Git checkout with assets and importing data:
-
-```bash
-git checkout your_branch
-git submodule update --init --force docker && docker/sdk boot -s
-
-docker/sdk up --assets --data
-```
-
-> Optional `up` command arguments:
->
-> - `--assets` - build assets
-> - `--data` - get new demo data
-
-3. Light git checkout:
-
-```bash
-git checkout your_branch
-git submodule update --init --force docker && docker/sdk boot -s
-
-docker/sdk up
-```
-
-4. Reload all the data:
-
-```bash
-docker/sdk clean-data && docker/sdk up && docker/sdk console q:w:s -v -s
-```
 
 ### Troubleshooting
 

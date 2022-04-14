@@ -110,7 +110,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
      */
     protected function getTwigLoaderPlugins(): array
     {
-        $plugins = [
+        $twigLoaderPlugins = [
             new FilesystemTwigLoaderPlugin(),
             new FormFilesystemTwigLoaderPlugin(),
             new GuiTwigLoaderPlugin(),
@@ -118,9 +118,9 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
         ];
 
         if (class_exists(WebProfilerTwigLoaderPlugin::class)) {
-            $plugins[] = new WebProfilerTwigLoaderPlugin();
+            $twigLoaderPlugins[] = new WebProfilerTwigLoaderPlugin();
         }
 
-        return $plugins;
+        return $twigLoaderPlugins;
     }
 }

@@ -22,6 +22,8 @@ use PyzTest\Yves\Checkout\CheckoutControllerTester;
 class CheckoutCest
 {
     /**
+     * @skip Issue with session need to be fixed.
+     *
      * @param \PyzTest\Yves\Checkout\CheckoutControllerTester $i
      *
      * @return void

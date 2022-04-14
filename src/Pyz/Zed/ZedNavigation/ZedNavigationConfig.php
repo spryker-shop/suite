@@ -12,33 +12,6 @@ use Spryker\Zed\ZedNavigation\ZedNavigationConfig as SprykerZedNavigationConfig;
 class ZedNavigationConfig extends SprykerZedNavigationConfig
 {
     /**
-     * @project Only needed in Project, not in demoshop
-     *
-     * @return array<string>
-     */
-    public function getNavigationSchemaPathPattern(): array
-    {
-        $paths = parent::getNavigationSchemaPathPattern();
-        $paths = $this->addSprykerFilePath($paths);
-
-        return $paths;
-    }
-
-    /**
-     * @project Only needed in Project, not in demoshop
-     *
-     * @param array<string> $paths
-     *
-     * @return array<string>
-     */
-    private function addSprykerFilePath($paths): array
-    {
-        $paths[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/*/Zed/*/Communication';
-
-        return $paths;
-    }
-
-    /**
      * @api
      *
      * @return string

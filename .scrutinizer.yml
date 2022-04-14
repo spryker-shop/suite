@@ -2,13 +2,13 @@ build:
     environment:
         php: '7.4.15'
 
+    dependencies:
+        override:
+            - composer install --ignore-platform-reqs --no-interaction --no-scripts
+
     tests:
         override:
             - true # disable test execution on scrutinizer
-
-    dependencies:
-        override:
-            - true
 
     nodes:
         analysis:

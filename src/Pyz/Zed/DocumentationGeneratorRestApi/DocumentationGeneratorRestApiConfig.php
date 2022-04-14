@@ -12,18 +12,6 @@ use Spryker\Zed\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConfi
 class DocumentationGeneratorRestApiConfig extends SprykerDocumentationGeneratorRestApiConfig
 {
     /**
-     * @project Only needed internal non-split project, not in public split project.
-     *
-     * @return array<string>
-     */
-    protected function getCoreAnnotationSourceDirectoryPatterns(): array
-    {
-        return [
-            APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/%1$s/src/Spryker/Glue/%1$s/Controller/',
-        ];
-    }
-
-    /**
      * @return string
      */
     public function getPathVersionPrefix(): string
