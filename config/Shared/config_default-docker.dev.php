@@ -167,5 +167,4 @@ require 'common/config_oms-development.php';
 // ----------------------------------------------------------------------------
 
 // >>> PAYONE
-
 require 'common/config_payone-development.php';

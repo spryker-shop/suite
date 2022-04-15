@@ -8,11 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductImage\Writer;
 
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductImage\CombinedProductImageHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageBulkPdoMariaDbDataSetWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface;
-use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
-use Spryker\Zed\DataImport\DataImportConfig;
 
 class CombinedProductImageBulkPdoMariaDbDataSetWriter extends ProductImageBulkPdoMariaDbDataSetWriter
 {
@@ -23,19 +19,4 @@ class CombinedProductImageBulkPdoMariaDbDataSetWriter extends ProductImageBulkPd
     protected const COLUMN_PRODUCT_IMAGE_KEY = CombinedProductImageHydratorStep::COLUMN_PRODUCT_IMAGE_KEY;
 
     protected const COLUMN_SORT_ORDER = CombinedProductImageHydratorStep::COLUMN_SORT_ORDER;
-
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface $productImageSql
-     * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
-     * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
-     * @param \Spryker\Zed\DataImport\DataImportConfig $dataImportConfig
-     */
-    public function __construct(
-        ProductImageSqlInterface $productImageSql,
-        PropelExecutorInterface $propelExecutor,
-        DataImportDataFormatterInterface $dataFormatter,
-        DataImportConfig $dataImportConfig
-    ) {
-        parent::__construct($productImageSql, $propelExecutor, $dataFormatter, $dataImportConfig);
-    }
 }

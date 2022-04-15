@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductGroup;
 
-use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductGroup\ProductGroupWriter;
 
 class CombinedProductGroupWriter extends ProductGroupWriter
@@ -26,12 +25,4 @@ class CombinedProductGroupWriter extends ProductGroupWriter
      * @var string
      */
     public const COLUMN_POSITION = 'product_group.position';
-
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     */
-    public function __construct(ProductRepository $productRepository)
-    {
-        parent::__construct($productRepository);
-    }
 }

@@ -8,10 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\Writer;
 
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\CombinedProductPriceHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPricePropelDataSetWriter;
-use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
-use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class CombinedProductPricePropelDataSetWriter extends ProductPricePropelDataSetWriter
 {
@@ -30,17 +27,4 @@ class CombinedProductPricePropelDataSetWriter extends ProductPricePropelDataSetW
     protected const COLUMN_PRICE_DATA = CombinedProductPriceHydratorStep::COLUMN_PRICE_DATA;
 
     protected const COLUMN_PRICE_DATA_CHECKSUM = CombinedProductPriceHydratorStep::COLUMN_PRICE_DATA_CHECKSUM;
-
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\Currency\Business\CurrencyFacadeInterface $currencyFacade
-     */
-    public function __construct(
-        ProductRepository $productRepository,
-        StoreFacadeInterface $storeFacade,
-        CurrencyFacadeInterface $currencyFacade
-    ) {
-        parent::__construct($productRepository, $storeFacade, $currencyFacade);
-    }
 }

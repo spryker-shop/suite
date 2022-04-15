@@ -13,6 +13,7 @@ use Spryker\Zed\Translator\Business\TranslatorFacadeInterface;
 
 /**
  * @method \Pyz\Zed\Oms\Business\OmsFacadeInterface getFacade()
+ * @method \Pyz\Zed\Oms\OmsConfig getConfig()
  */
 class OmsCommunicationFactory extends SprykerOmsCommunicationFactory
 {

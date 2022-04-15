@@ -7,6 +7,10 @@
 
 namespace Pyz\Zed\MerchantOms\Communication\Plugin\Oms;
 
+/**
+ * @method \Pyz\Zed\MerchantOms\MerchantOmsConfig getConfig()
+ * @method \Pyz\Zed\MerchantOms\Communication\MerchantOmsCommunicationFactory getFactory()
+ */
 class DeliverReturnMarketplaceOrderItemCommandPlugin extends AbstractTriggerOmsEventCommandPlugin
 {
     /**

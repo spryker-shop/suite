@@ -11,8 +11,6 @@ use Pyz\Zed\DataImport\Business\Exception\InvalidDataException;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface;
-use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 
 class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
 {
@@ -93,17 +91,6 @@ class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
         self::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT,
         self::ASSIGNABLE_PRODUCT_TYPE_CONCRETE,
     ];
-
-    /**
-     * @param \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface $priceProductFacade
-     * @param \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface $utilEncodingService
-     */
-    public function __construct(
-        PriceProductFacadeInterface $priceProductFacade,
-        DataImportToUtilEncodingServiceInterface $utilEncodingService
-    ) {
-        parent::__construct($priceProductFacade, $utilEncodingService);
-    }
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet

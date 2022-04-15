@@ -10,6 +10,7 @@ use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Agent\AgentConstants;
+use Spryker\Shared\AppCatalogGui\AppCatalogGuiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\CartsRestApi\CartsRestApiConstants;
@@ -63,6 +64,7 @@ use Spryker\Shared\SessionRedis\SessionRedisConfig;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
+use Spryker\Shared\StoreReference\StoreReferenceConstants;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
@@ -71,6 +73,7 @@ use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
+use Spryker\Zed\Payment\PaymentConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Payone\PayoneConstants;
 use SprykerEco\Zed\Payone\PayoneConfig;
@@ -588,6 +591,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('
 $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,
     APPLICATION_ROOT_DIR . '/vendor/spryker-eco/payone/config/Zed/Oms',
+    APPLICATION_ROOT_DIR . '/vendor/spryker/payment/config/Zed/Oms',
 ];
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'PayoneCreditCardPartialOperations',
@@ -596,6 +600,7 @@ $config[OmsConstants::ACTIVE_PROCESSES] = [
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     PayoneConfig::PAYMENT_METHOD_CREDIT_CARD => 'PayoneCreditCardPartialOperations',
     PayoneConfig::PAYMENT_METHOD_INSTANT_ONLINE_TRANSFER => 'PayoneOnlineTransferPartialOperations',
+    PaymentConfig::PAYMENT_FOREIGN_PROVIDER => 'B2CStateMachine01',
 ];
 
 // ----------------------------------------------------------------------------
@@ -691,8 +696,17 @@ $config[GlueBackendApiApplicationConstants::PROJECT_NAMESPACES] = [
 $sprykerGlueStorefrontHost = getenv('SPRYKER_GLUE_STOREFRONT_HOST');
 $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $sprykerGlueStorefrontHost;
 
-$config[GlueJsonApiConventionConstants::GLUE_DOMAIN]
-    = sprintf(
-        'https://%s',
-        $sprykerGlueStorefrontHost ?: $sprykerGlueBackendHost ?: 'localhost',
-    );
+$config[GlueJsonApiConventionConstants::GLUE_DOMAIN] = sprintf(
+    'https://%s',
+    $sprykerGlueStorefrontHost ?: $sprykerGlueBackendHost ?: 'localhost',
+);
+
+// ----------------------------------------------------------------------------
+// ------------------------------ AOP -----------------------------------------
+// ----------------------------------------------------------------------------
+
+$config[StoreReferenceConstants::STORE_NAME_REFERENCE_MAP] = json_decode(
+    html_entity_decode(getenv('STORE_NAME_REFERENCE_MAP') ?: ''),
+    true,
+);
+$config[AppCatalogGuiConstants::APP_CATALOG_SCRIPT_URL] = (string)getenv('APP_CATALOG_SCRIPT_URL');
