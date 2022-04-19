@@ -125,6 +125,9 @@ jobs:
             - name: Generate rest API dcoumentation
               run: vendor/bin/console rest-api:generate:documentation
 
+            - name: Run PHPStan
+              run: vendor/bin/phpstan analyze
+
             - name: Frontend install-dependencies
               run: |
                   vendor/bin/console frontend:mp:install-dependencies
@@ -165,9 +168,6 @@ jobs:
 
             - name: Validate transfer files
               run: vendor/bin/console transfer:validate
-
-            - name: Run PHPStan
-              run: vendor/bin/phpstan analyze -v
 
             - name: Run Architecture rules
               run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
