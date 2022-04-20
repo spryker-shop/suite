@@ -17,8 +17,8 @@ use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByItemInterface;
 
 /**
  * @method \Spryker\Zed\MerchantOms\Business\MerchantOmsFacadeInterface getFacade()
- * @method \Spryker\Zed\MerchantOms\Communication\MerchantOmsCommunicationFactory getFactory()
- * @method \Spryker\Zed\MerchantOms\MerchantOmsConfig getConfig()
+ * @method \Pyz\Zed\MerchantOms\Communication\MerchantOmsCommunicationFactory getFactory()
+ * @method \Pyz\Zed\MerchantOms\MerchantOmsConfig getConfig()
  */
 class CloseMerchantOrderItemCommandPlugin extends AbstractPlugin implements CommandByItemInterface
 {
