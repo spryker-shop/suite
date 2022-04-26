@@ -13,7 +13,7 @@ use Spryker\Zed\MerchantOms\Communication\MerchantOmsCommunicationFactory as Spr
 use Spryker\Zed\SalesReturn\Business\SalesReturnFacadeInterface;
 
 /**
- * @method \Spryker\Zed\MerchantOms\MerchantOmsConfig getConfig()
+ * @method \Pyz\Zed\MerchantOms\MerchantOmsConfig getConfig()
  * @method \Spryker\Zed\MerchantOms\Business\MerchantOmsFacadeInterface getFacade()
  * @method \Spryker\Zed\MerchantOms\Persistence\MerchantOmsRepositoryInterface getRepository()
  */
