@@ -13,6 +13,9 @@ use Spryker\Zed\Oms\Business\OmsBusinessFactory as SprykerOmsBusinessFactory;
 
 /**
  * @method \Pyz\Zed\Oms\OmsConfig getConfig()
+ * @method \Spryker\Zed\Oms\Persistence\OmsQueryContainerInterface getQueryContainer()
+ * @method \Spryker\Zed\Oms\Persistence\OmsRepositoryInterface getRepository()
+ * @method \Spryker\Zed\Oms\Persistence\OmsEntityManagerInterface getEntityManager()
  */
 class OmsBusinessFactory extends SprykerOmsBusinessFactory
 {

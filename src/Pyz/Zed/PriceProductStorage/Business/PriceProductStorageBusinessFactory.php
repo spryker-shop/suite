@@ -26,6 +26,7 @@ use Spryker\Zed\PriceProductStorage\Business\Storage\PriceProductConcreteStorage
 
 /**
  * @method \Pyz\Zed\PriceProductStorage\PriceProductStorageConfig getConfig()
+ * @method \Spryker\Zed\PriceProductStorage\Persistence\PriceProductStorageQueryContainerInterface getQueryContainer()
  */
 class PriceProductStorageBusinessFactory extends SprykerPriceProductStorageBusinessFactory
 {
