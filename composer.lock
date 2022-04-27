@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af266291c02877460c86ac5f2bf537a4",
+    "content-hash": "a25cb25f7b2145e9bba16c182e2951c0",
     "packages": [
         {
             "name": "async-aws/core",
@@ -14698,6 +14698,55 @@
             "time": "2019-04-23T09:58:16+00:00"
         },
         {
+            "name": "spryker/barcode-laminas",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/barcode-laminas.git",
+                "reference": "a639b465681d9a2baba85314c801b92f79787a3e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/barcode-laminas/zipball/a639b465681d9a2baba85314c801b92f79787a3e",
+                "reference": "a639b465681d9a2baba85314c801b92f79787a3e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "spryker/barcode-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/kernel": "*",
+                "spryker/laminas": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/kernel": "If you want to use Code128BarcodeGeneratorPlugin.",
+                "spryker/laminas": "If you want to use Code128BarcodeGeneratorPlugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "BarcodeLaminas module",
+            "support": {
+                "source": "https://github.com/spryker/barcode-laminas/tree/1.0.0"
+            },
+            "time": "2022-04-27T12:01:16+00:00"
+        },
+        {
             "name": "spryker/business-on-behalf",
             "version": "1.1.2",
             "source": {
@@ -19759,16 +19808,16 @@
         },
         {
             "name": "spryker/code-it-now",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-it-now.git",
-                "reference": "5b640c417967df863f1537c1336e19d50c0df3c9"
+                "reference": "5843d8bb4c12fb8ea3e40c68ee876eef7ac2bb77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-it-now/zipball/5b640c417967df863f1537c1336e19d50c0df3c9",
-                "reference": "5b640c417967df863f1537c1336e19d50c0df3c9",
+                "url": "https://api.github.com/repos/spryker/code-it-now/zipball/5843d8bb4c12fb8ea3e40c68ee876eef7ac2bb77",
+                "reference": "5843d8bb4c12fb8ea3e40c68ee876eef7ac2bb77",
                 "shasum": ""
             },
             "require": {
@@ -19778,10 +19827,12 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/kernel": "^3.1.0",
+                "spryker/laminas": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
-                "spryker/kernel": "for testing"
+                "spryker/kernel": "for testing",
+                "spryker/laminas": "If you want to use Code128BarcodeGeneratorPlugin."
             },
             "type": "library",
             "extra": {
@@ -19800,9 +19851,10 @@
             ],
             "description": "CodeItNow module",
             "support": {
-                "source": "https://github.com/spryker/code-it-now/tree/1.0.1"
+                "source": "https://github.com/spryker/code-it-now/tree/1.1.0"
             },
-            "time": "2022-04-21T13:32:43+00:00"
+            "abandoned": "spryker/barcode-laminas",
+            "time": "2022-04-27T12:01:16+00:00"
         },
         {
             "name": "spryker/collector",
@@ -67225,12 +67277,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "f2b1bd07717e4740b464e1df57933c7954163fb5"
+                "reference": "9d9d3f62dcc75a27ec4149bd600739bbd33a32db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/f2b1bd07717e4740b464e1df57933c7954163fb5",
-                "reference": "f2b1bd07717e4740b464e1df57933c7954163fb5",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/9d9d3f62dcc75a27ec4149bd600739bbd33a32db",
+                "reference": "9d9d3f62dcc75a27ec4149bd600739bbd33a32db",
                 "shasum": ""
             },
             "require": {
@@ -67275,7 +67327,7 @@
                 "issues": "https://github.com/spryker/code-sniffer/issues",
                 "source": "https://github.com/spryker/code-sniffer"
             },
-            "time": "2022-04-26T11:06:45+00:00"
+            "time": "2022-04-27T10:00:44+00:00"
         },
         {
             "name": "spryker/development",
