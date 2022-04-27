@@ -22,6 +22,9 @@ use Spryker\Zed\UrlStorage\Business\UrlStorageBusinessFactory as SprykerUrlStora
 
 /**
  * @method \Pyz\Zed\UrlStorage\UrlStorageConfig getConfig()
+ * @method \Spryker\Zed\UrlStorage\Persistence\UrlStorageQueryContainerInterface getQueryContainer()
+ * @method \Spryker\Zed\UrlStorage\Persistence\UrlStorageRepositoryInterface getRepository()
+ * @method \Spryker\Zed\UrlStorage\Persistence\UrlStorageEntityManagerInterface getEntityManager()
  */
 class UrlStorageBusinessFactory extends SprykerUrlStorageBusinessFactory
 {

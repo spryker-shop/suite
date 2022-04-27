@@ -19,7 +19,7 @@ use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByItemInterface;
 /**
  * @method \Pyz\Zed\MerchantOms\Communication\MerchantOmsCommunicationFactory getFactory()
  * @method \Pyz\Zed\MerchantOms\MerchantOmsConfig getConfig()
- * @method \Spryker\Zed\MerchantOms\Business\MerchantOmsFacade getFacade()()
+ * @method \Spryker\Zed\MerchantOms\Business\MerchantOmsFacadeInterface getFacade()
  */
 class ReturnMerchantOrderItemCommandPlugin extends AbstractPlugin implements CommandByItemInterface
 {

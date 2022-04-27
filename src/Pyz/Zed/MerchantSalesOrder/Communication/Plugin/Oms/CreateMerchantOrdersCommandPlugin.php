@@ -15,7 +15,8 @@ use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
 
 /**
  * @method \Pyz\Zed\MerchantSalesOrder\Communication\MerchantSalesOrderCommunicationFactory getFactory()
- * @method \Spryker\Zed\MerchantSalesOrder\Business\MerchantSalesOrderFacade getFacade()
+ * @method \Spryker\Zed\MerchantSalesOrder\Business\MerchantSalesOrderFacadeInterface getFacade()
+ * @method \Spryker\Zed\MerchantSalesOrder\MerchantSalesOrderConfig getConfig()
  */
 class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements CommandByOrderInterface
 {
