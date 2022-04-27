@@ -26,6 +26,7 @@ use Spryker\Zed\ProductStorage\Business\Storage\ProductConcreteStorageWriterInte
 
 /**
  * @method \Pyz\Zed\ProductStorage\ProductStorageConfig getConfig()
+ * @method \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface getQueryContainer()
  */
 class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
 {
