@@ -51796,23 +51796,26 @@
         },
         {
             "name": "spryker/session-file",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/session-file.git",
-                "reference": "0a889976f8ac8cf4aa288fa7501984c1281368d5"
+                "reference": "38b65c6160ef3cbd1e8dd8ab144240d515b474a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/session-file/zipball/0a889976f8ac8cf4aa288fa7501984c1281368d5",
-                "reference": "0a889976f8ac8cf4aa288fa7501984c1281368d5",
+                "url": "https://api.github.com/repos/spryker/session-file/zipball/38b65c6160ef3cbd1e8dd8ab144240d515b474a1",
+                "reference": "38b65c6160ef3cbd1e8dd8ab144240d515b474a1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4",
                 "spryker/kernel": "^3.33.0",
                 "spryker/monitoring": "^1.0.0 || ^2.0.0",
-                "spryker/session-extension": "^1.0.0"
+                "spryker/session-customer-validation-extension": "^1.0.0",
+                "spryker/session-extension": "^1.0.0",
+                "spryker/session-user-validation-extension": "^1.0.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -51836,9 +51839,9 @@
             ],
             "description": "SessionFile module",
             "support": {
-                "source": "https://github.com/spryker/session-file/tree/1.1.0"
+                "source": "https://github.com/spryker/session-file/tree/1.2.0"
             },
-            "time": "2021-10-26T15:19:01+00:00"
+            "time": "2022-04-27T13:43:50+00:00"
         },
         {
             "name": "spryker/session-redis",
