@@ -17,7 +17,7 @@ use Spryker\Client\Store\StoreClientInterface;
 class ExampleProductSalePageFactory extends AbstractFactory
 {
     /**
-     * @param array $requestParameters
+     * @param array<string, mixed> $requestParameters
      *
      * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
      */

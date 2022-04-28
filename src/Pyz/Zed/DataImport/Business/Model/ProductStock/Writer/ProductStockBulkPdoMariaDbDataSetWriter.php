@@ -99,9 +99,9 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
     }
 
     /**
-     * @param array $skus
+     * @param array<string> $skus
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param array $concreteSkusToAbstractMap
+     * @param array<string, string> $concreteSkusToAbstractMap
      * @param array<\Spryker\DecimalObject\Decimal> $reservations
      *
      * @return void

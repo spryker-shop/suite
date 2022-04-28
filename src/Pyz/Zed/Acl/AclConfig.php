@@ -32,7 +32,7 @@ class AclConfig extends SprykerAclConfig
     }
 
     /**
-     * @return array<string, array>
+     * @return array<string, array<string, mixed>>
      */
     public function getInstallerUsers(): array
     {

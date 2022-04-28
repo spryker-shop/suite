@@ -50,12 +50,12 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     protected $productAbstractPagePublisherCte;
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected $synchronizedDataCollection = [];
 
     /**
-     * @var array
+     * @var array<\Generated\Shared\Transfer\QueueSendMessageTransfer>
      */
     protected $synchronizedMessageCollection = [];
 
@@ -105,7 +105,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     }
 
     /**
-     * @param array $productAbstractLocalizedEntities
+     * @param array<array<string, mixed>> $productAbstractLocalizedEntities
      * @param array<\Orm\Zed\ProductPageSearch\Persistence\SpyProductAbstractPageSearch> $productAbstractPageSearchEntities
      * @param array<\Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface> $pageDataExpanderPlugins
      * @param \Generated\Shared\Transfer\ProductPageLoadTransfer $productPageLoadTransfer
@@ -171,7 +171,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     }
 
     /**
-     * @param array $productAbstractLocalizedEntity
+     * @param array<string, mixed> $productAbstractLocalizedEntity
      * @param \Orm\Zed\ProductPageSearch\Persistence\SpyProductAbstractPageSearch $productAbstractPageSearchEntity
      * @param \Generated\Shared\Transfer\ProductPageSearchTransfer $productPageSearchTransfer
      * @param string $storeName
@@ -200,7 +200,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
 
     /**
      * @param \Generated\Shared\Transfer\ProductPageSearchTransfer $productPageSearchTransfer
-     * @param array $searchDocument
+     * @param array<string, mixed> $searchDocument
      *
      * @return void
      */
@@ -214,10 +214,10 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
 
     /**
      * @param \Generated\Shared\Transfer\ProductPageSearchTransfer $productPageSearchTransfer
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $resourceName
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function buildSynchronizedData(
         ProductPageSearchTransfer $productPageSearchTransfer,
@@ -235,7 +235,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $keySuffix
      * @param string $resourceName
      *
@@ -259,9 +259,9 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $resourceName
-     * @param array $params
+     * @param array<string, mixed> $params
      *
      * @return \Generated\Shared\Transfer\QueueSendMessageTransfer
      */

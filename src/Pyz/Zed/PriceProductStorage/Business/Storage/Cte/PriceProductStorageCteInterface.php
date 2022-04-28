@@ -10,9 +10,9 @@ namespace Pyz\Zed\PriceProductStorage\Business\Storage\Cte;
 interface PriceProductStorageCteInterface
 {
     /**
-     * @param array $data
+     * @param array<mixed> $data
      *
-     * @return array
+     * @return array<string>
      */
     public function buildParams(array $data): array;
 

@@ -37,7 +37,7 @@ class ReturnMerchantOrderItemCommandPlugin extends AbstractPlugin implements Com
      *
      * @throws \LogicException
      *
-     * @return array
+     * @return array<mixed>
      */
     public function run(SpySalesOrderItem $orderItem, ReadOnlyArrayObject $data): array
     {

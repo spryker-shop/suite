@@ -80,9 +80,9 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @phpstan-return array<int, class-string<\Symfony\Component\Form\FormTypeInterface>|\Symfony\Component\Form\FormInterface>
+     * @phpstan-return array<class-string<\Symfony\Component\Form\FormTypeInterface>|\Symfony\Component\Form\FormInterface>
      *
-     * @return array<\Symfony\Component\Form\FormTypeInterface>|array<string>
+     * @return array<\Symfony\Component\Form\FormTypeInterface|string>
      */
     protected function getCustomerStepSubForms(): array
     {

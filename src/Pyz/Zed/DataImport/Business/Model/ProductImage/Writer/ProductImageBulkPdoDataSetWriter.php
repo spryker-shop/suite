@@ -53,7 +53,7 @@ class ProductImageBulkPdoDataSetWriter extends AbstractProductImageBulkDataSetWr
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     protected function persistProductImages(): array
     {

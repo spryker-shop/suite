@@ -23,7 +23,7 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      *
      * @return void
      */
@@ -46,7 +46,7 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     }
 
     /**
-     * @param array $priceProductConcreteCollection
+     * @param array<mixed> $priceProductConcreteCollection
      *
      * @return void
      */
@@ -71,7 +71,7 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      *
      * @return void
      */
@@ -97,7 +97,7 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      *
      * @return void
      */
@@ -123,7 +123,7 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      * @param string $tableName
      * @param string $productKey
      *
@@ -192,7 +192,7 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
      * @param string $productIdKey
      * @param string $productFkKey
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function addPriceProductEvents(string $productIdKey, string $productFkKey): array
     {
@@ -220,7 +220,7 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      * @param string $productTableName
      * @param string $productIdKey
      * @param string $productFkKey

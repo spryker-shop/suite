@@ -35,12 +35,12 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     protected const COLUMN_CURRENCY = ProductPriceHydratorStep::COLUMN_CURRENCY;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected static $priceProductAbstractCollection = [];
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected static $priceProductConcreteCollection = [];
 
@@ -172,7 +172,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      *
      * @return void
      */
@@ -195,7 +195,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $priceProductConcreteCollection
+     * @param array<mixed> $priceProductConcreteCollection
      *
      * @return void
      */
@@ -218,7 +218,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      *
      * @return void
      */
@@ -241,7 +241,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      *
      * @return void
      */
@@ -272,7 +272,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      * @param string $tableName
      * @param string $productKey
      *
@@ -358,7 +358,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
      * @param string $productIdKey
      * @param string $productFkKey
      *
-     * @return array
+     * @return array<mixed>
      */
     abstract protected function addPriceProductEvents(string $productIdKey, string $productFkKey): array;
 
@@ -393,7 +393,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      * @param string $productTableName
      * @param string $productIdKey
      * @param string $productFkKey

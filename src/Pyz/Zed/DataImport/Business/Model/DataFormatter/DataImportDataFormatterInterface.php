@@ -18,50 +18,50 @@ interface DataImportDataFormatterInterface
     public function replaceDoubleQuotes(string $value, string $replace = ''): string;
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      *
      * @return string
      */
     public function formatPostgresArray(array $values): string;
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      *
      * @return string
      */
     public function formatPostgresArrayString(array $values): string;
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      *
      * @return string
      */
     public function formatPostgresArrayBoolean(array $values): string;
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      *
      * @return string
      */
     public function formatPostgresArrayFromJson(array $values): string;
 
     /**
-     * @param array $collection
+     * @param array<mixed> $collection
      * @param string $key
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getCollectionDataByKey(array $collection, string $key): array;
 
     /**
-     * @param array $priceData
+     * @param array<mixed> $priceData
      *
      * @return string
      */
     public function formatPostgresPriceDataString(array $priceData): string;
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      * @param int|null $minimumLength
      *
      * @return string
@@ -69,7 +69,7 @@ interface DataImportDataFormatterInterface
     public function formatStringList(array $values, ?int $minimumLength = null): string;
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      * @param int|null $minimumLength
      *
      * @return string

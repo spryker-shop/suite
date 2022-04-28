@@ -18,9 +18,11 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 class ExampleStateMachineQueryContainer extends AbstractQueryContainer implements ExampleStateMachineQueryContainerInterface
 {
     /**
+     * @psalm-suppress TooManyTemplateParams
+     *
      * @param array<int> $stateIds
      *
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
+     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
     public function queryStateMachineItemsByStateIds(array $stateIds = []): PyzExampleStateMachineItemQuery
     {
@@ -42,9 +44,11 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
     }
 
     /**
+     * @psalm-suppress TooManyTemplateParams
+     *
      * @param int $idStateMachineItem
      *
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
+     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
     public function queryExampleStateMachineItemByIdStateMachineItem(
         $idStateMachineItem

@@ -61,7 +61,7 @@ class ProductImageBulkPdoMariaDbDataSetWriter extends AbstractProductImageBulkDa
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     protected function persistProductImages(): array
     {
