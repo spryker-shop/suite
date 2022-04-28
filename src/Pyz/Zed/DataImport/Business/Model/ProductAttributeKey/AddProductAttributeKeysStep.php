@@ -21,7 +21,7 @@ class AddProductAttributeKeysStep implements DataImportStepInterface
     public const KEY_TARGET = 'attributeKeys';
 
     /**
-     * @var array
+     * @var array<string, int>
      */
     protected $productAttributeKeys = [];
 
@@ -40,7 +40,7 @@ class AddProductAttributeKeysStep implements DataImportStepInterface
                 ])
                 ->setFormatter(new SimpleArrayFormatter());
 
-            /** @var array $productAttributeKeys */
+            /** @var array<array<string, mixed>> $productAttributeKeys */
             $productAttributeKeys = $query->find();
             foreach ($productAttributeKeys as $productAttributeKey) {
                 $key = $productAttributeKey[SpyProductAttributeKeyTableMap::COL_KEY];

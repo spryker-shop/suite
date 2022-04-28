@@ -41,12 +41,12 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
     protected $queueClient;
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected $synchronizedDataCollection = [];
 
     /**
-     * @var array
+     * @var array<\Generated\Shared\Transfer\QueueSendMessageTransfer>
      */
     protected $synchronizedMessageCollection = [];
 
@@ -81,8 +81,8 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
     }
 
     /**
-     * @param array $priceGroups First level keys are product concrete ids, second level keys are store names, values are grouped prices.
-     * @param array $priceProductConcreteStorageMap First level keys are product concrete ids, second level keys are store names, values are SpyPriceProductConcreteStorage objects
+     * @param array<int, array<string, array<mixed>>> $priceGroups First level keys are product concrete ids, second level keys are store names, values are grouped prices.
+     * @param array<int, array<string, \Orm\Zed\PriceProductStorage\Persistence\SpyPriceProductConcreteStorage>> $priceProductConcreteStorageMap First level keys are product concrete ids, second level keys are store names.
      *
      * @return void
      */
@@ -126,7 +126,7 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
     /**
      * @param int $idProductConcrete
      * @param string $storeName
-     * @param array $priceGroup
+     * @param array<mixed> $priceGroup
      *
      * @return void
      */
@@ -148,7 +148,7 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
     }
 
     /**
-     * @param array $productAbstractStorageData
+     * @param array<string, mixed> $productAbstractStorageData
      *
      * @return void
      */
@@ -163,11 +163,11 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $keySuffix
      * @param string $resourceName
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function buildSynchronizedData(array $data, string $keySuffix, string $resourceName): array
     {
@@ -180,7 +180,7 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $keySuffix
      * @param string $resourceName
      *
@@ -204,9 +204,9 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $resourceName
-     * @param array $params
+     * @param array<string, mixed> $params
      *
      * @return \Generated\Shared\Transfer\QueueSendMessageTransfer
      */
@@ -261,7 +261,7 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     protected function getParams(): array
     {

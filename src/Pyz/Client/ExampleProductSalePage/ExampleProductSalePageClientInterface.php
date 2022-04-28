@@ -21,9 +21,9 @@ interface ExampleProductSalePageClientInterface
      *
      * @api
      *
-     * @param array $requestParameters
+     * @param array<mixed> $requestParameters
      *
-     * @return array
+     * @return array<mixed>
      */
     public function saleSearch(array $requestParameters): array;
 }

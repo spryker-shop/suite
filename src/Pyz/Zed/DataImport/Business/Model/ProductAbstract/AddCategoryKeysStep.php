@@ -19,7 +19,7 @@ class AddCategoryKeysStep implements DataImportStepInterface
     public const KEY_CATEGORY_KEYS = 'categoryKeys';
 
     /**
-     * @var array
+     * @var array<string, int>
      */
     protected $categoryKeys = [];
 

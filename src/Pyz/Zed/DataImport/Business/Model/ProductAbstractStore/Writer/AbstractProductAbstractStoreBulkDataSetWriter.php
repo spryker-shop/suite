@@ -42,7 +42,7 @@ abstract class AbstractProductAbstractStoreBulkDataSetWriter implements DataSetW
     protected $dataImportConfig;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected static $productAbstractStoreCollection = [];
 
