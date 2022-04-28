@@ -35,7 +35,7 @@ class ProductAbstractSkuToIdProductAbstractStep implements DataImportStepInterfa
     protected $target;
 
     /**
-     * @var array
+     * @var array<string, int>
      */
     protected static $resolved = [];
 

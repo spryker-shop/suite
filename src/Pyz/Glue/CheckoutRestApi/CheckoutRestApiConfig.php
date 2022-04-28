@@ -12,10 +12,12 @@ use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig as SprykerCheckoutRestApi
 class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
 {
     /**
-     * @var array<string, array>
+     * @var array<string, array<string>>
      */
     protected const PAYMENT_METHOD_REQUIRED_FIELDS = [
-        'dummyPaymentInvoice' => ['dummyPaymentInvoice.dateOfBirth'],
+        'dummyPaymentInvoice' => [
+            'dummyPaymentInvoice.dateOfBirth',
+        ],
         'dummyPaymentCreditCard' => [
             'dummyPaymentCreditCard.cardType',
             'dummyPaymentCreditCard.cardNumber',

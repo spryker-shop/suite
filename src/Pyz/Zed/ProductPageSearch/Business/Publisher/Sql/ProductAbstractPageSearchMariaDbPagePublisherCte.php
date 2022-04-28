@@ -15,9 +15,9 @@ class ProductAbstractPageSearchMariaDbPagePublisherCte implements ProductPagePub
     use MariaDbDataFormatterTrait;
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      *
-     * @return array
+     * @return array<string>
      */
     public function buildParams(array $data): array
     {

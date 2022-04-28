@@ -36,7 +36,7 @@ class CloseMerchantOrderItemCommandPlugin extends AbstractPlugin implements Comm
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
      * @param \Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject $data
      *
-     * @return array
+     * @return array<mixed>
      */
     public function run(SpySalesOrderItem $orderItem, ReadOnlyArrayObject $data): array
     {

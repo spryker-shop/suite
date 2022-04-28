@@ -40,34 +40,29 @@ abstract class AbstractProductAbstractBulkPdoDataSetWriter implements DataSetWri
     protected const COLUMN_NEW_TO = ProductAbstractHydratorStep::COLUMN_NEW_TO;
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productAbstractCollection = [];
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productAbstractLocalizedAttributesCollection = [];
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productCategoryCollection = [];
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productUrlCollection = [];
 
     /**
-     * @var array
+     * @var array<int>
      */
     protected static $productAbstractUpdated = [];
-
-    /**
-     * @var bool
-     */
-    protected $isDuplicatedSku = false;
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface

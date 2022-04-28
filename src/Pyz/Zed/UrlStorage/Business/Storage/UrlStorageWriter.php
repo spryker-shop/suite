@@ -42,12 +42,12 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     protected $queueClient;
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected $synchronizedDataCollection = [];
 
     /**
-     * @var array
+     * @var array<\Generated\Shared\Transfer\QueueSendMessageTransfer>
      */
     protected $synchronizedMessageCollection = [];
 
@@ -90,8 +90,8 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     }
 
     /**
-     * @param array $urlStorageTransfers
-     * @param array $urlStorageEntities
+     * @param array<\Generated\Shared\Transfer\UrlStorageTransfer> $urlStorageTransfers
+     * @param array<int, \Orm\Zed\UrlStorage\Persistence\SpyUrlStorage> $urlStorageEntities
      *
      * @return void
      */
@@ -137,7 +137,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     }
 
     /**
-     * @param array $urlStorage
+     * @param array<string, mixed> $urlStorage
      *
      * @return void
      */
@@ -152,11 +152,11 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $keySuffix
      * @param string $resourceName
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function buildSynchronizedData(array $data, string $keySuffix, string $resourceName): array
     {
@@ -169,7 +169,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $keySuffix
      * @param string $resourceName
      *
@@ -186,9 +186,9 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $resourceName
-     * @param array $params
+     * @param array<string, mixed> $params
      *
      * @return \Generated\Shared\Transfer\QueueSendMessageTransfer
      */
@@ -237,7 +237,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     protected function getParams(): array
     {

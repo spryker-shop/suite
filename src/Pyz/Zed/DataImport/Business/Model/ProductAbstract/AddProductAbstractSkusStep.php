@@ -21,7 +21,7 @@ class AddProductAbstractSkusStep implements DataImportStepInterface
     public const KEY_PRODUCT_ABSTRACT_SKUS = 'productAbstractSkus';
 
     /**
-     * @var array
+     * @var array<string, int>
      */
     protected $productAbstractSkus = [];
 
@@ -39,7 +39,7 @@ class AddProductAbstractSkusStep implements DataImportStepInterface
                 SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT,
             ])->setFormatter(new SimpleArrayFormatter());
 
-            /** @var array $productAbstractEntities */
+            /** @var array<array<string, mixed>> $productAbstractEntities */
             $productAbstractEntities = $query->find();
 
             foreach ($productAbstractEntities as $productAbstractEntity) {

@@ -11,10 +11,10 @@ interface PropelExecutorInterface
 {
     /**
      * @param string $sql
-     * @param array $parameters
+     * @param array<mixed> $parameters
      * @param bool $fetch
      *
-     * @return array|null
+     * @return array<mixed>|null
      */
     public function execute(string $sql, array $parameters, bool $fetch = true): ?array;
 }

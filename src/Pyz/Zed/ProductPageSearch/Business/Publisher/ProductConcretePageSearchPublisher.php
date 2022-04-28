@@ -54,12 +54,12 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     protected $productConcretePagePublisherCte;
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected $synchronizedDataCollection = [];
 
     /**
-     * @var array
+     * @var array<\Generated\Shared\Transfer\QueueSendMessageTransfer>
      */
     protected $synchronizedMessageCollection = [];
 
@@ -205,7 +205,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Generated\Shared\Transfer\ProductConcretePageSearchTransfer $productPageSearchTransfer
      * @param string $resourceName
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function buildSynchronizedData(
         ProductConcretePageSearchTransfer $productPageSearchTransfer,
@@ -244,9 +244,9 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $resourceName
-     * @param array $params
+     * @param array<string, mixed> $params
      *
      * @return \Generated\Shared\Transfer\QueueSendMessageTransfer
      */
