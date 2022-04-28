@@ -141,13 +141,16 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             $store = $pairedEntity[static::STORE_NAME];
             $locale = $pairedEntity[static::LOCALE_NAME];
 
-            $productPageSearchTransfer = $indexedProductAbstractPageSearchTransfers[$locale][$productAbstractLocalizedEntity['fk_product_abstract']] ?? null;
+            if ($productAbstractLocalizedEntity === null || !$this->isActual($productAbstractLocalizedEntity)) {
+                $this->deleteProductAbstractPageSearchEntity($productAbstractPageSearchEntity);
 
-            if (
-                $productAbstractLocalizedEntity === null
-                || $productPageSearchTransfer === null
-                || !$this->isActual($productAbstractLocalizedEntity)
-            ) {
+                continue;
+            }
+
+            $idProductAbstract = $productAbstractLocalizedEntity['fk_product_abstract'];
+            $productPageSearchTransfer = $indexedProductAbstractPageSearchTransfers[$locale][$idProductAbstract] ?? null;
+
+            if ($productPageSearchTransfer === null) {
                 $this->deleteProductAbstractPageSearchEntity($productAbstractPageSearchEntity);
 
                 continue;

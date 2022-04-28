@@ -101,14 +101,29 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
         );
 
         $productConcreteStorageTransfers = $this->getProductConcreteStorageTransfers($pairedEntities);
+        $productConcreteStorageTransfers = $this->expandProductConcreteStorageCollection($productConcreteStorageTransfers);
 
-        $this->expandProductConcreteStorageCollection($productConcreteStorageTransfers);
+        $filteredProductConcreteStorageTransfers = $this->executeProductConcreteStorageCollectionFilterPlugins(
+            $productConcreteStorageTransfers,
+        );
+        $productConcreteStorageTransfersIndexedByIdProductConcrete = $this->getProductConcreteStorageTransfersIndexedByIdProductConcrete(
+            $filteredProductConcreteStorageTransfers,
+        );
 
         foreach ($pairedEntities as $index => $pair) {
             $productConcreteLocalizedEntity = $pair[static::PRODUCT_CONCRETE_LOCALIZED_ENTITY];
             $productConcreteStorageEntity = $pair[static::PRODUCT_CONCRETE_STORAGE_ENTITY];
 
             if ($productConcreteLocalizedEntity === null || !$this->isActive($productConcreteLocalizedEntity)) {
+                $this->deletedProductConcreteSorageEntity($productConcreteStorageEntity);
+
+                continue;
+            }
+
+            $idProduct = $productConcreteLocalizedEntity[static::COL_FK_PRODUCT];
+            $productConcreteStorageTransfer = $productConcreteStorageTransfersIndexedByIdProductConcrete[$idProduct] ?? null;
+
+            if ($productConcreteStorageTransfer === null) {
                 $this->deletedProductConcreteSorageEntity($productConcreteStorageEntity);
 
                 continue;

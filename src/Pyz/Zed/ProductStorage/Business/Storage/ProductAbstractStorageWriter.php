@@ -133,13 +133,16 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
             $productAbstractLocalizedEntity = $pair[static::PRODUCT_ABSTRACT_LOCALIZED_ENTITY];
             $productAbstractStorageEntity = $pair[static::PRODUCT_ABSTRACT_STORAGE_ENTITY];
 
-            $productAbstractStorageTransfer = $indexedProductAbstractStorageTransfers[$productAbstractLocalizedEntity[static::COL_FK_PRODUCT_ABSTRACT]] ?? null;
+            if ($productAbstractLocalizedEntity === null || !$this->isActive($productAbstractLocalizedEntity)) {
+                $this->deleteProductAbstractStorageEntity($productAbstractStorageEntity);
 
-            if (
-                $productAbstractLocalizedEntity === null
-                || $productAbstractStorageTransfer === null
-                || !$this->isActive($productAbstractLocalizedEntity)
-            ) {
+                continue;
+            }
+
+            $idProductAbstract = $productAbstractLocalizedEntity[static::COL_FK_PRODUCT_ABSTRACT];
+            $productAbstractStorageTransfer = $indexedProductAbstractStorageTransfers[$idProductAbstract] ?? null;
+
+            if ($productAbstractStorageTransfer === null) {
                 $this->deleteProductAbstractStorageEntity($productAbstractStorageEntity);
 
                 continue;
