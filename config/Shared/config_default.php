@@ -467,6 +467,7 @@ $config[SchedulerConstants::ENABLED_SCHEDULERS] = [
 ];
 $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
     SchedulerConfig::SCHEDULER_JENKINS => [
+        SchedulerJenkinsConfig::SCHEDULER_JENKINS_CSRF_ENABLED => (bool)getenv('SPRYKER_JENKINS_CSRF_PROTECTION_ENABLED'),
         SchedulerJenkinsConfig::SCHEDULER_JENKINS_BASE_URL => sprintf(
             '%s://%s:%s/',
             getenv('SPRYKER_SCHEDULER_PROTOCOL') ?: 'http',
