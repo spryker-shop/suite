@@ -17,6 +17,9 @@ use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueStorefrontApiApplicatio
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueStorefrontApiApplication\RequestCorsValidatorPlugin;
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueStorefrontApiApplication\SecurityHeaderResponseFormatterPlugin;
 use Spryker\Glue\GlueStorefrontApiApplicationExtension\Dependency\Plugin\RequestResourceFilterPluginInterface;
+use Spryker\Glue\OauthApi\Plugin\AccessTokenValidatorPlugin;
+use Spryker\Glue\OauthApi\Plugin\CustomerRequestBuilderPlugin;
+use Spryker\Glue\OauthApi\Plugin\TokenResource;
 
 class GlueStorefrontApiApplicationDependencyProvider extends SprykerGlueStorefrontApiApplicationDependencyProvider
 {
@@ -27,6 +30,17 @@ class GlueStorefrontApiApplicationDependencyProvider extends SprykerGlueStorefro
     {
         return [
             new LocaleRequestBuilderPlugin(),
+            new CustomerRequestBuilderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Glue\GlueStorefrontApiApplicationExtension\Dependency\Plugin\RequestValidatorPluginInterface>
+     */
+    protected function getRequestValidatorPlugins(): array
+    {
+        return [
+            new AccessTokenValidatorPlugin(),
         ];
     }
 
@@ -77,7 +91,9 @@ class GlueStorefrontApiApplicationDependencyProvider extends SprykerGlueStorefro
      */
     protected function getResourcePlugins(): array
     {
-        return [];
+        return [
+            new TokenResource(),
+        ];
     }
 
     /**
