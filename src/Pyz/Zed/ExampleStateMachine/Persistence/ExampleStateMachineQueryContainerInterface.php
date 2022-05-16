@@ -13,9 +13,11 @@ use Propel\Runtime\Collection\ObjectCollection;
 interface ExampleStateMachineQueryContainerInterface
 {
     /**
+     * @psalm-suppress TooManyTemplateParams
+     *
      * @param array<int> $stateIds
      *
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
+     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
     public function queryStateMachineItemsByStateIds(array $stateIds = []): PyzExampleStateMachineItemQuery;
 
@@ -27,9 +29,11 @@ interface ExampleStateMachineQueryContainerInterface
     public function queryAllStateMachineItems(): ObjectCollection;
 
     /**
+     * @psalm-suppress TooManyTemplateParams
+     *
      * @param int $idStateMachineItem
      *
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
+     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
     public function queryExampleStateMachineItemByIdStateMachineItem(
         $idStateMachineItem

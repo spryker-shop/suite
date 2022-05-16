@@ -7,6 +7,10 @@
         All sniffs in ./Sniffs will be auto loaded
     </description>
 
+    <file>src/</file>
+    <file>config/</file>
+    <file>tests/</file>
+
     <exclude-pattern>*/src/Generated/*</exclude-pattern>
     <exclude-pattern>*/src/Orm/*/Base/</exclude-pattern>
     <exclude-pattern>*/src/Orm/*/Map/</exclude-pattern>
@@ -14,13 +18,6 @@
     <exclude-pattern>*/tests/_support/_generated/*</exclude-pattern>
     <exclude-pattern>*/tests/_helpers/*</exclude-pattern>
     <exclude-pattern>*/tests/_output/*</exclude-pattern>
-    <exclude-pattern>./docker/*</exclude-pattern>
-    <exclude-pattern>./data/cache/*</exclude-pattern>
-    <exclude-pattern>./data/DE/cache/*</exclude-pattern>
-    <exclude-pattern>./data/AT/cache/*</exclude-pattern>
-    <exclude-pattern>./data/US/cache/*</exclude-pattern>
-    <exclude-pattern>./data/development-core/*</exclude-pattern>
-    <exclude-pattern>*/node_modules/*</exclude-pattern>
 
     <rule ref="vendor/spryker/code-sniffer/Spryker/ruleset.xml"/>
 

@@ -32,27 +32,22 @@ abstract class AbstractProductConcreteBulkDataSetWriter implements DataSetWriter
     protected const COLUMN_ABSTRACT_SKU = ProductConcreteHydratorStep::COLUMN_ABSTRACT_SKU;
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productConcreteCollection = [];
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productLocalizedAttributesCollection = [];
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productBundleCollection = [];
 
     /**
-     * @var array
-     */
-    protected static $productConcreteUpdated = [];
-
-    /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productSearchCollection = [];
 
@@ -220,6 +215,5 @@ abstract class AbstractProductConcreteBulkDataSetWriter implements DataSetWriter
         static::$productLocalizedAttributesCollection = [];
         static::$productSearchCollection = [];
         static::$productBundleCollection = [];
-        static::$productConcreteUpdated = [];
     }
 }

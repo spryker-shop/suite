@@ -32,9 +32,11 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
     /**
      * @api
      *
+     * @psalm-suppress TooManyTemplateParams
+     *
      * @param string $labelName
      *
-     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery
+     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery<\Orm\Zed\ProductLabel\Persistence\SpyProductLabel>
      */
     public function queryProductLabelByName($labelName): SpyProductLabelQuery
     {
@@ -46,13 +48,15 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
     /**
      * @api
      *
+     * @psalm-suppress TooManyTemplateParams
+     *
      * @param int $idProductLabel
      *
-     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery
+     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery<\Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstract>
      */
     public function queryRelationsBecomingInactive($idProductLabel): SpyProductLabelProductAbstractQuery
     {
-        /** @var \Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery $productLabelProductAbstractQuery */
+        /** @var \Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery<\Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstract> $productLabelProductAbstractQuery */
         $productLabelProductAbstractQuery = $this->getFactory()
             ->getProductLabelQueryContainer()
             ->queryProductAbstractRelationsByIdProductLabel($idProductLabel)
@@ -124,13 +128,15 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
     /**
      * @api
      *
+     * @psalm-suppress TooManyTemplateParams
+     *
      * @param int $idProductLabel
      *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery<\Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstract>
      */
     public function queryRelationsBecomingActive($idProductLabel): SpyProductAbstractQuery
     {
-        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstractQuery $productAbstractQuery */
+        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstractQuery<\Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstract> $productAbstractQuery */
         $productAbstractQuery = $this->getFactory()
             ->getProductQueryContainer()
             ->queryProductAbstract()

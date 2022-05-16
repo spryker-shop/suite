@@ -10,7 +10,7 @@ namespace Pyz\Zed\Propel\Business\CTE;
 trait PostgresDataFormatterTrait
 {
     /**
-     * @param array $values
+     * @param array<mixed> $values
      *
      * @return string
      */
@@ -31,7 +31,7 @@ trait PostgresDataFormatterTrait
     }
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      *
      * @return string
      */
@@ -44,7 +44,7 @@ trait PostgresDataFormatterTrait
     }
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      *
      * @return string
      */

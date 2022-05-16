@@ -13,11 +13,6 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 class StoreReader implements DataReaderInterface
 {
     /**
-     * @var array
-     */
-    protected $stores = [];
-
-    /**
      * @var int
      */
     protected $position = 0;

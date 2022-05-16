@@ -49,7 +49,7 @@ abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInt
     protected $dataImportConfig;
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productImageDataCollection = [];
 
@@ -108,7 +108,7 @@ abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInt
     abstract protected function persistProductImageSets(): void;
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     abstract protected function persistProductImages(): array;
 
@@ -125,7 +125,7 @@ abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInt
     abstract protected function triggerEventsForUpdatedImageSets(array $touchedProductImages): void;
 
     /**
-     * @param array $touchedProductSetImages
+     * @param array<array<string, mixed>> $touchedProductSetImages
      *
      * @return void
      */

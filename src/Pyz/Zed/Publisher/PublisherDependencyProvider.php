@@ -9,6 +9,8 @@ namespace Pyz\Zed\Publisher;
 
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\PublishAndSynchronizeHealthCheck\PublishAndSynchronizeHealthCheckConfig;
+use Spryker\Zed\AssetStorage\Communication\Plugin\Publisher\Asset\AssetDeletePublisherPlugin;
+use Spryker\Zed\AssetStorage\Communication\Plugin\Publisher\Asset\AssetWritePublisherPlugin;
 use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Publisher\Category\CategoryDeletePublisherPlugin as CategoryPageSearchCategoryDeletePublisherPlugin;
 use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Publisher\Category\CategoryWritePublisherPlugin as CategoryPageSearchCategoryWritePublisherPlugin;
 use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Publisher\CategoryAttribute\CategoryAttributeDeletePublisherPlugin as CategoryPageSearchCategoryAttributeDeletePublisherPlugin;
@@ -106,7 +108,7 @@ use Spryker\Zed\SalesReturnSearch\Communication\Plugin\Publisher\ReturnReasonPub
 class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
 {
     /**
-     * @return array
+     * @return array<int|string, \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>|array<string, array<int|string, \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>>
      */
     protected function getPublisherPlugins(): array
     {
@@ -137,6 +139,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getMerchantProductOfferStoragePlugins(),
             $this->getMerchantProductOfferStoragePlugins(),
             $this->getMerchantProductOfferSearchPlugins(),
+            $this->getAssetStoragePlugins(),
         );
     }
 
@@ -162,7 +165,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     }
 
     /**
-     * @return array
+     * @return array<int|string, \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>|array<string, array<int|string, \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>>
      */
     protected function getGlossaryStoragePlugins(): array
     {
@@ -176,7 +179,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     }
 
     /**
-     * @return array
+     * @return array<int|string, \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>|array<string, array<int|string, \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>>
      */
     protected function getPublishAndSynchronizeHealthCheckPlugins(): array
     {
@@ -248,7 +251,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     }
 
     /**
-     * @return array
+     * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
      */
     protected function getMerchantSearchPlugins(): array
     {
@@ -449,6 +452,17 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
         return [
             new ProductOfferProductConcreteWritePublisherPlugin(),
             new ProductOfferStoreProductConcreteWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getAssetStoragePlugins(): array
+    {
+        return [
+            new AssetWritePublisherPlugin(),
+            new AssetDeletePublisherPlugin(),
         ];
     }
 }

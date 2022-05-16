@@ -500,7 +500,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return array
+     * @return array<\Spryker\Zed\Console\Dependency\Plugin\ConsolePostRunHookPluginInterface>
      */
     public function getConsolePostRunHookPlugins(Container $container): array
     {
@@ -527,9 +527,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     /**
      * @project Only available in internal nonsplit project, not in public split project.
      *
-     * @param array $commands
+     * @param array<\Symfony\Component\Console\Command\Command> $commands
      *
-     * @return array
+     * @return array<\Symfony\Component\Console\Command\Command>
      */
     protected function addProjectNonsplitOnlyCommands(array $commands): array
     {
