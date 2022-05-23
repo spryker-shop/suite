@@ -201,7 +201,7 @@ jobs:
             - name: Run docker
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  cd docker && git checkout 266e81079f994faf4f45ed5f2b9f7145ff8db7af && cd ..
+                  cd docker && git checkout d406d49d0f8d74120b62bb7821a1d3fb529fbc77 && cd ..
                   docker/sdk boot deploy.ci.api.mariadb.yml -v
                   docker/sdk up -t -v
                   docker/sdk testing codecept fixtures
@@ -288,7 +288,7 @@ jobs:
             - name: Run docker
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  cd docker && git checkout 266e81079f994faf4f45ed5f2b9f7145ff8db7af && cd ..
+                  cd docker && git checkout d406d49d0f8d74120b62bb7821a1d3fb529fbc77 && cd ..
                   docker/sdk boot deploy.ci.api.mariadb.yml -v
                   docker/sdk up -t -v
                   docker/sdk testing codecept fixtures
