@@ -126,10 +126,12 @@ use Spryker\Glue\GlueApplicationAuthorizationConnector\Plugin\GlueApplication\Au
 use Spryker\Glue\GlueApplicationAuthorizationConnector\Plugin\GlueApplication\AuthorizationRouterParameterExpanderPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\BackendApiGlueApplicationBootstrapPlugin;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\BackendRouterProviderPlugin;
 use Spryker\Glue\GlueHttp\Plugin\GlueApplication\HttpCommunicationProtocolPlugin;
 use Spryker\Glue\GlueHttp\Plugin\GlueContext\HttpGlueContextExpanderPlugin;
 use Spryker\Glue\GlueJsonApiConvention\Plugin\GlueApplication\JsonApiApiConventionPlugin;
 use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\RestApiConventionPlugin;
+use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\StorefrontRouterProviderPlugin;
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\StorefrontApiGlueApplicationBootstrapPlugin;
 use Spryker\Glue\HealthCheck\Plugin\HealthCheckResourceRoutePlugin;
 use Spryker\Glue\Http\Plugin\Application\HttpApplicationPlugin;
@@ -1015,6 +1017,17 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new ConventionResourceFilterPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ApiApplicationEndpointProviderPluginInterface>
+     */
+    protected function getGlueApplicationRouterProviderPlugins(): array
+    {
+        return [
+            new BackendRouterProviderPlugin(),
+            new StorefrontRouterProviderPlugin(),
         ];
     }
 }
