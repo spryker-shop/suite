@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\CompanyUnitAddressGui;
 
+use Spryker\Zed\CompanyGui\Communication\Plugin\CompanyUnitAddressGui\CompanyToCompanyUnitAddressEditFormExpanderPlugin;
 use Spryker\Zed\CompanyUnitAddressGui\CompanyUnitAddressGuiDependencyProvider as SprykerCompanyUnitAddressGuiDependencyProvider;
 use Spryker\Zed\CompanyUnitAddressLabel\Communication\Plugin\CompanyUnitAddressEditFormExpanderPlugin;
 
@@ -19,6 +20,7 @@ class CompanyUnitAddressGuiDependencyProvider extends SprykerCompanyUnitAddressG
     {
         return [
             new CompanyUnitAddressEditFormExpanderPlugin(),
+            new CompanyToCompanyUnitAddressEditFormExpanderPlugin(),
         ];
     }
 
