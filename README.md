@@ -23,10 +23,10 @@ For the installation prerequisites, see [Docker Installation Prerequisites](http
 
 Recommended system requirements for MacOS:
 
-|Macbook type|vCPU| RAM|
-|---|---|---|
-|15' | 4 | 6GB |
-|13' | 2 | 4GB |
+| Macbook type | vCPU | RAM |
+|--------------|------|-----|
+| 15'          | 4    | 6GB |
+| 13'          | 2    | 4GB |
 
 ### Installation
 
