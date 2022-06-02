@@ -78,7 +78,7 @@ docker/sdk up --build --assets --data
 
     2. If there are unnecessary untracked files (red ones), remove them.
 
-    3. Restrart file sync and re-build the codebase:
+    3. Restart file sync and re-build the codebase:
     ```bash
     docker/sdk trouble
     rm -rf ./docker && git submodule update --init --force docker && docker/sdk boot -s deploy.dev.yml
