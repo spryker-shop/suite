@@ -38,4 +38,12 @@ class DocumentationGeneratorRestApiConfig extends SprykerDocumentationGeneratorR
     {
         return true;
     }
+
+    /**
+     * @return bool
+     */
+    public function isNestedRelationshipsEnabled(): bool
+    {
+        return true;
+    }
 }
