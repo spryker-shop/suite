@@ -8,6 +8,7 @@
 namespace Pyz\Glue\Console;
 
 use Spryker\Glue\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
+use Spryker\Glue\DocumentationGeneratorApi\Plugin\Console\ApiGenerateDocumentationConsole;
 use Spryker\Glue\GlueApplication\Plugin\Console\ControllerCacheCollectorConsole;
 use Spryker\Glue\GlueApplication\Plugin\Console\RouterDebugGlueApplicationConsole;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\Console\RouterCacheWarmUpConsole as BackendRouterCacheWarmUpConsole;
@@ -26,6 +27,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         return [
             new StorefrontRouterCacheWarmUpConsole(),
             new BackendRouterCacheWarmUpConsole(),
+            new ApiGenerateDocumentationConsole(),
             new ControllerCacheCollectorConsole(),
             new RouterDebugGlueApplicationConsole(),
         ];
