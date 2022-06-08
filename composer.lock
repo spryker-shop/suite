@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a5f1ceff85426feda549539847687a8",
+    "content-hash": "136d1f26a78a2493a4aea5c87050ea90",
     "packages": [
         {
             "name": "async-aws/core",
@@ -389,6 +389,75 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "cebe/php-openapi",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cebe/php-openapi.git",
+                "reference": "020d72b8e3a9a60bc229953e93eda25c49f46f45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cebe/php-openapi/zipball/020d72b8e3a9a60bc229953e93eda25c49f46f45",
+                "reference": "020d72b8e3a9a60bc229953e93eda25c49f46f45",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "justinrainbow/json-schema": "^5.2",
+                "php": ">=7.1.0",
+                "symfony/yaml": "^3.4 || ^4 || ^5 || ^6"
+            },
+            "conflict": {
+                "symfony/yaml": "3.4.0 - 3.4.4 || 4.0.0 - 4.4.17 || 5.0.0 - 5.1.9 || 5.2.0"
+            },
+            "require-dev": {
+                "apis-guru/openapi-directory": "1.0.0",
+                "cebe/indent": "*",
+                "mermade/openapi3-examples": "1.0.0",
+                "nexmo/api-specification": "1.0.0",
+                "oai/openapi-specification": "3.0.3",
+                "phpstan/phpstan": "^0.12.0",
+                "phpunit/phpunit": "^6.5 || ^7.5 || ^8.5 || ^9.4"
+            },
+            "bin": [
+                "bin/php-openapi"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "cebe\\openapi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc",
+                    "homepage": "https://cebe.cc/",
+                    "role": "Creator"
+                }
+            ],
+            "description": "Read and write OpenAPI yaml/json files and make the content accessable in PHP objects.",
+            "homepage": "https://github.com/cebe/php-openapi#readme",
+            "keywords": [
+                "openapi"
+            ],
+            "support": {
+                "issues": "https://github.com/cebe/php-openapi/issues",
+                "source": "https://github.com/cebe/php-openapi"
+            },
+            "time": "2022-04-20T14:46:44+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -23290,20 +23359,20 @@
         },
         {
             "name": "spryker/console",
-            "version": "4.10.2",
+            "version": "4.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/console.git",
-                "reference": "66566473325b128880e78e3772877b4351c0f3bd"
+                "reference": "ac277b9952b7aa4c0d258ec7135beda84845734c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/console/zipball/66566473325b128880e78e3772877b4351c0f3bd",
-                "reference": "66566473325b128880e78e3772877b4351c0f3bd",
+                "url": "https://api.github.com/repos/spryker/console/zipball/ac277b9952b7aa4c0d258ec7135beda84845734c",
+                "reference": "ac277b9952b7aa4c0d258ec7135beda84845734c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker/acl-entity-extension": "^0.1.0 || ^0.2.0 || ^1.0.0",
                 "spryker/application": "^3.23.0",
                 "spryker/application-extension": "^1.0.0",
@@ -23335,7 +23404,8 @@
             "autoload": {
                 "psr-4": {
                     "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Zed\\Console\\Helper\\": "tests/SprykerTest/Zed/Console/_support/Helper/"
+                    "SprykerTest\\Zed\\Console\\Helper\\": "tests/SprykerTest/Zed/Console/_support/Helper/",
+                    "SprykerTest\\Glue\\Console\\Helper\\": "tests/SprykerTest/Glue/Console/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -23344,9 +23414,9 @@
             ],
             "description": "Console module",
             "support": {
-                "source": "https://github.com/spryker/console/tree/4.10.2"
+                "source": "https://github.com/spryker/console/tree/4.10.3"
             },
-            "time": "2021-08-23T11:19:52+00:00"
+            "time": "2022-06-08T12:10:58+00:00"
         },
         {
             "name": "spryker/container",
@@ -26425,6 +26495,144 @@
             "time": "2021-04-07T19:22:34+00:00"
         },
         {
+            "name": "spryker/documentation-generator-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/documentation-generator-api.git",
+                "reference": "3ca1c87bd4274657744c36b53c1cbf09cf7f1683"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/documentation-generator-api/zipball/3ca1c87bd4274657744c36b53c1cbf09cf7f1683",
+                "reference": "3ca1c87bd4274657744c36b53c1cbf09cf7f1683",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "spryker/documentation-generator-api-extension": "^0.1.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.5.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/console": "*",
+                "spryker/documentation-generator-open-api": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DocumentationGeneratorApi module",
+            "support": {
+                "source": "https://github.com/spryker/documentation-generator-api/tree/0.1.0"
+            },
+            "time": "2022-06-08T12:10:58+00:00"
+        },
+        {
+            "name": "spryker/documentation-generator-api-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/documentation-generator-api-extension.git",
+                "reference": "6f4414c8aea7fa88bea4af4672d4004dce090acc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/documentation-generator-api-extension/zipball/6f4414c8aea7fa88bea4af4672d4004dce090acc",
+                "reference": "6f4414c8aea7fa88bea4af4672d4004dce090acc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DocumentationGeneratorApiExtension module",
+            "support": {
+                "source": "https://github.com/spryker/documentation-generator-api-extension/tree/0.1.0"
+            },
+            "time": "2022-06-08T12:10:58+00:00"
+        },
+        {
+            "name": "spryker/documentation-generator-open-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/documentation-generator-open-api.git",
+                "reference": "1546594345e2b5e3c2914f5e7e8ef23f22185281"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/documentation-generator-open-api/zipball/1546594345e2b5e3c2914f5e7e8ef23f22185281",
+                "reference": "1546594345e2b5e3c2914f5e7e8ef23f22185281",
+                "shasum": ""
+            },
+            "require": {
+                "cebe/php-openapi": "^1.6.0",
+                "php": ">=7.4",
+                "spryker/doctrine-inflector": "^1.0.0",
+                "spryker/documentation-generator-api-extension": "^0.1.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.5.0",
+                "spryker/transfer": "^3.25.0",
+                "spryker/util-encoding": "^2.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DocumentationGeneratorOpenApi module",
+            "support": {
+                "source": "https://github.com/spryker/documentation-generator-open-api/tree/0.1.0"
+            },
+            "time": "2022-06-08T12:10:58+00:00"
+        },
+        {
             "name": "spryker/documentation-generator-rest-api",
             "version": "1.15.0",
             "source": {
@@ -28307,22 +28515,23 @@
         },
         {
             "name": "spryker/glue-backend-api-application",
-            "version": "0.2.2",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-backend-api-application.git",
-                "reference": "0e2b853bb95397a34ae8145debe20a3c1f3123bb"
+                "reference": "2245bdc915feb8c0f7e79231e606566fd2257488"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-backend-api-application/zipball/0e2b853bb95397a34ae8145debe20a3c1f3123bb",
-                "reference": "0e2b853bb95397a34ae8145debe20a3c1f3123bb",
+                "url": "https://api.github.com/repos/spryker/glue-backend-api-application/zipball/2245bdc915feb8c0f7e79231e606566fd2257488",
+                "reference": "2245bdc915feb8c0f7e79231e606566fd2257488",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4",
                 "spryker/application": "^3.28.0",
                 "spryker/container": "^1.4.5",
+                "spryker/documentation-generator-api-extension": "^0.1.0",
                 "spryker/glue-application": "^1.39.0",
                 "spryker/glue-application-extension": "^1.9.0",
                 "spryker/glue-backend-api-application-extension": "^1.0.0",
@@ -28354,9 +28563,9 @@
             ],
             "description": "GlueBackendApiApplication module",
             "support": {
-                "source": "https://github.com/spryker/glue-backend-api-application/tree/0.2.2"
+                "source": "https://github.com/spryker/glue-backend-api-application/tree/0.2.3"
             },
-            "time": "2022-06-07T10:56:03+00:00"
+            "time": "2022-06-08T12:10:58+00:00"
         },
         {
             "name": "spryker/glue-backend-api-application-extension",
@@ -28455,20 +28664,22 @@
         },
         {
             "name": "spryker/glue-json-api-convention",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-json-api-convention.git",
-                "reference": "1a4501fc556f510bf7b889c51794326bd8519c1f"
+                "reference": "c9effa06cb1916e510c69fa04ee25212aa12fe36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-json-api-convention/zipball/1a4501fc556f510bf7b889c51794326bd8519c1f",
-                "reference": "1a4501fc556f510bf7b889c51794326bd8519c1f",
+                "url": "https://api.github.com/repos/spryker/glue-json-api-convention/zipball/c9effa06cb1916e510c69fa04ee25212aa12fe36",
+                "reference": "c9effa06cb1916e510c69fa04ee25212aa12fe36",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4",
+                "spryker/doctrine-inflector": "^1.0.0",
+                "spryker/documentation-generator-api-extension": "^0.1.0",
                 "spryker/glue-application-extension": "^1.7.0",
                 "spryker/glue-json-api-convention-extension": "^0.1.0",
                 "spryker/kernel": "^3.30.0",
@@ -28497,9 +28708,9 @@
             ],
             "description": "GlueJsonApiConvention module",
             "support": {
-                "source": "https://github.com/spryker/glue-json-api-convention/tree/0.1.1"
+                "source": "https://github.com/spryker/glue-json-api-convention/tree/0.1.2"
             },
-            "time": "2022-05-06T10:26:30+00:00"
+            "time": "2022-06-08T12:10:58+00:00"
         },
         {
             "name": "spryker/glue-json-api-convention-extension",
@@ -28545,20 +28756,22 @@
         },
         {
             "name": "spryker/glue-rest-api-convention",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-rest-api-convention.git",
-                "reference": "e4a7f1b2d559727823dc4f1c9cd13b8ed22b1045"
+                "reference": "6279a504fee835f9aa5a2e14bb1776df90b84171"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-rest-api-convention/zipball/e4a7f1b2d559727823dc4f1c9cd13b8ed22b1045",
-                "reference": "e4a7f1b2d559727823dc4f1c9cd13b8ed22b1045",
+                "url": "https://api.github.com/repos/spryker/glue-rest-api-convention/zipball/6279a504fee835f9aa5a2e14bb1776df90b84171",
+                "reference": "6279a504fee835f9aa5a2e14bb1776df90b84171",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4",
+                "spryker/doctrine-inflector": "^1.0.0",
+                "spryker/documentation-generator-api-extension": "^0.1.0",
                 "spryker/glue-application-extension": "^1.7.0",
                 "spryker/glue-rest-api-convention-extension": "^0.1.0",
                 "spryker/kernel": "^3.30.0",
@@ -28568,6 +28781,7 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/glue-application": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -28590,9 +28804,9 @@
             ],
             "description": "GlueRestApiConvention module",
             "support": {
-                "source": "https://github.com/spryker/glue-rest-api-convention/tree/0.1.1"
+                "source": "https://github.com/spryker/glue-rest-api-convention/tree/0.1.2"
             },
-            "time": "2022-05-06T10:26:30+00:00"
+            "time": "2022-06-08T12:10:58+00:00"
         },
         {
             "name": "spryker/glue-rest-api-convention-extension",
@@ -28638,22 +28852,23 @@
         },
         {
             "name": "spryker/glue-storefront-api-application",
-            "version": "0.3.2",
+            "version": "0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-storefront-api-application.git",
-                "reference": "544e45464d604a5fb3a84c6893cfc94481fc57fc"
+                "reference": "890d8e00823c15dcd812d1e9d1311a5d4fa1548e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-storefront-api-application/zipball/544e45464d604a5fb3a84c6893cfc94481fc57fc",
-                "reference": "544e45464d604a5fb3a84c6893cfc94481fc57fc",
+                "url": "https://api.github.com/repos/spryker/glue-storefront-api-application/zipball/890d8e00823c15dcd812d1e9d1311a5d4fa1548e",
+                "reference": "890d8e00823c15dcd812d1e9d1311a5d4fa1548e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4",
                 "spryker/application": "^3.28.0",
                 "spryker/container": "^1.4.5",
+                "spryker/documentation-generator-api-extension": "^0.1.0",
                 "spryker/glue-application": "^1.39.0",
                 "spryker/glue-application-extension": "^1.9.0",
                 "spryker/glue-storefront-api-application-extension": "^1.0.0",
@@ -28686,9 +28901,9 @@
             ],
             "description": "GlueStorefrontApiApplication module",
             "support": {
-                "source": "https://github.com/spryker/glue-storefront-api-application/tree/0.3.2"
+                "source": "https://github.com/spryker/glue-storefront-api-application/tree/0.3.3"
             },
-            "time": "2022-06-07T10:56:03+00:00"
+            "time": "2022-06-08T12:10:58+00:00"
         },
         {
             "name": "spryker/glue-storefront-api-application-extension",
@@ -28740,25 +28955,28 @@
         },
         {
             "name": "spryker/glue-storefront-api-application-glue-json-api-convention-connector",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-storefront-api-application-glue-json-api-convention-connector.git",
-                "reference": "7795c7b6397c64dd8aaf4fb940b58cc441b3be8d"
+                "reference": "e538cd0a18052b4f56c97753351b1301afc947d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-storefront-api-application-glue-json-api-convention-connector/zipball/7795c7b6397c64dd8aaf4fb940b58cc441b3be8d",
-                "reference": "7795c7b6397c64dd8aaf4fb940b58cc441b3be8d",
+                "url": "https://api.github.com/repos/spryker/glue-storefront-api-application-glue-json-api-convention-connector/zipball/e538cd0a18052b4f56c97753351b1301afc947d2",
+                "reference": "e538cd0a18052b4f56c97753351b1301afc947d2",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4",
+                "spryker/documentation-generator-api-extension": "^0.1.0",
                 "spryker/glue-json-api-convention-extension": "^0.1.0",
-                "spryker/kernel": "^3.30.0"
+                "spryker/kernel": "^3.30.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -28777,9 +28995,9 @@
             ],
             "description": "GlueStorefrontApiApplicationGlueJsonApiConventionConnector module",
             "support": {
-                "source": "https://github.com/spryker/glue-storefront-api-application-glue-json-api-convention-connector/tree/0.1.0"
+                "source": "https://github.com/spryker/glue-storefront-api-application-glue-json-api-convention-connector/tree/0.1.1"
             },
-            "time": "2022-03-01T14:38:47+00:00"
+            "time": "2022-06-08T12:10:58+00:00"
         },
         {
             "name": "spryker/graceful-runner",
