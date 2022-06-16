@@ -241,16 +241,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.225.3",
+            "version": "3.225.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "ee717ffeb6d7c6bd0278b51b9f070b3571ac4eb0"
+                "reference": "09b404c6b80b9c31be15fa245e647a2f9fb5e733"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ee717ffeb6d7c6bd0278b51b9f070b3571ac4eb0",
-                "reference": "ee717ffeb6d7c6bd0278b51b9f070b3571ac4eb0",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/09b404c6b80b9c31be15fa245e647a2f9fb5e733",
+                "reference": "09b404c6b80b9c31be15fa245e647a2f9fb5e733",
                 "shasum": ""
             },
             "require": {
@@ -326,9 +326,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.225.3"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.225.5"
             },
-            "time": "2022-06-13T18:56:48+00:00"
+            "time": "2022-06-15T19:35:13+00:00"
         },
         {
             "name": "brick/math",
@@ -1927,22 +1927,22 @@
         },
         {
             "name": "laminas/laminas-validator",
-            "version": "2.19.0",
+            "version": "2.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-validator.git",
-                "reference": "4875d4e58b6f728981bb767a60530540f82ee1df"
+                "reference": "ba665f5a52763dda5a747c4ad826d2adf1510486"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-validator/zipball/4875d4e58b6f728981bb767a60530540f82ee1df",
-                "reference": "4875d4e58b6f728981bb767a60530540f82ee1df",
+                "url": "https://api.github.com/repos/laminas/laminas-validator/zipball/ba665f5a52763dda5a747c4ad826d2adf1510486",
+                "reference": "ba665f5a52763dda5a747c4ad826d2adf1510486",
                 "shasum": ""
             },
             "require": {
-                "container-interop/container-interop": "^1.1",
+                "laminas/laminas-servicemanager": "^3.12.0",
                 "laminas/laminas-stdlib": "^3.10",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0"
+                "php": "^7.4 || ~8.0.0 || ~8.1.0"
             },
             "conflict": {
                 "zendframework/zend-validator": "*"
@@ -1951,27 +1951,24 @@
                 "laminas/laminas-cache": "^2.6.1",
                 "laminas/laminas-coding-standard": "~2.2.1",
                 "laminas/laminas-db": "^2.7",
-                "laminas/laminas-filter": "^2.6",
+                "laminas/laminas-filter": "^2.14.0",
                 "laminas/laminas-http": "^2.14.2",
-                "laminas/laminas-i18n": "^2.6",
-                "laminas/laminas-math": "^2.6",
-                "laminas/laminas-servicemanager": "^2.7.11 || ^3.0.3",
-                "laminas/laminas-session": "^2.8",
-                "laminas/laminas-uri": "^2.7",
+                "laminas/laminas-i18n": "^2.15.0",
+                "laminas/laminas-session": "^2.12.1",
+                "laminas/laminas-uri": "^2.9.1",
                 "phpspec/prophecy-phpunit": "^2.0",
                 "phpunit/phpunit": "^9.5.5",
                 "psalm/plugin-phpunit": "^0.15.0",
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0",
-                "vimeo/psalm": "^4.3"
+                "vimeo/psalm": "^4.23"
             },
             "suggest": {
                 "laminas/laminas-db": "Laminas\\Db component, required by the (No)RecordExists validator",
                 "laminas/laminas-filter": "Laminas\\Filter component, required by the Digits validator",
                 "laminas/laminas-i18n": "Laminas\\I18n component to allow translation of validation error messages",
                 "laminas/laminas-i18n-resources": "Translations of validator messages",
-                "laminas/laminas-math": "Laminas\\Math component, required by the Csrf validator",
                 "laminas/laminas-servicemanager": "Laminas\\ServiceManager component to allow using the ValidatorPluginManager and validator chains",
                 "laminas/laminas-session": "Laminas\\Session component, ^2.8; required by the Csrf validator",
                 "laminas/laminas-uri": "Laminas\\Uri component, required by the Uri and Sitemap\\Loc validators",
@@ -2013,7 +2010,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-06-09T21:49:40+00:00"
+            "time": "2022-06-14T12:31:18+00:00"
         },
         {
             "name": "lcobucci/clock",
@@ -62954,16 +62951,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "4.1.31",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "15524571ae0686a7facc2eb1f40f600e5bbce9e5"
+                "reference": "e646d160bf1223d3595b227b69d903777fbcfb5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/15524571ae0686a7facc2eb1f40f600e5bbce9e5",
-                "reference": "15524571ae0686a7facc2eb1f40f600e5bbce9e5",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/e646d160bf1223d3595b227b69d903777fbcfb5f",
+                "reference": "e646d160bf1223d3595b227b69d903777fbcfb5f",
                 "shasum": ""
             },
             "require": {
@@ -63026,11 +63023,11 @@
                 {
                     "name": "Michael Bodnarchuk",
                     "email": "davert@mail.ua",
-                    "homepage": "http://codegyre.com"
+                    "homepage": "https://codegyre.com"
                 }
             ],
             "description": "BDD-style testing framework",
-            "homepage": "http://codeception.com/",
+            "homepage": "https://codeception.com/",
             "keywords": [
                 "BDD",
                 "TDD",
@@ -63040,7 +63037,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/Codeception/issues",
-                "source": "https://github.com/Codeception/Codeception/tree/4.1.31"
+                "source": "https://github.com/Codeception/Codeception/tree/4.2.0"
             },
             "funding": [
                 {
@@ -63048,7 +63045,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-03-13T17:07:08+00:00"
+            "time": "2022-06-16T05:33:39+00:00"
         },
         {
             "name": "codeception/lib-asserts",
@@ -65625,16 +65622,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.6.2",
+            "version": "1.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "76150ae7512439b4e6903db834e4a327596b617d"
+                "reference": "4a07085f74cb1f3fc7103efa537d9f00ebb74ec7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/76150ae7512439b4e6903db834e4a327596b617d",
-                "reference": "76150ae7512439b4e6903db834e4a327596b617d",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/4a07085f74cb1f3fc7103efa537d9f00ebb74ec7",
+                "reference": "4a07085f74cb1f3fc7103efa537d9f00ebb74ec7",
                 "shasum": ""
             },
             "require": {
@@ -65664,9 +65661,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.6.2"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.6.3"
             },
-            "time": "2022-06-10T09:29:33+00:00"
+            "time": "2022-06-14T11:40:08+00:00"
         },
         {
             "name": "phpstan/phpstan",
