@@ -187,7 +187,7 @@ class CalculationBusinessTester extends Actor
     }
 
     /**
-     * @param array<string, mixed> $discountsData
+     * @param array<array<string, mixed>> $discountsData
      *
      * @return array<\Generated\Shared\Transfer\DiscountTransfer>
      */
@@ -217,6 +217,7 @@ class CalculationBusinessTester extends Actor
                 continue;
             }
 
+            /** @var \Generated\Shared\Transfer\DiscountVoucherTransfer $discountVoucherTransfer */
             $discountVoucherTransfer = $this->haveGeneratedVoucherCodes([
                 DiscountVoucherTransfer::ID_DISCOUNT => $discountGeneralTransfer->getIdDiscount(),
             ]);

@@ -198,7 +198,7 @@ class Case3Test extends Unit
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array<string, mixed>
+     * @return array<array<string, mixed>>
      */
     protected function getDiscountsData(QuoteTransfer $quoteTransfer): array
     {

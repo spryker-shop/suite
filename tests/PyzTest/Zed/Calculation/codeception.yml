@@ -21,7 +21,7 @@ suites:
                 - \SprykerTest\Shared\Testify\Helper\Environment
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
                       projectNamespaces: ['Pyz']
-
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
                 - \SprykerTest\Shared\Currency\Helper\CurrencyDataHelper
                 - \SprykerTest\Shared\Store\Helper\StoreDataHelper
                 - \SprykerTest\Shared\Discount\Helper\DiscountDataHelper
@@ -33,3 +33,5 @@ suites:
                 - \SprykerTest\Shared\Product\Helper\ProductDataHelper
                 - \SprykerTest\Shared\Availability\Helper\AvailabilityDataHelper
                 - \SprykerTest\Shared\Stock\Helper\StockDataHelper
+                - \SprykerTest\Shared\Customer\Helper\CustomerDataHelper
+                - \SprykerTest\Zed\CustomerGroup\Helper\CustomerGroupHelper
