@@ -861,16 +861,17 @@ class GuestCartsRestApiCest
             [$this->fixtures->getProductConcreteTransfer1()],
         );
         $guestQuoteUuid = $quoteTransfer->getUuid();
+        $itemGroupKey = $I->getGroupKeyFromQuote($quoteTransfer, $this->fixtures->getProductConcreteTransfer1()->getSku());
 
         // Act
         $I->sendPATCH(
             $I->formatUrl(
-                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemSku}?include={resourceGuestCartItems}',
+                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemId}?include={resourceGuestCartItems}',
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
+                    'itemId' => $itemGroupKey,
                 ],
             ),
             [
@@ -894,7 +895,7 @@ class GuestCartsRestApiCest
         $I->seeCartItemQuantityEqualsToQuantityInRequest(
             $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
             CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            $this->fixtures->getProductConcreteTransfer1()->getSku(),
+            $itemGroupKey,
         );
 
         $I->seeSingleResourceHasSelfLink(

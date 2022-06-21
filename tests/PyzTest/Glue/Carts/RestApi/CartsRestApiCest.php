@@ -644,6 +644,8 @@ class CartsRestApiCest
             ],
         );
 
+        $quoteTransfer = $I->getLocator()->quote()->facade()->findQuoteByUuid($quoteTransfer)->getQuoteTransfer();
+
         // Assert
         $I->seeResponseCodeIs(HttpCode::CREATED);
         $I->seeResponseMatchesOpenApiSchema();
@@ -660,7 +662,7 @@ class CartsRestApiCest
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $this->fixtures->getProductConcreteTransfer()->getSku(),
+                $I->getGroupKeyFromQuote($quoteTransfer, $this->fixtures->getProductConcreteTransfer()->getSku()),
             );
 
         $I->seeSingleResourceHasSelfLink(
@@ -818,15 +820,17 @@ class CartsRestApiCest
             [$this->fixtures->getProductConcreteTransfer()],
         );
 
+        $itemGroupKey = $I->getGroupKeyFromQuote($quoteTransfer, $this->fixtures->getProductConcreteTransfer()->getSku());
+
         // Act
         $I->sendPATCH(
             $I->formatUrl(
-                '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}?include={resourceCartItems}',
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemId}?include={resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $quoteTransfer->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
+                    'itemId' => $itemGroupKey,
                 ],
             ),
             [
@@ -850,7 +854,7 @@ class CartsRestApiCest
         $I->seeCartItemQuantityEqualsToQuantityInRequest(
             $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            $this->fixtures->getProductConcreteTransfer()->getSku(),
+            $itemGroupKey,
         );
     }
 
