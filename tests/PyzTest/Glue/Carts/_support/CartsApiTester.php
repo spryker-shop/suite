@@ -58,7 +58,7 @@ class CartsApiTester extends ApiEndToEndTester
         CustomerTransfer $customerTransfer,
         array $productConcreteTransfers
     ): QuoteTransfer {
-        return $I->havePersistentQuote([
+        $quoteTransfer = $I->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,
             QuoteTransfer::TOTALS => (new TotalsTransfer())
                 ->setSubtotal(random_int(1000, 10000))
@@ -67,6 +67,28 @@ class CartsApiTester extends ApiEndToEndTester
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
             QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
         ]);
+
+        $quoteTransfer = $I->getLocator()->cart()->facade()->reloadItems($quoteTransfer);
+        $I->getLocator()->quote()->facade()->updateQuote($quoteTransfer);
+
+        return $quoteTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param string $sku
+     *
+     * @return string|null
+     */
+    public function getGroupKeyFromQuote(QuoteTransfer $quoteTransfer, string $sku): ?string
+    {
+        foreach ($quoteTransfer->getItems() as $itemTransfer) {
+            if ($itemTransfer->getSku() === $sku) {
+                return $itemTransfer->getGroupKey();
+            }
+        }
+
+        return null;
     }
 
     /**

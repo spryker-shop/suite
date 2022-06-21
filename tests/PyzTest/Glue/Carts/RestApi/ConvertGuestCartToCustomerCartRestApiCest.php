@@ -82,7 +82,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
         // Arrange
         $this->authorizeCustomer($I);
         $quoteUuid = $this->fixtures->getGuestQuoteTransfer()->getUuid();
-        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
+        $itemGroupKey = $this->fixtures->getGuestQuoteTransfer()->getItems()->offsetGet(0)->getGroupKey();
         $url = $I->buildCartUrl($quoteUuid, [CartsRestApiConfig::RESOURCE_CART_ITEMS]);
 
         // Act
@@ -105,7 +105,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $productConcreteSku,
+                $itemGroupKey,
             );
     }
 
