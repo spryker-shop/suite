@@ -4649,55 +4649,6 @@
             "time": "2021-08-18T11:38:10+00:00"
         },
         {
-            "name": "spryker-sdk/async-api",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-sdk/async-api.git",
-                "reference": "b147ab39b3ebb5ad123944be3372a67f9355471e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/async-api/zipball/b147ab39b3ebb5ad123944be3372a67f9355471e",
-                "reference": "b147ab39b3ebb5ad123944be3372a67f9355471e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.4"
-            },
-            "require-dev": {
-                "codeception/codeception": "*",
-                "codeception/module-asserts": "*",
-                "sllh/composer-versions-check": "^2.0",
-                "spryker-sdk/architector": "0.1.x-dev",
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "^3.43",
-                "symfony/filesystem": "^5.3",
-                "symfony/var-dumper": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerSdk\\AsyncApi\\": "src/SprykerSdk/AsyncApi"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "SDK for AsyncAPI.",
-            "support": {
-                "issues": "https://github.com/spryker-sdk/async-api/issues",
-                "source": "https://github.com/spryker-sdk/async-api/tree/0.1.0"
-            },
-            "time": "2022-01-26T07:19:27+00:00"
-        },
-        {
             "name": "spryker-shop/agent-page",
             "version": "1.10.0",
             "source": {
@@ -34449,21 +34400,20 @@
         },
         {
             "name": "spryker/message-broker",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/message-broker.git",
-                "reference": "2eadf758148c901e1f9be0a98765554894a7d6ea"
+                "reference": "8200df6cc75b2094d42660d9fe8513a2f4f232bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/message-broker/zipball/2eadf758148c901e1f9be0a98765554894a7d6ea",
-                "reference": "2eadf758148c901e1f9be0a98765554894a7d6ea",
+                "url": "https://api.github.com/repos/spryker/message-broker/zipball/8200df6cc75b2094d42660d9fe8513a2f4f232bd",
+                "reference": "8200df6cc75b2094d42660d9fe8513a2f4f232bd",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4",
-                "spryker-sdk/async-api": "^0.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^3.0.0",
                 "spryker/message-broker-extension": "^1.0.0",
@@ -34474,6 +34424,7 @@
                 "symfony/messenger": "^5.0.0 || ^6.0.0"
             },
             "require-dev": {
+                "spryker-sdk/async-api": "^0.2.0",
                 "spryker/application": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/console": "*",
@@ -34504,9 +34455,9 @@
             ],
             "description": "MessageBroker module",
             "support": {
-                "source": "https://github.com/spryker/message-broker/tree/1.1.1"
+                "source": "https://github.com/spryker/message-broker/tree/1.2.0"
             },
-            "time": "2022-06-08T07:31:04+00:00"
+            "time": "2022-06-23T14:51:04+00:00"
         },
         {
             "name": "spryker/message-broker-aws",
@@ -64238,12 +64189,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "11e9959926d90dd21f1f36c22dc30dc09cfd7c5b"
+                "reference": "d9c383ec1e68b13d370507063431e10efeb93f1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/11e9959926d90dd21f1f36c22dc30dc09cfd7c5b",
-                "reference": "11e9959926d90dd21f1f36c22dc30dc09cfd7c5b",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/d9c383ec1e68b13d370507063431e10efeb93f1f",
+                "reference": "d9c383ec1e68b13d370507063431e10efeb93f1f",
                 "shasum": ""
             },
             "require-dev": {
@@ -64279,7 +64230,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2022-06-21T10:12:53+00:00"
+            "time": "2022-06-22T14:57:28+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -67484,12 +67435,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/composer-constrainer.git",
-                "reference": "5d5438491b2f06866e04687ded3c5e3f1a45e8bc"
+                "reference": "d39c6f9529a8af60d6ef986af68822d7b29bb9f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/5d5438491b2f06866e04687ded3c5e3f1a45e8bc",
-                "reference": "5d5438491b2f06866e04687ded3c5e3f1a45e8bc",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/d39c6f9529a8af60d6ef986af68822d7b29bb9f0",
+                "reference": "d39c6f9529a8af60d6ef986af68822d7b29bb9f0",
                 "shasum": ""
             },
             "require": {
@@ -67525,9 +67476,9 @@
             "description": "ComposerConstrainer module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/composer-constrainer/issues",
-                "source": "https://github.com/spryker-sdk/composer-constrainer/tree/master"
+                "source": "https://github.com/spryker-sdk/composer-constrainer/tree/0.2.6"
             },
-            "time": "2022-06-23T11:38:56+00:00"
+            "time": "2022-04-22T09:58:49+00:00"
         },
         {
             "name": "spryker-sdk/load-testing",
