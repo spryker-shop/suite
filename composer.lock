@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26a658cc96c3c7bd5b3177938b8caa18",
+    "content-hash": "041a7f40ffa1b86eca087e0bf75f4030",
     "packages": [
         {
             "name": "async-aws/core",
@@ -5685,7 +5685,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "419745a5915de8fcec79fae7cb19b69611b34b3f"
+                "reference": "cbc6c52b06f0a372bf73befee6142916220f86d8"
             },
             "require": {
                 "php": ">=7.4"
@@ -6605,7 +6605,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2022-06-23T11:37:14+00:00"
+            "time": "2022-06-23T14:51:04+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -15735,31 +15735,38 @@
         },
         {
             "name": "spryker-sdk/async-api",
-            "version": "0.1.0",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/async-api.git",
-                "reference": "b147ab39b3ebb5ad123944be3372a67f9355471e"
+                "reference": "00dabd7ce09a2dd7fa1ed7a93c63f43e1930c98f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/async-api/zipball/b147ab39b3ebb5ad123944be3372a67f9355471e",
-                "reference": "b147ab39b3ebb5ad123944be3372a67f9355471e",
+                "url": "https://api.github.com/repos/spryker-sdk/async-api/zipball/00dabd7ce09a2dd7fa1ed7a93c63f43e1930c98f",
+                "reference": "00dabd7ce09a2dd7fa1ed7a93c63f43e1930c98f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4"
+                "php": ">=7.4",
+                "spryker-sdk/spryk": "^0.4.0",
+                "symfony/console": "^4.0.0 || ^5.3 || ^6.0",
+                "symfony/finder": "^4.0.0 || ^5.3 || ^6.0",
+                "symfony/process": "^4.0.0 || ^5.4",
+                "symfony/property-access": "^4.0.0 || ^5.4"
             },
             "require-dev": {
                 "codeception/codeception": "*",
                 "codeception/module-asserts": "*",
+                "mikey179/vfsstream": "^1.6",
                 "sllh/composer-versions-check": "^2.0",
                 "spryker-sdk/architector": "0.1.x-dev",
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "^3.43",
-                "symfony/filesystem": "^5.3",
+                "spryker/code-sniffer": "dev-master",
                 "symfony/var-dumper": "*"
             },
+            "bin": [
+                "bin/asyncapi"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -15768,7 +15775,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "SprykerSdk\\AsyncApi\\": "src/SprykerSdk/AsyncApi"
+                    "Transfer\\": "src/Transfer/",
+                    "SprykerSdk\\AsyncApi\\": "src/SprykerSdk/AsyncApi/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -15778,9 +15786,9 @@
             "description": "SDK for AsyncAPI.",
             "support": {
                 "issues": "https://github.com/spryker-sdk/async-api/issues",
-                "source": "https://github.com/spryker-sdk/async-api/tree/0.1.0"
+                "source": "https://github.com/spryker-sdk/async-api/tree/0.2.3"
             },
-            "time": "2022-01-26T07:19:27+00:00"
+            "time": "2022-05-20T10:04:05+00:00"
         },
         {
             "name": "spryker-sdk/benchmark",
@@ -17654,6 +17662,12 @@
             "version": "9999999-dev",
             "alias": "2.11.0",
             "alias_normalized": "2.11.0.0"
+        },
+        {
+            "package": "spryker-sdk/spryk",
+            "version": "9999999-dev",
+            "alias": "0.4.x-dev",
+            "alias_normalized": "0.4.9999999.9999999-dev"
         }
     ],
     "minimum-stability": "dev",
