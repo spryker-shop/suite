@@ -10,6 +10,7 @@ namespace PyzTest\Zed\AclEntity;
 use Codeception\Actor;
 use Codeception\Stub;
 use Generated\Shared\Transfer\AclEntityMetadataCollectionTransfer;
+use Generated\Shared\Transfer\AclEntityMetadataConfigTransfer;
 use Generated\Shared\Transfer\AclEntityMetadataTransfer;
 use Generated\Shared\Transfer\AclEntityParentConnectionMetadataTransfer;
 use Generated\Shared\Transfer\AclEntityParentMetadataTransfer;
@@ -17,6 +18,7 @@ use Generated\Shared\Transfer\AclEntityRuleTransfer;
 use Generated\Shared\Transfer\AclEntitySegmentCriteriaTransfer;
 use Generated\Shared\Transfer\AclEntitySegmentRequestTransfer;
 use Generated\Shared\Transfer\AclRoleCriteriaTransfer;
+use Generated\Shared\Transfer\MerchantProductTransfer;
 use Generated\Shared\Transfer\MerchantTransfer;
 use Generated\Shared\Transfer\RolesTransfer;
 use Generated\Shared\Transfer\RoleTransfer;
@@ -35,6 +37,7 @@ use Orm\Zed\ProductImage\Persistence\SpyProductImageSet;
 use Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage;
 use Orm\Zed\ProductOffer\Persistence\SpyProductOffer;
 use Orm\Zed\ProductOffer\Persistence\SpyProductOfferQuery;
+use PyzTest\Zed\AclEntity\Plugin\AclEntityMetadataConfigExpanderPluginMock;
 use Spryker\Shared\AclEntity\AclEntityConstants;
 use Spryker\Zed\AclEntity\Dependency\Facade\AclEntityToAclFacadeBridge;
 use Spryker\Zed\AclEntity\Dependency\Facade\AclEntityToAclFacadeBridgeInterface;
@@ -42,10 +45,14 @@ use Spryker\Zed\AclEntity\Dependency\Facade\AclEntityToUserFacadeBridge;
 use Spryker\Zed\AclEntity\Dependency\Facade\AclEntityToUserFacadeBridgeInterface;
 use Spryker\Zed\AclEntity\Persistence\AclEntityPersistenceFactory;
 use Spryker\Zed\AclEntity\Persistence\AclEntityRepository;
+use Spryker\Zed\AclEntity\Persistence\Propel\AclDirector\AclModelDirector;
+use Spryker\Zed\AclEntity\Persistence\Propel\AclDirector\AclModelDirectorInterface;
 use Spryker\Zed\AclEntity\Persistence\Propel\AclDirector\AclQueryDirector;
 use Spryker\Zed\AclEntity\Persistence\Propel\AclDirector\AclQueryDirectorInterface;
-use Spryker\Zed\AclEntity\Persistence\Provider\AclRoleProvider;
-use Spryker\Zed\AclEntity\Persistence\Provider\AclRoleProviderInterface;
+use Spryker\Zed\AclEntity\Persistence\Propel\Provider\AclEntityRuleProvider;
+use Spryker\Zed\AclEntity\Persistence\Propel\Provider\AclRoleProvider;
+use Spryker\Zed\AclEntity\Persistence\Propel\Provider\AclRoleProviderInterface;
+use Spryker\Zed\AclEntityExtension\Dependency\Plugin\AclEntityMetadataConfigExpanderPluginInterface;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 /**
@@ -297,6 +304,14 @@ class AclQueryDirectorTester extends Actor
     }
 
     /**
+     * @return \Spryker\Zed\AclEntityExtension\Dependency\Plugin\AclEntityMetadataConfigExpanderPluginInterface
+     */
+    public function getProductAbstractMerchantAclEntityMetadataConfigExpanderPlugin(): AclEntityMetadataConfigExpanderPluginInterface
+    {
+        return new AclEntityMetadataConfigExpanderPluginMock();
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\RolesTransfer $rolesTransfer
      * @param \Generated\Shared\Transfer\AclEntityMetadataCollectionTransfer|null $aclEntityMetadataCollectionTransfer
      * @param \Spryker\Zed\Kernel\AbstractBundleConfig|null $bundleConfig
@@ -313,14 +328,46 @@ class AclQueryDirectorTester extends Actor
             $factory->setConfig($bundleConfig);
         }
         $aclEntityMetadataCollectionTransfer = $aclEntityMetadataCollectionTransfer ?: new AclEntityMetadataCollectionTransfer();
+        $aclEntityConfigTransfer = new AclEntityMetadataConfigTransfer();
+        $aclEntityConfigTransfer->setAclEntityMetadataCollection($aclEntityMetadataCollectionTransfer);
 
         return new AclQueryDirector(
-            new AclEntityRepository(),
-            $factory->createAclDirectorStrategyResolver($aclEntityMetadataCollectionTransfer),
-            $factory->createAclEntityMetadataReader($aclEntityMetadataCollectionTransfer),
-            $factory->createRelationResolver($aclEntityMetadataCollectionTransfer),
-            $this->getAclRoleProviderMock($rolesTransfer),
+            $factory->createAclJoinDirector($aclEntityConfigTransfer),
+            new AclEntityRuleProvider($this->getAclRoleProviderMock($rolesTransfer), new AclEntityRepository()),
+            $factory->createAclQueryScopeResolver($aclEntityConfigTransfer),
+            $factory->createAclEntityMetadataReader($aclEntityConfigTransfer),
+            $factory->createAclQueryExpander($aclEntityConfigTransfer),
             $factory->createAclEntityQueryMerger(),
+            $this->createAclModelDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer, $bundleConfig),
+        );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\RolesTransfer $rolesTransfer
+     * @param \Generated\Shared\Transfer\AclEntityMetadataCollectionTransfer|null $aclEntityMetadataCollectionTransfer
+     * @param \Spryker\Zed\Kernel\AbstractBundleConfig|null $bundleConfig
+     *
+     * @return \Spryker\Zed\AclEntity\Persistence\Propel\AclDirector\AclModelDirectorInterface
+     */
+    public function createAclModelDirector(
+        RolesTransfer $rolesTransfer,
+        ?AclEntityMetadataCollectionTransfer $aclEntityMetadataCollectionTransfer = null,
+        ?AbstractBundleConfig $bundleConfig = null
+    ): AclModelDirectorInterface {
+        $factory = new AclEntityPersistenceFactory();
+        if ($bundleConfig) {
+            $factory->setConfig($bundleConfig);
+        }
+        $aclEntityMetadataCollectionTransfer = $aclEntityMetadataCollectionTransfer ?: new AclEntityMetadataCollectionTransfer();
+        $aclEntityMetadataConfigTransfer = new AclEntityMetadataConfigTransfer();
+        $aclEntityMetadataConfigTransfer->setAclEntityMetadataCollection($aclEntityMetadataCollectionTransfer);
+
+        return new AclModelDirector(
+            $factory->createAclEntityMetadataReader($aclEntityMetadataConfigTransfer),
+            new AclEntityRuleProvider($this->getAclRoleProviderMock($rolesTransfer), new AclEntityRepository()),
+            $factory->createAclModelScopeResolver($aclEntityMetadataConfigTransfer),
+            $factory->createAclRelationReader($aclEntityMetadataConfigTransfer),
+            $factory->getPropelServiceContainer(),
         );
     }
 
@@ -549,6 +596,22 @@ class AclQueryDirectorTester extends Actor
     }
 
     /**
+     * @return \Generated\Shared\Transfer\MerchantProductTransfer
+     */
+    public function createMerchantProduct(): MerchantProductTransfer
+    {
+        $merchantTransfer = $this->haveMerchant();
+        $productConcreteTransfer = $this->haveProduct();
+
+        return $this->haveMerchantProduct(
+            [
+                MerchantProductTransfer::ID_MERCHANT => $merchantTransfer->getIdMerchantOrFail(),
+                MerchantProductTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstractOrFail(),
+            ],
+        );
+    }
+
+    /**
      * @param string $string
      *
      * @return string
@@ -561,7 +624,7 @@ class AclQueryDirectorTester extends Actor
     /**
      * @param \Generated\Shared\Transfer\RolesTransfer $rolesTransfer
      *
-     * @return \Spryker\Zed\AclEntity\Persistence\Provider\AclRoleProviderInterface
+     * @return \Spryker\Zed\AclEntity\Persistence\Propel\Provider\AclRoleProviderInterface
      */
     protected function getAclRoleProviderMock(RolesTransfer $rolesTransfer): AclRoleProviderInterface
     {

@@ -15,7 +15,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
  * @method \Pyz\Zed\ProductOfferStockDataImport\ProductOfferStockDataImportConfig getConfig()
- * @method \Pyz\Zed\ProductOfferStockDataImport\Business\ProductOfferStockDataImportFacade getFacade()
+ * @method \Pyz\Zed\ProductOfferStockDataImport\Business\ProductOfferStockDataImportFacadeInterface getFacade()
  */
 class CombinedProductOfferStockDataImportPlugin extends AbstractPlugin implements DataImportPluginInterface
 {

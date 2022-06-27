@@ -14,7 +14,7 @@ use SprykerShop\Yves\ShopCmsSlot\ShopCmsSlotDependencyProvider as SprykerShopSho
 class ShopCmsSlotDependencyProvider extends SprykerShopShopCmsSlotDependencyProvider
 {
     /**
-     * @return array<\SprykerShop\Yves\ShopCmsSlotExtension\Dependency\Plugin\CmsSlotContentPluginInterface>
+     * @return array<string, \SprykerShop\Yves\ShopCmsSlotExtension\Dependency\Plugin\CmsSlotContentPluginInterface>
      */
     protected function getCmsSlotContentPlugins(): array
     {

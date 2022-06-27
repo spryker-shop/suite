@@ -25,18 +25,22 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     protected const BULK_SIZE = ProductPriceHydratorStep::BULK_SIZE;
 
     protected const COLUMN_PRICE_TYPE = ProductPriceHydratorStep::COLUMN_PRICE_TYPE;
+
     protected const COLUMN_PRICE_DATA = ProductPriceHydratorStep::COLUMN_PRICE_DATA;
+
     protected const COLUMN_PRICE_DATA_CHECKSUM = ProductPriceHydratorStep::COLUMN_PRICE_DATA_CHECKSUM;
+
     protected const COLUMN_STORE = ProductPriceHydratorStep::COLUMN_STORE;
+
     protected const COLUMN_CURRENCY = ProductPriceHydratorStep::COLUMN_CURRENCY;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected static $priceProductAbstractCollection = [];
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected static $priceProductConcreteCollection = [];
 
@@ -168,7 +172,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      *
      * @return void
      */
@@ -191,7 +195,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $priceProductConcreteCollection
+     * @param array<mixed> $priceProductConcreteCollection
      *
      * @return void
      */
@@ -214,7 +218,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      *
      * @return void
      */
@@ -237,7 +241,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      *
      * @return void
      */
@@ -268,7 +272,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      * @param string $tableName
      * @param string $productKey
      *
@@ -354,7 +358,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
      * @param string $productIdKey
      * @param string $productFkKey
      *
-     * @return array
+     * @return array<mixed>
      */
     abstract protected function addPriceProductEvents(string $productIdKey, string $productFkKey): array;
 
@@ -389,7 +393,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $priceProductCollection
+     * @param array<mixed> $priceProductCollection
      * @param string $productTableName
      * @param string $productIdKey
      * @param string $productFkKey

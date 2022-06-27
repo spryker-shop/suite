@@ -7,6 +7,12 @@
 
 namespace Pyz\Yves\QuickOrderPage;
 
+use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\QuickOrderPage\MerchantProductOfferQuickOrderFormColumnPlugin;
+use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\QuickOrderPage\MerchantProductOfferQuickOrderFormExpanderPlugin;
+use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\QuickOrderPage\MerchantProductOfferQuickOrderItemExpanderPlugin;
+use SprykerShop\Yves\MerchantProductWidget\Plugin\QuickOrderPage\MerchantProductQuickOrderItemExpanderPlugin;
+use SprykerShop\Yves\MerchantWidget\Plugin\QuickOrderPage\MerchantQuickOrderItemMapperPlugin;
+use SprykerShop\Yves\ProductOfferWidget\Plugin\QuickOrderPage\ProductOfferQuickOrderItemMapperPlugin;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\QuickOrder\QuickOrderItemDefaultPackagingUnitExpanderPlugin;
 use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrder\QuickOrderFormMeasurementUnitColumnPlugin;
 use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrderPage\QuickOrderCsvFileTemplateStrategyPlugin;
@@ -24,6 +30,8 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     {
         return [
             new QuickOrderItemDefaultPackagingUnitExpanderPlugin(),
+            new MerchantProductQuickOrderItemExpanderPlugin(),
+            new MerchantProductOfferQuickOrderItemExpanderPlugin(),
         ];
     }
 
@@ -43,6 +51,7 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     protected function getQuickOrderFormColumnPlugins(): array
     {
         return [
+            new MerchantProductOfferQuickOrderFormColumnPlugin(),
             new QuickOrderFormMeasurementUnitColumnPlugin(),
         ];
     }
@@ -74,6 +83,27 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     {
         return [
             new QuickOrderCsvUploadedFileValidatorStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\SprykerShop\Yves\QuickOrderPageExtension\Dependency\Plugin\QuickOrderFormExpanderPluginInterface>
+     */
+    protected function getQuickOrderFormExpanderPlugins(): array
+    {
+        return [
+            new MerchantProductOfferQuickOrderFormExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\SprykerShop\Yves\QuickOrderPageExtension\Dependency\Plugin\QuickOrderItemMapperPluginInterface>
+     */
+    protected function getQuickOrderItemMapperPlugins(): array
+    {
+        return [
+            new MerchantQuickOrderItemMapperPlugin(),
+            new ProductOfferQuickOrderItemMapperPlugin(),
         ];
     }
 }

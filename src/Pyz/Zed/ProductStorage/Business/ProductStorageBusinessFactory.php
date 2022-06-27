@@ -26,6 +26,7 @@ use Spryker\Zed\ProductStorage\Business\Storage\ProductConcreteStorageWriterInte
 
 /**
  * @method \Pyz\Zed\ProductStorage\ProductStorageConfig getConfig()
+ * @method \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface getQueryContainer()
  */
 class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
 {
@@ -45,6 +46,7 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
             $this->getStoreFacade(),
             $this->getConfig()->isSendingToQueue(),
             $this->getProductAbstractStorageExpanderPlugins(),
+            $this->getProductAbstractStorageCollectionFilterPlugins(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
             $this->createProductAbstractStorageCteStrategyResolver()->resolve(),
@@ -99,6 +101,8 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
             $this->getProductFacade(),
             $this->getQueryContainer(),
             $this->getConfig()->isSendingToQueue(),
+            $this->getProductConcreteStorageCollectionExpanderPlugins(),
+            $this->getProductConcreteStorageCollectionFilterPlugins(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
             $this->createProductConcreteStorageCteStrategyResolver()->resolve(),

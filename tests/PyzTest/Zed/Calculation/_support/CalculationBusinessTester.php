@@ -187,7 +187,7 @@ class CalculationBusinessTester extends Actor
     }
 
     /**
-     * @param array<string, mixed> $discountsData
+     * @param array<array<string, mixed>> $discountsData
      *
      * @return array<\Generated\Shared\Transfer\DiscountTransfer>
      */
@@ -217,6 +217,7 @@ class CalculationBusinessTester extends Actor
                 continue;
             }
 
+            /** @var \Generated\Shared\Transfer\DiscountVoucherTransfer $discountVoucherTransfer */
             $discountVoucherTransfer = $this->haveGeneratedVoucherCodes([
                 DiscountVoucherTransfer::ID_DISCOUNT => $discountGeneralTransfer->getIdDiscount(),
             ]);
@@ -578,7 +579,8 @@ class CalculationBusinessTester extends Actor
         foreach ($discountTransfers as $discountTransfer) {
             $discountPromotionTransfer = $discountTransfer->getDiscountPromotion();
             if ($discountPromotionTransfer) {
-                $discountPromotionTransfers[$discountPromotionTransfer->getAbstractSku()] = $discountPromotionTransfer;
+                $abstractSku = $discountPromotionTransfer->getAbstractSkus()[0] ?? $discountPromotionTransfer->getAbstractSku();
+                $discountPromotionTransfers[$abstractSku] = $discountPromotionTransfer;
             }
         }
 
@@ -598,6 +600,9 @@ class CalculationBusinessTester extends Actor
         $discountPromotionTransfer = $this->haveDiscountPromotion([
             DiscountPromotionTransfer::FK_DISCOUNT => $discountGeneralTransfer->getIdDiscount(),
             DiscountPromotionTransfer::ABSTRACT_SKU => $skuPromotionalProductAbstract,
+            DiscountPromotionTransfer::ABSTRACT_SKUS => [
+                $skuPromotionalProductAbstract,
+            ],
         ]);
 
         $productFacade = $this->getLocator()->product()->facade();

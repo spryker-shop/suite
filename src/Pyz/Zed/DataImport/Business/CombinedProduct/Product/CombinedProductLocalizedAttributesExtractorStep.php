@@ -12,14 +12,6 @@ use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtracto
 class CombinedProductLocalizedAttributesExtractorStep extends ProductLocalizedAttributesExtractorStep
 {
     /**
-     * @param array $defaultAttributes
-     */
-    public function __construct(array $defaultAttributes = [])
-    {
-        parent::__construct($defaultAttributes);
-    }
-
-    /**
      * @return string
      */
     protected function getAttributeKeyPrefix(): string

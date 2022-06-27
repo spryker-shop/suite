@@ -253,7 +253,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
-     * @param array $localizedAttributes
+     * @param array<string, mixed> $localizedAttributes
      *
      * @return string
      */
@@ -270,7 +270,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
-     * @param array $localizedAttributes
+     * @param array<string, mixed> $localizedAttributes
      *
      * @return string|null
      */
@@ -287,7 +287,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
-     * @param array $localizedAttributes
+     * @param array<string, mixed> $localizedAttributes
      *
      * @return string|null
      */
@@ -304,7 +304,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
-     * @param array $localizedAttributes
+     * @param array<string, mixed> $localizedAttributes
      * @param int $idLocale
      *
      * @return int|null
@@ -330,7 +330,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
-     * @param array $localizedAttributes
+     * @param array<string, mixed> $localizedAttributes
      *
      * @return string|null
      */

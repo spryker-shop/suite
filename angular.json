@@ -1,7 +1,6 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "version": 1,
-    "defaultProject": "merchant-portal",
     "projects": {
         "merchant-portal": {
             "root": ".",
@@ -15,7 +14,7 @@
                     "options": {
                         "customWebpackConfig": {
                             "path": "./frontend/merchant-portal/webpack.config.ts",
-                            "mergeStrategies": {}
+                            "mergeRules": {}
                         },
                         "indexTransform": "./frontend/merchant-portal/html-transform.js",
                         "outputPath": "public/MerchantPortal/assets/js",
@@ -40,10 +39,17 @@
                             "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/styles.less",
                             "src/Pyz/Zed/ZedUi/Presentation/Components/styles.less"
                         ],
-                        "scripts": [],
-                        "extractCss": true
+                        "scripts": []
                     },
                     "configurations": {
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        },
                         "production": {
                             "fileReplacements": [
                                 {
@@ -54,9 +60,7 @@
                             "optimization": true,
                             "outputHashing": "none",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
-                            "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": true,
                             "buildOptimizer": true,
@@ -68,7 +72,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "defaultConfiguration": "development"
                 },
                 "serve": {
                     "builder": "@angular-builders/custom-webpack:dev-server",
@@ -93,14 +98,15 @@
                     "builder": "@nrwl/jest:jest",
                     "options": {
                         "jestConfig": "frontend/merchant-portal/jest.config.js",
-                        "tsConfig": "frontend/merchant-portal/tsconfig.spec.json",
-                        "setupFile": "frontend/merchant-portal/test-setup.ts"
-                    }
+                        "passWithNoTests": true
+                    },
+                    "outputs": ["coverage/."]
                 }
             }
         }
     },
     "cli": {
         "analytics": false
-    }
+    },
+    "defaultProject": "merchant-portal"
 }

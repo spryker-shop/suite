@@ -1,0 +1,17 @@
+{
+    "affected": {
+        "defaultBase": "master"
+    },
+    "cli": {
+        "analytics": false
+    },
+    "defaultProject": "merchant-portal",
+    "targetDependencies": {
+        "build": [
+            {
+                "target": "build",
+                "projects": "dependencies"
+            }
+        ]
+    }
+}

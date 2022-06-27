@@ -10,7 +10,7 @@ namespace Pyz\Zed\Propel\Business\CTE;
 trait MariaDbDataFormatterTrait
 {
     /**
-     * @param array $values
+     * @param array<mixed> $values
      * @param int|null $minimumLength
      *
      * @return string
@@ -33,7 +33,7 @@ trait MariaDbDataFormatterTrait
     }
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      * @param int|null $minimumLength
      *
      * @return string

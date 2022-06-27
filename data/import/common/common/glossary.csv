@@ -27,6 +27,8 @@ cart.discounts,Rabatte,de_DE
 cart.discounts,Discounts,en_US
 cart.sales-order-threshold,Mindestbestellwert,de_DE
 cart.sales-order-threshold,Minimum Order Value,en_US
+cart.title.available_discounts,Verfügbare Rabatte,de_DE
+cart.title.available_discounts,Available discounts,en_US
 cart_widget.add_product.separate,Add as separate item,en_US
 cart_widget.add_product.separate,Als separaten Artikel hinzufügen,de_DE
 checkout.sales-order-threshold,Mindestbestellwert,de_DE
@@ -779,6 +781,8 @@ checkout.step.success.title,Your order has been placed successfully!,en_US
 checkout.step.success.title,Ihre Bestellung wurde erfolgreich durchgeführt!,de_DE
 checkout.step.success.text,Thank you for shopping with us!,en_US
 checkout.step.success.text,Danke für ihren Einkauf!,de_DE
+checkout.step.error.no-product-permission,"You are not allowed to buy the following products from your cart",en_US
+checkout.step.error.no-product-permission,"Sie dürfen nicht die folgende Produkte aus Ihrem Warenkorb kaufen",de_DE
 checkout.step.error.title,Your order has not been placed.,en_US
 checkout.step.error.title,Ihre Bestellung konnte leider nicht durchgeführt werden.,de_DE
 checkout.step.error.text,Something went wrong. Sorry.,en_US
@@ -1245,6 +1249,10 @@ cart.promotion.items,Promotional products,en_US
 cart.promotion.items,Werbeprodukte,de_DE
 checkout.payment_method.invalid,Checkout Zahlung ist ungültig,de_DE
 checkout.payment_method.invalid,Checkout payment is not valid,en_US
+payment.cancellation.title,Bezahlvorgang abgebrochen,de_DE
+payment.cancellation.title,Payment cancellation,en_US
+payment.cancellation.message,Du hast den Bezahlvorgang abgebrochen.,de_DE
+payment.cancellation.message,You have cancelled your payment.,en_US
 checkout.payment.provider.DummyPayment,Dummy Payment,en_US
 checkout.payment.provider.DummyPayment,Beispiel-Zahlungsart,de_DE
 checkout.payment.provider.DummyMarketplacePayment,Dummy Marketplace Payment,en_US
@@ -1259,12 +1267,16 @@ product-cart.validation.error.abstract-product-exists,"Product ""sku"" not found
 product-cart.validation.error.abstract-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
 product-cart.validation.error.concrete-product-exists,"Product ""sku"" not found",en_US
 product-cart.validation.error.concrete-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
+product-cart.validation.error.no-product-permission,"Sorry, You are not allowed to buy this product.",en_US
+product-cart.validation.error.no-product-permission,"Entschuldigung, Sie dürfen dieses Produkt nicht kaufen.",de_DE
 cart.item.option.pre.check.validation.error.exists,"Product option of %name% is not available anymore.",en_US
 cart.item.option.pre.check.validation.error.exists,"Produktoption von %name% ist nicht mehr verfügbar.",de_DE
 product-cart.validation.error.product-option-value-price-exists,Product option price not found for product '%sku%'.,en_US
 product-cart.validation.error.product-option-value-price-exists,Produktoptionspreis nicht gefunden für Produkt '%sku%'.,de_DE
 product-cart.validation.error.concrete-product-inactive,Product sku is not active.,en_US
 product-cart.validation.error.concrete-product-inactive,Produkt sku ist nicht aktiv.,de_DE
+product-approval.message.not-approved,Product sku %sku% is not active.,en_US
+product-approval.message.not-approved,Produkt sku %sku% ist nicht aktiv.,de_DE
 product-cart.info.concrete-product-inactive.removed,Inactive item %sku% was removed from your shopping cart.,en_US
 product-cart.info.concrete-product-inactive.removed,Der inaktive Artikel %sku% wurde aus Ihrem Warenkorb entfernt.,de_DE
 product-offer.info.product-offer-inactive.removed,Inactive item %sku% was removed from your shopping cart.,en_US
@@ -1645,6 +1657,8 @@ quick-order.input.placeholder,Search by SKU or Name,en_US
 quick-order.input.placeholder,Suche per SKU oder Name,de_DE
 quick-order.input-label.measurement_unit,Measuring Unit,en_US
 quick-order.input-label.measurement_unit,Maßeinheit,de_DE
+quick-order.input-label.merchant,Merchant,en_US
+quick-order.input-label.merchant,Händler,de_DE
 quick-order.input-label.price,Price,en_US
 quick-order.input-label.price,Preis,de_DE
 quick-order.search.no_results,Item cannot be found,en_US
@@ -2901,6 +2915,10 @@ quote_request.validation.error.company_user_not_found,Company User not found.,en
 quote_request.validation.error.company_user_not_found,Firmenbenutzer nicht gefunden.,de_DE
 quote_request.validation.error.empty_cart,Quote request can't be created from empty cart.,en_US
 quote_request.validation.error.empty_cart,Angebotsanfrage kann nicht aus leerem Einkaufswagen erstellt werden.,de_DE
+quote_request.validation.error.is_not_applicable,Quote request is not applicable for the given quote.,en_US
+quote_request.validation.error.is_not_applicable,Die Angebotsanfrage gilt nicht für das angegebene Angebot.,de_DE
+quote_request.validation.error.cart_is_empty,The cart is empty.,en_US
+quote_request.validation.error.cart_is_empty,Der Warenkorb ist leer.,de_DE
 quote_request.checkout.validation.error.version_not_found,Quote Request Version not found.,en_US
 quote_request.checkout.validation.error.version_not_found,Angebotsanforderung Version nicht gefunden.,de_DE
 quote_request.checkout.validation.error.not_found,Quote Request not found.,en_US
@@ -3038,13 +3056,19 @@ comment.validation.error.comment_not_found,Kommentar nicht gefunden.,de_DE
 comment.validation.error.comment_thread_not_found,Comment Thread not found.,en_US
 comment.validation.error.comment_thread_not_found,Kommentar Thread nicht gefunden.,de_DE
 comment.validation.error.access_denied,Access denied.,en_US
-comment.validation.error.access_denied,Zugriff verweigert.,en_US
-comment.validation.error.comment_thread_already_exists,Comment Thread already exists.,de_DE
+comment.validation.error.access_denied,Zugriff verweigert.,de_DE
+comment.validation.error.comment_thread_already_exists,Comment Thread already exists.,en_US
 comment.validation.error.comment_thread_already_exists,Kommentar Thread existiert bereits.,de_DE
 comment.validation.error.invalid_message_length,Invalid message length.,en_US
 comment.validation.error.invalid_message_length,Ungültige Nachrichtenlänge.,de_DE
 comment.validation.error.comment_tag_not_available,Comment tag not available.,en_US
 comment.validation.error.comment_tag_not_available,Kommentar-Tag nicht verfügbar.,de_DE
+comment.validation.error.customer_not_set,The comment cannot be created without a valid customer,en_US
+comment.validation.error.customer_not_set,Der Kommentar kann ohne gültigen Kunden nicht erstellt werden,de_DE
+comment.validation.error.company_user_not_set,The comment cannot be created without a valid company user,en_US
+comment.validation.error.company_user_not_set,Der Kommentar kann ohne gültigen Benutzer nicht erstellt werden,de_DE
+comment.validation.error.owner_not_set,The comment cannot be created on an unknown %owner%,en_US
+comment.validation.error.owner_not_set,Der Kommentar kann nicht für eine(n) unbekannte(n) %owner% erstellt werden,de_DE
 comment_widget.comments_to_cart,Comments to Cart,en_US
 comment_widget.comments_to_cart,Kommentare zum Warenkorb,de_DE
 comment_widget.form.add_comment,Add,en_US
@@ -3165,12 +3189,18 @@ merchant_product_offer.view_seller,View Seller,en_US
 merchant_product_offer.view_seller,Händler ansehen,de_DE
 merchant_product_offer.sold_by,Sold by,en_US
 merchant_product_offer.sold_by,Verkauft durch,de_DE
+merchant_product_offer_widget.merchant_name,Merchant,en_US
+merchant_product_offer_widget.merchant_name,Händler,de_DE
 merchant_product.message.invalid,Product "%sku%" with Merchant "%merchant_reference%" not found.,en_US
 merchant_product.message.invalid,Der Produkt "%sku%" mit dem Händler "%merchant_reference%" ist nicht gefunden.,de_DE
 merchant_product.sold_by,Sold by,en_US
 merchant_product.sold_by,Verkauft durch,de_DE
 merchant.sold_by,Sold by,en_US
 merchant.sold_by,Verkauft durch,de_DE
+merchant_search_widget.all_merchants,All Merchants,en_US
+merchant_search_widget.all_merchants,Alle Händler,de_DE
+merchant_search_widget.merchants,Merchants,en_US
+merchant_search_widget.merchants,Händler,de_DE
 merchant_sales_order.merchant_order_id,Merchant Order ID,en_US
 merchant_sales_order.merchant_order_id,Händlerbestell-ID,de_DE
 merchant_sales_return.message.items_from_different_merchant_detected,"There are products from different merchants in your order. You can only return products from one merchant at a time.",en_US
@@ -3541,6 +3571,10 @@ oms.state.gift-card-shipped,Gift card shipped,en_US
 oms.state.gift-card-shipped,Geschenkkarte verschickt,de_DE
 oms.state.invoice-generated,Invoice generated,en_US
 oms.state.invoice-generated,Rechnung generiert,de_DE
+oms.state.reservation-cancelled,Reservation Cancelled,en_US
+oms.state.reservation-cancelled,Reservation Cancelled,de_DE
+oms.state.reservation-cancellation-pending,Reservation Cancellation Pending,en_US
+oms.state.reservation-cancellation-pending,Reservation Cancellation Pending,de_DE
 return.create_return.validation.returnable_items_error,Return cannot be created as it contains non-returnable items,en_US
 return.create_return.validation.returnable_items_error,"Retoure kann nicht angestellt werden, weil sie die Artikel beinhaltet, die nicht retourniert werden können",de_DE
 return.create_return.validation.store_error,Return cannot be created - a wrong store has been selected,en_US
@@ -3823,3 +3857,23 @@ error.429,Zu viele Anfragen,de_DE
 error.429,Too Many Requests,en_US
 security_blocker_page.error.account_blocked,"Too many log in attempts from your address. Please wait %minutes% minutes before trying again.",en_US
 security_blocker_page.error.account_blocked,"Warten Sie bitte %minutes% Minuten, bevor Sie es erneut versuchen.",de_DE
+payment_foreign.thank_you,Danke,de_DE
+payment_foreign.thank_you,Thank you,en_US
+payment_foreign.go_to_my_account,Gehe zum "Benutzerkonto",de_DE
+payment_foreign.go_to_my_account,Go to "My Account",en_US
+payment_foreign.success.order.placement.message,Deine Bestellung ist erfolgreich bei uns eingegangen. Die Bestellbestätigung wurde soeben per E-Mail versendet. In deinem Benutzerkonto kannst deine Bestellung überprüfen und nachverfolgen.,de_DE
+payment_foreign.success.order.placement.message,Your order has been paid successfully. You will receive your order confirmation email in a few minutes. You can check and track your order in your account.,en_US
+shopping_list.pre.check.product_offer,Product Offer is not found.,en_US
+shopping_list.pre.check.product_offer,Produktangebot wurde nicht gefunden.,de_DE
+shopping_list.pre.check.product_offer.approved,Product Offer is not approved.,en_US
+shopping_list.pre.check.product_offer.approved,Product Offer ist nicht genehmigt.,de_DE
+shopping_list.pre.check.product_offer.is_active,Product Offer is not active.,en_US
+shopping_list.pre.check.product_offer.is_active,Produktangebot ist inaktiv.,de_DE
+shopping_list.pre.check.product_merchant_inactive,Merchant is inactive.,en_US
+shopping_list.pre.check.product_merchant_inactive,Der Händler ist nicht aktiv.,de_DE
+shopping_list.pre.check.product_merchant_not_approved,Merchant is not approved.,en_US
+shopping_list.pre.check.product_merchant_not_approved,Der Händler ist nicht bestätigt.,de_DE
+shopping_list.pre.check.product_offer.store_invalid,Product Offer is not equal to the current Store.,en_US
+shopping_list.pre.check.product_offer.store_invalid,Das Angebot gleicht nicht dem aktuellen Shop.,de_DE
+shopping_list.pre.check.product.store_invalid,Product is not equal to the current Store.,en_US
+shopping_list.pre.check.product.store_invalid,Das Produkt gleicht nicht dem aktuellen Shop.,de_DE

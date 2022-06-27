@@ -45,12 +45,14 @@ use SprykerShop\Yves\DiscountWidget\Plugin\Router\DiscountWidgetRouteProviderPlu
 use SprykerShop\Yves\ErrorPage\Plugin\Router\ErrorPageRouteProviderPlugin;
 use SprykerShop\Yves\FileManagerWidget\Plugin\Router\FileManagerWidgetRouteProviderPlugin;
 use SprykerShop\Yves\HomePage\Plugin\Router\HomePageRouteProviderPlugin;
+use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\Router\MerchantProductOfferWidgetRouteProviderPlugin;
 use SprykerShop\Yves\MerchantSwitcherWidget\Plugin\Router\MerchantSwitcherWidgetRouteProviderPlugin;
 use SprykerShop\Yves\MultiCartPage\Plugin\Router\MultiCartPageRouteProviderPlugin;
 use SprykerShop\Yves\NewsletterPage\Plugin\Router\NewsletterPageRouteProviderPlugin;
 use SprykerShop\Yves\NewsletterWidget\Plugin\Router\NewsletterWidgetRouteProviderPlugin;
 use SprykerShop\Yves\OrderCancelWidget\Plugin\Router\OrderCancelWidgetRouteProviderPlugin;
 use SprykerShop\Yves\OrderCustomReferenceWidget\Plugin\Router\OrderCustomReferenceWidgetRouteProviderPlugin;
+use SprykerShop\Yves\PaymentPage\Plugin\Router\PaymentPageRouteProviderPlugin;
 use SprykerShop\Yves\PersistentCartSharePage\Plugin\Router\PersistentCartSharePageRouteProviderPlugin;
 use SprykerShop\Yves\PersistentCartShareWidget\Plugin\Router\PersistentCartShareWidgetRouteProviderPlugin;
 use SprykerShop\Yves\PriceWidget\Plugin\Router\PriceWidgetRouteProviderPlugin;
@@ -144,11 +146,13 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new ConfigurableBundleNoteWidgetRouteProviderPlugin(),
             new ConfigurableBundlePageRouteProviderPlugin(),
             new OrderCustomReferenceWidgetRouteProviderPlugin(),
+            new MerchantProductOfferWidgetRouteProviderPlugin(),
             new MerchantSwitcherWidgetRouteProviderPlugin(),
             new SalesReturnPageRouteProviderPlugin(),
             new OrderCancelWidgetRouteProviderPlugin(),
             new PayoneRouteProviderPlugin(),
             new ProductConfiguratorGatewayPageRouteProviderPlugin(),
+            new PaymentPageRouteProviderPlugin(),
         ];
 
         if (class_exists(LoadTestingRouterProviderPlugin::class)) {

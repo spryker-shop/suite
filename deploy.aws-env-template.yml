@@ -1,4 +1,4 @@
-version: "0.1"
+version: '0.1'
 
 x-real-ip: &real-ip
     real-ip:
@@ -180,16 +180,17 @@ services:
         engine: mysql
         version: mariadb-10.4
         root:
-            username: "root"
-            password: "secret"
+            username: 'root'
+            password: 'secret'
         endpoints:
             localhost:3306:
                 protocol: tcp
     broker:
         engine: rabbitmq
+        version: '3.9'
         api:
-            username: "spryker"
-            password: "secret"
+            username: 'spryker'
+            password: 'secret'
         endpoints:
             queue.example.cloud.spryker.toys:
             localhost:5672:
@@ -209,6 +210,8 @@ services:
                 protocol: tcp
     scheduler:
         engine: jenkins
+        version: '2.324'
+        csrf-protection-enabled: true
         endpoints:
             scheduler.example.cloud.spryker.toys:
     mail_catcher:

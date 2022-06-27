@@ -12,20 +12,20 @@ use Generated\Shared\Transfer\AclEntityMetadataCollectionTransfer;
 use Generated\Shared\Transfer\AclEntityMetadataTransfer;
 use Generated\Shared\Transfer\AclEntityRuleTransfer;
 use Generated\Shared\Transfer\AclEntitySegmentRequestTransfer;
+use Generated\Shared\Transfer\MerchantProductTransfer;
 use Generated\Shared\Transfer\RolesTransfer;
 use Generated\Shared\Transfer\RoleTransfer;
-use Orm\Zed\Merchant\Persistence\Map\SpyAclEntitySegmentMerchantTableMap;
-use Orm\Zed\Merchant\Persistence\Map\SpyMerchantTableMap;
 use Orm\Zed\Merchant\Persistence\SpyMerchant;
 use Orm\Zed\MerchantProduct\Persistence\SpyMerchantProductAbstract;
 use Orm\Zed\MerchantProduct\Persistence\SpyMerchantProductAbstractQuery;
-use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
 use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
+use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Pyz\Zed\Merchant\MerchantDependencyProvider;
 use PyzTest\Zed\AclEntity\AclQueryDirectorTester;
 use Spryker\Shared\AclEntity\AclEntityConstants;
+use Spryker\Zed\AclEntity\AclEntityDependencyProvider;
 use Spryker\Zed\AclEntity\Persistence\Exception\OperationNotAuthorizedException;
 
 /**
@@ -86,13 +86,13 @@ class RelationHandlingTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         $productEntity = new SpyProduct();
         $productEntity->setSpyProductAbstract(new SpyProductAbstract());
 
         // Act, Assert
-        $aclQueryDirector->inspectCreate($productEntity);
+        $aclModelDirector->inspectCreate($productEntity);
     }
 
     /**
@@ -130,13 +130,13 @@ class RelationHandlingTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         $productEntity = new SpyProduct();
         $productEntity->setSpyProductAbstract(new SpyProductAbstract());
 
         // Act
-        $aclQueryDirector->inspectCreate($productEntity);
+        $aclModelDirector->inspectCreate($productEntity);
     }
 
     /**
@@ -170,7 +170,7 @@ class RelationHandlingTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         $productAbstractEntity = $this->tester->findProductAbstractByIdProductAbstract(
             $productAbstractTransfer->getIdProductAbstractOrFail(),
@@ -180,7 +180,7 @@ class RelationHandlingTest extends Unit
         $newProductConcreteEntity->setSpyProductAbstract($productAbstractEntity);
 
         // Act, Assert
-        $aclQueryDirector->inspectCreate($newProductConcreteEntity);
+        $aclModelDirector->inspectCreate($newProductConcreteEntity);
     }
 
     /**
@@ -220,7 +220,7 @@ class RelationHandlingTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         $productAbstractEntity = $this->tester->findProductAbstractByIdProductAbstract(
             $productAbstractTransfer->getIdProductAbstractOrFail(),
@@ -230,7 +230,7 @@ class RelationHandlingTest extends Unit
         $newProductConcreteEntity->setSpyProductAbstract($productAbstractEntity);
 
         // Act
-        $aclQueryDirector->inspectCreate($newProductConcreteEntity);
+        $aclModelDirector->inspectCreate($newProductConcreteEntity);
     }
 
     /**
@@ -263,7 +263,7 @@ class RelationHandlingTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         $productEntity = $this->tester->findProductConcreteByIdProduct($productTransfer->getIdProductConcreteOrFail());
         $productEntity->setSku($productEntity->getSku() . time());
@@ -273,7 +273,7 @@ class RelationHandlingTest extends Unit
         $productAbstractEntity->setSku($productAbstractEntity->getSku() . time());
 
         // Act, Assert
-        $aclQueryDirector->inspectUpdate($productEntity);
+        $aclModelDirector->inspectUpdate($productEntity);
     }
 
     /**
@@ -313,7 +313,7 @@ class RelationHandlingTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         $productEntity = $this->tester->findProductConcreteByIdProduct($productTransfer->getIdProductConcreteOrFail());
         $productEntity->setSku($productEntity->getSku() . time());
@@ -324,7 +324,7 @@ class RelationHandlingTest extends Unit
         $productAbstractEntity->setSku($productAbstractEntity->getSku() . time());
 
         // Act
-        $aclQueryDirector->inspectUpdate($productEntity);
+        $aclModelDirector->inspectUpdate($productEntity);
     }
 
     /**
@@ -358,7 +358,7 @@ class RelationHandlingTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         $productAbstractEntity = $this->tester->findProductAbstractByIdProductAbstract(
             $productAbstractTransfer->getIdProductAbstract(),
@@ -367,7 +367,7 @@ class RelationHandlingTest extends Unit
         $productAbstractEntity->addSpyProduct(new SpyProduct());
 
         // Act, Assert
-        $aclQueryDirector->inspectUpdate($productAbstractEntity);
+        $aclModelDirector->inspectUpdate($productAbstractEntity);
     }
 
     /**
@@ -407,7 +407,7 @@ class RelationHandlingTest extends Unit
             ],
         );
 
-        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+        $aclModelDirector = $this->tester->createAclModelDirector($rolesTransfer);
 
         $productAbstractEntity = $this->tester->findProductAbstractByIdProductAbstract(
             $productAbstractTransfer->getIdProductAbstract(),
@@ -416,7 +416,7 @@ class RelationHandlingTest extends Unit
         $productAbstractEntity->addSpyProduct(new SpyProduct());
 
         // Act, Assert
-        $aclQueryDirector->inspectUpdate($productAbstractEntity);
+        $aclModelDirector->inspectUpdate($productAbstractEntity);
     }
 
     /**
@@ -429,6 +429,8 @@ class RelationHandlingTest extends Unit
         // Arrange
         $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
+
+        $productConcreteTransfer = $this->tester->haveProduct();
 
         $this->tester->haveAclEntityRule(
             [
@@ -448,26 +450,18 @@ class RelationHandlingTest extends Unit
         );
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
 
-        $query = SpyProductQuery::create()->joinWithSpyProductAbstract();
+        $query = SpyProductQuery::create()->joinWithSpyProductAbstract()->filterBySku(
+            $productConcreteTransfer->getSkuOrFail(),
+        );
 
         // Act
         $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
 
         // Assert
-        $this->assertSame(1, count($query->getWith()));
-        $this->assertStringContainsString(
-            'join ' . SpyProductAbstractTableMap::TABLE_NAME,
-            $this->tester->purify($query->toString()),
-        );
-        $this->assertStringContainsString(SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT, $query->toString());
-        $this->assertStringContainsString(SpyProductAbstractTableMap::COL_FK_TAX_SET, $query->toString());
-        $this->assertStringContainsString(SpyProductAbstractTableMap::COL_ATTRIBUTES, $query->toString());
-        $this->assertStringContainsString(SpyProductAbstractTableMap::COL_COLOR_CODE, $query->toString());
-        $this->assertStringContainsString(SpyProductAbstractTableMap::COL_NEW_FROM, $query->toString());
-        $this->assertStringContainsString(SpyProductAbstractTableMap::COL_NEW_TO, $query->toString());
-        $this->assertStringContainsString(SpyProductAbstractTableMap::COL_SKU, $query->toString());
-        $this->assertStringContainsString(SpyProductAbstractTableMap::COL_CREATED_AT, $query->toString());
-        $this->assertStringContainsString(SpyProductAbstractTableMap::COL_UPDATED_AT, $query->toString());
+        /** @var \Orm\Zed\Product\Persistence\SpyProduct $productConcreteEntity */
+        foreach ($query->find() as $productConcreteEntity) {
+            $this->assertNotEmpty($productConcreteEntity->getSpyProductAbstract());
+        }
     }
 
     /**
@@ -481,7 +475,7 @@ class RelationHandlingTest extends Unit
         $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
 
-        $this->tester->haveProduct();
+        $productTransfer = $this->tester->haveProduct();
 
         $this->tester->haveAclEntityRule(
             [
@@ -502,25 +496,18 @@ class RelationHandlingTest extends Unit
 
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
 
-        $query = SpyProductQuery::create()->leftJoinWithSpyProductAbstract();
+        $query = SpyProductQuery::create()->leftJoinWithSpyProductAbstract()->filterBySku(
+            $productTransfer->getSkuOrFail(),
+        );
 
         // Act
         $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
 
         // Assert
-        $this->assertEmpty(count($query->getWith()));
-        $this->assertStringContainsString(
-            'join ' . SpyProductAbstractTableMap::TABLE_NAME,
-            $this->tester->purify($query->toString()),
-        );
-        $this->assertStringNotContainsString(SpyProductAbstractTableMap::COL_FK_TAX_SET, $query->toString());
-        $this->assertStringNotContainsString(SpyProductAbstractTableMap::COL_ATTRIBUTES, $query->toString());
-        $this->assertStringNotContainsString(SpyProductAbstractTableMap::COL_COLOR_CODE, $query->toString());
-        $this->assertStringNotContainsString(SpyProductAbstractTableMap::COL_NEW_FROM, $query->toString());
-        $this->assertStringNotContainsString(SpyProductAbstractTableMap::COL_NEW_TO, $query->toString());
-        $this->assertStringNotContainsString(SpyProductAbstractTableMap::COL_SKU, $query->toString());
-        $this->assertStringNotContainsString(SpyProductAbstractTableMap::COL_CREATED_AT, $query->toString());
-        $this->assertStringNotContainsString(SpyProductAbstractTableMap::COL_UPDATED_AT, $query->toString());
+        $this->assertNotEmpty($query->count());
+        foreach ($query->find()->toArray() as $item) {
+            $this->assertArrayNotHasKey('SpyProductAbstract', $item);
+        }
     }
 
     /**
@@ -535,6 +522,13 @@ class RelationHandlingTest extends Unit
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
 
         $merchantTransfer = $this->tester->haveMerchant();
+        $productConcreteTransfer = $this->tester->haveProduct();
+        $merchantProductAbstractTransfer = $this->tester->haveMerchantProduct(
+            [
+                MerchantProductTransfer::ID_MERCHANT => $merchantTransfer->getIdMerchantOrFail(),
+                MerchantProductTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstractOrFail(),
+            ],
+        );
 
         $this->tester->haveAclEntityRule(
             [
@@ -564,18 +558,18 @@ class RelationHandlingTest extends Unit
 
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
 
-        $query = SpyMerchantProductAbstractQuery::create()->leftJoinWithMerchant();
+        $query = SpyMerchantProductAbstractQuery::create()->leftJoinWithMerchant()->filterByFkMerchant(
+            $merchantTransfer->getIdMerchantOrFail(),
+        );
 
         // Act
         $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
-        $sql = $this->tester->purify($query->toString());
 
         // Assert
-        $this->assertSame(1, count($query->getWith()));
-        $this->assertStringContainsString(SpyMerchantTableMap::COL_ID_MERCHANT, $sql);
-        $this->assertStringContainsString(SpyMerchantTableMap::COL_MERCHANT_REFERENCE, $sql);
-        $this->assertStringContainsString(SpyMerchantTableMap::COL_EMAIL, $sql);
-        $this->assertStringContainsString('join ' . SpyAclEntitySegmentMerchantTableMap::TABLE_NAME, $sql);
+        /** @var \Orm\Zed\MerchantProduct\Persistence\SpyMerchantProductAbstract $merchantProductEntity */
+        foreach ($query->find() as $merchantProductEntity) {
+            $this->assertNotEmpty($merchantProductEntity->getMerchant());
+        }
     }
 
     /**
@@ -598,6 +592,15 @@ class RelationHandlingTest extends Unit
             ],
         );
 
+        $merchantTransfer = $this->tester->haveMerchant();
+        $productConcreteTransfer = $this->tester->haveProduct();
+        $this->tester->haveMerchantProduct(
+            [
+                MerchantProductTransfer::ID_MERCHANT => $merchantTransfer->getIdMerchantOrFail(),
+                MerchantProductTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstractOrFail(),
+            ],
+        );
+
         $aclQueryDirector = $this->tester->createAclQueryDirector(
             $rolesTransfer,
             (new AclEntityMetadataCollectionTransfer())
@@ -609,16 +612,17 @@ class RelationHandlingTest extends Unit
                 ),
         );
 
-        $query = SpyMerchantProductAbstractQuery::create()->leftJoinWithMerchant();
+        $query = SpyMerchantProductAbstractQuery::create()->leftJoinWithMerchant()->filterByFkMerchant(
+            $merchantTransfer->getIdMerchantOrFail(),
+        );
 
         // Act
         $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
-        $sql = $this->tester->purify($query->toString());
 
         // Assert
-        $this->assertEmpty(count($query->getWith()));
-        $this->assertStringNotContainsString(SpyMerchantTableMap::COL_MERCHANT_REFERENCE, $sql);
-        $this->assertStringNotContainsString(SpyMerchantTableMap::COL_EMAIL, $sql);
+        foreach ($query->find()->toArray() as $item) {
+            $this->assertArrayNotHasKey('Merchant', $item);
+        }
     }
 
     /**
@@ -631,6 +635,15 @@ class RelationHandlingTest extends Unit
         // Arrange
         $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
         $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
+
+        $merchantTransfer = $this->tester->haveMerchant();
+        $productConcreteTransfer = $this->tester->haveProduct();
+        $this->tester->haveMerchantProduct(
+            [
+                MerchantProductTransfer::ID_MERCHANT => $merchantTransfer->getIdMerchantOrFail(),
+                MerchantProductTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstractOrFail(),
+            ],
+        );
 
         $this->tester->haveAclEntityRule(
             [
@@ -649,16 +662,349 @@ class RelationHandlingTest extends Unit
         );
         $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer, $aclEntityMetadataCollectionTransfer);
 
-        $query = SpyMerchantProductAbstractQuery::create()->joinWithMerchant();
+        $query = SpyMerchantProductAbstractQuery::create()->joinWithMerchant()->filterByFkMerchant(
+            $merchantTransfer->getIdMerchantOrFail(),
+        );
 
         // Act
         $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
-        $sql = $this->tester->purify($query->toString());
 
         // Assert
-        $this->assertSame(1, count($query->getWith()));
-        $this->assertStringContainsString(SpyMerchantTableMap::COL_ID_MERCHANT, $sql);
-        $this->assertStringContainsString(SpyMerchantTableMap::COL_EMAIL, $sql);
-        $this->assertStringContainsString(SpyMerchantTableMap::COL_NAME, $sql);
+        /** @var \Orm\Zed\MerchantProduct\Persistence\SpyMerchantProductAbstract $merchantProductAbstractEntity */
+        foreach ($query->find() as $merchantProductAbstractEntity) {
+            $this->assertNotEmpty($merchantProductAbstractEntity->getMerchant());
+        }
+    }
+
+    /**
+     * @group AclEntityApplyAclRules
+     *
+     * @return void
+     */
+    public function testApplyAclRulesOnSelectQueryWithReadPermissionForLeftJoin(): void
+    {
+        // Arrange
+        $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
+        $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
+
+        $merchantProductTransfer = $this->tester->createMerchantProduct();
+
+        $this->tester->haveAclEntityRule(
+            [
+                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_GLOBAL,
+                AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
+                AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
+                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
+            ],
+        );
+        $this->tester->haveAclEntityRule(
+            [
+                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_GLOBAL,
+                AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
+                AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
+                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
+            ],
+        );
+
+        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+
+        $query = SpyMerchantProductAbstractQuery::create()->leftJoinMerchant()->filterByFkMerchant(
+            $merchantProductTransfer->getIdMerchantOrFail(),
+        );
+
+        // Act
+        $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
+
+        // Assert
+        /** @var \Orm\Zed\MerchantProduct\Persistence\SpyMerchantProductAbstract $merchantProductAbstractEntity */
+        foreach ($query->find() as $merchantProductAbstractEntity) {
+            $this->assertNotEmpty($merchantProductAbstractEntity->getMerchant());
+        }
+    }
+
+    /**
+     * @group AclEntityApplyAclRules
+     *
+     * @return void
+     */
+    public function testApplyAclRulesOnSelectQueryWithNoReadPermissionForLeftJoin(): void
+    {
+        // Arrange
+        $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
+        $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
+
+        $merchantProductTransfer = $this->tester->createMerchantProduct();
+
+        $this->tester->haveAclEntityRule(
+            [
+                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_GLOBAL,
+                AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
+                AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
+                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
+            ],
+        );
+
+        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+
+        $query = SpyMerchantProductAbstractQuery::create()->leftJoinMerchant()->filterByFkMerchant(
+            $merchantProductTransfer->getIdMerchantOrFail(),
+        );
+
+        // Act
+        $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
+
+        // Assert
+        foreach ($query->find()->toArray() as $merchantProductAbstract) {
+            $this->assertArrayNotHasKey('Merchant', $merchantProductAbstract);
+        }
+    }
+
+    /**
+     * @group AclEntityApplyAclRules
+     *
+     * @return void
+     */
+    public function testApplyAclRulesOnSelectQueryWithReadPermissionForInnerJoin(): void
+    {
+        // Arrange
+        $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
+        $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
+
+        $merchantProductTransfer = $this->tester->createMerchantProduct();
+
+        $this->tester->haveAclEntityRule(
+            [
+                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_GLOBAL,
+                AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
+                AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
+                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
+            ],
+        );
+        $this->tester->haveAclEntityRule(
+            [
+                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_GLOBAL,
+                AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
+                AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
+                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
+            ],
+        );
+
+        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+
+        $query = SpyMerchantProductAbstractQuery::create()->innerJoinMerchant()->filterByFkMerchant(
+            $merchantProductTransfer->getIdMerchantOrFail(),
+        );
+
+        // Act
+        $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
+
+        // Assert
+        /** @var \Orm\Zed\MerchantProduct\Persistence\SpyMerchantProductAbstract $merchantProductAbstractEntity */
+        foreach ($query->find() as $merchantProductAbstractEntity) {
+            $this->assertNotEmpty($merchantProductAbstractEntity->getMerchant());
+        }
+    }
+
+    /**
+     * @group AclEntityApplyAclRules
+     *
+     * @return void
+     */
+    public function testApplyAclRulesOnSelectQueryWithNoReadPermissionForInnerJoin(): void
+    {
+        // Arrange
+        $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
+        $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
+
+        $merchantProductTransfer = $this->tester->createMerchantProduct();
+
+        $this->tester->haveAclEntityRule(
+            [
+                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_GLOBAL,
+                AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
+                AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
+                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
+            ],
+        );
+
+        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+
+        $query = SpyMerchantProductAbstractQuery::create()->innerJoinMerchant()->filterByFkMerchant(
+            $merchantProductTransfer->getIdMerchantOrFail(),
+        );
+
+        // Act
+        $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
+
+        // Assert
+        foreach ($query->find()->toArray() as $merchantProductAbstract) {
+            $this->assertArrayNotHasKey('Merchant', $merchantProductAbstract);
+        }
+    }
+
+    /**
+     * @group AclEntityApplyAclRules
+     *
+     * @return void
+     */
+    public function testApplyAclRulesOnSelectQueryWithReadPermissionForRightJoin(): void
+    {
+        // Arrange
+        $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
+        $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
+
+        $merchantProductTransfer = $this->tester->createMerchantProduct();
+
+        $this->tester->haveAclEntityRule(
+            [
+                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_GLOBAL,
+                AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
+                AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
+                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
+            ],
+        );
+        $this->tester->haveAclEntityRule(
+            [
+                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_GLOBAL,
+                AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
+                AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
+                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
+            ],
+        );
+
+        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+
+        $query = SpyMerchantProductAbstractQuery::create()->innerJoinMerchant()->filterByFkMerchant(
+            $merchantProductTransfer->getIdMerchantOrFail(),
+        );
+
+        // Act
+        $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
+
+        // Assert
+        /** @var \Orm\Zed\MerchantProduct\Persistence\SpyMerchantProductAbstract $merchantProductAbstractEntity */
+        foreach ($query->find() as $merchantProductAbstractEntity) {
+            $this->assertNotEmpty($merchantProductAbstractEntity->getMerchant());
+        }
+    }
+
+    /**
+     * @group AclEntityApplyAclRules
+     *
+     * @return void
+     */
+    public function testApplyAclRulesOnSelectQueryWithNoReadPermissionForRightJoin(): void
+    {
+        // Arrange
+        $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
+        $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
+
+        $merchantProductTransfer = $this->tester->createMerchantProduct();
+
+        $this->tester->haveAclEntityRule(
+            [
+                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_GLOBAL,
+                AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
+                AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
+                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
+            ],
+        );
+
+        $aclQueryDirector = $this->tester->createAclQueryDirector($rolesTransfer);
+
+        $query = SpyMerchantProductAbstractQuery::create()->rightJoinMerchant()->filterByFkMerchant(
+            $merchantProductTransfer->getIdMerchantOrFail(),
+        );
+
+        // Act
+        $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
+
+        // Assert
+        foreach ($query->find()->toArray() as $merchantProductAbstract) {
+            $this->assertArrayNotHasKey('Merchant', $merchantProductAbstract);
+        }
+    }
+
+    /**
+     * @group AclEntityApplyAclRules
+     *
+     * @return void
+     */
+    public function testApplyAclRulesOnSelectQueryWithReadPermissionForOptionalLeftJoinRelation(): void
+    {
+        // Arrange
+        $this->tester->setDependency(
+            AclEntityDependencyProvider::PLUGINS_ACL_ENTITY_METADATA_COLLECTION_EXPANDER,
+            [
+                $this->tester->getProductAbstractMerchantAclEntityMetadataConfigExpanderPlugin(),
+            ],
+        );
+
+        $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
+        $rolesTransfer = (new RolesTransfer())->addRole($roleTransfer);
+
+        $merchantTransfer = $this->tester->haveMerchant();
+        $segmentTransfer = $this->tester->haveAclEntitySegment(
+            [
+                AclEntitySegmentRequestTransfer::NAME => AclQueryDirectorTester::ACL_ENTITY_SEGMENT_1_NAME,
+                AclEntitySegmentRequestTransfer::REFERENCE => AclQueryDirectorTester::ACL_ENTITY_SEGMENT_1_REFERENCE,
+                AclEntitySegmentRequestTransfer::ENTITY => SpyMerchant::class,
+                AclEntitySegmentRequestTransfer::ENTITY_IDS => [$merchantTransfer->getIdMerchantOrFail()],
+            ],
+        );
+        $productAbstract1Transfer = $this->tester->haveProductAbstract();
+        $productAbstract2Transfer = $this->tester->haveProductAbstract();
+        $this->tester->haveMerchantProduct(
+            [
+                MerchantProductTransfer::ID_MERCHANT => $merchantTransfer->getIdMerchantOrFail(),
+                MerchantProductTransfer::ID_PRODUCT_ABSTRACT => $productAbstract1Transfer->getIdProductAbstractOrFail(),
+            ],
+        );
+
+        $this->tester->haveAclEntityRule(
+            [
+                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_GLOBAL,
+                AclEntityRuleTransfer::ENTITY => SpyProductAbstract::class,
+                AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
+                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
+            ],
+        );
+        $this->tester->haveAclEntityRule(
+            [
+                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_INHERITED,
+                AclEntityRuleTransfer::ENTITY => SpyMerchantProductAbstract::class,
+                AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
+                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
+            ],
+        );
+        $this->tester->haveAclEntityRule(
+            [
+                AclEntityRuleTransfer::SCOPE => AclEntityConstants::SCOPE_SEGMENT,
+                AclEntityRuleTransfer::ENTITY => SpyMerchant::class,
+                AclEntityRuleTransfer::ID_ACL_ROLE => $roleTransfer->getIdAclRole(),
+                AclEntityRuleTransfer::PERMISSION_MASK => AclEntityConstants::OPERATION_MASK_READ,
+                AclEntityRuleTransfer::ID_ACL_ENTITY_SEGMENT => $segmentTransfer->getIdAclEntitySegmentOrFail(),
+            ],
+        );
+        $aclQueryDirector = $this->tester->createAclQueryDirector(
+            $rolesTransfer,
+            $this->tester->createProductAbstractMerchantMetadataHierarchy(),
+        );
+        $query = SpyProductAbstractQuery::create()
+            ->leftJoinSpyMerchantProductAbstract()
+            ->filterByIdProductAbstract_In(
+                [
+                    $productAbstract1Transfer->getIdProductAbstractOrFail(),
+                    $productAbstract2Transfer->getIdProductAbstractOrFail(),
+                ],
+            )
+            ->orderByIdProductAbstract();
+
+        // Act
+        $query = $aclQueryDirector->applyAclRuleOnSelectQuery($query);
+        $productAbstractCollection = $query->find();
+
+        // Assert
+        $this->assertCount(2, $productAbstractCollection);
     }
 }

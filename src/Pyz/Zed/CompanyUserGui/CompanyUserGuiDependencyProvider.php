@@ -9,11 +9,12 @@ namespace Pyz\Zed\CompanyUserGui;
 
 use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\CompanyUserGui\BusinessOnBehalfCompanyUserTableDeleteActionPlugin;
 use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\CompanyUserGui\CompanyUserTableAttachToBusinessUnitActionLinksExpanderPlugin;
-use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitAttachCustomerFormExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitCompanyUserTableConfigExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitCompanyUserTablePrepareDataExpanderPlugin;
-use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitFormExpanderPlugin;
-use Spryker\Zed\CompanyGui\Communication\Plugin\CompanyUserGui\CompanyToCompanyUserFormExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitToCompanyUserAttachCustomerFormExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitToCompanyUserFormExpanderPlugin;
+use Spryker\Zed\CompanyGui\Communication\Plugin\CompanyUserGui\CompanyFieldToCompanyUserFormExpanderPlugin;
+use Spryker\Zed\CompanyGui\Communication\Plugin\CompanyUserGui\CompanyToCompanyUserAttachCustomerFormExpanderPlugin;
 use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUserGui\CompanyRoleAttachCustomerFormExpanderPlugin;
 use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUserGui\CompanyRoleCompanyUserTableConfigExpanderPlugin;
 use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUserGui\CompanyRoleCompanyUserTablePrepareDataExpanderPlugin;
@@ -51,8 +52,8 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
     protected function getCompanyUserFormExpanderPlugins(): array
     {
         return [
-            new CompanyToCompanyUserFormExpanderPlugin(),
-            new CompanyBusinessUnitFormExpanderPlugin(),
+            new CompanyFieldToCompanyUserFormExpanderPlugin(),
+            new CompanyBusinessUnitToCompanyUserFormExpanderPlugin(),
             new CompanyRoleFormExpanderPlugin(),
         ];
     }
@@ -63,8 +64,9 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
     protected function getCompanyUserAttachCustomerFormExpanderPlugins(): array
     {
         return [
-            new CompanyBusinessUnitAttachCustomerFormExpanderPlugin(),
+            new CompanyBusinessUnitToCompanyUserAttachCustomerFormExpanderPlugin(),
             new CompanyRoleAttachCustomerFormExpanderPlugin(),
+            new CompanyToCompanyUserAttachCustomerFormExpanderPlugin(),
         ];
     }
 

@@ -11,12 +11,14 @@ use Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery;
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 
 /**
- * @method \Pyz\Zed\ExampleStateMachine\Persistence\ExampleStateMachineQueryContainer getQueryContainer()
+ * @method \Pyz\Zed\ExampleStateMachine\Persistence\ExampleStateMachineQueryContainerInterface getQueryContainer()
  */
 class ExampleStateMachinePersistenceFactory extends AbstractPersistenceFactory
 {
     /**
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
+     * @psalm-suppress TooManyTemplateParams
+     *
+     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
     public function createExampleStateMachineQuery(): PyzExampleStateMachineItemQuery
     {

@@ -26,6 +26,9 @@ use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPu
 
 /**
  * @method \Pyz\Zed\ProductPageSearch\ProductPageSearchConfig getConfig()
+ * @method \Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchQueryContainerInterface getQueryContainer()
+ * @method \Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchRepositoryInterface getRepository()
+ * @method \Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchEntityManagerInterface getEntityManager()
  */
 class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessFactory
 {
@@ -42,6 +45,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
             $this->getQueryContainer(),
             $this->getProductPageDataExpanderPlugins(),
             $this->getProductPageDataLoaderPlugins(),
+            $this->getProductPageSearchCollectionFilterPlugins(),
             $this->createProductPageMapper(),
             $this->createProductPageWriter(),
             $this->getConfig(),
@@ -71,6 +75,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
             $this->getStoreFacade(),
             $this->getConfig(),
             $this->getProductConcretePageDataExpanderPlugins(),
+            $this->getProductConcreteCollectionFilterPlugins(),
             $this->getSynchronizationService(),
             $this->getQueueClient(),
             $this->createProductConcretePageCteStrategyResolver()->resolve(),

@@ -127,9 +127,8 @@ jobs:
 
             - name: Frontend install-dependencies
               run: |
-                  vendor/bin/console frontend:project:install-dependencies
-                  vendor/bin/console frontend:yves:install-dependencies
                   vendor/bin/console frontend:mp:install-dependencies
+                  vendor/bin/console frontend:zed:install-dependencies
 
             - name: Install NPM packages
               run: |
@@ -150,8 +149,14 @@ jobs:
             - name: Front-end MP Unit Tests
               run: yarn mp:test
 
+            - name: Front-end MP Disable IE11 support
+              run: git apply frontend/merchant-portal/disable-ie11-mp.patch
+
             - name: Front-end MP Build
-              run: yarn mp:build
+              run: yarn mp:build:production
+
+            - name: Front-end MP Restore IE11 support
+              run: git apply -R frontend/merchant-portal/disable-ie11-mp.patch
 
             - name: Validate propel files
               run: |

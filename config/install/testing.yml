@@ -15,6 +15,9 @@ sections:
         rest-api-generate-documentation:
             command: 'vendor/bin/console rest-api:generate:documentation'
 
+        api-generate-documentation:
+            command: 'vendor/bin/glue api:generate:documentation'
+
     cache:
         router-cache-warmup-yves:
             command: 'vendor/bin/yves router:cache:warm-up'
@@ -35,13 +38,13 @@ sections:
             command: 'vendor/bin/console rest-api:build-request-validation-cache'
 
         generate-page-source-map:
-            command: "vendor/bin/console search:setup:source-map"
+            command: 'vendor/bin/console search:setup:source-map'
 
         translator-generate-cache:
-            command: "vendor/bin/console translator:generate-cache"
+            command: 'vendor/bin/console translator:generate-cache'
 
         class-resolver-build:
-            command: "vendor/bin/console cache:class-resolver:build"
+            command: 'vendor/bin/console cache:class-resolver:build'
 
     queue-flush:
         set-permissions:

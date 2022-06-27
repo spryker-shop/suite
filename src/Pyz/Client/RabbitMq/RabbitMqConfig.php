@@ -8,6 +8,7 @@
 namespace Pyz\Client\RabbitMq;
 
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
+use Spryker\Shared\AssetStorage\AssetStorageConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
@@ -25,7 +26,6 @@ use Spryker\Shared\FileManagerStorage\FileManagerStorageConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\MerchantOpeningHoursStorage\MerchantOpeningHoursStorageConfig;
-use Spryker\Shared\MerchantProductOfferStorage\MerchantProductOfferStorageConfig;
 use Spryker\Shared\MerchantSearch\MerchantSearchConfig;
 use Spryker\Shared\MerchantStorage\MerchantStorageConfig;
 use Spryker\Shared\PriceProductOfferStorage\PriceProductOfferStorageConfig;
@@ -34,6 +34,7 @@ use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
 use Spryker\Shared\ProductConfigurationStorage\ProductConfigurationStorageConfig;
 use Spryker\Shared\ProductImageStorage\ProductImageStorageConfig;
 use Spryker\Shared\ProductOfferAvailabilityStorage\ProductOfferAvailabilityStorageConfig;
+use Spryker\Shared\ProductOfferStorage\ProductOfferStorageConfig;
 use Spryker\Shared\ProductPackagingUnitStorage\ProductPackagingUnitStorageConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
@@ -63,7 +64,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
      *
      * @see https://www.rabbitmq.com/tutorials/amqp-concepts.html
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function getQueueConfiguration(): array
     {
@@ -81,7 +82,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     protected function getPublishQueueConfiguration(): array
     {
@@ -106,7 +107,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     protected function getSynchronizationQueueConfiguration(): array
     {
@@ -135,12 +136,13 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             TaxStorageConfig::TAX_SET_SYNC_STORAGE_QUEUE,
             MerchantStorageConfig::MERCHANT_SYNC_STORAGE_QUEUE,
             MerchantOpeningHoursStorageConfig::MERCHANT_OPENING_HOURS_SYNC_STORAGE_QUEUE,
-            MerchantProductOfferStorageConfig::MERCHANT_PRODUCT_OFFER_SYNC_STORAGE_QUEUE,
+            ProductOfferStorageConfig::PRODUCT_OFFER_SYNC_STORAGE_QUEUE,
             PriceProductOfferStorageConfig::PRICE_PRODUCT_OFFER_OFFER_SYNC_STORAGE_QUEUE,
             ProductOfferAvailabilityStorageConfig::PRODUCT_OFFER_AVAILABILITY_SYNC_STORAGE_QUEUE,
             SalesReturnSearchConfig::SYNC_SEARCH_RETURN,
             MerchantSearchConfig::SYNC_SEARCH_MERCHANT,
             ProductConfigurationStorageConfig::PRODUCT_CONFIGURATION_SYNC_STORAGE_QUEUE,
+            AssetStorageConfig::ASSET_SYNC_STORAGE_QUEUE,
         ];
     }
 

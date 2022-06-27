@@ -143,6 +143,7 @@ class ProductAbstractManagerTest extends ProductTestAbstract
         /** @var array<\Generated\Shared\Transfer\ProductImageSetTransfer> $imageSetCollection */
         $imageSetCollection = (array)$productAbstractTransfer->getImageSets();
         $this->assertNotEmpty($imageSetCollection);
+        /** @var \Generated\Shared\Transfer\ProductImageSetTransfer $imageSet */
         $imageSet = $imageSetCollection[0];
         $this->assertInstanceOf(ProductImageSetTransfer::class, $imageSet);
         $this->assertNotNull($imageSet->getIdProductImageSet());

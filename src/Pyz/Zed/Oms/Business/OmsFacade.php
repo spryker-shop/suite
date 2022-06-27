@@ -13,6 +13,8 @@ use Spryker\Zed\Oms\Business\OmsFacade as SprykerOmsFacade;
 
 /**
  * @method \Pyz\Zed\Oms\Business\OmsBusinessFactory getFactory()
+ * @method \Spryker\Zed\Oms\Persistence\OmsRepositoryInterface getRepository()
+ * @method \Spryker\Zed\Oms\Persistence\OmsEntityManagerInterface getEntityManager()
  */
 class OmsFacade extends SprykerOmsFacade implements OmsFacadeInterface
 {

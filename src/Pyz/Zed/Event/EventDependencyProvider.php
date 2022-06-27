@@ -29,7 +29,6 @@ use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Event\Subscriber\FileManagerStorageSubscriber;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\Event\Subscriber\MerchantProductOfferSearchEventSubscriber;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\Event\Subscriber\MerchantSearchEventSubscriber;
-use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Event\Subscriber\MerchantProductOfferStorageEventSubscriber;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\Subscriber\NavigationStorageEventSubscriber;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\Subscriber\PriceProductMerchantRelationshipStorageEventSubscriber;
 use Spryker\Zed\PriceProductOfferStorage\Communication\Plugin\Event\Subscriber\PriceProductOfferStorageEventSubscriber;
@@ -109,7 +108,6 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new TaxStorageSubscriber());
         $eventSubscriberCollection->add(new TaxProductStorageSubscriber());
         $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
-        $eventSubscriberCollection->add(new MerchantProductOfferStorageEventSubscriber());
         $eventSubscriberCollection->add(new PriceProductOfferStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductOfferAvailabilityStorageEventSubscriber());
 
@@ -127,6 +125,10 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ConfigurableBundleTemplateImagePageSearchEventSubscriber());
         $eventSubscriberCollection->add(new MerchantSearchEventSubscriber());
         $eventSubscriberCollection->add(new MerchantProductOfferSearchEventSubscriber());
+
+        /*
+         * Payment Events
+         */
 
         $eventSubscriberCollection->add(new PublisherSubscriber());
 

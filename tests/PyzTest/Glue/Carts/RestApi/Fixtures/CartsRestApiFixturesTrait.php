@@ -55,7 +55,7 @@ trait CartsRestApiFixturesTrait
         CustomerTransfer $customerTransfer,
         array $productConcreteTransfers
     ): QuoteTransfer {
-        return $I->havePersistentQuote([
+        $quoteTransfer = $I->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,
             QuoteTransfer::TOTALS => (new TotalsTransfer())
                 ->setSubtotal(random_int(1000, 10000))
@@ -64,6 +64,11 @@ trait CartsRestApiFixturesTrait
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
             QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
         ]);
+
+        $quoteTransfer = $I->getLocator()->cart()->facade()->reloadItems($quoteTransfer);
+        $I->getLocator()->quote()->facade()->updateQuote($quoteTransfer);
+
+        return $quoteTransfer;
     }
 
     /**

@@ -24,9 +24,12 @@ use Spryker\Zed\Merchant\Communication\Plugin\Checkout\MerchantCheckoutPreCondit
 use Spryker\Zed\MerchantProductOption\Communication\Plugin\Checkout\MerchantProductOptionCheckoutPreConditionPlugin;
 use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Checkout\SingleMerchantCheckoutPreConditionPlugin;
 use Spryker\Zed\Nopayment\Communication\Plugin\Checkout\NopaymentCheckoutPreConditionPlugin;
+use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentAuthorizationCheckoutPostSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentMethodValidityCheckoutPreConditionPlugin;
+use Spryker\Zed\ProductApproval\Communication\Plugin\Checkout\ProductApprovalCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleAvailabilityCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleOrderSaverPlugin;
+use Spryker\Zed\ProductCartConnector\Communication\Plugin\Checkout\ProductExistsCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductConfigurationCart\Communication\Plugin\Checkout\ProductConfigurationCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Checkout\ProductDiscontinuedCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductOffer\Communication\Plugin\Checkout\ProductOfferCheckoutPreConditionPlugin;
@@ -80,6 +83,8 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new DuplicateOrderCheckoutPreConditionPlugin(),
             new ProductOfferCheckoutPreConditionPlugin(),
             new MerchantProductOptionCheckoutPreConditionPlugin(),
+            new ProductExistsCheckoutPreConditionPlugin(),
+            new ProductApprovalCheckoutPreConditionPlugin(),
         ];
     }
 
@@ -128,6 +133,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new PayoneCheckoutPostSavePlugin(),
             new CloseQuoteRequestCheckoutPostSaveHookPlugin(),
             new SendEmailToGiftCardUser(), #GiftCardFeature
+            new PaymentAuthorizationCheckoutPostSavePlugin(),
         ];
     }
 

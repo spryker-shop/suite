@@ -40,9 +40,13 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     public const BULK_SIZE = 2000;
 
     protected const COLUMN_NAME = ProductStockHydratorStep::COLUMN_NAME;
+
     protected const COLUMN_CONCRETE_SKU = ProductStockHydratorStep::COLUMN_CONCRETE_SKU;
+
     protected const COLUMN_IS_BUNDLE = ProductStockHydratorStep::COLUMN_IS_BUNDLE;
+
     protected const COLUMN_QUANTITY = ProductStockHydratorStep::COLUMN_QUANTITY;
+
     protected const COLUMN_IS_NEVER_OUT_OF_STOCK = ProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK;
 
     /**
@@ -61,12 +65,12 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     protected const KEY_IS_NEVER_OUT_OF_STOCK = 'is_never_out_of_stock';
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $stockCollection = [];
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $stockProductCollection = [];
 
@@ -161,9 +165,9 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     abstract protected function persistAvailability(): void;
 
     /**
-     * @param array $skus
+     * @param array<string> $skus
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param array $concreteSkusToAbstractMap
+     * @param array<string, string> $concreteSkusToAbstractMap
      * @param array<\Spryker\DecimalObject\Decimal> $reservations
      *
      * @return void
@@ -221,7 +225,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $skus
+     * @param array<string> $skus
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      *
      * @return array<string, mixed>
@@ -246,7 +250,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $stockProducts
+     * @param array<array<string, mixed>> $stockProducts
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      *
      * @return array<string, mixed>
@@ -294,9 +298,9 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     }
 
     /**
-     * @param array $skus
+     * @param array<mixed> $skus
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function mapConcreteSkuToAbstractSku(array $skus): array
     {

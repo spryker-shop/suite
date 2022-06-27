@@ -34,19 +34,13 @@ class CategoryRepository implements CategoryRepositoryInterface
     public const ID_CATEGORY = 'id_category';
 
     /**
-     * @var \ArrayObject
+     * @var \ArrayObject<string, array<string, mixed>>
      */
     protected $categoryKeys;
-
-    /**
-     * @var \ArrayObject
-     */
-    protected $categoryUrls;
 
     public function __construct()
     {
         $this->categoryKeys = new ArrayObject();
-        $this->categoryUrls = new ArrayObject();
     }
 
     /**

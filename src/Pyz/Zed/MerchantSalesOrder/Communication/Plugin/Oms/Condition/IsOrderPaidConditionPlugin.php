@@ -14,6 +14,7 @@ use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
 /**
  * @method \Pyz\Zed\MerchantSalesOrder\Communication\MerchantSalesOrderCommunicationFactory getFactory()
  * @method \Spryker\Zed\MerchantSalesOrder\Business\MerchantSalesOrderFacadeInterface getFacade()
+ * @method \Spryker\Zed\MerchantSalesOrder\MerchantSalesOrderConfig getConfig()
  */
 class IsOrderPaidConditionPlugin extends AbstractPlugin implements ConditionInterface
 {

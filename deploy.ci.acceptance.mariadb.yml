@@ -11,6 +11,7 @@ image:
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.spryker.local
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
         SPRYKER_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
+        STORE_NAME_REFERENCE_MAP: '{"DE":"dev-DE","AT":"dev-AT","US":"dev-US"}'
 
 composer:
     mode: --no-dev
@@ -116,6 +117,7 @@ services:
             password: 'secret'
     broker:
         engine: rabbitmq
+        version: '3.9'
         api:
             username: 'spryker'
             password: 'secret'
@@ -128,6 +130,8 @@ services:
         version: '7.10'
     scheduler:
         engine: jenkins
+        version: '2.324'
+        csrf-protection-enabled: true
     mail_catcher:
         engine: mailhog
     webdriver:

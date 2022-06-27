@@ -15,7 +15,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\StateMachine\Dependency\Plugin\StateMachineHandlerInterface;
 
 /**
- * @method \Pyz\Zed\ExampleStateMachine\Business\ExampleStateMachineFacade getFacade()
+ * @method \Pyz\Zed\ExampleStateMachine\Business\ExampleStateMachineFacadeInterface getFacade()
  * @method \Pyz\Zed\ExampleStateMachine\Communication\ExampleStateMachineCommunicationFactory getFactory()
  * @method \Pyz\Zed\ExampleStateMachine\Persistence\ExampleStateMachineQueryContainerInterface getQueryContainer()
  */
@@ -107,7 +107,7 @@ class TestStateMachineHandlerPlugin extends AbstractPlugin implements StateMachi
     /**
      * This method should return all list of StateMachineItemTransfer, with (identifier, IdStateMachineProcess, IdItemState)
      *
-     * @param array $stateIds
+     * @param array<int> $stateIds
      *
      * @return array<\Generated\Shared\Transfer\StateMachineItemTransfer>
      */

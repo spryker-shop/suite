@@ -21,8 +21,11 @@ use Spryker\Zed\ProductImage\Dependency\ProductImageEvents;
 abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInterface
 {
     protected const COLUMN_EXTERNAL_URL_LARGE = ProductImageHydratorStep::COLUMN_EXTERNAL_URL_LARGE;
+
     protected const COLUMN_EXTERNAL_URL_SMALL = ProductImageHydratorStep::COLUMN_EXTERNAL_URL_SMALL;
+
     protected const COLUMN_PRODUCT_IMAGE_KEY = ProductImageHydratorStep::COLUMN_PRODUCT_IMAGE_KEY;
+
     protected const COLUMN_SORT_ORDER = ProductImageHydratorStep::COLUMN_SORT_ORDER;
 
     /**
@@ -46,7 +49,7 @@ abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInt
     protected $dataImportConfig;
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productImageDataCollection = [];
 
@@ -105,7 +108,7 @@ abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInt
     abstract protected function persistProductImageSets(): void;
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     abstract protected function persistProductImages(): array;
 
@@ -122,7 +125,7 @@ abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInt
     abstract protected function triggerEventsForUpdatedImageSets(array $touchedProductImages): void;
 
     /**
-     * @param array $touchedProductSetImages
+     * @param array<array<string, mixed>> $touchedProductSetImages
      *
      * @return void
      */
