@@ -5,10 +5,9 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Client\Authorization;
+namespace Pyz\Zed\Authorization;
 
-use Spryker\Client\Authorization\AuthorizationDependencyProvider as SprykerAuthorizationDependencyProvider;
-use Spryker\Client\Customer\Plugin\Authorization\CustomerReferenceMatchingEntityIdAuthorizationStrategyPlugin;
+use Spryker\Zed\Authorization\AuthorizationDependencyProvider as SprykerAuthorizationDependencyProvider;
 
 class AuthorizationDependencyProvider extends SprykerAuthorizationDependencyProvider
 {
@@ -17,8 +16,6 @@ class AuthorizationDependencyProvider extends SprykerAuthorizationDependencyProv
      */
     protected function getAuthorizationStrategyPlugins(): array
     {
-        return [
-            new CustomerReferenceMatchingEntityIdAuthorizationStrategyPlugin(),
-        ];
+        return [];
     }
 }
