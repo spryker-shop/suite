@@ -14,7 +14,9 @@ use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication\Cust
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication\CustomRouteRouterPlugin;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication\LocaleRequestBuilderPlugin;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication\RequestCorsValidatorPlugin;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication\ScopeRequestAfterRoutingValidatorPlugin;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication\SecurityHeaderResponseFormatterPlugin;
+use Spryker\Glue\GlueBackendApiApplicationAuthorizationConnector\Plugin\GlueBackendApiApplication\AuthorizationRequestAfterRoutingValidatorPlugin;
 use Spryker\Glue\GlueBackendApiApplicationExtension\Dependency\Plugin\RequestResourceFilterPluginInterface;
 use Spryker\Glue\GlueHttp\Plugin\GlueBackendApiApplication\CorsHeaderExistenceRequestAfterRoutingValidatorPlugin;
 use Spryker\Glue\OauthBackendApi\Plugin\AccessTokenValidatorPlugin;
@@ -63,6 +65,8 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
         return [
             new CorsHeaderExistenceRequestAfterRoutingValidatorPlugin(),
             new RequestCorsValidatorPlugin(),
+            new ScopeRequestAfterRoutingValidatorPlugin(),
+            new AuthorizationRequestAfterRoutingValidatorPlugin(),
         ];
     }
 

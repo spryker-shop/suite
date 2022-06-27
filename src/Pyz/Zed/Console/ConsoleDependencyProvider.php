@@ -88,6 +88,7 @@ use Spryker\Zed\MessageBrokerAws\Communication\Console\MessageBrokerSqsToSnsSubs
 use Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin;
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
 use Spryker\Zed\Oauth\Communication\Console\OauthTokenConsole;
+use Spryker\Zed\Oauth\Communication\Console\ScopeCacheCollectorConsole;
 use Spryker\Zed\Oms\Communication\Console\CheckConditionConsole as OmsCheckConditionConsole;
 use Spryker\Zed\Oms\Communication\Console\CheckTimeoutConsole as OmsCheckTimeoutConsole;
 use Spryker\Zed\Oms\Communication\Console\ClearLocksConsole as OmsClearLocksConsole;
@@ -422,6 +423,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new OrderInvoiceSendConsole(),
 
             new MessageBrokerWorkerConsole(),
+
+            new ScopeCacheCollectorConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

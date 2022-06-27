@@ -7,6 +7,10 @@
 
 namespace Pyz\Zed\Oauth;
 
+use Spryker\Glue\GlueBackendApiApplication\Plugin\Oauth\BackendScopeCollectorPlugin;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\Oauth\BackendScopeFinderPlugin;
+use Spryker\Glue\GlueStorefrontApiApplication\Plugin\Oauth\StorefrontScopeCollectorPlugin;
+use Spryker\Glue\GlueStorefrontApiApplication\Plugin\Oauth\StorefrontScopeFinderPlugin;
 use Spryker\Zed\Oauth\Communication\Plugin\Oauth\CustomerPasswordOauthRequestGrantTypeConfigurationProviderPlugin;
 use Spryker\Zed\Oauth\Communication\Plugin\Oauth\UserPasswordOauthRequestGrantTypeConfigurationProviderPlugin;
 use Spryker\Zed\Oauth\OauthDependencyProvider as SprykerOauthDependencyProvider;
@@ -175,6 +179,28 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
         return [
             new UserPasswordOauthRequestGrantTypeConfigurationProviderPlugin(),
             new CustomerPasswordOauthRequestGrantTypeConfigurationProviderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Glue\OauthExtension\Dependency\Plugin\ScopeCollectorPluginInterface>
+     */
+    protected function getScopeCollectorPlugins(): array
+    {
+        return [
+            new StorefrontScopeCollectorPlugin(),
+            new BackendScopeCollectorPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Glue\OauthExtension\Dependency\Plugin\ScopeFinderPluginInterface>
+     */
+    protected function getScopeFinderPlugins(): array
+    {
+        return [
+            new BackendScopeFinderPlugin(),
+            new StorefrontScopeFinderPlugin(),
         ];
     }
 }
