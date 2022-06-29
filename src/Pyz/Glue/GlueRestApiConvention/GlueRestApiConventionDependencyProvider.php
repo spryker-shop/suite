@@ -8,15 +8,16 @@
 namespace Pyz\Glue\GlueRestApiConvention;
 
 use Spryker\Glue\GlueRestApiConvention\GlueRestApiConventionDependencyProvider as SprykerGlueRestApiConventionDependencyProvider;
-use Spryker\Glue\GlueRestApiConvention\Plugin\GlueRestApiConvention\AcceptFormatRequestValidatorPlugin;
-use Spryker\Glue\GlueRestApiConvention\Plugin\GlueRestApiConvention\AttributesRequestBuilderPlugin;
-use Spryker\Glue\GlueRestApiConvention\Plugin\GlueRestApiConvention\FilterFieldRequestBuilderPlugin;
-use Spryker\Glue\GlueRestApiConvention\Plugin\GlueRestApiConvention\FormatRequestBuilderPlugin;
+use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\AcceptFormatRequestValidatorPlugin;
+use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\AttributesRequestBuilderPlugin;
+use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\ConventionIdentifierRequestBuilderPlugin;
+use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\FilterFieldRequestBuilderPlugin;
+use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\FormatRequestBuilderPlugin;
+use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\PaginationRequestBuilderPlugin;
+use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\RestApiResponseFormatterPlugin;
+use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\SortRequestBuilderPlugin;
+use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\SparseFieldRequestBuilderPlugin;
 use Spryker\Glue\GlueRestApiConvention\Plugin\GlueRestApiConvention\JsonResponseEncoderPlugin;
-use Spryker\Glue\GlueRestApiConvention\Plugin\GlueRestApiConvention\PaginationRequestBuilderPlugin;
-use Spryker\Glue\GlueRestApiConvention\Plugin\GlueRestApiConvention\RestApiResponseFormatterPlugin;
-use Spryker\Glue\GlueRestApiConvention\Plugin\GlueRestApiConvention\SortRequestBuilderPlugin;
-use Spryker\Glue\GlueRestApiConvention\Plugin\GlueRestApiConvention\SparseFieldRequestBuilderPlugin;
 
 class GlueRestApiConventionDependencyProvider extends SprykerGlueRestApiConventionDependencyProvider
 {
@@ -31,11 +32,12 @@ class GlueRestApiConventionDependencyProvider extends SprykerGlueRestApiConventi
     }
 
     /**
-     * @return array<\Spryker\Glue\GlueRestApiConventionExtension\Dependency\Plugin\RequestBuilderPluginInterface>
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RequestBuilderPluginInterface>
      */
     protected function getRequestBuilderPlugins(): array
     {
         return [
+            new ConventionIdentifierRequestBuilderPlugin(),
             new FormatRequestBuilderPlugin(),
             new PaginationRequestBuilderPlugin(),
             new SortRequestBuilderPlugin(),
@@ -46,7 +48,7 @@ class GlueRestApiConventionDependencyProvider extends SprykerGlueRestApiConventi
     }
 
     /**
-     * @return array<\Spryker\Glue\GlueRestApiConventionExtension\Dependency\Plugin\RequestValidatorPluginInterface>
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RequestValidatorPluginInterface>
      */
     protected function getRequestValidatorPlugins(): array
     {
@@ -56,7 +58,7 @@ class GlueRestApiConventionDependencyProvider extends SprykerGlueRestApiConventi
     }
 
     /**
-     * @return array<\Spryker\Glue\GlueRestApiConventionExtension\Dependency\Plugin\ResponseFormatterPluginInterface>
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResponseFormatterPluginInterface>
      */
     protected function getResponseFormatterPlugins(): array
     {
