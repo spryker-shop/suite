@@ -7,6 +7,8 @@
 
 namespace Pyz\Yves\Router;
 
+use Pyz\Yves\CartPage\Plugin\Router\CartPageAsyncRouteProviderPlugin;
+use Pyz\Yves\CommentWidget\Plugin\Router\CommentWidgetAsyncRouteProviderPlugin;
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
 use Spryker\Yves\HealthCheck\Plugin\Router\HealthCheckRouteProviderPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\LanguageDefaultPostAddRouteManipulatorPlugin;
@@ -153,6 +155,8 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new PayoneRouteProviderPlugin(),
             new ProductConfiguratorGatewayPageRouteProviderPlugin(),
             new PaymentPageRouteProviderPlugin(),
+            new CartPageAsyncRouteProviderPlugin(),
+            new CommentWidgetAsyncRouteProviderPlugin(),
         ];
 
         if (class_exists(LoadTestingRouterProviderPlugin::class)) {
