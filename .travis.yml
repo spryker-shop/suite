@@ -787,6 +787,28 @@ jobs:
               mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
+        - name: PHP 8.1 / MariaDB / Testing (Business, Communication, ...)
+          php: "8.1.0"
+          stage: Test
+          env:
+              - APPLICATION_ENV=ci.mysql
+          before_install:
+              - *AWS_SYNC_DOWN_MYSQL
+              - *BEFORE_INSTALL_SCRIPT
+          install:
+              - *COMPOSER_INSTALL
+              - *INSTALL_SCRIPT
+              - *SETUP_WEB_INFRASTRUCTURE
+          before_script:
+              - *RESTORE_MYSQL_BACKUP
+          script:
+              - *TESTING_SCRIPT
+          after_script:
+              - *BROWSER_TESTING_AFTER_SCRIPT
+          addons:
+              mariadb: "10.3"
+              <<: *ADDONS_BASE_INFRASTRUCTURE
+
         - name: PHP 7.4 / MariaDB / Testing (Business, Communication, ..., prefer-lowest)
           php: "7.4"
           stage: Test
@@ -1001,29 +1023,6 @@ jobs:
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
-        - name: PHP 8.1.0 / MariaDB / Testing (Business, Communication, ...)
-          php: "8.1.0"
-          stage: Test
-          env:
-              - APPLICATION_ENV=ci.mysql
-          before_install:
-              - *AWS_SYNC_DOWN_MYSQL
-              - *BEFORE_INSTALL_SCRIPT
-              - *CHROMDRIVER_DOWNLOAD
-          install:
-              - *COMPOSER_INSTALL
-              - *INSTALL_SCRIPT
-              - *SETUP_WEB_INFRASTRUCTURE
-          before_script:
-              - *RESTORE_MYSQL_BACKUP
-          script:
-              - *TESTING_SCRIPT
-          after_script:
-              - *BROWSER_TESTING_AFTER_SCRIPT
-          addons:
-              mariadb: "10.3"
-              <<: *ADDONS_BASE_INFRASTRUCTURE
-
         - name: Docker / Alpine / PHP 7.4 / MariaDB / Functional Tests
           <<: *DOCKER_BUILD_TEMPLATE
           stage: Test
@@ -1122,6 +1121,99 @@ jobs:
           env:
               - PROGRESS_TYPE=plain
               - SPRYKER_PLATFORM_IMAGE=spryker/php:7.4-debian
+              - TRAVIS=1
+          script:
+              - docker/sdk boot -v deploy.yml
+              - SPRYKER_BUILD_HASH=myhash docker/sdk export images
+              - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
+              - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
+              - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
+
+
+        - name: Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests
+          <<: *DOCKER_BUILD_TEMPLATE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1-RC
+              - TRAVIS=1
+          script:
+              - docker/sdk boot -v deploy.ci.functional.mariadb.yml
+              - docker/sdk up -t -v
+              - docker/sdk testing codecept run -c codeception.ci.functional.yml
+
+        - name: Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests
+          <<: *DOCKER_BUILD_TEMPLATE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1-RC
+              - TRAVIS=1
+          script:
+              - docker/sdk boot -v deploy.ci.functional.yml
+              - docker/sdk up -t -v
+              - docker/sdk testing codecept run -c codeception.ci.functional.yml
+
+        - name: Docker / Alpine / PHP 8.1 / MariaDB / Acceptance
+          <<: *DOCKER_BUILD_TEMPLATE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1-RC
+              - TRAVIS=1
+          script:
+              - docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
+              - docker/sdk up -t
+              - docker/sdk testing console queue:worker:start --stop-when-empty
+              - docker/sdk testing codecept run -c codeception.acceptance.yml
+
+        - name: Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance
+          <<: *DOCKER_BUILD_TEMPLATE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1-RC
+              - TRAVIS=1
+          script:
+              - docker/sdk boot -v deploy.ci.acceptance.yml
+              - docker/sdk up -t
+              - docker/sdk testing console queue:worker:start --stop-when-empty
+              - docker/sdk testing codecept run -c codeception.acceptance.yml
+
+        - name: Docker / Alpine / PHP 8.1 / PostgreSQL / Glue
+          <<: *DOCKER_BUILD_TEMPLATE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1-RC
+              - TRAVIS=1
+          script:
+              - docker/sdk boot -v deploy.ci.api.yml
+              - docker/sdk up -t -v
+              - docker/sdk testing codecept fixtures
+              - docker/sdk testing console queue:worker:start --stop-when-empty
+              - docker/sdk testing codecept run -c codeception.api.yml
+
+        - name: Docker / Alpine / PHP 8.1 / MariaDB / Glue
+          <<: *DOCKER_BUILD_TEMPLATE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1-RC
+              - TRAVIS=1
+          script:
+              - docker/sdk boot -v deploy.ci.api.mariadb.yml
+              - docker/sdk up -t -v
+              - docker/sdk testing codecept fixtures
+              - docker/sdk testing console queue:worker:start --stop-when-empty
+              - docker/sdk testing codecept run -c codeception.api.yml
+
+        - name: Docker / Alpine / PHP 8.1 / Frontend & Assets
+          <<: *DOCKER_BUILD_TEMPLATE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1-RC
               - TRAVIS=1
           script:
               - docker/sdk boot -v deploy.yml

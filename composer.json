@@ -58,7 +58,7 @@
         "nette/di": "^3.0.0",
         "phpdocumentor/graphviz": "^2.0.0",
         "predis/predis": "^1.1.1",
-        "propel/propel": "2.0.0-beta1",
+        "propel/propel": "2.0.0-beta2",
         "psr/container": "^1.0.0",
         "psr/http-message": "^1.0.0",
         "psr/log": "^1.0.0",
@@ -228,7 +228,7 @@
             "php -d memory_limit=-1 vendor/bin/phpstan"
         ],
         "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate",
-        "psalm": "vendor/bin/psalm.phar --show-info=false",
+        "psalm": "vendor/bin/psalm.phar --show-info=false --no-cache",
         "psalm-update-baseline": "vendor/bin/psalm.phar --update-baseline",
         "psalm-set-baseline": "vendor/bin/psalm.phar --set-baseline=psalm-baseline.xml",
         "psalm-update-report": "vendor/bin/psalm.phar --report=psalm-report.xml",
