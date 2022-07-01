@@ -1,0 +1,18 @@
+{% extends view('remove-from-cart-form', '@SprykerShop:CartPage') %}
+
+{% define data = {
+    formClassName: '',
+} %}
+
+{% block form %}
+    {{ form_start(data.form, {
+        action: path('cart/async/remove', {'sku': cartItem.sku, 'groupKey': cartItemGroupKey }),
+        name: 'removeFromCartForm_' ~ cartItemGroupKey ~ (formNamePostfix ? '-' ~ formNamePostfix),
+        attr: {
+            class: data.formClassName,
+        },
+    }) }}
+        {% block embeddedData %}{% endblock %}
+        {{ form_row(data.form._token, {id: ''}) }}
+    {{ form_end(data.form) }}
+{% endblock %}

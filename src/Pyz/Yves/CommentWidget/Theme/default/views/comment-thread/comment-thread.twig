@@ -1,0 +1,62 @@
+{% extends view('comment-thread', '@SprykerShop:CommentWidget') %}
+
+{% set commentThreadViewClassName = 'js-comment-thread-view' %}
+
+{% block body %}
+    <div class="is-position-relative">
+        {{ block('title') }}
+
+        <div class="{{ commentThreadViewClassName }}">
+            {% block comments %}
+                {% if data.taggedComments is not empty %}
+                    {{ block('selectCommentThread') }}
+                    {{ block('commentThreadList') }}
+                {% endif %}
+            {% endblock %}
+        </div>
+
+        {% block newCommentForm %}
+            {% if data.customer %}
+                {% include molecule('comment-form', 'CommentWidget') with {
+                    data: {
+                        returnUrl: data.returnUrl,
+                        ownerId: data.ownerId,
+                        ownerType: data.ownerType,
+                        submit: {
+                            text: 'comment_widget.form.add_comment' | trans,
+                            action: path('comment/async/add'),
+                        },
+                    },
+                    attributes: {
+                        'should-reset-field-after-request': true,
+                    },
+                } only %}
+            {% endif %}
+        {% endblock %}
+
+        {% set providerClassName = 'js-comment-thread-view-provider' %}
+
+        {% include molecule('ajax-provider') with {
+            class: providerClassName,
+            attributes: {
+                method: 'POST',
+                url: path('comment/async/add'),
+            },
+        } only %}
+
+        {% include molecule('ajax-loader') with {
+            modifiers: ['big'],
+            attributes: {
+                'provider-class-name': providerClassName,
+            },
+        } only %}
+
+        {% include molecule('ajax-renderer') with {
+            attributes: {
+                'provider-class-name': providerClassName,
+                'target-class-name': commentThreadViewClassName,
+                'mount-after-render': true,
+            },
+        } only %}
+    </div>
+{% endblock %}

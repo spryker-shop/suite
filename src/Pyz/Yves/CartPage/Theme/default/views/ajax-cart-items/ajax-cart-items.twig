@@ -1,0 +1,17 @@
+{% extends view('ajax-cart-items', '@SprykerShop:CartPage') %}
+
+{% define data = {
+    providerClassName: 'js-page-layout-cart__provider',
+} %}
+
+{% block body %}
+    {% include molecule('product-cart-items-list', 'CartPage') with {
+        data: {
+            cart: data.cart,
+            cartItems: data.cartItems,
+            isQuoteEditable: data.isQuoteEditable,
+            attributes: data.attributes,
+            providerClassName: data.providerClassName,
+        },
+    } only %}
+{% endblock %}

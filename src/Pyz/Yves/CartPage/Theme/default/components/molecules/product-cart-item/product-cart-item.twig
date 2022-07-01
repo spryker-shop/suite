@@ -1,3 +1,52 @@
 {% extends molecule('product-cart-item', '@SprykerShop:CartPage') %}
 
+{% define config = {
+    tag: 'product-cart-item',
+} %}
+
+{% define attributes = {
+    'provider-class-name': '',
+} %}
+
 {% block colors %}{% endblock %}
+
+{% block actions %}
+    {% if data.product.amountSalesUnit is empty %}
+        {% if canEditCart %}
+            {% widget 'CartProductMeasurementUnitQuantitySelectorWidget' args [data.product] only %}
+            {% nowidget %}
+                {% include molecule('cart-quantity-input', 'CartPage') with {
+                    data: {
+                        cartItem: data.product,
+                    },
+                } only %}
+            {% endwidget %}
+        {% else %}
+            {{ 'cart.item_quantity' | trans }}:
+            <strong>{{ data.product.quantity }}</strong>
+        {% endif %}
+    {% endif %}
+
+    {% if canEditCart %}
+        {% widget 'RemoveFromCartFormWidget' args [data.product] with {
+            data: {
+                formClassName: config.jsName ~ '__remove-form',
+            },
+            embed: {
+                buttonClassName: config.jsName ~ '__remove-button',
+            },
+        }  only %}
+            {% block embeddedData %}
+                <button class="{{ embed.buttonClassName }} float-right link" data-init-single-click>
+                    {{ 'product_cart_item.remove' | trans }}
+                </button>
+            {% endblock %}
+        {% endwidget %}
+    {% endif %}
+
+    {% if data.cart %}
+        {% block cartItemNote %}
+            {{ parent() }}
+        {% endblock %}
+    {% endif %}
+{% endblock %}

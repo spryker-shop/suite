@@ -1,0 +1,20 @@
+{% extends molecule('comment', '@SprykerShop:CommentWidget') %}
+
+{% block commentUpdate %}
+    {% include molecule('comment-form', 'CommentWidget') with {
+        data: {
+            formView: 'update',
+            comment: data.comment,
+            returnUrl: data.returnUrl,
+            idCustomer: data.idCustomer,
+            submit: {
+                text: 'comment_widget.form.update_comment' | trans,
+                action: path('comment/async/update'),
+            },
+            remove: {
+                text: 'comment_widget.form.remove_comment' | trans,
+                action: path('comment/async/remove'),
+            },
+        },
+    } only %}
+{% endblock %}

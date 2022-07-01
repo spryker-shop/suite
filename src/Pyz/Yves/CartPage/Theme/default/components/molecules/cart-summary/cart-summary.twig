@@ -1,0 +1,5 @@
+{% extends molecule('cart-summary', '@SprykerShop:CartPage') %}
+
+{% define data = {
+    cartQuantity: functionExists('getCartQuantity') ? getCartQuantity() : (cartQuantity is defined ? cartQuantity : app['cart.quantity'] | default),
+} %}

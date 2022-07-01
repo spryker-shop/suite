@@ -1,0 +1,27 @@
+{% extends molecule('product-quick-add-form', '@SprykerShop:ProductSearchWidget') %}
+
+{% define config = {
+    tag: 'product-quick-add-form',
+} %}
+
+{% define attributes = {
+    'provider-class-name': '',
+} %}
+
+{% block productQuickAddForm %}
+    {% set fieldsAlignment = not data.verticalLayout ? 'col--md-10' %}
+
+    <div class="col col--sm-12 {{ fieldsAlignment }}">
+        {{ form_start(data.form, data.options | merge({
+            attr: {
+                class: config.jsName ~ '__form',
+            },
+        })) }}
+            <div class="grid">
+                {{ block('fields') }}
+                {{ block('merchantProductOffersSelectWidget') }}
+                {{ block('button') }}
+            </div>
+        {{ form_end(data.form) }}
+    </div>
+{% endblock %}

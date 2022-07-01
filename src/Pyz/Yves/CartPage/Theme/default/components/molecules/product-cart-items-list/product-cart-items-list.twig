@@ -1,0 +1,21 @@
+{% extends molecule('product-cart-items-list', '@SprykerShop:CartPage') %}
+
+{% define data = {
+    providerClassName: '',
+} %}
+
+{% block cartItem %}
+    {% if not cartItem.configuredBundleItem | default %}
+        {% include molecule('product-cart-item', 'CartPage') with {
+            data: {
+                product: cartItem,
+                cart: data.cart,
+                isQuoteEditable: data.isQuoteEditable,
+                attributes: data.attributes[cartItem.sku] | default([]),
+            },
+            attributes: {
+                'provider-class-name': data.providerClassName,
+            },
+        } only %}
+    {% endif %}
+{% endblock %}

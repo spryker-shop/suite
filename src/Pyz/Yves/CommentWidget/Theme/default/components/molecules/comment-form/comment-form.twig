@@ -1,0 +1,22 @@
+{% extends molecule('comment-form', '@SprykerShop:CommentWidget') %}
+
+{% define attributes = {
+    'provider-class-name': 'js-comment-thread-view-provider',
+    'should-reset-field-after-request': false,
+} %}
+
+{% block form %}
+    {% set messageField %}
+        <textarea
+            name="message"
+            placeholder="{{ 'comment_widget.form.placeholder.add_comment' | trans }}"
+            required="required"
+            class="{{ config.jsName }}__message textarea textarea--expand spacing-bottom spacing-bottom--small">
+            {%- if isUpdateFormView -%}
+                {{ data.comment.message }}
+            {%- endif -%}
+        </textarea>
+    {% endset %}
+
+    {{ parent() }}
+{% endblock %}

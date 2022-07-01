@@ -3,7 +3,14 @@
     "compilerOptions": {
         "paths": {
             "*": ["*"],
-            "ShopUi/*": ["./vendor/spryker-shop/shop-ui/src/SprykerShop/Yves/ShopUi/Theme/default/*"]
+            "ShopUi/*": ["./vendor/spryker-shop/shop-ui/src/SprykerShop/Yves/ShopUi/Theme/default/*"],
+            "CartPage/*": ["./vendor/spryker-shop/cart-page/src/SprykerShop/Yves/CartPage/Theme/default/*"],
+            "CommentWidget/*": [
+                "./vendor/spryker-shop/comment-widget/src/SprykerShop/Yves/CommentWidget/Theme/default/*"
+            ],
+            "ProductSearchWidget/*": [
+                "./vendor/spryker-shop/product-search-widget/src/SprykerShop/Yves/ProductSearchWidget/Theme/default/*"
+            ]
         }
     }
 }

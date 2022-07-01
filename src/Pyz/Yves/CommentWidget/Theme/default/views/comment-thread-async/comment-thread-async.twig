@@ -1,0 +1,14 @@
+{% extends view('comment-thread', 'CommentWidget') %}
+
+{% set _widget = {
+    ownerId: _view.ownerId | default(0),
+    ownerType: _view.ownerType | default,
+    returnUrl: _view.returnUrl | default,
+    customer: _view.customer | default(null),
+    taggedComments: _view.taggedComments | default([]),
+    availableCommentTags: _view.availableCommentTags | default([]),
+}%}
+
+{% block body %}
+    {{ block('comments') }}
+{% endblock %}
