@@ -41,7 +41,7 @@ class CmsGuiCreatePageCest
 
         $i->selectOption('//*[@id="cms_page_fkTemplate"]', 'Placeholders Title & Content');
         $i->setValidFrom('1985-07-01');
-        $i->setValidTo('2050-07-01');
+        $i->setValidTo('2030-07-01');
         $i->setIsSearchable();
 
         $i->fillLocalizedUrlForm(0, $i->getLocalizedName('en'), $i->getLocalizedUrl('en'));
