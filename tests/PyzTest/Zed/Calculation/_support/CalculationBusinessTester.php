@@ -159,7 +159,7 @@ class CalculationBusinessTester extends Actor
         $discountEntity->setDisplayName('test1' . $this->getIncrementNumber());
         $discountEntity->setIsActive(1);
         $discountEntity->setValidFrom(new DateTime('1985-07-01'));
-        $discountEntity->setValidTo(new DateTime('2050-07-01'));
+        $discountEntity->setValidTo(new DateTime('2030-07-01'));
         $discountEntity->setCalculatorPlugin($calculatorType);
         $discountEntity->setCollectorQueryString('sku = "' . $sku . '"');
 
