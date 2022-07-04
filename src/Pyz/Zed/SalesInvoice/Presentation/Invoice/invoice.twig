@@ -59,6 +59,11 @@
         .text-center {
             text-align: center;
         }
+
+        .product-option {
+            font-size: 13px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -127,9 +132,9 @@
             {# @var item \Generated\Shared\Transfer\ItemTransfer #}
 
             {% set taxRate = item.taxRate %}
-            {% set rateSum = taxes[item.taxRate] | default(0) + item.sumTaxAmountFullAggregation %}
+            {% set rateSum = taxes[taxRate] | default(0) + item.sumTaxAmount %}
             {% set taxes = taxes | merge({ (taxRate): rateSum }) %}
-            {% set rateItemSum = itemSumByTaxes[taxRate] | default(0) + item.sumPriceToPayAggregation %}
+            {% set rateItemSum = itemSumByTaxes[taxRate] | default(0) + item.sumPrice %}
             {% set itemSumByTaxes = itemSumByTaxes | merge({ (taxRate): rateItemSum }) %}
 
             {% if item.productBundle is not defined or item.productBundle is null %}
@@ -144,6 +149,30 @@
                 </tr>
             {% endif %}
 
+            {% if item.productOptions | length %}
+                <tr class="product-option">
+                    <td colspan="2"></td>
+                    <td colspan="3">{{ 'product.product_options' | trans }}:</td>
+                </tr>
+                {% for productOption in item.productOptions %}
+                    {# @var productOption \Generated\Shared\Transfer\ProductOptionTransfer #}
+
+                    {% set taxRate = productOption.taxRate %}
+                    {% set rateSum = (taxes[taxRate] | default(0)) + productOption.sumTaxAmount %}
+                    {% set taxes = taxes | merge({ (taxRate): rateSum }) %}
+                    {% set rateItemSum = (itemSumByTaxes[taxRate] | default(0)) + productOption.sumPrice %}
+                    {% set itemSumByTaxes = itemSumByTaxes | merge({ (taxRate): rateItemSum }) %}
+
+                    <tr class="product-option">
+                        <td></td>
+                        <td class="text-center">{{ productOption.quantity }}</td>
+                        <td>{{ productOption.value }}</td>
+                        <td class="text-center">{{ productOption.taxRate | number_format }}%</td>
+                        <td class="text-center">{{ productOption.sumPrice | money(true, order.currencyIsoCode) }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+
             {% if item.productBundle is defined and item.productBundle is not null %}
                 {% if item.relatedBundleItemIdentifier not in renderedBundles %}
                     {# @var productBundle \Generated\Shared\Transfer\ItemTransfer #}
@@ -156,7 +185,7 @@
                         <td class="text-center">{{ productBundle.quantity }}</td>
                         <td>{{ productBundle.name }}</td>
                         <td class="text-center">{{ productBundle.taxRate | number_format }}%</td>
-                        <td class="text-center">{{ productBundle.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
+                        <td class="text-center">{{ productBundle.sumPrice | money(true, order.currencyIsoCode) }}</td>
                     </tr>
 
                     {% for bundleditem in order.items %}
@@ -166,7 +195,7 @@
                                 <td class="text-center">{{ bundleditem.quantity }}</td>
                                 <td>{{ bundleditem.name }}</td>
                                 <td class="text-center">{{ bundleditem.taxRate | number_format }}%</td>
-                                <td class="text-center">{{ bundleditem.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
+                                <td class="text-center">{{ bundleditem.sumPrice | money(true, order.currencyIsoCode) }}</td>
                             </tr>
                         {% endif %}
                     {% endfor %}
@@ -181,7 +210,7 @@
             {% set taxRate = expense.taxRate %}
             {% set rateSum = taxes[expense.taxRate] | default(0) + expense.sumTaxAmount %}
             {% set taxes = taxes | merge({ (taxRate): rateSum }) %}
-            {% set rateItemSum = itemSumByTaxes[taxRate] | default(0) + expense.sumPriceToPayAggregation %}
+            {% set rateItemSum = itemSumByTaxes[taxRate] | default(0) + expense.sumPrice %}
             {% set itemSumByTaxes = itemSumByTaxes | merge({ (taxRate): rateItemSum }) %}
 
             <tr>
@@ -207,7 +236,7 @@
         {% for rate, tax in taxes %}
             <tr>
                 <td colspan="2">{{ 'order_invoice.invoice_template.table.tax.included' | trans({ '%tax_rate%': rate | number_format }) }}</td>
-                <td class="text-center">{{ (itemSumByTaxes[rate] - tax) | money(true, order.currencyIsoCode) }}</td>
+                <td class="text-center">{{ itemSumByTaxes[rate] | money(true, order.currencyIsoCode) }}</td>
                 <td class="text-center">{{ 'order_invoice.invoice_template.table.tax.name' | trans }}</td>
                 <td class="text-center">{{ tax | money(true, order.currencyIsoCode) }}</td>
             </tr>
