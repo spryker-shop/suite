@@ -23257,29 +23257,32 @@
         },
         {
             "name": "spryker/configurable-bundles-products-resource-relationship",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/configurable-bundles-products-resource-relationship.git",
-                "reference": "a9a11cf726dc02fb573651337e4cbd1456ec92fd"
+                "reference": "8c709152122606b87726468da33798ed816e3d24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/configurable-bundles-products-resource-relationship/zipball/a9a11cf726dc02fb573651337e4cbd1456ec92fd",
-                "reference": "a9a11cf726dc02fb573651337e4cbd1456ec92fd",
+                "url": "https://api.github.com/repos/spryker/configurable-bundles-products-resource-relationship/zipball/8c709152122606b87726468da33798ed816e3d24",
+                "reference": "8c709152122606b87726468da33798ed816e3d24",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.4",
                 "spryker/catalog": "^5.5.0",
                 "spryker/configurable-bundles-rest-api": "^1.0.0",
                 "spryker/glue-application": "^1.9.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/products-rest-api": "^2.12.0"
+                "spryker/products-rest-api": "^2.12.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -23298,9 +23301,9 @@
             ],
             "description": "ConfigurableBundlesProductsResourceRelationship module",
             "support": {
-                "source": "https://github.com/spryker/configurable-bundles-products-resource-relationship/tree/1.0.0"
+                "source": "https://github.com/spryker/configurable-bundles-products-resource-relationship/tree/1.1.0"
             },
-            "time": "2020-10-08T12:02:13+00:00"
+            "time": "2022-07-05T15:05:48+00:00"
         },
         {
             "name": "spryker/configurable-bundles-rest-api",
@@ -64333,12 +64336,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "842595abcb76351b4f4691a21abada9aad79ead8"
+                "reference": "f4f773981f1ebb5da8a79132e5c2545bb74e39cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/842595abcb76351b4f4691a21abada9aad79ead8",
-                "reference": "842595abcb76351b4f4691a21abada9aad79ead8",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/f4f773981f1ebb5da8a79132e5c2545bb74e39cd",
+                "reference": "f4f773981f1ebb5da8a79132e5c2545bb74e39cd",
                 "shasum": ""
             },
             "require-dev": {
@@ -64374,7 +64377,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2022-06-28T10:18:48+00:00"
+            "time": "2022-07-05T13:35:43+00:00"
         },
         {
             "name": "mikey179/vfsstream",
