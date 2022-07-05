@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d56bf971a56a1e0b50bf7f1e6bc5a6b0",
+    "content-hash": "ad1b9c01fc032aee7a14cbc97aaea260",
     "packages": [
         {
             "name": "async-aws/core",
@@ -33208,28 +33208,30 @@
         },
         {
             "name": "spryker/merchant-sales-order",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-sales-order.git",
-                "reference": "82d5287ae8806495a88216dca63acc62e7140e89"
+                "reference": "5fb16ad9a728aa80157fbf8429daba83c15e90e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-sales-order/zipball/82d5287ae8806495a88216dca63acc62e7140e89",
-                "reference": "82d5287ae8806495a88216dca63acc62e7140e89",
+                "url": "https://api.github.com/repos/spryker/merchant-sales-order/zipball/5fb16ad9a728aa80157fbf8429daba83c15e90e9",
+                "reference": "5fb16ad9a728aa80157fbf8429daba83c15e90e9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker/calculation": "^4.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/merchant": "^3.0.0",
                 "spryker/merchant-sales-order-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
+                "spryker/refund-extension": "^1.0.0",
                 "spryker/sales": "^11.18.0",
                 "spryker/sales-extension": "^1.1.0",
-                "spryker/shipment-extension": "^1.1.0"
+                "spryker/shipment-extension": "^1.1.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -33256,9 +33258,9 @@
             ],
             "description": "MerchantSalesOrder module",
             "support": {
-                "source": "https://github.com/spryker/merchant-sales-order/tree/1.0.0"
+                "source": "https://github.com/spryker/merchant-sales-order/tree/1.1.0"
             },
-            "time": "2021-08-16T16:27:47+00:00"
+            "time": "2022-07-05T11:45:02+00:00"
         },
         {
             "name": "spryker/merchant-sales-order-data-export",
@@ -49175,24 +49177,25 @@
         },
         {
             "name": "spryker/refund",
-            "version": "5.4.0",
+            "version": "5.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/refund.git",
-                "reference": "062c5f38a5d39b97df5575be1f73bc2ff58ee5be"
+                "reference": "86fa527be15c0946d80bf294bcf7411014fc61a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/refund/zipball/062c5f38a5d39b97df5575be1f73bc2ff58ee5be",
-                "reference": "062c5f38a5d39b97df5575be1f73bc2ff58ee5be",
+                "url": "https://api.github.com/repos/spryker/refund/zipball/86fa527be15c0946d80bf294bcf7411014fc61a6",
+                "reference": "86fa527be15c0946d80bf294bcf7411014fc61a6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.4",
                 "spryker/calculation": "^4.0.0",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/money": "^2.0.0",
+                "spryker/refund-extension": "^1.0.0",
                 "spryker/sales": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/util-date-time": "^1.0.0"
@@ -49224,9 +49227,50 @@
             ],
             "description": "Refund module",
             "support": {
-                "source": "https://github.com/spryker/refund/tree/5.4.0"
+                "source": "https://github.com/spryker/refund/tree/5.5.0"
             },
-            "time": "2020-08-20T12:38:58+00:00"
+            "time": "2022-07-05T11:45:02+00:00"
+        },
+        {
+            "name": "spryker/refund-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/refund-extension.git",
+                "reference": "8b3d70bd784a90725cef757c47441d036932548a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/refund-extension/zipball/8b3d70bd784a90725cef757c47441d036932548a",
+                "reference": "8b3d70bd784a90725cef757c47441d036932548a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "RefundExtension module",
+            "support": {
+                "source": "https://github.com/spryker/refund-extension/tree/1.0.0"
+            },
+            "time": "2022-07-05T11:45:02+00:00"
         },
         {
             "name": "spryker/related-products-rest-api",
