@@ -1,4 +1,7 @@
 <?php
+/**
+ * @deprecated Will be removed after the DevVM environment is no longer supported.
+ */
 
 use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Oauth\OauthConstants;

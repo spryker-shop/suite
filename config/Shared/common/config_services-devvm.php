@@ -1,4 +1,7 @@
 <?php
+/**
+ * @deprecated Will be removed after the DevVM environment is no longer supported.
+ */
 
 use Pyz\Shared\Scheduler\SchedulerConfig;
 use Spryker\Shared\Event\EventConstants;
