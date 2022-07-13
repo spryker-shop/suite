@@ -21,8 +21,8 @@ use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\MerchantPortalApplication\MerchantPortalConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Oauth\OauthConstants;
-use Spryker\Shared\OauthCryptography\OauthCryptographyConstants;
 use Spryker\Shared\OauthClient\OauthClientConstants;
+use Spryker\Shared\OauthCryptography\OauthCryptographyConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
@@ -40,7 +40,6 @@ use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\OauthDummy\OauthDummyConfig;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
-
 
 // ############################################################################
 // ############################## TESTING IN CI ###############################
