@@ -241,16 +241,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.231.4",
+            "version": "3.231.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "2dc6f917e3ce656e4fb5b9b591d7d84cd0d1f665"
+                "reference": "4ea642d1c7f8002037ef46e5f17c9fc1273a6021"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2dc6f917e3ce656e4fb5b9b591d7d84cd0d1f665",
-                "reference": "2dc6f917e3ce656e4fb5b9b591d7d84cd0d1f665",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4ea642d1c7f8002037ef46e5f17c9fc1273a6021",
+                "reference": "4ea642d1c7f8002037ef46e5f17c9fc1273a6021",
                 "shasum": ""
             },
             "require": {
@@ -327,9 +327,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.231.4"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.231.5"
             },
-            "time": "2022-07-12T18:46:48+00:00"
+            "time": "2022-07-13T18:36:03+00:00"
         },
         {
             "name": "brick/math",
@@ -38562,16 +38562,16 @@
         },
         {
             "name": "spryker/price-product-offer-gui",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-offer-gui.git",
-                "reference": "fa68f02f3cb7b57cb62726945920108d766ac184"
+                "reference": "aad4f8e74833f9187fe962131b85cd4adf21f941"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-offer-gui/zipball/fa68f02f3cb7b57cb62726945920108d766ac184",
-                "reference": "fa68f02f3cb7b57cb62726945920108d766ac184",
+                "url": "https://api.github.com/repos/spryker/price-product-offer-gui/zipball/aad4f8e74833f9187fe962131b85cd4adf21f941",
+                "reference": "aad4f8e74833f9187fe962131b85cd4adf21f941",
                 "shasum": ""
             },
             "require": {
@@ -38579,11 +38579,17 @@
                 "spryker/kernel": "^3.33.0",
                 "spryker/price": "^5.6.0",
                 "spryker/price-product": "^4.16.0",
+                "spryker/product-merchant-portal-gui-extension": "^1.1.0",
                 "spryker/product-offer-gui-extension": "^1.0.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/util-encoding": "^2.1.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/product": "*",
+                "spryker/product-offer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -38602,9 +38608,9 @@
             ],
             "description": "PriceProductOfferGui module",
             "support": {
-                "source": "https://github.com/spryker/price-product-offer-gui/tree/1.0.1"
+                "source": "https://github.com/spryker/price-product-offer-gui/tree/1.1.0"
             },
-            "time": "2022-04-26T16:30:57+00:00"
+            "time": "2022-07-14T11:12:48+00:00"
         },
         {
             "name": "spryker/price-product-offer-storage",
