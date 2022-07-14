@@ -12,6 +12,7 @@ use Spryker\Zed\PriceProductMerchantRelationshipMerchantPortalGui\Communication\
 use Spryker\Zed\PriceProductMerchantRelationshipMerchantPortalGui\Communication\Plugin\ProductMerchantPortalGui\MerchantRelationshipPriceProductConcreteTableConfigurationExpanderPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipMerchantPortalGui\Communication\Plugin\ProductMerchantPortalGui\MerchantRelationshipPriceProductMapperPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipMerchantPortalGui\Communication\Plugin\ProductMerchantPortalGui\MerchantRelationshipPriceProductTableFilterPlugin;
+use Spryker\Zed\PriceProductOfferGui\Communication\Plugin\ProductMerchantPortalGui\PriceProductOfferPriceProductTableFilterPlugin;
 use Spryker\Zed\ProductMerchantPortalGui\ProductMerchantPortalGuiDependencyProvider as SprykerProductMerchantPortalGuiDependencyProvider;
 use Spryker\Zed\TaxMerchantPortalGui\Communication\Plugin\ProductMerchantPortalGui\TaxProductAbstractFormExpanderPlugin;
 
@@ -44,6 +45,7 @@ class ProductMerchantPortalGuiDependencyProvider extends SprykerProductMerchantP
     {
         return [
             new MerchantRelationshipPriceProductTableFilterPlugin(),
+            new PriceProductOfferPriceProductTableFilterPlugin(),
         ];
     }
 
