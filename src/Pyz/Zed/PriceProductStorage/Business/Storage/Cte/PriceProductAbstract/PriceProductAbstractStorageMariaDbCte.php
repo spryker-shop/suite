@@ -8,7 +8,7 @@
 namespace Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductAbstract;
 
 use Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface;
-use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
+use Pyz\Zed\Propel\Business\Cte\MariaDbDataFormatterTrait;
 use Pyz\Zed\Propel\PropelConfig;
 
 class PriceProductAbstractStorageMariaDbCte implements PriceProductStorageCteInterface

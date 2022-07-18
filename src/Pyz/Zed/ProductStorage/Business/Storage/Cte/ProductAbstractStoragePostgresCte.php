@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\ProductStorage\Business\Storage\Cte;
 
-use Pyz\Zed\Propel\Business\CTE\PostgresDataFormatterTrait;
+use Pyz\Zed\Propel\Business\Cte\PostgresDataFormatterTrait;
 use Pyz\Zed\Propel\PropelConfig;
 
 class ProductAbstractStoragePostgresCte implements ProductStorageCteStrategyInterface
