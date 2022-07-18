@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\ProductPageSearch\Business\Publisher\Sql;
 
-use Pyz\Zed\Propel\Business\CTE\PostgresDataFormatterTrait;
+use Pyz\Zed\Propel\Business\Cte\PostgresDataFormatterTrait;
 use Spryker\Zed\Propel\PropelConfig;
 
 class ProductConcretePageSearchPostgresPagePublisherCte implements ProductPagePublisherCteInterface
