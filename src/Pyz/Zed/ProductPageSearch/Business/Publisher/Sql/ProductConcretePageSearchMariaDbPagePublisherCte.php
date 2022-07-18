@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\ProductPageSearch\Business\Publisher\Sql;
 
-use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
+use Pyz\Zed\Propel\Business\Cte\MariaDbDataFormatterTrait;
 use Spryker\Zed\Propel\PropelConfig;
 
 class ProductConcretePageSearchMariaDbPagePublisherCte implements ProductPagePublisherCteInterface

@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\ProductStorage\Business\Storage\Cte;
 
-use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
+use Pyz\Zed\Propel\Business\Cte\MariaDbDataFormatterTrait;
 use Pyz\Zed\Propel\PropelConfig;
 
 class ProductConcreteStorageMariaDbCte implements ProductStorageCteStrategyInterface

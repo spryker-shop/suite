@@ -8,7 +8,7 @@
 namespace Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductConcrete;
 
 use Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface;
-use Pyz\Zed\Propel\Business\CTE\PostgresDataFormatterTrait;
+use Pyz\Zed\Propel\Business\Cte\PostgresDataFormatterTrait;
 use Pyz\Zed\Propel\PropelConfig;
 
 class PriceProductConcreteStoragePostgresCte implements PriceProductStorageCteInterface
