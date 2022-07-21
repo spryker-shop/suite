@@ -49,7 +49,7 @@ jobs:
 
             - uses: actions/setup-node@v1
               with:
-                  node-version: '12'
+                  node-version: '16'
 
             - name: NPM cache
               uses: actions/cache@v2
@@ -58,19 +58,6 @@ jobs:
                   key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
                   restore-keys: |
                       ${{ runner.os }}-node-
-
-            - name: Yarn get cache directory
-              id: yarn-cache-dir-path
-              run: echo "::set-output name=dir::$(yarn cache dir)"
-
-            - name: Yarn cache
-              uses: actions/cache@v2
-              id: yarn-cache
-              with:
-                  path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-yarn-
 
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
@@ -127,8 +114,7 @@ jobs:
 
             - name: Frontend install-dependencies
               run: |
-                  vendor/bin/console frontend:mp:install-dependencies
-                  vendor/bin/console frontend:zed:install-dependencies
+                  vendor/bin/console frontend:project:install-dependencies -vvv
 
             - name: Install NPM packages
               run: |
@@ -147,13 +133,13 @@ jobs:
               run: node ./frontend/libs/formatter
 
             - name: Front-end MP Unit Tests
-              run: yarn mp:test
+              run: npm run mp:test
 
             - name: Front-end MP Disable IE11 support
               run: git apply frontend/merchant-portal/disable-ie11-mp.patch
 
             - name: Front-end MP Build
-              run: yarn mp:build:production
+              run: npm run mp:build:production
 
             - name: Front-end MP Restore IE11 support
               run: git apply -R frontend/merchant-portal/disable-ie11-mp.patch
