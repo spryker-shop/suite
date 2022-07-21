@@ -65,11 +65,8 @@ sections:
             command: 'vendor/bin/glue api:generate:documentation'
 
     build-static:
-        merchant-portal-install-dependencies:
-            command: 'console frontend:mp:install-dependencies | tail -100 && echo "Output trimmed, only last 100 lines shown."'
-
-        zed-install-dependencies:
-            command: 'vendor/bin/console frontend:zed:install-dependencies'
+        project-install-dependencies:
+            command: 'console frontend:project:install-dependencies | tail -100 && echo "Output trimmed, only last 100 lines shown."'
 
     build-static-production:
         excluded: true
