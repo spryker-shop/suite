@@ -118,7 +118,7 @@ jobs:
 
             - name: Install NPM packages
               run: |
-                  sudo npm install --location=global --unsafe-perm --legacy-peer-deps speccy@0.11.0
+                  sudo npm i --location=global --unsafe-perm speccy@0.11.0
 
             - name: Speccy lint Glue specification
               run: speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
@@ -134,15 +134,6 @@ jobs:
 
             - name: Front-end MP Unit Tests
               run: npm run mp:test
-
-            - name: Front-end MP Disable IE11 support
-              run: git apply frontend/merchant-portal/disable-ie11-mp.patch
-
-            - name: Front-end MP Build
-              run: npm run mp:build:production
-
-            - name: Front-end MP Restore IE11 support
-              run: git apply -R frontend/merchant-portal/disable-ie11-mp.patch
 
             - name: Validate propel files
               run: |
