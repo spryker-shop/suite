@@ -97,7 +97,7 @@ $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($trustedHosts, $config[
 // ------------------------------ AUTHENTICATION ------------------------------
 // ----------------------------------------------------------------------------
 
-require 'common/config_oauth-devvm.php';
+require 'common/config_oauth.php';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ SERVICES ------------------------------------
