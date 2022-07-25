@@ -16,12 +16,6 @@ Shop (internal)
 
 License: [MIT](LICENSE)
 
-## Installation
-
-For DevVM based installation instructions, see [About the Installation Guides](https://documentation.spryker.com/docs/about-installation).
-
-If you encounter any issues during or after the installation, see [Troubleshooting article](https://documentation.spryker.com/docs/troubleshooting).
-
 ## Docker installation
 
 For detailed installation instructions of Spryker in Docker, see [Getting Started with Docker](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/installing-spryker-with-docker.html).
