@@ -267,7 +267,12 @@ class DataImportConfig extends SprykerDataImportConfig
     /**
      * @var string
      */
-    public const IMPORT_TYPE_COMBINED_PRODUCT_IMAGE = 'combined-product-image';
+    public const IMPORT_TYPE_COMBINED_PRODUCT_IMAGE_ABSTRACT = 'combined-product-image-abstract';
+
+    /**
+     * @var string
+     */
+    public const IMPORT_TYPE_COMBINED_PRODUCT_IMAGE_CONCRETE = 'combined-product-image-concrete';
 
     /**
      * @var string
