@@ -32,6 +32,10 @@ use Pyz\Zed\DataImport\Business\CombinedProduct\ProductImage\CombinedProductImag
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductImage\Writer\CombinedProductImageBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductImage\Writer\CombinedProductImageBulkPdoMariaDbDataSetWriter;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductImage\Writer\CombinedProductImagePropelDataSetWriter;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductImageAbstract\CombinedProductImageAbstractHydratorStep;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductImageAbstract\CombinedProductImageAbstractTypeDataSetCondition;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductImageConcrete\CombinedProductImageConcreteHydratorStep;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductImageConcrete\CombinedProductImageConcreteTypeDataSetCondition;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\CombinedProductPriceHydratorStep;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\CombinedProductPriceMandatoryColumnCondition;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\Writer\CombinedProductPriceBulkPdoDataSetWriter;
@@ -257,8 +261,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 return $this->createCombinedProductAbstractStoreImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_CONCRETE:
                 return $this->createCombinedProductConcreteImporter($dataImportConfigurationActionTransfer);
-            case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_IMAGE:
-                return $this->createCombinedProductImageImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_IMAGE_ABSTRACT:
+                return $this->createCombinedProductImageAbstractImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_IMAGE_CONCRETE:
+                return $this->createCombinedProductImageConcreteImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_PRICE:
                 return $this->createCombinedProductPriceImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_STOCK:
@@ -719,6 +725,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
+     * @deprecated Use `\Pyz\Zed\DataImport\DataImportBusinessFactory::createCombinedProductImageAbstractImporter()`
+     * and `\Pyz\Zed\DataImport\DataImportBusinessFactory::createCombinedProductImageConcreteImporter()` instead.
+     *
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
@@ -738,6 +747,56 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addStep(new CombinedProductImageHydratorStep());
 
         $dataImporter->setDataSetCondition($this->createCombinedProductImageMandatoryColumnCondition());
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataSetWriter($this->createCombinedProductImageDataSetWriters());
+
+        return $dataImporter;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    public function createCombinedProductImageAbstractImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+    ): DataImporterInterface {
+        $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
+        );
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CombinedProductImageAbstractHydratorStep::BULK_SIZE);
+        $dataSetStepBroker
+            ->addStep($this->createProductAbstractSkuToIdProductAbstractStep(CombinedProductImageAbstractHydratorStep::COLUMN_ABSTRACT_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT))
+            ->addStep($this->createLocaleNameToIdStep(CombinedProductImageAbstractHydratorStep::COLUMN_LOCALE, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE))
+            ->addStep(new CombinedProductImageAbstractHydratorStep());
+
+        $dataImporter->setDataSetCondition($this->createCombinedProductImageAbstractTypeDataSetCondition());
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataSetWriter($this->createCombinedProductImageDataSetWriters());
+
+        return $dataImporter;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    public function createCombinedProductImageConcreteImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+    ): DataImporterInterface {
+        $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
+        );
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CombinedProductImageConcreteHydratorStep::BULK_SIZE);
+        $dataSetStepBroker
+            ->addStep($this->createProductSkuToIdProductStep(CombinedProductImageConcreteHydratorStep::COLUMN_CONCRETE_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT))
+            ->addStep($this->createLocaleNameToIdStep(CombinedProductImageConcreteHydratorStep::COLUMN_LOCALE, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE))
+            ->addStep(new CombinedProductImageConcreteHydratorStep());
+
+        $dataImporter->setDataSetCondition($this->createCombinedProductImageConcreteTypeDataSetCondition());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetWriter($this->createCombinedProductImageDataSetWriters());
 
@@ -1013,6 +1072,22 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createCombinedProductConcreteTypeDataSetCondition(): DataSetConditionInterface
     {
         return new CombinedProductConcreteTypeDataSetCondition();
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    protected function createCombinedProductImageConcreteTypeDataSetCondition(): DataSetConditionInterface
+    {
+        return new CombinedProductImageConcreteTypeDataSetCondition();
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    protected function createCombinedProductImageAbstractTypeDataSetCondition(): DataSetConditionInterface
+    {
+        return new CombinedProductImageAbstractTypeDataSetCondition();
     }
 
     /**
