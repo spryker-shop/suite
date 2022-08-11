@@ -330,6 +330,22 @@ class CustomerRegistrationCest
                 ],
             ],
             [
+                'attributes' => (new RestCustomersAttributesBuilder([
+                    RestCustomersAttributesTransfer::PASSWORD => 'change123',
+                    RestCustomersAttributesTransfer::CONFIRM_PASSWORD => 'change123',
+                    RestCustomersAttributesTransfer::ACCEPTED_TERMS => true,
+                    RestCustomersAttributesTransfer::GENDER => 'xyz',
+                ]))->build(),
+                RestErrorMessageTransfer::STATUS => Response::HTTP_BAD_REQUEST,
+                'errors' => [
+                    [
+                        RestErrorMessageTransfer::CODE => CustomersRestApiConfig::RESPONSE_CODE_NOT_VALID_GENDER,
+                        RestErrorMessageTransfer::STATUS => Response::HTTP_BAD_REQUEST,
+                        RestErrorMessageTransfer::DETAIL => 'Gender is not valid. Possible options are: Male, Female',
+                    ],
+                ],
+            ],
+            [
                 'attributes' => new RestCustomersAttributesTransfer(),
                 RestErrorMessageTransfer::STATUS => Response::HTTP_UNPROCESSABLE_ENTITY,
                 'errors' => [
