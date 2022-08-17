@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\PriceProduct;
 
+use Spryker\Zed\AclEntity\Communication\Plugin\PriceProduct\AclEntityOrphanPriceProductStoreRemovalVoterPlugin;
 use Spryker\Zed\PriceProduct\PriceProductDependencyProvider as SprykerPriceProductDependencyProvider;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceDimensionAbstractWriterPlugin;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceDimensionConcreteWriterPlugin;
@@ -103,6 +104,16 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     {
         return [
             new MerchantRelationshipPriceProductCollectionDeletePlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\PriceProductExtension\Dependency\Plugin\OrphanPriceProductStoreRemovalVoterPluginInterface>
+     */
+    protected function getOrphanPriceProductStoreRemovalVoterPlugins(): array
+    {
+        return [
+            new AclEntityOrphanPriceProductStoreRemovalVoterPlugin(),
         ];
     }
 }
