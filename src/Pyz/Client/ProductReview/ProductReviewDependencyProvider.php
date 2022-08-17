@@ -30,6 +30,8 @@ class ProductReviewDependencyProvider extends SprykerProductReviewDependencyProv
     }
 
     /**
+     * @phpstan-return array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>
+     *
      * @return array<\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface>|array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>
      */
     public function getProductReviewsBulkSearchResultFormatterPlugins(): array

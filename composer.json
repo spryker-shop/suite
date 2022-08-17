@@ -1060,7 +1060,7 @@
         "filp/whoops": "^2.7",
         "jetbrains/phpstorm-stubs": "dev-master",
         "pdepend/pdepend": "^2.2.4",
-        "phpstan/phpstan": "~1.6.0",
+        "phpstan/phpstan": "1.8.2",
         "phpunit/phpunit": "^9.5.0",
         "psalm/phar": "^4.3.1",
         "spryker-sdk/async-api": "^0.2.3",
@@ -1094,7 +1094,8 @@
     "autoload-dev": {
         "psr-4": {
             "PyzTest\\": "tests/PyzTest/",
-            "Acceptance\\Auth\\": "vendor/spryker/auth/tests/"
+            "Acceptance\\Auth\\": "vendor/spryker/auth/tests/",
+            "Symfony\\Contracts\\Translation\\": "vendor/symfony/translation-contracts/"
         },
         "files": [
             "test-autoload.php"
