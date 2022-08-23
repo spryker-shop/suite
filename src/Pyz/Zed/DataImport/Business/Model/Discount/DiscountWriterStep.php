@@ -98,6 +98,25 @@ class DiscountWriterStep implements DataImportStepInterface
     public const KEY_PROMOTION_QUANTITY = 'promotion_quantity';
 
     /**
+     * @var string
+     */
+    public const KEY_PRIORITY = 'priority';
+
+    /**
+     * @uses \Spryker\Zed\Discount\DiscountConfig::PRIORITY_MIN_VALUE
+     *
+     * @var int
+     */
+    protected const PRIORITY_MIN_VALUE = 1;
+
+    /**
+     * @uses \Spryker\Zed\Discount\DiscountConfig::PRIORITY_MAX_VALUE
+     *
+     * @var int
+     */
+    protected const PRIORITY_MAX_VALUE = 9999;
+
+    /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
@@ -119,6 +138,13 @@ class DiscountWriterStep implements DataImportStepInterface
             $discountVoucherPoolEntity->setIsActive($dataSet[static::KEY_IS_ACTIVE]);
 
             $discountEntity->setVoucherPool($discountVoucherPoolEntity);
+        }
+
+        if (
+            array_key_exists(static::KEY_PRIORITY, $dataSet->getArrayCopy())
+            && property_exists(SpyDiscount::class, 'priority')
+        ) {
+            $discountEntity->setPriority($this->getPriority($dataSet));
         }
 
         $discountEntity
@@ -260,5 +286,24 @@ class DiscountWriterStep implements DataImportStepInterface
         }
         $discountPromotion->setQuantity($dataSet[static::KEY_PROMOTION_QUANTITY]);
         $discountPromotion->save();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return int|null
+     */
+    protected function getPriority(DataSetInterface $dataSet): ?int
+    {
+        if ($dataSet[static::KEY_PRIORITY] === null || $dataSet[static::KEY_PRIORITY] === '') {
+            return null;
+        }
+
+        $priority = (int)$dataSet[static::KEY_PRIORITY];
+        if ($priority < static::PRIORITY_MIN_VALUE || $priority > static::PRIORITY_MAX_VALUE) {
+            return static::PRIORITY_MAX_VALUE;
+        }
+
+        return $priority;
     }
 }
