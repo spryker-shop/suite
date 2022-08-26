@@ -32,9 +32,7 @@ config/accumulated-config.json
 /src/Generated/
 /vendor/
 FOSS.md
-/public/Yves/maintenance/maintenance.marker
-/public/Zed/maintenance/maintenance.marker
-/public/Backoffice/maintenance/maintenance.marker
+/public/*/maintenance/maintenance.marker
 
 /data/*
 !/data/import/
@@ -47,7 +45,6 @@ FOSS.md
 /config/Yves/config_assets.php
 config/Yves/cache_bust.php
 /node_modules/
-.yarn/
 
 # public stuff
 public/Yves/assets/
@@ -55,10 +52,6 @@ public/Backoffice/assets/
 public/Zed/assets/
 public/MerchantPortal/assets/
 public/Configurator/dist/
-
-# vagrant stuff
-.vagrant
-Vagrantfile
 
 # docker stuff
 /.docker-sync/

@@ -46,6 +46,9 @@ sections:
         cache-class-resolver-build:
             command: 'vendor/bin/console cache:class-resolver:build'
 
+        generate-scope-collection-file:
+            command: 'vendor/bin/console oauth:scope-collection-file:generate'
+
     build-development:
         generate-transfers:
             command: 'vendor/bin/console transfer:generate'
@@ -62,12 +65,6 @@ sections:
     build-static:
         dependencies-install:
             command: 'vendor/bin/console frontend:project:install-dependencies'
-
-        yves-install-dependencies:
-            command: 'vendor/bin/console frontend:yves:install-dependencies'
-
-        zed-install-dependencies:
-            command: 'vendor/bin/console frontend:zed:install-dependencies'
 
     build-static-production:
         excluded: true

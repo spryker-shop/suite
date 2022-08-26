@@ -62,7 +62,7 @@ class CustomerProfilePage extends Customer
     /**
      * @var string
      */
-    public const ERROR_MESSAGE_EMAIL = 'Email already used';
+    public const ERROR_MESSAGE_EMAIL = 'If this E-mail address is already in use, you will receive a password reset link. Otherwise, you must first validate your E-mail address to finish registration. Please check your E-mail.';
 
     /**
      * @var string

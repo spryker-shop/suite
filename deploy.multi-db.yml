@@ -15,6 +15,10 @@ image:
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
         SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
         SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR: '0c1ffefeebdab4a3d839d0e52590c9a2'
+    node:
+        version: 16
+        npm: 8
+
 composer:
     mode: ''
     autoload: ''
@@ -199,7 +203,7 @@ groups:
             backoffice_us:
                 application: backoffice
                 endpoints:
-                    zed.us.spryker.local:
+                    backoffice.us.spryker.local:
                         store: US
                         services:
                             session:

@@ -20,6 +20,9 @@ image:
         AWS_SECRET_ACCESS_KEY: test
         AWS_DEFAULT_REGION: eu-central-1
         AWS_ENDPOINT: http://localhost.localstack.cloud:4566
+    node:
+        version: 16
+        npm: 8
 
 composer:
     mode: ''
@@ -206,7 +209,7 @@ groups:
             backoffice_us:
                 application: backoffice
                 endpoints:
-                    zed.us.spryker.local:
+                    backoffice.us.spryker.local:
                         store: US
                         services:
                             session:
