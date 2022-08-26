@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Authorization;
 
 use Spryker\Zed\Authorization\AuthorizationDependencyProvider as SprykerAuthorizationDependencyProvider;
+use Spryker\Zed\GlueBackendApiApplicationAuthorizationConnector\Communication\Plugin\Authorization\ProtectedPathAuthorizationStrategyPlugin;
 
 class AuthorizationDependencyProvider extends SprykerAuthorizationDependencyProvider
 {
@@ -16,6 +17,8 @@ class AuthorizationDependencyProvider extends SprykerAuthorizationDependencyProv
      */
     protected function getAuthorizationStrategyPlugins(): array
     {
-        return [];
+        return [
+            new ProtectedPathAuthorizationStrategyPlugin(),
+        ];
     }
 }
