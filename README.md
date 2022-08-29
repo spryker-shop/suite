@@ -4,6 +4,15 @@
 
 License: [MIT](LICENSE)
 
+## Suite vs Demo Shops
+Master Suite represents all Spryker OS modules and doesn't guarantee functional, business, and demo data consistency. Please consider B2B or B2C demo-shop when building standard E-Commerce use cases:
+
+- https://github.com/spryker-shop/b2c-demo-shop/releases/
+- https://github.com/spryker-shop/b2b-demo-shop/releases/
+- https://github.com/spryker-shop/b2c-demo-marketplace/releases/
+- https://github.com/spryker-shop/b2b-demo-marketplace/releases/
+
+
 ## Vagrant Installation
 In order to install the Shop Suite on your machine, you can follow the instructions described in the link below:
 
