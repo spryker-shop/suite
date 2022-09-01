@@ -202,6 +202,22 @@ class CustomerRegistrationCest
                 'attributes' => (new RestCustomersAttributesBuilder([
                     RestCustomersAttributesTransfer::PASSWORD => 'change123',
                     RestCustomersAttributesTransfer::CONFIRM_PASSWORD => 'change123',
+                    RestCustomersAttributesTransfer::ACCEPTED_TERMS => true,
+                    RestCustomersAttributesTransfer::SALUTATION => 'xyz',
+                ]))->build(),
+                RestErrorMessageTransfer::STATUS => Response::HTTP_UNPROCESSABLE_ENTITY,
+                'errors' => [
+                    [
+                        RestErrorMessageTransfer::CODE => RestRequestValidatorConfig::RESPONSE_CODE_REQUEST_INVALID,
+                        RestErrorMessageTransfer::STATUS => Response::HTTP_UNPROCESSABLE_ENTITY,
+                        RestErrorMessageTransfer::DETAIL => 'salutation => The value you selected is not a valid choice.',
+                    ],
+                ],
+            ],
+            [
+                'attributes' => (new RestCustomersAttributesBuilder([
+                    RestCustomersAttributesTransfer::PASSWORD => 'change123',
+                    RestCustomersAttributesTransfer::CONFIRM_PASSWORD => 'change123',
                 ]))->build(),
                 RestErrorMessageTransfer::STATUS => Response::HTTP_BAD_REQUEST,
                 'errors' => [
@@ -336,12 +352,12 @@ class CustomerRegistrationCest
                     RestCustomersAttributesTransfer::ACCEPTED_TERMS => true,
                     RestCustomersAttributesTransfer::GENDER => 'xyz',
                 ]))->build(),
-                RestErrorMessageTransfer::STATUS => Response::HTTP_BAD_REQUEST,
+                RestErrorMessageTransfer::STATUS => Response::HTTP_UNPROCESSABLE_ENTITY,
                 'errors' => [
                     [
-                        RestErrorMessageTransfer::CODE => CustomersRestApiConfig::RESPONSE_CODE_NOT_VALID_GENDER,
-                        RestErrorMessageTransfer::STATUS => Response::HTTP_BAD_REQUEST,
-                        RestErrorMessageTransfer::DETAIL => 'Gender is not valid. Possible options are: Male, Female',
+                        RestErrorMessageTransfer::CODE => RestRequestValidatorConfig::RESPONSE_CODE_REQUEST_INVALID,
+                        RestErrorMessageTransfer::STATUS => Response::HTTP_UNPROCESSABLE_ENTITY,
+                        RestErrorMessageTransfer::DETAIL => 'gender => The value you selected is not a valid choice.',
                     ],
                 ],
             ],
@@ -353,6 +369,11 @@ class CustomerRegistrationCest
                         RestErrorMessageTransfer::CODE => RestRequestValidatorConfig::RESPONSE_CODE_REQUEST_INVALID,
                         RestErrorMessageTransfer::STATUS => Response::HTTP_UNPROCESSABLE_ENTITY,
                         RestErrorMessageTransfer::DETAIL => 'email => This value should not be blank.',
+                    ],
+                    [
+                        RestErrorMessageTransfer::CODE => RestRequestValidatorConfig::RESPONSE_CODE_REQUEST_INVALID,
+                        RestErrorMessageTransfer::STATUS => Response::HTTP_UNPROCESSABLE_ENTITY,
+                        RestErrorMessageTransfer::DETAIL => 'gender => This value should not be blank.',
                     ],
                     [
                         RestErrorMessageTransfer::CODE => RestRequestValidatorConfig::RESPONSE_CODE_REQUEST_INVALID,

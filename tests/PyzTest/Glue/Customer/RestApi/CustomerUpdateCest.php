@@ -73,7 +73,9 @@ class CustomerUpdateCest
     {
         $firstName = uniqid('name');
         $restCustomersAttributesTransfer = (new RestCustomersAttributesTransfer())
-            ->setFirstName($firstName);
+            ->setFirstName($firstName)
+            ->setGender($this->customerTransfer->getGender())
+            ->setSalutation($this->customerTransfer->getSalutation());
 
         $I->sendPatch(
             $I->formatUrl(
@@ -139,7 +141,9 @@ class CustomerUpdateCest
         );
 
         $restCustomersAttributesTransfer = (new RestCustomersAttributesTransfer())
-            ->setEmail($firstCustomerTransfer->getEmail());
+            ->setEmail($firstCustomerTransfer->getEmail())
+            ->setGender($this->customerTransfer->getGender())
+            ->setSalutation($this->customerTransfer->getSalutation());
 
         $I->sendPatch(
             $I->formatUrl(
@@ -183,7 +187,9 @@ class CustomerUpdateCest
         );
 
         $restCustomersAttributesTransfer = (new RestCustomersAttributesTransfer())
-            ->setFirstName(uniqid());
+            ->setFirstName(uniqid())
+            ->setGender($this->customerTransfer->getGender())
+            ->setSalutation($this->customerTransfer->getSalutation());
 
         $I->sendPatch(
             $I->formatUrl(
@@ -220,7 +226,9 @@ class CustomerUpdateCest
     public function requestPatchCustomerFailsWithoutCustomerReference(CustomerApiTester $I): void
     {
         $restCustomersAttributesTransfer = (new RestCustomersAttributesTransfer())
-            ->setFirstName(uniqid());
+            ->setFirstName(uniqid())
+            ->setGender($this->customerTransfer->getGender())
+            ->setSalutation($this->customerTransfer->getSalutation());
 
         $I->sendPatch(
             $I->formatUrl(
@@ -258,7 +266,9 @@ class CustomerUpdateCest
     {
         $restCustomersAttributesTransfer = (new RestCustomersAttributesTransfer())
             ->setPassword('change123')
-            ->setConfirmPassword('change1234');
+            ->setConfirmPassword('change1234')
+            ->setGender($this->customerTransfer->getGender())
+            ->setSalutation($this->customerTransfer->getSalutation());
 
         $I->sendPatch(
             $I->formatUrl(
@@ -344,6 +354,8 @@ class CustomerUpdateCest
                 'attributes' => [
                     RestCustomersAttributesTransfer::PASSWORD => 'qwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiop',
                     RestCustomersAttributesTransfer::CONFIRM_PASSWORD => 'qwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiop',
+                    RestCustomersAttributesTransfer::GENDER => 'Male',
+                    RestCustomersAttributesTransfer::SALUTATION => 'Mr',
                 ],
                 RestErrorMessageTransfer::STATUS => Response::HTTP_UNPROCESSABLE_ENTITY,
                 'errors' => [
@@ -364,6 +376,8 @@ class CustomerUpdateCest
                 'attributes' => [
                     RestCustomersAttributesTransfer::PASSWORD => 'qwe',
                     RestCustomersAttributesTransfer::CONFIRM_PASSWORD => 'qwe',
+                    RestCustomersAttributesTransfer::GENDER => 'Male',
+                    RestCustomersAttributesTransfer::SALUTATION => 'Mr',
                 ],
                 RestErrorMessageTransfer::STATUS => Response::HTTP_UNPROCESSABLE_ENTITY,
                 'errors' => [
