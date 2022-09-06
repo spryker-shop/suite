@@ -220,13 +220,12 @@ $config[UserConstants::USER_SYSTEM_USERS] = [
 ];
 $config[SecuritySystemUserConstants::AUTH_DEFAULT_CREDENTIALS] = [
     'yves_system' => [
-        'token' => getenv('SPRYKER_ZED_REQUEST_TOKEN') ?: '',
+        'token' => getenv('SPRYKER_ZED_REQUEST_TOKEN'),
     ],
 ];
 
 // >> URL Signer
-
-$config[HttpConstants::URI_SIGNER_SECRET_KEY] = getenv('SPRYKER_URI_SIGNER_SECRET_KEY') ?: null;
+$config[HttpConstants::URI_SIGNER_SECRET_KEY] = getenv('SPRYKER_URI_SIGNER_SECRET_KEY');
 
 // ACL: Special rules for specific users
 $config[AclConstants::ACL_DEFAULT_CREDENTIALS] = [
