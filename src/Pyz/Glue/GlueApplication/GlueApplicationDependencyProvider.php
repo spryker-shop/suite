@@ -130,8 +130,6 @@ use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ControllerCach
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\CustomRouteRoutesProviderPlugin as BackendCustomRouteRoutesProviderPlugin;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ResourcesProviderPlugin as BackendResourcesProviderPlugin;
 use Spryker\Glue\GlueBackendApiApplicationAuthorizationConnector\Plugin\GlueApplication\IsProtectedTableColumnExpanderPlugin as BackendIsProtectedTableColumnExpanderPlugin;
-use Spryker\Glue\GlueHttp\Plugin\GlueApplication\HttpCommunicationProtocolPlugin;
-use Spryker\Glue\GlueHttp\Plugin\GlueContext\HttpGlueContextExpanderPlugin;
 use Spryker\Glue\GlueJsonApiConvention\Plugin\GlueApplication\JsonApiConventionPlugin;
 use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\RestConventionPlugin;
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\ControllerCacheCollectorPlugin as StorefrontControllerCacheCollectorPlugin;
@@ -983,26 +981,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new StorefrontApiGlueApplicationBootstrapPlugin(),
             new BackendApiGlueApplicationBootstrapPlugin(),
             new FallbackStorefrontApiGlueApplicationBootstrapPlugin(),
-        ];
-    }
-
-    /**
-     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\GlueContextExpanderPluginInterface>
-     */
-    protected function getGlueContextExpanderPlugins(): array
-    {
-        return [
-            new HttpGlueContextExpanderPlugin(),
-        ];
-    }
-
-    /**
-     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\CommunicationProtocolPluginInterface>
-     */
-    protected function getCommunicationProtocolPlugins(): array
-    {
-        return [
-            new HttpCommunicationProtocolPlugin(),
         ];
     }
 
