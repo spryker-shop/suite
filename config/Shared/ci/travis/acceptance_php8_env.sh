@@ -9,7 +9,7 @@ sudo chmod 600 config/Zed/dev_only_private.key
 sudo chmod 600 config/Zed/dev_only_public.key
 
 # setup php-fpm
-sudo cp config/Shared/ci/travis/www.conf ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf;
+sudo cp config/Shared/ci/travis/www.conf ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf
 sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
 echo "session.save_path = '/tmp'" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
@@ -24,11 +24,11 @@ sudo cp -f config/Shared/ci/travis/.htaccess public/Glue/.htaccess
 sudo cp -f config/Shared/ci/travis/.htaccess public/Yves/.htaccess
 
 # apache: virtual hosts configuration
-sudo cp -f config/Shared/ci/travis/travis-ci-apache-backend-api /etc/apache2/sites-available/backend-api.conf
-sudo cp -f config/Shared/ci/travis/travis-ci-apache-backend-gateway /etc/apache2/sites-available/backend-gateway.conf
-sudo cp -f config/Shared/ci/travis/travis-ci-apache-backoffice /etc/apache2/sites-available/backoffice.conf
-sudo cp -f config/Shared/ci/travis/travis-ci-apache-glue /etc/apache2/sites-available/glue.conf
-sudo cp -f config/Shared/ci/travis/travis-ci-apache-yves /etc/apache2/sites-available/yves.conf
+sudo cp -f config/Shared/ci/travis/travis-ci-apache-php8-backend-api /etc/apache2/sites-available/backend-api.conf
+sudo cp -f config/Shared/ci/travis/travis-ci-apache-php8-backend-gateway /etc/apache2/sites-available/backend-gateway.conf
+sudo cp -f config/Shared/ci/travis/travis-ci-apache-php8-backoffice /etc/apache2/sites-available/backoffice.conf
+sudo cp -f config/Shared/ci/travis/travis-ci-apache-php8-glue /etc/apache2/sites-available/glue.conf
+sudo cp -f config/Shared/ci/travis/travis-ci-apache-php8-yves /etc/apache2/sites-available/yves.conf
 sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/backend-api.conf
 sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/backend-gateway.conf
 sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/backoffice.conf
