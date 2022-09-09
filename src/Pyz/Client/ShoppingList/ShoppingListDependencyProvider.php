@@ -8,6 +8,9 @@
 namespace Pyz\Client\ShoppingList;
 
 use Spryker\Client\Merchant\Plugin\ShoppingList\MerchantShoppingListItemToItemMapperPlugin;
+use Spryker\Client\ProductConfigurationShoppingList\Plugin\ShoppingList\ProductConfigurationShoppingListExpanderPlugin;
+use Spryker\Client\ProductConfigurationShoppingList\Plugin\ShoppingList\ProductConfigurationShoppingListItemMapperPlugin;
+use Spryker\Client\ProductConfigurationShoppingList\Plugin\ShoppingList\ProductConfigurationShoppingListItemToItemMapperPlugin;
 use Spryker\Client\ProductOfferShoppingList\Plugin\ShoppingList\ProductOfferShoppingListItemMapperPlugin;
 use Spryker\Client\ProductOfferShoppingList\Plugin\ShoppingList\ProductOfferShoppingListItemToItemMapperPlugin;
 use Spryker\Client\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingListDependencyProvider;
@@ -26,6 +29,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
         return [
             new ShoppingListItemProductOptionRequestMapperPlugin(),
             new ProductOfferShoppingListItemMapperPlugin(),
+            new ProductConfigurationShoppingListItemMapperPlugin(),
         ];
     }
 
@@ -39,6 +43,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
             new ShoppingListItemProductOptionToItemProductOptionMapperPlugin(),
             new ProductOfferShoppingListItemToItemMapperPlugin(),
             new MerchantShoppingListItemToItemMapperPlugin(),
+            new ProductConfigurationShoppingListItemToItemMapperPlugin(),
         ];
     }
 
@@ -49,6 +54,16 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     {
         return [
             new ProductOptionQuoteItemToItemMapperPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Client\ShoppingListExtension\Dependency\Plugin\ShoppingListExpanderPluginInterface>
+     */
+    protected function getShoppingListExpanderPlugins(): array
+    {
+        return [
+            new ProductConfigurationShoppingListExpanderPlugin(),
         ];
     }
 }

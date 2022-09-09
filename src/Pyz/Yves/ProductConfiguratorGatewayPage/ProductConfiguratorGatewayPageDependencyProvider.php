@@ -10,6 +10,9 @@ namespace Pyz\Yves\ProductConfiguratorGatewayPage;
 use SprykerShop\Yves\ProductConfigurationCartWidget\Plugin\ProductConfiguratorGatewayPage\CartPageProductConfiguratorRequestDataFormExpanderStrategyPlugin;
 use SprykerShop\Yves\ProductConfigurationCartWidget\Plugin\ProductConfiguratorGatewayPage\CartPageProductConfiguratorRequestStartegyPlugin;
 use SprykerShop\Yves\ProductConfigurationCartWidget\Plugin\ProductConfiguratorGatewayPage\CartPageProductConfiguratorResponseStrategyPlugin;
+use SprykerShop\Yves\ProductConfigurationShoppingListWidget\Plugin\ProductConfiguratorGatewayPage\ShoppingListPageProductConfiguratorRequestDataFormExpanderStrategyPlugin;
+use SprykerShop\Yves\ProductConfigurationShoppingListWidget\Plugin\ProductConfiguratorGatewayPage\ShoppingListPageProductConfiguratorRequestStrategyPlugin;
+use SprykerShop\Yves\ProductConfigurationShoppingListWidget\Plugin\ProductConfiguratorGatewayPage\ShoppingListPageProductConfiguratorResponseStrategyPlugin;
 use SprykerShop\Yves\ProductConfigurationWishlistWidget\Plugin\ProductConfiguratorGatewayPage\WishlistPageProductConfiguratorRequestDataFormExpanderStrategyPlugin;
 use SprykerShop\Yves\ProductConfigurationWishlistWidget\Plugin\ProductConfiguratorGatewayPage\WishlistPageProductConfiguratorRequestStrategyPlugin;
 use SprykerShop\Yves\ProductConfigurationWishlistWidget\Plugin\ProductConfiguratorGatewayPage\WishlistPageProductConfiguratorResponseStrategyPlugin;
@@ -29,6 +32,7 @@ class ProductConfiguratorGatewayPageDependencyProvider extends SprykerProductCon
             new ProductDetailPageProductConfiguratorRequestStrategyPlugin(),
             new CartPageProductConfiguratorRequestStartegyPlugin(),
             new WishlistPageProductConfiguratorRequestStrategyPlugin(),
+            new ShoppingListPageProductConfiguratorRequestStrategyPlugin(),
         ];
     }
 
@@ -41,6 +45,7 @@ class ProductConfiguratorGatewayPageDependencyProvider extends SprykerProductCon
             new ProductDetailPageProductConfiguratorResponseStrategyPlugin(),
             new CartPageProductConfiguratorResponseStrategyPlugin(),
             new WishlistPageProductConfiguratorResponseStrategyPlugin(),
+            new ShoppingListPageProductConfiguratorResponseStrategyPlugin(),
         ];
     }
 
@@ -53,6 +58,7 @@ class ProductConfiguratorGatewayPageDependencyProvider extends SprykerProductCon
             new ProductDetailPageProductConfiguratorRequestDataFormExpanderStrategyPlugin(),
             new CartPageProductConfiguratorRequestDataFormExpanderStrategyPlugin(),
             new WishlistPageProductConfiguratorRequestDataFormExpanderStrategyPlugin(),
+            new ShoppingListPageProductConfiguratorRequestDataFormExpanderStrategyPlugin(),
         ];
     }
 }
