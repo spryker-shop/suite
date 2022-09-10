@@ -96,6 +96,8 @@ use SprykerShop\Yves\ProductCategoryWidget\Widget\ProductSchemaOrgCategoryWidget
 use SprykerShop\Yves\ProductConfigurationCartWidget\Widget\ProductConfigurationCartItemDisplayWidget;
 use SprykerShop\Yves\ProductConfigurationCartWidget\Widget\ProductConfigurationCartPageButtonWidget;
 use SprykerShop\Yves\ProductConfigurationCartWidget\Widget\ProductConfigurationQuoteValidatorWidget;
+use SprykerShop\Yves\ProductConfigurationShoppingListWidget\Widget\ProductConfigurationShoppingListItemDisplayWidget;
+use SprykerShop\Yves\ProductConfigurationShoppingListWidget\Widget\ProductConfigurationShoppingListPageButtonWidget;
 use SprykerShop\Yves\ProductConfigurationWidget\Widget\ProductConfigurationProductDetailPageButtonWidget;
 use SprykerShop\Yves\ProductConfigurationWidget\Widget\ProductConfigurationProductViewDisplayWidget;
 use SprykerShop\Yves\ProductConfigurationWishlistWidget\Widget\ProductConfigurationWishlistFormWidget;
@@ -310,6 +312,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             AssetWidget::class,
             CustomerReorderItemCheckboxWidget::class,
             CustomerReorderBundleItemCheckboxWidget::class,
+            ProductConfigurationShoppingListItemDisplayWidget::class,
+            ProductConfigurationShoppingListPageButtonWidget::class,
         ];
     }
 
