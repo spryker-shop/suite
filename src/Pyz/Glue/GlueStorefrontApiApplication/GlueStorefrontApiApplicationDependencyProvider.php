@@ -7,7 +7,6 @@
 
 namespace Pyz\Glue\GlueStorefrontApiApplication;
 
-use Spryker\Glue\GlueHttp\Plugin\GlueStorefrontApiApplication\CorsHeaderExistenceRequestAfterRoutingValidatorPlugin;
 use Spryker\Glue\GlueStorefrontApiApplication\GlueStorefrontApiApplicationDependencyProvider as SprykerGlueStorefrontApiApplicationDependencyProvider;
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\ApplicationIdentifierRequestBuilderPlugin;
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\LocaleRequestBuilderPlugin;
@@ -51,7 +50,6 @@ class GlueStorefrontApiApplicationDependencyProvider extends SprykerGlueStorefro
     protected function getRequestAfterRoutingValidatorPlugins(): array
     {
         return [
-            new CorsHeaderExistenceRequestAfterRoutingValidatorPlugin(),
             new RequestCorsValidatorPlugin(),
             new ScopeRequestAfterRoutingValidatorPlugin(),
             new AuthorizationRequestAfterRoutingValidatorPlugin(),

@@ -15,6 +15,10 @@ use Spryker\Zed\MerchantProductOffer\Communication\Plugin\ShoppingList\MerchantP
 use Spryker\Zed\MerchantProductOffer\Communication\Plugin\ShoppingList\MerchantProductOfferShoppingListItemCollectionExpanderPlugin;
 use Spryker\Zed\ProductApproval\Communication\Plugin\ShoppingList\ProductApprovalAddItemPreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\ShoppingList\ReplaceBundledQuoteItemsPreConvertPlugin;
+use Spryker\Zed\ProductConfigurationShoppingList\Communication\Plugin\ShoppingList\ItemProductConfigurationItemToShoppingListItemMapperPlugin;
+use Spryker\Zed\ProductConfigurationShoppingList\Communication\Plugin\ShoppingList\ProductConfigurationShoppingListAddItemPreCheckPlugin;
+use Spryker\Zed\ProductConfigurationShoppingList\Communication\Plugin\ShoppingList\ProductConfigurationShoppingListItemBulkPostSavePlugin;
+use Spryker\Zed\ProductConfigurationShoppingList\Communication\Plugin\ShoppingList\ProductConfigurationShoppingListItemCollectionExpanderPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\ShoppingList\ProductDiscontinuedAddItemPreCheckPlugin;
 use Spryker\Zed\ProductOfferShoppingList\Communication\Plugin\ShoppingList\ProductOfferItemToShoppingListItemMapperPlugin;
 use Spryker\Zed\ProductOfferShoppingList\Communication\Plugin\ShoppingList\ProductOfferShoppingListAddItemPreCheckPlugin;
@@ -45,6 +49,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
             new MerchantProductOfferAddItemPreCheckPlugin(),
             new MerchantProductAddItemPreCheckPlugin(),
             new ProductApprovalAddItemPreCheckPlugin(),
+            new ProductConfigurationShoppingListAddItemPreCheckPlugin(),
         ];
     }
 
@@ -68,6 +73,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
             new ShoppingListItemProductOptionBulkPostSavePlugin(),
             new MerchantProductShoppingListItemBulkPostSavePlugin(),
             new MerchantProductOfferShoppingListItemBulkPostSavePlugin(),
+            new ProductConfigurationShoppingListItemBulkPostSavePlugin(),
         ];
     }
 
@@ -92,6 +98,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
             new ShoppingListItemCollectionProductOptionExpanderPlugin(),
             new MerchantProductOfferShoppingListItemCollectionExpanderPlugin(),
             new MerchantProductShoppingListItemCollectionExpanderPlugin(),
+            new ProductConfigurationShoppingListItemCollectionExpanderPlugin(),
         ];
     }
 
@@ -104,6 +111,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
             new ItemCartNoteToShoppingListItemNoteMapperPlugin(),
             new CartItemProductOptionToShoppingListItemProductOptionMapperPlugin(),
             new ProductOfferItemToShoppingListItemMapperPlugin(),
+            new ItemProductConfigurationItemToShoppingListItemMapperPlugin(),
         ];
     }
 }
