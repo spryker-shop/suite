@@ -129,8 +129,7 @@ use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\BackendRouterP
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ControllerCacheCollectorPlugin as BackendControllerCacheCollectorPlugin;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\CustomRouteRoutesProviderPlugin as BackendCustomRouteRoutesProviderPlugin;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ResourcesProviderPlugin as BackendResourcesProviderPlugin;
-use Spryker\Glue\GlueHttp\Plugin\GlueApplication\HttpCommunicationProtocolPlugin;
-use Spryker\Glue\GlueHttp\Plugin\GlueContext\HttpGlueContextExpanderPlugin;
+use Spryker\Glue\GlueBackendApiApplicationAuthorizationConnector\Plugin\GlueApplication\IsProtectedTableColumnExpanderPlugin as BackendIsProtectedTableColumnExpanderPlugin;
 use Spryker\Glue\GlueJsonApiConvention\Plugin\GlueApplication\JsonApiConventionPlugin;
 use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\RestConventionPlugin;
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\ControllerCacheCollectorPlugin as StorefrontControllerCacheCollectorPlugin;
@@ -138,6 +137,7 @@ use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\CustomRoute
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\ResourcesProviderPlugin as StorefrontResourcesProviderPlugin;
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\StorefrontApiGlueApplicationBootstrapPlugin;
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\StorefrontRouterProviderPlugin;
+use Spryker\Glue\GlueStorefrontApiApplicationAuthorizationConnector\Plugin\GlueApplication\IsProtectedTableColumnExpanderPlugin as StorefrontIsProtectedTableColumnExpanderPlugin;
 use Spryker\Glue\HealthCheck\Plugin\HealthCheckResourceRoutePlugin;
 use Spryker\Glue\Http\Plugin\Application\HttpApplicationPlugin;
 use Spryker\Glue\MerchantOpeningHoursRestApi\Plugin\GlueApplication\MerchantOpeningHoursByMerchantReferenceResourceRelationshipPlugin;
@@ -985,26 +985,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     }
 
     /**
-     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\GlueContextExpanderPluginInterface>
-     */
-    protected function getGlueContextExpanderPlugins(): array
-    {
-        return [
-            new HttpGlueContextExpanderPlugin(),
-        ];
-    }
-
-    /**
-     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\CommunicationProtocolPluginInterface>
-     */
-    protected function getCommunicationProtocolPlugins(): array
-    {
-        return [
-            new HttpCommunicationProtocolPlugin(),
-        ];
-    }
-
-    /**
      * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ConventionPluginInterface>
      */
     protected function getConventionPlugins(): array
@@ -1056,6 +1036,17 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         return [
             new StorefrontResourcesProviderPlugin(),
             new BackendResourcesProviderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\TableColumnExpanderPluginInterface>
+     */
+    protected function getTableColumnExpanderPlugins(): array
+    {
+        return [
+            new BackendIsProtectedTableColumnExpanderPlugin(),
+            new StorefrontIsProtectedTableColumnExpanderPlugin(),
         ];
     }
 }
