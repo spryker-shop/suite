@@ -42,7 +42,7 @@ class TaxRateCreatePage
     /**
      * @var string
      */
-    public const ERROR_MESSAGE_PERCENTAGE_SHOULD_BE_VALID_NUMBER = 'This value should be a valid number.';
+    public const ERROR_MESSAGE_PERCENTAGE_SHOULD_BE_VALID_RANGE = 'This value should be between 0 and 100.';
 
     /**
      * @var string
@@ -116,7 +116,7 @@ class TaxRateCreatePage
         self::TAX_RATE_INVALID => [
             'name' => '',
             'country' => 'No country',
-            'percentage' => 'test',
+            'percentage' => '888',
         ],
         self::TAX_RATE_VALID_NOT_CREATED => [
             'name' => 'Acceptance Standard Not Created',
