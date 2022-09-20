@@ -142,7 +142,7 @@
 
                 <tr>
                     <td class="text-center">{{ linenumber }}</td>
-                    <td class="text-center">{{ item.quantity }}</td>
+                    <td class="text-center">{{ item.quantity | executeFilterIfExists('formatInt', app.locale) }}</td>
                     <td>{{ item.name }}</td>
                     <td class="text-center">{{ item.taxRate | number_format }}%</td>
                     <td class="text-center">{{ item.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
@@ -165,7 +165,7 @@
 
                     <tr class="product-option">
                         <td></td>
-                        <td class="text-center">{{ productOption.quantity }}</td>
+                        <td class="text-center">{{ productOption.quantity | executeFilterIfExists('formatInt', app.locale) }}</td>
                         <td>{{ productOption.value }}</td>
                         <td class="text-center">{{ productOption.taxRate | number_format }}%</td>
                         <td class="text-center">{{ productOption.sumPrice | money(true, order.currencyIsoCode) }}</td>
@@ -182,7 +182,7 @@
 
                     <tr>
                         <td class="text-center">{{ linenumber }}</td>
-                        <td class="text-center">{{ productBundle.quantity }}</td>
+                        <td class="text-center">{{ productBundle.quantity | executeFilterIfExists('formatInt', app.locale) }}</td>
                         <td>{{ productBundle.name }}</td>
                         <td class="text-center">{{ productBundle.taxRate | number_format }}%</td>
                         <td class="text-center">{{ productBundle.sumPrice | money(true, order.currencyIsoCode) }}</td>
@@ -192,7 +192,7 @@
                         {% if item.relatedBundleItemIdentifier == bundleditem.relatedBundleItemIdentifier %}
                             <tr>
                                 <td></td>
-                                <td class="text-center">{{ bundleditem.quantity }}</td>
+                                <td class="text-center">{{ bundleditem.quantity | executeFilterIfExists('formatInt', app.locale) }}</td>
                                 <td>{{ bundleditem.name }}</td>
                                 <td class="text-center">{{ bundleditem.taxRate | number_format }}%</td>
                                 <td class="text-center">{{ bundleditem.sumPrice | money(true, order.currencyIsoCode) }}</td>
