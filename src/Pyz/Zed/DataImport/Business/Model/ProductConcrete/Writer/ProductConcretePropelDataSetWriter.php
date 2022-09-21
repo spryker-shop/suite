@@ -20,6 +20,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\Product\Dependency\ProductEvents;
+use Spryker\Zed\ProductSearch\Dependency\ProductSearchEvents;
 
 class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
 {
@@ -183,8 +184,13 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
             ->findOneOrCreate();
         $productSearchEntity->fromArray($productSearchEntityTransfer->modifiedToArray());
 
-        if ($productSearchEntity->isNew() || $productSearchEntity->isModified()) {
+        $isNewProductSearchEntity = $productSearchEntity->isNew();
+        if ($isNewProductSearchEntity || $productSearchEntity->isModified()) {
             $productSearchEntity->save();
+            $eventName = $isNewProductSearchEntity
+                ? ProductSearchEvents::ENTITY_SPY_PRODUCT_SEARCH_CREATE
+                : ProductSearchEvents::ENTITY_SPY_PRODUCT_SEARCH_UPDATE;
+            DataImporterPublisher::addEvent($eventName, $productSearchEntity->getIdProductSearch());
         }
     }
 
