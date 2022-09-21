@@ -97,6 +97,8 @@ use Spryker\Zed\ProductOfferStorage\Communication\Plugin\Publisher\ProductOffer\
 use Spryker\Zed\ProductOfferStorage\Communication\Plugin\Publisher\ProductOffer\ProductOfferStoreDeletePublisherPlugin;
 use Spryker\Zed\ProductOfferStorage\Communication\Plugin\Publisher\ProductOffer\ProductOfferStoreWritePublisherPlugin;
 use Spryker\Zed\ProductOfferStorage\Communication\Plugin\Publisher\ProductOffer\ProductOfferWritePublisherPlugin;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\Publisher\Product\ProductConcretePageSearchWritePublisherPlugin;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\Publisher\ProductConcretePublisherTriggerPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelation\ProductRelationWriteForPublishingPublisherPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelation\ProductRelationWritePublisherPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelationProductAbstract\ProductRelationProductAbstractWritePublisherPlugin;
@@ -134,6 +136,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getMerchantSearchPlugins(),
             $this->getCategoryStoragePlugins(),
             $this->getCategoryPageSearchPlugins(),
+            $this->getProductPageSearchPlugins(),
             $this->getProductCategoryStoragePlugins(),
             $this->getMerchantOpeningHoursStoragePlugins(),
             $this->getMerchantProductOptionStoragePlugins(),
@@ -164,6 +167,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new CategoryTreePublisherTriggerPlugin(),
             new ProductCategoryPublisherTriggerPlugin(),
             new CategoryPagePublisherTriggerPlugin(),
+            new ProductConcretePublisherTriggerPlugin(),
         ];
     }
 
@@ -359,6 +363,16 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new CategoryPageSearchCategoryNodeWritePublisherPlugin(),
             new CategoryPageSearchCategoryTemplateDeletePublisherPlugin(),
             new CategoryPageSearchCategoryTemplateWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getProductPageSearchPlugins(): array
+    {
+        return [
+            new ProductConcretePageSearchWritePublisherPlugin(),
         ];
     }
 

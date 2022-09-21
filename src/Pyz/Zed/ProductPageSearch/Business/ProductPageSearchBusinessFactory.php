@@ -73,6 +73,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
             $this->getUtilEncoding(),
             $this->createProductConcreteSearchDataMapper(),
             $this->getStoreFacade(),
+            $this->getProductSearchFacade(),
             $this->getConfig(),
             $this->getProductConcretePageDataExpanderPlugins(),
             $this->getProductConcreteCollectionFilterPlugins(),
