@@ -8,6 +8,7 @@
 namespace Pyz\Client\RabbitMq;
 
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
+use Spryker\Shared\AssetStorage\AssetStorageConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
@@ -63,7 +64,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
      *
      * @see https://www.rabbitmq.com/tutorials/amqp-concepts.html
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function getQueueConfiguration(): array
     {
@@ -81,7 +82,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     protected function getPublishQueueConfiguration(): array
     {
@@ -106,7 +107,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     protected function getSynchronizationQueueConfiguration(): array
     {
@@ -141,6 +142,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             SalesReturnSearchConfig::SYNC_SEARCH_RETURN,
             MerchantSearchConfig::SYNC_SEARCH_MERCHANT,
             ProductConfigurationStorageConfig::PRODUCT_CONFIGURATION_SYNC_STORAGE_QUEUE,
+            AssetStorageConfig::ASSET_SYNC_STORAGE_QUEUE,
         ];
     }
 

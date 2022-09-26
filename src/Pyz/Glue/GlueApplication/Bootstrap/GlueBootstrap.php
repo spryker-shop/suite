@@ -14,7 +14,7 @@ use Spryker\Shared\Application\ApplicationInterface;
 class GlueBootstrap extends SprykerGlueBootstrap
 {
     /**
-     * @param array $glueApplicationBootstrapPluginClassNames
+     * @param array<string> $glueApplicationBootstrapPluginClassNames
      *
      * @return \Spryker\Shared\Application\ApplicationInterface
      */

@@ -116,7 +116,6 @@ use Spryker\Glue\EventDispatcher\Plugin\Application\EventDispatcherApplicationPl
 use Spryker\Glue\GiftCardsRestApi\Plugin\GlueApplication\GiftCardByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Application\GlueApplicationApplicationPlugin;
-use Spryker\Glue\GlueApplication\Plugin\GlueApplication\ConventionResourceFilterPlugin;
 use Spryker\Glue\GlueApplication\Plugin\GlueApplication\CorsValidateHttpRequestPlugin;
 use Spryker\Glue\GlueApplication\Plugin\GlueApplication\FallbackStorefrontApiGlueApplicationBootstrapPlugin;
 use Spryker\Glue\GlueApplication\Plugin\GlueApplication\HeadersValidateHttpRequestPlugin;
@@ -126,11 +125,19 @@ use Spryker\Glue\GlueApplicationAuthorizationConnector\Plugin\GlueApplication\Au
 use Spryker\Glue\GlueApplicationAuthorizationConnector\Plugin\GlueApplication\AuthorizationRouterParameterExpanderPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\BackendApiGlueApplicationBootstrapPlugin;
-use Spryker\Glue\GlueHttp\Plugin\GlueApplication\HttpCommunicationProtocolPlugin;
-use Spryker\Glue\GlueHttp\Plugin\GlueContext\HttpGlueContextExpanderPlugin;
-use Spryker\Glue\GlueJsonApiConvention\Plugin\GlueApplication\JsonApiApiConventionPlugin;
-use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\RestApiConventionPlugin;
-use Spryker\Glue\GlueStorefrontApiApplication\Plugin\StorefrontApiGlueApplicationBootstrapPlugin;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\BackendRouterProviderPlugin;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ControllerCacheCollectorPlugin as BackendControllerCacheCollectorPlugin;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\CustomRouteRoutesProviderPlugin as BackendCustomRouteRoutesProviderPlugin;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ResourcesProviderPlugin as BackendResourcesProviderPlugin;
+use Spryker\Glue\GlueBackendApiApplicationAuthorizationConnector\Plugin\GlueApplication\IsProtectedTableColumnExpanderPlugin as BackendIsProtectedTableColumnExpanderPlugin;
+use Spryker\Glue\GlueJsonApiConvention\Plugin\GlueApplication\JsonApiConventionPlugin;
+use Spryker\Glue\GlueRestApiConvention\Plugin\GlueApplication\RestConventionPlugin;
+use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\ControllerCacheCollectorPlugin as StorefrontControllerCacheCollectorPlugin;
+use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\CustomRouteRoutesProviderPlugin as StorefrontCustomRouteRoutesProviderPlugin;
+use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\ResourcesProviderPlugin as StorefrontResourcesProviderPlugin;
+use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\StorefrontApiGlueApplicationBootstrapPlugin;
+use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\StorefrontRouterProviderPlugin;
+use Spryker\Glue\GlueStorefrontApiApplicationAuthorizationConnector\Plugin\GlueApplication\IsProtectedTableColumnExpanderPlugin as StorefrontIsProtectedTableColumnExpanderPlugin;
 use Spryker\Glue\HealthCheck\Plugin\HealthCheckResourceRoutePlugin;
 use Spryker\Glue\Http\Plugin\Application\HttpApplicationPlugin;
 use Spryker\Glue\MerchantOpeningHoursRestApi\Plugin\GlueApplication\MerchantOpeningHoursByMerchantReferenceResourceRelationshipPlugin;
@@ -978,43 +985,68 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     }
 
     /**
-     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\GlueContextExpanderPluginInterface>
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ConventionPluginInterface>
      */
-    protected function getGlueContextExpanderPlugins(): array
+    protected function getConventionPlugins(): array
     {
         return [
-            new HttpGlueContextExpanderPlugin(),
+            new JsonApiConventionPlugin(),
+            new RestConventionPlugin(),
         ];
     }
 
     /**
-     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\CommunicationProtocolPluginInterface>
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ControllerCacheCollectorPluginInterface>
      */
-    protected function getCommunicationProtocolPlugins(): array
+    protected function getControllerCacheCollectorPlugins(): array
     {
         return [
-            new HttpCommunicationProtocolPlugin(),
+            new StorefrontControllerCacheCollectorPlugin(),
+            new BackendControllerCacheCollectorPlugin(),
         ];
     }
 
     /**
-     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ApiConventionPluginInterface>
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ApiApplicationEndpointProviderPluginInterface>
      */
-    protected function getApiConventionPlugins(): array
+    protected function getGlueApplicationRouterProviderPlugins(): array
     {
         return [
-            new JsonApiApiConventionPlugin(),
-            new RestApiConventionPlugin(),
+            new BackendRouterProviderPlugin(),
+            new StorefrontRouterProviderPlugin(),
         ];
     }
 
     /**
-     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceFilterPluginInterface>
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RoutesProviderPluginInterface>
      */
-    public function getResourceFilterPlugins(): array
+    protected function getRoutesProviderPlugins(): array
     {
         return [
-            new ConventionResourceFilterPlugin(),
+            new StorefrontCustomRouteRoutesProviderPlugin(),
+            new BackendCustomRouteRoutesProviderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourcesProviderPluginInterface>
+     */
+    protected function getResourcesProviderPlugins(): array
+    {
+        return [
+            new StorefrontResourcesProviderPlugin(),
+            new BackendResourcesProviderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\TableColumnExpanderPluginInterface>
+     */
+    protected function getTableColumnExpanderPlugins(): array
+    {
+        return [
+            new BackendIsProtectedTableColumnExpanderPlugin(),
+            new StorefrontIsProtectedTableColumnExpanderPlugin(),
         ];
     }
 }

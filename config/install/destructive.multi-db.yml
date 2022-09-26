@@ -1,0 +1,79 @@
+env:
+    NEW_RELIC_ENABLED: 0
+
+command-timeout: 7200
+
+stores:
+    - DE
+    - AT
+
+sections:
+    scheduler-clean:
+        scheduler-clean:
+            command: 'vendor/bin/console scheduler:clean -vvv --no-ansi || true'
+            stores: true
+
+    clean-storage:
+        clean-storage:
+            command: 'vendor/bin/console storage:delete -vvv --no-ansi'
+            stores: true
+
+        clean-search:
+            command: 'vendor/bin/console elasticsearch:index:delete -vvv --no-ansi'
+            stores: true
+
+        clean-db:
+            command: 'vendor/bin/console propel:tables:drop -vvv --no-ansi'
+            stores: true
+
+    init-storage:
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
+            stores: true
+
+        setup-search-create-sources:
+            command: 'vendor/bin/console search:setup:sources -vvv --no-ansi'
+            stores: true
+
+    init-storages-per-store:
+        propel-copy-schema:
+            command: 'vendor/bin/console propel:schema:copy -vvv --no-ansi'
+            stores: true
+
+        propel-postgres-compatibility:
+            command: 'vendor/bin/console propel:pg-sql-compat -vvv --no-ansi'
+            stores: true
+
+        propel-migration-delete:
+            command: 'vendor/bin/console propel:migration:delete -vvv --no-ansi'
+            stores: true
+
+        propel-tables-drop:
+            command: 'vendor/bin/console propel:tables:drop -vvv --no-ansi'
+            stores: true
+
+        propel-migrate:
+            command: 'vendor/bin/console propel:diff -vvv --no-ansi && vendor/bin/console propel:migrate -vvv --no-ansi && vendor/bin/console propel:migration:delete -vvv --no-ansi'
+            stores: true
+
+        init-database:
+            command: 'vendor/bin/console setup:init-db -vvv --no-ansi'
+            stores: true
+
+    demodata:
+        import-store-demodata:
+            command: 'vendor/bin/console data:import --config=data/import/production/full_${APPLICATION_STORE}.yml'
+            stores: true
+
+        update-product-labels:
+            command: 'vendor/bin/console product-label:relations:update -vvv --no-ansi'
+            stores: true
+
+        check-product-validity:
+            command: 'vendor/bin/console product:check-validity'
+            stores: true
+
+    scheduler-start:
+        scheduler-setup:
+            command: 'vendor/bin/console scheduler:setup -vvv --no-ansi || true'
+            stores: true

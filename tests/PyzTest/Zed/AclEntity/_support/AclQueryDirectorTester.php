@@ -37,6 +37,7 @@ use Orm\Zed\ProductImage\Persistence\SpyProductImageSet;
 use Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage;
 use Orm\Zed\ProductOffer\Persistence\SpyProductOffer;
 use Orm\Zed\ProductOffer\Persistence\SpyProductOfferQuery;
+use PyzTest\Zed\AclEntity\Plugin\AclEntityMetadataConfigExpanderPluginMock;
 use Spryker\Shared\AclEntity\AclEntityConstants;
 use Spryker\Zed\AclEntity\Dependency\Facade\AclEntityToAclFacadeBridge;
 use Spryker\Zed\AclEntity\Dependency\Facade\AclEntityToAclFacadeBridgeInterface;
@@ -51,6 +52,7 @@ use Spryker\Zed\AclEntity\Persistence\Propel\AclDirector\AclQueryDirectorInterfa
 use Spryker\Zed\AclEntity\Persistence\Propel\Provider\AclEntityRuleProvider;
 use Spryker\Zed\AclEntity\Persistence\Propel\Provider\AclRoleProvider;
 use Spryker\Zed\AclEntity\Persistence\Propel\Provider\AclRoleProviderInterface;
+use Spryker\Zed\AclEntityExtension\Dependency\Plugin\AclEntityMetadataConfigExpanderPluginInterface;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 /**
@@ -299,6 +301,14 @@ class AclQueryDirectorTester extends Actor
         );
 
         return $aclEntityMetadataCollectionTransfer;
+    }
+
+    /**
+     * @return \Spryker\Zed\AclEntityExtension\Dependency\Plugin\AclEntityMetadataConfigExpanderPluginInterface
+     */
+    public function getProductAbstractMerchantAclEntityMetadataConfigExpanderPlugin(): AclEntityMetadataConfigExpanderPluginInterface
+    {
+        return new AclEntityMetadataConfigExpanderPluginMock();
     }
 
     /**

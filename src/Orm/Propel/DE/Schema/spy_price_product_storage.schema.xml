@@ -1,9 +1,5 @@
 <?xml version="1.0"?>
-<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          name="zed"
-          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
-          namespace="Orm\Zed\PriceProductStorage\Persistence"
-          package="src.Orm.Zed.PriceProductStorage.Persistence">
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\PriceProductStorage\Persistence" package="src.Orm.Zed.PriceProductStorage.Persistence">
 
     <table name="spy_price_product_abstract_storage" identifierQuoting="true">
         <column name="id_price_product_abstract_storage" type="BIGINT" autoIncrement="true" primaryKey="true"/>
@@ -14,7 +10,7 @@
         <id-method-parameter value="spy_price_product_abstract_storage_pk_seq"/>
         <behavior name="synchronization">
             <parameter name="resource" value="price_product_abstract"/>
-            <parameter name="store" required="false" />
+            <parameter name="store" required="false"/>
             <parameter name="key_suffix_column" value="fk_product_abstract"/>
             <parameter name="queue_group" value="sync.storage.price"/>
         </behavior>
@@ -30,7 +26,7 @@
         <id-method-parameter value="spy_price_product_concrete_storage_pk_seq"/>
         <behavior name="synchronization">
             <parameter name="resource" value="price_product_concrete"/>
-            <parameter name="store" required="false" />
+            <parameter name="store" required="false"/>
             <parameter name="key_suffix_column" value="fk_product"/>
             <parameter name="queue_group" value="sync.storage.price"/>
         </behavior>

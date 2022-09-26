@@ -14,6 +14,10 @@ sections:
 
         rest-api-generate-documentation:
             command: 'vendor/bin/console rest-api:generate:documentation'
+        api-generate-documentation:
+            command: 'vendor/bin/glue api:generate:documentation'
+        generate-scope-collection-file:
+            command: 'vendor/bin/console oauth:scope-collection-file:generate'
 
     cache:
         router-cache-warmup-yves:
@@ -35,13 +39,13 @@ sections:
             command: 'vendor/bin/console rest-api:build-request-validation-cache'
 
         generate-page-source-map:
-            command: "vendor/bin/console search:setup:source-map"
+            command: 'vendor/bin/console search:setup:source-map'
 
         translator-generate-cache:
-            command: "vendor/bin/console translator:generate-cache"
+            command: 'vendor/bin/console translator:generate-cache'
 
         class-resolver-build:
-            command: "vendor/bin/console cache:class-resolver:build"
+            command: 'vendor/bin/console cache:class-resolver:build'
 
     queue-flush:
         set-permissions:
@@ -126,14 +130,8 @@ sections:
         dependencies-install:
             command: 'vendor/bin/console frontend:project:install-dependencies'
 
-        yves-install-dependencies:
-            command: 'vendor/bin/console frontend:yves:install-dependencies'
-
         yves-build-frontend:
             command: 'vendor/bin/console frontend:yves:build'
-
-        zed-install-dependencies:
-            command: 'vendor/bin/console frontend:zed:install-dependencies'
 
         zed-build-frontend:
             command: 'vendor/bin/console frontend:zed:build'

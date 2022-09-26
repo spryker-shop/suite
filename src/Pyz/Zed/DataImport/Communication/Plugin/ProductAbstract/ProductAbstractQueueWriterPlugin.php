@@ -12,6 +12,7 @@ use Spryker\Zed\DataImport\Communication\Plugin\AbstractQueueWriterPlugin;
 /**
  * @method \Pyz\Zed\DataImport\Business\DataImportFacadeInterface getFacade()
  * @method \Pyz\Zed\DataImport\DataImportConfig getConfig()
+ * @method \Spryker\Zed\DataImport\Communication\DataImportCommunicationFactory getFactory()
  */
 class ProductAbstractQueueWriterPlugin extends AbstractQueueWriterPlugin
 {

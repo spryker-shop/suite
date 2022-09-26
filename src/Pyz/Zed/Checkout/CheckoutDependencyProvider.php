@@ -10,7 +10,9 @@ namespace Pyz\Zed\Checkout;
 use Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPreConditionPlugin;
 use Spryker\Zed\CartNote\Communication\Plugin\Checkout\CartNoteSaverPlugin;
 use Spryker\Zed\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependencyProvider;
+use Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerAddressSalutationCheckoutPreConditionPlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerOrderSavePlugin;
+use Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerSalutationCheckoutPreConditionPlugin;
 use Spryker\Zed\Customer\Communication\Plugin\CustomerPreConditionCheckerPlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Checkout\DiscountOrderSavePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Checkout\VoucherDiscountMaxUsageCheckoutPreConditionPlugin;
@@ -24,6 +26,7 @@ use Spryker\Zed\Merchant\Communication\Plugin\Checkout\MerchantCheckoutPreCondit
 use Spryker\Zed\MerchantProductOption\Communication\Plugin\Checkout\MerchantProductOptionCheckoutPreConditionPlugin;
 use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Checkout\SingleMerchantCheckoutPreConditionPlugin;
 use Spryker\Zed\Nopayment\Communication\Plugin\Checkout\NopaymentCheckoutPreConditionPlugin;
+use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentAuthorizationCheckoutPostSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentMethodValidityCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductApproval\Communication\Plugin\Checkout\ProductApprovalCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleAvailabilityCheckoutPreConditionPlugin;
@@ -62,6 +65,8 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
     {
         return [
             new CustomerPreConditionCheckerPlugin(),
+            new CustomerSalutationCheckoutPreConditionPlugin(),
+            new CustomerAddressSalutationCheckoutPreConditionPlugin(),
             new ProductsAvailableCheckoutPreConditionPlugin(),
             new ProductBundleAvailabilityCheckoutPreConditionPlugin(),
             new GiftCardCheckoutPreConditionPlugin(),
@@ -132,6 +137,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new PayoneCheckoutPostSavePlugin(),
             new CloseQuoteRequestCheckoutPostSaveHookPlugin(),
             new SendEmailToGiftCardUser(), #GiftCardFeature
+            new PaymentAuthorizationCheckoutPostSavePlugin(),
         ];
     }
 

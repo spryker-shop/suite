@@ -20,6 +20,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\Product\Dependency\ProductEvents;
+use Spryker\Zed\ProductSearch\Dependency\ProductSearchEvents;
 
 class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
 {
@@ -88,11 +89,19 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
         $productConcreteEntity = SpyProductQuery::create()
             ->filterBySku($productConcreteEntityTransfer->getSku())
             ->findOneOrCreate();
+
+        $fkProductAbstract = $productConcreteEntity->getFkProductAbstract();
+
         $productConcreteEntity->fromArray($productConcreteEntityTransfer->modifiedToArray());
 
         if ($productConcreteEntity->isNew() || $productConcreteEntity->isModified()) {
             $productConcreteEntity->save();
             DataImporterPublisher::addEvent(ProductEvents::PRODUCT_CONCRETE_PUBLISH, $productConcreteEntity->getIdProduct());
+
+            if ($fkProductAbstract !== $idAbstract) {
+                DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $fkProductAbstract);
+                DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $idAbstract);
+            }
         }
 
         return $productConcreteEntity;
@@ -175,15 +184,20 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
             ->findOneOrCreate();
         $productSearchEntity->fromArray($productSearchEntityTransfer->modifiedToArray());
 
-        if ($productSearchEntity->isNew() || $productSearchEntity->isModified()) {
+        $isNewProductSearchEntity = $productSearchEntity->isNew();
+        if ($isNewProductSearchEntity || $productSearchEntity->isModified()) {
             $productSearchEntity->save();
+            $eventName = $isNewProductSearchEntity
+                ? ProductSearchEvents::ENTITY_SPY_PRODUCT_SEARCH_CREATE
+                : ProductSearchEvents::ENTITY_SPY_PRODUCT_SEARCH_UPDATE;
+            DataImporterPublisher::addEvent($eventName, $productSearchEntity->getIdProductSearch());
         }
     }
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getProductConcreteBundleData(DataSetInterface $dataSet): array
     {
@@ -193,7 +207,7 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getProductConcreteLocalizedTransfers(DataSetInterface $dataSet): array
     {

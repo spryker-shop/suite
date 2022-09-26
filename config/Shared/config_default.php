@@ -1,5 +1,22 @@
 <?php
 
+use Generated\Shared\Transfer\AssetAddedTransfer;
+use Generated\Shared\Transfer\AssetDeletedTransfer;
+use Generated\Shared\Transfer\AssetUpdatedTransfer;
+use Generated\Shared\Transfer\PaymentCancelReservationFailedTransfer;
+use Generated\Shared\Transfer\PaymentCancelReservationRequestedTransfer;
+use Generated\Shared\Transfer\PaymentConfirmationFailedTransfer;
+use Generated\Shared\Transfer\PaymentConfirmationRequestedTransfer;
+use Generated\Shared\Transfer\PaymentConfirmedTransfer;
+use Generated\Shared\Transfer\PaymentMethodAddedTransfer;
+use Generated\Shared\Transfer\PaymentMethodDeletedTransfer;
+use Generated\Shared\Transfer\PaymentMethodTransfer;
+use Generated\Shared\Transfer\PaymentPreauthorizationFailedTransfer;
+use Generated\Shared\Transfer\PaymentPreauthorizedTransfer;
+use Generated\Shared\Transfer\PaymentRefundedTransfer;
+use Generated\Shared\Transfer\PaymentRefundFailedTransfer;
+use Generated\Shared\Transfer\PaymentRefundRequestedTransfer;
+use Generated\Shared\Transfer\PaymentReservationCanceledTransfer;
 use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Shared\Scheduler\SchedulerConfig;
@@ -10,6 +27,7 @@ use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Agent\AgentConstants;
+use Spryker\Shared\AppCatalogGui\AppCatalogGuiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\CartsRestApi\CartsRestApiConstants;
@@ -34,9 +52,13 @@ use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\MerchantPortalApplication\MerchantPortalConstants;
+use Spryker\Shared\MessageBroker\MessageBrokerConstants;
+use Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Oauth\OauthConstants;
+use Spryker\Shared\OauthAuth0\OauthAuth0Constants;
+use Spryker\Shared\OauthClient\OauthClientConstants;
 use Spryker\Shared\OauthCryptography\OauthCryptographyConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\ProductConfiguration\ProductConfigurationConstants;
@@ -45,6 +67,7 @@ use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\ProductRelation\ProductRelationConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelQueryBuilder\PropelQueryBuilderConstants;
+use Spryker\Shared\PropelReplicationCache\PropelReplicationCacheConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
@@ -62,6 +85,7 @@ use Spryker\Shared\SessionRedis\SessionRedisConfig;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
+use Spryker\Shared\StoreReference\StoreReferenceConstants;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
@@ -69,7 +93,10 @@ use Spryker\Shared\User\UserConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
+use Spryker\Zed\MessageBrokerAws\MessageBrokerAwsConfig;
+use Spryker\Zed\OauthAuth0\OauthAuth0Config;
 use Spryker\Zed\Oms\OmsConfig;
+use Spryker\Zed\Payment\PaymentConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Payone\PayoneConstants;
 use SprykerEco\Zed\Payone\PayoneConfig;
@@ -213,9 +240,12 @@ $config[UserConstants::USER_SYSTEM_USERS] = [
 ];
 $config[SecuritySystemUserConstants::AUTH_DEFAULT_CREDENTIALS] = [
     'yves_system' => [
-        'token' => getenv('SPRYKER_ZED_REQUEST_TOKEN') ?: '',
+        'token' => getenv('SPRYKER_ZED_REQUEST_TOKEN'),
     ],
 ];
+
+// >> URL Signer
+$config[HttpConstants::URI_SIGNER_SECRET_KEY] = getenv('SPRYKER_URI_SIGNER_SECRET_KEY');
 
 // ACL: Special rules for specific users
 $config[AclConstants::ACL_DEFAULT_CREDENTIALS] = [
@@ -293,6 +323,20 @@ $config[PropelConstants::ZED_DB_DATABASE] = getenv('SPRYKER_DB_DATABASE');
 $config[PropelConstants::ZED_DB_REPLICAS] = json_decode(getenv('SPRYKER_DB_REPLICAS') ?: '[]', true);
 $config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = false;
 
+$paasServices = json_decode(getenv('SPRYKER_PAAS_SERVICES') ?: '[]', true);
+if (!empty($paasServices['databases'])) {
+    $databasesConfig = $paasServices['databases'][APPLICATION_CODE_BUCKET] ?? $paasServices['databases']['_default'];
+    $config[PropelConstants::ZED_DB_HOST] = $databasesConfig['host'];
+    $config[PropelConstants::ZED_DB_PORT] = $databasesConfig['port'];
+    $config[PropelConstants::ZED_DB_USERNAME] = $databasesConfig['username'];
+    $config[PropelConstants::ZED_DB_PASSWORD] = $databasesConfig['password'];
+    $config[PropelConstants::ZED_DB_DATABASE] = $databasesConfig['database'];
+}
+
+// >>> DATABASE REPLICA CACHE
+$config[PropelReplicationCacheConstants::IS_REPLICATION_ENABLED] = (bool)$config[PropelConstants::ZED_DB_REPLICAS];
+$config[PropelReplicationCacheConstants::CACHE_TTL] = 2;
+
 // >>> DATA IMPORT
 $config[DataImportConstants::IS_BULK_MODE_ENABLED] = false;
 
@@ -308,13 +352,14 @@ $config[SearchElasticsearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
 
 // >>> STORAGE
 
+$keyValueRegionNamespaces = json_decode(getenv('SPRYKER_KEY_VALUE_REGION_NAMESPACES') ?: '[]', true);
 $config[StorageConstants::STORAGE_KV_SOURCE] = strtolower(getenv('SPRYKER_KEY_VALUE_STORE_ENGINE')) ?: 'redis';
 $config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION] = true;
 $config[StorageRedisConstants::STORAGE_REDIS_SCHEME] = getenv('SPRYKER_KEY_VALUE_STORE_PROTOCOL') ?: 'tcp';
 $config[StorageRedisConstants::STORAGE_REDIS_HOST] = getenv('SPRYKER_KEY_VALUE_STORE_HOST');
 $config[StorageRedisConstants::STORAGE_REDIS_PORT] = getenv('SPRYKER_KEY_VALUE_STORE_PORT');
 $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD] = getenv('SPRYKER_KEY_VALUE_STORE_PASSWORD');
-$config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = getenv('SPRYKER_KEY_VALUE_STORE_NAMESPACE') ?: 1;
+$config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = getenv('SPRYKER_KEY_VALUE_STORE_NAMESPACE') ?: $keyValueRegionNamespaces[APPLICATION_CODE_BUCKET] ?? 1;
 $config[StorageRedisConstants::STORAGE_REDIS_DATA_SOURCE_NAMES] = json_decode(getenv('SPRYKER_KEY_VALUE_STORE_SOURCE_NAMES') ?: '[]', true) ?: [];
 $config[StorageRedisConstants::STORAGE_REDIS_CONNECTION_OPTIONS] = json_decode(getenv('SPRYKER_KEY_VALUE_STORE_CONNECTION_OPTIONS') ?: '[]', true) ?: [];
 
@@ -452,6 +497,7 @@ $config[SchedulerConstants::ENABLED_SCHEDULERS] = [
 ];
 $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
     SchedulerConfig::SCHEDULER_JENKINS => [
+        SchedulerJenkinsConfig::SCHEDULER_JENKINS_CSRF_ENABLED => (bool)getenv('SPRYKER_JENKINS_CSRF_PROTECTION_ENABLED'),
         SchedulerJenkinsConfig::SCHEDULER_JENKINS_BASE_URL => sprintf(
             '%s://%s:%s/',
             getenv('SPRYKER_SCHEDULER_PROTOCOL') ?: 'http',
@@ -579,14 +625,17 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('
 $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,
     APPLICATION_ROOT_DIR . '/vendor/spryker-eco/payone/config/Zed/Oms',
+    APPLICATION_ROOT_DIR . '/vendor/spryker/payment/config/Zed/Oms',
 ];
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'PayoneCreditCardPartialOperations',
     'PayoneOnlineTransferPartialOperations',
+    'ForeignPaymentB2CStateMachine01',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     PayoneConfig::PAYMENT_METHOD_CREDIT_CARD => 'PayoneCreditCardPartialOperations',
     PayoneConfig::PAYMENT_METHOD_INSTANT_ONLINE_TRANSFER => 'PayoneOnlineTransferPartialOperations',
+    PaymentConfig::PAYMENT_FOREIGN_PROVIDER => 'ForeignPaymentB2CStateMachine01',
 ];
 
 // ----------------------------------------------------------------------------
@@ -682,8 +731,72 @@ $config[GlueBackendApiApplicationConstants::PROJECT_NAMESPACES] = [
 $sprykerGlueStorefrontHost = getenv('SPRYKER_GLUE_STOREFRONT_HOST');
 $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $sprykerGlueStorefrontHost;
 
-$config[GlueJsonApiConventionConstants::GLUE_DOMAIN]
-    = sprintf(
-        'https://%s',
-        $sprykerGlueStorefrontHost ?: $sprykerGlueBackendHost ?: 'localhost',
-    );
+$config[GlueJsonApiConventionConstants::GLUE_DOMAIN] = sprintf(
+    'https://%s',
+    $sprykerGlueStorefrontHost ?: $sprykerGlueBackendHost ?: 'localhost',
+);
+
+// ----------------------------------------------------------------------------
+// ------------------------------ ACP -----------------------------------------
+// ----------------------------------------------------------------------------
+$aopApplicationConfiguration = json_decode(html_entity_decode((string)getenv('SPRYKER_AOP_APPLICATION')), true);
+$config[KernelConstants::DOMAIN_WHITELIST] = array_merge(
+    $config[KernelConstants::DOMAIN_WHITELIST],
+    $aopApplicationConfiguration['APP_DOMAINS'] ?? [],
+);
+$config[StoreReferenceConstants::STORE_NAME_REFERENCE_MAP] = $aopApplicationConfiguration['STORE_NAME_REFERENCE_MAP'] ?? [];
+$config[AppCatalogGuiConstants::APP_CATALOG_SCRIPT_URL] = $aopApplicationConfiguration['APP_CATALOG_SCRIPT_URL'] ?? '';
+
+$aopAuthenticationConfiguration = json_decode(html_entity_decode((string)getenv('SPRYKER_AOP_AUTHENTICATION')), true);
+$config[OauthAuth0Constants::AUTH0_CUSTOM_DOMAIN] = $aopAuthenticationConfiguration['AUTH0_CUSTOM_DOMAIN'] ?? '';
+$config[OauthAuth0Constants::AUTH0_CLIENT_ID] = $aopAuthenticationConfiguration['AUTH0_CLIENT_ID'] ?? '';
+$config[OauthAuth0Constants::AUTH0_CLIENT_SECRET] = $aopAuthenticationConfiguration['AUTH0_CLIENT_SECRET'] ?? '';
+
+$config[AppCatalogGuiConstants::OAUTH_PROVIDER_NAME] =
+$config[OauthClientConstants::OAUTH_PROVIDER_NAME_FOR_MESSAGE_BROKER] =
+$config[OauthClientConstants::OAUTH_PROVIDER_NAME_FOR_PAYMENT_AUTHORIZE] = OauthAuth0Config::PROVIDER_NAME;
+
+$config[AppCatalogGuiConstants::OAUTH_GRANT_TYPE] =
+$config[OauthClientConstants::OAUTH_GRANT_TYPE_FOR_MESSAGE_BROKER] =
+$config[OauthClientConstants::OAUTH_GRANT_TYPE_FOR_PAYMENT_AUTHORIZE] = OauthAuth0Config::GRANT_TYPE_CLIENT_CREDENTIALS;
+
+$config[AppCatalogGuiConstants::OAUTH_OPTION_AUDIENCE] = 'aop-atrs';
+$config[OauthClientConstants::OAUTH_OPTION_AUDIENCE_FOR_MESSAGE_BROKER] = 'aop-event-platform';
+$config[OauthClientConstants::OAUTH_OPTION_AUDIENCE_FOR_PAYMENT_AUTHORIZE] = 'aop-app';
+
+$config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
+    PaymentMethodTransfer::class => 'payment',
+    PaymentMethodAddedTransfer::class => 'payment',
+    PaymentCancelReservationRequestedTransfer::class => 'payment',
+    PaymentConfirmationRequestedTransfer::class => 'payment',
+    PaymentRefundRequestedTransfer::class => 'payment',
+    PaymentMethodDeletedTransfer::class => 'payment',
+    PaymentPreauthorizedTransfer::class => 'payment',
+    PaymentPreauthorizationFailedTransfer::class => 'payment',
+    PaymentConfirmedTransfer::class => 'payment',
+    PaymentConfirmationFailedTransfer::class => 'payment',
+    PaymentRefundedTransfer::class => 'payment',
+    PaymentRefundFailedTransfer::class => 'payment',
+    PaymentReservationCanceledTransfer::class => 'payment',
+    PaymentCancelReservationFailedTransfer::class => 'payment',
+    AssetAddedTransfer::class => 'assets',
+    AssetUpdatedTransfer::class => 'assets',
+    AssetDeletedTransfer::class => 'assets',
+];
+
+$config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] =
+$config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
+    'payment' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'assets' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+];
+
+$config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
+    'payment' => 'http',
+    'assets' => 'http',
+];
+
+// -------------------------------- ACP AWS --------------------------------------
+$aopInfrastructureConfiguration = json_decode(html_entity_decode((string)getenv('SPRYKER_AOP_INFRASTRUCTURE')), true);
+
+$config[MessageBrokerAwsConstants::SQS_RECEIVER_CONFIG] = json_encode($aopInfrastructureConfiguration['SPRYKER_MESSAGE_BROKER_SQS_RECEIVER_CONFIG'] ?? []);
+$config[MessageBrokerAwsConstants::HTTP_SENDER_CONFIG] = $aopInfrastructureConfiguration['SPRYKER_MESSAGE_BROKER_HTTP_SENDER_CONFIG'] ?? [];

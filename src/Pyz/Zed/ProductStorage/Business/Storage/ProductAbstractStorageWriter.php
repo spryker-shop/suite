@@ -41,12 +41,12 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     protected $queueClient;
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected $synchronizedDataCollection = [];
 
     /**
-     * @var array
+     * @var array<\Generated\Shared\Transfer\QueueSendMessageTransfer>
      */
     protected $synchronizedMessageCollection = [];
 
@@ -105,7 +105,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     }
 
     /**
-     * @param array $productAbstractLocalizedEntities
+     * @param array<array<string, mixed>> $productAbstractLocalizedEntities
      * @param array<\Orm\Zed\ProductStorage\Persistence\SpyProductAbstractStorage> $productAbstractStorageEntities
      *
      * @return void
@@ -133,13 +133,16 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
             $productAbstractLocalizedEntity = $pair[static::PRODUCT_ABSTRACT_LOCALIZED_ENTITY];
             $productAbstractStorageEntity = $pair[static::PRODUCT_ABSTRACT_STORAGE_ENTITY];
 
-            $productAbstractStorageTransfer = $indexedProductAbstractStorageTransfers[$productAbstractLocalizedEntity[static::COL_FK_PRODUCT_ABSTRACT]] ?? null;
+            if ($productAbstractLocalizedEntity === null || !$this->isActive($productAbstractLocalizedEntity)) {
+                $this->deleteProductAbstractStorageEntity($productAbstractStorageEntity);
 
-            if (
-                $productAbstractLocalizedEntity === null
-                || $productAbstractStorageTransfer === null
-                || !$this->isActive($productAbstractLocalizedEntity)
-            ) {
+                continue;
+            }
+
+            $idProductAbstract = $productAbstractLocalizedEntity[static::COL_FK_PRODUCT_ABSTRACT];
+            $productAbstractStorageTransfer = $indexedProductAbstractStorageTransfers[$idProductAbstract] ?? null;
+
+            if ($productAbstractStorageTransfer === null) {
                 $this->deleteProductAbstractStorageEntity($productAbstractStorageEntity);
 
                 continue;
@@ -161,10 +164,10 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     }
 
     /**
-     * @param array $productAbstractLocalizedEntity
+     * @param array<string, mixed> $productAbstractLocalizedEntity
      * @param string $storeName
      * @param string $localeName
-     * @param array $attributeMapBulk
+     * @param array<string, \Generated\Shared\Transfer\AttributeMapStorageTransfer> $attributeMapBulk
      *
      * @return void
      */
@@ -191,7 +194,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     }
 
     /**
-     * @param array $productAbstractStorageData
+     * @param array<string, mixed> $productAbstractStorageData
      *
      * @return void
      */
@@ -206,11 +209,11 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $keySuffix
      * @param string $resourceName
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function buildSynchronizedData(array $data, string $keySuffix, string $resourceName): array
     {
@@ -223,7 +226,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $keySuffix
      * @param string $resourceName
      *
@@ -247,9 +250,9 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $resourceName
-     * @param array $params
+     * @param array<string, mixed> $params
      *
      * @return \Generated\Shared\Transfer\QueueSendMessageTransfer
      */

@@ -421,6 +421,14 @@
             </groups>
         </pages>
     </users>
+    <app-catalog-gui>
+        <label>Apps</label>
+        <title>Apps</title>
+        <icon>fa-cubes</icon>
+        <bundle>app-catalog-gui</bundle>
+        <controller>index</controller>
+        <action>index</action>
+    </app-catalog-gui>
     <administration>
         <label>Administration</label>
         <title>Administration</title>
@@ -641,13 +649,13 @@
                 <controller>list</controller>
                 <action>index</action>
             </spryk-gui>
-            <storage>
+            <storage-gui>
                 <label>Storage</label>
                 <title>Storage index</title>
-                <bundle>storage</bundle>
+                <bundle>storage-gui</bundle>
                 <controller>maintenance</controller>
                 <action>index</action>
-            </storage>
+            </storage-gui>
         </pages>
     </maintenance>
     <merchant-portal-dashboard>

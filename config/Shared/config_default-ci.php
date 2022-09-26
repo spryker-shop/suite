@@ -2,6 +2,7 @@
 
 use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
+use Spryker\Shared\AppCatalogGui\AppCatalogGuiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
@@ -10,13 +11,18 @@ use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\EventBehavior\EventBehaviorConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
+use Spryker\Shared\GlueBackendApiApplication\GlueBackendApiApplicationConstants;
+use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
 use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\MerchantPortalApplication\MerchantPortalConstants;
+use Spryker\Shared\MessageBroker\MessageBrokerConstants;
+use Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
+use Spryker\Shared\OauthClient\OauthClientConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
@@ -31,6 +37,7 @@ use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
+use Spryker\Zed\OauthDummy\OauthDummyConfig;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 
 // ############################################################################
@@ -40,6 +47,8 @@ use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 $stores = array_combine(Store::getInstance()->getAllowedStores(), Store::getInstance()->getAllowedStores());
 $yvesHost = 'www.de.spryker.test';
 $glueHost = 'glue.de.spryker.test';
+$glueBackendHost = 'gluebackend.de.spryker.test';
+$glueStorefrontHost = 'gluestorefront.de.spryker.test';
 $backofficeHost = 'backoffice.de.spryker.test';
 $merchantPortalHost = 'mp.de.spryker.test';
 $backendGatewayHost = 'backend-gateway.de.spryker.test';
@@ -90,7 +99,7 @@ $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($trustedHosts, $config[
 // ------------------------------ AUTHENTICATION ------------------------------
 // ----------------------------------------------------------------------------
 
-require 'common/config_oauth-devvm.php';
+require 'common/config_oauth.php';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ SERVICES ------------------------------------
@@ -276,3 +285,32 @@ require 'common/config_oms-development.php';
 // >>> PAYONE
 
 require 'common/config_payone-development.php';
+
+// ----------------------------------------------------------------------------
+// ------------------------------ OAUTH ---------------------------------------
+// ----------------------------------------------------------------------------
+$config[OauthClientConstants::OAUTH_PROVIDER_NAME_FOR_MESSAGE_BROKER] = OauthDummyConfig::PROVIDER_NAME;
+$config[OauthClientConstants::OAUTH_PROVIDER_NAME_FOR_PAYMENT_AUTHORIZE] = OauthDummyConfig::PROVIDER_NAME;
+$config[AppCatalogGuiConstants::OAUTH_PROVIDER_NAME] = OauthDummyConfig::PROVIDER_NAME;
+
+// ----------------------------------------------------------------------------
+// ------------------------------ Glue Backend API -------------------------------
+// ----------------------------------------------------------------------------
+$config[GlueBackendApiApplicationConstants::GLUE_BACKEND_API_HOST] = $glueBackendHost;
+$config[GlueBackendApiApplicationConstants::PROJECT_NAMESPACES] = [
+    'Pyz',
+];
+
+// ----------------------------------------------------------------------------
+// ------------------------------ Glue Storefront API -------------------------------
+// ----------------------------------------------------------------------------
+$config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $glueStorefrontHost;
+
+// ----------------------------------------------------------------------------
+// ------------------------------ MessageBroker -----------------------------------------
+// ----------------------------------------------------------------------------
+$config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] =
+$config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
+    'payment' => 'in-memory',
+    'assets' => 'in-memory',
+];

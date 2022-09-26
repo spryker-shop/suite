@@ -8,13 +8,13 @@
 namespace Pyz\Glue\GlueApplication\Bootstrap;
 
 use Spryker\Glue\GlueApplication\Bootstrap\GlueBootstrap;
-use Spryker\Glue\GlueStorefrontApiApplication\Plugin\StorefrontApiGlueApplicationBootstrapPlugin;
+use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\StorefrontApiGlueApplicationBootstrapPlugin;
 use Spryker\Shared\Application\ApplicationInterface;
 
 class GlueStorefrontApiBootstrap extends GlueBootstrap
 {
     /**
-     * @param array $glueApplicationBootstrapPluginClassNames
+     * @param array<string> $glueApplicationBootstrapPluginClassNames
      *
      * @return \Spryker\Shared\Application\ApplicationInterface
      */

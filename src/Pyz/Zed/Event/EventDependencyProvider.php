@@ -126,6 +126,10 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new MerchantSearchEventSubscriber());
         $eventSubscriberCollection->add(new MerchantProductOfferSearchEventSubscriber());
 
+        /*
+         * Payment Events
+         */
+
         $eventSubscriberCollection->add(new PublisherSubscriber());
 
         return $eventSubscriberCollection;

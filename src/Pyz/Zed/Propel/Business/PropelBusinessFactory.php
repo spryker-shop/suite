@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\Propel\Business;
 
-use Pyz\Zed\Propel\Business\CTE\CteSupportChecker;
-use Pyz\Zed\Propel\Business\CTE\CteSupportCheckerInterface;
+use Pyz\Zed\Propel\Business\Cte\CteSupportChecker;
+use Pyz\Zed\Propel\Business\Cte\CteSupportCheckerInterface;
 use Spryker\Zed\Propel\Business\PropelBusinessFactory as SprykerPropelBusinessFactory;
 
 /**
@@ -17,7 +17,7 @@ use Spryker\Zed\Propel\Business\PropelBusinessFactory as SprykerPropelBusinessFa
 class PropelBusinessFactory extends SprykerPropelBusinessFactory
 {
     /**
-     * @return \Pyz\Zed\Propel\Business\CTE\CteSupportCheckerInterface
+     * @return \Pyz\Zed\Propel\Business\Cte\CteSupportCheckerInterface
      */
     public function createCteSupportChecker(): CteSupportCheckerInterface
     {

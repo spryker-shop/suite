@@ -8,25 +8,32 @@
 namespace Pyz\Zed\ExampleStateMachine\Persistence;
 
 use Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery;
+use Propel\Runtime\Collection\ObjectCollection;
 
 interface ExampleStateMachineQueryContainerInterface
 {
     /**
+     * @psalm-suppress TooManyTemplateParams
+     *
      * @param array<int> $stateIds
      *
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
+     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
     public function queryStateMachineItemsByStateIds(array $stateIds = []): PyzExampleStateMachineItemQuery;
 
     /**
-     * @return \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem[]
+     * @psalm-suppress TooManyTemplateParams
+     *
+     * @return \Propel\Runtime\Collection\ObjectCollection<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
-    public function queryAllStateMachineItems();
+    public function queryAllStateMachineItems(): ObjectCollection;
 
     /**
+     * @psalm-suppress TooManyTemplateParams
+     *
      * @param int $idStateMachineItem
      *
-     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
+     * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
     public function queryExampleStateMachineItemByIdStateMachineItem(
         $idStateMachineItem

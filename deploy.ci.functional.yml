@@ -6,12 +6,13 @@ tag: '1.0'
 environment: docker.ci
 pipeline: docker.ci.functional
 image:
-    tag: spryker/php:7.4
+    tag: spryker/php:8.1
     environment:
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.spryker.local
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
         SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
         SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR: '0c1ffefeebdab4a3d839d0e52590c9a2'
+
 composer:
     mode: --no-dev
     autoload: --classmap-authoritative
@@ -116,6 +117,7 @@ services:
             password: 'secret'
     broker:
         engine: rabbitmq
+        version: '3.9'
         api:
             username: 'spryker'
             password: 'secret'
@@ -128,6 +130,8 @@ services:
         version: 7.6
     scheduler:
         engine: jenkins
+        version: '2.324'
+        csrf-protection-enabled: true
     mail_catcher:
         engine: mailhog
 

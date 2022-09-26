@@ -22,6 +22,7 @@ use Spryker\Zed\ProductPageSearch\Business\ProductConcretePageSearchReader\Produ
 use Spryker\Zed\ProductPageSearch\Business\ProductConcretePageSearchWriter\ProductConcretePageSearchWriterInterface;
 use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPublisher as SprykerProductConcretePageSearchPublisher;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductInterface;
+use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductSearchInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface;
 use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
@@ -54,12 +55,12 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     protected $productConcretePagePublisherCte;
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected $synchronizedDataCollection = [];
 
     /**
-     * @var array
+     * @var array<\Generated\Shared\Transfer\QueueSendMessageTransfer>
      */
     protected $synchronizedMessageCollection = [];
 
@@ -70,6 +71,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface $utilEncoding
      * @param \Spryker\Zed\ProductPageSearch\Business\DataMapper\AbstractProductSearchDataMapper $productConcreteSearchDataMapper
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface $storeFacade
+     * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductSearchInterface $productPageSearchFacade
      * @param \Spryker\Zed\ProductPageSearch\ProductPageSearchConfig $productPageSearchConfig
      * @param array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface> $pageDataExpanderPlugins
      * @param array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcreteCollectionFilterPluginInterface> $productConcreteCollectionFilterPlugins
@@ -84,6 +86,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         ProductPageSearchToUtilEncodingInterface $utilEncoding,
         AbstractProductSearchDataMapper $productConcreteSearchDataMapper,
         ProductPageSearchToStoreFacadeInterface $storeFacade,
+        ProductPageSearchToProductSearchInterface $productPageSearchFacade,
         ProductPageSearchConfig $productPageSearchConfig,
         array $pageDataExpanderPlugins,
         array $productConcreteCollectionFilterPlugins,
@@ -98,6 +101,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             $utilEncoding,
             $productConcreteSearchDataMapper,
             $storeFacade,
+            $productPageSearchFacade,
             $productPageSearchConfig,
             $pageDataExpanderPlugins,
             $productConcreteCollectionFilterPlugins,
@@ -205,7 +209,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Generated\Shared\Transfer\ProductConcretePageSearchTransfer $productPageSearchTransfer
      * @param string $resourceName
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function buildSynchronizedData(
         ProductConcretePageSearchTransfer $productPageSearchTransfer,
@@ -244,9 +248,9 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $resourceName
-     * @param array $params
+     * @param array<string, mixed> $params
      *
      * @return \Generated\Shared\Transfer\QueueSendMessageTransfer
      */

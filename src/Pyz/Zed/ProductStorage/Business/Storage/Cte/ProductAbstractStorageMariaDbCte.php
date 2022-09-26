@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\ProductStorage\Business\Storage\Cte;
 
-use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
+use Pyz\Zed\Propel\Business\Cte\MariaDbDataFormatterTrait;
 use Pyz\Zed\Propel\PropelConfig;
 
 class ProductAbstractStorageMariaDbCte implements ProductStorageCteStrategyInterface
@@ -15,9 +15,9 @@ class ProductAbstractStorageMariaDbCte implements ProductStorageCteStrategyInter
     use MariaDbDataFormatterTrait;
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      *
-     * @return array
+     * @return array<string>
      */
     public function buildParams(array $data): array
     {

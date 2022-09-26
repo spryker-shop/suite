@@ -36,7 +36,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     }
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      *
      * @return string
      */
@@ -57,7 +57,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     }
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      *
      * @return string
      */
@@ -70,7 +70,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     }
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      *
      * @return string
      */
@@ -87,7 +87,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     }
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      *
      * @return string
      */
@@ -100,10 +100,10 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     }
 
     /**
-     * @param array $collection
+     * @param array<mixed> $collection
      * @param string $key
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getCollectionDataByKey(array $collection, string $key): array
     {
@@ -111,7 +111,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     }
 
     /**
-     * @param array $priceData
+     * @param array<mixed> $priceData
      *
      * @return string
      */
@@ -125,7 +125,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     }
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      * @param int|null $minimumLength
      *
      * @return string
@@ -148,7 +148,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     }
 
     /**
-     * @param array $values
+     * @param array<mixed> $values
      * @param int|null $minimumLength
      *
      * @return string

@@ -9,7 +9,7 @@ sudo chmod 600 config/Zed/dev_only_private.key
 sudo chmod 600 config/Zed/dev_only_public.key
 
 # setup php-fpm
-if [[ ${TRAVIS_PHP_VERSION:0:1} = "7" ]]; then sudo cp config/Shared/ci/travis/www.conf.php7 ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf; fi
+sudo cp config/Shared/ci/travis/www.conf ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf;
 sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
 echo "session.save_path = '/tmp'" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
@@ -49,7 +49,7 @@ sudo ln -s /etc/apache2/sites-available/glue.conf /etc/apache2/sites-enabled/glu
 sudo ln -s /etc/apache2/sites-available/yves.conf /etc/apache2/sites-enabled/yves.conf
 
 # apache: fastcgi/php-fpm configuration
-sudo cp -f config/Shared/ci/travis/php7-fpm.conf /etc/apache2/conf-enabled/php7-fpm.conf
+sudo cp -f config/Shared/ci/travis/php-fpm.conf /etc/apache2/conf-enabled/php-fpm.conf
 
 # apache: check configuration and start service
 sudo apachectl configtest

@@ -7,16 +7,17 @@
 
 namespace Pyz\Glue\GlueBackendApiApplication;
 
-use Spryker\Glue\GlueApplication\Plugin\GlueApplication\RequestResourceFilterPlugin;
-use Spryker\Glue\GlueApplication\Plugin\GlueApplication\ResourceRouteMatcherPlugin;
 use Spryker\Glue\GlueBackendApiApplication\GlueBackendApiApplicationDependencyProvider as SprykerGlueBackendApiApplicationDependencyProvider;
-use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication\CustomRouteRouteMatcherPlugin;
-use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication\CustomRouteRouterPlugin;
-use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication\LocaleRequestBuilderPlugin;
-use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication\RequestCorsValidatorPlugin;
-use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication\SecurityHeaderResponseFormatterPlugin;
-use Spryker\Glue\GlueBackendApiApplicationExtension\Dependency\Plugin\RequestResourceFilterPluginInterface;
-use Spryker\Glue\GlueHttp\Plugin\GlueBackendApiApplication\CorsHeaderExistenceRequestAfterRoutingValidatorPlugin;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ApplicationIdentifierRequestBuilderPlugin;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\LocaleRequestBuilderPlugin;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\RequestCorsValidatorPlugin;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ScopeRequestAfterRoutingValidatorPlugin;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\SecurityHeaderResponseFormatterPlugin;
+use Spryker\Glue\GlueBackendApiApplicationAuthorizationConnector\Plugin\GlueBackendApiApplication\AuthorizationRequestAfterRoutingValidatorPlugin;
+use Spryker\Glue\OauthBackendApi\Plugin\AccessTokenValidatorPlugin;
+use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\UserRequestValidatorPlugin;
+use Spryker\Glue\OauthBackendApi\Plugin\TokenResource;
+use Spryker\Glue\OauthBackendApi\Plugin\UserRequestBuilderPlugin;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 
 class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiApplicationDependencyProvider
@@ -32,28 +33,42 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
     }
 
     /**
-     * @return array<\Spryker\Glue\GlueBackendApiApplicationExtension\Dependency\Plugin\RequestBuilderPluginInterface>
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RequestBuilderPluginInterface>
      */
     protected function getRequestBuilderPlugins(): array
     {
         return [
+            new ApplicationIdentifierRequestBuilderPlugin(),
             new LocaleRequestBuilderPlugin(),
+            new UserRequestBuilderPlugin(),
         ];
     }
 
     /**
-     * @return array<\Spryker\Glue\GlueBackendApiApplicationExtension\Dependency\Plugin\RequestAfterRoutingValidatorPluginInterface>
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RequestValidatorPluginInterface>
+     */
+    protected function getRequestValidatorPlugins(): array
+    {
+        return [
+            new AccessTokenValidatorPlugin(),
+            new UserRequestValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RequestAfterRoutingValidatorPluginInterface>
      */
     protected function getRequestAfterRoutingValidatorPlugins(): array
     {
         return [
-            new CorsHeaderExistenceRequestAfterRoutingValidatorPlugin(),
             new RequestCorsValidatorPlugin(),
+            new ScopeRequestAfterRoutingValidatorPlugin(),
+            new AuthorizationRequestAfterRoutingValidatorPlugin(),
         ];
     }
 
     /**
-     * @return array<\Spryker\Glue\GlueBackendApiApplicationExtension\Dependency\Plugin\ResponseFormatterPluginInterface>
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResponseFormatterPluginInterface>
      */
     protected function getResponseFormatterPlugins(): array
     {
@@ -63,47 +78,12 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
     }
 
     /**
-     * @return array<\Spryker\Glue\GlueBackendApiApplicationExtension\Dependency\Plugin\RouterPluginInterface>
-     */
-    protected function getRouterPlugins(): array
-    {
-        return [
-            new CustomRouteRouterPlugin(),
-        ];
-    }
-
-    /**
-     * @return array<\Spryker\Glue\GlueBackendApiApplicationExtension\Dependency\Plugin\RouteMatcherPluginInterface>
-     */
-    protected function getRouteMatcherPlugins(): array
-    {
-        return [
-            new CustomRouteRouteMatcherPlugin(),
-            new ResourceRouteMatcherPlugin(),
-        ];
-    }
-
-    /**
      * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceInterface>
      */
     protected function getResourcePlugins(): array
     {
-        return [];
-    }
-
-    /**
-     * @return \Spryker\Glue\GlueBackendApiApplicationExtension\Dependency\Plugin\RequestResourceFilterPluginInterface
-     */
-    public function getRequestResourceFilterPlugin(): RequestResourceFilterPluginInterface
-    {
-        return new RequestResourceFilterPlugin();
-    }
-
-    /**
-     * @return array<\Spryker\Glue\GlueBackendApiApplicationExtension\Dependency\Plugin\RouteProviderPluginInterface>
-     */
-    protected function getRouteProviderPlugins(): array
-    {
-        return [];
+        return [
+            new TokenResource(),
+        ];
     }
 }

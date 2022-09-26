@@ -8,7 +8,7 @@
 namespace Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductConcrete;
 
 use Pyz\Zed\PriceProductStorage\Business\Storage\Cte\PriceProductStorageCteInterface;
-use Pyz\Zed\Propel\Business\CTE\MariaDbDataFormatterTrait;
+use Pyz\Zed\Propel\Business\Cte\MariaDbDataFormatterTrait;
 use Pyz\Zed\Propel\PropelConfig;
 
 class PriceProductConcreteStorageMariaDbCte implements PriceProductStorageCteInterface
@@ -16,9 +16,9 @@ class PriceProductConcreteStorageMariaDbCte implements PriceProductStorageCteInt
     use MariaDbDataFormatterTrait;
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      *
-     * @return array
+     * @return array<string>
      */
     public function buildParams(array $data): array
     {

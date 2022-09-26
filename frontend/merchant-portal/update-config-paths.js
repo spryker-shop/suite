@@ -9,7 +9,7 @@ const {
 } = require("./mp-paths");
 const { getMPEntryPoints, entryPointPathToName } = require("./utils");
 
-const TSCONFIG_FILES = ["tsconfig.json", "tsconfig.mp.json"];
+const TSCONFIG_FILES = ["tsconfig.base.json", "tsconfig.mp.json"];
 
 async function getMPPathsMap() {
     const entryPoints = await getMPEntryPoints(SPRYKER_CORE_DIR, MP_CORE_ENTRY_POINT_FILE);

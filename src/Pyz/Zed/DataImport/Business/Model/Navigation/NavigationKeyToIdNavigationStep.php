@@ -36,7 +36,7 @@ class NavigationKeyToIdNavigationStep implements DataImportStepInterface
     protected $target;
 
     /**
-     * @var array
+     * @var array<string, int>
      */
     protected $resolved = [];
 

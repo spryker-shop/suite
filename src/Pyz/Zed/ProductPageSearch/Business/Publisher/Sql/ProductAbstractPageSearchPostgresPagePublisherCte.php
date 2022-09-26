@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\ProductPageSearch\Business\Publisher\Sql;
 
-use Pyz\Zed\Propel\Business\CTE\PostgresDataFormatterTrait;
+use Pyz\Zed\Propel\Business\Cte\PostgresDataFormatterTrait;
 use Spryker\Zed\Propel\PropelConfig;
 
 class ProductAbstractPageSearchPostgresPagePublisherCte implements ProductPagePublisherCteInterface
@@ -15,9 +15,9 @@ class ProductAbstractPageSearchPostgresPagePublisherCte implements ProductPagePu
     use PostgresDataFormatterTrait;
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      *
-     * @return array
+     * @return array<string>
      */
     public function buildParams(array $data): array
     {

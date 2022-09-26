@@ -20,7 +20,7 @@ use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugi
 class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProvider
 {
     /**
-     * @return array
+     * @return array<\Spryker\Zed\CmsBlockGui\Communication\Plugin\CmsBlockFormPluginInterface>
      */
     protected function getCmsBlockFormPlugins(): array
     {
@@ -34,7 +34,7 @@ class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProv
     }
 
     /**
-     * @return array
+     * @return array<\Spryker\Zed\CmsBlockGui\Communication\Plugin\CmsBlockViewPluginInterface>
      */
     protected function getCmsBlockViewPlugins(): array
     {

@@ -265,8 +265,6 @@ actions:
       source: data/import/common/common/marketplace/product_offer_validity.csv
     - data_entity: price-product-offer
       source: data/import/common/US/price_product_offer.csv
-    - data_entity: product-offer-stock
-      source: data/import/common/common/marketplace/product_offer_stock.csv
     - data_entity: merchant-oms-process
       source: data/import/common/common/marketplace/merchant_oms_process.csv
     - data_entity: stock
@@ -275,8 +273,6 @@ actions:
       source: data/import/common/common/marketplace/warehouse_address.csv
     - data_entity: merchant-stock
       source: data/import/common/common/marketplace/merchant_stock.csv
-    - data_entity: product-stock
-      source: data/import/common/common/marketplace/product_stock.csv
     - data_entity: merchant-product-approval-status-default
       source: data/import/common/common/marketplace/merchant_product_approval_status_default.csv
     # Store relation
@@ -286,6 +282,10 @@ actions:
       source: data/import/common/US/merchant_product_offer_store.csv
     - data_entity: stock-store
       source: data/import/common/US/marketplace/warehouse_store.csv
+    - data_entity: product-stock
+      source: data/import/common/common/marketplace/product_stock.csv
+    - data_entity: product-offer-stock
+      source: data/import/common/common/marketplace/product_offer_stock.csv
 
     # Acl import
     - data_entity: acl-role

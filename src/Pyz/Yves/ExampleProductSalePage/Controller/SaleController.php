@@ -58,7 +58,7 @@ class SaleController extends AbstractController
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function getCategoryNode($categoryPath): array
     {

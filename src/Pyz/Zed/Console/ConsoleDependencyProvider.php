@@ -72,9 +72,12 @@ use Spryker\Zed\MerchantOms\Communication\Console\TriggerEventFromCsvFileConsole
 use Spryker\Zed\MerchantOpeningHoursDataImport\MerchantOpeningHoursDataImportConfig;
 use Spryker\Zed\MerchantProductApprovalDataImport\MerchantProductApprovalDataImportConfig;
 use Spryker\Zed\MerchantProfileDataImport\MerchantProfileDataImportConfig;
+use Spryker\Zed\MessageBroker\Communication\Plugin\Console\MessageBrokerDebugConsole;
+use Spryker\Zed\MessageBroker\Communication\Plugin\Console\MessageBrokerWorkerConsole;
 use Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin;
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
 use Spryker\Zed\Oauth\Communication\Console\OauthTokenConsole;
+use Spryker\Zed\Oauth\Communication\Console\ScopeCacheCollectorConsole;
 use Spryker\Zed\Oms\Communication\Console\CheckConditionConsole as OmsCheckConditionConsole;
 use Spryker\Zed\Oms\Communication\Console\CheckTimeoutConsole as OmsCheckTimeoutConsole;
 use Spryker\Zed\Oms\Communication\Console\ClearLocksConsole as OmsClearLocksConsole;
@@ -167,6 +170,7 @@ use Spryker\Zed\Storage\Communication\Console\StorageDeleteAllConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisExportRdbConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisImportRdbConsole;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
+use Spryker\Zed\Testify\Communication\Console\CleanOutputConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\RemoveDataBuilderConsole;
 use Spryker\Zed\Transfer\Communication\Console\RemoveTransferConsole;
@@ -179,9 +183,6 @@ use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\Uuid\Communication\Console\UuidGeneratorConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\RemoveNavigationCacheConsole;
-use SprykerSdk\Spryk\Console\SprykBuildConsole;
-use SprykerSdk\Spryk\Console\SprykDumpConsole;
-use SprykerSdk\Spryk\Console\SprykRunConsole;
 use SprykerSdk\Zed\Benchmark\Communication\Console\BenchmarkRunConsole;
 use SprykerSdk\Zed\ComposerConstrainer\Communication\Console\ComposerConstraintConsole;
 use SprykerShop\Zed\DateTimeConfiguratorPageExample\Communication\Console\DateTimeProductConfiguratorBuildFrontendConsole;
@@ -408,6 +409,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new CustomerPasswordSetConsole(),
 
             new OrderInvoiceSendConsole(),
+
+            new MessageBrokerWorkerConsole(),
+
+            new ScopeCacheCollectorConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
@@ -461,11 +466,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new RouterDebugBackofficeConsole();
             $commands[] = new RouterDebugBackendGatewayConsole();
             $commands[] = new RouterDebugBackendApiConsole();
-
-            $commands[] = new SprykRunConsole();
-            $commands[] = new SprykDumpConsole();
-            $commands[] = new SprykBuildConsole();
             $commands[] = new ComposerConstraintConsole();
+            $commands[] = new CleanOutputConsole();
+            $commands[] = new MessageBrokerDebugConsole();
 
             if (class_exists(SecurityCheckerCommand::class)) {
                 $commands[] = new SecurityCheckerCommand();
@@ -482,7 +485,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return array
+     * @return array<\Spryker\Zed\Console\Dependency\Plugin\ConsolePostRunHookPluginInterface>
      */
     public function getConsolePostRunHookPlugins(Container $container): array
     {

@@ -9,6 +9,9 @@ namespace Pyz\Zed\MerchantPortalApplication\Communication;
 
 use Spryker\Zed\MerchantPortalApplication\Communication\MerchantPortalApplicationCommunicationFactory as SprykerMerchantPortalApplicationCommunicationFactory;
 
+/**
+ * @method \Spryker\Zed\MerchantPortalApplication\MerchantPortalApplicationConfig getConfig()
+ */
 class MerchantPortalApplicationCommunicationFactory extends SprykerMerchantPortalApplicationCommunicationFactory
 {
 }

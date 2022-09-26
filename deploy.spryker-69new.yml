@@ -42,7 +42,7 @@ tag: '1.0'
 
 environment: docker.dev
 image:
-    tag: spryker/php:7.4
+    tag: spryker/php:8.1
     environment:
         SPRYKER_HOOK_BEFORE_DEPLOY: 'vendor/bin/install -r pre-deploy -vvv'
         SPRYKER_HOOK_AFTER_DEPLOY: 'true'
@@ -56,6 +56,9 @@ image:
         enabled-extensions:
             - blackfire
             - newrelic
+    node:
+        version: 16
+        npm: 8
 
 composer:
     mode: ''
@@ -152,13 +155,13 @@ groups:
                         store: AT
                         services:
                             session:
-                                namespace: 8   
+                                namespace: 8
                     mp.us.69-new.demo-spryker.com:
                         entry-point: MerchantPortal
                         store: US
                         services:
                             session:
-                                namespace: 9                                                                                                                 
+                                namespace: 9
             Yves:
                 application: yves
                 endpoints:
@@ -205,7 +208,7 @@ groups:
                         entry-point: BackendApi
                     backend-api.us.69-new.demo-spryker.com:
                         store: US
-                        entry-point: BackendApi                                              
+                        entry-point: BackendApi
             Glue:
                 application: glue
                 endpoints:
@@ -227,6 +230,7 @@ services:
                 protocol: tcp
     broker:
         engine: rabbitmq
+        version: '3.9'
         api:
             username: 'spryker'
             password: 'secret'
@@ -249,6 +253,8 @@ services:
                 protocol: tcp
     scheduler:
         engine: jenkins
+        version: '2.324'
+        csrf-protection-enabled: true
         endpoints:
             scheduler.69-new.demo-spryker.com:
     mail_catcher:

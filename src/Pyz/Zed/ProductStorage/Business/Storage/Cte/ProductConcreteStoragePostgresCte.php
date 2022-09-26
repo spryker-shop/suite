@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\ProductStorage\Business\Storage\Cte;
 
-use Pyz\Zed\Propel\Business\CTE\PostgresDataFormatterTrait;
+use Pyz\Zed\Propel\Business\Cte\PostgresDataFormatterTrait;
 use Pyz\Zed\Propel\PropelConfig;
 
 class ProductConcreteStoragePostgresCte implements ProductStorageCteStrategyInterface
@@ -15,9 +15,9 @@ class ProductConcreteStoragePostgresCte implements ProductStorageCteStrategyInte
     use PostgresDataFormatterTrait;
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      *
-     * @return array
+     * @return array<string>
      */
     public function buildParams(array $data): array
     {

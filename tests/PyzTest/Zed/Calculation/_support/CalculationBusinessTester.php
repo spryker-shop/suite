@@ -159,7 +159,7 @@ class CalculationBusinessTester extends Actor
         $discountEntity->setDisplayName('test1' . $this->getIncrementNumber());
         $discountEntity->setIsActive(1);
         $discountEntity->setValidFrom(new DateTime('1985-07-01'));
-        $discountEntity->setValidTo(new DateTime('2050-07-01'));
+        $discountEntity->setValidTo(new DateTime('2030-07-01'));
         $discountEntity->setCalculatorPlugin($calculatorType);
         $discountEntity->setCollectorQueryString('sku = "' . $sku . '"');
 
@@ -187,7 +187,7 @@ class CalculationBusinessTester extends Actor
     }
 
     /**
-     * @param array<string, mixed> $discountsData
+     * @param array<array<string, mixed>> $discountsData
      *
      * @return array<\Generated\Shared\Transfer\DiscountTransfer>
      */
@@ -217,6 +217,7 @@ class CalculationBusinessTester extends Actor
                 continue;
             }
 
+            /** @var \Generated\Shared\Transfer\DiscountVoucherTransfer $discountVoucherTransfer */
             $discountVoucherTransfer = $this->haveGeneratedVoucherCodes([
                 DiscountVoucherTransfer::ID_DISCOUNT => $discountGeneralTransfer->getIdDiscount(),
             ]);

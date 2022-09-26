@@ -18,6 +18,7 @@ use Spryker\Zed\DataImport\DataImportConfig;
 abstract class AbstractProductAbstractStoreBulkDataSetWriter implements DataSetWriterInterface
 {
     public const COLUMN_ABSTRACT_SKU = ProductAbstractStoreHydratorStep::COLUMN_ABSTRACT_SKU;
+
     public const COLUMN_STORE_NAME = ProductAbstractStoreHydratorStep::COLUMN_STORE_NAME;
 
     /**
@@ -41,7 +42,7 @@ abstract class AbstractProductAbstractStoreBulkDataSetWriter implements DataSetW
     protected $dataImportConfig;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected static $productAbstractStoreCollection = [];
 

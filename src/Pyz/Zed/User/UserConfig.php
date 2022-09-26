@@ -12,7 +12,7 @@ use Spryker\Zed\User\UserConfig as SprykerUserConfig;
 class UserConfig extends SprykerUserConfig
 {
     /**
-     * @return array<array>
+     * @return array<array<string, mixed>>
      */
     public function getInstallerUsers(): array
     {

@@ -20,45 +20,49 @@ use Spryker\Zed\Product\Dependency\ProductEvents;
 abstract class AbstractProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface
 {
     protected const COLUMN_ABSTRACT_SKU = ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU;
+
     protected const COLUMN_NEW_FROM = ProductAbstractHydratorStep::COLUMN_NEW_FROM;
+
     protected const COLUMN_COLOR_CODE = ProductAbstractHydratorStep::COLUMN_COLOR_CODE;
+
     protected const COLUMN_META_KEYWORDS = ProductAbstractHydratorStep::COLUMN_META_KEYWORDS;
+
     protected const COLUMN_META_DESCRIPTION = ProductAbstractHydratorStep::COLUMN_META_DESCRIPTION;
+
     protected const COLUMN_META_TITLE = ProductAbstractHydratorStep::COLUMN_META_TITLE;
+
     protected const COLUMN_DESCRIPTION = ProductAbstractHydratorStep::COLUMN_DESCRIPTION;
+
     protected const COLUMN_NAME = ProductAbstractHydratorStep::COLUMN_NAME;
+
     protected const COLUMN_URL = ProductAbstractHydratorStep::COLUMN_URL;
+
     protected const COLUMN_NEW_TO = ProductAbstractHydratorStep::COLUMN_NEW_TO;
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productAbstractCollection = [];
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productAbstractLocalizedAttributesCollection = [];
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productCategoryCollection = [];
 
     /**
-     * @var array
+     * @var array<array<string, mixed>>
      */
     protected static $productUrlCollection = [];
 
     /**
-     * @var array
+     * @var array<int>
      */
     protected static $productAbstractUpdated = [];
-
-    /**
-     * @var bool
-     */
-    protected $isDuplicatedSku = false;
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface
