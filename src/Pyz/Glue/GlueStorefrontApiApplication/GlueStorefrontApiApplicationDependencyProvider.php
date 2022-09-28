@@ -17,7 +17,7 @@ use Spryker\Glue\GlueStorefrontApiApplicationAuthorizationConnector\Plugin\GlueS
 use Spryker\Glue\OauthApi\Plugin\AccessTokenValidatorPlugin;
 use Spryker\Glue\OauthApi\Plugin\CustomerRequestBuilderPlugin;
 use Spryker\Glue\OauthApi\Plugin\GlueApplication\CustomerRequestValidatorPlugin;
-use Spryker\Glue\OauthApi\Plugin\TokenResource;
+use Spryker\Glue\OauthApi\Plugin\GlueApplication\OauthTokenResource;
 
 class GlueStorefrontApiApplicationDependencyProvider extends SprykerGlueStorefrontApiApplicationDependencyProvider
 {
@@ -72,7 +72,15 @@ class GlueStorefrontApiApplicationDependencyProvider extends SprykerGlueStorefro
     protected function getResourcePlugins(): array
     {
         return [
-            new TokenResource(),
+            new OauthTokenResource(),
         ];
+    }
+
+    /**
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RouteProviderPluginInterface>
+     */
+    protected function getRouteProviderPlugins(): array
+    {
+        return [];
     }
 }
