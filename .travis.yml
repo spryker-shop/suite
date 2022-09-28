@@ -158,7 +158,12 @@ _BACKUP_MYSQL: &BACKUP_MYSQL
     - mysqldump --password="" --all-databases --single-transaction --quick --lock-tables=false > ./database_dump/mysqldump.sql -u root
 
 _BACKUP_POSTGRES: &BACKUP_POSTGRES
-    - pg_dumpall -f ./database_dump/pgdumpall.sql
+    - /usr/lib/postgresql/13/bin/pg_dumpall > ./database_dump/pgdumpall.sql -U postgres
+    - sudo chown travis:travis ./database_dump/pgdumpall.sql
+
+_INSTALL_POSTGRES_9_6: &INSTALL_POSTGRES_9_6
+    - echo "_INSTALL_POSTGRES_9_6"
+    - config/Shared/ci/travis/install_postgres_9_6.sh
 
 _AWS_SYNC_CONFIG: &AWS_SYNC_CONFIG
     - aws configure set default.s3.max_concurrent_requests 80
@@ -248,7 +253,7 @@ _RESTORE_MYSQL_BACKUP: &RESTORE_MYSQL_BACKUP
     - *RESTORE_BACKUP
 
 _RESTORE_POSTGRES_BACKUP: &RESTORE_POSTGRES_BACKUP
-    - psql -p $POSTGRES_PORT -f $TRAVIS_BUILD_DIR/database_dump/pgdumpall.sql
+    - psql -p $POSTGRES_PORT -U postgres -f $TRAVIS_BUILD_DIR/database_dump/pgdumpall.sql
     - *RESTORE_BACKUP
 
 _CHROMDRIVER_DOWNLOAD: &CHROMDRIVER_DOWNLOAD
@@ -360,7 +365,7 @@ _BROWSER_TESTING_AFTER_SCRIPT: &BROWSER_TESTING_AFTER_SCRIPT
 _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
     stage: test
     os: linux
-    dist: bionic
+    dist: focal
     language: shell
     addons:
         hosts:
@@ -436,7 +441,7 @@ notifications:
     email: false
 
 os: linux
-dist: bionic
+dist: focal
 language: php
 
 git:
@@ -457,6 +462,7 @@ jobs:
           install:
               - *COMPOSER_INSTALL
               - *INSTALL_SCRIPT
+              - *INSTALL_POSTGRES_9_6
           before_script:
               - *SETUP_WEB_INFRASTRUCTURE
           script:
@@ -823,6 +829,7 @@ jobs:
           install:
               - *COMPOSER_INSTALL
               - *INSTALL_SCRIPT
+              - *INSTALL_POSTGRES_9_6
               - *SETUP_WEB_PHP8_INFRASTRUCTURE
           before_script:
               - *RESTORE_POSTGRES_BACKUP
@@ -844,6 +851,7 @@ jobs:
           install:
               - *COMPOSER_INSTALL
               - *INSTALL_SCRIPT
+              - *INSTALL_POSTGRES_9_6
               - *SETUP_WEB_INFRASTRUCTURE
           before_script:
               - *RESTORE_POSTGRES_BACKUP
