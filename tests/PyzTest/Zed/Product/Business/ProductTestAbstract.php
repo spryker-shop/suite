@@ -29,13 +29,16 @@ use Orm\Zed\Tax\Persistence\SpyTaxSetTax;
 use Spryker\Service\UtilEncoding\UtilEncodingService;
 use Spryker\Service\UtilText\UtilTextService;
 use Spryker\Zed\Currency\Business\CurrencyFacade;
+use Spryker\Zed\Event\Business\EventFacade;
 use Spryker\Zed\Locale\Business\LocaleFacade;
 use Spryker\Zed\PriceProduct\Business\PriceProductFacade;
 use Spryker\Zed\PriceProduct\Persistence\PriceProductQueryContainer;
 use Spryker\Zed\Product\Business\Product\ProductManager;
+use Spryker\Zed\Product\Business\Product\Trigger\ProductEventTrigger;
 use Spryker\Zed\Product\Business\Product\Url\ProductUrlManager;
 use Spryker\Zed\Product\Business\ProductBusinessFactory;
 use Spryker\Zed\Product\Business\ProductFacade;
+use Spryker\Zed\Product\Dependency\Facade\ProductToEventBridge;
 use Spryker\Zed\Product\Dependency\Facade\ProductToLocaleBridge;
 use Spryker\Zed\Product\Dependency\Facade\ProductToTouchBridge;
 use Spryker\Zed\Product\Dependency\Facade\ProductToUrlBridge;
@@ -227,6 +230,16 @@ abstract class ProductTestAbstract extends Unit
     protected $storeFacade;
 
     /**
+     * @var \Spryker\Zed\Event\Business\EventFacade
+     */
+    protected $eventFacade;
+
+    /**
+     * @var \Spryker\Zed\Product\Business\Product\Trigger\ProductEventTrigger
+     */
+    protected $productEventTrigger;
+
+    /**
      * @return void
      */
     protected function setUp(): void
@@ -247,6 +260,7 @@ abstract class ProductTestAbstract extends Unit
         $this->utilEncodingService = new UtilEncodingService();
         $this->currencyFacade = new CurrencyFacade();
         $this->storeFacade = new StoreFacade();
+        $this->eventFacade = new EventFacade();
 
         $this->setupLocales();
         $this->setupProductAbstract();
@@ -260,6 +274,9 @@ abstract class ProductTestAbstract extends Unit
         $urlBridge = new ProductToUrlBridge($this->urlFacade);
         $touchBridge = new ProductToTouchBridge($this->touchFacade);
         $localeBridge = new ProductToLocaleBridge($this->localeFacade);
+        $eventBridge = new ProductToEventBridge($this->eventFacade);
+
+        $this->productEventTrigger = new ProductEventTrigger($eventBridge);
 
         $this->productConcreteManager = $productBusinessFactory->createProductConcreteManager();
         $this->productAbstractManager = $productBusinessFactory->createProductAbstractManager();
@@ -272,12 +289,14 @@ abstract class ProductTestAbstract extends Unit
             $localeBridge,
             $this->productQueryContainer,
             $urlGenerator,
+            $this->productEventTrigger,
         );
 
         $this->productManager = new ProductManager(
             $this->productAbstractManager,
             $this->productConcreteManager,
             $this->productQueryContainer,
+            $this->productEventTrigger,
         );
     }
 
