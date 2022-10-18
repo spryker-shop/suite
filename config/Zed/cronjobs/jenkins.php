@@ -181,3 +181,14 @@ $jobs[] = [
     'enable' => true,
     'stores' => $allStores,
 ];
+
+/* Message broker */
+if (\Spryker\Shared\Config\Config::get(\Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants::SQS_RECEIVER_CONFIG)) {
+    $jobs[] = [
+        'name' => 'message-broker-consume-channels',
+        'command' => '$PHP_BIN vendor/bin/console message-broker:consume --time-limit=15',
+        'schedule' => '* * * * *',
+        'enable' => true,
+        'stores' => $allStores,
+    ];
+}
