@@ -328,7 +328,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
     php-74-mariadb-acceptance-alpine:
-        name: "PHP 7.4 / MariaDB / Acceptance / Alpine"
+        name: "PHP 8.0 / MariaDB / Acceptance / Alpine"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
