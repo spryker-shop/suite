@@ -15,7 +15,7 @@ jobs:
             fail-fast: false
             matrix:
                 php-version: [
-                    '7.4',
+                    '8.0',
                     '8.1'
                 ]
 
@@ -242,11 +242,11 @@ jobs:
 
 
     php-74-mariadb-glue-alpine:
-        name: "PHP 7.4 / MariaDB / Glue / Alpine"
+        name: "PHP 8.0 / MariaDB / Glue / Alpine"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
             TRAVIS: 1
 
         steps:
@@ -271,11 +271,11 @@ jobs:
                   docker/sdk testing codecept run -c codeception.api.yml
 
     php-74-postgresql-acceptance-alpine:
-        name: "PHP 7.4 / PostgreSQL / Acceptance / Alpine"
+        name: "PHP 8.0 / PostgreSQL / Acceptance / Alpine"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
             TRAVIS: 1
 
         steps:
@@ -300,11 +300,11 @@ jobs:
 
 
     php-74-postgresql-functional-alpine:
-        name: "PHP 7.4 / PostgreSQL / Functional / Alpine"
+        name: "PHP 8.0 / PostgreSQL / Functional / Alpine"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
             TRAVIS: 1
 
         steps:
@@ -332,7 +332,7 @@ jobs:
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
             TRAVIS: 1
 
         steps:
@@ -357,11 +357,11 @@ jobs:
 
 
     php-74-mariadb-functional-alpine:
-        name: "PHP 7.4 / MariaDB / Functional / Alpine"
+        name: "PHP 8.0 / MariaDB / Functional / Alpine"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
             TRAVIS: 1
 
         steps:
@@ -385,11 +385,11 @@ jobs:
 
 
     php-74-postgres-functional-debian:
-        name: "PHP 7.4 / PostgreSQL / Functional / Debian"
+        name: "PHP 8.0 / PostgreSQL / Functional / Debian"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:7.4-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.0-debian
             TRAVIS: 1
 
         steps:
@@ -413,11 +413,11 @@ jobs:
 
 
     php-74-frontend-and-assets-alpine:
-        name: "PHP 7.4 / Frontend & Assets / Alpine"
+        name: "PHP 8.0 / Frontend & Assets / Alpine"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:7.4
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
             TRAVIS: 1
 
         steps:
