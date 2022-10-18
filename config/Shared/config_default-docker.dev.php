@@ -206,6 +206,7 @@ $messageBrokerTransport = getenv('SPRYKER_TESTING_ENABLED') ? 'in-memory' : Mess
 
 $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] =
 $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
+    'product' => $messageBrokerTransport,
     'payment' => $messageBrokerTransport,
     'assets' => $messageBrokerTransport,
 ];
