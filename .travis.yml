@@ -502,7 +502,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: ElasticSearch 6 (prefer-lowest).
-          php: "7.4"
+          php: "8.0"
           stage: Build
           env:
               - APPLICATION_ENV=ci.mysql
@@ -556,7 +556,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP Validation (prefer-lowest)
-          php: "7.4"
+          php: "8.0"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -569,7 +569,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker (prefer-lowest) [1/4]
-          php: "7.4"
+          php: "8.0"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -582,7 +582,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker (prefer-lowest) [2/4]
-          php: "7.4"
+          php: "8.0"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -595,7 +595,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker (prefer-lowest) [3/4]
-          php: "7.4"
+          php: "8.0"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -608,7 +608,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker (prefer-lowest) [4/4]
-          php: "7.4"
+          php: "8.0"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -621,7 +621,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker-shop (prefer-lowest)
-          php: "7.4"
+          php: "8.0"
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -681,8 +681,8 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
               <<: *ADDONS_ARTIFACTS
 
-        - name: PHP 7.4 / MariaDB / Browser Testing (Presentation, prefer-lowest)
-          php: "7.4"
+        - name: PHP 8.0 / MariaDB / Browser Testing (Presentation, prefer-lowest)
+          php: "8.0"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -795,8 +795,8 @@ jobs:
               mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
-        - name: PHP 7.4 / MariaDB / Testing (Business, Communication, ..., prefer-lowest)
-          php: "7.4"
+        - name: PHP 8.0 / MariaDB / Testing (Business, Communication, ..., prefer-lowest)
+          php: "8.0"
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
