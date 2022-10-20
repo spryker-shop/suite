@@ -155,7 +155,7 @@ jobs:
             - name: Run CodeStyle checks
               run: vendor/bin/console code:sniff:style
 
-    php-8-mariadb-glue-alpine:
+    php-81-mariadb-glue-alpine:
         name: "PHP 8.1 / MariaDB / Glue / Alpine"
         runs-on: ubuntu-20.04
         env:
@@ -184,7 +184,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
-    php-8-mariadb-acceptance-alpine:
+    php-81-mariadb-acceptance-alpine:
         name: "PHP 8.1 / MariaDB / Acceptance / Alpine"
         runs-on: ubuntu-20.04
         env:
@@ -241,7 +241,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
 
-    php-74-mariadb-glue-alpine:
+    php-80-mariadb-glue-alpine:
         name: "PHP 8.0 / MariaDB / Glue / Alpine"
         runs-on: ubuntu-20.04
         env:
@@ -270,7 +270,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
-    php-74-postgresql-acceptance-alpine:
+    php-80-postgresql-acceptance-alpine:
         name: "PHP 8.0 / PostgreSQL / Acceptance / Alpine"
         runs-on: ubuntu-20.04
         env:
@@ -299,7 +299,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
 
-    php-74-postgresql-functional-alpine:
+    php-80-postgresql-functional-alpine:
         name: "PHP 8.0 / PostgreSQL / Functional / Alpine"
         runs-on: ubuntu-20.04
         env:
@@ -327,7 +327,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-    php-74-mariadb-acceptance-alpine:
+    php-80-mariadb-acceptance-alpine:
         name: "PHP 8.0 / MariaDB / Acceptance / Alpine"
         runs-on: ubuntu-20.04
         env:
@@ -356,7 +356,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
 
-    php-74-mariadb-functional-alpine:
+    php-80-mariadb-functional-alpine:
         name: "PHP 8.0 / MariaDB / Functional / Alpine"
         runs-on: ubuntu-20.04
         env:
@@ -384,7 +384,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
 
-    php-74-postgres-functional-debian:
+    php-80-postgres-functional-debian:
         name: "PHP 8.0 / PostgreSQL / Functional / Debian"
         runs-on: ubuntu-20.04
         env:
@@ -412,7 +412,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
 
-    php-74-frontend-and-assets-alpine:
+    php-80-frontend-and-assets-alpine:
         name: "PHP 8.0 / Frontend & Assets / Alpine"
         runs-on: ubuntu-20.04
         env:
@@ -440,3 +440,26 @@ jobs:
                   docker run -i --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
                   docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
                   docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
+
+    php-80-lowest:
+        name: "PHP 8.0 / Prefer Lowest"
+        runs-on: ubuntu-20.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
+            TRAVIS: 1
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Install apt-packages
+              run: |
+                  sudo apt-get install apache2-utils
+
+            - name: Install prefer lowest
+              run: |
+                  composer lowest-setup
+
+            - name: Run prefer lowest
+              run: |
+                  composer lowest
