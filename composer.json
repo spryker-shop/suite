@@ -1142,6 +1142,8 @@
         "phpstan": [
             "php -d memory_limit=1024M vendor/bin/phpstan analyze"
         ],
-        "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
+        "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion",
+        "lowest": "validate-prefer-lowest -m",
+        "lowest-setup": "composer update --prefer-lowest --prefer-stable --prefer-dist --no-interaction && cp composer.json composer.backup && composer require --dev dereuromark/composer-prefer-lowest && mv composer.backup composer.json"
     }
 }
