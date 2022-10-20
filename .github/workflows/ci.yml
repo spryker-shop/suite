@@ -10,7 +10,7 @@ on:
 jobs:
     validation:
         name: "CS, ArchSniffer, PHPStan, Security"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         strategy:
             fail-fast: false
             matrix:
@@ -44,7 +44,7 @@ jobs:
             - name: Runs Elasticsearch
               uses: elastic/elastic-github-actions/elasticsearch@master
               with:
-                  stack-version: 7.6.0
+                  stack-version: 7.10.0
                   port: 9200
 
             - uses: actions/setup-node@v1
@@ -157,7 +157,7 @@ jobs:
 
     php-8-mariadb-glue-alpine:
         name: "PHP 8.1 / MariaDB / Glue / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.1
@@ -186,7 +186,7 @@ jobs:
 
     php-8-mariadb-acceptance-alpine:
         name: "PHP 8.1 / MariaDB / Acceptance / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.1
@@ -215,7 +215,7 @@ jobs:
 
     php-81-mariadb-functional-alpine:
         name: "PHP 8.1 / MariaDB / Functional / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.1
@@ -230,7 +230,7 @@ jobs:
 
             - name: Install docker-compose
               run: |
-                  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                  sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
                   sudo chmod +x /usr/local/bin/docker-compose
 
             - name: Run docker
@@ -241,9 +241,9 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
 
-    php-74-mariadb-glue-alpine:
+    php-80-mariadb-glue-alpine:
         name: "PHP 8.0 / MariaDB / Glue / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
@@ -258,7 +258,7 @@ jobs:
 
             - name: Install docker-compose
               run: |
-                  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                  sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
                   sudo chmod +x /usr/local/bin/docker-compose
 
             - name: Run docker
@@ -270,9 +270,9 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
-    php-74-postgresql-acceptance-alpine:
+    php-80-postgresql-acceptance-alpine:
         name: "PHP 8.0 / PostgreSQL / Acceptance / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
@@ -287,7 +287,7 @@ jobs:
 
             - name: Install docker-compose
               run: |
-                  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                  sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
                   sudo chmod +x /usr/local/bin/docker-compose
 
             - name: Run docker
@@ -299,9 +299,9 @@ jobs:
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
 
-    php-74-postgresql-functional-alpine:
+    php-80-postgresql-functional-alpine:
         name: "PHP 8.0 / PostgreSQL / Functional / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
@@ -316,7 +316,7 @@ jobs:
 
             - name: Install docker-compose
               run: |
-                  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                  sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
                   sudo chmod +x /usr/local/bin/docker-compose
 
             - name: Run docker
@@ -327,9 +327,9 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-    php-74-mariadb-acceptance-alpine:
+    php-80-mariadb-acceptance-alpine:
         name: "PHP 8.0 / MariaDB / Acceptance / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
@@ -344,7 +344,7 @@ jobs:
 
             - name: Install docker-compose
               run: |
-                  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                  sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
                   sudo chmod +x /usr/local/bin/docker-compose
 
             - name: Run docker
@@ -356,9 +356,9 @@ jobs:
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
 
-    php-74-mariadb-functional-alpine:
+    php-80-mariadb-functional-alpine:
         name: "PHP 8.0 / MariaDB / Functional / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
@@ -373,7 +373,7 @@ jobs:
 
             - name: Install docker-compose
               run: |
-                  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                  sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
                   sudo chmod +x /usr/local/bin/docker-compose
 
             - name: Run docker
@@ -384,9 +384,9 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
 
-    php-74-postgres-functional-debian:
+    php-80-postgres-functional-debian:
         name: "PHP 8.0 / PostgreSQL / Functional / Debian"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.0-debian
@@ -401,7 +401,7 @@ jobs:
 
             - name: Install docker-compose
               run: |
-                  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                  sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
                   sudo chmod +x /usr/local/bin/docker-compose
 
             - name: Run docker
@@ -412,7 +412,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
 
-    php-74-frontend-and-assets-alpine:
+    php-80-frontend-and-assets-alpine:
         name: "PHP 8.0 / Frontend & Assets / Alpine"
         runs-on: ubuntu-20.04
         env:
@@ -429,7 +429,7 @@ jobs:
 
             - name: Install docker-compose
               run: |
-                  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                  sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
                   sudo chmod +x /usr/local/bin/docker-compose
 
             - name: Run docker
