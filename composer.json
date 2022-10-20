@@ -3,7 +3,7 @@
     "description": "Spryker Shop Suite",
     "license": "MIT",
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.0",
         "ext-bcmath": "*",
         "ext-curl": "*",
         "ext-gd": "*",
@@ -1124,11 +1124,6 @@
         }
     },
     "scripts": {
-        "compile": [
-            "mkdir -p ./data/DE/logs/ZED",
-            "echo '<?php return \"development-heroku\";' > config/Shared/console_env_local.php",
-            "./deploy/heroku/run.sh"
-        ],
         "post-install-cmd": [
             "ChromedriverInstaller\\Installer::installChromedriver"
         ],
