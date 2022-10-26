@@ -498,7 +498,7 @@ jobs:
           after_success:
               - *AWS_SYNC_UP_MYSQL
           addons:
-             mariadb: "10.3"
+              mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: ElasticSearch 6 (prefer-lowest).
