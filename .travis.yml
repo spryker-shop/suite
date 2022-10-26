@@ -264,6 +264,7 @@ _CHROMDRIVER_DOWNLOAD: &CHROMDRIVER_DOWNLOAD
     - export CHROMEDRIVER_REVISION=814168
 
 _BEFORE_INSTALL_SCRIPT: &BEFORE_INSTALL_SCRIPT
+    - sudo apt remove mysql-client mysql-server && sudo apt autoremove
     - echo "_BEFORE_INSTALL_SCRIPT"
     - nvm install 16 > /dev/null
     - nvm use 16
