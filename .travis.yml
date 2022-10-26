@@ -364,7 +364,7 @@ _BROWSER_TESTING_AFTER_SCRIPT: &BROWSER_TESTING_AFTER_SCRIPT
 _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
     stage: test
     os: linux
-    dist: focal
+    dist: bionic
     language: shell
     addons:
         hosts:
