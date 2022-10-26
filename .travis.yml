@@ -14,7 +14,6 @@ _COMPOSER_PREFER_LOWEST: &COMPOSER_PREFER_LOWEST
     - COMPOSER_MEMORY_LIMIT=-1 composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies;
 
 _SETUP_WEB_INFRASTRUCTURE: &SETUP_WEB_INFRASTRUCTURE
-    - sudo apt remove mysql-client mysql-server && sudo apt autoremove
     - echo "_BROWSER_TESTING_BEFORE_INSTALL_SCRIPT"
     - chmod +x config/Shared/ci/travis/*.sh
     - config/Shared/ci/travis/acceptance_env.sh
@@ -84,6 +83,7 @@ _ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE: &ADDONS_APT_PACKAGES_BASE_INFRASTRUCTU
     - xdg-utils
 
 _ADDONS_BASE_INFRASTRUCTURE: &ADDONS_BASE_INFRASTRUCTURE
+    - sudo apt remove mysql-client mysql-server && sudo apt autoremove
     apt:
         update: true
         sources:
