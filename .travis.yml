@@ -499,9 +499,9 @@ jobs:
               - *BACKUP_REDIS
           after_success:
               - *AWS_SYNC_UP_MYSQL
-          #addons:
+          addons:
           #    mariadb: "10.3"
-          #    <<: *ADDONS_BASE_INFRASTRUCTURE
+              <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: ElasticSearch 6 (prefer-lowest).
           php: "8.0"
