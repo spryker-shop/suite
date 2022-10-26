@@ -14,6 +14,7 @@ _COMPOSER_PREFER_LOWEST: &COMPOSER_PREFER_LOWEST
     - COMPOSER_MEMORY_LIMIT=-1 composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies;
 
 _SETUP_WEB_INFRASTRUCTURE: &SETUP_WEB_INFRASTRUCTURE
+    - sudo apt remove mysql-client mysql-server && sudo apt autoremove
     - echo "_BROWSER_TESTING_BEFORE_INSTALL_SCRIPT"
     - chmod +x config/Shared/ci/travis/*.sh
     - config/Shared/ci/travis/acceptance_env.sh
@@ -264,7 +265,6 @@ _CHROMDRIVER_DOWNLOAD: &CHROMDRIVER_DOWNLOAD
     - export CHROMEDRIVER_REVISION=814168
 
 _BEFORE_INSTALL_SCRIPT: &BEFORE_INSTALL_SCRIPT
-    - sudo apt remove mysql-client mysql-server && sudo apt autoremove
     - echo "_BEFORE_INSTALL_SCRIPT"
     - nvm install 16 > /dev/null
     - nvm use 16
