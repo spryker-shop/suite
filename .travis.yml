@@ -485,6 +485,7 @@ jobs:
           before_install:
               - sudo apt remove mysql-client mysql-server && sudo apt autoremove
               - sudo apt-get install -y -o Debug::pkgProblemResolver=yes -o Dpkg::Options::='--force-confnew' mariadb-server-10.3
+              - sudo service mysql start
               - *BEFORE_INSTALL_SCRIPT
           install:
               - *COMPOSER_INSTALL
