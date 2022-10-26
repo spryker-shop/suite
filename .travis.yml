@@ -441,7 +441,7 @@ notifications:
     email: false
 
 os: linux
-dist: focal
+dist: bionic
 language: php
 
 git:
@@ -483,9 +483,6 @@ jobs:
           env:
               - APPLICATION_ENV=ci.mysql
           before_install:
-              - sudo apt remove mysql-client mysql-server && sudo apt autoremove
-              - sudo apt-get install -y -o Debug::pkgProblemResolver=yes -o Dpkg::Options::='--force-confnew' mariadb-server-10.3
-              - sudo service mysql start
               - *BEFORE_INSTALL_SCRIPT
           install:
               - *COMPOSER_INSTALL
@@ -501,7 +498,7 @@ jobs:
           after_success:
               - *AWS_SYNC_UP_MYSQL
           addons:
-          #    mariadb: "10.3"
+             mariadb: "10.3"
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: ElasticSearch 6 (prefer-lowest).
