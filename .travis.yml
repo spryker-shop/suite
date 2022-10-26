@@ -83,13 +83,14 @@ _ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE: &ADDONS_APT_PACKAGES_BASE_INFRASTRUCTU
     - xdg-utils
 
 _ADDONS_BASE_INFRASTRUCTURE: &ADDONS_BASE_INFRASTRUCTURE
-    - sudo apt remove mysql-client mysql-server && sudo apt autoremove
     apt:
         update: true
         sources:
             - *ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE
         packages:
             - *ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE
+        remove: mysql-client mysql-server
+        autoremove: true
 
     hosts:
         - backend-api.de.spryker.test
