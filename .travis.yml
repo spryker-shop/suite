@@ -89,8 +89,6 @@ _ADDONS_BASE_INFRASTRUCTURE: &ADDONS_BASE_INFRASTRUCTURE
             - *ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE
         packages:
             - *ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE
-        remove: mysql-client mysql-server
-        autoremove: true
 
     hosts:
         - backend-api.de.spryker.test
@@ -485,6 +483,8 @@ jobs:
           env:
               - APPLICATION_ENV=ci.mysql
           before_install:
+              - sudo apt remove mysql-client mysql-server && sudo apt autoremove
+              - sudo apt-get install -y -o Debug::pkgProblemResolver=yes -o Dpkg::Options::='--force-confnew' mariadb-server-10.3
               - *BEFORE_INSTALL_SCRIPT
           install:
               - *COMPOSER_INSTALL
@@ -499,9 +499,9 @@ jobs:
               - *BACKUP_REDIS
           after_success:
               - *AWS_SYNC_UP_MYSQL
-          addons:
-              mariadb: "10.3"
-              <<: *ADDONS_BASE_INFRASTRUCTURE
+          #addons:
+          #    mariadb: "10.3"
+          #    <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: ElasticSearch 6 (prefer-lowest).
           php: "8.0"
