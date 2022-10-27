@@ -158,8 +158,7 @@ _BACKUP_MYSQL: &BACKUP_MYSQL
     - mysqldump --password="" --all-databases --single-transaction --quick --lock-tables=false > ./database_dump/mysqldump.sql -u root
 
 _BACKUP_POSTGRES: &BACKUP_POSTGRES
-    - /usr/lib/postgresql/13/bin/pg_dumpall > ./database_dump/pgdumpall.sql -U postgres
-    - sudo chown travis:travis ./database_dump/pgdumpall.sql
+    - pg_dumpall -f ./database_dump/pgdumpall.sql
 
 _INSTALL_POSTGRES_9_6: &INSTALL_POSTGRES_9_6
     - echo "_INSTALL_POSTGRES_9_6"
@@ -365,7 +364,7 @@ _BROWSER_TESTING_AFTER_SCRIPT: &BROWSER_TESTING_AFTER_SCRIPT
 _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
     stage: test
     os: linux
-    dist: focal
+    dist: bionic
     language: shell
     addons:
         hosts:
@@ -441,7 +440,7 @@ notifications:
     email: false
 
 os: linux
-dist: focal
+dist: bionic
 language: php
 
 git:
@@ -462,7 +461,6 @@ jobs:
           install:
               - *COMPOSER_INSTALL
               - *INSTALL_SCRIPT
-              - *INSTALL_POSTGRES_9_6
           before_script:
               - *SETUP_WEB_INFRASTRUCTURE
           script:
@@ -829,7 +827,6 @@ jobs:
           install:
               - *COMPOSER_INSTALL
               - *INSTALL_SCRIPT
-              - *INSTALL_POSTGRES_9_6
               - *SETUP_WEB_PHP8_INFRASTRUCTURE
           before_script:
               - *RESTORE_POSTGRES_BACKUP
@@ -851,7 +848,6 @@ jobs:
           install:
               - *COMPOSER_INSTALL
               - *INSTALL_SCRIPT
-              - *INSTALL_POSTGRES_9_6
               - *SETUP_WEB_INFRASTRUCTURE
           before_script:
               - *RESTORE_POSTGRES_BACKUP
