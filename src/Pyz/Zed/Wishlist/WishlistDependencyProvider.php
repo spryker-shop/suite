@@ -28,6 +28,7 @@ use Spryker\Zed\ProductConfigurationWishlist\Communication\Plugin\Wishlist\Produ
 use Spryker\Zed\ProductConfigurationWishlist\Communication\Plugin\Wishlist\ProductConfigurationWishlistUpdateItemPreCheckPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Wishlist\ProductDiscontinuedAddItemPreCheckPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Wishlist\ProductDiscontinuedUpdateItemPreCheckPlugin;
+use Spryker\Zed\Wishlist\Communication\Plugin\Wishlist\WishlistItemAddItemPreCheckPlugin;
 use Spryker\Zed\Wishlist\WishlistDependencyProvider as SprykerWishlistDependencyProvider;
 
 class WishlistDependencyProvider extends SprykerWishlistDependencyProvider
@@ -51,6 +52,7 @@ class WishlistDependencyProvider extends SprykerWishlistDependencyProvider
             new ProductConfigurationWishlistAddItemPreCheckPlugin(),
             new ProductDiscontinuedAddItemPreCheckPlugin(), #ProductDiscontinuedFeature
             new ValidMerchantProductOfferAddItemPreCheckPlugin(),
+            new WishlistItemAddItemPreCheckPlugin(),
         ];
     }
 
