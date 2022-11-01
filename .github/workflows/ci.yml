@@ -16,7 +16,7 @@ jobs:
             matrix:
                 php-version: [
                     '8.0',
-                    '8.1'
+                    '8.2'
                 ]
 
         env:
@@ -86,7 +86,7 @@ jobs:
               run: composer --version
 
             - name: Composer install
-              run: composer install
+              run: composer install --ignore-platform-req=php
 
             - name: Generate transfer objects
               run: vendor/bin/console transfer:generate
@@ -440,26 +440,3 @@ jobs:
                   docker run -i --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
                   docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
                   docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
-
-    php-80-lowest:
-        name: "PHP 8.0 / Prefer Lowest"
-        runs-on: ubuntu-20.04
-        env:
-            PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
-            TRAVIS: 1
-
-        steps:
-            - uses: actions/checkout@v2
-
-            - name: Install apt-packages
-              run: |
-                  sudo apt-get install apache2-utils
-
-            - name: Install prefer lowest
-              run: |
-                  composer lowest-setup
-
-            - name: Run prefer lowest
-              run: |
-                  composer lowest
