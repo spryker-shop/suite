@@ -241,16 +241,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.240.5",
+            "version": "3.240.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7fb4c933795c5908fe5e2cb32913eed608901195"
+                "reference": "81d8e135af0bbd0fd4dc1ffbcfb8869595ddadd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7fb4c933795c5908fe5e2cb32913eed608901195",
-                "reference": "7fb4c933795c5908fe5e2cb32913eed608901195",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/81d8e135af0bbd0fd4dc1ffbcfb8869595ddadd2",
+                "reference": "81d8e135af0bbd0fd4dc1ffbcfb8869595ddadd2",
                 "shasum": ""
             },
             "require": {
@@ -329,9 +329,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.240.5"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.240.6"
             },
-            "time": "2022-10-28T18:17:24+00:00"
+            "time": "2022-10-31T18:22:22+00:00"
         },
         {
             "name": "brick/math",
@@ -32994,27 +32994,29 @@
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-sales-order-threshold.git",
-                "reference": "5e59d79b2d6ab3e46607e9a5434e0d56f9ddab28"
+                "reference": "014085267433fdfa231c04b0b3cdf335d130388f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold/zipball/5e59d79b2d6ab3e46607e9a5434e0d56f9ddab28",
-                "reference": "5e59d79b2d6ab3e46607e9a5434e0d56f9ddab28",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold/zipball/014085267433fdfa231c04b0b3cdf335d130388f",
+                "reference": "014085267433fdfa231c04b0b3cdf335d130388f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/currency": "^3.0.0",
                 "spryker/glossary": "^3.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/merchant-relationship": "^1.0.0",
+                "spryker/merchant-relationship-extension": "^1.0.0",
                 "spryker/sales-order-threshold": "^1.0.0",
                 "spryker/sales-order-threshold-extension": "^1.0.0",
-                "spryker/store": "^1.2.0"
+                "spryker/store": "^1.2.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -33042,9 +33044,9 @@
             ],
             "description": "MerchantRelationshipSalesOrderThreshold module",
             "support": {
-                "source": "https://github.com/spryker/merchant-relationship-sales-order-threshold/tree/1.1.1"
+                "source": "https://github.com/spryker/merchant-relationship-sales-order-threshold/tree/1.2.0"
             },
-            "time": "2021-12-15T15:02:47+00:00"
+            "time": "2022-11-01T11:57:33+00:00"
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold-data-import",

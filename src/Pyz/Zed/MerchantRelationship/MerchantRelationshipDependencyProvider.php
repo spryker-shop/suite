@@ -14,6 +14,7 @@ use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRel
 use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipPostUpdatePlugin;
 use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipUpdateValidatorPlugin;
 use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListRelationshipMerchantRelationshipPreDeletePlugin;
+use Spryker\Zed\MerchantRelationshipSalesOrderThreshold\Communication\Plugin\MerchantRelationship\MerchantRelationshipSalesOrderThresholdMerchantRelationshipPreDeletePlugin;
 
 class MerchantRelationshipDependencyProvider extends SprykerMerchantRelationshipDependencyProvider
 {
@@ -23,6 +24,7 @@ class MerchantRelationshipDependencyProvider extends SprykerMerchantRelationship
     protected function getMerchantRelationshipPreDeletePlugins(): array
     {
         return [
+            new MerchantRelationshipSalesOrderThresholdMerchantRelationshipPreDeletePlugin(),
             new ProductListRelationshipMerchantRelationshipPreDeletePlugin(),
         ];
     }
