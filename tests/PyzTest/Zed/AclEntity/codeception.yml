@@ -3,7 +3,7 @@ paths:
     tests: .
     data: _data
     support: _support
-    log: _output
+    output: _output
 coverage:
     enabled: true
     remote: false
@@ -13,7 +13,7 @@ coverage:
 suites:
     Persistence:
         path: Persistence
-        class_name: AclQueryDirectorTester
+        actor: AclQueryDirectorTester
         modules:
             enabled:
                 - Asserts

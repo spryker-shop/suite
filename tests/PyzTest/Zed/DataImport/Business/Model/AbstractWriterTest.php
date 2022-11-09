@@ -7,8 +7,8 @@
 
 namespace PyzTest\Zed\DataImport\Business\Model;
 
+use Codeception\Stub;
 use Codeception\Test\Unit;
-use Codeception\Util\Stub;
 use Propel\Runtime\Propel;
 use Pyz\Zed\DataImport\Business\DataImportBusinessFactory;
 use Pyz\Zed\DataImport\Business\Model\PropelMariaDbVersionConstraintException;

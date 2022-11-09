@@ -48,7 +48,7 @@ class PriceProductVolumesApiTester extends ApiEndToEndTester
      */
     protected function grabPriceProductVolumesData(): array
     {
-        return $this->grabDataFromResponseByJsonPath('$.data[0].attributes.prices[0].volumePrices');
+        return $this->getDataFromResponseByJsonPath('$.data[0].attributes.prices[0].volumePrices');
     }
 
     /**

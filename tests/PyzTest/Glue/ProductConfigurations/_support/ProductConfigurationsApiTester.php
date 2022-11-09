@@ -102,7 +102,7 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
      */
     protected function grabProductConfigurationInstanceDataFromConcreteProductsResource(): array
     {
-        return $this->grabDataFromResponseByJsonPath('$.data.attributes.productConfigurationInstance');
+        return $this->getDataFromResponseByJsonPath('$.data.attributes.productConfigurationInstance');
     }
 
     /**
@@ -110,7 +110,7 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
      */
     protected function grabProductConfigurationInstanceDataFromOrdersResource(): array
     {
-        return $this->grabDataFromResponseByJsonPath('$.data.attributes.items[0].productConfigurationInstance');
+        return $this->getDataFromResponseByJsonPath('$.data.attributes.items[0].productConfigurationInstance');
     }
 
     /**

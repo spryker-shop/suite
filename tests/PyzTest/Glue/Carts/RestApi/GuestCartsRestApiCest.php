@@ -320,7 +320,7 @@ class GuestCartsRestApiCest
                 '{resourceGuestCarts}/{guestCartUuid}',
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                    'guestCartUuid' => $I->grabDataFromResponseByJsonPath('$.data')['id'],
+                    'guestCartUuid' => $I->getDataFromResponseByJsonPath('$.data')['id'],
                 ],
             ),
         );
