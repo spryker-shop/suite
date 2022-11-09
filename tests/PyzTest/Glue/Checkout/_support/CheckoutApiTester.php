@@ -99,7 +99,7 @@ class CheckoutApiTester extends ApiEndToEndTester
             ->whenI()
             ->seeSingleResourceIdEqualTo('');
 
-        $attributes = $this->grabDataFromResponseByJsonPath('$.data.attributes');
+        $attributes = $this->getDataFromResponseByJsonPath('$.data.attributes');
 
         $this->assertNotEmpty(
             $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
@@ -126,7 +126,7 @@ class CheckoutApiTester extends ApiEndToEndTester
             ->whenI()
             ->seeSingleResourceIdEqualTo('');
 
-        $attributes = $this->grabDataFromResponseByJsonPath('$.data.attributes');
+        $attributes = $this->getDataFromResponseByJsonPath('$.data.attributes');
 
         $this->assertEmpty(
             $attributes[RestCheckoutDataTransfer::ADDRESSES],

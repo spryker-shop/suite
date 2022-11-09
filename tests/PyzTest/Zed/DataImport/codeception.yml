@@ -4,7 +4,7 @@ paths:
     tests: .
     data: _data
     support: _support
-    log: _output
+    output: _output
 
 coverage:
     enabled: true
@@ -14,7 +14,7 @@ coverage:
 suites:
     Communication:
         path: Communication
-        class_name: DataImportCommunicationTester
+        actor: DataImportCommunicationTester
         modules:
             enabled:
                 - \SprykerTest\Shared\Testify\Helper\Environment
@@ -28,7 +28,7 @@ suites:
                 - \SprykerTest\Zed\Testify\Helper\Communication\DependencyProviderHelper
     Business:
         path: Business
-        class_name: DataImportBusinessTester
+        actor: DataImportBusinessTester
         modules:
             enabled:
                 - \SprykerTest\Shared\Testify\Helper\Environment

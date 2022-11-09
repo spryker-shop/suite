@@ -5,7 +5,7 @@ paths:
     tests: .
     data: _data
     support: _support
-    log: _output
+    output: _output
 
 coverage:
     enabled: true
@@ -21,7 +21,7 @@ coverage:
 suites:
     Presentation:
         path: Presentation
-        class_name: ApplicationPresentationTester
+        actor: ApplicationPresentationTester
         modules:
             enabled:
                 - Asserts
@@ -30,5 +30,6 @@ suites:
                 - \SprykerTest\Shared\Testify\Helper\ConfigHelper
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
                       projectNamespaces: ['Pyz']
+                      coreNamespaces: ['Spryker','SprykerShop','SprykerEco','SprykerSdk']
                 - \SprykerTest\Shared\Testify\Helper\DependencyHelper
                 - \SprykerTest\Shared\Propel\Helper\TransactionHelper
