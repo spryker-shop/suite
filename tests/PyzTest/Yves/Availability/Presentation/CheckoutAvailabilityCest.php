@@ -28,8 +28,6 @@ use PyzTest\Zed\Sales\PageObject\OrderListPage;
 class CheckoutAvailabilityCest
 {
     /**
-     * @skip Require P&S functionality
-     *
      * @param \PyzTest\Yves\Availability\AvailabilityPresentationTester $i
      * @param \Codeception\Scenario $scenario
      *
@@ -37,6 +35,8 @@ class CheckoutAvailabilityCest
      */
     public function testCheckoutItemWithAvailability(AvailabilityPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Require P&S functionality.');
+
         $i->wantTo('Checkout item with stock');
         $i->expectTo('Availability changed during SM processing.');
         $i->truncateSalesOrderThresholds();

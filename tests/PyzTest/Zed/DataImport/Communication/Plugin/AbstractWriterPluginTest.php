@@ -8,8 +8,8 @@
 namespace PyzTest\Zed\DataImport\Communication\Plugin;
 
 use Codeception\Configuration;
+use Codeception\Stub;
 use Codeception\Test\Unit;
-use Codeception\Util\Stub;
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Generated\Shared\Transfer\DataImporterReaderConfigurationTransfer;

@@ -44,7 +44,7 @@ class AgentAuthRestApiTester extends ApiEndToEndTester
      */
     public function seeResponseHasAccessToken(): void
     {
-        $this->assertNotEmpty($this->grabDataFromResponseByJsonPath(static::ACCESS_TOKEN_JSON_PATH));
+        $this->assertNotEmpty($this->getDataFromResponseByJsonPath(static::ACCESS_TOKEN_JSON_PATH));
     }
 
     /**
@@ -52,7 +52,7 @@ class AgentAuthRestApiTester extends ApiEndToEndTester
      */
     public function seeResponseHasRefreshToken(): void
     {
-        $this->assertNotEmpty($this->grabDataFromResponseByJsonPath(static::REFRESH_TOKEN_JSON_PATH));
+        $this->assertNotEmpty($this->getDataFromResponseByJsonPath(static::REFRESH_TOKEN_JSON_PATH));
     }
 
     /**
@@ -60,7 +60,7 @@ class AgentAuthRestApiTester extends ApiEndToEndTester
      */
     public function seeResponseDoesNotHaveAccessToken(): void
     {
-        $this->assertFalse($this->grabDataFromResponseByJsonPath(static::ACCESS_TOKEN_JSON_PATH));
+        $this->assertFalse($this->getDataFromResponseByJsonPath(static::ACCESS_TOKEN_JSON_PATH));
     }
 
     /**
@@ -68,6 +68,6 @@ class AgentAuthRestApiTester extends ApiEndToEndTester
      */
     public function seeResponseDoesNotHaveRefreshToken(): void
     {
-        $this->assertFalse($this->grabDataFromResponseByJsonPath(static::REFRESH_TOKEN_JSON_PATH));
+        $this->assertFalse($this->getDataFromResponseByJsonPath(static::REFRESH_TOKEN_JSON_PATH));
     }
 }
