@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad8f424315aacac1c2e1cd01fc1cb6d7",
+    "content-hash": "26f45055909de50a8b521b423d0fccc0",
     "packages": [
         {
             "name": "async-aws/core",
@@ -24891,20 +24891,20 @@
         },
         {
             "name": "spryker/customer",
-            "version": "7.47.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer.git",
-                "reference": "d34787e9a31dfed5e72a218863a185af60be2fe9"
+                "reference": "b12a88fef6c7f64f3cf106956bb69ea9fdc12a40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer/zipball/d34787e9a31dfed5e72a218863a185af60be2fe9",
-                "reference": "d34787e9a31dfed5e72a218863a185af60be2fe9",
+                "url": "https://api.github.com/repos/spryker/customer/zipball/b12a88fef6c7f64f3cf106956bb69ea9fdc12a40",
+                "reference": "b12a88fef6c7f64f3cf106956bb69ea9fdc12a40",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/authorization-extension": "^1.0.0",
                 "spryker/checkout-extension": "^1.2.0",
                 "spryker/country": "^3.0.0",
@@ -24946,6 +24946,7 @@
                 "spryker/checkout": "If you want to use Checkout plugins.",
                 "spryker/sales": "If you want customer information in sales."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -24965,9 +24966,9 @@
             ],
             "description": "Customer module",
             "support": {
-                "source": "https://github.com/spryker/customer/tree/7.47.0"
+                "source": "https://github.com/spryker/customer/tree/master"
             },
-            "time": "2022-09-28T12:34:39+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/customer-access",
@@ -69758,6 +69759,12 @@
             "alias_normalized": "1.4.6.0"
         },
         {
+            "package": "spryker/customer",
+            "version": "9999999-dev",
+            "alias": "7.47.1",
+            "alias_normalized": "7.47.1.0"
+        },
+        {
             "package": "spryker/data-import",
             "version": "9999999-dev",
             "alias": "1.19.1",
@@ -69876,6 +69883,7 @@
     "stability-flags": {
         "spryker/application": 20,
         "spryker/collector": 20,
+        "spryker/customer": 20,
         "spryker/data-import": 20,
         "spryker/event-dispatcher": 20,
         "spryker/form": 20,
