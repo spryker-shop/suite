@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e091e4ea9dcbdd7804db242569f766d",
+    "content-hash": "ad8f424315aacac1c2e1cd01fc1cb6d7",
     "packages": [
         {
             "name": "async-aws/core",
@@ -23631,20 +23631,20 @@
         },
         {
             "name": "spryker/container",
-            "version": "1.4.5",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/container.git",
-                "reference": "454477c3d3a09c6d03120db406fa6c22d642fba8"
+                "reference": "b0030726f5eba2ff53d83d67a3ce2b2086844a0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/container/zipball/454477c3d3a09c6d03120db406fa6c22d642fba8",
-                "reference": "454477c3d3a09c6d03120db406fa6c22d642fba8",
+                "url": "https://api.github.com/repos/spryker/container/zipball/b0030726f5eba2ff53d83d67a3ce2b2086844a0d",
+                "reference": "b0030726f5eba2ff53d83d67a3ce2b2086844a0d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "psr/container": "^1.0.0",
                 "spryker/symfony": "^3.0.0"
             },
@@ -23658,6 +23658,7 @@
                 "spryker/kernel": "*",
                 "spryker/testify": "*"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -23679,9 +23680,9 @@
             ],
             "description": "Container module",
             "support": {
-                "source": "https://github.com/spryker/container/tree/1.4.5"
+                "source": "https://github.com/spryker/container/tree/master"
             },
-            "time": "2021-10-26T15:19:01+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/content",
@@ -69751,6 +69752,12 @@
             "alias_normalized": "6.7.1.0"
         },
         {
+            "package": "spryker/container",
+            "version": "9999999-dev",
+            "alias": "1.4.6",
+            "alias_normalized": "1.4.6.0"
+        },
+        {
             "package": "spryker/data-import",
             "version": "9999999-dev",
             "alias": "1.19.1",
@@ -69888,6 +69895,7 @@
         "spryker/validator": 20,
         "spryker/zed-navigation": 20,
         "spryker/zed-request": 20,
+        "spryker/container": 20,
         "jetbrains/phpstorm-stubs": 20,
         "spryker/code-sniffer": 20,
         "spryker/docker-chromedriver": 20
