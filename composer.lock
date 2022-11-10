@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "627400cf1a0ac819a8d06b244687188e",
+    "content-hash": "3e091e4ea9dcbdd7804db242569f766d",
     "packages": [
         {
             "name": "async-aws/core",
@@ -13845,20 +13845,20 @@
         },
         {
             "name": "spryker/application",
-            "version": "3.30.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/application.git",
-                "reference": "28f07fc907314ea20d400897850b2a944ffb1d4e"
+                "reference": "a04e6dd0cd81bb882ff005502536b6d06025f527"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/application/zipball/28f07fc907314ea20d400897850b2a944ffb1d4e",
-                "reference": "28f07fc907314ea20d400897850b2a944ffb1d4e",
+                "url": "https://api.github.com/repos/spryker/application/zipball/a04e6dd0cd81bb882ff005502536b6d06025f527",
+                "reference": "a04e6dd0cd81bb882ff005502536b6d06025f527",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/application-extension": "^1.1.0",
                 "spryker/config": "^3.0.0",
                 "spryker/container": "^1.4.3",
@@ -13886,6 +13886,7 @@
             "suggest": {
                 "spryker/silex": "Add this when you still want to use the abandoned Silex."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -13906,9 +13907,9 @@
             ],
             "description": "Application module",
             "support": {
-                "source": "https://github.com/spryker/application/tree/3.30.0"
+                "source": "https://github.com/spryker/application/tree/master"
             },
-            "time": "2022-09-20T16:46:23+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/application-extension",
@@ -20329,20 +20330,20 @@
         },
         {
             "name": "spryker/collector",
-            "version": "6.7.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/collector.git",
-                "reference": "ef440487a18e9cbc014975f7b9d4b83b8afe005d"
+                "reference": "9b6c9e515016356eb48391f857254b5cb268fd5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/collector/zipball/ef440487a18e9cbc014975f7b9d4b83b8afe005d",
-                "reference": "ef440487a18e9cbc014975f7b9d4b83b8afe005d",
+                "url": "https://api.github.com/repos/spryker/collector/zipball/9b6c9e515016356eb48391f857254b5cb268fd5a",
+                "reference": "9b6c9e515016356eb48391f857254b5cb268fd5a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/config": "^3.0.0",
                 "spryker/elastica": "^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
                 "spryker/gui": "^3.0.0",
@@ -20365,6 +20366,7 @@
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -20383,9 +20385,9 @@
             ],
             "description": "Collector module",
             "support": {
-                "source": "https://github.com/spryker/collector/tree/6.7.0"
+                "source": "https://github.com/spryker/collector/tree/master"
             },
-            "time": "2022-01-04T12:43:20+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/collector-search-connector",
@@ -26042,20 +26044,20 @@
         },
         {
             "name": "spryker/data-import",
-            "version": "1.19.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/data-import.git",
-                "reference": "32e8abfbeeaa259d1af4da7c751b8d7e526850c4"
+                "reference": "9a6d9c0e4678c125b56456e146d82326d37fe381"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/data-import/zipball/32e8abfbeeaa259d1af4da7c751b8d7e526850c4",
-                "reference": "32e8abfbeeaa259d1af4da7c751b8d7e526850c4",
+                "url": "https://api.github.com/repos/spryker/data-import/zipball/9a6d9c0e4678c125b56456e146d82326d37fe381",
+                "reference": "9a6d9c0e4678c125b56456e146d82326d37fe381",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/config": "^3.0.0",
                 "spryker/data-import-extension": "^1.2.0",
                 "spryker/error-handler": "^2.1.0",
@@ -26081,6 +26083,7 @@
             "suggest": {
                 "spryker/event-behavior": "To be able to use the DataImportEventBehaviorPlugin please install the spryker/event-behavior module, minimum required version: 0.1.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -26099,9 +26102,9 @@
             ],
             "description": "DataImport module",
             "support": {
-                "source": "https://github.com/spryker/data-import/tree/1.19.0"
+                "source": "https://github.com/spryker/data-import/tree/master"
             },
-            "time": "2022-05-25T15:18:35+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/data-import-extension",
@@ -27486,20 +27489,20 @@
         },
         {
             "name": "spryker/event-dispatcher",
-            "version": "1.3.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-dispatcher.git",
-                "reference": "2b37e9d241e9bf0c8e0951abb80960597cd655da"
+                "reference": "1fc8b40e81751c0d2ab33182eeb6c54dc72dca6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-dispatcher/zipball/2b37e9d241e9bf0c8e0951abb80960597cd655da",
-                "reference": "2b37e9d241e9bf0c8e0951abb80960597cd655da",
+                "url": "https://api.github.com/repos/spryker/event-dispatcher/zipball/1fc8b40e81751c0d2ab33182eeb6c54dc72dca6e",
+                "reference": "1fc8b40e81751c0d2ab33182eeb6c54dc72dca6e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/kernel": "^3.52.0",
@@ -27513,6 +27516,7 @@
             "suggest": {
                 "spryker/container": "If you want to use the EventDispatcherApplicationPlugin"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -27533,9 +27537,9 @@
             ],
             "description": "EventDispatcher module",
             "support": {
-                "source": "https://github.com/spryker/event-dispatcher/tree/1.3.1"
+                "source": "https://github.com/spryker/event-dispatcher/tree/master"
             },
-            "time": "2021-12-01T17:41:51+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/event-dispatcher-extension",
@@ -28085,20 +28089,20 @@
         },
         {
             "name": "spryker/form",
-            "version": "1.1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/form.git",
-                "reference": "eb2f5332dc44f048213e2ce5c8e1203f1fd3f0f8"
+                "reference": "fbf9c660afd2472acd57bef566de44965f9a8bbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/form/zipball/eb2f5332dc44f048213e2ce5c8e1203f1fd3f0f8",
-                "reference": "eb2f5332dc44f048213e2ce5c8e1203f1fd3f0f8",
+                "url": "https://api.github.com/repos/spryker/form/zipball/fbf9c660afd2472acd57bef566de44965f9a8bbb",
+                "reference": "fbf9c660afd2472acd57bef566de44965f9a8bbb",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=8.0",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/form-extension": "^1.0.0",
                 "spryker/kernel": "^3.52.0",
@@ -28112,6 +28116,7 @@
             "suggest": {
                 "spryker/container": "If you want to use the form extension plugins."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -28130,9 +28135,9 @@
             ],
             "description": "Form module",
             "support": {
-                "source": "https://github.com/spryker/form/tree/1.1.1"
+                "source": "https://github.com/spryker/form/tree/master"
             },
-            "time": "2020-09-24T11:48:26+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/form-extension",
@@ -29207,20 +29212,20 @@
         },
         {
             "name": "spryker/gui",
-            "version": "3.45.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "48392842e23db854225e701e40760847ed871857"
+                "reference": "6ace62ca5a83af37b0677aa24adbf7e3f287bf4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/48392842e23db854225e701e40760847ed871857",
-                "reference": "48392842e23db854225e701e40760847ed871857",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/6ace62ca5a83af37b0677aa24adbf7e3f287bf4f",
+                "reference": "6ace62ca5a83af37b0677aa24adbf7e3f287bf4f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/form-extension": "^1.0.0",
                 "spryker/kernel": "^3.52.0",
                 "spryker/laminas": "^1.0.0",
@@ -29246,6 +29251,7 @@
                 "spryker/container": "If you want to use Twig plugins",
                 "spryker/silex": "If you want to use ServiceProvider."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -29264,9 +29270,9 @@
             ],
             "description": "Gui module",
             "support": {
-                "source": "https://github.com/spryker/gui/tree/3.45.1"
+                "source": "https://github.com/spryker/gui/tree/master"
             },
-            "time": "2022-09-30T12:07:07+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/gui-table",
@@ -34494,20 +34500,20 @@
         },
         {
             "name": "spryker/message-broker",
-            "version": "1.2.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/message-broker.git",
-                "reference": "8200df6cc75b2094d42660d9fe8513a2f4f232bd"
+                "reference": "201294866dd360c232a750807387c1aac26fb4ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/message-broker/zipball/8200df6cc75b2094d42660d9fe8513a2f4f232bd",
-                "reference": "8200df6cc75b2094d42660d9fe8513a2f4f232bd",
+                "url": "https://api.github.com/repos/spryker/message-broker/zipball/201294866dd360c232a750807387c1aac26fb4ec",
+                "reference": "201294866dd360c232a750807387c1aac26fb4ec",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^3.0.0",
                 "spryker/message-broker-extension": "^1.0.0",
@@ -34531,6 +34537,7 @@
             "suggest": {
                 "spryker/ramsey-uuid": "When the CorrelationIdMessageAttributeProviderPlugin is used you need to install this."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -34549,9 +34556,9 @@
             ],
             "description": "MessageBroker module",
             "support": {
-                "source": "https://github.com/spryker/message-broker/tree/1.2.0"
+                "source": "https://github.com/spryker/message-broker/tree/master"
             },
-            "time": "2022-06-23T14:51:04+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/message-broker-aws",
@@ -40287,20 +40294,20 @@
         },
         {
             "name": "spryker/product-barcode",
-            "version": "1.1.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-barcode.git",
-                "reference": "7282cf147acfdbd42401128279e8c2b8626dea80"
+                "reference": "a6b92568f17b4040f46961f80d07a479c5389951"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-barcode/zipball/7282cf147acfdbd42401128279e8c2b8626dea80",
-                "reference": "7282cf147acfdbd42401128279e8c2b8626dea80",
+                "url": "https://api.github.com/repos/spryker/product-barcode/zipball/a6b92568f17b4040f46961f80d07a479c5389951",
+                "reference": "a6b92568f17b4040f46961f80d07a479c5389951",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=8.0",
                 "spryker/barcode": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/product": "^6.0.0"
@@ -40311,6 +40318,7 @@
                 "spryker/propel": "*",
                 "spryker/testify": "*"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -40331,7 +40339,7 @@
             "support": {
                 "source": "https://github.com/spryker/product-barcode/tree/master"
             },
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/product-barcode-gui",
@@ -48076,20 +48084,20 @@
         },
         {
             "name": "spryker/propel",
-            "version": "3.35.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel.git",
-                "reference": "8814020da7fb5a9d15690dedf60c8f55c5445795"
+                "reference": "6098e6c078842c8fc444b8cd3fb8d5d99dd04b29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel/zipball/8814020da7fb5a9d15690dedf60c8f55c5445795",
-                "reference": "8814020da7fb5a9d15690dedf60c8f55c5445795",
+                "url": "https://api.github.com/repos/spryker/propel/zipball/6098e6c078842c8fc444b8cd3fb8d5d99dd04b29",
+                "reference": "6098e6c078842c8fc444b8cd3fb8d5d99dd04b29",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/config": "^3.0.0",
                 "spryker/health-check-extension": "^1.0.0",
@@ -48113,6 +48121,7 @@
                 "spryker/container": "If you want to use the PropelApplicationPlugin.",
                 "spryker/silex": "If you want to use ServiceProvider."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -48131,9 +48140,9 @@
             ],
             "description": "Propel module",
             "support": {
-                "source": "https://github.com/spryker/propel/tree/3.35.0"
+                "source": "https://github.com/spryker/propel/tree/master"
             },
-            "time": "2022-06-17T16:37:38+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/propel-orm",
@@ -48320,20 +48329,20 @@
         },
         {
             "name": "spryker/publish-and-synchronize-health-check",
-            "version": "1.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/publish-and-synchronize-health-check.git",
-                "reference": "de2fa9de79b35770b1ae31527484a8bd96153685"
+                "reference": "2d0916a7a07d0fe001b98d53a2f8f51ffe8dd070"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/publish-and-synchronize-health-check/zipball/de2fa9de79b35770b1ae31527484a8bd96153685",
-                "reference": "de2fa9de79b35770b1ae31527484a8bd96153685",
+                "url": "https://api.github.com/repos/spryker/publish-and-synchronize-health-check/zipball/2d0916a7a07d0fe001b98d53a2f8f51ffe8dd070",
+                "reference": "2d0916a7a07d0fe001b98d53a2f8f51ffe8dd070",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/event-behavior": "^1.20.0",
                 "spryker/health-check-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -48344,6 +48353,7 @@
                 "spryker/propel": "*",
                 "spryker/testify": "*"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -48362,9 +48372,9 @@
             "description": "PublishAndSynchronizeHealthCheck module",
             "support": {
                 "issues": "https://github.com/spryker/publish-and-synchronize-health-check/issues",
-                "source": "https://github.com/spryker/publish-and-synchronize-health-check/tree/1.0.1"
+                "source": "https://github.com/spryker/publish-and-synchronize-health-check/tree/master"
             },
-            "time": "2022-01-26T18:25:13+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/publish-and-synchronize-health-check-search",
@@ -48480,20 +48490,20 @@
         },
         {
             "name": "spryker/publisher",
-            "version": "1.2.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/publisher.git",
-                "reference": "b95c5542f2e1356f1e45ef0b6dd35efe56403d81"
+                "reference": "c2db9bb6a80475cf7073d4ed3627c7ab96c50b18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/publisher/zipball/b95c5542f2e1356f1e45ef0b6dd35efe56403d81",
-                "reference": "b95c5542f2e1356f1e45ef0b6dd35efe56403d81",
+                "url": "https://api.github.com/repos/spryker/publisher/zipball/c2db9bb6a80475cf7073d4ed3627c7ab96c50b18",
+                "reference": "c2db9bb6a80475cf7073d4ed3627c7ab96c50b18",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=8.0",
                 "spryker/event": "^2.0.0",
                 "spryker/event-behavior": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -48504,6 +48514,7 @@
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -48522,9 +48533,9 @@
             ],
             "description": "Publisher module",
             "support": {
-                "source": "https://github.com/spryker/publisher/tree/1.2.0"
+                "source": "https://github.com/spryker/publisher/tree/master"
             },
-            "time": "2021-05-27T10:33:36+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/publisher-extension",
@@ -48575,20 +48586,20 @@
         },
         {
             "name": "spryker/queue",
-            "version": "1.9.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/queue.git",
-                "reference": "3b2d957e926a14309fd7efccf2d96f1110ac24c6"
+                "reference": "99cfe1c628a1a3429f5d9ab98ed74d42a86b7a5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/queue/zipball/3b2d957e926a14309fd7efccf2d96f1110ac24c6",
-                "reference": "3b2d957e926a14309fd7efccf2d96f1110ac24c6",
+                "url": "https://api.github.com/repos/spryker/queue/zipball/99cfe1c628a1a3429f5d9ab98ed74d42a86b7a5c",
+                "reference": "99cfe1c628a1a3429f5d9ab98ed74d42a86b7a5c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -48608,6 +48619,7 @@
             "suggest": {
                 "ext-pcntl": "If you want gracefully shutdown worker when signal is received."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -48626,9 +48638,9 @@
             ],
             "description": "Queue module",
             "support": {
-                "source": "https://github.com/spryker/queue/tree/1.9.2"
+                "source": "https://github.com/spryker/queue/tree/master"
             },
-            "time": "2022-08-02T13:16:52+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/quick-order",
@@ -49779,20 +49791,20 @@
         },
         {
             "name": "spryker/router",
-            "version": "1.14.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/router.git",
-                "reference": "f49ce42dd1de16af45913b7dd1c7de652ba0226e"
+                "reference": "541622f0096f82a395064f1825b99d43458f3d69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/router/zipball/f49ce42dd1de16af45913b7dd1c7de652ba0226e",
-                "reference": "f49ce42dd1de16af45913b7dd1c7de652ba0226e",
+                "url": "https://api.github.com/repos/spryker/router/zipball/541622f0096f82a395064f1825b99d43458f3d69",
+                "reference": "541622f0096f82a395064f1825b99d43458f3d69",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/container": "^1.1.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
@@ -49813,6 +49825,7 @@
                 "spryker/event-dispatcher": "If you want to use the RouterLocaleEventDispatcher plugin.",
                 "spryker/util-text": "If you want to use the RouterEnhancer plugins."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -49832,9 +49845,9 @@
             ],
             "description": "Router module",
             "support": {
-                "source": "https://github.com/spryker/router/tree/1.14.0"
+                "source": "https://github.com/spryker/router/tree/master"
             },
-            "time": "2021-10-27T10:54:18+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/router-extension",
@@ -50366,20 +50379,20 @@
         },
         {
             "name": "spryker/sales-order-threshold",
-            "version": "1.7.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-order-threshold.git",
-                "reference": "e588719c941cc3e0d583f52b6b8cea879913dcd2"
+                "reference": "6c70380758c54cf9f9cc4571f73e7cb83613b200"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-order-threshold/zipball/e588719c941cc3e0d583f52b6b8cea879913dcd2",
-                "reference": "e588719c941cc3e0d583f52b6b8cea879913dcd2",
+                "url": "https://api.github.com/repos/spryker/sales-order-threshold/zipball/6c70380758c54cf9f9cc4571f73e7cb83613b200",
+                "reference": "6c70380758c54cf9f9cc4571f73e7cb83613b200",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/calculation-extension": "^1.0.0",
                 "spryker/cart-extension": "^1.6.0 || ^2.2.1 || ^4.0.0",
                 "spryker/checkout-extension": "^1.0.0",
@@ -50410,6 +50423,7 @@
                 "spryker/checkout": "If you want to use Checkout plugins: ^3.0.0.",
                 "spryker/installer": "If you want to use Installer plugins: ^4.0.0."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -50428,9 +50442,9 @@
             ],
             "description": "SalesOrderThreshold module",
             "support": {
-                "source": "https://github.com/spryker/sales-order-threshold/tree/1.7.0"
+                "source": "https://github.com/spryker/sales-order-threshold/tree/master"
             },
-            "time": "2022-04-01T13:11:37+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/sales-order-threshold-data-import",
@@ -51811,20 +51825,20 @@
         },
         {
             "name": "spryker/search",
-            "version": "8.19.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/search.git",
-                "reference": "902e77e319b78b5edf884b27ef60e12d525330fc"
+                "reference": "87dbfd0f829d20207a5b712e7174d41ffe18d460"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/search/zipball/902e77e319b78b5edf884b27ef60e12d525330fc",
-                "reference": "902e77e319b78b5edf884b27ef60e12d525330fc",
+                "url": "https://api.github.com/repos/spryker/search/zipball/87dbfd0f829d20207a5b712e7174d41ffe18d460",
+                "reference": "87dbfd0f829d20207a5b712e7174d41ffe18d460",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=8.0",
                 "spryker/config": "^3.0.0",
                 "spryker/elastica": "^4.0.0 || ^5.0.0 || ^6.0.0",
                 "spryker/gui": "^3.0.0",
@@ -51852,6 +51866,7 @@
             "suggest": {
                 "spryker/silex": "Add this when you still want to use the abandoned Silex."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -51870,9 +51885,9 @@
             ],
             "description": "Search module",
             "support": {
-                "source": "https://github.com/spryker/search/tree/8.19.0"
+                "source": "https://github.com/spryker/search/tree/master"
             },
-            "time": "2021-06-09T11:08:48+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/search-elasticsearch",
@@ -55115,20 +55130,20 @@
         },
         {
             "name": "spryker/storage",
-            "version": "3.19.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/storage.git",
-                "reference": "50a62cbf4ce13f0835c2909cd903fd27f373a502"
+                "reference": "cce2b2a9b5f9f59d064f7932c8ef419ce1c102b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/storage/zipball/50a62cbf4ce13f0835c2909cd903fd27f373a502",
-                "reference": "50a62cbf4ce13f0835c2909cd903fd27f373a502",
+                "url": "https://api.github.com/repos/spryker/storage/zipball/cce2b2a9b5f9f59d064f7932c8ef419ce1c102b0",
+                "reference": "cce2b2a9b5f9f59d064f7932c8ef419ce1c102b0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/config": "^3.0.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/gui": "^3.0.0",
@@ -55156,6 +55171,7 @@
                 "spryker/event-dispatcher": "If you want to use StorageCacheEventDispatcherPlugin.",
                 "spryker/silex": "Add this when you still want to use the abandoned Silex."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -55174,9 +55190,9 @@
             ],
             "description": "Storage module",
             "support": {
-                "source": "https://github.com/spryker/storage/tree/3.19.0"
+                "source": "https://github.com/spryker/storage/tree/master"
             },
-            "time": "2022-09-19T06:48:51+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/storage-database",
@@ -56185,20 +56201,20 @@
         },
         {
             "name": "spryker/transfer",
-            "version": "3.33.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/transfer.git",
-                "reference": "6ad314ebed828777d533139564694e7bc4bc467d"
+                "reference": "72a7ae9b63bead8106963e91ceed0a6c7ca7a1a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/transfer/zipball/6ad314ebed828777d533139564694e7bc4bc467d",
-                "reference": "6ad314ebed828777d533139564694e7bc4bc467d",
+                "url": "https://api.github.com/repos/spryker/transfer/zipball/72a7ae9b63bead8106963e91ceed0a6c7ca7a1a0",
+                "reference": "72a7ae9b63bead8106963e91ceed0a6c7ca7a1a0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/decimal-object": "^1.0.0",
                 "spryker/kernel": "^3.59.0",
                 "spryker/laminas": "^1.0.0",
@@ -56212,6 +56228,7 @@
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -56230,9 +56247,9 @@
             ],
             "description": "Transfer module",
             "support": {
-                "source": "https://github.com/spryker/transfer/tree/3.33.0"
+                "source": "https://github.com/spryker/transfer/tree/master"
             },
-            "time": "2022-09-14T14:03:27+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/translator",
@@ -56340,16 +56357,16 @@
         },
         {
             "name": "spryker/twig",
-            "version": "3.17.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/twig.git",
-                "reference": "1a1730c268f3052ed6376cb9f937a99d3e0613dc"
+                "reference": "b32e92311fc2037c37e280f3f242a47c4a284bc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/twig/zipball/1a1730c268f3052ed6376cb9f937a99d3e0613dc",
-                "reference": "1a1730c268f3052ed6376cb9f937a99d3e0613dc",
+                "url": "https://api.github.com/repos/spryker/twig/zipball/b32e92311fc2037c37e280f3f242a47c4a284bc7",
+                "reference": "b32e92311fc2037c37e280f3f242a47c4a284bc7",
                 "shasum": ""
             },
             "require": {
@@ -56376,6 +56393,7 @@
                 "spryker/event-dispatcher": "If you want to use EventDispatcher plugin.",
                 "spryker/silex": "If you want to use the TwigServiceProvider."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -56394,9 +56412,9 @@
             ],
             "description": "Twig module",
             "support": {
-                "source": "https://github.com/spryker/twig/tree/3.17.1"
+                "source": "https://github.com/spryker/twig/tree/master"
             },
-            "time": "2022-10-31T10:49:33+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/twig-extension",
@@ -58006,20 +58024,20 @@
         },
         {
             "name": "spryker/validator",
-            "version": "1.1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/validator.git",
-                "reference": "6629e92467822e159d04fb24cfca5a8a11b21cce"
+                "reference": "d5bea330e835d4e63608957062651409058453a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/validator/zipball/6629e92467822e159d04fb24cfca5a8a11b21cce",
-                "reference": "6629e92467822e159d04fb24cfca5a8a11b21cce",
+                "url": "https://api.github.com/repos/spryker/validator/zipball/d5bea330e835d4e63608957062651409058453a1",
+                "reference": "d5bea330e835d4e63608957062651409058453a1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=8.0",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/container": "^1.4.0",
                 "spryker/form-extension": "^1.0.0",
@@ -58031,6 +58049,7 @@
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -58049,9 +58068,9 @@
             ],
             "description": "Validator module",
             "support": {
-                "source": "https://github.com/spryker/validator/tree/1.1.1"
+                "source": "https://github.com/spryker/validator/tree/master"
             },
-            "time": "2020-09-24T11:48:26+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/validator-extension",
@@ -58431,20 +58450,20 @@
         },
         {
             "name": "spryker/zed-navigation",
-            "version": "1.12.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/zed-navigation.git",
-                "reference": "8a045759f8507b35cfaad53b3f74870da2f0f951"
+                "reference": "c254c4575338706213c6ba8c7c6178be08cd20af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-navigation/zipball/8a045759f8507b35cfaad53b3f74870da2f0f951",
-                "reference": "8a045759f8507b35cfaad53b3f74870da2f0f951",
+                "url": "https://api.github.com/repos/spryker/zed-navigation/zipball/c254c4575338706213c6ba8c7c6178be08cd20af",
+                "reference": "c254c4575338706213c6ba8c7c6178be08cd20af",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/kernel": "^3.52.0",
                 "spryker/laminas": "^1.0.0",
                 "spryker/log": "^2.0.0 || ^3.0.0",
@@ -58470,6 +58489,7 @@
                 "spryker/silex": "If you want to use ServiceProvider.",
                 "spryker/twig": "If you want to use ZedNavigationServiceProvider."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -58488,9 +58508,9 @@
             ],
             "description": "ZedNavigation module",
             "support": {
-                "source": "https://github.com/spryker/zed-navigation/tree/1.12.1"
+                "source": "https://github.com/spryker/zed-navigation/tree/master"
             },
-            "time": "2022-06-24T09:57:32+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/zed-navigation-extension",
@@ -58535,20 +58555,20 @@
         },
         {
             "name": "spryker/zed-request",
-            "version": "3.18.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/zed-request.git",
-                "reference": "e94f865cfa1c19202afb850802193073017ae60f"
+                "reference": "bece4007f7039c33bd99068fc8c22e8ef5673ebd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-request/zipball/e94f865cfa1c19202afb850802193073017ae60f",
-                "reference": "e94f865cfa1c19202afb850802193073017ae60f",
+                "url": "https://api.github.com/repos/spryker/zed-request/zipball/bece4007f7039c33bd99068fc8c22e8ef5673ebd",
+                "reference": "bece4007f7039c33bd99068fc8c22e8ef5673ebd",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "psr/http-message": "^1.0.0",
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.1.0",
@@ -58581,6 +58601,7 @@
                 "spryker/log": "Required for using the Log middleware.",
                 "spryker/silex": "Add this when you still want to use the abandoned Silex."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -58599,9 +58620,9 @@
             ],
             "description": "ZedRequest module",
             "support": {
-                "source": "https://github.com/spryker/zed-request/tree/3.18.0"
+                "source": "https://github.com/spryker/zed-request/tree/master"
             },
-            "time": "2022-01-04T12:43:20+00:00"
+            "time": "2022-11-09T15:21:55+00:00"
         },
         {
             "name": "spryker/zed-request-extension",
@@ -69716,9 +69737,157 @@
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "spryker/application",
+            "version": "9999999-dev",
+            "alias": "3.30.1",
+            "alias_normalized": "3.30.1.0"
+        },
+        {
+            "package": "spryker/collector",
+            "version": "9999999-dev",
+            "alias": "6.7.1",
+            "alias_normalized": "6.7.1.0"
+        },
+        {
+            "package": "spryker/data-import",
+            "version": "9999999-dev",
+            "alias": "1.19.1",
+            "alias_normalized": "1.19.1.0"
+        },
+        {
+            "package": "spryker/event-dispatcher",
+            "version": "9999999-dev",
+            "alias": "1.3.2",
+            "alias_normalized": "1.3.2.0"
+        },
+        {
+            "package": "spryker/form",
+            "version": "9999999-dev",
+            "alias": "1.1.2",
+            "alias_normalized": "1.1.2.0"
+        },
+        {
+            "package": "spryker/gui",
+            "version": "9999999-dev",
+            "alias": "3.45.2",
+            "alias_normalized": "3.45.2.0"
+        },
+        {
+            "package": "spryker/message-broker",
+            "version": "9999999-dev",
+            "alias": "1.2.1",
+            "alias_normalized": "1.2.1.0"
+        },
+        {
+            "package": "spryker/product-barcode",
+            "version": "9999999-dev",
+            "alias": "1.1.2",
+            "alias_normalized": "1.1.2.0"
+        },
+        {
+            "package": "spryker/propel",
+            "version": "9999999-dev",
+            "alias": "3.35.1",
+            "alias_normalized": "3.35.1.0"
+        },
+        {
+            "package": "spryker/publish-and-synchronize-health-check",
+            "version": "9999999-dev",
+            "alias": "1.0.2",
+            "alias_normalized": "1.0.2.0"
+        },
+        {
+            "package": "spryker/publisher",
+            "version": "9999999-dev",
+            "alias": "1.2.1",
+            "alias_normalized": "1.2.1.0"
+        },
+        {
+            "package": "spryker/queue",
+            "version": "9999999-dev",
+            "alias": "1.9.2",
+            "alias_normalized": "1.9.2.0"
+        },
+        {
+            "package": "spryker/router",
+            "version": "9999999-dev",
+            "alias": "1.14.1",
+            "alias_normalized": "1.14.1.0"
+        },
+        {
+            "package": "spryker/sales-order-threshold",
+            "version": "9999999-dev",
+            "alias": "1.7.1",
+            "alias_normalized": "1.7.1.0"
+        },
+        {
+            "package": "spryker/search",
+            "version": "9999999-dev",
+            "alias": "8.19.1",
+            "alias_normalized": "8.19.1.0"
+        },
+        {
+            "package": "spryker/storage",
+            "version": "9999999-dev",
+            "alias": "3.19.1",
+            "alias_normalized": "3.19.1.0"
+        },
+        {
+            "package": "spryker/transfer",
+            "version": "9999999-dev",
+            "alias": "3.33.1",
+            "alias_normalized": "3.33.1.0"
+        },
+        {
+            "package": "spryker/twig",
+            "version": "9999999-dev",
+            "alias": "3.17.2",
+            "alias_normalized": "3.17.2.0"
+        },
+        {
+            "package": "spryker/validator",
+            "version": "9999999-dev",
+            "alias": "1.1.2",
+            "alias_normalized": "1.1.2.0"
+        },
+        {
+            "package": "spryker/zed-navigation",
+            "version": "9999999-dev",
+            "alias": "1.12.1",
+            "alias_normalized": "1.12.1.0"
+        },
+        {
+            "package": "spryker/zed-request",
+            "version": "9999999-dev",
+            "alias": "3.18.1",
+            "alias_normalized": "3.18.1.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker/application": 20,
+        "spryker/collector": 20,
+        "spryker/data-import": 20,
+        "spryker/event-dispatcher": 20,
+        "spryker/form": 20,
+        "spryker/gui": 20,
+        "spryker/message-broker": 20,
+        "spryker/product-barcode": 20,
+        "spryker/propel": 20,
+        "spryker/publish-and-synchronize-health-check": 20,
+        "spryker/publisher": 20,
+        "spryker/queue": 20,
+        "spryker/router": 20,
+        "spryker/sales-order-threshold": 20,
+        "spryker/search": 20,
+        "spryker/storage": 20,
+        "spryker/transfer": 20,
+        "spryker/twig": 20,
+        "spryker/validator": 20,
+        "spryker/zed-navigation": 20,
+        "spryker/zed-request": 20,
         "jetbrains/phpstorm-stubs": 20,
         "spryker/code-sniffer": 20,
         "spryker/docker-chromedriver": 20
