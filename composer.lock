@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "627400cf1a0ac819a8d06b244687188e",
+    "content-hash": "b5fd77dfc1e81b96e3721bf778510ebf",
     "packages": [
         {
             "name": "async-aws/core",
@@ -14855,29 +14855,31 @@
         },
         {
             "name": "spryker/availability-notification",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/availability-notification.git",
-                "reference": "a810f81ded1cb88ae94f68ff806dbaf23a9a569e"
+                "reference": "68bb3286fa2e32a2b2f1a08bd91cb51d9d2adb6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/availability-notification/zipball/a810f81ded1cb88ae94f68ff806dbaf23a9a569e",
-                "reference": "a810f81ded1cb88ae94f68ff806dbaf23a9a569e",
+                "url": "https://api.github.com/repos/spryker/availability-notification/zipball/68bb3286fa2e32a2b2f1a08bd91cb51d9d2adb6d",
+                "reference": "68bb3286fa2e32a2b2f1a08bd91cb51d9d2adb6d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=8.0",
                 "spryker/application": "^3.2.0",
                 "spryker/customer": "^7.16.1",
                 "spryker/glossary": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/mail": "^4.6.0",
+                "spryker/mail-extension": "^1.0.0",
                 "spryker/product": "^6.8.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/store": "^1.5.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/util-text": "^1.2.0",
                 "spryker/util-validate": "^1.0.0",
                 "spryker/zed-request": "^3.0.0"
@@ -14911,9 +14913,9 @@
             ],
             "description": "AvailabilityNotification module",
             "support": {
-                "source": "https://github.com/spryker/availability-notification/tree/1.1.0"
+                "source": "https://github.com/spryker/availability-notification/tree/1.2.0"
             },
-            "time": "2021-03-18T15:02:23+00:00"
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/availability-notifications-rest-api",
@@ -21459,24 +21461,26 @@
         },
         {
             "name": "spryker/company-mail-connector",
-            "version": "1.0.5",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-mail-connector.git",
-                "reference": "0509738476d5b5c210e700f4fafbb07748b0304f"
+                "reference": "d70cdb99495e8a94d8e9836054b4bb1dfaba10f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-mail-connector/zipball/0509738476d5b5c210e700f4fafbb07748b0304f",
-                "reference": "0509738476d5b5c210e700f4fafbb07748b0304f",
+                "url": "https://api.github.com/repos/spryker/company-mail-connector/zipball/d70cdb99495e8a94d8e9836054b4bb1dfaba10f6",
+                "reference": "d70cdb99495e8a94d8e9836054b4bb1dfaba10f6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=8.0",
                 "spryker/company-extension": "^1.0.0",
                 "spryker/company-user": "^1.0.0 || ^2.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/mail": "^4.6.0"
+                "spryker/mail": "^4.6.0",
+                "spryker/mail-extension": "^1.0.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -21498,9 +21502,9 @@
             ],
             "description": "CompanyMailConnector module",
             "support": {
-                "source": "https://github.com/spryker/company-mail-connector/tree/1.0.5"
+                "source": "https://github.com/spryker/company-mail-connector/tree/1.1.0"
             },
-            "time": "2020-08-18T10:06:34+00:00"
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/company-role",
@@ -22654,28 +22658,30 @@
         },
         {
             "name": "spryker/company-user-invitation",
-            "version": "1.2.2",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-user-invitation.git",
-                "reference": "8dca423dc826a6e315fda77282df6acfd639aba3"
+                "reference": "3d36e4f8bb6b9261cfdafcd41dd5b7dc53bf1c0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-user-invitation/zipball/8dca423dc826a6e315fda77282df6acfd639aba3",
-                "reference": "8dca423dc826a6e315fda77282df6acfd639aba3",
+                "url": "https://api.github.com/repos/spryker/company-user-invitation/zipball/3d36e4f8bb6b9261cfdafcd41dd5b7dc53bf1c0b",
+                "reference": "3d36e4f8bb6b9261cfdafcd41dd5b7dc53bf1c0b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=8.0",
                 "spryker/application": "^3.9.0",
                 "spryker/company-business-unit": "^1.1.0 || ^2.0.0",
                 "spryker/company-user": "^1.0.0 || ^2.0.0",
                 "spryker/customer-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/mail": "^4.6.0",
+                "spryker/mail-extension": "^1.0.0",
                 "spryker/permission-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.6.1",
+                "spryker/transfer": "^3.25.0",
                 "spryker/util-text": "^1.2.1",
                 "spryker/zed-request": "^3.4.0"
             },
@@ -22713,9 +22719,9 @@
             ],
             "description": "CompanyUserInvitation module",
             "support": {
-                "source": "https://github.com/spryker/company-user-invitation/tree/1.2.2"
+                "source": "https://github.com/spryker/company-user-invitation/tree/1.3.0"
             },
-            "time": "2020-08-18T13:03:17+00:00"
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/company-user-storage",
@@ -24888,16 +24894,16 @@
         },
         {
             "name": "spryker/customer",
-            "version": "7.47.1",
+            "version": "7.48.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer.git",
-                "reference": "f45c8dcb4f70707d6357420d86756ab971726236"
+                "reference": "40ea174c81ee82f06ece7aa08ff42781b3b0d01e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer/zipball/f45c8dcb4f70707d6357420d86756ab971726236",
-                "reference": "f45c8dcb4f70707d6357420d86756ab971726236",
+                "url": "https://api.github.com/repos/spryker/customer/zipball/40ea174c81ee82f06ece7aa08ff42781b3b0d01e",
+                "reference": "40ea174c81ee82f06ece7aa08ff42781b3b0d01e",
                 "shasum": ""
             },
             "require": {
@@ -24910,6 +24916,7 @@
                 "spryker/kernel": "^3.52.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/mail": "^4.6.0",
+                "spryker/mail-extension": "^1.0.0",
                 "spryker/propel": "^3.0.0",
                 "spryker/propel-orm": "^1.16.0",
                 "spryker/router": "^1.12.0",
@@ -24962,9 +24969,9 @@
             ],
             "description": "Customer module",
             "support": {
-                "source": "https://github.com/spryker/customer/tree/7.47.1"
+                "source": "https://github.com/spryker/customer/tree/7.48.0"
             },
-            "time": "2022-11-11T07:06:41+00:00"
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/customer-access",
@@ -28303,25 +28310,27 @@
         },
         {
             "name": "spryker/gift-card-mail-connector",
-            "version": "1.0.5",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gift-card-mail-connector.git",
-                "reference": "7848662ba2c02b2204be1875aa22192a7cbbd271"
+                "reference": "7592d996bdf2a30be5481e0810cececa25c3b9c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gift-card-mail-connector/zipball/7848662ba2c02b2204be1875aa22192a7cbbd271",
-                "reference": "7848662ba2c02b2204be1875aa22192a7cbbd271",
+                "url": "https://api.github.com/repos/spryker/gift-card-mail-connector/zipball/7592d996bdf2a30be5481e0810cececa25c3b9c6",
+                "reference": "7592d996bdf2a30be5481e0810cececa25c3b9c6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=8.0",
                 "spryker/customer": "^6.2.0 || ^7.0.0",
                 "spryker/gift-card": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/mail": "^4.6.0",
-                "spryker/sales": "^8.6.0 || ^10.0.0 || ^11.0.0"
+                "spryker/mail-extension": "^1.0.0",
+                "spryker/sales": "^8.6.0 || ^10.0.0 || ^11.0.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/checkout": "*",
@@ -28349,9 +28358,9 @@
             ],
             "description": "GiftCardMailConnector module",
             "support": {
-                "source": "https://github.com/spryker/gift-card-mail-connector/tree/master"
+                "source": "https://github.com/spryker/gift-card-mail-connector/tree/1.1.0"
             },
-            "time": "2020-08-18T10:06:34+00:00"
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/gift-cards-rest-api",
@@ -30125,16 +30134,16 @@
         },
         {
             "name": "spryker/mail",
-            "version": "4.9.0",
+            "version": "4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/mail.git",
-                "reference": "680c648b227e7b0fee809b55e00262bac3bdc2d3"
+                "reference": "56c2aaa9b7ff3983326e8b1d70ecbf6dba8da416"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/mail/zipball/680c648b227e7b0fee809b55e00262bac3bdc2d3",
-                "reference": "680c648b227e7b0fee809b55e00262bac3bdc2d3",
+                "url": "https://api.github.com/repos/spryker/mail/zipball/56c2aaa9b7ff3983326e8b1d70ecbf6dba8da416",
+                "reference": "56c2aaa9b7ff3983326e8b1d70ecbf6dba8da416",
                 "shasum": ""
             },
             "require": {
@@ -30142,6 +30151,8 @@
                 "spryker/glossary": "^3.0.0",
                 "spryker/kernel": "^3.52.0",
                 "spryker/locale": "^3.0.0",
+                "spryker/mail-extension": "^1.0.0",
+                "spryker/transfer": "^3.33.0",
                 "swiftmailer/swiftmailer": "^6.1.0"
             },
             "require-dev": {
@@ -30167,9 +30178,50 @@
             ],
             "description": "Mail module",
             "support": {
-                "source": "https://github.com/spryker/mail/tree/4.9.0"
+                "source": "https://github.com/spryker/mail/tree/4.10.0"
             },
-            "time": "2022-10-18T17:47:15+00:00"
+            "time": "2022-11-11T13:29:11+00:00"
+        },
+        {
+            "name": "spryker/mail-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/mail-extension.git",
+                "reference": "3008aba62264fcf286518dc799177464c4200bed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/mail-extension/zipball/3008aba62264fcf286518dc799177464c4200bed",
+                "reference": "3008aba62264fcf286518dc799177464c4200bed",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MailExtension module",
+            "support": {
+                "source": "https://github.com/spryker/mail-extension/tree/1.0.0"
+            },
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/maintenance",
@@ -34354,23 +34406,25 @@
         },
         {
             "name": "spryker/merchant-user-password-reset-mail",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-user-password-reset-mail.git",
-                "reference": "32afb660ca5726b0e43043b52a57dbbfc4ee633e"
+                "reference": "8bfbd1bedd1ba0054d9f5544eb5fdc83190f8f5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-user-password-reset-mail/zipball/32afb660ca5726b0e43043b52a57dbbfc4ee633e",
-                "reference": "32afb660ca5726b0e43043b52a57dbbfc4ee633e",
+                "url": "https://api.github.com/repos/spryker/merchant-user-password-reset-mail/zipball/8bfbd1bedd1ba0054d9f5544eb5fdc83190f8f5d",
+                "reference": "8bfbd1bedd1ba0054d9f5544eb5fdc83190f8f5d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=8.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/mail": "^4.6.0",
+                "spryker/mail-extension": "^1.0.0",
                 "spryker/merchant-user": "^1.0.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/user-password-reset-extension": "^1.0.0"
             },
             "require-dev": {
@@ -34396,9 +34450,9 @@
             ],
             "description": "MerchantUserPasswordResetMail module",
             "support": {
-                "source": "https://github.com/spryker/merchant-user-password-reset-mail/tree/1.0.0"
+                "source": "https://github.com/spryker/merchant-user-password-reset-mail/tree/1.1.0"
             },
-            "time": "2021-08-16T16:27:47+00:00"
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/merchants-rest-api",
@@ -35497,25 +35551,26 @@
         },
         {
             "name": "spryker/newsletter",
-            "version": "4.5.2",
+            "version": "4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/newsletter.git",
-                "reference": "94dda4d9cb05f9c9f112440881786d334e9315fa"
+                "reference": "26c47affe536bcde467b7db2ca715592477f80af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/newsletter/zipball/94dda4d9cb05f9c9f112440881786d334e9315fa",
-                "reference": "94dda4d9cb05f9c9f112440881786d334e9315fa",
+                "url": "https://api.github.com/repos/spryker/newsletter/zipball/26c47affe536bcde467b7db2ca715592477f80af",
+                "reference": "26c47affe536bcde467b7db2ca715592477f80af",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=8.0",
                 "spryker/customer": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/glossary": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/mail": "^4.6.0",
-                "spryker/transfer": "^3.8.0",
+                "spryker/mail-extension": "^1.0.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/util-text": "^1.1.0",
                 "spryker/util-validate": "^1.0.0",
                 "spryker/zed-request": "^3.0.0"
@@ -35546,9 +35601,9 @@
             ],
             "description": "Newsletter module",
             "support": {
-                "source": "https://github.com/spryker/newsletter/tree/4.5.2"
+                "source": "https://github.com/spryker/newsletter/tree/4.6.0"
             },
-            "time": "2020-08-18T13:03:17+00:00"
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/nopayment",
@@ -36679,26 +36734,27 @@
         },
         {
             "name": "spryker/oms",
-            "version": "11.21.0",
+            "version": "11.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oms.git",
-                "reference": "7426f1a7b6bd8c283b97ab8984df37be7a3b0b53"
+                "reference": "81d8d1b2405d3158fdda0849f469cb3bf0cd8980"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oms/zipball/7426f1a7b6bd8c283b97ab8984df37be7a3b0b53",
-                "reference": "7426f1a7b6bd8c283b97ab8984df37be7a3b0b53",
+                "url": "https://api.github.com/repos/spryker/oms/zipball/81d8d1b2405d3158fdda0849f469cb3bf0cd8980",
+                "reference": "81d8d1b2405d3158fdda0849f469cb3bf0cd8980",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/decimal-object": "^1.0.0",
                 "spryker/error-handler": "^2.1.0",
                 "spryker/graph": "^3.0.0",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/mail": "^4.6.0",
+                "spryker/mail-extension": "^1.0.0",
                 "spryker/oms-extension": "^1.3.0",
                 "spryker/propel": "^3.28.0",
                 "spryker/propel-orm": "^1.16.0",
@@ -36706,7 +36762,7 @@
                 "spryker/sales-extension": "^1.7.0",
                 "spryker/store": "^1.5.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/transfer": "^3.18.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/util-network": "^1.1.0",
                 "spryker/util-sanitize": "^2.0.0",
                 "spryker/util-text": "^1.1.0"
@@ -36739,9 +36795,9 @@
             ],
             "description": "Oms module",
             "support": {
-                "source": "https://github.com/spryker/oms/tree/11.21.0"
+                "source": "https://github.com/spryker/oms/tree/11.22.0"
             },
-            "time": "2022-09-06T08:23:01+00:00"
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/oms-discount-connector",
@@ -50111,28 +50167,30 @@
         },
         {
             "name": "spryker/sales-invoice",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-invoice.git",
-                "reference": "78919731c4d39a874000b7fbd41b07a86a5b91f1"
+                "reference": "d71c0177465e402a66ed95f2171386fa480fcdb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-invoice/zipball/78919731c4d39a874000b7fbd41b07a86a5b91f1",
-                "reference": "78919731c4d39a874000b7fbd41b07a86a5b91f1",
+                "url": "https://api.github.com/repos/spryker/sales-invoice/zipball/d71c0177465e402a66ed95f2171386fa480fcdb2",
+                "reference": "d71c0177465e402a66ed95f2171386fa480fcdb2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=8.0",
                 "spryker/glossary": "^3.0.0",
                 "spryker/kernel": "^3.52.0",
                 "spryker/mail": "^4.6.0",
+                "spryker/mail-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/sales": "^11.11.0",
                 "spryker/sales-invoice-extension": "^1.0.0",
                 "spryker/sequence-number": "^3.0.0",
                 "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/twig": "^3.0.0"
             },
             "require-dev": {
@@ -50163,9 +50221,9 @@
             ],
             "description": "SalesInvoice module",
             "support": {
-                "source": "https://github.com/spryker/sales-invoice/tree/1.1.2"
+                "source": "https://github.com/spryker/sales-invoice/tree/1.2.0"
             },
-            "time": "2020-09-11T09:56:43+00:00"
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/sales-invoice-extension",
@@ -55637,6 +55695,56 @@
             "time": "2022-10-18T17:47:15+00:00"
         },
         {
+            "name": "spryker/symfony-mailer",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/symfony-mailer.git",
+                "reference": "02398996cbbe12d0da823ac73f3401ac3feb09a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/symfony-mailer/zipball/02398996cbbe12d0da823ac73f3401ac3feb09a0",
+                "reference": "02398996cbbe12d0da823ac73f3401ac3feb09a0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/glossary": "^3.0.0",
+                "spryker/kernel": "^3.52.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/mail-extension": "^1.0.0",
+                "spryker/symfony": "^3.9.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*",
+                "spryker/twig": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SymfonyMailer module",
+            "support": {
+                "source": "https://github.com/spryker/symfony-mailer/tree/1.0.0"
+            },
+            "time": "2022-11-11T13:29:11+00:00"
+        },
+        {
             "name": "spryker/synchronization",
             "version": "1.14.0",
             "source": {
@@ -57153,22 +57261,24 @@
         },
         {
             "name": "spryker/user-password-reset-mail",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/user-password-reset-mail.git",
-                "reference": "f5684f37b74a0a0c2fecf3cf7a79a377014bc89f"
+                "reference": "428114907ce4f3e2434953da0fc651f7dc2874c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/user-password-reset-mail/zipball/f5684f37b74a0a0c2fecf3cf7a79a377014bc89f",
-                "reference": "f5684f37b74a0a0c2fecf3cf7a79a377014bc89f",
+                "url": "https://api.github.com/repos/spryker/user-password-reset-mail/zipball/428114907ce4f3e2434953da0fc651f7dc2874c2",
+                "reference": "428114907ce4f3e2434953da0fc651f7dc2874c2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=8.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/mail": "^4.6.0",
+                "spryker/mail-extension": "^1.0.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/user-password-reset-extension": "^1.0.0"
             },
             "require-dev": {
@@ -57194,9 +57304,9 @@
             ],
             "description": "UserPasswordResetMail module",
             "support": {
-                "source": "https://github.com/spryker/user-password-reset-mail/tree/1.0.0"
+                "source": "https://github.com/spryker/user-password-reset-mail/tree/1.1.0"
             },
-            "time": "2021-08-16T16:27:47+00:00"
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/util-csv",
@@ -60173,82 +60283,6 @@
                 }
             ],
             "time": "2022-10-19T14:28:49+00:00"
-        },
-        {
-            "name": "symfony/mailer",
-            "version": "v5.4.15",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/mailer.git",
-                "reference": "926f4deddb60d40024e6058fd8f94e70e4024930"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/926f4deddb60d40024e6058fd8f94e70e4024930",
-                "reference": "926f4deddb60d40024e6058fd8f94e70e4024930",
-                "shasum": ""
-            },
-            "require": {
-                "egulias/email-validator": "^2.1.10|^3",
-                "php": ">=7.2.5",
-                "psr/event-dispatcher": "^1",
-                "psr/log": "^1|^2|^3",
-                "symfony/deprecation-contracts": "^2.1|^3",
-                "symfony/event-dispatcher": "^4.4|^5.0|^6.0",
-                "symfony/mime": "^5.2.6|^6.0",
-                "symfony/polyfill-php80": "^1.16",
-                "symfony/service-contracts": "^1.1|^2|^3"
-            },
-            "conflict": {
-                "symfony/http-kernel": "<4.4"
-            },
-            "require-dev": {
-                "symfony/http-client-contracts": "^1.1|^2|^3",
-                "symfony/messenger": "^4.4|^5.0|^6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Mailer\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Helps sending emails",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/mailer/tree/v5.4.15"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-10-27T07:55:40+00:00"
         },
         {
             "name": "symfony/messenger",
