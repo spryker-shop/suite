@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "608eb10a7729b70bee280b6111cced75",
+    "content-hash": "b0117eb6db728826ffd06f717045cb14",
     "packages": [
         {
             "name": "async-aws/core",
@@ -5701,7 +5701,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "67ea2c3123a824b2eb887a46916892d7e10029e9"
+                "reference": "b0a31b7a49c2b9bf4813c4e0ad57a485b6d00ffa"
             },
             "require": {
                 "php": ">=8.0"
@@ -6048,6 +6048,7 @@
                 "spryker/locale-extension": "*",
                 "spryker/log": "*",
                 "spryker/mail": "*",
+                "spryker/mail-extension": "*",
                 "spryker/maintenance": "*",
                 "spryker/manual-order-entry": "*",
                 "spryker/manual-order-entry-gui": "*",
@@ -6547,6 +6548,7 @@
                 "spryker/store-gui": "*",
                 "spryker/stores-rest-api": "*",
                 "spryker/symfony": "*",
+                "spryker/symfony-mailer": "*",
                 "spryker/synchronization": "*",
                 "spryker/synchronization-extension": "*",
                 "spryker/tax": "*",
@@ -6629,7 +6631,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2022-11-11T07:06:41+00:00"
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8401,6 +8403,82 @@
                 }
             ],
             "time": "2022-10-19T14:28:49+00:00"
+        },
+        {
+            "name": "symfony/mailer",
+            "version": "v5.4.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mailer.git",
+                "reference": "926f4deddb60d40024e6058fd8f94e70e4024930"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/926f4deddb60d40024e6058fd8f94e70e4024930",
+                "reference": "926f4deddb60d40024e6058fd8f94e70e4024930",
+                "shasum": ""
+            },
+            "require": {
+                "egulias/email-validator": "^2.1.10|^3",
+                "php": ">=7.2.5",
+                "psr/event-dispatcher": "^1",
+                "psr/log": "^1|^2|^3",
+                "symfony/deprecation-contracts": "^2.1|^3",
+                "symfony/event-dispatcher": "^4.4|^5.0|^6.0",
+                "symfony/mime": "^5.2.6|^6.0",
+                "symfony/polyfill-php80": "^1.16",
+                "symfony/service-contracts": "^1.1|^2|^3"
+            },
+            "conflict": {
+                "symfony/http-kernel": "<4.4"
+            },
+            "require-dev": {
+                "symfony/http-client-contracts": "^1.1|^2|^3",
+                "symfony/messenger": "^4.4|^5.0|^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mailer\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Helps sending emails",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/mailer/tree/v5.4.15"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-10-27T07:55:40+00:00"
         },
         {
             "name": "symfony/messenger",
