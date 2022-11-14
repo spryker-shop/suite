@@ -14,12 +14,12 @@ class DocumentationGeneratorOpenApiConfig extends SprykerDocumentationGeneratorO
     /**
      * @var string
      */
-    protected const APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_CONTROLLER_PATTERN = '/*/*/*/*/src/*/Glue/%1$s/Controller/';
+    protected const NON_SPLIT_APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_CONTROLLER_PATTERN = '/*/*/*/*/src/*/Glue/%1$s/Controller/';
 
     /**
      * @var string
      */
-    protected const APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_PLUGIN_PATTERN = '/*/*/*/*/src/*/Glue/%1$s/Plugin/';
+    protected const NON_SPLIT_APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_PLUGIN_PATTERN = '/*/*/*/*/src/*/Glue/%1$s/Plugin/';
 
     /**
      * @api
@@ -29,19 +29,19 @@ class DocumentationGeneratorOpenApiConfig extends SprykerDocumentationGeneratorO
     public function getAnnotationSourceDirectories(): array
     {
         return array_merge(
-            $this->getCoreAnnotationSourceDirectoryPatterns(),
-            $this->getProjectAnnotationSourceDirectoryPatterns(),
+            parent::getAnnotationSourceDirectories(),
+            $this->getNonSplitCoreAnnotationSourceDirectoryPatterns(),
         );
     }
 
     /**
      * @return array<string>
      */
-    protected function getCoreAnnotationSourceDirectoryPatterns(): array
+    protected function getNonSplitCoreAnnotationSourceDirectoryPatterns(): array
     {
         return [
-            APPLICATION_VENDOR_DIR . static::APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_CONTROLLER_PATTERN,
-            APPLICATION_VENDOR_DIR . static::APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_PLUGIN_PATTERN,
+            APPLICATION_VENDOR_DIR . static::NON_SPLIT_APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_CONTROLLER_PATTERN,
+            APPLICATION_VENDOR_DIR . static::NON_SPLIT_APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_PLUGIN_PATTERN,
         ];
     }
 }
