@@ -20,4 +20,28 @@ class DocumentationGeneratorOpenApiConfig extends SprykerDocumentationGeneratorO
      * @var string
      */
     protected const APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_PLUGIN_PATTERN = '/*/*/*/*/src/*/Glue/%1$s/Plugin/';
+
+    /**
+     * @api
+     *
+     * @return array<string>
+     */
+    public function getAnnotationSourceDirectories(): array
+    {
+        return array_merge(
+            $this->getCoreAnnotationSourceDirectoryPatterns(),
+            $this->getProjectAnnotationSourceDirectoryPatterns(),
+        );
+    }
+
+    /**
+     * @return array<string>
+     */
+    protected function getCoreAnnotationSourceDirectoryPatterns(): array
+    {
+        return [
+            APPLICATION_VENDOR_DIR . static::APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_CONTROLLER_PATTERN,
+            APPLICATION_VENDOR_DIR . static::APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_PLUGIN_PATTERN,
+        ];
+    }
 }
