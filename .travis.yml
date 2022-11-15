@@ -1168,7 +1168,7 @@ jobs:
           stage: Test
           env:
               - PROGRESS_TYPE=plain
-              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1-debian
               - TRAVIS=1
           script:
               - travis_wait 120 docker/sdk boot -v deploy.yml
