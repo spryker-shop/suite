@@ -974,7 +974,7 @@ jobs:
           script:
               - docker/sdk boot -v deploy.ci.functional.mariadb.yml
               - travis_wait 100 docker/sdk up -t -v
-              - docker/sdk testing codecept run -c codeception.ci.functional.yml
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.ci.functional.yml
 
         - name: Docker / Alpine / PHP 8.0 / PostgreSQL / Functional Tests
           <<: *DOCKER_BUILD_TEMPLATE
@@ -986,7 +986,7 @@ jobs:
           script:
               - docker/sdk boot -v deploy.ci.functional.yml
               - travis_wait 100 docker/sdk up -t -v
-              - docker/sdk testing codecept run -c codeception.ci.functional.yml
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.ci.functional.yml
 
         - name: Docker / Alpine / PHP 8.0 / MariaDB / Acceptance
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1081,7 +1081,7 @@ jobs:
           script:
               - docker/sdk boot -v deploy.ci.functional.mariadb.yml
               - travis_wait 100 docker/sdk up -t -v
-              - docker/sdk testing codecept run -c codeception.ci.functional.yml
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.ci.functional.yml
 
         - name: Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1093,7 +1093,7 @@ jobs:
           script:
               - docker/sdk boot -v deploy.ci.functional.yml
               - travis_wait 100 docker/sdk up -t -v
-              - docker/sdk testing codecept run -c codeception.ci.functional.yml
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.ci.functional.yml
 
         - name: Docker / Alpine / PHP 8.1 / MariaDB / Acceptance
           <<: *DOCKER_BUILD_TEMPLATE
