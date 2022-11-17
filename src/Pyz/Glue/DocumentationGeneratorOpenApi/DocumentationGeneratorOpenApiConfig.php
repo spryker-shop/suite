@@ -12,16 +12,22 @@ use Spryker\Glue\DocumentationGeneratorOpenApi\DocumentationGeneratorOpenApiConf
 class DocumentationGeneratorOpenApiConfig extends SprykerDocumentationGeneratorOpenApiConfig
 {
     /**
+     * @project Only needed in Project, not in demoshop
+     *
      * @var string
      */
     protected const NON_SPLIT_APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_CONTROLLER_PATTERN = '/*/*/*/*/src/*/Glue/%1$s/Controller/';
 
     /**
+     * @project Only needed in Project, not in demoshop
+     *
      * @var string
      */
     protected const NON_SPLIT_APPLICATION_CORE_ANNOTATION_SOURCE_DIRECTORY_PLUGIN_PATTERN = '/*/*/*/*/src/*/Glue/%1$s/Plugin/';
 
     /**
+     * @project Only needed in Project, not in demoshop
+     *
      * @api
      *
      * @return array<string>
@@ -35,6 +41,8 @@ class DocumentationGeneratorOpenApiConfig extends SprykerDocumentationGeneratorO
     }
 
     /**
+     * @project Only needed in Project, not in demoshop
+     *
      * @return array<string>
      */
     protected function getNonSplitCoreAnnotationSourceDirectoryPatterns(): array
