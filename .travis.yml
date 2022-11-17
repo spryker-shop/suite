@@ -226,7 +226,7 @@ _AWS_SYNC_UP_MYSQL_DUMP: &AWS_SYNC_UP_MYSQL_DUMP
 _AWS_SYNC_DOWN_POSTGRES: &AWS_SYNC_DOWN_POSTGRES
     - echo "_AWS_SYNC_DOWN_POSTGRES"
     - *AWS_SYNC_CONFIG
-    - aws s3 cp s3://spryker-ci/stage-artifacts/postgres/$TRAVIS_BUILD_NUMBER $TRAVIS_BUILD_DIR --recursive --quiet --debug
+    - aws s3 cp s3://spryker-ci/stage-artifacts/postgres/$TRAVIS_BUILD_NUMBER $TRAVIS_BUILD_DIR --recursive
 
 _AWS_SYNC_DOWN_MYSQL: &AWS_SYNC_DOWN_MYSQL
     - echo "_AWS_SYNC_DOWN"
