@@ -15,7 +15,7 @@ use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ScopeRequestAf
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\SecurityHeaderResponseFormatterPlugin;
 use Spryker\Glue\GlueBackendApiApplicationAuthorizationConnector\Plugin\GlueBackendApiApplication\AuthorizationRequestAfterRoutingValidatorPlugin;
 use Spryker\Glue\OauthBackendApi\Plugin\AccessTokenValidatorPlugin;
-use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\OauthBackendTokenResource;
+use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\OauthBackendApiTokenResource;
 use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\UserRequestValidatorPlugin;
 use Spryker\Glue\OauthBackendApi\Plugin\UserRequestBuilderPlugin;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
@@ -83,7 +83,7 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
     protected function getResourcePlugins(): array
     {
         return [
-            new OauthBackendTokenResource(),
+            new OauthBackendApiTokenResource(),
         ];
     }
 
