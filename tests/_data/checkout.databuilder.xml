@@ -6,33 +6,33 @@
 >
 
     <transfer name="Customer">
-        <property name="email" dataBuilderRule="unique()->email"/>
-        <property name="firstName" dataBuilderRule="firstName"/>
-        <property name="lastName" dataBuilderRule="lastName"/>
+        <property name="email" dataBuilderRule="unique()->email()"/>
+        <property name="firstName" dataBuilderRule="firstName()"/>
+        <property name="lastName" dataBuilderRule="lastName()"/>
         <property name="gender" dataBuilderRule="randomElement(['Male', 'Female'])"/>
         <property name="dateOfBirth" dataBuilderRule="date('Y-m-d', '-20 years')"/>
         <property name="salutation" dataBuilderRule="randomElement(['Mr', 'Mrs'])"/>
     </transfer>
 
     <transfer name="Item">
-        <property name="sku" dataBuilderRule="isbn10"/>
+        <property name="sku" dataBuilderRule="isbn10()"/>
         <property name="unitGrossPrice" dataBuilderRule="randomNumber(5)"/>
         <property name="sumGrossPrice" dataBuilderRule="randomNumber(5)"/>
         <property name="quantity" dataBuilderRule="=1"/>
-        <property name="name" dataBuilderRule="word"/>
+        <property name="name" dataBuilderRule="word()"/>
     </transfer>
 
     <transfer name="Address">
         <property name="salutation" dataBuilderRule="randomElement(['Mr', 'Mrs'])"/>
-        <property name="firstName" dataBuilderRule="firstName"/>
-        <property name="lastName" dataBuilderRule="lastName"/>
-        <property name="address1" dataBuilderRule="address"/>
-        <property name="address2" dataBuilderRule="address"/>
-        <property name="address3" dataBuilderRule="address"/>
-        <property name="company" dataBuilderRule="company"/>
-        <property name="city" dataBuilderRule="city"/>
-        <property name="zipCode" dataBuilderRule="postcode"/>
-        <property name="state" dataBuilderRule="country"/>
+        <property name="firstName" dataBuilderRule="firstName()"/>
+        <property name="lastName" dataBuilderRule="lastName()"/>
+        <property name="address1" dataBuilderRule="address()"/>
+        <property name="address2" dataBuilderRule="address()"/>
+        <property name="address3" dataBuilderRule="address()"/>
+        <property name="company" dataBuilderRule="company()"/>
+        <property name="city" dataBuilderRule="city()"/>
+        <property name="zipCode" dataBuilderRule="postcode()"/>
+        <property name="state" dataBuilderRule="country()"/>
         <property name="iso2Code" dataBuilderRule="=DE"/>
     </transfer>
 
@@ -55,8 +55,8 @@
     </transfer>
 
     <transfer name="RestPayment">
-        <property name="paymentProviderName" dataBuilderRule="=DummyPayment"/>
-        <property name="paymentMethodName" dataBuilderRule="=invoice"/>
+        <property name="paymentProviderName" dataBuilderRule="=DummyPayment()"/>
+        <property name="paymentMethodName" dataBuilderRule="=invoice()"/>
     </transfer>
 
     <transfer name="DummyPayment">
@@ -64,8 +64,8 @@
     </transfer>
 
     <transfer name="Currency">
-        <property name="code" dataBuilderRule="=EUR"/>
-        <property name="name" dataBuilderRule="=EURO"/>
+        <property name="code" dataBuilderRule="=EUR()"/>
+        <property name="name" dataBuilderRule="=EURO()"/>
         <property name="symbol" dataBuilderRule="=€"/>
     </transfer>
 
