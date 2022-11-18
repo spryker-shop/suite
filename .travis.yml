@@ -842,8 +842,6 @@ jobs:
         - name: PHP 8.0 / PostgreSQL 9.6 / Testing (Business, Communication, ...)
           php: "8.0"
           stage: Test
-          env:
-              - SYMFONY_DEPRECATIONS_HELPER=disabled
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
