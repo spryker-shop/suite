@@ -37,9 +37,9 @@
     </transfer>
 
     <transfer name="ShipmentMethod">
-        <property name="name" dataBuilderRule="word"/>
+        <property name="name" dataBuilderRule="word()"/>
         <property name="isActive" dataBuilderRule="=1"/>
-        <property name="carrierName" dataBuilderRule="word"/>
+        <property name="carrierName" dataBuilderRule="word()"/>
         <property name="taxRate" dataBuilderRule="randomFloat(2, 0, 99)"/>
         <property name="storeCurrencyPrice" dataBuilderRule="randomNumber(4)"/>
     </transfer>
@@ -55,8 +55,8 @@
     </transfer>
 
     <transfer name="RestPayment">
-        <property name="paymentProviderName" dataBuilderRule="=DummyPayment()"/>
-        <property name="paymentMethodName" dataBuilderRule="=invoice()"/>
+        <property name="paymentProviderName" dataBuilderRule="=DummyPayment"/>
+        <property name="paymentMethodName" dataBuilderRule="=invoice"/>
     </transfer>
 
     <transfer name="DummyPayment">
@@ -64,8 +64,8 @@
     </transfer>
 
     <transfer name="Currency">
-        <property name="code" dataBuilderRule="=EUR()"/>
-        <property name="name" dataBuilderRule="=EURO()"/>
+        <property name="code" dataBuilderRule="=EUR"/>
+        <property name="name" dataBuilderRule="=EURO"/>
         <property name="symbol" dataBuilderRule="=€"/>
     </transfer>
 
