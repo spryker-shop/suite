@@ -96,7 +96,7 @@ class CustomerReadCest
             ->whenI()
             ->assertCustomersAttributes(
                 $this->customerTransfer,
-                $I->grabDataFromResponseByJsonPath('$.data[0].attributes'),
+                $I->getDataFromResponseByJsonPath('$.data[0].attributes'),
             );
     }
 
@@ -144,7 +144,7 @@ class CustomerReadCest
             ->whenI()
             ->assertCustomersAttributes(
                 $this->customerTransfer,
-                $I->grabDataFromResponseByJsonPath('$.data.attributes'),
+                $I->getDataFromResponseByJsonPath('$.data.attributes'),
             );
     }
 

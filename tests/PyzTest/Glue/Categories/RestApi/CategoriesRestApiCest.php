@@ -66,16 +66,17 @@ class CategoriesRestApiCest
     }
 
     /**
-     * @skip
-     *
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Categories\CategoriesRestApiTester $I
+     * @param mixed $scenario
      *
      * @return void
      */
-    public function requestCategoryTreeHasUrlAttribute(CategoriesRestApiTester $I): void
+    public function requestCategoryTreeHasUrlAttribute(CategoriesRestApiTester $I, $scenario): void
     {
+        $scenario->skip('Refactoring require.');
+
         //act
         $I->sendGET($I->formatUrl('category-trees'));
 

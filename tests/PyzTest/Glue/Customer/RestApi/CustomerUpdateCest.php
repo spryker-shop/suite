@@ -113,7 +113,7 @@ class CustomerUpdateCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CustomersRestApiConfig::RESOURCE_CUSTOMERS);
 
-        $actualResponseAttributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
+        $actualResponseAttributes = $I->getDataFromResponseByJsonPath('$.data.attributes');
         $I->amSure(sprintf('Attribute %s has been updated', 'firstName'))
             ->whenI()
             ->assertSame($firstName, $actualResponseAttributes['firstName']);
@@ -122,7 +122,7 @@ class CustomerUpdateCest
             ->whenI()
             ->assertCustomersAttributes(
                 $this->customerTransfer->setFirstName($firstName),
-                $I->grabDataFromResponseByJsonPath('$.data.attributes'),
+                $I->getDataFromResponseByJsonPath('$.data.attributes'),
             );
     }
 

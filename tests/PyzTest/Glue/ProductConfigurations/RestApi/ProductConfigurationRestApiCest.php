@@ -158,7 +158,7 @@ class ProductConfigurationRestApiCest
                 '{resourceCarts}/{cartUuid}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $I->grabDataFromResponseByJsonPath('$.data')['id'],
+                    'cartUuid' => $I->getDataFromResponseByJsonPath('$.data')['id'],
                 ],
             ),
         );

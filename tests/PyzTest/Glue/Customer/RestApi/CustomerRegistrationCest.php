@@ -85,7 +85,7 @@ class CustomerRegistrationCest
                 '{resourceCustomers}/{customerReference}',
                 [
                     'resourceCustomers' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
-                    'customerReference' => $I->grabDataFromResponseByJsonPath('$.data')['id'],
+                    'customerReference' => $I->getDataFromResponseByJsonPath('$.data')['id'],
                 ],
             ),
         );
@@ -98,7 +98,7 @@ class CustomerRegistrationCest
             ->whenI()
             ->assertRegisteredCustomersAttributes(
                 $restCustomersAttributesTransfer,
-                $I->grabDataFromResponseByJsonPath('$.data.attributes'),
+                $I->getDataFromResponseByJsonPath('$.data.attributes'),
             );
     }
 
