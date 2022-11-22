@@ -348,7 +348,7 @@ _SECURITY_CHECK_SCRIPT: &SECURITY_CHECK_SCRIPT
     - vendor/bin/console security:check
 
 _BROWSER_TESTING_SCRIPT: &BROWSER_TESTING_SCRIPT
-    - timeout 55m bash -c "${CHROMEDRIVER_BINARY} --port=4444 --whitelisted-ips= --url-base=/wd/hub --log-path=/tmp/chromedriver.log --log-level=DEBUG">/dev/null &
+    - timeout 45 bash -c "${CHROMEDRIVER_BINARY} --port=4444 --whitelisted-ips= --url-base=/wd/hub --log-path=/tmp/chromedriver.log --log-level=DEBUG">/dev/null &
     - vendor/bin/codecept run -g EndToEnd -g Presentation -x DockerOnly --ext DotReporter
 
 _TESTING_SCRIPT: &TESTING_SCRIPT
