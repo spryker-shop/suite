@@ -21,6 +21,7 @@ use Spryker\Glue\ShoppingListsRestApi\ShoppingListsRestApiConfig;
  * @group RestApi
  * @group ShoppingListProductConfigurationRestApiCest
  * Add your own group annotations below this line
+ * @group EndToEnd
  */
 class ShoppingListProductConfigurationRestApiCest
 {
@@ -125,7 +126,7 @@ class ShoppingListProductConfigurationRestApiCest
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->assertNull($I->grabDataFromResponseByJsonPath('$.data.attributes.productConfigurationInstance'));
+        $I->assertNull($I->grabDataFromResponseByJsonPath('$.data.attributes.productConfigurationInstance')[0]);
     }
 
     /**
