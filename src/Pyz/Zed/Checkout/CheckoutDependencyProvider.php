@@ -107,7 +107,6 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
              * `OrderTotalsSaverPlugin`,
              * `SalesOrderShipmentSavePlugin`,
              * `OrderItemsSaverPlugin`,
-             * `ProductConfigurationOrderSaverPlugin`
              * must be enabled in the strict order.
              */
             new OrderSaverPlugin(),
