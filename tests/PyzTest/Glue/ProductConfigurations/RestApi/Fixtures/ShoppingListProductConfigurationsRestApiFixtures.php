@@ -22,7 +22,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     public const PRODUCT_CONFIGURATION_SHOPPING_LIST_ITEM_DATA = [
         'displayData' => '{"Preferred time of the day": "Afternoon", "Date": "9.09.2020"}',
@@ -163,7 +163,7 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
      */
     protected function createProductConfiguration(ProductConfigurationsApiTester $I): void
     {
-        $this->productConfigurationTransfer = $I->haveProductConfiguration([
+        $this->productConfigurationTransfer = $I->haveProductConfigurationTransferPersisted([
             ProductConfigurationTransfer::FK_PRODUCT => $this->productConcreteTransfer->getIdProductConcrete(),
         ]);
     }
@@ -197,7 +197,7 @@ class ShoppingListProductConfigurationsRestApiFixtures implements FixturesBuilde
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param array $seed
+     * @param array<string, mixed> $seed
      *
      * @return \Generated\Shared\Transfer\CompanyUserTransfer
      */
