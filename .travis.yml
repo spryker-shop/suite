@@ -972,9 +972,9 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.ci.functional.mariadb.yml
-              - travis_wait 120 docker/sdk up -t -v
-              - travis_wait 120 docker/sdk testing codecept run -c codeception.ci.functional.yml
+              - docker/sdk boot -v deploy.ci.functional.mariadb.yml
+              - travis_wait 100 docker/sdk up -t -v
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.ci.functional.yml
 
         - name: Docker / Alpine / PHP 8.0 / PostgreSQL / Functional Tests
           <<: *DOCKER_BUILD_TEMPLATE
@@ -984,9 +984,9 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.ci.functional.yml
-              - travis_wait 120 docker/sdk up -t -v
-              - travis_wait 120 docker/sdk testing codecept run -c codeception.ci.functional.yml
+              - docker/sdk boot -v deploy.ci.functional.yml
+              - travis_wait 100 docker/sdk up -t -v
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.ci.functional.yml
 
         - name: Docker / Alpine / PHP 8.0 / MariaDB / Acceptance
           <<: *DOCKER_BUILD_TEMPLATE
@@ -996,10 +996,10 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
-              - travis_wait 120 docker/sdk up -t
-              - travis_wait 120 docker/sdk testing console queue:worker:start --stop-when-empty
-              - travis_wait 120 docker/sdk testing codecept run -c codeception.acceptance.yml
+              - docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
+              - travis_wait 100 docker/sdk up -t
+              - travis_wait 100 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.acceptance.yml
 
         - name: Docker / Alpine / PHP 8.0 / PostgreSQL / Acceptance
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1009,10 +1009,10 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.ci.acceptance.yml
-              - travis_wait 120 docker/sdk up -t
-              - travis_wait 120 docker/sdk testing console queue:worker:start --stop-when-empty
-              - travis_wait 120 docker/sdk testing codecept run -c codeception.acceptance.yml
+              - docker/sdk boot -v deploy.ci.acceptance.yml
+              - travis_wait 100 docker/sdk up -t
+              - travis_wait 100 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.acceptance.yml
 
         - name: Docker / Alpine / PHP 8.0 / PostgreSQL / Glue
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1022,11 +1022,11 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.ci.api.yml
-              - travis_wait 120 docker/sdk up -t -v
-              - travis_wait 120 docker/sdk testing codecept fixtures
-              - travis_wait 120 docker/sdk testing console queue:worker:start --stop-when-empty
-              - travis_wait 120 docker/sdk testing codecept run -c codeception.api.yml
+              - docker/sdk boot -v deploy.ci.api.yml
+              - travis_wait 100 docker/sdk up -t -v
+              - travis_wait 100 docker/sdk testing codecept fixtures
+              - travis_wait 100 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.api.yml
 
         - name: Docker / Alpine / PHP 8.0 / MariaDB / Glue
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1036,11 +1036,11 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.ci.api.mariadb.yml
-              - travis_wait 120 docker/sdk up -t -v
-              - travis_wait 120 docker/sdk testing codecept fixtures
-              - travis_wait 120 docker/sdk testing console queue:worker:start --stop-when-empty
-              - travis_wait 120 docker/sdk testing codecept run -c codeception.api.yml
+              - docker/sdk boot -v deploy.ci.api.mariadb.yml
+              - travis_wait 100 docker/sdk up -t -v
+              - travis_wait 100 docker/sdk testing codecept fixtures
+              - travis_wait 100 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.api.yml
 
         - name: Docker / Alpine / PHP 8.0 / Frontend & Assets
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1050,8 +1050,8 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.yml
-              - SPRYKER_BUILD_HASH=myhash travis_wait 120 docker/sdk export images
+              - docker/sdk boot -v deploy.yml
+              - SPRYKER_BUILD_HASH=myhash travis_wait 100 docker/sdk export images
               - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
@@ -1064,8 +1064,8 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0-debian
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.yml
-              - SPRYKER_BUILD_HASH=myhash travis_wait 120 docker/sdk export images
+              - docker/sdk boot -v deploy.yml
+              - SPRYKER_BUILD_HASH=myhash travis_wait 100 docker/sdk export images
               - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
@@ -1079,9 +1079,9 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.ci.functional.mariadb.yml
-              - travis_wait 120 docker/sdk up -t -v
-              - travis_wait 120 docker/sdk testing codecept run -c codeception.ci.functional.yml
+              - docker/sdk boot -v deploy.ci.functional.mariadb.yml
+              - travis_wait 100 docker/sdk up -t -v
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.ci.functional.yml
 
         - name: Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1091,9 +1091,9 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.ci.functional.yml
-              - travis_wait 120 docker/sdk up -t -v
-              - travis_wait 120 docker/sdk testing codecept run -c codeception.ci.functional.yml
+              - docker/sdk boot -v deploy.ci.functional.yml
+              - travis_wait 100 docker/sdk up -t -v
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.ci.functional.yml
 
         - name: Docker / Alpine / PHP 8.1 / MariaDB / Acceptance
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1103,10 +1103,10 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
-              - travis_wait 120 docker/sdk up -t
-              - travis_wait 120 docker/sdk testing console queue:worker:start --stop-when-empty
-              - travis_wait 120 docker/sdk testing codecept run -c codeception.acceptance.yml
+              - docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
+              - travis_wait 100 docker/sdk up -t
+              - travis_wait 100 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.acceptance.yml
 
         - name: Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1116,10 +1116,10 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.ci.acceptance.yml
-              - travis_wait 120 docker/sdk up -t
-              - travis_wait 120 docker/sdk testing console queue:worker:start --stop-when-empty
-              - travis_wait 120 docker/sdk testing codecept run -c codeception.acceptance.yml
+              - docker/sdk boot -v deploy.ci.acceptance.yml
+              - travis_wait 100 docker/sdk up -t
+              - travis_wait 100 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.acceptance.yml
 
         - name: Docker / Alpine / PHP 8.1 / PostgreSQL / Glue
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1129,11 +1129,11 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.ci.api.yml
-              - travis_wait 120 docker/sdk up -t -v
-              - travis_wait 120 docker/sdk testing codecept fixtures
-              - travis_wait 120 docker/sdk testing console queue:worker:start --stop-when-empty
-              - travis_wait 120 docker/sdk testing codecept run -c codeception.api.yml
+              - docker/sdk boot -v deploy.ci.api.yml
+              - travis_wait 100 docker/sdk up -t -v
+              - travis_wait 100 docker/sdk testing codecept fixtures
+              - travis_wait 100 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.api.yml
 
         - name: Docker / Alpine / PHP 8.1 / MariaDB / Glue
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1143,11 +1143,11 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.ci.api.mariadb.yml
-              - travis_wait 120 docker/sdk up -t -v
-              - travis_wait 120 docker/sdk testing codecept fixtures
-              - travis_wait 120 docker/sdk testing console queue:worker:start --stop-when-empty
-              - travis_wait 120 docker/sdk testing codecept run -c codeception.api.yml
+              - docker/sdk boot -v deploy.ci.api.mariadb.yml
+              - travis_wait 100 docker/sdk up -t -v
+              - travis_wait 100 docker/sdk testing codecept fixtures
+              - travis_wait 100 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 100 docker/sdk testing codecept run -c codeception.api.yml
 
         - name: Docker / Alpine / PHP 8.1 / Frontend & Assets
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1157,8 +1157,8 @@ jobs:
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.yml
-              - SPRYKER_BUILD_HASH=myhash travis_wait 120 docker/sdk export images
+              - docker/sdk boot -v deploy.yml
+              - SPRYKER_BUILD_HASH=myhash travis_wait 100 docker/sdk export images
               - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
@@ -1168,11 +1168,11 @@ jobs:
           stage: Test
           env:
               - PROGRESS_TYPE=plain
-              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1-debian
               - TRAVIS=1
           script:
-              - travis_wait 120 docker/sdk boot -v deploy.yml
-              - SPRYKER_BUILD_HASH=myhash travis_wait 120 docker/sdk export images
+              - docker/sdk boot -v deploy.yml
+              - SPRYKER_BUILD_HASH=myhash travis_wait 100 docker/sdk export images
               - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
