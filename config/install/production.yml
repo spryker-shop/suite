@@ -47,3 +47,7 @@ sections:
         scheduler-setup:
             command: 'vendor/bin/console scheduler:setup -vvv --no-ansi'
             stores: true
+
+    demodata:
+        import-demodata:
+            command: 'vendor/bin/console data:import:stores'
