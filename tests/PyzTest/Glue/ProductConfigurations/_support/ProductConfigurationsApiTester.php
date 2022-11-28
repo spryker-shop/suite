@@ -33,13 +33,18 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
     use _generated\ProductConfigurationsApiTesterActions;
 
     /**
+     * @var string
+     */
+    protected const ATTRIBUTE_KEY_SKU = 'sku';
+
+    /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return void
      */
     public function amAuthorizedCustomer(CustomerTransfer $customerTransfer): void
     {
-        $token = $this->haveAuthorizationToGlue($customerTransfer)->getAccessToken();
+        $token = $this->haveAuthorizationToGlue($customerTransfer)->getAccessTokenOrFail();
 
         $this->amBearerAuthenticated($token);
     }
@@ -76,10 +81,9 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
             new RestProductConfigurationInstanceAttributesTransfer(),
         );
 
-        $this->assertEqualsCanonicalizing(
-            $productConfigurationData,
-            $restProductConfigurationInstanceAttributesTransfer->toArray(),
-        );
+        $this->assertEquals($productConfigurationData['displayData'], $restProductConfigurationInstanceAttributesTransfer->getDisplayData());
+        $this->assertEquals($productConfigurationData['configuration'], $restProductConfigurationInstanceAttributesTransfer->getConfiguration());
+        $this->assertEquals($productConfigurationData['configuratorKey'], $restProductConfigurationInstanceAttributesTransfer->getConfiguratorKey());
     }
 
     /**
@@ -92,13 +96,13 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
         string $resourceName,
         string $itemSku
     ): void {
-        $includedByTypeAndId = $this->grabIncludedByTypeAndId($resourceName, $itemSku);
+        $includedByTypeAndSku = $this->grabIncludedByTypeAndSku($resourceName, $itemSku);
 
-        $this->assertArrayHasKey('productConfigurationInstance', $includedByTypeAndId);
+        $this->assertArrayHasKey('productConfigurationInstance', $includedByTypeAndSku);
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
     protected function grabProductConfigurationInstanceDataFromConcreteProductsResource(): array
     {
@@ -106,11 +110,34 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
     protected function grabProductConfigurationInstanceDataFromOrdersResource(): array
     {
-        return $this->getDataFromResponseByJsonPath('$.data.attributes.items[0].productConfigurationInstance');
+        return $this->getDataFromResponseByJsonPath('$.data.attributes.items[0].salesOrderItemConfiguration');
+    }
+
+    /**
+     * @param string $resourceName
+     * @param string $sku
+     *
+     * @return array<string, mixed>
+     */
+    public function grabIncludedByTypeAndSku(string $resourceName, string $sku): array
+    {
+        $jsonPath = sprintf(
+            '$..included[?(@.type == \'%s\')].attributes',
+            $resourceName,
+        );
+
+        $attributes = $this->grabDataFromResponseByJsonPath($jsonPath);
+        foreach ($attributes as $attribute) {
+            if ($attribute[static::ATTRIBUTE_KEY_SKU] === $sku) {
+                return $attribute;
+            }
+        }
+
+        return [];
     }
 
     /**
@@ -123,6 +150,14 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
         ProductConfigurationTransfer $productConfigurationTransfer,
         RestProductConfigurationInstanceAttributesTransfer $restProductConfigurationInstanceAttributesTransfer
     ): RestProductConfigurationInstanceAttributesTransfer {
-        return $restProductConfigurationInstanceAttributesTransfer->fromArray($productConfigurationTransfer->toArray(), true);
+        $restProductConfigurationInstanceAttributesTransfer = $restProductConfigurationInstanceAttributesTransfer->fromArray(
+            $productConfigurationTransfer->toArray(),
+            true,
+        );
+
+        $restProductConfigurationInstanceAttributesTransfer->setDisplayData($productConfigurationTransfer->getDefaultDisplayData());
+        $restProductConfigurationInstanceAttributesTransfer->setConfiguration($productConfigurationTransfer->getDefaultConfiguration());
+
+        return $restProductConfigurationInstanceAttributesTransfer;
     }
 }

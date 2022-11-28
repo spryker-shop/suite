@@ -11,11 +11,13 @@ use Generated\Shared\DataBuilder\ProductConfigurationInstanceBuilder;
 use Generated\Shared\DataBuilder\QuoteBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
-use Generated\Shared\Transfer\OrderTransfer;
+use Generated\Shared\Transfer\MoneyValueTransfer;
+use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ProductConfigurationInstanceTransfer;
 use Generated\Shared\Transfer\ProductConfigurationTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\SaveOrderTransfer;
 use PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
@@ -28,12 +30,12 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
     public const PRODUCT_CONFIGURATION_INSTANCE_ATTRIBUTE_JSON_PATH = '.productConfigurationInstance';
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     public const PRODUCT_CONFIGURATION_CART_ITEM_DATA = [
-        'displayData' => '{"Preferred time of the day": "Afternoon", "Date": "9.09.2020"}',
-        'configuration' => '{"time_of_day": "2"}',
-        'configuratorKey' => 'installation_appointment',
+        'displayData' => self::TEST_DISPLAY_DATA,
+        'configuration' => self::TEST_CONFIGURATION,
+        'configuratorKey' => self::TEST_CONFIGURATOR_KEY,
         'isComplete' => false,
         'quantity' => 5,
         'availableQuantity' => 100,
@@ -71,17 +73,7 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
     /**
      * @var string
      */
-    public const PRODUCT_CONFIGURATION_INSTANCE_HASH = 'd3f1cc32c7cfe45608b80595e9f313c8';
-
-    /**
-     * @var string
-     */
     public const STORE_NAME_DE = 'DE';
-
-    /**
-     * @var string
-     */
-    protected const TEST_USERNAME = 'UserProductConfigurationsRestApiFixtures';
 
     /**
      * @var string
@@ -89,24 +81,39 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
     protected const TEST_PASSWORD = 'change123';
 
     /**
+     * @var string
+     */
+    protected const TEST_CONFIGURATOR_KEY = 'DATE_TIME_CONFIGURATOR';
+
+    /**
+     * @var string
+     */
+    protected const TEST_CONFIGURATION = '{"time_of_day": "2"}';
+
+    /**
+     * @var string
+     */
+    protected const TEST_DISPLAY_DATA = '{"Preferred time of the day": "Afternoon", "Date": "9.09.2020"}';
+
+    /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    protected $productConcreteTransfer;
+    protected ProductConcreteTransfer $productConcreteTransfer;
 
     /**
      * @var \Generated\Shared\Transfer\ProductConfigurationTransfer
      */
-    protected $productConfigurationTransfer;
+    protected ProductConfigurationTransfer $productConfigurationTransfer;
 
     /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected $customerTransfer;
+    protected CustomerTransfer $customerTransfer;
 
     /**
-     * @var \Generated\Shared\Transfer\OrderTransfer
+     * @var \Generated\Shared\Transfer\SaveOrderTransfer
      */
-    protected $orderTransfer;
+    protected SaveOrderTransfer $saveOrderTransfer;
 
     /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
@@ -133,11 +140,11 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
     }
 
     /**
-     * @return \Generated\Shared\Transfer\OrderTransfer
+     * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
-    public function getOrderTransfer(): OrderTransfer
+    public function getSaveOrderTransfer(): SaveOrderTransfer
     {
-        return $this->orderTransfer;
+        return $this->saveOrderTransfer;
     }
 
     /**
@@ -163,6 +170,15 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
     protected function createProductConcrete(ProductConfigurationsApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
+        $I->havePriceProduct([
+            PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $this->productConcreteTransfer->getAbstractSku(),
+            PriceProductTransfer::SKU_PRODUCT => $this->productConcreteTransfer->getSku(),
+            PriceProductTransfer::MONEY_VALUE => [
+                MoneyValueTransfer::NET_AMOUNT => 100,
+                MoneyValueTransfer::GROSS_AMOUNT => 100,
+                MoneyValueTransfer::STORE => static::STORE_NAME_DE,
+            ],
+        ]);
     }
 
     /**
@@ -172,8 +188,11 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
      */
     protected function createProductConfiguration(ProductConfigurationsApiTester $I): void
     {
-        $this->productConfigurationTransfer = $I->haveProductConfiguration([
+        $this->productConfigurationTransfer = $I->haveProductConfigurationTransferPersisted([
             ProductConfigurationTransfer::FK_PRODUCT => $this->productConcreteTransfer->getIdProductConcrete(),
+            ProductConfigurationTransfer::CONFIGURATOR_KEY => static::TEST_CONFIGURATOR_KEY,
+            ProductConfigurationTransfer::DEFAULT_CONFIGURATION => static::TEST_CONFIGURATION,
+            ProductConfigurationTransfer::DEFAULT_DISPLAY_DATA => static::TEST_DISPLAY_DATA,
         ]);
     }
 
@@ -188,6 +207,8 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
+
+        $I->confirmCustomer($this->customerTransfer);
     }
 
     /**
@@ -198,15 +219,21 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
     protected function createOrder(ProductConfigurationsApiTester $I): void
     {
         $productConfigurationInstanceTransfer = $this->createProductConfigurationInstanceTransfer($this->productConfigurationTransfer);
+        $quoteTransfer = $this->createQuoteTransfer(
+            $this->customerTransfer,
+            $this->productConcreteTransfer,
+            $productConfigurationInstanceTransfer,
+        );
 
-        $this->orderTransfer = $I->haveOrderFromQuote(
-            $this->createQuoteTransfer(
-                $this->customerTransfer,
-                $this->productConcreteTransfer,
-                $productConfigurationInstanceTransfer,
-            ),
+        $this->saveOrderTransfer = $I->haveOrderFromQuote(
+            $quoteTransfer,
             $this->createStateMachine($I),
         );
+
+        $I->getLocator()
+            ->salesProductConfiguration()
+            ->facade()
+            ->saveSalesOrderItemConfigurationsFromQuote($quoteTransfer);
     }
 
     /**
@@ -256,9 +283,19 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
     protected function createProductConfigurationInstanceTransfer(
         ProductConfigurationTransfer $productConfigurationTransfer
     ): ProductConfigurationInstanceTransfer {
-        return (new ProductConfigurationInstanceBuilder($productConfigurationTransfer->toArray()))
+        $productConfigurationInstanceTransfer = (new ProductConfigurationInstanceBuilder($productConfigurationTransfer->toArray()))
             ->withPrice()
             ->build()
             ->setIsComplete(true);
+
+        if ($productConfigurationTransfer->getDefaultConfiguration()) {
+            $productConfigurationInstanceTransfer->setConfiguration($productConfigurationTransfer->getDefaultConfiguration());
+        }
+
+        if ($productConfigurationTransfer->getDefaultDisplayData()) {
+            $productConfigurationInstanceTransfer->setDisplayData($productConfigurationTransfer->getDefaultDisplayData());
+        }
+
+        return $productConfigurationInstanceTransfer;
     }
 }
