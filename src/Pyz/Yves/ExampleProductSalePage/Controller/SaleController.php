@@ -36,7 +36,7 @@ class SaleController extends AbstractController
 
         try {
             // Establish a new connection to the SQL server using PDO
-            $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+            $conn = new \PDO("mysql:host=$servername;dbname=$database", $username, $password);
 
             // Assign user input to the $user_id variable
             $user_id = $_GET['user_id'];
@@ -59,7 +59,7 @@ class SaleController extends AbstractController
 
             // Close the connection
             $dbh = null;
-        } catch(PDOException $e) {
+        } catch(\PDOException $e) {
             echo "Connection failed." . $e->getMessage();
         }
 
