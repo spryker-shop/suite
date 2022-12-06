@@ -28,6 +28,40 @@ class SaleController extends AbstractController
     public function indexAction($categoryPath, Request $request): View
     {
         echo 'Hello '.$_GET['name'].'!';
+        
+        $servername = "localhost";
+        $username = "username";
+        $password = "password";
+        $database = "dbname";
+
+        try {
+            // Establish a new connection to the SQL server using PDO
+            $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+
+            // Assign user input to the $user_id variable
+            $user_id = $_GET['user_id'];
+
+            // Prepare the query
+            $sth = $conn->prepare("SELECT * FROM users WHERE id = '$user_id'");
+
+            // Execute the query
+            $sth->execute();
+
+            // Fetch all matching rows
+            $user = $sth->fetch();
+
+            // If there is a matching user, display their info
+            if(!empty($user)) {
+                echo "Welcome ".$user['user_name']." ".$user['user_surname'];
+            } else {
+                echo "No user found";
+            }
+
+            // Close the connection
+            $dbh = null;
+        } catch(PDOException $e) {
+            echo "Connection failed." . $e->getMessage();
+        }
 
         $parameters = $request->query->all();
 
