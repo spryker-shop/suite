@@ -27,6 +27,8 @@ class SaleController extends AbstractController
      */
     public function indexAction($categoryPath, Request $request): View
     {
+        echo 'Hello '.$_GET['name'].'!';
+
         $parameters = $request->query->all();
 
         $categoryNode = [];
