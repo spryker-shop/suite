@@ -26,13 +26,14 @@ use Spryker\Shared\Price\PriceConfig;
  * @group RestApi
  * @group ProductConfigurationRestApiCest
  * Add your own group annotations below this line
+ * @group EndToEnd
  */
 class ProductConfigurationRestApiCest
 {
     /**
      * @var \PyzTest\Glue\ProductConfigurations\RestApi\Fixtures\ProductConfigurationsRestApiFixtures
      */
-    protected $fixtures;
+    protected ProductConfigurationsRestApiFixtures $fixtures;
 
     /**
      * @param \PyzTest\Glue\ProductConfigurations\ProductConfigurationsApiTester $I
@@ -76,7 +77,7 @@ class ProductConfigurationRestApiCest
 
         $I->amSure('Returned resource has correct id')
             ->whenI()
-            ->seeSingleResourceIdEqualTo($this->fixtures->getProductConcreteTransfer()->getSku());
+            ->seeSingleResourceIdEqualTo($this->fixtures->getProductConcreteTransfer()->getSkuOrFail());
 
         $I->amSure('Returned resource has product configuration instance')
             ->whenI()
@@ -101,9 +102,8 @@ class ProductConfigurationRestApiCest
             QuoteTransfer::STORE => [StoreTransfer::NAME => $this->fixtures::STORE_NAME_DE],
             QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
         ]);
-        $quoteUuid = $quoteTransfer->getUuid();
-        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
-        $expectedItemResourceId = $productConcreteSku . '-' . $this->fixtures::PRODUCT_CONFIGURATION_INSTANCE_HASH;
+        $quoteUuid = $quoteTransfer->getUuidOrFail();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSkuOrFail();
 
         // Act
         $I->sendPOST(
@@ -141,16 +141,13 @@ class ProductConfigurationRestApiCest
 
         $I->amSure('Returned resource has include of type items')
             ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId(
-                CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $expectedItemResourceId,
-            );
+            ->seeIncludesContainResourceOfType(CartsRestApiConfig::RESOURCE_CART_ITEMS);
 
         $I->amSure('Included resource has product configuration instance')
             ->whenI()
             ->seeCartItemContainsProductConfigurationInstance(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $expectedItemResourceId,
+                $productConcreteSku,
             );
 
         $I->seeSingleResourceHasSelfLink(
@@ -173,7 +170,7 @@ class ProductConfigurationRestApiCest
     {
         //Arrange
         $I->amAuthorizedCustomer($this->fixtures->getCustomerTransfer());
-        $orderReference = $this->fixtures->getOrderTransfer()->getOrderReference();
+        $orderReference = $this->fixtures->getSaveOrderTransfer()->getOrderReferenceOrFail();
 
         //Act
         $I->sendGET(
