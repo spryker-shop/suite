@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "405e2ef135dcceb441ada4837b1864f5",
+    "content-hash": "eefc6176cc13b954663dd07e39c86562",
     "packages": [
         {
             "name": "async-aws/core",
@@ -4570,6 +4570,74 @@
                 "source": "https://github.com/Seldaek/signal-handler/tree/1.3.0"
             },
             "time": "2022-02-17T20:38:26+00:00"
+        },
+        {
+            "name": "spryker-eco/authorization-picking-app-backend-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-eco/authorization-picking-app-backend-api.git",
+                "reference": "23b44c7891f933a6db26db7ceaa8419307812149"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-eco/authorization-picking-app-backend-api/zipball/23b44c7891f933a6db26db7ceaa8419307812149",
+                "reference": "23b44c7891f933a6db26db7ceaa8419307812149",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "psr/http-message": "^1.0.0",
+                "spryker/glue-application-extension": "^1.10.0",
+                "spryker/guzzle": "^2.0.0",
+                "spryker/kernel": "^3.52.0",
+                "spryker/oauth": "^2.7.0",
+                "spryker/oauth-code-flow": "^0.1.0",
+                "spryker/propel-orm": "^1.16.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.25.0",
+                "spryker/user": "^3.9.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "codeception/module-asserts": "^3.0.0",
+                "phpstan/phpstan": "*",
+                "phpunit/phpunit": "^9.0.0",
+                "spryker/application": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/config": "*",
+                "spryker/error-handler": "*",
+                "spryker/glue-application": "*",
+                "spryker/log": "*",
+                "spryker/monolog": "*",
+                "spryker/propel": "^3.34.0",
+                "spryker/queue": "*",
+                "spryker/testify": "^3.47.0"
+            },
+            "suggest": {
+                "spryker/glue-application": "If you want to use plugins with glue application."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerEco\\": "src/SprykerEco/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "AuthorizationPickingAppBackendApi module",
+            "support": {
+                "issues": "https://github.com/spryker-eco/authorization-picking-app-backend-api/issues",
+                "source": "https://github.com/spryker-eco/authorization-picking-app-backend-api/tree/0.1.0"
+            },
+            "time": "2022-12-12T14:47:46+00:00"
         },
         {
             "name": "spryker-eco/loggly",
@@ -35753,21 +35821,21 @@
         },
         {
             "name": "spryker/oauth",
-            "version": "2.6.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth.git",
-                "reference": "5c7dab85adeb9430f1240c6f8f51ae578d3efb78"
+                "reference": "3763d191b73a9a163ca6e9ba8faecc4a5b19eecd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth/zipball/5c7dab85adeb9430f1240c6f8f51ae578d3efb78",
-                "reference": "5c7dab85adeb9430f1240c6f8f51ae578d3efb78",
+                "url": "https://api.github.com/repos/spryker/oauth/zipball/3763d191b73a9a163ca6e9ba8faecc4a5b19eecd",
+                "reference": "3763d191b73a9a163ca6e9ba8faecc4a5b19eecd",
                 "shasum": ""
             },
             "require": {
-                "league/oauth2-server": "^8.0.0",
-                "php": ">=7.4",
+                "league/oauth2-server": "^8.3.0",
+                "php": ">=8.0",
                 "psr/http-message": "^1.0.0",
                 "spryker/config": "^3.0.0",
                 "spryker/guzzle": "^2.0.0",
@@ -35809,9 +35877,9 @@
             ],
             "description": "Oauth module",
             "support": {
-                "source": "https://github.com/spryker/oauth/tree/2.6.0"
+                "source": "https://github.com/spryker/oauth/tree/2.7.0"
             },
-            "time": "2022-08-01T10:21:40+00:00"
+            "time": "2022-12-12T14:47:49+00:00"
         },
         {
             "name": "spryker/oauth-agent-connector",
@@ -36111,6 +36179,53 @@
                 "source": "https://github.com/spryker/oauth-client-extension/tree/1.0.0"
             },
             "time": "2022-04-26T12:27:56+00:00"
+        },
+        {
+            "name": "spryker/oauth-code-flow",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/oauth-code-flow.git",
+                "reference": "c93b7257272adba80deabcef7a2197cf31cd9076"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/oauth-code-flow/zipball/c93b7257272adba80deabcef7a2197cf31cd9076",
+                "reference": "c93b7257272adba80deabcef7a2197cf31cd9076",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "psr/http-message": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/oauth": "^2.7.0",
+                "spryker/oauth-extension": "^1.7.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OauthCodeFlow module",
+            "support": {
+                "source": "https://github.com/spryker/oauth-code-flow/tree/0.1.0"
+            },
+            "time": "2022-12-12T14:47:49+00:00"
         },
         {
             "name": "spryker/oauth-company-user",
