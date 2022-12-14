@@ -226,6 +226,8 @@ services:
         engine: mailhog
         endpoints:
             mail.night-test.cloud.spryker.toys:
+    webdriver:
+        engine: chromedriver
 
 docker:
     blackfire:
