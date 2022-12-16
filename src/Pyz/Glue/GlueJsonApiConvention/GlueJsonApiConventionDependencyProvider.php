@@ -7,6 +7,7 @@
 
 namespace Pyz\Glue\GlueJsonApiConvention;
 
+use Spryker\Glue\GlueBackendApiApplicationGlueJsonApiConventionConnector\Plugin\GlueJsonApiConvention\BackendApiRelationshipProviderPlugin;
 use Spryker\Glue\GlueJsonApiConvention\GlueJsonApiConventionDependencyProvider as SprykerGlueJsonApiConventionDependencyProvider;
 use Spryker\Glue\GlueStorefrontApiApplicationGlueJsonApiConventionConnector\Plugin\GlueStorefrontApiApplication\StorefrontApiRelationshipProviderPlugin;
 
@@ -19,6 +20,7 @@ class GlueJsonApiConventionDependencyProvider extends SprykerGlueJsonApiConventi
     {
         return [
             new StorefrontApiRelationshipProviderPlugin(),
+            new BackendApiRelationshipProviderPlugin(),
         ];
     }
 }
