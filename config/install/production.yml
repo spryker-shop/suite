@@ -50,4 +50,4 @@ sections:
 
     demodata:
         import-demodata:
-            command: 'vendor/bin/console data:import:store'
+            command: 'vendor/bin/console data:import --config=data/import/local/full_${SPRYKER_REGION}.yml'
