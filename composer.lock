@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3c03ac8a3fb8c48a448601da25eeb3be",
+    "content-hash": "4c48ed46eebc7f29a5232eb9af262a74",
     "packages": [
         {
             "name": "async-aws/core",
@@ -241,16 +241,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.253.2",
+            "version": "3.253.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "0f0e24bfae22edcdd62bcaedaff9610f8a328952"
+                "reference": "7e66338fc6aedd5fa53b268ee30d8f6e4a568147"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0f0e24bfae22edcdd62bcaedaff9610f8a328952",
-                "reference": "0f0e24bfae22edcdd62bcaedaff9610f8a328952",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7e66338fc6aedd5fa53b268ee30d8f6e4a568147",
+                "reference": "7e66338fc6aedd5fa53b268ee30d8f6e4a568147",
                 "shasum": ""
             },
             "require": {
@@ -329,9 +329,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.253.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.253.3"
             },
-            "time": "2022-12-14T19:25:13+00:00"
+            "time": "2022-12-15T19:26:05+00:00"
         },
         {
             "name": "brick/math",
@@ -29141,6 +29141,52 @@
                 "source": "https://github.com/spryker/glue-backend-api-application-authorization-connector/tree/1.1.0"
             },
             "time": "2022-11-22T13:42:03+00:00"
+        },
+        {
+            "name": "spryker/glue-backend-api-application-glue-json-api-convention-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/glue-backend-api-application-glue-json-api-convention-connector.git",
+                "reference": "2e74511822bafb0714c2a3e099c32b5011553857"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/glue-backend-api-application-glue-json-api-convention-connector/zipball/2e74511822bafb0714c2a3e099c32b5011553857",
+                "reference": "2e74511822bafb0714c2a3e099c32b5011553857",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/documentation-generator-api-extension": "^1.0.0",
+                "spryker/glue-json-api-convention-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "GlueBackendApiApplicationGlueJsonApiConventionConnector module",
+            "support": {
+                "source": "https://github.com/spryker/glue-backend-api-application-glue-json-api-convention-connector/tree/1.0.0"
+            },
+            "time": "2022-12-16T13:21:09+00:00"
         },
         {
             "name": "spryker/glue-json-api-convention",
@@ -65325,12 +65371,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "e2da5a96182370065cfcb0ea5f03a6e2519a7641"
+                "reference": "d2a0e9f7f2ea57788270c5e997ea32486299e475"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/e2da5a96182370065cfcb0ea5f03a6e2519a7641",
-                "reference": "e2da5a96182370065cfcb0ea5f03a6e2519a7641",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/d2a0e9f7f2ea57788270c5e997ea32486299e475",
+                "reference": "d2a0e9f7f2ea57788270c5e997ea32486299e475",
                 "shasum": ""
             },
             "require-dev": {
@@ -65366,7 +65412,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2022-12-10T20:53:46+00:00"
+            "time": "2022-12-15T21:36:39+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -68699,16 +68745,16 @@
         },
         {
             "name": "spryker-sdk/spryk",
-            "version": "0.4.6",
+            "version": "0.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "b007dcacebd2a1e6fd48b61006e3c3ac26226b73"
+                "reference": "60acb10713edcaec92dea6ad5a715b49987a2d14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/b007dcacebd2a1e6fd48b61006e3c3ac26226b73",
-                "reference": "b007dcacebd2a1e6fd48b61006e3c3ac26226b73",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/60acb10713edcaec92dea6ad5a715b49987a2d14",
+                "reference": "60acb10713edcaec92dea6ad5a715b49987a2d14",
                 "shasum": ""
             },
             "require": {
@@ -68733,9 +68779,9 @@
             "description": "Spryk module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/spryk/issues",
-                "source": "https://github.com/spryker-sdk/spryk/tree/0.4.6"
+                "source": "https://github.com/spryker-sdk/spryk/tree/0.4.7"
             },
-            "time": "2022-10-18T14:00:10+00:00"
+            "time": "2022-12-16T13:28:34+00:00"
         },
         {
             "name": "spryker-shop/web-profiler-widget",
