@@ -1,4 +1,5 @@
-version: "0.1"
+version: '0.1'
+
 x-real-ip: &real-ip
     real-ip:
         from:
@@ -24,48 +25,39 @@ x-real-ip: &real-ip
             - 2405:8100::/32 # Cloudflare
             - 2c0f:f248::/32 # Cloudflare
             - 2a06:98c0::/29 # Cloudflare
+
 x-frontend-auth: &frontend-auth
     <<: *real-ip
     auth:
         engine: basic
         users:
-            - username: cloud
-              password: cloud
+            - username: CHANGE_ME # must be changed
+              password: CHANGE_ME # must be changed
         exclude:
             - '${ALLOWED_IP}' # AWS gateway
             - 185.60.20.0/24 # PayOne
-namespace: spryker-cloud
+
+namespace: example-staging # INIT_IMAGE_PREFIX
 tag: '1.0'
 
-environment: docker.dev
+environment: docker
 image:
     tag: spryker/php:8.1
     environment:
-        SPRYKER_DEFAULT_STORE: "DE"
-        SPRYKER_ACTIVE_STORES: "DE,AT"
-        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy -vvv"
-        SPRYKER_HOOK_AFTER_DEPLOY: "true"
-        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive --no-ansi -vvv"
-        AWS_REGION: 'eu-west-2'
-    node:
-        version: 16
-        npm: 8
-    php:
-        enabled-extensions:
-            - blackfire
-            - newrelic
+        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.cloud.spryker.toys
+        SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
+        SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
+        SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR: '0c1ffefeebdab4a3d839d0e52590c9a2'
 composer:
     mode: --no-dev
     autoload: --classmap-authoritative
+
 assets:
     image: spryker/nginx-brotli:latest
     mode: production
     compression:
         brotli:
-            static: only
-        gzip:
-            static: true
+            static: on
             level: 5
 regions:
     EU:
@@ -73,9 +65,9 @@ regions:
             mail:
                 sender:
                     name: Spryker No-Reply
-                    email: no-reply@b2b.cloud.spryker.toys
+                    email: no-reply@example.cloud.spryker.toys
             database:
-                database: spryker_staging
+                database: CHANGE_ME #Example: customer_staging
                 username: spryker
                 password: secret
 
@@ -100,57 +92,94 @@ regions:
                         namespace: at_search
                     session:
                         namespace: 2
+            US:
+                services:
+                    broker:
+                        namespace: us_queue
+                    key_value_store:
+                        namespace: 1
+                    search:
+                        namespace: us_search
+                    session:
+                        namespace: 2
+
 groups:
     EU:
         region: EU
         applications:
-            Yves:
+            yves_eu:
                 application: yves
                 endpoints:
-                    www.de.b2b.cloud.spryker.toys:
+                    date-time-configurator-example.cloud.spryker.toys:
+                        entry-point: Configurator
+                    www.de.example.cloud.spryker.toys:
                         store: DE
                         <<: *frontend-auth
-                    www.at.b2b.cloud.spryker.toys:
+                    de.example.cloud.spryker.toys:
+                        store: DE
+                        <<: *frontend-auth
+                    www.at.example.cloud.spryker.toys:
                         store: AT
                         <<: *frontend-auth
-            boffice:
+                    at.example.cloud.spryker.toys:
+                        store: AT
+                        <<: *frontend-auth
+                    www.us.example.cloud.spryker.toys:
+                        store: US
+                        <<: *frontend-auth
+                    us.example.cloud.spryker.toys:
+                        store: US
+                        <<: *frontend-auth
+            backoffice_eu:
                 application: backoffice
                 endpoints:
-                    backoffice.de.b2b.cloud.spryker.toys:
+                    backoffice.de.example.cloud.spryker.toys:
                         store: DE
                         primal: true
-                    backoffice.at.b2b.cloud.spryker.toys:
+                    backoffice.at.example.cloud.spryker.toys:
                         store: AT
-            backgw:
+                    backoffice.us.example.cloud.spryker.toys:
+                        store: US
+            backend_gateway_eu:
                 application: backend-gateway
                 endpoints:
-                    backend-gateway.de.b2b.cloud.spryker.toys:
+                    backend-gateway.de.example.cloud.spryker.toys:
                         store: DE
-                    backend-gateway.at.b2b.cloud.spryker.toys:
+                        primal: true
+                    backend-gateway.at.example.cloud.spryker.toys:
                         store: AT
-            backapi:
+                        primal: true
+                    backend-gateway.us.example.cloud.spryker.toys:
+                        store: US
+                        primal: true
+            backend_api_eu:
                 application: zed
                 endpoints:
-                    backend-api.de.b2b.cloud.spryker.toys:
+                    backend-api.de.example.cloud.spryker.toys:
                         store: DE
                         entry-point: BackendApi
-                    backend-api.at.b2b.cloud.spryker.toys:
+                    backend-api.at.example.cloud.spryker.toys:
                         store: AT
                         entry-point: BackendApi
-            Glue:
+                    backend-api.us.example.cloud.spryker.toys:
+                        store: US
+                        entry-point: BackendApi
+            glue_eu:
                 application: glue
                 endpoints:
-                    glue.de.b2b.cloud.spryker.toys:
+                    glue.de.example.cloud.spryker.toys:
                         store: DE
-                    glue.at.b2b.cloud.spryker.toys:
+                    glue.at.example.cloud.spryker.toys:
                         store: AT
+                    glue.us.example.cloud.spryker.toys:
+                        store: US
 services:
     database:
         engine: mysql
         version: mariadb-10.4
         root:
-            username: "root"
-            password: "secret"
+            username: 'root'
+            password: 'secret'
         endpoints:
             localhost:3306:
                 protocol: tcp
@@ -158,10 +187,10 @@ services:
         engine: rabbitmq
         version: '3.9'
         api:
-            username: "spryker"
-            password: "secret"
+            username: 'spryker'
+            password: 'secret'
         endpoints:
-            queue.b2b.cloud.spryker.toys:
+            queue.example.cloud.spryker.toys:
             localhost:5672:
                 protocol: tcp
     session:
@@ -173,28 +202,38 @@ services:
                 protocol: tcp
     search:
         engine: elastic
-        version: '7.10'
+        version: 7.6
         endpoints:
             localhost:9200:
                 protocol: tcp
     scheduler:
         engine: jenkins
         version: '2.324'
+        csrf-protection-enabled: true
         endpoints:
-            jenkins2.b2b.cloud.spryker.toys:
+            scheduler.example.cloud.spryker.toys:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.b2b.cloud.spryker.toys:
+            mail.example.cloud.spryker.toys:
+    webdriver:
+        engine: chromedriver
+
 docker:
+    blackfire:
+        enabled: true
+
     ssl:
         enabled: true
         redirect: true
+
+    testing:
+        store: DE
+
     debug:
         enabled: false
         xdebug:
             enabled: false
-    testing:
-        store: DE
+
     mount:
         baked:
