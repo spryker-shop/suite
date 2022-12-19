@@ -41,6 +41,8 @@ use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DataImport\DataImportConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
+use Spryker\Shared\DummyMarketplacePayment\DummyMarketplacePaymentConfig;
+use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
@@ -61,6 +63,8 @@ use Spryker\Shared\MessageBroker\MessageBrokerConstants;
 use Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
+use Spryker\Shared\Nopayment\NopaymentConfig;
+use Spryker\Shared\Nopayment\NopaymentConstants;
 use Spryker\Shared\Oauth\OauthConstants;
 use Spryker\Shared\OauthAuth0\OauthAuth0Constants;
 use Spryker\Shared\OauthClient\OauthClientConstants;
@@ -98,6 +102,7 @@ use Spryker\Shared\Translator\TranslatorConstants;
 use Spryker\Shared\User\UserConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
+use Spryker\Zed\GiftCard\GiftCardConfig;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\MessageBrokerAws\MessageBrokerAwsConfig;
 use Spryker\Zed\OauthAuth0\OauthAuth0Config;
@@ -638,11 +643,39 @@ $config[OmsConstants::ACTIVE_PROCESSES] = [
     'PayoneCreditCardPartialOperations',
     'PayoneOnlineTransferPartialOperations',
     'ForeignPaymentB2CStateMachine01',
+    'Nopayment01',
+    'DummyPayment01',
+    'MarketplacePayment01',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     PayoneConfig::PAYMENT_METHOD_CREDIT_CARD => 'PayoneCreditCardPartialOperations',
     PayoneConfig::PAYMENT_METHOD_INSTANT_ONLINE_TRANSFER => 'PayoneOnlineTransferPartialOperations',
     PaymentConfig::PAYMENT_FOREIGN_PROVIDER => 'ForeignPaymentB2CStateMachine01',
+    DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
+    DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
+    DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
+    NopaymentConfig::PAYMENT_PROVIDER_NAME => 'Nopayment01',
+    GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
+];
+
+$config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
+    'CheckoutPage' => [
+        'DummyPayment',
+        NopaymentConfig::PAYMENT_PROVIDER_NAME,
+    ],
+];
+$config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
+    'Oms' => [
+        'DummyPayment',
+        GiftCardConfig::PROVIDER_NAME,
+    ],
+];
+
+$config[NopaymentConstants::NO_PAYMENT_METHODS] = [
+    NopaymentConfig::PAYMENT_PROVIDER_NAME,
+];
+$config[NopaymentConstants::WHITELIST_PAYMENT_METHODS] = [
+    GiftCardConfig::PROVIDER_NAME,
 ];
 
 // ----------------------------------------------------------------------------
