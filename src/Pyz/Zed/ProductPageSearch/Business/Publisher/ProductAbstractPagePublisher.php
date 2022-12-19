@@ -85,7 +85,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         AddToCartSkuReaderInterface $addToCartSkuReader,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
-        ProductPagePublisherCteInterface $productAbstractPagePublisherCte
+        ProductPagePublisherCteInterface $productAbstractPagePublisherCte,
     ) {
         parent::__construct(
             $queryContainer,
@@ -118,7 +118,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         array $productAbstractPageSearchEntities,
         array $pageDataExpanderPlugins,
         ProductPageLoadTransfer $productPageLoadTransfer,
-        $isRefresh = 0
+        $isRefresh = 0,
     ): void {
         $pairedEntities = $this->pairProductAbstractLocalizedEntitiesWithProductAbstractPageSearchEntities(
             $productAbstractLocalizedEntities,
@@ -189,7 +189,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         ProductPageSearchTransfer $productPageSearchTransfer,
         string $storeName,
         string $localeName,
-        array $pageDataExpanderPlugins
+        array $pageDataExpanderPlugins,
     ): void {
         $productPageSearchTransfer->setStore($storeName);
         $productPageSearchTransfer->setLocale($localeName);
@@ -225,7 +225,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     public function buildSynchronizedData(
         ProductPageSearchTransfer $productPageSearchTransfer,
         array $data,
-        string $resourceName
+        string $resourceName,
     ): array {
         $key = $this->generateResourceKey($data, (string)$productPageSearchTransfer->getIdProductAbstract(), $resourceName);
         $encodedData = json_encode($data);
@@ -271,7 +271,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     public function buildSynchronizedMessage(
         array $data,
         string $resourceName,
-        array $params = []
+        array $params = [],
     ): QueueSendMessageTransfer {
         $data['_timestamp'] = microtime(true);
         $payload = [

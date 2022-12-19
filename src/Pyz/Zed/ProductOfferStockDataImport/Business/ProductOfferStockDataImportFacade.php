@@ -22,7 +22,7 @@ class ProductOfferStockDataImportFacade extends SprykerProductOfferStockDataImpo
      * @return \Generated\Shared\Transfer\DataImporterReportTransfer
      */
     public function importCombinedProductOfferStock(
-        ?DataImporterConfigurationTransfer $dataImporterConfigurationTransfer
+        ?DataImporterConfigurationTransfer $dataImporterConfigurationTransfer,
     ): DataImporterReportTransfer {
         return $this->getFactory()
             ->getCombinedProductOfferStockDataImporter()

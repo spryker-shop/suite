@@ -71,7 +71,7 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
         bool $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
-        PriceProductStorageCteInterface $priceProductAbstractStorageCte
+        PriceProductStorageCteInterface $priceProductAbstractStorageCte,
     ) {
         parent::__construct($priceProductFacade, $storeFacade, $queryContainer, $isSendingToQueue);
 
@@ -133,7 +133,7 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
     protected function createPriceProductStorage(
         $idProductAbstract,
         $storeName,
-        array $priceGroup
+        array $priceGroup,
     ): void {
         $priceProductStorageTransfer = (new PriceProductStorageTransfer())
             ->setPrices($priceGroup);
@@ -213,7 +213,7 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
     public function buildSynchronizedMessage(
         array $data,
         string $resourceName,
-        array $params = []
+        array $params = [],
     ): QueueSendMessageTransfer {
         $data['_timestamp'] = microtime(true);
         $payload = [

@@ -110,7 +110,7 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
         array $skus,
         StoreTransfer $storeTransfer,
         array $concreteSkusToAbstractMap,
-        array $reservations
+        array $reservations,
     ): void {
         $stockProductsForStore = $this->getStockProductBySkusAndStore($skus, $storeTransfer);
         $concreteAvailabilityData = $this->prepareConcreteAvailabilityData($stockProductsForStore, $reservations);

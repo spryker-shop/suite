@@ -36,6 +36,6 @@ interface ExampleStateMachineQueryContainerInterface
      * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
     public function queryExampleStateMachineItemByIdStateMachineItem(
-        $idStateMachineItem
+        $idStateMachineItem,
     ): PyzExampleStateMachineItemQuery;
 }

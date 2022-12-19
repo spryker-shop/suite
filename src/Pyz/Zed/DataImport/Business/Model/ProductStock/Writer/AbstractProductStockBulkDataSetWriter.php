@@ -137,7 +137,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
         StoreFacadeInterface $storeFacade,
         DataImportDataFormatterInterface $dataFormatter,
         DataImportConfig $dataImportConfig,
-        ProductStockReaderInterface $productStockReader
+        ProductStockReaderInterface $productStockReader,
     ) {
         $this->stockFacade = $stockFacade;
         $this->productBundleFacade = $productBundleFacade;
@@ -176,7 +176,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
         array $skus,
         StoreTransfer $storeTransfer,
         array $concreteSkusToAbstractMap,
-        array $reservations
+        array $reservations,
     ): void;
 
     /**
@@ -343,7 +343,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
      */
     protected function prepareAbstractAvailabilityData(
         array $concreteAvailabilityData,
-        array $concreteSkusToAbstractMap
+        array $concreteSkusToAbstractMap,
     ): array {
         $abstractAvailabilityData = [];
         foreach ($concreteAvailabilityData as $concreteAvailability) {

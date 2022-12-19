@@ -87,7 +87,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         array $productAbstractStorageCollectionFilterPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
-        ProductStorageCteStrategyInterface $productAbstractStorageCte
+        ProductStorageCteStrategyInterface $productAbstractStorageCte,
     ) {
         parent::__construct(
             $productFacade,
@@ -175,7 +175,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         array $productAbstractLocalizedEntity,
         $storeName,
         $localeName,
-        array $attributeMapBulk = []
+        array $attributeMapBulk = [],
     ): void {
         $productAbstractStorageTransfer = $this->mapToProductAbstractStorageTransfer(
             $productAbstractLocalizedEntity,
@@ -259,7 +259,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     public function buildSynchronizedMessage(
         array $data,
         string $resourceName,
-        array $params = []
+        array $params = [],
     ): QueueSendMessageTransfer {
         $data['_timestamp'] = microtime(true);
         $payload = [
