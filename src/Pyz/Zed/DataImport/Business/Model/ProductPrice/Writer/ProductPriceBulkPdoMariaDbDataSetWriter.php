@@ -148,7 +148,7 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
     protected function prepareProductIdsCollection(
         array $priceProductCollection,
         string $tableName,
-        string $productKey
+        string $productKey,
     ): void {
         $productConcreteSkuCollection = $this->dataFormatter->getCollectionDataByKey($priceProductCollection, ProductPriceHydratorStep::KEY_SKU);
 
@@ -181,7 +181,7 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
     protected function persistPriceProductEntities(
         string $productIdKey,
         string $productTable,
-        string $productFkKey
+        string $productFkKey,
     ): void {
         if (!static::$productIds) {
             return;
@@ -258,7 +258,7 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
         array $priceProductCollection,
         string $productTableName,
         string $productIdKey,
-        string $productFkKey
+        string $productFkKey,
     ): void {
         $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productIds, $productIdKey);
 

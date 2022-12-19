@@ -63,7 +63,7 @@ abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInt
         ProductImageSqlInterface $productImageSql,
         PropelExecutorInterface $propelExecutor,
         DataImportDataFormatterInterface $dataFormatter,
-        DataImportConfig $dataImportConfig
+        DataImportConfig $dataImportConfig,
     ) {
         $this->productImageSql = $productImageSql;
         $this->propelExecutor = $propelExecutor;

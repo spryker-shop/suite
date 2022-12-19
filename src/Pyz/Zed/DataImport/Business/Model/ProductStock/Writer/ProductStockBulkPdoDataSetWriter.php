@@ -100,7 +100,7 @@ class ProductStockBulkPdoDataSetWriter extends AbstractProductStockBulkDataSetWr
         array $skus,
         StoreTransfer $storeTransfer,
         array $concreteSkusToAbstractMap,
-        array $reservations
+        array $reservations,
     ): void {
         $stockProductsForStore = $this->getStockProductBySkusAndStore($skus, $storeTransfer);
 

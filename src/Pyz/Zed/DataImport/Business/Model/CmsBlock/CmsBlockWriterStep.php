@@ -104,7 +104,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
      */
     public function __construct(
         CategoryRepositoryInterface $categoryRepository,
-        ProductRepositoryInterface $productRepository
+        ProductRepositoryInterface $productRepository,
     ) {
         $this->categoryRepository = $categoryRepository;
         $this->productRepository = $productRepository;
@@ -178,7 +178,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
      */
     protected function findOrCreateCmsBlockToCategoryRelation(
         DataSetInterface $dataSet,
-        SpyCmsBlock $cmsBlockEntity
+        SpyCmsBlock $cmsBlockEntity,
     ): void {
         if (empty($dataSet[static::KEY_CATEGORIES])) {
             return;
@@ -207,7 +207,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
      */
     protected function findOrCreateCmsBlockToProductRelation(
         DataSetInterface $dataSet,
-        SpyCmsBlock $cmsBlockEntity
+        SpyCmsBlock $cmsBlockEntity,
     ): void {
         if (empty($dataSet[static::KEY_PRODUCTS])) {
             return;
@@ -237,7 +237,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
      */
     protected function findOrCreateCmsBlockPlaceholderTranslation(
         DataSetInterface $dataSet,
-        SpyCmsBlock $cmsBlockEntity
+        SpyCmsBlock $cmsBlockEntity,
     ): void {
         foreach ($dataSet[LocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $placeholder) {
             foreach ($placeholder as $key => $value) {

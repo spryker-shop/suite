@@ -94,7 +94,7 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
      */
     public function seeCartItemContainsProductConfigurationInstance(
         string $resourceName,
-        string $itemSku
+        string $itemSku,
     ): void {
         $includedByTypeAndSku = $this->grabIncludedByTypeAndSku($resourceName, $itemSku);
 
@@ -148,7 +148,7 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
      */
     protected function mapProductConfigurationTransferToRestProductConfigurationInstanceAttributesTransfer(
         ProductConfigurationTransfer $productConfigurationTransfer,
-        RestProductConfigurationInstanceAttributesTransfer $restProductConfigurationInstanceAttributesTransfer
+        RestProductConfigurationInstanceAttributesTransfer $restProductConfigurationInstanceAttributesTransfer,
     ): RestProductConfigurationInstanceAttributesTransfer {
         $restProductConfigurationInstanceAttributesTransfer = $restProductConfigurationInstanceAttributesTransfer->fromArray(
             $productConfigurationTransfer->toArray(),
