@@ -123,7 +123,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      * @return \Generated\Shared\Transfer\OauthResponseTransfer
      */
     protected function createOauthResponseForCustomerWithTwoCompanyUsers(
-        CompanyUserAuthRestApiTester $I
+        CompanyUserAuthRestApiTester $I,
     ): OauthResponseTransfer {
         $customerTransfer = $this->createCustomerWithTwoCompanyUsers($I);
         $customerTransfer = $I->confirmCustomer($customerTransfer);
@@ -192,7 +192,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     protected function createCompanyUser(
         CompanyUserAuthRestApiTester $I,
         CustomerTransfer $customerTransfer,
-        array $seed = []
+        array $seed = [],
     ): CompanyUserTransfer {
         $companyTransfer = $I->haveActiveCompany([
             CompanyTransfer::STATUS => 'approved',

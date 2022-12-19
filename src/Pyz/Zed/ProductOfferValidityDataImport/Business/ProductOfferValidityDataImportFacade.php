@@ -22,7 +22,7 @@ class ProductOfferValidityDataImportFacade extends SprykerProductOfferValidityDa
      * @return \Generated\Shared\Transfer\DataImporterReportTransfer
      */
     public function importCombinedProductOfferValidity(
-        ?DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null
+        ?DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null,
     ): DataImporterReportTransfer {
         return $this->getFactory()
             ->getCombinedProductOfferValidityDataImporter()

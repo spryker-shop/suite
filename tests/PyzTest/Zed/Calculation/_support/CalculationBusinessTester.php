@@ -432,7 +432,7 @@ class CalculationBusinessTester extends Actor
         int $price,
         string $priceMode,
         float $taxRate,
-        int $quantity
+        int $quantity,
     ): ProductOptionTransfer {
         $productOptionValueEntity = $this->createProductOptionValue($taxRate);
 
@@ -541,7 +541,7 @@ class CalculationBusinessTester extends Actor
      */
     public function assertQuoteItemsHaveExpectedDiscountAmount(
         QuoteTransfer $quoteTransfer,
-        array $expectedItemsDiscountAmountIndexedByItemSku
+        array $expectedItemsDiscountAmountIndexedByItemSku,
     ): void {
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
             $itemDiscountAmountSum = $this->calculateItemDiscountAmountSum($itemTransfer);
@@ -595,7 +595,7 @@ class CalculationBusinessTester extends Actor
      */
     protected function createAvailablePromotionalProduct(
         DiscountGeneralTransfer $discountGeneralTransfer,
-        string $skuPromotionalProductAbstract
+        string $skuPromotionalProductAbstract,
     ): DiscountPromotionTransfer {
         $discountPromotionTransfer = $this->haveDiscountPromotion([
             DiscountPromotionTransfer::FK_DISCOUNT => $discountGeneralTransfer->getIdDiscount(),

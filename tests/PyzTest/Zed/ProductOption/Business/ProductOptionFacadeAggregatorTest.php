@@ -155,7 +155,7 @@ class ProductOptionFacadeAggregatorTest extends Unit
     protected function createSalesOrderItemEntity(
         SpyOmsOrderItemState $testStateEntity,
         SpyOmsOrderProcess $omsProcessEntity,
-        SpySalesOrder $salesOrderEntity
+        SpySalesOrder $salesOrderEntity,
     ): SpySalesOrderItem {
         $salesOrderItemEntity = new SpySalesOrderItem();
         $salesOrderItemEntity->setFkOmsOrderItemState($testStateEntity->getIdOmsOrderItemState());

@@ -86,7 +86,7 @@ class AbstractAlternativeProductsRestApiCest
      * @return void
      */
     public function requestAbstractAlternativeProductsByNotExistingProductConcreteSku(
-        AlternativeProductsRestApiTester $I
+        AlternativeProductsRestApiTester $I,
     ): void {
         // Act
         $I->sendGET($I->buildAbstractAlternativeProductsUrl('NotExistingSku'));

@@ -168,7 +168,7 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     protected function createPersistentQuote(
         UpSellingProductsApiTester $I,
         CustomerTransfer $customerTransfer,
-        array $productConcreteTransfers
+        array $productConcreteTransfers,
     ): QuoteTransfer {
         return $I->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,

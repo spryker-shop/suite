@@ -72,7 +72,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
         array $productConcreteStorageCollectionFilterPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
-        ProductStorageCteStrategyInterface $productConcreteStorageCte
+        ProductStorageCteStrategyInterface $productConcreteStorageCte,
     ) {
         parent::__construct(
             $productFacade,
@@ -153,7 +153,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     protected function storeProductConcreteStorageEntity(
         ProductConcreteStorageTransfer $productConcreteStorageTransfer,
         SpyProductConcreteStorage $productConcreteStorageEntity,
-        $localeName
+        $localeName,
     ): void {
         $productConcreteStorageData = [
             'fk_product' => $productConcreteStorageTransfer->getIdProductConcrete(),
@@ -250,7 +250,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     public function buildSynchronizedMessage(
         array $data,
         string $resourceName,
-        array $params = []
+        array $params = [],
     ): QueueSendMessageTransfer {
         $data['_timestamp'] = microtime(true);
         $payload = [

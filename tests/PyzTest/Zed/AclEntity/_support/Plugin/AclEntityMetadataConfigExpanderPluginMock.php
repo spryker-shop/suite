@@ -22,7 +22,7 @@ class AclEntityMetadataConfigExpanderPluginMock implements AclEntityMetadataConf
      * @return \Generated\Shared\Transfer\AclEntityMetadataConfigTransfer
      */
     public function expand(
-        AclEntityMetadataConfigTransfer $aclEntityMetadataConfigTransfer
+        AclEntityMetadataConfigTransfer $aclEntityMetadataConfigTransfer,
     ): AclEntityMetadataConfigTransfer {
         $aclEntityMetadataConfigTransfer->getAclEntityMetadataCollectionOrFail()->addAclEntityMetadata(
             SpyMerchantProductAbstract::class,

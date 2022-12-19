@@ -53,7 +53,7 @@ trait CartsRestApiFixturesTrait
     protected function createPersistentQuote(
         CartsApiTester $I,
         CustomerTransfer $customerTransfer,
-        array $productConcreteTransfers
+        array $productConcreteTransfers,
     ): QuoteTransfer {
         $quoteTransfer = $I->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,

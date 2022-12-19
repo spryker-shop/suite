@@ -92,7 +92,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         array $productConcreteCollectionFilterPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
-        ProductPagePublisherCteInterface $productConcretePagePublisherCte
+        ProductPagePublisherCteInterface $productConcretePagePublisherCte,
     ) {
         parent::__construct(
             $productConcretePageSearchReader,
@@ -120,7 +120,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      */
     protected function executePublishTransaction(
         array $productConcreteTransfers,
-        array $productConcretePageSearchTransfers
+        array $productConcretePageSearchTransfers,
     ): void {
         $filteredProductConcreteTransfers = $this->executeProductConcreteCollectionFilterPlugins($productConcreteTransfers);
         $filteredProductIds = $this->getProductIdsListFromProductConcreteTransfers($filteredProductConcreteTransfers);
@@ -158,7 +158,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         StoreTransfer $storeTransfer,
         ProductConcretePageSearchTransfer $productConcretePageSearchTransfer,
         LocalizedAttributesTransfer $localizedAttributesTransfer,
-        array $filteredProductIds
+        array $filteredProductIds,
     ): void {
         if (!in_array($productConcreteTransfer->getIdProductConcrete(), $filteredProductIds)) {
             if ($productConcretePageSearchTransfer->getIdProductConcretePageSearch() !== null) {
@@ -213,7 +213,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      */
     public function buildSynchronizedData(
         ProductConcretePageSearchTransfer $productPageSearchTransfer,
-        string $resourceName
+        string $resourceName,
     ): array {
         $data = [];
         $key = $this->generateResourceKey($productPageSearchTransfer, $resourceName);
@@ -236,7 +236,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      */
     protected function generateResourceKey(
         ProductConcretePageSearchTransfer $productPageSearchTransfer,
-        string $resourceName
+        string $resourceName,
     ): string {
         $syncTransferData = new SynchronizationDataTransfer();
         $syncTransferData->setStore($productPageSearchTransfer->getStore());
@@ -257,7 +257,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     public function buildSynchronizedMessage(
         array $data,
         string $resourceName,
-        array $params = []
+        array $params = [],
     ): QueueSendMessageTransfer {
         $data['_timestamp'] = microtime(true);
         $payload = [
