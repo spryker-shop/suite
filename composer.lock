@@ -34890,28 +34890,27 @@
         },
         {
             "name": "spryker/message-broker",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/message-broker.git",
-                "reference": "319bf3d6024e11ef7bae2b9246f1eaa378f1f6cc"
+                "reference": "85416b0a7fb79b567b5ae0b980021bac048cdacc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/message-broker/zipball/319bf3d6024e11ef7bae2b9246f1eaa378f1f6cc",
-                "reference": "319bf3d6024e11ef7bae2b9246f1eaa378f1f6cc",
+                "url": "https://api.github.com/repos/spryker/message-broker/zipball/85416b0a7fb79b567b5ae0b980021bac048cdacc",
+                "reference": "85416b0a7fb79b567b5ae0b980021bac048cdacc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^3.0.0",
-                "spryker/message-broker-extension": "^1.0.0",
+                "spryker/message-broker-extension": "^1.1.0",
                 "spryker/monolog": "^2.0.0",
-                "spryker/symfony": "^3.7.0",
+                "spryker/symfony": "^3.10.0",
                 "spryker/transfer": "^3.25.0",
-                "spryker/util-encoding": "^1.0.0 || ^2.0.0",
-                "symfony/messenger": "^5.0.0 || ^6.0.0"
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
             },
             "require-dev": {
                 "spryker-sdk/async-api": "^0.2.0",
@@ -34945,9 +34944,9 @@
             ],
             "description": "MessageBroker module",
             "support": {
-                "source": "https://github.com/spryker/message-broker/tree/1.2.1"
+                "source": "https://github.com/spryker/message-broker/tree/1.3.0"
             },
-            "time": "2022-11-11T07:06:41+00:00"
+            "time": "2022-12-23T11:50:03+00:00"
         },
         {
             "name": "spryker/message-broker-aws",
@@ -35010,20 +35009,20 @@
         },
         {
             "name": "spryker/message-broker-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/message-broker-extension.git",
-                "reference": "5ea18b678fc07f73779d34163dd4a3c15a275f10"
+                "reference": "8360ac910ec5458e47ce4e3d6600073111d57298"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/message-broker-extension/zipball/5ea18b678fc07f73779d34163dd4a3c15a275f10",
-                "reference": "5ea18b678fc07f73779d34163dd4a3c15a275f10",
+                "url": "https://api.github.com/repos/spryker/message-broker-extension/zipball/8360ac910ec5458e47ce4e3d6600073111d57298",
+                "reference": "8360ac910ec5458e47ce4e3d6600073111d57298",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4"
+                "php": ">=8.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -35032,7 +35031,7 @@
             },
             "suggest": {
                 "spryker/kernel": "If you want to use the MessageValidatorPluginInterface.",
-                "spryker/symfony": "If you want to use MessageSenderPluginInterface or MessageReceiverPluginInterface."
+                "spryker/symfony": "If you want to use MessageSenderPluginInterface, MessageReceiverPluginInterface or MiddlewarePluginInterface, minimum required version: 3.10.0."
             },
             "type": "library",
             "extra": {
@@ -35051,9 +35050,9 @@
             ],
             "description": "MessageBrokerExtension module",
             "support": {
-                "source": "https://github.com/spryker/message-broker-extension/tree/1.0.0"
+                "source": "https://github.com/spryker/message-broker-extension/tree/1.1.0"
             },
-            "time": "2022-04-14T07:53:41+00:00"
+            "time": "2022-12-23T11:50:03+00:00"
         },
         {
             "name": "spryker/messenger",
@@ -56035,16 +56034,16 @@
         },
         {
             "name": "spryker/symfony",
-            "version": "3.9.0",
+            "version": "3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/symfony.git",
-                "reference": "5e347ea8d9e14d393d2b6c018d6ea66b73be521b"
+                "reference": "21895c5a298987f75efd624d5ef8a13126e0805d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/symfony/zipball/5e347ea8d9e14d393d2b6c018d6ea66b73be521b",
-                "reference": "5e347ea8d9e14d393d2b6c018d6ea66b73be521b",
+                "url": "https://api.github.com/repos/spryker/symfony/zipball/21895c5a298987f75efd624d5ef8a13126e0805d",
+                "reference": "21895c5a298987f75efd624d5ef8a13126e0805d",
                 "shasum": ""
             },
             "require": {
@@ -56062,6 +56061,7 @@
                 "symfony/http-foundation": "^5.2.0",
                 "symfony/http-kernel": "^5.2.0",
                 "symfony/intl": "^5.0.9",
+                "symfony/messenger": "^5.0.0 || ^6.0.0",
                 "symfony/mime": "^5.0.9",
                 "symfony/options-resolver": "^5.0.9",
                 "symfony/process": "^5.4.0",
@@ -56101,9 +56101,9 @@
             ],
             "description": "Symfony module",
             "support": {
-                "source": "https://github.com/spryker/symfony/tree/3.9.0"
+                "source": "https://github.com/spryker/symfony/tree/3.10.0"
             },
-            "time": "2022-10-18T17:47:15+00:00"
+            "time": "2022-12-23T11:50:03+00:00"
         },
         {
             "name": "spryker/symfony-mailer",
@@ -68961,16 +68961,16 @@
         },
         {
             "name": "spryker/development",
-            "version": "3.34.1",
+            "version": "3.34.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/development.git",
-                "reference": "bc86af272d39c97e638f5f2001b150f5fd820229"
+                "reference": "1625e93110e48bf381d84c27ff1dc9389316ecb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/development/zipball/bc86af272d39c97e638f5f2001b150f5fd820229",
-                "reference": "bc86af272d39c97e638f5f2001b150f5fd820229",
+                "url": "https://api.github.com/repos/spryker/development/zipball/1625e93110e48bf381d84c27ff1dc9389316ecb3",
+                "reference": "1625e93110e48bf381d84c27ff1dc9389316ecb3",
                 "shasum": ""
             },
             "require": {
@@ -69011,9 +69011,9 @@
             ],
             "description": "Development module",
             "support": {
-                "source": "https://github.com/spryker/development/tree/3.34.1"
+                "source": "https://github.com/spryker/development/tree/3.34.2"
             },
-            "time": "2022-12-01T11:40:47+00:00"
+            "time": "2022-12-23T11:50:03+00:00"
         },
         {
             "name": "spryker/docker-chromedriver",
