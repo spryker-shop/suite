@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c48ed46eebc7f29a5232eb9af262a74",
+    "content-hash": "805da8890a6faa1ec91570494a982f65",
     "packages": [
         {
             "name": "async-aws/core",
@@ -56686,27 +56686,29 @@
         },
         {
             "name": "spryker/tax-storage",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/tax-storage.git",
-                "reference": "c7d5dc7fe5a493647393f63f68c1029c08902c54"
+                "reference": "e1b2cd130deafebadb8259b0fdba4e34cdde0dfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/tax-storage/zipball/c7d5dc7fe5a493647393f63f68c1029c08902c54",
-                "reference": "c7d5dc7fe5a493647393f63f68c1029c08902c54",
+                "url": "https://api.github.com/repos/spryker/tax-storage/zipball/e1b2cd130deafebadb8259b0fdba4e34cdde0dfc",
+                "reference": "e1b2cd130deafebadb8259b0fdba4e34cdde0dfc",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/event-behavior": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/publisher-extension": "^1.0.0",
                 "spryker/storage": "^3.0.0",
                 "spryker/synchronization": "^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0",
-                "spryker/tax": "^5.0.0"
+                "spryker/tax": "^5.11.0",
+                "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -56736,9 +56738,9 @@
             ],
             "description": "TaxStorage module",
             "support": {
-                "source": "https://github.com/spryker/tax-storage/tree/1.3.0"
+                "source": "https://github.com/spryker/tax-storage/tree/1.4.0"
             },
-            "time": "2022-04-18T08:41:46+00:00"
+            "time": "2023-01-16T13:42:24+00:00"
         },
         {
             "name": "spryker/touch",
