@@ -74,7 +74,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
         UrlStorageCteInterface $urlStorageCte,
-        UrlStorageToStoreFacadeInterface $storeFacade
+        UrlStorageToStoreFacadeInterface $storeFacade,
     ) {
         parent::__construct(
             $utilSanitize,
@@ -195,7 +195,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     public function buildSynchronizedMessage(
         array $data,
         string $resourceName,
-        array $params = []
+        array $params = [],
     ): QueueSendMessageTransfer {
         $data['_timestamp'] = microtime(true);
         $payload = [

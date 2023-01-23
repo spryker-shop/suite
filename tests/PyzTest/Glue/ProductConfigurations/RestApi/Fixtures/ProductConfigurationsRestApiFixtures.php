@@ -246,7 +246,7 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
     public function createQuoteTransfer(
         CustomerTransfer $customerTransfer,
         ProductConcreteTransfer $productConcreteTransfer,
-        ProductConfigurationInstanceTransfer $productConfigurationInstanceTransfer
+        ProductConfigurationInstanceTransfer $productConfigurationInstanceTransfer,
     ): QuoteTransfer {
         return (new QuoteBuilder())
             ->withItem([
@@ -281,7 +281,7 @@ class ProductConfigurationsRestApiFixtures implements FixturesBuilderInterface, 
      * @return \Generated\Shared\Transfer\ProductConfigurationInstanceTransfer
      */
     protected function createProductConfigurationInstanceTransfer(
-        ProductConfigurationTransfer $productConfigurationTransfer
+        ProductConfigurationTransfer $productConfigurationTransfer,
     ): ProductConfigurationInstanceTransfer {
         $productConfigurationInstanceTransfer = (new ProductConfigurationInstanceBuilder($productConfigurationTransfer->toArray()))
             ->withPrice()

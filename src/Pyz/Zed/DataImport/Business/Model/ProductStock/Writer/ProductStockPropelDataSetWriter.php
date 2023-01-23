@@ -113,7 +113,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         ProductBundleFacadeInterface $productBundleFacade,
         ProductRepositoryInterface $productRepository,
         StoreFacadeInterface $storeFacade,
-        StockFacadeInterface $stockFacade
+        StockFacadeInterface $stockFacade,
     ) {
         $this->productBundleFacade = $productBundleFacade;
         $this->productRepository = $productRepository;
@@ -349,7 +349,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getStockProductQuantityByIdProductAndStockNames(
         int $idProductConcrete,
-        array $stockNames
+        array $stockNames,
     ): Decimal {
         $stockProductTotalQuantity = SpyStockProductQuery::create()
             ->filterByFkProduct($idProductConcrete)
@@ -498,7 +498,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function updateAbstractAvailabilityQuantity(
         SpyAvailabilityAbstract $availabilityAbstractEntity,
-        int $idStore
+        int $idStore,
     ): SpyAvailabilityAbstract {
         $sumQuantity = SpyAvailabilityQuery::create()
             ->filterByFkAvailabilityAbstract($availabilityAbstractEntity->getIdAvailabilityAbstract())

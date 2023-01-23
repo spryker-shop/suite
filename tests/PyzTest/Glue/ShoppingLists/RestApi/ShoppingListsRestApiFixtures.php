@@ -144,7 +144,7 @@ class ShoppingListsRestApiFixtures implements FixturesBuilderInterface, Fixtures
     protected function createCompanyUser(
         ShoppingListsApiTester $I,
         CustomerTransfer $customerTransfer,
-        array $seed = []
+        array $seed = [],
     ): CompanyUserTransfer {
         $companyTransfer = $I->haveActiveCompany([
             CompanyTransfer::STATUS => 'approved',
