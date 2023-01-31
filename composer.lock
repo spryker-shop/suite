@@ -47494,25 +47494,27 @@
         },
         {
             "name": "spryker/product-review",
-            "version": "2.9.0",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-review.git",
-                "reference": "b503e41b196a9b5dae12982dcd30caab62375609"
+                "reference": "6e4a8c3d27d3fa170e8270ae30e05a85d59afb78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-review/zipball/b503e41b196a9b5dae12982dcd30caab62375609",
-                "reference": "b503e41b196a9b5dae12982dcd30caab62375609",
+                "url": "https://api.github.com/repos/spryker/product-review/zipball/6e4a8c3d27d3fa170e8270ae30e05a85d59afb78",
+                "reference": "6e4a8c3d27d3fa170e8270ae30e05a85d59afb78",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/event": "^1.0.0 || ^2.0.0",
                 "spryker/kernel": "^3.52.0",
                 "spryker/key-builder": "^1.0.0",
                 "spryker/locale": "^3.1.0",
-                "spryker/product": "^5.2.0 || ^6.0.0",
+                "spryker/log": "^3.0.0",
+                "spryker/message-broker-extension": "^1.0.0",
+                "spryker/product": "^5.2.0 || ^6.14.0",
                 "spryker/product-extension": "^1.3.0",
                 "spryker/propel-orm": "^1.1.0",
                 "spryker/search": "^6.3.0 || ^7.0.0 || ^8.0.0",
@@ -47526,9 +47528,11 @@
             "require-dev": {
                 "spryker/catalog": "*",
                 "spryker/code-sniffer": "*",
+                "spryker/container": "*",
                 "spryker/customer": "*",
                 "spryker/elastica": "*",
                 "spryker/propel": "^3.0.0",
+                "spryker/ramsey-uuid": "*",
                 "spryker/search-elasticsearch": "*",
                 "spryker/silex": "^2.0.0",
                 "spryker/testify": "*"
@@ -47557,9 +47561,9 @@
             ],
             "description": "ProductReview module",
             "support": {
-                "source": "https://github.com/spryker/product-review/tree/2.9.0"
+                "source": "https://github.com/spryker/product-review/tree/2.10.0"
             },
-            "time": "2022-10-11T14:40:32+00:00"
+            "time": "2023-01-31T10:39:04+00:00"
         },
         {
             "name": "spryker/product-review-collector",
@@ -47614,26 +47618,27 @@
         },
         {
             "name": "spryker/product-review-gui",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-review-gui.git",
-                "reference": "ef1bf0fe75acb1b9bc872e0eb86b793790c4bc0a"
+                "reference": "6215a0b026e50ab45b8061a29e88b1869df13606"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-review-gui/zipball/ef1bf0fe75acb1b9bc872e0eb86b793790c4bc0a",
-                "reference": "ef1bf0fe75acb1b9bc872e0eb86b793790c4bc0a",
+                "url": "https://api.github.com/repos/spryker/product-review-gui/zipball/6215a0b026e50ab45b8061a29e88b1869df13606",
+                "reference": "6215a0b026e50ab45b8061a29e88b1869df13606",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/customer": "^6.0.0 || ^7.0.0",
                 "spryker/gui": "^3.45.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.1.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
                 "spryker/product-review": "^1.0.0 || ^2.0.0",
+                "spryker/propel-orm": "^1.15.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/util-date-time": "^1.0.0",
                 "spryker/util-sanitize": "^2.0.0",
@@ -47659,9 +47664,9 @@
             ],
             "description": "ProductReviewGui module",
             "support": {
-                "source": "https://github.com/spryker/product-review-gui/tree/1.4.0"
+                "source": "https://github.com/spryker/product-review-gui/tree/1.5.0"
             },
-            "time": "2022-09-19T06:48:51+00:00"
+            "time": "2023-01-31T10:39:04+00:00"
         },
         {
             "name": "spryker/product-review-search",
