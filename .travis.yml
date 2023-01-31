@@ -1177,5 +1177,51 @@ jobs:
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
 
+        - name: Docker / Alpine / PHP 8.0 / MariaDB / Robot
+          <<: *DOCKER_BUILD_TEMPLATE
+          stage: Test
+          language: python
+          python: 3.9
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
+              - TRAVIS=1
+          script:
+              - docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
+              - travis_wait docker/sdk up -t -v
+              - travis_wait docker/sdk testing console queue:worker:start --stop-when-empty
+              - python3 -m pip install --upgrade pip
+              - python3 -m pip install -U robotframework
+              - python3 -m pip install -U robotframework-requests
+              - python3 -m pip install -U robotframework-jsonlibrary
+              - python3 -m pip install -U robotframework-databaselibrary
+              - python3 -m pip install PyMySQL
+              - git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
+              - cd robotframework-tests
+              - robot -v env:api_suite --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite.glue .
+
+        - name: Docker / Alpine / PHP 8.1 / MariaDB / Robot
+          <<: *DOCKER_BUILD_TEMPLATE
+          stage: Test
+          language: python
+          python: 3.9
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
+              - TRAVIS=1
+          script:
+              - docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
+              - travis_wait docker/sdk up -t -v
+              - travis_wait docker/sdk testing console queue:worker:start --stop-when-empty
+              - python3 -m pip install --upgrade pip
+              - python3 -m pip install -U robotframework
+              - python3 -m pip install -U robotframework-requests
+              - python3 -m pip install -U robotframework-jsonlibrary
+              - python3 -m pip install -U robotframework-databaselibrary
+              - python3 -m pip install PyMySQL
+              - git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
+              - cd robotframework-tests
+              - robot -v env:api_suite --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite.glue .
+
 services:
     - redis
