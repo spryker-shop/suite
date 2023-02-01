@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73263d0478e6af03435b64e2954b6cf0",
+    "content-hash": "623c15a2115178b4fc5cb3a32641485e",
     "packages": [
         {
             "name": "async-aws/core",
@@ -40651,25 +40651,26 @@
         },
         {
             "name": "spryker/product-attribute",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-attribute.git",
-                "reference": "d8dd5bdf32cd6be8bea4ae0e14cab2f653295ea9"
+                "reference": "7e4873d07110610f77c4f7de50e6d1598a8faa86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-attribute/zipball/d8dd5bdf32cd6be8bea4ae0e14cab2f653295ea9",
-                "reference": "d8dd5bdf32cd6be8bea4ae0e14cab2f653295ea9",
+                "url": "https://api.github.com/repos/spryker/product-attribute/zipball/7e4873d07110610f77c4f7de50e6d1598a8faa86",
+                "reference": "7e4873d07110610f77c4f7de50e6d1598a8faa86",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/glossary": "^3.8.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/product": "^5.2.0 || ^6.0.0",
                 "spryker/propel-orm": "^1.2.0",
+                "spryker/transfer": "^3.27.0",
                 "spryker/util-encoding": "^2.0.0",
                 "spryker/util-sanitize-xss": "^1.0.0",
                 "spryker/zed-request": "^3.4.0"
@@ -40697,9 +40698,9 @@
             ],
             "description": "ProductAttribute module",
             "support": {
-                "source": "https://github.com/spryker/product-attribute/tree/1.10.0"
+                "source": "https://github.com/spryker/product-attribute/tree/1.11.0"
             },
-            "time": "2022-01-04T12:43:20+00:00"
+            "time": "2023-02-01T17:39:17+00:00"
         },
         {
             "name": "spryker/product-attribute-gui",
@@ -40759,6 +40760,57 @@
                 "source": "https://github.com/spryker/product-attribute-gui/tree/1.4.0"
             },
             "time": "2022-09-19T06:48:51+00:00"
+        },
+        {
+            "name": "spryker/product-attributes-backend-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-attributes-backend-api.git",
+                "reference": "45f6c73c60890b799263657f9874a58c0fdc9a83"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-attributes-backend-api/zipball/45f6c73c60890b799263657f9874a58c0fdc9a83",
+                "reference": "45f6c73c60890b799263657f9874a58c0fdc9a83",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/glue-json-api-convention-extension": "^1.0.0",
+                "spryker/kernel": "^3.66.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/product-attribute": "^1.11.0",
+                "spryker/symfony": "^3.5.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/glue-application": "*"
+            },
+            "suggest": {
+                "spryker/glue-application": "If you want to use glue application plugins"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductAttributesBackendApi module",
+            "support": {
+                "source": "https://github.com/spryker/product-attributes-backend-api/tree/1.0.0"
+            },
+            "time": "2023-02-01T17:39:17+00:00"
         },
         {
             "name": "spryker/product-attributes-rest-api",
