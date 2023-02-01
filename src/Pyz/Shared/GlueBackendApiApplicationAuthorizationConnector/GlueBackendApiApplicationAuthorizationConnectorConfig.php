@@ -41,6 +41,24 @@ class GlueBackendApiApplicationAuthorizationConnectorConfig extends SprykerGlueB
             '#^/categories/.*#' => [
                 'isRegularExpression' => true,
             ],
+            '/\/product-attributes.*/' => [
+                'isRegularExpression' => true,
+                'methods' => [
+                    'get',
+                    'getCollection',
+                    'post',
+                    'patch',
+                ],
+            ],
+            '/\/product-abstract.*/' => [
+                'isRegularExpression' => true,
+                'methods' => [
+                    'get',
+                    'getCollection',
+                    'post',
+                    'patch',
+                ],
+            ],
         ];
     }
 }
