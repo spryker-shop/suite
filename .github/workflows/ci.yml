@@ -149,11 +149,11 @@ jobs:
             - name: Run Architecture rules
               run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
 
-            - name: Run Security check
-              run: vendor/bin/console security:check
-
             - name: Run CodeStyle checks
               run: vendor/bin/console code:sniff:style
+
+            - name: Run Security check
+              run: vendor/bin/console security:check
 
     php-81-mariadb-glue-alpine:
         name: "PHP 8.1 / MariaDB / Glue / Alpine"
