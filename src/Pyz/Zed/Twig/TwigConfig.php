@@ -34,8 +34,8 @@ class TwigConfig extends SprykerTwigConfig
     public function getZedDirectoryPathPatterns(): array
     {
         $directories = array_merge(
-            glob('vendor/spryker/spryker/Bundles/*/src/*/Zed/*/Presentation', GLOB_NOSORT | GLOB_ONLYDIR),
-            glob('vendor/spryker/spryker-shop/Bundles/*/src/*/Zed/*/Presentation', GLOB_NOSORT | GLOB_ONLYDIR),
+            glob('vendor/spryker/spryker/Bundles/*/src/*/Zed/*/Presentation', GLOB_NOSORT | GLOB_ONLYDIR) ?: [],
+            glob('vendor/spryker/spryker-shop/Bundles/*/src/*/Zed/*/Presentation', GLOB_NOSORT | GLOB_ONLYDIR) ?: [],
         );
 
         $directories = array_merge(
@@ -56,7 +56,7 @@ class TwigConfig extends SprykerTwigConfig
     public function getYvesDirectoryPathPatterns(): array
     {
         $themeNameDefault = $this->getSharedConfig()->getYvesThemeNameDefault();
-        $directories = glob(APPLICATION_VENDOR_DIR . '/*/*/Bundles/*/src/*/Yves/*/Theme/' . $themeNameDefault, GLOB_NOSORT | GLOB_ONLYDIR);
+        $directories = glob(APPLICATION_VENDOR_DIR . '/*/*/Bundles/*/src/*/Yves/*/Theme/' . $themeNameDefault, GLOB_NOSORT | GLOB_ONLYDIR) ?: [];
 
         $directories = array_merge(
             $directories,
