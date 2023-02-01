@@ -20,6 +20,7 @@ use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\OauthBackendApiTokenReso
 use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\UserRequestValidatorPlugin;
 use Spryker\Glue\OauthBackendApi\Plugin\UserRequestBuilderPlugin;
 use Spryker\Glue\ProductAttributesBackendApi\Plugin\GlueApplication\ProductAttributesBackendResourcePlugin;
+use Spryker\Glue\ProductsBackendApi\Plugin\GlueApplication\ProductsBackendResourcePlugin;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 
 class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiApplicationDependencyProvider
@@ -87,6 +88,8 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
         return [
             new OauthBackendApiTokenResource(),
             new CategoriesBackendApiResource(),
+            new ProductAttributesBackendResourcePlugin(),
+            new ProductsBackendResourcePlugin(),
         ];
     }
 
