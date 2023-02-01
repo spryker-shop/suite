@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c48ed46eebc7f29a5232eb9af262a74",
+    "content-hash": "73263d0478e6af03435b64e2954b6cf0",
     "packages": [
         {
             "name": "async-aws/core",
@@ -17016,6 +17016,65 @@
             "time": "2022-11-22T13:49:51+00:00"
         },
         {
+            "name": "spryker/categories-backend-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/categories-backend-api.git",
+                "reference": "75989ec9943bad5c506a2eebfba5b615de22b8dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/categories-backend-api/zipball/75989ec9943bad5c506a2eebfba5b615de22b8dc",
+                "reference": "75989ec9943bad5c506a2eebfba5b615de22b8dc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/category": "^5.9.0",
+                "spryker/category-image": "^1.1.0",
+                "spryker/glue-json-api-convention-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/store": "^1.12.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/config": "*",
+                "spryker/glue-application": "*",
+                "spryker/glue-backend-api-application": "*",
+                "spryker/propel": "*",
+                "spryker/ramsey-uuid": "*",
+                "spryker/testify": "*",
+                "spryker/zed-request": "*"
+            },
+            "suggest": {
+                "spryker/glue-application": "If you want to use the Glue backend resource plugins. The minimum varsion is 1.39.0."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CategoriesBackendApi module",
+            "support": {
+                "source": "https://github.com/spryker/categories-backend-api/tree/0.1.0"
+            },
+            "time": "2023-02-01T16:35:54+00:00"
+        },
+        {
             "name": "spryker/categories-rest-api",
             "version": "1.6.0",
             "source": {
@@ -17067,16 +17126,16 @@
         },
         {
             "name": "spryker/category",
-            "version": "5.8.0",
+            "version": "5.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/category.git",
-                "reference": "241414f869430a6016821fd77a37866589a1cc42"
+                "reference": "9da683015336144c6cb39a654f84949be97ad8f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/category/zipball/241414f869430a6016821fd77a37866589a1cc42",
-                "reference": "241414f869430a6016821fd77a37866589a1cc42",
+                "url": "https://api.github.com/repos/spryker/category/zipball/9da683015336144c6cb39a654f84949be97ad8f1",
+                "reference": "9da683015336144c6cb39a654f84949be97ad8f1",
                 "shasum": ""
             },
             "require": {
@@ -17117,9 +17176,9 @@
             ],
             "description": "Category module",
             "support": {
-                "source": "https://github.com/spryker/category/tree/5.8.0"
+                "source": "https://github.com/spryker/category/tree/5.9.0"
             },
-            "time": "2023-01-20T11:20:19+00:00"
+            "time": "2023-02-01T16:35:54+00:00"
         },
         {
             "name": "spryker/category-data-feed",
@@ -30231,16 +30290,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.71.0",
+            "version": "3.71.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "1faee971b008f23cfa17b168b24d54d9297cab94"
+                "reference": "416f88b29771f598d2bd8c8a951fd1837f0fa158"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/1faee971b008f23cfa17b168b24d54d9297cab94",
-                "reference": "1faee971b008f23cfa17b168b24d54d9297cab94",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/416f88b29771f598d2bd8c8a951fd1837f0fa158",
+                "reference": "416f88b29771f598d2bd8c8a951fd1837f0fa158",
                 "shasum": ""
             },
             "require": {
@@ -30286,9 +30345,9 @@
             ],
             "description": "Kernel module",
             "support": {
-                "source": "https://github.com/spryker/kernel/tree/3.71.0"
+                "source": "https://github.com/spryker/kernel/tree/3.71.1"
             },
-            "time": "2023-01-24T16:01:46+00:00"
+            "time": "2023-02-01T16:35:54+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -69401,16 +69460,16 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.47.1",
+            "version": "3.47.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "43e878c992855b0f04dc95a1ed935c2a353c3047"
+                "reference": "c78a8f1335b7562c31adf51ce35e5fce6c92a3c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/43e878c992855b0f04dc95a1ed935c2a353c3047",
-                "reference": "43e878c992855b0f04dc95a1ed935c2a353c3047",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/c78a8f1335b7562c31adf51ce35e5fce6c92a3c6",
+                "reference": "c78a8f1335b7562c31adf51ce35e5fce6c92a3c6",
                 "shasum": ""
             },
             "require": {
@@ -69431,6 +69490,10 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/console": "*",
+                "spryker/glue-application": "*",
+                "spryker/glue-backend-api-application": "*",
+                "spryker/glue-json-api-convention": "*",
+                "spryker/glue-json-api-convention-extension": "*",
                 "spryker/json-path": "^1.0.0",
                 "spryker/json-schema": "^1.0.0",
                 "spryker/propel-orm": "*",
@@ -69468,9 +69531,9 @@
             ],
             "description": "Testify module",
             "support": {
-                "source": "https://github.com/spryker/testify/tree/3.47.1"
+                "source": "https://github.com/spryker/testify/tree/3.47.2"
             },
-            "time": "2022-11-23T07:38:27+00:00"
+            "time": "2023-02-01T16:35:54+00:00"
         },
         {
             "name": "spryker/web-profiler",
