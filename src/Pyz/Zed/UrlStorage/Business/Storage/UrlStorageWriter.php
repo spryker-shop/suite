@@ -208,7 +208,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
         ];
 
         $queueSendTransfer = new QueueSendMessageTransfer();
-        $queueSendTransfer->setBody(json_encode($payload));
+        $queueSendTransfer->setBody((string)json_encode($payload));
 
         $queueSendTransfer->setQueuePoolName('synchronizationPool');
 
@@ -225,6 +225,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
         }
 
         $stmt = Propel::getConnection()->prepare($this->getSql());
+        assert($stmt !== false, 'PDOStatement not set');
         $stmt->execute($this->getParams());
     }
 

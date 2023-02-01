@@ -260,6 +260,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
         $stocks = $this->stockFacade->getStoreToWarehouseMapping();
         $result = [];
         foreach ($stockProducts as $stockProduct) {
+            /** @var string $sku */
             $sku = $stockProduct[SpyProductTableMap::COL_SKU];
             $result[$sku][static::KEY_SKU] = $sku;
             $result[$sku][static::KEY_IS_NEVER_OUT_OF_STOCK] = (bool)$stockProduct[SpyStockProductTableMap::COL_IS_NEVER_OUT_OF_STOCK];
@@ -327,6 +328,7 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
     protected function prepareConcreteAvailabilityData(array $stockProducts, array $reservations): array
     {
         foreach ($stockProducts as $stockProduct) {
+            /** @var string $sku */
             $sku = $stockProduct[static::KEY_SKU];
             $quantity = (new Decimal($stockProduct[static::KEY_QUANTITY]))->subtract($reservations[$sku] ?? 0);
             $stockProducts[$sku][static::KEY_QUANTITY] = $quantity->greatherThanOrEquals(0) ? $quantity : new Decimal(0);

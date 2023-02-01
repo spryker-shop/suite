@@ -210,7 +210,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         $productEntityTransfer->setSku($dataSet[static::COLUMN_CONCRETE_SKU]);
         $productEntityTransfer
             ->setIsActive($dataSet[static::KEY_IS_ACTIVE] ?? true)
-            ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]));
+            ->setAttributes((string)json_encode($dataSet[static::KEY_ATTRIBUTES]));
 
         if ($this->isProductColumn(static::COLUMN_IS_QUANTITY_SPLITTABLE)) {
             $isQuantitySplittable = (
@@ -238,7 +238,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
                 ->setName($localizedAttributes[static::COLUMN_NAME])
                 ->setDescription($localizedAttributes[static::COLUMN_DESCRIPTION])
                 ->setIsComplete($localizedAttributes[static::KEY_IS_COMPLETE] ?? true)
-                ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]))
+                ->setAttributes((string)json_encode($localizedAttributes[static::KEY_ATTRIBUTES]))
                 ->setFkLocale($idLocale);
 
             $productSearchEntityTransfer = new SpyProductSearchEntityTransfer();
