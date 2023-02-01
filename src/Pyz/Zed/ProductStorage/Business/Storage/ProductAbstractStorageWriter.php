@@ -272,7 +272,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         ];
 
         $queueSendTransfer = new QueueSendMessageTransfer();
-        $queueSendTransfer->setBody(json_encode($payload));
+        $queueSendTransfer->setBody((string)json_encode($payload));
 
         if (isset($data['store'])) {
             $queueSendTransfer->setStoreName($data['store']);
@@ -295,6 +295,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         }
 
         $stmt = Propel::getConnection()->prepare($this->getSql());
+        assert($stmt !== false, 'PDOStatement not set');
         $stmt->execute($this->getParams());
     }
 

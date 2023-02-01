@@ -270,7 +270,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         ];
 
         $queueSendTransfer = new QueueSendMessageTransfer();
-        $queueSendTransfer->setBody(json_encode($payload));
+        $queueSendTransfer->setBody((string)json_encode($payload));
 
         if (isset($data['store'])) {
             $queueSendTransfer->setStoreName($data['store']);
@@ -293,13 +293,12 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         }
 
         $con = Propel::getConnection();
-
         $sql = $this->productConcretePagePublisherCte->getSql();
 
         $stmt = $con->prepare($sql);
-
         $params = $this->productConcretePagePublisherCte->buildParams($this->synchronizedDataCollection);
 
+        assert($stmt !== false, 'PDOStatement not set');
         $stmt->execute($params);
     }
 }
