@@ -23,6 +23,7 @@ class InitiationTimeoutCalculator implements TimeoutProcessorTimeoutCalculatorIn
     {
         $omsEventTransfer = $timeoutProcessorTimeoutRequestTransfer->getOmsEvent();
         $interval = DateInterval::createFromDateString($omsEventTransfer->getTimeout());
+        assert($interval !== false);
         $currentTime = (new DateTime())->setTimestamp($timeoutProcessorTimeoutRequestTransfer->getTimestamp());
         $timeout = $currentTime->add($interval);
 
