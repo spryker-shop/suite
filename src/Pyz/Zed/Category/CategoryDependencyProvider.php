@@ -20,7 +20,6 @@ use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\Category\CmsBlock
 use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\CategoryFormPlugin;
 use Spryker\Zed\MerchantCategory\Communication\Plugin\RemoveMerchantCategoryRelationPlugin;
 use Spryker\Zed\ProductCategory\Communication\Plugin\RemoveProductCategoryRelationPlugin;
-use Spryker\Zed\ProductCategory\Communication\Plugin\UpdateProductCategoryRelationPlugin;
 
 class CategoryDependencyProvider extends SprykerDependencyProvider
 {
@@ -48,7 +47,6 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     {
         return array_merge(
             [
-                new UpdateProductCategoryRelationPlugin(),
                 new CategoryFormPlugin(),
                 new UpdateNavigationRelationPlugin(),
                 new CmsBlockCategoryCategoryRelationPlugin(),
