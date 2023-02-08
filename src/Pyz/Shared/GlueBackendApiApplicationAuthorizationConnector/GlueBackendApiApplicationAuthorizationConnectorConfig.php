@@ -59,6 +59,9 @@ class GlueBackendApiApplicationAuthorizationConnectorConfig extends SprykerGlueB
                     'patch',
                 ],
             ],
+            '/\/warehouse-user-assignments(?:\/[^\/]+)?\/?$/' => [
+                'isRegularExpression' => true,
+            ],
         ];
     }
 }
