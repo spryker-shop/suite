@@ -28607,16 +28607,16 @@
         },
         {
             "name": "spryker/gift-card",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gift-card.git",
-                "reference": "fe785de8a97470f740c70bba00256b7c40ae323e"
+                "reference": "eac3b53ecd6ca60f8f6414597fe5e6b159b560d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gift-card/zipball/fe785de8a97470f740c70bba00256b7c40ae323e",
-                "reference": "fe785de8a97470f740c70bba00256b7c40ae323e",
+                "url": "https://api.github.com/repos/spryker/gift-card/zipball/eac3b53ecd6ca60f8f6414597fe5e6b159b560d1",
+                "reference": "eac3b53ecd6ca60f8f6414597fe5e6b159b560d1",
                 "shasum": ""
             },
             "require": {
@@ -28629,8 +28629,10 @@
                 "spryker/product": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
                 "spryker/propel-orm": "^1.5.0",
                 "spryker/sales": "^8.0.0 || ^10.0.0 || ^11.0.0",
+                "spryker/sales-payment-extension": "^1.1.0",
                 "spryker/shipment-extension": "^1.0.0",
                 "spryker/symfony": "^3.1.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
@@ -28671,9 +28673,9 @@
             ],
             "description": "GiftCard module",
             "support": {
-                "source": "https://github.com/spryker/gift-card/tree/1.7.0"
+                "source": "https://github.com/spryker/gift-card/tree/1.8.0"
             },
-            "time": "2023-01-24T16:01:46+00:00"
+            "time": "2023-02-08T15:12:25+00:00"
         },
         {
             "name": "spryker/gift-card-balance",
@@ -51391,16 +51393,16 @@
         },
         {
             "name": "spryker/sales-payment",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-payment.git",
-                "reference": "cf730f0c1ddc38bb192866b4e66ceb63c545a5c2"
+                "reference": "4de58a8db39e30b320064e72ba1fbc3eb319d347"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-payment/zipball/cf730f0c1ddc38bb192866b4e66ceb63c545a5c2",
-                "reference": "cf730f0c1ddc38bb192866b4e66ceb63c545a5c2",
+                "url": "https://api.github.com/repos/spryker/sales-payment/zipball/4de58a8db39e30b320064e72ba1fbc3eb319d347",
+                "reference": "4de58a8db39e30b320064e72ba1fbc3eb319d347",
                 "shasum": ""
             },
             "require": {
@@ -51412,7 +51414,7 @@
                 "spryker/propel-orm": "^1.9.0",
                 "spryker/sales": "^8.15.0 || ^10.0.0 || ^11.0.0",
                 "spryker/sales-extension": "^1.8.0",
-                "spryker/sales-payment-extension": "^1.0.0",
+                "spryker/sales-payment-extension": "^1.1.0",
                 "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
@@ -51443,26 +51445,26 @@
             ],
             "description": "SalesPayment module",
             "support": {
-                "source": "https://github.com/spryker/sales-payment/tree/1.2.1"
+                "source": "https://github.com/spryker/sales-payment/tree/1.3.0"
             },
-            "time": "2022-12-29T12:04:01+00:00"
+            "time": "2023-02-08T15:12:25+00:00"
         },
         {
             "name": "spryker/sales-payment-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-payment-extension.git",
-                "reference": "f3c66a7ca3f5f0ae1407cedbffcfd384463e2618"
+                "reference": "38d6872a91ae4405948dea7d4a6073f204141e0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-payment-extension/zipball/f3c66a7ca3f5f0ae1407cedbffcfd384463e2618",
-                "reference": "f3c66a7ca3f5f0ae1407cedbffcfd384463e2618",
+                "url": "https://api.github.com/repos/spryker/sales-payment-extension/zipball/38d6872a91ae4405948dea7d4a6073f204141e0c",
+                "reference": "38d6872a91ae4405948dea7d4a6073f204141e0c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3"
+                "php": ">=8.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -51484,9 +51486,9 @@
             ],
             "description": "SalesPaymentExtension module",
             "support": {
-                "source": "https://github.com/spryker/sales-payment-extension/tree/1.0.0"
+                "source": "https://github.com/spryker/sales-payment-extension/tree/1.1.0"
             },
-            "time": "2021-05-13T14:15:04+00:00"
+            "time": "2023-02-08T15:12:25+00:00"
         },
         {
             "name": "spryker/sales-payment-gui",
