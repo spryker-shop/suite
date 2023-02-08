@@ -68932,30 +68932,31 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/async-api.git",
-                "reference": "c70ca5fedc51578934708c5ea8b1cb6735b2bb80"
+                "reference": "543bfce93f7901a79fe54d81b20d567ff0646fc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/async-api/zipball/c70ca5fedc51578934708c5ea8b1cb6735b2bb80",
-                "reference": "c70ca5fedc51578934708c5ea8b1cb6735b2bb80",
+                "url": "https://api.github.com/repos/spryker-sdk/async-api/zipball/543bfce93f7901a79fe54d81b20d567ff0646fc4",
+                "reference": "543bfce93f7901a79fe54d81b20d567ff0646fc4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
-                "spryker-sdk/spryk": "^0.4.0",
+                "doctrine/inflector": "^2.0",
+                "php": ">=8.0",
                 "symfony/console": "^4.0.0 || ^5.3 || ^6.0",
                 "symfony/finder": "^4.0.0 || ^5.3 || ^6.0",
                 "symfony/process": "^4.0.0 || ^5.4 || ^6.0",
                 "symfony/property-access": "^4.0.0 || ^5.4 || ^6.0"
             },
             "require-dev": {
-                "codeception/codeception": "*",
-                "codeception/module-asserts": "*",
-                "mikey179/vfsstream": "^1.6",
+                "codeception/codeception": "^5.0.0",
+                "codeception/module-asserts": "^3.0.0",
+                "mikey179/vfsstream": "^1.6.10",
+                "phpstan/phpdoc-parser": "~1.5.1",
                 "sllh/composer-versions-check": "^2.0",
                 "spryker-sdk/architector": "0.1.x-dev",
-                "spryker/code-sniffer": "dev-master",
-                "symfony/var-dumper": "*"
+                "spryker/code-sniffer": "^0.17.18",
+                "symfony/var-dumper": "^6.0.0"
             },
             "bin": [
                 "bin/asyncapi"
@@ -68979,9 +68980,9 @@
             "description": "SDK for AsyncAPI.",
             "support": {
                 "issues": "https://github.com/spryker-sdk/async-api/issues",
-                "source": "https://github.com/spryker-sdk/async-api/tree/0.2.7"
+                "source": "https://github.com/spryker-sdk/async-api/tree/0.2.8"
             },
-            "time": "2023-01-24T16:01:31+00:00"
+            "time": "2023-02-08T18:07:15+00:00"
         },
         {
             "name": "spryker-sdk/benchmark",
