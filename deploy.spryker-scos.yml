@@ -186,6 +186,20 @@ groups:
                         store: DE
                     glue.at.scos.demo-spryker.com:
                         store: AT
+            glue_storefront:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.de.scos.demo-spryker.com:
+                        store: DE
+                    glue-storefront.at.scos.demo-spryker.com:
+                        store: AT
+            glue_backend:
+                application: glue-backend
+                endpoints:
+                    glue-backend.de.scos.demo-spryker.com:
+                        store: DE
+                    glue-backend.at.scos.demo-spryker.com:
+                        store: AT
 services:
     database:
         engine: mysql
