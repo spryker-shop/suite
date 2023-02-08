@@ -5737,7 +5737,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "ddb5362496c11d07ea164986c03b23dfc3305def"
+                "reference": "f6b4ad0732380a58e981457af5124e3ecad73479"
             },
             "require": {
                 "php": ">=8.0"
@@ -5995,6 +5995,7 @@
                 "spryker/customer-note": "*",
                 "spryker/customer-note-gui": "*",
                 "spryker/customer-offer-connector": "*",
+                "spryker/customer-storage": "*",
                 "spryker/customer-user-connector": "*",
                 "spryker/customer-user-connector-gui": "*",
                 "spryker/customers-rest-api": "*",
@@ -6208,6 +6209,7 @@
                 "spryker/oauth-cryptography": "*",
                 "spryker/oauth-customer-connector": "*",
                 "spryker/oauth-customer-connector-extension": "*",
+                "spryker/oauth-customer-validation": "*",
                 "spryker/oauth-dummy": "*",
                 "spryker/oauth-extension": "*",
                 "spryker/oauth-permission": "*",
@@ -6676,7 +6678,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2023-02-08T16:26:42+00:00"
+            "time": "2023-02-08T18:31:45+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6684,7 +6686,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "f2340f2fed1742724431f5ff22f47956b670ce59"
+                "reference": "2d61fc1435be75b5aeb165770f4da94cf03258da"
             },
             "require": {
                 "php": ">=8.0"
@@ -6737,6 +6739,7 @@
                 "spryker-shop/customer-page-extension": "*",
                 "spryker-shop/customer-reorder-widget": "*",
                 "spryker-shop/customer-reorder-widget-extension": "*",
+                "spryker-shop/customer-validation-page": "*",
                 "spryker-shop/date-time-configurator-page-example": "*",
                 "spryker-shop/discount-promotion-widget": "*",
                 "spryker-shop/discount-widget": "*",
@@ -6868,7 +6871,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2023-02-08T16:26:45+00:00"
+            "time": "2023-02-08T18:31:48+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -15810,30 +15813,31 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/async-api.git",
-                "reference": "c70ca5fedc51578934708c5ea8b1cb6735b2bb80"
+                "reference": "543bfce93f7901a79fe54d81b20d567ff0646fc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/async-api/zipball/c70ca5fedc51578934708c5ea8b1cb6735b2bb80",
-                "reference": "c70ca5fedc51578934708c5ea8b1cb6735b2bb80",
+                "url": "https://api.github.com/repos/spryker-sdk/async-api/zipball/543bfce93f7901a79fe54d81b20d567ff0646fc4",
+                "reference": "543bfce93f7901a79fe54d81b20d567ff0646fc4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
-                "spryker-sdk/spryk": "^0.4.0",
+                "doctrine/inflector": "^2.0",
+                "php": ">=8.0",
                 "symfony/console": "^4.0.0 || ^5.3 || ^6.0",
                 "symfony/finder": "^4.0.0 || ^5.3 || ^6.0",
                 "symfony/process": "^4.0.0 || ^5.4 || ^6.0",
                 "symfony/property-access": "^4.0.0 || ^5.4 || ^6.0"
             },
             "require-dev": {
-                "codeception/codeception": "*",
-                "codeception/module-asserts": "*",
-                "mikey179/vfsstream": "^1.6",
+                "codeception/codeception": "^5.0.0",
+                "codeception/module-asserts": "^3.0.0",
+                "mikey179/vfsstream": "^1.6.10",
+                "phpstan/phpdoc-parser": "~1.5.1",
                 "sllh/composer-versions-check": "^2.0",
                 "spryker-sdk/architector": "0.1.x-dev",
-                "spryker/code-sniffer": "dev-master",
-                "symfony/var-dumper": "*"
+                "spryker/code-sniffer": "^0.17.18",
+                "symfony/var-dumper": "^6.0.0"
             },
             "default-branch": true,
             "bin": [
@@ -15858,9 +15862,9 @@
             "description": "SDK for AsyncAPI.",
             "support": {
                 "issues": "https://github.com/spryker-sdk/async-api/issues",
-                "source": "https://github.com/spryker-sdk/async-api/tree/0.2.7"
+                "source": "https://github.com/spryker-sdk/async-api/tree/0.2.8"
             },
-            "time": "2023-01-24T16:01:31+00:00"
+            "time": "2023-02-08T18:07:15+00:00"
         },
         {
             "name": "spryker-sdk/benchmark",
