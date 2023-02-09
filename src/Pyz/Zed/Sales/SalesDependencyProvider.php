@@ -71,6 +71,7 @@ use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\RemunerationTotalOrderExp
 use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\UpdateOrderItemIsReturnableByGlobalReturnableNumberOfDaysPlugin;
 use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\UpdateOrderItemIsReturnableByItemStatePlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
+use Spryker\Zed\WarehouseAllocation\Communication\Plugin\Sales\WarehouseOrderItemExpanderPlugin;
 
 class SalesDependencyProvider extends SprykerSalesDependencyProvider
 {
@@ -200,6 +201,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new AmountSalesUnitOrderItemExpanderPlugin(),
             new ItemStateOrderItemExpanderPlugin(),
             new ProductConfigurationOrderItemExpanderPlugin(),
+            new WarehouseOrderItemExpanderPlugin(),
         ];
     }
 

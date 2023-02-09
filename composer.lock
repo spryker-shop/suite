@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "51f18a8a2d0296633d66dc5faa8d44a8",
+    "content-hash": "535cbdced8718f4c854515f6e356f90a",
     "packages": [
         {
             "name": "async-aws/core",
@@ -46399,6 +46399,58 @@
             "time": "2022-09-01T08:48:24+00:00"
         },
         {
+            "name": "spryker/product-offer-warehouse-allocation-example",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-warehouse-allocation-example.git",
+                "reference": "34b9545ce62248a307bdb47e4705a7a5f8243762"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-warehouse-allocation-example/zipball/34b9545ce62248a307bdb47e4705a7a5f8243762",
+                "reference": "34b9545ce62248a307bdb47e4705a7a5f8243762",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-offer": "^1.0.0",
+                "spryker/product-offer-stock": "^1.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/stock": "^8.0.0",
+                "spryker/store": "^1.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/warehouse-allocation-extension": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ProductOfferWarehouseAllocationExample module",
+            "support": {
+                "source": "https://github.com/spryker/product-offer-warehouse-allocation-example/tree/0.1.0"
+            },
+            "time": "2023-02-09T15:12:38+00:00"
+        },
+        {
             "name": "spryker/product-offers-rest-api",
             "version": "1.0.0",
             "source": {
@@ -48748,6 +48800,56 @@
                 "source": "https://github.com/spryker/product-validity/tree/1.2.0"
             },
             "time": "2022-02-22T13:01:19+00:00"
+        },
+        {
+            "name": "spryker/product-warehouse-allocation-example",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-warehouse-allocation-example.git",
+                "reference": "af0c3bdff817c8ebf190c8afeabe0a20cd70c6b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-warehouse-allocation-example/zipball/af0c3bdff817c8ebf190c8afeabe0a20cd70c6b6",
+                "reference": "af0c3bdff817c8ebf190c8afeabe0a20cd70c6b6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product": "^6.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/stock": "^8.0.0",
+                "spryker/store": "^1.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/warehouse-allocation-extension": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ProductWarehouseAllocationExample module",
+            "support": {
+                "source": "https://github.com/spryker/product-warehouse-allocation-example/tree/0.1.0"
+            },
+            "time": "2023-02-09T15:12:38+00:00"
         },
         {
             "name": "spryker/products-backend-api",
@@ -59164,6 +59266,102 @@
             "time": "2020-05-29T13:08:37+00:00"
         },
         {
+            "name": "spryker/warehouse-allocation",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/warehouse-allocation.git",
+                "reference": "7787a11b9058b004c7a6a33e38aed938f83a246e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/warehouse-allocation/zipball/7787a11b9058b004c7a6a33e38aed938f83a246e",
+                "reference": "7787a11b9058b004c7a6a33e38aed938f83a246e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/sales-extension": "^1.6.0",
+                "spryker/stock": "^8.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/warehouse-allocation-extension": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/oms": "*",
+                "spryker/propel": "*",
+                "spryker/sales": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/oms": "If you want to use Oms command plugins.",
+                "spryker/sales": "If you want to use Oms command plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "WarehouseAllocation module",
+            "support": {
+                "source": "https://github.com/spryker/warehouse-allocation/tree/0.1.0"
+            },
+            "time": "2023-02-09T15:12:38+00:00"
+        },
+        {
+            "name": "spryker/warehouse-allocation-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/warehouse-allocation-extension.git",
+                "reference": "21d430d5e1261b8356e8593f387dcb219cd4182f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/warehouse-allocation-extension/zipball/21d430d5e1261b8356e8593f387dcb219cd4182f",
+                "reference": "21d430d5e1261b8356e8593f387dcb219cd4182f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "WarehouseAllocationExtension module",
+            "support": {
+                "source": "https://github.com/spryker/warehouse-allocation-extension/tree/0.1.0"
+            },
+            "time": "2023-02-09T15:12:38+00:00"
+        },
+        {
             "name": "spryker/warehouse-user",
             "version": "0.1.0",
             "source": {
@@ -66789,7 +66987,7 @@
         },
         {
             "name": "php-webdriver/webdriver",
-            "version": "1.14.1",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-webdriver/php-webdriver.git",
@@ -66849,7 +67047,7 @@
             ],
             "support": {
                 "issues": "https://github.com/php-webdriver/php-webdriver/issues",
-                "source": "https://github.com/php-webdriver/php-webdriver/tree/1.14.1"
+                "source": "https://github.com/php-webdriver/php-webdriver/tree/1.14.0"
             },
             "time": "2023-02-09T12:12:19+00:00"
         },
