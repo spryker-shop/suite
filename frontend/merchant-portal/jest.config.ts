@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     displayName: 'merchant-portal',
     preset: './jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/test-setup.ts'],
@@ -16,10 +16,4 @@ module.exports = {
     coverageReporters: ['lcov', 'text'],
     coverageDirectory: '<rootDir>/../../coverage/merchant-portal',
     passWithNoTests: true,
-    transform: { '^.+\\.(ts|js|html)$': 'jest-preset-angular' },
-    snapshotSerializers: [
-        'jest-preset-angular/build/serializers/no-ng-attributes',
-        'jest-preset-angular/build/serializers/ng-snapshot',
-        'jest-preset-angular/build/serializers/html-comment',
-    ],
 };

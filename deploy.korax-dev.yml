@@ -1,4 +1,4 @@
-version: "0.1"
+version: '0.1'
 
 x-real-ip: &real-ip
     real-ip:
@@ -11,8 +11,8 @@ x-frontend-auth: &frontend-auth
     auth:
         engine: basic
         users:
-            -   username: cloud
-                password: cloud
+            - username: cloud
+              password: cloud
         exclude:
             - '${ALLOWED_IP}' # AWS gateway
             - 185.60.20.0/24 # PayOne
@@ -24,11 +24,11 @@ environment: docker.dev
 image:
     tag: spryker/php:7.4
     environment:
-        SPRYKER_DNS_RESOLVER_IP: "10.105.0.2"
-        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r pre-deploy -vvv"
-        SPRYKER_HOOK_AFTER_DEPLOY: "true"
-        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r production --no-ansi -vvv"
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r destructive --no-ansi -vvv"
+        SPRYKER_DNS_RESOLVER_IP: '10.105.0.2'
+        SPRYKER_HOOK_BEFORE_DEPLOY: 'vendor/bin/install -r pre-deploy -vvv'
+        SPRYKER_HOOK_AFTER_DEPLOY: 'true'
+        SPRYKER_HOOK_INSTALL: 'vendor/bin/install -r production --no-ansi -vvv'
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: 'vendor/bin/install -r destructive --no-ansi -vvv'
     php:
         enabled-extensions:
             - blackfire
@@ -159,16 +159,16 @@ services:
         engine: mysql
         version: mariadb-10.4
         root:
-            username: "root"
-            password: "secret"
+            username: 'root'
+            password: 'secret'
         endpoints:
             localhost:3306:
                 protocol: tcp
     broker:
         engine: rabbitmq
         api:
-            username: "spryker"
-            password: "secret"
+            username: 'spryker'
+            password: 'secret'
         endpoints:
             queue.korax-dev.cloud.spryker.toys:
             localhost:5672:

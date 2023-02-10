@@ -47,10 +47,7 @@ config/Yves/cache_bust.php
 /node_modules/
 
 # public stuff
-public/Yves/assets/
-public/Backoffice/assets/
-public/Zed/assets/
-public/MerchantPortal/assets/
+public/*/assets/
 public/Configurator/dist/
 
 # docker stuff
@@ -93,3 +90,7 @@ composer.phar
 c3.php
 .phpstorm.meta.php
 .githook_local
+
+# angular
+/.angular/cache
+/.angular

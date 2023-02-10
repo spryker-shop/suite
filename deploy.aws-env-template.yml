@@ -1,4 +1,4 @@
-version: "0.1"
+version: '0.1'
 
 x-real-ip: &real-ip
     real-ip:
@@ -178,8 +178,8 @@ services:
         engine: mysql
         version: mariadb-10.4
         root:
-            username: "root"
-            password: "secret"
+            username: 'root'
+            password: 'secret'
         endpoints:
             localhost:3306:
                 protocol: tcp
@@ -187,8 +187,8 @@ services:
         engine: rabbitmq
         version: '3.9'
         api:
-            username: "spryker"
-            password: "secret"
+            username: 'spryker'
+            password: 'secret'
         endpoints:
             queue.example.cloud.spryker.toys:
             localhost:5672:

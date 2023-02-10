@@ -384,7 +384,7 @@ _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
                 - pigz
                 - software-properties-common
             sources:
-                - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+                - sourceline: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
                   key_url: https://download.docker.com/linux/ubuntu/gpg
     install:
         - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSwgImlwdjYiOiBmYWxzZSwgIm10dSI6IDE0NTB9|base64 -d|sudo tee /etc/docker/daemon.json
@@ -456,7 +456,7 @@ jobs:
     fast_finish: true
     include:
         - name: Code generation, fill databases (PostgreSQL).
-          php: "8.0"
+          php: '8.0'
           stage: Build
           before_install:
               - *BEFORE_INSTALL_SCRIPT
@@ -478,7 +478,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: Code generation, fill databases (MySQL).
-          php: "8.0"
+          php: '8.0'
           stage: Build
           env:
               - APPLICATION_ENV=ci.mysql
@@ -498,11 +498,11 @@ jobs:
           after_success:
               - *AWS_SYNC_UP_MYSQL
           addons:
-              mariadb: "10.3"
+              mariadb: '10.3'
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: ElasticSearch 6 (prefer-lowest).
-          php: "8.0"
+          php: '8.0'
           stage: Build
           env:
               - APPLICATION_ENV=ci.mysql
@@ -520,11 +520,11 @@ jobs:
           after_success:
               - *AWS_SYNC_UP_ES
           addons:
-              mariadb: "10.3"
+              mariadb: '10.3'
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: Security check
-          php: "8.0"
+          php: '8.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -537,13 +537,13 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: JS Validation
-          php: "8.0"
+          php: '8.0'
           stage: Test
           script:
               - *VALIDATION_FRONT_END_SCRIPT
 
         - name: PHP Validation
-          php: "8.0"
+          php: '8.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -556,7 +556,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP Validation (prefer-lowest)
-          php: "8.0"
+          php: '8.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -569,7 +569,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker (prefer-lowest) [1/4]
-          php: "8.0"
+          php: '8.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -582,7 +582,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker (prefer-lowest) [2/4]
-          php: "8.0"
+          php: '8.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -595,7 +595,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker (prefer-lowest) [3/4]
-          php: "8.0"
+          php: '8.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -608,7 +608,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker (prefer-lowest) [4/4]
-          php: "8.0"
+          php: '8.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -621,7 +621,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHPStan spryker/spryker-shop (prefer-lowest)
-          php: "8.0"
+          php: '8.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -634,7 +634,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.0 / MariaDB / Browser Testing (Presentation)
-          php: "8.0"
+          php: '8.0'
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -653,12 +653,12 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: "10.3"
+              mariadb: '10.3'
               <<: *ADDONS_BASE_INFRASTRUCTURE
               <<: *ADDONS_ARTIFACTS
 
         - name: PHP 8.0 / MariaDB / Browser Testing (Presentation, prefer-mid)
-          php: "8.0"
+          php: '8.0'
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -677,12 +677,12 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: "10.3"
+              mariadb: '10.3'
               <<: *ADDONS_BASE_INFRASTRUCTURE
               <<: *ADDONS_ARTIFACTS
 
         - name: PHP 8.0 / MariaDB / Browser Testing (Presentation, prefer-lowest)
-          php: "8.0"
+          php: '8.0'
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -703,12 +703,12 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: "10.3"
+              mariadb: '10.3'
               <<: *ADDONS_BASE_INFRASTRUCTURE
               <<: *ADDONS_ARTIFACTS
 
         - name: PHP 8.0 / MariaDB / Testing (Business, Communication, ...)
-          php: "8.0"
+          php: '8.0'
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -726,11 +726,11 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: "10.3"
+              mariadb: '10.3'
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.0 / MariaDB / Testing (Business, Communication, ..., prefer-mid)
-          php: "8.0"
+          php: '8.0'
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -748,11 +748,11 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: "10.3"
+              mariadb: '10.3'
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.0 / MariaDB / Testing (Business, Communication, ...)
-          php: "8.0"
+          php: '8.0'
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -770,11 +770,11 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: "10.3"
+              mariadb: '10.3'
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.1 / MariaDB / Testing (Business, Communication, ...)
-          php: "8.1.0"
+          php: '8.1.0'
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -792,11 +792,11 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: "10.3"
+              mariadb: '10.3'
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.0 / MariaDB / Testing (Business, Communication, ..., prefer-lowest)
-          php: "8.0"
+          php: '8.0'
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -816,11 +816,11 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: "10.3"
+              mariadb: '10.3'
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.0 / PostgreSQL 9.6 / Testing (Presentation)
-          php: "8.0"
+          php: '8.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -842,7 +842,7 @@ jobs:
               postgresql: 9.6
 
         - name: PHP 8.0 / PostgreSQL 9.6 / Testing (Business, Communication, ...)
-          php: "8.0"
+          php: '8.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -863,7 +863,7 @@ jobs:
               postgresql: 9.6
 
         - name: PHP 8.0 / MariaDB / MarketPlace Testing
-          php: "8.0"
+          php: '8.0'
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -885,11 +885,11 @@ jobs:
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
           addons:
-              mariadb: "10.3"
+              mariadb: '10.3'
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.1 Validation
-          php: "8.1.0"
+          php: '8.1.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -902,7 +902,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.1 PHPStan spryker/spryker [1/4]
-          php: "8.1.0"
+          php: '8.1.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -915,7 +915,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.1 PHPStan spryker/spryker [2/4]
-          php: "8.1.0"
+          php: '8.1.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -928,7 +928,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.1 PHPStan spryker/spryker [3/4]
-          php: "8.1.0"
+          php: '8.1.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -941,7 +941,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.1 PHPStan spryker/spryker [4/4]
-          php: "8.1.0"
+          php: '8.1.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -954,7 +954,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.1 PHPStan spryker/spryker-shop
-          php: "8.1.0"
+          php: '8.1.0'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -1071,7 +1071,6 @@ jobs:
               - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
-
 
         - name: Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests
           <<: *DOCKER_BUILD_TEMPLATE
