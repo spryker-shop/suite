@@ -132,6 +132,9 @@ jobs:
             - name: Front-end Formatter
               run: node ./frontend/libs/formatter
 
+            - name: Front-end MP Lint
+              run: npm run mp:eslint
+
             - name: Front-end MP Unit Tests
               run: npm run mp:test
 
