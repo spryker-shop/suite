@@ -7,19 +7,14 @@ channels:
         subscribe:
             message:
                 oneOf:
-                    -
-                        $ref: '#/components/messages/ProductExported'
-                    -
-                        $ref: '#/components/messages/ProductCreated'
-                    -
-                        $ref: '#/components/messages/ProductUpdated'
-                    -
-                        $ref: '#/components/messages/ProductDeleted'
+                    - $ref: '#/components/messages/ProductExported'
+                    - $ref: '#/components/messages/ProductCreated'
+                    - $ref: '#/components/messages/ProductUpdated'
+                    - $ref: '#/components/messages/ProductDeleted'
         publish:
             message:
                 oneOf:
-                    -
-                        $ref: '#/components/messages/InitializeProductExport'
+                    - $ref: '#/components/messages/InitializeProductExport'
 
 components:
     messages:

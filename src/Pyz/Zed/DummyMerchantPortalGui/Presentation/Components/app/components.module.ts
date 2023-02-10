@@ -4,7 +4,7 @@ import { DummyLayoutComponent, DummyLayoutModule } from '@mp/dummy-merchant-port
 import { OverwrittenDummyCardComponent } from './overwritten-dummy-card/overwritten-dummy-card.component';
 import { OverwrittenDummyCardModule } from './overwritten-dummy-card/overwritten-dummy-card.module';
 
-/* tslint:disable:no-unnecessary-class */
+/* eslint-disable @typescript-eslint/no-extraneous-class */
 @NgModule({
     imports: [
         WebComponentsModule.withComponents([DummyLayoutComponent, OverwrittenDummyCardComponent]),
