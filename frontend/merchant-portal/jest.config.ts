@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     displayName: 'merchant-portal',
     preset: './jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/test-setup.ts'],
@@ -8,7 +8,7 @@ module.exports = {
             tsconfig: '<rootDir>/tsconfig.spec.json',
         },
     },
-    roots: ["<rootDir>/../../vendor/spryker"],
+    roots: ['<rootDir>/../../vendor/spryker'],
     testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
     resolver: '@nrwl/jest/plugins/resolver',
     moduleFileExtensions: ['ts', 'js', 'html'],
@@ -16,10 +16,4 @@ module.exports = {
     coverageReporters: ['lcov', 'text'],
     coverageDirectory: '<rootDir>/../../coverage/merchant-portal',
     passWithNoTests: true,
-    transform: { '^.+\\.(ts|js|html)$': 'jest-preset-angular' },
-    snapshotSerializers: [
-        'jest-preset-angular/build/serializers/no-ng-attributes',
-        'jest-preset-angular/build/serializers/ng-snapshot',
-        'jest-preset-angular/build/serializers/html-comment',
-    ],
 };

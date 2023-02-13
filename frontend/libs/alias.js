@@ -1,9 +1,9 @@
 const { join } = require('path');
 
 // get the aliases from the tsconfig.json file
-// and transform them in webpack alises
+// and transform them in webpack aliases
 // allowing the definition of aliases in one place
-const getAliasList = appSettings => {
+const getAliasList = (appSettings) => {
     const tsConfigFile = join(appSettings.context, appSettings.paths.tsConfig);
     const tsConfig = require(tsConfigFile);
     const aliases = tsConfig.compilerOptions.paths;
