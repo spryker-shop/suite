@@ -42,7 +42,7 @@ class LocaleRepository implements LocaleRepositoryInterface
             ->find();
 
         foreach ($localeCollection as $locale) {
-            static::$localeMap[$locale[SpyLocaleTableMap::COL_LOCALE_NAME]] = $locale[SpyLocaleTableMap::COL_ID_LOCALE];
+            static::$localeMap[(string)$locale[SpyLocaleTableMap::COL_LOCALE_NAME]] = $locale[SpyLocaleTableMap::COL_ID_LOCALE];
         }
     }
 }

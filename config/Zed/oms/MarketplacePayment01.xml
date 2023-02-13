@@ -23,6 +23,12 @@
         <transitions>
             <transition happy="true">
                 <source>new</source>
+                <target>warehouse allocated</target>
+                <event>allocate warehouse</event>
+            </transition>
+
+            <transition happy="true">
+                <source>warehouse allocated</source>
                 <target>paid</target>
                 <event>pay</event>
             </transition>
@@ -100,11 +106,13 @@
         <subprocesses>
             <process>MarketplaceReturn</process>
             <process>MarketplaceRefund</process>
+            <process>WarehouseAllocation</process>
         </subprocesses>
 
     </process>
 
     <process name="MarketplaceReturn" file="MarketplaceSubprocess/MarketplaceReturn01.xml"/>
     <process name="MarketplaceRefund" file="MarketplaceSubprocess/MarketplaceRefund01.xml"/>
+    <process name="WarehouseAllocation" file="WarehouseAllocationSubprocess/WarehouseAllocation01.xml"/>
 
 </statemachine>

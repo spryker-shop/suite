@@ -34,6 +34,34 @@ class GlueBackendApiApplicationAuthorizationConnectorConfig extends SprykerGlueB
      */
     public function getProtectedPaths(): array
     {
-        return [];
+        return [
+            '/categories' => [
+                'isRegularExpression' => false,
+            ],
+            '#^/categories/.*#' => [
+                'isRegularExpression' => true,
+            ],
+            '/\/product-attributes.*/' => [
+                'isRegularExpression' => true,
+                'methods' => [
+                    'get',
+                    'getCollection',
+                    'post',
+                    'patch',
+                ],
+            ],
+            '/\/product-abstract.*/' => [
+                'isRegularExpression' => true,
+                'methods' => [
+                    'get',
+                    'getCollection',
+                    'post',
+                    'patch',
+                ],
+            ],
+            '/\/warehouse-user-assignments(?:\/[^\/]+)?\/?$/' => [
+                'isRegularExpression' => true,
+            ],
+        ];
     }
 }

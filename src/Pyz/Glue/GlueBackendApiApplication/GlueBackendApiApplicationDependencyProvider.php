@@ -7,6 +7,7 @@
 
 namespace Pyz\Glue\GlueBackendApiApplication;
 
+use Spryker\Glue\CategoriesBackendApi\Plugin\GlueApplication\CategoriesBackendApiResource;
 use Spryker\Glue\GlueBackendApiApplication\GlueBackendApiApplicationDependencyProvider as SprykerGlueBackendApiApplicationDependencyProvider;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ApplicationIdentifierRequestBuilderPlugin;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\LocaleRequestBuilderPlugin;
@@ -18,6 +19,9 @@ use Spryker\Glue\OauthBackendApi\Plugin\AccessTokenValidatorPlugin;
 use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\OauthBackendApiTokenResource;
 use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\UserRequestValidatorPlugin;
 use Spryker\Glue\OauthBackendApi\Plugin\UserRequestBuilderPlugin;
+use Spryker\Glue\ProductAttributesBackendApi\Plugin\GlueApplication\ProductAttributesBackendResourcePlugin;
+use Spryker\Glue\ProductsBackendApi\Plugin\GlueApplication\ProductsBackendResourcePlugin;
+use Spryker\Glue\WarehouseUsersBackendApi\Plugin\GlueApplication\WarehouseUserAssignmentsBackendResourcePlugin;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 
 class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiApplicationDependencyProvider
@@ -84,6 +88,10 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
     {
         return [
             new OauthBackendApiTokenResource(),
+            new CategoriesBackendApiResource(),
+            new ProductAttributesBackendResourcePlugin(),
+            new ProductsBackendResourcePlugin(),
+            new WarehouseUserAssignmentsBackendResourcePlugin(),
         ];
     }
 

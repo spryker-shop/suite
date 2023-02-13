@@ -40,6 +40,7 @@ use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendEventPaymentRefundPend
 use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
+use Spryker\Zed\WarehouseAllocation\Communication\Plugin\Oms\SalesOrderWarehouseAllocationCommandPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\CancelAndRecalculateCommandByOrderPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\CancelCommandPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\PartialCaptureCommandByOrderPlugin;
@@ -126,6 +127,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new SendEventPaymentConfirmationPendingPlugin(), 'Payment/SendEventPaymentConfirmationPending');
             $commandCollection->add(new SendEventPaymentRefundPendingPlugin(), 'Payment/SendEventPaymentRefundPending');
             $commandCollection->add(new SendEventPaymentCancelReservationPendingPlugin(), 'Payment/SendEventPaymentCancelReservationPending');
+            $commandCollection->add(new SalesOrderWarehouseAllocationCommandPlugin(), 'WarehouseAllocation/WarehouseAllocate');
 
             // ----- Payone
             $commandCollection->add(new CancelCommandPlugin(), 'Payone/Cancel');

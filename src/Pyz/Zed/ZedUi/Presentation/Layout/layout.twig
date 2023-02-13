@@ -1,7 +1,0 @@
-{% extends '@Spryker:ZedUi/Layout/layout.twig' %}
-
-{% block template %}
-    {% set importConfig = importConfig | merge({ isDifferentialMode: false }) %}
-
-    {{ parent() }}
-{% endblock %}

@@ -54,6 +54,7 @@ use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderFo
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemsFormWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Widget\CustomerReorderBundleItemCheckboxWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Widget\CustomerReorderItemCheckboxWidget;
+use SprykerShop\Yves\CustomerValidationPage\Plugin\ShopApplication\LogoutInvalidatedCustomerFilterControllerEventHandlerPlugin;
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\ShopApplication\CartDiscountPromotionProductListWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
 use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
@@ -66,6 +67,7 @@ use SprykerShop\Yves\MerchantSalesReturnWidget\Plugin\MerchantSalesReturnCreateF
 use SprykerShop\Yves\MerchantSalesReturnWidget\Widget\MerchantSalesReturnCreateFormWidget;
 use SprykerShop\Yves\MerchantSearchWidget\Widget\MerchantSearchWidget;
 use SprykerShop\Yves\MerchantSwitcherWidget\Widget\MerchantSwitcherSelectorFormWidget;
+use SprykerShop\Yves\MerchantWidget\Widget\MerchantMetaSchemaWidget;
 use SprykerShop\Yves\MerchantWidget\Widget\ShoppingListMerchantWidget;
 use SprykerShop\Yves\MerchantWidget\Widget\SoldByMerchantWidget;
 use SprykerShop\Yves\MoneyWidget\Widget\CurrencyIsoCodeWidget;
@@ -316,6 +318,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductBundleProductDetailPageItemsListWidget::class,
             ProductConfigurationShoppingListItemDisplayWidget::class,
             ProductConfigurationShoppingListPageButtonWidget::class,
+            MerchantMetaSchemaWidget::class,
         ];
     }
 
@@ -343,6 +346,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new CompanyUserRestrictionHandlerPlugin(),
             new CheckBusinessOnBehalfCompanyUserHandlerPlugin(), #BusinessOnBehalfFeature
             new CompanyBusinessUnitControllerRestrictionPlugin(),
+            new LogoutInvalidatedCustomerFilterControllerEventHandlerPlugin(),
         ];
     }
 
