@@ -19,6 +19,7 @@ use Spryker\Zed\CategoryNavigationConnector\Communication\Plugin\UpdateNavigatio
 use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\Category\CmsBlockCategoryCategoryRelationPlugin;
 use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\CategoryFormPlugin;
 use Spryker\Zed\MerchantCategory\Communication\Plugin\RemoveMerchantCategoryRelationPlugin;
+use Spryker\Zed\ProductCategory\Communication\Plugin\Category\ProductUpdateEventTriggerCategoryRelationUpdatePlugin;
 use Spryker\Zed\ProductCategory\Communication\Plugin\RemoveProductCategoryRelationPlugin;
 
 class CategoryDependencyProvider extends SprykerDependencyProvider
@@ -50,6 +51,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
                 new CategoryFormPlugin(),
                 new UpdateNavigationRelationPlugin(),
                 new CmsBlockCategoryCategoryRelationPlugin(),
+                new ProductUpdateEventTriggerCategoryRelationUpdatePlugin(),
             ],
             parent::getRelationUpdatePluginStack(),
         );
