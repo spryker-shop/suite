@@ -38,6 +38,11 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     public const CLIENT_CATALOG = 'CLIENT_CATALOG';
 
     /**
+     * @var string
+     */
+    public const SERVICE_UTIL_NUMBER = 'SERVICE_UTIL_NUMBER';
+
+    /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
      * @return \Spryker\Yves\Kernel\Container
@@ -49,6 +54,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
         $container = $this->addLocaleClient($container);
         $container = $this->addProductSalePageWidgetPlugins($container);
         $container = $this->addCatalogClient($container);
+        $container = $this->addUtilNumberService($container);
 
         return $container;
     }
@@ -104,6 +110,20 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     {
         $container->set(static::CLIENT_CATALOG, function (Container $container) {
             return $container->getLocator()->catalog()->client();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addUtilNumberService(Container $container): Container
+    {
+        $container->set(static::SERVICE_UTIL_NUMBER, function (Container $container) {
+            return $container->getLocator()->utilNumber()->service();
         });
 
         return $container;
