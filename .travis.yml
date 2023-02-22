@@ -414,6 +414,7 @@ env:
         - ARTIFACTS_KEY=$AWS_S3_ACCESS_KEY_ID
         - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
         - ARTIFACTS_BUCKET=spryker-ci
+        - ROBOT_TESTS_ARTIFACTS_BUCKET=suite-nonsplit-robot-api-ci
         - AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID
         - AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY
         - AWS_DEFAULT_REGION=eu-west-1
@@ -1197,9 +1198,16 @@ jobs:
               - python3 -m pip install -U robotframework-jsonlibrary
               - python3 -m pip install -U robotframework-databaselibrary
               - python3 -m pip install PyMySQL
+              - sudo apt install awscli -q
               - git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
               - cd robotframework-tests
               - robot -v env:api_suite --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite.glue .
+          after_script:
+              - *AWS_SYNC_CONFIG
+              - |
+                  AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET aws s3 cp $TRAVIS_BUILD_DIR/robotframework-tests/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/robot-test-artifacts/$TRAVIS_BUILD_NUMBER/PHP8.0MariaDBRobot/ \
+                    --recursive \
+                    --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
         - name: Docker / Alpine / PHP 8.1 / MariaDB / Robot
           <<: *DOCKER_BUILD_TEMPLATE
@@ -1220,9 +1228,15 @@ jobs:
               - python3 -m pip install -U robotframework-jsonlibrary
               - python3 -m pip install -U robotframework-databaselibrary
               - python3 -m pip install PyMySQL
+              - sudo apt install awscli -q
               - git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
               - cd robotframework-tests
               - robot -v env:api_suite --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite.glue .
-
+          after_script:
+              - *AWS_SYNC_CONFIG
+              - |
+                  AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET aws s3 cp $TRAVIS_BUILD_DIR/robotframework-tests/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/robot-test-artifacts/$TRAVIS_BUILD_NUMBER/PHP8.1MariaDBRobot/ \
+                    --recursive \
+                    --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 services:
     - redis
