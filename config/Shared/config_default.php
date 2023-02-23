@@ -23,6 +23,8 @@ use Generated\Shared\Transfer\ProductCreatedTransfer;
 use Generated\Shared\Transfer\ProductDeletedTransfer;
 use Generated\Shared\Transfer\ProductExportedTransfer;
 use Generated\Shared\Transfer\ProductUpdatedTransfer;
+use Generated\Shared\Transfer\SearchEndpointAvailableTransfer;
+use Generated\Shared\Transfer\SearchEndpointRemovedTransfer;
 use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Shared\Scheduler\SchedulerConfig;
@@ -633,7 +635,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('
 $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,
     APPLICATION_ROOT_DIR . '/vendor/spryker-eco/payone/config/Zed/Oms',
-    APPLICATION_ROOT_DIR . '/vendor/spryker/payment/config/Zed/Oms',
+    APPLICATION_ROOT_DIR . '/vendor/spryker/sales-payment/config/Zed/Oms',
 ];
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'PayoneCreditCardPartialOperations',
@@ -732,13 +734,14 @@ $config[GlueBackendApiApplicationConstants::GLUE_BACKEND_API_HOST] = $sprykerGlu
 $config[GlueBackendApiApplicationConstants::PROJECT_NAMESPACES] = [
     'Pyz',
 ];
+$config[GlueBackendApiApplicationConstants::GLUE_BACKEND_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '*';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ Glue Storefront API -------------------------------
 // ----------------------------------------------------------------------------
 $sprykerGlueStorefrontHost = getenv('SPRYKER_GLUE_STOREFRONT_HOST');
 $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $sprykerGlueStorefrontHost;
-
+$config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '*';
 $config[GlueJsonApiConventionConstants::GLUE_DOMAIN] = sprintf(
     'https://%s',
     $sprykerGlueStorefrontHost ?: $sprykerGlueBackendHost ?: 'localhost',
@@ -795,6 +798,8 @@ $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
     ProductUpdatedTransfer::class => 'product',
     ProductDeletedTransfer::class => 'product',
     InitializeProductExportTransfer::class => 'product',
+    SearchEndpointAvailableTransfer::class => 'search',
+    SearchEndpointRemovedTransfer::class => 'search',
     AddReviewsTransfer::class => 'reviews',
 ];
 
@@ -804,12 +809,14 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'payment' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'assets' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'product' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'search' => MessageBrokerAwsConfig::SQS_TRANSPORT,
 ];
 
 $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
     'payment' => 'http',
     'assets' => 'http',
     'product' => 'http',
+    'search' => 'http',
 ];
 
 // -------------------------------- ACP AWS --------------------------------------
