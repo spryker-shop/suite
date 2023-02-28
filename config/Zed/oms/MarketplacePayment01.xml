@@ -61,7 +61,7 @@
                 <event>cancel</event>
             </transition>
 
-            <transition happy="true" condition="MerchantSalesOrder/IsOrderPaid">
+            <transition condition="MerchantSalesOrder/IsOrderPaid">
                 <source>canceled</source>
                 <target>refunded</target>
                 <event>refund</event>
