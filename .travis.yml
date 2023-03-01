@@ -503,7 +503,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: ElasticSearch 6 (prefer-lowest).
-          php: '8.0'
+          php: '8.1.0'
           stage: Build
           env:
               - APPLICATION_ENV=ci.mysql
