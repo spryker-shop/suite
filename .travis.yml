@@ -503,7 +503,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: ElasticSearch 6 (prefer-lowest).
-          php: '8.0.1'
+          php: '8.0.2'
           stage: Build
           env:
               - APPLICATION_ENV=ci.mysql
@@ -683,7 +683,7 @@ jobs:
               <<: *ADDONS_ARTIFACTS
 
         - name: PHP 8.0 / MariaDB / Browser Testing (Presentation, prefer-lowest)
-          php: '8.0.1'
+          php: '8.0.2'
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -709,7 +709,7 @@ jobs:
               <<: *ADDONS_ARTIFACTS
 
         - name: PHP 8.0 / MariaDB / Testing (Business, Communication, ...)
-          php: '8.0.1'
+          php: '8.0.2'
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -797,7 +797,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.0 / MariaDB / Testing (Business, Communication, ..., prefer-lowest)
-          php: '8.0.1'
+          php: '8.0.2'
           stage: Test
           env:
               - APPLICATION_ENV=ci.mysql
@@ -821,7 +821,7 @@ jobs:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
         - name: PHP 8.0 / PostgreSQL 9.6 / Testing (Presentation)
-          php: '8.0.1'
+          php: '8.0.2'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
@@ -843,7 +843,7 @@ jobs:
               postgresql: 9.6
 
         - name: PHP 8.0 / PostgreSQL 9.6 / Testing (Business, Communication, ...)
-          php: '8.0.1'
+          php: '8.0.2'
           stage: Test
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
