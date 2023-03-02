@@ -321,4 +321,5 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'assets' => 'in-memory',
     'product' => 'in-memory',
     'reviews' => 'in-memory',
+    'orders' => 'in-memory',
 ];
