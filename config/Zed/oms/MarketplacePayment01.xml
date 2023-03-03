@@ -61,7 +61,7 @@
                 <event>cancel</event>
             </transition>
 
-            <transition happy="true" condition="MerchantSalesOrder/IsOrderPaid">
+            <transition condition="MerchantSalesOrder/IsOrderPaid">
                 <source>canceled</source>
                 <target>refunded</target>
                 <event>refund</event>
@@ -94,7 +94,7 @@
         </transitions>
 
         <events>
-            <event name="pay" manual="true"/>
+            <event name="pay" manual="true" command="Order/RequestProductReviews"/>
             <event name="cancel" manual="true"/>
             <event name="refund" manual="true"/>
             <event name="send to merchant" onEnter="true" command="MerchantSalesOrder/CreateOrders"/>
