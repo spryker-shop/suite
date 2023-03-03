@@ -21,6 +21,7 @@ use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\UserRequestValidatorPlug
 use Spryker\Glue\OauthBackendApi\Plugin\UserRequestBuilderPlugin;
 use Spryker\Glue\ProductAttributesBackendApi\Plugin\GlueApplication\ProductAttributesBackendResourcePlugin;
 use Spryker\Glue\ProductsBackendApi\Plugin\GlueApplication\ProductsBackendResourcePlugin;
+use Spryker\Glue\PushNotificationsBackendApi\Plugin\GlueBackendApiApplication\PushNotificationSubscriptionsBackendResourcePlugin;
 use Spryker\Glue\WarehouseUsersBackendApi\Plugin\GlueApplication\WarehouseUserAssignmentsBackendResourcePlugin;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 
@@ -92,6 +93,7 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
             new ProductAttributesBackendResourcePlugin(),
             new ProductsBackendResourcePlugin(),
             new WarehouseUserAssignmentsBackendResourcePlugin(),
+            new PushNotificationSubscriptionsBackendResourcePlugin(),
         ];
     }
 
