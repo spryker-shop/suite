@@ -191,6 +191,23 @@ $jobs[] = [
     'stores' => $allStores,
 ];
 
+/* Push notification */
+$jobs[] = [
+    'name' => 'delete-expired-push-notification-subscriptions',
+    'command' => '$PHP_BIN vendor/bin/console push-notification:delete-expired-push-notification-subscriptions',
+    'schedule' => '0 0 * * 0',
+    'enable' => true,
+    'stores' => $allStores,
+];
+
+$jobs[] = [
+    'name' => 'send-push-notifications',
+    'command' => '$PHP_BIN vendor/bin/console push-notification:send-push-notifications',
+    'schedule' => '* * * * *',
+    'enable' => true,
+    'stores' => $allStores,
+];
+
 /* Message broker */
 if (\Spryker\Shared\Config\Config::get(\Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants::SQS_RECEIVER_CONFIG)) {
     $jobs[] = [

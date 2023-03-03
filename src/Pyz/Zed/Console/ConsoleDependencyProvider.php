@@ -108,6 +108,8 @@ use Spryker\Zed\Propel\Communication\Console\PropelSchemaXmlNameValidatorConsole
 use Spryker\Zed\Propel\Communication\Console\RemoveEntityTransferConsole;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Zed\Publisher\Communication\Console\PublisherTriggerEventsConsole;
+use Spryker\Zed\PushNotification\Communication\Console\DeleteExpiredPushNotificationSubscriptionConsole;
+use Spryker\Zed\PushNotification\Communication\Console\SendPushNotificationConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueDumpConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
@@ -409,6 +411,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new MessageBrokerWorkerConsole(),
 
             new ScopeCacheCollectorConsole(),
+
+            new DeleteExpiredPushNotificationSubscriptionConsole(),
+            new SendPushNotificationConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
