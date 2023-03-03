@@ -414,7 +414,6 @@ env:
         - ARTIFACTS_KEY=$AWS_S3_ACCESS_KEY_ID
         - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
         - ARTIFACTS_BUCKET=spryker-ci
-        - ROBOT_TESTS_ARTIFACTS_BUCKET=suite-nonsplit-robot-api-ci
         - AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID
         - AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY
         - AWS_DEFAULT_REGION=eu-west-1
@@ -1205,7 +1204,7 @@ jobs:
           after_script:
               - *AWS_SYNC_CONFIG
               - |
-                  AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET aws s3 cp $TRAVIS_BUILD_DIR/robotframework-tests/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/robot-test-artifacts/$TRAVIS_BUILD_NUMBER/PHP8.0MariaDBRobot/ \
+                  AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET aws s3 cp $TRAVIS_BUILD_DIR/robotframework-tests/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-api-ci/$TRAVIS_BUILD_NUMBER/PHP8.0MariaDBRobot/ \
                     --recursive \
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
@@ -1235,7 +1234,7 @@ jobs:
           after_script:
               - *AWS_SYNC_CONFIG
               - |
-                  AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET aws s3 cp $TRAVIS_BUILD_DIR/robotframework-tests/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/robot-test-artifacts/$TRAVIS_BUILD_NUMBER/PHP8.1PostgreSQLRobot/ \
+                  AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET aws s3 cp $TRAVIS_BUILD_DIR/robotframework-tests/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-api-ci/$TRAVIS_BUILD_NUMBER/PHP8.1PostgreSQLRobot/ \
                     --recursive \
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 services:
