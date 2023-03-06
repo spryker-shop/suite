@@ -69,7 +69,7 @@
 
         <events>
             <event name="authorize" timeout="1 second"/>
-            <event name="request product review" onEnter="true" command="Order/RequestProductReviews"/>
+            <event name="request product review" onEnter="true"/>
             <event name="export" onEnter="true" manual="true" command="Oms/SendOrderConfirmation"/>
             <event name="ship" manual="true" command="Oms/SendOrderShipped"/>
             <event name="stock-update" manual="true"/>
