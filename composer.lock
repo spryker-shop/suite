@@ -241,16 +241,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.261.4",
+            "version": "3.261.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "31bc1e2a528c0f0881e4366d8ee0fa729cd42b00"
+                "reference": "1fb31e97fa4da90935a87e321c07662a5827ee2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/31bc1e2a528c0f0881e4366d8ee0fa729cd42b00",
-                "reference": "31bc1e2a528c0f0881e4366d8ee0fa729cd42b00",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1fb31e97fa4da90935a87e321c07662a5827ee2d",
+                "reference": "1fb31e97fa4da90935a87e321c07662a5827ee2d",
                 "shasum": ""
             },
             "require": {
@@ -329,9 +329,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.261.4"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.261.5"
             },
-            "time": "2023-03-03T19:22:53+00:00"
+            "time": "2023-03-06T19:20:40+00:00"
         },
         {
             "name": "brick/math",
@@ -43944,24 +43944,24 @@
         },
         {
             "name": "spryker/product-image-storage",
-            "version": "1.14.0",
+            "version": "1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-image-storage.git",
-                "reference": "3d6eaeabe3c1c81538c9600caad80c19bc0b7694"
+                "reference": "ab4e157b84b07a2006d17cfbc3b0145e230b6e62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-image-storage/zipball/3d6eaeabe3c1c81538c9600caad80c19bc0b7694",
-                "reference": "3d6eaeabe3c1c81538c9600caad80c19bc0b7694",
+                "url": "https://api.github.com/repos/spryker/product-image-storage/zipball/ab4e157b84b07a2006d17cfbc3b0145e230b6e62",
+                "reference": "ab4e157b84b07a2006d17cfbc3b0145e230b6e62",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/event-behavior": "^1.10.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/product": "^5.5.0 || ^6.0.0",
-                "spryker/product-image": "^3.5.0",
+                "spryker/product-image": "^3.8.0",
                 "spryker/propel-orm": "^1.5.0",
                 "spryker/storage": "^3.4.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
@@ -43974,6 +43974,7 @@
                 "spryker/product-attribute": "*",
                 "spryker/product-storage": "*",
                 "spryker/propel": "*",
+                "spryker/queue": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -43997,9 +43998,9 @@
             ],
             "description": "ProductImageStorage module",
             "support": {
-                "source": "https://github.com/spryker/product-image-storage/tree/1.14.0"
+                "source": "https://github.com/spryker/product-image-storage/tree/1.15.0"
             },
-            "time": "2022-04-18T08:41:46+00:00"
+            "time": "2023-03-07T08:36:29+00:00"
         },
         {
             "name": "spryker/product-label",
@@ -68067,25 +68068,25 @@
         },
         {
             "name": "phpbench/dom",
-            "version": "0.3.2",
+            "version": "0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpbench/dom.git",
-                "reference": "b013b717832ddbaadf2a40984b04bc66af9a7110"
+                "reference": "786a96db538d0def931f5b19225233ec42ec7a72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpbench/dom/zipball/b013b717832ddbaadf2a40984b04bc66af9a7110",
-                "reference": "b013b717832ddbaadf2a40984b04bc66af9a7110",
+                "url": "https://api.github.com/repos/phpbench/dom/zipball/786a96db538d0def931f5b19225233ec42ec7a72",
+                "reference": "786a96db538d0def931f5b19225233ec42ec7a72",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
-                "php": "^7.2||^8.0"
+                "php": "^7.3||^8.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.18",
-                "phpstan/phpstan": "^0.12.83",
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^8.0||^9.0"
             },
             "type": "library",
@@ -68112,9 +68113,9 @@
             "description": "DOM wrapper to simplify working with the PHP DOM implementation",
             "support": {
                 "issues": "https://github.com/phpbench/dom/issues",
-                "source": "https://github.com/phpbench/dom/tree/0.3.2"
+                "source": "https://github.com/phpbench/dom/tree/0.3.3"
             },
-            "time": "2021-09-24T15:26:07+00:00"
+            "time": "2023-03-06T23:46:57+00:00"
         },
         {
             "name": "phpbench/phpbench",
