@@ -20,6 +20,7 @@ use Spryker\Zed\GiftCardMailConnector\Communication\Plugin\Oms\Command\ShipGiftC
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderConfirmationPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderShippedPlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderStatusChangedMessagePlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandCollectionInterface;
 use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionCollectionInterface;
 use Spryker\Zed\Oms\OmsDependencyProvider as SprykerOmsDependencyProvider;
@@ -135,6 +136,8 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new PartialCaptureCommandByOrderPlugin(), 'Payone/PartialCapture');
             $commandCollection->add(new SavePartialRefundCommandPlugin(), 'Payone/SavePartialRefund');
             $commandCollection->add(new PartialRefundCommandPlugin(), 'Payone/PartialRefund');
+
+            $commandCollection->add(new SendOrderStatusChangedMessagePlugin(), 'Order/RequestProductReviews');
 
             return $commandCollection;
         });
