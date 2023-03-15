@@ -452,6 +452,8 @@ jobs:
               # Install npm packages
               - vendor/bin/console frontend:project:install-dependencies -vvv
               - npm run mp:build:production
+              - npm run mp:stylelint
+              - npm run mp:eslint
               - npm run mp:test
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
