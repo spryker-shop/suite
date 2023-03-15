@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 
-/* eslint-disable @typescript-eslint/no-extraneous-class */
 @Component({
     selector: 'mp-dummy-card',
     templateUrl: './overwritten-dummy-card.component.html',
