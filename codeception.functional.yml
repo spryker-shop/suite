@@ -40,6 +40,7 @@ extensions:
                 # Zed & Client SearchElasticsearch tests always fail if running AFTER Shared SearchElasticsearch tests
                 # see codeception.functional.stage2.yml
                 - SearchElasticsearch
+                - SalesOrderThreshold
                 # Also see FacetQueryExpanderPluginFilteredQueryTest::createFilteredStringFacetDataWithMultipleValues
                 - SearchClientBCTest
                 - SearchFacadeBCTest
@@ -50,6 +51,3 @@ extensions:
                 - AclRoleCreateCest
                 - AclRoleEditCest
                 - AclRoleListCest
-params:
-    - tests/default.yml
-    - env
