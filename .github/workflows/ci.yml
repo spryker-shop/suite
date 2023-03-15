@@ -135,6 +135,9 @@ jobs:
             - name: Front-end MP Lint
               run: npm run mp:eslint
 
+            - name: Front-end MP Style lint
+              run: npm run mp:stylelint
+
             - name: Front-end MP Unit Tests
               run: npm run mp:test
 

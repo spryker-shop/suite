@@ -8,7 +8,7 @@ export default {
             tsconfig: '<rootDir>/tsconfig.spec.json',
         },
     },
-    roots: ['<rootDir>/../../vendor/spryker'],
+    roots: ['<rootDir>/../../src/Pyz/Zed'],
     testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
     resolver: '@nrwl/jest/plugins/resolver',
     moduleFileExtensions: ['ts', 'js', 'html'],
