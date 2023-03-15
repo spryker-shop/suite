@@ -21,7 +21,7 @@ image:
         npm: 8
 
 composer:
-    mode: --no-dev
+    mode: "--no-dev --quiet"
     autoload: --classmap-authoritative
 
 regions:
@@ -114,6 +114,20 @@ groups:
                     backend-api.at.spryker.local:
                         store: AT
                         entry-point: BackendApi
+            glue_storefront_eu:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.de.spryker.local:
+                        store: DE
+                    glue-storefront.at.spryker.local:
+                        store: AT
+            glue_backend_eu:
+                application: glue-backend
+                endpoints:
+                    glue-backend.de.spryker.local:
+                        store: DE
+                    glue-backend.at.spryker.local:
+                        store: AT
 
 services:
     database:
