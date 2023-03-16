@@ -20,6 +20,7 @@ use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Installer\AgentOauthSco
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Installer\OauthCompanyUserInstallerPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Installer\OauthCustomerScopeInstallerPlugin;
 use Spryker\Zed\OauthUserConnector\Communication\Plugin\Installer\OauthUserScopeInstallerPlugin;
+use Spryker\Zed\OauthWarehouse\Communication\Plugin\Installer\OauthWarehouseInstallerPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\PriceInstallerPlugin;
 use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\Installer\ProductAlternativeProductLabelConnectorInstallerPlugin;
 use Spryker\Zed\ProductDiscontinuedProductLabelConnector\Communication\Plugin\Installer\ProductDiscontinuedProductLabelConnectorInstallerPlugin;
@@ -63,6 +64,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new OauthCompanyUserInstallerPlugin(),
             new AgentOauthScopeInstallerPlugin(),
             new PushNotificationWebPushPhpProviderInstallerPlugin(),
+            new OauthWarehouseInstallerPlugin(),
         ];
     }
 }
