@@ -18,10 +18,13 @@ use Spryker\Glue\GlueBackendApiApplicationAuthorizationConnector\Plugin\GlueBack
 use Spryker\Glue\OauthBackendApi\Plugin\AccessTokenValidatorPlugin;
 use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\OauthBackendApiTokenResource;
 use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\UserRequestValidatorPlugin;
-use Spryker\Glue\OauthBackendApi\Plugin\UserRequestBuilderPlugin;
+use Spryker\Glue\OauthBackendApi\Plugin\GlueBackendApiApplication\UserRequestBuilderPlugin;
 use Spryker\Glue\ProductAttributesBackendApi\Plugin\GlueApplication\ProductAttributesBackendResourcePlugin;
 use Spryker\Glue\ProductsBackendApi\Plugin\GlueApplication\ProductsBackendResourcePlugin;
 use Spryker\Glue\PushNotificationsBackendApi\Plugin\GlueBackendApiApplication\PushNotificationSubscriptionsBackendResourcePlugin;
+use Spryker\Glue\WarehouseOauthBackendApi\Plugin\GlueBackendApiApplication\WarehouseRequestBuilderPlugin;
+use Spryker\Glue\WarehouseOauthBackendApi\Plugin\GlueBackendApiApplication\WarehouseRequestValidatorPlugin;
+use Spryker\Glue\WarehouseOauthBackendApi\Plugin\GlueBackendApiApplication\WarehouseTokensBackendResourcePlugin;
 use Spryker\Glue\WarehouseUsersBackendApi\Plugin\GlueApplication\WarehouseUserAssignmentsBackendResourcePlugin;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 
@@ -46,6 +49,7 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
             new ApplicationIdentifierRequestBuilderPlugin(),
             new LocaleRequestBuilderPlugin(),
             new UserRequestBuilderPlugin(),
+            new WarehouseRequestBuilderPlugin(),
         ];
     }
 
@@ -57,6 +61,7 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
         return [
             new AccessTokenValidatorPlugin(),
             new UserRequestValidatorPlugin(),
+            new WarehouseRequestValidatorPlugin(),
         ];
     }
 
@@ -93,6 +98,7 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
             new ProductAttributesBackendResourcePlugin(),
             new ProductsBackendResourcePlugin(),
             new WarehouseUserAssignmentsBackendResourcePlugin(),
+            new WarehouseTokensBackendResourcePlugin(),
             new PushNotificationSubscriptionsBackendResourcePlugin(),
         ];
     }
