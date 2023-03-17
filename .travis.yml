@@ -794,6 +794,9 @@ jobs:
                   AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET aws s3 cp $TRAVIS_BUILD_DIR/robotframework-tests/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-api-ci/$TRAVIS_BUILD_NUMBER/PHP8.0MariaDBRobot/ \
                     --recursive \
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
+          after_failure:
+              - echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=${AWS_DEFAULT_REGION}&prefix=suite-nonsplit-robot-api-ci/${TRAVIS_BUILD_NUMBER}/PHP8.0MariaDBRobot/log.html"
+              - echo "You must have VPN access to AWS (Spryker-Internal account)"
 
         - name: Docker / Alpine / PHP 8.1 / PostgreSQL / Robot
           <<: *DOCKER_BUILD_TEMPLATE
@@ -824,5 +827,8 @@ jobs:
                   AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET aws s3 cp $TRAVIS_BUILD_DIR/robotframework-tests/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-api-ci/$TRAVIS_BUILD_NUMBER/PHP8.1PostgreSQLRobot/ \
                     --recursive \
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
+          after_failure:
+              - echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=${AWS_DEFAULT_REGION}&prefix=suite-nonsplit-robot-api-ci/${TRAVIS_BUILD_NUMBER}/PHP8.1PostgreSQLRobot/log.html"
+              - echo "You must have VPN access to AWS (Spryker-Internal account)"
 services:
     - redis
