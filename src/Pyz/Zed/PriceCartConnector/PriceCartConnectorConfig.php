@@ -27,4 +27,17 @@ class PriceCartConnectorConfig extends SprykerPriceCartConnectorConfig
             ItemTransfer::PRODUCT_OFFER_REFERENCE,
         ]);
     }
+
+    /**
+     * @return list<string>
+     */
+    public function getItemFieldsForIdentifier(): array
+    {
+        return array_merge(parent::getItemFieldsForIdentifier(), [
+            ItemTransfer::SKU,
+            ItemTransfer::QUANTITY,
+            ItemTransfer::MERCHANT_REFERENCE,
+            ItemTransfer::PRODUCT_OFFER_REFERENCE,
+        ]);
+    }
 }
