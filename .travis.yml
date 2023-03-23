@@ -203,9 +203,9 @@ _VALIDATION_SCRIPT_PHP_LOWEST: &VALIDATION_SCRIPT_PHP_LOWEST
 _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
     - echo "_VALIDATION_FRONT_END_SCRIPT"
     - npm install
-    - node ./frontend/libs/stylelint
-    - node ./frontend/libs/tslint --format stylish
-    - node ./frontend/libs/formatter
+    - npm run formatter
+    - npm run yves:stylelint
+    - npm run yves:eslint
 
 _SECURITY_CHECK_SCRIPT: &SECURITY_CHECK_SCRIPT
     - vendor/bin/console security:check
