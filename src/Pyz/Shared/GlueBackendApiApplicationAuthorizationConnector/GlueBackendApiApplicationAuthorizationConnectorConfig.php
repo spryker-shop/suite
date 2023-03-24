@@ -71,6 +71,12 @@ class GlueBackendApiApplicationAuthorizationConnectorConfig extends SprykerGlueB
                     'post',
                 ],
             ],
+            '/\/picking-lists.*/' => [
+                'isRegularExpression' => true,
+                'methods' => [
+                    'patch',
+                ],
+            ],
         ];
     }
 }

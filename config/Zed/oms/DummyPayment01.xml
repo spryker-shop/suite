@@ -10,6 +10,7 @@
             <process>DummyRefund</process>
             <process>DummyReturn</process>
             <process>DummyInvoice</process>
+            <process>DummyPicking</process>
             <process>CreateGiftCard</process>
             <process>WarehouseAllocation</process>
         </subprocesses>
@@ -108,8 +109,14 @@
 
             <transition happy="true">
                 <source>waiting</source>
+                <target>picking list generation scheduled</target>
+                <event>picking list generation schedule</event>
+            </transition>
+
+            <transition happy="true">
+                <source>picking finished</source>
                 <target>exported</target>
-                <event>check giftcard purchase</event>
+                <event>finish picking</event>
             </transition>
 
             <transition happy="true" condition="GiftCard/IsGiftCard">
@@ -160,6 +167,7 @@
 
     <process name="DummyRefund" file="DummySubprocess/DummyRefund01.xml"/>
     <process name="DummyReturn" file="DummySubprocess/DummyReturn01.xml"/>
+    <process name="DummyPicking" file="DummySubprocess/DummyPicking01.xml"/>
     <process name="DummyInvoice" file="DummySubprocess/DummyInvoice01.xml"/>
     <process name="CreateGiftCard" file="GiftCardSubprocess/CreateGiftCard01.xml"/>
     <process name="WarehouseAllocation" file="WarehouseAllocationSubprocess/WarehouseAllocation01.xml"/>

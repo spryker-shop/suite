@@ -9,6 +9,8 @@ namespace Pyz\Glue\GlueBackendApiApplicationGlueJsonApiConventionConnector;
 
 use Spryker\Glue\GlueBackendApiApplicationGlueJsonApiConventionConnector\GlueBackendApiApplicationGlueJsonApiConventionConnectorDependencyProvider as SprykerGlueBackendApiApplicationGlueJsonApiConventionConnectorDependencyProvider;
 use Spryker\Glue\GlueJsonApiConventionExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
+use Spryker\Glue\PickingListsBackendApi\PickingListsBackendApiConfig;
+use Spryker\Glue\PickingListsBackendApi\Plugin\GlueJsonApiConvention\PickingListItemsByPickingListsBackendResourceRelationshipPlugin;
 use Spryker\Glue\UsersBackendApi\Plugin\GlueJsonApiConvention\UserByWarehouseUserAssignmentBackendResourceRelationshipPlugin;
 use Spryker\Glue\WarehouseUsersBackendApi\WarehouseUsersBackendApiConfig;
 
@@ -25,6 +27,11 @@ class GlueBackendApiApplicationGlueJsonApiConventionConnectorDependencyProvider 
         $resourceRelationshipCollection->addRelationship(
             WarehouseUsersBackendApiConfig::RESOURCE_TYPE_WAREHOUSE_USER_ASSIGNMENTS,
             new UserByWarehouseUserAssignmentBackendResourceRelationshipPlugin(),
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            PickingListsBackendApiConfig::RESOURCE_PICKING_LISTS,
+            new PickingListItemsByPickingListsBackendResourceRelationshipPlugin(),
         );
 
         return $resourceRelationshipCollection;
