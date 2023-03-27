@@ -40,6 +40,7 @@ use Orm\Zed\Tax\Persistence\SpyTaxSet;
 use Orm\Zed\Tax\Persistence\SpyTaxSetTax;
 use Pyz\Zed\Calculation\CalculationDependencyProvider;
 use Pyz\Zed\Discount\DiscountDependencyProvider;
+use ReflectionClass;
 use Spryker\Shared\Calculation\CalculationPriceMode;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Zed\Calculation\Business\CalculationBusinessFactory;
@@ -48,6 +49,7 @@ use Spryker\Zed\Calculation\Communication\Plugin\Calculator\GrandTotalCalculator
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundableAmountCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundTotalCalculatorPlugin;
 use Spryker\Zed\Calculation\Dependency\Service\CalculationToUtilTextBridge;
+use Spryker\Zed\CategoryDiscountConnector\Business\Checker\CategoryDecisionRuleChecker;
 use Spryker\Zed\Kernel\Container;
 
 /**
@@ -549,6 +551,22 @@ class CalculationBusinessTester extends Actor
 
             $this->assertSame($expectedItemDiscountAmount, $itemDiscountAmountSum);
         }
+    }
+
+    /**
+     * @return void
+     */
+    public function cleanCategoryDecisionRuleCheckerStaticProperties(): void
+    {
+        $reflectedClass = new ReflectionClass(CategoryDecisionRuleChecker::class);
+
+        $groupedProductCategoryTransfers = $reflectedClass->getProperty('groupedProductCategoryTransfers');
+        $groupedProductCategoryTransfers->setAccessible(true);
+        $groupedProductCategoryTransfers->setValue(null);
+
+        $groupedCategoryKeys = $reflectedClass->getProperty('groupedCategoryKeys');
+        $groupedCategoryKeys->setAccessible(true);
+        $groupedCategoryKeys->setValue(null);
     }
 
     /**
