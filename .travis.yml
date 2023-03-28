@@ -205,7 +205,7 @@ _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
     - npm install
     - npm run formatter
     - npm run yves:stylelint
-    - npm run yves:eslint
+    - npm run yves:lint
 
 _SECURITY_CHECK_SCRIPT: &SECURITY_CHECK_SCRIPT
     - vendor/bin/console security:check
@@ -453,7 +453,7 @@ jobs:
               - vendor/bin/console frontend:project:install-dependencies -vvv
               - npm run mp:build:production
               - npm run mp:stylelint
-              - npm run mp:eslint
+              - npm run mp:lint
               - npm run mp:test
           after_script:
               - *BROWSER_TESTING_AFTER_SCRIPT
