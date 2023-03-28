@@ -127,13 +127,13 @@ jobs:
               run: npm run yves:stylelint
 
             - name: ES lint
-              run: npm run yves:eslint
+              run: npm run yves:lint
 
             - name: Front-end Formatter
               run: npm run formatter
 
             - name: Front-end MP Lint
-              run: npm run mp:eslint
+              run: npm run mp:lint
 
             - name: Front-end MP Style lint
               run: npm run mp:stylelint
