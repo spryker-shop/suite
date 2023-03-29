@@ -137,9 +137,17 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     protected function addProductSalePageWidgetPlugins($container): Container
     {
         $container->set(static::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS, function () {
-            return [];
+            return $this->getProductSalePageWidgetPlugins();
         });
 
         return $container;
+    }
+
+    /**
+     * @return array<string>
+     */
+    protected function getProductSalePageWidgetPlugins(): array
+    {
+        return [];
     }
 }
