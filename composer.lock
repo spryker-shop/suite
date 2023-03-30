@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d8f46dc9ccc81463f86bb19d252b3a9",
+    "content-hash": "c300733e511fe7554c486fcb9abedbda",
     "packages": [
         {
             "name": "async-aws/core",
@@ -71796,6 +71796,59 @@
                 "source": "https://github.com/spryker/docker-chromedriver/tree/master"
             },
             "time": "2022-12-28T16:44:41+00:00"
+        },
+        {
+            "name": "spryker/profiler",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/profiler.git",
+                "reference": "5d71224c1a41aa0329f41a1bb022404e37c5c15f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/profiler/zipball/5d71224c1a41aa0329f41a1bb022404e37c5c15f",
+                "reference": "5d71224c1a41aa0329f41a1bb022404e37c5c15f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xhprof": "*",
+                "php": ">=8.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/web-profiler-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use Web Profiler plugins.",
+                "spryker/event-dispatcher": "If you want to use profiler listeners."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Profiler module",
+            "support": {
+                "source": "https://github.com/spryker/profiler/tree/0.1.0"
+            },
+            "time": "2023-03-29T15:18:44+00:00"
         },
         {
             "name": "spryker/silex",
