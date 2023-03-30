@@ -8,7 +8,6 @@
 namespace Pyz\Zed\WebProfiler;
 
 use Spryker\Zed\Config\Communication\Plugin\WebProfiler\WebProfilerConfigDataCollectorPlugin;
-use Spryker\Zed\Profiler\Communication\Plugin\WebProfiler\WebProfilerProfilerDataCollectorPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\WebProfiler\WebProfilerAjaxDataCollectorPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\WebProfiler\WebProfilerConfigDataCollectorPlugin as SymfonyWebProfilerConfigDataCollectorPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\WebProfiler\WebProfilerEventsDataCollectorPlugin;
@@ -40,7 +39,6 @@ class WebProfilerDependencyProvider extends SprykerWebProfilerDependencyProvider
             new WebProfilerMemoryDataCollectorPlugin(),
             new WebProfilerTimeDataCollectorPlugin(),
             new WebProfilerTwigDataCollectorPlugin(),
-            new WebProfilerProfilerDataCollectorPlugin(),
         ];
     }
 }
