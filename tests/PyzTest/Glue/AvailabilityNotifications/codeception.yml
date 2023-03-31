@@ -28,6 +28,8 @@ suites:
                 - \SprykerTest\Shared\Product\Helper\ProductDataHelper
                 - \SprykerTest\Shared\Customer\Helper\CustomerDataHelper
                 - \SprykerTest\Glue\AuthRestApi\Helper\AuthRestApiHelper
+                - \SprykerTest\Service\Container\Helper\ContainerHelper
+                - \SprykerTest\Shared\Store\Helper\StoreDependencyHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser

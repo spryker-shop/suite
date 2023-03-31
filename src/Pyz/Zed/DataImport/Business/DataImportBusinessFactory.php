@@ -150,8 +150,6 @@ use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSql;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutor;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
-use Pyz\Zed\DataImport\Business\Model\Store\StoreReader;
-use Pyz\Zed\DataImport\Business\Model\Store\StoreWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxSetNameToIdTaxSetStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxWriterStep;
 use Pyz\Zed\DataImport\Communication\Plugin\CombinedProduct\ProductAbstract\CombinedProductAbstractBulkPdoWriterPlugin;
@@ -180,7 +178,6 @@ use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockBulkPdoWrit
 use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockPropelWriterPlugin;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\DataImport\DataImportDependencyProvider;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
@@ -215,8 +212,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function getDataImporterByType(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): ?DataImporterInterface
     {
         switch ($dataImportConfigurationActionTransfer->getDataEntity()) {
-            case DataImportConfig::IMPORT_TYPE_STORE:
-                return $this->createStoreImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_CURRENCY:
                 return $this->createCurrencyImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_ORDER_SOURCE:
@@ -1657,31 +1652,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker->addStep(new OrderSourceWriterStep());
-
-        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-
-        return $dataImporter;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
-     */
-    protected function createStoreImporter(
-        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer,
-    ): DataImporterInterface {
-        $dataImporter = $this->createDataImporter(
-            $dataImportConfigurationActionTransfer->getDataEntity(),
-            new StoreReader(
-                $this->createDataSet(
-                    Store::getInstance()->getAllowedStores(),
-                ),
-            ),
-        );
-
-        $dataSetStepBroker = $this->createDataSetStepBroker();
-        $dataSetStepBroker->addStep(new StoreWriterStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 

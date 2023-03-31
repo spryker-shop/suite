@@ -82,16 +82,11 @@ class ProductStockBulkPdoMariaDbDataSetWriter extends AbstractProductStockBulkDa
     protected function persistAvailability(): void
     {
         $skus = $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_CONCRETE_SKU);
-        $storeTransfer = $this->storeFacade->getCurrentStore();
 
         $concreteSkusToAbstractMap = $this->mapConcreteSkuToAbstractSku($skus);
         $reservationItems = $this->getReservationsBySkus($skus);
 
-        $this->updateAvailability($skus, $storeTransfer, $concreteSkusToAbstractMap, $reservationItems);
-
-        $sharedStores = $storeTransfer->getStoresWithSharedPersistence();
-        foreach ($sharedStores as $storeName) {
-            $storeTransfer = $this->storeFacade->getStoreByName($storeName);
+        foreach ($this->storeFacade->getAllStores() as $storeTransfer) {
             $this->updateAvailability($skus, $storeTransfer, $concreteSkusToAbstractMap, $reservationItems);
         }
 

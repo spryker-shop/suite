@@ -192,6 +192,7 @@ _VALIDATION_SCRIPT_PHP8: &VALIDATION_SCRIPT_PHP8
     - vendor/bin/console dev:dependency:find
     - vendor/bin/spryker-dev-console dev:deprecation-links:check
 
+_VALIDATION_SCRIPT_PHP8_TOUCHED_MODLUES: &VALIDATION_SCRIPT_PHP8_TOUCHED_MODULES
     - chmod +x tests/*.sh
     - tests/travis_check_touched_modules.sh
     - tests/travis_check_untracked.sh
@@ -229,6 +230,8 @@ _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
             - mp.de.spryker.local
         apt:
             packages:
+                - redis-tools
+                - redis-server
                 - apache2-utils
                 - apt-transport-https
                 - ca-certificates
@@ -239,6 +242,54 @@ _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
             sources:
                 - sourceline: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
                   key_url: https://download.docker.com/linux/ubuntu/gpg
+                - sourceline: ppa:chris-lea/redis-server
+                - sourceline: ppa:ondrej/php
+    install:
+        - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSwgImlwdjYiOiBmYWxzZSwgIm10dSI6IDE0NTB9|base64 -d|sudo tee /etc/docker/daemon.json
+        - sudo apt-get install docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+        - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        - sudo chmod +x /usr/local/bin/docker-compose
+    before_install:
+        - |
+            ./config/Shared/ci/travis/download-and-cache-file.sh  \
+              https://github.com/docker/docker-credential-helpers/releases/download/v0.6.3/docker-credential-pass-v0.6.3-amd64.tar.gz \
+              $HOME/other-download
+    before_script:
+        - ./config/Shared/ci/travis/docker-credentials.sh
+        - sudo systemctl start docker
+        - docker version
+        - docker buildx version
+    after_script: skip
+
+_DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE: &DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
+    stage: test
+    os: linux
+    dist: bionic
+    language: shell
+    addons:
+        hosts:
+            - backend-api.eu.spryker.local
+            - backend-gateway.eu.spryker.local
+            - backoffice.eu.spryker.local
+            - glue.eu.spryker.local
+            - yves.eu.spryker.local
+            - mp.eu.spryker.local
+        apt:
+            packages:
+                - redis-tools
+                - redis-server
+                - apache2-utils
+                - apt-transport-https
+                - ca-certificates
+                - curl
+                - gnupg-agent
+                - pigz
+                - software-properties-common
+            sources:
+                - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+                  key_url: https://download.docker.com/linux/ubuntu/gpg
+                - sourceline: ppa:chris-lea/redis-server
+                - sourceline: ppa:ondrej/php
     install:
         - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSwgImlwdjYiOiBmYWxzZSwgIm10dSI6IDE0NTB9|base64 -d|sudo tee /etc/docker/daemon.json
         - sudo apt-get install docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
@@ -261,7 +312,6 @@ version: ~> 1.0
 env:
     global:
         - APPLICATION_ENV=ci.pgsql
-        - APPLICATION_STORE=DE
         - SPRYKER_TESTING_ENABLED=1
         - PROJECT=suite
         - ARTIFACTS_KEY=$AWS_S3_ACCESS_KEY_ID
@@ -311,6 +361,8 @@ jobs:
         - name: Code generation.
           php: '8.0'
           stage: Build
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *BEFORE_INSTALL_SCRIPT
           install:
@@ -320,7 +372,29 @@ jobs:
           before_script:
               - *SETUP_WEB_INFRASTRUCTURE
           script:
-              - vendor/bin/install DE -r ci.code-generate
+              - travis_wait 60 vendor/bin/install DE -r ci.code-generate
+          after_success:
+              - *AWS_SYNC_UP_POSTGRES
+          addons:
+              postgresql: 9.6
+              <<: *ADDONS_BASE_INFRASTRUCTURE
+
+        - name: Code generation / Dynamic Store
+          php: '8.0'
+          stage: Build
+          env:
+              - SPRYKER_DYNAMIC_STORE_MODE=true
+              - SPRYKER_CURRENT_REGION=EU
+          before_install:
+              - *BEFORE_INSTALL_SCRIPT
+          install:
+              - echo "_COMPOSER_INSTALL"
+              - COMPOSER_MEMORY_LIMIT=-1 composer install --no-interaction --prefer-install=auto
+              - *INSTALL_SCRIPT
+          before_script:
+              - *SETUP_WEB_INFRASTRUCTURE
+          script:
+              - travis_wait 60 vendor/bin/install -r ci.code-generate
           after_success:
               - *AWS_SYNC_UP_POSTGRES
           addons:
@@ -330,6 +404,8 @@ jobs:
         - name: Security check
           php: '8.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -343,12 +419,16 @@ jobs:
         - name: JS Validation
           php: '8.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           script:
               - *VALIDATION_FRONT_END_SCRIPT
 
         - name: PHP Validation
           php: '8.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -362,6 +442,8 @@ jobs:
         - name: PHP Validation (prefer-lowest)
           php: '8.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -375,6 +457,8 @@ jobs:
         - name: PHPStan spryker/spryker (prefer-lowest) [1/4]
           php: '8.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -388,6 +472,8 @@ jobs:
         - name: PHPStan spryker/spryker (prefer-lowest) [2/4]
           php: '8.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -401,6 +487,8 @@ jobs:
         - name: PHPStan spryker/spryker (prefer-lowest) [3/4]
           php: '8.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -414,6 +502,8 @@ jobs:
         - name: PHPStan spryker/spryker (prefer-lowest) [4/4]
           php: '8.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -427,6 +517,8 @@ jobs:
         - name: PHPStan spryker/spryker-shop (prefer-lowest)
           php: '8.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -440,6 +532,8 @@ jobs:
         - name: PHP 8.0 / MarketPlace Testing
           php: '8.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -463,6 +557,8 @@ jobs:
         - name: PHP 8.1 Validation
           php: '8.1.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -473,9 +569,26 @@ jobs:
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
+        - name: PHP 8.1 Validation | Touched Modules
+          php: '8.1.0'
+          stage: Test
+          env:
+              - APPLICATION_STORE=DE
+          before_install:
+              - *AWS_SYNC_DOWN_POSTGRES
+              - *BEFORE_INSTALL_SCRIPT
+          install:
+              - *COMPOSER_INSTALL
+          script:
+              - *VALIDATION_SCRIPT_PHP8_TOUCHED_MODULES
+          addons:
+              <<: *ADDONS_BASE_INFRASTRUCTURE
+
         - name: PHP 8.1 PHPStan spryker/spryker [1/4]
           php: '8.1.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -489,6 +602,8 @@ jobs:
         - name: PHP 8.1 PHPStan spryker/spryker [2/4]
           php: '8.1.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -502,6 +617,8 @@ jobs:
         - name: PHP 8.1 PHPStan spryker/spryker [3/4]
           php: '8.1.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -515,6 +632,8 @@ jobs:
         - name: PHP 8.1 PHPStan spryker/spryker [4/4]
           php: '8.1.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -528,6 +647,8 @@ jobs:
         - name: PHP 8.1 PHPStan spryker/spryker-shop
           php: '8.1.0'
           stage: Test
+          env:
+              - APPLICATION_STORE=DE
           before_install:
               - *AWS_SYNC_DOWN_POSTGRES
               - *BEFORE_INSTALL_SCRIPT
@@ -554,6 +675,24 @@ jobs:
               - travis_wait 40 docker/sdk testing codecept run -c codeception.functional.stage2.yml
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.glue.yml
 
+        - name: Docker / Alpine / PHP 8.0 / MariaDB / Functional Tests / Dynamic Store
+          <<: *DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
+              - TRAVIS=1
+              - SPRYKER_DYNAMIC_STORE_MODE=true
+              - SPRYKER_CURRENT_REGION=EU
+          script:
+              - docker/sdk boot -v deploy.ci.functional.mariadb.dynamic-store.yml
+              - travis_wait 30 docker/sdk up -t
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage0.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage1.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage2.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.glue.yml
+
         - name: Docker / Alpine / PHP 8.0 / MariaDB / Functional Tests / Prefer Lowest
           <<: *DOCKER_BUILD_TEMPLATE
           language: php
@@ -567,37 +706,36 @@ jobs:
               - phpenv config-rm xdebug.ini
               - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
               - docker/sdk boot -v deploy.ci.functional.mariadb.prefer-lowest.yml
-              - COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto
+              - COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet
               - travis_wait 30 docker/sdk up -t
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage0.yml
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage1.yml
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.yml
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage2.yml
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.glue.yml
-          addons:
-              hosts:
-                  - backend-api.de.spryker.local
-                  - backend-gateway.de.spryker.local
-                  - backoffice.de.spryker.local
-                  - glue.de.spryker.local
-                  - yves.de.spryker.local
-                  - mp.de.spryker.local
-              apt:
-                  packages:
-                      - redis-tools
-                      - redis-server
-                      - apache2-utils
-                      - apt-transport-https
-                      - ca-certificates
-                      - curl
-                      - gnupg-agent
-                      - pigz
-                      - software-properties-common
-                  sources:
-                      - sourceline: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
-                        key_url: https://download.docker.com/linux/ubuntu/gpg
-                      - sourceline: ppa:chris-lea/redis-server
-                      - sourceline: ppa:ondrej/php
+
+        - name: Docker / Alpine / PHP 8.0 / MariaDB / Functional Tests / Prefer Lowest / Dynamic Store
+          <<: *DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
+          language: php
+          php: '8.0'
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
+              - TRAVIS=1
+              - SPRYKER_DYNAMIC_STORE_MODE=true
+              - SPRYKER_CURRENT_REGION=EU
+          script:
+              - phpenv config-rm xdebug.ini
+              - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+              - docker/sdk boot -v deploy.ci.functional.mariadb.prefer-lowest.dynamic-store.yml
+              - COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet
+              - travis_wait 30 docker/sdk up -t
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage0.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage1.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage2.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.glue.yml
 
         - name: Docker / Alpine / PHP 8.0 / PostgreSQL / Functional Tests
           <<: *DOCKER_BUILD_TEMPLATE
@@ -608,6 +746,24 @@ jobs:
               - TRAVIS=1
           script:
               - docker/sdk boot -v deploy.ci.functional.yml
+              - travis_wait 30 docker/sdk up -t
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage0.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage1.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage2.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.glue.yml
+
+        - name: Docker / Alpine / PHP 8.0 / PostgreSQL / Functional Tests / Dynamic Store
+          <<: *DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
+              - TRAVIS=1
+              - SPRYKER_DYNAMIC_STORE_MODE=true
+              - SPRYKER_CURRENT_REGION=EU
+          script:
+              - docker/sdk boot -v deploy.ci.functional.dynamic-store.yml
               - travis_wait 30 docker/sdk up -t
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage0.yml
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage1.yml
@@ -630,6 +786,23 @@ jobs:
               - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
               - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
 
+        - name: Docker / Alpine / PHP 8.0 / MariaDB / Acceptance / Dynamic Store
+          <<: *DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
+              - TRAVIS=1
+              - SPRYKER_DYNAMIC_STORE_MODE=true
+              - SPRYKER_CURRENT_REGION=EU
+          script:
+              - docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store.yml
+              - travis_wait 35 docker/sdk up -t
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.acceptance.yml
+              - travis_wait 30 docker/sdk testing codecept fixtures
+              - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
+
         - name: Docker / Alpine / PHP 8.0 / MariaDB / Acceptance / Prefer Lowest
           <<: *DOCKER_BUILD_TEMPLATE
           language: php
@@ -643,36 +816,34 @@ jobs:
               - phpenv config-rm xdebug.ini
               - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
               - docker/sdk boot -v deploy.ci.acceptance.mariadb.prefer-lowest.yml
-              - COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto
+              - COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet
               - travis_wait 35 docker/sdk up -t
               - travis_wait 35 docker/sdk testing codecept run -c codeception.acceptance.yml
               - travis_wait 30 docker/sdk testing codecept fixtures
               - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
               - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
-          addons:
-              hosts:
-                  - backend-api.de.spryker.local
-                  - backend-gateway.de.spryker.local
-                  - backoffice.de.spryker.local
-                  - glue.de.spryker.local
-                  - yves.de.spryker.local
-                  - mp.de.spryker.local
-              apt:
-                  packages:
-                      - redis-tools
-                      - redis-server
-                      - apache2-utils
-                      - apt-transport-https
-                      - ca-certificates
-                      - curl
-                      - gnupg-agent
-                      - pigz
-                      - software-properties-common
-                  sources:
-                      - sourceline: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
-                        key_url: https://download.docker.com/linux/ubuntu/gpg
-                      - sourceline: ppa:chris-lea/redis-server
-                      - sourceline: ppa:ondrej/php
+
+        - name: Docker / Alpine / PHP 8.0 / MariaDB / Acceptance / Prefer Lowest / Dynamic Store
+          <<: *DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
+          language: php
+          php: '8.0'
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
+              - TRAVIS=1
+              - SPRYKER_DYNAMIC_STORE_MODE=true
+              - SPRYKER_CURRENT_REGION=EU
+          script:
+              - phpenv config-rm xdebug.ini
+              - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+              - docker/sdk boot -v deploy.ci.acceptance.mariadb.prefer-lowest.dynamic-store.yml
+              - COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet
+              - travis_wait 35 docker/sdk up -t
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.acceptance.yml
+              - travis_wait 30 docker/sdk testing codecept fixtures
+              - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
 
         - name: Docker / Alpine / PHP 8.0 / PostgreSQL / Acceptance
           <<: *DOCKER_BUILD_TEMPLATE
@@ -689,6 +860,23 @@ jobs:
               - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
               - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
 
+        - name: Docker / Alpine / PHP 8.0 / PostgreSQL / Acceptance / Dynamic Store
+          <<: *DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.0
+              - TRAVIS=1
+              - SPRYKER_DYNAMIC_STORE_MODE=true
+              - SPRYKER_CURRENT_REGION=EU
+          script:
+              - docker/sdk boot -v deploy.ci.acceptance.dynamic-store.yml
+              - travis_wait 35 docker/sdk up -t
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.acceptance.yml
+              - travis_wait 30 docker/sdk testing codecept fixtures
+              - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
+
         - name: Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests
           <<: *DOCKER_BUILD_TEMPLATE
           stage: Test
@@ -698,6 +886,24 @@ jobs:
               - TRAVIS=1
           script:
               - docker/sdk boot -v deploy.ci.functional.mariadb.yml
+              - travis_wait 30 docker/sdk up -t
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage0.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage1.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage2.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.glue.yml
+
+        - name: Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Dynamic Store
+          <<: *DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
+              - TRAVIS=1
+              - SPRYKER_DYNAMIC_STORE_MODE=true
+              - SPRYKER_CURRENT_REGION=EU
+          script:
+              - docker/sdk boot -v deploy.ci.functional.mariadb.dynamic-store.yml
               - travis_wait 30 docker/sdk up -t
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage0.yml
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage1.yml
@@ -721,6 +927,24 @@ jobs:
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage2.yml
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.glue.yml
 
+        - name: Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests / Dynamic Store
+          <<: *DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
+              - TRAVIS=1
+              - SPRYKER_DYNAMIC_STORE_MODE=true
+              - SPRYKER_CURRENT_REGION=EU
+          script:
+              - docker/sdk boot -v deploy.ci.functional.dynamic-store.yml
+              - travis_wait 30 docker/sdk up -t
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage0.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage1.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage2.yml
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.glue.yml
+
         - name: Docker / Alpine / PHP 8.1 / MariaDB / Acceptance
           <<: *DOCKER_BUILD_TEMPLATE
           stage: Test
@@ -736,6 +960,23 @@ jobs:
               - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
               - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
 
+        - name: Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Dynamic Store
+          <<: *DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
+              - TRAVIS=1
+              - SPRYKER_DYNAMIC_STORE_MODE=true
+              - SPRYKER_CURRENT_REGION=EU
+          script:
+              - docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store.yml
+              - travis_wait 35 docker/sdk up -t
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.acceptance.yml
+              - travis_wait 30 docker/sdk testing codecept fixtures
+              - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
+
         - name: Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance
           <<: *DOCKER_BUILD_TEMPLATE
           stage: Test
@@ -745,6 +986,23 @@ jobs:
               - TRAVIS=1
           script:
               - docker/sdk boot -v deploy.ci.acceptance.yml
+              - travis_wait 35 docker/sdk up -t
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.acceptance.yml
+              - travis_wait 30 docker/sdk testing codecept fixtures
+              - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
+
+        - name: Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance / Dynamic Store
+          <<: *DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
+          stage: Test
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.1
+              - TRAVIS=1
+              - SPRYKER_DYNAMIC_STORE_MODE=true
+              - SPRYKER_CURRENT_REGION=EU
+          script:
+              - docker/sdk boot -v deploy.ci.acceptance.dynamic-store.yml
               - travis_wait 35 docker/sdk up -t
               - travis_wait 35 docker/sdk testing codecept run -c codeception.acceptance.yml
               - travis_wait 30 docker/sdk testing codecept fixtures

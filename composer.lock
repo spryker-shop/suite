@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d8c6d2860b4896569cb2f3ea2f4ed298",
+    "content-hash": "c366410aa071fd57ccd0722009cbde4a",
     "packages": [
         {
             "name": "async-aws/core",
@@ -245,16 +245,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.262.3",
+            "version": "3.263.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "f5c8142d43846194bbb3bb40b18e7f6df2788409"
+                "reference": "1f1ca8866e54aabdcde2aba177196ec2f12ee8a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f5c8142d43846194bbb3bb40b18e7f6df2788409",
-                "reference": "f5c8142d43846194bbb3bb40b18e7f6df2788409",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1f1ca8866e54aabdcde2aba177196ec2f12ee8a2",
+                "reference": "1f1ca8866e54aabdcde2aba177196ec2f12ee8a2",
                 "shasum": ""
             },
             "require": {
@@ -333,9 +333,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.262.3"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.263.1"
             },
-            "time": "2023-03-28T18:18:50+00:00"
+            "time": "2023-03-31T18:21:25+00:00"
         },
         {
             "name": "brick/math",
@@ -574,6 +574,97 @@
                 "source": "https://github.com/doctrine/deprecations/tree/v1.0.0"
             },
             "time": "2022-05-02T15:47:09+00:00"
+        },
+        {
+            "name": "doctrine/inflector",
+            "version": "2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/inflector.git",
+                "reference": "d9d313a36c872fd6ee06d9a6cbcf713eaa40f024"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/d9d313a36c872fd6ee06d9a6cbcf713eaa40f024",
+                "reference": "d9d313a36c872fd6ee06d9a6cbcf713eaa40f024",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^10",
+                "phpstan/phpstan": "^1.8",
+                "phpstan/phpstan-phpunit": "^1.1",
+                "phpstan/phpstan-strict-rules": "^1.3",
+                "phpunit/phpunit": "^8.5 || ^9.5",
+                "vimeo/psalm": "^4.25"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Inflector\\": "lib/Doctrine/Inflector"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "PHP Doctrine Inflector is a small library that can perform string manipulations with regard to upper/lowercase and singular/plural forms of words.",
+            "homepage": "https://www.doctrine-project.org/projects/inflector.html",
+            "keywords": [
+                "inflection",
+                "inflector",
+                "lowercase",
+                "manipulation",
+                "php",
+                "plural",
+                "singular",
+                "strings",
+                "uppercase",
+                "words"
+            ],
+            "support": {
+                "issues": "https://github.com/doctrine/inflector/issues",
+                "source": "https://github.com/doctrine/inflector/tree/2.0.6"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finflector",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-10-20T09:10:12+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -5342,16 +5433,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/payone.git",
-                "reference": "8997e0d3aa04b28ec313548104ffe0861f680380"
+                "reference": "a8446eb3b770f630f3226703deb5fd9ff62264bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/payone/zipball/8997e0d3aa04b28ec313548104ffe0861f680380",
-                "reference": "8997e0d3aa04b28ec313548104ffe0861f680380",
+                "url": "https://api.github.com/repos/spryker-eco/payone/zipball/a8446eb3b770f630f3226703deb5fd9ff62264bd",
+                "reference": "a8446eb3b770f630f3226703deb5fd9ff62264bd",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=8.0",
                 "spryker/calculation": "^4.0.0",
                 "spryker/cart": "^5.0.0 || ^7.0.0",
                 "spryker/checkout-extension": "^1.3.0",
@@ -5363,13 +5454,14 @@
                 "spryker/kernel": "^3.33.0",
                 "spryker/oms": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/propel-orm": "^1.6.0",
-                "spryker/quote": "^2.14.0",
+                "spryker/quote": "^2.18.0",
                 "spryker/refund": "^4.0.0 || ^5.0.0",
                 "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/shipment": "^6.0.0 || ^8.0.0",
                 "spryker/step-engine": "^3.0.0",
-                "spryker/store": "^1.1.0",
+                "spryker/store": "^1.19.0",
                 "spryker/symfony": "^3.1.1",
+                "spryker/transfer": "^3.25.0",
                 "spryker/util-encoding": "^2.0.0",
                 "spryker/zed-request": "^3.2.0"
             },
@@ -5382,7 +5474,7 @@
                 "spryker/checkout": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
-                "spryker/country": "^3.2.0",
+                "spryker/country": "^3.2.0 || ^4.0.0",
                 "spryker/payment": "*",
                 "spryker/propel": "*",
                 "spryker/router": "*",
@@ -5416,7 +5508,7 @@
             "support": {
                 "source": "https://github.com/spryker-eco/payone/tree/master"
             },
-            "time": "2022-06-23T11:41:49+00:00"
+            "time": "2023-03-31T19:36:06+00:00"
         },
         {
             "name": "spryker/checksum-generator",
@@ -5703,12 +5795,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "e009897c35c5e2f1e29903737f5d54dc2e21baca"
+                "reference": "8f458d4d640a85893ae2a1ec6cb75015e7bbc496"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/e009897c35c5e2f1e29903737f5d54dc2e21baca",
-                "reference": "e009897c35c5e2f1e29903737f5d54dc2e21baca",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/8f458d4d640a85893ae2a1ec6cb75015e7bbc496",
+                "reference": "8f458d4d640a85893ae2a1ec6cb75015e7bbc496",
                 "shasum": ""
             },
             "require": {
@@ -5720,14 +5812,14 @@
                 "spryker/queue": "^1.5.0",
                 "spryker/store": "^1.10.0",
                 "spryker/symfony": "^3.5.0",
-                "spryker/transfer": "^3.25.0"
+                "spryker/transfer": "^3.33.1"
             },
             "require-dev": {
-                "codeception/module-asserts": "^1.3.0",
-                "codeception/stub": "^3.6.1",
-                "mikey179/vfsstream": "^1.6.7",
+                "codeception/module-asserts": "*",
+                "codeception/stub": "^4.1",
+                "mikey179/vfsstream": "^1.6.11",
                 "spryker/code-sniffer": "^0.17.1",
-                "spryker/testify": "^3.40.0"
+                "spryker/testify": "^3.47.0"
             },
             "default-branch": true,
             "type": "library",
@@ -5766,7 +5858,7 @@
             "support": {
                 "source": "https://github.com/spryker/rabbit-mq"
             },
-            "time": "2023-03-03T16:13:26+00:00"
+            "time": "2023-03-31T19:36:08+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -5864,7 +5956,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "bcab5fe7af3f83eaa5d04719a18affbacc90d2dd"
+                "reference": "fc497245c26247afed8ca9e545734f631beba4ac"
             },
             "require": {
                 "php": ">=8.0"
@@ -6107,9 +6199,13 @@
                 "spryker/content-storage": "*",
                 "spryker/content-storage-extension": "*",
                 "spryker/country": "*",
+                "spryker/country-data-import": "*",
+                "spryker/country-gui": "*",
                 "spryker/csv": "*",
                 "spryker/currency": "*",
+                "spryker/currency-data-import": "*",
                 "spryker/currency-extension": "*",
+                "spryker/currency-gui": "*",
                 "spryker/customer": "*",
                 "spryker/customer-access": "*",
                 "spryker/customer-access-gui": "*",
@@ -6215,7 +6311,9 @@
                 "spryker/key-builder": "*",
                 "spryker/laminas": "*",
                 "spryker/locale": "*",
+                "spryker/locale-data-import": "*",
                 "spryker/locale-extension": "*",
+                "spryker/locale-gui": "*",
                 "spryker/log": "*",
                 "spryker/mail": "*",
                 "spryker/mail-extension": "*",
@@ -6442,6 +6540,7 @@
                 "spryker/product-category-filter": "*",
                 "spryker/product-category-filter-collector": "*",
                 "spryker/product-category-filter-gui": "*",
+                "spryker/product-category-filter-gui-extension": "*",
                 "spryker/product-category-filter-storage": "*",
                 "spryker/product-category-search": "*",
                 "spryker/product-category-storage": "*",
@@ -6738,7 +6837,12 @@
                 "spryker/storage-gui": "*",
                 "spryker/storage-redis": "*",
                 "spryker/store": "*",
+                "spryker/store-context-gui": "*",
+                "spryker/store-data-import": "*",
+                "spryker/store-extension": "*",
                 "spryker/store-gui": "*",
+                "spryker/store-gui-extension": "*",
+                "spryker/store-storage": "*",
                 "spryker/stores-rest-api": "*",
                 "spryker/symfony": "*",
                 "spryker/symfony-mailer": "*",
@@ -6831,7 +6935,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2023-03-30T08:31:31+00:00"
+            "time": "2023-03-31T19:36:11+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6839,7 +6943,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "f460bcc04469be51f22e0b0d1d746751fd9eeed2"
+                "reference": "e08e474048a7e996724d17296afbd8d4360af4fd"
             },
             "require": {
                 "php": ">=8.0"
@@ -7002,6 +7106,7 @@
                 "spryker-shop/shopping-list-widget": "*",
                 "spryker-shop/storage-router": "*",
                 "spryker-shop/storage-router-extension": "*",
+                "spryker-shop/store-widget": "*",
                 "spryker-shop/tabs-widget": "*",
                 "spryker-shop/tabs-widget-extension": "*",
                 "spryker-shop/web-profiler-widget": "*",
@@ -7024,7 +7129,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2023-03-28T12:28:19+00:00"
+            "time": "2023-03-31T19:36:14+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -7032,12 +7137,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "361158817b8f015b0d6b9a1ef1494ec576112163"
+                "reference": "648d7e3ce8374bf6b6f82fbeade432514b841eaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/361158817b8f015b0d6b9a1ef1494ec576112163",
-                "reference": "361158817b8f015b0d6b9a1ef1494ec576112163",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/648d7e3ce8374bf6b6f82fbeade432514b841eaa",
+                "reference": "648d7e3ce8374bf6b6f82fbeade432514b841eaa",
                 "shasum": ""
             },
             "require": {
@@ -7078,7 +7183,7 @@
             "support": {
                 "source": "https://github.com/spryker/synchronization-behavior"
             },
-            "time": "2022-11-30T10:11:15+00:00"
+            "time": "2023-03-31T19:36:17+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -8584,16 +8689,16 @@
         },
         {
             "name": "symfony/mailer",
-            "version": "v5.4.21",
+            "version": "v5.4.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mailer.git",
-                "reference": "60c5f5a29399ff591fadd99da345a4a8bf048c41"
+                "reference": "6330cd465dfd8b7a07515757a1c37069075f7b0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/60c5f5a29399ff591fadd99da345a4a8bf048c41",
-                "reference": "60c5f5a29399ff591fadd99da345a4a8bf048c41",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/6330cd465dfd8b7a07515757a1c37069075f7b0b",
+                "reference": "6330cd465dfd8b7a07515757a1c37069075f7b0b",
                 "shasum": ""
             },
             "require": {
@@ -8640,7 +8745,7 @@
             "description": "Helps sending emails",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/mailer/tree/v5.4.21"
+                "source": "https://github.com/symfony/mailer/tree/v5.4.22"
             },
             "funding": [
                 {
@@ -8656,7 +8761,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-21T10:48:16+00:00"
+            "time": "2023-03-10T10:15:32+00:00"
         },
         {
             "name": "symfony/messenger",
@@ -10187,16 +10292,16 @@
         },
         {
             "name": "symfony/security-core",
-            "version": "v5.4.21",
+            "version": "v5.4.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-core.git",
-                "reference": "aeb333053b9fca8554cdbdb00d451986d3e4386a"
+                "reference": "a801d525c7545332e2ddf7f52c163959354b1650"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-core/zipball/aeb333053b9fca8554cdbdb00d451986d3e4386a",
-                "reference": "aeb333053b9fca8554cdbdb00d451986d3e4386a",
+                "url": "https://api.github.com/repos/symfony/security-core/zipball/a801d525c7545332e2ddf7f52c163959354b1650",
+                "reference": "a801d525c7545332e2ddf7f52c163959354b1650",
                 "shasum": ""
             },
             "require": {
@@ -10260,7 +10365,7 @@
             "description": "Symfony Security Component - Core Library",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/security-core/tree/v5.4.21"
+                "source": "https://github.com/symfony/security-core/tree/v5.4.22"
             },
             "funding": [
                 {
@@ -10276,7 +10381,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-17T10:07:35+00:00"
+            "time": "2023-03-10T10:02:45+00:00"
         },
         {
             "name": "symfony/security-csrf",
@@ -10351,16 +10456,16 @@
         },
         {
             "name": "symfony/security-guard",
-            "version": "v5.4.21",
+            "version": "v5.4.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-guard.git",
-                "reference": "22d3c7e9692e4484662e1e59599e0d47a2f945ce"
+                "reference": "62d064b1ee682e4617f4c5ddc0d31f73e1a7ecaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-guard/zipball/22d3c7e9692e4484662e1e59599e0d47a2f945ce",
-                "reference": "22d3c7e9692e4484662e1e59599e0d47a2f945ce",
+                "url": "https://api.github.com/repos/symfony/security-guard/zipball/62d064b1ee682e4617f4c5ddc0d31f73e1a7ecaa",
+                "reference": "62d064b1ee682e4617f4c5ddc0d31f73e1a7ecaa",
                 "shasum": ""
             },
             "require": {
@@ -10398,7 +10503,7 @@
             "description": "Symfony Security Component - Guard",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/security-guard/tree/v5.4.21"
+                "source": "https://github.com/symfony/security-guard/tree/v5.4.22"
             },
             "funding": [
                 {
@@ -10414,20 +10519,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-26T12:08:44+00:00"
+            "time": "2023-03-06T21:29:33+00:00"
         },
         {
             "name": "symfony/security-http",
-            "version": "v5.4.21",
+            "version": "v5.4.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-http.git",
-                "reference": "0570380d0864d3fa5f8c07b59ada16149bf0570a"
+                "reference": "428c84954e95f54383d031693fa649f1e466461f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-http/zipball/0570380d0864d3fa5f8c07b59ada16149bf0570a",
-                "reference": "0570380d0864d3fa5f8c07b59ada16149bf0570a",
+                "url": "https://api.github.com/repos/symfony/security-http/zipball/428c84954e95f54383d031693fa649f1e466461f",
+                "reference": "428c84954e95f54383d031693fa649f1e466461f",
                 "shasum": ""
             },
             "require": {
@@ -10483,7 +10588,7 @@
             "description": "Symfony Security Component - HTTP Integration",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/security-http/tree/v5.4.21"
+                "source": "https://github.com/symfony/security-http/tree/v5.4.22"
             },
             "funding": [
                 {
@@ -10499,7 +10604,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-26T12:08:44+00:00"
+            "time": "2023-03-10T10:02:45+00:00"
         },
         {
             "name": "symfony/serializer",
@@ -12884,20 +12989,20 @@
         },
         {
             "name": "codeception/module-rest",
-            "version": "3.3.0",
+            "version": "3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-rest.git",
-                "reference": "57b35f9732bcebd744119c054fdb1b82345147a7"
+                "reference": "bb545d4f7c261472472da8730267d9df162199cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/57b35f9732bcebd744119c054fdb1b82345147a7",
-                "reference": "57b35f9732bcebd744119c054fdb1b82345147a7",
+                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/bb545d4f7c261472472da8730267d9df162199cb",
+                "reference": "bb545d4f7c261472472da8730267d9df162199cb",
                 "shasum": ""
             },
             "require": {
-                "codeception/codeception": "^5.0.0-alpha2",
+                "codeception/codeception": "^5.0.8",
                 "codeception/lib-xml": "^1.0",
                 "ext-dom": "*",
                 "ext-json": "*",
@@ -12905,11 +13010,8 @@
                 "php": "^8.0",
                 "softcreatr/jsonpath": "^0.8"
             },
-            "conflict": {
-                "codeception/codeception": "<5.0.0-alpha3"
-            },
             "require-dev": {
-                "codeception/lib-innerbrowser": "^3.0",
+                "codeception/lib-innerbrowser": "^3.0 | ^4.0",
                 "codeception/stub": "^4.0",
                 "codeception/util-universalframework": "^1.0",
                 "ext-libxml": "*",
@@ -12941,9 +13043,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/module-rest/issues",
-                "source": "https://github.com/Codeception/module-rest/tree/3.3.0"
+                "source": "https://github.com/Codeception/module-rest/tree/3.3.2"
             },
-            "time": "2022-08-22T07:10:02+00:00"
+            "time": "2023-02-09T18:11:19+00:00"
         },
         {
             "name": "codeception/module-webdriver",
@@ -13536,97 +13638,6 @@
                 "source": "https://github.com/doctrine/annotations/tree/2.0.1"
             },
             "time": "2023-02-02T22:02:53+00:00"
-        },
-        {
-            "name": "doctrine/inflector",
-            "version": "2.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/inflector.git",
-                "reference": "d9d313a36c872fd6ee06d9a6cbcf713eaa40f024"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/d9d313a36c872fd6ee06d9a6cbcf713eaa40f024",
-                "reference": "d9d313a36c872fd6ee06d9a6cbcf713eaa40f024",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2 || ^8.0"
-            },
-            "require-dev": {
-                "doctrine/coding-standard": "^10",
-                "phpstan/phpstan": "^1.8",
-                "phpstan/phpstan-phpunit": "^1.1",
-                "phpstan/phpstan-strict-rules": "^1.3",
-                "phpunit/phpunit": "^8.5 || ^9.5",
-                "vimeo/psalm": "^4.25"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Inflector\\": "lib/Doctrine/Inflector"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "PHP Doctrine Inflector is a small library that can perform string manipulations with regard to upper/lowercase and singular/plural forms of words.",
-            "homepage": "https://www.doctrine-project.org/projects/inflector.html",
-            "keywords": [
-                "inflection",
-                "inflector",
-                "lowercase",
-                "manipulation",
-                "php",
-                "plural",
-                "singular",
-                "strings",
-                "uppercase",
-                "words"
-            ],
-            "support": {
-                "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/2.0.6"
-            },
-            "funding": [
-                {
-                    "url": "https://www.doctrine-project.org/sponsorship.html",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.patreon.com/phpdoctrine",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finflector",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-10-20T09:10:12+00:00"
         },
         {
             "name": "doctrine/instantiator",

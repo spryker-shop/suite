@@ -136,6 +136,8 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
     {
         $storeTransfer = $I->haveStore([
             StoreTransfer::NAME => 'DE',
+            StoreTransfer::DEFAULT_CURRENCY_ISO_CODE => 'EUR',
+            StoreTransfer::AVAILABLE_CURRENCY_ISO_CODES => ['EUR'],
         ]);
         $storeRelationTransfer = (new StoreRelationBuilder())->seed([
             StoreRelationTransfer::ID_STORES => [

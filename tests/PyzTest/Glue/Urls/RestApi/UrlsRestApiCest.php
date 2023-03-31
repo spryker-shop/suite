@@ -25,6 +25,11 @@ use Spryker\Glue\UrlsRestApi\UrlsRestApiConfig;
 class UrlsRestApiCest
 {
     /**
+     * @var string
+     */
+    protected const DEFAULT_LOCALE = 'en_US';
+
+    /**
      * @var \PyzTest\Glue\Urls\RestApi\UrlsRestApiFixtures
      */
     protected $fixtures;
@@ -101,10 +106,9 @@ class UrlsRestApiCest
      */
     public function requestExistingProductAbstractUrl(UrlsRestApiTester $I): void
     {
-        $currentLocale = $I->getLocator()->locale()->client()->getCurrentLocale();
         $localizedUrl = '';
         foreach ($this->fixtures->getProductUrlTransfer()->getUrls() as $localizedUrlTransfer) {
-            if ($localizedUrlTransfer->getLocale()->getLocaleName() === $currentLocale) {
+            if ($localizedUrlTransfer->getLocale()->getLocaleName() === static::DEFAULT_LOCALE) {
                 $localizedUrl = $localizedUrlTransfer->getUrl();
             }
         }
