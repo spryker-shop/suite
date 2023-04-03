@@ -52,6 +52,7 @@ class AbstractAlternativeProductsRestApiCest
     public function requestAbstractAlternativeProducts(AlternativeProductsRestApiTester $I): void
     {
         // Arrange
+        $I->haveFullProduct();
         $productAbstractSku = $this->fixtures->getAlternativeProductConcreteTransfer()->getAbstractSku();
         $url = $I->buildAbstractAlternativeProductsUrl(
             $this->fixtures->getProductConcreteTransfer()->getSku(),

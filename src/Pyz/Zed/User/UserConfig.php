@@ -36,30 +36,35 @@ class UserConfig extends SprykerUserConfig
                 'lastName' => 'Schmidt',
                 'password' => 'change123',
                 'username' => 'harald@spryker.com',
+                'localeName' => 'en_US',
             ],
             [
                 'firstName' => 'Richard',
                 'lastName' => 'Gere',
                 'password' => 'change123',
                 'username' => 'richard@spryker.com',
+                'localeName' => 'en_US',
             ],
             [
                 'firstName' => 'Martha',
                 'lastName' => 'Farmer',
                 'password' => 'change123',
                 'username' => 'martha@video-king.nl',
+                'localeName' => 'en_US',
             ],
             [
                 'firstName' => 'Jason',
                 'lastName' => 'Weidmann',
                 'password' => 'change123',
                 'username' => 'jason.weidmann@budgetcamerasonline.com',
+                'localeName' => 'en_US',
             ],
             [
                 'firstName' => 'Michele',
                 'lastName' => 'Nemeth',
                 'password' => 'change123',
                 'username' => 'michele@sony-experts.com',
+                'localeName' => 'en_US',
             ],
             [
                 'firstName' => 'Vitaliy',
@@ -67,6 +72,7 @@ class UserConfig extends SprykerUserConfig
                 'password' => 'change123',
                 'username' => 'agent123@spryker.com',
                 'isAgent' => 1,
+                'localeName' => 'en_US',
             ],
         ];
     }

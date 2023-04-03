@@ -422,7 +422,11 @@ class CheckoutApiTester extends ApiEndToEndTester
      */
     public function havePaymentMethodWithStore(
         array $paymentMethodOverrideData = [],
-        array $storeOverrideData = [StoreTransfer::NAME => 'DE'],
+        array $storeOverrideData = [
+            StoreTransfer::NAME => 'DE',
+            StoreTransfer::DEFAULT_CURRENCY_ISO_CODE => 'EUR',
+            StoreTransfer::AVAILABLE_CURRENCY_ISO_CODES => ['EUR'],
+        ],
     ): PaymentMethodTransfer {
         $storeTransfer = $this->haveStore($storeOverrideData);
         $storeRelationTransfer = (new StoreRelationBuilder())->seed([

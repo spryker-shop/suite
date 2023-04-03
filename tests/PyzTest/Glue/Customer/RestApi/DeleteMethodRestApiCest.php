@@ -68,12 +68,14 @@ class DeleteMethodRestApiCest
             'Authorization: Bearer ' . $oauthResponseTransfer->getAccessToken(),
             'Cache-Control: no-cache',
             'Content-Type: application/json',
+            'Store: DE',
         ];
 
         $url = $i->formatFullUrl(
             'customers/{CustomerReference}',
             ['CustomerReference' => $customerTransfer->getCustomerReference()],
         );
+
         $result = file_get_contents(
             $url,
             false,
