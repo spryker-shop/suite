@@ -37,6 +37,8 @@ suites:
                 - \SprykerTest\Shared\ProductRelation\Helper\ProductRelationDataHelper
                 - \SprykerTest\Glue\AuthRestApi\Helper\AuthRestApiHelper
                 - \SprykerTest\Zed\SalesOrderThreshold\Helper\SalesOrderThresholdHelper
+                - \SprykerTest\Service\Container\Helper\ContainerHelper
+                - \SprykerTest\Shared\Store\Helper\StoreDependencyHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser
