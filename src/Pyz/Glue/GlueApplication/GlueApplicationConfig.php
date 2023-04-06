@@ -61,4 +61,12 @@ class GlueApplicationConfig extends SprykerGlueApplicationConfig
     {
         return 'v';
     }
+
+    /**
+     * @return bool
+     */
+    public function isTerminationEnabled(): bool
+    {
+        return true;
+    }
 }
