@@ -175,7 +175,6 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getPriceProductMerchantRelationshipStoragePlugins(),
             $this->getProductOfferStoragePlugins(),
             $this->getMerchantProductOfferStoragePlugins(),
-            $this->getMerchantProductOfferStoragePlugins(),
             $this->getStoreStoragePlugins(),
             $this->getMerchantProductOfferSearchPlugins(),
             $this->getAssetStoragePlugins(),
