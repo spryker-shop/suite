@@ -295,6 +295,13 @@ actions:
     - data_entity: product-offer-stock
       source: data/import/common/common/marketplace/product_offer_stock.csv
 
+    #8. Click&Collect import
+    - data_entity: service-point
+      source: data/import/common/common/service_point.csv
+    # Store relation
+    - data_entity: service-point-store
+      source: data/import/common/US/service_point_store.csv
+
     # Acl import
     - data_entity: acl-role
       source: data/import/common/common/acl_role.csv
