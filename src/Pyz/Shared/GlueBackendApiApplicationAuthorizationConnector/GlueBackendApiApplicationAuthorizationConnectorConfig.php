@@ -77,6 +77,9 @@ class GlueBackendApiApplicationAuthorizationConnectorConfig extends SprykerGlueB
                     'patch',
                 ],
             ],
+            '/\/service-points(?:\/[^\/]+)?\/?$/' => [
+                'isRegularExpression' => true,
+            ],
         ];
     }
 }
