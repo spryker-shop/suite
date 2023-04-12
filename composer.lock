@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4cacf7b8654f040903018af11899697c",
+    "content-hash": "7f568135f2ea9948cb3a4b00ffb664ab",
     "packages": [
         {
             "name": "async-aws/core",
@@ -55963,6 +55963,154 @@
                 "source": "https://github.com/spryker/sequence-number/tree/3.1.1"
             },
             "time": "2022-07-19T15:32:39+00:00"
+        },
+        {
+            "name": "spryker/service-point",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/service-point.git",
+                "reference": "3821e194ebd6845dded64d6f9f2fe15c92cda814"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/service-point/zipball/3821e194ebd6845dded64d6f9f2fe15c92cda814",
+                "reference": "3821e194ebd6845dded64d6f9f2fe15c92cda814",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/store": "^1.12.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/uuid-behavior": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ServicePoint module",
+            "support": {
+                "source": "https://github.com/spryker/service-point/tree/0.1.0"
+            },
+            "time": "2023-04-12T13:21:54+00:00"
+        },
+        {
+            "name": "spryker/service-point-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/service-point-data-import.git",
+                "reference": "3992baf403b67dd6405b52390d86d83ab7589964"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/service-point-data-import/zipball/3992baf403b67dd6405b52390d86d83ab7589964",
+                "reference": "3992baf403b67dd6405b52390d86d83ab7589964",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/service-point": "^0.1.0",
+                "spryker/store": "^1.0.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ServicePointDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/service-point-data-import/tree/0.1.0"
+            },
+            "time": "2023-04-12T13:21:54+00:00"
+        },
+        {
+            "name": "spryker/service-points-backend-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/service-points-backend-api.git",
+                "reference": "974a8c1be57781935a60cd880c42efc474eec62d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/service-points-backend-api/zipball/974a8c1be57781935a60cd880c42efc474eec62d",
+                "reference": "974a8c1be57781935a60cd880c42efc474eec62d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/glossary-storage": "^1.5.0",
+                "spryker/glue-json-api-convention-extension": "^1.0.0",
+                "spryker/kernel": "^3.66.0",
+                "spryker/service-point": "^0.1.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.31.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/glue-application": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/glue-application": "If you want to use glue application plugin"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ServicePointsBackendApi module",
+            "support": {
+                "source": "https://github.com/spryker/service-points-backend-api/tree/0.1.0"
+            },
+            "time": "2023-04-12T13:21:54+00:00"
         },
         {
             "name": "spryker/session",
