@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\PushNotification;
 
+use Spryker\Zed\PickingListPushNotification\Communication\Plugin\PushNotification\WarehouseUserPushNotificationSubscriptionValidatorPlugin;
 use Spryker\Zed\PushNotification\PushNotificationDependencyProvider as SprykerPushNotificationDependencyProvider;
 use Spryker\Zed\PushNotificationWebPushPhp\Communication\Plugin\PushNotification\PushNotificationWebPushPhpPayloadLengthPushNotificationValidatorPlugin;
 use Spryker\Zed\PushNotificationWebPushPhp\Communication\Plugin\PushNotification\PushNotificationWebPushPhpPushNotificationSenderPlugin;
@@ -21,6 +22,7 @@ class PushNotificationDependencyProvider extends SprykerPushNotificationDependen
     {
         return [
             new PushNotificationWebPushPhpPushNotificationSubscriptionValidatorPlugin(),
+            new WarehouseUserPushNotificationSubscriptionValidatorPlugin(),
         ];
     }
 
