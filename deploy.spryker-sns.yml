@@ -222,6 +222,24 @@ groups:
                         store: AT
                     glue.us.suite-nonsplit.demo-spryker.com:
                         store: US
+            glue_storefront:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.de.suite-nonsplit.demo-spryker.com:
+                        store: DE
+                    glue-storefront.at.suite-nonsplit.demo-spryker.com:
+                        store: AT
+                    glue-storefront.us.suite-nonsplit.demo-spryker.com:
+                        store: US
+            glue_backend:
+                application: glue-backend
+                endpoints:
+                    glue-backend.de.suite-nonsplit.demo-spryker.com:
+                        store: DE
+                    glue-backend.at.suite-nonsplit.demo-spryker.com:
+                        store: AT
+                    glue-backend.us.suite-nonsplit.demo-spryker.com:
+                        store: US
 services:
     database:
         engine: mysql

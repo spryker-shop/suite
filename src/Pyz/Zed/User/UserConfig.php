@@ -12,6 +12,11 @@ use Spryker\Zed\User\UserConfig as SprykerUserConfig;
 class UserConfig extends SprykerUserConfig
 {
     /**
+     * @var bool
+     */
+    protected const IS_POST_SAVE_PLUGINS_ENABLED_AFTER_USER_STATUS_CHANGE = true;
+
+    /**
      * @return array<array<string, mixed>>
      */
     public function getInstallerUsers(): array

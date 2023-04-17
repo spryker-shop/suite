@@ -245,16 +245,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.263.10",
+            "version": "3.263.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d5f40cff8fe2fe75a8415618f04c987472184eba"
+                "reference": "4ac444fd1dfabe18714d05d2603e92468c00a28b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d5f40cff8fe2fe75a8415618f04c987472184eba",
-                "reference": "d5f40cff8fe2fe75a8415618f04c987472184eba",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4ac444fd1dfabe18714d05d2603e92468c00a28b",
+                "reference": "4ac444fd1dfabe18714d05d2603e92468c00a28b",
                 "shasum": ""
             },
             "require": {
@@ -333,9 +333,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.263.10"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.263.11"
             },
-            "time": "2023-04-13T18:19:56+00:00"
+            "time": "2023-04-14T18:22:01+00:00"
         },
         {
             "name": "brick/math",
@@ -2689,16 +2689,16 @@
         },
         {
             "name": "league/oauth2-client",
-            "version": "2.6.1",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-client.git",
-                "reference": "2334c249907190c132364f5dae0287ab8666aa19"
+                "reference": "160d6274b03562ebeb55ed18399281d8118b76c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/2334c249907190c132364f5dae0287ab8666aa19",
-                "reference": "2334c249907190c132364f5dae0287ab8666aa19",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/160d6274b03562ebeb55ed18399281d8118b76c8",
+                "reference": "160d6274b03562ebeb55ed18399281d8118b76c8",
                 "shasum": ""
             },
             "require": {
@@ -2753,9 +2753,9 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/oauth2-client/issues",
-                "source": "https://github.com/thephpleague/oauth2-client/tree/2.6.1"
+                "source": "https://github.com/thephpleague/oauth2-client/tree/2.7.0"
             },
-            "time": "2021-12-22T16:42:49+00:00"
+            "time": "2023-04-16T18:19:15+00:00"
         },
         {
             "name": "league/oauth2-server",
@@ -4912,20 +4912,20 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "4.7.3",
+            "version": "4.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "433b2014e3979047db08a17a205f410ba3869cf2"
+                "reference": "60a4c63ab724854332900504274f6150ff26d286"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/433b2014e3979047db08a17a205f410ba3869cf2",
-                "reference": "433b2014e3979047db08a17a205f410ba3869cf2",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/60a4c63ab724854332900504274f6150ff26d286",
+                "reference": "60a4c63ab724854332900504274f6150ff26d286",
                 "shasum": ""
             },
             "require": {
-                "brick/math": "^0.8.8 || ^0.9 || ^0.10",
+                "brick/math": "^0.8.8 || ^0.9 || ^0.10 || ^0.11",
                 "ext-json": "*",
                 "php": "^8.0",
                 "ramsey/collection": "^1.2 || ^2.0"
@@ -4988,7 +4988,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/uuid/issues",
-                "source": "https://github.com/ramsey/uuid/tree/4.7.3"
+                "source": "https://github.com/ramsey/uuid/tree/4.7.4"
             },
             "funding": [
                 {
@@ -5000,7 +5000,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-12T18:13:24+00:00"
+            "time": "2023-04-15T23:01:58+00:00"
         },
         {
             "name": "react/promise",
@@ -5957,7 +5957,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "cdf6bbbdab4cce71bf67efe1fc09c83c7697c691"
+                "reference": "7e15aa8abb55078a71e80e3762a4e405d29ab2dd"
             },
             "require": {
                 "php": ">=8.0"
@@ -6029,6 +6029,7 @@
                 "spryker/cart-note-merchant-portal-gui": "*",
                 "spryker/cart-note-merchant-sales-order-gui": "*",
                 "spryker/cart-note-product-bundle-connector": "*",
+                "spryker/cart-notes-backend-api": "*",
                 "spryker/cart-permission-connector": "*",
                 "spryker/cart-permission-groups-rest-api": "*",
                 "spryker/cart-variant": "*",
@@ -6478,7 +6479,14 @@
                 "spryker/picking-list": "*",
                 "spryker/picking-list-extension": "*",
                 "spryker/picking-list-multi-shipment-picking-strategy-example": "*",
+                "spryker/picking-list-push-notification": "*",
                 "spryker/picking-lists-backend-api": "*",
+                "spryker/picking-lists-backend-api-extension": "*",
+                "spryker/picking-lists-products-backend-resource-relationship": "*",
+                "spryker/picking-lists-sales-orders-backend-resource-relationship": "*",
+                "spryker/picking-lists-shipments-backend-resource-relationship": "*",
+                "spryker/picking-lists-users-backend-resource-relationship": "*",
+                "spryker/picking-lists-warehouses-backend-resource-relationship": "*",
                 "spryker/price": "*",
                 "spryker/price-cart-connector": "*",
                 "spryker/price-cart-connector-extension": "*",
@@ -6579,6 +6587,7 @@
                 "spryker/product-group-storage": "*",
                 "spryker/product-image": "*",
                 "spryker/product-image-cart-connector": "*",
+                "spryker/product-image-sets-backend-api": "*",
                 "spryker/product-image-sets-rest-api": "*",
                 "spryker/product-image-storage": "*",
                 "spryker/product-label": "*",
@@ -6645,6 +6654,7 @@
                 "spryker/product-packaging-unit": "*",
                 "spryker/product-packaging-unit-data-import": "*",
                 "spryker/product-packaging-unit-storage": "*",
+                "spryker/product-packaging-units-backend-api": "*",
                 "spryker/product-page-search": "*",
                 "spryker/product-page-search-extension": "*",
                 "spryker/product-prices-rest-api": "*",
@@ -6678,6 +6688,7 @@
                 "spryker/product-warehouse-allocation-example": "*",
                 "spryker/products-backend-api": "*",
                 "spryker/products-categories-resource-relationship": "*",
+                "spryker/products-product-image-sets-backend-resource-relationship": "*",
                 "spryker/products-rest-api": "*",
                 "spryker/products-rest-api-extension": "*",
                 "spryker/propel": "*",
@@ -6734,6 +6745,8 @@
                 "spryker/sales-order-threshold-gui": "*",
                 "spryker/sales-order-threshold-gui-extension": "*",
                 "spryker/sales-order-thresholds-rest-api": "*",
+                "spryker/sales-orders-backend-api": "*",
+                "spryker/sales-orders-backend-api-extension": "*",
                 "spryker/sales-payment": "*",
                 "spryker/sales-payment-extension": "*",
                 "spryker/sales-payment-gui": "*",
@@ -6809,6 +6822,7 @@
                 "spryker/shipment-extension": "*",
                 "spryker/shipment-gui": "*",
                 "spryker/shipment-gui-extension": "*",
+                "spryker/shipments-backend-api": "*",
                 "spryker/shipments-rest-api": "*",
                 "spryker/shipments-rest-api-extension": "*",
                 "spryker/shop-context": "*",
@@ -6907,6 +6921,7 @@
                 "spryker/warehouse-user": "*",
                 "spryker/warehouse-user-gui": "*",
                 "spryker/warehouse-users-backend-api": "*",
+                "spryker/warehouses-backend-api": "*",
                 "spryker/web-profiler": "*",
                 "spryker/web-profiler-extension": "*",
                 "spryker/weekday-schedule": "*",
@@ -6939,7 +6954,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2023-04-14T12:33:30+00:00"
+            "time": "2023-04-17T15:49:27+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -13973,12 +13988,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "2627cab3890ecc74b621af24e0d881f475de2850"
+                "reference": "6db15360e40ef9c28ae6ed4236dbb39f65a586bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/2627cab3890ecc74b621af24e0d881f475de2850",
-                "reference": "2627cab3890ecc74b621af24e0d881f475de2850",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/6db15360e40ef9c28ae6ed4236dbb39f65a586bf",
+                "reference": "6db15360e40ef9c28ae6ed4236dbb39f65a586bf",
                 "shasum": ""
             },
             "require": {
@@ -14013,6 +14028,12 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
+            "keywords": [
+                "PHP Depend",
+                "PHP_Depend",
+                "dev",
+                "pdepend"
+            ],
             "support": {
                 "issues": "https://github.com/pdepend/pdepend/issues",
                 "source": "https://github.com/pdepend/pdepend/tree/master"
@@ -14023,7 +14044,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-22T11:16:27+00:00"
+            "time": "2023-04-15T11:49:14+00:00"
         },
         {
             "name": "phar-io/manifest",
