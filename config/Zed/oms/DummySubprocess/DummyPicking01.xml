@@ -41,7 +41,7 @@
         </transitions>
 
         <events>
-            <event name="picking list generation schedule" timeout="1 second" manual="true"/>
+            <event name="picking list generation schedule" manual="true"/>
             <event name="generate picking lists" onEnter="true" command="PickingList/GeneratePickingLists"/>
             <event name="prepare for picking" timeout="1 second" manual="true"/>
             <event name="start picking" timeout="1 second" manual="true"/>
