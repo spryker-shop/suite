@@ -245,16 +245,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.263.12",
+            "version": "3.263.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "8b1c7b4f1f931ee480a31f37870bdc66f9c23248"
+                "reference": "939120791996563677afe75a97ff18f514b7418f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8b1c7b4f1f931ee480a31f37870bdc66f9c23248",
-                "reference": "8b1c7b4f1f931ee480a31f37870bdc66f9c23248",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/939120791996563677afe75a97ff18f514b7418f",
+                "reference": "939120791996563677afe75a97ff18f514b7418f",
                 "shasum": ""
             },
             "require": {
@@ -283,6 +283,7 @@
                 "paragonie/random_compat": ">= 2",
                 "phpunit/phpunit": "^4.8.35 || ^5.6.3 || ^9.5",
                 "psr/cache": "^1.0",
+                "psr/http-message": "<1.1",
                 "psr/simple-cache": "^1.0",
                 "sebastian/comparator": "^1.2.3 || ^4.0",
                 "yoast/phpunit-polyfills": "^1.0"
@@ -333,9 +334,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.263.12"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.263.13"
             },
-            "time": "2023-04-17T18:22:13+00:00"
+            "time": "2023-04-19T18:23:42+00:00"
         },
         {
             "name": "brick/math",
@@ -5954,7 +5955,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1de4836cdb410d60bbaa5ff5100ff2ecc3d0d879"
+                "reference": "1ba226edbc39033d9483db03411a78f2fcbe37aa"
             },
             "require": {
                 "php": ">=8.0"
@@ -6550,6 +6551,7 @@
                 "spryker/product-category-filter-storage": "*",
                 "spryker/product-category-search": "*",
                 "spryker/product-category-storage": "*",
+                "spryker/product-category-storage-extension": "*",
                 "spryker/product-configuration": "*",
                 "spryker/product-configuration-cart": "*",
                 "spryker/product-configuration-data-import": "*",
@@ -6951,7 +6953,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2023-04-19T13:38:54+00:00"
+            "time": "2023-04-20T13:53:42+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6959,7 +6961,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "7b7400b08daeba8b684eea3887c95ebdc508b8c5"
+                "reference": "fb15d58c408cee530f93f8d2191fc0ce0ddbc0d1"
             },
             "require": {
                 "php": ">=8.0"
@@ -7145,7 +7147,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2023-04-18T14:01:21+00:00"
+            "time": "2023-04-20T13:53:45+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
