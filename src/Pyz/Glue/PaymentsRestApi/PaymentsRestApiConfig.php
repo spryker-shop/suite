@@ -9,6 +9,7 @@ namespace Pyz\Glue\PaymentsRestApi;
 
 use Spryker\Glue\PaymentsRestApi\PaymentsRestApiConfig as SprykerPaymentsRestApiConfig;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
+use SprykerEco\Shared\Unzer\UnzerConfig;
 
 class PaymentsRestApiConfig extends SprykerPaymentsRestApiConfig
 {
@@ -18,6 +19,12 @@ class PaymentsRestApiConfig extends SprykerPaymentsRestApiConfig
     protected const PAYMENT_METHOD_PRIORITY = [
         DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 1,
         DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 2,
+        UnzerConfig::PAYMENT_METHOD_KEY_MARKETPLACE_CREDIT_CARD => 3,
+        UnzerConfig::PAYMENT_METHOD_KEY_CREDIT_CARD => 4,
+        UnzerConfig::PAYMENT_METHOD_KEY_MARKETPLACE_SOFORT => 5,
+        UnzerConfig::PAYMENT_METHOD_KEY_SOFORT => 6,
+        UnzerConfig::PAYMENT_METHOD_KEY_MARKETPLACE_BANK_TRANSFER => 7,
+        UnzerConfig::PAYMENT_METHOD_KEY_BANK_TRANSFER => 8,
     ];
 
     /**
@@ -35,6 +42,26 @@ class PaymentsRestApiConfig extends SprykerPaymentsRestApiConfig
                 'dummyPaymentCreditCard.cardExpiresMonth',
                 'dummyPaymentCreditCard.cardExpiresYear',
                 'dummyPaymentCreditCard.cardSecurityCode',
+            ],
+        ],
+        UnzerConfig::PAYMENT_PROVIDER_NAME => [
+            UnzerConfig::PAYMENT_METHOD_KEY_MARKETPLACE_CREDIT_CARD => [
+                'unzerPayment.paymentResource.id',
+            ],
+            UnzerConfig::PAYMENT_METHOD_KEY_MARKETPLACE_SOFORT => [
+                'unzerPayment.paymentResource.id',
+            ],
+            UnzerConfig::PAYMENT_METHOD_KEY_MARKETPLACE_BANK_TRANSFER => [
+                'unzerPayment.paymentResource.id',
+            ],
+            UnzerConfig::PAYMENT_METHOD_KEY_CREDIT_CARD => [
+                'unzerPayment.paymentResource.id',
+            ],
+            UnzerConfig::PAYMENT_METHOD_KEY_SOFORT => [
+                'unzerPayment.paymentResource.id',
+            ],
+            UnzerConfig::PAYMENT_METHOD_KEY_BANK_TRANSFER => [
+                'unzerPayment.paymentResource.id',
             ],
         ],
     ];

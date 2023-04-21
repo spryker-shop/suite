@@ -57,6 +57,15 @@ use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\PaymentIsRefundCond
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\PreAuthorizationIsErrorConditionPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\RefundIsApprovedConditionPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\TrueConditionPlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Oms\Command\UnzerChargeCommandByOrderPlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Oms\Command\UnzerRefundCommandByOrderPlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Oms\Condition\UnzerIsAuthorizeCanceledConditionPlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Oms\Condition\UnzerIsAuthorizeFailedConditionPlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Oms\Condition\UnzerIsAuthorizePendingConditionPlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Oms\Condition\UnzerIsAuthorizeSucceededConditionPlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Oms\Condition\UnzerIsChargeFailedConditionPlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Oms\Condition\UnzerIsPaymentChargebackConditionPlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Oms\Condition\UnzerIsPaymentCompletedConditionPlugin;
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
@@ -134,6 +143,10 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new SavePartialRefundCommandPlugin(), 'Payone/SavePartialRefund');
             $commandCollection->add(new PartialRefundCommandPlugin(), 'Payone/PartialRefund');
 
+            // ----- Unzer
+            $commandCollection->add(new UnzerChargeCommandByOrderPlugin(), 'Unzer/Charge');
+            $commandCollection->add(new UnzerRefundCommandByOrderPlugin(), 'Unzer/Refund');
+
             return $commandCollection;
         });
 
@@ -166,6 +179,15 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $conditionCollection->add(new PaymentIsRefundConditionPlugin(), 'Payone/PaymentIsRefund');
             $conditionCollection->add(new PaymentIsPaidConditionPlugin(), 'Payone/PaymentIsPaid');
             $conditionCollection->add(new AuthorizationIsErrorConditionPlugin(), 'Payone/AuthorizationIsError');
+
+            // ----- Unzer
+            $conditionCollection->add(new UnzerIsAuthorizePendingConditionPlugin(), 'Unzer/IsAuthorizePending');
+            $conditionCollection->add(new UnzerIsAuthorizeSucceededConditionPlugin(), 'Unzer/IsAuthorizeSucceeded');
+            $conditionCollection->add(new UnzerIsAuthorizeFailedConditionPlugin(), 'Unzer/IsAuthorizeFailed');
+            $conditionCollection->add(new UnzerIsAuthorizeCanceledConditionPlugin(), 'Unzer/IsAuthorizeCanceled');
+            $conditionCollection->add(new UnzerIsPaymentCompletedConditionPlugin(), 'Unzer/IsPaymentCompleted');
+            $conditionCollection->add(new UnzerIsChargeFailedConditionPlugin(), 'Unzer/IsChargeFailed');
+            $conditionCollection->add(new UnzerIsPaymentChargebackConditionPlugin(), 'Unzer/IsPaymentChargeback');
 
             return $conditionCollection;
         });

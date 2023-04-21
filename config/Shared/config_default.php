@@ -100,6 +100,7 @@ use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
 use Spryker\Shared\User\UserConstants;
+use Spryker\Shared\Vault\VaultConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
 use Spryker\Zed\GiftCard\GiftCardConfig;
@@ -110,6 +111,9 @@ use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Payment\PaymentConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Payone\PayoneConstants;
+use SprykerEco\Shared\Unzer\UnzerConfig;
+use SprykerEco\Shared\Unzer\UnzerConstants;
+use SprykerEco\Shared\UnzerApi\UnzerApiConstants;
 use SprykerEco\Zed\Payone\PayoneConfig;
 use SprykerShop\Shared\CustomerPage\CustomerPageConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
@@ -202,6 +206,8 @@ $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($trustedHosts, [
     $sprykerFrontendHost,
     'threedssvc.pay1.de', // trusted Payone domain
     'www.sofort.com', // trusted Payone domain
+    'payment.unzer.com', // trusted Unzer domain
+    'sbx-payment.heidelpay.com', // trusted Unzer domain
 ]);
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
@@ -638,6 +644,7 @@ $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,
     APPLICATION_ROOT_DIR . '/vendor/spryker-eco/payone/config/Zed/Oms',
     APPLICATION_ROOT_DIR . '/vendor/spryker/payment/config/Zed/Oms',
+    APPLICATION_ROOT_DIR . '/vendor/spryker-eco/unzer/config/Zed/Oms',
 ];
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'PayoneCreditCardPartialOperations',
@@ -646,6 +653,12 @@ $config[OmsConstants::ACTIVE_PROCESSES] = [
     'Nopayment01',
     'DummyPayment01',
     'MarketplacePayment01',
+    'UnzerMarketplaceBankTransfer01',
+    'UnzerMarketplaceSofort01',
+    'UnzerMarketplaceCreditCard01',
+    'UnzerCreditCard01',
+    'UnzerBankTransfer01',
+    'UnzerSofort01',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     PayoneConfig::PAYMENT_METHOD_CREDIT_CARD => 'PayoneCreditCardPartialOperations',
@@ -656,6 +669,12 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
     NopaymentConfig::PAYMENT_PROVIDER_NAME => 'Nopayment01',
     GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
+    UnzerConfig::PAYMENT_METHOD_KEY_MARKETPLACE_BANK_TRANSFER => 'UnzerMarketplaceBankTransfer01',
+    UnzerConfig::PAYMENT_METHOD_KEY_MARKETPLACE_CREDIT_CARD => 'UnzerMarketplaceCreditCard01',
+    UnzerConfig::PAYMENT_METHOD_KEY_CREDIT_CARD => 'UnzerCreditCard01',
+    UnzerConfig::PAYMENT_METHOD_KEY_MARKETPLACE_SOFORT => 'UnzerMarketplaceSofort01',
+    UnzerConfig::PAYMENT_METHOD_KEY_BANK_TRANSFER => 'UnzerBankTransfer01',
+    UnzerConfig::PAYMENT_METHOD_KEY_SOFORT => 'UnzerSofort01',
 ];
 
 $config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
@@ -755,6 +774,33 @@ $config[AgentConstants::AGENT_ALLOWED_SECURED_PATTERN_LIST] = [
 // ----------------------------------------------------------------------------
 
 $config[CartsRestApiConstants::IS_QUOTE_RELOAD_ENABLED] = true;
+
+// UNZER
+$config[VaultConstants::ENCRYPTION_KEY] = 'key';
+$config[UnzerConstants::WEBHOOK_RETRIEVE_URL] = 'https://da61-87-239-181-112.ngrok-free.app/unzer-notification';
+$config[UnzerConstants::UNZER_AUTHORIZE_RETURN_URL] = 'https://yves.de.spryker.local/unzer/payment-result';
+$config[UnzerConstants::UNZER_CHARGE_RETURN_URL] = 'https://yves.de.spryker.local/';
+$config[UnzerConstants::VAULT_DATA_TYPE] = 'unzer-private-key';
+$config[UnzerConstants::EXPENSES_REFUND_STRATEGY_KEY] = UnzerConstants::LAST_SHIPMENT_ITEM_EXPENSES_REFUND_STRATEGY;
+
+// UNZER API
+$config[UnzerApiConstants::WEBHOOK_RESOURCE_URL] = 'https://api.unzer.com/v1/webhooks';
+$config[UnzerApiConstants::CUSTOMER_RESOURCE_URL] = 'https://api.unzer.com/v1/customers/%s';
+$config[UnzerApiConstants::BASKET_RESOURCE_URL] = 'https://api.unzer.com/v2/baskets';
+$config[UnzerApiConstants::MARKETPLACE_BASKET_RESOURCE_URL] = 'https://api.unzer.com/v2/marketplace/baskets';
+$config[UnzerApiConstants::MARKETPLACE_AUTHORIZE_URL] = 'https://api.unzer.com/v1/marketplace/payments/authorize';
+$config[UnzerApiConstants::AUTHORIZE_URL] = 'https://api.unzer.com/v1/payments/authorize';
+$config[UnzerApiConstants::METADATA_RESOURCE_URL] = 'https://api.unzer.com/v1/metadata';
+$config[UnzerApiConstants::MARKETPLACE_GET_PAYMENT_URL] = 'https://api.unzer.com/v1/marketplace/payments/%s';
+$config[UnzerApiConstants::GET_PAYMENT_URL] = 'https://api.unzer.com/v1/payments/%s';
+$config[UnzerApiConstants::CHARGE_URL] = 'https://api.unzer.com/v1/payments/charges';
+$config[UnzerApiConstants::MARKETPLACE_CHARGE_URL] = 'https://api.unzer.com/v1/marketplace/payments/charges';
+$config[UnzerApiConstants::MARKETPLACE_CREDIT_CARD_CHARGE_URL] = 'https://api.unzer.com/v1/marketplace/payments/%s/authorize/%s/charges';
+$config[UnzerApiConstants::CREDIT_CARD_CHARGE_URL] = 'https://api.unzer.com/v1/payments/%s/charges';
+$config[UnzerApiConstants::CREATE_PAYMENT_RESOURCE_URL] = 'https://api.unzer.com/v1/types/%s';
+$config[UnzerApiConstants::MARKETPLACE_REFUND_URL] = 'https://api.unzer.com/v1/marketplace/payments/%s/charges/%s/cancels';
+$config[UnzerApiConstants::REFUND_URL] = 'https://api.unzer.com/v1/payments/%s/charges/%s/cancels';
+$config[UnzerApiConstants::GET_PAYMENT_METHODS_URL] = 'https://api.unzer.com/v1/keypair';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ Glue Backend API -------------------------------

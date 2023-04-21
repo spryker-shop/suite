@@ -53,6 +53,9 @@ use Spryker\Zed\ShipmentCheckoutConnector\Communication\Plugin\Checkout\Shipment
 use SprykerEco\Zed\Payone\Communication\Plugin\Checkout\PayoneCheckoutDoSaveOrderPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Checkout\PayoneCheckoutPostSavePlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Checkout\PayoneCheckoutPreConditionPlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Checkout\UnzerCheckoutDoSaveOrderPlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Checkout\UnzerCheckoutPostSavePlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Checkout\UnzerCheckoutPreSaveOrderPlugin;
 
 class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
 {
@@ -121,6 +124,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new GiftCardCheckoutDoSaveOrderPlugin(),
             new PayoneCheckoutDoSaveOrderPlugin(),
             new SalesOrderThresholdExpenseSavePlugin(), #SalesOrderThresholdFeature
+            new UnzerCheckoutDoSaveOrderPlugin(),
         ];
     }
 
@@ -137,18 +141,20 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new CloseQuoteRequestCheckoutPostSaveHookPlugin(),
             new SendEmailToGiftCardUser(), #GiftCardFeature
             new PaymentAuthorizationCheckoutPostSavePlugin(),
+            new UnzerCheckoutPostSavePlugin(),
         ];
     }
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return array<\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreSaveHookInterface>|array<\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreSaveInterface>
+     * @return array<\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreSaveHookInterface>|array<\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreSaveInterface>|array<\Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutPreSavePluginInterface>
      */
     protected function getCheckoutPreSaveHooks(Container $container): array
     {
         return [
             new SalesOrderExpanderPlugin(),
+            new UnzerCheckoutPreSaveOrderPlugin(),
         ];
     }
 }
