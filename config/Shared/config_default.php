@@ -776,10 +776,10 @@ $config[AgentConstants::AGENT_ALLOWED_SECURED_PATTERN_LIST] = [
 $config[CartsRestApiConstants::IS_QUOTE_RELOAD_ENABLED] = true;
 
 // UNZER
-$config[VaultConstants::ENCRYPTION_KEY] = 'key';
-$config[UnzerConstants::WEBHOOK_RETRIEVE_URL] = 'https://da61-87-239-181-112.ngrok-free.app/unzer-notification';
-$config[UnzerConstants::UNZER_AUTHORIZE_RETURN_URL] = 'https://yves.de.spryker.local/unzer/payment-result';
-$config[UnzerConstants::UNZER_CHARGE_RETURN_URL] = 'https://yves.de.spryker.local/';
+$config[VaultConstants::ENCRYPTION_KEY] = getenv('VAULT_ENCRYPTION_KEY') ?: 'key';
+$config[UnzerConstants::WEBHOOK_RETRIEVE_URL] = getenv('UNZER_WEBHOOK_RETRIEVE_URL') ?: 'https://yves.de.faas-suite-prod.cloud.spryker.toys/unzer/notification';
+$config[UnzerConstants::UNZER_AUTHORIZE_RETURN_URL] = getenv('UNZER_AUTHORIZE_RETURN_URL') ?: 'https://yves.de.faas-suite-prod.cloud.spryker.toys/';
+$config[UnzerConstants::UNZER_CHARGE_RETURN_URL] = getenv('UNZER_CHARGE_RETURN_URL') ?: 'https://yves.de.faas-suite-prod.cloud.spryker.toys/';
 $config[UnzerConstants::VAULT_DATA_TYPE] = 'unzer-private-key';
 $config[UnzerConstants::EXPENSES_REFUND_STRATEGY_KEY] = UnzerConstants::LAST_SHIPMENT_ITEM_EXPENSES_REFUND_STRATEGY;
 
