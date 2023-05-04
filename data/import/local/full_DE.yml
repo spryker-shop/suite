@@ -270,3 +270,12 @@ actions:
       source: data/import/common/DE/merchant_store.csv
     - data_entity: merchant-product-offer-store
       source: data/import/common/DE/merchant_product_offer_store.csv
+
+    #9. Click&Collect import
+    - data_entity: service-point
+      source: data/import/common/common/service_point.csv
+    - data_entity: service-point-address
+      source: data/import/common/common/service_point_address.csv
+    # Store relation
+    - data_entity: service-point-store
+      source: data/import/common/DE/service_point_store.csv

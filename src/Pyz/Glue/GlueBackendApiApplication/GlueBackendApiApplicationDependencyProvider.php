@@ -28,7 +28,8 @@ use Spryker\Glue\ProductAttributesBackendApi\Plugin\GlueApplication\ProductAttri
 use Spryker\Glue\ProductsBackendApi\Plugin\GlueApplication\ProductsBackendResourcePlugin;
 use Spryker\Glue\PushNotificationsBackendApi\Plugin\GlueBackendApiApplication\PushNotificationSubscriptionsBackendResourcePlugin;
 use Spryker\Glue\Router\Plugin\Application\RouterApplicationPlugin;
-use Spryker\Glue\ServicePointsBackendApi\Plugin\GlueBackendApiApplicationGlueJsonApiConventionConnector\ServicePointsBackendResourcePlugin;
+use Spryker\Glue\ServicePointsBackendApi\Plugin\GlueBackendApiApplication\ServicePointAddressesBackendResourcePlugin;
+use Spryker\Glue\ServicePointsBackendApi\Plugin\GlueBackendApiApplication\ServicePointsBackendResourcePlugin;
 use Spryker\Glue\StoresRestApi\Plugin\Application\StoreHttpHeaderApplicationPlugin;
 use Spryker\Glue\WarehouseOauthBackendApi\Plugin\GlueBackendApiApplication\WarehouseRequestBuilderPlugin;
 use Spryker\Glue\WarehouseOauthBackendApi\Plugin\GlueBackendApiApplication\WarehouseRequestValidatorPlugin;
@@ -116,6 +117,7 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
             new WarehouseTokensBackendResourcePlugin(),
             new PushNotificationSubscriptionsBackendResourcePlugin(),
             new ServicePointsBackendResourcePlugin(),
+            new ServicePointAddressesBackendResourcePlugin(),
         ];
     }
 
