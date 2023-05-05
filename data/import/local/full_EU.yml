@@ -366,6 +366,15 @@ actions:
       source: data/import/common/DE/service_point_store.csv
     - data_entity: service-point-store
       source: data/import/common/AT/service_point_store.csv
+    # Shipment types
+    - data_entity: shipment-type
+      source: data/import/common/common/shipment_type.csv
+    - data_entity: shipment-type-store
+      source: data/import/common/DE/shipment_type_store.csv
+    - data_entity: shipment-type-store
+      source: data/import/common/AT/shipment_type_store.csv
+    - data_entity: shipment-method-shipment-type
+      source: data/import/common/common/shipment_method_shipment_type.csv
 
     # Acl import
     - data_entity: acl-role
