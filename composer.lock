@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ee78c14f6067e2f04b25bd96dd48ce9",
+    "content-hash": "13308073edaf25e8f221dffef7e17b52",
     "packages": [
         {
             "name": "async-aws/core",
@@ -57989,6 +57989,104 @@
                 "source": "https://github.com/spryker/shipment-gui-extension/tree/1.0.0"
             },
             "time": "2021-07-07T15:14:17+00:00"
+        },
+        {
+            "name": "spryker/shipment-type",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shipment-type.git",
+                "reference": "79baa2a30e18364419c45cb04a0c6251c9221e3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shipment-type/zipball/79baa2a30e18364419c45cb04a0c6251c9221e3c",
+                "reference": "79baa2a30e18364419c45cb04a0c6251c9221e3c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/propel-orm": "^1.6.0",
+                "spryker/store": "^1.12.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/uuid-behavior": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShipmentType module",
+            "support": {
+                "source": "https://github.com/spryker/shipment-type/tree/0.1.0"
+            },
+            "time": "2023-05-05T14:00:24+00:00"
+        },
+        {
+            "name": "spryker/shipment-type-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shipment-type-data-import.git",
+                "reference": "73609a88d515ba00748ae4ccc76662b84214953f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shipment-type-data-import/zipball/73609a88d515ba00748ae4ccc76662b84214953f",
+                "reference": "73609a88d515ba00748ae4ccc76662b84214953f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/shipment": "^8.0.0",
+                "spryker/shipment-type": "^0.1.0",
+                "spryker/store": "^1.0.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/propel-orm": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ShipmentTypeDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/shipment-type-data-import/tree/0.1.0"
+            },
+            "time": "2023-05-05T14:00:24+00:00"
         },
         {
             "name": "spryker/shipments-backend-api",
