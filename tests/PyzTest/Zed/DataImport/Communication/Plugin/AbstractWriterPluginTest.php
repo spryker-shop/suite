@@ -46,6 +46,11 @@ abstract class AbstractWriterPluginTest extends Unit
     protected $tester;
 
     /**
+     * @var array<string> these SKUs data comes from import/ProductAbstractStore/product_abstract_store.csv
+     */
+    protected $testSkus = ['testSku-228971244', 'testSku-228971245'];
+
+    /**
      * @return array
      */
     abstract public function getDataImportWriterPlugins(): array;
