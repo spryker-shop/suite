@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13308073edaf25e8f221dffef7e17b52",
+    "content-hash": "c9d746e1f9ce6eedf94f681f28ecb2f3",
     "packages": [
         {
             "name": "async-aws/core",
@@ -56657,16 +56657,16 @@
         },
         {
             "name": "spryker/service-point",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-point.git",
-                "reference": "e3e7298540f2c97689b727c02cd0d71ae76de4fd"
+                "reference": "ecc635d5c004b2c0b1ea4dcb3176a9fff18c4598"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-point/zipball/e3e7298540f2c97689b727c02cd0d71ae76de4fd",
-                "reference": "e3e7298540f2c97689b727c02cd0d71ae76de4fd",
+                "url": "https://api.github.com/repos/spryker/service-point/zipball/ecc635d5c004b2c0b1ea4dcb3176a9fff18c4598",
+                "reference": "ecc635d5c004b2c0b1ea4dcb3176a9fff18c4598",
                 "shasum": ""
             },
             "require": {
@@ -56700,22 +56700,22 @@
             ],
             "description": "ServicePoint module",
             "support": {
-                "source": "https://github.com/spryker/service-point/tree/0.2.0"
+                "source": "https://github.com/spryker/service-point/tree/0.2.1"
             },
-            "time": "2023-05-04T11:09:49+00:00"
+            "time": "2023-05-05T15:21:47+00:00"
         },
         {
             "name": "spryker/service-point-data-import",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-point-data-import.git",
-                "reference": "8abda6f431c867ce60c17849a83622dd1dfe8d7e"
+                "reference": "4a32a2d147cf7c0a913dc49d23ef9404cbc2ff05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-point-data-import/zipball/8abda6f431c867ce60c17849a83622dd1dfe8d7e",
-                "reference": "8abda6f431c867ce60c17849a83622dd1dfe8d7e",
+                "url": "https://api.github.com/repos/spryker/service-point-data-import/zipball/4a32a2d147cf7c0a913dc49d23ef9404cbc2ff05",
+                "reference": "4a32a2d147cf7c0a913dc49d23ef9404cbc2ff05",
                 "shasum": ""
             },
             "require": {
@@ -56749,9 +56749,75 @@
             ],
             "description": "ServicePointDataImport module",
             "support": {
-                "source": "https://github.com/spryker/service-point-data-import/tree/0.2.0"
+                "source": "https://github.com/spryker/service-point-data-import/tree/0.2.1"
             },
-            "time": "2023-05-04T11:09:49+00:00"
+            "time": "2023-05-05T15:21:47+00:00"
+        },
+        {
+            "name": "spryker/service-point-search",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/service-point-search.git",
+                "reference": "1f0dbf270cf4505c64a3738234c8b85a9f863d0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/service-point-search/zipball/1f0dbf270cf4505c64a3738234c8b85a9f863d0c",
+                "reference": "1f0dbf270cf4505c64a3738234c8b85a9f863d0c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/propel-orm": "^1.5.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/search": "^8.0.0",
+                "spryker/search-extension": "^1.0.0",
+                "spryker/service-point": "^0.2.1",
+                "spryker/store": "^1.19.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/country": "*",
+                "spryker/elastica": "*",
+                "spryker/event": "*",
+                "spryker/propel": "*",
+                "spryker/publisher": "*",
+                "spryker/queue": "*",
+                "spryker/search-elasticsearch": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/elastica": "If you want to use search functionality from ServicePointSearchClient.",
+                "spryker/search-elasticsearch": "If you want to use search plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ServicePointSearch module",
+            "support": {
+                "source": "https://github.com/spryker/service-point-search/tree/0.1.0"
+            },
+            "time": "2023-05-05T15:21:47+00:00"
         },
         {
             "name": "spryker/service-points-backend-api",
