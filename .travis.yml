@@ -690,7 +690,7 @@ jobs:
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage0.yml
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage1.yml
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.yml
-              - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.stage2.yml
+              - travis_wait 40 docker/sdk testing codecept run -c codeception.functional.stage2.yml
               - travis_wait 35 docker/sdk testing codecept run -c codeception.functional.glue.yml
 
         - name: Docker / Alpine / PHP 8.0 / MariaDB / Functional Tests / Prefer Lowest

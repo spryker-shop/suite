@@ -6,7 +6,7 @@
 >
 
     <transfer name="SpyProductAbstractEntity">
-        <property name="sku" type="string" dataBuilderRule="isbn10()"/>
+        <property name="sku" type="string" dataBuilderRule="unique()->isbn10()"/>
         <property name="colorCode" type="string" dataBuilderRule="hexcolor()"/>
     </transfer>
 
@@ -23,7 +23,7 @@
     </transfer>
 
     <transfer name="SpyProductEntity">
-        <property name="sku" type="string" dataBuilderRule="isbn10()"/>
+        <property name="sku" type="string" dataBuilderRule="unique()->isbn10()"/>
         <property name="attributes" type="string" dataBuilderRule="=[]"/>
         <property name="isActive" type="boolean" dataBuilderRule="boolean(100)"/>
         <property name="isQuantitySplittable" type="boolean" dataBuilderRule="boolean(100)"/>
