@@ -1034,8 +1034,8 @@ jobs:
               - TRAVIS=1
           script:
               - docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
-              - travis_wait docker/sdk up -t
-              - travis_wait docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 35 docker/sdk up -t
+              - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
               - python3 -m pip install --upgrade pip
               - python3 -m pip install -U robotframework
               - python3 -m pip install -U robotframework-requests
