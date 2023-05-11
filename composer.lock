@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a58564511c426883b78ca881837685e",
+    "content-hash": "cce53faba0477aefac949cdd9f2c8e6e",
     "packages": [
         {
             "name": "async-aws/core",
@@ -56818,6 +56818,63 @@
                 "source": "https://github.com/spryker/service-point-search/tree/0.1.1"
             },
             "time": "2023-05-10T13:58:34+00:00"
+        },
+        {
+            "name": "spryker/service-point-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/service-point-storage.git",
+                "reference": "fda127767ee1b4763b3ee1f1fd95e0ce11f72035"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/service-point-storage/zipball/fda127767ee1b4763b3ee1f1fd95e0ce11f72035",
+                "reference": "fda127767ee1b4763b3ee1f1fd95e0ce11f72035",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/service-point": "^0.3.0",
+                "spryker/storage": "^3.0.0",
+                "spryker/store": "^1.19.0",
+                "spryker/synchronization": "^1.9.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.1.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/country": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ServicePointStorage module",
+            "support": {
+                "source": "https://github.com/spryker/service-point-storage/tree/0.1.0"
+            },
+            "time": "2023-05-10T15:45:53+00:00"
         },
         {
             "name": "spryker/service-points-backend-api",
