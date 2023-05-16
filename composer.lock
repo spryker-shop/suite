@@ -56876,16 +56876,16 @@
         },
         {
             "name": "spryker/service-points-backend-api",
-            "version": "0.2.2",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-points-backend-api.git",
-                "reference": "3cbbf0ca3770ddfcfe0851e693f2627ca5d619b1"
+                "reference": "3b44ac705b21923b3a980ed668a71dcbbb9cf81b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-points-backend-api/zipball/3cbbf0ca3770ddfcfe0851e693f2627ca5d619b1",
-                "reference": "3cbbf0ca3770ddfcfe0851e693f2627ca5d619b1",
+                "url": "https://api.github.com/repos/spryker/service-points-backend-api/zipball/3b44ac705b21923b3a980ed668a71dcbbb9cf81b",
+                "reference": "3b44ac705b21923b3a980ed668a71dcbbb9cf81b",
                 "shasum": ""
             },
             "require": {
@@ -56901,8 +56901,15 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/config": "*",
+                "spryker/container": "*",
                 "spryker/glue-application": "*",
-                "spryker/testify": "*"
+                "spryker/glue-backend-api-application": "*",
+                "spryker/propel": "*",
+                "spryker/storage": "*",
+                "spryker/store": "*",
+                "spryker/testify": "*",
+                "spryker/zed-request": "*"
             },
             "suggest": {
                 "spryker/glue-application": "If you want to use glue application plugin"
@@ -56924,9 +56931,9 @@
             ],
             "description": "ServicePointsBackendApi module",
             "support": {
-                "source": "https://github.com/spryker/service-points-backend-api/tree/0.2.2"
+                "source": "https://github.com/spryker/service-points-backend-api/tree/0.2.3"
             },
-            "time": "2023-05-11T09:49:17+00:00"
+            "time": "2023-05-16T07:38:58+00:00"
         },
         {
             "name": "spryker/session",
