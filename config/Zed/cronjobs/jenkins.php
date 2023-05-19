@@ -56,7 +56,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console queue:worker:start',
     'schedule' => '* * * * *',
     'enable' => true,
-    'storeAware' => true,
 ];
 
 $jobs[] = [
@@ -129,7 +128,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console price-product-schedule:apply',
     'schedule' => '0 6 * * *',
     'enable' => true,
-    'storeAware' => true,
 ];
 
 /* ProductOfferValidity */
