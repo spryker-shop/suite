@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cce53faba0477aefac949cdd9f2c8e6e",
+    "content-hash": "b10200bf8398f65809e7bf5c7a3f8e2f",
     "packages": [
         {
             "name": "async-aws/core",
@@ -14019,16 +14019,16 @@
         },
         {
             "name": "spryker/acl-merchant-portal",
-            "version": "1.10.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/acl-merchant-portal.git",
-                "reference": "fe5816ecaf6471e57ec74abaaf21ddc71342213f"
+                "reference": "232309edc0fcdce3c84cb26ee45e91a7adbbe13b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/acl-merchant-portal/zipball/fe5816ecaf6471e57ec74abaaf21ddc71342213f",
-                "reference": "fe5816ecaf6471e57ec74abaaf21ddc71342213f",
+                "url": "https://api.github.com/repos/spryker/acl-merchant-portal/zipball/232309edc0fcdce3c84cb26ee45e91a7adbbe13b",
+                "reference": "232309edc0fcdce3c84cb26ee45e91a7adbbe13b",
                 "shasum": ""
             },
             "require": {
@@ -14055,6 +14055,7 @@
             "suggest": {
                 "spryker/event-behavior": "To be able to use the EventBehavior propel entities for AclEntityMetadataCollection expansion."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -14072,9 +14073,9 @@
             ],
             "description": "AclMerchantPortal module",
             "support": {
-                "source": "https://github.com/spryker/acl-merchant-portal/tree/1.10.0"
+                "source": "https://github.com/spryker/acl-merchant-portal/tree/master"
             },
-            "time": "2023-03-10T14:11:16+00:00"
+            "time": "2023-05-05T18:20:59+00:00"
         },
         {
             "name": "spryker/acl-merchant-portal-extension",
@@ -75389,9 +75390,17 @@
             "time": "2022-06-03T18:03:27+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "spryker/acl-merchant-portal",
+            "version": "9999999-dev",
+            "alias": "1.11.0",
+            "alias_normalized": "1.11.0.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker/acl-merchant-portal": 20,
         "jetbrains/phpstorm-stubs": 20,
         "spryker/code-sniffer": 20,
         "spryker/docker-chromedriver": 20
