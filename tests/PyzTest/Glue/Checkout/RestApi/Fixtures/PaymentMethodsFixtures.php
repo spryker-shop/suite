@@ -49,6 +49,13 @@ class PaymentMethodsFixtures implements FixturesBuilderInterface, FixturesContai
             PaymentMethodTransfer::NAME => 'Credit Card',
             PaymentMethodTransfer::ID_PAYMENT_PROVIDER => $paymentProviderTransfer->getIdPaymentProvider(),
         ]);
+        $I->havePaymentMethodWithStore([
+            PaymentMethodTransfer::IS_ACTIVE => true,
+            PaymentMethodTransfer::PAYMENT_METHOD_KEY => 'foreignPaymentCreditCard',
+            PaymentMethodTransfer::NAME => 'Foreign Credit Card',
+            PaymentMethodTransfer::ID_PAYMENT_PROVIDER => $paymentProviderTransfer->getIdPaymentProvider(),
+            PaymentMethodTransfer::IS_FOREIGN => true,
+        ]);
 
         return $this;
     }

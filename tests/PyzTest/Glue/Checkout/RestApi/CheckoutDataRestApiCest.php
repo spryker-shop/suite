@@ -10,6 +10,7 @@ namespace PyzTest\Glue\Checkout\RestApi;
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
 use PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutDataRestApiFixtures;
+use PyzTest\Glue\Checkout\RestApi\Fixtures\PaymentMethodsFixtures;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 
 /**
@@ -37,6 +38,7 @@ class CheckoutDataRestApiCest
      */
     public function loadFixtures(CheckoutApiTester $I): void
     {
+        $I->loadFixtures(PaymentMethodsFixtures::class);
         /** @var \PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutDataRestApiFixtures $fixtures */
         $fixtures = $I->loadFixtures(CheckoutDataRestApiFixtures::class);
         $this->fixtures = $fixtures;
