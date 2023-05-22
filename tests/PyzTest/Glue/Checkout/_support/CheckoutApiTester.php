@@ -73,6 +73,11 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @var string
      */
+    public const REQUEST_PARAM_PAYMENT_METHOD_NAME_FOREIGN_CREDIT_CARD = 'Foreign Credit Card';
+
+    /**
+     * @var string
+     */
     protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
 
     /**
