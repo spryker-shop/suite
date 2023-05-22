@@ -4,7 +4,11 @@ use Generated\Shared\Transfer\AddReviewsTransfer;
 use Generated\Shared\Transfer\AssetAddedTransfer;
 use Generated\Shared\Transfer\AssetDeletedTransfer;
 use Generated\Shared\Transfer\AssetUpdatedTransfer;
+use Generated\Shared\Transfer\ExportMerchantsTransfer;
 use Generated\Shared\Transfer\InitializeProductExportTransfer;
+use Generated\Shared\Transfer\MerchantCreatedTransfer;
+use Generated\Shared\Transfer\MerchantExportedTransfer;
+use Generated\Shared\Transfer\MerchantUpdatedTransfer;
 use Generated\Shared\Transfer\OrderStatusChangedTransfer;
 use Generated\Shared\Transfer\PaymentCancelReservationFailedTransfer;
 use Generated\Shared\Transfer\PaymentCancelReservationRequestedTransfer;
@@ -856,9 +860,23 @@ $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
     SearchEndpointRemovedTransfer::class => 'search',
     AddReviewsTransfer::class => 'reviews',
     OrderStatusChangedTransfer::class => 'orders',
+    ExportMerchantsTransfer::class => 'merchant-commands',
+    MerchantExportedTransfer::class => 'merchant-events',
+    MerchantCreatedTransfer::class => 'merchant-events',
+    MerchantUpdatedTransfer::class => 'merchant-events',
 ];
 
-$config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] =
+$config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [
+    'reviews' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'assets' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'product' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'search' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'orders' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'merchant-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'merchant-events' => 'http',
+];
+
 $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'reviews' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'payment' => MessageBrokerAwsConfig::SQS_TRANSPORT,
@@ -866,14 +884,14 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'product' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'search' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'orders' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'merchant-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
 ];
 
 $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
     'payment' => 'http',
-    'assets' => 'http',
     'product' => 'http',
-    'search' => 'http',
     'orders' => 'http',
+    'merchant-events' => 'http',
 ];
 
 // -------------------------------- ACP AWS --------------------------------------
