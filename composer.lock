@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cce53faba0477aefac949cdd9f2c8e6e",
+    "content-hash": "b10200bf8398f65809e7bf5c7a3f8e2f",
     "packages": [
         {
             "name": "async-aws/core",
@@ -245,16 +245,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.270.0",
+            "version": "3.270.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "edea7a2b0cc787dafa23b28215f3819362c9dcde"
+                "reference": "efc5a281bcdfb49bc1c608bb1f892403631da077"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/edea7a2b0cc787dafa23b28215f3819362c9dcde",
-                "reference": "edea7a2b0cc787dafa23b28215f3819362c9dcde",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/efc5a281bcdfb49bc1c608bb1f892403631da077",
+                "reference": "efc5a281bcdfb49bc1c608bb1f892403631da077",
                 "shasum": ""
             },
             "require": {
@@ -334,9 +334,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.270.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.270.1"
             },
-            "time": "2023-05-19T18:23:56+00:00"
+            "time": "2023-05-22T18:23:05+00:00"
         },
         {
             "name": "brick/math",
@@ -14019,16 +14019,16 @@
         },
         {
             "name": "spryker/acl-merchant-portal",
-            "version": "1.10.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/acl-merchant-portal.git",
-                "reference": "fe5816ecaf6471e57ec74abaaf21ddc71342213f"
+                "reference": "232309edc0fcdce3c84cb26ee45e91a7adbbe13b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/acl-merchant-portal/zipball/fe5816ecaf6471e57ec74abaaf21ddc71342213f",
-                "reference": "fe5816ecaf6471e57ec74abaaf21ddc71342213f",
+                "url": "https://api.github.com/repos/spryker/acl-merchant-portal/zipball/232309edc0fcdce3c84cb26ee45e91a7adbbe13b",
+                "reference": "232309edc0fcdce3c84cb26ee45e91a7adbbe13b",
                 "shasum": ""
             },
             "require": {
@@ -14055,6 +14055,7 @@
             "suggest": {
                 "spryker/event-behavior": "To be able to use the EventBehavior propel entities for AclEntityMetadataCollection expansion."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -14072,9 +14073,9 @@
             ],
             "description": "AclMerchantPortal module",
             "support": {
-                "source": "https://github.com/spryker/acl-merchant-portal/tree/1.10.0"
+                "source": "https://github.com/spryker/acl-merchant-portal/tree/master"
             },
-            "time": "2023-03-10T14:11:16+00:00"
+            "time": "2023-05-05T18:20:59+00:00"
         },
         {
             "name": "spryker/acl-merchant-portal-extension",
@@ -31999,16 +32000,16 @@
         },
         {
             "name": "spryker/merchant",
-            "version": "3.6.0",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant.git",
-                "reference": "6dcf160e3a7ebdd1e9d7551f216954aa7efb9e3d"
+                "reference": "e6013c11278d692f2bb2ed40eb5d870de22634ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant/zipball/6dcf160e3a7ebdd1e9d7551f216954aa7efb9e3d",
-                "reference": "6dcf160e3a7ebdd1e9d7551f216954aa7efb9e3d",
+                "url": "https://api.github.com/repos/spryker/merchant/zipball/e6013c11278d692f2bb2ed40eb5d870de22634ef",
+                "reference": "e6013c11278d692f2bb2ed40eb5d870de22634ef",
                 "shasum": ""
             },
             "require": {
@@ -32016,19 +32017,24 @@
                 "spryker/acl-merchant-portal-extension": "^1.0.0",
                 "spryker/cart-extension": "^4.0.0",
                 "spryker/checkout-extension": "^1.2.0",
-                "spryker/event": "^2.0.0",
+                "spryker/event": "^2.3.0",
                 "spryker/kernel": "^3.33.0",
+                "spryker/log": "^3.0.0",
                 "spryker/merchant-extension": "^1.1.0",
+                "spryker/message-broker": "^1.5.0",
+                "spryker/message-broker-extension": "^1.0.0",
                 "spryker/price-product-merchant-relationship-storage-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
+                "spryker/publisher-extension": "^1.0.0",
                 "spryker/shopping-list-extension": "^1.2.0",
-                "spryker/store": "^1.1.0",
-                "spryker/transfer": "^3.25.0",
+                "spryker/store": "^1.20.0",
+                "spryker/transfer": "^3.27.0",
                 "spryker/url": "^3.0.0",
                 "spryker/util-text": "^1.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/container": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
             },
@@ -32050,9 +32056,9 @@
             ],
             "description": "Merchant module",
             "support": {
-                "source": "https://github.com/spryker/merchant/tree/3.6.0"
+                "source": "https://github.com/spryker/merchant/tree/3.7.0"
             },
-            "time": "2023-03-10T14:11:16+00:00"
+            "time": "2023-05-22T19:10:17+00:00"
         },
         {
             "name": "spryker/merchant-categories-rest-api",
@@ -59753,16 +59759,16 @@
         },
         {
             "name": "spryker/store",
-            "version": "1.19.1",
+            "version": "1.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/store.git",
-                "reference": "abba25f1a572607891806b95384d9489ccbd3c2c"
+                "reference": "a9996e7c6f5c6ee5b63382bbe5d26de91a6ccb8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/store/zipball/abba25f1a572607891806b95384d9489ccbd3c2c",
-                "reference": "abba25f1a572607891806b95384d9489ccbd3c2c",
+                "url": "https://api.github.com/repos/spryker/store/zipball/a9996e7c6f5c6ee5b63382bbe5d26de91a6ccb8c",
+                "reference": "a9996e7c6f5c6ee5b63382bbe5d26de91a6ccb8c",
                 "shasum": ""
             },
             "require": {
@@ -59811,9 +59817,9 @@
             ],
             "description": "Store module",
             "support": {
-                "source": "https://github.com/spryker/store/tree/1.19.1"
+                "source": "https://github.com/spryker/store/tree/1.20.0"
             },
-            "time": "2023-05-05T18:20:59+00:00"
+            "time": "2023-05-22T19:10:17+00:00"
         },
         {
             "name": "spryker/store-context-gui",
@@ -75384,9 +75390,17 @@
             "time": "2022-06-03T18:03:27+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "spryker/acl-merchant-portal",
+            "version": "9999999-dev",
+            "alias": "1.11.0",
+            "alias_normalized": "1.11.0.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker/acl-merchant-portal": 20,
         "jetbrains/phpstorm-stubs": 20,
         "spryker/code-sniffer": 20,
         "spryker/docker-chromedriver": 20
