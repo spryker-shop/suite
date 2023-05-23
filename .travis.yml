@@ -191,8 +191,6 @@ _VALIDATION_SCRIPT_PHP8: &VALIDATION_SCRIPT_PHP8
 
     - vendor/bin/console dev:dependency:find
     - vendor/bin/spryker-dev-console dev:deprecation-links:check
-
-_VALIDATION_SCRIPT_PHP8_TOUCHED_MODLUES: &VALIDATION_SCRIPT_PHP8_TOUCHED_MODULES
     - chmod +x tests/*.sh
     - tests/travis_check_touched_modules.sh
     - tests/travis_check_untracked.sh
@@ -566,21 +564,6 @@ jobs:
               - *COMPOSER_INSTALL
           script:
               - *VALIDATION_SCRIPT_PHP8
-          addons:
-              <<: *ADDONS_BASE_INFRASTRUCTURE
-
-        - name: PHP 8.1 Validation | Touched Modules
-          php: '8.1.0'
-          stage: Test
-          env:
-              - APPLICATION_STORE=DE
-          before_install:
-              - *AWS_SYNC_DOWN_POSTGRES
-              - *BEFORE_INSTALL_SCRIPT
-          install:
-              - *COMPOSER_INSTALL
-          script:
-              - *VALIDATION_SCRIPT_PHP8_TOUCHED_MODULES
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
