@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef775798cc126931a44a7f2e7d7bf69d",
+    "content-hash": "ba243a98da3755cec2c649e6c3f4df7b",
     "packages": [
         {
             "name": "async-aws/core",
@@ -58129,16 +58129,16 @@
         },
         {
             "name": "spryker/shipment-type",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-type.git",
-                "reference": "79baa2a30e18364419c45cb04a0c6251c9221e3c"
+                "reference": "b03e8da30ce184ba86a0a17e6934523b1719510f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-type/zipball/79baa2a30e18364419c45cb04a0c6251c9221e3c",
-                "reference": "79baa2a30e18364419c45cb04a0c6251c9221e3c",
+                "url": "https://api.github.com/repos/spryker/shipment-type/zipball/b03e8da30ce184ba86a0a17e6934523b1719510f",
+                "reference": "b03e8da30ce184ba86a0a17e6934523b1719510f",
                 "shasum": ""
             },
             "require": {
@@ -58171,9 +58171,9 @@
             ],
             "description": "ShipmentType module",
             "support": {
-                "source": "https://github.com/spryker/shipment-type/tree/0.1.0"
+                "source": "https://github.com/spryker/shipment-type/tree/0.1.1"
             },
-            "time": "2023-05-05T14:00:24+00:00"
+            "time": "2023-05-23T12:28:05+00:00"
         },
         {
             "name": "spryker/shipment-type-data-import",
@@ -58224,6 +58224,58 @@
                 "source": "https://github.com/spryker/shipment-type-data-import/tree/0.1.0"
             },
             "time": "2023-05-05T14:00:24+00:00"
+        },
+        {
+            "name": "spryker/shipment-types-backend-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shipment-types-backend-api.git",
+                "reference": "99f4ae7b21c5711052509051c3c7cbd13fbca5cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shipment-types-backend-api/zipball/99f4ae7b21c5711052509051c3c7cbd13fbca5cd",
+                "reference": "99f4ae7b21c5711052509051c3c7cbd13fbca5cd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/glossary-storage": "^1.5.0",
+                "spryker/glue-json-api-convention-extension": "^1.0.0",
+                "spryker/kernel": "^3.66.0",
+                "spryker/shipment-type": "^0.1.1",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.31.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/glue-application": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/glue-application": "If you want to use the Glue backend resource plugins. The minimum version is 1.39.0."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShipmentTypesBackendApi module",
+            "support": {
+                "source": "https://github.com/spryker/shipment-types-backend-api/tree/0.1.0"
+            },
+            "time": "2023-05-23T12:28:05+00:00"
         },
         {
             "name": "spryker/shipments-backend-api",
