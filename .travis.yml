@@ -133,8 +133,8 @@ _CHROMDRIVER_DOWNLOAD: &CHROMDRIVER_DOWNLOAD
 
 _BEFORE_INSTALL_SCRIPT: &BEFORE_INSTALL_SCRIPT
     - echo "_BEFORE_INSTALL_SCRIPT"
-    - nvm install 16 > /dev/null
-    - nvm use 16
+    - nvm install 18 > /dev/null
+    - nvm use 18
     - mkdir -p shared/data/common/jenkins
     - mkdir -p shared/data/common/jenkins/jobs
     - mkdir -p data/cache -m 0777
@@ -425,6 +425,7 @@ jobs:
         - name: PHP Validation
           php: '8.0'
           stage: Test
+          dist: focal
           env:
               - APPLICATION_STORE=DE
           before_install:
@@ -530,6 +531,7 @@ jobs:
         - name: PHP 8.0 / MarketPlace Testing
           php: '8.0'
           stage: Test
+          dist: focal
           env:
               - APPLICATION_STORE=DE
           before_install:

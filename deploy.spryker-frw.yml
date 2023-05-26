@@ -58,8 +58,8 @@ image:
             - blackfire
             - newrelic
     node:
-        version: 16
-        npm: 8
+        version: 18
+        npm: 9
 composer:
     mode: ''
     autoload: --classmap-authoritative
@@ -198,7 +198,7 @@ services:
             rabbitmq.frw.cloud.spryker.toys:
             localhost:5672:
                 protocol: tcp
-        version: "3.9"
+        version: '3.9'
     session:
         engine: redis
     key_value_store:
@@ -208,7 +208,7 @@ services:
                 protocol: tcp
     search:
         engine: elastic
-        version: "7.10"
+        version: '7.10'
         endpoints:
             localhost:9200:
                 protocol: tcp
@@ -216,7 +216,7 @@ services:
         engine: jenkins
         endpoints:
             scheduler.frw.cloud.spryker.toys:
-        version: "2.324"
+        version: '2.324'
     mail_catcher:
         engine: mailhog
         endpoints:
