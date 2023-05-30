@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\ServicePoint\Persistence;
 
-use Spryker\Zed\ServicePoint\Persistence\Propel\AbstractSpyServicePointServiceQuery as BaseSpyServicePointServiceQuery;
+use Spryker\Zed\ServicePoint\Persistence\Propel\AbstractSpyServiceQuery as BaseSpyServiceQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_service_point_service' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_service' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\ServicePoint\Persistence\Propel\AbstractSpyServicePointServiceQu
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyServicePointServiceQuery extends BaseSpyServicePointServiceQuery
+class SpyServiceQuery extends BaseSpyServiceQuery
 {
 }

@@ -19,6 +19,9 @@ use Spryker\Glue\PickingListsWarehousesBackendResourceRelationship\Plugin\GlueBa
 use Spryker\Glue\ProductsBackendApi\ProductsBackendApiConfig;
 use Spryker\Glue\ProductsProductImageSetsBackendResourceRelationship\Plugin\GlueBackendApiApplicationGlueJsonApiConventionConnector\ConcreteProductImageSetsByProductsBackendResourceRelationshipPlugin;
 use Spryker\Glue\ServicePointsBackendApi\Plugin\GlueBackendApiApplicationGlueJsonApiConventionConnector\ServicePointAddressesByServicePointsBackendResourceRelationshipPlugin;
+use Spryker\Glue\ServicePointsBackendApi\Plugin\GlueBackendApiApplicationGlueJsonApiConventionConnector\ServicePointsByServicesBackendResourceRelationshipPlugin;
+use Spryker\Glue\ServicePointsBackendApi\Plugin\GlueBackendApiApplicationGlueJsonApiConventionConnector\ServicesByServicePointsBackendResourceRelationshipPlugin;
+use Spryker\Glue\ServicePointsBackendApi\Plugin\GlueBackendApiApplicationGlueJsonApiConventionConnector\ServiceTypesByServicesBackendResourceRelationshipPlugin;
 use Spryker\Glue\ServicePointsBackendApi\ServicePointsBackendApiConfig;
 use Spryker\Glue\UsersBackendApi\Plugin\GlueBackendApiApplicationGlueJsonApiConventionConnector\UserByWarehouseUserAssignmentBackendResourceRelationshipPlugin;
 use Spryker\Glue\WarehouseUsersBackendApi\WarehouseUsersBackendApiConfig;
@@ -76,6 +79,21 @@ class GlueBackendApiApplicationGlueJsonApiConventionConnectorDependencyProvider 
         $resourceRelationshipCollection->addRelationship(
             ServicePointsBackendApiConfig::RESOURCE_SERVICE_POINTS,
             new ServicePointAddressesByServicePointsBackendResourceRelationshipPlugin(),
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            ServicePointsBackendApiConfig::RESOURCE_SERVICE_POINTS,
+            new ServicesByServicePointsBackendResourceRelationshipPlugin(),
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            ServicePointsBackendApiConfig::RESOURCE_SERVICES,
+            new ServicePointsByServicesBackendResourceRelationshipPlugin(),
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            ServicePointsBackendApiConfig::RESOURCE_SERVICES,
+            new ServiceTypesByServicesBackendResourceRelationshipPlugin(),
         );
 
         return $resourceRelationshipCollection;
