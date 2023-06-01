@@ -137,6 +137,7 @@ use Spryker\Zed\Publisher\PublisherDependencyProvider as SprykerPublisherDepende
 use Spryker\Zed\SalesReturnSearch\Communication\Plugin\Publisher\ReturnReason\ReturnReasonDeletePublisherPlugin;
 use Spryker\Zed\SalesReturnSearch\Communication\Plugin\Publisher\ReturnReason\ReturnReasonWritePublisherPlugin;
 use Spryker\Zed\SalesReturnSearch\Communication\Plugin\Publisher\ReturnReasonPublisherTriggerPlugin;
+use Spryker\Zed\ServicePointSearch\Communication\Plugin\Publisher\Service\ServiceWritePublisherPlugin;
 use Spryker\Zed\ServicePointSearch\Communication\Plugin\Publisher\ServicePoint\ServicePointDeletePublisherPlugin;
 use Spryker\Zed\ServicePointSearch\Communication\Plugin\Publisher\ServicePoint\ServicePointWritePublisherPlugin;
 use Spryker\Zed\ServicePointSearch\Communication\Plugin\Publisher\ServicePointAddress\ServicePointAddressWritePublisherPlugin;
@@ -618,6 +619,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ServicePointDeletePublisherPlugin(),
             new ServicePointAddressWritePublisherPlugin(),
             new ServicePointStoreWritePublisherPlugin(),
+            new ServiceWritePublisherPlugin(),
         ];
     }
 
