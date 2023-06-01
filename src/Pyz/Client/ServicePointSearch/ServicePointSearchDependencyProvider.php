@@ -8,6 +8,7 @@
 namespace Pyz\Client\ServicePointSearch;
 
 use Spryker\Client\ServicePointSearch\Plugin\Elasticsearch\Query\PaginatedServicePointSearchQueryExpanderPlugin;
+use Spryker\Client\ServicePointSearch\Plugin\Elasticsearch\Query\ServiceTypesServicePointSearchQueryExpanderPlugin;
 use Spryker\Client\ServicePointSearch\Plugin\Elasticsearch\Query\SortedServicePointSearchQueryExpanderPlugin;
 use Spryker\Client\ServicePointSearch\Plugin\Elasticsearch\Query\StoreServicePointSearchQueryExpanderPlugin;
 use Spryker\Client\ServicePointSearch\Plugin\Elasticsearch\ResultFormatter\ServicePointSearchResultFormatterPlugin;
@@ -34,6 +35,7 @@ class ServicePointSearchDependencyProvider extends SprykerServicePointSearchDepe
             new StoreServicePointSearchQueryExpanderPlugin(),
             new SortedServicePointSearchQueryExpanderPlugin(),
             new PaginatedServicePointSearchQueryExpanderPlugin(),
+            new ServiceTypesServicePointSearchQueryExpanderPlugin(),
         ];
     }
 }
