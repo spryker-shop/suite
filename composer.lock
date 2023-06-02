@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95021d3a662732f7b88134d75fc9f7bd",
+    "content-hash": "27e949b2543980dcf08481b4e56ae070",
     "packages": [
         {
             "name": "async-aws/core",
@@ -58226,6 +58226,97 @@
             "time": "2023-05-05T14:00:24+00:00"
         },
         {
+            "name": "spryker/shipment-type-service-point",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shipment-type-service-point.git",
+                "reference": "ad372f7101239c8715e98526bf2739f347f7c7c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shipment-type-service-point/zipball/ad372f7101239c8715e98526bf2739f347f7c7c0",
+                "reference": "ad372f7101239c8715e98526bf2739f347f7c7c0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/service-point": "^0.4.0",
+                "spryker/shipment-type": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShipmentTypeServicePoint module",
+            "support": {
+                "source": "https://github.com/spryker/shipment-type-service-point/tree/0.1.0"
+            },
+            "time": "2023-06-02T12:54:25+00:00"
+        },
+        {
+            "name": "spryker/shipment-type-service-point-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shipment-type-service-point-data-import.git",
+                "reference": "2e4dda17eb2b7f163b54cf2da6b682af7d4ec604"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shipment-type-service-point-data-import/zipball/2e4dda17eb2b7f163b54cf2da6b682af7d4ec604",
+                "reference": "2e4dda17eb2b7f163b54cf2da6b682af7d4ec604",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/service-point": "^0.4.0",
+                "spryker/shipment-type": "^0.1.0",
+                "spryker/shipment-type-service-point": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ShipmentTypeServicePointDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/shipment-type-service-point-data-import/tree/0.1.0"
+            },
+            "time": "2023-06-02T12:54:25+00:00"
+        },
+        {
             "name": "spryker/shipment-types-backend-api",
             "version": "0.1.0",
             "source": {
@@ -73444,12 +73535,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/async-api.git",
-                "reference": "cf9e23127a4f4eecf90eb22fc03dce31dcb2ef61"
+                "reference": "ed75e647528cc686f144cdf8086d0662d96f0162"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/async-api/zipball/cf9e23127a4f4eecf90eb22fc03dce31dcb2ef61",
-                "reference": "cf9e23127a4f4eecf90eb22fc03dce31dcb2ef61",
+                "url": "https://api.github.com/repos/spryker-sdk/async-api/zipball/ed75e647528cc686f144cdf8086d0662d96f0162",
+                "reference": "ed75e647528cc686f144cdf8086d0662d96f0162",
                 "shasum": ""
             },
             "require": {
@@ -73492,9 +73583,9 @@
             "description": "SDK for AsyncAPI.",
             "support": {
                 "issues": "https://github.com/spryker-sdk/async-api/issues",
-                "source": "https://github.com/spryker-sdk/async-api/tree/0.3.0"
+                "source": "https://github.com/spryker-sdk/async-api/tree/0.2.9"
             },
-            "time": "2023-06-01T12:19:09+00:00"
+            "time": "2023-03-02T13:32:52+00:00"
         },
         {
             "name": "spryker-sdk/benchmark",
