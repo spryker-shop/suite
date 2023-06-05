@@ -245,16 +245,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.271.6",
+            "version": "3.271.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "16d4f9e5395e73d6370e7e3d9acd077a0e38adc3"
+                "reference": "d0fe1af38ef521e419004e5f990ceb8e0b2b001d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/16d4f9e5395e73d6370e7e3d9acd077a0e38adc3",
-                "reference": "16d4f9e5395e73d6370e7e3d9acd077a0e38adc3",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d0fe1af38ef521e419004e5f990ceb8e0b2b001d",
+                "reference": "d0fe1af38ef521e419004e5f990ceb8e0b2b001d",
                 "shasum": ""
             },
             "require": {
@@ -334,9 +334,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.271.6"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.271.7"
             },
-            "time": "2023-06-01T18:23:44+00:00"
+            "time": "2023-06-02T18:21:03+00:00"
         },
         {
             "name": "brick/math",
@@ -535,25 +535,29 @@
         },
         {
             "name": "doctrine/deprecations",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/deprecations.git",
-                "reference": "8cffffb2218e01f3b370bf763e00e81697725259"
+                "reference": "612a3ee5ab0d5dd97b7cf3874a6efe24325efac3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/8cffffb2218e01f3b370bf763e00e81697725259",
-                "reference": "8cffffb2218e01f3b370bf763e00e81697725259",
+                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/612a3ee5ab0d5dd97b7cf3874a6efe24325efac3",
+                "reference": "612a3ee5ab0d5dd97b7cf3874a6efe24325efac3",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1|^8.0"
+                "php": "^7.1 || ^8.0"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^9",
-                "phpunit/phpunit": "^7.5|^8.5|^9.5",
-                "psr/log": "^1|^2|^3"
+                "phpstan/phpstan": "1.4.10 || 1.10.15",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "psalm/plugin-phpunit": "0.18.4",
+                "psr/log": "^1 || ^2 || ^3",
+                "vimeo/psalm": "4.30.0 || 5.12.0"
             },
             "suggest": {
                 "psr/log": "Allows logging deprecations via PSR-3 logger implementation"
@@ -572,9 +576,9 @@
             "homepage": "https://www.doctrine-project.org/",
             "support": {
                 "issues": "https://github.com/doctrine/deprecations/issues",
-                "source": "https://github.com/doctrine/deprecations/tree/v1.1.0"
+                "source": "https://github.com/doctrine/deprecations/tree/v1.1.1"
             },
-            "time": "2023-05-29T18:55:17+00:00"
+            "time": "2023-06-03T09:27:29+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -50701,16 +50705,16 @@
         },
         {
             "name": "spryker/product-storage",
-            "version": "1.37.1",
+            "version": "1.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-storage.git",
-                "reference": "f5b23e5d49c222f192a1fba1c8270e7a78062d49"
+                "reference": "424ff5abad1843729079dfb563cd71a97cf134d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-storage/zipball/f5b23e5d49c222f192a1fba1c8270e7a78062d49",
-                "reference": "f5b23e5d49c222f192a1fba1c8270e7a78062d49",
+                "url": "https://api.github.com/repos/spryker/product-storage/zipball/424ff5abad1843729079dfb563cd71a97cf134d1",
+                "reference": "424ff5abad1843729079dfb563cd71a97cf134d1",
                 "shasum": ""
             },
             "require": {
@@ -50763,9 +50767,9 @@
             ],
             "description": "ProductStorage module",
             "support": {
-                "source": "https://github.com/spryker/product-storage/tree/1.37.1"
+                "source": "https://github.com/spryker/product-storage/tree/1.38.0"
             },
-            "time": "2023-05-05T18:20:59+00:00"
+            "time": "2023-06-05T10:22:03+00:00"
         },
         {
             "name": "spryker/product-storage-extension",
