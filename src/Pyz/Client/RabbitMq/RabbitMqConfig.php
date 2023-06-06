@@ -50,6 +50,7 @@ use Spryker\Shared\SalesReturnSearch\SalesReturnSearchConfig;
 use Spryker\Shared\SearchHttp\SearchHttpConfig;
 use Spryker\Shared\ServicePointSearch\ServicePointSearchConfig;
 use Spryker\Shared\ServicePointStorage\ServicePointStorageConfig;
+use Spryker\Shared\ShipmentTypeStorage\ShipmentTypeStorageConfig;
 use Spryker\Shared\ShoppingListStorage\ShoppingListStorageConfig;
 use Spryker\Shared\StoreStorage\StoreStorageConfig;
 use Spryker\Shared\TaxProductStorage\TaxProductStorageConfig;
@@ -173,6 +174,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             SearchHttpConfig::SEARCH_HTTP_CONFIG_SYNC_QUEUE,
             ServicePointSearchConfig::QUEUE_NAME_SYNC_SEARCH_SERVICE_POINT,
             ServicePointStorageConfig::QUEUE_NAME_SYNC_STORAGE_SERVICE_POINT,
+            ShipmentTypeStorageConfig::QUEUE_NAME_SYNC_STORAGE_SHIPMENT_TYPE,
         ];
     }
 

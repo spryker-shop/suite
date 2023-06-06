@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27e949b2543980dcf08481b4e56ae070",
+    "content-hash": "aa9b6174c48d2e7234b7e5a665a0892f",
     "packages": [
         {
             "name": "async-aws/core",
@@ -245,16 +245,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.271.7",
+            "version": "3.271.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d0fe1af38ef521e419004e5f990ceb8e0b2b001d"
+                "reference": "46250f9947768c102052a6650a0a09405e77ee0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d0fe1af38ef521e419004e5f990ceb8e0b2b001d",
-                "reference": "d0fe1af38ef521e419004e5f990ceb8e0b2b001d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/46250f9947768c102052a6650a0a09405e77ee0a",
+                "reference": "46250f9947768c102052a6650a0a09405e77ee0a",
                 "shasum": ""
             },
             "require": {
@@ -334,9 +334,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.271.7"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.271.8"
             },
-            "time": "2023-06-02T18:21:03+00:00"
+            "time": "2023-06-05T18:20:21+00:00"
         },
         {
             "name": "brick/math",
@@ -58181,16 +58181,16 @@
         },
         {
             "name": "spryker/shipment-type-data-import",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-type-data-import.git",
-                "reference": "73609a88d515ba00748ae4ccc76662b84214953f"
+                "reference": "6fadbc8cc5b15be6900efc13e1cbc1d2b022c53b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-type-data-import/zipball/73609a88d515ba00748ae4ccc76662b84214953f",
-                "reference": "73609a88d515ba00748ae4ccc76662b84214953f",
+                "url": "https://api.github.com/repos/spryker/shipment-type-data-import/zipball/6fadbc8cc5b15be6900efc13e1cbc1d2b022c53b",
+                "reference": "6fadbc8cc5b15be6900efc13e1cbc1d2b022c53b",
                 "shasum": ""
             },
             "require": {
@@ -58225,9 +58225,9 @@
             ],
             "description": "ShipmentTypeDataImport module",
             "support": {
-                "source": "https://github.com/spryker/shipment-type-data-import/tree/0.1.0"
+                "source": "https://github.com/spryker/shipment-type-data-import/tree/0.1.1"
             },
-            "time": "2023-05-05T14:00:24+00:00"
+            "time": "2023-06-06T09:21:00+00:00"
         },
         {
             "name": "spryker/shipment-type-service-point",
@@ -58319,6 +58319,60 @@
                 "source": "https://github.com/spryker/shipment-type-service-point-data-import/tree/0.1.0"
             },
             "time": "2023-06-02T12:54:25+00:00"
+        },
+        {
+            "name": "spryker/shipment-type-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shipment-type-storage.git",
+                "reference": "4bea41a720deaf81c6c259b87b6006453a012b71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shipment-type-storage/zipball/4bea41a720deaf81c6c259b87b6006453a012b71",
+                "reference": "4bea41a720deaf81c6c259b87b6006453a012b71",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/shipment-type": "^0.1.0",
+                "spryker/storage": "^3.0.0",
+                "spryker/store": "^1.19.0",
+                "spryker/synchronization": "^1.9.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.1.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShipmentTypeStorage module",
+            "support": {
+                "source": "https://github.com/spryker/shipment-type-storage/tree/0.1.0"
+            },
+            "time": "2023-06-06T09:21:00+00:00"
         },
         {
             "name": "spryker/shipment-types-backend-api",
