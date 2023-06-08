@@ -83,6 +83,12 @@ class GlueBackendApiApplicationAuthorizationConnectorConfig extends SprykerGlueB
             '/\/shipment-types.*/' => [
                 'isRegularExpression' => true,
             ],
+            '/\/services.*/' => [
+                'isRegularExpression' => true,
+            ],
+            '/\/service-types.*/' => [
+                'isRegularExpression' => true,
+            ],
         ];
     }
 }
