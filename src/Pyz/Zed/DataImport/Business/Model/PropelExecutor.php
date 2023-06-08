@@ -24,6 +24,7 @@ class PropelExecutor implements PropelExecutorInterface
     {
         $connection = $this->getConnection();
         $stmt = $connection->prepare($sql);
+        assert($stmt !== false, 'PDOStatement not set');
         $stmt->execute($parameters);
 
         if (!$fetch) {

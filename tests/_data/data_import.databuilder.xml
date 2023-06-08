@@ -6,8 +6,8 @@
 >
 
     <transfer name="SpyProductAbstractEntity">
-        <property name="sku" type="string" dataBuilderRule="isbn10"/>
-        <property name="colorCode" type="string" dataBuilderRule="hexcolor"/>
+        <property name="sku" type="string" dataBuilderRule="unique()->isbn10()"/>
+        <property name="colorCode" type="string" dataBuilderRule="hexcolor()"/>
     </transfer>
 
     <transfer name="SpyProductAbstractLocalizedAttributesEntity">
@@ -19,11 +19,11 @@
     </transfer>
 
     <transfer name="SpyUrlEntity">
-        <property name="url" type="string" dataBuilderRule="slug"/>
+        <property name="url" type="string" dataBuilderRule="slug()"/>
     </transfer>
 
     <transfer name="SpyProductEntity">
-        <property name="sku" type="string" dataBuilderRule="isbn10"/>
+        <property name="sku" type="string" dataBuilderRule="unique()->isbn10()"/>
         <property name="attributes" type="string" dataBuilderRule="=[]"/>
         <property name="isActive" type="boolean" dataBuilderRule="boolean(100)"/>
         <property name="isQuantitySplittable" type="boolean" dataBuilderRule="boolean(100)"/>
@@ -37,12 +37,12 @@
     </transfer>
 
     <transfer name="SpyProductImageSetEntity">
-        <property name="name" type="string" dataBuilderRule="=default"/>
+        <property name="name" type="string" dataBuilderRule="=default()"/>
     </transfer>
 
     <transfer name="SpyProductImageEntity">
-        <property name="externalUrlSmall" type="string" dataBuilderRule="url"/>
-        <property name="externalUrlLarge" type="string" dataBuilderRule="url"/>
+        <property name="externalUrlSmall" type="string" dataBuilderRule="url()"/>
+        <property name="externalUrlLarge" type="string" dataBuilderRule="url()"/>
     </transfer>
 
     <transfer name="SpyPriceProductStoreEntity">

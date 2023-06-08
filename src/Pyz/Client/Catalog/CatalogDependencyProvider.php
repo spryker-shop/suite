@@ -7,6 +7,8 @@
 
 namespace Pyz\Client\Catalog;
 
+use Generated\Shared\Transfer\SearchContextTransfer;
+use Generated\Shared\Transfer\SearchHttpSearchContextTransfer;
 use Spryker\Client\Catalog\CatalogDependencyProvider as SprykerCatalogDependencyProvider;
 use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\AscendingNameSortConfigTransferBuilderPlugin;
 use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\CategoryFacetConfigTransferBuilderPlugin;
@@ -15,16 +17,20 @@ use Spryker\Client\Catalog\Plugin\Elasticsearch\Query\ProductCatalogSearchQueryP
 use Spryker\Client\Catalog\Plugin\Elasticsearch\QueryExpander\PaginatedProductConcreteCatalogSearchQueryExpanderPlugin;
 use Spryker\Client\Catalog\Plugin\Elasticsearch\ResultFormatter\ProductConcreteCatalogSearchResultFormatterPlugin;
 use Spryker\Client\Catalog\Plugin\Elasticsearch\ResultFormatter\RawCatalogSearchResultFormatterPlugin;
+use Spryker\Client\CatalogPriceProductConnector\Plugin\Catalog\QueryExpander\ProductPriceSearchHttpQueryExpanderPlugin;
+use Spryker\Client\CatalogPriceProductConnector\Plugin\Catalog\ResultFormatter\CurrencyAwareCatalogSearchHttpResultFormatterPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ConfigTransferBuilder\AscendingPriceSortConfigTransferBuilderPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ConfigTransferBuilder\DescendingPriceSortConfigTransferBuilderPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ConfigTransferBuilder\PriceFacetConfigTransferBuilderPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareCatalogSearchResultFormatterPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareSuggestionByTypeResultFormatter;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ProductPriceQueryExpanderPlugin;
+use Spryker\Client\CategoryStorage\Plugin\Catalog\ResultFormatter\CategoryTreeFilterSearchHttpResultFormatterPlugin;
 use Spryker\Client\CategoryStorage\Plugin\Elasticsearch\ResultFormatter\CategoryTreeFilterPageSearchResultFormatterPlugin;
 use Spryker\Client\CustomerCatalog\Plugin\Search\ProductListQueryExpanderPlugin as CustomerCatalogProductListQueryExpanderPlugin;
 use Spryker\Client\MerchantProductOfferSearch\Plugin\Search\MerchantReferenceQueryExpanderPlugin;
 use Spryker\Client\MerchantProductSearch\Plugin\Search\MerchantReferenceQueryExpanderPlugin as MerchantProductReferenceQueryExpanderPlugin;
+use Spryker\Client\ProductLabelStorage\Plugin\Catalog\ProductLabelSearchHttpFacetConfigTransferBuilderPlugin;
 use Spryker\Client\ProductLabelStorage\Plugin\ProductLabelFacetConfigTransferBuilderPlugin;
 use Spryker\Client\ProductListSearch\Plugin\Search\ProductListQueryExpanderPlugin as ProductListSearchProductListQueryExpanderPlugin;
 use Spryker\Client\ProductReview\Plugin\RatingFacetConfigTransferBuilderPlugin;
@@ -49,6 +55,15 @@ use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\PaginatedResultFor
 use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\SortedResultFormatterPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\SpellingSuggestionResultFormatterPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\SuggestionByTypeResultFormatterPlugin;
+use Spryker\Client\SearchHttp\Plugin\Catalog\Query\SearchHttpQueryPlugin;
+use Spryker\Client\SearchHttp\Plugin\Catalog\QueryExpander\BasicSearchHttpQueryExpanderPlugin;
+use Spryker\Client\SearchHttp\Plugin\Catalog\QueryExpander\FacetSearchHttpQueryExpanderPlugin;
+use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\FacetSearchHttpResultFormatterPlugin;
+use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\PaginationSearchHttpResultFormatterPlugin;
+use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\ProductSearchHttpResultFormatterPlugin;
+use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\SortSearchHttpResultFormatterPlugin;
+use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\SpellingSuggestionSearchHttpResultFormatterPlugin;
+use Spryker\Shared\SearchHttp\SearchHttpConfig;
 
 class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
 {
@@ -62,6 +77,21 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new PriceFacetConfigTransferBuilderPlugin(),
             new RatingFacetConfigTransferBuilderPlugin(),
             new ProductLabelFacetConfigTransferBuilderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<string, array<\Spryker\Client\Catalog\Dependency\Plugin\FacetConfigTransferBuilderPluginInterface>>
+     */
+    protected function getFacetConfigTransferBuilderPluginVariants(): array
+    {
+        return [
+            SearchHttpConfig::TYPE_SEARCH_HTTP => [
+                new CategoryFacetConfigTransferBuilderPlugin(),
+                new PriceFacetConfigTransferBuilderPlugin(),
+                new RatingFacetConfigTransferBuilderPlugin(),
+                new ProductLabelSearchHttpFacetConfigTransferBuilderPlugin(),
+            ],
         ];
     }
 
@@ -91,6 +121,22 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
+     * @phpstan-return array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface>
+     *
+     * @return array<\Spryker\Client\Search\Dependency\Plugin\QueryInterface>
+     */
+    protected function createCatalogSearchQueryPluginVariants(): array
+    {
+        $searchContextTransfer = (new SearchContextTransfer())
+            ->setSourceIdentifier(SearchHttpConfig::SOURCE_IDENTIFIER_PRODUCT)
+            ->setSearchHttpContext(new SearchHttpSearchContextTransfer());
+
+        return [
+            new SearchHttpQueryPlugin($searchContextTransfer),
+        ];
+    }
+
+    /**
      * @return array<\Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface|\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface>
      */
     protected function createCatalogSearchQueryExpanderPlugins(): array
@@ -116,6 +162,20 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
+     * @return array<string, array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface>>
+     */
+    protected function createCatalogSearchQueryExpanderPluginVariants(): array
+    {
+        return [
+            SearchHttpConfig::TYPE_SEARCH_HTTP => [
+                new BasicSearchHttpQueryExpanderPlugin(),
+                new ProductPriceSearchHttpQueryExpanderPlugin(),
+                new FacetSearchHttpQueryExpanderPlugin(),
+            ],
+        ];
+    }
+
+    /**
      * @phpstan-return array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>
      *
      * @return array<\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface|\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>
@@ -134,6 +194,25 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             ),
             new SpellingSuggestionResultFormatterPlugin(),
             new CategoryTreeFilterPageSearchResultFormatterPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<string, array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>>
+     */
+    protected function createCatalogSearchResultFormatterPluginVariants(): array
+    {
+        return [
+            SearchHttpConfig::TYPE_SEARCH_HTTP => [
+                new PaginationSearchHttpResultFormatterPlugin(),
+                new SortSearchHttpResultFormatterPlugin(),
+                new CurrencyAwareCatalogSearchHttpResultFormatterPlugin(
+                    new ProductSearchHttpResultFormatterPlugin(),
+                ),
+                new SpellingSuggestionSearchHttpResultFormatterPlugin(),
+                new FacetSearchHttpResultFormatterPlugin(),
+                new CategoryTreeFilterSearchHttpResultFormatterPlugin(),
+            ],
         ];
     }
 

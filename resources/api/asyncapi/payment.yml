@@ -7,35 +7,22 @@ channels:
         subscribe:
             message:
                 oneOf:
-                    -
-                        $ref: '#/components/messages/PaymentCancelReservationRequested'
-                    -
-                        $ref: '#/components/messages/PaymentConfirmationRequested'
-                    -
-                        $ref: '#/components/messages/PaymentRefundRequested'
+                    - $ref: '#/components/messages/PaymentCancelReservationRequested'
+                    - $ref: '#/components/messages/PaymentConfirmationRequested'
+                    - $ref: '#/components/messages/PaymentRefundRequested'
         publish:
             message:
                 oneOf:
-                    -
-                        $ref: '#/components/messages/PaymentMethodAdded'
-                    -
-                        $ref: '#/components/messages/PaymentMethodDeleted'
-                    -
-                        $ref: '#/components/messages/PaymentPreauthorized'
-                    -
-                        $ref: '#/components/messages/PaymentPreauthorizationFailed'
-                    -
-                        $ref: '#/components/messages/PaymentConfirmed'
-                    -
-                        $ref: '#/components/messages/PaymentConfirmationFailed'
-                    -
-                        $ref: '#/components/messages/PaymentRefunded'
-                    -
-                        $ref: '#/components/messages/PaymentRefundFailed'
-                    -
-                        $ref: '#/components/messages/PaymentReservationCanceled'
-                    -
-                        $ref: '#/components/messages/PaymentCancelReservationFailed'
+                    - $ref: '#/components/messages/PaymentMethodAdded'
+                    - $ref: '#/components/messages/PaymentMethodDeleted'
+                    - $ref: '#/components/messages/PaymentPreauthorized'
+                    - $ref: '#/components/messages/PaymentPreauthorizationFailed'
+                    - $ref: '#/components/messages/PaymentConfirmed'
+                    - $ref: '#/components/messages/PaymentConfirmationFailed'
+                    - $ref: '#/components/messages/PaymentRefunded'
+                    - $ref: '#/components/messages/PaymentRefundFailed'
+                    - $ref: '#/components/messages/PaymentReservationCanceled'
+                    - $ref: '#/components/messages/PaymentCancelReservationFailed'
 components:
     messages:
         PaymentMethodAdded:

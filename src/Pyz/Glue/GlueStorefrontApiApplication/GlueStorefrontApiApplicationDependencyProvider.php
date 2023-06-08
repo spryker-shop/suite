@@ -13,11 +13,15 @@ use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\LocaleReque
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\RequestCorsValidatorPlugin;
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\ScopeRequestAfterRoutingValidatorPlugin;
 use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\SecurityHeaderResponseFormatterPlugin;
+use Spryker\Glue\GlueStorefrontApiApplication\Plugin\GlueApplication\StrictTransportSecurityHeaderResponseFormatterPlugin;
 use Spryker\Glue\GlueStorefrontApiApplicationAuthorizationConnector\Plugin\GlueStorefrontApiApplicationAuthorizationConnector\AuthorizationRequestAfterRoutingValidatorPlugin;
+use Spryker\Glue\Http\Plugin\Application\HttpApplicationPlugin;
+use Spryker\Glue\Locale\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Glue\OauthApi\Plugin\AccessTokenValidatorPlugin;
 use Spryker\Glue\OauthApi\Plugin\CustomerRequestBuilderPlugin;
 use Spryker\Glue\OauthApi\Plugin\GlueApplication\CustomerRequestValidatorPlugin;
 use Spryker\Glue\OauthApi\Plugin\GlueApplication\OauthApiTokenResource;
+use Spryker\Glue\StoresRestApi\Plugin\Application\StoreHttpHeaderApplicationPlugin;
 use SprykerEco\Glue\UnzerRestApi\Plugin\GlueJsonApiConventionExtension\UnzerNotificationResource;
 
 class GlueStorefrontApiApplicationDependencyProvider extends SprykerGlueStorefrontApiApplicationDependencyProvider
@@ -64,6 +68,7 @@ class GlueStorefrontApiApplicationDependencyProvider extends SprykerGlueStorefro
     {
         return [
             new SecurityHeaderResponseFormatterPlugin(),
+            new StrictTransportSecurityHeaderResponseFormatterPlugin(),
         ];
     }
 
@@ -84,5 +89,17 @@ class GlueStorefrontApiApplicationDependencyProvider extends SprykerGlueStorefro
     protected function getRouteProviderPlugins(): array
     {
         return [];
+    }
+
+    /**
+     * @return array<\Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface>
+     */
+    protected function getApplicationPlugins(): array
+    {
+        return [
+            new HttpApplicationPlugin(),
+            new StoreHttpHeaderApplicationPlugin(),
+            new LocaleApplicationPlugin(),
+        ];
     }
 }

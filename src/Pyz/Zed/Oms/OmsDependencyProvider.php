@@ -20,6 +20,7 @@ use Spryker\Zed\GiftCardMailConnector\Communication\Plugin\Oms\Command\ShipGiftC
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderConfirmationPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderShippedPlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderStatusChangedMessagePlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandCollectionInterface;
 use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionCollectionInterface;
 use Spryker\Zed\Oms\OmsDependencyProvider as SprykerOmsDependencyProvider;
@@ -27,6 +28,10 @@ use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOffer
 use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferOmsReservationReaderStrategyPlugin;
 use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferOmsReservationWriterStrategyPlugin;
 use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferReservationPostSaveTerminationAwareStrategyPlugin;
+use Spryker\Zed\PickingList\Communication\Plugin\Oms\GeneratePickingListsCommandByOrderPlugin;
+use Spryker\Zed\PickingList\Communication\Plugin\Oms\IsPickingFinishedConditionPlugin;
+use Spryker\Zed\PickingList\Communication\Plugin\Oms\IsPickingListGenerationFinishedConditionPlugin;
+use Spryker\Zed\PickingList\Communication\Plugin\Oms\IsPickingStartedConditionPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Oms\ProductBundleAvailabilityHandlerPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Oms\ProductBundleReservationPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\ProductOfferPackagingUnit\Communication\Plugin\Oms\ProductOfferPackagingUnitOmsReservationAggregationPlugin;
@@ -40,6 +45,7 @@ use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendEventPaymentRefundPend
 use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
+use Spryker\Zed\WarehouseAllocation\Communication\Plugin\Oms\SalesOrderWarehouseAllocationCommandPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\CancelAndRecalculateCommandByOrderPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\CancelCommandPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\PartialCaptureCommandByOrderPlugin;
@@ -135,6 +141,8 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new SendEventPaymentConfirmationPendingPlugin(), 'Payment/SendEventPaymentConfirmationPending');
             $commandCollection->add(new SendEventPaymentRefundPendingPlugin(), 'Payment/SendEventPaymentRefundPending');
             $commandCollection->add(new SendEventPaymentCancelReservationPendingPlugin(), 'Payment/SendEventPaymentCancelReservationPending');
+            $commandCollection->add(new GeneratePickingListsCommandByOrderPlugin(), 'PickingList/GeneratePickingLists');
+            $commandCollection->add(new SalesOrderWarehouseAllocationCommandPlugin(), 'WarehouseAllocation/WarehouseAllocate');
 
             // ----- Payone
             $commandCollection->add(new CancelCommandPlugin(), 'Payone/Cancel');
@@ -142,6 +150,8 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new PartialCaptureCommandByOrderPlugin(), 'Payone/PartialCapture');
             $commandCollection->add(new SavePartialRefundCommandPlugin(), 'Payone/SavePartialRefund');
             $commandCollection->add(new PartialRefundCommandPlugin(), 'Payone/PartialRefund');
+
+            $commandCollection->add(new SendOrderStatusChangedMessagePlugin(), 'Order/RequestProductReviews');
 
             // ----- Unzer
             $commandCollection->add(new UnzerChargeCommandByOrderPlugin(), 'Unzer/Charge');
@@ -179,6 +189,9 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $conditionCollection->add(new PaymentIsRefundConditionPlugin(), 'Payone/PaymentIsRefund');
             $conditionCollection->add(new PaymentIsPaidConditionPlugin(), 'Payone/PaymentIsPaid');
             $conditionCollection->add(new AuthorizationIsErrorConditionPlugin(), 'Payone/AuthorizationIsError');
+            $conditionCollection->add(new IsPickingListGenerationFinishedConditionPlugin(), 'PickingList/isPickingListGenerationFinished');
+            $conditionCollection->add(new IsPickingStartedConditionPlugin(), 'PickingList/isPickingStarted');
+            $conditionCollection->add(new IsPickingFinishedConditionPlugin(), 'PickingList/isPickingFinished');
 
             // ----- Unzer
             $conditionCollection->add(new UnzerIsAuthorizePendingConditionPlugin(), 'Unzer/IsAuthorizePending');

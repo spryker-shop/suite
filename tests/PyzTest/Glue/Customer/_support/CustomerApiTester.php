@@ -39,7 +39,7 @@ class CustomerApiTester extends ApiEndToEndTester
      */
     public function assertCustomersAttributes(
         CustomerTransfer $customerTransfer,
-        array $restCustomersAttributesTransferData
+        array $restCustomersAttributesTransferData,
     ): void {
         $restCustomersAttributesTransfer = (new RestCustomersAttributesTransfer())
             ->fromArray($restCustomersAttributesTransferData, true);
@@ -86,7 +86,7 @@ class CustomerApiTester extends ApiEndToEndTester
      */
     public function assertRegisteredCustomersAttributes(
         RestCustomersAttributesTransfer $expectedRestCustomersAttributesTransfer,
-        array $restCustomersAttributesTransferData
+        array $restCustomersAttributesTransferData,
     ): void {
         $restCustomersAttributesTransfer = (new RestCustomersAttributesTransfer())
             ->fromArray($restCustomersAttributesTransferData, true);

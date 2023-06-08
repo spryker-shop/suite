@@ -7,7 +7,9 @@
 
     <process name="MarketplacePayment01" main="true">
         <states>
-            <state name="new" reserved="true" display="oms.state.new"/>
+            <state name="new" reserved="true" display="oms.state.new">
+                <flag>cancellable</flag>
+            </state>
             <state name="paid" reserved="true" display="oms.state.paid"/>
             <state name="canceled" display="oms.state.canceled"/>
             <state name="refunded" display="oms.state.refunded"/>
@@ -21,8 +23,20 @@
         <transitions>
             <transition happy="true">
                 <source>new</source>
+                <target>warehouse allocated</target>
+                <event>allocate warehouse</event>
+            </transition>
+
+            <transition happy="true">
+                <source>warehouse allocated</source>
                 <target>paid</target>
                 <event>pay</event>
+            </transition>
+
+            <transition>
+                <source>new</source>
+                <target>canceled</target>
+                <event>cancel</event>
             </transition>
 
             <transition happy="true" condition="MerchantSalesOrder/IsOrderPaid">
@@ -47,7 +61,7 @@
                 <event>cancel</event>
             </transition>
 
-            <transition>
+            <transition condition="MerchantSalesOrder/IsOrderPaid">
                 <source>canceled</source>
                 <target>refunded</target>
                 <event>refund</event>
@@ -80,7 +94,7 @@
         </transitions>
 
         <events>
-            <event name="pay" manual="true"/>
+            <event name="pay" manual="true" command="Order/RequestProductReviews"/>
             <event name="cancel" manual="true"/>
             <event name="refund" manual="true"/>
             <event name="send to merchant" onEnter="true" command="MerchantSalesOrder/CreateOrders"/>
@@ -92,11 +106,13 @@
         <subprocesses>
             <process>MarketplaceReturn</process>
             <process>MarketplaceRefund</process>
+            <process>WarehouseAllocation</process>
         </subprocesses>
 
     </process>
 
     <process name="MarketplaceReturn" file="MarketplaceSubprocess/MarketplaceReturn01.xml"/>
     <process name="MarketplaceRefund" file="MarketplaceSubprocess/MarketplaceRefund01.xml"/>
+    <process name="WarehouseAllocation" file="WarehouseAllocationSubprocess/WarehouseAllocation01.xml"/>
 
 </statemachine>

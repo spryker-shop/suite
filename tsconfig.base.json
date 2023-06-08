@@ -3,19 +3,20 @@
         "sourceMap": true,
         "noImplicitAny": false,
         "declaration": false,
-        "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "noEmitHelpers": true,
         "importHelpers": true,
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
-        "target": "es2015",
+        "removeComments": true,
+        "useDefineForClassFields": false,
+        "moduleResolution": "node",
+        "target": "es2020",
         "module": "esnext",
         "typeRoots": ["node_modules/@types"],
         "lib": ["dom", "esnext"],
         "baseUrl": ".",
-        "removeComments": true,
         "rootDir": ".",
         "paths": {
             "@mp/dashboard-merchant-portal-gui": ["vendor/spryker/dashboard-merchant-portal-gui/mp.public-api.ts"],
@@ -44,5 +45,5 @@
         "./src/Pyz/Yves/**/*",
         "./src/Pyz/Zed/**/*"
     ],
-    "exclude": ["**/node_modules/**", "**/*.spec.ts", "public", "dist", "**/dist/**"]
+    "exclude": ["**/node_modules/**", "**/*.spec.ts", "**/*.test.ts", "public", "dist", "**/dist/**"]
 }

@@ -101,6 +101,8 @@ class ProductLabelsRestApiFixtures implements FixturesBuilderInterface, Fixtures
 
         $storeTransfer = $I->haveStore([
             StoreTransfer::NAME => 'DE',
+            StoreTransfer::DEFAULT_CURRENCY_ISO_CODE => 'EUR',
+            StoreTransfer::AVAILABLE_CURRENCY_ISO_CODES => ['EUR'],
         ]);
         $storeRelationSeedData = [
             StoreRelationTransfer::ID_STORES => [

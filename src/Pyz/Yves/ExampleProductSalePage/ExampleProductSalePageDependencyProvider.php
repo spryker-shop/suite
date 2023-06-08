@@ -38,6 +38,11 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     public const CLIENT_CATALOG = 'CLIENT_CATALOG';
 
     /**
+     * @var string
+     */
+    public const SERVICE_UTIL_NUMBER = 'SERVICE_UTIL_NUMBER';
+
+    /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
      * @return \Spryker\Yves\Kernel\Container
@@ -49,6 +54,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
         $container = $this->addLocaleClient($container);
         $container = $this->addProductSalePageWidgetPlugins($container);
         $container = $this->addCatalogClient($container);
+        $container = $this->addUtilNumberService($container);
 
         return $container;
     }
@@ -114,12 +120,34 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addProductSalePageWidgetPlugins($container): Container
+    protected function addUtilNumberService(Container $container): Container
     {
-        $container->set(static::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS, function () {
-            return [];
+        $container->set(static::SERVICE_UTIL_NUMBER, function (Container $container) {
+            return $container->getLocator()->utilNumber()->service();
         });
 
         return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addProductSalePageWidgetPlugins($container): Container
+    {
+        $container->set(static::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS, function () {
+            return $this->getProductSalePageWidgetPlugins();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @return array<string>
+     */
+    protected function getProductSalePageWidgetPlugins(): array
+    {
+        return [];
     }
 }

@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 
-/* tslint:disable:no-unnecessary-class */
 @Component({
     selector: 'mp-dummy-card',
     templateUrl: './overwritten-dummy-card.component.html',

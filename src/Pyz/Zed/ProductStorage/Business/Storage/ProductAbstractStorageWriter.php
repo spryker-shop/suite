@@ -87,7 +87,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         array $productAbstractStorageCollectionFilterPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient,
-        ProductStorageCteStrategyInterface $productAbstractStorageCte
+        ProductStorageCteStrategyInterface $productAbstractStorageCte,
     ) {
         parent::__construct(
             $productFacade,
@@ -175,7 +175,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         array $productAbstractLocalizedEntity,
         $storeName,
         $localeName,
-        array $attributeMapBulk = []
+        array $attributeMapBulk = [],
     ): void {
         $productAbstractStorageTransfer = $this->mapToProductAbstractStorageTransfer(
             $productAbstractLocalizedEntity,
@@ -259,7 +259,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     public function buildSynchronizedMessage(
         array $data,
         string $resourceName,
-        array $params = []
+        array $params = [],
     ): QueueSendMessageTransfer {
         $data['_timestamp'] = microtime(true);
         $payload = [
@@ -272,7 +272,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         ];
 
         $queueSendTransfer = new QueueSendMessageTransfer();
-        $queueSendTransfer->setBody(json_encode($payload));
+        $queueSendTransfer->setBody((string)json_encode($payload));
 
         if (isset($data['store'])) {
             $queueSendTransfer->setStoreName($data['store']);
@@ -295,6 +295,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         }
 
         $stmt = Propel::getConnection()->prepare($this->getSql());
+        assert($stmt !== false, 'PDOStatement not set');
         $stmt->execute($this->getParams());
     }
 

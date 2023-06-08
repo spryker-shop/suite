@@ -20,11 +20,13 @@ use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Installer\AgentOauthSco
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Installer\OauthCompanyUserInstallerPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Installer\OauthCustomerScopeInstallerPlugin;
 use Spryker\Zed\OauthUserConnector\Communication\Plugin\Installer\OauthUserScopeInstallerPlugin;
+use Spryker\Zed\OauthWarehouse\Communication\Plugin\Installer\OauthWarehouseInstallerPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\PriceInstallerPlugin;
 use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\Installer\ProductAlternativeProductLabelConnectorInstallerPlugin;
 use Spryker\Zed\ProductDiscontinuedProductLabelConnector\Communication\Plugin\Installer\ProductDiscontinuedProductLabelConnectorInstallerPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Installer\ProductMeasurementUnitInstallerPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Installer\ProductPackagingUnitTypeInstallerPlugin;
+use Spryker\Zed\PushNotificationWebPushPhp\Communication\Plugin\Installer\PushNotificationWebPushPhpProviderInstallerPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Installer\SalesOrderThresholdTypeInstallerPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedCartPermissionInstallerPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionsInstallerPlugin;
@@ -34,7 +36,7 @@ use Spryker\Zed\User\Communication\Plugin\UserInstallerPlugin;
 class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
 {
     /**
-     * @return array<\Spryker\Zed\Installer\Dependency\Plugin\InstallerPluginInterface>
+     * @return array<\Spryker\Zed\Installer\Dependency\Plugin\InstallerPluginInterface|\Spryker\Zed\InstallerExtension\Dependency\Plugin\InstallerPluginInterface>
      */
     public function getInstallerPlugins(): array
     {
@@ -61,6 +63,8 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new OauthUserScopeInstallerPlugin(),
             new OauthCompanyUserInstallerPlugin(),
             new AgentOauthScopeInstallerPlugin(),
+            new PushNotificationWebPushPhpProviderInstallerPlugin(),
+            new OauthWarehouseInstallerPlugin(),
         ];
     }
 }

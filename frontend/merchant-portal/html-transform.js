@@ -1,4 +1,4 @@
-const { getMPEntryPointsMap } = require("./entry-points");
+const { getMPEntryPointsMap } = require('./entry-points');
 
 module.exports = async (targetOptions, indexHtml) => {
     const entryPointsMap = await getMPEntryPointsMap();
@@ -6,7 +6,7 @@ module.exports = async (targetOptions, indexHtml) => {
 
     return entryNames.reduce((html, entryName) => {
         entryTag = createScriptTag(entryName + '.js');
-        return insertTextAt(entryTag, html.indexOf("</body>"), html);
+        return insertTextAt(entryTag, html.indexOf('</body>'), html);
     }, indexHtml);
 };
 

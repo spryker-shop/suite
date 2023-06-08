@@ -7,7 +7,7 @@
         All sniffs in ./Sniffs will be auto loaded
     </description>
 
-    <config name="php_version" value="70400"/>
+    <config name="php_version" value="80000"/>
 
     <file>src/</file>
     <file>config/</file>
@@ -33,9 +33,28 @@
 
     <rule ref="Spryker.Internal.SprykerDisallowFunctions">
         <properties>
-            <!-- We want to prevent 8.0+ functions to break 7.4 compatibility -->
-            <property name="phpVersion" value="7.4"/>
+            <!-- We want to prevent 8.1+ functions to break 8.0 compatibility -->
+            <property name="phpVersion" value="8.0"/>
         </properties>
+    </rule>
+
+    <rule ref="Spryker.Namespaces.SprykerNamespace">
+        <properties>
+            <property name="namespace" value="Pyz"/>
+        </properties>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInDeclaration"/>
+    <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInClosureUse"/>
+
+    <rule ref="SlevomatCodingStandard.ControlStructures.DisallowNullSafeObjectOperator">
+        <severity>0</severity>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Functions.DisallowTrailingCommaInDeclaration">
+        <severity>0</severity>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Functions.DisallowTrailingCommaInClosureUse">
+        <severity>0</severity>
     </rule>
 
 </ruleset>
