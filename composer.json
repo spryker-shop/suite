@@ -146,9 +146,9 @@
         "spryker-sdk/benchmark": "dev-master",
         "spryker/docker-chromedriver": "dev-master",
         "spryker-sdk/load-testing": "dev-master",
-        "spryker-sdk/security-checker": "dev-master",
         "codeception/c3": "^2.6",
-        "spryker-sdk/async-api": "dev-master"
+        "spryker-sdk/async-api": "dev-master",
+        "spryker-sdk/evaluator": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -196,7 +196,9 @@
             "composer/package-versions-deprecated": true,
             "codeception/c3": true,
             "spryker/composer-merge-plugin": true,
-            "sllh/composer-versions-check": true
+            "sllh/composer-versions-check": true,
+            "symfony/runtime": false,
+            "symfony/flex": false
         }
     },
     "repositories": [

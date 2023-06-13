@@ -206,8 +206,8 @@ _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
     - npm run yves:stylelint
     - npm run yves:lint
 
-_SECURITY_CHECK_SCRIPT: &SECURITY_CHECK_SCRIPT
-    - vendor/bin/console security:check
+_EVALUATOR_SCRIPT: &EVALUATOR_SCRIPT
+    - vendor/bin/evaluator evaluate
 
 _BROWSER_TESTING_AFTER_SCRIPT: &BROWSER_TESTING_AFTER_SCRIPT
     - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/chromedriver.log ; fi
@@ -399,7 +399,7 @@ jobs:
               postgresql: 9.6
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
-        - name: Security check
+        - name: Evaluator check
           php: '8.0'
           stage: Test
           env:
@@ -410,7 +410,7 @@ jobs:
           install:
               - *COMPOSER_INSTALL
           script:
-              - *SECURITY_CHECK_SCRIPT
+              - *EVALUATOR_SCRIPT
           addons:
               <<: *ADDONS_BASE_INFRASTRUCTURE
 
