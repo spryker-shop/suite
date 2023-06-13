@@ -19,6 +19,7 @@
         "spryker-eco/authorization-picking-app-backend-api": "^0.2.0",
         "spryker-eco/loggly": "^0.1.0",
         "spryker-eco/payone": "^4.0.0",
+        "spryker-sdk/evaluator": "dev-master",
         "spryker-shop/agent-page": "^1.10.0",
         "spryker-shop/agent-page-extension": "^1.0.0",
         "spryker-shop/agent-widget": "^1.3.3",
@@ -1166,7 +1167,6 @@
         "spryker-sdk/composer-constrainer": "^0.2.0",
         "spryker-sdk/load-testing": "^0.1.0",
         "spryker-sdk/phpstan-spryker": "^0.4.0",
-        "spryker-sdk/security-checker": "^0.1.0",
         "spryker-sdk/spryk": "^0.4.0",
         "spryker-shop/web-profiler-widget": "^1.4.2",
         "spryker/architecture-sniffer": "^0.5.0",
@@ -1213,7 +1213,9 @@
         "chromium-revision": 814168,
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "composer/package-versions-deprecated": true
+            "composer/package-versions-deprecated": true,
+            "symfony/runtime": false,
+            "symfony/flex": false
         }
     },
     "scripts": {
