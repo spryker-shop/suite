@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\DataImport;
 
-use Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer;
 use Spryker\Zed\AclDataImport\AclDataImportConfig;
 use Spryker\Zed\AclEntityDataImport\AclEntityDataImportConfig;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
@@ -292,46 +291,6 @@ class DataImportConfig extends SprykerDataImportConfig
     /**
      * @var string
      */
-    public const PRODUCT_ABSTRACT_QUEUE = 'import.product_abstract';
-
-    /**
-     * @var string
-     */
-    public const PRODUCT_ABSTRACT_QUEUE_ERROR = 'import.product_abstract.error';
-
-    /**
-     * @var string
-     */
-    public const PRODUCT_CONCRETE_QUEUE = 'import.product_concrete';
-
-    /**
-     * @var string
-     */
-    public const PRODUCT_CONCRETE_QUEUE_ERROR = 'import.product_concrete.error';
-
-    /**
-     * @var string
-     */
-    public const PRODUCT_IMAGE_QUEUE = 'import.product_image';
-
-    /**
-     * @var string
-     */
-    public const PRODUCT_IMAGE_QUEUE_ERROR = 'import.product_image.error';
-
-    /**
-     * @var string
-     */
-    public const PRODUCT_PRICE_QUEUE = 'import.product_price';
-
-    /**
-     * @var string
-     */
-    public const PRODUCT_PRICE_QUEUE_ERROR = 'import.product_price.error';
-
-    /**
-     * @var string
-     */
     public const IMPORT_TYPE_MERCHANT_USER = 'merchant-user';
 
     /**
@@ -342,46 +301,6 @@ class DataImportConfig extends SprykerDataImportConfig
         $regionDir = defined('APPLICATION_REGION') ? APPLICATION_REGION : 'EU';
 
         return APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'data/import/local/full_' . $regionDir . '.yml';
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer
-     */
-    public function getProductAbstractQueueWriterConfiguration(): DataImporterQueueWriterConfigurationTransfer
-    {
-        return (new DataImporterQueueWriterConfigurationTransfer())
-            ->setQueueName(static::PRODUCT_ABSTRACT_QUEUE)
-            ->setChunkSize($this->getQueueWriterChunkSize());
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer
-     */
-    public function getProductConcreteQueueWriterConfiguration(): DataImporterQueueWriterConfigurationTransfer
-    {
-        return (new DataImporterQueueWriterConfigurationTransfer())
-            ->setQueueName(static::PRODUCT_CONCRETE_QUEUE)
-            ->setChunkSize($this->getQueueWriterChunkSize());
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer
-     */
-    public function getProductImageQueueWriterConfiguration(): DataImporterQueueWriterConfigurationTransfer
-    {
-        return (new DataImporterQueueWriterConfigurationTransfer())
-            ->setQueueName(static::PRODUCT_IMAGE_QUEUE)
-            ->setChunkSize($this->getQueueWriterChunkSize());
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer
-     */
-    public function getProductPriceQueueWriterConfiguration(): DataImporterQueueWriterConfigurationTransfer
-    {
-        return (new DataImporterQueueWriterConfigurationTransfer())
-            ->setQueueName(static::PRODUCT_PRICE_QUEUE)
-            ->setChunkSize($this->getQueueWriterChunkSize());
     }
 
     /**
