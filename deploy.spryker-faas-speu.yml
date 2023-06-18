@@ -8,8 +8,6 @@ environment: docker.prod
 image:
     tag: spryker/php:8.1
     php:
-        enabled-extensions:
-            - blackfire
     environment:
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.faas-suite-prod.cloud.spryker.toys
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
