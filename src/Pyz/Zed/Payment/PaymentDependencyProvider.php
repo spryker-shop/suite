@@ -27,7 +27,6 @@ class PaymentDependencyProvider extends SprykerPaymentDependencyProvider
             new GiftCardPaymentMethodFilterPlugin(),
             new MerchantProductItemPaymentMethodFilterPlugin(),
             new UnzerMarketplacePaymentMethodFilterPlugin(),
-            new UnzerEnabledPaymentMethodFilterPlugin(),
         ];
     }
 
