@@ -47,7 +47,10 @@ config/Yves/cache_bust.php
 /node_modules/
 
 # public stuff
-public/*/assets/
+public/Yves/assets/
+public/Backoffice/assets/
+public/Zed/assets/
+public/MerchantPortal/assets/
 public/Configurator/dist/
 
 # docker stuff
@@ -98,7 +101,3 @@ c3.php
 
 # Docker
 docker
-
-# angular
-/.angular/cache
-/.angular

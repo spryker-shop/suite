@@ -205,7 +205,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
             ->fromArray($dataSet->getArrayCopy(), true)
             ->setColorCode($dataSet[static::COLUMN_COLOR_CODE])
             ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
-            ->setAttributes((string)json_encode($dataSet[static::KEY_ATTRIBUTES]))
+            ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
             ->setNewFrom($dataSet[static::COLUMN_NEW_FROM])
             ->setNewTo($dataSet[static::COLUMN_NEW_TO]);
 
@@ -230,7 +230,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
                 ->setMetaDescription($localizedAttributes[static::COLUMN_META_DESCRIPTION])
                 ->setMetaKeywords($localizedAttributes[static::COLUMN_META_KEYWORDS])
                 ->setFkLocale($idLocale)
-                ->setAttributes((string)json_encode($localizedAttributes[static::KEY_ATTRIBUTES]));
+                ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]));
 
             $localizedAttributeTransfer[] = [
                 static::COLUMN_ABSTRACT_SKU => $dataSet[static::COLUMN_ABSTRACT_SKU],
@@ -263,12 +263,16 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
                 ));
             }
 
-            $productCategoryEntityTransfer = (new SpyProductCategoryEntityTransfer())
-                ->setFkCategory($dataSet[static::COLUMN_CATEGORY_KEYS][$categoryKey]);
+            $productOrder = 0;
 
-            if (count($categoryProductOrder) && isset($categoryProductOrder[$index]) && $categoryProductOrder[$index] !== '') {
-                $productCategoryEntityTransfer->setProductOrder((int)$categoryProductOrder[$index]);
+            if (count($categoryProductOrder) && isset($categoryProductOrder[$index])) {
+                $productOrder = (int)$categoryProductOrder[$index];
             }
+
+            $productCategoryEntityTransfer = new SpyProductCategoryEntityTransfer();
+            $productCategoryEntityTransfer
+                ->setFkCategory($dataSet[static::COLUMN_CATEGORY_KEYS][$categoryKey])
+                ->setProductOrder($productOrder);
 
             $productCategoryTransfers[] = [
                 static::COLUMN_ABSTRACT_SKU => $dataSet[static::COLUMN_ABSTRACT_SKU],

@@ -14,7 +14,6 @@
         <states>
             <state name="new" display="oms.state.new"/>
             <state name="paid" reserved="true" display="oms.state.paid"/>
-            <state name="product review requested" reserved="true" display="oms.state.paid"/>
             <state name="exported" reserved="true" display="oms.state.in-progress"/>
             <state name="waiting for conformation" reserved="true" display="oms.state.in-progress"/>
             <state name="shipped" reserved="true" display="oms.state.shipped"/>
@@ -31,12 +30,6 @@
 
             <transition happy="true">
                 <source>paid</source>
-                <target>product review requested</target>
-                <event>request product review</event>
-            </transition>
-
-            <transition happy="true">
-                <source>product review requested</source>
                 <target>exported</target>
                 <event>export</event>
             </transition>
@@ -69,7 +62,6 @@
 
         <events>
             <event name="authorize" timeout="1 second"/>
-            <event name="request product review" onEnter="true" command="Order/RequestProductReviews"/>
             <event name="export" onEnter="true" manual="true" command="Oms/SendOrderConfirmation"/>
             <event name="ship" manual="true" command="Oms/SendOrderShipped"/>
             <event name="stock-update" manual="true"/>

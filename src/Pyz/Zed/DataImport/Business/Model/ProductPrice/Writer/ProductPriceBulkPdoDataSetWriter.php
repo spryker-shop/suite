@@ -132,7 +132,7 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     protected function prepareProductIdsCollection(
         array $priceProductCollection,
         string $tableName,
-        string $productKey,
+        string $productKey
     ): void {
         $productConcreteSkuCollection = $this->dataFormatter->getCollectionDataByKey($priceProductCollection, ProductPriceHydratorStep::KEY_SKU);
         $productSku = $this->dataFormatter->formatPostgresArray($productConcreteSkuCollection);
@@ -162,7 +162,7 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
     protected function persistPriceProductEntities(
         string $productIdKey,
         string $productTable,
-        string $productFkKey,
+        string $productFkKey
     ): void {
         if (!static::$productIds) {
             return;
@@ -231,7 +231,7 @@ class ProductPriceBulkPdoDataSetWriter extends AbstractProductPriceBulkDataSetWr
         array $priceProductCollection,
         string $productTableName,
         string $productIdKey,
-        string $productFkKey,
+        string $productFkKey
     ): void {
         $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productIds, $productIdKey);
         $product = $this->dataFormatter->formatPostgresArray($productCollection);

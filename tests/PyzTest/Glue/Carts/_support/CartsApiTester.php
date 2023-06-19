@@ -56,7 +56,7 @@ class CartsApiTester extends ApiEndToEndTester
     public function createPersistentQuote(
         CartsApiTester $I,
         CustomerTransfer $customerTransfer,
-        array $productConcreteTransfers,
+        array $productConcreteTransfers
     ): QuoteTransfer {
         $quoteTransfer = $I->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,
@@ -64,11 +64,7 @@ class CartsApiTester extends ApiEndToEndTester
                 ->setSubtotal(random_int(1000, 10000))
                 ->setPriceToPay(random_int(1000, 10000)),
             QuoteTransfer::ITEMS => $this->mapProductConcreteTransfersToQuoteTransferItems($productConcreteTransfers),
-            QuoteTransfer::STORE => [
-                StoreTransfer::NAME => 'DE',
-                StoreTransfer::DEFAULT_CURRENCY_ISO_CODE => 'EUR',
-                StoreTransfer::AVAILABLE_CURRENCY_ISO_CODES => ['EUR'],
-            ],
+            QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
             QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
         ]);
 
@@ -129,7 +125,7 @@ class CartsApiTester extends ApiEndToEndTester
     public function createCartResourceEntityTag(
         CartsApiTester $I,
         string $cartUuid,
-        array $attributes,
+        array $attributes
     ): string {
         return $I->haveEntityTag(
             CartsRestApiConfig::RESOURCE_CARTS,
@@ -148,7 +144,7 @@ class CartsApiTester extends ApiEndToEndTester
     public function seeCartItemQuantityEqualsToQuantityInRequest(
         int $quantity,
         string $resourceName,
-        string $itemSku,
+        string $itemSku
     ): void {
         $includedByTypeAndId = $this->grabIncludedByTypeAndId($resourceName, $itemSku);
 
@@ -299,7 +295,7 @@ class CartsApiTester extends ApiEndToEndTester
     public function buildGuestCartItemUrl(
         string $guestCartUuid,
         string $guestCartItemGroupKey,
-        array $includes = [],
+        array $includes = []
     ): string {
         return $this->formatFullUrl(
             '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{guestCartItemGroupKey}' . $this->formatQueryInclude($includes),

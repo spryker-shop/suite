@@ -29,16 +29,18 @@ const globalSettings = {
         project: './src/Pyz/Yves',
     },
 
-    formatter: [`**/*.(scss|css|less|js|ts|json|html|yml|yaml|xml)`],
+    formatter: [
+        `**/*.(scss|css|less|js|ts|json|html|yml|yaml|xml)`,
+    ],
 
     expectedModeArgument: 2,
 };
 
 const imageOptimizationOptions = {
     enabledInModes: {
-        development: false,
+        'development': false,
         'development-watch': false,
-        production: false,
+        'production': false,
     },
 
     // available options https://github.com/imagemin/imagemin-mozjpeg#api
@@ -72,7 +74,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     ];
 
     // getting collection of entry points by pattern
-    const entryPointsCollection = (pathPattern) => entryPointsParts.map((element) => `${pathPattern}/${element}`);
+    const entryPointsCollection = pathPattern => entryPointsParts.map(element => `${pathPattern}/${element}`);
 
     // define the application name
     const name = 'yves_default';
@@ -90,13 +92,13 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     const getPublicStaticUrl = () => namespaceJson.staticPath;
 
     // get array of available module suffixes
-    const getAllCodeBuckets = () => namespaceJson.namespaces.map((namespace) => namespace.codeBucket);
+    const getAllCodeBuckets = () => namespaceJson.namespaces.map(namespace => namespace.codeBucket);
 
     // get array of ignored modules
     const ignoreModulesCollection = () =>
         getAllCodeBuckets()
-            .filter((suffix) => suffix !== namespaceConfig.codeBucket)
-            .map((suffix) => `!**/*${suffix}/Theme/**`);
+            .filter(suffix => suffix !== namespaceConfig.codeBucket)
+            .map(suffix => `!**/*${suffix}/Theme/**`);
 
     // define ignore patterns
     const ignoreFiles = [
@@ -154,8 +156,8 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 
     // define if current theme is empty
     const isDefaultTheme = theme === namespaceConfig.defaultTheme;
-    const getThemeName = (isFallbackPattern) => (isFallbackPattern ? namespaceConfig.defaultTheme : theme);
-    const isFallbackPatternAndDefaultTheme = (isFallbackPattern) => isFallbackPattern && isDefaultTheme;
+    const getThemeName = isFallbackPattern => (isFallbackPattern ? namespaceConfig.defaultTheme : theme);
+    const isFallbackPatternAndDefaultTheme = isFallbackPattern => isFallbackPattern && isDefaultTheme;
 
     // define entry point patterns for current theme, if current theme is defined
     const customThemeEntryPointPatterns = (isFallbackPattern = false) => {
@@ -246,8 +248,8 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 
 const getAppSettings = (namespaceConfigList, pathToConfig) => {
     const appSettings = [];
-    namespaceConfigList.forEach((namespaceConfig) => {
-        namespaceConfig.themes.forEach((theme) => {
+    namespaceConfigList.forEach(namespaceConfig => {
+        namespaceConfig.themes.forEach(theme => {
             appSettings.push(getAppSettingsByTheme(namespaceConfig, theme, pathToConfig));
         });
     });

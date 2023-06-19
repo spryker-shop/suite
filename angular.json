@@ -87,30 +87,26 @@
                     }
                 },
                 "lint": {
-                    "builder": "@angular-eslint/builder:lint",
+                    "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "eslintConfig": ".eslintrc.mp.json",
-                        "lintFilePatterns": [
-                            "src/Pyz/Zed/*/Presentation/Components/**/*.ts",
-                            "src/Pyz/Zed/*/Presentation/Components/**/*.html"
-                        ]
+                        "tsConfig": ["tsconfig.mp.json"],
+                        "tslintConfig": "tslint.mp.json",
+                        "exclude": ["**/node_modules/**"]
                     }
                 },
                 "test": {
                     "builder": "@nrwl/jest:jest",
                     "options": {
-                        "jestConfig": "frontend/merchant-portal/jest.config.ts",
+                        "jestConfig": "frontend/merchant-portal/jest.config.js",
                         "passWithNoTests": true
                     },
-                    "outputs": ["{projectRoot}/coverage"]
+                    "outputs": ["coverage/."]
                 }
             }
         }
     },
     "cli": {
-        "analytics": false,
-        "cache": {
-            "enabled": false
-        }
-    }
+        "analytics": false
+    },
+    "defaultProject": "merchant-portal"
 }

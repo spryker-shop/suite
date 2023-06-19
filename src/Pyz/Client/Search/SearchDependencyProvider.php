@@ -16,8 +16,6 @@ use Spryker\Client\Search\Dependency\Plugin\SearchConfigBuilderInterface;
 use Spryker\Client\Search\SearchDependencyProvider as SprykerSearchDependencyProvider;
 use Spryker\Client\SearchElasticsearch\Plugin\ElasticsearchSearchAdapterPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\ElasticsearchSearchContextExpanderPlugin;
-use Spryker\Client\SearchHttp\Plugin\Search\SearchHttpSearchAdapterPlugin;
-use Spryker\Client\SearchHttp\Plugin\Search\SearchHttpSearchContextExpanderPlugin;
 
 class SearchDependencyProvider extends SprykerSearchDependencyProvider
 {
@@ -53,7 +51,6 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
     protected function getClientAdapterPlugins(): array
     {
         return [
-            new SearchHttpSearchAdapterPlugin(),
             new ElasticsearchSearchAdapterPlugin(),
         ];
     }
@@ -64,7 +61,6 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
     protected function getSearchContextExpanderPlugins(): array
     {
         return [
-            new SearchHttpSearchContextExpanderPlugin(),
             new ElasticsearchSearchContextExpanderPlugin(),
         ];
     }

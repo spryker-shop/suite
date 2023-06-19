@@ -16,11 +16,6 @@ class ProductAbstractStoreBulkPdoMariaDbDataSetWriter extends AbstractProductAbs
     use PropelMariaDbVersionConstraintTrait;
 
     /**
-     * @var string
-     */
-    public const COLUMN_ABSTRACT_SKU = 'product_abstract_sku';
-
-    /**
      * @return bool
      */
     public function isApplicable(): bool

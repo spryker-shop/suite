@@ -7,9 +7,12 @@ channels:
         publish:
             message:
                 oneOf:
-                    - $ref: '#/components/messages/AssetAdded'
-                    - $ref: '#/components/messages/AssetUpdated'
-                    - $ref: '#/components/messages/AssetDeleted'
+                    -
+                        $ref: '#/components/messages/AssetAdded'
+                    -
+                        $ref: '#/components/messages/AssetUpdated'
+                    -
+                        $ref: '#/components/messages/AssetDeleted'
 components:
     messages:
         AssetAdded:

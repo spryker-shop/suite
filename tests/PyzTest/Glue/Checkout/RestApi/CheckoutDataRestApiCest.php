@@ -10,7 +10,6 @@ namespace PyzTest\Glue\Checkout\RestApi;
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
 use PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutDataRestApiFixtures;
-use PyzTest\Glue\Checkout\RestApi\Fixtures\PaymentMethodsFixtures;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 
 /**
@@ -38,7 +37,6 @@ class CheckoutDataRestApiCest
      */
     public function loadFixtures(CheckoutApiTester $I): void
     {
-        $I->loadFixtures(PaymentMethodsFixtures::class);
         /** @var \PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutDataRestApiFixtures $fixtures */
         $fixtures = $I->loadFixtures(CheckoutDataRestApiFixtures::class);
         $this->fixtures = $fixtures;
@@ -279,6 +277,52 @@ class CheckoutDataRestApiCest
                     'billingAddress' => $I->getAddressRequestPayload($quoteTransfer->getBillingAddress()),
                     'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
                     'customer' => $I->getCustomerRequestPayload($this->fixtures->getCustomerTransfer()),
+                ],
+            ],
+        ];
+
+        // Act
+        $I->sendPOST($url, $requestPayload);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
+
+        $I->amSure('The returned resource has correct self link')
+            ->whenI()
+            ->seeSingleResourceHasSelfLink($url);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
+     *
+     * @return void
+     */
+    public function requestWithOneItemInQuoteAndFullBody(CheckoutApiTester $I): void
+    {
+        // Arrange
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
+
+        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
+        $idShipmentMethod = $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod();
+
+        $url = $I->buildCheckoutDataUrl();
+        $requestPayload = [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => $quoteTransfer->getUuid(),
+                    'billingAddress' => $I->getAddressRequestPayload($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
+                    'customer' => $I->getCustomerRequestPayload($this->fixtures->getCustomerTransfer()),
+                    'payments' => $I->getPaymentRequestPayload(),
+                    'shipment' => $I->getShipmentRequestPayload($idShipmentMethod),
                 ],
             ],
         ];

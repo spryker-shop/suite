@@ -34,7 +34,7 @@ class ProductReviewWriterStep extends PublishAwareStep implements DataImportStep
      */
     public function __construct(
         ProductRepositoryInterface $productRepository,
-        LocaleRepositoryInterface $localeRepository,
+        LocaleRepositoryInterface $localeRepository
     ) {
         $this->productRepository = $productRepository;
         $this->localeRepository = $localeRepository;

@@ -7,9 +7,6 @@
 
 namespace PyzTest\Zed\DataImport\Business\Model\ProductAbstractStore;
 
-use Spryker\Zed\Product\Business\ProductFacadeInterface;
-use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
-
 /**
  * Auto-generated group annotations
  *
@@ -24,8 +21,6 @@ use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
  */
 class ProductAbstractStoreWriterPdoTest extends AbstractProductAbstractStoreWriterTest
 {
-    use LocatorHelperTrait;
-
     /**
      * @group ProductWriterTest
      * @group ProductAbstractStoreWriterTest
@@ -35,12 +30,6 @@ class ProductAbstractStoreWriterPdoTest extends AbstractProductAbstractStoreWrit
      */
     public function testProductAbstractStoreWriter(): void
     {
-        //these SKUs data comes from import/ProductAbstractStore/product_abstract_store.csv
-        foreach ($this->testSkus as $sku) {
-            if (!$this->getProductFacade()->findProductAbstractIdBySku($sku)) {
-                $this->tester->haveProductAbstract(['sku' => $sku]);
-            }
-        }
         $this->markTestSkippedOnDatabaseConstraintsMismatch();
 
         $writer = $this->getDataImportBusinessFactoryStub()->createProductAbstractStoreBulkPdoWriter();
@@ -51,14 +40,6 @@ class ProductAbstractStoreWriterPdoTest extends AbstractProductAbstractStoreWrit
         }
         $writer->flush();
 
-        $this->assertImportedData($dataSets, $this->queryDataFromDB($this->testSkus));
-    }
-
-    /**
-     * @return \Spryker\Zed\Product\Business\ProductFacadeInterface
-     */
-    private function getProductFacade(): ProductFacadeInterface
-    {
-        return $this->getLocator()->product()->facade();
+        $this->assertImportedData($dataSets, $this->queryDataFromDB(array_keys($dataSets)));
     }
 }

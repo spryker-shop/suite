@@ -129,30 +129,22 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
     protected function addSaleSearchQueryExpanderPlugins(Container $container): Container
     {
         $container->set(static::SALE_SEARCH_QUERY_EXPANDER_PLUGINS, function () {
-            return $this->getSaleSearchQueryExpanderPlugins();
+            return [
+                new StoreQueryExpanderPlugin(),
+                new LocalizedQueryExpanderPlugin(),
+                new ProductPriceQueryExpanderPlugin(),
+                new SortedQueryExpanderPlugin(),
+                new PaginatedQueryExpanderPlugin(),
+                new ProductListQueryExpanderPlugin(),
+
+                /*
+                 * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
+                 */
+                new FacetQueryExpanderPlugin(),
+            ];
         });
 
         return $container;
-    }
-
-    /**
-     * @return array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface>
-     */
-    protected function getSaleSearchQueryExpanderPlugins(): array
-    {
-        return [
-            new StoreQueryExpanderPlugin(),
-            new LocalizedQueryExpanderPlugin(),
-            new ProductPriceQueryExpanderPlugin(),
-            new SortedQueryExpanderPlugin(),
-            new PaginatedQueryExpanderPlugin(),
-            new ProductListQueryExpanderPlugin(),
-
-            /*
-             * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
-             */
-            new FacetQueryExpanderPlugin(),
-        ];
     }
 
     /**
@@ -163,28 +155,20 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
     protected function addSaleSearchResultFormatterPlugins(Container $container): Container
     {
         $container->set(static::SALE_SEARCH_RESULT_FORMATTER_PLUGINS, function () {
-            return $this->getSaleSearchResultFormatterPlugins();
+            /** @phpstan-var \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface $rawCatalogSearchResultFormatterPlugin */
+            $rawCatalogSearchResultFormatterPlugin = new RawCatalogSearchResultFormatterPlugin();
+
+            return [
+                new FacetResultFormatterPlugin(),
+                new SortedResultFormatterPlugin(),
+                new PaginatedResultFormatterPlugin(),
+                new CurrencyAwareCatalogSearchResultFormatterPlugin(
+                    $rawCatalogSearchResultFormatterPlugin,
+                ),
+            ];
         });
 
         return $container;
-    }
-
-    /**
-     * @return array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface|\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface>
-     */
-    protected function getSaleSearchResultFormatterPlugins(): array
-    {
-        /** @phpstan-var \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface $rawCatalogSearchResultFormatterPlugin */
-        $rawCatalogSearchResultFormatterPlugin = new RawCatalogSearchResultFormatterPlugin();
-
-        return [
-            new FacetResultFormatterPlugin(),
-            new SortedResultFormatterPlugin(),
-            new PaginatedResultFormatterPlugin(),
-            new CurrencyAwareCatalogSearchResultFormatterPlugin(
-                $rawCatalogSearchResultFormatterPlugin,
-            ),
-        ];
     }
 
     /**

@@ -18,7 +18,7 @@ use Spryker\Zed\CompanyUser\CompanyUserDependencyProvider as SprykerCompanyUserD
 use Spryker\Zed\MerchantRelationship\Communication\Plugin\CompanyUser\MerchantRelationshipHydratePlugin;
 use Spryker\Zed\QuoteRequest\Communication\Plugin\CompanyUserExtension\QuoteRequestCompanyUserPreDeletePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\CompanyUserExtension\SharedCartCompanyUserPreDeletePlugin;
-use Spryker\Zed\ShoppingList\Communication\Plugin\CompanyUser\ShoppingListCompanyUserPreDeletePlugin;
+use Spryker\Zed\ShoppingList\Communication\Plugin\CompanyUserExtension\ShoppingListCompanyUserPreDeletePlugin;
 
 class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
 {

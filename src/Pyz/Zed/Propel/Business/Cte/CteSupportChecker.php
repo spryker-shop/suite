@@ -70,7 +70,6 @@ class CteSupportChecker implements CteSupportCheckerInterface
     protected function getEngineVersion(): string
     {
         $stmt = Propel::getConnection()->prepare('SELECT VERSION() AS `version`', []);
-        assert($stmt !== false, 'PDOStatement not set');
         $stmt->execute();
 
         return (string)$stmt->fetchColumn();

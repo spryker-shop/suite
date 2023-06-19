@@ -11,12 +11,6 @@ use Spryker\Zed\PriceProductOffer\Communication\Plugin\ProductOffer\PriceProduct
 use Spryker\Zed\PriceProductOffer\Communication\Plugin\ProductOffer\PriceProductOfferProductOfferPostCreatePlugin;
 use Spryker\Zed\PriceProductOffer\Communication\Plugin\ProductOffer\PriceProductOfferProductOfferPostUpdatePlugin;
 use Spryker\Zed\ProductOffer\ProductOfferDependencyProvider as SprykerProductOfferDependencyProvider;
-use Spryker\Zed\ProductOfferServicePoint\Communication\Plugin\ProductOffer\ServiceProductOfferExpanderPlugin;
-use Spryker\Zed\ProductOfferServicePoint\Communication\Plugin\ProductOffer\ServiceProductOfferPostCreatePlugin;
-use Spryker\Zed\ProductOfferServicePoint\Communication\Plugin\ProductOffer\ServiceProductOfferPostUpdatePlugin;
-use Spryker\Zed\ProductOfferShipmentType\Communication\Plugin\ProductOffer\ShipmentTypeProductOfferExpanderPlugin;
-use Spryker\Zed\ProductOfferShipmentType\Communication\Plugin\ProductOffer\ShipmentTypeProductOfferPostCreatePlugin;
-use Spryker\Zed\ProductOfferShipmentType\Communication\Plugin\ProductOffer\ShipmentTypeProductOfferPostUpdatePlugin;
 use Spryker\Zed\ProductOfferStock\Communication\Plugin\ProductOffer\ProductOfferStockProductOfferExpanderPlugin;
 use Spryker\Zed\ProductOfferStock\Communication\Plugin\ProductOffer\ProductOfferStockProductOfferPostCreatePlugin;
 use Spryker\Zed\ProductOfferStock\Communication\Plugin\ProductOffer\ProductOfferStockProductOfferPostUpdatePlugin;
@@ -35,8 +29,6 @@ class ProductOfferDependencyProvider extends SprykerProductOfferDependencyProvid
             new ProductOfferValidityProductOfferPostCreatePlugin(),
             new ProductOfferStockProductOfferPostCreatePlugin(),
             new PriceProductOfferProductOfferPostCreatePlugin(),
-            new ShipmentTypeProductOfferPostCreatePlugin(),
-            new ServiceProductOfferPostCreatePlugin(),
         ];
     }
 
@@ -49,8 +41,6 @@ class ProductOfferDependencyProvider extends SprykerProductOfferDependencyProvid
             new ProductOfferValidityProductOfferPostUpdatePlugin(),
             new ProductOfferStockProductOfferPostUpdatePlugin(),
             new PriceProductOfferProductOfferPostUpdatePlugin(),
-            new ShipmentTypeProductOfferPostUpdatePlugin(),
-            new ServiceProductOfferPostUpdatePlugin(),
         ];
     }
 
@@ -63,8 +53,6 @@ class ProductOfferDependencyProvider extends SprykerProductOfferDependencyProvid
             new ProductOfferValidityProductOfferExpanderPlugin(),
             new ProductOfferStockProductOfferExpanderPlugin(),
             new PriceProductOfferProductOfferExpanderPlugin(),
-            new ShipmentTypeProductOfferExpanderPlugin(),
-            new ServiceProductOfferExpanderPlugin(),
         ];
     }
 }

@@ -49,6 +49,55 @@ class ProductAbstractProductLabelsRestApiCest
      *
      * @return void
      */
+    public function requestProductAbstractWithProductLabelsRelationship(ProductLabelsApiTester $I): void
+    {
+        // Arrange
+        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
+        $url = $I->buildProductAbstractUrl(
+            $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ],
+        );
+
+        // Act
+        $I->sendGET($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('The returned resource has product-labels relationship')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel,
+            );
+
+        $I->amSure('The returned resource has product-labels include')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel,
+            );
+
+        $I->amSure('The include has correct self-link')
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel,
+                $I->buildProductLabelUrl($idProductLabel),
+            );
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\ProductLabels\ProductLabelsApiTester $I
+     *
+     * @return void
+     */
     public function requestProductAbstractWithoutProductLabelsRelationship(ProductLabelsApiTester $I): void
     {
         // Arrange

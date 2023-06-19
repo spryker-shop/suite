@@ -7,6 +7,7 @@
 
 namespace Pyz\Glue\Log;
 
+use Spryker\Glue\Kernel\Container;
 use Spryker\Glue\Log\LogDependencyProvider as SprykerLogDependencyProvider;
 use Spryker\Glue\Log\Plugin\Handler\ExceptionStreamHandlerPlugin;
 use Spryker\Glue\Log\Plugin\Handler\StreamHandlerPlugin;
@@ -20,28 +21,40 @@ use Spryker\Glue\Log\Plugin\Processor\ServerProcessorPlugin;
 class LogDependencyProvider extends SprykerLogDependencyProvider
 {
     /**
-     * @return array<\Monolog\Handler\HandlerInterface>
+     * @param \Spryker\Glue\Kernel\Container $container
+     *
+     * @return \Spryker\Glue\Kernel\Container
      */
-    protected function getLogHandlers(): array
+    protected function addLogHandlers(Container $container): Container
     {
-        return [
-            new StreamHandlerPlugin(),
-            new ExceptionStreamHandlerPlugin(),
-        ];
+        $container->set(static::LOG_HANDLERS, function () {
+            return [
+                new StreamHandlerPlugin(),
+                new ExceptionStreamHandlerPlugin(),
+            ];
+        });
+
+        return $container;
     }
 
     /**
-     * @return array<\Spryker\Shared\Log\Dependency\Plugin\LogProcessorPluginInterface>
+     * @param \Spryker\Glue\Kernel\Container $container
+     *
+     * @return \Spryker\Glue\Kernel\Container
      */
-    protected function getProcessors(): array
+    protected function addProcessors(Container $container): Container
     {
-        return [
-            new PsrLogMessageProcessorPlugin(),
-            new EnvironmentProcessorPlugin(),
-            new ServerProcessorPlugin(),
-            new RequestProcessorPlugin(),
-            new ResponseProcessorPlugin(),
-            new GuzzleBodyProcessorPlugin(),
-        ];
+        $container->set(static::LOG_PROCESSORS, function () {
+            return [
+                new PsrLogMessageProcessorPlugin(),
+                new EnvironmentProcessorPlugin(),
+                new ServerProcessorPlugin(),
+                new RequestProcessorPlugin(),
+                new ResponseProcessorPlugin(),
+                new GuzzleBodyProcessorPlugin(),
+            ];
+        });
+
+        return $container;
     }
 }

@@ -195,7 +195,7 @@ class AccessTokensForCompanyUserRestApiFixtures implements FixturesBuilderInterf
     protected function createCompanyUserTransfer(
         AuthRestApiTester $I,
         CustomerTransfer $customerTransfer,
-        array $seed = [],
+        array $seed = []
     ): CompanyUserTransfer {
         $companyTransfer = $I->haveActiveCompany([
             CompanyTransfer::STATUS => 'approved',

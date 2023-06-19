@@ -31,7 +31,6 @@ class AddCategoryKeysStep implements DataImportStepInterface
     public function execute(DataSetInterface $dataSet): void
     {
         if (!$this->categoryKeys) {
-            /** @var array<\Orm\Zed\Category\Persistence\SpyCategory> $categoryEntityCollection */
             $categoryEntityCollection = SpyCategoryQuery::create()->find();
 
             foreach ($categoryEntityCollection as $categoryEntity) {

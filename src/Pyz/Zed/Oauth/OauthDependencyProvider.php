@@ -17,8 +17,6 @@ use Spryker\Zed\Oauth\OauthDependencyProvider as SprykerOauthDependencyProvider;
 use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Oauth\AgentCredentialsOauthGrantTypeConfigurationProviderPlugin;
 use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Oauth\AgentOauthScopeProviderPlugin;
 use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Oauth\AgentOauthUserProviderPlugin;
-use Spryker\Zed\OauthCodeFlow\Communication\Plugin\Oauth\CustomerAuthCodeOauthRequestGrantTypeConfigurationProviderPlugin;
-use Spryker\Zed\OauthCodeFlow\Communication\Plugin\Oauth\UserAuthCodeOauthRequestGrantTypeConfigurationProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserAccessTokenOauthGrantTypeConfigurationProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserAccessTokenOauthUserProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthScopeProviderPlugin;
@@ -39,9 +37,6 @@ use Spryker\Zed\OauthRevoke\Communication\Plugin\Oauth\OauthRefreshTokensReaderP
 use Spryker\Zed\OauthRevoke\Communication\Plugin\Oauth\OauthRefreshTokensRevokerPlugin;
 use Spryker\Zed\OauthUserConnector\Communication\Plugin\Oauth\UserOauthScopeProviderPlugin;
 use Spryker\Zed\OauthUserConnector\Communication\Plugin\Oauth\UserOauthUserProviderPlugin;
-use Spryker\Zed\OauthWarehouse\Communication\Plugin\Oauth\WarehouseOauthRequestGrantTypeConfigurationProviderPlugin;
-use Spryker\Zed\OauthWarehouse\Communication\Plugin\Oauth\WarehouseOauthScopeProviderPlugin;
-use Spryker\Zed\OauthWarehouse\Communication\Plugin\Oauth\WarehouseOauthUserProviderPlugin;
 
 class OauthDependencyProvider extends SprykerOauthDependencyProvider
 {
@@ -56,7 +51,6 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
             new CompanyUserAccessTokenOauthUserProviderPlugin(),
             new AgentOauthUserProviderPlugin(),
             new CustomerImpersonationOauthUserProviderPlugin(),
-            new WarehouseOauthUserProviderPlugin(),
         ];
     }
 
@@ -81,7 +75,6 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
             new AgentOauthScopeProviderPlugin(),
             new CustomerImpersonationOauthScopeProviderPlugin(),
             new UserOauthScopeProviderPlugin(),
-            new WarehouseOauthScopeProviderPlugin(),
         ];
     }
 
@@ -186,9 +179,6 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
         return [
             new UserPasswordOauthRequestGrantTypeConfigurationProviderPlugin(),
             new CustomerPasswordOauthRequestGrantTypeConfigurationProviderPlugin(),
-            new UserAuthCodeOauthRequestGrantTypeConfigurationProviderPlugin(),
-            new CustomerAuthCodeOauthRequestGrantTypeConfigurationProviderPlugin(),
-            new WarehouseOauthRequestGrantTypeConfigurationProviderPlugin(),
         ];
     }
 

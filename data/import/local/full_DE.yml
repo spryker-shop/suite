@@ -17,10 +17,6 @@ actions:
       source: data/import/common/common/tax.csv
     - data_entity: shipment
       source: data/import/common/common/shipment.csv
-    - data_entity: shipment-type
-      source: data/import/common/common/shipment_type.csv
-    - data_entity: shipment-method-shipment-type
-      source: data/import/common/common/shipment_method_shipment_type.csv
     - data_entity: shipment-price
       source: data/import/common/DE/shipment_price.csv
     - data_entity: sales-order-threshold
@@ -40,8 +36,6 @@ actions:
       source: data/import/common/DE/warehouse_store.csv
     - data_entity: payment-method-store
       source: data/import/common/DE/payment_method_store.csv
-    - data_entity: shipment-type-store
-      source: data/import/common/DE/shipment_type_store.csv
 
     #2. Catalog Setup data import
     - data_entity: category-template
@@ -132,9 +126,8 @@ actions:
     - data_entity: product-alternative
       source: data/import/common/common/product_alternative.csv
     - data_entity: product-quantity
-      source:
-          data/import/common/common/product_quantity.csv
-          # Store relation
+      source: data/import/common/common/product_quantity.csv
+        # Store relation
     - data_entity: discount-store
       source: data/import/common/DE/discount_store.csv
     - data_entity: product-relation-store
@@ -271,27 +264,8 @@ actions:
       source: data/import/common/common/marketplace/merchant_stock.csv
     - data_entity: merchant-product-approval-status-default
       source: data/import/common/common/marketplace/merchant_product_approval_status_default.csv
-    - data_entity: product-offer-shipment-type
-      source: data/import/common/common/product_offer_shipment_type.csv
     # Store relation
     - data_entity: merchant-store
       source: data/import/common/DE/merchant_store.csv
     - data_entity: merchant-product-offer-store
       source: data/import/common/DE/merchant_product_offer_store.csv
-
-    #9. Click&Collect import
-    - data_entity: service-point
-      source: data/import/common/common/service_point.csv
-    - data_entity: service-point-address
-      source: data/import/common/common/service_point_address.csv
-    - data_entity: service-type
-      source: data/import/common/common/service_type.csv
-    - data_entity: service
-      source: data/import/common/common/service.csv
-    - data_entity: shipment-type-service-type
-      source: data/import/common/common/shipment_type_service_type.csv
-    - data_entity: product-offer-service
-      source: data/import/common/common/marketplace/product_offer_service.csv
-    # Store relation
-    - data_entity: service-point-store
-      source: data/import/common/DE/service_point_store.csv

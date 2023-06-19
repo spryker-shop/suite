@@ -7,15 +7,12 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer;
 
-use Generated\Shared\Transfer\EventEntityTransfer;
 use Generated\Shared\Transfer\SpyProductEntityTransfer;
 use Generated\Shared\Transfer\SpyProductSearchEntityTransfer;
 use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Orm\Zed\ProductBundle\Persistence\SpyProductBundleQuery;
-use Orm\Zed\ProductSearch\Persistence\Map\SpyProductSearchTableMap;
-use Orm\Zed\ProductSearch\Persistence\SpyProductSearch;
 use Orm\Zed\ProductSearch\Persistence\SpyProductSearchQuery;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
@@ -149,7 +146,7 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function createOrUpdateProductConcreteLocalizedAttributesEntities(
         DataSetInterface $dataSet,
-        int $idProduct,
+        int $idProduct
     ): void {
         $productConcreteLocalizedTransfers = $this->getProductConcreteLocalizedTransfers($dataSet);
 
@@ -179,7 +176,7 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function createOrUpdateProductConcreteSearchEntities(
         int $idProduct,
-        SpyProductSearchEntityTransfer $productSearchEntityTransfer,
+        SpyProductSearchEntityTransfer $productSearchEntityTransfer
     ): void {
         $productSearchEntity = SpyProductSearchQuery::create()
             ->filterByFkProduct($idProduct)
@@ -190,43 +187,11 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
         $isNewProductSearchEntity = $productSearchEntity->isNew();
         if ($isNewProductSearchEntity || $productSearchEntity->isModified()) {
             $productSearchEntity->save();
-            $eventEntityTransfer = $this->mapProductSearchEntityToEventEntityTransfer(
-                $productSearchEntity,
-                $isNewProductSearchEntity,
-                new EventEntityTransfer(),
-            );
-
-            DataImporterPublisher::addEvent($eventEntityTransfer->getEvent(), $eventEntityTransfer->getId(), $eventEntityTransfer);
+            $eventName = $isNewProductSearchEntity
+                ? ProductSearchEvents::ENTITY_SPY_PRODUCT_SEARCH_CREATE
+                : ProductSearchEvents::ENTITY_SPY_PRODUCT_SEARCH_UPDATE;
+            DataImporterPublisher::addEvent($eventName, $productSearchEntity->getIdProductSearch());
         }
-    }
-
-    /**
-     * @param \Orm\Zed\ProductSearch\Persistence\SpyProductSearch $productSearchEntity
-     * @param bool $isNewProductSearchEntity
-     * @param \Generated\Shared\Transfer\EventEntityTransfer $eventEntityTransfer
-     *
-     * @return \Generated\Shared\Transfer\EventEntityTransfer
-     */
-    protected function mapProductSearchEntityToEventEntityTransfer(
-        SpyProductSearch $productSearchEntity,
-        bool $isNewProductSearchEntity,
-        EventEntityTransfer $eventEntityTransfer,
-    ): EventEntityTransfer {
-        return $eventEntityTransfer
-            ->setId($productSearchEntity->getIdProductSearch())
-            ->setEvent(
-                $isNewProductSearchEntity
-                    ? ProductSearchEvents::ENTITY_SPY_PRODUCT_SEARCH_CREATE
-                    : ProductSearchEvents::ENTITY_SPY_PRODUCT_SEARCH_UPDATE,
-            )
-            ->setName(SpyProductSearchTableMap::TABLE_NAME)
-            ->setForeignKeys([
-                SpyProductSearchTableMap::COL_FK_PRODUCT => $productSearchEntity->getFkProduct(),
-                SpyProductSearchTableMap::COL_FK_LOCALE => $productSearchEntity->getFkLocale(),
-            ])
-            ->setModifiedColumns([
-                SpyProductSearchTableMap::COL_IS_SEARCHABLE,
-            ]);
     }
 
     /**

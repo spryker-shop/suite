@@ -31,7 +31,7 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
      */
     public function __construct(
         ExampleProductSalePageQueryContainerInterface $productSaleQueryContainer,
-        ExampleProductSalePageConfig $productSaleConfig,
+        ExampleProductSalePageConfig $productSaleConfig
     ) {
         $this->productSaleQueryContainer = $productSaleQueryContainer;
         $this->productSaleConfig = $productSaleConfig;
@@ -134,7 +134,7 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
     protected function mapRelationTransfer(
         $idProductLabel,
         array $relationsToAssign,
-        array $relationsToDeAssign,
+        array $relationsToDeAssign
     ): ProductLabelProductAbstractRelationsTransfer {
         $productLabelProductAbstractRelationsTransfer = new ProductLabelProductAbstractRelationsTransfer();
         $productLabelProductAbstractRelationsTransfer->setIdProductLabel($idProductLabel);

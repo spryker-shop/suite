@@ -71,23 +71,6 @@ class ProductAbstractManagerTest extends ProductTestAbstract
     }
 
     /**
-     * @return void
-     */
-    public function testGetProductAbstractByIdsShouldReturnFullyLoadedTransferObjectsIndexedByProductAbstractIds(): void
-    {
-        // Arrange
-        $this->setupDefaultProducts();
-
-        // Act
-        $productAbstractCollection = $this->productAbstractManager->findProductAbstractByIdsIndexedByProductAbstractIds(
-            [$this->productAbstractTransfer->getIdProductAbstract()],
-        );
-
-        // Assert
-        $this->assertReadProductAbstract($productAbstractCollection[$this->productAbstractTransfer->getIdProductAbstract()]);
-    }
-
-    /**
      * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      *
      * @return void

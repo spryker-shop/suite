@@ -82,7 +82,7 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
     protected function createDataSet(
         array $product,
         SpyLocale $locale,
-        ?SpyProductImageEntityTransfer $productImageEntityTransfer = null,
+        ?SpyProductImageEntityTransfer $productImageEntityTransfer = null
     ): DataSet {
         $dataSet = new DataSet();
         $productImageKey = $productImageEntityTransfer ? $productImageEntityTransfer->getProductImageKey() : uniqid('', true);
@@ -122,7 +122,7 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
     protected function createProductImageEntityTransfer(
         string $externalUrlLarge,
         string $externalUrlSmall,
-        string $productImageKey,
+        string $productImageKey
     ): SpyProductImageEntityTransfer {
         return (new SpyProductImageEntityTransfer())
             ->setExternalUrlLarge($externalUrlLarge)

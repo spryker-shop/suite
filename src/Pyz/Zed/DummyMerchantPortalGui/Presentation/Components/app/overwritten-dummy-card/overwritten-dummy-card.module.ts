@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardModule } from '@spryker/card';
 import { OverwrittenDummyCardComponent } from './overwritten-dummy-card.component';
+import { CardModule } from '@spryker/card';
 
+/* tslint:disable:no-unnecessary-class */
 @NgModule({
     imports: [CommonModule, CardModule],
     declarations: [OverwrittenDummyCardComponent],

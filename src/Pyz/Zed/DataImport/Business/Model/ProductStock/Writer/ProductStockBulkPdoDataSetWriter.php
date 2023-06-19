@@ -72,11 +72,16 @@ class ProductStockBulkPdoDataSetWriter extends AbstractProductStockBulkDataSetWr
     protected function persistAvailability(): void
     {
         $skus = $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_CONCRETE_SKU);
+        $storeTransfer = $this->storeFacade->getCurrentStore();
 
         $concreteSkusToAbstractMap = $this->mapConcreteSkuToAbstractSku($skus);
         $reservations = $this->getReservationsBySkus($skus);
 
-        foreach ($this->storeFacade->getAllStores() as $storeTransfer) {
+        $this->updateAvailability($skus, $storeTransfer, $concreteSkusToAbstractMap, $reservations);
+
+        $sharedStores = $storeTransfer->getStoresWithSharedPersistence();
+        foreach ($sharedStores as $storeName) {
+            $storeTransfer = $this->storeFacade->getStoreByName($storeName);
             $this->updateAvailability($skus, $storeTransfer, $concreteSkusToAbstractMap, $reservations);
         }
 
@@ -95,7 +100,7 @@ class ProductStockBulkPdoDataSetWriter extends AbstractProductStockBulkDataSetWr
         array $skus,
         StoreTransfer $storeTransfer,
         array $concreteSkusToAbstractMap,
-        array $reservations,
+        array $reservations
     ): void {
         $stockProductsForStore = $this->getStockProductBySkusAndStore($skus, $storeTransfer);
 

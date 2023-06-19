@@ -144,9 +144,6 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
         }
 
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
-            if ($localizedAttributes === []) {
-                continue;
-            }
             $navigationNodeLocalizedAttributesEntity = SpyNavigationNodeLocalizedAttributesQuery::create()
                 ->filterByFkNavigationNode($navigationNodeEntity->getIdNavigationNode())
                 ->filterByFkLocale($idLocale)
@@ -262,7 +259,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      */
     protected function getTitle(
         SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
-        array $localizedAttributes,
+        array $localizedAttributes
     ): string {
         if (isset($localizedAttributes[static::KEY_TITLE]) && !empty($localizedAttributes[static::KEY_TITLE])) {
             return $localizedAttributes[static::KEY_TITLE];
@@ -279,7 +276,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      */
     protected function getLink(
         SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
-        array $localizedAttributes,
+        array $localizedAttributes
     ): ?string {
         if (isset($localizedAttributes[static::KEY_URL]) && !empty($localizedAttributes[static::KEY_URL])) {
             return $localizedAttributes[static::KEY_URL];
@@ -296,7 +293,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      */
     protected function getExternalUrl(
         SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
-        array $localizedAttributes,
+        array $localizedAttributes
     ): ?string {
         if (isset($localizedAttributes[static::KEY_URL]) && !empty($localizedAttributes[static::KEY_URL])) {
             return $localizedAttributes[static::KEY_URL];
@@ -315,7 +312,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
     protected function getFkUrl(
         SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
         array $localizedAttributes,
-        $idLocale,
+        $idLocale
     ): ?int {
         if (isset($localizedAttributes[static::KEY_URL]) && !empty($localizedAttributes[static::KEY_URL])) {
             $urlEntity = SpyUrlQuery::create()
@@ -339,7 +336,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      */
     protected function getCssClass(
         SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
-        array $localizedAttributes,
+        array $localizedAttributes
     ): ?string {
         if (isset($localizedAttributes[static::KEY_CSS_CLASS]) && !empty($localizedAttributes[static::KEY_CSS_CLASS])) {
             return $localizedAttributes[static::KEY_CSS_CLASS];

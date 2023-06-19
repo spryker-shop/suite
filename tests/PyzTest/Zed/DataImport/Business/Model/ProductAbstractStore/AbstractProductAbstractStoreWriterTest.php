@@ -9,6 +9,7 @@ namespace PyzTest\Zed\DataImport\Business\Model\ProductAbstractStore;
 
 use Generated\Shared\Transfer\ProductAbstractStoreTransfer;
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
+use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductAbstractStoreQuery;
 use Orm\Zed\Store\Persistence\Map\SpyStoreTableMap;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreHydratorStep;
@@ -30,11 +31,6 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
 {
     /**
-     * @var \PyzTest\Zed\DataImport\DataImportBusinessTester
-     */
-    protected $tester;
-
-    /**
      * @var string
      */
     protected const DEFAULT_STORE_NAME = 'DE';
@@ -45,17 +41,13 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
     protected const PRODUCTS_LIMIT = 2;
 
     /**
-     * @var array<string> these SKUs data comes from import/ProductAbstractStore/product_abstract_store.csv
-     */
-    protected $testSkus = ['testSku-228971244', 'testSku-228971245'];
-
-    /**
      * @return array
      */
     protected function createDataSets(): array
     {
         $result = [];
-        foreach ($this->testSkus as $abstractProductSku) {
+        $abstractProductSkus = $this->getAbstractProductSkus();
+        foreach ($abstractProductSkus as $abstractProductSku) {
             $dataSet = new DataSet();
             $dataSet[ProductAbstractStoreHydratorStep::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER] = (new ProductAbstractStoreTransfer())
                 ->setProductAbstractSku($abstractProductSku)
@@ -104,5 +96,17 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
                 $productAbstractStore[SpyStoreTableMap::COL_NAME],
             );
         }
+    }
+
+    /**
+     * @return array
+     */
+    protected function getAbstractProductSkus(): array
+    {
+        return SpyProductAbstractQuery::create()
+            ->select(SpyProductAbstractTableMap::COL_SKU)
+            ->limit(static::PRODUCTS_LIMIT)
+            ->find()
+            ->toArray();
     }
 }

@@ -22,11 +22,6 @@ namespace PyzTest\Zed\DataImport\Business\Model\ProductStock;
 class ProductStockPdoTest extends AbstractProductStockWriterTest
 {
     /**
-     * @var \PyzTest\Zed\DataImport\DataImportBusinessTester
-     */
-    protected $tester;
-
-    /**
      * @group ProductWriterTest
      * @group ProductStockWriterTest
      * @group ProductStockWriterPropelTest
@@ -39,18 +34,15 @@ class ProductStockPdoTest extends AbstractProductStockWriterTest
         $this->markTestSkipped(true);
         $writer = $this->getDataImportBusinessFactoryStub()->createProductStockBulkPdoWriter();
 
-        $product = $this->tester->haveProduct();
-        $stock = $this->tester->haveStock();
-        $store = $this->tester->getAllowedStore();
+        $productSkus = $this->getProductsSkus();
+        $warehouses = $this->getWarehouses($productSkus);
 
-        $this->tester->haveStockStoreRelation($stock, $store);
-
-        $dataSets = $this->createDataSets([$product->getSku()], [$stock->getName()]);
+        $dataSets = $this->createDataSets($productSkus, $warehouses);
         foreach ($dataSets as $dataSet) {
             $writer->write($dataSet);
         }
         $writer->flush();
 
-        $this->assertImportedData($dataSets, $this->queryDataFromDB([$product->getSku()], [$stock->getName()]));
+        $this->assertImportedData($dataSets, $this->queryDataFromDB($productSkus, $warehouses));
     }
 }

@@ -104,7 +104,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
         ProductPriceSqlInterface $productPriceSql,
         PropelExecutorInterface $propelExecutor,
         DataImportDataFormatterInterface $dataFormatter,
-        DataImportConfig $dataImportConfig,
+        DataImportConfig $dataImportConfig
     ) {
         $this->productPriceSql = $productPriceSql;
         $this->propelExecutor = $propelExecutor;
@@ -281,7 +281,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     abstract protected function prepareProductIdsCollection(
         array $priceProductCollection,
         string $tableName,
-        string $productKey,
+        string $productKey
     ): void;
 
     /**
@@ -318,7 +318,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
     abstract protected function persistPriceProductEntities(
         string $productIdKey,
         string $productTable,
-        string $productFkKey,
+        string $productFkKey
     ): void;
 
     /**
@@ -404,7 +404,7 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
         array $priceProductCollection,
         string $productTableName,
         string $productIdKey,
-        string $productFkKey,
+        string $productFkKey
     ): void;
 
     /**

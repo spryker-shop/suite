@@ -81,7 +81,7 @@ abstract class AbstractProductConcreteBulkDataSetWriter implements DataSetWriter
         ProductConcreteSqlInterface $productConcreteSql,
         PropelExecutorInterface $propelExecutor,
         DataImportDataFormatterInterface $dataFormatter,
-        DataImportConfig $dataImportConfig,
+        DataImportConfig $dataImportConfig
     ) {
         $this->productConcreteSql = $productConcreteSql;
         $this->propelExecutor = $propelExecutor;

@@ -94,7 +94,7 @@ abstract class AbstractProductAbstractBulkPdoDataSetWriter implements DataSetWri
         ProductAbstractSqlInterface $productAbstractSql,
         PropelExecutorInterface $propelExecutor,
         DataImportDataFormatterInterface $dataFormatter,
-        DataImportConfig $dataImportConfig,
+        DataImportConfig $dataImportConfig
     ) {
         $this->productAbstractSql = $productAbstractSql;
         $this->propelExecutor = $propelExecutor;

@@ -73,11 +73,6 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @var string
      */
-    public const REQUEST_PARAM_PAYMENT_METHOD_NAME_FOREIGN_CREDIT_CARD = 'Foreign Credit Card';
-
-    /**
-     * @var string
-     */
     protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
 
     /**
@@ -246,7 +241,7 @@ class CheckoutApiTester extends ApiEndToEndTester
      */
     public function getPaymentRequestPayload(
         string $paymentMethodName = self::REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE,
-        string $paymentProviderName = self::REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT,
+        string $paymentProviderName = self::REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT
     ): array {
         return [
             [
@@ -278,7 +273,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     public function getQuoteItemOverrideData(
         ProductConcreteTransfer $productConcreteTransfer,
         ShipmentMethodTransfer $shipmentMethodTransfer,
-        int $quantity = self::DEFAULT_QUOTE_ITEM_QUANTITY,
+        int $quantity = self::DEFAULT_QUOTE_ITEM_QUANTITY
     ): array {
         return [
             static::QUOTE_ITEM_OVERRIDE_DATA_PRODUCT => $productConcreteTransfer,
@@ -318,7 +313,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     public function havePersistentQuoteWithItems(
         CustomerTransfer $customerTransfer,
         array $productConcreteTransfers,
-        array $overrideShipment = [],
+        array $overrideShipment = []
     ): QuoteTransfer {
         $shipmentTransfer = (new ShipmentBuilder($overrideShipment))
             ->withMethod()
@@ -427,11 +422,7 @@ class CheckoutApiTester extends ApiEndToEndTester
      */
     public function havePaymentMethodWithStore(
         array $paymentMethodOverrideData = [],
-        array $storeOverrideData = [
-            StoreTransfer::NAME => 'DE',
-            StoreTransfer::DEFAULT_CURRENCY_ISO_CODE => 'EUR',
-            StoreTransfer::AVAILABLE_CURRENCY_ISO_CODES => ['EUR'],
-        ],
+        array $storeOverrideData = [StoreTransfer::NAME => 'DE']
     ): PaymentMethodTransfer {
         $storeTransfer = $this->haveStore($storeOverrideData);
         $storeRelationTransfer = (new StoreRelationBuilder())->seed([

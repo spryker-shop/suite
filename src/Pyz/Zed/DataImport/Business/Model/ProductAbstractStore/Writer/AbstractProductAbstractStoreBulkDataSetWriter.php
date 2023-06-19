@@ -56,7 +56,7 @@ abstract class AbstractProductAbstractStoreBulkDataSetWriter implements DataSetW
         ProductAbstractStoreSqlInterface $productAbstractStoreSql,
         PropelExecutorInterface $propelExecutor,
         DataImportDataFormatterInterface $dataFormatter,
-        DataImportConfig $dataImportConfig,
+        DataImportConfig $dataImportConfig
     ) {
         $this->productAbstractStoreSql = $productAbstractStoreSql;
         $this->propelExecutor = $propelExecutor;

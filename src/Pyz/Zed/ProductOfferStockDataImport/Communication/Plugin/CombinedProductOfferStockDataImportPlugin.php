@@ -33,7 +33,7 @@ class CombinedProductOfferStockDataImportPlugin extends AbstractPlugin implement
      * @return \Generated\Shared\Transfer\DataImporterReportTransfer
      */
     public function import(
-        ?DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null,
+        ?DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null
     ): DataImporterReportTransfer {
         return $this->getFacade()->importCombinedProductOfferStock($dataImporterConfigurationTransfer);
     }

@@ -26,8 +26,6 @@ use Spryker\Zed\Newsletter\NewsletterDependencyProvider;
 class CustomerNewsletterCest
 {
     /**
-     * @skip This test was temporarily skipped due to flikerness. See {@link https://spryker.atlassian.net/browse/CC-25718} for details
-     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void
@@ -45,8 +43,6 @@ class CustomerNewsletterCest
     }
 
     /**
-     * @skip This test was temporarily skipped due to flikerness. See {@link https://spryker.atlassian.net/browse/CC-25718} for details
-     *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
      *
      * @return void

@@ -66,13 +66,11 @@ class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
             ));
         }
 
-        /** @var string $taxSetName */
-        $taxSetName = $dataSet[$this->source];
-        if (!isset($this->resolved[$taxSetName])) {
-            $this->resolved[$taxSetName] = $this->resolveIdStock($taxSetName);
+        if (!isset($this->resolved[$dataSet[$this->source]])) {
+            $this->resolved[$dataSet[$this->source]] = $this->resolveIdStock($dataSet[$this->source]);
         }
 
-        $dataSet[$this->target] = $this->resolved[$taxSetName];
+        $dataSet[$this->target] = $this->resolved[$dataSet[$this->source]];
     }
 
     /**

@@ -43,7 +43,6 @@ class AddProductAbstractSkusStep implements DataImportStepInterface
             $productAbstractEntities = $query->find();
 
             foreach ($productAbstractEntities as $productAbstractEntity) {
-                /** @var string $key */
                 $key = $productAbstractEntity[SpyProductAbstractTableMap::COL_SKU];
                 $value = $productAbstractEntity[SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT];
                 $this->productAbstractSkus[$key] = $value;

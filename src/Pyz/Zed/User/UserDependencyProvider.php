@@ -13,13 +13,10 @@ use Spryker\Zed\AgentGui\Communication\Plugin\UserAgentTableConfigExpanderPlugin
 use Spryker\Zed\AgentGui\Communication\Plugin\UserAgentTableDataExpanderPlugin;
 use Spryker\Zed\CustomerUserConnectorGui\Communication\Plugin\UserTableActionExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
-use Spryker\Zed\PickingList\Communication\Plugin\User\UnassignPickingListUserPostSavePlugin;
 use Spryker\Zed\User\UserDependencyProvider as SprykerUserDependencyProvider;
 use Spryker\Zed\UserLocale\Communication\Plugin\User\AssignUserLocalePreSavePlugin;
-use Spryker\Zed\UserLocale\Communication\Plugin\User\LocaleUserExpanderPlugin;
+use Spryker\Zed\UserLocale\Communication\Plugin\User\UserLocaleTransferExpanderPlugin;
 use Spryker\Zed\UserLocaleGui\Communication\Plugin\UserLocaleFormExpanderPlugin;
-use Spryker\Zed\WarehouseUserGui\Communication\Plugin\User\WarehouseUserAssignmentUserFormExpanderPlugin;
-use Spryker\Zed\WarehouseUserGui\Communication\Plugin\User\WarehouseUserAssignmentUserTableActionExpanderPlugin;
 
 class UserDependencyProvider extends SprykerUserDependencyProvider
 {
@@ -44,7 +41,6 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
     {
         return [
             new UserTableActionExpanderPlugin(),
-            new WarehouseUserAssignmentUserTableActionExpanderPlugin(),
         ];
     }
 
@@ -55,7 +51,6 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
     {
         return [
             new UserAgentFormExpanderPlugin(),
-            new WarehouseUserAssignmentUserFormExpanderPlugin(),
             new UserLocaleFormExpanderPlugin(),
         ];
     }
@@ -91,22 +86,12 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
     }
 
     /**
-     * @return array<\Spryker\Zed\UserExtension\Dependency\Plugin\UserExpanderPluginInterface>
+     * @return array<\Spryker\Zed\UserExtension\Dependency\Plugin\UserTransferExpanderPluginInterface>
      */
-    protected function getUserExpanderPlugins(): array
+    protected function getUserTransferExpanderPlugins(): array
     {
         return [
-            new LocaleUserExpanderPlugin(),
-        ];
-    }
-
-    /**
-     * @return list<\Spryker\Zed\UserExtension\Dependency\Plugin\UserPostSavePluginInterface>
-     */
-    protected function getPostSavePlugins(): array
-    {
-        return [
-            new UnassignPickingListUserPostSavePlugin(),
+            new UserLocaleTransferExpanderPlugin(),
         ];
     }
 }

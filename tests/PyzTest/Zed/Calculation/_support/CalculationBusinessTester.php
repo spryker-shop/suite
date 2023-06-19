@@ -10,7 +10,6 @@ namespace PyzTest\Zed\Calculation;
 use Codeception\Actor;
 use DateTime;
 use Generated\Shared\DataBuilder\ItemBuilder;
-use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\DiscountGeneralTransfer;
 use Generated\Shared\Transfer\DiscountPromotionTransfer;
@@ -41,7 +40,6 @@ use Orm\Zed\Tax\Persistence\SpyTaxSet;
 use Orm\Zed\Tax\Persistence\SpyTaxSetTax;
 use Pyz\Zed\Calculation\CalculationDependencyProvider;
 use Pyz\Zed\Discount\DiscountDependencyProvider;
-use ReflectionClass;
 use Spryker\Shared\Calculation\CalculationPriceMode;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Zed\Calculation\Business\CalculationBusinessFactory;
@@ -50,7 +48,6 @@ use Spryker\Zed\Calculation\Communication\Plugin\Calculator\GrandTotalCalculator
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundableAmountCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundTotalCalculatorPlugin;
 use Spryker\Zed\Calculation\Dependency\Service\CalculationToUtilTextBridge;
-use Spryker\Zed\CategoryDiscountConnector\Business\Checker\CategoryDecisionRuleChecker;
 use Spryker\Zed\Kernel\Container;
 
 /**
@@ -136,11 +133,6 @@ class CalculationBusinessTester extends Actor
      * @var int
      */
     protected $incrementNumber = 0;
-
-    /**
-     * @var string
-     */
-    protected const COUNTRY_DE = 'DE';
 
     /**
      * @param int $discountAmount
@@ -353,15 +345,7 @@ class CalculationBusinessTester extends Actor
     {
         return (new StoreTransfer())
             ->setIdStore(1)
-            ->setName(static::COUNTRY_DE);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\AddressTransfer
-     */
-    public function getCurrentShippingAddress(): AddressTransfer
-    {
-        return (new AddressTransfer())->setIso2Code(static::COUNTRY_DE);
+            ->setName('DE');
     }
 
     /**
@@ -393,8 +377,6 @@ class CalculationBusinessTester extends Actor
 
         $quoteTransfer->setStore($this->haveStore([
             StoreTransfer::NAME => static::STORE_DE,
-            StoreTransfer::DEFAULT_CURRENCY_ISO_CODE => 'EUR',
-            StoreTransfer::AVAILABLE_CURRENCY_ISO_CODES => ['EUR'],
         ]));
 
         $quoteTransfer->setCurrency($this->createCurrencyTransfer())
@@ -450,9 +432,10 @@ class CalculationBusinessTester extends Actor
         int $price,
         string $priceMode,
         float $taxRate,
-        int $quantity,
+        int $quantity
     ): ProductOptionTransfer {
         $productOptionValueEntity = $this->createProductOptionValue($taxRate);
+
         $productOptionTransfer = (new ProductOptionTransfer())
             ->setTaxRate($taxRate)
             ->setQuantity($quantity)
@@ -476,7 +459,7 @@ class CalculationBusinessTester extends Actor
      */
     public function createAbstractProductWithTaxSet(float $taxRate): SpyProductAbstract
     {
-        $countryEntity = SpyCountryQuery::create()->findOneByIso2Code(static::COUNTRY_DE);
+        $countryEntity = SpyCountryQuery::create()->findOneByIso2Code('DE');
 
         $taxRateEntity = new SpyTaxRate();
         $taxRateEntity->setRate($taxRate);
@@ -558,7 +541,7 @@ class CalculationBusinessTester extends Actor
      */
     public function assertQuoteItemsHaveExpectedDiscountAmount(
         QuoteTransfer $quoteTransfer,
-        array $expectedItemsDiscountAmountIndexedByItemSku,
+        array $expectedItemsDiscountAmountIndexedByItemSku
     ): void {
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
             $itemDiscountAmountSum = $this->calculateItemDiscountAmountSum($itemTransfer);
@@ -566,22 +549,6 @@ class CalculationBusinessTester extends Actor
 
             $this->assertSame($expectedItemDiscountAmount, $itemDiscountAmountSum);
         }
-    }
-
-    /**
-     * @return void
-     */
-    public function cleanCategoryDecisionRuleCheckerStaticProperties(): void
-    {
-        $reflectedClass = new ReflectionClass(CategoryDecisionRuleChecker::class);
-
-        $groupedProductCategoryTransfers = $reflectedClass->getProperty('groupedProductCategoryTransfers');
-        $groupedProductCategoryTransfers->setAccessible(true);
-        $groupedProductCategoryTransfers->setValue(null);
-
-        $groupedCategoryKeys = $reflectedClass->getProperty('groupedCategoryKeys');
-        $groupedCategoryKeys->setAccessible(true);
-        $groupedCategoryKeys->setValue(null);
     }
 
     /**
@@ -628,7 +595,7 @@ class CalculationBusinessTester extends Actor
      */
     protected function createAvailablePromotionalProduct(
         DiscountGeneralTransfer $discountGeneralTransfer,
-        string $skuPromotionalProductAbstract,
+        string $skuPromotionalProductAbstract
     ): DiscountPromotionTransfer {
         $discountPromotionTransfer = $this->haveDiscountPromotion([
             DiscountPromotionTransfer::FK_DISCOUNT => $discountGeneralTransfer->getIdDiscount(),

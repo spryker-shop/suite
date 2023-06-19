@@ -11,8 +11,6 @@ use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstractStore\ProductAbstractStoreBulkPdoWriterPlugin;
 use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
-use Spryker\Zed\Product\Business\ProductFacadeInterface;
-use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
 
 /**
  * Auto-generated group annotations
@@ -28,8 +26,6 @@ use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
  */
 class ProductAbstractStoreBulkPdoWriterPluginTest extends AbstractWriterPluginTest
 {
-    use LocatorHelperTrait;
-
     /**
      * @var string
      */
@@ -46,12 +42,6 @@ class ProductAbstractStoreBulkPdoWriterPluginTest extends AbstractWriterPluginTe
     public function testProductAbstractStoreBulkPdoWriterPlugin(): void
     {
         $this->markTestSkippedOnDatabaseConstraintsMismatch();
-
-        foreach ($this->testSkus as $sku) {
-            if (!$this->getProductFacade()->findProductAbstractIdBySku($sku)) {
-                $this->tester->haveProductAbstract(['sku' => $sku]);
-            }
-        }
 
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
         $dataImport = $dataImportBusinessFactory->createProductAbstractStoreImporter($this->getDataImportConfigurationActionTransfer());
@@ -77,13 +67,5 @@ class ProductAbstractStoreBulkPdoWriterPluginTest extends AbstractWriterPluginTe
         return (new DataImportConfigurationActionTransfer())
             ->setDataEntity(static::DATA_IMPORTER_TYPE)
             ->setSource(static::CSV_IMPORT_FILE);
-    }
-
-    /**
-     * @return \Spryker\Zed\Product\Business\ProductFacadeInterface
-     */
-    private function getProductFacade(): ProductFacadeInterface
-    {
-        return $this->getLocator()->product()->facade();
     }
 }

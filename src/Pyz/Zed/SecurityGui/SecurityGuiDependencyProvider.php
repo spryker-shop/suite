@@ -9,7 +9,6 @@ namespace Pyz\Zed\SecurityGui;
 
 use Spryker\Zed\MerchantUser\Communication\Plugin\SecurityGui\MerchantUserUserRoleFilterPlugin;
 use Spryker\Zed\SecurityGui\SecurityGuiDependencyProvider as SprykerSecurityGuiDependencyProvider;
-use Spryker\Zed\WarehouseUser\Communication\Plugin\SecurityGui\WarehouseUserLoginRestrictionPlugin;
 
 class SecurityGuiDependencyProvider extends SprykerSecurityGuiDependencyProvider
 {
@@ -20,16 +19,6 @@ class SecurityGuiDependencyProvider extends SprykerSecurityGuiDependencyProvider
     {
         return [
             new MerchantUserUserRoleFilterPlugin(),
-        ];
-    }
-
-    /**
-     * @return array<\Spryker\Zed\SecurityGuiExtension\Dependency\Plugin\UserLoginRestrictionPluginInterface>
-     */
-    protected function getUserLoginRestrictionPlugins(): array
-    {
-        return [
-            new WarehouseUserLoginRestrictionPlugin(),
         ];
     }
 }

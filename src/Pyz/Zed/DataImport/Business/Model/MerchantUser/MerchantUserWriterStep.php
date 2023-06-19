@@ -9,9 +9,7 @@ namespace Pyz\Zed\DataImport\Business\Model\MerchantUser;
 
 use Generated\Shared\Transfer\MerchantUserCriteriaTransfer;
 use Generated\Shared\Transfer\MerchantUserTransfer;
-use Generated\Shared\Transfer\UserConditionsTransfer;
 use Generated\Shared\Transfer\UserCriteriaTransfer;
-use Generated\Shared\Transfer\UserTransfer;
 use Orm\Zed\Merchant\Persistence\SpyMerchantQuery;
 use Orm\Zed\User\Persistence\SpyUserQuery;
 use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
@@ -59,7 +57,9 @@ class MerchantUserWriterStep implements DataImportStepInterface
         );
 
         if (!$merchantUserTransfer) {
-            $userTransfer = $this->findUserTransfer($idUser);
+            $userTransfer = $this->merchantUserFacade->findUser(
+                (new UserCriteriaTransfer())->setIdUser($idUser),
+            );
 
             $this->merchantUserFacade->createMerchantUser(
                 (new MerchantUserTransfer())
@@ -105,30 +105,5 @@ class MerchantUserWriterStep implements DataImportStepInterface
         }
 
         return $userEntity->getIdUser();
-    }
-
-    /**
-     * @param int $idUser
-     *
-     * @return \Generated\Shared\Transfer\UserTransfer|null
-     */
-    protected function findUserTransfer(int $idUser): ?UserTransfer
-    {
-        $userCriteriaTransfer = $this->createUserCriteriaTransfer($idUser);
-        $userCollectionTransfer = $this->merchantUserFacade->getUserCollection($userCriteriaTransfer);
-
-        return $userCollectionTransfer->getUsers()->getIterator()->current();
-    }
-
-    /**
-     * @param int $idUser
-     *
-     * @return \Generated\Shared\Transfer\UserCriteriaTransfer
-     */
-    protected function createUserCriteriaTransfer(int $idUser): UserCriteriaTransfer
-    {
-        $userConditionsTransfer = (new UserConditionsTransfer())->addIdUser($idUser);
-
-        return (new UserCriteriaTransfer())->setUserConditions($userConditionsTransfer);
     }
 }

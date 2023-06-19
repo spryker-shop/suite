@@ -19,6 +19,5 @@ class SearchElasticsearchConfig extends SprykerSearchElasticsearchConfig
         'product-review',
         'return_reason',
         'merchant',
-        'service_point',
     ];
 }

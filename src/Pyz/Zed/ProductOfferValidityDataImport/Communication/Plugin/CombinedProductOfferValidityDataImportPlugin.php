@@ -33,7 +33,7 @@ class CombinedProductOfferValidityDataImportPlugin extends AbstractPlugin implem
      * @return \Generated\Shared\Transfer\DataImporterReportTransfer
      */
     public function import(
-        ?DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null,
+        ?DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null
     ): DataImporterReportTransfer {
         return $this->getFacade()->importCombinedProductOfferValidity($dataImporterConfigurationTransfer);
     }
