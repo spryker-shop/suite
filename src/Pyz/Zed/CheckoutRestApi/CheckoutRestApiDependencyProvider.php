@@ -24,6 +24,7 @@ use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentCh
 use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentMethodCheckoutDataValidatorPlugin;
 use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentQuoteMapperPlugin;
 use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentsQuoteMapperPlugin;
+use SprykerEco\Zed\UnzerRestApi\Communication\Plugin\CheckoutRestApi\UnzerCheckoutDataExpanderPlugin;
 
 class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependencyProvider
 {
@@ -76,6 +77,7 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
         return [
             new CompanyBusinessUnitAddressCheckoutDataExpanderPlugin(),
             new ShipmentCheckoutDataExpanderPlugin(),
+            new UnzerCheckoutDataExpanderPlugin(),
         ];
     }
 }
