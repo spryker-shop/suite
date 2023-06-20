@@ -643,7 +643,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('
 $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,
     APPLICATION_ROOT_DIR . '/vendor/spryker-eco/payone/config/Zed/Oms',
-    APPLICATION_ROOT_DIR . '/vendor/spryker/payment/config/Zed/Oms',
+    APPLICATION_ROOT_DIR . '/vendor/spryker/sales-payment/config/Zed/Oms',
     APPLICATION_ROOT_DIR . '/vendor/spryker-eco/unzer/config/Zed/Oms',
 ];
 $config[OmsConstants::ACTIVE_PROCESSES] = [
@@ -742,7 +742,7 @@ $config[PayoneConstants::PAYONE] = [
 
 // >>> UNZER
 $config[VaultConstants::ENCRYPTION_KEY] = getenv('VAULT_ENCRYPTION_KEY') ?: 'key';
-$config[UnzerConstants::WEBHOOK_RETRIEVE_URL] = getenv('UNZER_WEBHOOK_RETRIEVE_URL') ?: 'https://yves.de.faas-suite-prod.cloud.spryker.toys/unzer/notification/1';
+$config[UnzerConstants::WEBHOOK_RETRIEVE_URL] = getenv('UNZER_WEBHOOK_RETRIEVE_URL') ?: 'https://yves.de.faas-suite-prod.cloud.spryker.toys/unzer/notification';
 $config[UnzerConstants::UNZER_AUTHORIZE_RETURN_URL] = getenv('UNZER_AUTHORIZE_RETURN_URL') ?: 'https://yves.de.faas-suite-prod.cloud.spryker.toys/';
 $config[UnzerConstants::UNZER_CHARGE_RETURN_URL] = getenv('UNZER_CHARGE_RETURN_URL') ?: 'https://yves.de.faas-suite-prod.cloud.spryker.toys/';
 $config[UnzerConstants::VAULT_DATA_TYPE] = 'unzer-private-key';
