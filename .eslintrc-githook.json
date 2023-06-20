@@ -1,0 +1,17 @@
+{
+    "root": true,
+    "extends": ["./node_modules/@spryker/frontend-config.eslint/.eslintrc.js", "plugin:@typescript-eslint/recommended"],
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "project": "./tsconfig.yves.json"
+    },
+    "ignorePatterns": [
+        "docker/",
+        "public/*/assets/",
+        "**/dist/",
+        "**/node_modules/",
+        "src/Pyz/Zed/*/Presentation/Components/",
+        "vendor/**/Zed/*/Presentation/Components/"
+    ]
+}

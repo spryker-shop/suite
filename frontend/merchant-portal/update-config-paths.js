@@ -4,7 +4,7 @@ const { spawnSync } = require('child_process');
 const { SPRYKER_CORE_DIR, MP_CORE_ENTRY_POINT_FILE, MP_PUBLIC_API_FILE, ROOT_DIR } = require('./mp-paths');
 const { getMPEntryPoints, entryPointPathToName } = require('./utils');
 
-const TSCONFIG_FILES = ['tsconfig.base.json', 'tsconfig.mp.json'];
+const TSCONFIG_FILES = ['tsconfig.mp.json'];
 
 async function getMPPathsMap() {
     const entryPoints = await getMPEntryPoints(SPRYKER_CORE_DIR, MP_CORE_ENTRY_POINT_FILE);

@@ -73,6 +73,11 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @var string
      */
+    public const REQUEST_PARAM_PAYMENT_METHOD_NAME_FOREIGN_CREDIT_CARD = 'Foreign Credit Card';
+
+    /**
+     * @var string
+     */
     protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
 
     /**
@@ -422,7 +427,11 @@ class CheckoutApiTester extends ApiEndToEndTester
      */
     public function havePaymentMethodWithStore(
         array $paymentMethodOverrideData = [],
-        array $storeOverrideData = [StoreTransfer::NAME => 'DE'],
+        array $storeOverrideData = [
+            StoreTransfer::NAME => 'DE',
+            StoreTransfer::DEFAULT_CURRENCY_ISO_CODE => 'EUR',
+            StoreTransfer::AVAILABLE_CURRENCY_ISO_CODES => ['EUR'],
+        ],
     ): PaymentMethodTransfer {
         $storeTransfer = $this->haveStore($storeOverrideData);
         $storeRelationTransfer = (new StoreRelationBuilder())->seed([

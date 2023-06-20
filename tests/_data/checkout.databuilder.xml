@@ -15,11 +15,11 @@
     </transfer>
 
     <transfer name="Item">
-        <property name="sku" dataBuilderRule="isbn10()"/>
+        <property name="sku" dataBuilderRule="unique()->isbn10()"/>
         <property name="unitGrossPrice" dataBuilderRule="randomNumber(5)"/>
         <property name="sumGrossPrice" dataBuilderRule="randomNumber(5)"/>
         <property name="quantity" dataBuilderRule="=1"/>
-        <property name="name" dataBuilderRule="word()"/>
+        <property name="name" dataBuilderRule="lexify('??????????')"/>
     </transfer>
 
     <transfer name="Address">
@@ -37,9 +37,9 @@
     </transfer>
 
     <transfer name="ShipmentMethod">
-        <property name="name" dataBuilderRule="word()"/>
+        <property name="name" dataBuilderRule="lexify('??????????')"/>
         <property name="isActive" dataBuilderRule="=1"/>
-        <property name="carrierName" dataBuilderRule="word()"/>
+        <property name="carrierName" dataBuilderRule="lexify('??????????')"/>
         <property name="taxRate" dataBuilderRule="randomFloat(2, 0, 99)"/>
         <property name="storeCurrencyPrice" dataBuilderRule="randomNumber(4)"/>
     </transfer>

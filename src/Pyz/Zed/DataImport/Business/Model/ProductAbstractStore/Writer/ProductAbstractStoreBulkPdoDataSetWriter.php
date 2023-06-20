@@ -13,6 +13,11 @@ use Spryker\Zed\Propel\PropelConfig;
 class ProductAbstractStoreBulkPdoDataSetWriter extends AbstractProductAbstractStoreBulkDataSetWriter implements ApplicableDatabaseEngineAwareInterface
 {
     /**
+     * @var string
+     */
+    public const COLUMN_ABSTRACT_SKU = 'product_abstract_sku';
+
+    /**
      * @return bool
      */
     public function isApplicable(): bool

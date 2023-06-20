@@ -4,9 +4,17 @@ version: 0
 actions:
     #1. Commerce Setup data import
     - data_entity: store
-    # Cannot have a source because we use store.php
+      source: data/import/common/US/store.csv
     - data_entity: currency
       source: data/import/common/common/currency.csv
+    - data_entity: currency-store
+      source: data/import/common/US/currency_store.csv
+    - data_entity: country-store
+      source: data/import/common/US/country_store.csv
+    - data_entity: locale-store
+      source: data/import/common/US/locale_store.csv
+    - data_entity: default-locale-store
+      source: data/import/common/US/default_locale_store.csv
     - data_entity: order-source
       source: data/import/common/common/order_source.csv
     - data_entity: customer
@@ -17,6 +25,10 @@ actions:
       source: data/import/common/common/tax.csv
     - data_entity: shipment
       source: data/import/common/common/shipment.csv
+    - data_entity: shipment-type
+      source: data/import/common/common/shipment_type.csv
+    - data_entity: shipment-method-shipment-type
+      source: data/import/common/common/shipment_method_shipment_type.csv
     - data_entity: shipment-price
       source: data/import/common/US/shipment_price.csv
     - data_entity: sales-order-threshold
@@ -36,6 +48,8 @@ actions:
       source: data/import/common/US/warehouse_store.csv
     - data_entity: payment-method-store
       source: data/import/common/US/payment_method_store.csv
+    - data_entity: shipment-type-store
+      source: data/import/common/US/shipment_type_store.csv
 
     #2. Catalog Setup data import
     - data_entity: category-template
@@ -275,6 +289,8 @@ actions:
       source: data/import/common/common/marketplace/merchant_stock.csv
     - data_entity: merchant-product-approval-status-default
       source: data/import/common/common/marketplace/merchant_product_approval_status_default.csv
+    - data_entity: product-offer-shipment-type
+      source: data/import/common/common/product_offer_shipment_type.csv
     # Store relation
     - data_entity: merchant-store
       source: data/import/common/US/merchant_store.csv
@@ -286,6 +302,30 @@ actions:
       source: data/import/common/common/marketplace/product_stock.csv
     - data_entity: product-offer-stock
       source: data/import/common/common/marketplace/product_offer_stock.csv
+
+    #9. Click&Collect import
+    - data_entity: service-point
+      source: data/import/common/common/service_point.csv
+    - data_entity: service-point-address
+      source: data/import/common/common/service_point_address.csv
+    - data_entity: service-type
+      source: data/import/common/common/service_type.csv
+    - data_entity: service
+      source: data/import/common/common/service.csv
+    - data_entity: shipment-type-service-type
+      source: data/import/common/common/shipment_type_service_type.csv
+    - data_entity: product-offer-service
+      source: data/import/common/common/product_offer_service.csv
+    # Store relation
+    - data_entity: service-point-store
+      source: data/import/common/US/service_point_store.csv
+    # Shipment types
+    - data_entity: shipment-type
+      source: data/import/common/common/shipment_type.csv
+    - data_entity: shipment-type-store
+      source: data/import/common/US/shipment_type_store.csv
+    - data_entity: shipment-method-shipment-type
+      source: data/import/common/common/shipment_method_shipment_type.csv
 
     # Acl import
     - data_entity: acl-role

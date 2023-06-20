@@ -691,6 +691,7 @@ class CalculationWithCalculableObjectFacadeTest extends Unit
     protected function createFixtureDataForTestCases(string $priceMode, array $items, array $expense): QuoteTransfer
     {
         $quoteTransfer = new QuoteTransfer();
+        $quoteTransfer->setShippingAddress($this->tester->getCurrentShippingAddress());
         $quoteTransfer->setStore($this->tester->getCurrentStoreTransfer());
         $quoteTransfer->setCurrency($this->tester->createCurrencyTransfer());
         $quoteTransfer->setPriceMode($priceMode);

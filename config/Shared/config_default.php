@@ -4,7 +4,11 @@ use Generated\Shared\Transfer\AddReviewsTransfer;
 use Generated\Shared\Transfer\AssetAddedTransfer;
 use Generated\Shared\Transfer\AssetDeletedTransfer;
 use Generated\Shared\Transfer\AssetUpdatedTransfer;
+use Generated\Shared\Transfer\ExportMerchantsTransfer;
 use Generated\Shared\Transfer\InitializeProductExportTransfer;
+use Generated\Shared\Transfer\MerchantCreatedTransfer;
+use Generated\Shared\Transfer\MerchantExportedTransfer;
+use Generated\Shared\Transfer\MerchantUpdatedTransfer;
 use Generated\Shared\Transfer\OrderStatusChangedTransfer;
 use Generated\Shared\Transfer\PaymentCancelReservationFailedTransfer;
 use Generated\Shared\Transfer\PaymentCancelReservationRequestedTransfer;
@@ -13,7 +17,6 @@ use Generated\Shared\Transfer\PaymentConfirmationRequestedTransfer;
 use Generated\Shared\Transfer\PaymentConfirmedTransfer;
 use Generated\Shared\Transfer\PaymentMethodAddedTransfer;
 use Generated\Shared\Transfer\PaymentMethodDeletedTransfer;
-use Generated\Shared\Transfer\PaymentMethodTransfer;
 use Generated\Shared\Transfer\PaymentPreauthorizationFailedTransfer;
 use Generated\Shared\Transfer\PaymentPreauthorizedTransfer;
 use Generated\Shared\Transfer\PaymentRefundedTransfer;
@@ -89,6 +92,10 @@ use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConfig;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
 use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConstants;
 use Spryker\Shared\SecurityBlocker\SecurityBlockerConstants;
+use Spryker\Shared\SecurityBlockerBackoffice\SecurityBlockerBackofficeConstants;
+use Spryker\Shared\SecurityBlockerMerchantPortal\SecurityBlockerMerchantPortalConstants;
+use Spryker\Shared\SecurityBlockerStorefrontAgent\SecurityBlockerStorefrontAgentConstants;
+use Spryker\Shared\SecurityBlockerStorefrontCustomer\SecurityBlockerStorefrontCustomerConstants;
 use Spryker\Shared\SecuritySystemUser\SecuritySystemUserConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
@@ -98,6 +105,7 @@ use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Store\StoreConstants;
 use Spryker\Shared\SymfonyMailer\SymfonyMailerConstants;
+use Spryker\Shared\Synchronization\SynchronizationConstants;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
@@ -242,8 +250,7 @@ $config[OauthConstants::PUBLIC_KEY_PATH]
         getenv('SPRYKER_OAUTH_KEY_PUBLIC') ?: '',
     ) ?: null;
 $config[OauthConstants::ENCRYPTION_KEY] = getenv('SPRYKER_OAUTH_ENCRYPTION_KEY') ?: null;
-$config[OauthConstants::OAUTH_CLIENT_IDENTIFIER] = getenv('SPRYKER_OAUTH_CLIENT_IDENTIFIER') ?: null;
-$config[OauthConstants::OAUTH_CLIENT_SECRET] = getenv('SPRYKER_OAUTH_CLIENT_SECRET') ?: null;
+$config[OauthConstants::OAUTH_CLIENT_CONFIGURATION] = json_decode(getenv('SPRYKER_OAUTH_CLIENT_CONFIGURATION'), true) ?: [];
 
 // >> ZED REQUEST
 
@@ -493,6 +500,14 @@ $defaultConnection = [
 ];
 
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [];
+$connectionKeys = array_keys($rabbitConnections);
+$defaultKey = reset($connectionKeys);
+if (getenv('SPRYKER_CURRENT_REGION')) {
+    $defaultKey = getenv('SPRYKER_CURRENT_REGION');
+}
+if (getenv('APPLICATION_STORE') && (bool)getenv('SPRYKER_DYNAMIC_STORE_MODE') === false) {
+    $defaultKey = getenv('APPLICATION_STORE');
+}
 foreach ($rabbitConnections as $key => $connection) {
     $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key] = $defaultConnection;
     $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_CONNECTION_NAME] = $key . '-connection';
@@ -500,8 +515,11 @@ foreach ($rabbitConnections as $key => $connection) {
     foreach ($connection as $constant => $value) {
         $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][constant(RabbitMqEnv::class . '::' . $constant)] = $value;
     }
-    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = $key === APPLICATION_STORE;
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = $key === $defaultKey;
 }
+
+// >>> SYNCHRONIZATION
+$config[SynchronizationConstants::DEFAULT_SYNC_SEARCH_QUEUE_MESSAGE_CHUNK_SIZE] = 1000;
 
 // >>> SCHEDULER
 $config[SchedulerConstants::ENABLED_SCHEDULERS] = [
@@ -619,6 +637,10 @@ $config[AvailabilityNotificationConstants::STORE_TO_YVES_HOST_MAPPING] = [
     'AT' => getenv('SPRYKER_YVES_HOST_AT'),
     'US' => getenv('SPRYKER_YVES_HOST_US'),
 ];
+$config[AvailabilityNotificationConstants::REGION_TO_YVES_HOST_MAPPING] = [
+    'EU' => getenv('SPRYKER_YVES_HOST_EU'),
+    'US' => getenv('SPRYKER_YVES_HOST_US'),
+];
 
 // ----------------------------------------------------------------------------
 // ------------------------------ API -----------------------------------------
@@ -717,6 +739,27 @@ $config[SecurityBlockerConstants::SECURITY_BLOCKER_BLOCKING_NUMBER_OF_ATTEMPTS] 
 
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_AGENT_BLOCK_FOR] = 360;
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_AGENT_BLOCKING_NUMBER_OF_ATTEMPTS] = 9;
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_AGENT_BLOCKING_TTL] = 900;
+
+// >>> Security Blocker Storefront Agent
+$config[SecurityBlockerStorefrontAgentConstants::AGENT_BLOCK_FOR_SECONDS] = 360;
+$config[SecurityBlockerStorefrontAgentConstants::AGENT_BLOCKING_TTL] = 900;
+$config[SecurityBlockerStorefrontAgentConstants::AGENT_BLOCKING_NUMBER_OF_ATTEMPTS] = 9;
+
+// >>> Security Blocker Storefront Customer
+$config[SecurityBlockerStorefrontCustomerConstants::CUSTOMER_BLOCK_FOR_SECONDS] = 360;
+$config[SecurityBlockerStorefrontCustomerConstants::CUSTOMER_BLOCKING_TTL] = 900;
+$config[SecurityBlockerStorefrontCustomerConstants::CUSTOMER_BLOCKING_NUMBER_OF_ATTEMPTS] = 9;
+
+// >>> Security Blocker BackOffice user
+$config[SecurityBlockerBackofficeConstants::BACKOFFICE_USER_BLOCKING_TTL] = 900;
+$config[SecurityBlockerBackofficeConstants::BACKOFFICE_USER_BLOCK_FOR_SECONDS] = 360;
+$config[SecurityBlockerBackofficeConstants::BACKOFFICE_USER_BLOCKING_NUMBER_OF_ATTEMPTS] = 9;
+
+// >>> Security Blocker MerchantPortal user
+$config[SecurityBlockerMerchantPortalConstants::MERCHANT_PORTAL_USER_BLOCK_FOR_SECONDS] = 360;
+$config[SecurityBlockerMerchantPortalConstants::MERCHANT_PORTAL_USER_BLOCKING_TTL] = 900;
+$config[SecurityBlockerMerchantPortalConstants::MERCHANT_PORTAL_USER_BLOCKING_NUMBER_OF_ATTEMPTS] = 9;
 
 // >>> Product Label
 $config[ProductLabelConstants::PRODUCT_LABEL_TO_DE_ASSIGN_CHUNK_SIZE] = 1000;
@@ -792,50 +835,68 @@ $config[OauthClientConstants::OAUTH_OPTION_AUDIENCE_FOR_MESSAGE_BROKER] = 'aop-e
 $config[OauthClientConstants::OAUTH_OPTION_AUDIENCE_FOR_PAYMENT_AUTHORIZE] = 'aop-app';
 
 $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
-    PaymentMethodTransfer::class => 'payment',
-    PaymentMethodAddedTransfer::class => 'payment',
-    PaymentCancelReservationRequestedTransfer::class => 'payment',
-    PaymentConfirmationRequestedTransfer::class => 'payment',
-    PaymentRefundRequestedTransfer::class => 'payment',
-    PaymentMethodDeletedTransfer::class => 'payment',
-    PaymentPreauthorizedTransfer::class => 'payment',
-    PaymentPreauthorizationFailedTransfer::class => 'payment',
-    PaymentConfirmedTransfer::class => 'payment',
-    PaymentConfirmationFailedTransfer::class => 'payment',
-    PaymentRefundedTransfer::class => 'payment',
-    PaymentRefundFailedTransfer::class => 'payment',
-    PaymentReservationCanceledTransfer::class => 'payment',
-    PaymentCancelReservationFailedTransfer::class => 'payment',
-    AssetAddedTransfer::class => 'assets',
-    AssetUpdatedTransfer::class => 'assets',
-    AssetDeletedTransfer::class => 'assets',
-    ProductExportedTransfer::class => 'product',
-    ProductCreatedTransfer::class => 'product',
-    ProductUpdatedTransfer::class => 'product',
-    ProductDeletedTransfer::class => 'product',
-    InitializeProductExportTransfer::class => 'product',
-    SearchEndpointAvailableTransfer::class => 'search',
-    SearchEndpointRemovedTransfer::class => 'search',
-    AddReviewsTransfer::class => 'reviews',
-    OrderStatusChangedTransfer::class => 'orders',
+    PaymentMethodAddedTransfer::class => 'payment-method-commands',
+    PaymentMethodDeletedTransfer::class => 'payment-method-commands',
+    PaymentCancelReservationRequestedTransfer::class => 'payment-commands',
+    PaymentConfirmationRequestedTransfer::class => 'payment-commands',
+    PaymentRefundRequestedTransfer::class => 'payment-commands',
+    PaymentPreauthorizedTransfer::class => 'payment-events',
+    PaymentPreauthorizationFailedTransfer::class => 'payment-events',
+    PaymentConfirmedTransfer::class => 'payment-events',
+    PaymentConfirmationFailedTransfer::class => 'payment-events',
+    PaymentRefundedTransfer::class => 'payment-events',
+    PaymentRefundFailedTransfer::class => 'payment-events',
+    PaymentReservationCanceledTransfer::class => 'payment-events',
+    PaymentCancelReservationFailedTransfer::class => 'payment-events',
+    AssetAddedTransfer::class => 'asset-commands',
+    AssetUpdatedTransfer::class => 'asset-commands',
+    AssetDeletedTransfer::class => 'asset-commands',
+    ProductExportedTransfer::class => 'product-events',
+    ProductCreatedTransfer::class => 'product-events',
+    ProductUpdatedTransfer::class => 'product-events',
+    ProductDeletedTransfer::class => 'product-events',
+    InitializeProductExportTransfer::class => 'product-commands',
+    SearchEndpointAvailableTransfer::class => 'search-commands',
+    SearchEndpointRemovedTransfer::class => 'search-commands',
+    AddReviewsTransfer::class => 'product-review-commands',
+    OrderStatusChangedTransfer::class => 'order-events',
+    ExportMerchantsTransfer::class => 'merchant-commands',
+    MerchantExportedTransfer::class => 'merchant-events',
+    MerchantCreatedTransfer::class => 'merchant-events',
+    MerchantUpdatedTransfer::class => 'merchant-events',
 ];
 
-$config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] =
+$config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [
+    'product-review-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-method-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'asset-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'product-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'search-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'merchant-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'merchant-events' => 'http',
+    'order-events' => 'http',
+    'product-events' => 'http',
+];
+
 $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
-    'reviews' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'payment' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'assets' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'product' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'search' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'orders' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'product-review-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-method-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'asset-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'product-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'search-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'order-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'merchant-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
 ];
 
 $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
-    'payment' => 'http',
-    'assets' => 'http',
-    'product' => 'http',
-    'search' => 'http',
-    'orders' => 'http',
+    'payment-commands' => 'http',
+    'product-events' => 'http',
+    'order-events' => 'http',
+    'merchant-events' => 'http',
 ];
 
 // -------------------------------- ACP AWS --------------------------------------
