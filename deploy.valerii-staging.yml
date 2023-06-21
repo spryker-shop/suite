@@ -75,7 +75,7 @@ regions:
                     name: Spryker No-Reply
                     email: no-reply@valerii-terraform.cloud.spryker.toys
             database:
-                database: valerii_terraform
+                database: valerii_staging
                 username: spryker
                 password: secret
 
@@ -160,7 +160,7 @@ groups:
 services:
     database:
         engine: mysql
-        version: mariadb-10.4
+        version: mariadb-10.6
         root:
             username: "root"
             password: "secret"
