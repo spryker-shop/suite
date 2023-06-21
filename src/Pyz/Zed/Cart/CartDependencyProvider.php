@@ -89,6 +89,7 @@ use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItem
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentCartOperationPostSavePlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\SanitizeCartShipmentItemExpanderPlugin;
+use SprykerEco\Zed\Unzer\Communication\Plugin\Cart\UnzerCredentialsCartOperationPostSavePlugin;
 
 class CartDependencyProvider extends SprykerCartDependencyProvider
 {
@@ -192,6 +193,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountSalesUnitValuePostSavePlugin(), #ProductPackagingUnit
             new ConfiguredBundleQuantityPostSavePlugin(),
             new CartShipmentCartOperationPostSavePlugin(),
+            new UnzerCredentialsCartOperationPostSavePlugin(),
         ];
     }
 
