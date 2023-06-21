@@ -28,7 +28,7 @@ class PaymentsRestApiConfig extends SprykerPaymentsRestApiConfig
     ];
 
     /**
-     * @var array<string, array<string, array<string>>>
+     * @var array<string, mixed>
      */
     protected const PAYMENT_METHOD_REQUIRED_FIELDS = [
         DummyPaymentConfig::PROVIDER_NAME => [
