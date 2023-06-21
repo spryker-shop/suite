@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0544bfc90a1bbf92a403c972a9853e2b",
+    "content-hash": "f30f991e79ad450ce5cf501534b63fe8",
     "packages": [
         {
             "name": "async-aws/core",
@@ -75404,6 +75404,33 @@
             "time": "2022-12-28T16:44:41+00:00"
         },
         {
+            "name": "spryker/robotframework-suite-tests",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/robotframework-suite-tests.git",
+                "reference": "0bac3e44112e29d40221cccb931012f4c882e33e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/0bac3e44112e29d40221cccb931012f4c882e33e",
+                "reference": "0bac3e44112e29d40221cccb931012f4c882e33e",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Automated tests for the Robot Framework",
+            "support": {
+                "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
+                "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
+            },
+            "time": "2023-06-20T21:39:41+00:00"
+        },
+        {
             "name": "spryker/silex",
             "version": "2.2.1",
             "source": {
@@ -76261,7 +76288,8 @@
         "spryker-sdk/evaluator": 20,
         "jetbrains/phpstorm-stubs": 20,
         "spryker/code-sniffer": 20,
-        "spryker/docker-chromedriver": 20
+        "spryker/docker-chromedriver": 20,
+        "spryker/robotframework-suite-tests": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
