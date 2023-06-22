@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "async-aws/core",
-            "version": "1.18.1",
+            "version": "1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/async-aws/core.git",
-                "reference": "fd09655f15b8b2d16799ec46a792dcdbb4e460fb"
+                "reference": "8702223061b63f800257b3177f36cb7572360352"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/async-aws/core/zipball/fd09655f15b8b2d16799ec46a792dcdbb4e460fb",
-                "reference": "fd09655f15b8b2d16799ec46a792dcdbb4e460fb",
+                "url": "https://api.github.com/repos/async-aws/core/zipball/8702223061b63f800257b3177f36cb7572360352",
+                "reference": "8702223061b63f800257b3177f36cb7572360352",
                 "shasum": ""
             },
             "require": {
@@ -28,12 +28,13 @@
                 "psr/cache": "^1.0 || ^2.0 || ^3.0",
                 "psr/log": "^1.0 || ^2.0 || ^3.0",
                 "symfony/deprecation-contracts": "^2.1 || ^3.0",
-                "symfony/http-client": "^4.4.16 || ^5.1.7,!=5.2.0 || ^6.0",
+                "symfony/http-client": "^4.4.16 || ^5.1.7 || ^6.0 || ^7.0",
                 "symfony/http-client-contracts": "^1.1.8 || ^2.0 || ^3.0",
                 "symfony/service-contracts": "^1.0 || ^2.0 || ^3.0"
             },
             "conflict": {
-                "async-aws/s3": "<1.1"
+                "async-aws/s3": "<1.1",
+                "symfony/http-client": "5.2.0"
             },
             "type": "library",
             "extra": {
@@ -59,7 +60,7 @@
                 "sts"
             ],
             "support": {
-                "source": "https://github.com/async-aws/core/tree/1.18.1"
+                "source": "https://github.com/async-aws/core/tree/1.19.0"
             },
             "funding": [
                 {
@@ -71,7 +72,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-28T16:31:16+00:00"
+            "time": "2023-06-20T19:17:40+00:00"
         },
         {
             "name": "async-aws/sns",
@@ -133,16 +134,16 @@
         },
         {
             "name": "async-aws/sqs",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/async-aws/sqs.git",
-                "reference": "6959a2222a30a67177e7f1658bdd1bb9547d237e"
+                "reference": "46eb8ad1208c815cf302807a301cfb37317678f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/async-aws/sqs/zipball/6959a2222a30a67177e7f1658bdd1bb9547d237e",
-                "reference": "6959a2222a30a67177e7f1658bdd1bb9547d237e",
+                "url": "https://api.github.com/repos/async-aws/sqs/zipball/46eb8ad1208c815cf302807a301cfb37317678f8",
+                "reference": "46eb8ad1208c815cf302807a301cfb37317678f8",
                 "shasum": ""
             },
             "require": {
@@ -154,7 +155,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7-dev"
+                    "dev-master": "1.8-dev"
                 }
             },
             "autoload": {
@@ -175,7 +176,7 @@
                 "sqs"
             ],
             "support": {
-                "source": "https://github.com/async-aws/sqs/tree/1.7.0"
+                "source": "https://github.com/async-aws/sqs/tree/1.8.0"
             },
             "funding": [
                 {
@@ -187,7 +188,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-20T13:18:18+00:00"
+            "time": "2023-06-20T19:17:40+00:00"
         },
         {
             "name": "aws/aws-crt-php",
@@ -245,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.273.3",
+            "version": "3.273.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "fc2995defbfa0e113a30d02b7b0ff52d8056841c"
+                "reference": "dbb8640e651351b47f50548c26abbe316d36632b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fc2995defbfa0e113a30d02b7b0ff52d8056841c",
-                "reference": "fc2995defbfa0e113a30d02b7b0ff52d8056841c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/dbb8640e651351b47f50548c26abbe316d36632b",
+                "reference": "dbb8640e651351b47f50548c26abbe316d36632b",
                 "shasum": ""
             },
             "require": {
@@ -334,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.273.3"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.273.5"
             },
-            "time": "2023-06-19T18:21:47+00:00"
+            "time": "2023-06-21T18:22:15+00:00"
         },
         {
             "name": "brick/math",
@@ -6152,7 +6153,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "fd3bc1559479e1efef74d32c9c969386c761df95"
+                "reference": "e182de0c818e7fb90f09b3ad2e3a8a05b1affd32"
             },
             "require": {
                 "php": ">=8.0"
@@ -7162,7 +7163,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2023-06-20T07:21:15+00:00"
+            "time": "2023-06-22T08:06:14+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -14881,12 +14882,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "f58b36c8deaff8481a7e7712bc453c0b9a4b12db"
+                "reference": "855eff23b6399678fede7a29923ca01b27e343b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/f58b36c8deaff8481a7e7712bc453c0b9a4b12db",
-                "reference": "f58b36c8deaff8481a7e7712bc453c0b9a4b12db",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/855eff23b6399678fede7a29923ca01b27e343b8",
+                "reference": "855eff23b6399678fede7a29923ca01b27e343b8",
                 "shasum": ""
             },
             "require": {
@@ -14937,7 +14938,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-12T09:10:15+00:00"
+            "time": "2023-06-20T19:52:02+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -18053,7 +18054,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "13325954c2b69f1f1530f8693bd247d4a86aba75"
+                "reference": "179dc383898db8441ac8fc291389ef076a8ceea5"
             },
             "default-branch": true,
             "type": "library",
@@ -18061,7 +18062,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2023-06-20T08:08:15+00:00"
+            "time": "2023-06-21T17:38:36+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
