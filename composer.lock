@@ -30977,20 +30977,20 @@
         },
         {
             "name": "spryker/guzzle",
-            "version": "2.4.0",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/guzzle.git",
-                "reference": "f462fc17af7e1800b69b1c187296d8f2c5ce85f8"
+                "reference": "ed1d219086f6b8719d6b90d54bc9f12388ca9a4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/guzzle/zipball/f462fc17af7e1800b69b1c187296d8f2c5ce85f8",
-                "reference": "f462fc17af7e1800b69b1c187296d8f2c5ce85f8",
+                "url": "https://api.github.com/repos/spryker/guzzle/zipball/ed1d219086f6b8719d6b90d54bc9f12388ca9a4c",
+                "reference": "ed1d219086f6b8719d6b90d54bc9f12388ca9a4c",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "^7.0.0",
+                "guzzlehttp/guzzle": "^7.5.1",
                 "php": ">=8.0"
             },
             "type": "library",
@@ -31005,9 +31005,9 @@
             ],
             "description": "Guzzle module",
             "support": {
-                "source": "https://github.com/spryker/guzzle/tree/2.4.0"
+                "source": "https://github.com/spryker/guzzle/tree/2.4.1"
             },
-            "time": "2022-10-18T17:47:15+00:00"
+            "time": "2023-06-22T13:12:04+00:00"
         },
         {
             "name": "spryker/health-check",
@@ -36473,23 +36473,23 @@
         },
         {
             "name": "spryker/message-broker-aws",
-            "version": "1.4.2",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/message-broker-aws.git",
-                "reference": "f720e73bf61f810faa1c80ef766fe0d706fa8964"
+                "reference": "5cc230af8d486356b66990567082f632b7bb4ae7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/message-broker-aws/zipball/f720e73bf61f810faa1c80ef766fe0d706fa8964",
-                "reference": "f720e73bf61f810faa1c80ef766fe0d706fa8964",
+                "url": "https://api.github.com/repos/spryker/message-broker-aws/zipball/5cc230af8d486356b66990567082f632b7bb4ae7",
+                "reference": "5cc230af8d486356b66990567082f632b7bb4ae7",
                 "shasum": ""
             },
             "require": {
                 "async-aws/core": "^1.10.0",
                 "async-aws/sns": "^1.0.0",
                 "async-aws/sqs": "^1.0.0",
-                "aws/aws-sdk-php": "^3.247.0",
+                "aws/aws-sdk-php": "^3.263.14",
                 "php": ">=8.0",
                 "spryker/guzzle": "^2.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -36527,9 +36527,9 @@
             ],
             "description": "MessageBrokerAws module",
             "support": {
-                "source": "https://github.com/spryker/message-broker-aws/tree/1.4.2"
+                "source": "https://github.com/spryker/message-broker-aws/tree/1.4.3"
             },
-            "time": "2023-05-05T18:20:59+00:00"
+            "time": "2023-06-22T13:12:04+00:00"
         },
         {
             "name": "spryker/message-broker-extension",
@@ -37709,22 +37709,23 @@
         },
         {
             "name": "spryker/oauth-auth0",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth-auth0.git",
-                "reference": "09276494edd6e95197a4bedaeff495ba7515649a"
+                "reference": "d8455c7e2ce989d56234e162b2b83fdda3d14e13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-auth0/zipball/09276494edd6e95197a4bedaeff495ba7515649a",
-                "reference": "09276494edd6e95197a4bedaeff495ba7515649a",
+                "url": "https://api.github.com/repos/spryker/oauth-auth0/zipball/d8455c7e2ce989d56234e162b2b83fdda3d14e13",
+                "reference": "d8455c7e2ce989d56234e162b2b83fdda3d14e13",
                 "shasum": ""
             },
             "require": {
-                "league/oauth2-client": "^2.5.0",
-                "php": ">=7.4",
+                "league/oauth2-client": "^2.6.0",
+                "php": ">=8.0",
                 "riskio/oauth2-auth0": "^2.4.0",
+                "spryker/guzzle": "^2.4.1",
                 "spryker/kernel": "^3.30.0",
                 "spryker/oauth-client-extension": "^1.0.0",
                 "spryker/transfer": "^3.27.0"
@@ -37750,9 +37751,9 @@
             ],
             "description": "OauthAuth0 module",
             "support": {
-                "source": "https://github.com/spryker/oauth-auth0/tree/1.0.0"
+                "source": "https://github.com/spryker/oauth-auth0/tree/1.0.1"
             },
-            "time": "2022-04-26T12:27:56+00:00"
+            "time": "2023-06-22T13:12:04+00:00"
         },
         {
             "name": "spryker/oauth-backend-api",
@@ -56046,21 +56047,21 @@
         },
         {
             "name": "spryker/secrets-manager-aws",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/secrets-manager-aws.git",
-                "reference": "82f1ebe2990c9662646148c4233504c4bb629780"
+                "reference": "957116be05150a8dbdaa349ca0580795c560f1a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/secrets-manager-aws/zipball/82f1ebe2990c9662646148c4233504c4bb629780",
-                "reference": "82f1ebe2990c9662646148c4233504c4bb629780",
+                "url": "https://api.github.com/repos/spryker/secrets-manager-aws/zipball/957116be05150a8dbdaa349ca0580795c560f1a0",
+                "reference": "957116be05150a8dbdaa349ca0580795c560f1a0",
                 "shasum": ""
             },
             "require": {
-                "aws/aws-sdk-php": "^3.0.0",
-                "php": ">=7.4",
+                "aws/aws-sdk-php": "^3.263.14",
+                "php": ">=8.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^1.0.0 || ^2.0.0 || ^3.0.0",
                 "spryker/secrets-manager-extension": "^1.0.0",
@@ -56089,9 +56090,9 @@
             ],
             "description": "SecretsManagerAws module",
             "support": {
-                "source": "https://github.com/spryker/secrets-manager-aws/tree/1.0.1"
+                "source": "https://github.com/spryker/secrets-manager-aws/tree/1.0.2"
             },
-            "time": "2022-05-18T16:18:58+00:00"
+            "time": "2023-06-22T13:12:04+00:00"
         },
         {
             "name": "spryker/secrets-manager-extension",
