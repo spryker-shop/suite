@@ -46,3 +46,5 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'product' => 'in-memory',
     'reviews' => 'in-memory',
 ];
+
+$config[MessageBrokerConstants::IS_ENABLED] = true;
