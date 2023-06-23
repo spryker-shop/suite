@@ -32,7 +32,7 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
  * @method void comment($description)
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Glue\Carts\PHPMD)
  */
 class CartsApiTester extends ApiEndToEndTester
 {

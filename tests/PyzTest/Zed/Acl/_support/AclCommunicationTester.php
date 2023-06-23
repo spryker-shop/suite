@@ -24,7 +24,7 @@ use Codeception\Scenario;
  * @method void comment($description)
  * @method void pause()
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Zed\Acl\PHPMD)
  */
 class AclCommunicationTester extends Actor
 {

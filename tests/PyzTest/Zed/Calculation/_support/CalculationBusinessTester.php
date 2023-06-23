@@ -68,7 +68,7 @@ use Spryker\Zed\Kernel\Container;
  * @method \Spryker\Zed\Calculation\Business\CalculationFacadeInterface getFacade()
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Zed\Calculation\PHPMD)
  */
 class CalculationBusinessTester extends Actor
 {
