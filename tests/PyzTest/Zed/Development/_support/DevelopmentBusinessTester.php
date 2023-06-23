@@ -23,7 +23,7 @@ use Codeception\Actor;
  * @method void comment($description)
  * @method void pause()
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Zed\Development\PHPMD)
  *
  * @method \Spryker\Zed\Development\Business\DevelopmentBusinessFactory getFactory($moduleName = null) : \Spryker\Zed\Development\Business\DevelopmentBusinessFactory
  */

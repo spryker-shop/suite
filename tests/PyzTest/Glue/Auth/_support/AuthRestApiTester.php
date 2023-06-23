@@ -23,7 +23,7 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
  * @method void comment($description)
  * @method void pause()
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Glue\Auth\PHPMD)
  */
 class AuthRestApiTester extends ApiEndToEndTester
 {
