@@ -25,7 +25,7 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
  * @method void comment($description)
  * @method void pause()
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Glue\Customer\PHPMD)
  */
 class CustomerApiTester extends ApiEndToEndTester
 {
