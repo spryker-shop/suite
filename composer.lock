@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1259e1e560e7ce237b31f725615ea655",
+    "content-hash": "7067b538ccb66ca46f55746fa0a00a7d",
     "packages": [
         {
             "name": "async-aws/core",
@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.273.7",
+            "version": "3.273.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1d3e7ae37f31dfe1d4e9d9e361fd8e6702074fbe"
+                "reference": "4013e1fd2e84ebba548c0158fd3e7ca0c0346b43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1d3e7ae37f31dfe1d4e9d9e361fd8e6702074fbe",
-                "reference": "1d3e7ae37f31dfe1d4e9d9e361fd8e6702074fbe",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4013e1fd2e84ebba548c0158fd3e7ca0c0346b43",
+                "reference": "4013e1fd2e84ebba548c0158fd3e7ca0c0346b43",
                 "shasum": ""
             },
             "require": {
@@ -335,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.273.7"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.273.8"
             },
-            "time": "2023-06-23T18:19:24+00:00"
+            "time": "2023-06-26T18:21:57+00:00"
         },
         {
             "name": "brick/math",
@@ -18051,6 +18051,60 @@
             "time": "2023-01-19T13:32:54+00:00"
         },
         {
+            "name": "spryker/profiler",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/profiler.git",
+                "reference": "1b227b723dade26d33ee948df1cf1054dd90d39a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/profiler/zipball/1b227b723dade26d33ee948df1cf1054dd90d39a",
+                "reference": "1b227b723dade26d33ee948df1cf1054dd90d39a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/web-profiler-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "ext-xhprof": "If you want to use profiler module.",
+                "spryker/container": "If you want to use Web Profiler plugins.",
+                "spryker/event-dispatcher": "If you want to use profiler listeners."
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Profiler module",
+            "support": {
+                "source": "https://github.com/spryker/profiler/tree/master"
+            },
+            "time": "2023-06-27T11:06:03+00:00"
+        },
+        {
             "name": "spryker/robotframework-suite-tests",
             "version": "dev-master",
             "source": {
@@ -18702,7 +18756,8 @@
         "spryker/docker-chromedriver": 20,
         "spryker-sdk/load-testing": 20,
         "spryker-sdk/async-api": 20,
-        "spryker-sdk/evaluator": 20
+        "spryker-sdk/evaluator": 20,
+        "spryker/profiler": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
