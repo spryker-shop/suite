@@ -65,6 +65,9 @@ class GlueBackendApiApplicationAuthorizationConnectorConfig extends SprykerGlueB
             '/push-notification-subscriptions' => [
                 'isRegularExpression' => false,
             ],
+            '/\/push-notification-providers.*/' => [
+                'isRegularExpression' => true,
+            ],
             '/warehouse-tokens' => [
                 'isRegularExpression' => false,
                 'methods' => [
