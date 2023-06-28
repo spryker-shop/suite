@@ -24,8 +24,10 @@ use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\UserRequestValidatorPlug
 use Spryker\Glue\OauthBackendApi\Plugin\GlueBackendApiApplication\UserRequestBuilderPlugin;
 use Spryker\Glue\PickingListsBackendApi\Plugin\GlueBackendApiApplication\PickingListItemsBackendResourcePlugin;
 use Spryker\Glue\PickingListsBackendApi\Plugin\GlueBackendApiApplication\PickingListsBackendResourcePlugin;
+use Spryker\Glue\PickingListsBackendApi\Plugin\GlueBackendApiApplication\PickingListStartPickingBackendResourcePlugin;
 use Spryker\Glue\ProductAttributesBackendApi\Plugin\GlueApplication\ProductAttributesBackendResourcePlugin;
 use Spryker\Glue\ProductsBackendApi\Plugin\GlueApplication\ProductsBackendResourcePlugin;
+use Spryker\Glue\PushNotificationsBackendApi\Plugin\GlueBackendApiApplication\PushNotificationProvidersBackendResourcePlugin;
 use Spryker\Glue\PushNotificationsBackendApi\Plugin\GlueBackendApiApplication\PushNotificationSubscriptionsBackendResourcePlugin;
 use Spryker\Glue\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Glue\ServicePointsBackendApi\Plugin\GlueBackendApiApplication\ServicePointAddressesBackendResourcePlugin;
@@ -112,6 +114,7 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
         return [
             new CategoriesBackendApiResource(),
             new OauthBackendApiTokenResource(),
+            new PickingListStartPickingBackendResourcePlugin(),
             new PickingListsBackendResourcePlugin(),
             new PickingListItemsBackendResourcePlugin(),
             new ProductAttributesBackendResourcePlugin(),
@@ -119,6 +122,7 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
             new WarehouseUserAssignmentsBackendResourcePlugin(),
             new WarehouseTokensBackendResourcePlugin(),
             new PushNotificationSubscriptionsBackendResourcePlugin(),
+            new PushNotificationProvidersBackendResourcePlugin(),
             new ServicePointsBackendResourcePlugin(),
             new ServicePointAddressesBackendResourcePlugin(),
             new ServiceTypesBackendResourcePlugin(),
