@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6661cadb2d578dde57781b5e4b851920",
+    "content-hash": "3f1d050dec04ee6737b7a37e88f04e90",
     "packages": [
         {
             "name": "async-aws/core",
@@ -12479,6 +12479,57 @@
             "time": "2023-03-28T12:28:19+00:00"
         },
         {
+            "name": "spryker-shop/service-point-widget",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/service-point-widget.git",
+                "reference": "bf2ec055d2c2d64391ed9a2cd5b772e230d6ab21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/service-point-widget/zipball/bf2ec055d2c2d64391ed9a2cd5b772e230d6ab21",
+                "reference": "bf2ec055d2c2d64391ed9a2cd5b772e230d6ab21",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker-shop/shop-ui": "^1.71.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/service-point-search": "^0.2.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/twig": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*"
+            },
+            "suggest": {
+                "spryker/router": "Use this module if you need use the RouterProviderPlugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ServicePointWidget module",
+            "support": {
+                "source": "https://github.com/spryker-shop/service-point-widget/tree/0.1.0"
+            },
+            "time": "2023-07-03T12:28:35+00:00"
+        },
+        {
             "name": "spryker-shop/session-agent-validation",
             "version": "1.1.0",
             "source": {
@@ -13188,16 +13239,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "1.70.0",
+            "version": "1.71.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "93e666adac5a20344bce22dfb22ac85dfeb76631"
+                "reference": "688ca5a02955d6443dbf2a192f0c0d052c3c7298"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/93e666adac5a20344bce22dfb22ac85dfeb76631",
-                "reference": "93e666adac5a20344bce22dfb22ac85dfeb76631",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/688ca5a02955d6443dbf2a192f0c0d052c3c7298",
+                "reference": "688ca5a02955d6443dbf2a192f0c0d052c3c7298",
                 "shasum": ""
             },
             "require": {
@@ -13245,9 +13296,9 @@
             ],
             "description": "ShopUi module",
             "support": {
-                "source": "https://github.com/spryker-shop/shop-ui/tree/1.70.0"
+                "source": "https://github.com/spryker-shop/shop-ui/tree/1.71.0"
             },
-            "time": "2023-06-16T12:23:11+00:00"
+            "time": "2023-07-03T12:28:35+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-note-widget",
@@ -57186,16 +57237,16 @@
         },
         {
             "name": "spryker/service-point-search",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-point-search.git",
-                "reference": "669314e2487e0bb0f960a0756bf42ca9fe7e6de7"
+                "reference": "38a30aa95112c42741b5d28d13ec419eb059d4fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-point-search/zipball/669314e2487e0bb0f960a0756bf42ca9fe7e6de7",
-                "reference": "669314e2487e0bb0f960a0756bf42ca9fe7e6de7",
+                "url": "https://api.github.com/repos/spryker/service-point-search/zipball/38a30aa95112c42741b5d28d13ec419eb059d4fb",
+                "reference": "38a30aa95112c42741b5d28d13ec419eb059d4fb",
                 "shasum": ""
             },
             "require": {
@@ -57246,9 +57297,9 @@
             ],
             "description": "ServicePointSearch module",
             "support": {
-                "source": "https://github.com/spryker/service-point-search/tree/0.2.0"
+                "source": "https://github.com/spryker/service-point-search/tree/0.2.1"
             },
-            "time": "2023-06-01T08:21:24+00:00"
+            "time": "2023-07-03T12:28:33+00:00"
         },
         {
             "name": "spryker/service-point-storage",
