@@ -22,10 +22,10 @@ suites:
                 - \SprykerTest\Shared\Testify\Helper\ConfigHelper
                 - \SprykerTest\Shared\Testify\Helper\DependencyHelper
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
-                      projectNamespaces: [ 'Pyz' ]
+                      projectNamespaces: ['Pyz']
                 - \PyzTest\Zed\Testify\Helper\LoginHelper
                 - \PyzTest\Zed\Testify\Helper\BootstrapHelper
                 - \SprykerTest\Shared\Store\Helper\StoreDataHelper
                 - \SprykerTest\Shared\Store\Helper\StoreReferenceHelper
                 - REST:
-                    depends: \PyzTest\Zed\Testify\Helper\BootstrapHelper
+                      depends: \PyzTest\Zed\Testify\Helper\BootstrapHelper
