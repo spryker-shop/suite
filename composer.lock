@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "96a4115762eef4eba3ec87e9b6177ce4",
+    "content-hash": "809f0c2e0ece8eb21e6256eb9e07a84c",
     "packages": [
         {
             "name": "async-aws/core",
@@ -33647,27 +33647,28 @@
         },
         {
             "name": "spryker/merchant-product-offer-storage",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-product-offer-storage.git",
-                "reference": "569a019e42d1a226bae545c660471c56498fdbd7"
+                "reference": "3f9f772e06a35d6825f13faac62a2ef3282ab451"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-product-offer-storage/zipball/569a019e42d1a226bae545c660471c56498fdbd7",
-                "reference": "569a019e42d1a226bae545c660471c56498fdbd7",
+                "url": "https://api.github.com/repos/spryker/merchant-product-offer-storage/zipball/3f9f772e06a35d6825f13faac62a2ef3282ab451",
+                "reference": "3f9f772e06a35d6825f13faac62a2ef3282ab451",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/event-behavior": "^1.14.0",
                 "spryker/kernel": "^3.33.0",
-                "spryker/merchant": "^3.0.0",
+                "spryker/merchant": "^3.1.0",
                 "spryker/merchant-product-offer": "^1.0.0",
                 "spryker/merchant-product-offer-storage-extension": "^1.1.0",
                 "spryker/product-offer": "^1.0.0 ",
                 "spryker/product-offer-service-point-storage-extension": "^1.0.0",
+                "spryker/product-offer-shipment-type-storage-extension": "^1.0.0",
                 "spryker/product-offer-storage": "^1.0.0",
                 "spryker/product-offer-storage-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -33704,9 +33705,9 @@
             ],
             "description": "MerchantProductOfferStorage module",
             "support": {
-                "source": "https://github.com/spryker/merchant-product-offer-storage/tree/2.1.0"
+                "source": "https://github.com/spryker/merchant-product-offer-storage/tree/2.2.0"
             },
-            "time": "2023-07-04T11:30:17+00:00"
+            "time": "2023-07-04T16:48:08+00:00"
         },
         {
             "name": "spryker/merchant-product-offer-storage-extension",
@@ -47367,16 +47368,16 @@
         },
         {
             "name": "spryker/product-offer",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-offer.git",
-                "reference": "3cc531ad5c86deee94a625e13dd0fba9fe2657fd"
+                "reference": "42f2c1b44ed0075da4bcb158822d5bb49d35639f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-offer/zipball/3cc531ad5c86deee94a625e13dd0fba9fe2657fd",
-                "reference": "3cc531ad5c86deee94a625e13dd0fba9fe2657fd",
+                "url": "https://api.github.com/repos/spryker/product-offer/zipball/42f2c1b44ed0075da4bcb158822d5bb49d35639f",
+                "reference": "42f2c1b44ed0075da4bcb158822d5bb49d35639f",
                 "shasum": ""
             },
             "require": {
@@ -47423,9 +47424,9 @@
             ],
             "description": "ProductOffer module",
             "support": {
-                "source": "https://github.com/spryker/product-offer/tree/1.9.0"
+                "source": "https://github.com/spryker/product-offer/tree/1.9.1"
             },
-            "time": "2023-07-04T11:30:17+00:00"
+            "time": "2023-07-04T16:48:08+00:00"
         },
         {
             "name": "spryker/product-offer-availabilities-rest-api",
@@ -48337,22 +48338,22 @@
         },
         {
             "name": "spryker/product-offer-shipment-type",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-offer-shipment-type.git",
-                "reference": "b7827d183cf4fc64823d27d69b62deb61da1e0df"
+                "reference": "3cf229ed8feb3c1047ce4959e9dec7022d01b042"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-offer-shipment-type/zipball/b7827d183cf4fc64823d27d69b62deb61da1e0df",
-                "reference": "b7827d183cf4fc64823d27d69b62deb61da1e0df",
+                "url": "https://api.github.com/repos/spryker/product-offer-shipment-type/zipball/3cf229ed8feb3c1047ce4959e9dec7022d01b042",
+                "reference": "3cf229ed8feb3c1047ce4959e9dec7022d01b042",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/product-offer": "^1.0.0",
+                "spryker/product-offer": "^1.9.0",
                 "spryker/product-offer-extension": "^1.0.0",
                 "spryker/shipment-type": "^0.1.0",
                 "spryker/transfer": "^3.27.0"
@@ -48381,22 +48382,22 @@
             ],
             "description": "ProductOfferShipmentType module",
             "support": {
-                "source": "https://github.com/spryker/product-offer-shipment-type/tree/0.1.0"
+                "source": "https://github.com/spryker/product-offer-shipment-type/tree/0.2.0"
             },
-            "time": "2023-06-06T15:14:45+00:00"
+            "time": "2023-07-04T16:48:08+00:00"
         },
         {
             "name": "spryker/product-offer-shipment-type-data-import",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-offer-shipment-type-data-import.git",
-                "reference": "f8378b42df9e9f96bc3cc3fc618711cb0179cc66"
+                "reference": "9a6be6f4736fe6f2f0b65c3ac8f2670cae76ab5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-offer-shipment-type-data-import/zipball/f8378b42df9e9f96bc3cc3fc618711cb0179cc66",
-                "reference": "f8378b42df9e9f96bc3cc3fc618711cb0179cc66",
+                "url": "https://api.github.com/repos/spryker/product-offer-shipment-type-data-import/zipball/9a6be6f4736fe6f2f0b65c3ac8f2670cae76ab5f",
+                "reference": "9a6be6f4736fe6f2f0b65c3ac8f2670cae76ab5f",
                 "shasum": ""
             },
             "require": {
@@ -48404,7 +48405,7 @@
                 "spryker/data-import": "^1.3.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/product-offer": "^1.0.0",
-                "spryker/product-offer-shipment-type": "^0.1.0",
+                "spryker/product-offer-shipment-type": "^0.2.0",
                 "spryker/shipment-type": "^0.1.0",
                 "spryker/transfer": "^3.27.0"
             },
@@ -48432,9 +48433,111 @@
             ],
             "description": "ProductOfferShipmentTypeDataImport module",
             "support": {
-                "source": "https://github.com/spryker/product-offer-shipment-type-data-import/tree/0.1.0"
+                "source": "https://github.com/spryker/product-offer-shipment-type-data-import/tree/0.2.0"
             },
-            "time": "2023-06-06T15:14:45+00:00"
+            "time": "2023-07-04T16:48:08+00:00"
+        },
+        {
+            "name": "spryker/product-offer-shipment-type-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-shipment-type-storage.git",
+                "reference": "4695e3bf3b58437fd85ba346da243a80ecd3db9c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-shipment-type-storage/zipball/4695e3bf3b58437fd85ba346da243a80ecd3db9c",
+                "reference": "4695e3bf3b58437fd85ba346da243a80ecd3db9c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-offer": "^1.9.0",
+                "spryker/product-offer-shipment-type": "^0.2.0",
+                "spryker/product-offer-shipment-type-storage-extension": "^1.0.0",
+                "spryker/product-offer-storage-extension": "^1.0.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/shipment-type-storage": "^0.1.0",
+                "spryker/storage": "^3.0.0",
+                "spryker/store": "^1.19.0",
+                "spryker/synchronization": "^1.9.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.1.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/shipment-type": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferShipmentTypeStorage module",
+            "support": {
+                "source": "https://github.com/spryker/product-offer-shipment-type-storage/tree/0.1.0"
+            },
+            "time": "2023-07-04T16:48:08+00:00"
+        },
+        {
+            "name": "spryker/product-offer-shipment-type-storage-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-shipment-type-storage-extension.git",
+                "reference": "0ba4bea5a2627e134f3cded10b320bcc038760d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-shipment-type-storage-extension/zipball/0ba4bea5a2627e134f3cded10b320bcc038760d4",
+                "reference": "0ba4bea5a2627e134f3cded10b320bcc038760d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferShipmentTypeStorageExtension module",
+            "support": {
+                "source": "https://github.com/spryker/product-offer-shipment-type-storage-extension/tree/1.0.0"
+            },
+            "time": "2023-07-04T16:48:08+00:00"
         },
         {
             "name": "spryker/product-offer-shopping-list",
