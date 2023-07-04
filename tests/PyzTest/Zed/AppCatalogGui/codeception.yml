@@ -12,20 +12,21 @@ coverage:
     whitelist: { include: ['../../../../src/*'] }
 
 suites:
-    Communication:
-        path: Communication
-        actor: AppCatalogGuiCommunicationTester
+    Presentation:
+        path: Presentation
+        actor: AppCatalogGuiPresentationTester
         modules:
             enabled:
                 - Asserts
                 - \SprykerTest\Shared\Testify\Helper\Environment
                 - \SprykerTest\Shared\Testify\Helper\ConfigHelper
-                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+                - \SprykerTest\Shared\Application\Helper\ZedHelper
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
                       projectNamespaces: ['Pyz']
-                - \PyzTest\Zed\Testify\Helper\LoginHelper
-                - \PyzTest\Zed\Testify\Helper\BootstrapHelper
+                - WebDriver:
+                      url: ''
+                      browser: chrome
+                      window_size: 1920x1080
+                      host: 0.0.0.0
+                      restart: false
                 - \SprykerTest\Shared\Store\Helper\StoreDataHelper
-                - \SprykerTest\Shared\Store\Helper\StoreReferenceHelper
-                - REST:
-                      depends: \PyzTest\Zed\Testify\Helper\BootstrapHelper
