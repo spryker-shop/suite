@@ -25,9 +25,9 @@ use Codeception\Actor;
  *
  * @SuppressWarnings(\PyzTest\Zed\AppCatalogGui\PHPMD)
  */
-class AppCatalogGuiCommunicationTester extends Actor
+class AppCatalogGuiPresentationTester extends Actor
 {
-    use _generated\AppCatalogGuiCommunicationTesterActions;
+    use _generated\AppCatalogGuiPresentationTesterActions;
 
     /**
      * @return bool
