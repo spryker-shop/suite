@@ -121,6 +121,12 @@ use Spryker\Zed\ProductOfferServicePointStorage\Communication\Plugin\Publisher\P
 use Spryker\Zed\ProductOfferServicePointStorage\Communication\Plugin\Publisher\Service\ServiceWritePublisherPlugin as ProductOfferServiceServiceWritePublisherPlugin;
 use Spryker\Zed\ProductOfferServicePointStorage\Communication\Plugin\Publisher\ServicePoint\ServicePointWritePublisherPlugin as ProductOfferServiceServicePointWritePublisherPlugin;
 use Spryker\Zed\ProductOfferServicePointStorage\Communication\Plugin\Publisher\ServicePointStore\ServicePointStoreWritePublisherPlugin as ProductOfferServiceServicePointStoreWritePublisherPlugin;
+use Spryker\Zed\ProductOfferShipmentTypeStorage\Communication\Plugin\Publisher\ProductOffer\ProductOfferProductOfferShipmentTypeWritePublisherPlugin;
+use Spryker\Zed\ProductOfferShipmentTypeStorage\Communication\Plugin\Publisher\ProductOfferShipmentType\ProductOfferShipmentTypeWritePublisherPlugin;
+use Spryker\Zed\ProductOfferShipmentTypeStorage\Communication\Plugin\Publisher\ProductOfferShipmentTypePublisherTriggerPlugin;
+use Spryker\Zed\ProductOfferShipmentTypeStorage\Communication\Plugin\Publisher\ProductOfferStore\ProductOfferStoreProductOfferShipmentTypeWritePublisherPlugin;
+use Spryker\Zed\ProductOfferShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentType\ShipmentTypeProductOfferShipmentTypeWritePublisherPlugin;
+use Spryker\Zed\ProductOfferShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentTypeStore\ShipmentTypeStoreProductOfferShipmentTypeWritePublisherPlugin;
 use Spryker\Zed\ProductOfferStorage\Communication\Plugin\Publisher\ProductConcreteOffers\ProductConcreteProductOffersDeletePublisherPlugin;
 use Spryker\Zed\ProductOfferStorage\Communication\Plugin\Publisher\ProductConcreteOffers\ProductConcreteProductOffersStoreDeletePublisherPlugin;
 use Spryker\Zed\ProductOfferStorage\Communication\Plugin\Publisher\ProductConcreteOffers\ProductConcreteProductOffersStoreWritePublisherPlugin;
@@ -212,6 +218,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getMerchantExportPlugins(),
             $this->getShipmentTypeStoragePlugins(),
             $this->getProductOfferServicePointStoragePlugins(),
+            $this->getProductOfferShipmentTypeStoragePlugins(),
         );
     }
 
@@ -258,6 +265,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ServicePointStoragePublisherTriggerPlugin(),
             new ShipmentTypePublisherTriggerPlugin(),
             new ProductOfferServicePublisherTriggerPlugin(),
+            new ProductOfferShipmentTypePublisherTriggerPlugin(),
         ];
     }
 
@@ -688,6 +696,20 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ProductOfferServiceServiceWritePublisherPlugin(),
             new ProductOfferServiceServicePointWritePublisherPlugin(),
             new ProductOfferServiceServicePointStoreWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getProductOfferShipmentTypeStoragePlugins(): array
+    {
+        return [
+            new ProductOfferShipmentTypeWritePublisherPlugin(),
+            new ProductOfferProductOfferShipmentTypeWritePublisherPlugin(),
+            new ProductOfferStoreProductOfferShipmentTypeWritePublisherPlugin(),
+            new ShipmentTypeProductOfferShipmentTypeWritePublisherPlugin(),
+            new ShipmentTypeStoreProductOfferShipmentTypeWritePublisherPlugin(),
         ];
     }
 }
