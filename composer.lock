@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f1d050dec04ee6737b7a37e88f04e90",
+    "content-hash": "96a4115762eef4eba3ec87e9b6177ce4",
     "packages": [
         {
             "name": "async-aws/core",
@@ -33647,16 +33647,16 @@
         },
         {
             "name": "spryker/merchant-product-offer-storage",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-product-offer-storage.git",
-                "reference": "29b4d1fd4edf9c977c0a8440e28a395642d67691"
+                "reference": "569a019e42d1a226bae545c660471c56498fdbd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-product-offer-storage/zipball/29b4d1fd4edf9c977c0a8440e28a395642d67691",
-                "reference": "29b4d1fd4edf9c977c0a8440e28a395642d67691",
+                "url": "https://api.github.com/repos/spryker/merchant-product-offer-storage/zipball/569a019e42d1a226bae545c660471c56498fdbd7",
+                "reference": "569a019e42d1a226bae545c660471c56498fdbd7",
                 "shasum": ""
             },
             "require": {
@@ -33667,10 +33667,12 @@
                 "spryker/merchant-product-offer": "^1.0.0",
                 "spryker/merchant-product-offer-storage-extension": "^1.1.0",
                 "spryker/product-offer": "^1.0.0 ",
+                "spryker/product-offer-service-point-storage-extension": "^1.0.0",
                 "spryker/product-offer-storage": "^1.0.0",
                 "spryker/product-offer-storage-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/publisher-extension": "^1.0.0"
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -33702,9 +33704,9 @@
             ],
             "description": "MerchantProductOfferStorage module",
             "support": {
-                "source": "https://github.com/spryker/merchant-product-offer-storage/tree/2.0.1"
+                "source": "https://github.com/spryker/merchant-product-offer-storage/tree/2.1.0"
             },
-            "time": "2023-03-31T19:36:11+00:00"
+            "time": "2023-07-04T11:30:17+00:00"
         },
         {
             "name": "spryker/merchant-product-offer-storage-extension",
@@ -47365,16 +47367,16 @@
         },
         {
             "name": "spryker/product-offer",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-offer.git",
-                "reference": "0a6eff948e80fecf8179fd48999e1a081efa5017"
+                "reference": "3cc531ad5c86deee94a625e13dd0fba9fe2657fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-offer/zipball/0a6eff948e80fecf8179fd48999e1a081efa5017",
-                "reference": "0a6eff948e80fecf8179fd48999e1a081efa5017",
+                "url": "https://api.github.com/repos/spryker/product-offer/zipball/3cc531ad5c86deee94a625e13dd0fba9fe2657fd",
+                "reference": "3cc531ad5c86deee94a625e13dd0fba9fe2657fd",
                 "shasum": ""
             },
             "require": {
@@ -47421,9 +47423,9 @@
             ],
             "description": "ProductOffer module",
             "support": {
-                "source": "https://github.com/spryker/product-offer/tree/1.8.0"
+                "source": "https://github.com/spryker/product-offer/tree/1.9.0"
             },
-            "time": "2023-05-15T10:55:04+00:00"
+            "time": "2023-07-04T11:30:17+00:00"
         },
         {
             "name": "spryker/product-offer-availabilities-rest-api",
@@ -48132,25 +48134,25 @@
         },
         {
             "name": "spryker/product-offer-service-point",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-offer-service-point.git",
-                "reference": "725d46d2f466642373f7752cdbe8c4f51e2a36a3"
+                "reference": "5f148363d91040c982194c50a1f82ef57e5374f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-offer-service-point/zipball/725d46d2f466642373f7752cdbe8c4f51e2a36a3",
-                "reference": "725d46d2f466642373f7752cdbe8c4f51e2a36a3",
+                "url": "https://api.github.com/repos/spryker/product-offer-service-point/zipball/5f148363d91040c982194c50a1f82ef57e5374f9",
+                "reference": "5f148363d91040c982194c50a1f82ef57e5374f9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/product-offer": "^1.8.0",
+                "spryker/product-offer": "^1.9.0",
                 "spryker/product-offer-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/service-point": "^0.4.0",
+                "spryker/service-point": "^0.4.2",
                 "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
@@ -48176,22 +48178,22 @@
             ],
             "description": "ProductOfferServicePoint module",
             "support": {
-                "source": "https://github.com/spryker/product-offer-service-point/tree/0.1.0"
+                "source": "https://github.com/spryker/product-offer-service-point/tree/0.2.0"
             },
-            "time": "2023-06-08T07:22:42+00:00"
+            "time": "2023-07-04T11:30:17+00:00"
         },
         {
             "name": "spryker/product-offer-service-point-data-import",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-offer-service-point-data-import.git",
-                "reference": "abc956f5667f19daa1104d63ce5d61b9b520e6d5"
+                "reference": "698b9f38cf0f27876cb46576cf14bd5636b68fbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-offer-service-point-data-import/zipball/abc956f5667f19daa1104d63ce5d61b9b520e6d5",
-                "reference": "abc956f5667f19daa1104d63ce5d61b9b520e6d5",
+                "url": "https://api.github.com/repos/spryker/product-offer-service-point-data-import/zipball/698b9f38cf0f27876cb46576cf14bd5636b68fbe",
+                "reference": "698b9f38cf0f27876cb46576cf14bd5636b68fbe",
                 "shasum": ""
             },
             "require": {
@@ -48199,7 +48201,7 @@
                 "spryker/data-import": "^1.3.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/product-offer": "^1.0.0",
-                "spryker/product-offer-service-point": "^0.1.0",
+                "spryker/product-offer-service-point": "^0.2.0",
                 "spryker/service-point": "^0.4.0",
                 "spryker/transfer": "^3.27.0"
             },
@@ -48226,9 +48228,112 @@
             ],
             "description": "ProductOfferServicePointDataImport module",
             "support": {
-                "source": "https://github.com/spryker/product-offer-service-point-data-import/tree/0.1.0"
+                "source": "https://github.com/spryker/product-offer-service-point-data-import/tree/0.2.0"
             },
-            "time": "2023-06-08T07:22:42+00:00"
+            "time": "2023-07-04T11:30:17+00:00"
+        },
+        {
+            "name": "spryker/product-offer-service-point-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-service-point-storage.git",
+                "reference": "450141f4d10131873b9c043a586fea4a66d47165"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-service-point-storage/zipball/450141f4d10131873b9c043a586fea4a66d47165",
+                "reference": "450141f4d10131873b9c043a586fea4a66d47165",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-offer": "^1.9.0",
+                "spryker/product-offer-service-point": "^0.2.0",
+                "spryker/product-offer-service-point-storage-extension": "^1.0.0",
+                "spryker/product-offer-storage-extension": "^1.0.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/service-point": "^0.4.2",
+                "spryker/service-point-storage": "^0.2.0",
+                "spryker/storage": "^3.0.0",
+                "spryker/store": "^1.1.0",
+                "spryker/synchronization": "^1.9.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.1.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferServicePointStorage module",
+            "support": {
+                "source": "https://github.com/spryker/product-offer-service-point-storage/tree/0.1.0"
+            },
+            "time": "2023-07-04T11:30:17+00:00"
+        },
+        {
+            "name": "spryker/product-offer-service-point-storage-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-service-point-storage-extension.git",
+                "reference": "ea362ffc333566b12071fc3559cd976ad365975c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-service-point-storage-extension/zipball/ea362ffc333566b12071fc3559cd976ad365975c",
+                "reference": "ea362ffc333566b12071fc3559cd976ad365975c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferServicePointStorageExtension module",
+            "support": {
+                "source": "https://github.com/spryker/product-offer-service-point-storage-extension/tree/1.0.0"
+            },
+            "time": "2023-07-04T11:30:17+00:00"
         },
         {
             "name": "spryker/product-offer-shipment-type",
@@ -57139,16 +57244,16 @@
         },
         {
             "name": "spryker/service-point",
-            "version": "0.4.1",
+            "version": "0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-point.git",
-                "reference": "8b8b14382dfa075e30b1e1fed591c12728390be7"
+                "reference": "1aad5e4b4c5ed619bcb7aae04b7d71fa8423ab48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-point/zipball/8b8b14382dfa075e30b1e1fed591c12728390be7",
-                "reference": "8b8b14382dfa075e30b1e1fed591c12728390be7",
+                "url": "https://api.github.com/repos/spryker/service-point/zipball/1aad5e4b4c5ed619bcb7aae04b7d71fa8423ab48",
+                "reference": "1aad5e4b4c5ed619bcb7aae04b7d71fa8423ab48",
                 "shasum": ""
             },
             "require": {
@@ -57182,9 +57287,9 @@
             ],
             "description": "ServicePoint module",
             "support": {
-                "source": "https://github.com/spryker/service-point/tree/0.4.1"
+                "source": "https://github.com/spryker/service-point/tree/0.4.2"
             },
-            "time": "2023-06-01T08:21:24+00:00"
+            "time": "2023-07-04T11:30:17+00:00"
         },
         {
             "name": "spryker/service-point-data-import",
@@ -57303,16 +57408,16 @@
         },
         {
             "name": "spryker/service-point-storage",
-            "version": "0.1.1",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-point-storage.git",
-                "reference": "5a62b685f479b5889cf80a0a66a63425510db0c9"
+                "reference": "753ec409d9b6d5515bd3760a51538a57fc140331"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-point-storage/zipball/5a62b685f479b5889cf80a0a66a63425510db0c9",
-                "reference": "5a62b685f479b5889cf80a0a66a63425510db0c9",
+                "url": "https://api.github.com/repos/spryker/service-point-storage/zipball/753ec409d9b6d5515bd3760a51538a57fc140331",
+                "reference": "753ec409d9b6d5515bd3760a51538a57fc140331",
                 "shasum": ""
             },
             "require": {
@@ -57320,7 +57425,7 @@
                 "spryker/event-behavior": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/publisher-extension": "^1.0.0",
-                "spryker/service-point": "^0.3.0 || ^0.4.0",
+                "spryker/service-point": "^0.4.1",
                 "spryker/storage": "^3.0.0",
                 "spryker/store": "^1.19.0",
                 "spryker/synchronization": "^1.9.0",
@@ -57334,7 +57439,6 @@
                 "spryker/container": "*",
                 "spryker/country": "*",
                 "spryker/propel": "*",
-                "spryker/queue": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -57354,9 +57458,9 @@
             ],
             "description": "ServicePointStorage module",
             "support": {
-                "source": "https://github.com/spryker/service-point-storage/tree/0.1.1"
+                "source": "https://github.com/spryker/service-point-storage/tree/0.2.0"
             },
-            "time": "2023-05-30T20:54:20+00:00"
+            "time": "2023-07-04T11:30:17+00:00"
         },
         {
             "name": "spryker/service-points-backend-api",
