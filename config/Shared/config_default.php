@@ -344,7 +344,7 @@ $config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = false;
 
 $paasServices = json_decode(getenv('SPRYKER_PAAS_SERVICES') ?: '[]', true);
 if (!empty($paasServices['databases'])) {
-    $databasesConfig = $paasServices['databases'][APPLICATION_CODE_BUCKET] ?? $paasServices['databases']['_default'];
+    $databasesConfig = $paasServices['databases'][APPLICATION_STORE] ?? $paasServices['databases']['_default'];
     $config[PropelConstants::ZED_DB_HOST] = $databasesConfig['host'];
     $config[PropelConstants::ZED_DB_PORT] = $databasesConfig['port'];
     $config[PropelConstants::ZED_DB_USERNAME] = $databasesConfig['username'];
