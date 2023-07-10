@@ -201,7 +201,7 @@ _VALIDATION_SCRIPT_PHP_LOWEST: &VALIDATION_SCRIPT_PHP_LOWEST
 
 _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
     - echo "_VALIDATION_FRONT_END_SCRIPT"
-    - npm install
+    - npm ci
     - npm run formatter
     - npm run yves:stylelint
     - npm run yves:lint
@@ -284,7 +284,7 @@ _DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE: &DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
                 - pigz
                 - software-properties-common
             sources:
-                - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+                - sourceline: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
                   key_url: https://download.docker.com/linux/ubuntu/gpg
                 - sourceline: ppa:chris-lea/redis-server
                 - sourceline: ppa:ondrej/php
