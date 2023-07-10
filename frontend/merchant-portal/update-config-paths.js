@@ -9,7 +9,7 @@ const TSCONFIG_FILES = ['tsconfig.mp.json'];
 async function getMPPathsMap() {
     const entryPoints = await getMPEntryPoints(SPRYKER_CORE_DIR, MP_CORE_ENTRY_POINT_FILE);
 
-    return entryPoints.reduce(
+    return entryPoints.sort().reduce(
         (acc, entryPoint) => ({
             ...acc,
             [entryPointPathToName('@mp/', entryPoint)]: [
@@ -34,7 +34,10 @@ async function updateConfigPaths() {
 
         fs.writeFileSync(fileName, JSON.stringify(config));
 
-        spawnSync('node', ['./frontend/libs/formatter', '-f', '-p', fileName], { stdio: 'inherit', cwd: ROOT_DIR });
+        spawnSync('npx', ['prettier', '--write', fileName], {
+            stdio: 'inherit',
+            cwd: ROOT_DIR,
+        });
     }
 }
 
