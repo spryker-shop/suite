@@ -14,8 +14,7 @@ sections:
 
         rest-api-generate-documentation:
             command: 'vendor/bin/console rest-api:generate:documentation'
-        api-generate-documentation:
-            command: 'vendor/bin/glue api:generate:documentation'
+
         generate-scope-collection-file:
             command: 'vendor/bin/console oauth:scope-collection-file:generate'
 
@@ -37,9 +36,6 @@ sections:
 
         rest-request-validation-cache-warmup:
             command: 'vendor/bin/console rest-api:build-request-validation-cache'
-
-        controller-cache-warmup:
-            command: 'vendor/bin/glue glue-api:controller:cache:warm-up'
 
     queue-flush:
         set-permissions:
@@ -111,6 +107,13 @@ sections:
 
         update-product-labels:
             command: 'vendor/bin/console product-label:relations:update'
+
+    setup-glue:
+        controller-cache-warmup:
+            command: 'vendor/bin/glue glue-api:controller:cache:warm-up'
+
+        api-generate-documentation:
+            command: 'vendor/bin/glue api:generate:documentation'
 
     fixtures:
         fixtures:
