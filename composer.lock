@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.275.6",
+            "version": "3.275.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "a048b1d7110f62fb67cc69b93efc24e62ea8b64b"
+                "reference": "54dcef3349c81b46c0f5f6e54b5f9bfb5db19903"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a048b1d7110f62fb67cc69b93efc24e62ea8b64b",
-                "reference": "a048b1d7110f62fb67cc69b93efc24e62ea8b64b",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/54dcef3349c81b46c0f5f6e54b5f9bfb5db19903",
+                "reference": "54dcef3349c81b46c0f5f6e54b5f9bfb5db19903",
                 "shasum": ""
             },
             "require": {
@@ -335,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.275.6"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.275.7"
             },
-            "time": "2023-07-11T04:45:11+00:00"
+            "time": "2023-07-13T18:21:04+00:00"
         },
         {
             "name": "brick/math",
@@ -45883,16 +45883,16 @@
         },
         {
             "name": "spryker/product-image",
-            "version": "3.16.0",
+            "version": "3.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-image.git",
-                "reference": "768d310f354c7b3230f85aa9814c325dbb759b7d"
+                "reference": "ee8b04fd065a58fc74cd5bd0ed307ee50810f8c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-image/zipball/768d310f354c7b3230f85aa9814c325dbb759b7d",
-                "reference": "768d310f354c7b3230f85aa9814c325dbb759b7d",
+                "url": "https://api.github.com/repos/spryker/product-image/zipball/ee8b04fd065a58fc74cd5bd0ed307ee50810f8c3",
+                "reference": "ee8b04fd065a58fc74cd5bd0ed307ee50810f8c3",
                 "shasum": ""
             },
             "require": {
@@ -45930,28 +45930,31 @@
             ],
             "description": "ProductImage module",
             "support": {
-                "source": "https://github.com/spryker/product-image/tree/3.16.0"
+                "source": "https://github.com/spryker/product-image/tree/3.17.0"
             },
-            "time": "2023-04-17T15:49:27+00:00"
+            "time": "2023-07-17T12:04:54+00:00"
         },
         {
             "name": "spryker/product-image-cart-connector",
-            "version": "1.2.4",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-image-cart-connector.git",
-                "reference": "899b64d25d31424a617b1baa38b81c02de20d549"
+                "reference": "5c1513f84b32e965dd5d9b2f9fbe28d950e124bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-image-cart-connector/zipball/899b64d25d31424a617b1baa38b81c02de20d549",
-                "reference": "899b64d25d31424a617b1baa38b81c02de20d549",
+                "url": "https://api.github.com/repos/spryker/product-image-cart-connector/zipball/5c1513f84b32e965dd5d9b2f9fbe28d950e124bf",
+                "reference": "5c1513f84b32e965dd5d9b2f9fbe28d950e124bf",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
+                "spryker/cart-extension": "^1.10.0 || ^2.6.0 || ^4.2.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/product-image": "^3.7.0"
+                "spryker/locale": "^3.0.0 || ^4.0.0",
+                "spryker/product-image": "^3.17.0",
+                "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
                 "spryker/cart": "*",
@@ -45982,9 +45985,9 @@
             ],
             "description": "ProductImageCartConnector module",
             "support": {
-                "source": "https://github.com/spryker/product-image-cart-connector/tree/1.2.4"
+                "source": "https://github.com/spryker/product-image-cart-connector/tree/1.3.0"
             },
-            "time": "2023-03-31T19:36:11+00:00"
+            "time": "2023-07-17T12:04:54+00:00"
         },
         {
             "name": "spryker/product-image-sets-backend-api",
@@ -72008,16 +72011,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.15.2",
+            "version": "2.15.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "aac9304c5ed61bf7b1b7a6064bf9806ab842ce73"
+                "reference": "c83e88a30524f9360b11f585f71e6b17313b7187"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/aac9304c5ed61bf7b1b7a6064bf9806ab842ce73",
-                "reference": "aac9304c5ed61bf7b1b7a6064bf9806ab842ce73",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/c83e88a30524f9360b11f585f71e6b17313b7187",
+                "reference": "c83e88a30524f9360b11f585f71e6b17313b7187",
                 "shasum": ""
             },
             "require": {
@@ -72067,7 +72070,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.15.2"
+                "source": "https://github.com/filp/whoops/tree/2.15.3"
             },
             "funding": [
                 {
@@ -72075,7 +72078,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-04-12T12:00:00+00:00"
+            "time": "2023-07-13T12:00:00+00:00"
         },
         {
             "name": "jetbrains/phpstorm-stubs",
@@ -72083,12 +72086,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "e2e898a29929d2f520fe95bdb2109d8fa895ba4a"
+                "reference": "ac879a1b675e381326d3f2a440b81af3c1a7a374"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/e2e898a29929d2f520fe95bdb2109d8fa895ba4a",
-                "reference": "e2e898a29929d2f520fe95bdb2109d8fa895ba4a",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/ac879a1b675e381326d3f2a440b81af3c1a7a374",
+                "reference": "ac879a1b675e381326d3f2a440b81af3c1a7a374",
                 "shasum": ""
             },
             "require-dev": {
@@ -72124,7 +72127,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2023-06-20T16:39:44+00:00"
+            "time": "2023-07-16T13:57:52+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -73960,16 +73963,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.18",
+            "version": "v0.11.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "4f00ee9e236fa6a48f4560d1300b9c961a70a7ec"
+                "reference": "1724ceff278daeeac5a006744633bacbb2dc4706"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/4f00ee9e236fa6a48f4560d1300b9c961a70a7ec",
-                "reference": "4f00ee9e236fa6a48f4560d1300b9c961a70a7ec",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/1724ceff278daeeac5a006744633bacbb2dc4706",
+                "reference": "1724ceff278daeeac5a006744633bacbb2dc4706",
                 "shasum": ""
             },
             "require": {
@@ -74030,9 +74033,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.18"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.19"
             },
-            "time": "2023-05-23T02:31:11+00:00"
+            "time": "2023-07-15T19:42:19+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -75831,12 +75834,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "5da6b689daa3c43bc1ddb6d36f1b27e3c7dea300"
+                "reference": "83d02086ac7a6f7ec674faa9de5b591487c63499"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/5da6b689daa3c43bc1ddb6d36f1b27e3c7dea300",
-                "reference": "5da6b689daa3c43bc1ddb6d36f1b27e3c7dea300",
+                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/83d02086ac7a6f7ec674faa9de5b591487c63499",
+                "reference": "83d02086ac7a6f7ec674faa9de5b591487c63499",
                 "shasum": ""
             },
             "default-branch": true,
@@ -75850,7 +75853,7 @@
                 "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
                 "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
             },
-            "time": "2023-07-12T08:16:57+00:00"
+            "time": "2023-07-14T13:52:00+00:00"
         },
         {
             "name": "spryker/silex",
