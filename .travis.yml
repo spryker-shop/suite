@@ -206,6 +206,12 @@ _VALIDATION_FRONT_END_SCRIPT: &VALIDATION_FRONT_END_SCRIPT
     - npm run yves:stylelint
     - npm run yves:lint
 
+_VALIDATION_SNYK_SCRIPT: &VALIDATION_SNYK_SCRIPT
+    - echo "_VALIDATION_SNYK_SCRIPT"
+    - npm install --location=global snyk
+    - snyk monitor --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac
+    - snyk test --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --severity-threshold=high
+
 _EVALUATOR_SCRIPT: &EVALUATOR_SCRIPT
     - vendor/bin/evaluator evaluate
 
@@ -354,6 +360,8 @@ stages:
     - Test
 
 jobs:
+    allow_failures:
+        - name: Snyk Validation
     fast_finish: true
     include:
         - name: Code generation.
@@ -421,6 +429,14 @@ jobs:
               - APPLICATION_STORE=DE
           script:
               - *VALIDATION_FRONT_END_SCRIPT
+
+        - name: Snyk Validation
+          php: '8.0'
+          stage: Test
+          env:
+              - APPLICATION_STORE=DE
+          script:
+              - *VALIDATION_SNYK_SCRIPT
 
         - name: PHP Validation
           php: '8.0'
