@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5cbb6c541fa41c0e4af1f86eedd4c647",
+    "content-hash": "ca9382e1d19a193a990a5f194dc3a542",
     "packages": [
         {
             "name": "async-aws/core",
@@ -341,26 +341,25 @@
         },
         {
             "name": "brick/math",
-            "version": "0.9.3",
+            "version": "0.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae"
+                "reference": "0ad82ce168c82ba30d1c01ec86116ab52f589478"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/ca57d18f028f84f777b2168cd1911b0dee2343ae",
-                "reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae",
+                "url": "https://api.github.com/repos/brick/math/zipball/0ad82ce168c82ba30d1c01ec86116ab52f589478",
+                "reference": "0ad82ce168c82ba30d1c01ec86116ab52f589478",
                 "shasum": ""
             },
             "require": {
-                "ext-json": "*",
-                "php": "^7.1 || ^8.0"
+                "php": "^8.0"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.2",
-                "phpunit/phpunit": "^7.5.15 || ^8.5 || ^9.0",
-                "vimeo/psalm": "4.9.2"
+                "phpunit/phpunit": "^9.0",
+                "vimeo/psalm": "5.0.0"
             },
             "type": "library",
             "autoload": {
@@ -385,19 +384,15 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.9.3"
+                "source": "https://github.com/brick/math/tree/0.11.0"
             },
             "funding": [
                 {
                     "url": "https://github.com/BenMorel",
                     "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/brick/math",
-                    "type": "tidelift"
                 }
             ],
-            "time": "2021-08-15T20:50:18+00:00"
+            "time": "2023-01-15T23:15:59+00:00"
         },
         {
             "name": "cebe/php-openapi",
@@ -5125,12 +5120,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/evaluator.git",
-                "reference": "c7fd2f9782de0b1120ea8e39c788d068c749181d"
+                "reference": "7b825941c82d579251ffec8b492c87e04c3de819"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/c7fd2f9782de0b1120ea8e39c788d068c749181d",
-                "reference": "c7fd2f9782de0b1120ea8e39c788d068c749181d",
+                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/7b825941c82d579251ffec8b492c87e04c3de819",
+                "reference": "7b825941c82d579251ffec8b492c87e04c3de819",
                 "shasum": ""
             },
             "require": {
@@ -5190,9 +5185,9 @@
             "description": "The tool for evaluating Spryker shops",
             "support": {
                 "issues": "https://github.com/spryker-sdk/evaluator/issues",
-                "source": "https://github.com/spryker-sdk/evaluator/tree/0.1.1"
+                "source": "https://github.com/spryker-sdk/evaluator/tree/master"
             },
-            "time": "2023-06-28T08:54:05+00:00"
+            "time": "2023-07-18T11:27:23+00:00"
         },
         {
             "name": "spryker-sdk/security-checker",
@@ -40184,16 +40179,16 @@
         },
         {
             "name": "spryker/picking-list",
-            "version": "0.2.1",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/picking-list.git",
-                "reference": "29ee1735b9b5cb9e1a7ab7591abe1d9cd440cbf7"
+                "reference": "25854dd0a669da01554be7bf5e36a7b90f970812"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/picking-list/zipball/29ee1735b9b5cb9e1a7ab7591abe1d9cd440cbf7",
-                "reference": "29ee1735b9b5cb9e1a7ab7591abe1d9cd440cbf7",
+                "url": "https://api.github.com/repos/spryker/picking-list/zipball/25854dd0a669da01554be7bf5e36a7b90f970812",
+                "reference": "25854dd0a669da01554be7bf5e36a7b90f970812",
                 "shasum": ""
             },
             "require": {
@@ -40237,9 +40232,9 @@
             ],
             "description": "PickingList module",
             "support": {
-                "source": "https://github.com/spryker/picking-list/tree/0.2.1"
+                "source": "https://github.com/spryker/picking-list/tree/0.3.0"
             },
-            "time": "2023-04-18T13:50:02+00:00"
+            "time": "2023-07-18T11:53:16+00:00"
         },
         {
             "name": "spryker/picking-list-extension",
@@ -40341,25 +40336,25 @@
         },
         {
             "name": "spryker/picking-list-push-notification",
-            "version": "0.2.1",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/picking-list-push-notification.git",
-                "reference": "c1a8656c78746ee0a8c42efb1464624488a2cefb"
+                "reference": "510570ed8f85c98455788c6730e4c7366a36e45a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/picking-list-push-notification/zipball/c1a8656c78746ee0a8c42efb1464624488a2cefb",
-                "reference": "c1a8656c78746ee0a8c42efb1464624488a2cefb",
+                "url": "https://api.github.com/repos/spryker/picking-list-push-notification/zipball/510570ed8f85c98455788c6730e4c7366a36e45a",
+                "reference": "510570ed8f85c98455788c6730e4c7366a36e45a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/picking-list": "^0.2.0",
+                "spryker/picking-list": "^0.3.0",
                 "spryker/picking-list-extension": "^1.0.0",
-                "spryker/push-notification": "^0.1.0 || ^0.2.0",
-                "spryker/push-notification-extension": "^0.1.0",
+                "spryker/push-notification": "^0.3.0",
+                "spryker/push-notification-extension": "^0.2.0",
                 "spryker/transfer": "^3.27.0",
                 "spryker/warehouse-user": "^0.1.0"
             },
@@ -40384,22 +40379,22 @@
             ],
             "description": "PickingListPushNotification module",
             "support": {
-                "source": "https://github.com/spryker/picking-list-push-notification/tree/0.2.1"
+                "source": "https://github.com/spryker/picking-list-push-notification/tree/0.3.0"
             },
-            "time": "2023-06-28T15:24:09+00:00"
+            "time": "2023-07-18T11:53:16+00:00"
         },
         {
             "name": "spryker/picking-lists-backend-api",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/picking-lists-backend-api.git",
-                "reference": "d8f06db16da62c8adf5e0d991bfc6726347878f3"
+                "reference": "94c55554c238f10306415884b6b4d9c80c614b97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/picking-lists-backend-api/zipball/d8f06db16da62c8adf5e0d991bfc6726347878f3",
-                "reference": "d8f06db16da62c8adf5e0d991bfc6726347878f3",
+                "url": "https://api.github.com/repos/spryker/picking-lists-backend-api/zipball/94c55554c238f10306415884b6b4d9c80c614b97",
+                "reference": "94c55554c238f10306415884b6b4d9c80c614b97",
                 "shasum": ""
             },
             "require": {
@@ -40411,7 +40406,7 @@
                 "spryker/glue-json-api-convention-extension": "^1.0.0",
                 "spryker/kernel": "^3.66.0",
                 "spryker/oauth-warehouse": "^0.1.0",
-                "spryker/picking-list": "^0.1.0 || ^0.2.0",
+                "spryker/picking-list": "^0.3.0",
                 "spryker/picking-lists-backend-api-extension": "^0.1.0",
                 "spryker/stock": "^8.8.0",
                 "spryker/symfony": "^3.5.0",
@@ -40441,9 +40436,9 @@
             ],
             "description": "PickingListsBackendApi module",
             "support": {
-                "source": "https://github.com/spryker/picking-lists-backend-api/tree/0.3.0"
+                "source": "https://github.com/spryker/picking-lists-backend-api/tree/0.4.0"
             },
-            "time": "2023-06-28T15:24:09+00:00"
+            "time": "2023-07-18T11:53:16+00:00"
         },
         {
             "name": "spryker/picking-lists-backend-api-extension",
@@ -40488,23 +40483,23 @@
         },
         {
             "name": "spryker/picking-lists-products-backend-resource-relationship",
-            "version": "0.1.2",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/picking-lists-products-backend-resource-relationship.git",
-                "reference": "3ba056f9c8561f989360e64eda1b2b0f0a64eba9"
+                "reference": "fca9f2ce66784b6e94e6a5f901788a3d1d0b856b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/picking-lists-products-backend-resource-relationship/zipball/3ba056f9c8561f989360e64eda1b2b0f0a64eba9",
-                "reference": "3ba056f9c8561f989360e64eda1b2b0f0a64eba9",
+                "url": "https://api.github.com/repos/spryker/picking-lists-products-backend-resource-relationship/zipball/fca9f2ce66784b6e94e6a5f901788a3d1d0b856b",
+                "reference": "fca9f2ce66784b6e94e6a5f901788a3d1d0b856b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/glue-json-api-convention-extension": "^1.0.0",
                 "spryker/kernel": "^3.66.0",
-                "spryker/picking-lists-backend-api": "^0.1.0 || ^0.2.0 || ^0.3.0",
+                "spryker/picking-lists-backend-api": "^0.4.0",
                 "spryker/products-backend-api": "^0.1.0",
                 "spryker/transfer": "^3.31.0"
             },
@@ -40539,29 +40534,29 @@
             ],
             "description": "PickingListsProductsBackendResourceRelationship module",
             "support": {
-                "source": "https://github.com/spryker/picking-lists-products-backend-resource-relationship/tree/0.1.2"
+                "source": "https://github.com/spryker/picking-lists-products-backend-resource-relationship/tree/0.2.0"
             },
-            "time": "2023-06-28T15:24:09+00:00"
+            "time": "2023-07-18T11:53:16+00:00"
         },
         {
             "name": "spryker/picking-lists-sales-orders-backend-resource-relationship",
-            "version": "0.1.2",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/picking-lists-sales-orders-backend-resource-relationship.git",
-                "reference": "0eddfa028a6a1ea489e7601a6a2f980bf47af1f0"
+                "reference": "695505e214c0bfa1f6654b1cf9f3e6a761b79f59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/picking-lists-sales-orders-backend-resource-relationship/zipball/0eddfa028a6a1ea489e7601a6a2f980bf47af1f0",
-                "reference": "0eddfa028a6a1ea489e7601a6a2f980bf47af1f0",
+                "url": "https://api.github.com/repos/spryker/picking-lists-sales-orders-backend-resource-relationship/zipball/695505e214c0bfa1f6654b1cf9f3e6a761b79f59",
+                "reference": "695505e214c0bfa1f6654b1cf9f3e6a761b79f59",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/glue-json-api-convention-extension": "^1.0.0",
                 "spryker/kernel": "^3.66.0",
-                "spryker/picking-lists-backend-api": "^0.1.0 || ^0.2.0 || ^0.3.0",
+                "spryker/picking-lists-backend-api": "^0.4.0",
                 "spryker/sales-orders-backend-api": "^0.1.0",
                 "spryker/transfer": "^3.31.0"
             },
@@ -40594,29 +40589,29 @@
             ],
             "description": "PickingListsSalesOrdersBackendResourceRelationship module",
             "support": {
-                "source": "https://github.com/spryker/picking-lists-sales-orders-backend-resource-relationship/tree/0.1.2"
+                "source": "https://github.com/spryker/picking-lists-sales-orders-backend-resource-relationship/tree/0.2.0"
             },
-            "time": "2023-06-28T15:24:09+00:00"
+            "time": "2023-07-18T11:53:16+00:00"
         },
         {
             "name": "spryker/picking-lists-shipments-backend-resource-relationship",
-            "version": "0.1.1",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/picking-lists-shipments-backend-resource-relationship.git",
-                "reference": "c8ebd9a8be8b4785cfa434d8cbcfa81c26231eeb"
+                "reference": "b4fdd529933d2ee5a5f5d2ecad003538487db75a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/picking-lists-shipments-backend-resource-relationship/zipball/c8ebd9a8be8b4785cfa434d8cbcfa81c26231eeb",
-                "reference": "c8ebd9a8be8b4785cfa434d8cbcfa81c26231eeb",
+                "url": "https://api.github.com/repos/spryker/picking-lists-shipments-backend-resource-relationship/zipball/b4fdd529933d2ee5a5f5d2ecad003538487db75a",
+                "reference": "b4fdd529933d2ee5a5f5d2ecad003538487db75a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/glue-json-api-convention-extension": "^1.0.0",
                 "spryker/kernel": "^3.66.0",
-                "spryker/picking-list": "^0.2.0",
+                "spryker/picking-list": "^0.3.0",
                 "spryker/shipments-backend-api": "^0.1.0",
                 "spryker/transfer": "^3.31.0"
             },
@@ -40646,29 +40641,29 @@
             ],
             "description": "PickingListsShipmentsBackendResourceRelationship module",
             "support": {
-                "source": "https://github.com/spryker/picking-lists-shipments-backend-resource-relationship/tree/0.1.1"
+                "source": "https://github.com/spryker/picking-lists-shipments-backend-resource-relationship/tree/0.2.0"
             },
-            "time": "2023-05-05T18:20:59+00:00"
+            "time": "2023-07-18T11:53:16+00:00"
         },
         {
             "name": "spryker/picking-lists-users-backend-resource-relationship",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/picking-lists-users-backend-resource-relationship.git",
-                "reference": "13f2139fd24d6d3633cba17f038c3cbf5cea30b6"
+                "reference": "5c061806dcef7556531ee4f11e65bdb29119f7e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/picking-lists-users-backend-resource-relationship/zipball/13f2139fd24d6d3633cba17f038c3cbf5cea30b6",
-                "reference": "13f2139fd24d6d3633cba17f038c3cbf5cea30b6",
+                "url": "https://api.github.com/repos/spryker/picking-lists-users-backend-resource-relationship/zipball/5c061806dcef7556531ee4f11e65bdb29119f7e5",
+                "reference": "5c061806dcef7556531ee4f11e65bdb29119f7e5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/glue-json-api-convention-extension": "^1.0.0",
                 "spryker/kernel": "^3.66.0",
-                "spryker/picking-list": "^0.2.0",
+                "spryker/picking-list": "^0.3.0",
                 "spryker/transfer": "^3.31.0",
                 "spryker/users-backend-api": "^1.3.0"
             },
@@ -40697,29 +40692,29 @@
             ],
             "description": "PickingListsUsersBackendResourceRelationship module",
             "support": {
-                "source": "https://github.com/spryker/picking-lists-users-backend-resource-relationship/tree/0.2.0"
+                "source": "https://github.com/spryker/picking-lists-users-backend-resource-relationship/tree/0.3.0"
             },
-            "time": "2023-05-24T17:55:49+00:00"
+            "time": "2023-07-18T11:53:16+00:00"
         },
         {
             "name": "spryker/picking-lists-warehouses-backend-resource-relationship",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/picking-lists-warehouses-backend-resource-relationship.git",
-                "reference": "b6f7f6058a51d3721d2365d5f2fe7a2d8adf3542"
+                "reference": "2236333e9b3eb4d7af4894e8ea7087b4bda000bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/picking-lists-warehouses-backend-resource-relationship/zipball/b6f7f6058a51d3721d2365d5f2fe7a2d8adf3542",
-                "reference": "b6f7f6058a51d3721d2365d5f2fe7a2d8adf3542",
+                "url": "https://api.github.com/repos/spryker/picking-lists-warehouses-backend-resource-relationship/zipball/2236333e9b3eb4d7af4894e8ea7087b4bda000bd",
+                "reference": "2236333e9b3eb4d7af4894e8ea7087b4bda000bd",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/glue-json-api-convention-extension": "^1.0.0",
                 "spryker/kernel": "^3.66.0",
-                "spryker/picking-list": "^0.2.0",
+                "spryker/picking-list": "^0.3.0",
                 "spryker/transfer": "^3.31.0",
                 "spryker/warehouses-backend-api": "^0.1.0"
             },
@@ -40746,9 +40741,9 @@
             ],
             "description": "PickingListsWarehousesBackendResourceRelationship module",
             "support": {
-                "source": "https://github.com/spryker/picking-lists-warehouses-backend-resource-relationship/tree/0.1.0"
+                "source": "https://github.com/spryker/picking-lists-warehouses-backend-resource-relationship/tree/0.2.0"
             },
-            "time": "2023-04-17T15:49:27+00:00"
+            "time": "2023-07-18T11:53:16+00:00"
         },
         {
             "name": "spryker/price",
@@ -52558,23 +52553,23 @@
         },
         {
             "name": "spryker/push-notification",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/push-notification.git",
-                "reference": "94265c7ac91faea78dd35e31c0bdf0a5c5b904fa"
+                "reference": "1c9b3aa436680dcd20871884c9f91130000ce802"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/push-notification/zipball/94265c7ac91faea78dd35e31c0bdf0a5c5b904fa",
-                "reference": "94265c7ac91faea78dd35e31c0bdf0a5c5b904fa",
+                "url": "https://api.github.com/repos/spryker/push-notification/zipball/1c9b3aa436680dcd20871884c9f91130000ce802",
+                "reference": "1c9b3aa436680dcd20871884c9f91130000ce802",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.6.0",
-                "spryker/push-notification-extension": "^0.1.0",
+                "spryker/push-notification-extension": "^0.2.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.27.0",
                 "spryker/util-encoding": "^2.0.0",
@@ -52603,22 +52598,22 @@
             ],
             "description": "PushNotification module",
             "support": {
-                "source": "https://github.com/spryker/push-notification/tree/0.2.0"
+                "source": "https://github.com/spryker/push-notification/tree/0.3.0"
             },
-            "time": "2023-06-28T15:24:09+00:00"
+            "time": "2023-07-18T11:53:16+00:00"
         },
         {
             "name": "spryker/push-notification-extension",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/push-notification-extension.git",
-                "reference": "129308a1fe27bde1cd7422194495846280b7ea5b"
+                "reference": "f2d01079bbdf489757f7a14a2d56dc57a68ad09d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/push-notification-extension/zipball/129308a1fe27bde1cd7422194495846280b7ea5b",
-                "reference": "129308a1fe27bde1cd7422194495846280b7ea5b",
+                "url": "https://api.github.com/repos/spryker/push-notification-extension/zipball/f2d01079bbdf489757f7a14a2d56dc57a68ad09d",
+                "reference": "f2d01079bbdf489757f7a14a2d56dc57a68ad09d",
                 "shasum": ""
             },
             "require": {
@@ -52645,22 +52640,22 @@
             ],
             "description": "PushNotificationExtension module",
             "support": {
-                "source": "https://github.com/spryker/push-notification-extension/tree/0.1.0"
+                "source": "https://github.com/spryker/push-notification-extension/tree/0.2.0"
             },
-            "time": "2023-03-03T10:58:02+00:00"
+            "time": "2023-07-18T11:53:16+00:00"
         },
         {
             "name": "spryker/push-notification-web-push-php",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/push-notification-web-push-php.git",
-                "reference": "42df5afb6b8f6ca2a527fe190214eb4672266c3b"
+                "reference": "0a25a2a137d866fa9fdd41dea5edf8daa600b7f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/push-notification-web-push-php/zipball/42df5afb6b8f6ca2a527fe190214eb4672266c3b",
-                "reference": "42df5afb6b8f6ca2a527fe190214eb4672266c3b",
+                "url": "https://api.github.com/repos/spryker/push-notification-web-push-php/zipball/0a25a2a137d866fa9fdd41dea5edf8daa600b7f4",
+                "reference": "0a25a2a137d866fa9fdd41dea5edf8daa600b7f4",
                 "shasum": ""
             },
             "require": {
@@ -52669,8 +52664,8 @@
                 "psr/http-message": "^1.0.1",
                 "spryker/installer-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/push-notification": "^0.2.0",
-                "spryker/push-notification-extension": "^0.1.0",
+                "spryker/push-notification": "^0.3.0",
+                "spryker/push-notification-extension": "^0.2.0",
                 "spryker/transfer": "^3.27.0",
                 "spryker/util-encoding": "^2.0.0"
             },
@@ -52700,22 +52695,22 @@
             ],
             "description": "PushNotificationWebPushPhp module",
             "support": {
-                "source": "https://github.com/spryker/push-notification-web-push-php/tree/0.2.0"
+                "source": "https://github.com/spryker/push-notification-web-push-php/tree/0.3.0"
             },
-            "time": "2023-06-28T15:24:09+00:00"
+            "time": "2023-07-18T11:53:16+00:00"
         },
         {
             "name": "spryker/push-notifications-backend-api",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/push-notifications-backend-api.git",
-                "reference": "d5373aa059e0342726e9de9a715ed8f7e94d63d5"
+                "reference": "49cc7785472bc05112d9e1b6ae2a5230cc345ca8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/push-notifications-backend-api/zipball/d5373aa059e0342726e9de9a715ed8f7e94d63d5",
-                "reference": "d5373aa059e0342726e9de9a715ed8f7e94d63d5",
+                "url": "https://api.github.com/repos/spryker/push-notifications-backend-api/zipball/49cc7785472bc05112d9e1b6ae2a5230cc345ca8",
+                "reference": "49cc7785472bc05112d9e1b6ae2a5230cc345ca8",
                 "shasum": ""
             },
             "require": {
@@ -52723,7 +52718,7 @@
                 "spryker/glossary-storage": "^1.8.0",
                 "spryker/glue-json-api-convention-extension": "^1.0.0",
                 "spryker/kernel": "^3.66.0",
-                "spryker/push-notification": "^0.2.0",
+                "spryker/push-notification": "^0.3.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.31.0"
             },
@@ -52752,9 +52747,9 @@
             ],
             "description": "PushNotificationsBackendApi module",
             "support": {
-                "source": "https://github.com/spryker/push-notifications-backend-api/tree/0.3.0"
+                "source": "https://github.com/spryker/push-notifications-backend-api/tree/0.4.0"
             },
-            "time": "2023-06-28T15:24:09+00:00"
+            "time": "2023-07-18T11:53:16+00:00"
         },
         {
             "name": "spryker/queue",
@@ -70205,20 +70200,19 @@
         },
         {
             "name": "web-token/jwt-core",
-            "version": "v2.2.11",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-core.git",
-                "reference": "53beb6f6c1eec4fa93c1c3e5d9e5701e71fa1678"
+                "reference": "0909efa4fe2c3e2d537922b3ea1b65eb8203686c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-core/zipball/53beb6f6c1eec4fa93c1c3e5d9e5701e71fa1678",
-                "reference": "53beb6f6c1eec4fa93c1c3e5d9e5701e71fa1678",
+                "url": "https://api.github.com/repos/web-token/jwt-core/zipball/0909efa4fe2c3e2d537922b3ea1b65eb8203686c",
+                "reference": "0909efa4fe2c3e2d537922b3ea1b65eb8203686c",
                 "shasum": ""
             },
             "require": {
-                "brick/math": "^0.8.17|^0.9",
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "fgrosse/phpasn1": "^2.0",
@@ -70228,7 +70222,20 @@
             "conflict": {
                 "spomky-labs/jose": "*"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0"
+            },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "v1.0": "1.0.x-dev",
+                    "v1.1": "1.1.x-dev",
+                    "v1.2": "1.2.x-dev",
+                    "v1.3": "1.3.x-dev",
+                    "v2.0": "2.0.x-dev",
+                    "v2.1": "2.1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Jose\\Component\\Core\\": ""
@@ -70269,7 +70276,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-core/tree/v2.2.11"
+                "source": "https://github.com/web-token/jwt-core/tree/v2.2"
             },
             "funding": [
                 {
@@ -70277,7 +70284,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-03-17T14:55:52+00:00"
+            "time": "2020-08-22T13:17:25+00:00"
         },
         {
             "name": "web-token/jwt-key-mgmt",
@@ -70503,26 +70510,35 @@
         },
         {
             "name": "web-token/jwt-util-ecc",
-            "version": "v2.2.11",
+            "version": "v2.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-util-ecc.git",
-                "reference": "915f3fde86f5236c205620d61177b9ef43863deb"
+                "reference": "37c155f03f2161b00beef9a40be6baa33c469927"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-util-ecc/zipball/915f3fde86f5236c205620d61177b9ef43863deb",
-                "reference": "915f3fde86f5236c205620d61177b9ef43863deb",
+                "url": "https://api.github.com/repos/web-token/jwt-util-ecc/zipball/37c155f03f2161b00beef9a40be6baa33c469927",
+                "reference": "37c155f03f2161b00beef9a40be6baa33c469927",
                 "shasum": ""
             },
             "require": {
-                "brick/math": "^0.8.17|^0.9"
+                "ext-gmp": "*"
             },
-            "suggest": {
-                "ext-bcmath": "GMP or BCMath is highly recommended to improve the library performance",
-                "ext-gmp": "GMP or BCMath is highly recommended to improve the library performance"
+            "require-dev": {
+                "phpunit/phpunit": "^8.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "v1.0": "1.0.x-dev",
+                    "v1.1": "1.1.x-dev",
+                    "v1.2": "1.2.x-dev",
+                    "v1.3": "1.3.x-dev",
+                    "v2.0": "2.0.x-dev",
+                    "v2.1": "2.1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Jose\\Component\\Core\\Util\\Ecc\\": ""
@@ -70563,7 +70579,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-util-ecc/tree/v2.2.11"
+                "source": "https://github.com/web-token/jwt-util-ecc/tree/v2.1"
             },
             "funding": [
                 {
@@ -70571,7 +70587,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-03-24T13:35:17+00:00"
+            "time": "2020-05-29T20:21:59+00:00"
         },
         {
             "name": "webmozart/glob",
@@ -75834,12 +75850,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "83d02086ac7a6f7ec674faa9de5b591487c63499"
+                "reference": "8e96264ad8610812c6bc3fef64f16f0abd847821"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/83d02086ac7a6f7ec674faa9de5b591487c63499",
-                "reference": "83d02086ac7a6f7ec674faa9de5b591487c63499",
+                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/8e96264ad8610812c6bc3fef64f16f0abd847821",
+                "reference": "8e96264ad8610812c6bc3fef64f16f0abd847821",
                 "shasum": ""
             },
             "default-branch": true,
@@ -75853,7 +75869,7 @@
                 "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
                 "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
             },
-            "time": "2023-07-14T13:52:00+00:00"
+            "time": "2023-07-18T11:52:43+00:00"
         },
         {
             "name": "spryker/silex",
