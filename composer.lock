@@ -341,25 +341,26 @@
         },
         {
             "name": "brick/math",
-            "version": "0.11.0",
+            "version": "0.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "0ad82ce168c82ba30d1c01ec86116ab52f589478"
+                "reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/0ad82ce168c82ba30d1c01ec86116ab52f589478",
-                "reference": "0ad82ce168c82ba30d1c01ec86116ab52f589478",
+                "url": "https://api.github.com/repos/brick/math/zipball/ca57d18f028f84f777b2168cd1911b0dee2343ae",
+                "reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.0"
+                "ext-json": "*",
+                "php": "^7.1 || ^8.0"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.2",
-                "phpunit/phpunit": "^9.0",
-                "vimeo/psalm": "5.0.0"
+                "phpunit/phpunit": "^7.5.15 || ^8.5 || ^9.0",
+                "vimeo/psalm": "4.9.2"
             },
             "type": "library",
             "autoload": {
@@ -384,15 +385,19 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.11.0"
+                "source": "https://github.com/brick/math/tree/0.9.3"
             },
             "funding": [
                 {
                     "url": "https://github.com/BenMorel",
                     "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/brick/math",
+                    "type": "tidelift"
                 }
             ],
-            "time": "2023-01-15T23:15:59+00:00"
+            "time": "2021-08-15T20:50:18+00:00"
         },
         {
             "name": "cebe/php-openapi",
@@ -5120,12 +5125,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/evaluator.git",
-                "reference": "7b825941c82d579251ffec8b492c87e04c3de819"
+                "reference": "dd5d598238a38b99fcb6c9d5978628606d58ed62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/7b825941c82d579251ffec8b492c87e04c3de819",
-                "reference": "7b825941c82d579251ffec8b492c87e04c3de819",
+                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/dd5d598238a38b99fcb6c9d5978628606d58ed62",
+                "reference": "dd5d598238a38b99fcb6c9d5978628606d58ed62",
                 "shasum": ""
             },
             "require": {
@@ -5185,9 +5190,9 @@
             "description": "The tool for evaluating Spryker shops",
             "support": {
                 "issues": "https://github.com/spryker-sdk/evaluator/issues",
-                "source": "https://github.com/spryker-sdk/evaluator/tree/master"
+                "source": "https://github.com/spryker-sdk/evaluator/tree/0.1.2"
             },
-            "time": "2023-07-18T11:27:23+00:00"
+            "time": "2023-07-18T13:16:58+00:00"
         },
         {
             "name": "spryker-sdk/security-checker",
@@ -30289,16 +30294,16 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.55.0",
+            "version": "1.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "53dcd27fab5e23f22cd29f7d384c7a498b27cebf"
+                "reference": "c3424316c67bc96e5231cf4539e1207e81703ed7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/53dcd27fab5e23f22cd29f7d384c7a498b27cebf",
-                "reference": "53dcd27fab5e23f22cd29f7d384c7a498b27cebf",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/c3424316c67bc96e5231cf4539e1207e81703ed7",
+                "reference": "c3424316c67bc96e5231cf4539e1207e81703ed7",
                 "shasum": ""
             },
             "require": {
@@ -30310,7 +30315,7 @@
                 "spryker/documentation-generator-api-extension": "^1.0.0",
                 "spryker/documentation-generator-rest-api-extension": "^1.0.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
-                "spryker/glue-application-extension": "^1.13.0",
+                "spryker/glue-application-extension": "^1.14.0",
                 "spryker/kernel": "^3.58.0",
                 "spryker/log": "^3.0.0",
                 "spryker/session": "^3.0.0 || ^4.0.0",
@@ -30350,9 +30355,9 @@
             ],
             "description": "GlueApplication module",
             "support": {
-                "source": "https://github.com/spryker/glue-application/tree/1.55.0"
+                "source": "https://github.com/spryker/glue-application/tree/1.56.0"
             },
-            "time": "2023-06-22T12:15:46+00:00"
+            "time": "2023-07-18T14:25:47+00:00"
         },
         {
             "name": "spryker/glue-application-authorization-connector",
@@ -30444,20 +30449,20 @@
         },
         {
             "name": "spryker/glue-application-extension",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application-extension.git",
-                "reference": "9d915e60284a2bdecc0b1df8c0dd80b5fbc5715b"
+                "reference": "2110960384d2f2e43dca02c680332826acc38102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application-extension/zipball/9d915e60284a2bdecc0b1df8c0dd80b5fbc5715b",
-                "reference": "9d915e60284a2bdecc0b1df8c0dd80b5fbc5715b",
+                "url": "https://api.github.com/repos/spryker/glue-application-extension/zipball/2110960384d2f2e43dca02c680332826acc38102",
+                "reference": "2110960384d2f2e43dca02c680332826acc38102",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4"
+                "php": ">=8.0"
             },
             "require-dev": {
                 "spryker/application": "*",
@@ -30489,22 +30494,22 @@
             ],
             "description": "GlueApplicationExtension module",
             "support": {
-                "source": "https://github.com/spryker/glue-application-extension/tree/1.13.0"
+                "source": "https://github.com/spryker/glue-application-extension/tree/1.14.0"
             },
-            "time": "2022-09-20T11:45:04+00:00"
+            "time": "2023-07-18T14:25:47+00:00"
         },
         {
             "name": "spryker/glue-backend-api-application",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-backend-api-application.git",
-                "reference": "992187dc0620a9ee357ce86c29c531fa0ac4cf55"
+                "reference": "6c093688ba13c4aaceb8eca713fcb4eef2725b2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-backend-api-application/zipball/992187dc0620a9ee357ce86c29c531fa0ac4cf55",
-                "reference": "992187dc0620a9ee357ce86c29c531fa0ac4cf55",
+                "url": "https://api.github.com/repos/spryker/glue-backend-api-application/zipball/6c093688ba13c4aaceb8eca713fcb4eef2725b2b",
+                "reference": "6c093688ba13c4aaceb8eca713fcb4eef2725b2b",
                 "shasum": ""
             },
             "require": {
@@ -30513,7 +30518,7 @@
                 "spryker/container": "^1.4.5",
                 "spryker/documentation-generator-api-extension": "^1.0.0",
                 "spryker/glue-application": "^1.39.0",
-                "spryker/glue-application-extension": "^1.13.0",
+                "spryker/glue-application-extension": "^1.14.0",
                 "spryker/kernel": "^3.66.0",
                 "spryker/oauth-extension": "^1.7.0",
                 "spryker/store": "^1.19.0",
@@ -30543,9 +30548,9 @@
             ],
             "description": "GlueBackendApiApplication module",
             "support": {
-                "source": "https://github.com/spryker/glue-backend-api-application/tree/1.3.0"
+                "source": "https://github.com/spryker/glue-backend-api-application/tree/1.4.0"
             },
-            "time": "2023-04-18T12:57:09+00:00"
+            "time": "2023-07-18T14:25:47+00:00"
         },
         {
             "name": "spryker/glue-backend-api-application-authorization-connector",
@@ -30779,16 +30784,16 @@
         },
         {
             "name": "spryker/glue-storefront-api-application",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-storefront-api-application.git",
-                "reference": "ce5f9c934eb4dda5e2d9c721a078494ba3b55597"
+                "reference": "2897c4f233fb0e4dedbc6402df4c3838dd74dd2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-storefront-api-application/zipball/ce5f9c934eb4dda5e2d9c721a078494ba3b55597",
-                "reference": "ce5f9c934eb4dda5e2d9c721a078494ba3b55597",
+                "url": "https://api.github.com/repos/spryker/glue-storefront-api-application/zipball/2897c4f233fb0e4dedbc6402df4c3838dd74dd2b",
+                "reference": "2897c4f233fb0e4dedbc6402df4c3838dd74dd2b",
                 "shasum": ""
             },
             "require": {
@@ -30797,7 +30802,7 @@
                 "spryker/container": "^1.4.5",
                 "spryker/documentation-generator-api-extension": "^1.0.0",
                 "spryker/glue-application": "^1.39.0",
-                "spryker/glue-application-extension": "^1.13.0",
+                "spryker/glue-application-extension": "^1.14.0",
                 "spryker/kernel": "^3.66.0",
                 "spryker/oauth-extension": "^1.7.0",
                 "spryker/session": "^3.0.0 || ^4.0.0",
@@ -30828,9 +30833,9 @@
             ],
             "description": "GlueStorefrontApiApplication module",
             "support": {
-                "source": "https://github.com/spryker/glue-storefront-api-application/tree/1.2.0"
+                "source": "https://github.com/spryker/glue-storefront-api-application/tree/1.3.0"
             },
-            "time": "2023-04-18T12:57:09+00:00"
+            "time": "2023-07-18T14:25:47+00:00"
         },
         {
             "name": "spryker/glue-storefront-api-application-authorization-connector",
@@ -70200,19 +70205,20 @@
         },
         {
             "name": "web-token/jwt-core",
-            "version": "v2.2.3",
+            "version": "v2.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-core.git",
-                "reference": "0909efa4fe2c3e2d537922b3ea1b65eb8203686c"
+                "reference": "53beb6f6c1eec4fa93c1c3e5d9e5701e71fa1678"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-core/zipball/0909efa4fe2c3e2d537922b3ea1b65eb8203686c",
-                "reference": "0909efa4fe2c3e2d537922b3ea1b65eb8203686c",
+                "url": "https://api.github.com/repos/web-token/jwt-core/zipball/53beb6f6c1eec4fa93c1c3e5d9e5701e71fa1678",
+                "reference": "53beb6f6c1eec4fa93c1c3e5d9e5701e71fa1678",
                 "shasum": ""
             },
             "require": {
+                "brick/math": "^0.8.17|^0.9",
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "fgrosse/phpasn1": "^2.0",
@@ -70222,20 +70228,7 @@
             "conflict": {
                 "spomky-labs/jose": "*"
             },
-            "require-dev": {
-                "phpunit/phpunit": "^8.0"
-            },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "v1.0": "1.0.x-dev",
-                    "v1.1": "1.1.x-dev",
-                    "v1.2": "1.2.x-dev",
-                    "v1.3": "1.3.x-dev",
-                    "v2.0": "2.0.x-dev",
-                    "v2.1": "2.1.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Jose\\Component\\Core\\": ""
@@ -70276,7 +70269,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-core/tree/v2.2"
+                "source": "https://github.com/web-token/jwt-core/tree/v2.2.11"
             },
             "funding": [
                 {
@@ -70284,7 +70277,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-08-22T13:17:25+00:00"
+            "time": "2021-03-17T14:55:52+00:00"
         },
         {
             "name": "web-token/jwt-key-mgmt",
@@ -70510,35 +70503,26 @@
         },
         {
             "name": "web-token/jwt-util-ecc",
-            "version": "v2.1.9",
+            "version": "v2.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-util-ecc.git",
-                "reference": "37c155f03f2161b00beef9a40be6baa33c469927"
+                "reference": "915f3fde86f5236c205620d61177b9ef43863deb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-util-ecc/zipball/37c155f03f2161b00beef9a40be6baa33c469927",
-                "reference": "37c155f03f2161b00beef9a40be6baa33c469927",
+                "url": "https://api.github.com/repos/web-token/jwt-util-ecc/zipball/915f3fde86f5236c205620d61177b9ef43863deb",
+                "reference": "915f3fde86f5236c205620d61177b9ef43863deb",
                 "shasum": ""
             },
             "require": {
-                "ext-gmp": "*"
+                "brick/math": "^0.8.17|^0.9"
             },
-            "require-dev": {
-                "phpunit/phpunit": "^8.0"
+            "suggest": {
+                "ext-bcmath": "GMP or BCMath is highly recommended to improve the library performance",
+                "ext-gmp": "GMP or BCMath is highly recommended to improve the library performance"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "v1.0": "1.0.x-dev",
-                    "v1.1": "1.1.x-dev",
-                    "v1.2": "1.2.x-dev",
-                    "v1.3": "1.3.x-dev",
-                    "v2.0": "2.0.x-dev",
-                    "v2.1": "2.1.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Jose\\Component\\Core\\Util\\Ecc\\": ""
@@ -70579,7 +70563,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-util-ecc/tree/v2.1"
+                "source": "https://github.com/web-token/jwt-util-ecc/tree/v2.2.11"
             },
             "funding": [
                 {
@@ -70587,7 +70571,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-05-29T20:21:59+00:00"
+            "time": "2021-03-24T13:35:17+00:00"
         },
         {
             "name": "webmozart/glob",
