@@ -78,7 +78,7 @@ jobs:
               run: composer --version
 
             - name: Composer install
-              run: export COMPOSER_IGNORE_CHROMEDRIVER=0 && composer install
+              run: composer install
 
             - name: Generate transfer objects
               run: vendor/bin/console transfer:generate
