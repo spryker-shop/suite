@@ -31,9 +31,10 @@ extensions:
     config:
         \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper:
             exclusive:
-                - Presentation
-                - Glue
                 - Api
+                - AsyncApi
+                - Glue
+                - Presentation
                 # ProductPageSearchListenerTest fails if runs after something
                 # see codeception.functional.stage0.yml
                 - ProductPageSearchListenerTest
