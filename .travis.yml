@@ -1047,8 +1047,7 @@ jobs:
               - sudo apt install awscli -q
               - git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
               - cd robotframework-tests
-              - robot -v env:api_suite --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite.glue .
-              - robot -v env:api_suite --exclude skip-due-to-issueORskip-due-to-refactoring -d results tests/api/suite/bapi
+              - robot -v env:api_suite --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite .
           after_script:
               - *AWS_SYNC_CONFIG
               - |
@@ -1081,8 +1080,7 @@ jobs:
               - sudo apt install awscli -q
               - git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
               - cd robotframework-tests
-              - robot -v env:api_suite -v db_engine:psycopg2 --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite.glue .
-              - robot -v env:api_suite -v db_engine:psycopg2 --exclude skip-due-to-issueORskip-due-to-refactoring -d results tests/api/suite/bapi
+              - robot -v env:api_suite -v db_engine:psycopg2 --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite .
           after_script:
               - *AWS_SYNC_CONFIG
               - |
