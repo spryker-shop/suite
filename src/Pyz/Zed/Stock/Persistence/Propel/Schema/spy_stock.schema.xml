@@ -1,8 +1,18 @@
 <?xml version="1.0"?>
 <database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\Stock\Persistence" package="src.Orm.Zed.Stock.Persistence">
 
+    <table name="spy_stock">
+        <behavior name="event">
+            <parameter name="spy_stock_is_active" column="is_active"/>
+        </behavior>
+    </table>
+
     <table name="spy_stock_store">
         <behavior name="\Spryker\Zed\AclEntity\Persistence\Propel\Behavior\AclEntityBehavior"/>
+
+        <behavior name="event">
+            <parameter name="spy_stock_store_all" column="*"/>
+        </behavior>
     </table>
 
     <table name="spy_stock_product">
