@@ -150,6 +150,8 @@ use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderItemsConfiguredBu
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SalesProductBundleWidget\Widget\OrderItemsProductBundleWidget;
 use SprykerShop\Yves\SalesProductConfigurationWidget\Widget\ProductConfigurationOrderItemDisplayWidget;
+use SprykerShop\Yves\ServicePointWidget\Plugin\ShopApplication\ClickCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin;
+use SprykerShop\Yves\ServicePointWidget\Widget\ClickCollectServicePointAddressFormWidget;
 use SprykerShop\Yves\ServicePointWidget\Widget\ServicePointSearchWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
@@ -157,6 +159,8 @@ use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartOperationsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartShareWidget;
+use SprykerShop\Yves\ShipmentTypeWidget\Plugin\ShopApplication\ShipmentTypeAddressFormWidgetCacheKeyGeneratorStrategyPlugin;
+use SprykerShop\Yves\ShipmentTypeWidget\Widget\ShipmentTypeAddressFormWidget;
 use SprykerShop\Yves\ShopApplication\Plugin\Application\ShopApplicationApplicationPlugin;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
 use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
@@ -323,6 +327,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConfigurationShoppingListPageButtonWidget::class,
             MerchantMetaSchemaWidget::class,
             ServicePointSearchWidget::class,
+            ShipmentTypeAddressFormWidget::class,
+            ClickCollectServicePointAddressFormWidget::class,
         ];
     }
 
@@ -338,6 +344,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new CartDiscountPromotionProductListWidgetCacheKeyGeneratorStrategyPlugin(),
             new CartItemNoteFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new MerchantSalesReturnCreateFormWidgetCacheKeyGeneratorStrategyPlugin(),
+            new ShipmentTypeAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
+            new ClickCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
         ];
     }
 
