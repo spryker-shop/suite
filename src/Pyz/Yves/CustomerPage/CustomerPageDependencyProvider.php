@@ -17,7 +17,14 @@ use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopC
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\RedirectUriCustomerRedirectStrategyPlugin;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
 use SprykerShop\Yves\MerchantSwitcherWidget\Plugin\CustomerPage\MerchantSwitchCartAfterCustomerAuthenticationSuccessPlugin;
+use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ClickCollectServiceTypeCheckoutAddressCollectionFormExpanderPlugin;
+use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ClickCollectServiceTypeCheckoutMultiShippingAddressesFormExpanderPlugin;
+use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ServicePointAddressCheckoutAddressCollectionFormExpanderPlugin;
+use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ServicePointCheckoutAddressCollectionFormExpanderPlugin;
+use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ServicePointCheckoutMultiShippingAddressesFormExpanderPlugin;
 use SprykerShop\Yves\SessionAgentValidation\Plugin\CustomerPage\UpdateAgentSessionAfterCustomerAuthenticationSuccessPlugin;
+use SprykerShop\Yves\ShipmentTypeWidget\Plugin\CustomerPage\ShipmentTypeCheckoutAddressCollectionFormExpanderPlugin;
+use SprykerShop\Yves\ShipmentTypeWidget\Plugin\CustomerPage\ShipmentTypeCheckoutMultiShippingAddressesFormExpanderPlugin;
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
@@ -111,6 +118,31 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             new CompanyBusinessUnitOrderSearchFormHandlerPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\CheckoutAddressCollectionFormExpanderPluginInterface>
+     */
+    protected function getCheckoutAddressCollectionFormExpanderPlugins(): array
+    {
+        return [
+            new ShipmentTypeCheckoutAddressCollectionFormExpanderPlugin(),
+            new ServicePointCheckoutAddressCollectionFormExpanderPlugin(),
+            new ServicePointAddressCheckoutAddressCollectionFormExpanderPlugin(),
+            new ClickCollectServiceTypeCheckoutAddressCollectionFormExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\CheckoutMultiShippingAddressesFormExpanderPluginInterface>
+     */
+    protected function getCheckoutMultiShippingAddressesFormExpanderPlugins(): array
+    {
+        return [
+            new ShipmentTypeCheckoutMultiShippingAddressesFormExpanderPlugin(),
+            new ServicePointCheckoutMultiShippingAddressesFormExpanderPlugin(),
+            new ClickCollectServiceTypeCheckoutMultiShippingAddressesFormExpanderPlugin(),
         ];
     }
 }
