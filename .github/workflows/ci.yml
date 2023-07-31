@@ -494,7 +494,7 @@ jobs:
                   sudo chmod +x /usr/local/bin/docker-compose
             - name: Install Robot tests
               run: |
-                  git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch bugfix/frw-2376/adjusted-expect-for-error-messages robotframework-tests
+                  git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
             - name: Install Project
               continue-on-error: true
               run: |
@@ -546,7 +546,7 @@ jobs:
                   sudo chmod +x /usr/local/bin/docker-compose
             - name: Install Robot tests
               run: |
-                  git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch bugfix/frw-2376/adjusted-expect-for-error-messages robotframework-tests
+                  git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
             - name: Install Project
               continue-on-error: true
               run: |
