@@ -150,6 +150,7 @@ use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderItemsConfiguredBu
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SalesProductBundleWidget\Widget\OrderItemsProductBundleWidget;
 use SprykerShop\Yves\SalesProductConfigurationWidget\Widget\ProductConfigurationOrderItemDisplayWidget;
+use SprykerShop\Yves\SalesServicePointWidget\Widget\SalesServicePointNameForShipmentGroupWidget;
 use SprykerShop\Yves\ServicePointWidget\Plugin\ShopApplication\ClickCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerShop\Yves\ServicePointWidget\Widget\ClickCollectServicePointAddressFormWidget;
 use SprykerShop\Yves\ServicePointWidget\Widget\ServicePointSearchWidget;
@@ -328,6 +329,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MerchantMetaSchemaWidget::class,
             ServicePointSearchWidget::class,
             ShipmentTypeAddressFormWidget::class,
+            SalesServicePointNameForShipmentGroupWidget::class,
             ClickCollectServicePointAddressFormWidget::class,
         ];
     }
