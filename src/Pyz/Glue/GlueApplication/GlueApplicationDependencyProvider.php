@@ -257,6 +257,7 @@ use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemsRe
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListsResourcePlugin;
 use Spryker\Glue\ShoppingListsRestApi\ShoppingListsRestApiConfig;
 use Spryker\Glue\StoresRestApi\Plugin\Application\StoreHttpHeaderApplicationPlugin;
+use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\CartUpSellingProductsResourceRoutePlugin;
 use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\GuestCartUpSellingProductsResourceRoutePlugin;
 use Spryker\Glue\UrlsRestApi\Plugin\GlueApplication\UrlResolverResourceRoutePlugin;
@@ -284,6 +285,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new AccessTokensResourceRoutePlugin(),
             new RefreshTokensResourceRoutePlugin(),
             new CatalogSearchResourceRoutePlugin(),
+            new StoresResourceRoutePlugin(),
             new CatalogSearchSuggestionsResourceRoutePlugin(),
             new ConcreteProductAvailabilitiesRoutePlugin(),
             new AbstractProductAvailabilitiesRoutePlugin(),
