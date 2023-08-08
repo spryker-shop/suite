@@ -4,6 +4,8 @@
 // ############################## CI CONFIGURATION ############################
 // ############################################################################
 
+use Spryker\Shared\GlueJsonApiConvention\GlueJsonApiConventionConstants;
+use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
 use Spryker\Shared\MessageBroker\MessageBrokerConstants;
 use Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants;
 use Spryker\Shared\Product\ProductConstants;
@@ -50,3 +52,10 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
 ];
 
 $config[MessageBrokerConstants::IS_ENABLED] = true;
+
+$sprykerGlueStorefrontHost = getenv('SPRYKER_GLUE_STOREFRONT_HOST');
+$config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $sprykerGlueStorefrontHost;
+$config[GlueJsonApiConventionConstants::GLUE_DOMAIN] = sprintf(
+    'http://%s',
+    $sprykerGlueStorefrontHost ?: 'localhost',
+);
