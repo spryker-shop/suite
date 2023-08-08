@@ -151,7 +151,7 @@ jobs:
               run: vendor/bin/console code:sniff:style
 
             - name: Run Evaluator
-              run: vendor/bin/evaluator evaluate --exclude-checkers NPM_CHECKER
+              run: vendor/bin/evaluator evaluate
 
     php-81-mariadb-glue-alpine:
         name: "PHP 8.1 / MariaDB / Glue / Alpine"
