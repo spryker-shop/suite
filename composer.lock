@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d777285680f6c60fef47ff05f4f8402",
+    "content-hash": "94b78e847e489382c768f5940db76d88",
     "packages": [
         {
             "name": "async-aws/core",
@@ -59810,16 +59810,16 @@
         },
         {
             "name": "spryker/service-point-search",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-point-search.git",
-                "reference": "63ccbbd2b6baeffa9de87ecf0aa96281046453d2"
+                "reference": "df3d535ed6eb5388fd0fb9d45f6158789b4b1627"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-point-search/zipball/63ccbbd2b6baeffa9de87ecf0aa96281046453d2",
-                "reference": "63ccbbd2b6baeffa9de87ecf0aa96281046453d2",
+                "url": "https://api.github.com/repos/spryker/service-point-search/zipball/df3d535ed6eb5388fd0fb9d45f6158789b4b1627",
+                "reference": "df3d535ed6eb5388fd0fb9d45f6158789b4b1627",
                 "shasum": ""
             },
             "require": {
@@ -59870,9 +59870,9 @@
             ],
             "description": "ServicePointSearch module",
             "support": {
-                "source": "https://github.com/spryker/service-point-search/tree/0.3.0"
+                "source": "https://github.com/spryker/service-point-search/tree/0.3.1"
             },
-            "time": "2023-07-28T12:48:58+00:00"
+            "time": "2023-08-08T11:27:56+00:00"
         },
         {
             "name": "spryker/service-point-storage",
@@ -59990,6 +59990,56 @@
                 "source": "https://github.com/spryker/service-points-backend-api/tree/0.3.0"
             },
             "time": "2023-05-30T20:54:20+00:00"
+        },
+        {
+            "name": "spryker/service-points-rest-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/service-points-rest-api.git",
+                "reference": "0b7b16f5483aa1ad6c7f9a112099b44a6a76e0c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/service-points-rest-api/zipball/0b7b16f5483aa1ad6c7f9a112099b44a6a76e0c4",
+                "reference": "0b7b16f5483aa1ad6c7f9a112099b44a6a76e0c4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/glossary-storage": "^1.5.0",
+                "spryker/glue-application": "^1.8.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/service-point-search": "^0.3.1",
+                "spryker/service-point-storage": "^0.2.0",
+                "spryker/store": "^1.19.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ServicePointsRestApi module",
+            "support": {
+                "source": "https://github.com/spryker/service-points-rest-api/tree/0.1.0"
+            },
+            "time": "2023-08-08T11:27:56+00:00"
         },
         {
             "name": "spryker/session",
