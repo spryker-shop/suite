@@ -240,6 +240,10 @@ use Spryker\Glue\SecurityBlockerRestApi\Plugin\GlueApplication\SecurityBlockerAg
 use Spryker\Glue\SecurityBlockerRestApi\Plugin\GlueApplication\SecurityBlockerAgentRestRequestValidatorPlugin;
 use Spryker\Glue\SecurityBlockerRestApi\Plugin\GlueApplication\SecurityBlockerCustomerControllerAfterActionPlugin;
 use Spryker\Glue\SecurityBlockerRestApi\Plugin\GlueApplication\SecurityBlockerCustomerRestRequestValidatorPlugin;
+use Spryker\Glue\ServicePointsRestApi\Plugin\GlueApplication\ServicePointAddressesByServicePointUuidResourceRelationshipPlugin;
+use Spryker\Glue\ServicePointsRestApi\Plugin\GlueApplication\ServicePointAddressesResourceRoutePlugin;
+use Spryker\Glue\ServicePointsRestApi\Plugin\GlueApplication\ServicePointsResourceRoutePlugin;
+use Spryker\Glue\ServicePointsRestApi\ServicePointsRestApiConfig;
 use Spryker\Glue\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartByCartIdResourceRelationshipPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartsResourceRoutePlugin;
@@ -370,6 +374,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new MyAvailabilityNotificationsResourceRoutePlugin(),
             new CustomerAvailabilityNotificationsResourceRoutePlugin(),
             new CustomerOrdersResourceRoutePlugin(),
+            new ServicePointsResourceRoutePlugin(),
+            new ServicePointAddressesResourceRoutePlugin(),
         ];
     }
 
@@ -935,6 +941,11 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LIST_ITEMS,
             new ProductOfferPriceByProductOfferReferenceResourceRelationshipPlugin(),
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            ServicePointsRestApiConfig::RESOURCE_SERVICE_POINTS,
+            new ServicePointAddressesByServicePointUuidResourceRelationshipPlugin(),
         );
 
         return $resourceRelationshipCollection;
