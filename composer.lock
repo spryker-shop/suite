@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ffefd8c73cdda1ebd60e1b694356447",
+    "content-hash": "27ab01bea05d6ccaa77beb3080e3482f",
     "packages": [
         {
             "name": "async-aws/core",
@@ -58133,6 +58133,56 @@
             "time": "2023-08-01T16:36:46+00:00"
         },
         {
+            "name": "spryker/sales-shipment-type",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-shipment-type.git",
+                "reference": "e8fedc9ea7619f5f5275edbe47fbe8196aa54df1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-shipment-type/zipball/e8fedc9ea7619f5f5275edbe47fbe8196aa54df1",
+                "reference": "e8fedc9ea7619f5f5275edbe47fbe8196aa54df1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/checkout-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/sales": "^11.0.0",
+                "spryker/shipment": "^8.0.0",
+                "spryker/shipment-type": "^0.1.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesShipmentType module",
+            "support": {
+                "source": "https://github.com/spryker/sales-shipment-type/tree/0.1.0"
+            },
+            "time": "2023-08-10T13:04:13+00:00"
+        },
+        {
             "name": "spryker/sales-split",
             "version": "5.1.1",
             "source": {
@@ -61420,22 +61470,23 @@
         },
         {
             "name": "spryker/shipment-type-cart",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-type-cart.git",
-                "reference": "2c2372a064a9812457de99228c1290aa283b658c"
+                "reference": "48f79b7d4c155458ddfd758f8235ee74a88230e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-type-cart/zipball/2c2372a064a9812457de99228c1290aa283b658c",
-                "reference": "2c2372a064a9812457de99228c1290aa283b658c",
+                "url": "https://api.github.com/repos/spryker/shipment-type-cart/zipball/48f79b7d4c155458ddfd758f8235ee74a88230e1",
+                "reference": "48f79b7d4c155458ddfd758f8235ee74a88230e1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/cart": "^7.0.0",
                 "spryker/cart-extension": "^4.2.0",
+                "spryker/checkout-extension": "^1.2.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/quote-extension": "^1.2.0",
                 "spryker/shipment-type": "^0.1.0",
@@ -61443,6 +61494,8 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/store": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -61462,9 +61515,9 @@
             ],
             "description": "ShipmentTypeCart module",
             "support": {
-                "source": "https://github.com/spryker/shipment-type-cart/tree/0.1.0"
+                "source": "https://github.com/spryker/shipment-type-cart/tree/0.1.1"
             },
-            "time": "2023-08-01T09:25:56+00:00"
+            "time": "2023-08-10T13:04:13+00:00"
         },
         {
             "name": "spryker/shipment-type-data-import",
