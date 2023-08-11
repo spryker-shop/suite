@@ -48,6 +48,10 @@ class OAuthClientTest extends Unit
      */
     public function testOauthTokenRequestContainsAllTheNecessaryData(): void
     {
+        if ($this->tester->seeThatDynamicStoreEnabled()) {
+            $this->tester->markTestSkipped('Test is valid for Static Store mode only.');
+        }
+
         // Arrange
         $storeTransfer = $this->tester->getAllowedStore();
         $this->tester->setStoreReferenceData([$storeTransfer->getName() => static::STORE_REFERENCE]);

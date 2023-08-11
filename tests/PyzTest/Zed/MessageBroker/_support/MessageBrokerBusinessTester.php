@@ -37,4 +37,12 @@ class MessageBrokerBusinessTester extends Actor
     {
         return $this->getLocator()->messageBroker()->facade();
     }
+
+    /**
+     * @return bool
+     */
+    public function seeThatDynamicStoreEnabled(): bool
+    {
+        return $this->getLocator()->store()->facade()->isDynamicStoreEnabled();
+    }
 }

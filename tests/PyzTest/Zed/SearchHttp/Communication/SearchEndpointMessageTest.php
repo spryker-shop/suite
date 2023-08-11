@@ -39,10 +39,6 @@ class SearchEndpointMessageTest extends Unit
      */
     public function testSearchEndpointAvailableMessageIsSuccessfullyHandled(): void
     {
-        if ($this->tester->seeThatDynamicStoreEnabled()) {
-            $this->tester->markTestSkipped('Test is valid for Static Store mode only.');
-        }
-
         // Arrange
         $storeTransfer = $this->tester->getAllowedStore();
         $this->tester->setStoreReferenceData([$storeTransfer->getName() => static::STORE_REFERENCE]);
@@ -65,10 +61,6 @@ class SearchEndpointMessageTest extends Unit
      */
     public function testSearchEndpointRemovedMessageIsSuccessfullyHandled(): void
     {
-        if ($this->tester->seeThatDynamicStoreEnabled()) {
-            $this->tester->markTestSkipped('Test is valid for Static Store mode only.');
-        }
-
         // Arrange
         $storeTransfer = $this->tester->getAllowedStore();
         $this->tester->setStoreReferenceData([$storeTransfer->getName() => static::STORE_REFERENCE]);
