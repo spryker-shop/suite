@@ -9,7 +9,7 @@ namespace PyzTest\Zed\Product\Communication;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\EventEntityTransfer;
-use Generated\Shared\Transfer\InitializeProductExportTransfer;
+use Generated\Shared\Transfer\MessageAttributesTransfer;
 use PyzTest\Zed\Product\ProductCommunicationTester;
 use Spryker\Zed\Product\Business\ProductBusinessFactory;
 use Spryker\Zed\Product\Dependency\Facade\ProductToEventInterface;
@@ -43,10 +43,6 @@ class InitializeProductExportMessageTest extends Unit
      */
     public function testInitializeProductExportMessageIsSuccessfullyHandled(): void
     {
-        if ($this->tester->seeThatDynamicStoreEnabled()) {
-            $this->tester->markTestSkipped('Test is valid for Static Store mode only.');
-        }
-
         // Arrange
         $storeTransfer = $this->tester->getAllowedStore();
         $this->tester->setStoreReferenceData([$storeTransfer->getName() => static::STORE_REFERENCE]);
@@ -73,9 +69,13 @@ class InitializeProductExportMessageTest extends Unit
 
         // Act
         $messageBrokerFacade = $this->tester->getLocator()->messageBroker()->facade();
-        $messageBrokerFacade->sendMessage(new InitializeProductExportTransfer());
+        $messageBrokerFacade->sendMessage(
+            $this->tester->buildInitializeProductExportTransfer([
+                MessageAttributesTransfer::STORE_REFERENCE => static::STORE_REFERENCE,
+            ]),
+        );
         $messageBrokerFacade->startWorker(
-            $this->tester->buildMessageBrokerWorkerConfigTransfer(['product'], 1),
+            $this->tester->buildMessageBrokerWorkerConfigTransfer(['product-commands'], 1),
         );
     }
 }

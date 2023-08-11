@@ -8,6 +8,8 @@
 namespace PyzTest\Zed\Product;
 
 use Codeception\Actor;
+use Generated\Shared\DataBuilder\InitializeProductExportBuilder;
+use Generated\Shared\Transfer\InitializeProductExportTransfer;
 
 /**
  * Inherited Methods
@@ -35,5 +37,17 @@ class ProductCommunicationTester extends Actor
     public function seeThatDynamicStoreEnabled(): bool
     {
         return $this->getLocator()->store()->facade()->isDynamicStoreEnabled();
+    }
+
+    /**
+     * @param array<string, mixed> $messageAttributeSeedData
+     *
+     * @return \Generated\Shared\Transfer\InitializeProductExportTransfer
+     */
+    public function buildInitializeProductExportTransfer(array $messageAttributeSeedData = []): InitializeProductExportTransfer
+    {
+        return (new InitializeProductExportBuilder())
+            ->withMessageAttributes($messageAttributeSeedData)
+            ->build();
     }
 }
