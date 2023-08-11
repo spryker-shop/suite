@@ -53,4 +53,12 @@ class OauthClientBusinessTester extends Actor
             $pluginStack,
         );
     }
+
+    /**
+     * @return bool
+     */
+    public function seeThatDynamicStoreEnabled(): bool
+    {
+        return $this->getLocator()->store()->facade()->isDynamicStoreEnabled();
+    }
 }
