@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.278.3",
+            "version": "3.279.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "596534c0627d8b38597061341e99b460437d1a16"
+                "reference": "7b3d38cfccd393add0ea0ce281de91846967c61e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/596534c0627d8b38597061341e99b460437d1a16",
-                "reference": "596534c0627d8b38597061341e99b460437d1a16",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7b3d38cfccd393add0ea0ce281de91846967c61e",
+                "reference": "7b3d38cfccd393add0ea0ce281de91846967c61e",
                 "shasum": ""
             },
             "require": {
@@ -264,11 +264,11 @@
                 "ext-pcre": "*",
                 "ext-simplexml": "*",
                 "guzzlehttp/guzzle": "^6.5.8 || ^7.4.5",
-                "guzzlehttp/promises": "^1.4.0",
+                "guzzlehttp/promises": "^1.4.0 || ^2.0",
                 "guzzlehttp/psr7": "^1.9.1 || ^2.4.5",
                 "mtdowling/jmespath.php": "^2.6",
-                "php": ">=5.5",
-                "psr/http-message": "^1.0"
+                "php": ">=7.2.5",
+                "psr/http-message": "^1.0 || ^2.0"
             },
             "require-dev": {
                 "andrewsville/php-token-reflection": "^1.4",
@@ -283,7 +283,7 @@
                 "ext-sockets": "*",
                 "nette/neon": "^2.3",
                 "paragonie/random_compat": ">= 2",
-                "phpunit/phpunit": "^4.8.35 || ^5.6.3 || ^9.5",
+                "phpunit/phpunit": "^5.6.3 || ^8.5 || ^9.5",
                 "psr/cache": "^1.0",
                 "psr/simple-cache": "^1.0",
                 "sebastian/comparator": "^1.2.3 || ^4.0",
@@ -335,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.278.3"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.279.0"
             },
-            "time": "2023-08-15T18:07:55+00:00"
+            "time": "2023-08-16T18:18:34+00:00"
         },
         {
             "name": "brick/math",
@@ -1514,29 +1514,33 @@
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "1.5.3",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "67ab6e18aaa14d753cc148911d273f6e6cb6721e"
+                "reference": "111166291a0f8130081195ac4556a5587d7f1b5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/67ab6e18aaa14d753cc148911d273f6e6cb6721e",
-                "reference": "67ab6e18aaa14d753cc148911d273f6e6cb6721e",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/111166291a0f8130081195ac4556a5587d7f1b5d",
+                "reference": "111166291a0f8130081195ac4556a5587d7f1b5d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5"
+                "php": "^7.2.5 || ^8.0"
             },
             "require-dev": {
-                "symfony/phpunit-bridge": "^4.4 || ^5.1"
+                "bamarni/composer-bin-plugin": "^1.8.1",
+                "phpunit/phpunit": "^8.5.29 || ^9.5.23"
             },
             "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": false
+                }
+            },
             "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ],
                 "psr-4": {
                     "GuzzleHttp\\Promise\\": "src/"
                 }
@@ -1573,7 +1577,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/1.5.3"
+                "source": "https://github.com/guzzle/promises/tree/2.0.1"
             },
             "funding": [
                 {
@@ -1589,7 +1593,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-21T12:31:43+00:00"
+            "time": "2023-08-03T15:11:55+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -6154,7 +6158,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "ba2d6057aaa7cb49dea416d4e717c70fe7b3c68a"
+                "reference": "c8d88f03eb111f73f1c3934862d0311e1cd418be"
             },
             "require": {
                 "php": ">=8.0"
@@ -7177,7 +7181,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2023-08-16T11:17:53+00:00"
+            "time": "2023-08-17T11:25:52+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -14123,16 +14127,16 @@
         },
         {
             "name": "codeception/stub",
-            "version": "4.1.0",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Stub.git",
-                "reference": "58751aed08a68ae960a952fd3fe74ee9a56cdb1b"
+                "reference": "4aaeffdc7089f3cae173b73bd4bc3672e4618747"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Stub/zipball/58751aed08a68ae960a952fd3fe74ee9a56cdb1b",
-                "reference": "58751aed08a68ae960a952fd3fe74ee9a56cdb1b",
+                "url": "https://api.github.com/repos/Codeception/Stub/zipball/4aaeffdc7089f3cae173b73bd4bc3672e4618747",
+                "reference": "4aaeffdc7089f3cae173b73bd4bc3672e4618747",
                 "shasum": ""
             },
             "require": {
@@ -14158,9 +14162,9 @@
             "description": "Flexible Stub wrapper for PHPUnit's Mock Builder",
             "support": {
                 "issues": "https://github.com/Codeception/Stub/issues",
-                "source": "https://github.com/Codeception/Stub/tree/4.1.0"
+                "source": "https://github.com/Codeception/Stub/tree/4.1.1"
             },
-            "time": "2022-12-27T18:41:43+00:00"
+            "time": "2023-08-16T19:17:44+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
@@ -18145,7 +18149,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "0fac54616a7ca607424127e88134fbda2fdcd8a3"
+                "reference": "72d5295b992f10e961e963333e49e2a7628a5867"
             },
             "default-branch": true,
             "type": "library",
@@ -18153,7 +18157,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2023-08-14T08:07:35+00:00"
+            "time": "2023-08-16T12:59:42+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
