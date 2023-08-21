@@ -8,6 +8,8 @@
 namespace PyzTest\Zed\OauthClient\Business;
 
 use Codeception\Test\Unit;
+use Generated\Shared\DataBuilder\AccessTokenRequestBuilder;
+use Generated\Shared\Transfer\AccessTokenRequestOptionsTransfer;
 use Generated\Shared\Transfer\AccessTokenRequestTransfer;
 use Spryker\Zed\OauthClientExtension\Dependency\Plugin\OauthAccessTokenProviderPluginInterface;
 
@@ -48,26 +50,27 @@ class OAuthClientTest extends Unit
      */
     public function testOauthTokenRequestContainsAllTheNecessaryData(): void
     {
-        if ($this->tester->seeThatDynamicStoreEnabled()) {
-            $this->tester->markTestSkipped('Test is valid for Static Store mode only.');
-        }
-
         // Arrange
-        $storeTransfer = $this->tester->getAllowedStore();
-        $this->tester->setStoreReferenceData([$storeTransfer->getName() => static::STORE_REFERENCE]);
+        $accessTokenRequestTransfer = (new AccessTokenRequestBuilder())->withAccessTokenRequestOptions([
+            AccessTokenRequestOptionsTransfer::STORE_REFERENCE => null,
+        ])->build();
+        $expectedAccessTokenRequestTransfer = (new AccessTokenRequestBuilder($accessTokenRequestTransfer->modifiedToArray()))->build();
 
-        $accessTokenRequestTransfer = (new AccessTokenRequestTransfer());
+        if (!$this->tester->isDynamicStoreEnabled()) {
+            $storeTransfer = $this->tester->getAllowedStore();
+            $this->tester->setStoreReferenceData([$storeTransfer->getName() => static::STORE_REFERENCE]);
+            $expectedAccessTokenRequestTransfer->getAccessTokenRequestOptions()->setStoreReference(static::STORE_REFERENCE);
+        }
 
         $mockOAuthAccessTokenProviderPlugin = $this->createMock(OauthAccessTokenProviderPluginInterface::class);
         $mockOAuthAccessTokenProviderPlugin->method('isApplicable')->willReturn(true);
 
         // Assert
         $mockOAuthAccessTokenProviderPlugin->expects($this->once())->method('getAccessToken')->with(
-            $this->callback(function (AccessTokenRequestTransfer $accessTokenRequestTransfer) {
-                $this->assertNotNull($accessTokenRequestTransfer->getAccessTokenRequestOptions());
-                $this->assertSame(
-                    $accessTokenRequestTransfer->getAccessTokenRequestOptions()->getStoreReference(),
-                    static::STORE_REFERENCE,
+            $this->callback(function (AccessTokenRequestTransfer $accessTokenRequestTransfer) use ($expectedAccessTokenRequestTransfer) {
+                $this->assertEquals(
+                    $expectedAccessTokenRequestTransfer,
+                    $accessTokenRequestTransfer,
                 );
 
                 return true;
