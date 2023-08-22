@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8322d084c93520800047a7cf2aa84b7",
+    "content-hash": "1729d076ddd2b939cbafbdd9441669d8",
     "packages": [
         {
             "name": "async-aws/core",
@@ -15189,6 +15189,51 @@
                 "source": "https://github.com/spryker-shop/shared-cart-widget/tree/1.7.0"
             },
             "time": "2020-06-26T16:02:13+00:00"
+        },
+        {
+            "name": "spryker-shop/shipment-page",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shipment-page.git",
+                "reference": "e5970af6546cbb701989595d86b173f68e95793b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shipment-page/zipball/e5970af6546cbb701989595d86b173f68e95793b",
+                "reference": "e5970af6546cbb701989595d86b173f68e95793b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker-shop/customer-reorder-widget-extension": "^1.2.0",
+                "spryker/kernel": "^3.52.0",
+                "spryker/shipment": "^8.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShipmentPage module",
+            "support": {
+                "source": "https://github.com/spryker-shop/shipment-page/tree/0.1.0"
+            },
+            "time": "2023-08-22T09:22:18+00:00"
         },
         {
             "name": "spryker-shop/shipment-type-widget",
