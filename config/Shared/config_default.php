@@ -74,6 +74,7 @@ use Spryker\Shared\OauthAuth0\OauthAuth0Constants;
 use Spryker\Shared\OauthClient\OauthClientConstants;
 use Spryker\Shared\OauthCryptography\OauthCryptographyConstants;
 use Spryker\Shared\Oms\OmsConstants;
+use Spryker\Shared\Payment\PaymentConstants;
 use Spryker\Shared\Product\ProductConstants;
 use Spryker\Shared\ProductConfiguration\ProductConfigurationConstants;
 use Spryker\Shared\ProductLabel\ProductLabelConstants;
@@ -841,6 +842,8 @@ $config[OauthClientConstants::OAUTH_OPTION_AUDIENCE_FOR_PAYMENT_AUTHORIZE] = 'ao
 
 $config[SearchHttpConstants::TENANT_IDENTIFIER]
     = $config[ProductConstants::TENANT_IDENTIFIER]
+    = $config[PaymentConstants::TENANT_IDENTIFIER]
+    = $config[AppCatalogGuiConstants::TENANT_IDENTIFIER]
     = getenv('SPRYKER_TENANT_IDENTIFIER') ?: '';
 
 $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [

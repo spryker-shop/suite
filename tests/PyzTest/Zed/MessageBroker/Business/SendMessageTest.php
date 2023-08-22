@@ -51,13 +51,12 @@ class SendMessageTest extends Unit
      */
     public function testCheckAttributesBeforeSendingMessage(): void
     {
-        if ($this->tester->seeThatDynamicStoreEnabled()) {
-            $this->tester->markTestSkipped('Test is valid for Static Store mode only.');
+        // Arrange
+        if (!$this->tester->isDynamicStoreEnabled()) {
+            $storeTransfer = $this->tester->getAllowedStore();
+            $this->tester->setStoreReferenceData([$storeTransfer->getName() => static::STORE_REFERENCE]);
         }
 
-        // Arrange
-        $storeTransfer = $this->tester->getAllowedStore();
-        $this->tester->setStoreReferenceData([$storeTransfer->getName() => static::STORE_REFERENCE]);
         $this->tester->setMessageToSenderChannelNameMap(MessageBrokerTestMessageTransfer::class, static::CHANNEL_NAME);
 
         $messageSenderPlugin = $this->createMock(MessageSenderPluginInterface::class);
@@ -74,8 +73,12 @@ class SendMessageTest extends Unit
                 $this->assertSame($message->getKey(), static::MESSAGE_BROKER_TRANSFER_VALUE);
 
                 $this->assertIsObject($message->getMessageAttributes());
-                $this->assertSame($message->getMessageAttributes()->getStoreReference(), static::STORE_REFERENCE);
-                $this->assertSame($message->getMessageAttributes()->getEmitter(), static::STORE_REFERENCE);
+
+                if (!$this->tester->isDynamicStoreEnabled()) {
+                    $this->assertSame($message->getMessageAttributes()->getStoreReference(), static::STORE_REFERENCE);
+                    $this->assertSame($message->getMessageAttributes()->getEmitter(), static::STORE_REFERENCE);
+                }
+
                 $this->assertSame($message->getMessageAttributes()->getTransferName(), $this->getTransferNameFromClass($message));
                 $this->assertSame($message->getMessageAttributes()->getEvent(), $this->getTransferNameFromClass($message));
 

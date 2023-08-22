@@ -7,10 +7,8 @@
 
 namespace Pyz\Zed\MessageBroker;
 
-use Spryker\Zed\Asset\Communication\Plugin\MessageBroker\AssetAddedMessageHandlerPlugin;
-use Spryker\Zed\Asset\Communication\Plugin\MessageBroker\AssetDeletedMessageHandlerPlugin;
-use Spryker\Zed\Asset\Communication\Plugin\MessageBroker\AssetUpdatedMessageHandlerPlugin;
-use Spryker\Zed\Merchant\Communication\Plugin\MessageBroker\MerchantExportMerchantsMessageHandlerPlugin;
+use Spryker\Zed\Asset\Communication\Plugin\MessageBroker\AssetMessageHandlerPlugin;
+use Spryker\Zed\Merchant\Communication\Plugin\MessageBroker\MerchantMessageHandlerPlugin;
 use Spryker\Zed\MessageBroker\Communication\Plugin\MessageBroker\CorrelationIdMessageAttributeProviderPlugin;
 use Spryker\Zed\MessageBroker\Communication\Plugin\MessageBroker\TimestampMessageAttributeProviderPlugin;
 use Spryker\Zed\MessageBroker\Communication\Plugin\MessageBroker\TransactionIdMessageAttributeProviderPlugin;
@@ -24,8 +22,7 @@ use Spryker\Zed\OauthClient\Communication\Plugin\MessageBroker\AccessTokenMessag
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentCancelReservationFailedMessageHandlerPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentConfirmationFailedMessageHandlerPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentConfirmedMessageHandlerPlugin;
-use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentMethodAddedMessageHandlerPlugin;
-use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentMethodDeletedMessageHandlerPlugin;
+use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentMethodMessageHandlerPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentPreauthorizationFailedMessageHandlerPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentPreauthorizedMessageHandlerPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentRefundedMessageHandlerPlugin;
@@ -76,15 +73,12 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new PaymentReservationCanceledMessageHandlerPlugin(),
             new PaymentRefundedMessageHandlerPlugin(),
             new PaymentRefundFailedMessageHandlerPlugin(),
-            new PaymentMethodAddedMessageHandlerPlugin(),
-            new PaymentMethodDeletedMessageHandlerPlugin(),
-            new AssetAddedMessageHandlerPlugin(),
-            new AssetUpdatedMessageHandlerPlugin(),
-            new AssetDeletedMessageHandlerPlugin(),
+            new PaymentMethodMessageHandlerPlugin(),
+            new AssetMessageHandlerPlugin(),
             new ProductExportMessageHandlerPlugin(),
             new SearchEndpointMessageHandlerPlugin(),
             new ProductReviewAddReviewsMessageHandlerPlugin(),
-            new MerchantExportMerchantsMessageHandlerPlugin(),
+            new MerchantMessageHandlerPlugin(),
         ];
     }
 
