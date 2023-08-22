@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8322d084c93520800047a7cf2aa84b7",
+    "content-hash": "b29b7db0001c4d0de764aafabdd7bbd3",
     "packages": [
         {
             "name": "async-aws/core",
@@ -54277,21 +54277,21 @@
         },
         {
             "name": "spryker/propel-orm",
-            "version": "1.19.0",
+            "version": "dev-backport/1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel-orm.git",
-                "reference": "aeb6819ff5fc80fb6d6447c9abc7f11c911eb1d8"
+                "reference": "39f14f7f88147805e58cc41ccc50d14fc25a4783"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/aeb6819ff5fc80fb6d6447c9abc7f11c911eb1d8",
-                "reference": "aeb6819ff5fc80fb6d6447c9abc7f11c911eb1d8",
+                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/39f14f7f88147805e58cc41ccc50d14fc25a4783",
+                "reference": "39f14f7f88147805e58cc41ccc50d14fc25a4783",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
-                "propel/propel": "2.0.0-beta3",
+                "propel/propel": "2.0.0-beta1 || 2.0.0-beta2 || 2.0.0-beta3",
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.0.0",
                 "spryker/kernel": "^3.67.0",
@@ -54321,9 +54321,9 @@
             ],
             "description": "PropelOrm module",
             "support": {
-                "source": "https://github.com/spryker/propel-orm/tree/1.19.0"
+                "source": "https://github.com/spryker/propel-orm/tree/backport/1.18.1"
             },
-            "time": "2023-04-18T11:16:52+00:00"
+            "time": "2023-08-17T15:43:46+00:00"
         },
         {
             "name": "spryker/propel-orm-extension",
@@ -77184,9 +77184,17 @@
             "time": "2022-06-03T18:03:27+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "spryker/propel-orm",
+            "version": "dev-backport/1.18.1",
+            "alias": "1.18.1",
+            "alias_normalized": "1.18.1.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker/propel-orm": 20,
         "jetbrains/phpstorm-stubs": 20,
         "spryker/code-sniffer": 20,
         "spryker/docker-chromedriver": 20,
