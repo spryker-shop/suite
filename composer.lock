@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1729d076ddd2b939cbafbdd9441669d8",
+    "content-hash": "1ddce375e65e0d26b3f0224a8fa5ca06",
     "packages": [
         {
             "name": "async-aws/core",
@@ -17169,6 +17169,105 @@
                 "source": "https://github.com/spryker/api-extension/tree/0.1.0"
             },
             "time": "2022-01-28T07:52:09+00:00"
+        },
+        {
+            "name": "spryker/api-key",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/api-key.git",
+                "reference": "96692aa796cfd38bb99b4ed8e3143fa0e7d6ba2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/api-key/zipball/96692aa796cfd38bb99b4ed8e3143fa0e7d6ba2c",
+                "reference": "96692aa796cfd38bb99b4ed8e3143fa0e7d6ba2c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/user": "^3.0.0",
+                "spryker/util-text": "^1.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "Add this module when you want to use the Container."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ApiKey module",
+            "support": {
+                "source": "https://github.com/spryker/api-key/tree/1.0.0"
+            },
+            "time": "2023-08-22T12:38:47+00:00"
+        },
+        {
+            "name": "spryker/api-key-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/api-key-gui.git",
+                "reference": "ed761a76c6ec5c7326ff8bf5ac15d02424a60f33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/api-key-gui/zipball/ed761a76c6ec5c7326ff8bf5ac15d02424a60f33",
+                "reference": "ed761a76c6ec5c7326ff8bf5ac15d02424a60f33",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/api-key": "^1.0.0",
+                "spryker/gui": "^3.38.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/user": "^3.0.0",
+                "spryker/util-text": "^1.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ApiKeyGui module",
+            "support": {
+                "source": "https://github.com/spryker/api-key-gui/tree/1.0.0"
+            },
+            "time": "2023-08-22T12:38:47+00:00"
         },
         {
             "name": "spryker/api-query-builder",
