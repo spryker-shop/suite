@@ -58404,20 +58404,21 @@
         },
         {
             "name": "spryker/shipment-extension",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-extension.git",
-                "reference": "617c4a5fc41fc141f368e7133aab7e0cc8464b4a"
+                "reference": "60944ddd7eb0cb42da0e37ff3953590353434ba3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-extension/zipball/617c4a5fc41fc141f368e7133aab7e0cc8464b4a",
-                "reference": "617c4a5fc41fc141f368e7133aab7e0cc8464b4a",
+                "url": "https://api.github.com/repos/spryker/shipment-extension/zipball/60944ddd7eb0cb42da0e37ff3953590353434ba3",
+                "reference": "60944ddd7eb0cb42da0e37ff3953590353434ba3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2"
+                "php": ">=8.0",
+                "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -58439,9 +58440,9 @@
             ],
             "description": "ShipmentExtension module",
             "support": {
-                "source": "https://github.com/spryker/shipment-extension/tree/master"
+                "source": "https://github.com/spryker/shipment-extension/tree/1.2.0"
             },
-            "time": "2020-03-11T14:56:31+00:00"
+            "time": "2023-08-01T09:25:56+00:00"
         },
         {
             "name": "spryker/shipment-gui",
@@ -58551,22 +58552,24 @@
         },
         {
             "name": "spryker/shipment-type",
-            "version": "0.1.1",
+            "version": "0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-type.git",
-                "reference": "b03e8da30ce184ba86a0a17e6934523b1719510f"
+                "reference": "df17b83220fde33446f97979fb44605c5443df81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-type/zipball/b03e8da30ce184ba86a0a17e6934523b1719510f",
-                "reference": "b03e8da30ce184ba86a0a17e6934523b1719510f",
+                "url": "https://api.github.com/repos/spryker/shipment-type/zipball/df17b83220fde33446f97979fb44605c5443df81",
+                "reference": "df17b83220fde33446f97979fb44605c5443df81",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.6.0",
+                "spryker/shipment": "^8.0.0",
+                "spryker/shipment-extension": "^1.2.0",
                 "spryker/store": "^1.12.0",
                 "spryker/transfer": "^3.27.0",
                 "spryker/uuid-behavior": "^1.0.0"
@@ -58584,7 +58587,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\ShipmentType\\Helper\\": "tests/SprykerTest/Shared/ShipmentType/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -58593,9 +58597,9 @@
             ],
             "description": "ShipmentType module",
             "support": {
-                "source": "https://github.com/spryker/shipment-type/tree/0.1.1"
+                "source": "https://github.com/spryker/shipment-type/tree/0.1.4"
             },
-            "time": "2023-05-23T12:28:05+00:00"
+            "time": "2023-08-23T09:59:37+00:00"
         },
         {
             "name": "spryker/shipment-type-data-import",
