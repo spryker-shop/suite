@@ -7,18 +7,18 @@
 
 namespace Pyz\Glue\SalesOrdersBackendApi;
 
-use Spryker\Glue\CartNotesBackendApi\Plugin\SalesOrdersBackendApi\CartNoteApiOrdersAttributesMapperPlugin;
+use Spryker\Glue\CartNotesBackendApi\Plugin\SalesOrdersBackendApi\CartNoteOrdersBackendApiAttributesMapperPlugin;
 use Spryker\Glue\SalesOrdersBackendApi\SalesOrdersBackendApiDependencyProvider as SprykerSalesOrdersBackendApiDependencyProvider;
 
 class SalesOrdersBackendApiDependencyProvider extends SprykerSalesOrdersBackendApiDependencyProvider
 {
     /**
-     * @return list<\Spryker\Glue\SalesOrdersBackendApiExtension\Dependency\Plugin\ApiOrdersAttributesMapperPluginInterface>
+     * @return list<\Spryker\Glue\SalesOrdersBackendApiExtension\Dependency\Plugin\OrdersBackendApiAttributesMapperPluginInterface>
      */
-    protected function getApiOrdersAttributesMapperPlugins(): array
+    protected function getOrdersBackendApiAttributesMapperPlugins(): array
     {
         return [
-            new CartNoteApiOrdersAttributesMapperPlugin(),
+            new CartNoteOrdersBackendApiAttributesMapperPlugin(),
         ];
     }
 }
