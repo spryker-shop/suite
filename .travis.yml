@@ -362,8 +362,6 @@ stages:
     - Test
 
 jobs:
-    allow_failures:
-        - name: Snyk Validation
     fast_finish: true
     include:
         - name: Code generation.
