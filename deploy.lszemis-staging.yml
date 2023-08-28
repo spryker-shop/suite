@@ -54,7 +54,7 @@ image:
     node:
         version: 18
         npm: 9
-        
+
 composer:
     mode: --no-dev
     autoload: --classmap-authoritative
@@ -183,7 +183,7 @@ groups:
 services:
     database:
         engine: mysql
-        version: mariadb-10.4
+        version: mariadb-10.6
         root:
             username: 'root'
             password: 'secret'
@@ -209,13 +209,13 @@ services:
                 protocol: tcp
     search:
         engine: elastic
-        version: 7.6
+        version: '7.10'
         endpoints:
             localhost:9200:
                 protocol: tcp
     scheduler:
         engine: jenkins
-        version: '2.324'
+        version: '2.401'
         csrf-protection-enabled: true
         endpoints:
             scheduler.example.cloud.spryker.toys:
@@ -223,6 +223,10 @@ services:
         engine: mailhog
         endpoints:
             mail.example.cloud.spryker.toys:
+    dashboard:
+        engine: dashboard
+        endpoints:
+            spryker.local:
     webdriver:
         engine: chromedriver
 
