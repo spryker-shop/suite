@@ -30,19 +30,7 @@ class AppCatalogGuiControllerCest
      */
     public function checkIfAppCatalogGuiReturn200AndValidUrl(AppCatalogGuiPresentationTester $I): void
     {
-        if ($I->seeThatDynamicStoreEnabled()) {
-            $I->markTestSkipped('Test is valid for Static Store mode only.');
-        }
-
         // Arrange
-        /** @var \Spryker\Zed\AppCatalogGui\AppCatalogGuiConfig $appCatalogGuiConfig */
-        $appCatalogGuiConfig = $I->getModuleConfig();
-        $storeTransfer = $I->getAllowedStore();
-        $locale = array_search(
-            $storeTransfer->getDefaultLocaleIsoCode(),
-            $storeTransfer->getAvailableLocaleIsoCodes(),
-            true,
-        );
         $I->amZed();
         $I->amLoggedInUser();
 
@@ -54,9 +42,9 @@ class AppCatalogGuiControllerCest
         // Assert
         $I->seeInSource(sprintf(
             AppCatalogGuiIndexPage::APP_CATALOG_SCRIPT,
-            $appCatalogGuiConfig->getAppCatalogScriptUrl(),
-            $storeTransfer->getStoreReference() ?: '',
-            $locale,
+            $I->getModuleConfig()->getAppCatalogScriptUrl(),
+            $I->getTenantIdentifier(),
+            $I->getLocale(),
         ));
     }
 
@@ -67,10 +55,6 @@ class AppCatalogGuiControllerCest
      */
     public function checkIfAppCatalogGuiApiLoginReturn200AndValidToken(AppCatalogGuiPresentationTester $I): void
     {
-        if ($I->seeThatDynamicStoreEnabled()) {
-            $I->markTestSkipped('Test is valid for Static Store mode only.');
-        }
-
         // Arrange
         $I->amZed();
         $I->amLoggedInUser();
