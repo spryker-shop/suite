@@ -34,7 +34,7 @@ class OauthClientBusinessTester extends Actor
     use _generated\OauthClientBusinessTesterActions;
 
     /**
-     * @return \Spryker\Zed\MessageBroker\Business\MessageBrokerFacadeInterface
+     * @return \Spryker\Zed\OauthClient\Business\OauthClientFacadeInterface
      */
     public function getOauthClientFacade(): OauthClientFacadeInterface
     {
