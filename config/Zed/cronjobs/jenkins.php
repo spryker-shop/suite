@@ -184,6 +184,13 @@ $jobs[] = [
     'enable' => true,
 ];
 
+$jobs[] = [
+    'name' => 'glue-api-generate-documentation',
+    'command' => '$PHP_BIN vendor/bin/glue api:generate:documentation --invalidated-after-interval 90sec',
+    'schedule' => '*/1 * * * *',
+    'enable' => true,
+];
+
 /* Message broker */
 if (\Spryker\Shared\Config\Config::get(\Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants::SQS_RECEIVER_CONFIG)) {
     $jobs[] = [
