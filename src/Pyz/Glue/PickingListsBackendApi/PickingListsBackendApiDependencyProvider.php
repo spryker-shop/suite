@@ -8,17 +8,17 @@
 namespace Pyz\Glue\PickingListsBackendApi;
 
 use Spryker\Glue\PickingListsBackendApi\PickingListsBackendApiDependencyProvider as SprykerPickingListsBackendApiDependencyProvider;
-use Spryker\Glue\ProductPackagingUnitsBackendApi\Plugin\PickingListsBackendApi\ProductPackagingUnitApiPickingListItemsAttributesMapperPlugin;
+use Spryker\Glue\ProductPackagingUnitsBackendApi\Plugin\PickingListsBackendApi\ProductPackagingUnitPickingListItemsBackendApiAttributesMapperPlugin;
 
 class PickingListsBackendApiDependencyProvider extends SprykerPickingListsBackendApiDependencyProvider
 {
     /**
-     * @return list<\Spryker\Glue\PickingListsBackendApiExtension\Dependency\Plugin\ApiPickingListItemsAttributesMapperPluginInterface>
+     * @return list<\Spryker\Glue\PickingListsBackendApiExtension\Dependency\Plugin\PickingListItemsBackendApiAttributesMapperPluginInterface>
      */
-    protected function getApiPickingListItemsAttributesMapperPlugins(): array
+    protected function getPickingListItemsBackendApiAttributesMapperPlugins(): array
     {
         return [
-            new ProductPackagingUnitApiPickingListItemsAttributesMapperPlugin(),
+            new ProductPackagingUnitPickingListItemsBackendApiAttributesMapperPlugin(),
         ];
     }
 }
