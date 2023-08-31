@@ -34,32 +34,8 @@ class AppCatalogGuiPresentationTester extends Actor
     /**
      * @return string
      */
-    public function getTenantIdentifier(): string
-    {
-        if (!$this->isDynamicStoreEnabled()) {
-            $storeTransfer = $this->getAllowedStore();
-
-            return $storeTransfer->getStoreReference() ?: '';
-        }
-
-        return $this->getModuleConfig()->getTenantIdentifier();
-    }
-
-    /**
-     * @return string
-     */
     public function getLocale(): string
     {
-        if (!$this->isDynamicStoreEnabled()) {
-            $storeTransfer = $this->getAllowedStore();
-
-            return array_search(
-                $storeTransfer->getDefaultLocaleIsoCode(),
-                $storeTransfer->getAvailableLocaleIsoCodes(),
-                true,
-            );
-        }
-
         return mb_substr($this->getLocator()->locale()->facade()->getCurrentLocaleName(), 0, 2);
     }
 }
