@@ -5,6 +5,7 @@
 // ############################################################################
 
 use Spryker\Shared\AppCatalogGui\AppCatalogGuiConstants;
+use Spryker\Shared\GlueBackendApiApplication\GlueBackendApiApplicationConstants;
 use Spryker\Shared\GlueJsonApiConvention\GlueJsonApiConventionConstants;
 use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
 use Spryker\Shared\MessageBroker\MessageBrokerConstants;
@@ -64,7 +65,9 @@ $config[MessageBrokerConstants::IS_ENABLED] = true;
 
 $sprykerGlueStorefrontHost = getenv('SPRYKER_GLUE_STOREFRONT_HOST');
 $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $sprykerGlueStorefrontHost;
+$sprykerGlueBackendHost = getenv('SPRYKER_GLUE_BACKEND_HOST');
+$config[GlueBackendApiApplicationConstants::GLUE_BACKEND_API_HOST] = $sprykerGlueBackendHost;
 $config[GlueJsonApiConventionConstants::GLUE_DOMAIN] = sprintf(
     'http://%s',
-    $sprykerGlueStorefrontHost ?: 'localhost',
+    $sprykerGlueStorefrontHost ?: $sprykerGlueBackendHost ?: 'localhost',
 );
