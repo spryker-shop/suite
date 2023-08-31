@@ -43,7 +43,7 @@ class AppCatalogGuiControllerCest
         $I->seeInSource(sprintf(
             AppCatalogGuiIndexPage::APP_CATALOG_SCRIPT,
             $I->getModuleConfig()->getAppCatalogScriptUrl(),
-            $I->getTenantIdentifier(),
+            $I->getModuleConfig()->getTenantIdentifier(),
             $I->getLocale(),
         ));
     }

@@ -33,11 +33,6 @@ class OAuthClientTest extends Unit
     /**
      * @var string
      */
-    protected const STORE_REFERENCE = 'dev-DE';
-
-    /**
-     * @var string
-     */
     protected const AUDIENCE = 'aud';
 
     /**
@@ -52,15 +47,9 @@ class OAuthClientTest extends Unit
     {
         // Arrange
         $accessTokenRequestTransfer = (new AccessTokenRequestBuilder())->withAccessTokenRequestOptions([
-            AccessTokenRequestOptionsTransfer::STORE_REFERENCE => null,
+            AccessTokenRequestOptionsTransfer::TENANT_IDENTIFIER => $this->tester->getModuleConfig()->getTenantIdentifier(),
         ])->build();
         $expectedAccessTokenRequestTransfer = (new AccessTokenRequestBuilder($accessTokenRequestTransfer->modifiedToArray()))->build();
-
-        if (!$this->tester->isDynamicStoreEnabled()) {
-            $storeTransfer = $this->tester->getAllowedStore();
-            $this->tester->setStoreReferenceData([$storeTransfer->getName() => static::STORE_REFERENCE]);
-            $expectedAccessTokenRequestTransfer->getAccessTokenRequestOptions()->setStoreReference(static::STORE_REFERENCE);
-        }
 
         $mockOAuthAccessTokenProviderPlugin = $this->createMock(OauthAccessTokenProviderPluginInterface::class);
         $mockOAuthAccessTokenProviderPlugin->method('isApplicable')->willReturn(true);

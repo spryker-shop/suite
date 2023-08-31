@@ -25,6 +25,8 @@ use Spryker\Zed\MessageBroker\Business\MessageBrokerFacadeInterface;
  * @method void pause()
  *
  * @SuppressWarnings(\PyzTest\Zed\MessageBroker\PHPMD)
+ *
+ * @method \Spryker\Zed\MessageBroker\MessageBrokerConfig getModuleConfig()
  */
 class MessageBrokerBusinessTester extends Actor
 {
@@ -36,13 +38,5 @@ class MessageBrokerBusinessTester extends Actor
     public function getMessageBrokerFacade(): MessageBrokerFacadeInterface
     {
         return $this->getLocator()->messageBroker()->facade();
-    }
-
-    /**
-     * @return bool
-     */
-    public function seeThatDynamicStoreEnabled(): bool
-    {
-        return $this->getLocator()->store()->facade()->isDynamicStoreEnabled();
     }
 }

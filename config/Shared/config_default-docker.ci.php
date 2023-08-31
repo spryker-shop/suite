@@ -4,16 +4,12 @@
 // ############################## CI CONFIGURATION ############################
 // ############################################################################
 
-use Spryker\Shared\AppCatalogGui\AppCatalogGuiConstants;
 use Spryker\Shared\GlueJsonApiConvention\GlueJsonApiConventionConstants;
 use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
 use Spryker\Shared\MessageBroker\MessageBrokerConstants;
 use Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants;
-use Spryker\Shared\Payment\PaymentConstants;
 use Spryker\Shared\Product\ProductConstants;
-use Spryker\Shared\SearchHttp\SearchHttpConstants;
 use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
-use Spryker\Shared\Store\StoreConstants;
 use Spryker\Zed\Propel\PropelConfig;
 
 require 'config_default-docker.dev.php';
@@ -29,13 +25,6 @@ require 'common/config_logs-ci-info.php';
 //----------------------------------- ACP -------------------------------------
 //-----------------------------------------------------------------------------
 $config[ProductConstants::PUBLISHING_TO_MESSAGE_BROKER_ENABLED] = false;
-$config[StoreConstants::STORE_NAME_REFERENCE_MAP] = ['DE' => 'dev-DE'];
-
-$config[SearchHttpConstants::TENANT_IDENTIFIER]
-    = $config[ProductConstants::TENANT_IDENTIFIER]
-    = $config[PaymentConstants::TENANT_IDENTIFIER]
-    = $config[AppCatalogGuiConstants::TENANT_IDENTIFIER]
-    = 'tenant-identifier';
 
 //-----------------------------------------------------------------------------
 //------------------------------- RDS Storage ---------------------------------
