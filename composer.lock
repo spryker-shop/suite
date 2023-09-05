@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04bca028476098663d743bd03eeface5",
+    "content-hash": "45a6d68ad7dffac32c41ae14644e11e1",
     "packages": [
         {
             "name": "async-aws/core",
@@ -21474,6 +21474,51 @@
                 "source": "https://github.com/spryker/checksum-generator/tree/1.0.0"
             },
             "time": "2020-11-16T14:02:55+00:00"
+        },
+        {
+            "name": "spryker/click-and-collect-example",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/click-and-collect-example.git",
+                "reference": "2daed55edf89b03c9aa58eff235b8dbbd42635fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/click-and-collect-example/zipball/2daed55edf89b03c9aa58eff235b8dbbd42635fe",
+                "reference": "2daed55edf89b03c9aa58eff235b8dbbd42635fe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-offer-service-point-availability-calculator-extension": "^0.1.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ClickAndCollectExample module",
+            "support": {
+                "source": "https://github.com/spryker/click-and-collect-example/tree/0.1.0"
+            },
+            "time": "2023-09-05T11:39:26+00:00"
         },
         {
             "name": "spryker/cms",
@@ -50836,6 +50881,95 @@
             "time": "2023-08-30T12:01:35+00:00"
         },
         {
+            "name": "spryker/product-offer-service-point-availability-calculator",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-service-point-availability-calculator.git",
+                "reference": "51a9b0e197812319ba416fa70b51e1e318234d31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-service-point-availability-calculator/zipball/51a9b0e197812319ba416fa70b51e1e318234d31",
+                "reference": "51a9b0e197812319ba416fa70b51e1e318234d31",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-offer-service-point-availability": "^0.1.0",
+                "spryker/product-offer-service-point-availability-calculator-extension": "^0.1.0",
+                "spryker/store": "^1.19.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferServicePointAvailabilityCalculator module",
+            "support": {
+                "source": "https://github.com/spryker/product-offer-service-point-availability-calculator/tree/0.1.0"
+            },
+            "time": "2023-09-05T11:39:26+00:00"
+        },
+        {
+            "name": "spryker/product-offer-service-point-availability-calculator-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-service-point-availability-calculator-extension.git",
+                "reference": "4c3bd9b34a781c0c80707eb35be8ef712ca20a71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-service-point-availability-calculator-extension/zipball/4c3bd9b34a781c0c80707eb35be8ef712ca20a71",
+                "reference": "4c3bd9b34a781c0c80707eb35be8ef712ca20a71",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferServicePointAvailabilityCalculatorExtension module",
+            "support": {
+                "source": "https://github.com/spryker/product-offer-service-point-availability-calculator-extension/tree/0.1.0"
+            },
+            "time": "2023-09-05T11:39:26+00:00"
+        },
+        {
             "name": "spryker/product-offer-service-point-availability-extension",
             "version": "0.1.0",
             "source": {
@@ -76985,12 +77119,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "a77f5ebcc6911a5fc9a5fa447a436237c18adb81"
+                "reference": "63a847d22d2251fd1ee99eb304ec24afb78b7f44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/a77f5ebcc6911a5fc9a5fa447a436237c18adb81",
-                "reference": "a77f5ebcc6911a5fc9a5fa447a436237c18adb81",
+                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/63a847d22d2251fd1ee99eb304ec24afb78b7f44",
+                "reference": "63a847d22d2251fd1ee99eb304ec24afb78b7f44",
                 "shasum": ""
             },
             "default-branch": true,
@@ -77004,7 +77138,7 @@
                 "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
                 "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
             },
-            "time": "2023-08-31T12:10:21+00:00"
+            "time": "2023-09-05T08:35:06+00:00"
         },
         {
             "name": "spryker/silex",
