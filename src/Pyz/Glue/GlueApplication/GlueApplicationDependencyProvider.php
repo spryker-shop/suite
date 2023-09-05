@@ -253,6 +253,8 @@ use Spryker\Glue\ShipmentsRestApi\Plugin\GlueApplication\ShipmentMethodsByShipme
 use Spryker\Glue\ShipmentsRestApi\Plugin\GlueApplication\ShipmentsByCheckoutDataResourceRelationshipPlugin;
 use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
 use Spryker\Glue\ShipmentTypesRestApi\Plugin\GlueApplication\ShipmentTypesResourceRoutePlugin;
+use Spryker\Glue\ShipmentTypesRestApi\ShipmentTypesRestApiConfig;
+use Spryker\Glue\ShipmentTypesServicePointsResourceRelationship\Plugin\GlueApplication\ServiceTypeByShipmentTypesResourceRelationshipPlugin;
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemByShoppingListResourceRelationshipPlugin;
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemsResourcePlugin;
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListsResourcePlugin;
@@ -950,6 +952,11 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ServicePointsRestApiConfig::RESOURCE_SERVICE_POINTS,
             new ServicePointAddressesByServicePointUuidResourceRelationshipPlugin(),
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            ShipmentTypesRestApiConfig::RESOURCE_SHIPMENT_TYPES,
+            new ServiceTypeByShipmentTypesResourceRelationshipPlugin(),
         );
 
         return $resourceRelationshipCollection;

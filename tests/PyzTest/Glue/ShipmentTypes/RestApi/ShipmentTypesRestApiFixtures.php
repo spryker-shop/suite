@@ -7,6 +7,7 @@
 
 namespace PyzTest\Glue\ShipmentTypes\RestApi;
 
+use Generated\Shared\Transfer\ServiceTypeTransfer;
 use Generated\Shared\Transfer\ShipmentTypeTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
@@ -33,6 +34,11 @@ class ShipmentTypesRestApiFixtures implements FixturesBuilderInterface, Fixtures
     protected array $shipmentTypes = [];
 
     /**
+     * @var \Generated\Shared\Transfer\ServiceTypeTransfer
+     */
+    protected ServiceTypeTransfer $serviceTypeTransfer;
+
+    /**
      * @param \PyzTest\Glue\ShipmentTypes\ShipmentTypesApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
@@ -43,6 +49,8 @@ class ShipmentTypesRestApiFixtures implements FixturesBuilderInterface, Fixtures
             $this->createActiveShipmentType($I, ['DE']),
             $this->createActiveShipmentType($I, ['DE']),
         ];
+        $this->serviceTypeTransfer = $this->createServiceType($I);
+        $this->createShipmentTypeServiceTypeRelation($I);
 
         return $this;
     }
@@ -53,6 +61,14 @@ class ShipmentTypesRestApiFixtures implements FixturesBuilderInterface, Fixtures
     public function getShipmentTypes(): array
     {
         return $this->shipmentTypes;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ServiceTypeTransfer
+     */
+    public function getServiceTypeTransfer(): ServiceTypeTransfer
+    {
+        return $this->serviceTypeTransfer;
     }
 
     /**
@@ -72,5 +88,28 @@ class ShipmentTypesRestApiFixtures implements FixturesBuilderInterface, Fixtures
             ShipmentTypeTransfer::IS_ACTIVE => true,
             ShipmentTypeTransfer::STORE_RELATION => $storeRelationTransfer,
         ]);
+    }
+
+    /**
+     * @param \PyzTest\Glue\ShipmentTypes\ShipmentTypesApiTester $I
+     *
+     * @return \Generated\Shared\Transfer\ServiceTypeTransfer
+     */
+    protected function createServiceType(ShipmentTypesApiTester $I): ServiceTypeTransfer
+    {
+        return $I->haveServiceType();
+    }
+
+    /**
+     * @param \PyzTest\Glue\ShipmentTypes\ShipmentTypesApiTester $I
+     *
+     * @return void
+     */
+    protected function createShipmentTypeServiceTypeRelation(ShipmentTypesApiTester $I): void
+    {
+        $I->haveShipmentTypeServiceTypeRelation(
+            $this->shipmentTypes[0],
+            $this->serviceTypeTransfer,
+        );
     }
 }

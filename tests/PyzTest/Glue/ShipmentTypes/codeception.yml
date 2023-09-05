@@ -31,6 +31,8 @@ suites:
                 - \SprykerTest\Shared\ShipmentType\Helper\ShipmentTypeHelper
                 - \SprykerTest\Shared\Store\Helper\StoreDataHelper
                 - \SprykerTest\Shared\Store\Helper\StoreDependencyHelper
+                - \SprykerTest\Shared\ServicePoint\Helper\ServicePointHelper
+                - \SprykerTest\Shared\ShipmentTypeServicePoint\Helper\ShipmentTypeServicePointHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser
