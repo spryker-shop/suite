@@ -68,6 +68,46 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new EnvironmentInfoHeaderEventDispatcherPlugin(),
             new SecurityBlockerBackofficeUserEventDispatcherPlugin(),
             new SecurityBlockerMerchantPortalUserEventDispatcherPlugin(),
+            new GatewayControllerEventDispatcherPlugin(),
+            new ApiControllerEventDispatcherPlugin(),
+        ];
+
+        if (class_exists(ProfilerRequestEventDispatcherPlugin::class)) {
+            $plugins[] = new ProfilerRequestEventDispatcherPlugin();
+        }
+
+        return $plugins;
+    }
+
+    /**
+     * @return array<\Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface>
+     */
+    protected function getBackofficeEventDispatcherPlugins(): array
+    {
+        $plugins = [
+            new AccessControlEventDispatcherPlugin(),
+            new EventBehaviorEventDispatcherPlugin(),
+            new HeadersSecurityEventDispatcherPlugin(),
+            new LocaleEventDispatcherPlugin(),
+            new MonitoringRequestTransactionEventDispatcherPlugin(),
+            new RouterLocaleEventDispatcherPlugin(),
+            new RouterListenerEventDispatcherPlugin(),
+            new RouterSslRedirectEventDispatcherPlugin(),
+            new CookieEventDispatcherPlugin(),
+            new FragmentEventDispatcherPlugin(),
+            new HstsHeaderEventDispatcher(),
+            new CacheControlHeaderEventDispatcherPlugin(),
+            new TwigEventDispatcherPlugin(),
+            new SessionEventDispatcherPlugin(),
+            new SaveSessionEventDispatcherPlugin(),
+            new AutoloaderCacheEventDispatcherPlugin(),
+            new RequestAttributesEventDispatcherPlugin(),
+            new ResponseListenerEventDispatcherPlugin(),
+            new ErrorPageEventDispatcherPlugin(),
+            new RedirectUrlValidationEventDispatcherPlugin(),
+            new EnvironmentInfoHeaderEventDispatcherPlugin(),
+            new SecurityBlockerBackofficeUserEventDispatcherPlugin(),
+            new SecurityBlockerMerchantPortalUserEventDispatcherPlugin(),
         ];
 
         if (class_exists(ProfilerRequestEventDispatcherPlugin::class)) {
