@@ -113,6 +113,8 @@ use SprykerShop\Yves\ProductLabelWidget\Widget\ProductAbstractLabelWidget;
 use SprykerShop\Yves\ProductLabelWidget\Widget\ProductConcreteLabelWidget;
 use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\CartProductMeasurementUnitQuantitySelectorWidget;
 use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\ManageProductMeasurementUnitWidget;
+use SprykerShop\Yves\ProductOfferServicePointAvailabilityWidget\Widget\ProductOfferServicePointAvailabilityDisplayWidget;
+use SprykerShop\Yves\ProductOfferServicePointAvailabilityWidget\Widget\ProductOfferServicePointAvailabilityWidget;
 use SprykerShop\Yves\ProductOfferShoppingListWidget\Widget\ProductOfferShoppingListWidget;
 use SprykerShop\Yves\ProductOfferWidget\Widget\ShoppingListProductOfferWidget;
 use SprykerShop\Yves\ProductOptionWidget\Widget\ProductOptionConfiguratorWidget;
@@ -331,6 +333,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ShipmentTypeAddressFormWidget::class,
             SalesServicePointNameForShipmentGroupWidget::class,
             ClickCollectServicePointAddressFormWidget::class,
+            ProductOfferServicePointAvailabilityWidget::class,
+            ProductOfferServicePointAvailabilityDisplayWidget::class,
         ];
     }
 
