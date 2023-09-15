@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a8ce27d90b80fc3005304b6392b7a37",
+    "content-hash": "ba43a27e7e8c91a13db917cbc3a6512c",
     "packages": [
         {
             "name": "async-aws/core",
@@ -10732,6 +10732,49 @@
             "time": "2023-01-31T08:51:30+00:00"
         },
         {
+            "name": "spryker-shop/merchant-product-offer-service-point-availability-widget",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/merchant-product-offer-service-point-availability-widget.git",
+                "reference": "99f6a2014fbfab3ef0ca4a088ef5c83ae3beb1d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/merchant-product-offer-service-point-availability-widget/zipball/99f6a2014fbfab3ef0ca4a088ef5c83ae3beb1d5",
+                "reference": "99f6a2014fbfab3ef0ca4a088ef5c83ae3beb1d5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker-shop/product-offer-service-point-availability-widget": "^0.1.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProductOfferServicePointAvailabilityWidget module",
+            "support": {
+                "source": "https://github.com/spryker-shop/merchant-product-offer-service-point-availability-widget/tree/0.1.0"
+            },
+            "time": "2023-09-15T12:54:14+00:00"
+        },
+        {
             "name": "spryker-shop/merchant-product-offer-widget",
             "version": "2.4.1",
             "source": {
@@ -12972,6 +13015,54 @@
             "time": "2023-03-31T19:36:14+00:00"
         },
         {
+            "name": "spryker-shop/product-offer-service-point-availability-widget",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-offer-service-point-availability-widget.git",
+                "reference": "64dbbf4c61166bbcf7d588066be6be05238f694f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-offer-service-point-availability-widget/zipball/64dbbf4c61166bbcf7d588066be6be05238f694f",
+                "reference": "64dbbf4c61166bbcf7d588066be6be05238f694f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker-shop/shop-ui": "^1.45.1",
+                "spryker/cart": "^7.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-offer-service-point-availability-calculator": "^0.1.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/application": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferServicePointAvailabilityWidget module",
+            "support": {
+                "source": "https://github.com/spryker-shop/product-offer-service-point-availability-widget/tree/0.1.0"
+            },
+            "time": "2023-09-15T12:54:14+00:00"
+        },
+        {
             "name": "spryker-shop/product-offer-shopping-list-widget",
             "version": "1.0.0",
             "source": {
@@ -14833,16 +14924,16 @@
         },
         {
             "name": "spryker-shop/service-point-widget",
-            "version": "0.4.0",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/service-point-widget.git",
-                "reference": "ac8ff6327d8f351e254c559be28c02352c9870de"
+                "reference": "bd30129031b26b0ad52bcff20dad8986a0c711ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/service-point-widget/zipball/ac8ff6327d8f351e254c559be28c02352c9870de",
-                "reference": "ac8ff6327d8f351e254c559be28c02352c9870de",
+                "url": "https://api.github.com/repos/spryker-shop/service-point-widget/zipball/bd30129031b26b0ad52bcff20dad8986a0c711ba",
+                "reference": "bd30129031b26b0ad52bcff20dad8986a0c711ba",
                 "shasum": ""
             },
             "require": {
@@ -14862,6 +14953,7 @@
                 "spryker/router": "*"
             },
             "suggest": {
+                "spryker-shop/product-offer-service-point-availability-widget": "Use this module if you need use product offer service point availability widgets.",
                 "spryker/router": "Use this module if you need use the RouterProviderPlugin.",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
@@ -14882,9 +14974,9 @@
             ],
             "description": "ServicePointWidget module",
             "support": {
-                "source": "https://github.com/spryker-shop/service-point-widget/tree/0.4.0"
+                "source": "https://github.com/spryker-shop/service-point-widget/tree/0.5.0"
             },
-            "time": "2023-09-05T15:42:18+00:00"
+            "time": "2023-09-15T12:54:14+00:00"
         },
         {
             "name": "spryker-shop/session-agent-validation",
