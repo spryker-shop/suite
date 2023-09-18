@@ -47,3 +47,8 @@ sections:
         scheduler-setup:
             command: 'vendor/bin/console scheduler:setup -vvv --no-ansi'
             stores: true
+
+    data-import:
+        glossary:
+            command: 'vendor/bin/console data:import:glossary -vvv --no-ansi'
+            stores: true
