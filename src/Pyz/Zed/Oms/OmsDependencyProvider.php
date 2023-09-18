@@ -45,6 +45,7 @@ use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendEventPaymentRefundPend
 use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
+use Spryker\Zed\TaxApp\Communication\Plugin\Oms\Command\SubmitPaymentTaxInvoicePlugin;
 use Spryker\Zed\WarehouseAllocation\Communication\Plugin\Oms\SalesOrderWarehouseAllocationCommandPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\CancelAndRecalculateCommandByOrderPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\CancelCommandPlugin;
@@ -143,6 +144,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new PartialRefundCommandPlugin(), 'Payone/PartialRefund');
 
             $commandCollection->add(new SendOrderStatusChangedMessagePlugin(), 'Order/RequestProductReviews');
+            $commandCollection->add(new SubmitPaymentTaxInvoicePlugin(), 'TaxApp/SubmitPaymentTaxInvoice');
 
             return $commandCollection;
         });
