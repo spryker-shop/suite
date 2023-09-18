@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.281.7",
+            "version": "3.281.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "926cea9a41a545ca9801ac304f2a9ffd23ac68c9"
+                "reference": "eb349b9f31502a05c70362f57913b9fed6b65b1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/926cea9a41a545ca9801ac304f2a9ffd23ac68c9",
-                "reference": "926cea9a41a545ca9801ac304f2a9ffd23ac68c9",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/eb349b9f31502a05c70362f57913b9fed6b65b1f",
+                "reference": "eb349b9f31502a05c70362f57913b9fed6b65b1f",
                 "shasum": ""
             },
             "require": {
@@ -335,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.281.7"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.281.8"
             },
-            "time": "2023-09-14T18:05:11+00:00"
+            "time": "2023-09-15T18:34:59+00:00"
         },
         {
             "name": "brick/math",
@@ -4207,16 +4207,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "3.0.21",
+            "version": "3.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "4580645d3fc05c189024eb3b834c6c1e4f0f30a1"
+                "reference": "b6bd1c5f79b2c39e144770eb6d9180fbdb00d09b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/4580645d3fc05c189024eb3b834c6c1e4f0f30a1",
-                "reference": "4580645d3fc05c189024eb3b834c6c1e4f0f30a1",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/b6bd1c5f79b2c39e144770eb6d9180fbdb00d09b",
+                "reference": "b6bd1c5f79b2c39e144770eb6d9180fbdb00d09b",
                 "shasum": ""
             },
             "require": {
@@ -4297,7 +4297,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpseclib/phpseclib/issues",
-                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.21"
+                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.22"
             },
             "funding": [
                 {
@@ -4313,7 +4313,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-09T15:24:48+00:00"
+            "time": "2023-09-16T11:49:37+00:00"
         },
         {
             "name": "predis/predis",
@@ -5599,12 +5599,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/evaluator.git",
-                "reference": "f8f990e6a5bf9f4914e98e32c0f759cfc73f89d9"
+                "reference": "f79b968983d9ec58d510f9f8988baf55a6e518da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/f8f990e6a5bf9f4914e98e32c0f759cfc73f89d9",
-                "reference": "f8f990e6a5bf9f4914e98e32c0f759cfc73f89d9",
+                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/f79b968983d9ec58d510f9f8988baf55a6e518da",
+                "reference": "f79b968983d9ec58d510f9f8988baf55a6e518da",
                 "shasum": ""
             },
             "require": {
@@ -5665,9 +5665,9 @@
             "description": "The tool for evaluating Spryker shops",
             "support": {
                 "issues": "https://github.com/spryker-sdk/evaluator/issues",
-                "source": "https://github.com/spryker-sdk/evaluator/tree/0.1.6"
+                "source": "https://github.com/spryker-sdk/evaluator/tree/0.1.7"
             },
-            "time": "2023-09-04T07:27:07+00:00"
+            "time": "2023-09-18T09:48:13+00:00"
         },
         {
             "name": "spryker-sdk/security-checker",
@@ -6163,7 +6163,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "ef9da488534b662158e005dbdd6ac0f2b7a933fd"
+                "reference": "b9bf6f15c4064ead5875108953ac1cfb753daabb"
             },
             "require": {
                 "php": ">=8.0"
@@ -6863,6 +6863,7 @@
                 "spryker/product-offer-shopping-lists-rest-api": "*",
                 "spryker/product-offer-stock": "*",
                 "spryker/product-offer-stock-data-import": "*",
+                "spryker/product-offer-stock-extension": "*",
                 "spryker/product-offer-stock-gui": "*",
                 "spryker/product-offer-stock-gui-extension": "*",
                 "spryker/product-offer-storage": "*",
@@ -7116,6 +7117,8 @@
                 "spryker/synchronization": "*",
                 "spryker/synchronization-extension": "*",
                 "spryker/tax": "*",
+                "spryker/tax-app": "*",
+                "spryker/tax-app-extension": "*",
                 "spryker/tax-merchant-portal-gui": "*",
                 "spryker/tax-product-connector": "*",
                 "spryker/tax-product-connector-extension": "*",
@@ -7204,7 +7207,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2023-09-14T06:27:30+00:00"
+            "time": "2023-09-18T09:59:00+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7212,7 +7215,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "9991b2979d90304811671243a4e45aa80f7e0946"
+                "reference": "099cf243d5094f117cc7da63d0d99de029dd7904"
             },
             "require": {
                 "php": ">=8.0"
@@ -7405,7 +7408,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2023-09-15T12:54:14+00:00"
+            "time": "2023-09-18T09:59:02+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -16170,16 +16173,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.20",
+            "version": "v0.11.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "0fa27040553d1d280a67a4393194df5228afea5b"
+                "reference": "bcb22101107f3bf770523b65630c9d547f60c540"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/0fa27040553d1d280a67a4393194df5228afea5b",
-                "reference": "0fa27040553d1d280a67a4393194df5228afea5b",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/bcb22101107f3bf770523b65630c9d547f60c540",
+                "reference": "bcb22101107f3bf770523b65630c9d547f60c540",
                 "shasum": ""
             },
             "require": {
@@ -16209,6 +16212,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-main": "0.11.x-dev"
+                },
+                "bamarni-bin": {
+                    "bin-links": false,
+                    "forward-command": false
                 }
             },
             "autoload": {
@@ -16240,9 +16247,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.20"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.21"
             },
-            "time": "2023-07-31T14:32:22+00:00"
+            "time": "2023-09-17T21:15:54+00:00"
         },
         {
             "name": "sebastian/cli-parser",
