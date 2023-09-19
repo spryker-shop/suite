@@ -236,8 +236,6 @@ _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
             - glue-storefront.de.spryker.local
         apt:
             packages:
-                - redis-tools
-                - redis-server
                 - apache2-utils
                 - apt-transport-https
                 - ca-certificates
@@ -256,6 +254,8 @@ _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
     before_install:
+        - sudo apt upgrade
+        - sudo apt update
         - |
             ./config/Shared/ci/travis/download-and-cache-file.sh  \
               https://github.com/docker/docker-credential-helpers/releases/download/v0.6.3/docker-credential-pass-v0.6.3-amd64.tar.gz \
@@ -282,8 +282,6 @@ _DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE: &DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
             - mp.eu.spryker.local
         apt:
             packages:
-                - redis-tools
-                - redis-server
                 - apache2-utils
                 - apt-transport-https
                 - ca-certificates
