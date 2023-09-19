@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6592f0d1c17a7f5f0e5b2c7aed20f364",
+    "content-hash": "22d3dd346134386b47db1c3e707b6b9e",
     "packages": [
         {
             "name": "async-aws/core",
@@ -18082,16 +18082,16 @@
         },
         {
             "name": "spryker/availability",
-            "version": "9.18.0",
+            "version": "9.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/availability.git",
-                "reference": "8b69d070335433a1483934cc65cd798c6e98a510"
+                "reference": "8ece945666e292626470cddd5da6f16cee71daeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/availability/zipball/8b69d070335433a1483934cc65cd798c6e98a510",
-                "reference": "8b69d070335433a1483934cc65cd798c6e98a510",
+                "url": "https://api.github.com/repos/spryker/availability/zipball/8ece945666e292626470cddd5da6f16cee71daeb",
+                "reference": "8ece945666e292626470cddd5da6f16cee71daeb",
                 "shasum": ""
             },
             "require": {
@@ -18099,6 +18099,7 @@
                 "spryker/acl-merchant-portal-extension": "^1.0.0",
                 "spryker/availability-extension": "^1.2.0",
                 "spryker/decimal-object": "^1.0.0",
+                "spryker/dynamic-entity-extension": "^1.0.0",
                 "spryker/event": "^2.3.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/key-builder": "^1.0.0",
@@ -18114,7 +18115,7 @@
                 "spryker/storage": "^3.0.0",
                 "spryker/store": "^1.19.0",
                 "spryker/touch": "^3.0.0 || ^4.0.0",
-                "spryker/transfer": "^3.25.0",
+                "spryker/transfer": "^3.27.0",
                 "spryker/wishlist-extension": "^1.2.0",
                 "spryker/zed-request": "^3.0.0"
             },
@@ -18147,9 +18148,9 @@
             ],
             "description": "Availability module",
             "support": {
-                "source": "https://github.com/spryker/availability/tree/9.18.0"
+                "source": "https://github.com/spryker/availability/tree/9.19.0"
             },
-            "time": "2023-03-31T19:36:11+00:00"
+            "time": "2023-09-19T09:44:37+00:00"
         },
         {
             "name": "spryker/availability-cart-connector",
@@ -31346,20 +31347,21 @@
         },
         {
             "name": "spryker/dynamic-entity",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/dynamic-entity.git",
-                "reference": "c27457607b879af2ee4c035a0f538f5cf1718ac7"
+                "reference": "570c09489bc8bea073ee154f6369d040b65c4570"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/dynamic-entity/zipball/c27457607b879af2ee4c035a0f538f5cf1718ac7",
-                "reference": "c27457607b879af2ee4c035a0f538f5cf1718ac7",
+                "url": "https://api.github.com/repos/spryker/dynamic-entity/zipball/570c09489bc8bea073ee154f6369d040b65c4570",
+                "reference": "570c09489bc8bea073ee154f6369d040b65c4570",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
+                "spryker/dynamic-entity-extension": "^1.0.0",
                 "spryker/installer-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.6.0",
@@ -31389,9 +31391,9 @@
             ],
             "description": "DynamicEntity module",
             "support": {
-                "source": "https://github.com/spryker/dynamic-entity/tree/0.2.0"
+                "source": "https://github.com/spryker/dynamic-entity/tree/0.2.1"
             },
-            "time": "2023-09-14T06:27:30+00:00"
+            "time": "2023-09-19T09:44:37+00:00"
         },
         {
             "name": "spryker/dynamic-entity-backend-api",
@@ -31453,6 +31455,48 @@
                 "source": "https://github.com/spryker/dynamic-entity-backend-api/tree/0.4.0"
             },
             "time": "2023-09-14T06:27:30+00:00"
+        },
+        {
+            "name": "spryker/dynamic-entity-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/dynamic-entity-extension.git",
+                "reference": "bf84f58deb3dc0135ded9e91e19d58c53e02fc34"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/dynamic-entity-extension/zipball/bf84f58deb3dc0135ded9e91e19d58c53e02fc34",
+                "reference": "bf84f58deb3dc0135ded9e91e19d58c53e02fc34",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DynamicEntityExtension module",
+            "support": {
+                "source": "https://github.com/spryker/dynamic-entity-extension/tree/1.0.0"
+            },
+            "time": "2023-09-19T09:44:37+00:00"
         },
         {
             "name": "spryker/dynamic-entity-gui",
