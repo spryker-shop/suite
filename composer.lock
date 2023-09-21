@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22d3dd346134386b47db1c3e707b6b9e",
+    "content-hash": "ac3a054f41256e899d2009b130ef146d",
     "packages": [
         {
             "name": "async-aws/core",
@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.281.10",
+            "version": "3.281.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "049604298f769fa218549d8ff5cac1981f0a349a"
+                "reference": "9d466efae67d5016ed132fd4ffa1566a7d4cab98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/049604298f769fa218549d8ff5cac1981f0a349a",
-                "reference": "049604298f769fa218549d8ff5cac1981f0a349a",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9d466efae67d5016ed132fd4ffa1566a7d4cab98",
+                "reference": "9d466efae67d5016ed132fd4ffa1566a7d4cab98",
                 "shasum": ""
             },
             "require": {
@@ -335,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.281.10"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.281.11"
             },
-            "time": "2023-09-19T18:33:42+00:00"
+            "time": "2023-09-20T19:16:24+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -36462,6 +36462,51 @@
             "time": "2023-07-03T09:56:58+00:00"
         },
         {
+            "name": "spryker/merchant-product-offer-service-point-availabilities-rest-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-product-offer-service-point-availabilities-rest-api.git",
+                "reference": "6e596fc3818e39f86f6558d48f1a79847fd111c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-product-offer-service-point-availabilities-rest-api/zipball/6e596fc3818e39f86f6558d48f1a79847fd111c8",
+                "reference": "6e596fc3818e39f86f6558d48f1a79847fd111c8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/merchant": "^3.0.0",
+                "spryker/product-offer-service-point-availabilities-rest-api": "^0.1.0",
+                "spryker/product-offer-service-point-availability-calculator": "^0.1.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProductOfferServicePointAvailabilitiesRestApi module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-product-offer-service-point-availabilities-rest-api/tree/0.1.0"
+            },
+            "time": "2023-09-21T11:22:33+00:00"
+        },
+        {
             "name": "spryker/merchant-product-offer-service-point-availability",
             "version": "0.1.0",
             "source": {
@@ -51030,6 +51075,53 @@
             "time": "2023-09-12T13:38:42+00:00"
         },
         {
+            "name": "spryker/product-offer-service-point-availabilities-rest-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-service-point-availabilities-rest-api.git",
+                "reference": "90a780c389bdc59b46bbb6ad24c6f7a13a216ae3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-service-point-availabilities-rest-api/zipball/90a780c389bdc59b46bbb6ad24c6f7a13a216ae3",
+                "reference": "90a780c389bdc59b46bbb6ad24c6f7a13a216ae3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/glue-application": "^1.8.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-offer-service-point-availability-calculator": "^0.1.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferServicePointAvailabilitiesRestApi module",
+            "support": {
+                "source": "https://github.com/spryker/product-offer-service-point-availabilities-rest-api/tree/0.1.0"
+            },
+            "time": "2023-09-21T11:22:33+00:00"
+        },
+        {
             "name": "spryker/product-offer-service-point-availability",
             "version": "0.1.0",
             "source": {
@@ -60814,16 +60906,16 @@
         },
         {
             "name": "spryker/service-point",
-            "version": "0.4.5",
+            "version": "0.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-point.git",
-                "reference": "bbf2531e14b544c5d02615ed5197197ce76ba2bc"
+                "reference": "30f6fe3072d594d5f7a71a988d580c13f6491689"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-point/zipball/bbf2531e14b544c5d02615ed5197197ce76ba2bc",
-                "reference": "bbf2531e14b544c5d02615ed5197197ce76ba2bc",
+                "url": "https://api.github.com/repos/spryker/service-point/zipball/30f6fe3072d594d5f7a71a988d580c13f6491689",
+                "reference": "30f6fe3072d594d5f7a71a988d580c13f6491689",
                 "shasum": ""
             },
             "require": {
@@ -60859,9 +60951,9 @@
             ],
             "description": "ServicePoint module",
             "support": {
-                "source": "https://github.com/spryker/service-point/tree/0.4.5"
+                "source": "https://github.com/spryker/service-point/tree/0.4.6"
             },
-            "time": "2023-09-12T13:38:42+00:00"
+            "time": "2023-09-21T11:22:33+00:00"
         },
         {
             "name": "spryker/service-point-cart",
@@ -61188,16 +61280,16 @@
         },
         {
             "name": "spryker/service-points-rest-api",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-points-rest-api.git",
-                "reference": "28577a489f4248c9939fa90cf9b2cfa1f0274094"
+                "reference": "eef20749686cf6af9a3658a6da8ad1b1ab7364e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-points-rest-api/zipball/28577a489f4248c9939fa90cf9b2cfa1f0274094",
-                "reference": "28577a489f4248c9939fa90cf9b2cfa1f0274094",
+                "url": "https://api.github.com/repos/spryker/service-points-rest-api/zipball/eef20749686cf6af9a3658a6da8ad1b1ab7364e7",
+                "reference": "eef20749686cf6af9a3658a6da8ad1b1ab7364e7",
                 "shasum": ""
             },
             "require": {
@@ -61233,9 +61325,9 @@
             ],
             "description": "ServicePointsRestApi module",
             "support": {
-                "source": "https://github.com/spryker/service-points-rest-api/tree/0.3.0"
+                "source": "https://github.com/spryker/service-points-rest-api/tree/0.3.1"
             },
-            "time": "2023-09-05T15:42:15+00:00"
+            "time": "2023-09-21T11:22:33+00:00"
         },
         {
             "name": "spryker/session",
@@ -62577,6 +62669,51 @@
                 "source": "https://github.com/spryker/shipment-type-data-import/tree/0.1.1"
             },
             "time": "2023-06-06T09:21:00+00:00"
+        },
+        {
+            "name": "spryker/shipment-type-product-offer-service-point-availabilities-rest-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shipment-type-product-offer-service-point-availabilities-rest-api.git",
+                "reference": "b35d9b8ecfab3c8e5f5537495c880e670439a3e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shipment-type-product-offer-service-point-availabilities-rest-api/zipball/b35d9b8ecfab3c8e5f5537495c880e670439a3e9",
+                "reference": "b35d9b8ecfab3c8e5f5537495c880e670439a3e9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/product-offer-service-point-availabilities-rest-api": "^0.1.0",
+                "spryker/product-offer-service-point-availability-calculator": "^0.1.0",
+                "spryker/shipment-type": "^0.1.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShipmentTypeProductOfferServicePointAvailabilitiesRestApi module",
+            "support": {
+                "source": "https://github.com/spryker/shipment-type-product-offer-service-point-availabilities-rest-api/tree/0.1.0"
+            },
+            "time": "2023-09-21T11:22:33+00:00"
         },
         {
             "name": "spryker/shipment-type-service-point",
