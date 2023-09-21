@@ -195,6 +195,7 @@ use Spryker\Glue\ProductOfferAvailabilitiesRestApi\Plugin\GlueApplication\Produc
 use Spryker\Glue\ProductOfferAvailabilitiesRestApi\Plugin\GlueApplication\ProductOfferAvailabilitiesResourceRoutePlugin;
 use Spryker\Glue\ProductOfferPricesRestApi\Plugin\GlueApplication\ProductOfferPriceByProductOfferReferenceResourceRelationshipPlugin;
 use Spryker\Glue\ProductOfferPricesRestApi\Plugin\GlueApplication\ProductOfferPricesResourceRoutePlugin;
+use Spryker\Glue\ProductOfferServicePointAvailabilitiesRestApi\Plugin\GlueApplication\ProductOfferServicePointAvailabilitiesResourceRoutePlugin;
 use Spryker\Glue\ProductOffersRestApi\Plugin\GlueApplication\ProductOffersByProductOfferReferenceResourceRelationshipPlugin;
 use Spryker\Glue\ProductOptionsRestApi\Plugin\GlueApplication\ProductOptionsByProductAbstractSkuResourceRelationshipPlugin;
 use Spryker\Glue\ProductOptionsRestApi\Plugin\GlueApplication\ProductOptionsByProductConcreteSkuResourceRelationshipPlugin;
@@ -382,6 +383,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ServicePointsResourceRoutePlugin(),
             new ServicePointAddressesResourceRoutePlugin(),
             new ShipmentTypesResourceRoutePlugin(),
+            new ProductOfferServicePointAvailabilitiesResourceRoutePlugin(),
         ];
     }
 
