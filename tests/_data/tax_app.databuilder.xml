@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<transfers
+    xmlns="spryker:databuilder-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:databuilder-01 http://static.spryker.com/databuilder-01.xsd"
+>
+
+    <transfer name="ConfigureTaxApp" strict="true">
+        <property name="apiUrl" type="string" dataBuilderRule="lexify('??????????')"/>
+        <property name="vendorCode" type="string" dataBuilderRule="lexify('??????????')"/>
+        <property name="storeReference" type="string" dataBuilderRule="=de-DE"/>
+        <property name="isActive" type="bool" dataBuilderRule="boolean(100)"/>
+    </transfer>
+
+    <transfer name="DeleteTaxApp" strict="true">
+        <property name="vendorCode" type="string" dataBuilderRule="lexify('??????????')"/>
+        <property name="storeReference" type="string" dataBuilderRule="=de-DE"/>
+    </transfer>
+
+</transfers>
