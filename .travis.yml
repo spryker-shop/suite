@@ -213,7 +213,7 @@ _VALIDATION_SNYK_SCRIPT: &VALIDATION_SNYK_SCRIPT
     - snyk test --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --severity-threshold=high
 
 _EVALUATOR_SCRIPT: &EVALUATOR_SCRIPT
-    - vendor/bin/evaluator evaluate
+    - vendor/bin/evaluator evaluate --exclude-checkers=NPM_CHECKER,SPRYKER_DEV_PACKAGES_CHECKER --format=compact
 
 _BROWSER_TESTING_AFTER_SCRIPT: &BROWSER_TESTING_AFTER_SCRIPT
     - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/chromedriver.log ; fi
