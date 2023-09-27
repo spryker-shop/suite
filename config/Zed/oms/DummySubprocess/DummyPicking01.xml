@@ -7,11 +7,11 @@
 
     <process name="DummyPicking">
         <states>
-            <state name="picking list generation scheduled" display="oms.state.picking-list-generation-scheduled"/>
-            <state name="picking list generation started" display="oms.state.picking-list-generation-started"/>
-            <state name="ready for picking" display="oms.state.ready-for-picking"/>
-            <state name="picking started" display="oms.state.picking-started"/>
-            <state name="picking finished" display="oms.state.picking-done"/>
+            <state name="picking list generation scheduled" display="oms.state.confirmed"/>
+            <state name="picking list generation started" display="oms.state.confirmed"/>
+            <state name="ready for picking" display="oms.state.confirmed"/>
+            <state name="picking started" display="oms.state.confirmed"/>
+            <state name="picking finished" display="oms.state.confirmed"/>
         </states>
 
         <transitions>
