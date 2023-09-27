@@ -243,6 +243,7 @@ use Spryker\Glue\SecurityBlockerRestApi\Plugin\GlueApplication\SecurityBlockerCu
 use Spryker\Glue\SecurityBlockerRestApi\Plugin\GlueApplication\SecurityBlockerCustomerRestRequestValidatorPlugin;
 use Spryker\Glue\ServicePointsRestApi\Plugin\GlueApplication\ServicePointAddressesByServicePointUuidResourceRelationshipPlugin;
 use Spryker\Glue\ServicePointsRestApi\Plugin\GlueApplication\ServicePointAddressesResourceRoutePlugin;
+use Spryker\Glue\ServicePointsRestApi\Plugin\GlueApplication\ServicePointsByCheckoutDataResourceRelationshipPlugin;
 use Spryker\Glue\ServicePointsRestApi\Plugin\GlueApplication\ServicePointsResourceRoutePlugin;
 use Spryker\Glue\ServicePointsRestApi\ServicePointsRestApiConfig;
 use Spryker\Glue\Session\Plugin\Application\SessionApplicationPlugin;
@@ -954,6 +955,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ServicePointsRestApiConfig::RESOURCE_SERVICE_POINTS,
             new ServicePointAddressesByServicePointUuidResourceRelationshipPlugin(),
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+            new ServicePointsByCheckoutDataResourceRelationshipPlugin(),
         );
 
         $resourceRelationshipCollection->addRelationship(

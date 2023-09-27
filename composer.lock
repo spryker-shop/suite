@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "497a1dcff7c382c82642f71e0c3e6c3a",
+    "content-hash": "e7e4e65bcebefadcb20b813bb471a94a",
     "packages": [
         {
             "name": "async-aws/core",
@@ -60760,16 +60760,16 @@
         },
         {
             "name": "spryker/service-point",
-            "version": "0.4.6",
+            "version": "0.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-point.git",
-                "reference": "30f6fe3072d594d5f7a71a988d580c13f6491689"
+                "reference": "5153326237a460fe93774fff0571c5955b54ee51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-point/zipball/30f6fe3072d594d5f7a71a988d580c13f6491689",
-                "reference": "30f6fe3072d594d5f7a71a988d580c13f6491689",
+                "url": "https://api.github.com/repos/spryker/service-point/zipball/5153326237a460fe93774fff0571c5955b54ee51",
+                "reference": "5153326237a460fe93774fff0571c5955b54ee51",
                 "shasum": ""
             },
             "require": {
@@ -60805,30 +60805,31 @@
             ],
             "description": "ServicePoint module",
             "support": {
-                "source": "https://github.com/spryker/service-point/tree/0.4.6"
+                "source": "https://github.com/spryker/service-point/tree/0.4.7"
             },
-            "time": "2023-09-21T11:22:33+00:00"
+            "time": "2023-09-27T14:12:57+00:00"
         },
         {
             "name": "spryker/service-point-cart",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-point-cart.git",
-                "reference": "ad580e3868a55bf88511481ab3d113b95aed50ac"
+                "reference": "0756e1aa47d902428ebf1ce35b32ed2e0c74eb2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-point-cart/zipball/ad580e3868a55bf88511481ab3d113b95aed50ac",
-                "reference": "ad580e3868a55bf88511481ab3d113b95aed50ac",
+                "url": "https://api.github.com/repos/spryker/service-point-cart/zipball/0756e1aa47d902428ebf1ce35b32ed2e0c74eb2c",
+                "reference": "0756e1aa47d902428ebf1ce35b32ed2e0c74eb2c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/cart": "^7.0.0",
+                "spryker/checkout-extension": "^1.2.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/quote": "^2.0.0",
-                "spryker/service-point": "^0.4.0",
+                "spryker/service-point": "^0.4.7",
                 "spryker/service-point-cart-extension": "^0.1.0",
                 "spryker/transfer": "^3.27.0",
                 "spryker/zed-request": "^3.0.0"
@@ -60836,6 +60837,8 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
+                "spryker/propel": "*",
+                "spryker/store": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -60855,9 +60858,9 @@
             ],
             "description": "ServicePointCart module",
             "support": {
-                "source": "https://github.com/spryker/service-point-cart/tree/0.1.0"
+                "source": "https://github.com/spryker/service-point-cart/tree/0.1.1"
             },
-            "time": "2023-08-09T13:13:54+00:00"
+            "time": "2023-09-27T14:12:57+00:00"
         },
         {
             "name": "spryker/service-point-cart-extension",
@@ -61134,24 +61137,26 @@
         },
         {
             "name": "spryker/service-points-rest-api",
-            "version": "0.3.1",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-points-rest-api.git",
-                "reference": "eef20749686cf6af9a3658a6da8ad1b1ab7364e7"
+                "reference": "a07a287089bdc7e4f40b61b2b933df175877d7b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-points-rest-api/zipball/eef20749686cf6af9a3658a6da8ad1b1ab7364e7",
-                "reference": "eef20749686cf6af9a3658a6da8ad1b1ab7364e7",
+                "url": "https://api.github.com/repos/spryker/service-points-rest-api/zipball/a07a287089bdc7e4f40b61b2b933df175877d7b5",
+                "reference": "a07a287089bdc7e4f40b61b2b933df175877d7b5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
+                "spryker/checkout-rest-api-extension": "^1.5.0",
                 "spryker/glossary-storage": "^1.5.0",
                 "spryker/glue-application": "^1.8.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/service-point": "^0.4.7",
                 "spryker/service-point-search": "^0.3.1",
                 "spryker/service-point-storage": "^0.4.0",
                 "spryker/store": "^1.19.0",
@@ -61160,6 +61165,9 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/propel": "*",
+                "spryker/quote": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -61179,9 +61187,9 @@
             ],
             "description": "ServicePointsRestApi module",
             "support": {
-                "source": "https://github.com/spryker/service-points-rest-api/tree/0.3.1"
+                "source": "https://github.com/spryker/service-points-rest-api/tree/0.4.0"
             },
-            "time": "2023-09-21T11:22:33+00:00"
+            "time": "2023-09-27T14:12:57+00:00"
         },
         {
             "name": "spryker/session",
@@ -62867,16 +62875,16 @@
         },
         {
             "name": "spryker/shipment-types-service-points-resource-relationship",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-types-service-points-resource-relationship.git",
-                "reference": "bbe8a2e4f887522feb6c920a767481071301edde"
+                "reference": "2febe0ae22d084b15fbb2de99aa067bcb1c90e9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-types-service-points-resource-relationship/zipball/bbe8a2e4f887522feb6c920a767481071301edde",
-                "reference": "bbe8a2e4f887522feb6c920a767481071301edde",
+                "url": "https://api.github.com/repos/spryker/shipment-types-service-points-resource-relationship/zipball/2febe0ae22d084b15fbb2de99aa067bcb1c90e9b",
+                "reference": "2febe0ae22d084b15fbb2de99aa067bcb1c90e9b",
                 "shasum": ""
             },
             "require": {
@@ -62884,7 +62892,7 @@
                 "spryker/glue-application": "^1.8.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/service-points-rest-api": "^0.3.0",
+                "spryker/service-points-rest-api": "^0.4.0",
                 "spryker/shipment-types-rest-api": "^0.1.0",
                 "spryker/transfer": "^3.27.0"
             },
@@ -62910,9 +62918,9 @@
             ],
             "description": "ShipmentTypesServicePointsResourceRelationship module",
             "support": {
-                "source": "https://github.com/spryker/shipment-types-service-points-resource-relationship/tree/0.1.0"
+                "source": "https://github.com/spryker/shipment-types-service-points-resource-relationship/tree/0.2.0"
             },
-            "time": "2023-09-05T15:42:15+00:00"
+            "time": "2023-09-27T14:12:57+00:00"
         },
         {
             "name": "spryker/shipments-backend-api",
