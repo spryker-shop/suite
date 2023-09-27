@@ -10,6 +10,7 @@ namespace PyzTest\Glue\Checkout;
 use Generated\Shared\DataBuilder\AddressBuilder;
 use Generated\Shared\DataBuilder\CustomerBuilder;
 use Generated\Shared\DataBuilder\ItemBuilder;
+use Generated\Shared\DataBuilder\ServicePointBuilder;
 use Generated\Shared\DataBuilder\ShipmentBuilder;
 use Generated\Shared\DataBuilder\StoreRelationBuilder;
 use Generated\Shared\Transfer\AddressTransfer;
@@ -25,7 +26,9 @@ use Generated\Shared\Transfer\RestCheckoutDataTransfer;
 use Generated\Shared\Transfer\RestCheckoutResponseTransfer;
 use Generated\Shared\Transfer\RestCustomerTransfer;
 use Generated\Shared\Transfer\RestPaymentTransfer;
+use Generated\Shared\Transfer\RestServicePointTransfer;
 use Generated\Shared\Transfer\RestShipmentTransfer;
+use Generated\Shared\Transfer\ServicePointTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
@@ -94,6 +97,11 @@ class CheckoutApiTester extends ApiEndToEndTester
      * @var int
      */
     protected const DEFAULT_QUOTE_ITEM_QUANTITY = 10;
+
+    /**
+     * @var string
+     */
+    protected const TEST_STORE_NAME = 'DE';
 
     /**
      * @return void
@@ -269,6 +277,22 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
+     * @param string $idServicePoint
+     * @param list<string> $itemGroupKeys
+     *
+     * @return list<array<string, mixed>>
+     */
+    public function getServicePointsRequestPayload(string $idServicePoint, array $itemGroupKeys): array
+    {
+        return [
+            [
+                RestServicePointTransfer::ID_SERVICE_POINT => $idServicePoint,
+                RestServicePointTransfer::ITEMS => $itemGroupKeys,
+            ],
+        ];
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
      * @param \Generated\Shared\Transfer\ShipmentMethodTransfer $shipmentMethodTransfer
      * @param int $quantity
@@ -354,6 +378,28 @@ class CheckoutApiTester extends ApiEndToEndTester
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
             QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
             QuoteTransfer::BILLING_ADDRESS => (new AddressBuilder())->build(),
+        ]);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function havePersistentQuoteWithItemAndItemServicePoint(CustomerTransfer $customerTransfer): QuoteTransfer
+    {
+        $productConcreteTransfer = $this->haveProductWithStock();
+        $storeTransfer = $this->haveStore([StoreTransfer::NAME => static::TEST_STORE_NAME]);
+        $quoteItemData = $this->createItemTransferWithServicePoint($productConcreteTransfer, $storeTransfer)->toArray();
+
+        return $this->havePersistentQuote([
+            QuoteTransfer::CUSTOMER => $customerTransfer,
+            QuoteTransfer::TOTALS => (new TotalsTransfer())
+                ->setSubtotal(random_int(1000, 10000))
+                ->setPriceToPay(random_int(1000, 10000)),
+            QuoteTransfer::ITEMS => [$quoteItemData],
+            QuoteTransfer::STORE => $storeTransfer->toArray(),
+            QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
         ]);
     }
 
@@ -517,6 +563,39 @@ class CheckoutApiTester extends ApiEndToEndTester
         }
 
         return $quoteTransferItems;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
+     * @return \Generated\Shared\Transfer\ItemTransfer
+     */
+    protected function createItemTransferWithServicePoint(
+        ProductConcreteTransfer $productConcreteTransfer,
+        StoreTransfer $storeTransfer,
+    ): ItemTransfer {
+        $servicePointBuilder = (new ServicePointBuilder([
+            ServicePointTransfer::UUID => uniqid('test-service-point'),
+            ServicePointTransfer::IS_ACTIVE => true,
+            ]))
+            ->withStoreRelation([
+                StoreRelationTransfer::STORES =>
+                    [
+                        $storeTransfer->toArray(),
+                    ],
+            ])
+            ->build();
+        $servicePointData = $this->haveServicePoint($servicePointBuilder->toArray())->toArray();
+
+        return (new ItemBuilder([
+            ItemTransfer::SKU => $productConcreteTransfer->getSku(),
+            ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
+            ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
+            ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
+            ItemTransfer::QUANTITY => 1,
+            ItemTransfer::SERVICE_POINT => $servicePointData,
+        ]))->build();
     }
 
     /**
