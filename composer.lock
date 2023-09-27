@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7e4e65bcebefadcb20b813bb471a94a",
+    "content-hash": "864fcab62905b6ab206878cc18e854a6",
     "packages": [
         {
             "name": "async-aws/core",
@@ -2165,16 +2165,16 @@
         },
         {
             "name": "justinrainbow/json-schema",
-            "version": "5.2.12",
+            "version": "v5.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/justinrainbow/json-schema.git",
-                "reference": "ad87d5a5ca981228e0e205c2bc7dfb8e24559b60"
+                "reference": "fbbe7e5d79f618997bc3332a6f49246036c45793"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/ad87d5a5ca981228e0e205c2bc7dfb8e24559b60",
-                "reference": "ad87d5a5ca981228e0e205c2bc7dfb8e24559b60",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/fbbe7e5d79f618997bc3332a6f49246036c45793",
+                "reference": "fbbe7e5d79f618997bc3332a6f49246036c45793",
                 "shasum": ""
             },
             "require": {
@@ -2229,9 +2229,9 @@
             ],
             "support": {
                 "issues": "https://github.com/justinrainbow/json-schema/issues",
-                "source": "https://github.com/justinrainbow/json-schema/tree/5.2.12"
+                "source": "https://github.com/justinrainbow/json-schema/tree/v5.2.13"
             },
-            "time": "2022-04-13T08:02:27+00:00"
+            "time": "2023-09-26T02:20:38+00:00"
         },
         {
             "name": "laminas/laminas-barcode",
@@ -17273,16 +17273,16 @@
         },
         {
             "name": "spryker/api-key",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/api-key.git",
-                "reference": "96692aa796cfd38bb99b4ed8e3143fa0e7d6ba2c"
+                "reference": "5796b58d41749bbb4152e8d5cf99a8a3463e2e46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/api-key/zipball/96692aa796cfd38bb99b4ed8e3143fa0e7d6ba2c",
-                "reference": "96692aa796cfd38bb99b4ed8e3143fa0e7d6ba2c",
+                "url": "https://api.github.com/repos/spryker/api-key/zipball/5796b58d41749bbb4152e8d5cf99a8a3463e2e46",
+                "reference": "5796b58d41749bbb4152e8d5cf99a8a3463e2e46",
                 "shasum": ""
             },
             "require": {
@@ -17304,7 +17304,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -17318,36 +17318,42 @@
             ],
             "description": "ApiKey module",
             "support": {
-                "source": "https://github.com/spryker/api-key/tree/1.0.0"
+                "source": "https://github.com/spryker/api-key/tree/2.0.0"
             },
-            "time": "2023-08-22T12:38:47+00:00"
+            "time": "2023-09-27T16:08:39+00:00"
         },
         {
-            "name": "spryker/api-key-gui",
+            "name": "spryker/api-key-authorization-connector",
             "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/api-key-gui.git",
-                "reference": "ed761a76c6ec5c7326ff8bf5ac15d02424a60f33"
+                "url": "https://github.com/spryker/api-key-authorization-connector.git",
+                "reference": "8a1e3241c8736c518a7c7fb2b3d8bf7ea37d2e9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/api-key-gui/zipball/ed761a76c6ec5c7326ff8bf5ac15d02424a60f33",
-                "reference": "ed761a76c6ec5c7326ff8bf5ac15d02424a60f33",
+                "url": "https://api.github.com/repos/spryker/api-key-authorization-connector/zipball/8a1e3241c8736c518a7c7fb2b3d8bf7ea37d2e9f",
+                "reference": "8a1e3241c8736c518a7c7fb2b3d8bf7ea37d2e9f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
-                "spryker/api-key": "^1.0.0",
-                "spryker/gui": "^3.38.0",
-                "spryker/kernel": "^3.33.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/transfer": "^3.27.0",
-                "spryker/user": "^3.0.0",
-                "spryker/util-text": "^1.2.0"
+                "spryker/api-key": "^2.0.0",
+                "spryker/authorization-extension": "^1.0.0",
+                "spryker/glue-backend-api-application-authorization-connector-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/log": "^3.7.0",
+                "spryker/monolog": "^2.0.0",
+                "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*",
+                "spryker/user": "*"
+            },
+            "suggest": {
+                "spryker/container": "Add this module when you want to use the Container."
             },
             "type": "library",
             "extra": {
@@ -17364,11 +17370,59 @@
             "license": [
                 "proprietary"
             ],
+            "description": "ApiKeyAuthorizationConnector module",
+            "support": {
+                "source": "https://github.com/spryker/api-key-authorization-connector/tree/1.0.0"
+            },
+            "time": "2023-09-27T16:08:39+00:00"
+        },
+        {
+            "name": "spryker/api-key-gui",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/api-key-gui.git",
+                "reference": "6fab4a0342e6cfa539457df9dc49eedad84ed779"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/api-key-gui/zipball/6fab4a0342e6cfa539457df9dc49eedad84ed779",
+                "reference": "6fab4a0342e6cfa539457df9dc49eedad84ed779",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/api-key": "^2.0.0",
+                "spryker/gui": "^3.38.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/user": "^3.0.0",
+                "spryker/util-text": "^1.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
             "description": "ApiKeyGui module",
             "support": {
-                "source": "https://github.com/spryker/api-key-gui/tree/1.0.0"
+                "source": "https://github.com/spryker/api-key-gui/tree/2.0.0"
             },
-            "time": "2023-08-22T12:38:47+00:00"
+            "time": "2023-09-27T16:08:39+00:00"
         },
         {
             "name": "spryker/api-query-builder",
@@ -17992,16 +18046,16 @@
         },
         {
             "name": "spryker/authorization",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/authorization.git",
-                "reference": "f68b43d067e68decb4c7d54ddfd1a9c9d6bdbc8b"
+                "reference": "7e00cd7bf5432a6b57e6d4c30bc32956487b8157"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/authorization/zipball/f68b43d067e68decb4c7d54ddfd1a9c9d6bdbc8b",
-                "reference": "f68b43d067e68decb4c7d54ddfd1a9c9d6bdbc8b",
+                "url": "https://api.github.com/repos/spryker/authorization/zipball/7e00cd7bf5432a6b57e6d4c30bc32956487b8157",
+                "reference": "7e00cd7bf5432a6b57e6d4c30bc32956487b8157",
                 "shasum": ""
             },
             "require": {
@@ -18035,9 +18089,9 @@
             ],
             "description": "Authorization module",
             "support": {
-                "source": "https://github.com/spryker/authorization/tree/1.3.0"
+                "source": "https://github.com/spryker/authorization/tree/1.4.0"
             },
-            "time": "2023-05-15T15:35:26+00:00"
+            "time": "2023-09-27T16:08:39+00:00"
         },
         {
             "name": "spryker/authorization-extension",
@@ -31397,16 +31451,16 @@
         },
         {
             "name": "spryker/dynamic-entity-backend-api",
-            "version": "0.4.0",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/dynamic-entity-backend-api.git",
-                "reference": "a34d75a09126bdcc8b1aef109417cf506e947a91"
+                "reference": "01f45e5049a038ee702da389c976f6a9e1075144"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/dynamic-entity-backend-api/zipball/a34d75a09126bdcc8b1aef109417cf506e947a91",
-                "reference": "a34d75a09126bdcc8b1aef109417cf506e947a91",
+                "url": "https://api.github.com/repos/spryker/dynamic-entity-backend-api/zipball/01f45e5049a038ee702da389c976f6a9e1075144",
+                "reference": "01f45e5049a038ee702da389c976f6a9e1075144",
                 "shasum": ""
             },
             "require": {
@@ -31452,9 +31506,9 @@
             ],
             "description": "DynamicEntityBackendApi module",
             "support": {
-                "source": "https://github.com/spryker/dynamic-entity-backend-api/tree/0.4.0"
+                "source": "https://github.com/spryker/dynamic-entity-backend-api/tree/0.4.1"
             },
-            "time": "2023-09-14T06:27:30+00:00"
+            "time": "2023-09-27T16:08:39+00:00"
         },
         {
             "name": "spryker/dynamic-entity-extension",
@@ -33263,16 +33317,16 @@
         },
         {
             "name": "spryker/glue-backend-api-application-authorization-connector",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-backend-api-application-authorization-connector.git",
-                "reference": "8c305a21f01b0dc8f5ecd60a4eabdab5ed04be47"
+                "reference": "ca9055f8e2531717d6aee1d6c9d0ff6e0e0cac9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-backend-api-application-authorization-connector/zipball/8c305a21f01b0dc8f5ecd60a4eabdab5ed04be47",
-                "reference": "8c305a21f01b0dc8f5ecd60a4eabdab5ed04be47",
+                "url": "https://api.github.com/repos/spryker/glue-backend-api-application-authorization-connector/zipball/ca9055f8e2531717d6aee1d6c9d0ff6e0e0cac9b",
+                "reference": "ca9055f8e2531717d6aee1d6c9d0ff6e0e0cac9b",
                 "shasum": ""
             },
             "require": {
@@ -33308,9 +33362,9 @@
             ],
             "description": "GlueBackendApiApplicationAuthorizationConnector module",
             "support": {
-                "source": "https://github.com/spryker/glue-backend-api-application-authorization-connector/tree/1.3.0"
+                "source": "https://github.com/spryker/glue-backend-api-application-authorization-connector/tree/1.4.0"
             },
-            "time": "2023-07-11T13:58:55+00:00"
+            "time": "2023-09-27T16:08:39+00:00"
         },
         {
             "name": "spryker/glue-backend-api-application-authorization-connector-extension",
