@@ -53,6 +53,7 @@ class ProductOfferServicePointAvailabilitiesApiTester extends ApiEndToEndTester
      * @param array<string, mixed> $productOfferServicePointAvailabilityResponseItemData
      * @param \Generated\Shared\Transfer\ProductOfferServicePointAvailabilityResponseItemTransfer $expectedProductOfferServicePointAvailabilityResponseItemTransfer
      * @param int $expectedAvailableQuantity
+     * @param string $expectedIdentifier
      * @param bool $expectedIsAvailable
      *
      * @return void
@@ -61,10 +62,11 @@ class ProductOfferServicePointAvailabilitiesApiTester extends ApiEndToEndTester
         array $productOfferServicePointAvailabilityResponseItemData,
         ProductOfferServicePointAvailabilityResponseItemTransfer $expectedProductOfferServicePointAvailabilityResponseItemTransfer,
         int $expectedAvailableQuantity,
+        string $expectedIdentifier,
         bool $expectedIsAvailable,
     ): void {
         $this->assertSame(
-            $expectedProductOfferServicePointAvailabilityResponseItemTransfer->getProductOfferReferenceOrFail(),
+            $expectedProductOfferServicePointAvailabilityResponseItemTransfer->getProductOfferReference(),
             $productOfferServicePointAvailabilityResponseItemData[RestProductOfferServicePointAvailabilityResponseItemsAttributesTransfer::PRODUCT_OFFER_REFERENCE],
         );
         $this->assertSame(
@@ -74,6 +76,10 @@ class ProductOfferServicePointAvailabilitiesApiTester extends ApiEndToEndTester
         $this->assertSame(
             $expectedAvailableQuantity,
             $productOfferServicePointAvailabilityResponseItemData[RestProductOfferServicePointAvailabilityResponseItemsAttributesTransfer::AVAILABLE_QUANTITY],
+        );
+        $this->assertSame(
+            $expectedIdentifier,
+            $productOfferServicePointAvailabilityResponseItemData[RestProductOfferServicePointAvailabilityResponseItemsAttributesTransfer::IDENTIFIER],
         );
         $this->assertSame(
             $expectedIsAvailable,
@@ -88,11 +94,27 @@ class ProductOfferServicePointAvailabilitiesApiTester extends ApiEndToEndTester
      */
     public function getProductOfferServicePointAvailabilityByServicePointUuid(string $servicePointUuid): array
     {
-        return $this->getDataFromResponseByJsonPath(sprintf(
+        $productOfferServicePointAvailabilitiesData = $this->getDataFromResponseByJsonPath(sprintf(
             '$.data.attributes.%s[?(@.%s == "%s")]',
             RestProductOfferServicePointAvailabilitiesResponseAttributesCollectionTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITIES,
             RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::SERVICE_POINT_UUID,
             $servicePointUuid,
         ))[0] ?? [];
+
+        return $this->sortProductOfferServicePointAvailabilitiesByIdentifier($productOfferServicePointAvailabilitiesData);
+    }
+
+    /**
+     * @param array<string, mixed> $productOfferServicePointAvailabilitiesData
+     *
+     * @return array<string, mixed>
+     */
+    protected function sortProductOfferServicePointAvailabilitiesByIdentifier(array $productOfferServicePointAvailabilitiesData): array
+    {
+        usort($productOfferServicePointAvailabilitiesData[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS], function ($availabilityResponse1, $availabilityResponse2) {
+            return $availabilityResponse1[RestProductOfferServicePointAvailabilityResponseItemsAttributesTransfer::IDENTIFIER] <=> $availabilityResponse2[RestProductOfferServicePointAvailabilityResponseItemsAttributesTransfer::IDENTIFIER];
+        });
+
+        return $productOfferServicePointAvailabilitiesData;
     }
 }

@@ -118,18 +118,21 @@ class ProductOfferServicePointAvailabilitiesRestApiCest
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][0],
             $productOfferAvailabilityResponseItemTransfer,
             $productOfferAvailabilityResponseItemTransfer->getAvailableQuantity(),
+            '0',
             true,
         );
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][1],
             $secondProductOfferAvailabilityResponseItemTransfer,
             $secondProductOfferAvailabilityResponseItemTransfer->getAvailableQuantity(),
+            '1',
             false,
         );
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][2],
             $notAvailableProductOfferAvailabilityResponseItemTransfer,
             0,
+            '2',
             false,
         );
     }
@@ -191,18 +194,21 @@ class ProductOfferServicePointAvailabilitiesRestApiCest
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][0],
             $productOfferAvailabilityResponseItemTransfer,
             0,
+            '0',
             false,
         );
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][1],
             $secondProductOfferAvailabilityResponseItemTransfer,
             0,
+            '1',
             false,
         );
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][2],
             $notAvailableProductOfferAvailabilityResponseItemTransfer,
             0,
+            '2',
             false,
         );
     }
@@ -263,12 +269,14 @@ class ProductOfferServicePointAvailabilitiesRestApiCest
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][0],
             $productOfferAvailabilityResponseItemTransfer,
             $productOfferAvailabilityResponseItemTransfer->getAvailableQuantity(),
+            '0',
             true,
         );
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][1],
             $productOfferAvailabilityResponseItemTransferWithoutShipmentType,
             0,
+            '1',
             false,
         );
     }
@@ -292,6 +300,7 @@ class ProductOfferServicePointAvailabilitiesRestApiCest
         $merchantTransfer = $this->fixtures->getMerchantTransfer();
 
         $requestData = $this->getRequestData([$servicePointUuid], $this->fixtures->getServiceTransfers()[3]->getServiceTypeOrFail()->getUuidOrFail());
+
         $requestData['data'][GlueRequestTransfer::ATTRIBUTES][RestProductOfferServicePointAvailabilitiesRequestAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_REQUEST_ITEMS] = [
             [
                 RestProductOfferServicePointAvailabilityRequestItemsAttributesTransfer::PRODUCT_OFFER_REFERENCE => $productOfferAvailabilityResponseItemTransfer->getProductOfferReferenceOrFail(),
@@ -327,12 +336,14 @@ class ProductOfferServicePointAvailabilitiesRestApiCest
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][0],
             $productOfferAvailabilityResponseItemTransfer,
             0,
+            '0',
             false,
         );
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][1],
             $secondProductOfferAvailabilityResponseItemTransfer,
             0,
+            '1',
             false,
         );
     }
@@ -396,23 +407,27 @@ class ProductOfferServicePointAvailabilitiesRestApiCest
         $I->assertProductOfferServicePointAvailabilitiesResourceHasCorrectData();
 
         $productOfferServicePointAvailability = $I->getProductOfferServicePointAvailabilityByServicePointUuid($servicePointUuids[0]);
+
         $I->assertCount(3, $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS]);
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][0],
             $productOfferAvailabilityResponseItemTransfer,
             $productOfferAvailabilityResponseItemTransfer->getAvailableQuantity(),
+            '0',
             true,
         );
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][1],
             $secondProductOfferAvailabilityResponseItemTransfer,
             0,
+            '1',
             false,
         );
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][2],
             $thirdProductOfferAvailabilityResponseItemTransfer,
             0,
+            '2',
             false,
         );
 
@@ -422,18 +437,21 @@ class ProductOfferServicePointAvailabilitiesRestApiCest
             $secondProductOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][0],
             $productOfferAvailabilityResponseItemTransfer,
             0,
+            '0',
             false,
         );
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $secondProductOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][1],
             $secondProductOfferAvailabilityResponseItemTransfer,
             $secondProductOfferAvailabilityResponseItemTransfer->getAvailableQuantity(),
+            '1',
             true,
         );
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $secondProductOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][2],
             $thirdProductOfferAvailabilityResponseItemTransfer,
             0,
+            '2',
             false,
         );
 
@@ -443,18 +461,21 @@ class ProductOfferServicePointAvailabilitiesRestApiCest
             $thirdProductOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][0],
             $productOfferAvailabilityResponseItemTransfer,
             0,
+            '0',
             false,
         );
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $thirdProductOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][1],
             $secondProductOfferAvailabilityResponseItemTransfer,
             0,
+            '1',
             false,
         );
         $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
             $thirdProductOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][2],
             $thirdProductOfferAvailabilityResponseItemTransfer,
             0,
+            '2',
             false,
         );
     }
@@ -499,6 +520,57 @@ class ProductOfferServicePointAvailabilitiesRestApiCest
     }
 
     /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\ProductOfferServicePointAvailabilities\ProductOfferServicePointAvailabilitiesApiTester $I
+     *
+     * @return void
+     */
+    public function requestGetProductOfferServicePointAvailabilitiesWithoutProductOfferReference(ProductOfferServicePointAvailabilitiesApiTester $I): void
+    {
+        // Arrange
+        $serviceTransfer = $this->fixtures->getServiceTransfers()[0];
+        $servicePointUuid = $serviceTransfer->getServicePointOrFail()->getUuidOrFail();
+
+        $productOfferAvailabilityResponseItemTransfer = $this->fixtures->getAvailableProductOfferServicePointAvailabilityResponseItemTransfers()[$servicePointUuid][0];
+        $merchantTransfer = $this->fixtures->getMerchantTransfer();
+
+        $requestData = $this->getRequestData([$servicePointUuid], $serviceTransfer->getServiceTypeOrFail()->getUuidOrFail());
+        $requestData['data'][GlueRequestTransfer::ATTRIBUTES][RestProductOfferServicePointAvailabilitiesRequestAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_REQUEST_ITEMS] = [
+            [
+                RestProductOfferServicePointAvailabilityRequestItemsAttributesTransfer::PRODUCT_OFFER_REFERENCE => null,
+                RestProductOfferServicePointAvailabilityRequestItemsAttributesTransfer::PRODUCT_CONCRETE_SKU => $productOfferAvailabilityResponseItemTransfer->getProductConcreteSkuOrFail(),
+                RestProductOfferServicePointAvailabilityRequestItemsAttributesTransfer::QUANTITY => $productOfferAvailabilityResponseItemTransfer->getAvailableQuantity(),
+                RestProductOfferServicePointAvailabilityRequestItemsAttributesTransfer::MERCHANT_REFERENCE => $merchantTransfer->getMerchantReferenceOrFail(),
+            ],
+        ];
+
+        // Act
+        $I->sendPost(
+            $I->formatUrl(ProductOfferServicePointAvailabilitiesRestApiConfig::RESOURCE_PRODUCT_OFFER_SERVICE_POINT_AVAILABILITIES),
+            $requestData,
+        );
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->assertProductOfferServicePointAvailabilitiesResourceHasCorrectData();
+
+        $productOfferServicePointAvailability = $I->getProductOfferServicePointAvailabilityByServicePointUuid($servicePointUuid);
+        $I->assertNotEmpty($productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS]);
+
+        $I->assertProductOfferServicePointAvailabilityResponseItemHasCorrectData(
+            $productOfferServicePointAvailability[RestProductOfferServicePointAvailabilitiesResponseAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_RESPONSE_ITEMS][0],
+            $productOfferAvailabilityResponseItemTransfer,
+            $productOfferAvailabilityResponseItemTransfer->getAvailableQuantity(),
+            '0',
+            true,
+        );
+    }
+
+    /**
      * @return array<string, array<string, mixed>>
      */
     protected function getValidationErrorsDataProvider(): array
@@ -514,13 +586,6 @@ class ProductOfferServicePointAvailabilitiesRestApiCest
                 GlueRequestTransfer::ATTRIBUTES => [
             RestProductOfferServicePointAvailabilitiesRequestAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_REQUEST_ITEMS => [
                     RestProductOfferServicePointAvailabilityRequestItemsAttributesTransfer::PRODUCT_OFFER_REFERENCE => static::TEST_PRODUCT_OFFER_REFERENCE,
-                    RestProductOfferServicePointAvailabilityRequestItemsAttributesTransfer::QUANTITY => 1,
-                ]],
-            ],
-            'Should return error when product offer reference is not provided' => [
-                GlueRequestTransfer::ATTRIBUTES => [
-            RestProductOfferServicePointAvailabilitiesRequestAttributesTransfer::PRODUCT_OFFER_SERVICE_POINT_AVAILABILITY_REQUEST_ITEMS => [
-                    RestProductOfferServicePointAvailabilityRequestItemsAttributesTransfer::PRODUCT_CONCRETE_SKU => static::TEST_PRODUCT_CONCRETE_SKU,
                     RestProductOfferServicePointAvailabilityRequestItemsAttributesTransfer::QUANTITY => 1,
                 ]],
             ],
