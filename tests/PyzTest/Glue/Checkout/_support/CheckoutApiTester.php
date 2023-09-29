@@ -31,10 +31,12 @@ use Generated\Shared\Transfer\RestShipmentTransfer;
 use Generated\Shared\Transfer\ServicePointTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
+use Generated\Shared\Transfer\ShipmentTypeTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
+use Orm\Zed\Shipment\Persistence\SpyShipmentMethodQuery;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 use Spryker\Shared\Price\PriceConfig;
@@ -492,6 +494,24 @@ class CheckoutApiTester extends ApiEndToEndTester
         $paymentMethodOverrideData = array_merge($paymentMethodOverrideData, [PaymentMethodTransfer::STORE_RELATION => $storeRelationTransfer]);
 
         return $this->havePaymentMethod($paymentMethodOverrideData);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ShipmentMethodTransfer $shipmentMethodTransfer
+     * @param \Generated\Shared\Transfer\ShipmentTypeTransfer $shipmentTypeTransfer
+     *
+     * @return void
+     */
+    public function addShipmentTypeToShipmentMethod(
+        ShipmentMethodTransfer $shipmentMethodTransfer,
+        ShipmentTypeTransfer $shipmentTypeTransfer,
+    ): void {
+        /** @var \Orm\Zed\Shipment\Persistence\SpyShipmentMethod $shipmentMethodEntity */
+        $shipmentMethodEntity = (SpyShipmentMethodQuery::create())
+            ->findOneByIdShipmentMethod($shipmentMethodTransfer->getIdShipmentMethodOrFail());
+
+        $shipmentMethodEntity->setFkShipmentType($shipmentTypeTransfer->getIdShipmentTypeOrFail());
+        $shipmentMethodEntity->save();
     }
 
     /**

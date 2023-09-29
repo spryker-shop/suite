@@ -20,11 +20,11 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  * @group Glue
  * @group Checkout
  * @group RestApi
- * @group GuestCheckoutDataRelationshipsFixtures
+ * @group GuestCheckoutDataServicePointRelationshipsFixtures
  * Add your own group annotations below this line
  * @group EndToEnd
  */
-class GuestCheckoutDataRelationshipsFixtures implements FixturesBuilderInterface, FixturesContainerInterface
+class GuestCheckoutDataServicePointRelationshipsFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     /**
      * @var string
