@@ -26,6 +26,9 @@ use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentCh
 use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentMethodCheckoutDataValidatorPlugin;
 use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentQuoteMapperPlugin;
 use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentsQuoteMapperPlugin;
+use Spryker\Zed\ShipmentTypesRestApi\Communication\Plugin\CheckoutRestApi\ItemShipmentTypeQuoteMapperPlugin;
+use Spryker\Zed\ShipmentTypesRestApi\Communication\Plugin\CheckoutRestApi\ShipmentTypeCheckoutDataValidatorPlugin;
+use Spryker\Zed\ShipmentTypesRestApi\Communication\Plugin\CheckoutRestApi\ShipmentTypeReadCheckoutDataValidatorPlugin;
 
 class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependencyProvider
 {
@@ -43,6 +46,7 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
             new CompanyBusinessUnitAddressQuoteMapperPlugin(),
             new ShipmentsQuoteMapperPlugin(),
             new ServicePointQuoteMapperPlugin(),
+            new ItemShipmentTypeQuoteMapperPlugin(),
         ];
     }
 
@@ -57,6 +61,7 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
             new ItemsCheckoutDataValidatorPlugin(),
             new CustomerAddressCheckoutDataValidatorPlugin(),
             new CompanyBusinessUnitAddressCheckoutDataValidatorPlugin(),
+            new ShipmentTypeCheckoutDataValidatorPlugin(),
         ];
     }
 
@@ -68,6 +73,7 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
         return [
             new ItemsReadCheckoutDataValidatorPlugin(),
             new SalesOrderThresholdReadCheckoutDataValidatorPlugin(),
+            new ShipmentTypeReadCheckoutDataValidatorPlugin(),
         ];
     }
 

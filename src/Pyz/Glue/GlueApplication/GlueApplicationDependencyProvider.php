@@ -254,6 +254,7 @@ use Spryker\Glue\ShipmentsRestApi\Plugin\GlueApplication\OrderShipmentByOrderRes
 use Spryker\Glue\ShipmentsRestApi\Plugin\GlueApplication\ShipmentMethodsByShipmentResourceRelationshipPlugin;
 use Spryker\Glue\ShipmentsRestApi\Plugin\GlueApplication\ShipmentsByCheckoutDataResourceRelationshipPlugin;
 use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
+use Spryker\Glue\ShipmentTypesRestApi\Plugin\GlueApplication\ShipmentTypesByShipmentMethodsResourceRelationshipPlugin;
 use Spryker\Glue\ShipmentTypesRestApi\Plugin\GlueApplication\ShipmentTypesResourceRoutePlugin;
 use Spryker\Glue\ShipmentTypesRestApi\ShipmentTypesRestApiConfig;
 use Spryker\Glue\ShipmentTypesServicePointsResourceRelationship\Plugin\GlueApplication\ServiceTypeByShipmentTypesResourceRelationshipPlugin;
@@ -964,6 +965,11 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ShipmentTypesRestApiConfig::RESOURCE_SHIPMENT_TYPES,
             new ServiceTypeByShipmentTypesResourceRelationshipPlugin(),
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS,
+            new ShipmentTypesByShipmentMethodsResourceRelationshipPlugin(),
         );
 
         return $resourceRelationshipCollection;
