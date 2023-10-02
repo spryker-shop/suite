@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f425baf97fd746c78a9bd0d8af0c3cc",
+    "content-hash": "7543e4bc0b1fac8e0d8dce4e63616870",
     "packages": [
         {
             "name": "async-aws/core",
@@ -21630,26 +21630,42 @@
         },
         {
             "name": "spryker/click-and-collect-example",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/click-and-collect-example.git",
-                "reference": "ef9a7b1b090b7e9fa8d317307f0ccc7ebbf002bb"
+                "reference": "164a42775c95549c039dc9c6490e68a184bf1541"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/click-and-collect-example/zipball/ef9a7b1b090b7e9fa8d317307f0ccc7ebbf002bb",
-                "reference": "ef9a7b1b090b7e9fa8d317307f0ccc7ebbf002bb",
+                "url": "https://api.github.com/repos/spryker/click-and-collect-example/zipball/164a42775c95549c039dc9c6490e68a184bf1541",
+                "reference": "164a42775c95549c039dc9c6490e68a184bf1541",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
+                "spryker/currency": "^3.0.0 || ^4.0.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/price-product-offer": "^1.0.0",
+                "spryker/product-offer": "^1.0.0",
+                "spryker/product-offer-service-point": "^0.2.2",
                 "spryker/product-offer-service-point-availability-calculator-extension": "^0.1.0",
+                "spryker/product-offer-shipment-type": "^0.2.1",
+                "spryker/product-offer-stock": "^1.0.0",
+                "spryker/propel-orm": "^1.18.0",
+                "spryker/service-point": "^0.4.5",
+                "spryker/service-point-cart-extension": "^0.1.0",
+                "spryker/shipment-type": "^0.1.5",
+                "spryker/shipment-type-service-point": "^0.3.0",
+                "spryker/store": "^1.19.0",
                 "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/price-product": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/stock": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -21669,9 +21685,9 @@
             ],
             "description": "ClickAndCollectExample module",
             "support": {
-                "source": "https://github.com/spryker/click-and-collect-example/tree/0.2.0"
+                "source": "https://github.com/spryker/click-and-collect-example/tree/0.3.0"
             },
-            "time": "2023-09-28T17:30:17+00:00"
+            "time": "2023-10-02T10:21:06+00:00"
         },
         {
             "name": "spryker/cms",
@@ -60865,23 +60881,26 @@
         },
         {
             "name": "spryker/service-point-cart",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/service-point-cart.git",
-                "reference": "0756e1aa47d902428ebf1ce35b32ed2e0c74eb2c"
+                "reference": "ce397cecaf939766be8ba8802aae8fbf77ec39ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/service-point-cart/zipball/0756e1aa47d902428ebf1ce35b32ed2e0c74eb2c",
-                "reference": "0756e1aa47d902428ebf1ce35b32ed2e0c74eb2c",
+                "url": "https://api.github.com/repos/spryker/service-point-cart/zipball/ce397cecaf939766be8ba8802aae8fbf77ec39ea",
+                "reference": "ce397cecaf939766be8ba8802aae8fbf77ec39ea",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/cart": "^7.0.0",
                 "spryker/checkout-extension": "^1.2.0",
+                "spryker/glossary-storage": "^1.5.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^3.0.0 || ^4.0.0",
+                "spryker/messenger": "^3.1.0",
                 "spryker/quote": "^2.0.0",
                 "spryker/service-point": "^0.4.7",
                 "spryker/service-point-cart-extension": "^0.1.0",
@@ -60912,9 +60931,9 @@
             ],
             "description": "ServicePointCart module",
             "support": {
-                "source": "https://github.com/spryker/service-point-cart/tree/0.1.1"
+                "source": "https://github.com/spryker/service-point-cart/tree/0.1.2"
             },
-            "time": "2023-09-27T14:12:57+00:00"
+            "time": "2023-10-02T10:21:06+00:00"
         },
         {
             "name": "spryker/service-point-cart-extension",
