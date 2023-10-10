@@ -39,6 +39,8 @@ use SprykerShop\Yves\CartPage\Widget\RemoveFromCartFormWidget;
 use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\ProceedToCheckoutButtonWidget;
+use SprykerShop\Yves\ClickAndCollectPageExample\Plugin\ShopApplication\ClickAndCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin;
+use SprykerShop\Yves\ClickAndCollectPageExample\Widget\ClickAndCollectServicePointAddressFormWidget;
 use SprykerShop\Yves\CommentWidget\Widget\CommentThreadWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitControllerRestrictionPlugin;
@@ -154,8 +156,6 @@ use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SalesProductBundleWidget\Widget\OrderItemsProductBundleWidget;
 use SprykerShop\Yves\SalesProductConfigurationWidget\Widget\ProductConfigurationOrderItemDisplayWidget;
 use SprykerShop\Yves\SalesServicePointWidget\Widget\SalesServicePointNameForShipmentGroupWidget;
-use SprykerShop\Yves\ServicePointWidget\Plugin\ShopApplication\ClickCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin;
-use SprykerShop\Yves\ServicePointWidget\Widget\ClickCollectServicePointAddressFormWidget;
 use SprykerShop\Yves\ServicePointWidget\Widget\ServicePointSearchWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
@@ -333,7 +333,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ServicePointSearchWidget::class,
             ShipmentTypeAddressFormWidget::class,
             SalesServicePointNameForShipmentGroupWidget::class,
-            ClickCollectServicePointAddressFormWidget::class,
+            ClickAndCollectServicePointAddressFormWidget::class,
             ProductOfferServicePointAvailabilityWidget::class,
             ProductOfferServicePointAvailabilityDisplayWidget::class,
             CartSummaryHideTaxAmountWidget::class,
@@ -353,7 +353,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new CartItemNoteFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new MerchantSalesReturnCreateFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new ShipmentTypeAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
-            new ClickCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
+            new ClickAndCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
         ];
     }
 
