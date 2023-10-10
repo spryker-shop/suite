@@ -9,6 +9,8 @@ namespace Pyz\Yves\CustomerPage;
 
 use Spryker\Yves\MerchantShipment\Plugin\CustomerPage\MerchantShipmentCheckoutAddressStepPreGroupItemsByShipmentPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
+use SprykerShop\Yves\ClickAndCollectPageExample\Plugin\CustomerPage\ClickAndCollectServiceTypeCheckoutAddressCollectionFormExpanderPlugin;
+use SprykerShop\Yves\ClickAndCollectPageExample\Plugin\CustomerPage\ClickAndCollectServiceTypeCheckoutMultiShippingAddressesFormExpanderPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\CompanyBusinessUnitOrderSearchFormExpanderPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\CompanyBusinessUnitOrderSearchFormHandlerPlugin;
@@ -17,8 +19,6 @@ use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopC
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\RedirectUriCustomerRedirectStrategyPlugin;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
 use SprykerShop\Yves\MerchantSwitcherWidget\Plugin\CustomerPage\MerchantSwitchCartAfterCustomerAuthenticationSuccessPlugin;
-use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ClickCollectServiceTypeCheckoutAddressCollectionFormExpanderPlugin;
-use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ClickCollectServiceTypeCheckoutMultiShippingAddressesFormExpanderPlugin;
 use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ServicePointAddressCheckoutAddressCollectionFormExpanderPlugin;
 use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ServicePointCheckoutAddressCollectionFormExpanderPlugin;
 use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ServicePointCheckoutMultiShippingAddressesFormExpanderPlugin;
@@ -132,7 +132,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
             new ShipmentTypeCheckoutAddressCollectionFormExpanderPlugin(),
             new ServicePointCheckoutAddressCollectionFormExpanderPlugin(),
             new ServicePointAddressCheckoutAddressCollectionFormExpanderPlugin(),
-            new ClickCollectServiceTypeCheckoutAddressCollectionFormExpanderPlugin(),
+            new ClickAndCollectServiceTypeCheckoutAddressCollectionFormExpanderPlugin(),
         ];
     }
 
@@ -144,7 +144,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
         return [
             new ShipmentTypeCheckoutMultiShippingAddressesFormExpanderPlugin(),
             new ServicePointCheckoutMultiShippingAddressesFormExpanderPlugin(),
-            new ClickCollectServiceTypeCheckoutMultiShippingAddressesFormExpanderPlugin(),
+            new ClickAndCollectServiceTypeCheckoutMultiShippingAddressesFormExpanderPlugin(),
         ];
     }
 }
