@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "51fd2c5a7bed8fa3d2ee053eda6a6b61",
+    "content-hash": "f7bad91d1ab4dd9a1d0992200a3cbddd",
     "packages": [
         {
             "name": "async-aws/core",
@@ -21730,16 +21730,16 @@
         },
         {
             "name": "spryker/click-and-collect-example",
-            "version": "0.4.0",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/click-and-collect-example.git",
-                "reference": "dfa498ec64d3102884f74f2c46e0105597d36780"
+                "reference": "a75df4c7458e6c4c46cd0ca902753b75ba7bdab9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/click-and-collect-example/zipball/dfa498ec64d3102884f74f2c46e0105597d36780",
-                "reference": "dfa498ec64d3102884f74f2c46e0105597d36780",
+                "url": "https://api.github.com/repos/spryker/click-and-collect-example/zipball/a75df4c7458e6c4c46cd0ca902753b75ba7bdab9",
+                "reference": "a75df4c7458e6c4c46cd0ca902753b75ba7bdab9",
                 "shasum": ""
             },
             "require": {
@@ -21757,7 +21757,7 @@
                 "spryker/service-point": "^0.4.5",
                 "spryker/service-point-cart-extension": "^0.1.0",
                 "spryker/shipment-type": "^0.1.5",
-                "spryker/shipment-type-service-point": "^0.3.0",
+                "spryker/shipment-type-service-point": "^0.4.0",
                 "spryker/shipment-type-storage-extension": "^0.1.0",
                 "spryker/store": "^1.19.0",
                 "spryker/transfer": "^3.27.0"
@@ -21787,9 +21787,9 @@
             ],
             "description": "ClickAndCollectExample module",
             "support": {
-                "source": "https://github.com/spryker/click-and-collect-example/tree/0.4.0"
+                "source": "https://github.com/spryker/click-and-collect-example/tree/0.5.0"
             },
-            "time": "2023-10-10T12:08:34+00:00"
+            "time": "2023-10-11T07:32:50+00:00"
         },
         {
             "name": "spryker/cms",
@@ -62752,25 +62752,24 @@
         },
         {
             "name": "spryker/shipment-type-service-point",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-type-service-point.git",
-                "reference": "2ed3a85ed5489fb9cd03fdb49a5852abaf1876b8"
+                "reference": "f817ab4bb3780987b451c521fc73127f84c8624d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-type-service-point/zipball/2ed3a85ed5489fb9cd03fdb49a5852abaf1876b8",
-                "reference": "2ed3a85ed5489fb9cd03fdb49a5852abaf1876b8",
+                "url": "https://api.github.com/repos/spryker/shipment-type-service-point/zipball/f817ab4bb3780987b451c521fc73127f84c8624d",
+                "reference": "f817ab4bb3780987b451c521fc73127f84c8624d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/propel-orm": "^1.0.0",
                 "spryker/service-point": "^0.4.0",
-                "spryker/service-point-storage": "^0.4.0",
                 "spryker/shipment-type": "^0.1.0",
-                "spryker/shipment-type-storage-extension": "^0.1.1",
                 "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
@@ -62796,22 +62795,22 @@
             ],
             "description": "ShipmentTypeServicePoint module",
             "support": {
-                "source": "https://github.com/spryker/shipment-type-service-point/tree/0.3.0"
+                "source": "https://github.com/spryker/shipment-type-service-point/tree/0.4.0"
             },
-            "time": "2023-09-05T15:42:15+00:00"
+            "time": "2023-10-11T07:32:50+00:00"
         },
         {
             "name": "spryker/shipment-type-service-point-data-import",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-type-service-point-data-import.git",
-                "reference": "d915cd6ac5f98c7b70b4321cedff0815082669ad"
+                "reference": "dc1e9373841d46f8dc25c6860873fbc307570743"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-type-service-point-data-import/zipball/d915cd6ac5f98c7b70b4321cedff0815082669ad",
-                "reference": "d915cd6ac5f98c7b70b4321cedff0815082669ad",
+                "url": "https://api.github.com/repos/spryker/shipment-type-service-point-data-import/zipball/dc1e9373841d46f8dc25c6860873fbc307570743",
+                "reference": "dc1e9373841d46f8dc25c6860873fbc307570743",
                 "shasum": ""
             },
             "require": {
@@ -62820,7 +62819,7 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/service-point": "^0.4.0",
                 "spryker/shipment-type": "^0.1.0",
-                "spryker/shipment-type-service-point": "^0.3.0"
+                "spryker/shipment-type-service-point": "^0.4.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -62844,9 +62843,60 @@
             ],
             "description": "ShipmentTypeServicePointDataImport module",
             "support": {
-                "source": "https://github.com/spryker/shipment-type-service-point-data-import/tree/0.3.0"
+                "source": "https://github.com/spryker/shipment-type-service-point-data-import/tree/0.4.0"
             },
-            "time": "2023-09-05T15:42:15+00:00"
+            "time": "2023-10-11T07:32:50+00:00"
+        },
+        {
+            "name": "spryker/shipment-type-service-point-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shipment-type-service-point-storage.git",
+                "reference": "43d8dc64fe0fed337fa906c5e3f63c75d18637a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shipment-type-service-point-storage/zipball/43d8dc64fe0fed337fa906c5e3f63c75d18637a8",
+                "reference": "43d8dc64fe0fed337fa906c5e3f63c75d18637a8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/service-point-storage": "^0.4.0",
+                "spryker/shipment-type-service-point": "^0.4.0",
+                "spryker/shipment-type-storage": "^0.1.0",
+                "spryker/shipment-type-storage-extension": "^0.1.1",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/service-point": "*",
+                "spryker/shipment-type": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShipmentTypeServicePointStorage module",
+            "support": {
+                "source": "https://github.com/spryker/shipment-type-service-point-storage/tree/0.1.0"
+            },
+            "time": "2023-10-11T07:32:50+00:00"
         },
         {
             "name": "spryker/shipment-type-storage",
