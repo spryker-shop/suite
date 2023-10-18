@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c4fc1fffe69eeb515692924c9224a4f",
+    "content-hash": "c21becae3385773c828c3ae11e6a3b43",
     "packages": [
         {
             "name": "async-aws/core",
@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.283.4",
+            "version": "3.283.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "a0877cbbf6062cef363145b1bd0cb1d1f6654e04"
+                "reference": "848be1aefb7ab6adfe8995de07166f38ec7c1f53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a0877cbbf6062cef363145b1bd0cb1d1f6654e04",
-                "reference": "a0877cbbf6062cef363145b1bd0cb1d1f6654e04",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/848be1aefb7ab6adfe8995de07166f38ec7c1f53",
+                "reference": "848be1aefb7ab6adfe8995de07166f38ec7c1f53",
                 "shasum": ""
             },
             "require": {
@@ -335,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.283.4"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.283.5"
             },
-            "time": "2023-10-16T18:08:25+00:00"
+            "time": "2023-10-17T18:12:19+00:00"
         },
         {
             "name": "brick/math",
@@ -2499,14 +2499,8 @@
             "version": "2.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/thephpleague/flysystem.git",
+                "url": "git@github.com:thephpleague/flysystem.git",
                 "reference": "8aaffb653c5777781b0f7f69a5d937baf7ab6cdb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8aaffb653c5777781b0f7f69a5d937baf7ab6cdb",
-                "reference": "8aaffb653c5777781b0f7f69a5d937baf7ab6cdb",
-                "shasum": ""
             },
             "require": {
                 "ext-json": "*",
@@ -2536,7 +2530,11 @@
                     "League\\Flysystem\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "phpstan": [
+                    "vendor/bin/phpstan analyse -l 6 src"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -2548,7 +2546,6 @@
             ],
             "description": "File storage abstraction for PHP",
             "keywords": [
-                "WebDAV",
                 "aws",
                 "cloud",
                 "file",
@@ -2558,160 +2555,10 @@
                 "ftp",
                 "s3",
                 "sftp",
-                "storage"
-            ],
-            "support": {
-                "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/2.5.0"
-            },
-            "funding": [
-                {
-                    "url": "https://ecologi.com/frankdejonge",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/frankdejonge",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/league/flysystem",
-                    "type": "tidelift"
-                }
+                "storage",
+                "webdav"
             ],
             "time": "2022-09-17T21:02:32+00:00"
-        },
-        {
-            "name": "league/flysystem-aws-s3-v3",
-            "version": "2.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/flysystem-aws-s3-v3.git",
-                "reference": "2ae435f7177fd5d3afc0090bc7f849093d8361e8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/2ae435f7177fd5d3afc0090bc7f849093d8361e8",
-                "reference": "2ae435f7177fd5d3afc0090bc7f849093d8361e8",
-                "shasum": ""
-            },
-            "require": {
-                "aws/aws-sdk-php": "^3.132.4",
-                "league/flysystem": "^2.0.0",
-                "league/mime-type-detection": "^1.0.0",
-                "php": "^7.2 || ^8.0"
-            },
-            "conflict": {
-                "guzzlehttp/ringphp": "<1.1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "League\\Flysystem\\AwsS3V3\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Frank de Jonge",
-                    "email": "info@frankdejonge.nl"
-                }
-            ],
-            "description": "AWS S3 filesystem adapter for Flysystem.",
-            "keywords": [
-                "Flysystem",
-                "aws",
-                "file",
-                "files",
-                "filesystem",
-                "s3",
-                "storage"
-            ],
-            "support": {
-                "issues": "https://github.com/thephpleague/flysystem-aws-s3-v3/issues",
-                "source": "https://github.com/thephpleague/flysystem-aws-s3-v3/tree/2.5.0"
-            },
-            "funding": [
-                {
-                    "url": "https://ecologi.com/frankdejonge",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/frankdejonge",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/league/flysystem",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-09-09T19:33:51+00:00"
-        },
-        {
-            "name": "league/flysystem-ftp",
-            "version": "2.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/flysystem-ftp.git",
-                "reference": "a49dd4c4f0b7af88fe118218a6995609d1570f93"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-ftp/zipball/a49dd4c4f0b7af88fe118218a6995609d1570f93",
-                "reference": "a49dd4c4f0b7af88fe118218a6995609d1570f93",
-                "shasum": ""
-            },
-            "require": {
-                "ext-ftp": "*",
-                "league/flysystem": "^2.0.0",
-                "league/mime-type-detection": "^1.0.0",
-                "php": "^7.2 || ^8.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "League\\Flysystem\\Ftp\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Frank de Jonge",
-                    "email": "info@frankdejonge.nl"
-                }
-            ],
-            "description": "FTP filesystem adapter for Flysystem.",
-            "keywords": [
-                "Flysystem",
-                "file",
-                "files",
-                "filesystem",
-                "ftp",
-                "ftpd"
-            ],
-            "support": {
-                "source": "https://github.com/thephpleague/flysystem-ftp/tree/2.4.2"
-            },
-            "funding": [
-                {
-                    "url": "https://offset.earth/frankdejonge",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/frankdejonge",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/league/flysystem",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-01-31T19:07:20+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -6162,7 +6009,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "70bab7d53e601dfff605a58fe63b137aee62bed2"
+                "reference": "069a6ad081ac9a4ab1a63f9a71a8010061121af0"
             },
             "require": {
                 "php": ">=8.0"
@@ -7210,7 +7057,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2023-10-17T16:01:45+00:00"
+            "time": "2023-10-18T10:03:14+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -18077,12 +17924,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "0d9bd609de02618a1aa58610db95cbd2f79cbfad"
+                "reference": "1405c9ec0f797dc6806a5ff2366bddbeef8ad20d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/0d9bd609de02618a1aa58610db95cbd2f79cbfad",
-                "reference": "0d9bd609de02618a1aa58610db95cbd2f79cbfad",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/1405c9ec0f797dc6806a5ff2366bddbeef8ad20d",
+                "reference": "1405c9ec0f797dc6806a5ff2366bddbeef8ad20d",
                 "shasum": ""
             },
             "require": {
@@ -18126,7 +17973,7 @@
                 "issues": "https://github.com/spryker/git-hook/issues",
                 "source": "https://github.com/spryker/git-hook"
             },
-            "time": "2023-10-04T08:31:58+00:00"
+            "time": "2023-10-18T08:24:44+00:00"
         },
         {
             "name": "spryker/profiler",
