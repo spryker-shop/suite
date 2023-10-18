@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.283.4",
+            "version": "3.283.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "a0877cbbf6062cef363145b1bd0cb1d1f6654e04"
+                "reference": "848be1aefb7ab6adfe8995de07166f38ec7c1f53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a0877cbbf6062cef363145b1bd0cb1d1f6654e04",
-                "reference": "a0877cbbf6062cef363145b1bd0cb1d1f6654e04",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/848be1aefb7ab6adfe8995de07166f38ec7c1f53",
+                "reference": "848be1aefb7ab6adfe8995de07166f38ec7c1f53",
                 "shasum": ""
             },
             "require": {
@@ -335,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.283.4"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.283.5"
             },
-            "time": "2023-10-16T18:08:25+00:00"
+            "time": "2023-10-17T18:12:19+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -2951,8 +2951,14 @@
             "version": "2.5.0",
             "source": {
                 "type": "git",
-                "url": "git@github.com:thephpleague/flysystem.git",
+                "url": "https://github.com/thephpleague/flysystem.git",
                 "reference": "8aaffb653c5777781b0f7f69a5d937baf7ab6cdb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8aaffb653c5777781b0f7f69a5d937baf7ab6cdb",
+                "reference": "8aaffb653c5777781b0f7f69a5d937baf7ab6cdb",
+                "shasum": ""
             },
             "require": {
                 "ext-json": "*",
@@ -2982,11 +2988,7 @@
                     "League\\Flysystem\\": "src"
                 }
             },
-            "scripts": {
-                "phpstan": [
-                    "vendor/bin/phpstan analyse -l 6 src"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2998,6 +3000,7 @@
             ],
             "description": "File storage abstraction for PHP",
             "keywords": [
+                "WebDAV",
                 "aws",
                 "cloud",
                 "file",
@@ -3007,8 +3010,25 @@
                 "ftp",
                 "s3",
                 "sftp",
-                "storage",
-                "webdav"
+                "storage"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/flysystem/issues",
+                "source": "https://github.com/thephpleague/flysystem/tree/2.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://ecologi.com/frankdejonge",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/frankdejonge",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/league/flysystem",
+                    "type": "tidelift"
+                }
             ],
             "time": "2022-09-17T21:02:32+00:00"
         },
@@ -32416,21 +32436,21 @@
         },
         {
             "name": "spryker/flysystem-aws3v3-file-system",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/flysystem-aws3v3-file-system.git",
-                "reference": "32bdd901a23597c5b09e439b5d4f1281fb81e140"
+                "reference": "68cb97dc846b024946c9b45e4e1c9632f7dbcc91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/flysystem-aws3v3-file-system/zipball/32bdd901a23597c5b09e439b5d4f1281fb81e140",
-                "reference": "32bdd901a23597c5b09e439b5d4f1281fb81e140",
+                "url": "https://api.github.com/repos/spryker/flysystem-aws3v3-file-system/zipball/68cb97dc846b024946c9b45e4e1c9632f7dbcc91",
+                "reference": "68cb97dc846b024946c9b45e4e1c9632f7dbcc91",
                 "shasum": ""
             },
             "require": {
-                "league/flysystem-aws-s3-v3": "^2.1.0",
-                "php": ">=7.3",
+                "league/flysystem": "^2.1.0",
+                "php": ">=8.0",
                 "spryker/kernel": "^3.30.0"
             },
             "require-dev": {
@@ -32459,28 +32479,27 @@
             ],
             "description": "FlysystemAws3v3FileSystem module",
             "support": {
-                "source": "https://github.com/spryker/flysystem-aws3v3-file-system/tree/2.0.0"
+                "source": "https://github.com/spryker/flysystem-aws3v3-file-system/tree/2.1.0"
             },
-            "time": "2021-10-08T18:13:40+00:00"
+            "time": "2023-10-18T10:03:14+00:00"
         },
         {
             "name": "spryker/flysystem-ftp-file-system",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/flysystem-ftp-file-system.git",
-                "reference": "8b98f3caecfe1dcd22662d226bc5f56e3995ba56"
+                "reference": "1ee174c810d633b83213ebbf74c6975cd932a1d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/flysystem-ftp-file-system/zipball/8b98f3caecfe1dcd22662d226bc5f56e3995ba56",
-                "reference": "8b98f3caecfe1dcd22662d226bc5f56e3995ba56",
+                "url": "https://api.github.com/repos/spryker/flysystem-ftp-file-system/zipball/1ee174c810d633b83213ebbf74c6975cd932a1d3",
+                "reference": "1ee174c810d633b83213ebbf74c6975cd932a1d3",
                 "shasum": ""
             },
             "require": {
-                "league/flysystem": "^2.0",
-                "league/flysystem-ftp": "^2.0.8",
-                "php": ">=7.3",
+                "league/flysystem": "^2.0.8",
+                "php": ">=8.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/transfer": "^3.25.0"
             },
@@ -32510,9 +32529,9 @@
             ],
             "description": "FlysystemFtpFileSystem module",
             "support": {
-                "source": "https://github.com/spryker/flysystem-ftp-file-system/tree/2.0.0"
+                "source": "https://github.com/spryker/flysystem-ftp-file-system/tree/2.1.0"
             },
-            "time": "2021-10-08T18:13:40+00:00"
+            "time": "2023-10-18T10:03:14+00:00"
         },
         {
             "name": "spryker/flysystem-local-file-system",
