@@ -193,6 +193,30 @@ groups:
                     backend-api.us.staging.cloud.spryker.toys:
                         store: US
                         entry-point: BackendApi
+            glue_storefront_eu:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.de.staging.cloud.spryker.toys:
+                        store: DE
+                        entry-point: GlueStorefront
+                    glue-storefront.at.staging.cloud.spryker.toys:
+                        store: AT
+                        entry-point: GlueStorefront
+                    glue-storefront.us.staging.cloud.spryker.toys:
+                        store: US
+                        entry-point: GlueStorefront
+            glue_backend_eu:
+                application: glue-backend
+                endpoints:
+                    glue-backend.de.staging.cloud.spryker.toys:
+                        store: DE
+                        entry-point: GlueBackend
+                    glue-backend.at.staging.cloud.spryker.toys:
+                        store: AT
+                        entry-point: GlueBackend
+                    glue-backend.us.staging.cloud.spryker.toys:
+                        store: US
+                        entry-point: GlueBackend
 services:
     database:
         engine: mysql

@@ -136,6 +136,16 @@ groups:
                     backend-api.eu.multistore.frw.cloud.spryker.toys:
                         region: EU
                         entry-point: BackendApi
+            glue_storefront_eu:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.eu.multistore.frw.cloud.spryker.toys:
+                        region: EU
+            glue_backend_eu:
+                application: glue-backend
+                endpoints:
+                    glue-backend.eu.multistore.frw.cloud.spryker.toys:
+                        region: EU
 
 services:
     database:

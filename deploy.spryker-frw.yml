@@ -179,6 +179,20 @@ groups:
                         store: DE
                     glue.at.frw.cloud.spryker.toys:
                         store: AT
+            glue_storefront_eu:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.de.frw.cloud.spryker.toys:
+                        store: DE
+                    glue-storefront.at.frw.cloud.spryker.toys:
+                        store: AT
+            glue_backend_eu:
+                application: glue-backend
+                endpoints:
+                    glue-backend.de.frw.cloud.spryker.toys:
+                        store: DE
+                    glue-backend.at.frw.cloud.spryker.toys:
+                        store: AT
 services:
     database:
         engine: mysql

@@ -222,6 +222,24 @@ groups:
                         store: AT
                     glue.us.69-new.demo-spryker.com:
                         store: US
+            glue_storefront_eu:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.de.69-new.demo-spryker.com:
+                        store: DE
+                    glue-storefront.at.69-new.demo-spryker.com:
+                        store: AT
+                    glue-storefront.us.69-new.demo-spryker.com:
+                        store: US
+            glue_backend_eu:
+                application: glue-backend
+                endpoints:
+                    glue-backend.de.69-new.demo-spryker.com:
+                        store: DE
+                    glue-backend.at.69-new.demo-spryker.com:
+                        store: AT
+                    glue-backend.us.69-new.demo-spryker.com:
+                        store: US
 services:
     database:
         engine: mysql

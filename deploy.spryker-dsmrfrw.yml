@@ -150,6 +150,16 @@ groups:
                     backend-api.eu.multistore.frw.cloud.spryker.toys:
                         region: EU
                         entry-point: BackendApi
+            glue_storefront_eu:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.eu.multistore.frw.cloud.spryker.toys:
+                        region: EU
+            glue_backend_eu:
+                application: glue-backend
+                endpoints:
+                    glue-backend.eu.multistore.frw.cloud.spryker.toys:
+                        region: EU
     US:
         region: US
         applications:
@@ -200,6 +210,16 @@ groups:
                     backend-api.us.multistore.frw.cloud.spryker.toys:
                         region: US
                         entry-point: BackendApi
+            glue_storefront_us:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.us.multistore.frw.cloud.spryker.toys:
+                        region: US
+            glue_backend_us:
+                application: glue-backend
+                endpoints:
+                    glue-backend.us.multistore.frw.cloud.spryker.toys:
+                        region: US
 services:
     database:
         engine: mysql
