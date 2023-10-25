@@ -11,6 +11,8 @@ use Spryker\Zed\GiftCard\Communication\Plugin\Shipment\GiftCardShipmentGroupMeth
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Shipment\MerchantReferenceShipmentExpenseExpanderPlugin;
 use Spryker\Zed\Shipment\ShipmentDependencyProvider as SprykerShipmentDependencyProvider;
+use Spryker\Zed\ShipmentType\Communication\Plugin\Shipment\ShipmentTypeShipmentMethodCollectionExpanderPlugin;
+use Spryker\Zed\ShipmentType\Communication\Plugin\Shipment\ShipmentTypeShipmentMethodFilterPlugin;
 
 class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
 {
@@ -53,6 +55,7 @@ class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
     {
         return [
             new GiftCardShipmentGroupMethodFilterPlugin(),
+            new ShipmentTypeShipmentMethodFilterPlugin(),
         ];
     }
 
@@ -63,6 +66,16 @@ class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
     {
         return [
             new MerchantReferenceShipmentExpenseExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\ShipmentExtension\Dependency\Plugin\ShipmentMethodCollectionExpanderPluginInterface>
+     */
+    protected function getShipmentMethodCollectionExpanderPlugins(): array
+    {
+        return [
+            new ShipmentTypeShipmentMethodCollectionExpanderPlugin(),
         ];
     }
 }

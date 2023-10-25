@@ -189,6 +189,24 @@ groups:
                         store: AT
                     glue.us.night-test.cloud.spryker.toys:
                         store: US
+            glue_storefront_eu:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.de.night-test.cloud.spryker.toys:
+                        store: DE
+                    glue-storefront.at.night-test.cloud.spryker.toys:
+                        store: AT
+                    glue-storefront.us.night-test.cloud.spryker.toys:
+                        store: US
+            glue_backend_eu:
+                application: glue-backend
+                endpoints:
+                    glue-backend.de.night-test.cloud.spryker.toys:
+                        store: DE
+                    glue-backend.at.night-test.cloud.spryker.toys:
+                        store: AT
+                    glue-backend.us.night-test.cloud.spryker.toys:
+                        store: US
 services:
     database:
         engine: mysql
@@ -224,7 +242,7 @@ services:
                 protocol: tcp
     scheduler:
         engine: jenkins
-        version: '2.324'
+        version: '2.401'
         csrf-protection-enabled: true
         endpoints:
             scheduler.night-test.cloud.spryker.toys:

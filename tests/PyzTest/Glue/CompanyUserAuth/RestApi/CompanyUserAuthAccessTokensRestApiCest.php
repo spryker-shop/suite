@@ -49,6 +49,67 @@ class CompanyUserAuthAccessTokensRestApiCest
      *
      * @return void
      */
+    public function requestCompanyUserAccessTokenForExistingCustomerWithCompanyUser(
+        CompanyUserAuthRestApiTester $I,
+    ): void {
+        //Arrange
+        $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
+
+        //Act
+        $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
+            'data' => [
+                'type' => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
+                'attributes' => [
+                    'idCompanyUser' => $this->fixtures->getOauthResponseTransferForCompanyUser()->getIdCompanyUser(),
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseHasAccessToken();
+        $I->seeResponseHasRefreshToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCompanyUserAccessTokenForExistingCustomerWithWrongType(CompanyUserAuthRestApiTester $I): void
+    {
+        //Arrange
+        $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
+
+        //Act
+        $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
+            'data' => [
+                'type' => uniqid(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS),
+                'attributes' => [
+                    'idCompanyUser' => $this->fixtures->getOauthResponseTransferForCompanyUser()->getIdCompanyUser(),
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->dontSeeResponseHasRefreshToken();
+        $I->dontSeeResponseHasAccessToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
+     *
+     * @return void
+     */
     public function requestCompanyUserAccessTokenForExistingCustomerWithInvalidPostData(
         CompanyUserAuthRestApiTester $I,
     ): void {
@@ -65,6 +126,96 @@ class CompanyUserAuthAccessTokensRestApiCest
 
         //Assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->dontSeeResponseHasRefreshToken();
+        $I->dontSeeResponseHasAccessToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCompanyUserAccessTokenWithUuidOfAnotherCompanyUser(CompanyUserAuthRestApiTester $I): void
+    {
+        //Arrange
+        $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForNonCompanyUser()->getAccessToken());
+
+        //Act
+        $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
+            'data' => [
+                'type' => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
+                'attributes' => [
+                    'idCompanyUser' => $this->fixtures->getOauthResponseTransferForCompanyUser()->getIdCompanyUser(),
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::UNAUTHORIZED);
+        $I->dontSeeResponseHasRefreshToken();
+        $I->dontSeeResponseHasAccessToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCompanyUserAccessTokenWithNoExistingIdCompanyUser(CompanyUserAuthRestApiTester $I): void
+    {
+        //Arrange
+        $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
+
+        //Act
+        $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
+            'data' => [
+                'type' => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
+                'attributes' => [
+                    'idCompanyUser' => uniqid(),
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->dontSeeResponseHasRefreshToken();
+        $I->dontSeeResponseHasAccessToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCompanyUserAccessTokenWithEmptyIdCompanyUser(CompanyUserAuthRestApiTester $I): void
+    {
+        //Arrange
+        $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
+
+        //Act
+        $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
+            'data' => [
+                'type' => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
+                'attributes' => [
+                    'idCompanyUser' => '',
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
         $I->dontSeeResponseHasRefreshToken();
         $I->dontSeeResponseHasAccessToken();
 

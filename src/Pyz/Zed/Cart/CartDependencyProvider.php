@@ -52,7 +52,7 @@ use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductUrlItemExpander
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\RemoveInactiveItemsPreReloadPlugin;
 use Spryker\Zed\ProductConfigurationCart\Communication\Plugin\Cart\ProductConfigurationGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Cart\ProductDiscontinuedCartPreCheckPlugin;
-use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartPlugin;
+use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\Cart\ProductImageItemExpanderPlugin;
 use Spryker\Zed\ProductList\Communication\Plugin\CartExtension\ProductListRestrictedItemsPreCheckPlugin;
 use Spryker\Zed\ProductList\Communication\Plugin\CartExtension\RemoveRestrictedItemsPreReloadPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\DefaultQuantitySalesUnitItemExpanderPlugin;
@@ -89,6 +89,7 @@ use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItem
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentCartOperationPostSavePlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\SanitizeCartShipmentItemExpanderPlugin;
+use Spryker\Zed\ShipmentTypeCart\Communication\Plugin\Cart\ShipmentTypeItemExpanderPlugin;
 
 class CartDependencyProvider extends SprykerCartDependencyProvider
 {
@@ -111,7 +112,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new QuantitySalesUnitGroupKeyItemExpanderPlugin(),
             new CartItemGroupKeyOptionPlugin(),
             new CartItemWithBundleGroupKeyExpanderPlugin(),
-            new ProductImageCartPlugin(),
+            new ProductImageItemExpanderPlugin(),
             new CartGroupPromotionItems(),
             new QuantitySalesUnitItemExpanderPlugin(),
             new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
@@ -127,6 +128,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductConfigurationGroupKeyItemExpanderPlugin(),
             new MerchantShipmentItemExpanderPlugin(),
             new GroupKeyWithCartIdentifierItemExpanderPlugin(),
+            new ShipmentTypeItemExpanderPlugin(),
         ];
     }
 

@@ -19,7 +19,6 @@ use Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\StoreManualOrderEntryFo
 use Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\SummaryManualOrderEntryFormPlugin;
 use Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\VoucherManualOrderEntryFormPlugin;
 use Spryker\Zed\ManualOrderEntryGui\ManualOrderEntryGuiDependencyProvider as SprykerManualOrderEntryGuiDependencyProvider;
-use Spryker\Zed\OfferGui\Communication\Plugin\ManualOrderEntryGui\OfferQuoteExpanderPlugin;
 
 class ManualOrderEntryGuiDependencyProvider extends SprykerManualOrderEntryGuiDependencyProvider
 {
@@ -30,16 +29,6 @@ class ManualOrderEntryGuiDependencyProvider extends SprykerManualOrderEntryGuiDe
     {
         return [
             new DummyPaymentInvoicePaymentSubFormPlugin(),
-        ];
-    }
-
-    /**
-     * @return array<\Spryker\Zed\ManualOrderEntryGui\Dependency\Plugin\QuoteExpanderPluginInterface>
-     */
-    protected function getQuoteExpanderPlugins(): array
-    {
-        return [
-            new OfferQuoteExpanderPlugin(),
         ];
     }
 

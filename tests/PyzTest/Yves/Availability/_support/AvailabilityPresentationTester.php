@@ -25,7 +25,7 @@ use Pyz\Yves\CartPage\CartPageConfig;
  * @method void comment($description)
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = NULL)
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Yves\Availability\PHPMD)
  */
 class AvailabilityPresentationTester extends Actor
 {

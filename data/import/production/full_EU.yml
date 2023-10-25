@@ -346,6 +346,8 @@ actions:
       source: data/import/common/common/marketplace/merchant_stock.csv
     - data_entity: merchant-product-approval-status-default
       source: data/import/common/common/marketplace/merchant_product_approval_status_default.csv
+    - data_entity: product-offer-shipment-type
+      source: data/import/common/common/product_offer_shipment_type.csv
     # Store relation
     - data_entity: merchant-store
       source: data/import/common/DE/merchant_store.csv
@@ -363,6 +365,25 @@ actions:
       source: data/import/common/common/marketplace/product_stock.csv
     - data_entity: product-offer-stock
       source: data/import/common/common/marketplace/product_offer_stock.csv
+
+    #9. Click&Collect import
+    - data_entity: service-point
+      source: data/import/common/common/service_point.csv
+    - data_entity: service-point-address
+      source: data/import/common/common/service_point_address.csv
+    - data_entity: service-type
+      source: data/import/common/common/service_type.csv
+    - data_entity: service
+      source: data/import/common/common/service.csv
+    - data_entity: shipment-type-service-type
+      source: data/import/common/common/shipment_type_service_type.csv
+    - data_entity: product-offer-service
+      source: data/import/common/common/product_offer_service.csv
+    # Store relation
+    - data_entity: service-point-store
+      source: data/import/common/DE/service_point_store.csv
+    - data_entity: service-point-store
+      source: data/import/common/AT/service_point_store.csv
 
     # Acl import
     - data_entity: acl-role

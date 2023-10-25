@@ -9,11 +9,11 @@ namespace Pyz\Zed\Merchant;
 
 use Spryker\Zed\AclMerchantPortal\Communication\Plugin\Merchant\MerchantAclEntitiesMerchantPostCreatePlugin;
 use Spryker\Zed\Merchant\MerchantDependencyProvider as SprykerMerchantDependencyProvider;
-use Spryker\Zed\MerchantCategory\Communication\Plugin\Merchant\MerchantCategoryMerchantExpanderPlugin;
-use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileExpanderPlugin;
+use Spryker\Zed\MerchantCategory\Communication\Plugin\Merchant\MerchantCategoryMerchantBulkExpanderPlugin;
+use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileMerchantBulkExpanderPlugin;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileMerchantPostCreatePlugin;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileMerchantPostUpdatePlugin;
-use Spryker\Zed\MerchantStock\Communication\Plugin\Merchant\MerchantStockMerchantExpanderPlugin;
+use Spryker\Zed\MerchantStock\Communication\Plugin\Merchant\MerchantStockMerchantBulkExpanderPlugin;
 use Spryker\Zed\MerchantStock\Communication\Plugin\Merchant\MerchantStockMerchantPostCreatePlugin;
 use Spryker\Zed\MerchantUser\Communication\Plugin\Merchant\SyncMerchantUsersStatusMerchantPostUpdatePlugin;
 
@@ -43,14 +43,14 @@ class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
     }
 
     /**
-     * @return array<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantExpanderPluginInterface>
+     * @return list<\Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantBulkExpanderPluginInterface>
      */
-    protected function getMerchantExpanderPlugins(): array
+    protected function getMerchantBulkExpanderPlugins(): array
     {
         return [
-            new MerchantProfileExpanderPlugin(),
-            new MerchantStockMerchantExpanderPlugin(),
-            new MerchantCategoryMerchantExpanderPlugin(),
+            new MerchantProfileMerchantBulkExpanderPlugin(),
+            new MerchantStockMerchantBulkExpanderPlugin(),
+            new MerchantCategoryMerchantBulkExpanderPlugin(),
         ];
     }
 }

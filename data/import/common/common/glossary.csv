@@ -51,6 +51,8 @@ cart.price.grand.total,Summe,de_DE
 cart.price.grand.total,Grand Total,en_US
 cart.total.tax_total,Mehrwertsteuer,de_DE
 cart.total.tax_total,Tax,en_US
+cart.total.tax_total.calculated_at_checkout,an der Kasse berechnet,de_DE
+cart.total.tax_total.calculated_at_checkout,calculated at checkout,en_US
 auth.login,Anmelden,de_DE
 auth.login,Sign up,en_US
 auth.password,Passwort,de_DE
@@ -799,6 +801,28 @@ customer.password.change.success,Password change successful,en_US
 customer.password.change.success,Passwort erfolgreich geändert,de_DE
 customer.newsletter.subscribed,Newsletter subscribed,en_US
 customer.newsletter.subscribed,Newsletter abonniert,de_DE
+dynamic_entity.validation.invalid_data_format,"Invalid or missing data format. Please ensure that the data is provided in the correct format. Example request body: {'data':[{...},{...},..]}",en_US
+dynamic_entity.validation.invalid_data_format,"Ungültiges oder fehlendes Datenformat. Stellen Sie bitte sicher, dass die Daten im richtigen Format bereitgestellt werden. Beispiel Anforderungskörper: {'data':[{...},{...}]}",de_DE
+dynamic_entity.validation.persistence_failed,"Failed to persist the data. Please verify the provided data and try again.",en_US
+dynamic_entity.validation.persistence_failed,"Das Speichern der Daten ist fehlgeschlagen. Bitte überprüfen Sie die bereitgestellten Daten und versuchen Sie es erneut.",de_DE
+dynamic_entity.validation.persistence_failed_duplicate_entry,"Failed to persist the data. Please verify the provided data and try again. Entry is duplicated.",en_US
+dynamic_entity.validation.persistence_failed_duplicate_entry,"Das Speichern der Daten ist fehlgeschlagen. Bitte überprüfen Sie die bereitgestellten Daten und versuchen Sie es erneut. Eintrag is doppelt vorhanden.",de_DE
+dynamic_entity.validation.entity_does_not_exist,"The entity could not be found in the database.",en_US
+dynamic_entity.validation.entity_does_not_exist,"Die Entität konnte in der Datenbank nicht gefunden werden.",de_DE
+dynamic_entity.validation.invalid_field_type,"Invalid data type for field: %fieldName%",en_US
+dynamic_entity.validation.invalid_field_type,"Ungültiger Datentyp: %fieldName%",de_DE
+dynamic_entity.validation.invalid_field_value,"Invalid data value for field: %fieldName%, row number: %rowNumber%. Field rules: %validationRules%",en_US
+dynamic_entity.validation.invalid_field_value,"Ungültiger Datenwert für das Feld: %fieldName%, Zeilennummer: %rowNumber%. Feldregeln: %validationRules%",de_DE
+dynamic_entity.validation.required_field_is_missing,"The required field must not be empty. Field: '%fieldName%'",en_US
+dynamic_entity.validation.required_field_is_missing,"Das erforderlich Feld darf nicht leer sein. Feld: '%fieldName%'",de_DE
+dynamic_entity.validation.entity_not_found_or_identifier_is_not_creatable,"Entity `%identifier%` not found by identifier, and new identifier can not be persisted. Please update the request.",en_US
+dynamic_entity.validation.entity_not_found_or_identifier_is_not_creatable,"Entität `%identifier%` konnte anhand der ID nicht gefunden werden, und die neue ID kann nicht dauerhaft gespeichert werden. Bitte aktualisieren Sie die Anfrage.",de_DE
+dynamic_entity.validation.modification_of_immutable_field_prohibited,"Modification of immutable field `%fieldName%` is prohibited",en_US
+dynamic_entity.validation.modification_of_immutable_field_prohibited,"Änderung des unveränderlichen Feldes %fieldName% ist nicht zulässig.",de_DE
+dynamic_entity.validation.missing_identifier,"Incomplete Request - missing identifier",en_US
+dynamic_entity.validation.missing_identifier,"Unvollständige Anforderung - fehlende ID",de_DE
+dynamic_entity.validation.provided_field_is_invalid,"The provided `%fieldName%` is incorrect or invalid.",en_US
+dynamic_entity.validation.provided_field_is_invalid,"Der angegebene `%fieldName%` ist falsch oder ungültig.",de_DE
 validator.constraints.password.do_not_match,Passwords don't match,en_US
 validator.constraints.password.do_not_match,Passwörter stimmen nicht überein,de_DE
 discount.successfully.applied,"The discount ""display_name"" has been successfully applied",en_US
@@ -3545,10 +3569,6 @@ oms.state.payment-pending,Payment pending,en_US
 oms.state.payment-pending,Ausstehende Zahlung,de_DE
 oms.state.paid,Paid,en_US
 oms.state.paid,Bezahlt,de_DE
-oms.state.picking-done,Picking done,en_US
-oms.state.picking-done,Picking erledigt,de_DE
-oms.state.picking-started,Picking started,en_US
-oms.state.picking-started,Picking gestartet,de_DE
 oms.state.confirmed,Confirmed,en_US
 oms.state.confirmed,Bestätigt,de_DE
 oms.state.exported,Exported,en_US
@@ -3557,14 +3577,8 @@ oms.state.shipped,Shipped,en_US
 oms.state.shipped,Versandt,de_DE
 oms.state.delivered,Delivered,en_US
 oms.state.delivered,Geliefert,de_DE
-oms.state.ready-for-picking,Ready for picking,en_US
-oms.state.ready-for-picking,Bereit zum Picking,de_DE
 oms.state.ready-for-return,Ready for return,en_US
 oms.state.ready-for-return,Bereit zum Retournieren,de_DE
-oms.state.picking-list-generation-scheduled,Picking list generation scheduled,en_US
-oms.state.picking-list-generation-scheduled,Packlistengenerierung geplant,de_DE
-oms.state.picking-list-generation-started,Picking list generation started,en_US
-oms.state.picking-list-generation-started,Packlistengenerierung gestartet,de_DE
 oms.state.refunded,Refunded,en_US
 oms.state.refunded,Zurückerstattet,de_DE
 oms.state.returned,Returned,en_US
@@ -3905,6 +3919,8 @@ shopping_list.pre.check.product_offer.store_invalid,Product Offer is not equal t
 shopping_list.pre.check.product_offer.store_invalid,Das Angebot gleicht nicht dem aktuellen Shop.,de_DE
 shopping_list.pre.check.product.store_invalid,Product is not equal to the current Store.,en_US
 shopping_list.pre.check.product.store_invalid,Das Produkt gleicht nicht dem aktuellen Shop.,de_DE
+store.validation.store_not_found,"Store not found",en_US
+store.validation.store_not_found,"Store nicht gefunden",de_DE
 store_widget.switcher.store,Store:,en_US
 store_widget.switcher.store,Shop:,de_DE
 product_bundle_product_detail_page_items_list_widget.title.bundle_includes,Bundle includes,en_US
@@ -3943,16 +3959,16 @@ warehouse_user_assignment.validation.too_many_active_warehouse_assignments,User 
 warehouse_user_assignment.validation.too_many_active_warehouse_assignments,Dem Benutzer sind zu viele aktive Läger zugewiesen.,de_DE
 warehouse_user_assignment.validation.warehouse_user_assignment_already_exists,Warehouse user assignment already exists.,en_US
 warehouse_user_assignment.validation.warehouse_user_assignment_already_exists,Lagerbenutzerzuweisung existiert bereits.,de_DE
-push_notification.validation.error.push_notification_provider_not_found,Push notification provider name is not found.,en_US
-push_notification.validation.error.push_notification_provider_not_found,Der Anbietername der Push-Benachrichtigung wurde nicht gefundenn.,de_DE
+push_notification.validation.error.push_notification_provider_not_found,The push notification provider was not found.,en_US
+push_notification.validation.error.push_notification_provider_not_found,Der Push-Benachrichtigungsanbieters wurde nicht gefunden.,de_DE
 push_notification.validation.error.push_notification_not_found,Push notification not found.,en_US
 push_notification.validation.error.push_notification_not_found,Push-Nachricht nicht gefunden.,de_DE
-push_notification.validation.error.push_notification_provider_already_exists,Push notification provider already exists.,en_US
-push_notification.validation.error.push_notification_provider_already_exists,Der Anbieter für Push-Benachrichtigungen existiert bereits.,de_DE
 push_notification.validation.error.wrong_group_name,Wrong group name.,en_US
 push_notification.validation.error.wrong_group_name,Falscher Gruppenname.,de_DE
 push_notification.validation.error.push_notification_already_exists,Push notification subscription already exists.,en_US
 push_notification.validation.error.push_notification_already_exists,Das Abonnement für Push-Benachrichtigungen existiert bereits.,de_DE
+push_notification.validation.error.locale_not_found,Provided locale not found.,en_US
+push_notification.validation.error.locale_not_found,Bereitgestellte Sprache nicht gefunden.,de_DE
 push_notification_web_push_php.validation.error.invalid_payload_structure,Invalid payload structure.,en_US
 push_notification_web_push_php.validation.error.invalid_payload_structure,Ungültige Nutzlaststruktur.,de_DE
 push_notification_web_push_php.validation.error.payload_length_exceeded,The maximum payload length exceeded.,en_US
@@ -4051,3 +4067,55 @@ shipment_type.validation.shipment_type_name_invalid_length,A delivery type name 
 shipment_type.validation.shipment_type_name_invalid_length,Der Lieferart-Name muss eine Länge von %min% bis %max% Zeichen haben.,de_DE
 shipment_type.validation.store_does_not_exist,A store with the name ‘%name%’ does not exist.,en_US
 shipment_type.validation.store_does_not_exist,Store mit dem Namen ‘%name%’ existiert nicht.,de_DE
+push_notification.validation.push_notification_provider_name_exists,A push notification provider with the same name already exists.,en_US
+push_notification.validation.push_notification_provider_name_exists,Ein Push-Benachrichtigungsanbieter mit demselben Namen ist bereits vorhanden.,de_DE
+push_notification.validation.push_notification_provider_name_wrong_length,A push notification provider name must have length from %min% to %max% characters.,en_US
+push_notification.validation.push_notification_provider_name_wrong_length,Ein Push-Benachrichtigungsanbietername muss eine Länge von %min% bis %max% Zeichen haben.,de_DE
+push_notification.validation.push_notification_provider_name_is_not_unique,A push notification provider with the same name already exists in request.,en_US
+push_notification.validation.push_notification_provider_name_is_not_unique,Ein Push-Benachrichtigungsanbieter mit demselben Namen ist bereits in der Anfrage vorhanden.,de_DE
+push_notification.validation.push_notification_exists,Unable to delete push notification provider while push notification exists.,en_US
+push_notification.validation.push_notification_exists,Der Push-Benachrichtigungsanbieter kann nicht gelöscht werden solange Push-Benachrichtigungen vorhanden sind.,de_DE
+push_notification.validation.push_notification_subscription_exists,Unable to delete push notification provider while push notification subscription exists.,en_US
+push_notification.validation.push_notification_subscription_exists,Der Push-Benachrichtigungsanbieter kann nicht gelöscht werden solange Push-Benachrichtigungsabonnements vorhanden sind.,de_DE
+push_notification.validation.wrong_request_body,Wrong request body.,en_US
+push_notification.validation.wrong_request_body,Falscher Anforderungstext.,de_DE
+service_point_widget.search,"Search for Store, zip code or city...",en_US
+service_point_widget.search,"Suche nach Store, PLZ oder Stadt...",de_DE
+service_point_widget.select_store_action,Select store,en_US
+service_point_widget.select_store_action,Store auswählen,de_DE
+service_point_widget.no_results,"Nothing found...",en_US
+service_point_widget.no_results,"Nichts gefunden...",de_DE
+service_point_widget.validation.error.service_point_not_selected,Please select service point.,en_US
+service_point_widget.validation.error.service_point_not_selected,Bitte Servicestelle auswählen.,de_DE
+service_point_widget.validation.error.billing_address_not_provided,Please add billing address manually.,en_US
+service_point_widget.validation.error.billing_address_not_provided,Bitte fügen Sie die Rechnungsadresse manuell hinzu.,de_DE
+page.checkout.address.single_address,Single address,en_US
+page.checkout.address.single_address,Eine Adresse,de_DE
+page.checkout.address.multiple_addresses,Multiple addresses,en_US
+page.checkout.address.multiple_addresses,Mehrere Adressen,de_DE
+service_point_widget.select_location_action,Select a location,en_US
+service_point_widget.select_location_action,Wählen Sie einen Standort,de_DE
+service_point_widget.change_action,Change,en_US
+service_point_widget.change_action,Ändern,de_DE
+service_point_widget.location_label,Location:,en_US
+service_point_widget.location_label,Standort:,de_DE
+service_point_widget.select_your_store_title,Select your store,en_US
+service_point_widget.select_your_store_title,Wählen Sie Ihren Store,de_DE
+service_points_rest_api.error.endpoint_not_found,The endpoint is not found.,en_US
+service_points_rest_api.error.endpoint_not_found,Der Endpunkt wurde nicht gefunden.,de_DE
+service_points_rest_api.error.service_point_identifier_is_not_specified,The service point identifier is not specified.,en_US
+service_points_rest_api.error.service_point_identifier_is_not_specified,Der Servicestellen-Identifikator ist ungültig.,de_DE
+shipment_type_cart.checkout.validation.error,Selected delivery type "%name%" is not available,en_US
+shipment_type_cart.checkout.validation.error,Die ausgewählte Lieferart "%name%" ist nicht verfügbar,de_DE
+service_point_cart.checkout.validation.error,Selected service point "%uuid%" is not available for the store "%store_name%",en_US
+service_point_cart.checkout.validation.error,Der ausgewählte Servicepunkt "%uuid%" ist für den Shop "%store_name%" nicht verfügbar,de_DE
+product_offer_service_point_availability_widget.all_items_available,All items are available.,en_US
+product_offer_service_point_availability_widget.all_items_available,Alle Produkte sind verfügbar.,de_DE
+product_offer_service_point_availability_widget.some_items_not_available,Some items are not available.,en_US
+product_offer_service_point_availability_widget.some_items_not_available,Einige der Produkte sind nicht verfügbar.,de_DE
+product_offer_service_point_availability_widget.all_items_not_available,Not available.,en_US
+product_offer_service_point_availability_widget.all_items_not_available,Keine der Produkte sind verfügbar.,de_DE
+shipment_types_rest_api.error.shipment_type_not_available,Selected delivery type "%name%" is not available.,en_US
+shipment_types_rest_api.error.shipment_type_not_available,Die ausgewählte Lieferart "%name%" ist nicht verfügbar.,de_DE
+click_and_collect_example.error.item_replacement_not_found,Item "%item%" is unavailable for delivery with the selected delivery type. Please choose an alternative way to deliver the item or remove it from the cart.,en_US
+click_and_collect_example.error.item_replacement_not_found,Artikel "%item%" kann nicht mit der ausgewählten Versandart geliefert werden. Bitte wählen Sie eine alternative Versandart oder entfernen Sie den Artikel aus dem Warenkorb.,de_DE
