@@ -26,6 +26,7 @@ use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentCh
 use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentMethodCheckoutDataValidatorPlugin;
 use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentQuoteMapperPlugin;
 use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentsQuoteMapperPlugin;
+use Spryker\Zed\ShipmentTypeServicePointsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentTypeServicePointQuoteMapperPlugin;
 use Spryker\Zed\ShipmentTypesRestApi\Communication\Plugin\CheckoutRestApi\ItemShipmentTypeQuoteMapperPlugin;
 use Spryker\Zed\ShipmentTypesRestApi\Communication\Plugin\CheckoutRestApi\ShipmentTypeCheckoutDataValidatorPlugin;
 use Spryker\Zed\ShipmentTypesRestApi\Communication\Plugin\CheckoutRestApi\ShipmentTypeReadCheckoutDataValidatorPlugin;
@@ -47,6 +48,7 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
             new ShipmentsQuoteMapperPlugin(),
             new ServicePointQuoteMapperPlugin(),
             new ItemShipmentTypeQuoteMapperPlugin(),
+            new ShipmentTypeServicePointQuoteMapperPlugin(),
         ];
     }
 
