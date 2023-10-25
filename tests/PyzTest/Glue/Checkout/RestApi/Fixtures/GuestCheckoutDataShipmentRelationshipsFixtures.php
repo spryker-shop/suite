@@ -132,7 +132,10 @@ class GuestCheckoutDataShipmentRelationshipsFixtures implements FixturesBuilderI
             ShipmentTypeTransfer::STORE_RELATION => (new StoreRelationTransfer())
                 ->addStores($I->haveStore([StoreTransfer::NAME => 'DE'])),
         ]);
-        $I->addShipmentTypeToShipmentMethod($this->shipmentMethodTransfer, $this->shipmentTypeTransfer);
+        $I->haveShipmentMethodShipmentTypeRelation(
+            $this->shipmentMethodTransfer->getIdShipmentMethodOrFail(),
+            $this->shipmentTypeTransfer->getIdShipmentTypeOrFail(),
+        );
 
         $this->guestQuoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $this->guestCustomerTransfer,
