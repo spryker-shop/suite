@@ -167,6 +167,10 @@ use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServicePointP
 use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServicePointStore\ServicePointStoreWritePublisherPlugin as ServicePointStorageStoreWritePublisherPlugin;
 use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServiceType\ServiceTypeWritePublisherPlugin;
 use Spryker\Zed\ServicePointStorage\Communication\Plugin\Publisher\ServiceTypePublisherTriggerPlugin;
+use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentCarrier\ShipmentCarrierShipmentTypeWriterPublisherPlugin;
+use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentMethod\ShipmentMethodPublishShipmentTypeWriterPublisherPlugin;
+use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentMethod\ShipmentMethodShipmentTypeWriterPublisherPlugin;
+use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentMethodStore\ShipmentMethodStoreShipmentTypeWriterPublisherPlugin;
 use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentType\ShipmentTypeWriterPublisherPlugin;
 use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentTypePublisherTriggerPlugin;
 use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Publisher\ShipmentTypeStore\ShipmentTypeStoreWriterPublisherPlugin;
@@ -700,6 +704,10 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
         return [
             new ShipmentTypeWriterPublisherPlugin(),
             new ShipmentTypeStoreWriterPublisherPlugin(),
+            new ShipmentCarrierShipmentTypeWriterPublisherPlugin(),
+            new ShipmentMethodPublishShipmentTypeWriterPublisherPlugin(),
+            new ShipmentMethodShipmentTypeWriterPublisherPlugin(),
+            new ShipmentMethodStoreShipmentTypeWriterPublisherPlugin(),
         ];
     }
 
