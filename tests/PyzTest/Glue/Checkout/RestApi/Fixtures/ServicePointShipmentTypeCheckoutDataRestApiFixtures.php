@@ -137,7 +137,7 @@ class ServicePointShipmentTypeCheckoutDataRestApiFixtures implements FixturesBui
             ShipmentMethodDataHelper::DEFAULT_PRICE_LIST,
             [$storeTransfer->getIdStoreOrFail()],
         );
-        $I->addShipmentTypeToShipmentMethod($this->pickableShipmentMethodTransfer, $I->havePickableShipmentType());
+        $I->addShipmentTypeToShipmentMethod($this->pickableShipmentMethodTransfer, $I->havePickableShipmentType($storeTransfer));
 
         $this->nonPickableShipmentMethodTransfer = $I->haveShipmentMethod(
             [
