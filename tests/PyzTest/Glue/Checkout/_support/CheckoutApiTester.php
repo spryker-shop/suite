@@ -602,19 +602,25 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
      * @return \Generated\Shared\Transfer\ShipmentTypeTransfer
      */
-    public function havePickableShipmentType(): ShipmentTypeTransfer
+    public function havePickableShipmentType(StoreTransfer $storeTransfer): ShipmentTypeTransfer
     {
         $shipmentTypeEntity = SpyShipmentTypeQuery::create()
             ->filterByKey(static::SHIPMENT_TYPE_KEY_PICKUP)
-            ->findOneOrCreate();
-        if ($shipmentTypeEntity->isNew()) {
-            $shipmentTypeEntity->setName(ucfirst(static::SHIPMENT_TYPE_KEY_PICKUP));
-            $shipmentTypeEntity->save();
+            ->findOne();
+
+        if ($shipmentTypeEntity !== null) {
+            return (new ShipmentTypeTransfer())->fromArray($shipmentTypeEntity->toArray());
         }
 
-        return (new ShipmentTypeTransfer())->fromArray($shipmentTypeEntity->toArray());
+        return $this->haveShipmentType([
+            ShipmentTypeTransfer::IS_ACTIVE => true,
+            ShipmentTypeTransfer::KEY => static::SHIPMENT_TYPE_KEY_PICKUP,
+            ShipmentTypeTransfer::STORE_RELATION => (new StoreRelationTransfer())->addStores($storeTransfer),
+        ]);
     }
 
     /**
