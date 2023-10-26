@@ -8,7 +8,6 @@
     <transfer name="ConfigureTaxApp" strict="true">
         <property name="apiUrl" type="string" dataBuilderRule="lexify('??????????')"/>
         <property name="vendorCode" type="string" dataBuilderRule="lexify('??????????')"/>
-        <property name="storeReference" type="string" dataBuilderRule="=de-DE"/>
         <property name="isActive" type="bool" dataBuilderRule="boolean(100)"/>
     </transfer>
 
