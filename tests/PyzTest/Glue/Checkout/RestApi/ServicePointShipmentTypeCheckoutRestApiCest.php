@@ -320,6 +320,69 @@ class ServicePointShipmentTypeCheckoutRestApiCest
      *
      * @return void
      */
+    public function requestCheckoutWithSplitShipmentWIthOneItemAndPickableShipmentMethodWithoutCustomerDataInRequestBody(CheckoutApiTester $I): void
+    {
+        $customerTransfer = $this->fixtures->getCustomerTransfer();
+        $servicePointTransfer = $this->fixtures->getServicePointTransfer();
+        $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
+            $customerTransfer,
+            [
+                $I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[0], $this->fixtures->getPickableShipmentMethodTransfer(), 1),
+            ],
+        );
+        $quoteTransfer = $I->getCartFacade()->reloadItems($quoteTransfer);
+
+        $I->authorizeCustomerToGlue($customerTransfer);
+
+        $url = $I->buildCheckoutUrl();
+        $requestPayload = [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
+                'attributes' => [
+                    'idCart' => $quoteTransfer->getUuidOrFail(),
+                    'billingAddress' => $I->getAddressRequestPayload($quoteTransfer->getBillingAddressOrFail()),
+                    'payments' => $I->getPaymentRequestPayload(),
+                    'servicePoints' => $I->getServicePointsRequestPayload(
+                        $servicePointTransfer->getUuidOrFail(),
+                        [$quoteTransfer->getItems()->offsetGet(0)->getGroupKeyOrFail()],
+                    ),
+                    'shipments' => [
+                        $I->getSplitShipmentRequestPayload($quoteTransfer->getItems()->offsetGet(0)),
+                    ],
+                ],
+            ],
+        ];
+
+        // Act
+        $I->sendPOST($url, $requestPayload);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->assertCheckoutResponseResourceHasCorrectData();
+
+        $I->amSure('The returned resource has correct self link')
+            ->whenI()
+            ->seeSingleResourceHasSelfLink($url);
+
+        $I->amSure('Service point address is persisted as order shipping address')
+            ->whenI()
+            ->assertSalesOrderAddressIsCorrectForItem(
+                $servicePointTransfer->getAddressOrFail(),
+                $customerTransfer,
+                $this->fixtures->getProductConcreteTransfers()[0]->getSkuOrFail(),
+            );
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
+     *
+     * @return void
+     */
     public function requestCheckoutForGuestUserWithPickableShipmentMethodWithoutCustomerDataInRequestBody(CheckoutApiTester $I): void
     {
         $guestCustomerReference = $I->createGuestCustomerReference();
