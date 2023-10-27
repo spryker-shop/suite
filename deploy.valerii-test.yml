@@ -196,6 +196,11 @@ services:
         endpoints:
             mail.valerii-test.cloud.spryker.toys:
 docker:
+    maintenance:
+        enabled: true
+        whitelist:
+          ips:
+              - 80.144.159.176/32 
     ssl:
         enabled: true
         redirect: true
