@@ -7,18 +7,18 @@
 
 namespace Pyz\Zed\ProductOfferServicePointStorage;
 
-use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\ProductOfferServicePointStorage\MerchantProductOfferServiceStorageFilterPlugin;
+use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\ProductOfferServicePointStorage\MerchantProductOfferServiceCollectionStorageFilterPlugin;
 use Spryker\Zed\ProductOfferServicePointStorage\ProductOfferServicePointStorageDependencyProvider as SprykerProductOfferServicePointStorageDependencyProvider;
 
 class ProductOfferServicePointStorageDependencyProvider extends SprykerProductOfferServicePointStorageDependencyProvider
 {
     /**
-     * @return list<\Spryker\Zed\ProductOfferServicePointStorageExtension\Dependeency\Plugin\ProductOfferServiceStorageFilterPluginInterface>
+     * @return list<\Spryker\Zed\ProductOfferServicePointStorageExtension\Dependency\Plugin\ProductOfferServiceCollectionStorageFilterPluginInterface>
      */
-    protected function getProductOfferServiceStorageFilterPlugins(): array
+    protected function getProductOfferServiceCollectionStorageFilterPlugins(): array
     {
         return [
-            new MerchantProductOfferServiceStorageFilterPlugin(),
+            new MerchantProductOfferServiceCollectionStorageFilterPlugin(),
         ];
     }
 }
