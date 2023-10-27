@@ -150,10 +150,10 @@ services:
         engine: redis
     search:
         engine: elastic
-        version: 7.6
+        version: '7.10'
     scheduler:
         engine: jenkins
-        version: '2.324'
+        version: '2.401'
         csrf-protection-enabled: true
     mail_catcher:
         engine: mailhog
@@ -174,3 +174,7 @@ docker:
 
     mount:
         baked:
+
+    compose:
+        yamls:
+            - .robot/docker-compose.robot.yml

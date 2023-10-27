@@ -29,6 +29,7 @@
             <state name="paid" reserved="true" display="oms.state.paid">
                 <flag>cancellable</flag>
             </state>
+            <state name="tax invoice submitted" reserved="true" display="oms.state.paid"/>
             <state name="waiting" reserved="true" display="oms.state.waiting"/>
             <state name="exported" reserved="true" display="oms.state.exported"/>
             <state name="product review requested" reserved="true" display="oms.state.paid"/>
@@ -71,6 +72,12 @@
                 <event>pay</event>
             </transition>
 
+            <transition happy="true">
+                <source>paid</source>
+                <target>tax invoice submitted</target>
+                <event>submit tax invoice</event>
+            </transition>
+
             <transition>
                 <source>payment pending</source>
                 <target>cancelled</target>
@@ -84,7 +91,7 @@
             </transition>
 
             <transition happy="true">
-                <source>paid</source>
+                <source>tax invoice submitted</source>
                 <target>product review requested</target>
                 <event>request product review</event>
             </transition>
@@ -160,6 +167,7 @@
         <events>
             <event name="authorize" timeout="1 second"/>
             <event name="pay" manual="true" timeout="1 hour" timeoutProcessor="OmsTimeout/Initiation" command="DummyPayment/Pay"/>
+            <event name="submit tax invoice" onEnter="true" command="TaxApp/SubmitPaymentTaxInvoice"/>
             <event name="request product review" onEnter="true" command="Order/RequestProductReviews"/>
             <event name="confirm" onEnter="true" manual="true" command="Oms/SendOrderConfirmation"/>
             <event name="skip timeout" manual="true" timeout="30 minute"/>

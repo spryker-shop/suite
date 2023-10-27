@@ -69,7 +69,7 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
  * @method void comment($description)
  * @method void pause()
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Zed\AclEntity\PHPMD)
  */
 class AclQueryDirectorTester extends Actor
 {

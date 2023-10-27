@@ -24,7 +24,7 @@ use Codeception\Scenario;
  * @method void comment($description)
  * @method void pause()
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Yves\CartUpSellingProducts\PHPMD)
  */
 class CartUpSellingProductsPresentationTester extends Actor
 {

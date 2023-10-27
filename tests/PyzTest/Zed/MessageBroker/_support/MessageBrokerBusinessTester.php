@@ -24,7 +24,9 @@ use Spryker\Zed\MessageBroker\Business\MessageBrokerFacadeInterface;
  * @method void comment($description)
  * @method void pause()
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Zed\MessageBroker\PHPMD)
+ *
+ * @method \Spryker\Zed\MessageBroker\MessageBrokerConfig getModuleConfig()
  */
 class MessageBrokerBusinessTester extends Actor
 {

@@ -12,16 +12,18 @@ use SprykerShop\Yves\DiscountPromotionWidget\Plugin\CartPage\DiscountPromotionAd
 use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\CartPage\MerchantProductOfferPreAddToCartPlugin;
 use SprykerShop\Yves\MerchantProductWidget\Plugin\CartPage\MerchantProductPreAddToCartPlugin;
 use SprykerShop\Yves\ProductBundleWidget\Plugin\CartPage\ProductBundleCartItemTransformerPlugin;
+use SprykerShop\Yves\UrlPage\Plugin\CartPage\UrlCartItemTransformerPlugin;
 
 class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
 {
     /**
-     * @return array<\SprykerShop\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface>
+     * @return array<\SprykerShop\Yves\CartPageExtension\Dependency\Plugin\CartItemTransformerPluginInterface>
      */
     protected function getCartItemTransformerPlugins(): array
     {
         return [
             new ProductBundleCartItemTransformerPlugin(),
+            new UrlCartItemTransformerPlugin(),
         ];
     }
 

@@ -27,14 +27,14 @@ use Spryker\Zed\OauthClient\OauthClientDependencyProvider;
  * @method void comment($description)
  * @method void pause($vars = [])
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Zed\OauthClient\PHPMD)
  */
 class OauthClientBusinessTester extends Actor
 {
     use _generated\OauthClientBusinessTesterActions;
 
     /**
-     * @return \Spryker\Zed\MessageBroker\Business\MessageBrokerFacadeInterface
+     * @return \Spryker\Zed\OauthClient\Business\OauthClientFacadeInterface
      */
     public function getOauthClientFacade(): OauthClientFacadeInterface
     {

@@ -39,6 +39,9 @@ suites:
                 - \SprykerTest\Zed\SalesOrderThreshold\Helper\SalesOrderThresholdHelper
                 - \SprykerTest\Service\Container\Helper\ContainerHelper
                 - \SprykerTest\Shared\Store\Helper\StoreDependencyHelper
+                - \SprykerTest\Shared\ServicePoint\Helper\ServicePointHelper
+                - \SprykerTest\Shared\ShipmentType\Helper\ShipmentTypeHelper
+                - \SprykerTest\Zed\Country\Helper\CountryDataHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser

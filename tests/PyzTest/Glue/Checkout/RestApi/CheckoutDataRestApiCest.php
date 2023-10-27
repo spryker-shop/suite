@@ -297,4 +297,50 @@ class CheckoutDataRestApiCest
             ->whenI()
             ->seeSingleResourceHasSelfLink($url);
     }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
+     *
+     * @return void
+     */
+    public function requestWithOneItemInQuoteAndFullBody(CheckoutApiTester $I): void
+    {
+        // Arrange
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
+
+        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
+        $idShipmentMethod = $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod();
+
+        $url = $I->buildCheckoutDataUrl();
+        $requestPayload = [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => $quoteTransfer->getUuid(),
+                    'billingAddress' => $I->getAddressRequestPayload($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
+                    'customer' => $I->getCustomerRequestPayload($this->fixtures->getCustomerTransfer()),
+                    'payments' => $I->getPaymentRequestPayload(),
+                    'shipment' => $I->getShipmentRequestPayload($idShipmentMethod),
+                ],
+            ],
+        ];
+
+        // Act
+        $I->sendPOST($url, $requestPayload);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
+
+        $I->amSure('The returned resource has correct self link')
+            ->whenI()
+            ->seeSingleResourceHasSelfLink($url);
+    }
 }

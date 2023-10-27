@@ -7,6 +7,7 @@
 
 namespace Pyz\Glue\CheckoutRestApi;
 
+use Generated\Shared\Transfer\RestCustomerTransfer;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig as SprykerCheckoutRestApiConfig;
 
 class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
@@ -103,5 +104,16 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
     public function isAddressesMappedToAttributes(): bool
     {
         return false;
+    }
+
+    /**
+     * @return list<string>
+     */
+    public function getRequiredCustomerRequestDataForGuestCheckout(): array
+    {
+        return array_merge(parent::getRequiredCustomerRequestDataForGuestCheckout(), [
+            RestCustomerTransfer::FIRST_NAME,
+            RestCustomerTransfer::LAST_NAME,
+        ]);
     }
 }

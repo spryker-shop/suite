@@ -7,12 +7,15 @@
 
 namespace PyzTest\Glue\Checkout;
 
+use DateTime;
 use Generated\Shared\DataBuilder\AddressBuilder;
 use Generated\Shared\DataBuilder\CustomerBuilder;
 use Generated\Shared\DataBuilder\ItemBuilder;
+use Generated\Shared\DataBuilder\ServicePointBuilder;
 use Generated\Shared\DataBuilder\ShipmentBuilder;
 use Generated\Shared\DataBuilder\StoreRelationBuilder;
 use Generated\Shared\Transfer\AddressTransfer;
+use Generated\Shared\Transfer\CountryTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\MoneyValueTransfer;
@@ -24,17 +27,30 @@ use Generated\Shared\Transfer\RestAddressTransfer;
 use Generated\Shared\Transfer\RestCheckoutDataTransfer;
 use Generated\Shared\Transfer\RestCheckoutResponseTransfer;
 use Generated\Shared\Transfer\RestCustomerTransfer;
+use Generated\Shared\Transfer\RestOrderDetailsAttributesTransfer;
 use Generated\Shared\Transfer\RestPaymentTransfer;
+use Generated\Shared\Transfer\RestServicePointTransfer;
+use Generated\Shared\Transfer\RestShipmentsTransfer;
 use Generated\Shared\Transfer\RestShipmentTransfer;
+use Generated\Shared\Transfer\ServicePointAddressTransfer;
+use Generated\Shared\Transfer\ServicePointTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
+use Generated\Shared\Transfer\ShipmentTypeTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
+use Orm\Zed\Sales\Persistence\SpySalesOrderAddress;
+use Orm\Zed\Sales\Persistence\SpySalesOrderAddressQuery;
+use Orm\Zed\Shipment\Persistence\SpyShipmentMethodQuery;
+use Orm\Zed\ShipmentType\Persistence\SpyShipmentTypeQuery;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
+use Spryker\Glue\OrdersRestApi\OrdersRestApiConfig;
 use Spryker\Shared\Price\PriceConfig;
+use Spryker\Shared\Shipment\ShipmentConfig;
+use Spryker\Zed\Cart\Business\CartFacadeInterface;
 use Spryker\Zed\Customer\Business\CustomerFacadeInterface;
 use Spryker\Zed\Payment\Business\PaymentFacadeInterface;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
@@ -54,7 +70,7 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
  * @method void comment($description)
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Glue\Checkout\PHPMD)
  */
 class CheckoutApiTester extends ApiEndToEndTester
 {
@@ -94,6 +110,26 @@ class CheckoutApiTester extends ApiEndToEndTester
      * @var int
      */
     protected const DEFAULT_QUOTE_ITEM_QUANTITY = 10;
+
+    /**
+     * @var string
+     */
+    protected const TEST_STORE_NAME = 'DE';
+
+    /**
+     * @var string
+     */
+    protected const SHIPMENT_TYPE_KEY_PICKUP = 'pickup';
+
+    /**
+     * @var string
+     */
+    protected const COUNTRY_ISO2_CODE = 'XX';
+
+    /**
+     * @var string
+     */
+    protected const COUNTRY_ISO3_CODE = 'XXX';
 
     /**
      * @return void
@@ -137,6 +173,58 @@ class CheckoutApiTester extends ApiEndToEndTester
             $attributes[RestCheckoutDataTransfer::ADDRESSES],
             'The returned resource attributes addresses should be an empty array',
         );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ServicePointAddressTransfer $servicePointAddressTransfer
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     * @param string $itemSku
+     *
+     * @return void
+     */
+    public function assertSalesOrderAddressIsCorrectForItem(
+        ServicePointAddressTransfer $servicePointAddressTransfer,
+        CustomerTransfer $customerTransfer,
+        string $itemSku,
+    ): void {
+        $orderReference = $this->getDataFromResponseByJsonPath('$.data.attributes')[RestCheckoutResponseTransfer::ORDER_REFERENCE];
+
+        $salesOrderShipmentAddressEntity = $this->findSalesOrderAddressEntity($orderReference, $itemSku);
+        $this->assertNotNull($salesOrderShipmentAddressEntity);
+        $this->assertSame($servicePointAddressTransfer->getAddress1OrFail(), $salesOrderShipmentAddressEntity->getAddress1());
+        $this->assertSame($servicePointAddressTransfer->getAddress2OrFail(), $salesOrderShipmentAddressEntity->getAddress2());
+        $this->assertSame($servicePointAddressTransfer->getZipCodeOrFail(), $salesOrderShipmentAddressEntity->getZipCode());
+        $this->assertSame($servicePointAddressTransfer->getCountryOrFail()->getIdCountryOrFail(), $salesOrderShipmentAddressEntity->getFkCountry());
+        $this->assertSame($servicePointAddressTransfer->getCityOrFail(), $salesOrderShipmentAddressEntity->getCity());
+        $this->assertSame($customerTransfer->getFirstNameOrFail(), $salesOrderShipmentAddressEntity->getFirstName());
+        $this->assertSame($customerTransfer->getLastNameOrFail(), $salesOrderShipmentAddressEntity->getLastName());
+        $this->assertSame($customerTransfer->getSalutationOrFail(), $salesOrderShipmentAddressEntity->getSalutation());
+    }
+
+    /**
+     * @param int $price
+     *
+     * @return void
+     */
+    public function assertShipmentExpensesHaveCorrectPrice(int $price): void
+    {
+        $this->amSure('The returned resource should have included orders resource')
+            ->whenI()
+            ->seeIncludesContainResourceOfType(OrdersRestApiConfig::RESOURCE_ORDERS);
+
+        $ordersAttributes = $this->getDataFromResponseByJsonPath(
+            sprintf('$.included[?(@.type == %1$s)].attributes', json_encode(OrdersRestApiConfig::RESOURCE_ORDERS)),
+        );
+
+        $this->assertNotNull($ordersAttributes);
+        $this->assertCount(1, $ordersAttributes);
+        $restOrdersDetailsAttributesTransfer = (new RestOrderDetailsAttributesTransfer())->fromArray($ordersAttributes[0], true);
+        $this->assertCount(1, $restOrdersDetailsAttributesTransfer->getExpenses());
+
+        /** @var \Generated\Shared\Transfer\RestOrderExpensesAttributesTransfer $restOrderExpensesAttributesTransfer */
+        $restOrderExpensesAttributesTransfer = $restOrdersDetailsAttributesTransfer->getExpenses()->getIterator()->current();
+        $this->assertSame(ShipmentConfig::SHIPMENT_EXPENSE_TYPE, $restOrderExpensesAttributesTransfer->getType());
+        $this->assertSame($price, $restOrderExpensesAttributesTransfer->getSumPrice());
     }
 
     /**
@@ -197,6 +285,14 @@ class CheckoutApiTester extends ApiEndToEndTester
         return $this->getLocator()
             ->payment()
             ->facade();
+    }
+
+    /**
+     * @return \Spryker\Zed\Cart\Business\CartFacadeInterface
+     */
+    public function getCartFacade(): CartFacadeInterface
+    {
+        return $this->getLocator()->cart()->facade();
     }
 
     /**
@@ -265,6 +361,37 @@ class CheckoutApiTester extends ApiEndToEndTester
     {
         return [
             RestShipmentTransfer::ID_SHIPMENT_METHOD => $idShipmentMethod,
+        ];
+    }
+
+    /**
+     * @param string $idServicePoint
+     * @param list<string> $itemGroupKeys
+     *
+     * @return list<array<string, mixed>>
+     */
+    public function getServicePointsRequestPayload(string $idServicePoint, array $itemGroupKeys): array
+    {
+        return [
+            [
+                RestServicePointTransfer::ID_SERVICE_POINT => $idServicePoint,
+                RestServicePointTransfer::ITEMS => $itemGroupKeys,
+            ],
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return array<string, mixed>
+     */
+    public function getSplitShipmentRequestPayload(ItemTransfer $itemTransfer): array
+    {
+        return [
+            RestShipmentsTransfer::ID_SHIPMENT_METHOD => $itemTransfer->getShipmentOrFail()->getMethodOrFail()->getIdShipmentMethodOrFail(),
+            RestShipmentsTransfer::ITEMS => [$itemTransfer->getGroupKeyOrFail()],
+            RestShipmentsTransfer::SHIPPING_ADDRESS => $this->getAddressRequestPayload($itemTransfer->getShipmentOrFail()->getShippingAddressOrFail()),
+            RestShipmentsTransfer::REQUESTED_DELIVERY_DATE => (new DateTime('tomorrow'))->format('Y-m-d'),
         ];
     }
 
@@ -340,11 +467,15 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param array $overrideItems
+     * @param string $priceMode
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function havePersistentQuoteWithItemsAndItemLevelShipment(CustomerTransfer $customerTransfer, array $overrideItems = []): QuoteTransfer
-    {
+    public function havePersistentQuoteWithItemsAndItemLevelShipment(
+        CustomerTransfer $customerTransfer,
+        array $overrideItems = [],
+        string $priceMode = PriceConfig::PRICE_MODE_GROSS,
+    ): QuoteTransfer {
         return $this->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,
             QuoteTransfer::TOTALS => (new TotalsTransfer())
@@ -352,8 +483,30 @@ class CheckoutApiTester extends ApiEndToEndTester
                 ->setPriceToPay(random_int(1000, 10000)),
             QuoteTransfer::ITEMS => $this->mapProductConcreteTransfersToQuoteTransferItemsWithItemLevelShipment($overrideItems),
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
-            QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
+            QuoteTransfer::PRICE_MODE => $priceMode,
             QuoteTransfer::BILLING_ADDRESS => (new AddressBuilder())->build(),
+        ]);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function havePersistentQuoteWithItemAndItemServicePoint(CustomerTransfer $customerTransfer): QuoteTransfer
+    {
+        $productConcreteTransfer = $this->haveProductWithStock();
+        $storeTransfer = $this->haveStore([StoreTransfer::NAME => static::TEST_STORE_NAME]);
+        $quoteItemData = $this->createItemTransferWithServicePoint($productConcreteTransfer, $storeTransfer)->toArray();
+
+        return $this->havePersistentQuote([
+            QuoteTransfer::CUSTOMER => $customerTransfer,
+            QuoteTransfer::TOTALS => (new TotalsTransfer())
+                ->setSubtotal(random_int(1000, 10000))
+                ->setPriceToPay(random_int(1000, 10000)),
+            QuoteTransfer::ITEMS => [$quoteItemData],
+            QuoteTransfer::STORE => $storeTransfer->toArray(),
+            QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
         ]);
     }
 
@@ -449,6 +602,69 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
+     * @return \Generated\Shared\Transfer\ShipmentTypeTransfer
+     */
+    public function havePickableShipmentType(StoreTransfer $storeTransfer): ShipmentTypeTransfer
+    {
+        $shipmentTypeEntity = SpyShipmentTypeQuery::create()
+            ->filterByKey(static::SHIPMENT_TYPE_KEY_PICKUP)
+            ->findOne();
+
+        if ($shipmentTypeEntity !== null) {
+            return (new ShipmentTypeTransfer())->fromArray($shipmentTypeEntity->toArray());
+        }
+
+        return $this->haveShipmentType([
+            ShipmentTypeTransfer::IS_ACTIVE => true,
+            ShipmentTypeTransfer::KEY => static::SHIPMENT_TYPE_KEY_PICKUP,
+            ShipmentTypeTransfer::STORE_RELATION => (new StoreRelationTransfer())->addStores($storeTransfer),
+        ]);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ShipmentMethodTransfer $shipmentMethodTransfer
+     * @param \Generated\Shared\Transfer\ShipmentTypeTransfer $shipmentTypeTransfer
+     *
+     * @return void
+     */
+    public function addShipmentTypeToShipmentMethod(
+        ShipmentMethodTransfer $shipmentMethodTransfer,
+        ShipmentTypeTransfer $shipmentTypeTransfer,
+    ): void {
+        /** @var \Orm\Zed\Shipment\Persistence\SpyShipmentMethod $shipmentMethodEntity */
+        $shipmentMethodEntity = (SpyShipmentMethodQuery::create())
+            ->findOneByIdShipmentMethod($shipmentMethodTransfer->getIdShipmentMethodOrFail());
+
+        $shipmentMethodEntity->setFkShipmentType($shipmentTypeTransfer->getIdShipmentTypeOrFail());
+        $shipmentMethodEntity->save();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
+     * @return \Generated\Shared\Transfer\ServicePointTransfer
+     */
+    public function haveServicePointWithAddress(StoreTransfer $storeTransfer): ServicePointTransfer
+    {
+        $countryTransfer = $this->haveCountryTransfer([
+            CountryTransfer::ISO2_CODE => static::COUNTRY_ISO2_CODE,
+            CountryTransfer::ISO3_CODE => static::COUNTRY_ISO3_CODE,
+        ]);
+        $servicePointTransfer = $this->haveServicePoint([
+            ServicePointTransfer::IS_ACTIVE => true,
+            ServicePointTransfer::STORE_RELATION => (new StoreRelationTransfer())->addStores($storeTransfer),
+        ]);
+        $servicePointAddressTransfer = $this->haveServicePointAddress([
+            ServicePointAddressTransfer::SERVICE_POINT => $servicePointTransfer,
+            ServicePointAddressTransfer::COUNTRY => $countryTransfer,
+        ]);
+
+        return $servicePointTransfer->setAddress($servicePointAddressTransfer->setServicePoint(null));
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
@@ -520,6 +736,39 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
+     * @return \Generated\Shared\Transfer\ItemTransfer
+     */
+    protected function createItemTransferWithServicePoint(
+        ProductConcreteTransfer $productConcreteTransfer,
+        StoreTransfer $storeTransfer,
+    ): ItemTransfer {
+        $servicePointBuilder = (new ServicePointBuilder([
+            ServicePointTransfer::UUID => uniqid('test-service-point'),
+            ServicePointTransfer::IS_ACTIVE => true,
+            ]))
+            ->withStoreRelation([
+                StoreRelationTransfer::STORES =>
+                    [
+                        $storeTransfer->toArray(),
+                    ],
+            ])
+            ->build();
+        $servicePointData = $this->haveServicePoint($servicePointBuilder->toArray())->toArray();
+
+        return (new ItemBuilder([
+            ItemTransfer::SKU => $productConcreteTransfer->getSku(),
+            ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
+            ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
+            ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
+            ItemTransfer::QUANTITY => 1,
+            ItemTransfer::SERVICE_POINT => $servicePointData,
+        ]))->build();
+    }
+
+    /**
      * @param array $overrideItem
      *
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
@@ -561,5 +810,41 @@ class CheckoutApiTester extends ApiEndToEndTester
         }
 
         return sprintf('?%s=%s', RequestConstantsInterface::QUERY_INCLUDE, implode(',', $includes));
+    }
+
+    /**
+     * @param string $orderReference
+     * @param string $itemSku
+     *
+     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderAddress|null
+     */
+    protected function findSalesOrderAddressEntity(string $orderReference, string $itemSku): ?SpySalesOrderAddress
+    {
+        return $this->getSpySalesOrderAddressQuery()
+            ->useSpySalesShipmentQuery()
+                ->useOrderQuery()
+                    ->filterByOrderReference($orderReference)
+                ->endUse()
+                ->useSpySalesOrderItemQuery()
+                    ->filterBySku($itemSku)
+                ->endUse()
+            ->endUse()
+            ->findOne();
+    }
+
+    /**
+     * @return \Orm\Zed\ShipmentType\Persistence\SpyShipmentTypeQuery
+     */
+    protected function getShipmentTypeQuery(): SpyShipmentTypeQuery
+    {
+        return SpyShipmentTypeQuery::create();
+    }
+
+    /**
+     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderAddressQuery
+     */
+    protected function getSpySalesOrderAddressQuery(): SpySalesOrderAddressQuery
+    {
+        return SpySalesOrderAddressQuery::create();
     }
 }

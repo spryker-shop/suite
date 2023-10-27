@@ -4,9 +4,17 @@ version: 0
 actions:
     #1. Commerce Setup data import
     - data_entity: store
-    # Cannot have a source because we use store.php
+      source: data/import/common/AT/store.csv
     - data_entity: currency
       source: data/import/common/common/currency.csv
+    - data_entity: currency-store
+      source: data/import/common/AT/currency_store.csv
+    - data_entity: country-store
+      source: data/import/common/AT/country_store.csv
+    - data_entity: locale-store
+      source: data/import/common/AT/locale_store.csv
+    - data_entity: default-locale-store
+      source: data/import/common/AT/default_locale_store.csv
     - data_entity: order-source
       source: data/import/common/common/order_source.csv
     - data_entity: customer
@@ -34,10 +42,10 @@ actions:
     - data_entity: return-reason
       source: data/import/common/common/return_reason.csv
     # Store relation
-    - data_entity: shipment-method-store
-      source: data/import/common/AT/shipment_method_store.csv
     - data_entity: stock-store
       source: data/import/common/AT/warehouse_store.csv
+    - data_entity: shipment-method-store
+      source: data/import/common/AT/shipment_method_store.csv
     - data_entity: payment-method-store
       source: data/import/common/AT/payment_method_store.csv
     - data_entity: shipment-type-store
@@ -62,12 +70,14 @@ actions:
       source: data/import/common/AT/product_price.csv
     - data_entity: product-price-schedule
       source: data/import/common/AT/product_price_schedule.csv
+    - data_entity: product-abstract-store
+      source: data/import/common/AT/product_abstract_store.csv
     - data_entity: product-stock
       source: data/import/common/common/product_stock.csv
     - data_entity: product-approval-status
       source: data/import/common/common/product_abstract_approval_status.csv
-    - data_entity: product-abstract-store
-      source: data/import/common/AT/product_abstract_store.csv
+    - data_entity: product-configuration
+      source: data/import/common/common/product_configuration.csv
     - data_entity: category-store
       source: data/import/common/AT/category_store.csv
 
@@ -133,11 +143,13 @@ actions:
       source: data/import/common/common/product_alternative.csv
     - data_entity: product-quantity
       source: data/import/common/common/product_quantity.csv
-      # Store relation
+    # Store relation
     - data_entity: discount-store
       source: data/import/common/AT/discount_store.csv
     - data_entity: product-relation-store
       source: data/import/common/AT/product_relation_store.csv
+    - data_entity: product-label-store
+      source: data/import/common/AT/product_label_store.csv
 
     #5. Content Management Setup import
     - data_entity: navigation
@@ -246,12 +258,18 @@ actions:
       source: data/import/common/common/marketplace/merchant_user.csv
     - data_entity: merchant-product
       source: data/import/common/common/marketplace/merchant_product.csv
+    - data_entity: merchant-category
+      source: data/import/common/common/marketplace/merchant_category.csv
     - data_entity: merchant-profile
       source: data/import/common/common/marketplace/merchant_profile.csv
     - data_entity: merchant-profile-address
       source: data/import/common/common/marketplace/merchant_profile_address.csv
     - data_entity: merchant-product-offer
       source: data/import/common/common/marketplace/merchant_product_offer.csv
+    - data_entity: product-offer-shopping-list-item
+      source: data/import/common/common/marketplace/product_offer_shopping_list_item.csv
+    - data_entity: merchant-product-option-group
+      source: data/import/common/common/marketplace/merchant_product_option_group.csv
     - data_entity: merchant-opening-hours-date-schedule
       source: data/import/common/common/marketplace/merchant_open_hours_date_schedule.csv
     - data_entity: merchant-opening-hours-weekday-schedule
@@ -260,12 +278,12 @@ actions:
       source: data/import/common/common/marketplace/product_offer_validity.csv
     - data_entity: price-product-offer
       source: data/import/common/AT/price_product_offer.csv
-    - data_entity: product-offer-stock
-      source: data/import/common/common/marketplace/product_offer_stock.csv
     - data_entity: merchant-oms-process
       source: data/import/common/common/marketplace/merchant_oms_process.csv
     - data_entity: stock
       source: data/import/common/common/marketplace/warehouse.csv
+    - data_entity: stock-address
+      source: data/import/common/common/marketplace/warehouse_address.csv
     - data_entity: merchant-stock
       source: data/import/common/common/marketplace/merchant_stock.csv
     - data_entity: merchant-product-approval-status-default
@@ -277,6 +295,12 @@ actions:
       source: data/import/common/AT/merchant_store.csv
     - data_entity: merchant-product-offer-store
       source: data/import/common/AT/merchant_product_offer_store.csv
+    - data_entity: stock-store
+      source: data/import/common/AT/marketplace/warehouse_store.csv
+    - data_entity: product-stock
+      source: data/import/common/common/marketplace/product_stock.csv
+    - data_entity: product-offer-stock
+      source: data/import/common/common/marketplace/product_offer_stock.csv
 
     #9. Click&Collect import
     - data_entity: service-point
@@ -294,3 +318,15 @@ actions:
     # Store relation
     - data_entity: service-point-store
       source: data/import/common/AT/service_point_store.csv
+
+    # Acl import
+    - data_entity: acl-role
+      source: data/import/common/common/acl_role.csv
+
+    # AclEntity import
+    - data_entity: acl-entity-segment
+      source: data/import/common/common/acl_entity_segment.csv
+    - data_entity: acl-entity-rule
+      source: data/import/common/common/acl_entity_rule.csv
+    - data_entity: acl-entity-segment-connector
+      source: data/import/common/common/acl_entity_segment_connector.csv

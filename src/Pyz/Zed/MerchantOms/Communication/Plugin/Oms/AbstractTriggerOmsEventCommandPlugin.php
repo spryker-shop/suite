@@ -36,7 +36,7 @@ abstract class AbstractTriggerOmsEventCommandPlugin extends AbstractPlugin imple
      *
      * @return void
      */
-    public function run(StateMachineItemTransfer $stateMachineItemTransfer)
+    public function run(StateMachineItemTransfer $stateMachineItemTransfer): void
     {
         $merchantOrderItemTransfer = $this->getFactory()->getMerchantSalesOrderFacade()->findMerchantOrderItem(
             (new MerchantOrderItemCriteriaTransfer())

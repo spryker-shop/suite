@@ -93,7 +93,7 @@ if (getenv('SPRYKER_ACTIVE_STORES')) {
         }, $activeStores);
     }
 
-    return $isMultiDbEnabled ? [APPLICATION_CODE_BUCKET => $stores[APPLICATION_CODE_BUCKET]] : $stores;
+    return $isMultiDbEnabled ? [APPLICATION_STORE => $stores[APPLICATION_STORE]] : $stores;
 }
 
 $stores['DE'] = [

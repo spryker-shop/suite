@@ -184,11 +184,18 @@ $jobs[] = [
     'enable' => true,
 ];
 
+$jobs[] = [
+    'name' => 'glue-api-generate-documentation',
+    'command' => '$PHP_BIN vendor/bin/glue api:generate:documentation --invalidated-after-interval 90sec',
+    'schedule' => '*/1 * * * *',
+    'enable' => true,
+];
+
 /* Message broker */
-if (\Spryker\Shared\Config\Config::get(\Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants::SQS_RECEIVER_CONFIG)) {
+if (\Spryker\Shared\Config\Config::get(\Spryker\Shared\MessageBroker\MessageBrokerConstants::IS_ENABLED)) {
     $jobs[] = [
         'name' => 'message-broker-consume-channels',
-        'command' => '$PHP_BIN vendor/bin/console message-broker:consume --time-limit=15',
+        'command' => '$PHP_BIN vendor/bin/console message-broker:consume --time-limit=15 --sleep=5',
         'schedule' => '* * * * *',
         'enable' => true,
     ];

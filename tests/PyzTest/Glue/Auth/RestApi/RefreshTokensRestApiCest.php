@@ -54,6 +54,83 @@ class RefreshTokensRestApiCest
      *
      * @return void
      */
+    public function requestRefreshTokenWithValidRefreshTokenValue(AuthRestApiTester $I): void
+    {
+        //Act
+        $I->sendPOST(AuthRestApiConfig::RESOURCE_REFRESH_TOKENS, [
+            'data' => [
+                'type' => AuthRestApiConfig::RESOURCE_REFRESH_TOKENS,
+                'attributes' => [
+                    'refreshToken' => $this->fixtures->getOauthResponseTransfer()->getRefreshToken(),
+                ],
+            ],
+        ]);
+
+        //Assert
+
+
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseHasRefreshToken();
+        $I->seeResponseHasAccessToken();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestRefreshTokenWithInvalidRefreshTokenValue(AuthRestApiTester $I): void
+    {
+        //Act
+        $I->sendPOST(AuthRestApiConfig::RESOURCE_REFRESH_TOKENS, [
+            'data' => [
+                'type' => AuthRestApiConfig::RESOURCE_REFRESH_TOKENS,
+                'attributes' => [
+                    'refreshToken' => static::INVALID_REFRESH_TOKEN,
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::UNAUTHORIZED);
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestRefreshTokenWithEmptyRefreshTokenValue(AuthRestApiTester $I): void
+    {
+        //Act
+        $I->sendPOST(AuthRestApiConfig::RESOURCE_REFRESH_TOKENS, [
+            'data' => [
+                'type' => AuthRestApiConfig::RESOURCE_REFRESH_TOKENS,
+                'attributes' => [
+                    'refreshToken' => '',
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->dontSeeResponseHasAccessToken();
+        $I->dontSeeResponseHasRefreshToken();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
+     *
+     * @return void
+     */
     public function requestRefreshTokenWithInvalidPostData(AuthRestApiTester $I): void
     {
         //Act
@@ -61,6 +138,32 @@ class RefreshTokensRestApiCest
             'type' => AuthRestApiConfig::RESOURCE_REFRESH_TOKENS,
             'attributes' => [
                 'refreshToken' => $this->fixtures->getOauthResponseTransfer()->getRefreshToken(),
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->dontSeeResponseHasAccessToken();
+        $I->dontSeeResponseHasRefreshToken();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestRefreshTokenWithInvalidRequestType(AuthRestApiTester $I): void
+    {
+        //Act
+        $I->sendPOST(AuthRestApiConfig::RESOURCE_REFRESH_TOKENS, [
+            'data' => [
+                'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
+                'attributes' => [
+                    'refreshToken' => $this->fixtures->getOauthResponseTransfer()->getRefreshToken(),
+                ],
             ],
         ]);
 
