@@ -34,6 +34,7 @@ x-frontend-auth: &frontend-auth
         exclude:
             - '${ALLOWED_IP}' # AWS gateway
             - 185.60.20.0/24 # PayOne
+            - 80.144.159.176/32
 namespace: spryker-cloud
 tag: '1.0'
 
@@ -200,7 +201,7 @@ docker:
         enabled: true
         whitelist:
           ips:
-              - 80.144.159.176/32 
+              - 80.144.159.176
     ssl:
         enabled: true
         redirect: true
