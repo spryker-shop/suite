@@ -16,6 +16,8 @@ use Spryker\Glue\ServicePointsRestApi\Plugin\CheckoutRestApi\ServicePointCheckou
 use Spryker\Glue\ShipmentsRestApi\Plugin\CheckoutRestApi\AddressSourceCheckoutRequestValidatorPlugin;
 use Spryker\Glue\ShipmentsRestApi\Plugin\CheckoutRestApi\SelectedShipmentMethodCheckoutDataResponseMapperPlugin;
 use Spryker\Glue\ShipmentsRestApi\Plugin\CheckoutRestApi\ShipmentDataCheckoutRequestValidatorPlugin;
+use Spryker\Glue\ShipmentTypeServicePointsRestApi\Plugin\CheckoutRestApi\ShipmentTypeServicePointCheckoutRequestAttributesValidatorPlugin;
+use Spryker\Glue\ShipmentTypeServicePointsRestApi\Plugin\CheckoutRestApi\ShipmentTypeServicePointCheckoutRequestExpanderPlugin;
 use Spryker\Glue\ShipmentTypesRestApi\Plugin\CheckoutRestApi\SelectedShipmentTypesCheckoutDataResponseMapperPlugin;
 
 class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependencyProvider
@@ -28,6 +30,7 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
         return [
             new SinglePaymentCheckoutRequestAttributesValidatorPlugin(),
             new ServicePointCheckoutRequestAttributesValidatorPlugin(),
+            new ShipmentTypeServicePointCheckoutRequestAttributesValidatorPlugin(),
         ];
     }
 
@@ -62,6 +65,7 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
     {
         return [
             new CompanyUserCheckoutRequestExpanderPlugin(),
+            new ShipmentTypeServicePointCheckoutRequestExpanderPlugin(),
         ];
     }
 }
