@@ -41,7 +41,13 @@ suites:
                 - \SprykerTest\Shared\Store\Helper\StoreDependencyHelper
                 - \SprykerTest\Shared\ServicePoint\Helper\ServicePointHelper
                 - \SprykerTest\Shared\ShipmentType\Helper\ShipmentTypeHelper
+                - \SprykerTest\Shared\ShipmentTypeServicePoint\Helper\ShipmentTypeServicePointHelper
                 - \SprykerTest\Zed\Country\Helper\CountryDataHelper
+                - \SprykerTest\Zed\ProductOffer\Helper\ProductOfferHelper
+                - \SprykerTest\Shared\PriceProductOffer\Helper\PriceProductOfferHelper
+                - \SprykerTest\Shared\ProductOfferStock\Helper\ProductOfferStockDataHelper
+                - \SprykerTest\Shared\ProductOfferServicePoint\Helper\ProductOfferServiceHelper
+                - \SprykerTest\Shared\ProductOfferShipmentType\Helper\ProductOfferShipmentTypeHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser
