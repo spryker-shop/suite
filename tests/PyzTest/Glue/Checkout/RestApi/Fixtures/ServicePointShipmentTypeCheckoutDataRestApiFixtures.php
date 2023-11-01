@@ -7,11 +7,14 @@
 
 namespace PyzTest\Glue\Checkout\RestApi\Fixtures;
 
+use ArrayObject;
 use Generated\Shared\Transfer\CountryTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\ProductOfferTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ServicePointAddressTransfer;
 use Generated\Shared\Transfer\ServicePointTransfer;
+use Generated\Shared\Transfer\ServiceTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
@@ -62,11 +65,24 @@ class ServicePointShipmentTypeCheckoutDataRestApiFixtures implements FixturesBui
     protected ServicePointTransfer $servicePoint;
 
     /**
+     * @var \Generated\Shared\Transfer\ServicePointTransfer
+     */
+    protected ServicePointTransfer $servicePointWithoutAddress;
+
+    /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function getQuoteTransfer(): QuoteTransfer
     {
         return $this->quoteTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ServicePointTransfer
+     */
+    public function getServicePointWithoutAddress(): ServicePointTransfer
+    {
+        return $this->servicePointWithoutAddress;
     }
 
     /**
@@ -137,7 +153,8 @@ class ServicePointShipmentTypeCheckoutDataRestApiFixtures implements FixturesBui
             ShipmentMethodDataHelper::DEFAULT_PRICE_LIST,
             [$storeTransfer->getIdStoreOrFail()],
         );
-        $I->addShipmentTypeToShipmentMethod($this->pickableShipmentMethodTransfer, $I->havePickableShipmentType($storeTransfer));
+        $pickableShipmentTypeTransfer = $I->havePickableShipmentType($storeTransfer);
+        $I->addShipmentTypeToShipmentMethod($this->pickableShipmentMethodTransfer, $pickableShipmentTypeTransfer);
 
         $this->nonPickableShipmentMethodTransfer = $I->haveShipmentMethod(
             [
@@ -149,10 +166,25 @@ class ServicePointShipmentTypeCheckoutDataRestApiFixtures implements FixturesBui
             [$storeTransfer->getIdStoreOrFail()],
         );
 
-        $this->servicePoint = $I->haveServicePoint(
-            [
-                ServicePointTransfer::STORE_RELATION => (new StoreRelationTransfer())->addStores($storeTransfer),
-            ],
+        $this->servicePointWithoutAddress = $I->haveServicePointWithoutAddress($storeTransfer);
+
+        $this->servicePoint = $I->haveServicePointWithAddress($storeTransfer);
+        $serviceTransfer = $I->havePickableService($pickableShipmentTypeTransfer, [
+            ServiceTransfer::SERVICE_POINT => $this->servicePoint->toArray(),
+            ServiceTransfer::IS_ACTIVE => true,
+        ]);
+
+        $productOfferTransfer1 = $I->haveProductOfferWithShipmentTypeAndServiceRelations(
+            $productConcreteTransfer1,
+            $serviceTransfer,
+            $pickableShipmentTypeTransfer,
+            [ProductOfferTransfer::STORES => new ArrayObject([$storeTransfer])],
+        );
+        $productOfferTransfer2 = $I->haveProductOfferWithShipmentTypeAndServiceRelations(
+            $productConcreteTransfer2,
+            $serviceTransfer,
+            $pickableShipmentTypeTransfer,
+            [ProductOfferTransfer::STORES => new ArrayObject([$storeTransfer])],
         );
 
         $countryTransfer = $I->haveCountry([
@@ -172,9 +204,9 @@ class ServicePointShipmentTypeCheckoutDataRestApiFixtures implements FixturesBui
         $this->servicePointWithAddress->setAddress($servicePointAddressTransfer);
 
         $this->customerTransfer = $I->confirmCustomer($customerTransfer);
-        $this->quoteTransfer = $I->havePersistentQuoteWithItems(
+        $this->quoteTransfer = $I->havePersistentQuoteWithProductOfferItems(
             $this->customerTransfer,
-            [$productConcreteTransfer1, $productConcreteTransfer2],
+            [$productOfferTransfer1, $productOfferTransfer2],
         );
 
         return $this;

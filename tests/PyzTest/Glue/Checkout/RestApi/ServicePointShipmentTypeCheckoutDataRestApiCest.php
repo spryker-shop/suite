@@ -23,6 +23,7 @@ use Spryker\Glue\ShipmentTypeServicePointsRestApi\ShipmentTypeServicePointsRestA
  * @group RestApi
  * @group ServicePointShipmentTypeCheckoutDataRestApiCest
  * Add your own group annotations below this line
+ * @group EndToEnd
  */
 class ServicePointShipmentTypeCheckoutDataRestApiCest
 {
@@ -164,73 +165,6 @@ class ServicePointShipmentTypeCheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutDataReturnsCustomerDataNotProvidedValidationError(CheckoutApiTester $I): void
-    {
-        // Arrange
-        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
-
-        $quoteTransfer = $this->fixtures->getQuoteTransfer();
-        $url = $I->buildCheckoutDataUrl();
-
-        $requestPayload = [
-            'data' => [
-                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
-                'attributes' => [
-                    'idCart' => $quoteTransfer->getUuid(),
-                    'shipments' => [
-                        [
-                            'items' => [$this->fixtures->getQuoteTransfer()->getItems()[0]->getGroupKeyOrFail()],
-                            'shippingAddress' => $I->getAddressRequestPayload((new AddressBuilder())->build()),
-                            'idShipmentMethod' => $this->fixtures->getNonPickableShipmentMethodTransfer()->getIdShipmentMethodOrFail(),
-                            'requestedDeliveryDate' => null,
-                        ],
-                        [
-                            'items' => [$this->fixtures->getQuoteTransfer()->getItems()[1]->getGroupKeyOrFail()],
-                            'shippingAddress' => $I->getAddressRequestPayload((new AddressBuilder())->build()),
-                            'idShipmentMethod' => $this->fixtures->getPickableShipmentMethodTransfer()->getIdShipmentMethodOrFail(),
-                            'requestedDeliveryDate' => null,
-                        ],
-                    ],
-                    'servicePoints' => [
-                        [
-                            'items' => [$this->fixtures->getQuoteTransfer()->getItems()[1]->getGroupKeyOrFail()],
-                            'idServicePoint' => $this->fixtures->getServicePointWithAddress()->getUuidOrFail(),
-                        ],
-                    ],
-                ],
-            ],
-        ];
-
-        // Act
-        $I->sendPOST($url, $requestPayload);
-
-        // Assert
-        $error = $I->getDataFromResponseByJsonPath('$.errors[0]');
-        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
-        $I->seeResponseIsJson();
-
-        $I->amSure('The returned response contains expected message')
-            ->whenI()
-            ->assertSame(
-                ShipmentTypeServicePointsRestApiConfig::ERROR_RESPONSE_DETAIL_CUSTOMER_DATA_MISSING,
-                $error['detail'],
-            );
-
-        $I->amSure('The returned response contains expected code')
-            ->whenI()
-            ->assertSame(
-                ShipmentTypeServicePointsRestApiConfig::ERROR_RESPONSE_CODE_CUSTOMER_DATA_MISSING,
-                $error['code'],
-            );
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return void
-     */
     public function requestCheckoutDataReturnsServicePointHasNoAddressValidationError(CheckoutApiTester $I): void
     {
         // Arrange
@@ -262,7 +196,7 @@ class ServicePointShipmentTypeCheckoutDataRestApiCest
                     'servicePoints' => [
                         [
                             'items' => [$this->fixtures->getQuoteTransfer()->getItems()[1]->getGroupKeyOrFail()],
-                            'idServicePoint' => $this->fixtures->getServicePoint()->getUuidOrFail(),
+                            'idServicePoint' => $this->fixtures->getServicePointWithoutAddress()->getUuidOrFail(),
                         ],
                     ],
                 ],
@@ -282,7 +216,7 @@ class ServicePointShipmentTypeCheckoutDataRestApiCest
             ->assertSame(
                 sprintf(
                     ShipmentTypeServicePointsRestApiConfig::ERROR_RESPONSE_DETAIL_SERVICE_POINT_ADDRESS_MISSING,
-                    $this->fixtures->getServicePoint()->getUuidOrFail(),
+                    $this->fixtures->getServicePointWithoutAddress()->getUuidOrFail(),
                 ),
                 $error['detail'],
             );

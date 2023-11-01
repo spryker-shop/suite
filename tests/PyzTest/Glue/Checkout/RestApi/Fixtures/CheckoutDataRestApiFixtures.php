@@ -10,6 +10,8 @@ namespace PyzTest\Glue\Checkout\RestApi\Fixtures;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
+use Generated\Shared\Transfer\ShipmentTypeTransfer;
+use Generated\Shared\Transfer\StoreRelationTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
 use SprykerTest\Shared\Shipment\Helper\ShipmentMethodDataHelper;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
@@ -94,6 +96,10 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
 
         $this->customerTransfer = $I->confirmCustomer($customerTransfer);
 
+        $shipmentTypeTransfer = $I->haveShipmentType([
+            ShipmentTypeTransfer::IS_ACTIVE => true,
+            ShipmentTypeTransfer::STORE_RELATION => (new StoreRelationTransfer())->addStores($I->getStoreFacade()->getCurrentStore()),
+        ]);
         $this->shipmentMethodTransfer = $I->haveShipmentMethod(
             [
                 ShipmentMethodTransfer::CARRIER_NAME => 'Spryker Dummy Shipment',
@@ -106,6 +112,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
             ],
         );
 
+        $I->addShipmentTypeToShipmentMethod($this->shipmentMethodTransfer, $shipmentTypeTransfer);
         $this->quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $this->customerTransfer,
             [$I->getQuoteItemOverrideData($I->haveProductWithStock(), $this->shipmentMethodTransfer, 10)],
