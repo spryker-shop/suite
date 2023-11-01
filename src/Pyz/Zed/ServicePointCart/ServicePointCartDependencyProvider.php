@@ -7,8 +7,7 @@
 
 namespace Pyz\Zed\ServicePointCart;
 
-use Spryker\Zed\ClickAndCollectExample\Communication\Plugin\ServicePointCart\ClickAndCollectExampleDeliveryServicePointQuoteItemReplaceStrategyPlugin;
-use Spryker\Zed\ClickAndCollectExample\Communication\Plugin\ServicePointCart\ClickAndCollectExamplePickupServicePointQuoteItemReplaceStrategyPlugin;
+use Spryker\Zed\ClickAndCollectExample\Communication\Plugin\ServicePointCart\ClickAndCollectExampleServicePointQuoteItemReplaceStrategyPlugin;
 use Spryker\Zed\ServicePointCart\ServicePointCartDependencyProvider as SprykerServicePointCartDependencyProvider;
 
 class ServicePointCartDependencyProvider extends SprykerServicePointCartDependencyProvider
@@ -19,8 +18,7 @@ class ServicePointCartDependencyProvider extends SprykerServicePointCartDependen
     protected function getServicePointQuoteItemReplaceStrategyPlugins(): array
     {
         return [
-            new ClickAndCollectExampleDeliveryServicePointQuoteItemReplaceStrategyPlugin(),
-            new ClickAndCollectExamplePickupServicePointQuoteItemReplaceStrategyPlugin(),
+            new ClickAndCollectExampleServicePointQuoteItemReplaceStrategyPlugin(),
         ];
     }
 }
