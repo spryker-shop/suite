@@ -201,7 +201,8 @@ docker:
         enabled: true
         whitelist:
           ips:
-              - 80.144.159.176
+              - 80.144.159.176/32
+              - 10.105.0.0/16
     ssl:
         enabled: true
         redirect: true
