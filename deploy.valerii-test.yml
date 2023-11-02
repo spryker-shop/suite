@@ -129,31 +129,39 @@ groups:
                     backoffice.de.valerii-test.cloud.spryker.toys:
                         store: DE
                         primal: true
+                        <<: *real-ip
                     backoffice.at.valerii-test.cloud.spryker.toys:
                         store: AT
+                        <<: *real-ip
             backgw:
                 application: backend-gateway
                 endpoints:
                     backend-gateway.de.valerii-test.cloud.spryker.toys:
                         store: DE
+                        <<: *real-ip
                     backend-gateway.at.valerii-test.cloud.spryker.toys:
                         store: AT
+                        <<: *real-ip
             backapi:
                 application: zed
                 endpoints:
                     backend-api.de.valerii-test.cloud.spryker.toys:
                         store: DE
                         entry-point: BackendApi
+                        <<: *real-ip
                     backend-api.at.valerii-test.cloud.spryker.toys:
                         store: AT
                         entry-point: BackendApi
+                        <<: *real-ip
             Glue:
                 application: glue
                 endpoints:
                     glue.de.valerii-test.cloud.spryker.toys:
                         store: DE
+                        <<: *real-ip
                     glue.at.valerii-test.cloud.spryker.toys:
                         store: AT
+                        <<: *real-ip
 services:
     database:
         engine: mysql
