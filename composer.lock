@@ -31011,24 +31011,26 @@
         },
         {
             "name": "spryker/documentation-generator-api",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/documentation-generator-api.git",
-                "reference": "426a821c8a8224a6bf9281c2bc10acedfdbfea4b"
+                "reference": "f4e8681682aba50f8be777223d9b658a4e14fd64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/documentation-generator-api/zipball/426a821c8a8224a6bf9281c2bc10acedfdbfea4b",
-                "reference": "426a821c8a8224a6bf9281c2bc10acedfdbfea4b",
+                "url": "https://api.github.com/repos/spryker/documentation-generator-api/zipball/f4e8681682aba50f8be777223d9b658a4e14fd64",
+                "reference": "f4e8681682aba50f8be777223d9b658a4e14fd64",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0",
+                "php": ">=8.1",
                 "spryker/documentation-generator-api-extension": "^1.1.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/storage": "^3.0.0",
                 "spryker/symfony": "^3.5.0",
-                "spryker/transfer": "^3.27.0"
+                "spryker/transfer": "^3.27.0",
+                "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -31053,9 +31055,9 @@
             ],
             "description": "DocumentationGeneratorApi module",
             "support": {
-                "source": "https://github.com/spryker/documentation-generator-api/tree/1.2.0"
+                "source": "https://github.com/spryker/documentation-generator-api/tree/1.3.0"
             },
-            "time": "2023-09-21T18:41:05+00:00"
+            "time": "2023-11-03T12:14:55+00:00"
         },
         {
             "name": "spryker/documentation-generator-api-extension",
@@ -31490,20 +31492,20 @@
         },
         {
             "name": "spryker/dynamic-entity-backend-api",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/dynamic-entity-backend-api.git",
-                "reference": "ee251ffdb36f116e7bb043f69823e84f2b647e3f"
+                "reference": "695fbb1f46c061ea2a8686bf6fcf0b912ebdb3b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/dynamic-entity-backend-api/zipball/ee251ffdb36f116e7bb043f69823e84f2b647e3f",
-                "reference": "ee251ffdb36f116e7bb043f69823e84f2b647e3f",
+                "url": "https://api.github.com/repos/spryker/dynamic-entity-backend-api/zipball/695fbb1f46c061ea2a8686bf6fcf0b912ebdb3b5",
+                "reference": "695fbb1f46c061ea2a8686bf6fcf0b912ebdb3b5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0",
+                "php": ">=8.1",
                 "spryker/documentation-generator-api-extension": "^1.1.0",
                 "spryker/documentation-generator-open-api-extension": "^1.0.0",
                 "spryker/dynamic-entity": "^1.0.0",
@@ -31514,6 +31516,7 @@
                 "spryker/locale": "^3.0.0 || ^4.0.0",
                 "spryker/log": "^3.7.0",
                 "spryker/monolog": "^2.0.0",
+                "spryker/storage": "^3.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.27.0",
                 "spryker/util-encoding": "^2.0.0"
@@ -31524,7 +31527,6 @@
                 "spryker/container": "*",
                 "spryker/glue-application": "*",
                 "spryker/propel": "*",
-                "spryker/storage": "*",
                 "spryker/store": "*",
                 "spryker/testify": "*"
             },
@@ -31545,9 +31547,9 @@
             ],
             "description": "DynamicEntityBackendApi module",
             "support": {
-                "source": "https://github.com/spryker/dynamic-entity-backend-api/tree/1.0.0"
+                "source": "https://github.com/spryker/dynamic-entity-backend-api/tree/1.1.0"
             },
-            "time": "2023-10-02T08:42:29+00:00"
+            "time": "2023-11-03T12:14:55+00:00"
         },
         {
             "name": "spryker/dynamic-entity-extension",
@@ -31593,25 +31595,26 @@
         },
         {
             "name": "spryker/dynamic-entity-gui",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/dynamic-entity-gui.git",
-                "reference": "f2199df26695565c6d1ae13c396a77f6ba9354e8"
+                "reference": "fc21160bf89fef2cbeb11ee163caf3beaf0967d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/dynamic-entity-gui/zipball/f2199df26695565c6d1ae13c396a77f6ba9354e8",
-                "reference": "f2199df26695565c6d1ae13c396a77f6ba9354e8",
+                "url": "https://api.github.com/repos/spryker/dynamic-entity-gui/zipball/fc21160bf89fef2cbeb11ee163caf3beaf0967d1",
+                "reference": "fc21160bf89fef2cbeb11ee163caf3beaf0967d1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0",
+                "php": ">=8.1",
                 "spryker/doctrine-inflector": "^1.0.0",
                 "spryker/dynamic-entity": "^1.0.0",
                 "spryker/gui": "^3.38.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/propel-orm": "^1.0.0",
+                "spryker/storage": "^3.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.27.0",
                 "spryker/util-text": "^1.1.0"
@@ -31636,9 +31639,9 @@
             ],
             "description": "DynamicEntityGui module",
             "support": {
-                "source": "https://github.com/spryker/dynamic-entity-gui/tree/1.0.0"
+                "source": "https://github.com/spryker/dynamic-entity-gui/tree/1.1.0"
             },
-            "time": "2023-10-02T08:42:29+00:00"
+            "time": "2023-11-03T12:14:55+00:00"
         },
         {
             "name": "spryker/egulias",
@@ -76082,12 +76085,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "dacc7b6b9f4c0ce9d6d74b25d0486da944404564"
+                "reference": "3b4c0b0701790046f2be48d0821ca4b7532126a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/dacc7b6b9f4c0ce9d6d74b25d0486da944404564",
-                "reference": "dacc7b6b9f4c0ce9d6d74b25d0486da944404564",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/3b4c0b0701790046f2be48d0821ca4b7532126a1",
+                "reference": "3b4c0b0701790046f2be48d0821ca4b7532126a1",
                 "shasum": ""
             },
             "require-dev": {
@@ -76123,7 +76126,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2023-11-02T09:04:18+00:00"
+            "time": "2023-11-03T11:54:06+00:00"
         },
         {
             "name": "masterminds/html5",
