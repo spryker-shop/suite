@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.283.18",
+            "version": "3.284.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "0263a41920f77a521660fb128701d9c9c6312756"
+                "reference": "1b7e926acc990509e3d13fa708cdede686b40d90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0263a41920f77a521660fb128701d9c9c6312756",
-                "reference": "0263a41920f77a521660fb128701d9c9c6312756",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1b7e926acc990509e3d13fa708cdede686b40d90",
+                "reference": "1b7e926acc990509e3d13fa708cdede686b40d90",
                 "shasum": ""
             },
             "require": {
@@ -335,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.283.18"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.284.0"
             },
-            "time": "2023-11-02T18:16:01+00:00"
+            "time": "2023-11-03T18:13:48+00:00"
         },
         {
             "name": "brick/math",
@@ -1830,23 +1830,23 @@
         },
         {
             "name": "laminas/laminas-filter",
-            "version": "2.32.0",
+            "version": "2.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-filter.git",
-                "reference": "2b7e6b2b26a92412c38336ee3089251164edf141"
+                "reference": "6ad64828d25ec4bdf226ec5096aabb04aa710324"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/2b7e6b2b26a92412c38336ee3089251164edf141",
-                "reference": "2b7e6b2b26a92412c38336ee3089251164edf141",
+                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/6ad64828d25ec4bdf226ec5096aabb04aa710324",
+                "reference": "6ad64828d25ec4bdf226ec5096aabb04aa710324",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
                 "laminas/laminas-servicemanager": "^3.21.0",
                 "laminas/laminas-stdlib": "^3.13.0",
-                "php": "~8.1.0 || ~8.2.0"
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
             },
             "conflict": {
                 "laminas/laminas-validator": "<2.10.1",
@@ -1855,12 +1855,13 @@
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.5.0",
                 "laminas/laminas-crypt": "^3.10",
-                "laminas/laminas-uri": "^2.10",
+                "laminas/laminas-i18n": "^2.23.1",
+                "laminas/laminas-uri": "^2.11",
                 "pear/archive_tar": "^1.4.14",
-                "phpunit/phpunit": "^10.1.3",
+                "phpunit/phpunit": "^10.4.2",
                 "psalm/plugin-phpunit": "^0.18.4",
                 "psr/http-factory": "^1.0.2",
-                "vimeo/psalm": "^5.11"
+                "vimeo/psalm": "^5.15.0"
             },
             "suggest": {
                 "laminas/laminas-crypt": "Laminas\\Crypt component, for encryption filters",
@@ -1904,7 +1905,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-05-16T23:25:05+00:00"
+            "time": "2023-11-03T13:29:10+00:00"
         },
         {
             "name": "laminas/laminas-servicemanager",
@@ -2057,16 +2058,16 @@
         },
         {
             "name": "laminas/laminas-validator",
-            "version": "2.41.0",
+            "version": "2.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-validator.git",
-                "reference": "ca27df621e12cbd4c138dab7abf3e7e5692c582c"
+                "reference": "a5221732b2ff6df59908bbf2eb274ed3688665bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-validator/zipball/ca27df621e12cbd4c138dab7abf3e7e5692c582c",
-                "reference": "ca27df621e12cbd4c138dab7abf3e7e5692c582c",
+                "url": "https://api.github.com/repos/laminas/laminas-validator/zipball/a5221732b2ff6df59908bbf2eb274ed3688665bc",
+                "reference": "a5221732b2ff6df59908bbf2eb274ed3688665bc",
                 "shasum": ""
             },
             "require": {
@@ -2137,7 +2138,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-10-30T08:22:19+00:00"
+            "time": "2023-11-06T09:13:00+00:00"
         },
         {
             "name": "lcobucci/clock",
@@ -6043,7 +6044,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a90a00b4e1a4f80165783753c2d4eb37205eec9d"
+                "reference": "36d21015689b1a3aedf164a20eef9b5ed9a14adc"
             },
             "require": {
                 "php": ">=8.1"
@@ -7094,7 +7095,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2023-11-03T12:14:55+00:00"
+            "time": "2023-11-06T10:23:04+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -14886,19 +14887,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "d12f25bcdfb7754bea458a4a5cb159d55e9950d0"
+                "reference": "bfb52ab6410d1d06a4162be9fc3a3e3a93233166"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/d12f25bcdfb7754bea458a4a5cb159d55e9950d0",
-                "reference": "d12f25bcdfb7754bea458a4a5cb159d55e9950d0",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/bfb52ab6410d1d06a4162be9fc3a3e3a93233166",
+                "reference": "bfb52ab6410d1d06a4162be9fc3a3e3a93233166",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.7",
-                "symfony/config": "^2.3.0|^3|^4|^5|^6.0",
-                "symfony/dependency-injection": "^2.3.0|^3|^4|^5|^6.0",
-                "symfony/filesystem": "^2.3.0|^3|^4|^5|^6.0"
+                "symfony/config": "^2.3.0|^3|^4|^5|^6.0|^7.0",
+                "symfony/dependency-injection": "^2.3.0|^3|^4|^5|^6.0|^7.0",
+                "symfony/filesystem": "^2.3.0|^3|^4|^5|^6.0|^7.0"
             },
             "require-dev": {
                 "easy-doc/easy-doc": "0.0.0|^1.2.3",
@@ -14934,7 +14935,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pdepend/pdepend/issues",
-                "source": "https://github.com/pdepend/pdepend/tree/2.15.1"
+                "source": "https://github.com/pdepend/pdepend/tree/master"
             },
             "funding": [
                 {
@@ -14942,7 +14943,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-09-28T12:00:56+00:00"
+            "time": "2023-11-04T14:57:59+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -18138,7 +18139,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "17fe7945d97b2304ae5cfadd6cfe930c2e47aa49"
+                "reference": "ba38912c5474b2042a88c95616447598395c2658"
             },
             "default-branch": true,
             "type": "library",
@@ -18146,7 +18147,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2023-11-03T10:22:18+00:00"
+            "time": "2023-11-06T08:27:27+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
