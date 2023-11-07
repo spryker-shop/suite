@@ -11,6 +11,7 @@ _SETUP_WEB_INFRASTRUCTURE: &SETUP_WEB_INFRASTRUCTURE
     - echo "_BROWSER_TESTING_BEFORE_INSTALL_SCRIPT"
     - chmod +x config/Shared/ci/travis/*.sh
     - config/Shared/ci/travis/acceptance_env.sh
+    - sudo cat /etc/apt/sources.list
 
 _ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE: &ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE
     - sourceline: ppa:chris-lea/redis-server
