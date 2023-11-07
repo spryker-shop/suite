@@ -12,10 +12,6 @@ _SETUP_WEB_INFRASTRUCTURE: &SETUP_WEB_INFRASTRUCTURE
     - chmod +x config/Shared/ci/travis/*.sh
     - config/Shared/ci/travis/acceptance_env.sh
 
-_ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE: &ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE
-    - sourceline: ppa:chris-lea/redis-server
-    - sourceline: ppa:ondrej/php
-
 _ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE: &ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE
     - redis-tools
     - redis-server
@@ -65,8 +61,6 @@ _ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE: &ADDONS_APT_PACKAGES_BASE_INFRASTRUCTU
 _ADDONS_BASE_INFRASTRUCTURE: &ADDONS_BASE_INFRASTRUCTURE
     apt:
         update: true
-        sources:
-            - *ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE
         packages:
             - *ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE
 
