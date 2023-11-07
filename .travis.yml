@@ -127,7 +127,7 @@ _CHROMDRIVER_DOWNLOAD: &CHROMDRIVER_DOWNLOAD
 
 _BEFORE_INSTALL_SCRIPT: &BEFORE_INSTALL_SCRIPT
     - echo "_BEFORE_INSTALL_SCRIPT"
-    - cat /etc/apt/sources.list
+    - cat /etc/apt/sources.list; for X in /etc/apt/sources.list.d/*; do echo; echo; echo "** $X:"; echo; cat $X; done
     - nvm install 18 > /dev/null
     - nvm use 18
     - mkdir -p shared/data/common/jenkins
@@ -352,9 +352,6 @@ git:
 stages:
     - Build
     - Test
-
-before_script:
-    - sudo add-apt-repository --remove "deb http://apt.postgresql.org/pub/repos/apt bionic-pgdg Release"
 
 jobs:
     fast_finish: true
