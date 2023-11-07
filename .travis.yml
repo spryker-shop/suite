@@ -127,7 +127,7 @@ _CHROMDRIVER_DOWNLOAD: &CHROMDRIVER_DOWNLOAD
 
 _BEFORE_INSTALL_SCRIPT: &BEFORE_INSTALL_SCRIPT
     - echo "_BEFORE_INSTALL_SCRIPT"
-    - sudo add-apt-repository --list
+    - cat /etc/apt/sources.list
     - nvm install 18 > /dev/null
     - nvm use 18
     - mkdir -p shared/data/common/jenkins
