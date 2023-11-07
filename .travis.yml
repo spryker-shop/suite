@@ -239,8 +239,6 @@ _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
             sources:
                 - sourceline: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
                   key_url: https://download.docker.com/linux/ubuntu/gpg
-                - sourceline: ppa:chris-lea/redis-server
-                - sourceline: ppa:ondrej/php
     install:
         - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSwgImlwdjYiOiBmYWxzZSwgIm10dSI6IDE0NTB9|base64 -d|sudo tee /etc/docker/daemon.json
         - sudo apt-get install docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
@@ -285,8 +283,6 @@ _DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE: &DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
             sources:
                 - sourceline: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
                   key_url: https://download.docker.com/linux/ubuntu/gpg
-                - sourceline: ppa:chris-lea/redis-server
-                - sourceline: ppa:ondrej/php
     install:
         - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSwgImlwdjYiOiBmYWxzZSwgIm10dSI6IDE0NTB9|base64 -d|sudo tee /etc/docker/daemon.json
         - sudo apt-get install docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
