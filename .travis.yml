@@ -127,7 +127,7 @@ _CHROMDRIVER_DOWNLOAD: &CHROMDRIVER_DOWNLOAD
 
 _BEFORE_INSTALL_SCRIPT: &BEFORE_INSTALL_SCRIPT
     - echo "_BEFORE_INSTALL_SCRIPT"
-    - rm /etc/apt/sources.list.d/pgdg.list
+    - sudo rm /etc/apt/sources.list.d/pgdg.list
     - nvm install 18 > /dev/null
     - nvm use 18
     - mkdir -p shared/data/common/jenkins
@@ -247,7 +247,7 @@ _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
     before_install:
-        - rm /etc/apt/sources.list.d/pgdg.list
+        - sudo rm /etc/apt/sources.list.d/pgdg.list
         - sudo apt upgrade
         - sudo apt update
         - |
