@@ -64,6 +64,7 @@ _ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE: &ADDONS_APT_PACKAGES_BASE_INFRASTRUCTU
 
 _ADDONS_BASE_INFRASTRUCTURE: &ADDONS_BASE_INFRASTRUCTURE
     apt:
+        update: true
         sources:
             - *ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE
         packages:
@@ -360,6 +361,9 @@ git:
 stages:
     - Build
     - Test
+
+before_script:
+    - sudo add-apt-repository --remove "deb http://apt.postgresql.org/pub/repos/apt bionic-pgdg Release"
 
 jobs:
     fast_finish: true
