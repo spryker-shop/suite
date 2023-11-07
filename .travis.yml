@@ -12,10 +12,6 @@ _SETUP_WEB_INFRASTRUCTURE: &SETUP_WEB_INFRASTRUCTURE
     - chmod +x config/Shared/ci/travis/*.sh
     - config/Shared/ci/travis/acceptance_env.sh
 
-_ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE: &ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE
-    - sourceline: ppa:chris-lea/redis-server
-    - sourceline: ppa:ondrej/php
-
 _ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE: &ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE
     - redis-tools
     - redis-server
@@ -65,8 +61,6 @@ _ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE: &ADDONS_APT_PACKAGES_BASE_INFRASTRUCTU
 _ADDONS_BASE_INFRASTRUCTURE: &ADDONS_BASE_INFRASTRUCTURE
     apt:
         update: true
-        sources:
-            - *ADDONS_APT_SOURCES_BASE_INFRASTRUCTURE
         packages:
             - *ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE
 
@@ -133,6 +127,7 @@ _CHROMDRIVER_DOWNLOAD: &CHROMDRIVER_DOWNLOAD
 
 _BEFORE_INSTALL_SCRIPT: &BEFORE_INSTALL_SCRIPT
     - echo "_BEFORE_INSTALL_SCRIPT"
+    - sudo rm -f /etc/apt/sources.list.d/pgdg.list
     - nvm install 18 > /dev/null
     - nvm use 18
     - mkdir -p shared/data/common/jenkins
@@ -245,14 +240,13 @@ _DOCKER_BUILD_TEMPLATE: &DOCKER_BUILD_TEMPLATE
             sources:
                 - sourceline: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
                   key_url: https://download.docker.com/linux/ubuntu/gpg
-                - sourceline: ppa:chris-lea/redis-server
-                - sourceline: ppa:ondrej/php
     install:
         - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSwgImlwdjYiOiBmYWxzZSwgIm10dSI6IDE0NTB9|base64 -d|sudo tee /etc/docker/daemon.json
         - sudo apt-get install docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
     before_install:
+        - sudo rm -f /etc/apt/sources.list.d/pgdg.list
         - sudo apt upgrade
         - sudo apt update
         - |
@@ -291,8 +285,6 @@ _DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE: &DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
             sources:
                 - sourceline: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
                   key_url: https://download.docker.com/linux/ubuntu/gpg
-                - sourceline: ppa:chris-lea/redis-server
-                - sourceline: ppa:ondrej/php
     install:
         - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSwgImlwdjYiOiBmYWxzZSwgIm10dSI6IDE0NTB9|base64 -d|sudo tee /etc/docker/daemon.json
         - sudo apt-get install docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
