@@ -12,6 +12,7 @@ use Generated\Shared\DataBuilder\CustomerBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RestCheckoutErrorTransfer;
+use Generated\Shared\Transfer\ShipmentTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
 use PyzTest\Glue\Checkout\RestApi\Fixtures\ServicePointShipmentTypeCheckoutRestApiFixtures;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
@@ -75,10 +76,15 @@ class ServicePointShipmentTypeCheckoutRestApiCest
     public function requestCheckoutWithSingleShipmentAndPickableShipmentMethod(CheckoutApiTester $I): void
     {
         $customerTransfer = $this->fixtures->getCustomerTransfer();
-        $quoteTransfer = $I->havePersistentQuoteWithItems(
+        $quoteTransfer = $I->havePersistentQuoteWithProductOfferItems(
             $customerTransfer,
-            $this->fixtures->getProductConcreteTransfers(),
+            $this->fixtures->getProductOfferTransfers(),
+            [
+                ShipmentTransfer::METHOD => $this->fixtures->getPickableShipmentMethodTransfer()->toArray(),
+            ],
         );
+        $quoteTransfer = $I->getCartFacade()->reloadItems($quoteTransfer);
+
         $servicePointTransfer = $this->fixtures->getServicePointTransfer();
         $itemGroupKeys = $this->extractItemGroupKeys($quoteTransfer);
 
@@ -120,7 +126,7 @@ class ServicePointShipmentTypeCheckoutRestApiCest
             ->assertSalesOrderAddressIsCorrectForItem(
                 $servicePointTransfer->getAddressOrFail(),
                 $overrideCustomerTransfer,
-                $this->fixtures->getProductConcreteTransfers()[0]->getSkuOrFail(),
+                $this->fixtures->getProductOfferTransfers()[0]->getConcreteSkuOrFail(),
             );
     }
 
@@ -135,11 +141,11 @@ class ServicePointShipmentTypeCheckoutRestApiCest
     {
         $customerTransfer = $this->fixtures->getCustomerTransfer();
         $servicePointTransfer = $this->fixtures->getServicePointTransfer();
-        $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
+        $quoteTransfer = $I->havePersistentQuoteWithProductOfferItemsAndItemLevelShipment(
             $customerTransfer,
             [
-                $I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[0], $this->fixtures->getPickableShipmentMethodTransfer(), 1),
-                $I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[1], $this->fixtures->getRegularShipmentMethodTransfer(), 1),
+                $I->getQuoteProductOfferItemOverrideData($this->fixtures->getProductOfferTransfers()[0], $this->fixtures->getPickableShipmentMethodTransfer(), 1),
+                $I->getQuoteProductOfferItemOverrideData($this->fixtures->getProductOfferTransfers()[1], $this->fixtures->getRegularShipmentMethodTransfer(), 1),
             ],
         );
         $quoteTransfer = $I->getCartFacade()->reloadItems($quoteTransfer);
@@ -187,7 +193,7 @@ class ServicePointShipmentTypeCheckoutRestApiCest
             ->assertSalesOrderAddressIsCorrectForItem(
                 $servicePointTransfer->getAddressOrFail(),
                 $overrideCustomerTransfer,
-                $this->fixtures->getProductConcreteTransfers()[0]->getSkuOrFail(),
+                $this->fixtures->getProductOfferTransfers()[0]->getConcreteSkuOrFail(),
             );
     }
 
@@ -201,10 +207,15 @@ class ServicePointShipmentTypeCheckoutRestApiCest
     public function requestCheckoutWithSingleShipmentAndPickableShipmentMethodWithoutCustomerDataInRequestBody(CheckoutApiTester $I): void
     {
         $customerTransfer = $this->fixtures->getCustomerTransfer();
-        $quoteTransfer = $I->havePersistentQuoteWithItems(
+        $quoteTransfer = $I->havePersistentQuoteWithProductOfferItems(
             $customerTransfer,
-            $this->fixtures->getProductConcreteTransfers(),
+            $this->fixtures->getProductOfferTransfers(),
+            [
+                ShipmentTransfer::METHOD => $this->fixtures->getPickableShipmentMethodTransfer()->toArray(),
+            ],
         );
+        $quoteTransfer = $I->getCartFacade()->reloadItems($quoteTransfer);
+
         $servicePointTransfer = $this->fixtures->getServicePointTransfer();
         $itemGroupKeys = $this->extractItemGroupKeys($quoteTransfer);
 
@@ -244,7 +255,7 @@ class ServicePointShipmentTypeCheckoutRestApiCest
             ->assertSalesOrderAddressIsCorrectForItem(
                 $servicePointTransfer->getAddressOrFail(),
                 $customerTransfer,
-                $this->fixtures->getProductConcreteTransfers()[0]->getSkuOrFail(),
+                $this->fixtures->getProductOfferTransfers()[0]->getConcreteSkuOrFail(),
             );
     }
 
@@ -259,11 +270,11 @@ class ServicePointShipmentTypeCheckoutRestApiCest
     {
         $customerTransfer = $this->fixtures->getCustomerTransfer();
         $servicePointTransfer = $this->fixtures->getServicePointTransfer();
-        $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
+        $quoteTransfer = $I->havePersistentQuoteWithProductOfferItemsAndItemLevelShipment(
             $customerTransfer,
             [
-                $I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[0], $this->fixtures->getPickableShipmentMethodTransfer(), 1),
-                $I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[1], $this->fixtures->getRegularShipmentMethodTransfer(), 1),
+                $I->getQuoteProductOfferItemOverrideData($this->fixtures->getProductOfferTransfers()[0], $this->fixtures->getPickableShipmentMethodTransfer(), 1),
+                $I->getQuoteProductOfferItemOverrideData($this->fixtures->getProductOfferTransfers()[1], $this->fixtures->getRegularShipmentMethodTransfer(), 1),
             ],
         );
         $quoteTransfer = $I->getCartFacade()->reloadItems($quoteTransfer);
@@ -309,7 +320,7 @@ class ServicePointShipmentTypeCheckoutRestApiCest
             ->assertSalesOrderAddressIsCorrectForItem(
                 $servicePointTransfer->getAddressOrFail(),
                 $customerTransfer,
-                $this->fixtures->getProductConcreteTransfers()[0]->getSkuOrFail(),
+                $this->fixtures->getProductOfferTransfers()[0]->getConcreteSkuOrFail(),
             );
     }
 
@@ -320,14 +331,14 @@ class ServicePointShipmentTypeCheckoutRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutWithSplitShipmentWIthOneItemAndPickableShipmentMethodWithoutCustomerDataInRequestBody(CheckoutApiTester $I): void
+    public function requestCheckoutWithSplitShipmentWithOneItemAndPickableShipmentMethodWithoutCustomerDataInRequestBody(CheckoutApiTester $I): void
     {
         $customerTransfer = $this->fixtures->getCustomerTransfer();
         $servicePointTransfer = $this->fixtures->getServicePointTransfer();
-        $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
+        $quoteTransfer = $I->havePersistentQuoteWithProductOfferItemsAndItemLevelShipment(
             $customerTransfer,
             [
-                $I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[0], $this->fixtures->getPickableShipmentMethodTransfer(), 1),
+                $I->getQuoteProductOfferItemOverrideData($this->fixtures->getProductOfferTransfers()[0], $this->fixtures->getPickableShipmentMethodTransfer(), 1),
             ],
         );
         $quoteTransfer = $I->getCartFacade()->reloadItems($quoteTransfer);
@@ -372,7 +383,7 @@ class ServicePointShipmentTypeCheckoutRestApiCest
             ->assertSalesOrderAddressIsCorrectForItem(
                 $servicePointTransfer->getAddressOrFail(),
                 $customerTransfer,
-                $this->fixtures->getProductConcreteTransfers()[0]->getSkuOrFail(),
+                $this->fixtures->getProductOfferTransfers()[0]->getConcreteSkuOrFail(),
             );
     }
 
@@ -396,11 +407,11 @@ class ServicePointShipmentTypeCheckoutRestApiCest
         );
 
         $servicePointTransfer = $this->fixtures->getServicePointTransfer();
-        $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
+        $quoteTransfer = $I->havePersistentQuoteWithProductOfferItemsAndItemLevelShipment(
             $guestCustomerTransfer,
             [
-                $I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[0], $this->fixtures->getPickableShipmentMethodTransfer(), 1),
-                $I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfers()[1], $this->fixtures->getRegularShipmentMethodTransfer(), 1),
+                $I->getQuoteProductOfferItemOverrideData($this->fixtures->getProductOfferTransfers()[0], $this->fixtures->getPickableShipmentMethodTransfer(), 1),
+                $I->getQuoteProductOfferItemOverrideData($this->fixtures->getProductOfferTransfers()[1], $this->fixtures->getRegularShipmentMethodTransfer(), 1),
             ],
         );
         $quoteTransfer = $I->getCartFacade()->reloadItems($quoteTransfer);

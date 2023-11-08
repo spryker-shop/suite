@@ -7,9 +7,16 @@
 
 namespace PyzTest\Glue\Checkout\RestApi\Fixtures;
 
+use ArrayObject;
 use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\ProductOfferStockTransfer;
+use Generated\Shared\Transfer\ProductOfferTransfer;
 use Generated\Shared\Transfer\ServicePointTransfer;
+use Generated\Shared\Transfer\ServiceTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
+use Generated\Shared\Transfer\ShipmentTypeTransfer;
+use Generated\Shared\Transfer\StockTransfer;
+use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
 use SprykerTest\Shared\Shipment\Helper\ShipmentMethodDataHelper;
@@ -54,14 +61,19 @@ class ServicePointShipmentTypeCheckoutRestApiFixtures implements FixturesBuilder
     protected ServicePointTransfer $servicePointTransfer;
 
     /**
+     * @var \Generated\Shared\Transfer\ShipmentTypeTransfer
+     */
+    protected ShipmentTypeTransfer $pickableShipmentTypeTransfer;
+
+    /**
      * @var \Generated\Shared\Transfer\StoreTransfer
      */
     protected StoreTransfer $storeTransfer;
 
     /**
-     * @var list<\Generated\Shared\Transfer\ProductConcreteTransfer>
+     * @var list<\Generated\Shared\Transfer\ProductOfferTransfer>
      */
-    protected array $productConcreteTransfers;
+    protected array $productOfferTransfers;
 
     /**
      * @return \Generated\Shared\Transfer\CustomerTransfer
@@ -96,11 +108,11 @@ class ServicePointShipmentTypeCheckoutRestApiFixtures implements FixturesBuilder
     }
 
     /**
-     * @return list<\Generated\Shared\Transfer\ProductConcreteTransfer>
+     * @return list<\Generated\Shared\Transfer\ProductOfferTransfer>
      */
-    public function getProductConcreteTransfers(): array
+    public function getProductOfferTransfers(): array
     {
-        return $this->productConcreteTransfers;
+        return $this->productOfferTransfers;
     }
 
     /**
@@ -114,9 +126,10 @@ class ServicePointShipmentTypeCheckoutRestApiFixtures implements FixturesBuilder
 
         $this->createStore($I);
         $this->createCustomer($I);
+        $this->createPickableShipmentType($I);
         $this->createShipmentMethods($I);
         $this->createServicePoint($I);
-        $this->createProductConcreteTransfers($I);
+        $this->createProductOfferTransfers($I);
 
         return $this;
     }
@@ -152,9 +165,18 @@ class ServicePointShipmentTypeCheckoutRestApiFixtures implements FixturesBuilder
      *
      * @return void
      */
+    protected function createPickableShipmentType(CheckoutApiTester $I): void
+    {
+        $this->pickableShipmentTypeTransfer = $I->havePickableShipmentType($this->storeTransfer);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
+     *
+     * @return void
+     */
     protected function createShipmentMethods(CheckoutApiTester $I): void
     {
-        $shipmentTypeTransfer = $I->havePickableShipmentType($this->storeTransfer);
         $this->pickableShipmentMethodTransfer = $I->haveShipmentMethod(
             [ShipmentMethodTransfer::IS_ACTIVE => true],
             [],
@@ -163,7 +185,7 @@ class ServicePointShipmentTypeCheckoutRestApiFixtures implements FixturesBuilder
         );
         $I->haveShipmentMethodShipmentTypeRelation(
             $this->pickableShipmentMethodTransfer->getIdShipmentMethod(),
-            $shipmentTypeTransfer->getIdShipmentType(),
+            $this->pickableShipmentTypeTransfer->getIdShipmentType(),
         );
 
         $this->regularShipmentMethodTransfer = $I->haveShipmentMethod(
@@ -189,11 +211,42 @@ class ServicePointShipmentTypeCheckoutRestApiFixtures implements FixturesBuilder
      *
      * @return void
      */
-    protected function createProductConcreteTransfers(CheckoutApiTester $I): void
+    protected function createProductOfferTransfers(CheckoutApiTester $I): void
     {
-        $this->productConcreteTransfers = [
-            $I->haveProductWithStock(),
-            $I->haveProductWithStock(),
-        ];
+        $serviceTransfer = $I->havePickableService($this->pickableShipmentTypeTransfer, [
+            ServiceTransfer::SERVICE_POINT => $this->servicePointTransfer->toArray(),
+            ServiceTransfer::IS_ACTIVE => true,
+        ]);
+        $stockTransfer = $I->haveStock([
+            StockTransfer::STORE_RELATION => (new StoreRelationTransfer())->addIdStores($this->storeTransfer->getIdStoreOrFail()),
+        ]);
+        $productConcreteTransfer1 = $I->haveProductWithStock();
+        $productConcreteTransfer2 = $I->haveProductWithStock();
+
+        $this->productOfferTransfers[] = $I->haveProductOfferWithShipmentTypeAndServiceRelations(
+            $productConcreteTransfer1,
+            $serviceTransfer,
+            $this->pickableShipmentTypeTransfer,
+            [
+                ProductOfferTransfer::STORES => new ArrayObject([$this->storeTransfer]),
+                ProductOfferStockTransfer::STOCK => $stockTransfer->toArray(),
+            ],
+        );
+        $this->productOfferTransfers[] = $I->haveProductOfferWithShipmentTypeAndServiceRelations(
+            $productConcreteTransfer2,
+            $serviceTransfer,
+            $this->pickableShipmentTypeTransfer,
+            [
+                ProductOfferTransfer::STORES => new ArrayObject([$this->storeTransfer]),
+                ProductOfferStockTransfer::STOCK => $stockTransfer->toArray(),
+            ],
+        );
+        $I->haveProductOfferWithStock(
+            $productConcreteTransfer2,
+            [
+                ProductOfferTransfer::STORES => new ArrayObject([$this->storeTransfer]),
+                ProductOfferStockTransfer::STOCK => $stockTransfer->toArray(),
+            ],
+        );
     }
 }
