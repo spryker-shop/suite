@@ -50,7 +50,8 @@ use Spryker\Zed\Calculation\Communication\Plugin\Calculator\GrandTotalCalculator
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundableAmountCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundTotalCalculatorPlugin;
 use Spryker\Zed\Calculation\Dependency\Service\CalculationToUtilTextBridge;
-use Spryker\Zed\CategoryDiscountConnector\Business\Checker\CategoryDecisionRuleChecker;
+use Spryker\Zed\CategoryDiscountConnector\Business\Reader\CategoryReader;
+use Spryker\Zed\CategoryDiscountConnector\Business\Reader\ProductCategoryReader;
 use Spryker\Zed\Kernel\Container;
 
 /**
@@ -573,15 +574,16 @@ class CalculationBusinessTester extends Actor
      */
     public function cleanCategoryDecisionRuleCheckerStaticProperties(): void
     {
-        $reflectedClass = new ReflectionClass(CategoryDecisionRuleChecker::class);
+        $reflectedClass = new ReflectionClass(ProductCategoryReader::class);
 
-        $groupedProductCategoryTransfers = $reflectedClass->getProperty('groupedProductCategoryTransfers');
-        $groupedProductCategoryTransfers->setAccessible(true);
-        $groupedProductCategoryTransfers->setValue(null);
+        $productCategoryTransfersGroupedByIdProductAbstract = $reflectedClass->getProperty('productCategoryTransfersGroupedByIdProductAbstract');
+        $productCategoryTransfersGroupedByIdProductAbstract->setAccessible(true);
+        $productCategoryTransfersGroupedByIdProductAbstract->setValue([]);
 
-        $groupedCategoryKeys = $reflectedClass->getProperty('groupedCategoryKeys');
-        $groupedCategoryKeys->setAccessible(true);
-        $groupedCategoryKeys->setValue(null);
+        $reflectedClass = new ReflectionClass(CategoryReader::class);
+        $categoryKeysGroupedByIdCategoryNode = $reflectedClass->getProperty('categoryKeysGroupedByIdCategoryNode');
+        $categoryKeysGroupedByIdCategoryNode->setAccessible(true);
+        $categoryKeysGroupedByIdCategoryNode->setValue([]);
     }
 
     /**
