@@ -294,6 +294,11 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_MERCHANT_USER = 'merchant-user';
 
     /**
+     * @var int
+     */
+    protected const READ_COLLECTION_BATCH_SIZE = 500;
+
+    /**
      * @return string|null
      */
     public function getDefaultYamlConfigPath(): ?string
@@ -438,5 +443,13 @@ class DataImportConfig extends SprykerDataImportConfig
             MerchantProductApprovalDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_APPROVAL_STATUS_DEFAULT,
             ProductApprovalDataImportConfig::IMPORT_TYPE_PRODUCT_APPROVAL_STATUS,
         ];
+    }
+
+    /**
+     * @return int
+     */
+    public function getReadCollectionBatchSize(): int
+    {
+        return static::READ_COLLECTION_BATCH_SIZE;
     }
 }
