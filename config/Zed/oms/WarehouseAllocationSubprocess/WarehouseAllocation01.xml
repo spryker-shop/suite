@@ -7,7 +7,9 @@
 
     <process name="WarehouseAllocation">
         <states>
-            <state name="warehouse allocated" reserved="true" display="oms.state.new"/>
+            <state name="warehouse allocated" reserved="true" display="oms.state.new">
+                <flag>cancellable</flag>
+            </state>
         </states>
 
         <events>
