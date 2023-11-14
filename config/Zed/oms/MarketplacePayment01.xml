@@ -34,6 +34,12 @@
             </transition>
 
             <transition>
+                <source>warehouse allocated</source>
+                <target>canceled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition>
                 <source>new</source>
                 <target>canceled</target>
                 <event>cancel</event>
