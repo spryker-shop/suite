@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d8dea047ad68719a555aa8e5b6d4f444",
+    "content-hash": "5f69a2d8d04838f751d68e5af9e9f2f9",
     "packages": [
         {
             "name": "async-aws/core",
@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.286.1",
+            "version": "3.286.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "f3276ecb6e5202452d4b64237e6dc1bc9d350ae6"
+                "reference": "33a763586e840e5162ff8144a9532aa43172e11c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f3276ecb6e5202452d4b64237e6dc1bc9d350ae6",
-                "reference": "f3276ecb6e5202452d4b64237e6dc1bc9d350ae6",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/33a763586e840e5162ff8144a9532aa43172e11c",
+                "reference": "33a763586e840e5162ff8144a9532aa43172e11c",
                 "shasum": ""
             },
             "require": {
@@ -335,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.286.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.286.2"
             },
-            "time": "2023-11-14T19:09:59+00:00"
+            "time": "2023-11-15T19:19:39+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -21649,16 +21649,16 @@
         },
         {
             "name": "spryker/click-and-collect-example",
-            "version": "0.8.2",
+            "version": "0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/click-and-collect-example.git",
-                "reference": "d6590b7324807464d29269d908f4ef6f780acdbd"
+                "reference": "713144e04fbf2576c2cca89bb75836909102dac4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/click-and-collect-example/zipball/d6590b7324807464d29269d908f4ef6f780acdbd",
-                "reference": "d6590b7324807464d29269d908f4ef6f780acdbd",
+                "url": "https://api.github.com/repos/spryker/click-and-collect-example/zipball/713144e04fbf2576c2cca89bb75836909102dac4",
+                "reference": "713144e04fbf2576c2cca89bb75836909102dac4",
                 "shasum": ""
             },
             "require": {
@@ -21666,7 +21666,9 @@
                 "spryker/availability": "^9.20.0",
                 "spryker/checkout-rest-api-extension": "^1.5.0",
                 "spryker/currency": "^3.0.0 || ^4.0.0",
+                "spryker/glue-application-extension": "^1.10.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/merchant-user": "^1.0.0",
                 "spryker/price-product-offer": "^1.0.0",
                 "spryker/product-offer": "^1.0.0",
                 "spryker/product-offer-service-point": "^1.0.0",
@@ -21682,16 +21684,19 @@
                 "spryker/shipment-type-service-point": "^1.0.0",
                 "spryker/shipment-type-storage-extension": "^1.0.0",
                 "spryker/store": "^1.19.0",
+                "spryker/symfony": "^3.7.0",
                 "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/decimal-object": "*",
+                "spryker/merchant": "*",
                 "spryker/price-product": "*",
                 "spryker/product": "*",
                 "spryker/propel": "*",
                 "spryker/stock": "*",
-                "spryker/testify": "*"
+                "spryker/testify": "*",
+                "spryker/user": "*"
             },
             "type": "library",
             "extra": {
@@ -21710,9 +21715,9 @@
             ],
             "description": "ClickAndCollectExample module",
             "support": {
-                "source": "https://github.com/spryker/click-and-collect-example/tree/0.8.2"
+                "source": "https://github.com/spryker/click-and-collect-example/tree/0.9.0"
             },
-            "time": "2023-11-13T14:37:10+00:00"
+            "time": "2023-11-16T10:48:30+00:00"
         },
         {
             "name": "spryker/cms",
@@ -78112,12 +78117,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "c7756dee9093090c09f47e7677165932903bfe3f"
+                "reference": "ce5b2dcdf54309293c6c9dbdd107ac7a0439aa86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/c7756dee9093090c09f47e7677165932903bfe3f",
-                "reference": "c7756dee9093090c09f47e7677165932903bfe3f",
+                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/ce5b2dcdf54309293c6c9dbdd107ac7a0439aa86",
+                "reference": "ce5b2dcdf54309293c6c9dbdd107ac7a0439aa86",
                 "shasum": ""
             },
             "default-branch": true,
@@ -78131,7 +78136,7 @@
                 "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
                 "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
             },
-            "time": "2023-11-10T09:25:40+00:00"
+            "time": "2023-11-15T18:01:33+00:00"
         },
         {
             "name": "spryker/silex",
