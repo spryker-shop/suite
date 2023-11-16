@@ -81,6 +81,18 @@
 
             <transition happy="true">
                 <source>sent to merchant</source>
+                <target>picking list generation scheduled</target>
+                <event>picking list generation schedule</event>
+            </transition>
+
+            <transition>
+                <source>sent to merchant</source>
+                <target>shipped by merchant</target>
+                <event>skip picking</event>
+            </transition>
+
+            <transition happy="true">
+                <source>picking finished</source>
                 <target>shipped by merchant</target>
                 <event>ship by merchant</event>
             </transition>
@@ -103,6 +115,7 @@
             <event name="pay" manual="true" command="Order/RequestProductReviews"/>
             <event name="cancel" manual="true"/>
             <event name="refund" manual="true"/>
+            <event name="skip picking" manual="true" timeout="30 minute"/>
             <event name="send to merchant" onEnter="true" command="MerchantSalesOrder/CreateOrders"/>
             <event name="ship by merchant"/>
             <event name="deliver"/>
@@ -113,6 +126,7 @@
             <process>MarketplaceReturn</process>
             <process>MarketplaceRefund</process>
             <process>WarehouseAllocation</process>
+            <process>DummyPicking</process>
         </subprocesses>
 
     </process>
@@ -120,5 +134,6 @@
     <process name="MarketplaceReturn" file="MarketplaceSubprocess/MarketplaceReturn01.xml"/>
     <process name="MarketplaceRefund" file="MarketplaceSubprocess/MarketplaceRefund01.xml"/>
     <process name="WarehouseAllocation" file="WarehouseAllocationSubprocess/WarehouseAllocation01.xml"/>
+    <process name="DummyPicking" file="DummySubprocess/DummyPicking01.xml"/>
 
 </statemachine>
