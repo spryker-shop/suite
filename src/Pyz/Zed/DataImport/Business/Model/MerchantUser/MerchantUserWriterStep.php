@@ -108,6 +108,8 @@ class MerchantUserWriterStep implements DataImportStepInterface
     }
 
     /**
+     * @psalm-suppress MissingTemplateParam
+     *
      * @param int $idUser
      *
      * @return \Generated\Shared\Transfer\UserTransfer|null
