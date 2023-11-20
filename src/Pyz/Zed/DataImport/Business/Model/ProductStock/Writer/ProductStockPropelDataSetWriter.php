@@ -508,6 +508,8 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     }
 
     /**
+     * @psalm-suppress MissingTemplateParam
+     *
      * @return array<string>
      */
     protected function getBundleProductAbstractSkus(): array
