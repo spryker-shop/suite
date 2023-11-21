@@ -156,6 +156,7 @@ use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SalesProductBundleWidget\Widget\OrderItemsProductBundleWidget;
 use SprykerShop\Yves\SalesProductConfigurationWidget\Widget\ProductConfigurationOrderItemDisplayWidget;
 use SprykerShop\Yves\SalesServicePointWidget\Widget\SalesServicePointNameForShipmentGroupWidget;
+use SprykerShop\Yves\ServicePointWidget\Widget\ServicePointNameForShipmentGroupWidget;
 use SprykerShop\Yves\ServicePointWidget\Widget\ServicePointSearchWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
@@ -333,6 +334,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ServicePointSearchWidget::class,
             ShipmentTypeAddressFormWidget::class,
             SalesServicePointNameForShipmentGroupWidget::class,
+            ServicePointNameForShipmentGroupWidget::class,
             ClickAndCollectServicePointAddressFormWidget::class,
             ProductOfferServicePointAvailabilityWidget::class,
             ProductOfferServicePointAvailabilityDisplayWidget::class,
