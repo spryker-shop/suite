@@ -680,12 +680,12 @@ $config[OmsConstants::PROCESS_LOCATION] = [
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'PayoneCreditCardPartialOperations',
     'PayoneOnlineTransferPartialOperations',
-    'ForeignPaymentB2CStateMachine01',
+    'ForeignPaymentStateMachine01',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     PayoneConfig::PAYMENT_METHOD_CREDIT_CARD => 'PayoneCreditCardPartialOperations',
     PayoneConfig::PAYMENT_METHOD_INSTANT_ONLINE_TRANSFER => 'PayoneOnlineTransferPartialOperations',
-    PaymentConfig::PAYMENT_FOREIGN_PROVIDER => 'ForeignPaymentB2CStateMachine01',
+    PaymentConfig::PAYMENT_FOREIGN_PROVIDER => 'ForeignPaymentStateMachine01',
 ];
 
 // ----------------------------------------------------------------------------
