@@ -29,10 +29,10 @@ extensions:
     commands:
         - \SprykerTest\Shared\Testify\Fixtures\FixturesCommand
     enabled:
-        - \SprykerTest\Shared\Testify\Helper\WebDriverHelper
+        #- \SprykerTest\Shared\Testify\Helper\WebDriverHelper
     config:
         \SprykerTest\Shared\Testify\Helper\WebDriverHelper:
-            suites: ['Presentation']
+            # suites: ['Presentation']
             path: '%SPRYKER_TEST_WEB_DRIVER_BIN%'
             whitelisted-ips: ''
             webdriver-port: '%SPRYKER_TEST_WEB_DRIVER_PORT%'

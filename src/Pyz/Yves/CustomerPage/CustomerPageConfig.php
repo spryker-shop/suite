@@ -31,6 +31,11 @@ class CustomerPageConfig extends SprykerCustomerPageConfig
     protected const IS_ORDER_HISTORY_SEARCH_ENABLED = true;
 
     /**
+     * @var bool
+     */
+    protected const CUSTOMER_SECURITY_BLOCKER_ENABLED = true;
+
+    /**
      * @api
      *
      * @return bool
