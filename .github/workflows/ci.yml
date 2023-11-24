@@ -1,4 +1,4 @@
-name: CI
+name: SUITE-CI
 
 on:
     pull_request:
@@ -7,6 +7,10 @@ on:
             - master
     workflow_dispatch:
 
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+    cancel-in-progress: true
+    
 jobs:
     validation:
         name: "CS, ArchSniffer, PHPStan, Evaluator"
