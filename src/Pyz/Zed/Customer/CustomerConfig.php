@@ -22,6 +22,11 @@ class CustomerConfig extends SprykerCustomerConfig
     protected const MAX_LENGTH_CUSTOMER_PASSWORD = 64;
 
     /**
+     * @var bool
+     */
+    protected const PASSWORD_RESET_EXPIRATION_IS_ENABLED = true;
+
+    /**
      * {@inheritDoc}
      *
      * @return array<string>
