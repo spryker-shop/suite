@@ -10,7 +10,7 @@ on:
 concurrency:
     group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
     cancel-in-progress: true
-    
+
 jobs:
     validation:
         name: "CS, ArchSniffer, PHPStan, Evaluator"
@@ -510,7 +510,7 @@ jobs:
             - name: Run Tests
               run: |
                   cd robotframework-tests
-                  robot -v env:api_suite --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite .
+                  robot -v env:api_suite -v ignore_console:false --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite .
             - name: Upload artifacts
               if: always()
               run: |
@@ -562,7 +562,7 @@ jobs:
             - name: Run Tests
               run: |
                   cd robotframework-tests
-                  robot -v env:api_suite -v db_engine:psycopg2 --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite .
+                  robot -v env:api_suite -v db_engine:psycopg2 -v ignore_console:false --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite .
             - name: Upload artifacts
               if: always()
               run: |
