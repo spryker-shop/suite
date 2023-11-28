@@ -11,6 +11,7 @@ use DateTime;
 use Generated\Shared\DataBuilder\AddressBuilder;
 use Generated\Shared\DataBuilder\CustomerBuilder;
 use Generated\Shared\DataBuilder\ItemBuilder;
+use Generated\Shared\DataBuilder\MerchantBuilder;
 use Generated\Shared\DataBuilder\ServicePointBuilder;
 use Generated\Shared\DataBuilder\ShipmentBuilder;
 use Generated\Shared\DataBuilder\StoreRelationBuilder;
@@ -18,6 +19,7 @@ use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CountryTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\MerchantTransfer;
 use Generated\Shared\Transfer\MoneyValueTransfer;
 use Generated\Shared\Transfer\PaymentMethodTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
@@ -142,6 +144,13 @@ class CheckoutApiTester extends ApiEndToEndTester
      * @var string
      */
     protected const COUNTRY_ISO3_CODE = 'XXX';
+
+    /**
+     * @uses \Spryker\Zed\Merchant\MerchantConfig::STATUS_APPROVED
+     *
+     * @var string
+     */
+    protected const MERCHANT_STATUS_APPROVED = 'approved';
 
     /**
      * @return void
@@ -843,6 +852,24 @@ class CheckoutApiTester extends ApiEndToEndTester
         ]);
 
         return $servicePointTransfer->setAddress($servicePointAddressTransfer->setServicePoint(null));
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
+     * @return \Generated\Shared\Transfer\MerchantTransfer
+     */
+    public function haveMerchantWithStoreRelation(StoreTransfer $storeTransfer): MerchantTransfer
+    {
+        $merchantTransfer = (new MerchantBuilder([
+            MerchantTransfer::STATUS => static::MERCHANT_STATUS_APPROVED,
+            MerchantTransfer::IS_ACTIVE => true,
+            MerchantTransfer::STORE_RELATION => (new StoreRelationTransfer())
+                ->addIdStores($storeTransfer->getIdStoreOrFail())
+                ->addStores($storeTransfer),
+        ]))->withMerchantProfile()->build();
+
+        return $this->haveMerchant($merchantTransfer->toArray(true, true));
     }
 
     /**
