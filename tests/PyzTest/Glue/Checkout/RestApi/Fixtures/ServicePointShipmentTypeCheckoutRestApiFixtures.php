@@ -36,11 +36,6 @@ class ServicePointShipmentTypeCheckoutRestApiFixtures implements FixturesBuilder
     protected const TEST_PASSWORD = 'change123';
 
     /**
-     * @var string
-     */
-    protected const TEST_STORE_NAME = 'DE';
-
-    /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
      */
     protected CustomerTransfer $customerTransfer;
@@ -141,7 +136,7 @@ class ServicePointShipmentTypeCheckoutRestApiFixtures implements FixturesBuilder
      */
     protected function createStore(CheckoutApiTester $I): void
     {
-        $this->storeTransfer = $I->haveStore([StoreTransfer::NAME => static::TEST_STORE_NAME]);
+        $this->storeTransfer = $I->getStoreFacade()->getCurrentStore();
     }
 
     /**
@@ -213,21 +208,25 @@ class ServicePointShipmentTypeCheckoutRestApiFixtures implements FixturesBuilder
      */
     protected function createProductOfferTransfers(CheckoutApiTester $I): void
     {
+        $productConcreteTransfer1 = $I->haveProductWithStock();
+        $productConcreteTransfer2 = $I->haveProductWithStock();
+
+        $merchantTransfer = $I->haveMerchantWithStoreRelation($this->storeTransfer);
+        $stockTransfer = $I->haveStock([
+            StockTransfer::IS_ACTIVE => true,
+            StockTransfer::STORE_RELATION => (new StoreRelationTransfer())->addIdStores($this->storeTransfer->getIdStoreOrFail()),
+        ]);
         $serviceTransfer = $I->havePickableService($this->pickableShipmentTypeTransfer, [
             ServiceTransfer::SERVICE_POINT => $this->servicePointTransfer->toArray(),
             ServiceTransfer::IS_ACTIVE => true,
         ]);
-        $stockTransfer = $I->haveStock([
-            StockTransfer::STORE_RELATION => (new StoreRelationTransfer())->addIdStores($this->storeTransfer->getIdStoreOrFail()),
-        ]);
-        $productConcreteTransfer1 = $I->haveProductWithStock();
-        $productConcreteTransfer2 = $I->haveProductWithStock();
 
         $this->productOfferTransfers[] = $I->haveProductOfferWithShipmentTypeAndServiceRelations(
             $productConcreteTransfer1,
             $serviceTransfer,
             $this->pickableShipmentTypeTransfer,
             [
+                ProductOfferTransfer::MERCHANT_REFERENCE => $merchantTransfer->getMerchantReferenceOrFail(),
                 ProductOfferTransfer::STORES => new ArrayObject([$this->storeTransfer]),
                 ProductOfferStockTransfer::STOCK => $stockTransfer->toArray(),
             ],
@@ -237,13 +236,7 @@ class ServicePointShipmentTypeCheckoutRestApiFixtures implements FixturesBuilder
             $serviceTransfer,
             $this->pickableShipmentTypeTransfer,
             [
-                ProductOfferTransfer::STORES => new ArrayObject([$this->storeTransfer]),
-                ProductOfferStockTransfer::STOCK => $stockTransfer->toArray(),
-            ],
-        );
-        $I->haveProductOfferWithStock(
-            $productConcreteTransfer2,
-            [
+                ProductOfferTransfer::MERCHANT_REFERENCE => $merchantTransfer->getMerchantReferenceOrFail(),
                 ProductOfferTransfer::STORES => new ArrayObject([$this->storeTransfer]),
                 ProductOfferStockTransfer::STOCK => $stockTransfer->toArray(),
             ],
