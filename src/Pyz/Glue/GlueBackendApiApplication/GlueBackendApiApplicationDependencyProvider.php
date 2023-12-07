@@ -19,7 +19,7 @@ use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\SecurityHeader
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\StrictTransportSecurityHeaderResponseFormatterPlugin;
 use Spryker\Glue\GlueBackendApiApplicationAuthorizationConnector\Plugin\GlueBackendApiApplication\AuthorizationRequestAfterRoutingValidatorPlugin;
 use Spryker\Glue\Http\Plugin\Application\HttpApplicationPlugin;
-use Spryker\Glue\OauthBackendApi\Plugin\AccessTokenValidatorPlugin;
+use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\BackendApiAccessTokenValidatorPlugin;
 use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\OauthBackendApiTokenResource;
 use Spryker\Glue\OauthBackendApi\Plugin\GlueApplication\UserRequestValidatorPlugin;
 use Spryker\Glue\OauthBackendApi\Plugin\GlueBackendApiApplication\UserRequestBuilderPlugin;
@@ -79,7 +79,7 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
     protected function getRequestValidatorPlugins(): array
     {
         return [
-            new AccessTokenValidatorPlugin(),
+            new BackendApiAccessTokenValidatorPlugin(),
             new UserRequestValidatorPlugin(),
             new WarehouseRequestValidatorPlugin(),
         ];
