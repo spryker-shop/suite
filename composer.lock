@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.293.8",
+            "version": "3.293.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "abb250f6ac8798fa1547eff6f9bda526a90efa15"
+                "reference": "1fa17dba47021586de511d10944637da8ea4cc43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/abb250f6ac8798fa1547eff6f9bda526a90efa15",
-                "reference": "abb250f6ac8798fa1547eff6f9bda526a90efa15",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1fa17dba47021586de511d10944637da8ea4cc43",
+                "reference": "1fa17dba47021586de511d10944637da8ea4cc43",
                 "shasum": ""
             },
             "require": {
@@ -335,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.293.8"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.293.9"
             },
-            "time": "2023-12-11T19:15:29+00:00"
+            "time": "2023-12-12T19:08:53+00:00"
         },
         {
             "name": "brick/math",
@@ -14762,6 +14762,54 @@
             "time": "2023-11-03T12:00:00+00:00"
         },
         {
+            "name": "jetbrains/phpstorm-stubs",
+            "version": "v2023.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JetBrains/phpstorm-stubs.git",
+                "reference": "3bb9c8a1050ad324c2dca7964487fa9f081f1005"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/3bb9c8a1050ad324c2dca7964487fa9f081f1005",
+                "reference": "3bb9c8a1050ad324c2dca7964487fa9f081f1005",
+                "shasum": ""
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "@stable",
+                "nikic/php-parser": "@stable",
+                "php": "^8.0",
+                "phpdocumentor/reflection-docblock": "@stable",
+                "phpunit/phpunit": "^9.6"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "PhpStormStubsMap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "PHP runtime & extensions header files for PhpStorm",
+            "homepage": "https://www.jetbrains.com/phpstorm",
+            "keywords": [
+                "autocomplete",
+                "code",
+                "inference",
+                "inspection",
+                "jetbrains",
+                "phpstorm",
+                "stubs",
+                "type"
+            ],
+            "support": {
+                "source": "https://github.com/JetBrains/phpstorm-stubs/tree/v2023.2"
+            },
+            "time": "2023-07-14T12:50:15+00:00"
+        },
+        {
             "name": "masterminds/html5",
             "version": "2.8.1",
             "source": {
@@ -16278,6 +16326,120 @@
             "time": "2023-10-14T21:56:36+00:00"
         },
         {
+            "name": "roave/better-reflection",
+            "version": "6.19.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Roave/BetterReflection.git",
+                "reference": "92e9cbd9ccfea0924135a29f4be3959cd59cf54c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/92e9cbd9ccfea0924135a29f4be3959cd59cf54c",
+                "reference": "92e9cbd9ccfea0924135a29f4be3959cd59cf54c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "jetbrains/phpstorm-stubs": "2023.2",
+                "nikic/php-parser": "^4.17.1",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+                "roave/signature": "^1.8.0"
+            },
+            "conflict": {
+                "thecodingmachine/safe": "<1.1.3"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^12.0.0",
+                "phpstan/phpstan": "^1.10.47",
+                "phpstan/phpstan-phpunit": "^1.3.15",
+                "phpunit/phpunit": "^10.5.2",
+                "roave/infection-static-analysis-plugin": "^1.34.0",
+                "vimeo/psalm": "5.17.0"
+            },
+            "suggest": {
+                "composer/composer": "Required to use the ComposerSourceLocator"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Roave\\BetterReflection\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Titcumb",
+                    "email": "james@asgrim.com",
+                    "homepage": "https://github.com/asgrim"
+                },
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "https://ocramius.github.io/"
+                },
+                {
+                    "name": "Gary Hockin",
+                    "email": "gary@roave.com",
+                    "homepage": "https://github.com/geeh"
+                },
+                {
+                    "name": "Jaroslav Hanslík",
+                    "email": "kukulich@kukulich.cz",
+                    "homepage": "https://github.com/kukulich"
+                }
+            ],
+            "description": "Better Reflection - an improved code reflection API",
+            "support": {
+                "issues": "https://github.com/Roave/BetterReflection/issues",
+                "source": "https://github.com/Roave/BetterReflection/tree/6.19.0"
+            },
+            "time": "2023-12-07T10:58:42+00:00"
+        },
+        {
+            "name": "roave/signature",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Roave/Signature.git",
+                "reference": "f92ce20f82c9a1df3b50fc56fbdaeb82cf4c9c5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Roave/Signature/zipball/f92ce20f82c9a1df3b50fc56fbdaeb82cf4c9c5b",
+                "reference": "f92ce20f82c9a1df3b50fc56fbdaeb82cf4c9c5b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^12.0.0",
+                "infection/infection": "^0.26.19",
+                "phpunit/phpunit": "^9.6.7",
+                "vimeo/psalm": "^5.9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Roave\\Signature\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Sign and verify stuff",
+            "support": {
+                "issues": "https://github.com/Roave/Signature/issues",
+                "source": "https://github.com/Roave/Signature/tree/1.8.0"
+            },
+            "time": "2023-11-25T00:11:29+00:00"
+        },
+        {
             "name": "sebastian/cli-parser",
             "version": "1.0.1",
             "source": {
@@ -17597,16 +17759,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/composer-constrainer.git",
-                "reference": "867437d857bb9b3fc36cf1ba6739fbbbc2afc5a4"
+                "reference": "88d12a03267ac2f3d364365ce463e999cbec8ea1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/867437d857bb9b3fc36cf1ba6739fbbbc2afc5a4",
-                "reference": "867437d857bb9b3fc36cf1ba6739fbbbc2afc5a4",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/88d12a03267ac2f3d364365ce463e999cbec8ea1",
+                "reference": "88d12a03267ac2f3d364365ce463e999cbec8ea1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4",
+                "roave/better-reflection": "^5.0.0 || ^6.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/laminas": "^1.0.0",
                 "spryker/symfony": "^3.2.2",
@@ -17639,9 +17802,9 @@
             "description": "ComposerConstrainer module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/composer-constrainer/issues",
-                "source": "https://github.com/spryker-sdk/composer-constrainer/tree/master"
+                "source": "https://github.com/spryker-sdk/composer-constrainer/tree/0.2.7"
             },
-            "time": "2022-12-01T11:26:01+00:00"
+            "time": "2023-12-13T08:54:07+00:00"
         },
         {
             "name": "spryker-sdk/composer-replace",
@@ -18208,7 +18371,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "5d3c7a899e67884bbcb3eab5064d34612e7c1153"
+                "reference": "ebb297ab126195686b35528970ab3fb6947a8bea"
             },
             "default-branch": true,
             "type": "library",
@@ -18216,7 +18379,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2023-12-12T12:30:57+00:00"
+            "time": "2023-12-12T20:33:53+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
