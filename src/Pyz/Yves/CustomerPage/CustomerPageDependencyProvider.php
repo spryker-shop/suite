@@ -8,7 +8,7 @@
 namespace Pyz\Yves\CustomerPage;
 
 use Spryker\Yves\MerchantShipment\Plugin\CustomerPage\MerchantShipmentCheckoutAddressStepPreGroupItemsByShipmentPlugin;
-use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
+use SprykerShop\Yves\AgentPage\Plugin\Security\UpdateAgentTokenAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\ClickAndCollectPageExample\Plugin\CustomerPage\ClickAndCollectServiceTypeCheckoutAddressCollectionFormExpanderPlugin;
 use SprykerShop\Yves\ClickAndCollectPageExample\Plugin\CustomerPage\ClickAndCollectServiceTypeCheckoutMultiShippingAddressesFormExpanderPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
@@ -86,7 +86,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     protected function getAfterCustomerAuthenticationSuccessPlugins(): array
     {
         return [
-            new FixAgentTokenAfterCustomerAuthenticationSuccessPlugin(),
+            new UpdateAgentTokenAfterCustomerAuthenticationSuccessPlugin(),
             new MerchantSwitchCartAfterCustomerAuthenticationSuccessPlugin(),
             new UpdateAgentSessionAfterCustomerAuthenticationSuccessPlugin(),
         ];
