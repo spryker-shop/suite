@@ -10,11 +10,11 @@ namespace Pyz\Yves\ShopApplication;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin;
-use Spryker\Yves\Http\Plugin\Application\HttpApplicationPlugin;
+use Spryker\Yves\Http\Plugin\Application\YvesHttpApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Yves\Messenger\Plugin\Application\FlashMessengerApplicationPlugin;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
-use Spryker\Yves\Security\Plugin\Application\SecurityApplicationPlugin;
+use Spryker\Yves\Security\Plugin\Application\YvesSecurityApplicationPlugin;
 use Spryker\Yves\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Yves\ShopContext\Communication\Plugin\ShopApplication\ShopContextApplicationPlugin;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
@@ -391,7 +391,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new FlashMessengerApplicationPlugin(),
             new FormApplicationPlugin(),
             new ValidatorApplicationPlugin(),
-            new SecurityApplicationPlugin(),
+            new YvesSecurityApplicationPlugin(),
             new ShopContextApplicationPlugin(),
             new CustomerConfirmationUserCheckerApplicationPlugin(),
         ];
