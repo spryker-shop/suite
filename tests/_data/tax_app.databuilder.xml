@@ -6,7 +6,7 @@
 >
 
     <transfer name="ConfigureTaxApp" strict="true">
-        <property name="apiUrl" type="string" dataBuilderRule="lexify('??????????')"/>
+        <property name="apiUrls" dataBuilderRule="TaxAppApiUrls"/>
         <property name="vendorCode" type="string" dataBuilderRule="lexify('??????????')"/>
         <property name="isActive" type="bool" dataBuilderRule="boolean(100)"/>
     </transfer>
