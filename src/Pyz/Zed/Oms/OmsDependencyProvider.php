@@ -46,6 +46,7 @@ use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandP
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
 use Spryker\Zed\TaxApp\Communication\Plugin\Oms\Command\SubmitPaymentTaxInvoicePlugin;
+use Spryker\Zed\TaxApp\Communication\Plugin\Oms\OrderRefundedEventListenerPlugin;
 use Spryker\Zed\WarehouseAllocation\Communication\Plugin\Oms\SalesOrderWarehouseAllocationCommandPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\CancelAndRecalculateCommandByOrderPlugin;
 use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\CancelCommandPlugin;
@@ -280,6 +281,16 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     {
         return [
             new InitiationTimeoutProcessorPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\OmsExtension\Dependency\Plugin\OmsEventTriggeredListenerPluginInterface>
+     */
+    protected function getOmsEventTriggeredListenerPlugins(): array
+    {
+        return [
+            new OrderRefundedEventListenerPlugin(),
         ];
     }
 }

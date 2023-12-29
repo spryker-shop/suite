@@ -64,7 +64,7 @@ validateModuleArchitecture() {
         let "ARCHITECTURE_TOTAL_MODULES_PROCESSED_COUNT+=1"
 
         echo $2.$module
-        output=$(vendor/bin/console code:sniff:architecture -m $2.$module)
+        output=$(vendor/bin/console code:sniff:architecture -v -m $2.$module)
         if [ $? -ne 0 ]; then
             echo $output
             EXITCODE=1
