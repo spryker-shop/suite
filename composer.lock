@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.295.2",
+            "version": "3.295.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7e8f68580954a01cf9c8f2abd4f4db52ebcb7b73"
+                "reference": "3346f60c6c5075453f90f703693f764dad76a3a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7e8f68580954a01cf9c8f2abd4f4db52ebcb7b73",
-                "reference": "7e8f68580954a01cf9c8f2abd4f4db52ebcb7b73",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3346f60c6c5075453f90f703693f764dad76a3a8",
+                "reference": "3346f60c6c5075453f90f703693f764dad76a3a8",
                 "shasum": ""
             },
             "require": {
@@ -335,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.295.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.295.3"
             },
-            "time": "2023-12-27T19:06:10+00:00"
+            "time": "2023-12-28T19:32:33+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -4259,16 +4259,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "3.0.34",
+            "version": "3.0.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "56c79f16a6ae17e42089c06a2144467acc35348a"
+                "reference": "4b1827beabce71953ca479485c0ae9c51287f2fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/56c79f16a6ae17e42089c06a2144467acc35348a",
-                "reference": "56c79f16a6ae17e42089c06a2144467acc35348a",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/4b1827beabce71953ca479485c0ae9c51287f2fe",
+                "reference": "4b1827beabce71953ca479485c0ae9c51287f2fe",
                 "shasum": ""
             },
             "require": {
@@ -4349,7 +4349,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpseclib/phpseclib/issues",
-                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.34"
+                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.35"
             },
             "funding": [
                 {
@@ -4365,7 +4365,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-27T11:13:31+00:00"
+            "time": "2023-12-29T01:59:53+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -18012,20 +18012,20 @@
         },
         {
             "name": "spryker/authentication-oauth",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/authentication-oauth.git",
-                "reference": "0d7d29d61082569a826522a370a188e6452e6fa7"
+                "reference": "42f0ce3e87a5bb75a8c4f4dfdac46c81940635dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/authentication-oauth/zipball/0d7d29d61082569a826522a370a188e6452e6fa7",
-                "reference": "0d7d29d61082569a826522a370a188e6452e6fa7",
+                "url": "https://api.github.com/repos/spryker/authentication-oauth/zipball/42f0ce3e87a5bb75a8c4f4dfdac46c81940635dc",
+                "reference": "42f0ce3e87a5bb75a8c4f4dfdac46c81940635dc",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0",
+                "php": ">=8.1",
                 "spryker/authentication-extension": "^1.0.0",
                 "spryker/kernel": "^3.66.0",
                 "spryker/oauth": "^2.4.0",
@@ -18050,7 +18050,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\AuthenticationOauth\\Helper\\": "tests/SprykerTest/Shared/AuthenticationOauth/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -18059,9 +18060,9 @@
             ],
             "description": "AuthenticationOauth module",
             "support": {
-                "source": "https://github.com/spryker/authentication-oauth/tree/1.0.1"
+                "source": "https://github.com/spryker/authentication-oauth/tree/1.1.0"
             },
-            "time": "2023-03-31T19:36:11+00:00"
+            "time": "2023-12-29T09:21:43+00:00"
         },
         {
             "name": "spryker/authorization",
@@ -66058,16 +66059,16 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.51.0",
+            "version": "3.52.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "b366934fde5167a753ca0688ac21724001151e39"
+                "reference": "685ef0decd19dfc9bf21a5144bff7296ca238541"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/b366934fde5167a753ca0688ac21724001151e39",
-                "reference": "b366934fde5167a753ca0688ac21724001151e39",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/685ef0decd19dfc9bf21a5144bff7296ca238541",
+                "reference": "685ef0decd19dfc9bf21a5144bff7296ca238541",
                 "shasum": ""
             },
             "require": {
@@ -66130,9 +66131,9 @@
             ],
             "description": "Testify module",
             "support": {
-                "source": "https://github.com/spryker/testify/tree/3.51.0"
+                "source": "https://github.com/spryker/testify/tree/3.52.0"
             },
-            "time": "2023-12-05T11:49:25+00:00"
+            "time": "2023-12-29T09:21:43+00:00"
         },
         {
             "name": "spryker/testify-async-api",
@@ -78139,12 +78140,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "70c8f6bc177770a27c684a0b43f623bb110543f0"
+                "reference": "59a91c974fec377579be3b8f1e48555a14a73306"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/70c8f6bc177770a27c684a0b43f623bb110543f0",
-                "reference": "70c8f6bc177770a27c684a0b43f623bb110543f0",
+                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/59a91c974fec377579be3b8f1e48555a14a73306",
+                "reference": "59a91c974fec377579be3b8f1e48555a14a73306",
                 "shasum": ""
             },
             "default-branch": true,
@@ -78158,7 +78159,7 @@
                 "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
                 "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
             },
-            "time": "2023-12-28T10:46:25+00:00"
+            "time": "2023-12-29T09:06:22+00:00"
         },
         {
             "name": "spryker/silex",
