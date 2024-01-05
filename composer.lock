@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.295.4",
+            "version": "3.295.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "2372661db989fe4229abd95f4434b37252076d58"
+                "reference": "9b0b2daf46d5e6a4600575917cea0764e4dbb6b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2372661db989fe4229abd95f4434b37252076d58",
-                "reference": "2372661db989fe4229abd95f4434b37252076d58",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9b0b2daf46d5e6a4600575917cea0764e4dbb6b5",
+                "reference": "9b0b2daf46d5e6a4600575917cea0764e4dbb6b5",
                 "shasum": ""
             },
             "require": {
@@ -335,9 +335,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.295.4"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.295.6"
             },
-            "time": "2023-12-29T19:07:49+00:00"
+            "time": "2024-01-04T19:43:02+00:00"
         },
         {
             "name": "brick/math",
@@ -1830,16 +1830,16 @@
         },
         {
             "name": "laminas/laminas-filter",
-            "version": "2.33.0",
+            "version": "2.34.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-filter.git",
-                "reference": "6ad64828d25ec4bdf226ec5096aabb04aa710324"
+                "reference": "008923542683d853109af5c71b7e9099de76c3e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/6ad64828d25ec4bdf226ec5096aabb04aa710324",
-                "reference": "6ad64828d25ec4bdf226ec5096aabb04aa710324",
+                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/008923542683d853109af5c71b7e9099de76c3e6",
+                "reference": "008923542683d853109af5c71b7e9099de76c3e6",
                 "shasum": ""
             },
             "require": {
@@ -1854,14 +1854,14 @@
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.5.0",
-                "laminas/laminas-crypt": "^3.10",
-                "laminas/laminas-i18n": "^2.23.1",
+                "laminas/laminas-crypt": "^3.11",
+                "laminas/laminas-i18n": "^2.25.0",
                 "laminas/laminas-uri": "^2.11",
                 "pear/archive_tar": "^1.4.14",
-                "phpunit/phpunit": "^10.4.2",
+                "phpunit/phpunit": "^10.5.5",
                 "psalm/plugin-phpunit": "^0.18.4",
                 "psr/http-factory": "^1.0.2",
-                "vimeo/psalm": "^5.15.0"
+                "vimeo/psalm": "^5.18.0"
             },
             "suggest": {
                 "laminas/laminas-crypt": "Laminas\\Crypt component, for encryption filters",
@@ -1905,7 +1905,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-11-03T13:29:10+00:00"
+            "time": "2024-01-04T11:47:08+00:00"
         },
         {
             "name": "laminas/laminas-servicemanager",
@@ -5480,12 +5480,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/evaluator.git",
-                "reference": "bdd17bb757e282e438d66e660d15c577a6880664"
+                "reference": "be96e940dae52d9197edd589517ec79da0cb9456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/bdd17bb757e282e438d66e660d15c577a6880664",
-                "reference": "bdd17bb757e282e438d66e660d15c577a6880664",
+                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/be96e940dae52d9197edd589517ec79da0cb9456",
+                "reference": "be96e940dae52d9197edd589517ec79da0cb9456",
                 "shasum": ""
             },
             "require": {
@@ -5494,21 +5494,21 @@
                 "ext-iconv": "*",
                 "ext-json": "*",
                 "guzzlehttp/guzzle": "^7.5",
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker-sdk/security-checker": "^0.2.0",
-                "spryker-sdk/utils": "^0.1.1",
-                "symfony/console": "^5.4|^6.0",
-                "symfony/dotenv": "^5.4|^6.0",
-                "symfony/filesystem": "^5.4|^6.0",
+                "spryker-sdk/utils": "^0.2.1",
+                "symfony/console": "^6.0",
+                "symfony/dotenv": "^6.0",
+                "symfony/filesystem": "^6.0",
                 "symfony/flex": "^1.17|^2",
-                "symfony/framework-bundle": "^5.4|^6.0",
+                "symfony/framework-bundle": "^6.0",
                 "symfony/monolog-bundle": "^3.8",
-                "symfony/process": "^5.4|^6.0",
-                "symfony/runtime": "^5.4|^6.0",
-                "symfony/serializer": "^5.4|^6.0",
-                "symfony/stopwatch": "^5.4|^6.0",
-                "symfony/uid": "^5.4|^6.0",
-                "symfony/yaml": "^5.4|^6.0"
+                "symfony/process": "^6.0",
+                "symfony/runtime": "^6.0",
+                "symfony/serializer": "^6.0",
+                "symfony/stopwatch": "^6.0",
+                "symfony/uid": "^6.0",
+                "symfony/yaml": "^6.0"
             },
             "conflict": {
                 "symfony/symfony": "*"
@@ -5531,7 +5531,7 @@
             "extra": {
                 "symfony": {
                     "allow-contrib": false,
-                    "require": "^5.4|^6.0"
+                    "require": "^6.0"
                 }
             },
             "autoload": {
@@ -5546,9 +5546,9 @@
             "description": "The tool for evaluating Spryker shops",
             "support": {
                 "issues": "https://github.com/spryker-sdk/evaluator/issues",
-                "source": "https://github.com/spryker-sdk/evaluator/tree/0.1.16"
+                "source": "https://github.com/spryker-sdk/evaluator/tree/0.2.1"
             },
-            "time": "2024-01-02T14:21:11+00:00"
+            "time": "2024-01-05T10:52:46+00:00"
         },
         {
             "name": "spryker-sdk/security-checker",
@@ -5600,33 +5600,32 @@
         },
         {
             "name": "spryker-sdk/utils",
-            "version": "0.1.2",
+            "version": "0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/utils.git",
-                "reference": "a8db5e53e71a39fc94ed8105e2ec78be5c88e9e2"
+                "reference": "2ea6418e3272c92ee8ad010e4aab0263daa62ba3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/utils/zipball/a8db5e53e71a39fc94ed8105e2ec78be5c88e9e2",
-                "reference": "a8db5e53e71a39fc94ed8105e2ec78be5c88e9e2",
+                "url": "https://api.github.com/repos/spryker-sdk/utils/zipball/2ea6418e3272c92ee8ad010e4aab0263daa62ba3",
+                "reference": "2ea6418e3272c92ee8ad010e4aab0263daa62ba3",
                 "shasum": ""
             },
             "require": {
                 "composer/semver": "^3.4",
                 "ext-mbstring": "*",
-                "laminas/laminas-filter": "^2.22.0",
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "psr/log": "^1.0 || ^2.0 || ^3.0",
-                "symfony/filesystem": "^5.4.0 || ^6.0.0",
-                "symfony/finder": "^5.4.0 || ^6.0.0",
-                "symfony/process": "^5.4.0 || ^6.0.0"
+                "symfony/filesystem": "^6.0.0",
+                "symfony/finder": "^6.0.0",
+                "symfony/process": "^6.0.0"
             },
             "require-dev": {
                 "ext-zip": "*",
                 "phpstan/phpstan": "^1.0.0",
                 "phpunit/phpunit": "^9.5.0",
-                "spryker/code-sniffer": "0.17.18"
+                "spryker/code-sniffer": "^0.17.20"
             },
             "type": "library",
             "autoload": {
@@ -5641,9 +5640,9 @@
             "description": "Spryker SDK Utils Module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/utils/issues",
-                "source": "https://github.com/spryker-sdk/utils/tree/0.1.2"
+                "source": "https://github.com/spryker-sdk/utils/tree/0.2.2"
             },
-            "time": "2023-12-04T17:07:52+00:00"
+            "time": "2024-01-05T09:40:55+00:00"
         },
         {
             "name": "spryker/checksum-generator",
@@ -6091,7 +6090,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d89403eaddf9cdf3a56dd6021c409381df5e3b2f"
+                "reference": "07a35aa54f57d32a990622b9cf658f124ffd6779"
             },
             "require": {
                 "php": ">=8.1"
@@ -7142,7 +7141,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2024-01-03T14:15:34+00:00"
+            "time": "2024-01-05T15:37:58+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -15667,16 +15666,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.24.5",
+            "version": "1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "fedf211ff14ec8381c9bf5714e33a7a552dd1acc"
+                "reference": "bd84b629c8de41aa2ae82c067c955e06f1b00240"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/fedf211ff14ec8381c9bf5714e33a7a552dd1acc",
-                "reference": "fedf211ff14ec8381c9bf5714e33a7a552dd1acc",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/bd84b629c8de41aa2ae82c067c955e06f1b00240",
+                "reference": "bd84b629c8de41aa2ae82c067c955e06f1b00240",
                 "shasum": ""
             },
             "require": {
@@ -15708,9 +15707,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.24.5"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.25.0"
             },
-            "time": "2023-12-16T09:33:33+00:00"
+            "time": "2024-01-04T17:06:16+00:00"
         },
         {
             "name": "phpstan/phpstan",
@@ -16309,16 +16308,16 @@
         },
         {
             "name": "roave/better-reflection",
-            "version": "6.20.0",
+            "version": "6.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/BetterReflection.git",
-                "reference": "a1fcefb03ced1e8f3a5be4d92e23bb9e95f51bca"
+                "reference": "7f9bf2c73d80c71599aa84b2cd78360346049f6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/a1fcefb03ced1e8f3a5be4d92e23bb9e95f51bca",
-                "reference": "a1fcefb03ced1e8f3a5be4d92e23bb9e95f51bca",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/7f9bf2c73d80c71599aa84b2cd78360346049f6a",
+                "reference": "7f9bf2c73d80c71599aa84b2cd78360346049f6a",
                 "shasum": ""
             },
             "require": {
@@ -16335,9 +16334,9 @@
                 "doctrine/coding-standard": "^12.0.0",
                 "phpstan/phpstan": "^1.10.50",
                 "phpstan/phpstan-phpunit": "^1.3.15",
-                "phpunit/phpunit": "^10.5.3",
+                "phpunit/phpunit": "^10.5.5",
                 "roave/infection-static-analysis-plugin": "^1.34.0",
-                "vimeo/psalm": "5.17.0"
+                "vimeo/psalm": "5.18.0"
             },
             "suggest": {
                 "composer/composer": "Required to use the ComposerSourceLocator"
@@ -16377,9 +16376,9 @@
             "description": "Better Reflection - an improved code reflection API",
             "support": {
                 "issues": "https://github.com/Roave/BetterReflection/issues",
-                "source": "https://github.com/Roave/BetterReflection/tree/6.20.0"
+                "source": "https://github.com/Roave/BetterReflection/tree/6.21.0"
             },
-            "time": "2023-12-16T12:01:31+00:00"
+            "time": "2024-01-04T16:52:13+00:00"
         },
         {
             "name": "roave/signature",
@@ -18056,12 +18055,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "2156a1d4d257e20dacc955872c8f6b9c7b8be3fd"
+                "reference": "5374a2c2ad29c361a6aeec0c81730aed438d08e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/2156a1d4d257e20dacc955872c8f6b9c7b8be3fd",
-                "reference": "2156a1d4d257e20dacc955872c8f6b9c7b8be3fd",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/5374a2c2ad29c361a6aeec0c81730aed438d08e4",
+                "reference": "5374a2c2ad29c361a6aeec0c81730aed438d08e4",
                 "shasum": ""
             },
             "require": {
@@ -18107,7 +18106,7 @@
                 "issues": "https://github.com/spryker/code-sniffer/issues",
                 "source": "https://github.com/spryker/code-sniffer"
             },
-            "time": "2023-11-02T19:16:04+00:00"
+            "time": "2024-01-04T17:11:52+00:00"
         },
         {
             "name": "spryker/commerce-k6-performance-tests",
@@ -18353,7 +18352,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "6f30a6afc741d1e55e9e2cc93b5cb7abe1a25fc7"
+                "reference": "b6914c64c22f66bc698cadc485a4bde0d2f5331e"
             },
             "default-branch": true,
             "type": "library",
@@ -18361,7 +18360,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2023-12-30T09:43:48+00:00"
+            "time": "2024-01-05T14:12:57+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
