@@ -404,26 +404,25 @@
         },
         {
             "name": "brick/math",
-            "version": "0.9.3",
+            "version": "0.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae"
+                "reference": "0ad82ce168c82ba30d1c01ec86116ab52f589478"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/ca57d18f028f84f777b2168cd1911b0dee2343ae",
-                "reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae",
+                "url": "https://api.github.com/repos/brick/math/zipball/0ad82ce168c82ba30d1c01ec86116ab52f589478",
+                "reference": "0ad82ce168c82ba30d1c01ec86116ab52f589478",
                 "shasum": ""
             },
             "require": {
-                "ext-json": "*",
-                "php": "^7.1 || ^8.0"
+                "php": "^8.0"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.2",
-                "phpunit/phpunit": "^7.5.15 || ^8.5 || ^9.0",
-                "vimeo/psalm": "4.9.2"
+                "phpunit/phpunit": "^9.0",
+                "vimeo/psalm": "5.0.0"
             },
             "type": "library",
             "autoload": {
@@ -448,19 +447,15 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.9.3"
+                "source": "https://github.com/brick/math/tree/0.11.0"
             },
             "funding": [
                 {
                     "url": "https://github.com/BenMorel",
                     "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/brick/math",
-                    "type": "tidelift"
                 }
             ],
-            "time": "2021-08-15T20:50:18+00:00"
+            "time": "2023-01-15T23:15:59+00:00"
         },
         {
             "name": "cebe/php-openapi",
@@ -13332,16 +13327,16 @@
         },
         {
             "name": "spryker-shop/product-review-widget",
-            "version": "1.15.0",
+            "version": "1.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-review-widget.git",
-                "reference": "81fc1d10bae00f81c9b13aeb1010efc7ec61891b"
+                "reference": "977825d0bdb714530002a4e8fd69eab8ce295eee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-review-widget/zipball/81fc1d10bae00f81c9b13aeb1010efc7ec61891b",
-                "reference": "81fc1d10bae00f81c9b13aeb1010efc7ec61891b",
+                "url": "https://api.github.com/repos/spryker-shop/product-review-widget/zipball/977825d0bdb714530002a4e8fd69eab8ce295eee",
+                "reference": "977825d0bdb714530002a4e8fd69eab8ce295eee",
                 "shasum": ""
             },
             "require": {
@@ -13352,7 +13347,7 @@
                 "spryker/application": "^3.8.0",
                 "spryker/customer": "^7.4.0",
                 "spryker/kernel": "^3.52.0",
-                "spryker/product-review": "^1.3.0 || ^2.8.0",
+                "spryker/product-review": "^1.4.0 || ^2.12.0",
                 "spryker/product-review-storage": "^1.0.0",
                 "spryker/storage": "^3.4.0",
                 "spryker/symfony": "^3.1.0",
@@ -13390,9 +13385,9 @@
             ],
             "description": "ProductReviewWidget module",
             "support": {
-                "source": "https://github.com/spryker-shop/product-review-widget/tree/1.15.0"
+                "source": "https://github.com/spryker-shop/product-review-widget/tree/1.16.0"
             },
-            "time": "2023-11-02T20:09:30+00:00"
+            "time": "2024-01-08T13:16:01+00:00"
         },
         {
             "name": "spryker-shop/product-search-widget",
@@ -54125,20 +54120,20 @@
         },
         {
             "name": "spryker/product-review",
-            "version": "2.11.2",
+            "version": "2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-review.git",
-                "reference": "0d206591030f41fa72411bb3ae2eff08df6d2979"
+                "reference": "40d1ab4db52e483ac5db7dfe0d0532aae941ae74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-review/zipball/0d206591030f41fa72411bb3ae2eff08df6d2979",
-                "reference": "0d206591030f41fa72411bb3ae2eff08df6d2979",
+                "url": "https://api.github.com/repos/spryker/product-review/zipball/40d1ab4db52e483ac5db7dfe0d0532aae941ae74",
+                "reference": "40d1ab4db52e483ac5db7dfe0d0532aae941ae74",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0",
+                "php": ">=8.1",
                 "spryker/event": "^1.0.0 || ^2.0.0",
                 "spryker/kernel": "^3.52.0",
                 "spryker/key-builder": "^1.0.0",
@@ -54194,9 +54189,9 @@
             ],
             "description": "ProductReview module",
             "support": {
-                "source": "https://github.com/spryker/product-review/tree/2.11.2"
+                "source": "https://github.com/spryker/product-review/tree/2.12.0"
             },
-            "time": "2023-06-16T09:24:47+00:00"
+            "time": "2024-01-08T13:15:59+00:00"
         },
         {
             "name": "spryker/product-review-collector",
@@ -74782,7 +74777,7 @@
                 "php": ">=8.1",
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
-                "web-token/jwt-core": "^3.0"
+                "web-token/jwt-core": "^3.2"
             },
             "suggest": {
                 "ext-sodium": "Sodium is required for OKP key creation, EdDSA signature algorithm and ECDH-ES key encryption with OKP keys",
@@ -74857,7 +74852,7 @@
             },
             "require": {
                 "php": ">=8.1",
-                "web-token/jwt-core": "^3.0"
+                "web-token/jwt-core": "^3.2"
             },
             "suggest": {
                 "web-token/jwt-signature-algorithm-ecdsa": "ECDSA Based Signature Algorithms",
@@ -74935,7 +74930,7 @@
             "require": {
                 "ext-openssl": "*",
                 "php": ">=8.1",
-                "web-token/jwt-signature": "^3.0"
+                "web-token/jwt-signature": "^3.2"
             },
             "type": "library",
             "autoload": {
