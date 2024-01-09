@@ -7,11 +7,6 @@ _COMPOSER_PREFER_LOWEST: &COMPOSER_PREFER_LOWEST
     - COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --optimize-autoloader --no-interaction --prefer-install=auto
     - COMPOSER_MEMORY_LIMIT=-1 composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies;
 
-_SETUP_WEB_INFRASTRUCTURE: &SETUP_WEB_INFRASTRUCTURE
-    - echo "_BROWSER_TESTING_BEFORE_INSTALL_SCRIPT"
-    - chmod +x config/Shared/ci/travis/*.sh
-    - config/Shared/ci/travis/acceptance_env.sh
-
 _ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE: &ADDONS_APT_PACKAGES_BASE_INFRASTRUCTURE
     - redis-tools
     - redis-server
@@ -368,8 +363,6 @@ jobs:
               - echo "_COMPOSER_INSTALL"
               - COMPOSER_MEMORY_LIMIT=-1 composer install --no-interaction --prefer-install=auto
               - *INSTALL_SCRIPT
-          before_script:
-              - *SETUP_WEB_INFRASTRUCTURE
           script:
               - travis_wait 60 vendor/bin/install DE -r ci.code-generate
           after_success:
@@ -390,8 +383,6 @@ jobs:
               - echo "_COMPOSER_INSTALL"
               - COMPOSER_MEMORY_LIMIT=-1 composer install --no-interaction --prefer-install=auto
               - *INSTALL_SCRIPT
-          before_script:
-              - *SETUP_WEB_INFRASTRUCTURE
           script:
               - travis_wait 60 vendor/bin/install -r ci.code-generate
           after_success:
@@ -549,7 +540,6 @@ jobs:
           install:
               - *COMPOSER_INSTALL
               - *INSTALL_SCRIPT
-              - *SETUP_WEB_INFRASTRUCTURE
           script:
               - unset CHROME_BIN && export CHROME_BIN=${CHROMIUM_BINARY}
               # Install npm packages
