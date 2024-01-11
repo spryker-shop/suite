@@ -15,4 +15,9 @@ class UserMerchantPortalGuiConfig extends SprykerUserMerchantPortalGuiConfig
      * @var bool
      */
     protected const IS_EMAIL_UPDATE_PASSWORD_VERIFICATION_ENABLED = true;
+
+    /**
+     * @var bool
+     */
+    protected const IS_SECURITY_BLOCKER_FOR_MERCHANT_USER_EMAIL_CHANGING_ENABLED = true;
 }
