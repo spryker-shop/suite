@@ -1080,7 +1080,7 @@ jobs:
               - travis_wait 35 docker/sdk up -t
               - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
               - sudo apt install awscli -q
-              - docker/sdk exec robot-framework robot -v env:api_suite -v docker:True --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite .
+              - docker/sdk exec robot-framework robot -v env:api_suite -v docker:True --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite .
           after_script:
               - *AWS_SYNC_CONFIG
               - |
@@ -1108,7 +1108,7 @@ jobs:
               - travis_wait 35 docker/sdk up -t -v
               - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
               - sudo apt install awscli -q
-              - docker/sdk exec robot-framework robot -v env:api_suite -v db_engine:psycopg2 -v docker:True --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.suite .
+              - docker/sdk exec robot-framework robot -v env:api_suite -v db_engine:psycopg2 -v docker:True --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite .
           after_script:
               - *AWS_SYNC_CONFIG
               - |
