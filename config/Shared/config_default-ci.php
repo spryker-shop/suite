@@ -182,7 +182,7 @@ $currentRegion = getenv('SPRYKER_CURRENT_REGION') ?: null;
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = array_map(static function ($storeName) use ($currentRegion, $dynamicStoreEnabled) {
     return [
         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => $storeName . '-connection',
-        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_HOST => getenv('MESSAGE_BROKER_HOST') ?: 'localhost',
         RabbitMqEnv::RABBITMQ_PORT => '5672',
         RabbitMqEnv::RABBITMQ_PASSWORD => 'guest',
         RabbitMqEnv::RABBITMQ_USERNAME => 'guest',
