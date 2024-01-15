@@ -55377,16 +55377,16 @@
         },
         {
             "name": "spryker/propel",
-            "version": "3.39.0",
+            "version": "3.40.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel.git",
-                "reference": "7fad9a13c46b04fcb8ae7b5f36f25da1ec7bb585"
+                "reference": "6bd8f1d5ae4b31f28cde53795823cee4ad1311bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel/zipball/7fad9a13c46b04fcb8ae7b5f36f25da1ec7bb585",
-                "reference": "7fad9a13c46b04fcb8ae7b5f36f25da1ec7bb585",
+                "url": "https://api.github.com/repos/spryker/propel/zipball/6bd8f1d5ae4b31f28cde53795823cee4ad1311bc",
+                "reference": "6bd8f1d5ae4b31f28cde53795823cee4ad1311bc",
                 "shasum": ""
             },
             "require": {
@@ -55397,7 +55397,7 @@
                 "spryker/kernel": "^3.48.0",
                 "spryker/log": "^3.0.0",
                 "spryker/monolog": "^2.0.0",
-                "spryker/propel-orm": "^1.18.0",
+                "spryker/propel-orm": "^1.20.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.12.0",
                 "spryker/util-encoding": "^2.0.0",
@@ -55433,26 +55433,26 @@
             ],
             "description": "Propel module",
             "support": {
-                "source": "https://github.com/spryker/propel/tree/3.39.0"
+                "source": "https://github.com/spryker/propel/tree/3.40.0"
             },
-            "time": "2023-11-02T20:09:27+00:00"
+            "time": "2024-01-15T11:37:17+00:00"
         },
         {
             "name": "spryker/propel-orm",
-            "version": "1.19.0",
+            "version": "1.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel-orm.git",
-                "reference": "aeb6819ff5fc80fb6d6447c9abc7f11c911eb1d8"
+                "reference": "e372e740ce43bc8a7fce52931d064ce60fc54157"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/aeb6819ff5fc80fb6d6447c9abc7f11c911eb1d8",
-                "reference": "aeb6819ff5fc80fb6d6447c9abc7f11c911eb1d8",
+                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/e372e740ce43bc8a7fce52931d064ce60fc54157",
+                "reference": "e372e740ce43bc8a7fce52931d064ce60fc54157",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0",
+                "php": ">=8.1",
                 "propel/propel": "2.0.0-beta3",
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.0.0",
@@ -55473,6 +55473,7 @@
             },
             "autoload": {
                 "psr-4": {
+                    "Propel\\": "src/Spryker/Zed/PropelOrm/Business/Polyfill/",
                     "Spryker\\": "src/Spryker/",
                     "SprykerTest\\Shared\\PropelOrm\\Helper\\": "tests/SprykerTest/Shared/PropelOrm/_support/Helper/"
                 }
@@ -55483,9 +55484,9 @@
             ],
             "description": "PropelOrm module",
             "support": {
-                "source": "https://github.com/spryker/propel-orm/tree/1.19.0"
+                "source": "https://github.com/spryker/propel-orm/tree/1.20.0"
             },
-            "time": "2023-04-18T11:16:52+00:00"
+            "time": "2024-01-15T11:37:17+00:00"
         },
         {
             "name": "spryker/propel-orm-extension",
@@ -78045,16 +78046,16 @@
         },
         {
             "name": "spryker/development",
-            "version": "3.35.0",
+            "version": "3.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/development.git",
-                "reference": "c651efb9b6c93357dfe8aa8faa2903a30a587d92"
+                "reference": "9b9de5b04f0c2f7bcb7c245762c3945b34e9fa99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/development/zipball/c651efb9b6c93357dfe8aa8faa2903a30a587d92",
-                "reference": "c651efb9b6c93357dfe8aa8faa2903a30a587d92",
+                "url": "https://api.github.com/repos/spryker/development/zipball/9b9de5b04f0c2f7bcb7c245762c3945b34e9fa99",
+                "reference": "9b9de5b04f0c2f7bcb7c245762c3945b34e9fa99",
                 "shasum": ""
             },
             "require": {
@@ -78095,9 +78096,9 @@
             ],
             "description": "Development module",
             "support": {
-                "source": "https://github.com/spryker/development/tree/3.35.0"
+                "source": "https://github.com/spryker/development/tree/3.36.0"
             },
-            "time": "2023-11-02T20:09:27+00:00"
+            "time": "2024-01-15T11:37:17+00:00"
         },
         {
             "name": "spryker/docker-chromedriver",
@@ -78160,7 +78161,7 @@
             "description": "Automated tests for the Robot Framework",
             "support": {
                 "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
-                "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
+                "source": "https://github.com/spryker/robotframework-suite-tests/tree/fix-order-cancelation-logic"
             },
             "time": "2024-01-12T13:03:52+00:00"
         },
