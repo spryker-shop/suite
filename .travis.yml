@@ -142,6 +142,8 @@ _INSTALL_CHROMEDRIVER: &INSTALL_CHROMEDRIVER
     - . $HOME/chromium-ecosystem/docker-chromedriver-master/chromium-installer $CHROMEDRIVER_REVISION $HOME/chromium-ecosystem false
 
 _INSTALL_MAILCATCHER: &INSTALL_MAILCATCHER
+    - rvm install 3.0
+    - rvm use 3.0 --default
     - echo "_INSTALL_MAILCATCHER"
     - config/Shared/ci/travis/install_mailcatcher.sh
 
