@@ -131,7 +131,7 @@ $config[SearchElasticsearchConstants::PORT] = 9200;
 
 $config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION] = true;
 $config[StorageRedisConstants::STORAGE_REDIS_SCHEME] = 'tcp';
-$config[StorageRedisConstants::STORAGE_REDIS_HOST] = '127.0.0.1';
+$config[StorageRedisConstants::STORAGE_REDIS_HOST] = getenv('STORAGE_REDIS_HOST') ?: '127.0.0.1';
 $config[StorageRedisConstants::STORAGE_REDIS_PORT] = 6379;
 $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD] = false;
 $config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = 3;
@@ -162,7 +162,7 @@ $config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = 2;
 
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_PERSISTENT_CONNECTION] = true;
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_SCHEME] = 'tcp';
-$config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_HOST] = '127.0.0.1';
+$config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_HOST] = getenv('STORAGE_REDIS_HOST') ?: '127.0.0.1';
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_PORT] = 6379;
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_PASSWORD] = false;
 $config[SecurityBlockerConstants::SECURITY_BLOCKER_REDIS_DATABASE] = 7;
