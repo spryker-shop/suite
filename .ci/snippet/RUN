@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set +e
+
+"$@"
+
+if [ $? -ne 0 ]; then
+    touch '/dev/shm/failed'
+fi
