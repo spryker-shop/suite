@@ -1,7 +1,17 @@
 #!/bin/bash
 
-if [ -e /dev/shm/failed ]; then
-    exit 1;
+set +e
+
+total=`cat /dev/shm/total`
+failed=`cat /dev/shm/failed`
+
+echo "------------- ↓↓↓ REPORT"
+cat /dev/shm/report
+echo "-------------"
+
+if [ "${failed}" != "" ] && [ "${failed}" -gt "0" ]; then
+    echo "↑ ${ANSI_GREEN}FAILED ${failed}${ANSI_RESET} from $total job(s)"
+    exit 1
 else
-    exit 0;
-exit
+    echo "✓ ${ANSI_GREEN}SUCCESS${ANSI_RESET} for all $total job(s)"
+fi

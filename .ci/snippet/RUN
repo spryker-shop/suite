@@ -2,8 +2,24 @@
 
 set +e
 
-"$@"
+cmd=("${@}")
 
-if [ $? -ne 0 ]; then
-    touch '/dev/shm/failed'
+echo " "
+echo "------------- ↓↓↓ Running: ${cmd[*]}"
+
+"${cmd[@]}" &
+cmd_pid="${!}"
+wait "${cmd_pid}"
+status="${?}"
+
+echo -e "$((`cat /dev/shm/total` + 1))" > /dev/shm/total
+
+if [[ "${status}" -eq 0 ]]; then
+    echo "------------- ↑↑↑ OK"
+    echo "[✓] ${ANSI_GREEN}${cmd[*]}${ANSI_RESET}" >> /dev/shm/report
+else
+    echo "$((`cat /dev/shm/failed` + 1))" > /dev/shm/failed
+    echo "[x] ${ANSI_RED}${cmd[*]}${ANSI_RESET}" >> /dev/shm/report
+    echo "------------- ↑↑↑ ${ANSI_RED}ERROR: exited with ${status}${ANSI_RESET}"
+    echo "------------- ↑↑↑ ${ANSI_GREY}${cmd[*]}${ANSI_RESET}"
 fi
