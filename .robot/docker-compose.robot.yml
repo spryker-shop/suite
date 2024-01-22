@@ -16,6 +16,6 @@ services:
         volumes:
             - ./vendor/spryker/robotframework-suite-tests:/opt/robotframework:rw
             - ./.robot/results:/opt/robotframework/results:rw
-        tty: true
+        tty: false
 networks:
     private:
