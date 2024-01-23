@@ -174,7 +174,17 @@ docker:
         store: DE
 
     mount:
-        baked:
+        native:
+            platforms:
+                - linux
+
+        docker-sync:
+            platforms:
+                - windows
+
+        mutagen:
+            platforms:
+                - macos
 
     compose:
         yamls:
