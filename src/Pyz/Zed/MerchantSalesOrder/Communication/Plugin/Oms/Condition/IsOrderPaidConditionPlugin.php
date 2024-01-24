@@ -29,6 +29,8 @@ class IsOrderPaidConditionPlugin extends AbstractPlugin implements ConditionInte
      *
      * @api
      *
+     * @psalm-suppress MissingTemplateParam
+     *
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
      *
      * @return bool

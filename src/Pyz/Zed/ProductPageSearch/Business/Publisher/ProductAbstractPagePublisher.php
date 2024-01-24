@@ -131,7 +131,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             $isRefresh,
         );
         $productPageSearchTransfers = $this->executeProductPageSearchCollectionFilterPlugins($productPageSearchTransfers);
-        $indexedProductAbstractPageSearchTransfers = $this->indexProductPageSearchTransfersByLocaleAndIdProductAbstract(
+        $productPageSearchTransfersIndexedByLocaleAndIdProductAbstract = $this->getProductPageSearchTransfersIndexedByLocaleAndIdProductAbstract(
             $productPageSearchTransfers,
         );
 
@@ -148,7 +148,12 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             }
 
             $idProductAbstract = $productAbstractLocalizedEntity['fk_product_abstract'];
-            $productPageSearchTransfer = $indexedProductAbstractPageSearchTransfers[$locale][$idProductAbstract] ?? null;
+            $productPageSearchTransfer = $this->findProductPageSearchTransferFromIndexedList(
+                $productPageSearchTransfersIndexedByLocaleAndIdProductAbstract,
+                $idProductAbstract,
+                $locale,
+                $store,
+            );
 
             if ($productPageSearchTransfer === null) {
                 $this->deleteProductAbstractPageSearchEntity($productAbstractPageSearchEntity);

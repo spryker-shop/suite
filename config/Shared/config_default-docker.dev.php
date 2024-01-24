@@ -19,19 +19,14 @@ use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationCons
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\MerchantPortalApplication\MerchantPortalConstants;
-use Spryker\Shared\MessageBroker\MessageBrokerConstants;
-use Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\OauthClient\OauthClientConstants;
-use Spryker\Shared\Payment\PaymentConstants;
-use Spryker\Shared\Product\ProductConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelOrm\PropelOrmConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\Router\RouterConstants;
-use Spryker\Shared\SearchHttp\SearchHttpConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\TaxApp\TaxAppConstants;
 use Spryker\Shared\Testify\TestifyConstants;
@@ -101,6 +96,8 @@ $config[LogConstants::LOG_LEVEL] = getenv('SPRYKER_DEBUG_ENABLED') ? Logger::INF
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 $config[ZedRequestConstants::SET_REPEAT_DATA] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 
+$isTestifyConstantsClassExists = class_exists(TestifyConstants::class);
+
 if (!getenv('SPRYKER_SSL_ENABLE')) {
 // ----------------------------------------------------------------------------
 // ------------------------------ SECURITY ------------------------------------
@@ -162,7 +159,7 @@ if (!getenv('SPRYKER_SSL_ENABLE')) {
         $gluePort !== 80 ? ':' . $gluePort : '',
     );
 
-    if (class_exists(TestifyConstants::class, true)) {
+    if ($isTestifyConstantsClassExists) {
         $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
     }
 }
@@ -192,25 +189,22 @@ $config[TaxAppConstants::OAUTH_PROVIDER_NAME] = OauthDummyConfig::PROVIDER_NAME;
 // ------------------------------ Glue Backend API -------------------------------
 // ----------------------------------------------------------------------------
 $sprykerGlueBackendHost = getenv('SPRYKER_GLUE_BACKEND_HOST');
+$sprykerGlueBackendPort = (int)(getenv('SPRYKER_GLUE_BACKEND_PORT')) ?: 80;
 $config[GlueBackendApiApplicationConstants::GLUE_BACKEND_API_HOST] = $sprykerGlueBackendHost;
 $config[GlueBackendApiApplicationConstants::PROJECT_NAMESPACES] = [
     'Pyz',
 ];
+
+if ($isTestifyConstantsClassExists) {
+    $config[TestifyConstants::GLUE_BACKEND_API_DOMAIN] = sprintf(
+        'http://%s%s',
+        $sprykerGlueBackendHost,
+        $sprykerGlueBackendPort !== 80 ? ':' . $sprykerGlueBackendPort : '',
+    );
+}
 
 // ----------------------------------------------------------------------------
 // ------------------------------ Glue Storefront API -------------------------------
 // ----------------------------------------------------------------------------
 $sprykerGlueStorefrontHost = getenv('SPRYKER_GLUE_STOREFRONT_HOST');
 $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $sprykerGlueStorefrontHost;
-
-//-----------------------------------------------------------------------------
-//----------------------------------- ACP -------------------------------------
-//-----------------------------------------------------------------------------
-$config[SearchHttpConstants::TENANT_IDENTIFIER]
-    = $config[ProductConstants::TENANT_IDENTIFIER]
-    = $config[MessageBrokerConstants::TENANT_IDENTIFIER]
-    = $config[MessageBrokerAwsConstants::CONSUMER_ID]
-    = $config[OauthClientConstants::TENANT_IDENTIFIER]
-    = $config[PaymentConstants::TENANT_IDENTIFIER]
-    = $config[AppCatalogGuiConstants::TENANT_IDENTIFIER]
-    = getenv('SPRYKER_TENANT_IDENTIFIER') ?: 'tenant-identifier';

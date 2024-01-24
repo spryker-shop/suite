@@ -10,12 +10,14 @@ namespace PyzTest\Glue\Checkout\RestApi\Fixtures;
 use ArrayObject;
 use Generated\Shared\Transfer\CountryTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\ProductOfferStockTransfer;
 use Generated\Shared\Transfer\ProductOfferTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ServicePointAddressTransfer;
 use Generated\Shared\Transfer\ServicePointTransfer;
 use Generated\Shared\Transfer\ServiceTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
+use Generated\Shared\Transfer\StockTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
 use SprykerTest\Shared\Shipment\Helper\ShipmentMethodDataHelper;
@@ -174,17 +176,31 @@ class ServicePointShipmentTypeCheckoutDataRestApiFixtures implements FixturesBui
             ServiceTransfer::IS_ACTIVE => true,
         ]);
 
+        $merchantTransfer = $I->haveMerchantWithStoreRelation($storeTransfer);
+        $stockTransfer = $I->haveStock([
+            StockTransfer::IS_ACTIVE => true,
+            StockTransfer::STORE_RELATION => (new StoreRelationTransfer())->addIdStores($storeTransfer->getIdStoreOrFail()),
+        ]);
+
         $productOfferTransfer1 = $I->haveProductOfferWithShipmentTypeAndServiceRelations(
             $productConcreteTransfer1,
             $serviceTransfer,
             $pickableShipmentTypeTransfer,
-            [ProductOfferTransfer::STORES => new ArrayObject([$storeTransfer])],
+            [
+                ProductOfferTransfer::MERCHANT_REFERENCE => $merchantTransfer->getMerchantReferenceOrFail(),
+                ProductOfferTransfer::STORES => new ArrayObject([$storeTransfer]),
+                ProductOfferStockTransfer::STOCK => $stockTransfer->toArray(),
+            ],
         );
         $productOfferTransfer2 = $I->haveProductOfferWithShipmentTypeAndServiceRelations(
             $productConcreteTransfer2,
             $serviceTransfer,
             $pickableShipmentTypeTransfer,
-            [ProductOfferTransfer::STORES => new ArrayObject([$storeTransfer])],
+            [
+                ProductOfferTransfer::MERCHANT_REFERENCE => $merchantTransfer->getMerchantReferenceOrFail(),
+                ProductOfferTransfer::STORES => new ArrayObject([$storeTransfer]),
+                ProductOfferStockTransfer::STOCK => $stockTransfer->toArray(),
+            ],
         );
 
         $countryTransfer = $I->haveCountry([
