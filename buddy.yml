@@ -30,7 +30,6 @@
     - ".ci/snippet/RUN npm run yves:stylelint"
     - ".ci/snippet/RUN npm run yves:lint"
     - ".ci/snippet/FINISH"
-    - ""
     shell: "BASH"
     run_next_parallel: true
   - action: "Build Project"
@@ -44,7 +43,6 @@
     - ".ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto"
     - ".ci/snippet/REQUIRE vendor/bin/install DE -r ci.code-generate"
     - ".ci/snippet/FINISH"
-    - ""
     services:
     - type: "POSTGRE_SQL"
       version: "9.6"
@@ -69,7 +67,6 @@
     - ".ci/snippet/PREPARE"
     - ".ci/snippet/REQUIRE vendor/bin/evaluator evaluate --exclude-checkers=SPRYKER_DEV_PACKAGES_CHECKER,MINIMUM_ALLOWED_SHOP_VERSION --format=compact"
     - ".ci/snippet/FINISH"
-    - ""
     shell: "BASH"
     run_next_parallel: true
   - action: "Generic Validation"
@@ -94,7 +91,6 @@
     - ".ci/snippet/RUN vendor/bin/phpstan analyze"
     - ".ci/snippet/RUN vendor/bin/psalm.phar --show-info=false --no-cache --threads=1"
     - ".ci/snippet/FINISH"
-    - ""
     shell: "BASH"
     run_next_parallel: true
     variables:
@@ -828,7 +824,6 @@
 - pipeline: "Robot Tests"
   on: "CLICK"
   refs:
-  - "refs/heads/feature/frw-6958/dev-migration-to-buddy-ci"
   - ":default"
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -844,9 +839,6 @@
     - "# Shold be optimized to install only robot framework in the version provided in composer.lock."
     - ".ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto "
     - ".ci/snippet/FINISH"
-    - ""
-    - ""
-    - ""
     shell: "BASH"
   - action: "Docker / Alpine / PHP 8.1 / MariaDB / Robot"
     type: "NATIVE_BUILD_DOCKER_CLI"
@@ -864,13 +856,10 @@
     - "export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY"
     - "export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY"
     - "export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET"
-    - ""
     - ".ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.1MariaDBRobot/ --recursive --expires \"$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')\""
     - "echo \"Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.1MariaDBRobot/log.html\""
     - "echo \"You must have VPN access to AWS (Spryker-Internal account)\""
     - ".ci/snippet/FINISH"
-    - ""
-    - ""
     run_next_parallel: true
     variables:
     - key: "SPRYKER_PLATFORM_IMAGE"
@@ -902,7 +891,6 @@
     - "export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY"
     - "export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY"
     - "export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET"
-    - ""
     - ".ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.2PostgreSQLRobot/ --recursive --expires \"$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')\""
     - "echo \"Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.2PostgreSQLRobot/log.html\""
     - "echo \"You must have VPN access to AWS (Spryker-Internal account)\""
