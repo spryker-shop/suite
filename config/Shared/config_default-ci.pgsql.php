@@ -11,7 +11,7 @@ $config[PropelConstants::ZED_DB_ENGINE] = PropelConfig::DB_ENGINE_PGSQL;
 $config[PropelConstants::ZED_DB_USERNAME] = 'postgres';
 $config[PropelConstants::ZED_DB_PASSWORD] = getenv('DB_PASSWORD') ?: '';
 $config[PropelConstants::ZED_DB_DATABASE] = 'DE_test_zed';
-$config[PropelConstants::ZED_DB_HOST] = '127.0.0.1';
+$config[PropelConstants::ZED_DB_HOST] = getenv('DB_HOST') ?: '127.0.0.1';
 $config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = false;
 $config[PropelConstants::ZED_DB_PORT] = getenv('POSTGRES_PORT');
 
