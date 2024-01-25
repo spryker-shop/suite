@@ -1,4 +1,4 @@
-- pipeline: 'Code Sniffers'
+- pipeline: 'Standard Validation'
   on: 'CLICK'
   refs:
       - ':default'
@@ -908,7 +908,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-- pipeline: 'Code Sniffers / Prefer Lowest'
+- pipeline: 'Validation / Prefer Lowest'
   on: 'CLICK'
   refs:
       - ':default'
