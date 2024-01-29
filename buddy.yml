@@ -195,6 +195,7 @@
         docker_image_name: 'library/node'
         docker_image_tag: '18'
         execute_commands:
+            - '.ci/snippet/REQUIRE rm -rf node_modules **/node_modules'
             - '.ci/snippet/REQUIRE vendor/bin/console frontend:project:install-dependencies -vvv'
             - '.ci/snippet/REQUIRE npm install'
             - '.ci/snippet/RUN npm run mp:build:production'
