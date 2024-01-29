@@ -3,9 +3,11 @@
       - type: 'PUSH'
         refs:
             - 'refs/pull/*'
+            - 'refs/heads/master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
   resources: 'LARGE'
   actions:
       - action: 'Snyk Validation'
@@ -30,6 +32,7 @@
             - '.ci/snippet/RUN npm run formatter'
             - '.ci/snippet/RUN npm run yves:stylelint'
             - '.ci/snippet/RUN npm run yves:lint'
+            - '.ci/snippet/REQUIRE rm -rf node_modules **/node_modules'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -192,7 +195,7 @@
         docker_image_name: 'library/node'
         docker_image_tag: '18'
         execute_commands:
-            - '.ci/snippet/REQUIRE rm -rf node_modules && vendor/bin/console frontend:project:install-dependencies -vvv'
+            - '.ci/snippet/REQUIRE vendor/bin/console frontend:project:install-dependencies -vvv'
             - '.ci/snippet/REQUIRE npm install'
             - '.ci/snippet/RUN npm run mp:build:production'
             - '.ci/snippet/RUN npm run mp:stylelint'
@@ -207,9 +210,11 @@
       - type: 'PUSH'
         refs:
             - 'refs/pull/*'
+            - 'refs/heads/master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
   actions:
       - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -697,9 +702,11 @@
       - type: 'PUSH'
         refs:
             - 'refs/pull/*'
+            - 'refs/heads/master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
   actions:
       - action: 'Update Composer (Prefer Lowest)'
         type: 'BUILD'
@@ -829,9 +836,11 @@
       - type: 'PUSH'
         refs:
             - 'refs/pull/*'
+            - 'refs/heads/master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
   actions:
       - action: 'Install Composer'
         type: 'BUILD'
@@ -917,9 +926,11 @@
       - type: 'PUSH'
         refs:
             - 'refs/pull/*'
+            - 'refs/heads/master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
   resources: 'LARGE'
   actions:
       - action: 'Build Project'
