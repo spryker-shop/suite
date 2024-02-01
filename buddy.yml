@@ -1,9 +1,7 @@
-- pipeline: 'Standard Validation'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
+- pipeline: "Standard Validation"
+  on: "CLICK"
+  refs:
+      - ":default"
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -207,11 +205,9 @@
             - 'apt-get update && apt-get -y install php8.2-cli php8.2-mbstring'
         shell: 'BASH'
 - pipeline: 'Docker / Functional / Acceptance'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
+  on: "CLICK"
+  refs:
+      - ":default"
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -699,11 +695,9 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
 - pipeline: 'Docker / Functional / Acceptance/ Prefer Lowest'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
+  on: "CLICK"
+  refs:
+      - ":default"
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -833,11 +827,9 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
 - pipeline: 'Robot Tests'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
+  on: "CLICK"
+  refs:
+      - ":default"
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -923,11 +915,9 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
 - pipeline: 'Validation / Prefer Lowest'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
+  on: "CLICK"
+  refs:
+      - ":default"
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
