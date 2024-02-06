@@ -29,7 +29,7 @@
         "mp:build:watch": "ng build --watch",
         "mp:build:production": "ng build --configuration production",
         "mp:stylelint": "node ./frontend/merchant-portal/stylelint",
-        "mp:lint": "ng lint",
+        "mp:lint": "ng lint --no-eslintrc",
         "mp:test": "ng test",
         "mp:clean": "run-s mp:clean:*",
         "mp:clean:dist": "rimraf public/MerchantPortal/assets/js",

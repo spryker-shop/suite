@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\UserMerchantPortalGui;
 
-use Spryker\Zed\SecurityMerchantPortalGui\Communication\Plugin\UserMerchantPortalGui\SecurityTokenUpdateMerchantUserPostChangePlugin;
+use Spryker\Zed\SecurityMerchantPortalGui\Communication\Plugin\UserMerchantPortalGui\MerchantUserSecurityTokenUpdateMerchantUserPostChangePlugin;
 use Spryker\Zed\UserMerchantPortalGui\UserMerchantPortalGuiDependencyProvider as SprykerUserMerchantPortalGuiDependencyProvider;
 
 class UserMerchantPortalGuiDependencyProvider extends SprykerUserMerchantPortalGuiDependencyProvider
@@ -18,7 +18,7 @@ class UserMerchantPortalGuiDependencyProvider extends SprykerUserMerchantPortalG
     public function getMerchantUserPostChangePlugins(): array
     {
         return [
-            new SecurityTokenUpdateMerchantUserPostChangePlugin(),
+            new MerchantUserSecurityTokenUpdateMerchantUserPostChangePlugin(),
         ];
     }
 }
