@@ -41,6 +41,7 @@ use Spryker\Zed\Gui\Communication\Plugin\Twig\UrlTwigPlugin;
 use Spryker\Zed\GuiTable\Communication\Plugin\Twig\GuiTableConfigurationTwigPlugin;
 use Spryker\Zed\Http\Communication\Plugin\Twig\HttpKernelTwigPlugin;
 use Spryker\Zed\Http\Communication\Plugin\Twig\RuntimeLoaderTwigPlugin;
+use Spryker\Zed\MerchantUser\Communication\Plugin\Twig\MerchantUserTwigPlugin;
 use Spryker\Zed\Money\Communication\Plugin\Twig\MoneyTwigPlugin;
 use Spryker\Zed\Scheduler\Communication\Plugin\Twig\SchedulerTwigPlugin;
 use Spryker\Zed\Translator\Communication\Plugin\Twig\TranslatorTwigPlugin;
@@ -104,6 +105,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new GuiFilterTwigPlugin(),
             new BooleanToStringTwigPlugin(),
             new GuiTableConfigurationTwigPlugin(),
+            new MerchantUserTwigPlugin(),
         ];
     }
 
