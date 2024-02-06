@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9723063e06279343163ccb16dbb032c8",
+    "content-hash": "3cd028b91c5e84a3e9a037d5684f9aaa",
     "packages": [
         {
             "name": "async-aws/core",
@@ -7287,16 +7287,16 @@
         },
         {
             "name": "spryker-sdk/evaluator",
-            "version": "0.1.4",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/evaluator.git",
-                "reference": "d0d9fe4e4ec03966d356a4d1c482b55c239bf2c3"
+                "reference": "be96e940dae52d9197edd589517ec79da0cb9456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/d0d9fe4e4ec03966d356a4d1c482b55c239bf2c3",
-                "reference": "d0d9fe4e4ec03966d356a4d1c482b55c239bf2c3",
+                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/be96e940dae52d9197edd589517ec79da0cb9456",
+                "reference": "be96e940dae52d9197edd589517ec79da0cb9456",
                 "shasum": ""
             },
             "require": {
@@ -7305,20 +7305,21 @@
                 "ext-iconv": "*",
                 "ext-json": "*",
                 "guzzlehttp/guzzle": "^7.5",
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker-sdk/security-checker": "^0.2.0",
-                "symfony/console": "^5.4|^6.0",
-                "symfony/dotenv": "^5.4|^6.0",
-                "symfony/filesystem": "^5.4|^6.0",
+                "spryker-sdk/utils": "^0.2.1",
+                "symfony/console": "^6.0",
+                "symfony/dotenv": "^6.0",
+                "symfony/filesystem": "^6.0",
                 "symfony/flex": "^1.17|^2",
-                "symfony/framework-bundle": "^5.4|^6.0",
+                "symfony/framework-bundle": "^6.0",
                 "symfony/monolog-bundle": "^3.8",
-                "symfony/process": "^5.4|^6.0",
-                "symfony/runtime": "^5.4|^6.0",
-                "symfony/serializer": "^5.4|^6.0",
-                "symfony/stopwatch": "^5.4|^6.0",
-                "symfony/uid": "^5.4|^6.0",
-                "symfony/yaml": "^5.4|^6.0"
+                "symfony/process": "^6.0",
+                "symfony/runtime": "^6.0",
+                "symfony/serializer": "^6.0",
+                "symfony/stopwatch": "^6.0",
+                "symfony/uid": "^6.0",
+                "symfony/yaml": "^6.0"
             },
             "conflict": {
                 "symfony/symfony": "*"
@@ -7333,6 +7334,7 @@
                 "phpunit/phpunit": "^9.6",
                 "spryker/code-sniffer": "^0.17.18"
             },
+            "default-branch": true,
             "bin": [
                 "bin/evaluator"
             ],
@@ -7340,7 +7342,7 @@
             "extra": {
                 "symfony": {
                     "allow-contrib": false,
-                    "require": "^5.4|^6.0"
+                    "require": "^6.0"
                 }
             },
             "autoload": {
@@ -7355,9 +7357,9 @@
             "description": "The tool for evaluating Spryker shops",
             "support": {
                 "issues": "https://github.com/spryker-sdk/evaluator/issues",
-                "source": "https://github.com/spryker-sdk/evaluator/tree/0.1.4"
+                "source": "https://github.com/spryker-sdk/evaluator/tree/0.2.1"
             },
-            "time": "2023-07-31T09:39:39+00:00"
+            "time": "2024-01-05T10:52:46+00:00"
         },
         {
             "name": "spryker-sdk/security-checker",
@@ -7406,6 +7408,52 @@
                 "source": "https://github.com/spryker-sdk/security-checker/tree/0.2.0"
             },
             "time": "2023-04-24T11:24:18+00:00"
+        },
+        {
+            "name": "spryker-sdk/utils",
+            "version": "0.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-sdk/utils.git",
+                "reference": "a0d23aaa8fc90b18cf1918a928532d01dd29469d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/utils/zipball/a0d23aaa8fc90b18cf1918a928532d01dd29469d",
+                "reference": "a0d23aaa8fc90b18cf1918a928532d01dd29469d",
+                "shasum": ""
+            },
+            "require": {
+                "composer/semver": "^3.4",
+                "ext-mbstring": "*",
+                "php": ">=8.0",
+                "psr/log": "^1.0 || ^2.0 || ^3.0",
+                "symfony/filesystem": "^6.0.0",
+                "symfony/finder": "^6.0.0",
+                "symfony/process": "^6.0.0"
+            },
+            "require-dev": {
+                "ext-zip": "*",
+                "phpstan/phpstan": "^1.0.0",
+                "phpunit/phpunit": "^9.5.0",
+                "spryker/code-sniffer": "^0.17.20"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SprykerSdk\\Utils\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Spryker SDK Utils Module",
+            "support": {
+                "issues": "https://github.com/spryker-sdk/utils/issues",
+                "source": "https://github.com/spryker-sdk/utils/tree/0.2.3"
+            },
+            "time": "2024-01-10T08:28:20+00:00"
         },
         {
             "name": "spryker-shop/agent-page",
@@ -79414,6 +79462,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "jetbrains/phpstorm-stubs": 20,
+        "spryker-sdk/evaluator": 20,
         "spryker/code-sniffer": 20,
         "spryker/docker-chromedriver": 20,
         "spryker/robotframework-suite-tests": 20
