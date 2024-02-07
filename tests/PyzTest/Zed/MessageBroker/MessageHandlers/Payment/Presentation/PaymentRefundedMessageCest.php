@@ -39,7 +39,7 @@ class PaymentRefundedMessageCest
      *
      * @return void
      */
-    public function testPaymentReservationCanceledMessageIsSuccessfullyHandled(PaymentPresentationTester $I): void
+    public function testPaymentCanceledMessageIsSuccessfullyHandled(PaymentPresentationTester $I): void
     {
         // Arrange
         $salesOrderEntity = $I->haveSalesOrder(static::INITIAL_ITEM_STATE);
