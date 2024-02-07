@@ -13,6 +13,10 @@ use Spryker\Zed\AgentGui\Communication\Plugin\UserAgentTableConfigExpanderPlugin
 use Spryker\Zed\AgentGui\Communication\Plugin\UserAgentTableDataExpanderPlugin;
 use Spryker\Zed\CustomerUserConnectorGui\Communication\Plugin\UserTableActionExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MerchantAgent\Communication\Plugin\User\MerchantAgentUserQueryCriteriaExpanderPlugin;
+use Spryker\Zed\MerchantAgentGui\Communication\Plugin\User\MerchantAgentUserFormExpanderPlugin;
+use Spryker\Zed\MerchantAgentGui\Communication\Plugin\User\MerchantAgentUserTableConfigExpanderPlugin;
+use Spryker\Zed\MerchantAgentGui\Communication\Plugin\User\MerchantAgentUserTableDataExpanderPlugin;
 use Spryker\Zed\PickingList\Communication\Plugin\User\UnassignPickingListUserPostSavePlugin;
 use Spryker\Zed\User\UserDependencyProvider as SprykerUserDependencyProvider;
 use Spryker\Zed\UserLocale\Communication\Plugin\User\AssignUserLocalePreSavePlugin;
@@ -55,6 +59,7 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
     {
         return [
             new UserAgentFormExpanderPlugin(),
+            new MerchantAgentUserFormExpanderPlugin(),
             new WarehouseUserAssignmentUserFormExpanderPlugin(),
             new UserLocaleFormExpanderPlugin(),
         ];
@@ -66,6 +71,7 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
     protected function getUserTableConfigExpanderPlugins(): array
     {
         return [
+            new MerchantAgentUserTableConfigExpanderPlugin(),
             new UserAgentTableConfigExpanderPlugin(),
         ];
     }
@@ -77,6 +83,7 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
     {
         return [
             new UserAgentTableDataExpanderPlugin(),
+            new MerchantAgentUserTableDataExpanderPlugin(),
         ];
     }
 
@@ -107,6 +114,16 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
     {
         return [
             new UnassignPickingListUserPostSavePlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\UserExtension\Dependency\Plugin\UserQueryCriteriaExpanderPluginInterface>
+     */
+    protected function getUserQueryCriteriaExpanderPlugins(): array
+    {
+        return [
+            new MerchantAgentUserQueryCriteriaExpanderPlugin(),
         ];
     }
 }
