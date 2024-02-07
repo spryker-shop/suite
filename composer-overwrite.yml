@@ -1,3 +1,8 @@
 # We remove packages as soon as possible again, the goal is to keep this list minimal/empty.
 packages:
 packages-dev:
+    codeception/codeception:
+        reason: 'The UI tests are failing with version higher than > 5.0.12.'
+        constraint: ~5.0.12
+        original: ^5.0.8
+        date: 2024-02-06
