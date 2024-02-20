@@ -571,7 +571,7 @@ jobs:
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
     docker-alpine-php-8-2-mariadb-robot-dynamic-multistore:
-        name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot /API / Dynamic Multistore"
+        name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Multistore"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
