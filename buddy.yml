@@ -216,6 +216,7 @@
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
+  resources: 'NANO'
   actions:
       - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -708,6 +709,7 @@
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
+  resources: 'NANO'
   actions:
       - action: 'Update Composer (Prefer Lowest)'
         type: 'BUILD'
@@ -842,6 +844,7 @@
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
+  resources: 'NANO'
   actions:
       - action: 'Install Composer'
         type: 'BUILD'
