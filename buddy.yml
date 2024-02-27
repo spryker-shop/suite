@@ -849,7 +849,7 @@
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+      - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot / API'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
@@ -883,7 +883,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Robot'
+      - action: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Robot / API'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
