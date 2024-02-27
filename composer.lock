@@ -33596,16 +33596,16 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.61.0",
+            "version": "1.62.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "f241e93f1d604404e2ffb270bedde02e11c9fe8b"
+                "reference": "b821138bb9d7bb144fdc64e301a1c4a8cbd2058c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/f241e93f1d604404e2ffb270bedde02e11c9fe8b",
-                "reference": "f241e93f1d604404e2ffb270bedde02e11c9fe8b",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/b821138bb9d7bb144fdc64e301a1c4a8cbd2058c",
+                "reference": "b821138bb9d7bb144fdc64e301a1c4a8cbd2058c",
                 "shasum": ""
             },
             "require": {
@@ -33657,9 +33657,9 @@
             ],
             "description": "GlueApplication module",
             "support": {
-                "source": "https://github.com/spryker/glue-application/tree/1.61.0"
+                "source": "https://github.com/spryker/glue-application/tree/1.62.0"
             },
-            "time": "2024-02-26T10:28:45+00:00"
+            "time": "2024-02-27T11:38:55+00:00"
         },
         {
             "name": "spryker/glue-application-authorization-connector",
@@ -40272,16 +40272,16 @@
         },
         {
             "name": "spryker/message-broker-aws",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/message-broker-aws.git",
-                "reference": "19ed881437de7e14e6cebf80e7d1fe69c8814a71"
+                "reference": "79c342f7e326d870014e00035c2d5474089a7aae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/message-broker-aws/zipball/19ed881437de7e14e6cebf80e7d1fe69c8814a71",
-                "reference": "19ed881437de7e14e6cebf80e7d1fe69c8814a71",
+                "url": "https://api.github.com/repos/spryker/message-broker-aws/zipball/79c342f7e326d870014e00035c2d5474089a7aae",
+                "reference": "79c342f7e326d870014e00035c2d5474089a7aae",
                 "shasum": ""
             },
             "require": {
@@ -40299,7 +40299,7 @@
                 "spryker/symfony": "^3.7.0",
                 "spryker/transfer": "^3.25.0",
                 "spryker/util-encoding": "^1.0.0 || ^2.0.0",
-                "symfony/amazon-sqs-messenger": "^5.1.0 || ^6.0.0"
+                "symfony/amazon-sqs-messenger": "^5.1.0 || ^6.4.0"
             },
             "require-dev": {
                 "psr/http-message": "*",
@@ -40330,9 +40330,9 @@
             ],
             "description": "MessageBrokerAws module",
             "support": {
-                "source": "https://github.com/spryker/message-broker-aws/tree/1.6.0"
+                "source": "https://github.com/spryker/message-broker-aws/tree/1.7.0"
             },
-            "time": "2023-11-02T20:09:27+00:00"
+            "time": "2024-02-27T11:38:55+00:00"
         },
         {
             "name": "spryker/message-broker-aws-extension",
@@ -66003,50 +66003,50 @@
         },
         {
             "name": "spryker/symfony",
-            "version": "3.15.0",
+            "version": "3.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/symfony.git",
-                "reference": "9eee920faa74a702919def1720196456e085ac5a"
+                "reference": "17475d338750cfc0434123638b31f7371fa3fed8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/symfony/zipball/9eee920faa74a702919def1720196456e085ac5a",
-                "reference": "9eee920faa74a702919def1720196456e085ac5a",
+                "url": "https://api.github.com/repos/spryker/symfony/zipball/17475d338750cfc0434123638b31f7371fa3fed8",
+                "reference": "17475d338750cfc0434123638b31f7371fa3fed8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
                 "symfony-cmf/routing": "^2.3.3 || ^3.0.0",
-                "symfony/config": "^5.0.9 || ^6.0.0",
-                "symfony/console": "^5.3.0 || ^6.0.0",
+                "symfony/config": "^5.0.9 || ^6.4.0",
+                "symfony/console": "^5.3.0 || ^6.4.0",
                 "symfony/debug": "^4.4.9",
-                "symfony/error-handler": "^5.0.9 || ^6.0.0",
-                "symfony/event-dispatcher": "^5.1.0 || ^6.0.0",
-                "symfony/filesystem": "^5.2.1 || ^6.0.0",
-                "symfony/finder": "^5.3.0 || ^6.0.0",
-                "symfony/form": "^5.2.0 || ^6.0.0",
-                "symfony/http-client": "^5.0.9 || ^6.0.0",
-                "symfony/http-foundation": "^5.2.0 || ^6.0.0",
-                "symfony/http-kernel": "^5.2.1 || ^6.0.0",
-                "symfony/intl": "^5.0.9 || ^6.0.0",
-                "symfony/messenger": "^5.3.0 || ^6.0.0",
-                "symfony/mime": "^5.0.9 || ^6.0.0",
-                "symfony/options-resolver": "^5.0.9 || ^6.0.0",
-                "symfony/process": "^5.4.0 || ^6.0.0",
-                "symfony/property-access": "^5.4.0 || ^6.0.0",
-                "symfony/routing": "^5.1.0 || ^6.0.0",
-                "symfony/security-core": "^5.4.21 || ^6.0.0",
-                "symfony/security-csrf": "^5.3.0 || ^6.0.0",
+                "symfony/error-handler": "^5.0.9 || ^6.4.0",
+                "symfony/event-dispatcher": "^5.1.0 || ^6.4.0",
+                "symfony/filesystem": "^5.2.1 || ^6.4.0",
+                "symfony/finder": "^5.3.0 || ^6.4.0",
+                "symfony/form": "^5.2.0 || ^6.4.0",
+                "symfony/http-client": "^5.0.9 || ^6.4.0",
+                "symfony/http-foundation": "^5.2.0 || ^6.4.0",
+                "symfony/http-kernel": "^5.2.1 || ^6.4.0",
+                "symfony/intl": "^5.0.9 || ^6.4.0",
+                "symfony/messenger": "^5.3.0 || ^6.4.0",
+                "symfony/mime": "^5.0.9 || ^6.4.0",
+                "symfony/options-resolver": "^5.0.9 || ^6.4.0",
+                "symfony/process": "^5.4.0 || ^6.4.0",
+                "symfony/property-access": "^5.4.0 || ^6.4.0",
+                "symfony/routing": "^5.1.0 || ^6.4.0",
+                "symfony/security-core": "^5.4.21 || ^6.4.0",
+                "symfony/security-csrf": "^5.3.0 || ^6.4.0",
                 "symfony/security-guard": "^5.4.0",
-                "symfony/security-http": "^5.4.31 || ^6.0.0",
-                "symfony/serializer": "^5.0.9 || ^6.0.0",
-                "symfony/stopwatch": "^5.0.9 || ^6.0.0",
-                "symfony/translation": "^5.0.9 || ^6.0.0",
-                "symfony/translation-contracts": "^2.1.2 || ^3.0.0",
-                "symfony/twig-bridge": "^5.4.31 || ^6.3.8",
-                "symfony/validator": "^5.2.0 || ^6.0.0",
-                "symfony/yaml": "^5.1.10  || ^6.0.0"
+                "symfony/security-http": "^5.4.31 || ^6.4.0",
+                "symfony/serializer": "^5.0.9 || ^6.4.0",
+                "symfony/stopwatch": "^5.0.9 || ^6.4.0",
+                "symfony/translation": "^5.0.9 || ^6.4.0",
+                "symfony/translation-contracts": "^2.1.2 || ^3.1.0",
+                "symfony/twig-bridge": "^5.4.31 || ^6.4.0",
+                "symfony/validator": "^5.2.0 || ^6.4.0",
+                "symfony/yaml": "^5.1.10  || ^6.4.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -66070,33 +66070,33 @@
             ],
             "description": "Symfony module",
             "support": {
-                "source": "https://github.com/spryker/symfony/tree/3.15.0"
+                "source": "https://github.com/spryker/symfony/tree/3.16.0"
             },
-            "time": "2023-12-21T16:51:01+00:00"
+            "time": "2024-02-27T11:38:55+00:00"
         },
         {
             "name": "spryker/symfony-mailer",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/symfony-mailer.git",
-                "reference": "09df341291846e1721fbb8e6573e717fe7daf949"
+                "reference": "fd56718fd0b91d1aa87e032b7ac4fd40b44bb790"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/symfony-mailer/zipball/09df341291846e1721fbb8e6573e717fe7daf949",
-                "reference": "09df341291846e1721fbb8e6573e717fe7daf949",
+                "url": "https://api.github.com/repos/spryker/symfony-mailer/zipball/fd56718fd0b91d1aa87e032b7ac4fd40b44bb790",
+                "reference": "fd56718fd0b91d1aa87e032b7ac4fd40b44bb790",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0",
+                "php": ">=8.1",
                 "spryker/glossary": "^3.0.0",
                 "spryker/kernel": "^3.52.0",
                 "spryker/locale": "^3.0.0 || ^4.0.0",
                 "spryker/mail-extension": "^1.0.0",
                 "spryker/symfony": "^3.9.0",
                 "spryker/transfer": "^3.25.0",
-                "symfony/mailer": "^5.4.12"
+                "symfony/mailer": "^5.4.12 || ^6.4.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -66121,9 +66121,9 @@
             ],
             "description": "SymfonyMailer module",
             "support": {
-                "source": "https://github.com/spryker/symfony-mailer/tree/1.2.0"
+                "source": "https://github.com/spryker/symfony-mailer/tree/1.3.0"
             },
-            "time": "2023-09-25T14:55:37+00:00"
+            "time": "2024-02-27T11:38:55+00:00"
         },
         {
             "name": "spryker/synchronization",
@@ -71721,16 +71721,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v6.4.4",
+            "version": "v6.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "ebc713bc6e6f4b53f46539fc158be85dfcd77304"
+                "reference": "172d807f9ef3fc3fbed8377cc57c20d389269271"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/ebc713bc6e6f4b53f46539fc158be85dfcd77304",
-                "reference": "ebc713bc6e6f4b53f46539fc158be85dfcd77304",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/172d807f9ef3fc3fbed8377cc57c20d389269271",
+                "reference": "172d807f9ef3fc3fbed8377cc57c20d389269271",
                 "shasum": ""
             },
             "require": {
@@ -71778,7 +71778,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/v6.4.4"
+                "source": "https://github.com/symfony/http-foundation/tree/v6.4.2"
             },
             "funding": [
                 {
@@ -71794,7 +71794,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-08T15:01:18+00:00"
+            "time": "2023-12-27T22:16:42+00:00"
         },
         {
             "name": "symfony/http-kernel",
@@ -78791,12 +78791,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "ccb370abb180f9958297a34f349420a017204312"
+                "reference": "55e515f4134f6368cfc1ff63ff5da36de2f5f7f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/ccb370abb180f9958297a34f349420a017204312",
-                "reference": "ccb370abb180f9958297a34f349420a017204312",
+                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/55e515f4134f6368cfc1ff63ff5da36de2f5f7f0",
+                "reference": "55e515f4134f6368cfc1ff63ff5da36de2f5f7f0",
                 "shasum": ""
             },
             "default-branch": true,
@@ -78810,7 +78810,7 @@
                 "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
                 "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
             },
-            "time": "2024-02-21T10:52:25+00:00"
+            "time": "2024-02-27T08:22:09+00:00"
         },
         {
             "name": "spryker/silex",
@@ -79074,6 +79074,56 @@
                 }
             ],
             "time": "2024-02-16T15:06:51+00:00"
+        },
+        {
+            "name": "stecman/symfony-console-completion",
+            "version": "v0.12.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stecman/symfony-console-completion.git",
+                "reference": "17e105a12ad8ce0ae1347e6ef5d2cf4c96b8fd1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stecman/symfony-console-completion/zipball/17e105a12ad8ce0ae1347e6ef5d2cf4c96b8fd1b",
+                "reference": "17e105a12ad8ce0ae1347e6ef5d2cf4c96b8fd1b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.2",
+                "symfony/console": "~6.3"
+            },
+            "require-dev": {
+                "dms/phpunit-arraysubset-asserts": "^0.4.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.12.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stecman\\Component\\Symfony\\Console\\BashCompletion\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Holdaway",
+                    "email": "stephen@stecman.co.nz"
+                }
+            ],
+            "description": "Automatic BASH completion for Symfony Console Component based applications.",
+            "support": {
+                "issues": "https://github.com/stecman/symfony-console-completion/issues",
+                "source": "https://github.com/stecman/symfony-console-completion/tree/v0.12.2"
+            },
+            "time": "2023-06-27T23:55:08+00:00"
         },
         {
             "name": "symfony/browser-kit",
