@@ -543,6 +543,8 @@ jobs:
               - *BEFORE_INSTALL_SCRIPT
           install:
               - *COMPOSER_INSTALL
+              - sudo apt install openssl libssl-dev
+              - rvm reinstall ruby
               - *INSTALL_SCRIPT
           script:
               - unset CHROME_BIN && export CHROME_BIN=${CHROMIUM_BINARY}
