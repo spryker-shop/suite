@@ -429,6 +429,7 @@ jobs:
         - name: PHP Validation
           php: '8.1'
           stage: Test
+          dist: jammy
           env:
               - APPLICATION_STORE=DE
           before_install:
@@ -534,6 +535,7 @@ jobs:
         - name: PHP 8.1 / MarketPlace Testing
           php: '8.1'
           stage: Test
+          dist: jammy
           env:
               - APPLICATION_STORE=DE
           before_install:
