@@ -1055,6 +1055,7 @@ jobs:
         - name: Docker / Debian / PHP 8.2 / Frontend & Assets
           <<: *DOCKER_BUILD_TEMPLATE
           stage: Test
+          dist: jammy
           env:
               - PROGRESS_TYPE=plain
               - SPRYKER_PLATFORM_IMAGE=spryker/php:8.2-debian
