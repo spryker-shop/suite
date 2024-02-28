@@ -543,10 +543,6 @@ jobs:
               - *BEFORE_INSTALL_SCRIPT
           install:
               - *COMPOSER_INSTALL
-#              - gem source -h
-#              - gem source -r https://rubygems.org/
-#              - gem source -a http://rubygems.org/
- #             - *INSTALL_SCRIPT
           script:
               - unset CHROME_BIN && export CHROME_BIN=${CHROMIUM_BINARY}
               # Install npm packages
