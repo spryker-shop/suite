@@ -1148,7 +1148,7 @@ jobs:
                     --recursive \
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
           after_failure:
-              - echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=${AWS_DEFAULT_REGION}&prefix=dms-on/suite-nonsplit-robot-api-ci/${TRAVIS_BUILD_NUMBER}/PHP8.2MariaDBRobot/log.html"
+              - echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=${AWS_DEFAULT_REGION}&prefix=suite-nonsplit-robot-api-ci-dynamic-multistore/${TRAVIS_BUILD_NUMBER}/PHP8.2MariaDBRobot/log.html"
               - echo "You must have VPN access to AWS (Spryker-Internal account)"
 
 services:
