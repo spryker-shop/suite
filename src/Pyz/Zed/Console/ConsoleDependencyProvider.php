@@ -206,7 +206,6 @@ use SprykerSdk\Zed\Benchmark\Communication\Console\BenchmarkRunConsole;
 use SprykerSdk\Zed\ComposerConstrainer\Communication\Console\ComposerConstraintConsole;
 use SprykerSdk\Zed\ComposerReplace\Communication\Console\ComposerReplaceConsole;
 use SprykerShop\Zed\DateTimeConfiguratorPageExample\Communication\Console\DateTimeProductConfiguratorBuildFrontendConsole;
-use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
@@ -490,7 +489,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new RemoveIdeAutoCompletionConsole();
             $commands[] = new DataBuilderGeneratorConsole();
             $commands[] = new RemoveDataBuilderConsole();
-            $commands[] = new CompletionCommand();
             $commands[] = new PropelSchemaValidatorConsole();
             $commands[] = new PropelSchemaXmlNameValidatorConsole();
             $commands[] = new DataImportDumpConsole();

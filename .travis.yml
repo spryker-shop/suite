@@ -268,6 +268,8 @@ _DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE: &DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
             - backend-gateway.eu.spryker.local
             - backoffice.eu.spryker.local
             - glue.eu.spryker.local
+            - glue-backend.eu.spryker.local
+            - glue-storefront.eu.spryker.local
             - yves.eu.spryker.local
             - mp.eu.spryker.local
         apt:
@@ -427,7 +429,7 @@ jobs:
         - name: PHP Validation
           php: '8.1'
           stage: Test
-          dist: focal
+          dist: jammy
           env:
               - APPLICATION_STORE=DE
           before_install:
@@ -533,7 +535,7 @@ jobs:
         - name: PHP 8.1 / MarketPlace Testing
           php: '8.1'
           stage: Test
-          dist: focal
+          dist: jammy
           env:
               - APPLICATION_STORE=DE
           before_install:
@@ -541,7 +543,6 @@ jobs:
               - *BEFORE_INSTALL_SCRIPT
           install:
               - *COMPOSER_INSTALL
-              - *INSTALL_SCRIPT
           script:
               - unset CHROME_BIN && export CHROME_BIN=${CHROMIUM_BINARY}
               # Install npm packages
@@ -1061,11 +1062,10 @@ jobs:
           script:
               - docker/sdk boot -v deploy.yml
               - SPRYKER_BUILD_HASH=myhash travis_wait 30 docker/sdk export images
-              - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
               - docker run -it --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
 
-        - name: Docker / Alpine / PHP 8.1 / MariaDB / Robot
+        - name: Docker / Alpine / PHP 8.1 / MariaDB / Robot / API
           <<: *DOCKER_BUILD_TEMPLATE
           stage: Test
           language: php
@@ -1093,7 +1093,7 @@ jobs:
               - echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=${AWS_DEFAULT_REGION}&prefix=suite-nonsplit-robot-api-ci/${TRAVIS_BUILD_NUMBER}/PHP8.1MariaDBRobot/log.html"
               - echo "You must have VPN access to AWS (Spryker-Internal account)"
 
-        - name: Docker / Alpine / PHP 8.2 / PostgreSQL / Robot
+        - name: Docker / Alpine / PHP 8.2 / PostgreSQL / Robot / API
           <<: *DOCKER_BUILD_TEMPLATE
           stage: Test
           language: php
@@ -1120,5 +1120,36 @@ jobs:
           after_failure:
               - echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=${AWS_DEFAULT_REGION}&prefix=suite-nonsplit-robot-api-ci/${TRAVIS_BUILD_NUMBER}/PHP8.2PostgreSQLRobot/log.html"
               - echo "You must have VPN access to AWS (Spryker-Internal account)"
+
+        - name: Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Store
+          <<: *DOCKER_BUILD_TEMPLATE_DYNAMIC_STORE
+          stage: Test
+          language: php
+          php: '8.2.0'
+          env:
+              - PROGRESS_TYPE=plain
+              - SPRYKER_PLATFORM_IMAGE=spryker/php:8.2
+              - SPRYKER_DYNAMIC_STORE_MODE=true
+              - SPRYKER_CURRENT_REGION=EU
+              - TRAVIS=1
+          script:
+              - phpenv config-rm xdebug.ini
+              - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+              - *COMPOSER_INSTALL
+              - docker/sdk boot -v deploy.ci.api.mariadb.dynamic-store.robot.yml
+              - travis_wait 35 docker/sdk up -t -v
+              - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
+              - sudo apt install awscli -q
+              - docker/sdk exec robot-framework robot -v env:api_suite -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite .
+          after_script:
+              - *AWS_SYNC_CONFIG
+              - |
+                  AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET aws s3 cp $TRAVIS_BUILD_DIR/.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-api-ci/$TRAVIS_BUILD_NUMBER/PHP8.2MariaDBRobot/ \
+                    --recursive \
+                    --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
+          after_failure:
+              - echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=${AWS_DEFAULT_REGION}&prefix=suite-nonsplit-robot-api-ci-dynamic-multistore/${TRAVIS_BUILD_NUMBER}/PHP8.2MariaDBRobot/log.html"
+              - echo "You must have VPN access to AWS (Spryker-Internal account)"
+
 services:
     - redis
