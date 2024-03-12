@@ -31,7 +31,6 @@
             - ".ci/snippet/RUN npm run formatter"
             - ".ci/snippet/RUN npm run yves:stylelint"
             - ".ci/snippet/RUN npm run yves:lint"
-            - ".ci/snippet/REQUIRE rm -rf node_modules **/node_modules"
             - ".ci/snippet/FINISH"
         shell: "BASH"
         run_next_parallel: true
