@@ -21,7 +21,6 @@
             - ".ci/snippet/RUN snyk test --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --severity-threshold=high"
             - ".ci/snippet/FINISH"
         shell: "BASH"
-        run_next_parallel: true
       - action: "JS Validation"
         type: "BUILD"
         docker_image_name: "library/node"
@@ -66,6 +65,7 @@
                   host: "redis"
               volume_mappings: []
         shell: "BASH"
+        run_next_parallel: true
       - action: "Evaluator"
         type: "BUILD"
         docker_image_name: "spryker/php"
@@ -75,7 +75,6 @@
             - ".ci/snippet/REQUIRE vendor/bin/evaluator evaluate --exclude-checkers=SPRYKER_DEV_PACKAGES_CHECKER,MINIMUM_ALLOWED_SHOP_VERSION --format=compact"
             - ".ci/snippet/FINISH"
         shell: "BASH"
-        run_next_parallel: true
       - action: "OpenAPI schema validation"
         type: "BUILD"
         docker_image_name: "library/node"
@@ -197,7 +196,6 @@
         docker_image_name: "library/node"
         docker_image_tag: "18"
         execute_commands:
-            - ".ci/snippet/REQUIRE rm -rf node_modules **/node_modules"
             - ".ci/snippet/REQUIRE vendor/bin/console frontend:project:install-dependencies -vvv"
             - ".ci/snippet/REQUIRE npm install"
             - ".ci/snippet/RUN npm run mp:build:production"
