@@ -1,210 +1,210 @@
-- pipeline: "Standard Validation"
+- pipeline: 'Standard Validation'
   events:
-      - type: "PUSH"
+      - type: 'PUSH'
         refs:
-            - "refs/pull/*"
-            - "refs/heads/master"
+            - 'refs/pull/*'
+            - 'refs/heads/master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
-  resources: "LARGE"
+  resources: 'LARGE'
   actions:
-      - action: "Snyk Validation"
-        type: "BUILD"
-        docker_image_name: "library/node"
-        docker_image_tag: "18"
+      - action: 'Snyk Validation'
+        type: 'BUILD'
+        docker_image_name: 'library/node'
+        docker_image_tag: '18'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/REQUIRE npm install --location=global snyk"
-            - ".ci/snippet/RUN snyk monitor --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac"
-            - ".ci/snippet/RUN snyk test --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --severity-threshold=high"
-            - ".ci/snippet/FINISH"
-        shell: "BASH"
-      - action: "JS Validation"
-        type: "BUILD"
-        docker_image_name: "library/node"
-        docker_image_tag: "18"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE npm install --location=global snyk'
+            - '.ci/snippet/RUN snyk monitor --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac'
+            - '.ci/snippet/RUN snyk test --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --severity-threshold=high'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+      - action: 'JS Validation'
+        type: 'BUILD'
+        docker_image_name: 'library/node'
+        docker_image_tag: '18'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/REQUIRE npm ci"
-            - ".ci/snippet/RUN npm run formatter"
-            - ".ci/snippet/RUN npm run yves:stylelint"
-            - ".ci/snippet/RUN npm run yves:lint"
-            - ".ci/snippet/FINISH"
-        shell: "BASH"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE npm ci'
+            - '.ci/snippet/RUN npm run formatter'
+            - '.ci/snippet/RUN npm run yves:stylelint'
+            - '.ci/snippet/RUN npm run yves:lint'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
         run_next_parallel: true
-      - action: "Build Project"
-        type: "BUILD"
-        main_service_name: "post"
-        docker_image_name: "spryker/php"
-        docker_image_tag: "8.1"
+      - action: 'Build Project'
+        type: 'BUILD'
+        main_service_name: 'post'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.1'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}"
-            - ".ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto"
-            - ".ci/snippet/REQUIRE vendor/bin/install DE -r ci.code-generate"
-            - ".ci/snippet/FINISH"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
+            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto'
+            - '.ci/snippet/REQUIRE vendor/bin/install DE -r ci.code-generate'
+            - '.ci/snippet/FINISH'
         services:
-            - type: "POSTGRE_SQL"
-              version: "9.6"
+            - type: 'POSTGRE_SQL'
+              version: '9.6'
               connection:
-                  host: "postgres"
-                  user: "postgres"
-                  password: "secret"
+                  host: 'postgres'
+                  user: 'postgres'
+                  password: 'secret'
               volume_mappings: []
-            - type: "RABBIT_MQ"
+            - type: 'RABBIT_MQ'
               connection:
-                  host: "rabbitmq"
-                  user: "guest"
-                  password: "guest"
+                  host: 'rabbitmq'
+                  user: 'guest'
+                  password: 'guest'
               volume_mappings: []
-            - type: "REDIS"
+            - type: 'REDIS'
               connection:
-                  host: "redis"
+                  host: 'redis'
               volume_mappings: []
-        shell: "BASH"
+        shell: 'BASH'
         run_next_parallel: true
-      - action: "Evaluator"
-        type: "BUILD"
-        docker_image_name: "spryker/php"
-        docker_image_tag: "8.1"
+      - action: 'Evaluator'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.1'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/REQUIRE vendor/bin/evaluator evaluate --exclude-checkers=SPRYKER_DEV_PACKAGES_CHECKER,MINIMUM_ALLOWED_SHOP_VERSION --format=compact"
-            - ".ci/snippet/FINISH"
-        shell: "BASH"
-      - action: "OpenAPI schema validation"
-        type: "BUILD"
-        docker_image_name: "library/node"
-        docker_image_tag: "18"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE vendor/bin/evaluator evaluate --exclude-checkers=SPRYKER_DEV_PACKAGES_CHECKER,MINIMUM_ALLOWED_SHOP_VERSION --format=compact'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+      - action: 'OpenAPI schema validation'
+        type: 'BUILD'
+        docker_image_name: 'library/node'
+        docker_image_tag: '18'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/REQUIRE npm install"
-            - ".ci/snippet/REQUIRE npm install speccy@0.11.0 -g"
-            - ".ci/snippet/RUN speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default"
-            - ".ci/snippet/RUN speccy lint src/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml --rules=default --skip openapi-tags"
-            - ".ci/snippet/RUN speccy lint src/Generated/GlueBackend/Specification/spryker_backend_api.schema.yml --rules=default --skip openapi-tags"
-            - ".ci/snippet/FINISH"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE npm install'
+            - '.ci/snippet/REQUIRE npm install speccy@0.11.0 -g'
+            - '.ci/snippet/RUN speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default'
+            - '.ci/snippet/RUN speccy lint src/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml --rules=default --skip openapi-tags'
+            - '.ci/snippet/RUN speccy lint src/Generated/GlueBackend/Specification/spryker_backend_api.schema.yml --rules=default --skip openapi-tags'
+            - '.ci/snippet/FINISH'
         ignore_errors: true
-        shell: "BASH"
-      - action: "Generic Validation"
-        type: "BUILD"
-        docker_image_name: "spryker/php"
-        docker_image_tag: "8.1"
+        shell: 'BASH'
+      - action: 'Generic Validation'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.1'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/RUN vendor/bin/console code:propel:validate-abstract"
-            - ".ci/snippet/RUN vendor/bin/console propel:schema:validate"
-            - ".ci/snippet/RUN vendor/bin/console propel:schema:validate-xml-names"
-            - ".ci/snippet/RUN vendor/bin/console transfer:validate"
-            - ".ci/snippet/RUN vendor/bin/spryker-dev-console dev:validate-module-schemas"
-            - ".ci/snippet/RUN vendor/bin/spryker-dev-console dev:validate-module-databuilders"
-            - ".ci/snippet/RUN vendor/bin/console dev:composer:replace -d -v"
-            - ".ci/snippet/RUN vendor/bin/spryker-dev-console dev:sync-composer -d"
-            - ".ci/snippet/RUN vendor/bin/spryker-dev-console dev:module-meta-files -d -v"
-            - ".ci/snippet/RUN vendor/bin/console dev:composer:update-json-files -d -v"
-            - ".ci/snippet/RUN vendor/bin/console dev:composer:validate-json-files"
-            - ".ci/snippet/RUN vendor/bin/console code:sniff:style"
-            - ".ci/snippet/RUN vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2"
-            - ".ci/snippet/RUN vendor/bin/phpstan analyze"
-            - ".ci/snippet/RUN vendor/bin/psalm.phar --show-info=false --no-cache --threads=1"
-            - ".ci/snippet/FINISH"
-        shell: "BASH"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:propel:validate-abstract'
+            - '.ci/snippet/RUN vendor/bin/console propel:schema:validate'
+            - '.ci/snippet/RUN vendor/bin/console propel:schema:validate-xml-names'
+            - '.ci/snippet/RUN vendor/bin/console transfer:validate'
+            - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:validate-module-schemas'
+            - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:validate-module-databuilders'
+            - '.ci/snippet/RUN vendor/bin/console dev:composer:replace -d -v'
+            - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:sync-composer -d'
+            - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:module-meta-files -d -v'
+            - '.ci/snippet/RUN vendor/bin/console dev:composer:update-json-files -d -v'
+            - '.ci/snippet/RUN vendor/bin/console dev:composer:validate-json-files'
+            - '.ci/snippet/RUN vendor/bin/console code:sniff:style'
+            - '.ci/snippet/RUN vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2'
+            - '.ci/snippet/RUN vendor/bin/phpstan analyze'
+            - '.ci/snippet/RUN vendor/bin/psalm.phar --show-info=false --no-cache --threads=1'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
         run_next_parallel: true
         variables:
-            - key: "STORAGE_REDIS_HOST"
-              value: "redis"
-              type: "VAR"
-      - action: "PHP 8.2 Validation"
-        type: "BUILD"
-        docker_image_name: "spryker/php"
-        docker_image_tag: "8.2"
+            - key: 'STORAGE_REDIS_HOST'
+              value: 'redis'
+              type: 'VAR'
+      - action: 'PHP 8.2 Validation'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/RUN vendor/bin/phpstan analyze"
-            - ".ci/snippet/RUN vendor/bin/console dev:dependency:find"
-            - ".ci/snippet/RUN vendor/bin/spryker-dev-console dev:deprecation-links:check"
-            - ".ci/snippet/RUN tests/travis_check_untracked.sh"
-            - ".ci/snippet/RUN tests/travis_check_touched_modules.sh"
-            - ".ci/snippet/FINISH"
-        shell: "BASH"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/phpstan analyze'
+            - '.ci/snippet/RUN vendor/bin/console dev:dependency:find'
+            - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:deprecation-links:check'
+            - '.ci/snippet/RUN tests/travis_check_untracked.sh'
+            - '.ci/snippet/RUN tests/travis_check_touched_modules.sh'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
         run_next_parallel: true
-      - action: "PHP 8.2 PHPStan spryker/spryker [1/5]"
-        type: "BUILD"
-        docker_image_name: "spryker/php"
-        docker_image_tag: "8.2"
+      - action: 'PHP 8.2 PHPStan spryker/spryker [1/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 0,275"
-            - ".ci/snippet/FINISH"
-        shell: "BASH"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 0,275'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
         run_next_parallel: true
-      - action: "PHP 8.2 PHPStan spryker/spryker [2/5]"
-        type: "BUILD"
-        docker_image_name: "spryker/php"
-        docker_image_tag: "8.2"
+      - action: 'PHP 8.2 PHPStan spryker/spryker [2/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 275,275"
-            - ".ci/snippet/FINISH"
-        shell: "BASH"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 275,275'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
         run_next_parallel: true
-      - action: "PHP 8.2 PHPStan spryker/spryker [3/5]"
-        type: "BUILD"
-        docker_image_name: "spryker/php"
-        docker_image_tag: "8.2"
+      - action: 'PHP 8.2 PHPStan spryker/spryker [3/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 550,150"
-            - ".ci/snippet/FINISH"
-        shell: "BASH"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 550,150'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
         run_next_parallel: true
-      - action: "PHP 8.2 PHPStan spryker/spryker [4/5]"
-        type: "BUILD"
-        docker_image_name: "spryker/php"
-        docker_image_tag: "8.2"
+      - action: 'PHP 8.2 PHPStan spryker/spryker [4/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 700"
-            - ".ci/snippet/FINISH"
-        shell: "BASH"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 700'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
         run_next_parallel: true
-      - action: "PHP 8.2 PHPStan spryker/spryker [5/5]"
-        type: "BUILD"
-        docker_image_name: "spryker/php"
-        docker_image_tag: "8.2"
+      - action: 'PHP 8.2 PHPStan spryker/spryker [5/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 900"
-            - ".ci/snippet/FINISH"
-        shell: "BASH"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 900'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
         run_next_parallel: true
-      - action: "PHP 8.2 PHPStan spryker/spryker-shop"
-        type: "BUILD"
-        docker_image_name: "spryker/php"
-        docker_image_tag: "8.2"
+      - action: 'PHP 8.2 PHPStan spryker/spryker-shop'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
         execute_commands:
-            - ".ci/snippet/PREPARE"
-            - ".ci/snippet/RUN vendor/bin/console code:phpstan -m SprykerShop.all -v"
-            - ".ci/snippet/FINISH"
-        shell: "BASH"
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m SprykerShop.all -v'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
         run_next_parallel: true
-      - action: "PHP 8.2 MarketPlace Testing"
-        type: "BUILD"
-        docker_image_name: "library/node"
-        docker_image_tag: "18"
+      - action: 'PHP 8.2 MarketPlace Testing'
+        type: 'BUILD'
+        docker_image_name: 'library/node'
+        docker_image_tag: '18'
         execute_commands:
-            - ".ci/snippet/REQUIRE vendor/bin/console frontend:project:install-dependencies -vvv"
-            - ".ci/snippet/REQUIRE npm install"
-            - ".ci/snippet/RUN npm run mp:build:production"
-            - ".ci/snippet/RUN npm run mp:stylelint"
-            - ".ci/snippet/RUN npm run mp:lint"
-            - ".ci/snippet/RUN npm run mp:test"
-            - ".ci/snippet/FINISH"
+            - '.ci/snippet/REQUIRE vendor/bin/console frontend:project:install-dependencies -vvv'
+            - '.ci/snippet/REQUIRE npm install'
+            - '.ci/snippet/RUN npm run mp:build:production'
+            - '.ci/snippet/RUN npm run mp:stylelint'
+            - '.ci/snippet/RUN npm run mp:lint'
+            - '.ci/snippet/RUN npm run mp:test'
+            - '.ci/snippet/FINISH'
         setup_commands:
-            - "apt-get update && apt-get -y install php8.2-cli php8.2-mbstring"
-        shell: "BASH"
+            - 'apt-get update && apt-get -y install php8.2-cli php8.2-mbstring'
+        shell: 'BASH'
 
 - pipeline: 'Validation / Prefer Lowest'
   events:
