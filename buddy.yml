@@ -64,7 +64,7 @@
                   host: 'redis'
               volume_mappings: []
         shell: 'BASH'
-        run_next_parallel: true
+        run_next_parallel: false
       - action: 'Evaluator'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
