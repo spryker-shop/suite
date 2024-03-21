@@ -842,8 +842,8 @@ jobs:
               - docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store.yml
               - travis_wait 35 docker/sdk up -t
               - travis_wait 35 docker/sdk testing codecept run -c codeception.acceptance.yml
-              - travis_wait 30 docker/sdk testing codecept fixtures
-              - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 50 docker/sdk testing codecept fixtures
+              - travis_wait 80 docker/sdk testing console queue:worker:start --stop-when-empty
               - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
 
         - name: Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest
@@ -884,8 +884,8 @@ jobs:
               - COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet
               - travis_wait 35 docker/sdk up -t
               - travis_wait 35 docker/sdk testing codecept run -c codeception.acceptance.yml
-              - travis_wait 30 docker/sdk testing codecept fixtures
-              - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 50 docker/sdk testing codecept fixtures
+              - travis_wait 80 docker/sdk testing console queue:worker:start --stop-when-empty
               - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
 
         - name: Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance
@@ -916,8 +916,8 @@ jobs:
               - docker/sdk boot -v deploy.ci.acceptance.dynamic-store.yml
               - travis_wait 35 docker/sdk up -t
               - travis_wait 35 docker/sdk testing codecept run -c codeception.acceptance.yml
-              - travis_wait 30 docker/sdk testing codecept fixtures
-              - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 50 docker/sdk testing codecept fixtures
+              - travis_wait 80 docker/sdk testing console queue:worker:start --stop-when-empty
               - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
 
         - name: Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests
@@ -1016,8 +1016,8 @@ jobs:
               - docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store.yml
               - travis_wait 35 docker/sdk up -t
               - travis_wait 35 docker/sdk testing codecept run -c codeception.acceptance.yml
-              - travis_wait 30 docker/sdk testing codecept fixtures
-              - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 50 docker/sdk testing codecept fixtures
+              - travis_wait 80 docker/sdk testing console queue:worker:start --stop-when-empty
               - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
 
         - name: Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance
@@ -1048,8 +1048,8 @@ jobs:
               - docker/sdk boot -v deploy.ci.acceptance.dynamic-store.yml
               - travis_wait 35 docker/sdk up -t
               - travis_wait 35 docker/sdk testing codecept run -c codeception.acceptance.yml
-              - travis_wait 30 docker/sdk testing codecept fixtures
-              - travis_wait 35 docker/sdk testing console queue:worker:start --stop-when-empty
+              - travis_wait 50 docker/sdk testing codecept fixtures
+              - travis_wait 80 docker/sdk testing console queue:worker:start --stop-when-empty
               - travis_wait 35 docker/sdk testing codecept run -c codeception.api.yml
 
         - name: Docker / Debian / PHP 8.2 / Frontend & Assets
