@@ -646,7 +646,7 @@ class CalculationBusinessTester extends Actor
             return $discountPromotionTransfer;
         }
 
-        $storeTransfer = (new StoreTransfer())->setIdStore($discountGeneralTransfer->getStoreRelation()->getIdStores()[0]);
+        $storeTransfer = $this->haveStore([StoreTransfer::NAME => static::STORE_DE]);
 
         $this->haveProductAvailable($skuPromotionalProductAbstract, $storeTransfer);
 
@@ -670,7 +670,7 @@ class CalculationBusinessTester extends Actor
                 StockProductTransfer::IS_NEVER_OUT_OF_STOCK => true,
             ],
         );
-        $this->haveAvailabilityConcrete($productConcreteTransfer->getSku());
+        $this->haveAvailabilityConcrete($productConcreteTransfer->getSku(), $storeTransfer);
     }
 
     /**
