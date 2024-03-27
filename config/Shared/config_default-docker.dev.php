@@ -19,6 +19,8 @@ use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationCons
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\MerchantPortalApplication\MerchantPortalConstants;
+use Spryker\Shared\MerchantRelationRequest\MerchantRelationRequestConstants;
+use Spryker\Shared\MerchantRelationship\MerchantRelationshipConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\OauthClient\OauthClientConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
@@ -144,6 +146,8 @@ if (!getenv('SPRYKER_SSL_ENABLE')) {
         = $config[CustomerConstants::BASE_URL_YVES]
         = $config[ProductManagementConstants::BASE_URL_YVES]
         = $config[NewsletterConstants::BASE_URL_YVES]
+        = $config[MerchantRelationshipConstants::BASE_URL_YVES]
+        = $config[MerchantRelationRequestConstants::BASE_URL_YVES]
         = sprintf(
             'http://%s%s',
             $yvesHost,

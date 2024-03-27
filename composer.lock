@@ -6337,7 +6337,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "01d0adf7c030847528617356e0405b894af1eae8"
+                "reference": "3dcf61e04b24b722b7b202ebe67fb67946a7fe74"
             },
             "require": {
                 "php": ">=8.1"
@@ -6508,7 +6508,12 @@
                 "spryker/comment": "*",
                 "spryker/comment-data-import": "*",
                 "spryker/comment-extension": "*",
+                "spryker/comment-gui": "*",
+                "spryker/comment-merchant-portal-gui": "*",
+                "spryker/comment-merchant-relation-request-connector": "*",
+                "spryker/comment-merchant-relationship-connector": "*",
                 "spryker/comment-sales-connector": "*",
+                "spryker/comment-user-connector": "*",
                 "spryker/companies-rest-api": "*",
                 "spryker/company": "*",
                 "spryker/company-business-unit": "*",
@@ -6766,12 +6771,19 @@
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
                 "spryker/merchant-profile-merchant-portal-gui": "*",
+                "spryker/merchant-profile-merchant-portal-gui-extension": "*",
+                "spryker/merchant-relation-request": "*",
+                "spryker/merchant-relation-request-extension": "*",
+                "spryker/merchant-relation-request-gui": "*",
+                "spryker/merchant-relation-request-merchant-portal-gui": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-api": "*",
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
                 "spryker/merchant-relationship-gui": "*",
                 "spryker/merchant-relationship-gui-extension": "*",
+                "spryker/merchant-relationship-merchant-portal-gui": "*",
+                "spryker/merchant-relationship-merchant-portal-gui-extension": "*",
                 "spryker/merchant-relationship-product-list": "*",
                 "spryker/merchant-relationship-product-list-data-import": "*",
                 "spryker/merchant-relationship-product-list-gui": "*",
@@ -7402,7 +7414,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2024-03-27T06:05:01+00:00"
+            "time": "2024-03-27T10:11:29+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7410,7 +7422,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "c4f2907383d610dd29eba42fbc8b802c4a4f8ed6"
+                "reference": "977e9a9e18cdad731d2bc8081c10cd2c4f0c5538"
             },
             "require": {
                 "php": ">=8.1"
@@ -7481,6 +7493,10 @@
                 "spryker-shop/merchant-product-offer-widget-extension": "*",
                 "spryker-shop/merchant-product-widget": "*",
                 "spryker-shop/merchant-profile-widget": "*",
+                "spryker-shop/merchant-relation-request-page": "*",
+                "spryker-shop/merchant-relation-request-widget": "*",
+                "spryker-shop/merchant-relationship-page": "*",
+                "spryker-shop/merchant-relationship-widget": "*",
                 "spryker-shop/merchant-sales-order-widget": "*",
                 "spryker-shop/merchant-sales-return-widget": "*",
                 "spryker-shop/merchant-search-widget": "*",
@@ -7605,7 +7621,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2024-03-19T19:23:11+00:00"
+            "time": "2024-03-27T10:11:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
