@@ -1165,7 +1165,7 @@
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
-        instance_type: "GENERAL_LARGE"
+        instance_type: 'GENERAL_LARGE'
 
 - pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest / Dynamic Store'
   events:
