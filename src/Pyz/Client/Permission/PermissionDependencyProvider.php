@@ -17,6 +17,7 @@ use Spryker\Client\CustomerAccessPermission\Plugin\SeeOrderPlaceSubmitPermission
 use Spryker\Client\CustomerAccessPermission\Plugin\SeePricePermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeShoppingListPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeWishlistPermissionPlugin;
+use Spryker\Client\MerchantRelationRequest\Plugin\Permission\CreateMerchantRelationRequestPermissionPlugin;
 use Spryker\Client\OauthPermission\Plugin\Permission\OauthPermissionStoragePlugin;
 use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
 use Spryker\Client\SharedCart\Plugin\ReadSharedCartPermissionPlugin;
@@ -56,6 +57,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new SeeCompanyOrdersPermissionPlugin(),
             new SeeBusinessUnitOrdersPermissionPlugin(),
             new SeeCompanyUsersPermissionPlugin(),
+            new CreateMerchantRelationRequestPermissionPlugin(),
         ];
     }
 }

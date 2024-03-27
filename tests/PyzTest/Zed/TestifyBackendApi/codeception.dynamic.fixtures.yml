@@ -47,7 +47,14 @@ suites:
                 - \SprykerTest\Shared\Url\Helper\UrlDataHelper
                 - \SprykerTest\Zed\MerchantStock\Helper\MerchantStockHelper
                 - \SprykerTest\Shared\ProductImage\Helper\ProductImageDataHelper
+                - \SprykerTest\Zed\Permission\Helper\PermissionHelper
                 - \SprykerTest\Zed\Country\Helper\CountryDataHelper
+                - \SprykerTest\Zed\Company\Helper\CompanyHelper
+                - \SprykerTest\Zed\CompanyBusinessUnit\Helper\CompanyBusinessUnitHelper
+                - \SprykerTest\Shared\CompanyUser\Helper\CompanyUserHelper
+                - \SprykerTest\Zed\CompanyRole\Helper\CompanyRoleHelper
+                - \SprykerTest\Shared\MerchantRelationRequest\Helper\MerchantRelationRequestHelper
+                - \SprykerTest\Shared\Comment\Helper\CommentHelper
                 - \SprykerTest\Zed\Twig\Helper\TwigHelper:
             config:
                 \SprykerTest\Shared\Testify\Helper\DataCleanupHelper:
