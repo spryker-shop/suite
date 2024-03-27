@@ -864,7 +864,7 @@
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
-  resources: 'MEDIUM'
+  resources: 'NANO'
   actions:
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -896,7 +896,7 @@
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
+        instance_type: 'GENERAL_LARGE'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance'
   events:
@@ -1130,7 +1130,7 @@
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
-  resources: 'MEDIUM'
+  resources: 'NANO'
   actions:
       - action: 'Update Composer (Prefer Lowest)'
         type: 'BUILD'
@@ -1165,7 +1165,7 @@
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
+        instance_type: "GENERAL_LARGE"
 
 - pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest / Dynamic Store'
   events:
@@ -1230,7 +1230,7 @@
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
-  resources: 'MEDIUM'
+  resources: 'NANO'
   actions:
       - action: 'Install Composer'
         type: 'BUILD'
@@ -1270,13 +1270,12 @@
             - key: 'TRAVIS'
               value: '1'
               type: 'VAR'
-        timeout: 8000      
+        timeout: 8000
         sync_paths:
             - pipeline_path: '/'
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Robot'
   events:
@@ -1288,7 +1287,7 @@
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
-  resources: 'MEDIUM'
+  resources: 'NANO'
   actions:
       - action: 'Install Composer'
         type: 'BUILD'
@@ -1334,4 +1333,3 @@
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
