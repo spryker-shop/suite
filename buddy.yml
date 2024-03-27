@@ -864,7 +864,7 @@
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
-  resources: 'NANO'
+  resources: 'MEDIUM'
   actions:
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -1130,7 +1130,7 @@
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
-  resources: 'NANO'
+  resources: 'MEDIUM'
   actions:
       - action: 'Update Composer (Prefer Lowest)'
         type: 'BUILD'
@@ -1230,7 +1230,7 @@
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
-  resources: 'XLARGE'
+  resources: 'MEDIUM'
   actions:
       - action: 'Install Composer'
         type: 'BUILD'
@@ -1270,6 +1270,7 @@
             - key: 'TRAVIS'
               value: '1'
               type: 'VAR'
+        timeout: 8000      
         sync_paths:
             - pipeline_path: '/'
               vm_path: '/home/ubuntu/build'
@@ -1287,7 +1288,7 @@
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
-  resources: 'XLARGE'
+  resources: 'MEDIUM'
   actions:
       - action: 'Install Composer'
         type: 'BUILD'
@@ -1327,6 +1328,7 @@
             - key: 'TRAVIS'
               value: '1'
               type: 'VAR'
+        timeout: 8000
         sync_paths:
             - pipeline_path: '/'
               vm_path: '/home/ubuntu/build'
