@@ -59,3 +59,5 @@ suites:
             config:
                 \SprykerTest\Shared\Testify\Helper\DataCleanupHelper:
                     cleanup: false
+                \SprykerTest\Shared\Customer\Helper\CustomerDataHelper:
+                    isMailFacadeMockEnabled: false
