@@ -1,16 +1,11 @@
 {
     "extends": "../../tsconfig.mp.json",
     "compilerOptions": {
-        "outDir": "./out-tsc/spec",
+        "esModuleInterop": true,
+        "target": "ES2015",
         "module": "commonjs",
-        "types": ["jest", "node"],
-        "emitDecoratorMetadata": false
+        "types": ["jest", "node"]
     },
     "files": ["test-setup.ts"],
-    "include": [
-        "../../src/Pyz/Zed/*/Presentation/Components/**/*.spec.ts",
-        "../../src/Pyz/Zed/*/Presentation/Components/**/*.test.ts",
-        "../../src/Pyz/Zed/*/Presentation/Components/**/*.d.ts",
-        "jest.config.ts"
-    ]
+    "include": ["../../src/Pyz/Zed/*/Presentation/Components/**/*.spec.ts"]
 }
