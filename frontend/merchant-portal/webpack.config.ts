@@ -1,5 +1,5 @@
 import { CustomWebpackBrowserSchema, TargetOptions } from '@angular-builders/custom-webpack';
-import path = require('path');
+import * as path from 'path';
 import * as webpack from 'webpack';
 
 import { getMPEntryPointsMap } from './entry-points';
@@ -16,7 +16,7 @@ export default async (
     console.log(`Found ${Object.keys(entryPointsMap).length} entry point(s)!`);
 
     config.entry = {
-        ...(config.entry as any),
+        ...(config.entry as Record<string, string>),
         ...entryPointsMap,
     };
 
@@ -24,6 +24,8 @@ export default async (
         '~@spryker': path.resolve(__dirname, '../../node_modules/@spryker'),
         '~@angular': path.resolve(__dirname, '../../node_modules/@angular'),
     };
+
+    config.output.publicPath = '/assets/js/';
 
     return config;
 };

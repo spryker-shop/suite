@@ -1,0 +1,99 @@
+{
+    "name": "merchant-portal",
+    "$schema": "node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": ".",
+    "projectType": "application",
+    "prefix": "mp",
+    "generators": {},
+    "targets": {
+        "build": {
+            "executor": "@angular-builders/custom-webpack:browser",
+            "options": {
+                "customWebpackConfig": {
+                    "path": "./frontend/merchant-portal/webpack.config.ts",
+                    "mergeRules": {}
+                },
+                "indexTransform": "./frontend/merchant-portal/html-transform.js",
+                "outputPath": "public/MerchantPortal/assets/js",
+                "baseHref": "/assets/js/",
+                "index": "src/Pyz/Zed/ZedUi/Presentation/Components/index.html",
+                "main": "src/Pyz/Zed/ZedUi/Presentation/Components/main.ts",
+                "polyfills": "src/Pyz/Zed/ZedUi/Presentation/Components/polyfills.ts",
+                "tsConfig": "tsconfig.mp.json",
+                "assets": [
+                    {
+                        "glob": "*/src/Spryker/Zed/*/Presentation/Components/assets/**/*",
+                        "input": "vendor/spryker/spryker/Bundles",
+                        "output": "/assets/"
+                    },
+                    {
+                        "glob": "*/Presentation/Components/assets/**/*",
+                        "input": "src/Pyz/Zed",
+                        "output": "/assets/"
+                    }
+                ],
+                "styles": [
+                    "vendor/spryker/zed-ui/src/Spryker/Zed/ZedUi/Presentation/Components/styles.less",
+                    "src/Pyz/Zed/ZedUi/Presentation/Components/styles.less"
+                ],
+                "scripts": []
+            },
+            "configurations": {
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                },
+                "production": {
+                    "fileReplacements": [
+                        {
+                            "replace": "src/Pyz/Zed/ZedUi/Presentation/Components/environments/environment.ts",
+                            "with": "src/Pyz/Zed/ZedUi/Presentation/Components/environments/environment.prod.ts"
+                        }
+                    ],
+                    "optimization": {
+                        "scripts": true,
+                        "styles": {
+                            "minify": true,
+                            "inlineCritical": false
+                        }
+                    },
+                    "outputHashing": "none",
+                    "sourceMap": false,
+                    "namedChunks": false,
+                    "extractLicenses": true,
+                    "vendorChunk": true,
+                    "buildOptimizer": true,
+                    "budgets": [
+                        {
+                            "type": "bundle",
+                            "maximumWarning": "2mb",
+                            "maximumError": "5mb"
+                        }
+                    ]
+                }
+            },
+            "defaultConfiguration": "development"
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "options": {
+                "eslintConfig": ".eslintrc.mp.json",
+                "lintFilePatterns": [
+                    "src/Pyz/Zed/*/Presentation/Components/**/*.ts",
+                    "src/Pyz/Zed/*/Presentation/Components/**/*.html"
+                ],
+                "noEslintrc": true
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "options": {
+                "jestConfig": "frontend/merchant-portal/jest.config.ts"
+            }
+        }
+    }
+}
