@@ -18,7 +18,15 @@
                 {
                     "value": "2",
                     "title": "Option title 2",
-                    "price": 51700
+                    "price": 51700,
+                    "availableQuantity": [
+                        {
+                            "condition": {
+                                "store_name": "DE"
+                            },
+                            "quantity": 5
+                        }
+                    ]
                 },
                 {
                     "value": "3",
@@ -39,7 +47,8 @@
                 {
                     "value": "2",
                     "title": "Option Two title 2",
-                    "price": 21000
+                    "price": 21000,
+                    "availableQuantity": 0
                 },
                 {
                     "value": "3",
@@ -63,6 +72,30 @@
                     }
                 }
             ]
+        }
+    ],
+    "volumePrices": [
+        {
+            "condition": {
+                "option-1": "3",
+                "option-2": "4"
+            },
+            "prices": {
+                "GROSS_MODE": [
+                    {
+                        "quantity": 5,
+                        "net_price": 58500,
+                        "gross_price": 59000
+                    }
+                ],
+                "NET_MODE": [
+                    {
+                        "quantity": 5,
+                        "net_price": 53500,
+                        "gross_price": 54000
+                    }
+                ]
+            }
         }
     ],
     "defaults": {
