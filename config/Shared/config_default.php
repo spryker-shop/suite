@@ -948,3 +948,5 @@ $config[MessageBrokerConstants::IS_ENABLED] = (
     $config[MessageBrokerAwsConstants::HTTP_CHANNEL_SENDER_BASE_URL]
     && $config[MessageBrokerAwsConstants::HTTP_CHANNEL_RECEIVER_BASE_URL]
 );
+
+$config[ProductConstants::PUBLISHING_TO_MESSAGE_BROKER_ENABLED] = $config[MessageBrokerConstants::IS_ENABLED];
