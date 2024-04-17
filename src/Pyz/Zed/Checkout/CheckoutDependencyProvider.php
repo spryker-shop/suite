@@ -37,6 +37,7 @@ use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Checkout\ProductDiscont
 use Spryker\Zed\ProductOffer\Communication\Plugin\Checkout\ProductOfferCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Checkout\ProductOptionOrderSaverPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\AmountAvailabilityCheckoutPreConditionPlugin;
+use Spryker\Zed\ProductQuantity\Communication\Plugin\Checkout\ProductQuantityRestrictionCheckoutPreConditionPlugin;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Checkout\QuoteApprovalCheckoutPreConditionPlugin;
 use Spryker\Zed\QuoteRequest\Communication\Plugin\Checkout\CloseQuoteRequestCheckoutPostSaveHookPlugin;
 use Spryker\Zed\QuoteRequest\Communication\Plugin\Checkout\QuoteRequestPreCheckPlugin;
@@ -94,6 +95,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductApprovalCheckoutPreConditionPlugin(),
             new ShipmentTypeCheckoutPreConditionPlugin(),
             new ServicePointCheckoutPreConditionPlugin(),
+            new ProductQuantityRestrictionCheckoutPreConditionPlugin(),
         ];
     }
 
