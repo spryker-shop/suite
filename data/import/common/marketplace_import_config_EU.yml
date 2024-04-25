@@ -40,6 +40,12 @@ actions:
       source: data/import/common/common/marketplace/payment_method.csv
     - data_entity: merchant-product-approval-status-default
       source: data/import/common/common/marketplace/merchant_product_approval_status_default.csv
+    - data_entity: merchant-commission-group
+      source: data/import/common/common/marketplace/merchant_commission_group.csv
+    - data_entity: merchant-commission
+      source: data/import/common/common/marketplace/merchant_commission.csv
+    - data_entity: merchant-commission-merchant
+      source: data/import/common/common/marketplace/merchant_commission_merchant.csv
     # Store relation
     - data_entity: merchant-store
       source: data/import/common/DE/merchant_store.csv
@@ -57,3 +63,11 @@ actions:
       source: data/import/common/DE/payment_method_store.csv
     - data_entity: payment-method-store
       source: data/import/common/AT/payment_method_store.csv
+    - data_entity: merchant-commission-amount
+      source: data/import/common/DE/marketplace/merchant_commission_amount.csv
+    - data_entity: merchant-commission-amount
+      source: data/import/common/AT/marketplace/merchant_commission_amount.csv
+    - data_entity: merchant-commission-store
+      source: data/import/common/DE/marketplace/merchant_commission_store.csv
+    - data_entity: merchant-commission-store
+      source: data/import/common/AT/marketplace/merchant_commission_store.csv
