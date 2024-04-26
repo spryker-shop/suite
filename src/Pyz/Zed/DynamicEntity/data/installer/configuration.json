@@ -88,7 +88,7 @@
             },
             {
                 "name": "productAbstractLocalizedAttributes",
-                "isEditable": false,
+                "isEditable": true,
                 "childDynamicEntityConfiguration": {
                     "tableAlias": "product-abstract-localized-attributes"
                 },
@@ -101,26 +101,13 @@
             },
             {
                 "name": "productAbstractCategories",
-                "isEditable": false,
+                "isEditable": true,
                 "childDynamicEntityConfiguration": {
                     "tableAlias": "product-categories"
                 },
                 "relationFieldMappings": [
                     {
                         "childFieldName": "fk_product_abstract",
-                        "parentFieldName": "id_product_abstract"
-                    }
-                ]
-            },
-            {
-                "name": "productAbstractUrls",
-                "isEditable": true,
-                "childDynamicEntityConfiguration": {
-                    "tableAlias": "urls"
-                },
-                "relationFieldMappings": [
-                    {
-                        "childFieldName": "fk_resource_product_abstract",
                         "parentFieldName": "id_product_abstract"
                     }
                 ]
@@ -139,7 +126,7 @@
                 ]
             },
             {
-                "name": "productImageSets",
+                "name": "productAbstractImageSets",
                 "isEditable": true,
                 "childDynamicEntityConfiguration": {
                     "tableAlias": "product-image-sets"
@@ -192,7 +179,7 @@
             },
             {
                 "name": "productRelations",
-                "isEditable": false,
+                "isEditable": true,
                 "childDynamicEntityConfiguration": {
                     "tableAlias": "product-relations"
                 },
@@ -204,7 +191,7 @@
                 ]
             },
             {
-                "name": "productRelationProductAbstracts",
+                "name": "productAbstractsProductRelation",
                 "isEditable": false,
                 "childDynamicEntityConfiguration": {
                     "tableAlias": "product-relations-product-abstract"
@@ -217,8 +204,8 @@
                 ]
             },
             {
-                "name": "productLabelProductAbstracts",
-                "isEditable": false,
+                "name": "productAbstractsProductLabel",
+                "isEditable": true,
                 "childDynamicEntityConfiguration": {
                     "tableAlias": "product-label-product-abstracts"
                 },
@@ -334,7 +321,7 @@
         "childRelations": [
             {
                 "name": "productLocalizedAttributes",
-                "isEditable": false,
+                "isEditable": true,
                 "childDynamicEntityConfiguration": {
                     "tableAlias": "product-localized-attributes"
                 },
@@ -399,7 +386,7 @@
             },
             {
                 "name": "productStocks",
-                "isEditable": false,
+                "isEditable": true,
                 "childDynamicEntityConfiguration": {
                     "tableAlias": "stock-products"
                 },
@@ -757,20 +744,23 @@
                     "validation": { "isRequired": true }
                 },
                 {
-                    "fieldName": "fk_resource_product_abstract",
-                    "fieldVisibleName": "fk_resource_product_abstract",
-                    "isCreatable": true,
-                    "isEditable": true,
-                    "type": "integer",
-                    "validation": { "isRequired": false }
-                },
-                {
                     "fieldName": "url",
                     "fieldVisibleName": "url",
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true,
+                        "constraints": [{ "name": "url" }]
+                    }
+                },
+                {
+                    "fieldName": "fk_resource_product_set",
+                    "fieldVisibleName": "fk_resource_product_set",
+                    "isCreatable": true,
+                    "isEditable": true,
+                    "type": "integer",
+                    "validation": { "isRequired": false }
                 }
             ]
         }
@@ -1473,8 +1463,8 @@
         },
         "childRelations": [
             {
-                "name": "productImageSetToProductImages",
-                "isEditable": false,
+                "name": "productImagesToProductImageSet",
+                "isEditable": true,
                 "childDynamicEntityConfiguration": {
                     "tableAlias": "product-image-set-to-product-images"
                 },
@@ -2237,7 +2227,7 @@
         "childRelations": [
             {
                 "name": "priceProductStores",
-                "isEditable": false,
+                "isEditable": true,
                 "childDynamicEntityConfiguration": {
                     "tableAlias": "price-product-stores"
                 },
@@ -3624,7 +3614,7 @@
             },
             {
                 "name": "productRelationStores",
-                "isEditable": false,
+                "isEditable": true,
                 "childDynamicEntityConfiguration": {
                     "tableAlias": "product-relation-stores"
                 },
@@ -3818,7 +3808,7 @@
             },
             {
                 "name": "productLabelStores",
-                "isEditable": false,
+                "isEditable": true,
                 "childDynamicEntityConfiguration": {
                     "tableAlias": "product-label-stores"
                 },

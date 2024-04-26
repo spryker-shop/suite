@@ -1,5 +1,11 @@
 const glob = require('fast-glob');
-const { strings } = require('@angular-devkit/core');
+
+function dasherize(str) {
+    return str
+        .replace(/[\s_]/g, '-')
+        .replace(/([a-z])([A-Z])/g, '$1-$2')
+        .toLowerCase();
+}
 
 async function getMPEntryPoints(directory, entryPath) {
     return glob(entryPath, {
@@ -8,7 +14,7 @@ async function getMPEntryPoints(directory, entryPath) {
 }
 
 function entryPointPathToName(prefix, path) {
-    return prefix + strings.dasherize(path.split('/')[0]);
+    return prefix + dasherize(path.split('/')[0]);
 }
 
 module.exports = {

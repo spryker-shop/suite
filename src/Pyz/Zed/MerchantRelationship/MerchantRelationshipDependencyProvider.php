@@ -7,6 +7,9 @@
 
 namespace Pyz\Zed\MerchantRelationship;
 
+use Spryker\Zed\CommentMerchantRelationRequestConnector\Communication\Plugin\MerchantRelationship\CopyCommentThreadToMerchantRelationshipPostCreatePlugin;
+use Spryker\Zed\CommentMerchantRelationshipConnector\Communication\Plugin\MerchantRelationship\CommentThreadMerchantRelationshipExpanderPlugin;
+use Spryker\Zed\CompanyUnitAddress\Communication\Plugin\MerchantRelationship\CompanyUnitAddressMerchantRelationshipExpanderPlugin;
 use Spryker\Zed\MerchantRelationship\MerchantRelationshipDependencyProvider as SprykerMerchantRelationshipDependencyProvider;
 use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipCreateValidatorPlugin;
 use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipExpanderPlugin;
@@ -36,6 +39,7 @@ class MerchantRelationshipDependencyProvider extends SprykerMerchantRelationship
     {
         return [
             new ProductListMerchantRelationshipPostCreatePlugin(),
+            new CopyCommentThreadToMerchantRelationshipPostCreatePlugin(),
         ];
     }
 
@@ -76,6 +80,8 @@ class MerchantRelationshipDependencyProvider extends SprykerMerchantRelationship
     {
         return [
             new ProductListMerchantRelationshipExpanderPlugin(),
+            new CommentThreadMerchantRelationshipExpanderPlugin(),
+            new CompanyUnitAddressMerchantRelationshipExpanderPlugin(),
         ];
     }
 }

@@ -15,7 +15,11 @@ use Spryker\Zed\Category\Communication\Plugin\AclMerchantPortal\CategoryAclEntit
 use Spryker\Zed\CategoryImage\Communication\Plugin\AclMerchantPortal\CategoryImageAclEntityConfigurationExpanderPlugin;
 use Spryker\Zed\CmsBlock\Communication\Plugin\AclMerchantPortal\CmsBlockAclEntityConfigurationExpanderPlugin;
 use Spryker\Zed\Comment\Communication\Plugin\AclMerchantPortal\CommentAclEntityConfigurationExpanderPlugin;
+use Spryker\Zed\CommentMerchantPortalGui\Communication\Plugin\AclMerchantPortal\CommentMerchantPortalGuiMerchantAclRuleExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\AclMerchantPortal\CompanyBusinessUnitAclEntityConfigurationExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\AclMerchantPortal\CompanyBusinessUnitMerchantAclEntityRuleExpanderPlugin;
+use Spryker\Zed\CompanyUnitAddress\Communication\Plugin\AclMerchantPortal\CompanyUnitAddressAclEntityConfigurationExpanderPlugin;
+use Spryker\Zed\CompanyUnitAddress\Communication\Plugin\AclMerchantPortal\CompanyUnitAddressMerchantAclEntityRuleExpanderPlugin;
 use Spryker\Zed\Country\Communication\Plugin\AclMerchantPortal\CountryAclEntityConfigurationExpanderPlugin;
 use Spryker\Zed\Country\Communication\Plugin\AclMerchantPortal\CountryMerchantAclEntityRuleExpanderPlugin;
 use Spryker\Zed\Country\Communication\Plugin\AclMerchantPortal\CountryStoreAclEntityConfigurationExpanderPlugin;
@@ -42,7 +46,12 @@ use Spryker\Zed\MerchantProduct\Communication\Plugin\AclMerchantPortal\MerchantP
 use Spryker\Zed\MerchantProductOffer\Communication\Plugin\AclMerchantPortal\MerchantProductOfferAclEntityConfigurationExpanderPlugin;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\AclMerchantPortal\MerchantProfileAclEntityConfigurationExpanderPlugin;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Communication\Plugin\AclMerchantPortal\MerchantProfileMerchantPortalGuiMerchantAclRuleExpanderPlugin;
-use Spryker\Zed\MerchantRelationship\Communication\Plugin\AclMerchantPortal\MerchantRelationshipAclEntityConfigurationExpanderPlugin;
+use Spryker\Zed\MerchantRelationRequest\Communication\Plugin\AclMerchantPortal\MerchantRelationRequestAclEntityConfigurationExpanderPlugin;
+use Spryker\Zed\MerchantRelationRequest\Communication\Plugin\AclMerchantPortal\MerchantRelationRequestMerchantAclEntityRuleExpanderPlugin;
+use Spryker\Zed\MerchantRelationRequestMerchantPortalGui\Communication\Plugin\AclMerchantPortal\MerchantRelationRequestMerchantPortalGuiMerchantAclRuleExpanderPlugin;
+use Spryker\Zed\MerchantRelationship\Communication\Plugin\AclMerchantPortal\MerchantRelationshipMerchantAclEntityRuleExpanderPlugin;
+use Spryker\Zed\MerchantRelationship\Communication\Plugin\AclMerchantPortal\MerchantRelationshipModelAclEntityConfigurationExpanderPlugin;
+use Spryker\Zed\MerchantRelationshipMerchantPortalGui\Communication\Plugin\AclMerchantPortal\MerchantRelationshipMerchantPortalGuiMerchantAclRuleExpanderPlugin;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\AclMerchantPortal\MerchantSalesOrderAclEntityConfigurationExpanderPlugin;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\AclMerchantPortal\MerchantSalesOrderMerchantAclEntityRuleExpanderPlugin;
 use Spryker\Zed\MerchantStock\Communication\Plugin\AclMerchantPortal\MerchantStockAclEntityConfigurationExpanderPlugin;
@@ -113,6 +122,9 @@ class AclMerchantPortalDependencyProvider extends SprykerAclMerchantPortalDepend
             new DummyMerchantPortalGuiMerchantAclRuleExpanderPlugin(),
             new PriceProductMerchantRelationshipMerchantPortalGuiMerchantAclRuleExpanderPlugin(),
             new ProductOfferServicePointMerchantPortalGuiMerchantAclRuleExpanderPlugin(),
+            new MerchantRelationRequestMerchantPortalGuiMerchantAclRuleExpanderPlugin(),
+            new CommentMerchantPortalGuiMerchantAclRuleExpanderPlugin(),
+            new MerchantRelationshipMerchantPortalGuiMerchantAclRuleExpanderPlugin(),
         ];
     }
 
@@ -141,6 +153,10 @@ class AclMerchantPortalDependencyProvider extends SprykerAclMerchantPortalDepend
             new CustomerMerchantAclEntityRuleExpanderPlugin(),
             new DiscountMerchantAclEntityRuleExpanderPlugin(),
             new DiscountPromotionMerchantAclEntityRuleExpanderPlugin(),
+            new MerchantRelationRequestMerchantAclEntityRuleExpanderPlugin(),
+            new MerchantRelationshipMerchantAclEntityRuleExpanderPlugin(),
+            new CompanyUnitAddressMerchantAclEntityRuleExpanderPlugin(),
+            new CompanyBusinessUnitMerchantAclEntityRuleExpanderPlugin(),
         ];
     }
 
@@ -179,6 +195,7 @@ class AclMerchantPortalDependencyProvider extends SprykerAclMerchantPortalDepend
             new CmsBlockAclEntityConfigurationExpanderPlugin(),
             new CommentAclEntityConfigurationExpanderPlugin(),
             new CompanyBusinessUnitAclEntityConfigurationExpanderPlugin(),
+            new CompanyUnitAddressAclEntityConfigurationExpanderPlugin(),
             new CountryAclEntityConfigurationExpanderPlugin(),
             new CountryStoreAclEntityConfigurationExpanderPlugin(),
             new CurrencyAclEntityConfigurationExpanderPlugin(),
@@ -194,7 +211,7 @@ class AclMerchantPortalDependencyProvider extends SprykerAclMerchantPortalDepend
             new MerchantProductAclEntityConfigurationExpanderPlugin(),
             new MerchantProductOfferAclEntityConfigurationExpanderPlugin(),
             new MerchantProfileAclEntityConfigurationExpanderPlugin(),
-            new MerchantRelationshipAclEntityConfigurationExpanderPlugin(),
+            new MerchantRelationshipModelAclEntityConfigurationExpanderPlugin(),
             new MerchantSalesOrderAclEntityConfigurationExpanderPlugin(),
             new MerchantStockAclEntityConfigurationExpanderPlugin(),
             new MerchantUserAclEntityConfigurationExpanderPlugin(),
@@ -229,6 +246,7 @@ class AclMerchantPortalDependencyProvider extends SprykerAclMerchantPortalDepend
             new ProductOfferShipmentTypeAclEntityConfigurationExpanderPlugin(),
             new ServiceAclEntityConfigurationExpanderPlugin(),
             new ProductOfferServicePointAclEntityConfigurationExpanderPlugin(),
+            new MerchantRelationRequestAclEntityConfigurationExpanderPlugin(),
         ];
     }
 }

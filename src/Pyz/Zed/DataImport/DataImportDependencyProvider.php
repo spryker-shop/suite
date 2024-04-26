@@ -55,6 +55,11 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\LocaleDataImport\Communication\Plugin\DataImport\DefaultLocaleStoreDataImportPlugin;
 use Spryker\Zed\LocaleDataImport\Communication\Plugin\DataImport\LocaleStoreDataImportPlugin;
 use Spryker\Zed\MerchantCategoryDataImport\Communication\Plugin\DataImport\MerchantCategoryDataImportPlugin;
+use Spryker\Zed\MerchantCommissionDataImport\Communication\Plugin\DataImport\MerchantCommissionAmountDataImportPlugin;
+use Spryker\Zed\MerchantCommissionDataImport\Communication\Plugin\DataImport\MerchantCommissionDataImportPlugin;
+use Spryker\Zed\MerchantCommissionDataImport\Communication\Plugin\DataImport\MerchantCommissionGroupDataImportPlugin;
+use Spryker\Zed\MerchantCommissionDataImport\Communication\Plugin\DataImport\MerchantCommissionMerchantDataImportPlugin;
+use Spryker\Zed\MerchantCommissionDataImport\Communication\Plugin\DataImport\MerchantCommissionStoreDataImportPlugin;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantStoreDataImportPlugin;
 use Spryker\Zed\MerchantOmsDataImport\Communication\Plugin\DataImport\MerchantOmsProcessDataImportPlugin;
@@ -430,6 +435,11 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ShipmentTypeServiceTypeDataImportPlugin(),
             new ProductOfferShipmentTypeDataImportPlugin(),
             new ProductOfferServiceDataImportPlugin(),
+            new MerchantCommissionGroupDataImportPlugin(),
+            new MerchantCommissionDataImportPlugin(),
+            new MerchantCommissionAmountDataImportPlugin(),
+            new MerchantCommissionStoreDataImportPlugin(),
+            new MerchantCommissionMerchantDataImportPlugin(),
         ];
     }
 
