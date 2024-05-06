@@ -10,7 +10,7 @@ namespace Pyz\Zed\DataImport\Business\Model\Product\Repository;
 use Generated\Shared\Transfer\PaginationTransfer;
 use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
-use Propel\Runtime\Collection\ArrayCollection;
+use Propel\Runtime\Collection\Collection;
 
 interface ProductRepositoryInterface
 {
@@ -48,9 +48,9 @@ interface ProductRepositoryInterface
     /**
      * @param \Generated\Shared\Transfer\PaginationTransfer $paginationTransfer
      *
-     * @return \Propel\Runtime\Collection\ArrayCollection
+     * @return \Propel\Runtime\Collection\Collection
      */
-    public function getProductConcreteAttributesCollection(PaginationTransfer $paginationTransfer): ArrayCollection;
+    public function getProductConcreteAttributesCollection(PaginationTransfer $paginationTransfer): Collection;
 
     /**
      * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity

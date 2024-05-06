@@ -9,7 +9,7 @@ namespace Pyz\Zed\ExampleStateMachine\Persistence;
 
 use Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Propel\Runtime\Collection\ObjectCollection;
+use Propel\Runtime\Collection\Collection;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 
 /**
@@ -34,13 +34,16 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
     /**
      * @psalm-suppress TooManyTemplateParams
      *
-     * @return \Propel\Runtime\Collection\ObjectCollection<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
+     * @return \Propel\Runtime\Collection\Collection<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
-    public function queryAllStateMachineItems(): ObjectCollection
+    public function queryAllStateMachineItems(): Collection
     {
-         return $this->getFactory()
+        /** @var \Propel\Runtime\Collection\Collection<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem> $exampleStateMachineCollection */
+        $exampleStateMachineCollection = $this->getFactory()
              ->createExampleStateMachineQuery()
              ->find();
+
+         return $exampleStateMachineCollection;
     }
 
     /**
