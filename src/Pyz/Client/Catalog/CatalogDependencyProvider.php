@@ -235,6 +235,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
      */
     protected function createCatalogSearchResultFormatterPlugins(): array
     {
+        /** @var \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface $rawCatalogSearchResultFormatterPlugin */
         $rawCatalogSearchResultFormatterPlugin = new RawCatalogSearchResultFormatterPlugin();
 
         return [
