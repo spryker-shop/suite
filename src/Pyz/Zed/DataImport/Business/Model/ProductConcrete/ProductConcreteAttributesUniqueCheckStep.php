@@ -154,6 +154,7 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
         $paginationTransfer = (new PaginationTransfer())->setOffset(0)->setLimit($readCollectionBatchSize);
 
         do {
+            /** @var \Propel\Runtime\Collection\ArrayCollection $productConcreteCollection */
             $productConcreteCollection = $this->productRepository->getProductConcreteAttributesCollection($paginationTransfer);
             if (!count($productConcreteCollection)) {
                 break;
