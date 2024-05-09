@@ -1485,7 +1485,6 @@
                     vm_path: '/home/ubuntu/build'
                     direction: 'PIPELINE_TO_VM'
             docker_layer_caching_scope: 'ACTION'
-            instance_type: 'GENERAL_MEDIUM'
 
 -   pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Cypress / Dynamic Store'
     events:
@@ -1554,4 +1553,3 @@
                     vm_path: '/home/ubuntu/build'
                     direction: 'PIPELINE_TO_VM'
             docker_layer_caching_scope: 'ACTION'
-            instance_type: 'GENERAL_MEDIUM'
