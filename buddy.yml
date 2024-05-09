@@ -1513,7 +1513,7 @@
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.api.mariadb.dynamic-store.cypress.yml'
+            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.mariadb.dynamic-store.cypress.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk cli composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
