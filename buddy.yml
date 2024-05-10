@@ -1455,7 +1455,8 @@
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk cli composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec --env "ENV_REPOSITORY_ID=suite" --env "SPRYKER_MP_HOST=mp.de.spryker.local" cypress-tests npm run cy:ci"'
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.example .env"'
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"'
             - 'if [ $? -ne 0 ]; then'
             - '  .ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '  .ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
@@ -1474,6 +1475,74 @@
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
               value: 'spryker/php:8.2'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        timeout: 8000
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Cypress / Dynamic Store'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Install Composer'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
+            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+      - action: 'Run tests'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.mariadb.dynamic-store.cypress.yml'
+            - '.ci/snippet/RUN docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk cli composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.dynamic-store.example .env"'
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"'
+            - 'if [ $? -ne 0 ]; then'
+            - '  .ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
+            - '  .ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
+            - '  .ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
+            - '  .ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
+            - '  export AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID'
+            - '  export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
+            - '  export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
+            - '  export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
+            - '  .ci/snippet/REQUIRE aws s3 cp ./.cypress s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/cypress-ui/suite-nonsplit/$BUDDY_EXECUTION_HASH/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - '  echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=cypress-ui/suite-nonsplit/${BUDDY_EXECUTION_HASH}/screenshots/&showversions=false"'
+            - '  echo "You must have VPN access to AWS (Spryker-Internal account)"'
+            - 'fi'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.2'
+              type: 'VAR'
+            - key: 'SPRYKER_CURRENT_REGION'
+              value: 'EU'
+              type: 'VAR'
+            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
+              value: 'true'
               type: 'VAR'
             - key: 'TRAVIS'
               value: '1'
