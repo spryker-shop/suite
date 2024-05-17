@@ -21,7 +21,6 @@
             - '.ci/snippet/RUN snyk monitor --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --exclude=project.json'
             - '.ci/snippet/RUN snyk test --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --severity-threshold=high'
             - '.ci/snippet/FINISH'
-        ignore_errors: true    
         shell: 'BASH'
       - action: 'JS Validation'
         type: 'BUILD'
