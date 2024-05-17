@@ -772,6 +772,9 @@ jobs:
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
         steps:
+            - name: apt update
+              run: sudo apt update
+
             - uses: actions/checkout@v3
 
             - uses: actions/setup-python@v4
@@ -801,17 +804,21 @@ jobs:
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot -v deploy.ci.acceptance.dynamic-store.yml
+                  sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
                   docker/sdk up -t -v
-                  docker/sdk testing console queue:worker:start --stop-when-empty
-                  sudo bash -c "echo '127.0.0.1 backend-api.at.spryker.local backend-api.de.spryker.local backend-gateway.at.spryker.local backend-gateway.de.spryker.local backoffice.at.spryker.local backoffice.de.spryker.local date-time-configurator-example.spryker.local glue.at.spryker.local glue.de.spryker.local yves.at.spryker.local yves.de.spryker.local glue-backend.de.spryker.local glue-storefront.de.spryker.local' >> /etc/hosts"
+            - name: Custom commands
+              continue-on-error: false
+              run: |
+                  docker/sdk cli composer dump-autoload -o -a
+                  SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
             - name: Run Tests
               run: |
                   cd robotframework-tests
-                  robot -v env:api_suite -v db_engine:psycopg2 -v ignore_console:false --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework-tests.tests.api.suite .
+                  robot -v env:api_suite -v db_engine:psycopg2 -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v ignore_console:false --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework-tests.tests.api.suite .
             - name: Upload artifacts
               if: always()
               run: |
-                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/${GITHUB_RUN_ID}/PHP8.2PostgreSQLRobot/ \
+                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-dynamic-multistore/${GITHUB_RUN_ID}/PHP8.2PostgreSQLRobot/ \
                     --recursive \
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
