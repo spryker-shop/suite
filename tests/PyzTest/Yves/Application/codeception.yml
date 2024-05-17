@@ -12,20 +12,6 @@ coverage:
     whitelist: { include: ['../../../../src/*'] }
 
 suites:
-    Presentation:
-        path: Presentation
-        actor: ApplicationPresentationTester
-        modules:
-            enabled:
-                - Asserts
-                - \PyzTest\Shared\Testify\Helper\YvesBootstrap
-                - \PyzTest\Shared\Testify\Helper\Environment
-                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
-                -   \SprykerTest\Shared\Testify\Helper\LocatorHelper:
-                        projectNamespaces: [ 'Pyz' ]
-                        coreNamespaces: [ 'SprykerShop', 'Spryker', 'SprykerEco', 'SprykerSdk' ]
-                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
-                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
     Controller:
         path: .
         actor: ApplicationControllerTester
