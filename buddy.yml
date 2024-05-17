@@ -9,6 +9,31 @@
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
   clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Snyk Validation'
+        type: 'BUILD'
+        docker_image_name: 'library/node'
+        docker_image_tag: '18'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE npm install --location=global snyk'
+            - '.ci/snippet/RUN snyk monitor --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --exclude=project.json'
+            - '.ci/snippet/RUN snyk test --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --severity-threshold=high'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+
+- pipeline: 'Standard Validation'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
   resources: 'LARGE'
   actions:
       - action: 'Snyk Validation'
