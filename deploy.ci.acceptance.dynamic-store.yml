@@ -47,6 +47,8 @@ groups:
             yves_eu:
                 application: yves
                 endpoints:
+                    date-time-configurator-example.spryker.local:
+                        entry-point: Configurator
                     yves.eu.spryker.local:
                         region: EU
                         services:
@@ -94,6 +96,9 @@ services:
         root:
             username: 'root'
             password: 'secret'
+        endpoints:
+            localhost:5432:
+                protocol: tcp
     broker:
         engine: rabbitmq
         version: '3.9'

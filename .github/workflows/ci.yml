@@ -211,9 +211,9 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.api.mariadb.dynamic-store.yml -v
                   docker/sdk up -t -v
-                  docker/sdk testing codecept fixtures
-                  docker/sdk testing console queue:worker:start --stop-when-empty
-                  docker/sdk testing codecept run -c codeception.api.yml
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept fixtures
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing console queue:worker:start --stop-when-empty
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.api.yml
 
     php-82-mariadb-acceptance-alpine:
         name: "PHP 8.2 / MariaDB / Acceptance / Alpine"
@@ -268,8 +268,8 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store.yml
                   docker/sdk up -t
-                  docker/sdk testing console queue:worker:start --stop-when-empty
-                  docker/sdk testing codecept run -c codeception.acceptance.yml
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing console queue:worker:start --stop-when-empty
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.acceptance.yml
 
     php-82-mariadb-functional-alpine:
         name: "PHP 8.2 / MariaDB / Functional / Alpine"
@@ -323,7 +323,7 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.functional.mariadb.dynamic-store.yml -v
                   docker/sdk up -t -v
-                  docker/sdk testing codecept run -c codeception.functional.yml
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.functional.yml
 
     php-81-mariadb-glue-alpine:
         name: "PHP 8.1 / MariaDB / Glue / Alpine"
@@ -379,9 +379,9 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.api.mariadb.dynamic-store.yml -v
                   docker/sdk up -t -v
-                  docker/sdk testing codecept fixtures
-                  docker/sdk testing console queue:worker:start --stop-when-empty
-                  docker/sdk testing codecept run -c codeception.api.yml
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept fixtures
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing console queue:worker:start --stop-when-empty
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.api.yml
 
     php-81-postgresql-acceptance-alpine:
         name: "PHP 8.1 / PostgreSQL / Acceptance / Alpine"
@@ -436,8 +436,8 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot -v deploy.ci.acceptance.dynamic-store.yml
                   docker/sdk up -t
-                  docker/sdk testing console queue:worker:start --stop-when-empty
-                  docker/sdk testing codecept run -c codeception.acceptance.yml
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing console queue:worker:start --stop-when-empty
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.acceptance.yml
 
     php-81-postgresql-functional-alpine:
         name: "PHP 8.1 / PostgreSQL / Functional / Alpine"
@@ -492,8 +492,8 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot -v deploy.ci.acceptance.dynamic-store.yml
                   docker/sdk up -t
-                  docker/sdk testing console queue:worker:start --stop-when-empty
-                  docker/sdk testing codecept run -c codeception.functional.yml
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing console queue:worker:start --stop-when-empty
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.functional.yml
 
     php-81-mariadb-acceptance-alpine:
         name: "PHP 8.1 / MariaDB / Acceptance / Alpine"
@@ -548,8 +548,8 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store.yml
                   docker/sdk up -t
-                  docker/sdk testing console queue:worker:start --stop-when-empty
-                  docker/sdk testing codecept run -c codeception.acceptance.yml
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing console queue:worker:start --stop-when-empty
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.acceptance.yml
 
     php-81-mariadb-functional-alpine:
         name: "PHP 8.1 / MariaDB / Functional / Alpine"
@@ -603,7 +603,7 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.functional.mariadb.dynamic-store.yml -v
                   docker/sdk up -t -v
-                  docker/sdk testing codecept run -c codeception.functional.yml
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.functional.yml
 
     php-81-postgres-functional-debian:
         name: "PHP 8.1 / PostgreSQL / Functional / Debian"
@@ -657,7 +657,7 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.functional.dynamic-store.yml -v
                   docker/sdk up -t -v
-                  docker/sdk testing codecept run -c codeception.functional.yml
+                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.functional.yml
 
     php-81-frontend-and-assets-alpine:
         name: "PHP 8.1 / Frontend & Assets / Alpine "
@@ -804,8 +804,8 @@ jobs:
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot -v deploy.ci.acceptance.dynamic-store.yml
-                  sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
                   docker/sdk up -t -v
+                  sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
             - name: Custom commands
               continue-on-error: false
               run: |
