@@ -1,12 +1,8 @@
 env:
     NEW_RELIC_ENABLED: 0
-
-stores:
-    - DE
-    - AT
+    SPRYKER_CURRENT_REGION: EU
 
 sections:
     scheduler-stop:
         scheduler-clean:
             command: 'vendor/bin/console scheduler:suspend -vvv --no-ansi'
-            stores: true

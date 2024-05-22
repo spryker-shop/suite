@@ -93,7 +93,7 @@ docker/sdk clean-data && docker/sdk up && docker/sdk console q:w:s -v -s
 1. Run the commands right after cloning the repository:
 
 ```bash
-docker/sdk boot deploy.dev.dynamic-store.yml
+docker/sdk boot deploy.dev.yml
 ```
 
 > Please, follow the recommendations in output in order to prepare the environment.
@@ -106,7 +106,7 @@ docker/sdk up
 
 ```bash
 git checkout your_branch
-docker/sdk boot -s deploy.dev.dynamic-store.yml
+docker/sdk boot -s deploy.dev.yml
 docker/sdk up --build --assets --data
 ```
 
@@ -128,7 +128,7 @@ docker/sdk up --build --assets --data
     3. Restart file sync and re-build the codebase:
     ```bash
     docker/sdk trouble
-    docker/sdk boot -s deploy.dev.dynamic-store.yml
+    docker/sdk boot -s deploy.dev.yml
     docker/sdk up --build --assets
     ```
 
@@ -139,7 +139,7 @@ docker/sdk up --build --assets --data
     2. If the queue is empty but the issue persists, reload the demo data:
     ```bash
     docker/sdk trouble
-    docker/sdk boot -s deploy.dev.dynamic-store.yml
+    docker/sdk boot -s deploy.dev.yml
     docker/sdk up --build --assets --data
     ```
 
