@@ -37,7 +37,7 @@ jobs:
                 options: --health-cmd="redis-cli ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Configure sysctl limits
               run: |
@@ -167,7 +167,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -194,7 +194,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -219,7 +219,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -240,10 +240,12 @@ jobs:
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -255,8 +257,8 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.acceptance.mariadb.yml
                   docker/sdk up -t
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing console queue:worker:start --stop-when-empty
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.acceptance.yml
+                  docker/sdk testing console queue:worker:start --stop-when-empty
+                  docker/sdk testing codecept run -c codeception.acceptance.yml
 
     php-82-mariadb-functional-alpine-dynamic-store-off:
         name: "PHP 8.2 / MariaDB / Functional / Alpine / Dynamic Store OFF"
@@ -267,7 +269,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -287,10 +289,12 @@ jobs:
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -302,7 +306,7 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.functional.mariadb.yml
                   docker/sdk up -t
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.functional.yml
+                  docker/sdk testing codecept run -c codeception.functional.yml
 
     php-81-mariadb-glue-alpine-dynamic-store-off:
         name: "PHP 8.1 / MariaDB / Glue / Alpine / Dynamic Store OFF"
@@ -313,7 +317,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -335,10 +339,12 @@ jobs:
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.1
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -350,9 +356,9 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.api.mariadb.yml
                   docker/sdk up -t
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept fixtures
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing console queue:worker:start --stop-when-empty
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.api.yml
+                  docker/sdk testing codecept fixtures
+                  docker/sdk testing console queue:worker:start --stop-when-empty
+                  docker/sdk testing codecept run -c codeception.api.yml
 
     php-81-postgresql-acceptance-alpine-dynamic-store-off:
         name: "PHP 8.1 / PostgreSQL / Acceptance / Alpine / Dynamic Store OFF"
@@ -363,7 +369,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -384,10 +390,12 @@ jobs:
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.1
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -399,8 +407,8 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.acceptance.yml
                   docker/sdk up -t
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing console queue:worker:start --stop-when-empty
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.acceptance.yml
+                  docker/sdk testing console queue:worker:start --stop-when-empty
+                  docker/sdk testing codecept run -c codeception.acceptance.yml
 
     php-81-postgresql-functional-alpine-dynamic-store-off:
         name: "PHP 8.1 / PostgreSQL / Functional / Alpine / Dynamic Store OFF"
@@ -411,7 +419,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -432,10 +440,12 @@ jobs:
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.1
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -447,8 +457,8 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.acceptance.yml
                   docker/sdk up -t
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing console queue:worker:start --stop-when-empty
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.functional.yml
+                  docker/sdk testing console queue:worker:start --stop-when-empty
+                  docker/sdk testing codecept run -c codeception.functional.yml
 
     php-81-mariadb-acceptance-alpine-dynamic-store-off:
         name: "PHP 8.1 / MariaDB / Acceptance / Alpine / Dynamic Store OFF"
@@ -459,7 +469,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -480,10 +490,12 @@ jobs:
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.1
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -495,8 +507,8 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.acceptance.mariadb.yml
                   docker/sdk up -t
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing console queue:worker:start --stop-when-empty
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.acceptance.yml
+                  docker/sdk testing console queue:worker:start --stop-when-empty
+                  docker/sdk testing codecept run -c codeception.acceptance.yml
 
     php-81-mariadb-functional-alpine-dynamic-store-off:
         name: "PHP 8.1 / MariaDB / Functional / Alpine / Dynamic Store OFF"
@@ -507,7 +519,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -527,10 +539,12 @@ jobs:
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.1
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -542,7 +556,7 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.functional.mariadb.yml
                   docker/sdk up -t
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.functional.yml
+                  docker/sdk testing codecept run -c codeception.functional.yml
 
     php-81-postgres-functional-debian-dynamic-store-off:
         name: "PHP 8.1 / PostgreSQL / Functional / Debian / Dynamic Store OFF"
@@ -553,7 +567,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -573,10 +587,12 @@ jobs:
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.1-debian
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -588,18 +604,20 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot deploy.ci.functional.yml
                   docker/sdk up -t
-                  SPRYKER_CURRENT_REGION=EU docker/sdk testing codecept run -c codeception.functional.yml
+                  docker/sdk testing codecept run -c codeception.functional.yml
 
     php-81-frontend-and-assets-alpine:
-        name: "PHP 8.1 / Frontend & Assets / Alpine "
+        name: "PHP 8.1 / Frontend & Assets / Alpine"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.1
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install docker-compose
               run: |
@@ -626,7 +644,7 @@ jobs:
             TRAVIS: 1
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Install prefer lowest
               run: |
@@ -645,7 +663,7 @@ jobs:
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - uses: actions/setup-python@v4
               with:
@@ -694,8 +712,10 @@ jobs:
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - uses: actions/setup-python@v4
               with:
@@ -728,7 +748,7 @@ jobs:
               continue-on-error: false
               run: |
                   docker/sdk cli composer dump-autoload -o -a
-                  SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
+                  docker/sdk console queue:worker:start --stop-when-empty
             - name: Run Tests
               run: |
                   cd robotframework-tests
@@ -748,8 +768,10 @@ jobs:
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - uses: actions/setup-python@v4
               with:
@@ -782,7 +804,7 @@ jobs:
                 continue-on-error: false
                 run: |
                     docker/sdk cli composer dump-autoload -o -a
-                    SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
+                    docker/sdk console queue:worker:start --stop-when-empty
             -   name: Run Tests
                 run: |
                     cd robotframework-tests
