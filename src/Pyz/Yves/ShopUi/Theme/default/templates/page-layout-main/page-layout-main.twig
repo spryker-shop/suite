@@ -3,6 +3,10 @@
 {% block sidebar %}
     {% embed organism('side-drawer') with {
         class: 'is-hidden-lg-xl',
+        data: {
+            isAjaxMode: data.isAjaxHeader,
+            ajaxCartUrl: data.ajaxCartUrl,
+        },
         attributes: {
             'container-selector': 'js-page-layout-main',
             'trigger-selector': 'js-page-layout-main__side-drawer-trigger',
@@ -15,7 +19,12 @@
 {% endblock %}
 
 {% block header %}
-    {% embed organism('header') only %}
+    {% embed organism('header') with {
+        data: {
+            isAjaxMode: data.isAjaxHeader,
+            ajaxCartUrl: data.ajaxCartUrl,
+        },
+    }  only %}
         {% block mainNavigation %}
             {% cms_slot 'slt-desktop-header' %}
         {% endblock %}
