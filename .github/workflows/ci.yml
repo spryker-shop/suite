@@ -197,9 +197,9 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Install apt-packages
-              run: |
-                  sudo apt-get install apache2-utils
+#            - name: Install apt-packages
+#              run: |
+#                  sudo apt-get install apache2-utils
 
             - name: Install docker-compose
               run: |
@@ -254,9 +254,9 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Install apt-packages
-              run: |
-                  sudo apt-get install apache2-utils
+#            - name: Install apt-packages
+#              run: |
+#                  sudo apt-get install apache2-utils
 
             - name: Install docker-compose
               run: |
@@ -309,9 +309,9 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Install apt-packages
-              run: |
-                  sudo apt-get install apache2-utils
+#            - name: Install apt-packages
+#              run: |
+#                  sudo apt-get install apache2-utils
 
             - name: Install docker-compose
               run: |
@@ -336,9 +336,9 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Install apt-packages
-              run: |
-                  sudo apt-get install apache2-utils
+#            - name: Install apt-packages
+#              run: |
+#                  sudo apt-get install apache2-utils
 
             - name: Install docker-compose
               run: |
@@ -365,9 +365,9 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Install apt-packages
-              run: |
-                  sudo apt-get install apache2-utils
+#            - name: Install apt-packages
+#              run: |
+#                  sudo apt-get install apache2-utils
 
             - name: Install docker-compose
               run: |
@@ -422,9 +422,9 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Install apt-packages
-              run: |
-                  sudo apt-get install apache2-utils
+#            - name: Install apt-packages
+#              run: |
+#                  sudo apt-get install apache2-utils
 
             - name: Install docker-compose
               run: |
@@ -478,9 +478,9 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Install apt-packages
-              run: |
-                  sudo apt-get install apache2-utils
+#            - name: Install apt-packages
+#              run: |
+#                  sudo apt-get install apache2-utils
 
             - name: Install docker-compose
               run: |
@@ -534,9 +534,9 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Install apt-packages
-              run: |
-                  sudo apt-get install apache2-utils
+#            - name: Install apt-packages
+#              run: |
+#                  sudo apt-get install apache2-utils
 
             - name: Install docker-compose
               run: |
@@ -589,9 +589,9 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Install apt-packages
-              run: |
-                  sudo apt-get install apache2-utils
+#            - name: Install apt-packages
+#              run: |
+#                  sudo apt-get install apache2-utils
 
             - name: Install docker-compose
               run: |
@@ -643,9 +643,9 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Install apt-packages
-              run: |
-                  sudo apt-get install apache2-utils
+#            - name: Install apt-packages
+#              run: |
+#                  sudo apt-get install apache2-utils
 
             - name: Install docker-compose
               run: |
@@ -784,7 +784,7 @@ jobs:
             - name: Install packages
               run: |
                   sudo apt-get update
-                  sudo apt-get install apache2-utils
+#                  sudo apt-get install apache2-utils
                   sudo apt install awscli -q
                   python3 -m pip install --upgrade pip
                   python3 -m pip install -U robotframework
