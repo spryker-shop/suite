@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f09af9e06417bf02f00e5d419c6ce04",
+    "content-hash": "fd941db28feb3a9a7fbb86bf77d7cc17",
     "packages": [
         {
             "name": "async-aws/core",
@@ -31414,16 +31414,16 @@
         },
         {
             "name": "spryker/data-export",
-            "version": "0.1.4",
+            "version": "0.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/data-export.git",
-                "reference": "79a3ca33d5abd0e2737e39e3529c3183d93b0d11"
+                "reference": "3a43a7999503037006d4b989285eef9341e2987a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/data-export/zipball/79a3ca33d5abd0e2737e39e3529c3183d93b0d11",
-                "reference": "79a3ca33d5abd0e2737e39e3529c3183d93b0d11",
+                "url": "https://api.github.com/repos/spryker/data-export/zipball/3a43a7999503037006d4b989285eef9341e2987a",
+                "reference": "3a43a7999503037006d4b989285eef9341e2987a",
                 "shasum": ""
             },
             "require": {
@@ -31458,9 +31458,9 @@
             ],
             "description": "DataExport module",
             "support": {
-                "source": "https://github.com/spryker/data-export/tree/0.1.4"
+                "source": "https://github.com/spryker/data-export/tree/0.1.5"
             },
-            "time": "2023-11-23T15:03:23+00:00"
+            "time": "2024-05-27T13:08:39+00:00"
         },
         {
             "name": "spryker/data-export-extension",
@@ -36747,16 +36747,16 @@
         },
         {
             "name": "spryker/merchant-commission",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-commission.git",
-                "reference": "b4bac47786431e6642a9e0aea311d84a7e5b048f"
+                "reference": "9217d54fceb7df13c75d10c73f4413eeb36c0f45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-commission/zipball/b4bac47786431e6642a9e0aea311d84a7e5b048f",
-                "reference": "b4bac47786431e6642a9e0aea311d84a7e5b048f",
+                "url": "https://api.github.com/repos/spryker/merchant-commission/zipball/9217d54fceb7df13c75d10c73f4413eeb36c0f45",
+                "reference": "9217d54fceb7df13c75d10c73f4413eeb36c0f45",
                 "shasum": ""
             },
             "require": {
@@ -36792,9 +36792,60 @@
             ],
             "description": "MerchantCommission module",
             "support": {
-                "source": "https://github.com/spryker/merchant-commission/tree/0.1.1"
+                "source": "https://github.com/spryker/merchant-commission/tree/0.1.2"
             },
-            "time": "2024-05-06T12:15:28+00:00"
+            "time": "2024-05-27T13:08:39+00:00"
+        },
+        {
+            "name": "spryker/merchant-commission-data-export",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-commission-data-export.git",
+                "reference": "be37b0dbe3eef90bfd3ce7936789cea7490bab1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-commission-data-export/zipball/be37b0dbe3eef90bfd3ce7936789cea7490bab1b",
+                "reference": "be37b0dbe3eef90bfd3ce7936789cea7490bab1b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "spryker/currency": "^4.0.0",
+                "spryker/data-export": "^0.1.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant": "^3.0.0",
+                "spryker/merchant-commission": "^0.1.0",
+                "spryker/propel-orm": "^1.2.0",
+                "spryker/store": "^1.0.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantCommissionDataExport module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-commission-data-export/tree/0.1.0"
+            },
+            "time": "2024-05-27T13:08:39+00:00"
         },
         {
             "name": "spryker/merchant-commission-data-import",
@@ -36844,6 +36895,60 @@
                 "source": "https://github.com/spryker/merchant-commission-data-import/tree/0.1.0"
             },
             "time": "2024-04-25T07:42:23+00:00"
+        },
+        {
+            "name": "spryker/merchant-commission-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-commission-gui.git",
+                "reference": "edb9c1572ed20ad9c3b24f053ac8ba911cee7a7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-commission-gui/zipball/edb9c1572ed20ad9c3b24f053ac8ba911cee7a7e",
+                "reference": "edb9c1572ed20ad9c3b24f053ac8ba911cee7a7e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "spryker/glossary": "^3.0.0",
+                "spryker/gui": "^3.45.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant-commission": "^0.1.2",
+                "spryker/merchant-commission-data-export": "^0.1.0",
+                "spryker/money": "^2.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.9.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/util-csv": "^1.0.0",
+                "spryker/util-date-time": "^1.0.0",
+                "spryker/util-text": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantCommissionGui module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-commission-gui/tree/0.1.0"
+            },
+            "time": "2024-05-27T13:08:39+00:00"
         },
         {
             "name": "spryker/merchant-data-import",
@@ -80128,12 +80233,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "877702d9b42c5250501faae6623856d48ddbd6cc"
+                "reference": "56851be26b114b847656252bc3e5a14ced3ee10d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/877702d9b42c5250501faae6623856d48ddbd6cc",
-                "reference": "877702d9b42c5250501faae6623856d48ddbd6cc",
+                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/56851be26b114b847656252bc3e5a14ced3ee10d",
+                "reference": "56851be26b114b847656252bc3e5a14ced3ee10d",
                 "shasum": ""
             },
             "default-branch": true,
@@ -80147,7 +80252,7 @@
                 "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
                 "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
             },
-            "time": "2024-05-27T10:03:25+00:00"
+            "time": "2024-05-27T12:17:43+00:00"
         },
         {
             "name": "spryker/silex",
