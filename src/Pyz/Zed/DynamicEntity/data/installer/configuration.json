@@ -242,6 +242,19 @@
                         "parentFieldName": "id_product_abstract"
                     }
                 ]
+            },
+            {
+                "name": "productAbstractUrls",
+                "isEditable": false,
+                "childDynamicEntityConfiguration": {
+                    "tableAlias": "urls"
+                },
+                "relationFieldMappings": [
+                    {
+                        "childFieldName": "fk_resource_product_abstract",
+                        "parentFieldName": "id_product_abstract"
+                    }
+                ]
             }
         ]
     },
@@ -764,6 +777,14 @@
                 {
                     "fieldName": "fk_resource_product_set",
                     "fieldVisibleName": "fk_resource_product_set",
+                    "isCreatable": true,
+                    "isEditable": true,
+                    "type": "integer",
+                    "validation": { "isRequired": false }
+                },
+                {
+                    "fieldName": "fk_resource_product_abstract",
+                    "fieldVisibleName": "fk_resource_product_abstract",
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
