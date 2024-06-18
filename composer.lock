@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fd941db28feb3a9a7fbb86bf77d7cc17",
+    "content-hash": "d59d011c17c2497b698e2d359b8e4dce",
     "packages": [
         {
             "name": "async-aws/core",
@@ -66844,16 +66844,16 @@
         },
         {
             "name": "spryker/store",
-            "version": "1.26.0",
+            "version": "1.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/store.git",
-                "reference": "72667300080a66934a5e7dd003ddca0ecca1a0fe"
+                "reference": "4039f0b440f52c8fd56def8bc7e3774834af6c9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/store/zipball/72667300080a66934a5e7dd003ddca0ecca1a0fe",
-                "reference": "72667300080a66934a5e7dd003ddca0ecca1a0fe",
+                "url": "https://api.github.com/repos/spryker/store/zipball/4039f0b440f52c8fd56def8bc7e3774834af6c9e",
+                "reference": "4039f0b440f52c8fd56def8bc7e3774834af6c9e",
                 "shasum": ""
             },
             "require": {
@@ -66907,33 +66907,38 @@
             ],
             "description": "Store module",
             "support": {
-                "source": "https://github.com/spryker/store/tree/1.26.0"
+                "source": "https://github.com/spryker/store/tree/1.27.0"
             },
-            "time": "2024-05-06T12:15:28+00:00"
+            "time": "2024-06-18T09:53:39+00:00"
         },
         {
-            "name": "spryker/store-context-gui",
+            "name": "spryker/store-context",
             "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/store-context-gui.git",
-                "reference": "f416882c1b3a79b63281a195ad721959ef6695ab"
+                "url": "https://github.com/spryker/store-context.git",
+                "reference": "80d8de9dc363aec878b5efa45504c6687b908181"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/store-context-gui/zipball/f416882c1b3a79b63281a195ad721959ef6695ab",
-                "reference": "f416882c1b3a79b63281a195ad721959ef6695ab",
+                "url": "https://api.github.com/repos/spryker/store-context/zipball/80d8de9dc363aec878b5efa45504c6687b908181",
+                "reference": "80d8de9dc363aec878b5efa45504c6687b908181",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0",
-                "spryker/gui": "^3.45.0",
-                "spryker/kernel": "^3.71.0",
-                "spryker/store-gui-extension": "^1.0.0",
-                "spryker/symfony": "^3.11.0"
+                "php": ">=8.1",
+                "spryker/kernel": "^3.30.0",
+                "spryker/store": "^1.25.0",
+                "spryker/store-extension": "^1.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/application": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -66950,11 +66955,157 @@
             "license": [
                 "proprietary"
             ],
+            "description": "StoreContext module",
+            "support": {
+                "source": "https://github.com/spryker/store-context/tree/1.0.0"
+            },
+            "time": "2024-06-18T09:53:39+00:00"
+        },
+        {
+            "name": "spryker/store-context-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/store-context-data-import.git",
+                "reference": "719c09852e53074ebd96f3b993b36e77c94fbffa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/store-context-data-import/zipball/719c09852e53074ebd96f3b993b36e77c94fbffa",
+                "reference": "719c09852e53074ebd96f3b993b36e77c94fbffa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "spryker/data-import": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/store": "^1.19.0",
+                "spryker/store-context": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "StoreContextDataImport module",
+            "support": {
+                "source": "https://github.com/spryker/store-context-data-import/tree/0.1.0"
+            },
+            "time": "2024-06-18T09:53:39+00:00"
+        },
+        {
+            "name": "spryker/store-context-gui",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/store-context-gui.git",
+                "reference": "1dacbec8ac2e50b7cde5c5b4f6837c8abe7a1429"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/store-context-gui/zipball/1dacbec8ac2e50b7cde5c5b4f6837c8abe7a1429",
+                "reference": "1dacbec8ac2e50b7cde5c5b4f6837c8abe7a1429",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "spryker/gui": "^3.45.0",
+                "spryker/kernel": "^3.71.0",
+                "spryker/store-context": "^1.0.0",
+                "spryker/store-gui-extension": "^1.0.0",
+                "spryker/symfony": "^3.11.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
             "description": "StoreContextGui module",
             "support": {
-                "source": "https://github.com/spryker/store-context-gui/tree/1.0.0"
+                "source": "https://github.com/spryker/store-context-gui/tree/2.0.0"
             },
-            "time": "2023-03-31T19:36:11+00:00"
+            "time": "2024-06-18T09:53:39+00:00"
+        },
+        {
+            "name": "spryker/store-context-storage",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/store-context-storage.git",
+                "reference": "239c461ae03c02bc8753387c2d4f8156f29cc257"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/store-context-storage/zipball/239c461ae03c02bc8753387c2d4f8156f29cc257",
+                "reference": "239c461ae03c02bc8753387c2d4f8156f29cc257",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/store-extension": "^1.0.0",
+                "spryker/store-storage": "^1.0.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/store": "*",
+                "spryker/store-context": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "StoreContextStorage module",
+            "support": {
+                "source": "https://github.com/spryker/store-context-storage/tree/1.0.0"
+            },
+            "time": "2024-06-18T09:53:39+00:00"
         },
         {
             "name": "spryker/store-data-import",
@@ -80235,12 +80386,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "488a121b1af033257c68fda18243088dd1700a38"
+                "reference": "4dcb65cec8b6f05291fc469ca6f3be98a2e5833f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/488a121b1af033257c68fda18243088dd1700a38",
-                "reference": "488a121b1af033257c68fda18243088dd1700a38",
+                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/4dcb65cec8b6f05291fc469ca6f3be98a2e5833f",
+                "reference": "4dcb65cec8b6f05291fc469ca6f3be98a2e5833f",
                 "shasum": ""
             },
             "default-branch": true,
@@ -80254,7 +80405,7 @@
                 "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
                 "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
             },
-            "time": "2024-06-15T15:28:17+00:00"
+            "time": "2024-06-18T09:37:34+00:00"
         },
         {
             "name": "spryker/silex",
