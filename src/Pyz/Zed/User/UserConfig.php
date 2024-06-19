@@ -79,6 +79,14 @@ class UserConfig extends SprykerUserConfig
                 'isAgent' => 1,
                 'localeName' => 'en_US',
             ],
+            [
+                'firstName' => 'Agent',
+                'lastName' => 'Merchant',
+                'password' => 'change123',
+                'username' => 'agent-merchant@spryker.com',
+                'isMerchantAgent' => 1,
+                'localeName' => 'en_US',
+            ],
         ];
     }
 }

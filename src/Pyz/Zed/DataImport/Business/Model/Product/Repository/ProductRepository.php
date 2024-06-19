@@ -14,7 +14,7 @@ use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
-use Propel\Runtime\Collection\ArrayCollection;
+use Propel\Runtime\Collection\Collection;
 use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 
 class ProductRepository implements ProductRepositoryInterface
@@ -86,10 +86,12 @@ class ProductRepository implements ProductRepositoryInterface
      */
     public function getSkuProductAbstractList(): array
     {
-        return SpyProductAbstractQuery::create()
+        /** @var \Propel\Runtime\Collection\ArrayCollection $productAbstractCollection */
+        $productAbstractCollection = SpyProductAbstractQuery::create()
             ->select([SpyProductAbstractTableMap::COL_SKU])
-            ->find()
-            ->toArray();
+            ->find();
+
+        return $productAbstractCollection->toArray();
     }
 
     /**
@@ -97,18 +99,20 @@ class ProductRepository implements ProductRepositoryInterface
      */
     public function getSkuProductConcreteList(): array
     {
-        return SpyProductQuery::create()
+        /** @var \Propel\Runtime\Collection\ArrayCollection $productCollection */
+        $productCollection = SpyProductQuery::create()
             ->select([SpyProductTableMap::COL_SKU])
-            ->find()
-            ->toArray();
+            ->find();
+
+        return $productCollection->toArray();
     }
 
     /**
      * @param \Generated\Shared\Transfer\PaginationTransfer $paginationTransfer
      *
-     * @return \Propel\Runtime\Collection\ArrayCollection
+     * @return \Propel\Runtime\Collection\Collection
      */
-    public function getProductConcreteAttributesCollection(PaginationTransfer $paginationTransfer): ArrayCollection
+    public function getProductConcreteAttributesCollection(PaginationTransfer $paginationTransfer): Collection
     {
         $productQuery = SpyProductQuery::create()
             ->joinWithSpyProductAbstract()

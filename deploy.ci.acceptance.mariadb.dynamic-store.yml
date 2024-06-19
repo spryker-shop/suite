@@ -47,11 +47,13 @@ groups:
             yves_eu:
                 application: yves
                 endpoints:
+                    date-time-configurator-example.spryker.local:
+                        entry-point: Configurator
                     yves.eu.spryker.local:
                         region: EU
                         services:
                             session:
-                                namespace: 1
+                                namespace: 2
             glue_eu:
                 application: glue
                 endpoints:
@@ -95,6 +97,9 @@ services:
         root:
             username: 'root'
             password: 'secret'
+        endpoints:
+            localhost:3306:
+                protocol: tcp
     broker:
         engine: rabbitmq
         version: '3.9'
@@ -110,7 +115,7 @@ services:
         version: '7.10'
     scheduler:
         engine: jenkins
-        version: '2.401'
+        version: '2.442'
         csrf-protection-enabled: true
     mail_catcher:
         engine: mailhog

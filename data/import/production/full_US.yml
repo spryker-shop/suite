@@ -15,6 +15,8 @@ actions:
       source: data/import/common/US/locale_store.csv
     - data_entity: default-locale-store
       source: data/import/common/US/default_locale_store.csv
+    - data_entity: context-store
+      source: data/import/common/US/store_context.csv
     - data_entity: order-source
       source: data/import/common/common/order_source.csv
     - data_entity: customer
@@ -291,6 +293,12 @@ actions:
       source: data/import/common/common/marketplace/merchant_product_approval_status_default.csv
     - data_entity: product-offer-shipment-type
       source: data/import/common/common/product_offer_shipment_type.csv
+    - data_entity: merchant-commission-group
+      source: data/import/common/common/marketplace/merchant_commission_group.csv
+    - data_entity: merchant-commission
+      source: data/import/common/common/marketplace/merchant_commission.csv
+    - data_entity: merchant-commission-merchant
+      source: data/import/common/common/marketplace/merchant_commission_merchant.csv
     # Store relation
     - data_entity: merchant-store
       source: data/import/common/US/merchant_store.csv
@@ -302,6 +310,10 @@ actions:
       source: data/import/common/common/marketplace/product_stock.csv
     - data_entity: product-offer-stock
       source: data/import/common/common/marketplace/product_offer_stock.csv
+    - data_entity: merchant-commission-amount
+      source: data/import/common/US/marketplace/merchant_commission_amount.csv
+    - data_entity: merchant-commission-store
+      source: data/import/common/US/marketplace/merchant_commission_store.csv
 
     #9. Click&Collect import
     - data_entity: service-point

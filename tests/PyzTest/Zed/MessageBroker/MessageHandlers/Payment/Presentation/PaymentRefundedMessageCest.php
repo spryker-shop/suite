@@ -32,14 +32,14 @@ class PaymentRefundedMessageCest
     /**
      * @var string
      */
-    public const FINAL_ITEM_STATE = 'payment refunded';
+    public const FINAL_ITEM_STATE = 'payment refund succeeded';
 
     /**
      * @param \PyzTest\Zed\MessageBroker\PaymentPresentationTester $I
      *
      * @return void
      */
-    public function testPaymentReservationCanceledMessageIsSuccessfullyHandled(PaymentPresentationTester $I): void
+    public function testPaymentCanceledMessageIsSuccessfullyHandled(PaymentPresentationTester $I): void
     {
         // Arrange
         $salesOrderEntity = $I->haveSalesOrder(static::INITIAL_ITEM_STATE);

@@ -369,6 +369,20 @@
                 <controller>list-merchant-relationship</controller>
                 <action>index</action>
             </merchant-relationship>
+            <merchant-relation-request-gui>
+                <label>navigation.merchant_relation_requests</label>
+                <title>navigation.merchant_relation_requests</title>
+                <bundle>merchant-relation-request-gui</bundle>
+                <controller>list</controller>
+                <action>index</action>
+            </merchant-relation-request-gui>
+            <merchant-commission-gui>
+                <label>Merchant Commissions</label>
+                <title>Merchant Commissions</title>
+                <bundle>merchant-commission-gui</bundle>
+                <controller>list</controller>
+                <action>index</action>
+            </merchant-commission-gui>
             <product-offer-gui>
                 <label>Offers</label>
                 <title>Offers</title>
@@ -707,6 +721,14 @@
         <controller>profile</controller>
         <action>index</action>
     </merchant-portal-profile>
+    <product-merchant-portal-gui>
+        <label>Products</label>
+        <title>Products</title>
+        <icon>products</icon>
+        <bundle>product-merchant-portal-gui</bundle>
+        <controller>products</controller>
+        <action>index</action>
+    </product-merchant-portal-gui>
     <product-offer-merchant-portal-gui>
         <label>Offers</label>
         <title>Offers</title>
@@ -733,12 +755,33 @@
         <controller>orders</controller>
         <action>index</action>
     </sales-merchant-portal-gui>
-    <product-merchant-portal-gui>
-        <label>Products</label>
-        <title>Products</title>
-        <icon>offers</icon>
-        <bundle>product-merchant-portal-gui</bundle>
-        <controller>products</controller>
+    <b2b-contracts>
+        <label>B2B Contracts</label>
+        <title>B2B Contracts</title>
+        <icon>contracts</icon>
+        <pages>
+            <merchant-relationship-merchant-portal-gui>
+                <label>Merchant Relations</label>
+                <title>Merchant Relations</title>
+                <bundle>merchant-relationship-merchant-portal-gui</bundle>
+                <controller>merchant-relationship</controller>
+                <action>index</action>
+            </merchant-relationship-merchant-portal-gui>
+            <merchant-relation-request-merchant-portal-gui>
+                <label>navigation.merchant_relation_requests</label>
+                <title>navigation.merchant_relation_requests</title>
+                <bundle>merchant-relation-request-merchant-portal-gui</bundle>
+                <controller>merchant-relation-requests</controller>
+                <action>index</action>
+            </merchant-relation-request-merchant-portal-gui>
+        </pages>
+    </b2b-contracts>
+    <agent-dashboard-merchant-portal-gui>
+        <label>Merchant Users</label>
+        <title>Merchant Users</title>
+        <icon>user-group</icon>
+        <bundle>agent-dashboard-merchant-portal-gui</bundle>
+        <controller>merchant-users</controller>
         <action>index</action>
-    </product-merchant-portal-gui>
+    </agent-dashboard-merchant-portal-gui>
 </config>

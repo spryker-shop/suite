@@ -1,0 +1,105 @@
+{
+    "data": {
+        "name": "Configurable Product Name From JSON",
+        "image": "https://images.icecat.biz/img/gallery/30400157_1167.jpg",
+        "logo": "./logo.svg"
+    },
+    "configuration": [
+        {
+            "id": "option-1",
+            "label": "Option One",
+            "tooltip": "Tooltip for option one",
+            "data": [
+                {
+                    "value": "1",
+                    "title": "Option title 1",
+                    "price": 38950
+                },
+                {
+                    "value": "2",
+                    "title": "Option title 2",
+                    "price": 51700,
+                    "availableQuantity": [
+                        {
+                            "condition": {
+                                "store_name": "DE"
+                            },
+                            "quantity": 5
+                        }
+                    ]
+                },
+                {
+                    "value": "3",
+                    "title": "Option title 3",
+                    "price": 60700
+                }
+            ]
+        },
+        {
+            "id": "option-2",
+            "label": "Option Two",
+            "data": [
+                {
+                    "value": "1",
+                    "title": "Option Two title 1",
+                    "price": 16700
+                },
+                {
+                    "value": "2",
+                    "title": "Option Two title 2",
+                    "price": 21000,
+                    "availableQuantity": 0
+                },
+                {
+                    "value": "3",
+                    "title": "Option Two title 3",
+                    "price": 24900
+                },
+                {
+                    "value": "4",
+                    "title": "Option Two title 4",
+                    "price": 27500
+                },
+                {
+                    "value": "5",
+                    "title": "Option Two title 5",
+                    "price": 47300,
+                    "disabled": {
+                        "option-1": {
+                            "condition": ["1", "3"],
+                            "tooltip": "This option is not compatible with the selected Option One"
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "volumePrices": [
+        {
+            "condition": {
+                "option-1": "3",
+                "option-2": "4"
+            },
+            "prices": {
+                "GROSS_MODE": [
+                    {
+                        "quantity": 5,
+                        "net_price": 58500,
+                        "gross_price": 59000
+                    }
+                ],
+                "NET_MODE": [
+                    {
+                        "quantity": 5,
+                        "net_price": 53500,
+                        "gross_price": 54000
+                    }
+                ]
+            }
+        }
+    ],
+    "defaults": {
+        "option-1": "1",
+        "option-2": "1"
+    }
+}

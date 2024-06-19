@@ -1,34 +1,31 @@
 <?php
 
+use Generated\Shared\Transfer\AddPaymentMethodTransfer;
 use Generated\Shared\Transfer\AddReviewsTransfer;
 use Generated\Shared\Transfer\AssetAddedTransfer;
 use Generated\Shared\Transfer\AssetDeletedTransfer;
 use Generated\Shared\Transfer\AssetUpdatedTransfer;
+use Generated\Shared\Transfer\CancelPaymentTransfer;
+use Generated\Shared\Transfer\CapturePaymentTransfer;
 use Generated\Shared\Transfer\ConfigureTaxAppTransfer;
+use Generated\Shared\Transfer\DeletePaymentMethodTransfer;
 use Generated\Shared\Transfer\DeleteTaxAppTransfer;
-use Generated\Shared\Transfer\ExportMerchantsTransfer;
 use Generated\Shared\Transfer\InitializeProductExportTransfer;
-use Generated\Shared\Transfer\MerchantCreatedTransfer;
-use Generated\Shared\Transfer\MerchantExportedTransfer;
-use Generated\Shared\Transfer\MerchantUpdatedTransfer;
 use Generated\Shared\Transfer\OrderStatusChangedTransfer;
-use Generated\Shared\Transfer\PaymentCancelReservationFailedTransfer;
-use Generated\Shared\Transfer\PaymentCancelReservationRequestedTransfer;
-use Generated\Shared\Transfer\PaymentConfirmationFailedTransfer;
-use Generated\Shared\Transfer\PaymentConfirmationRequestedTransfer;
-use Generated\Shared\Transfer\PaymentConfirmedTransfer;
-use Generated\Shared\Transfer\PaymentMethodAddedTransfer;
-use Generated\Shared\Transfer\PaymentMethodDeletedTransfer;
-use Generated\Shared\Transfer\PaymentPreauthorizationFailedTransfer;
-use Generated\Shared\Transfer\PaymentPreauthorizedTransfer;
+use Generated\Shared\Transfer\PaymentAuthorizationFailedTransfer;
+use Generated\Shared\Transfer\PaymentAuthorizedTransfer;
+use Generated\Shared\Transfer\PaymentCanceledTransfer;
+use Generated\Shared\Transfer\PaymentCancellationFailedTransfer;
+use Generated\Shared\Transfer\PaymentCapturedTransfer;
+use Generated\Shared\Transfer\PaymentCaptureFailedTransfer;
+use Generated\Shared\Transfer\PaymentCreatedTransfer;
 use Generated\Shared\Transfer\PaymentRefundedTransfer;
 use Generated\Shared\Transfer\PaymentRefundFailedTransfer;
-use Generated\Shared\Transfer\PaymentRefundRequestedTransfer;
-use Generated\Shared\Transfer\PaymentReservationCanceledTransfer;
 use Generated\Shared\Transfer\ProductCreatedTransfer;
 use Generated\Shared\Transfer\ProductDeletedTransfer;
 use Generated\Shared\Transfer\ProductExportedTransfer;
 use Generated\Shared\Transfer\ProductUpdatedTransfer;
+use Generated\Shared\Transfer\RefundPaymentTransfer;
 use Generated\Shared\Transfer\SearchEndpointAvailableTransfer;
 use Generated\Shared\Transfer\SearchEndpointRemovedTransfer;
 use Generated\Shared\Transfer\SubmitPaymentTaxInvoiceTransfer;
@@ -42,6 +39,7 @@ use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Agent\AgentConstants;
+use Spryker\Shared\AgentSecurityBlockerMerchantPortal\AgentSecurityBlockerMerchantPortalConstants;
 use Spryker\Shared\AppCatalogGui\AppCatalogGuiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
@@ -68,6 +66,8 @@ use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\MerchantPortalApplication\MerchantPortalConstants;
+use Spryker\Shared\MerchantRelationRequest\MerchantRelationRequestConstants;
+use Spryker\Shared\MerchantRelationship\MerchantRelationshipConstants;
 use Spryker\Shared\MessageBroker\MessageBrokerConstants;
 use Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
@@ -318,6 +318,12 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
     [
         'bundle' => 'api',
         'controller' => 'rest',
+        'action' => '*',
+        'type' => 'allow',
+    ],
+    [
+        'bundle' => 'agent-security-merchant-portal-gui',
+        'controller' => '*',
         'action' => '*',
         'type' => 'allow',
     ],
@@ -630,6 +636,8 @@ $config[ApplicationConstants::BASE_URL_YVES]
     = $config[CustomerConstants::BASE_URL_YVES]
     = $config[ProductManagementConstants::BASE_URL_YVES]
     = $config[NewsletterConstants::BASE_URL_YVES]
+    = $config[MerchantRelationshipConstants::BASE_URL_YVES]
+    = $config[MerchantRelationRequestConstants::BASE_URL_YVES]
     = sprintf(
         'https://%s%s',
         $yvesHost,
@@ -769,6 +777,11 @@ $config[SecurityBlockerMerchantPortalConstants::MERCHANT_PORTAL_USER_BLOCK_FOR_S
 $config[SecurityBlockerMerchantPortalConstants::MERCHANT_PORTAL_USER_BLOCKING_TTL] = 900;
 $config[SecurityBlockerMerchantPortalConstants::MERCHANT_PORTAL_USER_BLOCKING_NUMBER_OF_ATTEMPTS] = 9;
 
+// >>> Security Blocker MerchantPortal agent
+$config[AgentSecurityBlockerMerchantPortalConstants::AGENT_MERCHANT_PORTAL_BLOCK_FOR_SECONDS] = 360;
+$config[AgentSecurityBlockerMerchantPortalConstants::AGENT_MERCHANT_PORTAL_BLOCKING_TTL] = 900;
+$config[AgentSecurityBlockerMerchantPortalConstants::AGENT_MERCHANT_PORTAL_BLOCKING_NUMBER_OF_ATTEMPTS] = 9;
+
 // >>> Product Label
 $config[ProductLabelConstants::PRODUCT_LABEL_TO_DE_ASSIGN_CHUNK_SIZE] = 1000;
 
@@ -869,19 +882,19 @@ $config[SearchHttpConstants::TENANT_IDENTIFIER]
 
 $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] =
 $config[MessageBrokerAwsConstants::MESSAGE_TO_CHANNEL_MAP] = [
-    PaymentMethodAddedTransfer::class => 'payment-method-commands',
-    PaymentMethodDeletedTransfer::class => 'payment-method-commands',
-    PaymentCancelReservationRequestedTransfer::class => 'payment-commands',
-    PaymentConfirmationRequestedTransfer::class => 'payment-commands',
-    PaymentRefundRequestedTransfer::class => 'payment-commands',
-    PaymentPreauthorizedTransfer::class => 'payment-events',
-    PaymentPreauthorizationFailedTransfer::class => 'payment-events',
-    PaymentConfirmedTransfer::class => 'payment-events',
-    PaymentConfirmationFailedTransfer::class => 'payment-events',
+    AddPaymentMethodTransfer::class => 'payment-method-commands',
+    DeletePaymentMethodTransfer::class => 'payment-method-commands',
+    CancelPaymentTransfer::class => 'payment-commands',
+    CapturePaymentTransfer::class => 'payment-commands',
+    RefundPaymentTransfer::class => 'payment-commands',
+    PaymentAuthorizedTransfer::class => 'payment-events',
+    PaymentAuthorizationFailedTransfer::class => 'payment-events',
+    PaymentCapturedTransfer::class => 'payment-events',
+    PaymentCaptureFailedTransfer::class => 'payment-events',
     PaymentRefundedTransfer::class => 'payment-events',
     PaymentRefundFailedTransfer::class => 'payment-events',
-    PaymentReservationCanceledTransfer::class => 'payment-events',
-    PaymentCancelReservationFailedTransfer::class => 'payment-events',
+    PaymentCanceledTransfer::class => 'payment-events',
+    PaymentCancellationFailedTransfer::class => 'payment-events',
     AssetAddedTransfer::class => 'asset-commands',
     AssetUpdatedTransfer::class => 'asset-commands',
     AssetDeletedTransfer::class => 'asset-commands',
@@ -894,13 +907,10 @@ $config[MessageBrokerAwsConstants::MESSAGE_TO_CHANNEL_MAP] = [
     SearchEndpointRemovedTransfer::class => 'search-commands',
     AddReviewsTransfer::class => 'product-review-commands',
     OrderStatusChangedTransfer::class => 'order-events',
-    ExportMerchantsTransfer::class => 'merchant-commands',
-    MerchantExportedTransfer::class => 'merchant-events',
-    MerchantCreatedTransfer::class => 'merchant-events',
-    MerchantUpdatedTransfer::class => 'merchant-events',
     ConfigureTaxAppTransfer::class => 'tax-commands',
     DeleteTaxAppTransfer::class => 'tax-commands',
     SubmitPaymentTaxInvoiceTransfer::class => 'payment-tax-invoice-commands',
+    PaymentCreatedTransfer::class => 'payment-events',
 ];
 
 $config[MessageBrokerConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
@@ -910,7 +920,6 @@ $config[MessageBrokerConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'product-review-commands' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
     'product-commands' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
     'search-commands' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
-    'merchant-commands' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
     'tax-commands' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
 ];
 
@@ -918,7 +927,6 @@ $config[MessageBrokerConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
     'payment-commands' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
     'product-events' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
     'order-events' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
-    'merchant-events' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
     'payment-tax-invoice-commands' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
 ];
 
@@ -930,3 +938,5 @@ $config[MessageBrokerConstants::IS_ENABLED] = (
     $config[MessageBrokerAwsConstants::HTTP_CHANNEL_SENDER_BASE_URL]
     && $config[MessageBrokerAwsConstants::HTTP_CHANNEL_RECEIVER_BASE_URL]
 );
+
+$config[ProductConstants::PUBLISHING_TO_MESSAGE_BROKER_ENABLED] = $config[MessageBrokerConstants::IS_ENABLED];

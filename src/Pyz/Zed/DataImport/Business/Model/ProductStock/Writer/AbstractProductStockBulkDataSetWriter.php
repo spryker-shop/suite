@@ -232,7 +232,8 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
      */
     protected function getStockProductBySkusAndStore(array $skus, StoreTransfer $storeTransfer): array
     {
-        $stockProducts = SpyStockProductQuery::create()
+        /** @var \Propel\Runtime\Collection\ArrayCollection $stockProductCollection */
+        $stockProductCollection = SpyStockProductQuery::create()
             ->useSpyProductQuery()
             ->filterBySku_In($skus)
             ->endUse()
@@ -243,10 +244,9 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
                 SpyStockProductTableMap::COL_IS_NEVER_OUT_OF_STOCK,
                 SpyStockTableMap::COL_NAME,
             ])
-            ->find()
-            ->toArray();
+            ->find();
 
-        return $this->mapStockProducts($stockProducts, $storeTransfer);
+        return $this->mapStockProducts($stockProductCollection->toArray(), $storeTransfer);
     }
 
     /**
@@ -282,16 +282,16 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
      */
     protected function getReservationsBySkus(array $skus): array
     {
-        $reservations = SpyOmsProductReservationQuery::create()
+        /** @var \Propel\Runtime\Collection\ArrayCollection $omsProductReservationCollection */
+        $omsProductReservationCollection = SpyOmsProductReservationQuery::create()
             ->filterBySku_In($skus)
             ->select([
                 SpyOmsProductReservationTableMap::COL_SKU,
                 SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY,
             ])
-            ->find()
-            ->toArray();
+            ->find();
         $result = [];
-        foreach ($reservations as $reservation) {
+        foreach ($omsProductReservationCollection->toArray() as $reservation) {
             $result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] = (new Decimal($result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] ?? '0'))->add($reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY]);
         }
 
@@ -305,13 +305,14 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
      */
     protected function mapConcreteSkuToAbstractSku(array $skus): array
     {
-        $abstractProducts = SpyProductAbstractQuery::create()
+        /** @var \Propel\Runtime\Collection\ArrayCollection $abstractProductCollection */
+        $abstractProductCollection = SpyProductAbstractQuery::create()
             ->useSpyProductQuery()
             ->filterBySku_In($skus)
             ->endUse()
             ->select([SpyProductTableMap::COL_SKU, SpyProductAbstractTableMap::COL_SKU])
-            ->find()
-            ->toArray();
+            ->find();
+        $abstractProducts = $abstractProductCollection->toArray();
 
         return array_combine(
             array_column($abstractProducts, SpyProductTableMap::COL_SKU),
