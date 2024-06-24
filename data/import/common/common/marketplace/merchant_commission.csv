@@ -1,6 +1,3 @@
 key,name,description,valid_from,valid_to,is_active,amount,calculator_type_plugin,merchant_commission_group_key,priority,item_condition,order_condition
-mc1,Merchant Commission 1,,2024-01-01,2029-06-01,1,5,percentage,primary,1,item-price >= '500' AND category IS IN 'computer',"price-mode = ""GROSS_MODE"""
-mc2,Merchant Commission 2,,2024-01-01,2029-06-01,1,10,percentage,primary,2,item-price >= '200' AND item-price < '500' AND category IS IN 'computer',"price-mode = ""GROSS_MODE"""
-mc3,Merchant Commission 3,,2024-01-01,2029-06-01,1,15,percentage,primary,3,item-price >= '0' AND item-price < '200' AND category IS IN 'computer',"price-mode = ""GROSS_MODE"""
-mc4,Merchant Commission 4,,2024-01-01,2029-06-01,1,10,percentage,primary,4,,"price-mode = ""GROSS_MODE"""
-mc5,Merchant Commission 5,,2024-01-01,2029-06-01,1,,fixed,secondary,4,,"price-mode = ""GROSS_MODE"""
+mc1,2% for all,Apply global percentage marketplace commission for all merchants,2024-01-01,2029-06-01,1,200,percentage,primary,1,,
+mc2,50 cents for Video King,Apply fixed marketplace commission for Video King merchant,2024-01-01,2029-06-01,1,,fixed,secondary,2,,
