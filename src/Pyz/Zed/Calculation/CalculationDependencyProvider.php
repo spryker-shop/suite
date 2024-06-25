@@ -36,6 +36,7 @@ use Spryker\Zed\Payment\Communication\Plugin\Calculation\PaymentCalculatorPlugin
 use Spryker\Zed\PersistentCart\Communication\Plugin\Calculation\QuoteSaveQuotePostRecalculateStrategyPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Calculation\CalculateBundlePricesPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Calculation\ProductOptionTaxRateCalculatorPlugin;
+use Spryker\Zed\SalesMerchantCommission\Communication\Plugin\Calculation\MerchantCommissionCalculatorPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Calculation\AddSalesOrderThresholdExpenseCalculatorPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Calculation\RemoveSalesOrderThresholdExpenseCalculatorPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\Calculation\FilterObsoleteShipmentExpensesCalculatorPlugin;
@@ -272,6 +273,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 
             new GrandTotalCalculatorPlugin(),
             new NetTotalCalculatorPlugin(),
+            new MerchantCommissionCalculatorPlugin(),
         ];
     }
 

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd"
+>
+
+    <process name="DummyMerchantCommission">
+        <states>
+            <state name="commission calculated" display="oms.state.paid"/>
+        </states>
+
+        <transitions>
+            <transition happy="true">
+                <source>paid</source>
+                <target>commission calculated</target>
+                <event>commission-calculate</event>
+            </transition>
+
+            <transition happy="true">
+                <source>commission calculated</source>
+                <target>tax pending</target>
+                <target>commission-calculated</target>
+            </transition>
+        </transitions>
+
+        <events>
+            <event name="commission-calculate" onEnter="true" command="MerchantCommission/Calculate"/>
+            <event name="commission-calculated" onEnter="true"/>
+        </events>
+    </process>
+
+</statemachine>

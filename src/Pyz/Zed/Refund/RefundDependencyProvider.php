@@ -9,6 +9,7 @@ namespace Pyz\Zed\Refund;
 
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Refund\MerchantOrderTotalsRefundPostSavePlugin;
 use Spryker\Zed\Refund\RefundDependencyProvider as SprykerRefundDependencyProvider;
+use Spryker\Zed\SalesMerchantCommission\Communication\Plugin\Refund\MerchantCommissionRefundPostSavePlugin;
 
 class RefundDependencyProvider extends SprykerRefundDependencyProvider
 {
@@ -19,6 +20,7 @@ class RefundDependencyProvider extends SprykerRefundDependencyProvider
     {
         return [
             new MerchantOrderTotalsRefundPostSavePlugin(),
+            new MerchantCommissionRefundPostSavePlugin(),
         ];
     }
 }

@@ -13,6 +13,7 @@
             <process>DummyPicking</process>
             <process>CreateGiftCard</process>
             <process>WarehouseAllocation</process>
+            <process>DummyMerchantCommission</process>
         </subprocesses>
 
         <states>
@@ -29,6 +30,7 @@
             <state name="paid" reserved="true" display="oms.state.paid">
                 <flag>cancellable</flag>
             </state>
+            <state name="tax pending" reserved="true" display="oms.state.tax-pending"/>
             <state name="tax invoice submitted" reserved="true" display="oms.state.paid"/>
             <state name="waiting" reserved="true" display="oms.state.waiting"/>
             <state name="exported" reserved="true" display="oms.state.exported"/>
@@ -71,7 +73,7 @@
             </transition>
 
             <transition happy="true">
-                <source>paid</source>
+                <source>tax pending</source>
                 <target>tax invoice submitted</target>
                 <event>submit tax invoice</event>
             </transition>
@@ -178,5 +180,6 @@
     <process name="DummyInvoice" file="DummySubprocess/DummyInvoice01.xml"/>
     <process name="CreateGiftCard" file="GiftCardSubprocess/CreateGiftCard01.xml"/>
     <process name="WarehouseAllocation" file="WarehouseAllocationSubprocess/WarehouseAllocation01.xml"/>
+    <process name="DummyMerchantCommission" file="DummySubprocess/DummyMerchantCommission01.xml"/>
 
 </statemachine>

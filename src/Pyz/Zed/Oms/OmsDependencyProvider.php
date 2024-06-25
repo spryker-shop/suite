@@ -41,6 +41,7 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Reservation\LeadProduc
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Reservation\LeadProductReservationPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\Refund\Communication\Plugin\Oms\RefundCommandPlugin;
 use Spryker\Zed\SalesInvoice\Communication\Plugin\Oms\GenerateOrderInvoiceCommandPlugin;
+use Spryker\Zed\SalesMerchantCommission\Communication\Plugin\Oms\Command\SalesMerchantCommissionCalculationCommandByOrderPlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendCancelPaymentMessageCommandPlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendCapturePaymentMessageCommandPlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendRefundPaymentMessageCommandPlugin;
@@ -139,6 +140,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new SendCancelPaymentMessageCommandPlugin(), 'Payment/Cancel');
             $commandCollection->add(new GeneratePickingListsCommandByOrderPlugin(), 'PickingList/GeneratePickingLists');
             $commandCollection->add(new SalesOrderWarehouseAllocationCommandPlugin(), 'WarehouseAllocation/WarehouseAllocate');
+            $commandCollection->add(new SalesMerchantCommissionCalculationCommandByOrderPlugin(), 'MerchantCommission/Calculate');
 
             // ----- Payone
             $commandCollection->add(new CancelCommandPlugin(), 'Payone/Cancel');
