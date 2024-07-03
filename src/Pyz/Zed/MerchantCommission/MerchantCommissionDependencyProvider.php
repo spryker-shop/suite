@@ -7,11 +7,14 @@
 
 namespace Pyz\Zed\MerchantCommission;
 
+use Spryker\Zed\CategoryMerchantCommissionConnector\Communication\Plugin\MerchantCommission\CategoryMerchantCommissionItemCollectorRulePlugin;
 use Spryker\Zed\MerchantCommission\Communication\Plugin\MerchantCommission\FixedMerchantCommissionCalculatorPlugin;
 use Spryker\Zed\MerchantCommission\Communication\Plugin\MerchantCommission\PercentageMerchantCommissionCalculatorPlugin;
 use Spryker\Zed\MerchantCommission\Communication\Plugin\RuleEngine\ItemSkuCollectorRulePlugin;
 use Spryker\Zed\MerchantCommission\Communication\Plugin\RuleEngine\PriceModeDecisionRulePlugin;
 use Spryker\Zed\MerchantCommission\MerchantCommissionDependencyProvider as SprykerMerchantCommissionDependencyProvider;
+use Spryker\Zed\PriceProductMerchantCommissionConnector\Communication\Plugin\MerchantCommission\PriceProductMerchantCommissionItemCollectorRulePlugin;
+use Spryker\Zed\ProductMerchantCommissionConnector\Communication\Plugin\MerchantCommission\ProductAttributeMerchantCommissionItemCollectorRulePlugin;
 
 class MerchantCommissionDependencyProvider extends SprykerMerchantCommissionDependencyProvider
 {
@@ -33,6 +36,9 @@ class MerchantCommissionDependencyProvider extends SprykerMerchantCommissionDepe
     {
         return [
             new ItemSkuCollectorRulePlugin(),
+            new ProductAttributeMerchantCommissionItemCollectorRulePlugin(),
+            new PriceProductMerchantCommissionItemCollectorRulePlugin(),
+            new CategoryMerchantCommissionItemCollectorRulePlugin(),
         ];
     }
 
