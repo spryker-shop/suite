@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "066f2dac1b40af8b08d167e520bc19d2",
+    "content-hash": "c1b33242a6802cc19c038221711908aa",
     "packages": [
         {
             "name": "async-aws/core",
@@ -22000,6 +22000,59 @@
             "time": "2024-05-06T12:15:28+00:00"
         },
         {
+            "name": "spryker/category-merchant-commission-connector",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/category-merchant-commission-connector.git",
+                "reference": "828529d3ccd6986b9eea3996b7d7fca4f86f3eb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/category-merchant-commission-connector/zipball/828529d3ccd6986b9eea3996b7d7fca4f86f3eb8",
+                "reference": "828529d3ccd6986b9eea3996b7d7fca4f86f3eb8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "spryker/category": "^5.3.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant-commission": "^0.1.0",
+                "spryker/product": "^6.42.0",
+                "spryker/product-category": "^4.13.0",
+                "spryker/rule-engine": "^0.1.0",
+                "spryker/rule-engine-extension": "^0.1.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/propel": "*",
+                "spryker/store": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CategoryMerchantCommissionConnector module",
+            "support": {
+                "source": "https://github.com/spryker/category-merchant-commission-connector/tree/0.1.0"
+            },
+            "time": "2024-07-03T11:11:29+00:00"
+        },
+        {
             "name": "spryker/category-navigation-connector",
             "version": "1.0.3",
             "source": {
@@ -36748,16 +36801,16 @@
         },
         {
             "name": "spryker/merchant-commission",
-            "version": "0.1.3",
+            "version": "0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-commission.git",
-                "reference": "5da9b3b0c44f8b612bf41d15d4f23600428a28e9"
+                "reference": "8134114349f92d725a1d6095bebd4144546b3fbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-commission/zipball/5da9b3b0c44f8b612bf41d15d4f23600428a28e9",
-                "reference": "5da9b3b0c44f8b612bf41d15d4f23600428a28e9",
+                "url": "https://api.github.com/repos/spryker/merchant-commission/zipball/8134114349f92d725a1d6095bebd4144546b3fbe",
+                "reference": "8134114349f92d725a1d6095bebd4144546b3fbe",
                 "shasum": ""
             },
             "require": {
@@ -36798,9 +36851,9 @@
             ],
             "description": "MerchantCommission module",
             "support": {
-                "source": "https://github.com/spryker/merchant-commission/tree/0.1.3"
+                "source": "https://github.com/spryker/merchant-commission/tree/0.1.4"
             },
-            "time": "2024-06-24T13:52:12+00:00"
+            "time": "2024-07-03T11:11:29+00:00"
         },
         {
             "name": "spryker/merchant-commission-data-export",
@@ -36947,16 +37000,16 @@
         },
         {
             "name": "spryker/merchant-commission-gui",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-commission-gui.git",
-                "reference": "b8fa43f65304c925b1d09ac178570e014c4441bc"
+                "reference": "202a7543fea12d428b037786093a08b17b9b668a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-commission-gui/zipball/b8fa43f65304c925b1d09ac178570e014c4441bc",
-                "reference": "b8fa43f65304c925b1d09ac178570e014c4441bc",
+                "url": "https://api.github.com/repos/spryker/merchant-commission-gui/zipball/202a7543fea12d428b037786093a08b17b9b668a",
+                "reference": "202a7543fea12d428b037786093a08b17b9b668a",
                 "shasum": ""
             },
             "require": {
@@ -36994,9 +37047,9 @@
             ],
             "description": "MerchantCommissionGui module",
             "support": {
-                "source": "https://github.com/spryker/merchant-commission-gui/tree/0.1.1"
+                "source": "https://github.com/spryker/merchant-commission-gui/tree/0.1.2"
             },
-            "time": "2024-06-24T13:52:12+00:00"
+            "time": "2024-07-03T11:11:29+00:00"
         },
         {
             "name": "spryker/merchant-data-import",
@@ -45967,6 +46020,54 @@
             "time": "2022-08-17T13:59:25+00:00"
         },
         {
+            "name": "spryker/price-product-merchant-commission-connector",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/price-product-merchant-commission-connector.git",
+                "reference": "fee274a9e5f8d80dfd4bcb5dd36818e9999afc7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/price-product-merchant-commission-connector/zipball/fee274a9e5f8d80dfd4bcb5dd36818e9999afc7c",
+                "reference": "fee274a9e5f8d80dfd4bcb5dd36818e9999afc7c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant-commission": "^0.1.0",
+                "spryker/money": "^2.0.0",
+                "spryker/rule-engine": "^0.1.0",
+                "spryker/rule-engine-extension": "^0.1.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PriceProductMerchantCommissionConnector module",
+            "support": {
+                "source": "https://github.com/spryker/price-product-merchant-commission-connector/tree/0.1.0"
+            },
+            "time": "2024-07-03T11:11:29+00:00"
+        },
+        {
             "name": "spryker/price-product-merchant-relationship",
             "version": "1.12.0",
             "source": {
@@ -47174,16 +47275,16 @@
         },
         {
             "name": "spryker/product",
-            "version": "6.41.0",
+            "version": "6.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product.git",
-                "reference": "28745eed261a7e52da2f8022a74b50a0ab519fce"
+                "reference": "a398be4f37f1cf4e924b345e92054f67ea34159f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product/zipball/28745eed261a7e52da2f8022a74b50a0ab519fce",
-                "reference": "28745eed261a7e52da2f8022a74b50a0ab519fce",
+                "url": "https://api.github.com/repos/spryker/product/zipball/a398be4f37f1cf4e924b345e92054f67ea34159f",
+                "reference": "a398be4f37f1cf4e924b345e92054f67ea34159f",
                 "shasum": ""
             },
             "require": {
@@ -47211,6 +47312,7 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
+                "spryker/product-attribute": "*",
                 "spryker/product-image": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
@@ -47233,9 +47335,9 @@
             ],
             "description": "Product module",
             "support": {
-                "source": "https://github.com/spryker/product/tree/6.41.0"
+                "source": "https://github.com/spryker/product/tree/6.42.0"
             },
-            "time": "2024-05-06T12:15:28+00:00"
+            "time": "2024-07-03T11:11:29+00:00"
         },
         {
             "name": "spryker/product-abstract-data-feed",
@@ -52214,6 +52316,56 @@
                 "source": "https://github.com/spryker/product-measurement-units-rest-api/tree/1.1.0"
             },
             "time": "2021-07-06T13:27:56+00:00"
+        },
+        {
+            "name": "spryker/product-merchant-commission-connector",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-merchant-commission-connector.git",
+                "reference": "464e20625f64f1e836055af08f06ab6d72ebaba0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-merchant-commission-connector/zipball/464e20625f64f1e836055af08f06ab6d72ebaba0",
+                "reference": "464e20625f64f1e836055af08f06ab6d72ebaba0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant-commission": "^0.1.0",
+                "spryker/product": "^6.42.0",
+                "spryker/rule-engine": "^0.1.0",
+                "spryker/rule-engine-extension": "^0.1.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/product-attribute": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductMerchantCommissionConnector module",
+            "support": {
+                "source": "https://github.com/spryker/product-merchant-commission-connector/tree/0.1.0"
+            },
+            "time": "2024-07-03T11:11:29+00:00"
         },
         {
             "name": "spryker/product-merchant-portal-gui",
@@ -59567,16 +59719,16 @@
         },
         {
             "name": "spryker/rule-engine",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rule-engine.git",
-                "reference": "d89083b1f94a37685467d70bc3ef11407d68f066"
+                "reference": "8e66b6991eed0c403f53ad58a25b7231c68c264d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rule-engine/zipball/d89083b1f94a37685467d70bc3ef11407d68f066",
-                "reference": "d89083b1f94a37685467d70bc3ef11407d68f066",
+                "url": "https://api.github.com/repos/spryker/rule-engine/zipball/8e66b6991eed0c403f53ad58a25b7231c68c264d",
+                "reference": "8e66b6991eed0c403f53ad58a25b7231c68c264d",
                 "shasum": ""
             },
             "require": {
@@ -59606,9 +59758,9 @@
             ],
             "description": "RuleEngine module",
             "support": {
-                "source": "https://github.com/spryker/rule-engine/tree/0.1.0"
+                "source": "https://github.com/spryker/rule-engine/tree/0.1.1"
             },
-            "time": "2024-06-24T13:52:12+00:00"
+            "time": "2024-07-03T11:11:29+00:00"
         },
         {
             "name": "spryker/rule-engine-extension",
@@ -72504,7 +72656,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-28T09:49:33+00:00"
+            "time": "2024-05-31T14:49:08+00:00"
         },
         {
             "name": "symfony/debug",
