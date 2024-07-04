@@ -37,6 +37,9 @@ sections:
         rest-request-validation-cache-warmup:
             command: 'vendor/bin/console rest-api:build-request-validation-cache'
 
+        oms-process-cache-warmup:
+            command: 'vendor/bin/console oms:process-cache:warm-up'
+
     queue-flush:
         set-permissions:
             command: 'vendor/bin/console queue:permission:set'
