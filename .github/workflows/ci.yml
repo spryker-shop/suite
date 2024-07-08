@@ -512,7 +512,7 @@ jobs:
                   cd robotframework-tests
                   robot -v env:api_suite -v ignore_console:false --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework-tests.tests.api.suite .
             - name: Upload artifacts
-              if: always()
+              if: failure()
               run: |
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/${GITHUB_RUN_ID}/PHP8.1MariaDBRobot/ \
                     --recursive \
@@ -564,7 +564,7 @@ jobs:
                   cd robotframework-tests
                   robot -v env:api_suite -v db_engine:psycopg2 -v ignore_console:false --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework-tests.tests.api.suite .
             - name: Upload artifacts
-              if: always()
+              if: failure()
               run: |
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/${GITHUB_RUN_ID}/PHP8.2PostgreSQLRobot/ \
                     --recursive \
@@ -624,7 +624,7 @@ jobs:
                     robot -v env:api_suite -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s '*'.tests.api.suite .
                     touch results/time.txt && echo $(date) > results/time.txt
             -   name: Upload artifacts
-                if: always()
+                if: failure()
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-dynamic-multistore/${GITHUB_RUN_ID}/PHP8.2MariaDBRobot/ \
                     --recursive \
