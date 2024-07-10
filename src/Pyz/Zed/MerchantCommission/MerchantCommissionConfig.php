@@ -30,7 +30,7 @@ class MerchantCommissionConfig extends SprykerMerchantCommissionConfig
      */
     protected const MERCHANT_COMMISSION_PRICE_MODE_PER_STORE = [
         'DE' => self::PRICE_MODE_GROSS,
-        'AT' => self::PRICE_MODE_GROSS,
+        'AT' => self::PRICE_MODE_NET,
         'US' => self::PRICE_MODE_GROSS,
     ];
 
