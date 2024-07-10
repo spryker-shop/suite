@@ -1471,7 +1471,6 @@
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.example .env"'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"'
-            - 'if [ $? -ne 0 ]; then'
             - '  .ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '  .ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '  .ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
@@ -1483,7 +1482,6 @@
             - '  .ci/snippet/REQUIRE aws s3 cp ./.cypress s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/cypress-ui/suite-nonsplit/$BUDDY_EXECUTION_HASH/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
             - '  echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=cypress-ui/suite-nonsplit/${BUDDY_EXECUTION_HASH}/screenshots/&showversions=false"'
             - '  echo "You must have VPN access to AWS (Spryker-Internal account)"'
-            - 'fi'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -1533,7 +1531,6 @@
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.dynamic-store.example .env"'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"'
-            - 'if [ $? -ne 0 ]; then'
             - '  .ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '  .ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '  .ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
@@ -1545,7 +1542,6 @@
             - '  .ci/snippet/REQUIRE aws s3 cp ./.cypress s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/cypress-ui/suite-nonsplit/$BUDDY_EXECUTION_HASH/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
             - '  echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=cypress-ui/suite-nonsplit/${BUDDY_EXECUTION_HASH}/screenshots/&showversions=false"'
             - '  echo "You must have VPN access to AWS (Spryker-Internal account)"'
-            - 'fi'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:

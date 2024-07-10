@@ -9,9 +9,9 @@ namespace Pyz\Zed\MerchantCommission;
 
 use Spryker\Zed\CategoryMerchantCommissionConnector\Communication\Plugin\MerchantCommission\CategoryMerchantCommissionItemCollectorRulePlugin;
 use Spryker\Zed\MerchantCommission\Communication\Plugin\MerchantCommission\FixedMerchantCommissionCalculatorPlugin;
+use Spryker\Zed\MerchantCommission\Communication\Plugin\MerchantCommission\ItemSkuMerchantCommissionItemCollectorRulePlugin;
 use Spryker\Zed\MerchantCommission\Communication\Plugin\MerchantCommission\PercentageMerchantCommissionCalculatorPlugin;
-use Spryker\Zed\MerchantCommission\Communication\Plugin\RuleEngine\ItemSkuCollectorRulePlugin;
-use Spryker\Zed\MerchantCommission\Communication\Plugin\RuleEngine\PriceModeDecisionRulePlugin;
+use Spryker\Zed\MerchantCommission\Communication\Plugin\MerchantCommission\PriceModeMerchantCommissionOrderDecisionRulePlugin;
 use Spryker\Zed\MerchantCommission\MerchantCommissionDependencyProvider as SprykerMerchantCommissionDependencyProvider;
 use Spryker\Zed\PriceProductMerchantCommissionConnector\Communication\Plugin\MerchantCommission\PriceProductMerchantCommissionItemCollectorRulePlugin;
 use Spryker\Zed\ProductMerchantCommissionConnector\Communication\Plugin\MerchantCommission\ProductAttributeMerchantCommissionItemCollectorRulePlugin;
@@ -35,7 +35,7 @@ class MerchantCommissionDependencyProvider extends SprykerMerchantCommissionDepe
     protected function getRuleEngineCollectorRulePlugins(): array
     {
         return [
-            new ItemSkuCollectorRulePlugin(),
+            new ItemSkuMerchantCommissionItemCollectorRulePlugin(),
             new ProductAttributeMerchantCommissionItemCollectorRulePlugin(),
             new PriceProductMerchantCommissionItemCollectorRulePlugin(),
             new CategoryMerchantCommissionItemCollectorRulePlugin(),
@@ -48,7 +48,7 @@ class MerchantCommissionDependencyProvider extends SprykerMerchantCommissionDepe
     protected function getRuleEngineDecisionRulePlugins(): array
     {
         return [
-            new PriceModeDecisionRulePlugin(),
+            new PriceModeMerchantCommissionOrderDecisionRulePlugin(),
         ];
     }
 }
