@@ -1316,22 +1316,22 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.8.1",
+            "version": "7.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "41042bc7ab002487b876a0683fc8dce04ddce104"
+                "reference": "a629e5b69db96eb4939c1b34114130077dd4c6fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/41042bc7ab002487b876a0683fc8dce04ddce104",
-                "reference": "41042bc7ab002487b876a0683fc8dce04ddce104",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/a629e5b69db96eb4939c1b34114130077dd4c6fc",
+                "reference": "a629e5b69db96eb4939c1b34114130077dd4c6fc",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^1.5.3 || ^2.0.1",
-                "guzzlehttp/psr7": "^1.9.1 || ^2.5.1",
+                "guzzlehttp/promises": "^1.5.3 || ^2.0.3",
+                "guzzlehttp/psr7": "^2.7.0",
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0",
                 "symfony/deprecation-contracts": "^2.2 || ^3.0"
@@ -1342,9 +1342,9 @@
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.8.2",
                 "ext-curl": "*",
-                "php-http/client-integration-tests": "dev-master#2c025848417c1135031fdf9c728ee53d0a7ceaee as 3.0.999",
+                "guzzle/client-integration-tests": "3.0.2",
                 "php-http/message-factory": "^1.1",
-                "phpunit/phpunit": "^8.5.36 || ^9.6.15",
+                "phpunit/phpunit": "^8.5.39 || ^9.6.20",
                 "psr/log": "^1.1 || ^2.0 || ^3.0"
             },
             "suggest": {
@@ -1422,7 +1422,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.8.1"
+                "source": "https://github.com/guzzle/guzzle/tree/7.9.1"
             },
             "funding": [
                 {
@@ -1438,20 +1438,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-03T20:35:24+00:00"
+            "time": "2024-07-19T16:19:57+00:00"
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "bbff78d96034045e58e13dedd6ad91b5d1253223"
+                "reference": "6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/bbff78d96034045e58e13dedd6ad91b5d1253223",
-                "reference": "bbff78d96034045e58e13dedd6ad91b5d1253223",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8",
+                "reference": "6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8",
                 "shasum": ""
             },
             "require": {
@@ -1459,7 +1459,7 @@
             },
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.8.2",
-                "phpunit/phpunit": "^8.5.36 || ^9.6.15"
+                "phpunit/phpunit": "^8.5.39 || ^9.6.20"
             },
             "type": "library",
             "extra": {
@@ -1505,7 +1505,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.0.2"
+                "source": "https://github.com/guzzle/promises/tree/2.0.3"
             },
             "funding": [
                 {
@@ -1521,20 +1521,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-03T20:19:20+00:00"
+            "time": "2024-07-18T10:29:17+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.6.2",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "45b30f99ac27b5ca93cb4831afe16285f57b8221"
+                "reference": "a70f5c95fb43bc83f07c9c948baa0dc1829bf201"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/45b30f99ac27b5ca93cb4831afe16285f57b8221",
-                "reference": "45b30f99ac27b5ca93cb4831afe16285f57b8221",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/a70f5c95fb43bc83f07c9c948baa0dc1829bf201",
+                "reference": "a70f5c95fb43bc83f07c9c948baa0dc1829bf201",
                 "shasum": ""
             },
             "require": {
@@ -1549,8 +1549,8 @@
             },
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.8.2",
-                "http-interop/http-factory-tests": "^0.9",
-                "phpunit/phpunit": "^8.5.36 || ^9.6.15"
+                "http-interop/http-factory-tests": "0.9.0",
+                "phpunit/phpunit": "^8.5.39 || ^9.6.20"
             },
             "suggest": {
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
@@ -1621,7 +1621,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.6.2"
+                "source": "https://github.com/guzzle/psr7/tree/2.7.0"
             },
             "funding": [
                 {
@@ -1637,7 +1637,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-03T20:05:35+00:00"
+            "time": "2024-07-18T11:15:46+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -5977,12 +5977,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/checksum-generator.git",
-                "reference": "a6c24adb817a07800d7e8dee07f825b332cbf5c1"
+                "reference": "943c7d43fb0d0202b6cb8f39b75d7355602104b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checksum-generator/zipball/a6c24adb817a07800d7e8dee07f825b332cbf5c1",
-                "reference": "a6c24adb817a07800d7e8dee07f825b332cbf5c1",
+                "url": "https://api.github.com/repos/spryker/checksum-generator/zipball/943c7d43fb0d0202b6cb8f39b75d7355602104b4",
+                "reference": "943c7d43fb0d0202b6cb8f39b75d7355602104b4",
                 "shasum": ""
             },
             "require": {
@@ -6016,7 +6016,7 @@
                 "issues": "https://github.com/spryker/checksum-generator/issues",
                 "source": "https://github.com/spryker/checksum-generator/tree/master"
             },
-            "time": "2023-11-02T18:49:57+00:00"
+            "time": "2024-07-18T11:05:41+00:00"
         },
         {
             "name": "spryker/composer-merge-plugin",
@@ -6127,12 +6127,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "9ff9bc3e9b2443c91c500948461d3a3b455991a6"
+                "reference": "febd6aa2e4bc3561107ad9fbcec289473002283a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/9ff9bc3e9b2443c91c500948461d3a3b455991a6",
-                "reference": "9ff9bc3e9b2443c91c500948461d3a3b455991a6",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/febd6aa2e4bc3561107ad9fbcec289473002283a",
+                "reference": "febd6aa2e4bc3561107ad9fbcec289473002283a",
                 "shasum": ""
             },
             "require": {
@@ -6195,7 +6195,7 @@
             "support": {
                 "source": "https://github.com/spryker/event-behavior"
             },
-            "time": "2024-06-18T09:07:30+00:00"
+            "time": "2024-07-18T11:06:47+00:00"
         },
         {
             "name": "spryker/install",
@@ -6256,12 +6256,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "2107d07b033f24c42470d9dec5732541103d5363"
+                "reference": "95cc2f99b1207f41c97f6ba53bae1b49b3f2051b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/2107d07b033f24c42470d9dec5732541103d5363",
-                "reference": "2107d07b033f24c42470d9dec5732541103d5363",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/95cc2f99b1207f41c97f6ba53bae1b49b3f2051b",
+                "reference": "95cc2f99b1207f41c97f6ba53bae1b49b3f2051b",
                 "shasum": ""
             },
             "require": {
@@ -6319,7 +6319,7 @@
             "support": {
                 "source": "https://github.com/spryker/rabbit-mq"
             },
-            "time": "2024-07-03T10:31:58+00:00"
+            "time": "2024-07-18T11:07:09+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -6417,7 +6417,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6d457e6a4e92a17a05bc20ab4a531bd880800f36"
+                "reference": "e269b1bc42df7c826991509ca0e40def7be77425"
             },
             "require": {
                 "php": ">=8.1"
@@ -7514,7 +7514,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2024-07-17T09:41:07+00:00"
+            "time": "2024-07-19T16:23:35+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7522,7 +7522,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "b1656e6645956cba7cabd2ab04144720bf2bb456"
+                "reference": "abdd014bdcb001c38cec1e0eab4b150277a0e1b8"
             },
             "require": {
                 "php": ">=8.1"
@@ -7721,7 +7721,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2024-07-12T15:20:06+00:00"
+            "time": "2024-07-18T11:23:40+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -7729,12 +7729,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "a81deffc6d007187e794f3c7ca6de48405560a60"
+                "reference": "16986611ef89fdf8841b8ed0c6b5916875d8c5c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/a81deffc6d007187e794f3c7ca6de48405560a60",
-                "reference": "a81deffc6d007187e794f3c7ca6de48405560a60",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/16986611ef89fdf8841b8ed0c6b5916875d8c5c4",
+                "reference": "16986611ef89fdf8841b8ed0c6b5916875d8c5c4",
                 "shasum": ""
             },
             "require": {
@@ -7775,7 +7775,7 @@
             "support": {
                 "source": "https://github.com/spryker/synchronization-behavior"
             },
-            "time": "2023-11-02T20:09:33+00:00"
+            "time": "2024-07-18T11:07:25+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -7783,12 +7783,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/uuid-behavior.git",
-                "reference": "9d9485b0182778fdc558433b78282d0748ef0db5"
+                "reference": "4ba1e86918c5e773a5b05a5fa756ac9a0c71b28a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/uuid-behavior/zipball/9d9485b0182778fdc558433b78282d0748ef0db5",
-                "reference": "9d9485b0182778fdc558433b78282d0748ef0db5",
+                "url": "https://api.github.com/repos/spryker/uuid-behavior/zipball/4ba1e86918c5e773a5b05a5fa756ac9a0c71b28a",
+                "reference": "4ba1e86918c5e773a5b05a5fa756ac9a0c71b28a",
                 "shasum": ""
             },
             "require": {
@@ -7826,7 +7826,7 @@
             "support": {
                 "source": "https://github.com/spryker/uuid-behavior"
             },
-            "time": "2023-11-02T20:09:35+00:00"
+            "time": "2024-07-18T11:07:31+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -18428,7 +18428,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/commerce-k6-performance-tests.git",
-                "reference": "e1a49bb5aa3155165dec41ad6416ea6a8d4670b4"
+                "reference": "07bdae774b93f05559a150f16d9561871e4c5d82"
             },
             "default-branch": true,
             "type": "library",
@@ -18436,7 +18436,7 @@
                 "MIT"
             ],
             "description": "K6 performance tests",
-            "time": "2024-06-12T21:04:47+00:00"
+            "time": "2024-07-18T11:06:21+00:00"
         },
         {
             "name": "spryker/cypress-tests",
@@ -18460,7 +18460,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "f44e48da0e5d99c259dfe4ee4e69db427b3cb0bd"
+                "reference": "04900780f00fd820d683d5f51442db04fe28c60e"
             },
             "require": {
                 "composer/semver": "^1.0.0 || ^2.0.0 || ^3.0.0",
@@ -18525,7 +18525,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2024-01-24T15:28:52+00:00"
+            "time": "2024-07-18T11:06:30+00:00"
         },
         {
             "name": "spryker/docker-chromedriver",
@@ -18628,12 +18628,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/profiler.git",
-                "reference": "e7631977477a81204e9dfd59d4e34d947c38ffb8"
+                "reference": "156d0c54d970f5fc14b5a0cff34f2cf20f0ac51d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/profiler/zipball/e7631977477a81204e9dfd59d4e34d947c38ffb8",
-                "reference": "e7631977477a81204e9dfd59d4e34d947c38ffb8",
+                "url": "https://api.github.com/repos/spryker/profiler/zipball/156d0c54d970f5fc14b5a0cff34f2cf20f0ac51d",
+                "reference": "156d0c54d970f5fc14b5a0cff34f2cf20f0ac51d",
                 "shasum": ""
             },
             "require": {
@@ -18674,7 +18674,7 @@
             "support": {
                 "source": "https://github.com/spryker/profiler/tree/master"
             },
-            "time": "2023-11-02T20:09:20+00:00"
+            "time": "2024-07-18T11:07:00+00:00"
         },
         {
             "name": "spryker/robotframework-suite-tests",
