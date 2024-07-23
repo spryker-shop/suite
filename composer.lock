@@ -2093,20 +2093,20 @@
         },
         {
             "name": "justinrainbow/json-schema",
-            "version": "v5.2.13",
+            "version": "5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jsonrainbow/json-schema.git",
-                "reference": "fbbe7e5d79f618997bc3332a6f49246036c45793"
+                "reference": "feb2ca6dd1cebdaf1ed60a4c8de2e53ce11c4fd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jsonrainbow/json-schema/zipball/fbbe7e5d79f618997bc3332a6f49246036c45793",
-                "reference": "fbbe7e5d79f618997bc3332a6f49246036c45793",
+                "url": "https://api.github.com/repos/jsonrainbow/json-schema/zipball/feb2ca6dd1cebdaf1ed60a4c8de2e53ce11c4fd8",
+                "reference": "feb2ca6dd1cebdaf1ed60a4c8de2e53ce11c4fd8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=7.1"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "~2.2.20||~2.15.1",
@@ -2117,11 +2117,6 @@
                 "bin/validate-json"
             ],
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "JsonSchema\\": "src/JsonSchema/"
@@ -2157,9 +2152,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jsonrainbow/json-schema/issues",
-                "source": "https://github.com/jsonrainbow/json-schema/tree/v5.2.13"
+                "source": "https://github.com/jsonrainbow/json-schema/tree/5.3.0"
             },
-            "time": "2023-09-26T02:20:38+00:00"
+            "time": "2024-07-06T21:00:26+00:00"
         },
         {
             "name": "laminas/laminas-barcode",
@@ -33209,12 +33204,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "9ff9bc3e9b2443c91c500948461d3a3b455991a6"
+                "reference": "febd6aa2e4bc3561107ad9fbcec289473002283a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/9ff9bc3e9b2443c91c500948461d3a3b455991a6",
-                "reference": "9ff9bc3e9b2443c91c500948461d3a3b455991a6",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/febd6aa2e4bc3561107ad9fbcec289473002283a",
+                "reference": "febd6aa2e4bc3561107ad9fbcec289473002283a",
                 "shasum": ""
             },
             "require": {
@@ -33276,7 +33271,7 @@
             "support": {
                 "source": "https://github.com/spryker/event-behavior"
             },
-            "time": "2024-06-18T09:07:30+00:00"
+            "time": "2024-07-18T11:06:47+00:00"
         },
         {
             "name": "spryker/event-dispatcher",
@@ -59262,12 +59257,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "2107d07b033f24c42470d9dec5732541103d5363"
+                "reference": "95cc2f99b1207f41c97f6ba53bae1b49b3f2051b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/2107d07b033f24c42470d9dec5732541103d5363",
-                "reference": "2107d07b033f24c42470d9dec5732541103d5363",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/95cc2f99b1207f41c97f6ba53bae1b49b3f2051b",
+                "reference": "95cc2f99b1207f41c97f6ba53bae1b49b3f2051b",
                 "shasum": ""
             },
             "require": {
@@ -59324,7 +59319,7 @@
             "support": {
                 "source": "https://github.com/spryker/rabbit-mq"
             },
-            "time": "2024-07-03T10:31:58+00:00"
+            "time": "2024-07-18T11:07:09+00:00"
         },
         {
             "name": "spryker/ramsey-uuid",
@@ -78395,9 +78390,9 @@
                 "codeception/lib-xml": "^1.0",
                 "ext-dom": "*",
                 "ext-json": "*",
-                "justinrainbow/json-schema": "~5.2.9",
-                "php": "^8.0",
-                "softcreatr/jsonpath": "^0.8"
+                "justinrainbow/json-schema": "^5.2.9",
+                "php": "^8.1",
+                "softcreatr/jsonpath": "^0.8 || ^0.9"
             },
             "conflict": {
                 "codeception/codeception": "<5.0.0-alpha3"
@@ -80334,28 +80329,29 @@
         },
         {
             "name": "softcreatr/jsonpath",
-            "version": "0.8.3",
+            "version": "0.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SoftCreatR/JSONPath.git",
-                "reference": "fc12dee0b46f3fa3a175c4051dbab60984acef4b"
+                "reference": "272173a65fd16b25010dbd54d04dd34c0c5a8500"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SoftCreatR/JSONPath/zipball/fc12dee0b46f3fa3a175c4051dbab60984acef4b",
-                "reference": "fc12dee0b46f3fa3a175c4051dbab60984acef4b",
+                "url": "https://api.github.com/repos/SoftCreatR/JSONPath/zipball/272173a65fd16b25010dbd54d04dd34c0c5a8500",
+                "reference": "272173a65fd16b25010dbd54d04dd34c0c5a8500",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=8.0"
+                "php": "8.1 - 8.4"
             },
             "replace": {
                 "flow/jsonpath": "*"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.6",
-                "roave/security-advisories": "dev-latest"
+                "friendsofphp/php-cs-fixer": "^3.58",
+                "phpunit/phpunit": "10 - 12",
+                "squizlabs/php_codesniffer": "^3.10"
             },
             "type": "library",
             "autoload": {
@@ -80398,7 +80394,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-08-17T20:14:00+00:00"
+            "time": "2024-06-01T09:15:21+00:00"
         },
         {
             "name": "spryker-sdk/benchmark",
