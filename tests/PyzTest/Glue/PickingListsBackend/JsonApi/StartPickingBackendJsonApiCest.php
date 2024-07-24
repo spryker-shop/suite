@@ -208,7 +208,7 @@ class StartPickingBackendJsonApiCest
      *
      * @return void
      */
-    public function requestReturnsNotFoundErrorWhenUserDoNotHaveWarehouseAssignment(PickingListsBackendApiTester $I): void
+    public function requestReturnsNotFoundWhenUserDoNotHaveWarehouseAssignment(PickingListsBackendApiTester $I): void
     {
         //Arrange
         $oauthResponseTransfer = $I->havePasswordAuthorizationToBackendApi($this->fixtures->getWithoutAssignmentWarehouseUserTransfer());
@@ -235,7 +235,7 @@ class StartPickingBackendJsonApiCest
      *
      * @return void
      */
-    public function requestReturnsNotFoundErrorWhenUserWarehouseAssignmentIsInactive(PickingListsBackendApiTester $I): void
+    public function requestReturnsNotFoundWhenUserWarehouseAssignmentIsInactive(PickingListsBackendApiTester $I): void
     {
         //Arrange
         $oauthResponseTransfer = $I->havePasswordAuthorizationToBackendApi($this->fixtures->getWithInactiveAssignmentWarehouseUserTransfer());
@@ -262,7 +262,7 @@ class StartPickingBackendJsonApiCest
      *
      * @return void
      */
-    public function requestReturnsNotFoundErrorWhenUserIsNotWarehouseUser(PickingListsBackendApiTester $I): void
+    public function requestReturnsNotFoundWhenUserIsNotWarehouseUser(PickingListsBackendApiTester $I): void
     {
         //Arrange
         $oauthResponseTransfer = $I->havePasswordAuthorizationToBackendApi($this->fixtures->getNotWarehouseUserTransfer());
@@ -289,7 +289,7 @@ class StartPickingBackendJsonApiCest
      *
      * @return void
      */
-    public function requestReturnsNotFoundErrorWhenNonExistingPickingListUuidIsProvided(PickingListsBackendApiTester $I): void
+    public function requestReturnsNotFoundWhenNonExistingPickingListUuidIsProvided(PickingListsBackendApiTester $I): void
     {
         //Arrange
         $oauthResponseTransfer = $I->havePasswordAuthorizationToBackendApi($this->fixtures->getMainWarehouseUserTransfer());
@@ -316,7 +316,7 @@ class StartPickingBackendJsonApiCest
      *
      * @return void
      */
-    public function requestReturnsConflictErrorWhenPickingListIsAlreadyAssignedToAnotherWarehouseUser(PickingListsBackendApiTester $I): void
+    public function requestReturnsConflictWhenPickingListIsAlreadyAssignedToAnotherWarehouseUser(PickingListsBackendApiTester $I): void
     {
         //Arrange
         $oauthResponseTransfer = $I->havePasswordAuthorizationToBackendApi($this->fixtures->getSecondaryWarehouseUserTransfer());
@@ -349,7 +349,7 @@ class StartPickingBackendJsonApiCest
      *
      * @return void
      */
-    public function requestReturnsUnauthorizedErrorResponseWhenAuthTokenIsNotProvided(PickingListsBackendApiTester $I): void
+    public function requestReturnsForbiddenResponseWhenAuthTokenIsNotProvided(PickingListsBackendApiTester $I): void
     {
         //Act
         $I->sendJsonApiPost(

@@ -89,7 +89,7 @@ class CustomerAddressesRestApiCest
      *
      * @return void
      */
-    public function requestGetCustomerAddressesAuthorizationError(CustomerApiTester $I): void
+    public function requestGetCustomerAddressesForbidden(CustomerApiTester $I): void
     {
         // Act
         $I->sendGet(
