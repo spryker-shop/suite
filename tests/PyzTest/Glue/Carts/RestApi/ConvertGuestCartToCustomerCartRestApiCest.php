@@ -55,7 +55,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
      *
      * @return void
      */
-    public function requestGuestCartWithXAnonymousAndAuthorizationTokenValidationError(CartsApiTester $I): void
+    public function requestGuestCartWithXAnonymousAndAuthorizationTokenBadRequest(CartsApiTester $I): void
     {
         // Arrange
         $this->requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader($I);
