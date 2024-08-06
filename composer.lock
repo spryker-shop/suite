@@ -6417,7 +6417,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "97801ed23d5d4ec02ebc7d1574a81e46e700d023"
+                "reference": "195e426a5ff6245858aca25c61a4358ba3b54b9f"
             },
             "require": {
                 "php": ">=8.1"
@@ -6790,6 +6790,8 @@
                 "spryker/json-path": "*",
                 "spryker/json-schema": "*",
                 "spryker/kernel": "*",
+                "spryker/kernel-app": "*",
+                "spryker/kernel-app-extension": "*",
                 "spryker/key-builder": "*",
                 "spryker/laminas": "*",
                 "spryker/locale": "*",
@@ -6807,6 +6809,8 @@
                 "spryker/merchant": "*",
                 "spryker/merchant-agent": "*",
                 "spryker/merchant-agent-gui": "*",
+                "spryker/merchant-app": "*",
+                "spryker/merchant-app-merchant-portal-gui": "*",
                 "spryker/merchant-categories-rest-api": "*",
                 "spryker/merchant-category": "*",
                 "spryker/merchant-category-data-import": "*",
@@ -7279,6 +7283,9 @@
                 "spryker/sales-payment-detail": "*",
                 "spryker/sales-payment-extension": "*",
                 "spryker/sales-payment-gui": "*",
+                "spryker/sales-payment-merchant": "*",
+                "spryker/sales-payment-merchant-extension": "*",
+                "spryker/sales-payment-merchant-sales-merchant-commission": "*",
                 "spryker/sales-product-configuration": "*",
                 "spryker/sales-product-configuration-gui": "*",
                 "spryker/sales-product-configuration-gui-extension": "*",
@@ -7502,7 +7509,8 @@
             "bin": [
                 "Bundles/Console/bin/console",
                 "Bundles/Console/bin/yves",
-                "Bundles/Console/bin/glue"
+                "Bundles/Console/bin/glue",
+                ".local-ci/bin/local-ci"
             ],
             "type": "library",
             "scripts": {
@@ -7514,7 +7522,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2024-08-06T13:05:39+00:00"
+            "time": "2024-08-06T15:45:00+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -18460,7 +18468,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "04900780f00fd820d683d5f51442db04fe28c60e"
+                "reference": "32ec0363bfabb1312cec7390646282a34a3f81e3"
             },
             "require": {
                 "composer/semver": "^1.0.0 || ^2.0.0 || ^3.0.0",
@@ -18525,7 +18533,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2024-07-18T11:06:30+00:00"
+            "time": "2024-08-06T15:44:57+00:00"
         },
         {
             "name": "spryker/docker-chromedriver",

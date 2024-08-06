@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Use this file to define the modules that you want to include into the local-ci runs.
+ *
+ * Copy it to `.local-ci.modules` and adjust the module list to your needs.
+ */
+
+return [
+    [
+        'module' => 'Namespace.ModuleName', // Use this for the module that you want to include into the local-ci runs.
+        'skip' => [], // Add commands that should be excluded for this module. Usually needed when a codeception configuration has the WebDriverHelper enabled.
+    ],
+];
