@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.317.2",
+            "version": "3.318.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "890ca1841a49317db884d1b87f7c08613213f852"
+                "reference": "3f9cc3fe95f5dfa9fbd535c4d3bc78e7ac0adf44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/890ca1841a49317db884d1b87f7c08613213f852",
-                "reference": "890ca1841a49317db884d1b87f7c08613213f852",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3f9cc3fe95f5dfa9fbd535c4d3bc78e7ac0adf44",
+                "reference": "3f9cc3fe95f5dfa9fbd535c4d3bc78e7ac0adf44",
                 "shasum": ""
             },
             "require": {
@@ -308,7 +308,10 @@
                 ],
                 "psr-4": {
                     "Aws\\": "src/"
-                }
+                },
+                "exclude-from-classmap": [
+                    "src/data/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -335,9 +338,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.317.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.318.0"
             },
-            "time": "2024-08-05T18:08:05+00:00"
+            "time": "2024-08-06T18:05:56+00:00"
         },
         {
             "name": "brick/math",
@@ -6417,7 +6420,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "195e426a5ff6245858aca25c61a4358ba3b54b9f"
+                "reference": "fc9f30ea9855716478897a28ba4c7ba1f1b57dce"
             },
             "require": {
                 "php": ">=8.1"
@@ -7522,7 +7525,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2024-08-06T15:45:00+00:00"
+            "time": "2024-08-07T10:12:06+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7530,7 +7533,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "3db0fccca25755a23e0d4e7111f1d2c674683b74"
+                "reference": "9369bb787ec300da0303bab976dcabe8b98514cc"
             },
             "require": {
                 "php": ">=8.1"
@@ -7729,7 +7732,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2024-08-06T06:50:57+00:00"
+            "time": "2024-08-07T08:32:32+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
