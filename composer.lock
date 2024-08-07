@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.317.2",
+            "version": "3.318.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "890ca1841a49317db884d1b87f7c08613213f852"
+                "reference": "3f9cc3fe95f5dfa9fbd535c4d3bc78e7ac0adf44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/890ca1841a49317db884d1b87f7c08613213f852",
-                "reference": "890ca1841a49317db884d1b87f7c08613213f852",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3f9cc3fe95f5dfa9fbd535c4d3bc78e7ac0adf44",
+                "reference": "3f9cc3fe95f5dfa9fbd535c4d3bc78e7ac0adf44",
                 "shasum": ""
             },
             "require": {
@@ -308,7 +308,10 @@
                 ],
                 "psr-4": {
                     "Aws\\": "src/"
-                }
+                },
+                "exclude-from-classmap": [
+                    "src/data/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -335,9 +338,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.317.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.318.0"
             },
-            "time": "2024-08-05T18:08:05+00:00"
+            "time": "2024-08-06T18:05:56+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -44935,16 +44938,16 @@
         },
         {
             "name": "spryker/payment",
-            "version": "5.21.0",
+            "version": "5.21.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/payment.git",
-                "reference": "274e646a0037b85b6f00a8d15e2c7e5ea77bb8c9"
+                "reference": "328939e7bc1863640302ed40bb17f653d6df8e80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/payment/zipball/274e646a0037b85b6f00a8d15e2c7e5ea77bb8c9",
-                "reference": "274e646a0037b85b6f00a8d15e2c7e5ea77bb8c9",
+                "url": "https://api.github.com/repos/spryker/payment/zipball/328939e7bc1863640302ed40bb17f653d6df8e80",
+                "reference": "328939e7bc1863640302ed40bb17f653d6df8e80",
                 "shasum": ""
             },
             "require": {
@@ -45001,9 +45004,9 @@
             ],
             "description": "Payment module",
             "support": {
-                "source": "https://github.com/spryker/payment/tree/5.21.0"
+                "source": "https://github.com/spryker/payment/tree/5.21.1"
             },
-            "time": "2024-08-06T15:45:00+00:00"
+            "time": "2024-08-07T10:12:06+00:00"
         },
         {
             "name": "spryker/payment-cart-connector",
