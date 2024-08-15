@@ -784,4 +784,23 @@
         <controller>merchant-users</controller>
         <action>index</action>
     </agent-dashboard-merchant-portal-gui>
+    <merchant-portal-payment-settings>
+        <label>Payment Settings</label>
+        <title>Payment Settings</title>
+        <icon>payment</icon>
+        <bundle>merchant-app-merchant-portal-gui</bundle>
+        <controller>payment-settings</controller>
+        <action>index</action>
+        <pages>
+            <onboarding>
+                <label>Onboarding</label>
+                <title>Onboarding</title>
+                <icon>payment</icon>
+                <bundle>merchant-app-merchant-portal-gui</bundle>
+                <controller>payment-settings</controller>
+                <action>onboarding</action>
+                <visible>0</visible>
+            </onboarding>
+        </pages>
+    </merchant-portal-payment-settings>
 </config>
