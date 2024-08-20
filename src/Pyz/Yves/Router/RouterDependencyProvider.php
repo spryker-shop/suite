@@ -17,7 +17,6 @@ use Spryker\Yves\Router\Plugin\Router\YvesRouterPlugin;
 use Spryker\Yves\Router\Plugin\RouterEnhancer\LanguagePrefixRouterEnhancerPlugin;
 use Spryker\Yves\Router\Plugin\RouterEnhancer\StorePrefixRouterEnhancerPlugin;
 use Spryker\Yves\Router\RouterDependencyProvider as SprykerRouterDependencyProvider;
-use SprykerEco\Yves\Payone\Plugin\Router\PayoneRouteProviderPlugin;
 use SprykerSdk\Yves\LoadTesting\Plugin\Router\LoadTestingRouterProviderPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\Router\AgentPageRouteProviderPlugin;
 use SprykerShop\Yves\AgentWidget\Plugin\Router\AgentWidgetRouteProviderPlugin;
@@ -171,7 +170,6 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new MerchantSwitcherWidgetRouteProviderPlugin(),
             new SalesReturnPageRouteProviderPlugin(),
             new OrderCancelWidgetRouteProviderPlugin(),
-            new PayoneRouteProviderPlugin(),
             new ProductConfiguratorGatewayPageRouteProviderPlugin(),
             new PaymentPageRouteProviderPlugin(),
             new ServicePointWidgetRouteProviderPlugin(),

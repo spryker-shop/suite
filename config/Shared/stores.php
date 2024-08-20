@@ -38,10 +38,10 @@ if (getenv('SPRYKER_ACTIVE_STORES')) {
             'de' => 'de_DE',
         ],
         // first entry is default
-        'countries' => ['DE', 'AT', 'NO', 'CH', 'ES', 'GB'],
+        'countries' => ['DE', 'AT', 'NO', 'CH', 'ES', 'GB', 'US'],
         // internal and shop
         'currencyIsoCode' => 'EUR',
-        'currencyIsoCodes' => ['EUR', 'CHF'],
+        'currencyIsoCodes' => ['EUR', 'CHF', 'USD'],
         'queuePools' => [
             'synchronizationPool' => [],
         ],
@@ -127,10 +127,10 @@ $stores['DE'] = [
         'de' => 'de_DE',
     ],
     // first entry is default
-    'countries' => ['DE', 'AT', 'NO', 'CH', 'ES', 'GB'],
+    'countries' => ['DE', 'AT', 'NO', 'CH', 'ES', 'GB', 'US'],
     // internal and shop
     'currencyIsoCode' => 'EUR',
-    'currencyIsoCodes' => ['EUR', 'CHF'],
+    'currencyIsoCodes' => ['EUR', 'CHF', 'USD'],
     'queuePools' => [
         'synchronizationPool' => [
             'AT-connection',
@@ -152,5 +152,10 @@ $stores['US'] = [
         ],
         'storesWithSharedPersistence' => [],
     ] + $stores['DE'];
+
+if (APPLICATION_ENV === 'docker.acp.dev') {
+    require sprintf('%s/acp-toolbox/config/stores_acp.php', APPLICATION_ROOT_DIR);
+    $stores += getAcpStores();
+}
 
 return $stores;

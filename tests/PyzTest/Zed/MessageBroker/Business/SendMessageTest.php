@@ -50,6 +50,7 @@ class SendMessageTest extends Unit
         // Arrange
         $messageSenderPlugin = $this->createMock(MessageSenderPluginInterface::class);
 
+        $this->tester->setupMessageBrokerValidationPlugins();
         $this->tester->setMessageToSenderChannelNameMap(MessageBrokerTestMessageTransfer::class, static::CHANNEL_NAME);
         $this->tester->setChannelToTransportMap(static::CHANNEL_NAME, $messageSenderPlugin->getTransportName());
 

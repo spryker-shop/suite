@@ -16,8 +16,12 @@ use Spryker\Zed\MessageBroker\Communication\Plugin\MessageBroker\TimestampMessag
 use Spryker\Zed\MessageBroker\Communication\Plugin\MessageBroker\TransactionIdMessageAttributeProviderPlugin;
 use Spryker\Zed\MessageBroker\Communication\Plugin\MessageBroker\ValidationMiddlewarePlugin;
 use Spryker\Zed\MessageBroker\MessageBrokerDependencyProvider as SprykerMessageBrokerDependencyProvider;
+use Spryker\Zed\MessageBrokerAws\Communication\Plugin\MessageBroker\Receiver\AwsSqsMessageReceiverPlugin;
 use Spryker\Zed\MessageBrokerAws\Communication\Plugin\MessageBroker\Receiver\HttpChannelMessageReceiverPlugin;
+use Spryker\Zed\MessageBrokerAws\Communication\Plugin\MessageBroker\Sender\AwsSnsMessageSenderPlugin;
+use Spryker\Zed\MessageBrokerAws\Communication\Plugin\MessageBroker\Sender\AwsSqsMessageSenderPlugin;
 use Spryker\Zed\MessageBrokerAws\Communication\Plugin\MessageBroker\Sender\HttpChannelMessageSenderPlugin;
+use Spryker\Zed\MessageBrokerAws\Communication\Plugin\MessageBroker\Sender\HttpMessageSenderPlugin;
 use Spryker\Zed\OauthClient\Communication\Plugin\MessageBroker\AccessTokenMessageAttributeProviderPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentMethodMessageHandlerPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentOperationsMessageHandlerPlugin;
@@ -27,6 +31,7 @@ use Spryker\Zed\SalesPaymentDetail\Communication\Plugin\MessageBroker\PaymentCre
 use Spryker\Zed\SearchHttp\Communication\Plugin\MessageBroker\SearchEndpointMessageHandlerPlugin;
 use Spryker\Zed\Session\Communication\Plugin\MessageBroker\SessionTrackingIdMessageAttributeProviderPlugin;
 use Spryker\Zed\Store\Communication\Plugin\MessageBroker\CurrentStoreReferenceMessageAttributeProviderPlugin;
+use Spryker\Zed\Store\Communication\Plugin\MessageBroker\StoreReferenceMessageValidatorPlugin;
 use Spryker\Zed\TaxApp\Communication\Plugin\MessageBroker\TaxAppMessageHandlerPlugin;
 
 /**
@@ -39,8 +44,16 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
      */
     public function getMessageSenderPlugins(): array
     {
+        if ($this->getConfig()->isDevelopmentMessageBrokerVersion2Enabled()) {
+            return [
+                new HttpChannelMessageSenderPlugin(),
+            ];
+        }
+
         return [
-            new HttpChannelMessageSenderPlugin(),
+            new AwsSnsMessageSenderPlugin(),
+            new AwsSqsMessageSenderPlugin(),
+            new HttpMessageSenderPlugin(),
         ];
     }
 
@@ -49,8 +62,14 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
      */
     public function getMessageReceiverPlugins(): array
     {
+        if ($this->getConfig()->isDevelopmentMessageBrokerVersion2Enabled()) {
+            return [
+                new HttpChannelMessageReceiverPlugin(),
+            ];
+        }
+
         return [
-            new HttpChannelMessageReceiverPlugin(),
+            new AwsSqsMessageReceiverPlugin(),
         ];
     }
 
@@ -104,6 +123,12 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
      */
     public function getExternalValidatorPlugins(): array
     {
-        return [];
+        if ($this->getConfig()->isDevelopmentMessageBrokerVersion2Enabled()) {
+            return [];
+        }
+
+        return [
+            new StoreReferenceMessageValidatorPlugin(),
+        ];
     }
 }

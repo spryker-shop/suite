@@ -108,4 +108,11 @@ docker
 
 .nx/cache
 
+# ACP
+/app-store-suite
+/registry-service
+public/Acp/*
+!public/Acp/*/index.php
+
+# LocalCI
 .local-ci.modules
