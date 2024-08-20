@@ -17,6 +17,14 @@ use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountAfterCancellationCa
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountCalculatorPlugin;
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxRateAverageAggregatorPlugin;
 use Spryker\Zed\TaxApp\TaxAppDependencyProvider as SprykerTaxAppDependencyProvider;
+use Spryker\Zed\TaxAppVertex\Communication\Plugin\Order\OrderCustomerWithVertexCodeExpanderPlugin;
+use Spryker\Zed\TaxAppVertex\Communication\Plugin\Order\OrderExpensesWithVertexCodeExpanderPlugin;
+use Spryker\Zed\TaxAppVertex\Communication\Plugin\Order\OrderItemProductOptionWithVertexCodeExpanderPlugin;
+use Spryker\Zed\TaxAppVertex\Communication\Plugin\Order\OrderItemWithVertexSpecificFieldsExpanderPlugin;
+use Spryker\Zed\TaxAppVertex\Communication\Plugin\Quote\CalculableObjectCustomerWithVertexCodeExpanderPlugin;
+use Spryker\Zed\TaxAppVertex\Communication\Plugin\Quote\CalculableObjectExpensesWithVertexCodeExpanderPlugin;
+use Spryker\Zed\TaxAppVertex\Communication\Plugin\Quote\CalculableObjectItemProductOptionWithVertexCodeExpanderPlugin;
+use Spryker\Zed\TaxAppVertex\Communication\Plugin\Quote\CalculableObjectItemWithVertexSpecificFieldsExpanderPlugin;
 
 class TaxAppDependencyProvider extends SprykerTaxAppDependencyProvider
 {
@@ -26,6 +34,10 @@ class TaxAppDependencyProvider extends SprykerTaxAppDependencyProvider
     protected function getCalculableObjectTaxAppExpanderPlugins(): array
     {
         return [
+            new CalculableObjectCustomerWithVertexCodeExpanderPlugin(),
+            new CalculableObjectExpensesWithVertexCodeExpanderPlugin(),
+            new CalculableObjectItemProductOptionWithVertexCodeExpanderPlugin(),
+            new CalculableObjectItemWithVertexSpecificFieldsExpanderPlugin(),
             new MerchantProfileAddressCalculableObjectTaxAppExpanderPlugin(),
             new ProductOfferAvailabilityCalculableObjectTaxAppExpanderPlugin(),
         ];
@@ -37,6 +49,10 @@ class TaxAppDependencyProvider extends SprykerTaxAppDependencyProvider
     protected function getOrderTaxAppExpanderPlugins(): array
     {
         return [
+            new OrderCustomerWithVertexCodeExpanderPlugin(),
+            new OrderExpensesWithVertexCodeExpanderPlugin(),
+            new OrderItemProductOptionWithVertexCodeExpanderPlugin(),
+            new OrderItemWithVertexSpecificFieldsExpanderPlugin(),
             new MerchantProfileAddressOrderTaxAppExpanderPlugin(),
             new ProductOfferAvailabilityOrderTaxAppExpanderPlugin(),
         ];

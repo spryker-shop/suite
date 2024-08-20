@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\MessageBroker;
 
+use Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants;
 use Spryker\Zed\MessageBroker\MessageBrokerConfig as SprykerMessageBrokerConfig;
 
 class MessageBrokerConfig extends SprykerMessageBrokerConfig
@@ -28,5 +29,19 @@ class MessageBrokerConfig extends SprykerMessageBrokerConfig
             'merchant-app-events',
             'tax-commands',
         ];
+    }
+
+    /**
+     * Additional method to support MB1 and MB2 in parallel.
+     * Will be removed when MB1 is deprecated and removed.
+     *
+     * @api
+     *
+     * @return bool
+     */
+    public function isDevelopmentMessageBrokerVersion2Enabled(): bool
+    {
+        return $this->get(MessageBrokerAwsConstants::HTTP_CHANNEL_SENDER_BASE_URL)
+            && $this->get(MessageBrokerAwsConstants::HTTP_CHANNEL_RECEIVER_BASE_URL);
     }
 }
