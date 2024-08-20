@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd97b23d4985358f06af3423b9298702",
+    "content-hash": "1ca977549b37c4a55db7c66a1f298c25",
     "packages": [
         {
             "name": "async-aws/core",
@@ -7406,88 +7406,6 @@
                 "source": "https://github.com/spryker-eco/loggly/tree/0.1.1"
             },
             "time": "2021-11-10T11:57:20+00:00"
-        },
-        {
-            "name": "spryker-eco/payone",
-            "version": "4.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-eco/payone.git",
-                "reference": "715d3c730ab0a15866783c3bd2c0d125c2d95d1e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/payone/zipball/715d3c730ab0a15866783c3bd2c0d125c2d95d1e",
-                "reference": "715d3c730ab0a15866783c3bd2c0d125c2d95d1e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "spryker/calculation": "^4.0.0",
-                "spryker/cart": "^5.0.0 || ^7.0.0",
-                "spryker/checkout-extension": "^1.3.0",
-                "spryker/config": "^3.0.0",
-                "spryker/customer": "^7.0.0",
-                "spryker/decimal-object": "^1.0.0",
-                "spryker/glossary": "^3.0.0",
-                "spryker/guzzle": "^2.1.0",
-                "spryker/kernel": "^3.33.0",
-                "spryker/oms": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
-                "spryker/propel-orm": "^1.6.0",
-                "spryker/quote": "^2.18.0",
-                "spryker/refund": "^4.0.0 || ^5.0.0",
-                "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
-                "spryker/shipment": "^6.0.0 || ^8.0.0",
-                "spryker/step-engine": "^3.0.0",
-                "spryker/store": "^1.19.0",
-                "spryker/symfony": "^3.1.1",
-                "spryker/transfer": "^3.25.0",
-                "spryker/util-encoding": "^2.0.0",
-                "spryker/zed-request": "^3.2.0"
-            },
-            "replace": {
-                "spryker/payone": "*"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "*",
-                "spryker/application": "^3.0.0",
-                "spryker/checkout": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/container": "*",
-                "spryker/country": "^3.2.0 || ^4.0.0",
-                "spryker/payment": "*",
-                "spryker/propel": "*",
-                "spryker/router": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/application": "If you want to use Application plugins you need to install spryker/application.",
-                "spryker/checkout": "If you want to use Checkout plugins you need to install spryker/checkout.",
-                "spryker/payment": "If you want to use Payment plugins you need to install spryker/payment.",
-                "spryker/router": "Use this module if you want use the RouterProviderPlugin.",
-                "spryker/silex": "If you want to use Silex plugins you need to install spryker/silex."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerEco\\": "src/SprykerEco/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Payone module",
-            "support": {
-                "source": "https://github.com/spryker-eco/payone/tree/4.6.0"
-            },
-            "time": "2024-03-25T12:07:25+00:00"
         },
         {
             "name": "spryker-sdk/async-api",
@@ -68962,6 +68880,47 @@
             "time": "2023-09-18T09:59:00+00:00"
         },
         {
+            "name": "spryker/tax-app-vertex",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/tax-app-vertex.git",
+                "reference": "f1a0e833548a51ab53a94c6711ad932d0c871953"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/tax-app-vertex/zipball/f1a0e833548a51ab53a94c6711ad932d0c871953",
+                "reference": "f1a0e833548a51ab53a94c6711ad932d0c871953",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/tax-app-extension": "^1.0.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "TaxApp extension for Vertex app",
+            "support": {
+                "issues": "https://github.com/spryker/tax-app-vertex/issues",
+                "source": "https://github.com/spryker/tax-app-vertex/tree/master"
+            },
+            "time": "2024-08-15T16:12:59+00:00"
+        },
+        {
             "name": "spryker/tax-merchant-portal-gui",
             "version": "1.0.1",
             "source": {
@@ -82040,6 +81999,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker/tax-app-vertex": 20,
         "jetbrains/phpstorm-stubs": 20,
         "spryker-sdk/evaluator": 20,
         "spryker/code-sniffer": 20,
