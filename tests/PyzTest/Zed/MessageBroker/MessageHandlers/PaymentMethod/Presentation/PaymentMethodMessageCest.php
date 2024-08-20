@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\AddPaymentMethodTransfer;
 use Generated\Shared\Transfer\DeletePaymentMethodTransfer;
 use PyzTest\Zed\MessageBroker\PageObject\PaymentMethodPage;
 use PyzTest\Zed\MessageBroker\PaymentMethodPresentationTester;
+use Spryker\Zed\MessageBroker\MessageBrokerDependencyProvider;
 
 /**
  * Auto-generated group annotations
@@ -54,6 +55,7 @@ class PaymentMethodMessageCest
         // Act
         $channelName = 'payment-method-commands';
         $I->setupMessageBroker(AddPaymentMethodTransfer::class, $channelName);
+        $I->setDependency(MessageBrokerDependencyProvider::PLUGINS_EXTERNAL_VALIDATOR, []);
         $messageBrokerFacade->sendMessage(
             $I->haveAddPaymentMethodTransfer(
                 [
@@ -95,6 +97,7 @@ class PaymentMethodMessageCest
 
         $channelName = 'payment-method-commands';
         $I->setupMessageBroker(AddPaymentMethodTransfer::class, $channelName);
+        $I->setDependency(MessageBrokerDependencyProvider::PLUGINS_EXTERNAL_VALIDATOR, []);
         $messageBrokerFacade->sendMessage(
             $I->haveAddPaymentMethodTransfer(
                 [

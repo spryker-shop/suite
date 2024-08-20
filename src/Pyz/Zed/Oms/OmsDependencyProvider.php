@@ -55,23 +55,6 @@ use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
 use Spryker\Zed\TaxApp\Communication\Plugin\Oms\Command\SubmitPaymentTaxInvoicePlugin;
 use Spryker\Zed\TaxApp\Communication\Plugin\Oms\OrderRefundedEventListenerPlugin;
 use Spryker\Zed\WarehouseAllocation\Communication\Plugin\Oms\SalesOrderWarehouseAllocationCommandPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\CancelAndRecalculateCommandByOrderPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\CancelCommandPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\PartialCaptureCommandByOrderPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\PartialRefundCommandPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\SavePartialRefundCommandPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\AuthorizationIsErrorConditionPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\CaptureIsApprovedConditionPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\Is1HourPassedConditionPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\IsFullOrderCancelledConditionPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\IsRefundAllowedConditionPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\PaymentIsAppointedConditionPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\PaymentIsCaptureConditionPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\PaymentIsPaidConditionPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\PaymentIsRefundConditionPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\PreAuthorizationIsErrorConditionPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\RefundIsApprovedConditionPlugin;
-use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\TrueConditionPlugin;
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
@@ -142,13 +125,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new SalesOrderWarehouseAllocationCommandPlugin(), 'WarehouseAllocation/WarehouseAllocate');
             $commandCollection->add(new SalesMerchantCommissionCalculationCommandByOrderPlugin(), 'MerchantCommission/Calculate');
 
-            // ----- Payone
-            $commandCollection->add(new CancelCommandPlugin(), 'Payone/Cancel');
-            $commandCollection->add(new CancelAndRecalculateCommandByOrderPlugin(), 'Payone/CancelAndRecalculate');
-            $commandCollection->add(new PartialCaptureCommandByOrderPlugin(), 'Payone/PartialCapture');
-            $commandCollection->add(new SavePartialRefundCommandPlugin(), 'Payone/SavePartialRefund');
-            $commandCollection->add(new PartialRefundCommandPlugin(), 'Payone/PartialRefund');
-
             $commandCollection->add(new SendOrderStatusChangedMessagePlugin(), 'Order/RequestProductReviews');
             $commandCollection->add(new SubmitPaymentTaxInvoicePlugin(), 'TaxApp/SubmitPaymentTaxInvoice');
 
@@ -179,19 +155,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $conditionCollection
                 ->add(new IsOrderPaidConditionPlugin(), 'MerchantSalesOrder/IsOrderPaid');
 
-            // ----- Payone
-            $conditionCollection->add(new TrueConditionPlugin(), 'Payone/TrueCondition');
-            $conditionCollection->add(new PaymentIsAppointedConditionPlugin(), 'Payone/PaymentIsAppointed');
-            $conditionCollection->add(new Is1HourPassedConditionPlugin(), 'Payone/Is1HourPassed');
-            $conditionCollection->add(new PreAuthorizationIsErrorConditionPlugin(), 'Payone/PreAuthorizationIsError');
-            $conditionCollection->add(new IsFullOrderCancelledConditionPlugin(), 'Payone/IsFullOrderCancelled');
-            $conditionCollection->add(new CaptureIsApprovedConditionPlugin(), 'Payone/CaptureIsApproved');
-            $conditionCollection->add(new PaymentIsCaptureConditionPlugin(), 'Payone/PaymentIsCapture');
-            $conditionCollection->add(new IsRefundAllowedConditionPlugin(), 'Payone/IsRefundAllowed');
-            $conditionCollection->add(new RefundIsApprovedConditionPlugin(), 'Payone/RefundIsApproved');
-            $conditionCollection->add(new PaymentIsRefundConditionPlugin(), 'Payone/PaymentIsRefund');
-            $conditionCollection->add(new PaymentIsPaidConditionPlugin(), 'Payone/PaymentIsPaid');
-            $conditionCollection->add(new AuthorizationIsErrorConditionPlugin(), 'Payone/AuthorizationIsError');
             $conditionCollection->add(new IsPickingListGenerationFinishedConditionPlugin(), 'PickingList/isPickingListGenerationFinished');
             $conditionCollection->add(new IsPickingStartedConditionPlugin(), 'PickingList/isPickingStarted');
             $conditionCollection->add(new IsPickingFinishedConditionPlugin(), 'PickingList/isPickingFinished');
