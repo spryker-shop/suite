@@ -39,6 +39,8 @@ use Spryker\Zed\ProductOption\Communication\Plugin\Checkout\ProductOptionOrderSa
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\AmountAvailabilityCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Checkout\ProductQuantityRestrictionCheckoutPreConditionPlugin;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Checkout\QuoteApprovalCheckoutPreConditionPlugin;
+use Spryker\Zed\QuoteCheckoutConnector\Communication\Plugin\Checkout\DisallowedQuoteCheckoutPreConditionPlugin;
+use Spryker\Zed\QuoteCheckoutConnector\Communication\Plugin\Checkout\DisallowQuoteCheckoutPreSavePlugin;
 use Spryker\Zed\QuoteRequest\Communication\Plugin\Checkout\CloseQuoteRequestCheckoutPostSaveHookPlugin;
 use Spryker\Zed\QuoteRequest\Communication\Plugin\Checkout\QuoteRequestPreCheckPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\Checkout\DuplicateOrderCheckoutPreConditionPlugin;
@@ -65,6 +67,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
     protected function getCheckoutPreConditions(Container $container): array
     {
         return [
+            new DisallowedQuoteCheckoutPreConditionPlugin(),
             new CustomerPreConditionCheckerPlugin(),
             new CustomerSalutationCheckoutPreConditionPlugin(),
             new CustomerAddressSalutationCheckoutPreConditionPlugin(),
@@ -146,11 +149,12 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return array<\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreSaveHookInterface>|array<\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreSaveInterface>
+     * @return array<\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreSaveHookInterface|\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreSaveInterface|\Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutPreSavePluginInterface>
      */
     protected function getCheckoutPreSaveHooks(Container $container): array
     {
         return [
+            new DisallowQuoteCheckoutPreSavePlugin(),
             new SalesOrderExpanderPlugin(),
         ];
     }
