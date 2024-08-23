@@ -1,4 +1,4 @@
-- pipeline: 'Snyk Validation'
+- pipeline: 'Snyk Validation v2'
   events:
     - type: 'PUSH'
       refs:
@@ -25,7 +25,7 @@
         - 'apt-get update && apt-get install -y golang-go'
       shell: 'BASH'
 
-- pipeline: 'Standard Validation'
+- pipeline: 'Standard Validation v2'
   events:
     - type: 'PUSH'
       refs:
@@ -223,7 +223,7 @@
         - 'apt-get update && apt-get -y install php8.2-cli php8.2-mbstring'
       shell: 'BASH'
 
-- pipeline: 'Validation / Prefer Lowest'
+- pipeline: 'Validation / Prefer Lowest v2'
   events:
     - type: 'PUSH'
       refs:
@@ -334,7 +334,7 @@
         - '.ci/snippet/FINISH'
       shell: 'BASH'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests'
+- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests v2'
   events:
     - type: 'PUSH'
       refs:
@@ -374,7 +374,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Dynamic Store'
+- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Dynamic Store v2'
   events:
     - type: 'PUSH'
       refs:
@@ -420,7 +420,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests'
+- pipeline: 'Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests v2'
   events:
     - type: 'PUSH'
       refs:
@@ -460,7 +460,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests / Dynamic Store'
+- pipeline: 'Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests / Dynamic Store v2'
   events:
     - type: 'PUSH'
       refs:
@@ -506,7 +506,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance'
+- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance v2'
   events:
     - type: 'PUSH'
       refs:
@@ -545,7 +545,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Dynamic Store'
+- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Dynamic Store v2'
   events:
     - type: 'PUSH'
       refs:
@@ -590,7 +590,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance'
+- pipeline: 'Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance v2'
   events:
     - type: 'PUSH'
       refs:
@@ -629,7 +629,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance / Dynamic Store'
+- pipeline: 'Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance / Dynamic Store v2'
   events:
     - type: 'PUSH'
       refs:
@@ -674,7 +674,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests'
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests v2'
   events:
     - type: 'PUSH'
       refs:
@@ -714,7 +714,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Dynamic Store'
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Dynamic Store v2'
   events:
     - type: 'PUSH'
       refs:
@@ -760,7 +760,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests'
+- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests v2'
   events:
     - type: 'PUSH'
       refs:
@@ -800,7 +800,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests / Dynamic Store'
+- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests / Dynamic Store v2'
   events:
     - type: 'PUSH'
       refs:
@@ -846,7 +846,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance'
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance v2'
   events:
     - type: 'PUSH'
       refs:
@@ -885,7 +885,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance / Dynamic Store'
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance / Dynamic Store v2'
   events:
     - type: 'PUSH'
       refs:
@@ -930,7 +930,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance'
+- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance v2'
   events:
     - type: 'PUSH'
       refs:
@@ -969,7 +969,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance / Dynamic Store'
+- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance / Dynamic Store v2'
   events:
     - type: 'PUSH'
       refs:
@@ -1014,7 +1014,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Debian / PHP 8.2 / Frontend & Assets'
+- pipeline: 'Docker / Debian / PHP 8.2 / Frontend & Assets v2'
   events:
     - type: 'PUSH'
       refs:
@@ -1053,7 +1053,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Prefer Lowest'
+- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Prefer Lowest v2'
   events:
     - type: 'PUSH'
       refs:
@@ -1102,7 +1102,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Prefer Lowest / Dynamic Store'
+- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Prefer Lowest / Dynamic Store v2'
   events:
     - type: 'PUSH'
       refs:
@@ -1157,7 +1157,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest'
+- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest v2'
   events:
     - type: 'PUSH'
       refs:
@@ -1205,7 +1205,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_LARGE'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest / Dynamic Store'
+- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest / Dynamic Store v2'
   events:
     - type: 'PUSH'
       refs:
@@ -1259,7 +1259,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot v2'
   events:
     - type: 'PUSH'
       refs:
@@ -1317,7 +1317,7 @@
           direction: 'PIPELINE_TO_VM'
       docker_layer_caching_scope: 'ACTION'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Robot'
+- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Robot v2'
   events:
     - type: 'PUSH'
       refs:
@@ -1375,7 +1375,7 @@
           direction: 'PIPELINE_TO_VM'
       docker_layer_caching_scope: 'ACTION'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Store'
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Store v2'
   events:
     - type: 'PUSH'
       refs:
@@ -1440,7 +1440,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Cypress'
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Cypress v2'
   events:
     - type: 'PUSH'
       refs:
@@ -1500,7 +1500,7 @@
           direction: 'PIPELINE_TO_VM'
       docker_layer_caching_scope: 'ACTION'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Cypress / Dynamic Store'
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Cypress / Dynamic Store v2'
   events:
     - type: 'PUSH'
       refs:
