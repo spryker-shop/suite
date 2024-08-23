@@ -1566,7 +1566,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
 
-- pipeline: '[Hakaton] Snyk Validation'
+- pipeline: 'Hakaton / Snyk Validation'
   events:
     - type: 'PUSH'
       refs:
@@ -1593,7 +1593,7 @@
         - 'apt-get update && apt-get install -y golang-go'
       shell: 'BASH'
 
-- pipeline: '[Hakaton] Standard Validation'
+- pipeline: 'Hakaton / Standard Validation'
   events:
     - type: 'PUSH'
       refs:
@@ -1791,7 +1791,7 @@
         - 'apt-get update && apt-get -y install php8.2-cli php8.2-mbstring'
       shell: 'BASH'
 
-- pipeline: '[Hakaton] Validation / Prefer Lowest'
+- pipeline: 'Hakaton / Validation / Prefer Lowest'
   events:
     - type: 'PUSH'
       refs:
@@ -1902,7 +1902,7 @@
         - '.ci/snippet/FINISH'
       shell: 'BASH'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests'
   events:
     - type: 'PUSH'
       refs:
@@ -1942,7 +1942,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Dynamic Store'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Dynamic Store'
   events:
     - type: 'PUSH'
       refs:
@@ -1988,7 +1988,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests'
   events:
     - type: 'PUSH'
       refs:
@@ -2028,7 +2028,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests / Dynamic Store'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests / Dynamic Store'
   events:
     - type: 'PUSH'
       refs:
@@ -2074,7 +2074,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / MariaDB / Acceptance'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / MariaDB / Acceptance'
   events:
     - type: 'PUSH'
       refs:
@@ -2113,7 +2113,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Dynamic Store'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Dynamic Store'
   events:
     - type: 'PUSH'
       refs:
@@ -2158,7 +2158,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance'
   events:
     - type: 'PUSH'
       refs:
@@ -2197,7 +2197,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance / Dynamic Store'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance / Dynamic Store'
   events:
     - type: 'PUSH'
       refs:
@@ -2242,7 +2242,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests'
   events:
     - type: 'PUSH'
       refs:
@@ -2282,7 +2282,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Dynamic Store'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Dynamic Store'
   events:
     - type: 'PUSH'
       refs:
@@ -2328,7 +2328,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests'
   events:
     - type: 'PUSH'
       refs:
@@ -2368,7 +2368,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests / Dynamic Store'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests / Dynamic Store'
   events:
     - type: 'PUSH'
       refs:
@@ -2414,7 +2414,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.2 / MariaDB / Acceptance'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.2 / MariaDB / Acceptance'
   events:
     - type: 'PUSH'
       refs:
@@ -2453,7 +2453,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.2 / MariaDB / Acceptance / Dynamic Store'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.2 / MariaDB / Acceptance / Dynamic Store'
   events:
     - type: 'PUSH'
       refs:
@@ -2498,7 +2498,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance'
   events:
     - type: 'PUSH'
       refs:
@@ -2537,7 +2537,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance / Dynamic Store'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance / Dynamic Store'
   events:
     - type: 'PUSH'
       refs:
@@ -2582,7 +2582,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Debian / PHP 8.2 / Frontend & Assets'
+- pipeline: 'Hakaton / Docker / Debian / PHP 8.2 / Frontend & Assets'
   events:
     - type: 'PUSH'
       refs:
@@ -2621,7 +2621,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Prefer Lowest'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Prefer Lowest'
   events:
     - type: 'PUSH'
       refs:
@@ -2670,7 +2670,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Prefer Lowest / Dynamic Store'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Prefer Lowest / Dynamic Store'
   events:
     - type: 'PUSH'
       refs:
@@ -2725,7 +2725,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest'
   events:
     - type: 'PUSH'
       refs:
@@ -2773,7 +2773,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_LARGE'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest / Dynamic Store'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest / Dynamic Store'
   events:
     - type: 'PUSH'
       refs:
@@ -2827,7 +2827,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.1 / MariaDB / Robot'
   events:
     - type: 'PUSH'
       refs:
@@ -2885,7 +2885,7 @@
           direction: 'PIPELINE_TO_VM'
       docker_layer_caching_scope: 'ACTION'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.2 / PostgreSQL / Robot'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.2 / PostgreSQL / Robot'
   events:
     - type: 'PUSH'
       refs:
@@ -2943,7 +2943,7 @@
           direction: 'PIPELINE_TO_VM'
       docker_layer_caching_scope: 'ACTION'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Store'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Store'
   events:
     - type: 'PUSH'
       refs:
@@ -3008,7 +3008,7 @@
       docker_layer_caching_scope: 'ACTION'
       instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.2 / MariaDB / Cypress'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.2 / MariaDB / Cypress'
   events:
     - type: 'PUSH'
       refs:
@@ -3068,7 +3068,7 @@
           direction: 'PIPELINE_TO_VM'
       docker_layer_caching_scope: 'ACTION'
 
-- pipeline: '[Hakaton] Docker / Alpine / PHP 8.2 / MariaDB / Cypress / Dynamic Store'
+- pipeline: 'Hakaton / Docker / Alpine / PHP 8.2 / MariaDB / Cypress / Dynamic Store'
   events:
     - type: 'PUSH'
       refs:
