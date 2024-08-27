@@ -189,6 +189,7 @@ jobs:
 
     php-82-mariadb-acceptance-alpine:
         name: "PHP 8.2 / MariaDB / Acceptance / Alpine"
+        if: "!contains(github.event.pull_request.labels.*.name, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -275,7 +276,6 @@ jobs:
 
     php-81-postgresql-acceptance-alpine:
         name: "PHP 8.1 / PostgreSQL / Acceptance / Alpine"
-        if: "!contains(github.event.pull_request.labels.*.name, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -305,6 +305,7 @@ jobs:
 
     php-81-postgresql-functional-alpine:
         name: "PHP 8.1 / PostgreSQL / Functional / Alpine"
+        if: "!contains(github.event.pull_request.labels.*.name, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -333,6 +334,7 @@ jobs:
 
     php-81-mariadb-acceptance-alpine:
         name: "PHP 8.1 / MariaDB / Acceptance / Alpine"
+        if: "!contains(github.event.pull_request.labels.*.name, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -363,6 +365,7 @@ jobs:
     php-81-mariadb-functional-alpine:
         name: "PHP 8.1 / MariaDB / Functional / Alpine"
         runs-on: ubuntu-20.04
+        if: "!contains(github.event.pull_request.labels.*.name, 'hackathon')"
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.1
@@ -470,6 +473,7 @@ jobs:
 
     docker-alpine-php-8-1-mariadb-robot:
         name: "Docker / Alpine / PHP 8.1 / MariaDB / Robot / API"
+        if: "!contains(github.event.pull_request.labels.*.name, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
