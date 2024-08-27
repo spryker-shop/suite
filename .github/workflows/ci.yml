@@ -22,11 +22,9 @@ jobs:
                     '8.1',
                     '8.2'
                 ]
-                include:
-                    - php-version: '8.1'
-                      run_job: true
+                exclude:
                     - php-version: '8.2'
-                      run_job: ${{ !contains(github.event.pull_request.labels.*.name, 'hackathon') }}
+                      if: "contains(github.event.pull_request.labels.*.name, 'hackathon')"
 
         env:
             APPLICATION_ENV: ci.mysql
