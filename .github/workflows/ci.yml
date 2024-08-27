@@ -159,7 +159,7 @@ jobs:
 
     php-82-mariadb-glue-alpine:
         name: "PHP 8.2 / MariaDB / Glue / Alpine"
-        if: "!contains(github.event.issue.labels.*.name, 'hackathon')"
+        if: "!contains(github.event.pull_request.labels.*.name, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -275,7 +275,7 @@ jobs:
 
     php-81-postgresql-acceptance-alpine:
         name: "PHP 8.1 / PostgreSQL / Acceptance / Alpine"
-        if: "!contains(github.event.issue.labels.*.name, 'hackathon')"
+        if: "!contains(github.event.pull_request.labels.*.name, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
