@@ -84,9 +84,6 @@ jobs:
             - name: Composer install
               run: composer install
 
-            - name: Dump Composer autoload
-              run: composer dump-autoload -o -a --apcu
-
             - name: Generate transfer objects
               run: vendor/bin/console transfer:generate
 
