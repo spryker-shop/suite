@@ -18,14 +18,10 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php-version:
-                    - '8.1'
-                    - '8.2'
-                isHackathonPR: "contains(github.event.pull_request.labels.*.name, 'hackathon')"
-                exclude:
-                    - { isHackathonPR: true }
-                include:
-                    - { php-version: "8.1" }
+                php-version: [
+                    '8.1',
+                    '8.2'
+                ]
         env:
             APPLICATION_ENV: ci.mysql
             APPLICATION_STORE: DE
@@ -159,6 +155,10 @@ jobs:
 
             - name: Run Evaluator
               run: vendor/bin/evaluator evaluate
+
+        if: |
+            matrix.php-version == '8.1' || 
+            (matrix.php-version == '8.2' && !contains(github.event.pull_request.labels.*.name, 'hackathon'))
 
     php-82-mariadb-glue-alpine:
         name: "PHP 8.2 / MariaDB / Glue / Alpine"
