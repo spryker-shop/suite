@@ -18,12 +18,14 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                build-config:
-                    - php-version: ['8.1', '8.2']
-                      if: "!contains(github.event.pull_request.labels.*.name, 'hackathon')"
-                    - php-version: [ '8.1']
-                      if: "contains(github.event.pull_request.labels.*.name, 'hackathon')"
-
+                php-version:
+                    - '8.1'
+                    - '8.2'
+                isHackathonPR: "contains(github.event.pull_request.labels.*.name, 'hackathon')"
+                exclude:
+                    - { isHackathonPR: true }
+                include:
+                    - { php-version: "8.1" }
         env:
             APPLICATION_ENV: ci.mysql
             APPLICATION_STORE: DE
