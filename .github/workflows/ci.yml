@@ -15,14 +15,14 @@ jobs:
     validation:
         name: "CS, ArchSniffer, PHPStan, Evaluator"
         runs-on: ubuntu-20.04
+        if: matrix.php-version == '8.1' || !contains(github.event.pull_request.labels.*.name, 'hackathon')
         strategy:
             fail-fast: false
             matrix:
-                include:
-                   - php-version: '8.1'
-                     run_job: true
-                   - php-version: '8.2'
-                     run_job: ${{ contains(github.event.pull_request.labels.*.name, 'hackathon') == false }}
+                php-version: [
+                    '8.1',
+                    '8.2'
+                ]
 
         env:
             APPLICATION_ENV: ci.mysql
