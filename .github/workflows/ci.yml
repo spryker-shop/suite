@@ -22,9 +22,10 @@ jobs:
                     '8.1',
                     '8.2'
                 ]
+                is-hackathon-pr: "contains(github.event.pull_request.labels.*.name, 'hackathon')"
                 exclude:
-                    - php-version: '8.2'
-                      if: "contains(github.event.pull_request.labels.*.name, 'hackathon')"
+                    - is-hackathon-pr: true
+                      php-version: '8.2'
 
         env:
             APPLICATION_ENV: ci.mysql
