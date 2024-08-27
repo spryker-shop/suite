@@ -243,7 +243,7 @@ jobs:
 
 
     positive-docker-alpine-php-8-1-mariadb-robot-dynamic-multistore:
-        name: "Docker / Alpine / PHP 8.1 / MariaDB / Robot / API / Dynamic Multistore"
+        name: "Positive / Docker / Alpine / PHP 8.1 / MariaDB / Robot / API / Dynamic Multistore"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -293,7 +293,7 @@ jobs:
             -   name: Run Tests
                 run: |
                     cd robotframework-tests
-                    robot -v env:api_suite -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s positive '*'.tests.api.suite .
+                    robot -v env:api_suite -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s positive -s '*'.tests.api.suite .
                     touch results/time.txt && echo $(date) > results/time.txt
             -   name: Upload artifacts
                 if: failure()
@@ -303,7 +303,7 @@ jobs:
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
     negative-docker-alpine-php-8-1-mariadb-robot-dynamic-multistore:
-        name: "Docker / Alpine / PHP 8.1 / MariaDB / Robot / API / Dynamic Multistore"
+        name: "Negative / Docker / Alpine / PHP 8.1 / MariaDB / Robot / API / Dynamic Multistore"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -353,7 +353,7 @@ jobs:
             -   name: Run Tests
                 run: |
                     cd robotframework-tests
-                    robot -v env:api_suite -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s negative '*'.tests.api.suite .
+                    robot -v env:api_suite -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s negative -s '*'.tests.api.suite .
                     touch results/time.txt && echo $(date) > results/time.txt
             -   name: Upload artifacts
                 if: failure()
