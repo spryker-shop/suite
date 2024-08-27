@@ -18,13 +18,11 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php-version: [
-                    '8.1',
-                    '8.2'
-                ]
-                is-hackathon-pr: ${{ contains(github.event.pull_request.labels.*.name, 'hackathon') }}
-                exclude:
-                    - {php-version: '8.1', is-hackathon-pr: true}
+                include:
+                   - php-version: '8.1'
+                     run_job: true
+                   - php-version: '8.2'
+                     run_job: ${{ contains(github.event.pull_request.labels.*.name, 'hackathon') == false }}
 
         env:
             APPLICATION_ENV: ci.mysql
