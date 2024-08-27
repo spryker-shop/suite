@@ -160,6 +160,7 @@ jobs:
     php-82-mariadb-glue-alpine:
         name: "PHP 8.2 / MariaDB / Glue / Alpine"
         runs-on: ubuntu-20.04
+        if: !contains(github.event.issue.labels.*.name, 'hackathon')
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
