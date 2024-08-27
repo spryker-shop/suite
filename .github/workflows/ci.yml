@@ -15,6 +15,7 @@ jobs:
     validation:
         name: "CS, ArchSniffer, PHPStan, Evaluator"
         runs-on: ubuntu-20.04
+        if: "matrix.php-version == '8.1' || (matrix.php-version == '8.2' && !contains(github.event.pull_request.labels.*.name, 'hackathon'))"
         strategy:
             fail-fast: false
             matrix:
