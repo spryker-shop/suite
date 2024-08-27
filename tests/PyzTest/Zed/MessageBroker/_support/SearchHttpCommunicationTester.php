@@ -105,6 +105,7 @@ class SearchHttpCommunicationTester extends Actor
     {
         $channelName = 'search-commands';
         $this->setupMessageBroker($searchMessageTransfer::class, $channelName);
+        $this->setupMessageBrokerValidationPlugins();
         $messageBrokerFacade = $this->getLocator()->messageBroker()->facade();
         $messageBrokerFacade->sendMessage($searchMessageTransfer);
         $messageBrokerFacade->startWorker(

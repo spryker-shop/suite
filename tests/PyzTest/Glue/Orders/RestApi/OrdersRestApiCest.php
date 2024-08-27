@@ -184,7 +184,7 @@ class OrdersRestApiCest
      *
      * @return void
      */
-    public function requestGetCustomerOrderAuthorizationError(OrdersApiTester $I): void
+    public function requestGetCustomerOrderForbidden(OrdersApiTester $I): void
     {
         //Arrange
         $this->authorizeCustomer($I, $this->fixtures->getCustomerWithOrders());

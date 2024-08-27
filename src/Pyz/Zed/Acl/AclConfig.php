@@ -77,6 +77,7 @@ class AclConfig extends SprykerAclConfig
             'agent-dashboard-merchant-portal-gui',
             'merchant-relation-request-merchant-portal-gui',
             'merchant-relationship-merchant-portal-gui',
+            'merchant-app-merchant-portal-gui',
         ];
 
         foreach ($bundleNames as $bundleName) {

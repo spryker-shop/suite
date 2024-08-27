@@ -50,7 +50,11 @@ class TransferConfig extends SprykerTransferConfig
      */
     public function isTransferNameValidated(): bool
     {
-        return true;
+        // This should not be merged to projects!
+        // We set this to false to ensure that we do not have wrong names used in our transfer schema definitions.
+        // When this is set to true, you can use "MyTransfer" as name which leads to "MyTransferTransfer.php".
+        // When projects don't have this set to true our code would not work for them as the generated file name would be "MyTransfer.php"
+        return false;
     }
 
     /**
