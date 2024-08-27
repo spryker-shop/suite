@@ -24,9 +24,7 @@ jobs:
                 ]
                 is-hackathon-pr: ${{ contains(github.event.pull_request.labels.*.name, 'hackathon') }}
                 exclude:
-                    - is-hackathon-pr: true
-                include:
-                    - php-version: "8.1"
+                    - {php-version: '8.1', is-hackathon-pr: true}
 
         env:
             APPLICATION_ENV: ci.mysql
