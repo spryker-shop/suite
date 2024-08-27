@@ -22,8 +22,6 @@ jobs:
                     '8.1',
                     '8.2'
                 ]
-        if: matrix.php-version == '8.1' || !contains(github.event.pull_request.labels.*.name, 'hackathon')
-
         env:
             APPLICATION_ENV: ci.mysql
             APPLICATION_STORE: DE
