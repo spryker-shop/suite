@@ -18,10 +18,11 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php-version: [
-                    '8.1',
-                    '8.2'
-                ]
+                build-config:
+                    - php-version: ['8.1', '8.2']
+                      if: "!contains(github.event.pull_request.labels.*.name, 'hackathon')"
+                    - php-version: [ '8.1']
+                      if: "contains(github.event.pull_request.labels.*.name, 'hackathon')"
 
         env:
             APPLICATION_ENV: ci.mysql
@@ -393,6 +394,7 @@ jobs:
 
     php-81-postgres-functional-debian:
         name: "PHP 8.1 / PostgreSQL / Functional / Debian"
+        if: "!contains(github.event.pull_request.labels.*.name, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -527,6 +529,7 @@ jobs:
     docker-alpine-php-8-2-postgresql-robot:
         name: "Docker / Alpine / PHP 8.2 / PostgreSQL / Robot / API"
         runs-on: ubuntu-20.04
+        if: "!contains(github.event.pull_request.labels.*.name, 'hackathon')"
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -576,12 +579,12 @@ jobs:
                     --recursive \
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
-    docker-alpine-php-8-2-mariadb-robot-dynamic-multistore:
-        name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Multistore"
+    docker-alpine-php-8-1-mariadb-robot-dynamic-multistore:
+        name: "Docker / Alpine / PHP 8.1 / MariaDB / Robot / API / Dynamic Multistore"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.1
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
         steps:
