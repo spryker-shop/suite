@@ -1025,6 +1025,10 @@
   fail_on_prepare_env_warning: true
   concurrent_pipeline_runs: true
   clone_depth: 1
+  trigger_conditions:
+      - trigger_condition: "VAR_NOT_CONTAINS"
+        trigger_variable_value: "hackathon"
+        trigger_variable_key: "BUDDY_EXECUTION_PULL_REQUEST_BASE_BRANCH"
   resources: 'NANO'
   actions:
       - action: 'Run tests'
