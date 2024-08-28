@@ -1015,22 +1015,15 @@
         instance_type: 'GENERAL_MEDIUM'
 
 - pipeline: '[Hackathon] Docker / Debian / PHP 8.2 / Frontend & Assets'
-  trigger_mode: "ON_EVERY_PUSH"
-  ref_name: "*"
-  ref_type: "WILDCARD"
+  events:
+    - type: 'PUSH'
+      refs:
+        - 'refs/pull/*'
+        - 'refs/heads/master'
   trigger_conditions:
     - trigger_condition: "VAR_NOT_CONTAINS"
       trigger_variable_value: "hackathon"
       trigger_variable_key: "BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH"
-    - trigger_condition: "OR"
-      trigger_operands:
-        - trigger_condition: "VAR_IS_NOT"
-          trigger_variable_value: ""
-          trigger_variable_key: "BUDDY_EXECUTION_PULL_REQUEST_ID"
-        - trigger_condition: "VAR_IS"
-          trigger_variable_value: "master"
-          trigger_variable_key: "BUDDY_EXECUTION_BRANCH"
-
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
