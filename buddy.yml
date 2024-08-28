@@ -1015,19 +1015,14 @@
         instance_type: 'GENERAL_MEDIUM'
 
 - pipeline: '[Hackathon] Docker / Debian / PHP 8.2 / Frontend & Assets'
-  trigger_mode: 'ON_EVERY_PUSH'
   events:
     - type: 'PUSH'
       refs:
         - 'refs/pull/*'
         - 'refs/heads/master'
-  condition:
-    scripts:
-      - |
-        if [[ "$BUDDY_EXECUTION_BRANCH" == *"hackathon"* ]]; then
-          echo "Branch name contains 'hello'. Skipping pipeline."
-          exit 1
-        fi
+  ref_name:
+    exclude:
+      - "*hackathon*"
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
