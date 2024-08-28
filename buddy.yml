@@ -1662,3 +1662,128 @@
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
+
+- pipeline: '[Hackathon] Positive / Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+  events:
+    - type: 'PUSH'
+      refs:
+        - 'refs/pull/*'
+        - 'refs/heads/master'
+  trigger_conditions:
+    - trigger_condition: "VAR_CONTAINS"
+      trigger_variable_value: "hackathon"
+      trigger_variable_key: "BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH"
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+    - action: 'Install Composer'
+      type: 'BUILD'
+      docker_image_name: 'spryker/php'
+      docker_image_tag: '8.2'
+      execute_commands:
+        - '.ci/snippet/PREPARE'
+        - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
+        - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
+        - '.ci/snippet/FINISH'
+      shell: 'BASH'
+    - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+      type: 'NATIVE_BUILD_DOCKER_CLI'
+      commands:
+        - '.ci/snippet/PREPARE'
+        - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.mariadb.yml'
+        - '.ci/snippet/RUN docker/sdk up -t'
+        - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
+        - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v docker:True --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite.[*].positive ."'
+        - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
+        - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
+        - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
+        - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
+        - 'export AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID'
+        - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
+        - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
+        - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
+        - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.1MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+        - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.1MariaDBRobot/log.html"'
+        - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
+        - '.ci/snippet/FINISH'
+      run_next_parallel: true
+      variables:
+        - key: 'SPRYKER_PLATFORM_IMAGE'
+          value: 'spryker/php:8.1'
+          type: 'VAR'
+        - key: 'TRAVIS'
+          value: '1'
+          type: 'VAR'
+      timeout: 8000
+      sync_paths:
+        - pipeline_path: '/'
+          vm_path: '/home/ubuntu/build'
+          direction: 'PIPELINE_TO_VM'
+      docker_layer_caching_scope: 'ACTION'
+
+
+- pipeline: '[Hackathon] Negative / Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+  events:
+    - type: 'PUSH'
+      refs:
+        - 'refs/pull/*'
+        - 'refs/heads/master'
+  trigger_conditions:
+    - trigger_condition: "VAR_CONTAINS"
+      trigger_variable_value: "hackathon"
+      trigger_variable_key: "BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH"
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+    - action: 'Install Composer'
+      type: 'BUILD'
+      docker_image_name: 'spryker/php'
+      docker_image_tag: '8.2'
+      execute_commands:
+        - '.ci/snippet/PREPARE'
+        - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
+        - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
+        - '.ci/snippet/FINISH'
+      shell: 'BASH'
+    - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+      type: 'NATIVE_BUILD_DOCKER_CLI'
+      commands:
+        - '.ci/snippet/PREPARE'
+        - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.mariadb.yml'
+        - '.ci/snippet/RUN docker/sdk up -t'
+        - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
+        - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v docker:True --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite.[*].negative ."'
+        - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
+        - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
+        - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
+        - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
+        - 'export AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID'
+        - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
+        - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
+        - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
+        - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.1MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+        - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.1MariaDBRobot/log.html"'
+        - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
+        - '.ci/snippet/FINISH'
+      run_next_parallel: true
+      variables:
+        - key: 'SPRYKER_PLATFORM_IMAGE'
+          value: 'spryker/php:8.1'
+          type: 'VAR'
+        - key: 'TRAVIS'
+          value: '1'
+          type: 'VAR'
+      timeout: 8000
+      sync_paths:
+        - pipeline_path: '/'
+          vm_path: '/home/ubuntu/build'
+          direction: 'PIPELINE_TO_VM'
+      docker_layer_caching_scope: 'ACTION'
