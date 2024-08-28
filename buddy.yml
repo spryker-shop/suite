@@ -340,6 +340,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -353,6 +357,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
@@ -380,6 +385,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -393,6 +402,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.dynamic-store.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
@@ -439,6 +449,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
@@ -466,6 +477,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -479,6 +494,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.dynamic-store.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
@@ -512,6 +528,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -525,6 +545,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -564,6 +585,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -596,6 +618,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -609,6 +635,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -635,6 +662,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -648,6 +679,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.dynamic-store.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -680,6 +712,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -693,6 +729,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
@@ -720,6 +757,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -733,6 +774,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.dynamic-store.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
@@ -766,6 +808,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -779,6 +825,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
@@ -806,6 +853,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -819,6 +870,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.dynamic-store.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
@@ -852,6 +904,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -865,6 +921,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -891,6 +948,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -904,6 +965,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -936,6 +998,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -949,6 +1015,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -975,6 +1042,11 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -988,6 +1060,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.dynamic-store.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -1020,6 +1093,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1059,6 +1136,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1081,6 +1162,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.prefer-lowest.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
@@ -1108,6 +1190,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1130,6 +1216,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.prefer-lowest.dynamic-store.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
@@ -1163,6 +1250,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1185,6 +1276,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.prefer-lowest.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -1211,6 +1303,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1233,6 +1329,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.prefer-lowest.dynamic-store.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -1265,6 +1362,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1288,6 +1389,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.mariadb.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v docker:True --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite ."'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
@@ -1323,6 +1425,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1347,6 +1453,7 @@
             - 'export SPRYKER_PLATFORM_IMAGE=spryker/php:8.2'
             - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v db_engine:psycopg2 -v docker:True --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite ."'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
@@ -1381,6 +1488,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1404,6 +1515,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.api.mariadb.dynamic-store.robot.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite ."'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
@@ -1446,6 +1558,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1506,6 +1622,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1565,3 +1685,143 @@
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
+
+- pipeline: 'Positive / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Store'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Install Composer'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.1'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
+            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+      - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.api.mariadb.dynamic-store.robot.yml'
+            - '.ci/snippet/RUN docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite.\"*\".positive ."'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
+            - 'export AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID'
+            - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
+            - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
+            - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.2MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.1MariaDBRobot/log.html"'
+            - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.1'
+              type: 'VAR'
+            - key: 'SPRYKER_CURRENT_REGION'
+              value: 'EU'
+              type: 'VAR'
+            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
+              value: 'true'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        timeout: 8000
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
+
+- pipeline: 'Negative / Docker / Alpine / PHP 8.1 / MariaDB / Robot / API / Dynamic Store'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Install Composer'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.1'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
+            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+      - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.api.mariadb.dynamic-store.robot.yml'
+            - '.ci/snippet/RUN docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite.\"*\".negative ."'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
+            - 'export AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID'
+            - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
+            - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
+            - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.2MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.1MariaDBRobot/log.html"'
+            - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.1'
+              type: 'VAR'
+            - key: 'SPRYKER_CURRENT_REGION'
+              value: 'EU'
+              type: 'VAR'
+            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
+              value: 'true'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        timeout: 8000
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
