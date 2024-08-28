@@ -244,7 +244,7 @@ jobs:
 
 
     positive-docker-alpine-php-8-1-mariadb-robot-dynamic-multistore:
-        name: "Positive / Docker / Alpine / PHP 8.1 / MariaDB / Robot / API / Dynamic Multistore"
+        name: "[Hackathon] Positive / Docker / Alpine / PHP 8.1 / MariaDB / Robot / API / Dynamic Multistore"
         runs-on: ubuntu-20.04
         if: "contains(github.event.pull_request.labels.*.name, 'hackathon')"
         env:
@@ -305,7 +305,7 @@ jobs:
                     --expires "$(date -d '+7 days' --utc +'%Y-%m-%dT%H:%M:%SZ')"
 
     negative-docker-alpine-php-8-1-mariadb-robot-dynamic-multistore:
-        name: "Negative / Docker / Alpine / PHP 8.1 / MariaDB / Robot / API / Dynamic Multistore"
+        name: "[Hackathon] Negative / Docker / Alpine / PHP 8.1 / MariaDB / Robot / API / Dynamic Multistore"
         runs-on: ubuntu-20.04
         if: "contains(github.event.pull_request.labels.*.name, 'hackathon')"
         env:
