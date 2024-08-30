@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5d33eda5d1ceb281a76a0da0280c41d",
+    "content-hash": "d346c02a9f28d2feec2750156a21dd78",
     "packages": [
         {
             "name": "async-aws/core",
@@ -35379,6 +35379,94 @@
                 "source": "https://github.com/spryker/http-extension/tree/master"
             },
             "time": "2019-08-15T16:09:16+00:00"
+        },
+        {
+            "name": "spryker/incremental-installer",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/incremental-installer.git",
+                "reference": "5f5ece0082f3c13e48d3cddcfeddf15944c5538c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/incremental-installer/zipball/5f5ece0082f3c13e48d3cddcfeddf15944c5538c",
+                "reference": "5f5ece0082f3c13e48d3cddcfeddf15944c5538c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "spryker/incremental-installer-extension": "^0.1.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "IncrementalInstaller module",
+            "support": {
+                "source": "https://github.com/spryker/incremental-installer/tree/0.1.0"
+            },
+            "time": "2024-08-30T13:47:13+00:00"
+        },
+        {
+            "name": "spryker/incremental-installer-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/incremental-installer-extension.git",
+                "reference": "153f4be7782cb1e34ec39cc0a79f3d86ef18d3e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/incremental-installer-extension/zipball/153f4be7782cb1e34ec39cc0a79f3d86ef18d3e5",
+                "reference": "153f4be7782cb1e34ec39cc0a79f3d86ef18d3e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "IncrementalInstallerExtension module",
+            "support": {
+                "source": "https://github.com/spryker/incremental-installer-extension/tree/0.1.0"
+            },
+            "time": "2024-08-30T13:47:13+00:00"
         },
         {
             "name": "spryker/index-generator",
