@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d346c02a9f28d2feec2750156a21dd78",
+    "content-hash": "6fa09ce9cc662d061174c04dff5e1b5d",
     "packages": [
         {
             "name": "async-aws/core",
@@ -13031,16 +13031,16 @@
         },
         {
             "name": "spryker-shop/product-detail-page",
-            "version": "3.20.0",
+            "version": "3.20.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-detail-page.git",
-                "reference": "ab7ac9858f1e4a353060c2c5bda94c50e38087a7"
+                "reference": "672e6d68ccd01c95bb9a651b53c8edfa98a78ae3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-detail-page/zipball/ab7ac9858f1e4a353060c2c5bda94c50e38087a7",
-                "reference": "ab7ac9858f1e4a353060c2c5bda94c50e38087a7",
+                "url": "https://api.github.com/repos/spryker-shop/product-detail-page/zipball/672e6d68ccd01c95bb9a651b53c8edfa98a78ae3",
+                "reference": "672e6d68ccd01c95bb9a651b53c8edfa98a78ae3",
                 "shasum": ""
             },
             "require": {
@@ -13090,9 +13090,9 @@
             ],
             "description": "ProductDetailPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/product-detail-page/tree/3.20.0"
+                "source": "https://github.com/spryker-shop/product-detail-page/tree/3.20.1"
             },
-            "time": "2023-12-27T10:44:32+00:00"
+            "time": "2024-09-02T08:22:17+00:00"
         },
         {
             "name": "spryker-shop/product-discontinued-widget",
@@ -48365,16 +48365,16 @@
         },
         {
             "name": "spryker/product-attribute",
-            "version": "1.14.0",
+            "version": "1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-attribute.git",
-                "reference": "f748371e3dd24df0f7b7cf4030740a18565d8add"
+                "reference": "c3074890a011d096bb11abd8cbb155be0e3d41b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-attribute/zipball/f748371e3dd24df0f7b7cf4030740a18565d8add",
-                "reference": "f748371e3dd24df0f7b7cf4030740a18565d8add",
+                "url": "https://api.github.com/repos/spryker/product-attribute/zipball/c3074890a011d096bb11abd8cbb155be0e3d41b3",
+                "reference": "c3074890a011d096bb11abd8cbb155be0e3d41b3",
                 "shasum": ""
             },
             "require": {
@@ -48384,6 +48384,7 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0 || ^4.0.0",
                 "spryker/product": "^5.2.0 || ^6.0.0",
+                "spryker/product-attribute-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.2.0",
                 "spryker/transfer": "^3.27.0",
                 "spryker/util-encoding": "^2.0.0",
@@ -48413,22 +48414,63 @@
             ],
             "description": "ProductAttribute module",
             "support": {
-                "source": "https://github.com/spryker/product-attribute/tree/1.14.0"
+                "source": "https://github.com/spryker/product-attribute/tree/1.15.0"
             },
-            "time": "2024-05-06T12:15:28+00:00"
+            "time": "2024-09-02T08:22:15+00:00"
         },
         {
-            "name": "spryker/product-attribute-gui",
-            "version": "1.6.0",
+            "name": "spryker/product-attribute-extension",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/product-attribute-gui.git",
-                "reference": "a5e9ca2267757a1434157691b15b5d715a58450d"
+                "url": "https://github.com/spryker/product-attribute-extension.git",
+                "reference": "65b0ffc5636977201d37b6d62abceaf208b17e2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-attribute-gui/zipball/a5e9ca2267757a1434157691b15b5d715a58450d",
-                "reference": "a5e9ca2267757a1434157691b15b5d715a58450d",
+                "url": "https://api.github.com/repos/spryker/product-attribute-extension/zipball/65b0ffc5636977201d37b6d62abceaf208b17e2a",
+                "reference": "65b0ffc5636977201d37b6d62abceaf208b17e2a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductAttributeExtension module",
+            "support": {
+                "source": "https://github.com/spryker/product-attribute-extension/tree/1.0.0"
+            },
+            "time": "2024-09-02T08:22:15+00:00"
+        },
+        {
+            "name": "spryker/product-attribute-gui",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-attribute-gui.git",
+                "reference": "fd202da5b61bd1ca85e22f2e6a39e6823d73518f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-attribute-gui/zipball/fd202da5b61bd1ca85e22f2e6a39e6823d73518f",
+                "reference": "fd202da5b61bd1ca85e22f2e6a39e6823d73518f",
                 "shasum": ""
             },
             "require": {
@@ -48473,9 +48515,9 @@
             ],
             "description": "ProductAttributeGui module",
             "support": {
-                "source": "https://github.com/spryker/product-attribute-gui/tree/1.6.0"
+                "source": "https://github.com/spryker/product-attribute-gui/tree/1.7.0"
             },
-            "time": "2023-11-02T20:09:27+00:00"
+            "time": "2024-09-02T08:22:15+00:00"
         },
         {
             "name": "spryker/product-attributes-backend-api",
@@ -48530,29 +48572,29 @@
         },
         {
             "name": "spryker/product-attributes-rest-api",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-attributes-rest-api.git",
-                "reference": "9d2a42bcba5338423d3da4731b8f5f1c7df99871"
+                "reference": "e40c51e427224fb4fab9edada5b156fd9cc0d9fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-attributes-rest-api/zipball/9d2a42bcba5338423d3da4731b8f5f1c7df99871",
-                "reference": "9d2a42bcba5338423d3da4731b8f5f1c7df99871",
+                "url": "https://api.github.com/repos/spryker/product-attributes-rest-api/zipball/e40c51e427224fb4fab9edada5b156fd9cc0d9fd",
+                "reference": "e40c51e427224fb4fab9edada5b156fd9cc0d9fd",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=8.1",
                 "spryker/glue-application": "^1.0.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/product-attribute": "^1.8.0",
+                "spryker/products-rest-api-extension": "^1.1.0",
                 "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -48572,9 +48614,9 @@
             "description": "ProductAttributesRestApi module",
             "support": {
                 "issues": "https://github.com/spryker/product-attributes-rest-api/issues",
-                "source": "https://github.com/spryker/product-attributes-rest-api/tree/1.0.0"
+                "source": "https://github.com/spryker/product-attributes-rest-api/tree/1.1.0"
             },
-            "time": "2020-10-05T14:05:22+00:00"
+            "time": "2024-09-02T08:22:15+00:00"
         },
         {
             "name": "spryker/product-availabilities-rest-api",
@@ -52381,16 +52423,16 @@
         },
         {
             "name": "spryker/product-management",
-            "version": "0.19.40",
+            "version": "0.19.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-management.git",
-                "reference": "777891b06eea85dc179bb4d05101d4471a922e54"
+                "reference": "dc3269b8a0a514a3dc49b69ba530e722669761a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-management/zipball/777891b06eea85dc179bb4d05101d4471a922e54",
-                "reference": "777891b06eea85dc179bb4d05101d4471a922e54",
+                "url": "https://api.github.com/repos/spryker/product-management/zipball/dc3269b8a0a514a3dc49b69ba530e722669761a0",
+                "reference": "dc3269b8a0a514a3dc49b69ba530e722669761a0",
                 "shasum": ""
             },
             "require": {
@@ -52458,9 +52500,9 @@
             ],
             "description": "ProductManagement module",
             "support": {
-                "source": "https://github.com/spryker/product-management/tree/0.19.40"
+                "source": "https://github.com/spryker/product-management/tree/0.19.41"
             },
-            "time": "2024-08-02T09:21:41+00:00"
+            "time": "2024-09-02T08:22:15+00:00"
         },
         {
             "name": "spryker/product-management-extension",
@@ -52794,16 +52836,16 @@
         },
         {
             "name": "spryker/product-merchant-portal-gui",
-            "version": "4.2.1",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-merchant-portal-gui.git",
-                "reference": "f0ba8cf691ff460a49cd8c60510f1df24e839a6d"
+                "reference": "cf00d4e817a3840baf7b47b7f957eb30a514284b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-merchant-portal-gui/zipball/f0ba8cf691ff460a49cd8c60510f1df24e839a6d",
-                "reference": "f0ba8cf691ff460a49cd8c60510f1df24e839a6d",
+                "url": "https://api.github.com/repos/spryker/product-merchant-portal-gui/zipball/cf00d4e817a3840baf7b47b7f957eb30a514284b",
+                "reference": "cf00d4e817a3840baf7b47b7f957eb30a514284b",
                 "shasum": ""
             },
             "require": {
@@ -52864,9 +52906,9 @@
             ],
             "description": "ProductMerchantPortalGui module",
             "support": {
-                "source": "https://github.com/spryker/product-merchant-portal-gui/tree/4.2.1"
+                "source": "https://github.com/spryker/product-merchant-portal-gui/tree/4.3.0"
             },
-            "time": "2024-08-22T10:59:48+00:00"
+            "time": "2024-09-02T08:22:15+00:00"
         },
         {
             "name": "spryker/product-merchant-portal-gui-extension",
@@ -79500,12 +79542,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "2b7bdea4df5352a08ee3cdd2fe8de78ca94db6a7"
+                "reference": "56f6b9e55f5885e651553843a1aaf9ec9c586c04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/2b7bdea4df5352a08ee3cdd2fe8de78ca94db6a7",
-                "reference": "2b7bdea4df5352a08ee3cdd2fe8de78ca94db6a7",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/56f6b9e55f5885e651553843a1aaf9ec9c586c04",
+                "reference": "56f6b9e55f5885e651553843a1aaf9ec9c586c04",
                 "shasum": ""
             },
             "require-dev": {
@@ -79540,7 +79582,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2024-08-29T12:16:53+00:00"
+            "time": "2024-09-01T14:35:14+00:00"
         },
         {
             "name": "masterminds/html5",
