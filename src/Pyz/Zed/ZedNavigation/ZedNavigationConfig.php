@@ -12,6 +12,20 @@ use Spryker\Zed\ZedNavigation\ZedNavigationConfig as SprykerZedNavigationConfig;
 class ZedNavigationConfig extends SprykerZedNavigationConfig
 {
     /**
+     * @uses \Spryker\Zed\MerchantPortalApplication\Communication\Plugin\Twig\MerchantNavigationTypeTwigPlugin::NAVIGATION_TYPE_MAIN_MERCHANT_PORTAL
+     *
+     * @var string
+     */
+    protected const NAVIGATION_TYPE_MAIN_MERCHANT_PORTAL = 'main-merchant-portal';
+
+    /**
+     * @uses \Spryker\Zed\MerchantPortalApplication\Communication\Plugin\Twig\MerchantNavigationTypeTwigPlugin::NAVIGATION_TYPE_SECONDARY_MERCHANT_PORTAL
+     *
+     * @var string
+     */
+    protected const NAVIGATION_TYPE_SECONDARY_MERCHANT_PORTAL = 'secondary-merchant-portal';
+
+    /**
      * @api
      *
      * @return string
