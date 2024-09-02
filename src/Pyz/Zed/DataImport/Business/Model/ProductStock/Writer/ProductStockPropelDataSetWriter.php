@@ -236,6 +236,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     {
         $storeIds = $this->getStoreIds();
 
+        // @phpstan-ignore-next-line
         return SpyAvailabilityAbstractQuery::create()
             ->joinWithSpyAvailability()
             ->useSpyAvailabilityQuery()
