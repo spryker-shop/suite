@@ -201,11 +201,13 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         $productAbstractEntityTransfer = new SpyProductAbstractEntityTransfer();
         $productAbstractEntityTransfer->setSku($dataSet[static::COLUMN_ABSTRACT_SKU]);
 
+        $attributes = $this->formatMultiSelectProductAttributes($dataSet[static::KEY_ATTRIBUTES] ?? []);
+
         $productAbstractEntityTransfer
             ->fromArray($dataSet->getArrayCopy(), true)
             ->setColorCode($dataSet[static::COLUMN_COLOR_CODE])
             ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
-            ->setAttributes((string)json_encode($dataSet[static::KEY_ATTRIBUTES]))
+            ->setAttributes((string)json_encode($attributes))
             ->setNewFrom($dataSet[static::COLUMN_NEW_FROM])
             ->setNewTo($dataSet[static::COLUMN_NEW_TO]);
 
@@ -328,5 +330,25 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         $categoryProductOrder = explode(',', $categoryProductOrder);
 
         return array_map('trim', $categoryProductOrder);
+    }
+
+    /**
+     * @param array<mixed> $attributes
+     *
+     * @return array<mixed>
+     */
+    protected function formatMultiSelectProductAttributes(array $attributes): array
+    {
+        foreach ($attributes as $key => $value) {
+            if (is_string($value) && preg_match('/^\[.*\]$/', $value)) {
+                $json = str_replace("'", '"', $value);
+                $decoded = json_decode($json, true);
+                if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                    $attributes[$key] = $decoded;
+                }
+            }
+        }
+
+        return $attributes;
     }
 }

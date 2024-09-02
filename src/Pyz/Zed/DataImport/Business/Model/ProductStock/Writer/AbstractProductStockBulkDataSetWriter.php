@@ -232,8 +232,10 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
      */
     protected function getStockProductBySkusAndStore(array $skus, StoreTransfer $storeTransfer): array
     {
-        /** @var \Propel\Runtime\Collection\ArrayCollection $stockProductCollection */
-        $stockProductCollection = SpyStockProductQuery::create()
+        $stockProductQuery = SpyStockProductQuery::create();
+
+        // @phpstan-ignore-next-line
+        $stockProductQuery = $stockProductQuery
             ->useSpyProductQuery()
             ->filterBySku_In($skus)
             ->endUse()
@@ -243,8 +245,10 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
                 SpyStockProductTableMap::COL_QUANTITY,
                 SpyStockProductTableMap::COL_IS_NEVER_OUT_OF_STOCK,
                 SpyStockTableMap::COL_NAME,
-            ])
-            ->find();
+            ]);
+
+        /** @var \Propel\Runtime\Collection\ArrayCollection $stockProductCollection */
+        $stockProductCollection = $stockProductQuery->find();
 
         return $this->mapStockProducts($stockProductCollection->toArray(), $storeTransfer);
     }
