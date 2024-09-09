@@ -96,6 +96,7 @@ use Spryker\Zed\SalesMerchantCommission\Communication\Plugin\AclMerchantPortal\S
 use Spryker\Zed\SalesMerchantCommission\Communication\Plugin\AclMerchantPortal\SalesMerchantCommissionMerchantAclEntityRuleExpanderPlugin;
 use Spryker\Zed\SalesMerchantPortalGui\Communication\Plugin\AclMerchantPortal\SalesMerchantPortalGuiMerchantAclRuleExpanderPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\AclMerchantPortal\SalesOrderThresholdAclEntityConfigurationExpanderPlugin;
+use Spryker\Zed\SalesPaymentMerchant\Communication\Plugin\AclMerchantPortal\SalesPaymentMerchantAclEntityConfigurationExpanderPlugin;
 use Spryker\Zed\SecurityMerchantPortalGui\Communication\Plugin\AclMerchantPortal\SecurityMerchantPortalGuiMerchantUserAclRuleExpanderPlugin;
 use Spryker\Zed\ServicePoint\Communication\Plugin\AclMerchantPortal\ServiceAclEntityConfigurationExpanderPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\AclMerchantPortal\ShipmentAclEntityConfigurationExpanderPlugin;
@@ -219,6 +220,7 @@ class AclMerchantPortalDependencyProvider extends SprykerAclMerchantPortalDepend
             new MerchantProfileAclEntityConfigurationExpanderPlugin(),
             new MerchantRelationshipModelAclEntityConfigurationExpanderPlugin(),
             new MerchantSalesOrderAclEntityConfigurationExpanderPlugin(),
+            new SalesPaymentMerchantAclEntityConfigurationExpanderPlugin(),
             new MerchantStockAclEntityConfigurationExpanderPlugin(),
             new MerchantUserAclEntityConfigurationExpanderPlugin(),
             new OmsAclEntityConfigurationExpanderPlugin(),
