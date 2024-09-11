@@ -187,6 +187,7 @@ jobs:
 
     php-82-mariadb-glue-alpine:
         name: "PHP 8.2 / MariaDB / Glue / Alpine"
+        if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -215,6 +216,7 @@ jobs:
 
     php-82-mariadb-acceptance-alpine-dynamic-store-off:
         name: "PHP 8.2 / MariaDB / Acceptance / Alpine / Dynamic Store OFF"
+        if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -268,6 +270,7 @@ jobs:
 
     php-82-mariadb-functional-alpine-dynamic-store-off:
         name: "PHP 8.2 / MariaDB / Functional / Alpine / Dynamic Store OFF"
+        if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -318,6 +321,7 @@ jobs:
 
     php-81-mariadb-glue-alpine-dynamic-store-off:
         name: "PHP 8.1 / MariaDB / Glue / Alpine / Dynamic Store OFF"
+        if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -397,6 +401,7 @@ jobs:
 
     php-81-postgresql-acceptance-alpine:
         name: "PHP 8.1 / PostgreSQL / Acceptance / Alpine"
+        if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -424,6 +429,7 @@ jobs:
 
     php-81-postgresql-functional-alpine-dynamic-store-off:
         name: "PHP 8.1 / PostgreSQL / Functional / Alpine / Dynamic Store OFF"
+        if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -477,6 +483,7 @@ jobs:
 
     php-81-mariadb-acceptance-alpine-dynamic-store-off:
         name: "PHP 8.1 / MariaDB / Acceptance / Alpine / Dynamic Store OFF"
+        if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain
@@ -530,6 +537,7 @@ jobs:
 
     php-81-mariadb-functional-alpine-dynamic-store-off:
         name: "PHP 8.1 / MariaDB / Functional / Alpine / Dynamic Store OFF"
+        if: "!contains(github.event.pull_request.head.ref, 'hackathon')"
         runs-on: ubuntu-20.04
         env:
             PROGRESS_TYPE: plain

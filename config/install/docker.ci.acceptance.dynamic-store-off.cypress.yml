@@ -130,6 +130,9 @@ sections:
         apply-scheduled-prices:
             command: 'vendor/bin/console price-product-schedule:apply'
 
+        propel-copy-schema:
+            command: 'vendor/bin/console propel:schema:copy'
+
         update-product-labels:
             command: 'vendor/bin/console product-label:relations:update'
 
