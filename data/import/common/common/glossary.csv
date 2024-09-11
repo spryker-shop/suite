@@ -809,6 +809,8 @@ dynamic_entity.validation.persistence_failed_duplicate_entry,"Failed to persist 
 dynamic_entity.validation.persistence_failed_duplicate_entry,"Das Speichern der Daten ist fehlgeschlagen für `%errorPath%`. Bitte überprüfen Sie die bereitgestellten Daten und versuchen Sie es erneut. Eintrag is doppelt vorhanden.",de_DE
 dynamic_entity.validation.persistence_failed_not_nullable_field,"Failed to persist the data for `%errorPath%`. Please verify the provided data and try again. Field must not be null.",en_US
 dynamic_entity.validation.persistence_failed_not_nullable_field,"Das Speichern der Daten ist fehlgeschlagen für `%errorPath%`. Bitte überprüfen Sie die bereitgestellten Daten und versuchen Sie es erneut. Das Feld darf nicht null sein.",de_DE
+dynamic_entity.validation.delete_foreign_key_constraint_fails,"Failed to delete the data for `%errorPath%`. The entity has a child entity and can not be deleted. Child entity: `%childEntity%`.",en_US
+dynamic_entity.validation.delete_foreign_key_constraint_fails,"Die Daten für `%errorPath%` konnten nicht gelöscht werden. Die Entität hat eine untergeordnete Entität und kann nicht gelöscht werden. Untergeordnete Entität: `%childEntity%`.",de_DE
 dynamic_entity.validation.entity_does_not_exist,"The entity `%errorPath%` could not be found in the database.",en_US
 dynamic_entity.validation.entity_does_not_exist,"Die Entität `%errorPath%` konnte in der Datenbank nicht gefunden werden.",de_DE
 dynamic_entity.validation.invalid_field_type,"Invalid data type `%errorPath%` for field `%fieldName%`",en_US
@@ -833,8 +835,10 @@ dynamic_entity.validation.configuration_not_found,"Dynamic entity configuration 
 dynamic_entity.validation.configuration_not_found,"Dynamische Entitätskonfiguration für Tabellenalias `%aliasName%` nicht gefunden.",de_DE
 dynamic_entity.validation.filter_field_not_found,"Filter field `%filterField%` for table alias `%aliasName%` not found.",en_US
 dynamic_entity.validation.filter_field_not_found,"Filterfeld `%filterField%` für Tabellen alias `%aliasName%` nicht gefunden.",de_DE
-dynamic_entity.validation.invalid_url,"The URL is invalid. `%errorPath%` field '%fieldName%' must have a URL data format.",en_US
-dynamic_entity.validation.invalid_url,"Die URL ist ungültig. `%errorPath%` Feld '%fieldName%' muss ein URL-Datenformat haben.",de_DE
+dynamic_entity.validation.invalid_url,"The URL is invalid. `%errorPath%` field `%fieldName%` must have a URL data format.",en_US
+dynamic_entity.validation.invalid_url,"Die URL ist ungültig. `%errorPath%` Feld `%fieldName%` muss ein URL-Datenformat haben.",de_DE
+dynamic_entity.validation.method_not_allowed,"Method not allowed for the entity `%aliasName%`.",en_US
+dynamic_entity.validation.method_not_allowed,"Die Methode ist für die Entität nicht zulässig `%aliasName%`.",de_DE
 validator.constraints.password.do_not_match,Passwords don't match,en_US
 validator.constraints.password.do_not_match,Passwörter stimmen nicht überein,de_DE
 discount.successfully.applied,"The discount ""display_name"" has been successfully applied",en_US
@@ -1301,6 +1305,8 @@ checkout.payment.provider.DummyMarketplacePayment,Dummy Marketplace Payment,en_U
 checkout.payment.provider.DummyMarketplacePayment,Beispiel Marktplatz Zahlungsmethode,de_DE
 checkout.order.duplicate,Order with given reference {{reference}} already exists,en_US
 checkout.order.duplicate,Bestellung mit gegebener Referenz {{reference}} existiert bereits,de_DE
+checkout.order.checkout.error.duplicate-order-processing,Cart with given uid %quote-uid% has already been processing,en_US
+checkout.order.checkout.error.duplicate-order-processing,Warenkorb mit der angegebenen UID %quote-uid% wird bereits verarbeitet,de_DE
 checkout.item.option.pre.condition.validation.error.exists,"Product option of %name% is not available anymore.",en_US
 checkout.item.option.pre.condition.validation.error.exists,"Produktoption von %name% ist nicht mehr verfügbar.",de_DE
 cms.preview.access_denied,You are not logged in or you do not have permission to access this page.,en_US
@@ -3591,6 +3597,8 @@ oms.state.shipped,Shipped,en_US
 oms.state.shipped,Versandt,de_DE
 oms.state.delivered,Delivered,en_US
 oms.state.delivered,Geliefert,de_DE
+oms.state.payout-failed,Merchant Payout failed,en_US
+oms.state.payout-failed,Merchant Auszahlung fehlgeschlagen,de_DE
 oms.state.ready-for-return,Ready for return,en_US
 oms.state.ready-for-return,Bereit zum Retournieren,de_DE
 oms.state.refunded,Refunded,en_US
@@ -3621,6 +3629,8 @@ oms.state.reservation-cancelled,Payment cancelled,en_US
 oms.state.reservation-cancelled,Payment cancelled,de_DE
 oms.state.reservation-cancellation-pending,Payment cancellation in progress,en_US
 oms.state.reservation-cancellation-pending,Payment cancellation in progress,de_DE
+oms.state.tax-pending,Tax pending,en_US
+oms.state.tax-pending,Steuer ausstehend,de_DE
 return.create_return.validation.returnable_items_error,Return cannot be created as it contains non-returnable items,en_US
 return.create_return.validation.returnable_items_error,"Retoure kann nicht angestellt werden, weil sie die Artikel beinhaltet, die nicht retourniert werden können",de_DE
 return.create_return.validation.store_error,Return cannot be created - a wrong store has been selected,en_US
@@ -4367,3 +4377,41 @@ merchant_relationship.mail.trans.merchant_relationship_delete.main_text,"Merchan
 merchant_relationship.mail.trans.merchant_relationship_delete.main_text,"Der Händler %merchant_name% hat Ihre Händlerbeziehung beendet. Bei Fragen wenden Sie sich bitte an den Händler.",de_DE
 merchant_relationship.mail.trans.merchant_relationship_delete.link,Contact merchant,en_US
 merchant_relationship.mail.trans.merchant_relationship_delete.link,Händler kontaktieren,de_DE
+merchant_commission.validation.currency_does_not_exist,A currency with the code ‘%code%’ does not exist.,en_US
+merchant_commission.validation.currency_does_not_exist,Eine Währung mit dem Code ‘%code%’ existiert nicht.,de_DE
+merchant_commission.validation.merchant_commission_description_invalid_length,A merchant commission description must have a length from %min% to %max% characters.,en_US
+merchant_commission.validation.merchant_commission_description_invalid_length,Die Beschreibung einer Händlerprovision muss eine Länge von %min% bis %max% Zeichen haben.,de_DE
+merchant_commission.validation.merchant_commission_key_exists,A merchant commission with the key ‘%key%’ already exists.,en_US
+merchant_commission.validation.merchant_commission_key_exists,Es existiert bereits eine Händlerprovision mit dem Schlüssel ‘%key%’.,de_DE
+merchant_commission.validation.merchant_commission_key_invalid_length,A merchant commission key must have a length from %min% to %max% characters.,en_US
+merchant_commission.validation.merchant_commission_key_invalid_length,Ein Händlerprovisionsschlüssel muss eine Länge von %min% bis %max% Zeichen haben.,de_DE
+merchant_commission.validation.merchant_commission_key_is_not_unique,At least two merchant commissions in this request have the same key.,en_US
+merchant_commission.validation.merchant_commission_key_is_not_unique,Mindestens zwei Händlerprovisionen in dieser Anfrage haben den gleichen Schlüssel.,de_DE
+merchant_commission.validation.merchant_commission_does_not_exist,A merchant commission with the key ‘%key%’ was not found.,en_US
+merchant_commission.validation.merchant_commission_does_not_exist,Die Händlerprovision mit dem Schlüssel ‘%key%’ wurde nicht gefunden.,de_DE
+merchant_commission.validation.merchant_commission_group_does_not_exist,A merchant commission group was not found.,en_US
+merchant_commission.validation.merchant_commission_group_does_not_exist,Es wurde keine Händlerprovisionsgruppe gefunden.,de_DE
+merchant_commission.validation.merchant_commission_group_key_does_not_exist,A merchant commission group with the key ‘%key%’ was not found.,en_US
+merchant_commission.validation.merchant_commission_group_does_not_exist,Die Händlerprovisionsgruppe mit dem Schlüssel ‘%key%’ wurde nicht gefunden.,de_DE
+merchant_commission.validation.merchant_does_not_exist,A merchant with the reference ‘%merchant_reference%’ does not exist.,en_US
+merchant_commission.validation.merchant_does_not_exist,Ein Händler mit der Referenz ‘%merchant_reference%’ existiert nicht.,de_DE
+merchant_commission.validation.merchant_commission_name_invalid_length,A merchant commission name must have a length from %min% to %max% characters.,en_US
+merchant_commission.validation.merchant_commission_name_invalid_length,Der Händlerprovisionsname muss eine Länge von %min% bis %max% Zeichen haben.,de_DE
+merchant_commission.validation.merchant_commission_priority_not_in_range,A merchant commission priority must be within a range from %min% to %max%.,en_US
+merchant_commission.validation.merchant_commission_priority_not_in_range,Die Priorität der Händlerprovision muss im Bereich von %min% bis %max% liegen.,de_DE
+merchant_commission.validation.store_does_not_exist,A store with the name ‘%name%’ does not exist.,en_US
+merchant_commission.validation.store_does_not_exist,Ein Shop mit dem Namen ‘%name%’ existiert nicht.,de_DE
+merchant_commission.validation.merchant_commission_valid_from_invalid_datetime,A merchant commission ‘valid from’ date is not a valid format.,en_US
+merchant_commission.validation.merchant_commission_valid_from_invalid_datetime,Das ‘Gültig von’-Datum ist nicht im gültigen Format.,de_DE
+merchant_commission.validation.merchant_commission_valid_to_invalid_datetime,A merchant commission ‘valid to’ date is not a valid format.,en_US
+merchant_commission.validation.merchant_commission_valid_to_invalid_datetime,Das ‘Gültig bis’-Datum ist nicht im gültigen Format.,de_DE
+merchant_commission.validation.merchant_commission_validity_period_invalid,A merchant commission ‘valid to’ date must be later than the ‘valid from’ date.,en_US
+merchant_commission.validation.merchant_commission_validity_period_invalid,Das ‘Gültig bis’-Datum muss nach dem ‘Gültig von’-Datum liegen.,de_DE
+merchant_commission.validation.invalid_query_string,The provided query string has an invalid format in %field%.,en_US
+merchant_commission.validation.invalid_query_string,Die angegebene Abfragezeichenfolge hat ein ungültiges Format in %field%.,de_DE
+merchant_commission.validation.invalid_compare_operator,The provided compare operator is invalid in %field%.,en_US
+merchant_commission.validation.invalid_compare_operator,Der angegebene Vergleichsoperator ist ungültig in %field%.,de_DE
+rule_engine.validation.invalid_query_string,The provided query string has an invalid format.,en_US
+rule_engine.validation.invalid_query_string,Die angegebene Abfragezeichenfolge hat ein ungültiges Format.,de_DE
+rule_engine.validation.invalid_compare_operator_value,The provided compare operator is invalid.,en_US
+rule_engine.validation.invalid_compare_operator_value,Der angegebene Vergleichsoperator ist ungültig.,de_DE

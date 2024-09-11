@@ -51,7 +51,7 @@ class ServicePointShipmentTypeCheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutDataReturnsServicePointNotProvidedValidationErrorForMultiShipment(CheckoutApiTester $I): void
+    public function requestCheckoutDataReturnsServicePointNotProvidedUnprocessableEntityForMultiShipment(CheckoutApiTester $I): void
     {
         // Arrange
         $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
@@ -113,7 +113,7 @@ class ServicePointShipmentTypeCheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutDataReturnsServicePointNotProvidedValidationErrorForSingleShipment(CheckoutApiTester $I): void
+    public function requestCheckoutDataReturnsServicePointNotProvidedUnprocessableEntityForSingleShipment(CheckoutApiTester $I): void
     {
         // Arrange
         $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
@@ -165,7 +165,7 @@ class ServicePointShipmentTypeCheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutDataReturnsServicePointHasNoAddressValidationError(CheckoutApiTester $I): void
+    public function requestCheckoutDataReturnsServicePointHasNoAddressUnprocessableEntity(CheckoutApiTester $I): void
     {
         // Arrange
         $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
@@ -236,7 +236,7 @@ class ServicePointShipmentTypeCheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutReturnsShippingAddressMissingValidationError(CheckoutApiTester $I): void
+    public function requestCheckoutReturnsShippingAddressUnprocessableEntity(CheckoutApiTester $I): void
     {
         // Arrange
         $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
@@ -308,7 +308,7 @@ class ServicePointShipmentTypeCheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutDataReturnsOnlyOneServicePointShouldBeSelectedValidationError(CheckoutApiTester $I): void
+    public function requestCheckoutDataReturnsOnlyOneServicePointShouldBeSelectedUnprocessableEntity(CheckoutApiTester $I): void
     {
         // Arrange
         $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());

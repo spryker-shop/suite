@@ -568,7 +568,7 @@ class GetCollectionPickingListsBackendJsonApiCest
      *
      * @return void
      */
-    public function requestReturnsUnauthorizedErrorResponseWhenAuthTokenIsNotProvided(PickingListsBackendApiTester $I): void
+    public function requestReturnsForbiddenResponseWhenAuthTokenIsNotProvided(PickingListsBackendApiTester $I): void
     {
         //Act
         $I->sendJsonApiGet(

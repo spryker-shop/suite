@@ -71,7 +71,7 @@ class AvailabilityNotificationsRestApiCest
      *
      * @return void
      */
-    public function requestCustomerAvailabilityNotificationsAuthorizationError(AvailabilityNotificationsRestApiTester $I): void
+    public function requestCustomerAvailabilityNotificationsForbidden(AvailabilityNotificationsRestApiTester $I): void
     {
         // Arrange
         $customerTransfer = $this->fixtures->getCustomerTransfer();

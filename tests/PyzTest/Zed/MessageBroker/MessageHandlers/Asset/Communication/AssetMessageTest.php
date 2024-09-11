@@ -50,6 +50,7 @@ class AssetMessageTest extends Unit
 
         // Act
         $this->tester->setupMessageBroker($assetAddedTransfer::class, $channelName);
+        $this->tester->setupMessageBrokerValidationPlugins();
         $messageBrokerFacade = $this->tester->getLocator()->messageBroker()->facade();
         $messageBrokerFacade->sendMessage($assetAddedTransfer);
         $messageBrokerFacade->startWorker($this->tester->buildMessageBrokerWorkerConfigTransfer([$channelName], 1));
@@ -71,6 +72,7 @@ class AssetMessageTest extends Unit
         $slotName = 'header-top';
 
         $this->tester->setupMessageBroker(AssetAddedTransfer::class, $channelName);
+        $this->tester->setupMessageBrokerValidationPlugins();
         $messageBrokerFacade = $this->tester->getLocator()->messageBroker()->facade();
         $messageBrokerWorkerConfigTransfer = $this->tester->buildMessageBrokerWorkerConfigTransfer([$channelName], 1);
         $messageBrokerFacade->sendMessage(
@@ -108,6 +110,7 @@ class AssetMessageTest extends Unit
         $assetUuid = Uuid::uuid4()->toString();
 
         $this->tester->setupMessageBroker(AssetAddedTransfer::class, $channelName);
+        $this->tester->setupMessageBrokerValidationPlugins();
         $messageBrokerFacade = $this->tester->getLocator()->messageBroker()->facade();
         $messageBrokerWorkerConfigTransfer = $this->tester->buildMessageBrokerWorkerConfigTransfer([$channelName], 1);
         $messageBrokerFacade->sendMessage(
