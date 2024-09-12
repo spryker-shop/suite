@@ -15,6 +15,7 @@ use Pyz\Zed\MerchantProductOfferDataImport\MerchantProductOfferDataImportConfig;
 use SecurityChecker\Command\SecurityCheckerCommand;
 use Spryker\Zed\AclDataImport\AclDataImportConfig;
 use Spryker\Zed\AclEntityDataImport\AclEntityDataImportConfig;
+use Spryker\Zed\AclMerchantPortal\Communication\Console\AclEntitySynchronizeConsole;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
@@ -470,6 +471,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new OrderMatrixConsole(),
             new IncrementalInstallersConsole(),
             new IncrementalInstallersRollbackConsole(),
+            new AclEntitySynchronizeConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
