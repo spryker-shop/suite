@@ -1,10 +1,9 @@
 version: '0.1'
 
-namespace: spryker_m
-tag: 'dev'
+namespace: spryker_demo
+tag: '1.0'
 
 environment: docker.dev
-pipeline: docker.multi-db.yml
 image:
     tag: spryker/php:8.2
     php:
@@ -26,11 +25,16 @@ image:
         npm: 9
 
 composer:
-    mode: ''
-    autoload: ''
+    mode: --no-dev
+    autoload: --classmap-authoritative
 
 assets:
-    mode: development
+    image: spryker/nginx-brotli:latest
+    mode: production
+    compression:
+        brotli:
+            static: on
+            level: 5
 
 regions:
     EU:
@@ -39,9 +43,11 @@ regions:
                 sender:
                     name: Spryker No-Reply
                     email: no-reply@spryker.local
-            databases:
-                de:
-                at:
+            database:
+                database: eu-docker
+                username: spryker
+                password: secret
+
         stores:
             DE:
                 services:
@@ -66,7 +72,7 @@ regions:
                     name: Spryker No-Reply
                     email: no-reply@spryker.local
             database:
-                database: us-docker-test
+                database: us-docker
                 username: spryker
                 password: secret
         stores:
@@ -103,21 +109,17 @@ groups:
                 endpoints:
                     date-time-configurator-example.spryker.local:
                         entry-point: Configurator
-                    yves.de.spryker.local:
-                        store: DE
+                    yves.eu.spryker.local:
+                        region: EU
                         services:
                             session:
-                                namespace: 1
-                    yves.at.spryker.local:
-                        store: AT
-                        services:
-                            session:
-                                namespace:
+                                namespace: 2
             glue_eu:
                 application: glue
                 endpoints:
                     glue.de.spryker.local:
                         store: DE
+                        cors-allow-origin: '*'
                     glue.at.spryker.local:
                         store: AT
             glue_storefront_eu:
@@ -166,7 +168,6 @@ groups:
                     backend-api.at.spryker.local:
                         store: AT
                         entry-point: BackendApi
-
     US:
         region: US
         applications:
@@ -220,6 +221,7 @@ groups:
                 endpoints:
                     backend-api.us.spryker.local:
                         store: US
+                        entry-point: BackendApi
 services:
     database:
         engine: mysql
@@ -232,6 +234,7 @@ services:
                 protocol: tcp
     broker:
         engine: rabbitmq
+        version: '3.9'
         api:
             username: 'spryker'
             password: 'secret'
@@ -254,6 +257,8 @@ services:
                 protocol: tcp
     scheduler:
         engine: jenkins
+        version: '2.442'
+        csrf-protection-enabled: true
         endpoints:
             scheduler.spryker.local:
     mail_catcher:
@@ -264,10 +269,6 @@ services:
         engine: swagger-ui
         endpoints:
             swagger.spryker.local:
-    redis-gui:
-        engine: redis-commander
-        endpoints:
-            redis-commander.spryker.local:
     dashboard:
         engine: dashboard
         endpoints:
@@ -280,23 +281,13 @@ docker:
         enabled: false
         redirect: true
 
+    debug:
+        enabled: false
+        xdebug:
+            enabled: false
+
     testing:
         store: DE
 
-    debug:
-        enabled: true
-        xdebug:
-            enabled: true
-
     mount:
-        native:
-            platforms:
-                - linux
-
-        docker-sync:
-            platforms:
-                - windows
-
-        mutagen:
-            platforms:
-                - macos
+        baked:
