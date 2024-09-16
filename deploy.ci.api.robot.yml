@@ -4,7 +4,7 @@ namespace: spryker_ci
 tag: '1.0'
 
 environment: docker.ci
-pipeline: docker.ci.acceptance.dynamic-store
+pipeline: docker.ci.acceptance
 image:
     tag: spryker/php:8.2
     environment:
@@ -47,13 +47,11 @@ groups:
             yves_eu:
                 application: yves
                 endpoints:
-                    date-time-configurator-example.spryker.local:
-                        entry-point: Configurator
                     yves.eu.spryker.local:
                         region: EU
                         services:
                             session:
-                                namespace: 2
+                                namespace: 1
             glue_eu:
                 application: glue
                 endpoints:
@@ -92,13 +90,12 @@ groups:
 
 services:
     database:
-        engine: mysql
-        version: mariadb-10.4
+        engine: postgres
         root:
             username: 'root'
             password: 'secret'
         endpoints:
-            localhost:3306:
+            localhost:5432:
                 protocol: tcp
     broker:
         engine: rabbitmq
@@ -113,10 +110,6 @@ services:
     search:
         engine: elastic
         version: '7.10'
-    scheduler:
-        engine: jenkins
-        version: '2.442'
-        csrf-protection-enabled: true
     mail_catcher:
         engine: mailhog
     webdriver:
@@ -136,3 +129,7 @@ docker:
 
     mount:
         baked:
+
+    compose:
+        yamls:
+            - .robot/docker-compose.robot.yml
