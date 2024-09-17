@@ -1,54 +1,40 @@
 env:
     NEW_RELIC_ENABLED: 0
+    SPRYKER_CURRENT_REGION: EU
 
 command-timeout: 1200
-
-stores:
-    - DE
-    - AT
 
 sections:
     clean-oms:
         clear-oms-locks:
             command: 'vendor/bin/console oms:clear-locks -vvv --no-ansi'
-            stores:
-                - DE
 
     diff:
         propel-migration-delete:
             command: 'vendor/bin/console propel:migration:delete -vvv --no-ansi'
-            stores:
-                - DE
 
         propel-diff:
             command: 'vendor/bin/console propel:diff -vvv --no-ansi'
-            stores:
-                - DE
 
         show_migrations:
             command: 'ls -al ./src/Orm/Propel/Migration_*/*.php 2>/dev/null || true'
-            stores:
-                - DE
 
         propel-migrate:
             command: 'vendor/bin/console propel:migrate -vvv --no-ansi'
-            stores:
-                - DE
 
         propel-migration-cleanup:
             command: 'vendor/bin/console propel:migration:delete -vvv --no-ansi'
-            stores:
-                - DE
 
     scheduler-start:
         queue-setup:
             command: 'vendor/bin/console queue:setup'
-            stores: true
         scheduler-setup:
             command: 'vendor/bin/console scheduler:setup -vvv --no-ansi'
-            stores: true
 
     data-import:
         glossary:
             command: 'vendor/bin/console data:import:glossary -vvv --no-ansi'
-            stores: true
+
+    acl:
+        acl-entity-synchronize:
+            command: 'vendor/bin/console acl-entity:synchronize -vvv --no-ansi'
