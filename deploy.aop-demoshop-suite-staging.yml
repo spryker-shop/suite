@@ -45,10 +45,10 @@ pipeline: docker.acp
 image:
     tag: spryker/php:8.1
     environment:
-        SPRYKER_HOOK_BEFORE_DEPLOY: 'vendor/bin/install -r pre-deploy -vvv'
+        SPRYKER_HOOK_BEFORE_DEPLOY: 'vendor/bin/install -r pre-deploy.dynamic-store-off -vvv'
         SPRYKER_HOOK_AFTER_DEPLOY: 'true'
-        SPRYKER_HOOK_INSTALL: 'vendor/bin/install -r production --no-ansi -vvv'
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: 'vendor/bin/install -r destructive --no-ansi -vvv'
+        SPRYKER_HOOK_INSTALL: 'vendor/bin/install -r production.dynamic-store-off --no-ansi -vvv'
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: 'vendor/bin/install -r destructive.dynamic-store-off --no-ansi -vvv'
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: 'demo-date-time-configurator.aop-suite-staging.demo-spryker.com'
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 443
 
