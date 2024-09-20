@@ -38,7 +38,7 @@ namespace: spryker-cloud
 tag: '1.0'
 environment: docker.dev
 image:
-    tag: spryker/php:8.2
+    tag: spryker/php:8.3
     environment:
         SPRYKER_HOOK_BEFORE_DEPLOY: 'vendor/bin/install -r pre-deploy.dynamic-store-off -vvv'
         SPRYKER_HOOK_AFTER_DEPLOY: 'true'

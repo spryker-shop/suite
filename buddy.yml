@@ -55,7 +55,7 @@
         type: 'BUILD'
         main_service_name: 'post'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
+        docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
@@ -85,7 +85,7 @@
       - action: 'Evaluator'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
+        docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE vendor/bin/evaluator evaluate --exclude-checkers=SPRYKER_DEV_PACKAGES_CHECKER,MINIMUM_ALLOWED_SHOP_VERSION --format=compact'
@@ -108,7 +108,7 @@
       - action: 'Generic Validation'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
+        docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/RUN vendor/bin/console code:propel:validate-abstract'
@@ -133,10 +133,10 @@
             - key: 'STORAGE_REDIS_HOST'
               value: 'redis'
               type: 'VAR'
-      - action: 'PHP 8.2 Validation'
+      - action: 'PHP 8.3 Validation'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
+        docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/RUN vendor/bin/phpstan analyze'
@@ -144,6 +144,133 @@
             - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:deprecation-links:check'
             - '.ci/snippet/RUN tests/travis_check_untracked.sh'
             - '.ci/snippet/RUN tests/travis_check_touched_modules.sh'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker [1/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 0,275'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker [2/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 275,275'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker [3/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 550,150'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker [4/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 700'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker [5/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 900'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker-shop'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m SprykerShop.all -v'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 MarketPlace Testing'
+        type: 'BUILD'
+        docker_image_name: 'library/node'
+        docker_image_tag: '18'
+        execute_commands:
+            - '.ci/snippet/REQUIRE vendor/bin/console frontend:project:install-dependencies -vvv'
+            - '.ci/snippet/REQUIRE npm install'
+            - '.ci/snippet/RUN npm run mp:build:production'
+            - '.ci/snippet/RUN npm run mp:stylelint'
+            - '.ci/snippet/RUN npm run mp:lint'
+            - '.ci/snippet/RUN npm run mp:test'
+            - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'apt-get update && apt-get -y install php8.2-cli php8.2-mbstring'
+        shell: 'BASH'
+
+- pipeline: 'Validation / Prefer Lowest'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'LARGE'
+  actions:
+      - action: 'Build Project'
+        type: 'BUILD'
+        main_service_name: 'post'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
+            - '.ci/snippet/REQUIRE composer update --prefer-lowest --optimize-autoloader --no-interaction --prefer-install=auto'
+            - '.ci/snippet/REQUIRE composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies;'
+            - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install -r ci.code-generate'
+            - '.ci/snippet/FINISH'
+        services:
+            - type: 'POSTGRE_SQL'
+              version: '9.6'
+              connection:
+                  host: 'postgres'
+                  user: 'postgres'
+                  password: 'secret'
+            - type: 'RABBIT_MQ'
+              connection:
+                  host: 'rabbitmq'
+                  user: 'guest'
+                  password: 'guest'
+            - type: 'REDIS'
+              connection:
+                  host: 'redis'
+        shell: 'BASH'
+      - action: 'PHP 8.2 Validation'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/phpstan analyze'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -183,7 +310,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 700'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 700,200'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -206,505 +333,6 @@
             - '.ci/snippet/RUN vendor/bin/console code:phpstan -m SprykerShop.all -v'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-        run_next_parallel: true
-      - action: 'PHP 8.2 MarketPlace Testing'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        execute_commands:
-            - '.ci/snippet/REQUIRE vendor/bin/console frontend:project:install-dependencies -vvv'
-            - '.ci/snippet/REQUIRE npm install'
-            - '.ci/snippet/RUN npm run mp:build:production'
-            - '.ci/snippet/RUN npm run mp:stylelint'
-            - '.ci/snippet/RUN npm run mp:lint'
-            - '.ci/snippet/RUN npm run mp:test'
-            - '.ci/snippet/FINISH'
-        setup_commands:
-            - 'apt-get update && apt-get -y install php8.2-cli php8.2-mbstring'
-        shell: 'BASH'
-
-- pipeline: 'Validation / Prefer Lowest'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
-  terminate_stale_runs: true
-  auto_clear_cache: true
-  fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: true
-  clone_depth: 1
-  resources: 'LARGE'
-  actions:
-      - action: 'Build Project'
-        type: 'BUILD'
-        main_service_name: 'post'
-        docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
-        execute_commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
-            - '.ci/snippet/REQUIRE composer update --prefer-lowest --optimize-autoloader --no-interaction --prefer-install=auto'
-            - '.ci/snippet/REQUIRE composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies;'
-            - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install -r ci.code-generate'
-            - '.ci/snippet/FINISH'
-        services:
-            - type: 'POSTGRE_SQL'
-              version: '9.6'
-              connection:
-                  host: 'postgres'
-                  user: 'postgres'
-                  password: 'secret'
-            - type: 'RABBIT_MQ'
-              connection:
-                  host: 'rabbitmq'
-                  user: 'guest'
-                  password: 'guest'
-            - type: 'REDIS'
-              connection:
-                  host: 'redis'
-        shell: 'BASH'
-      - action: 'PHP 8.1 Validation'
-        type: 'BUILD'
-        docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
-        execute_commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/phpstan analyze'
-            - '.ci/snippet/FINISH'
-        shell: 'BASH'
-        run_next_parallel: true
-      - action: 'PHP 8.1 PHPStan spryker/spryker [1/5]'
-        type: 'BUILD'
-        docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
-        execute_commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 0,275'
-            - '.ci/snippet/FINISH'
-        shell: 'BASH'
-        run_next_parallel: true
-      - action: 'PHP 8.1 PHPStan spryker/spryker [2/5]'
-        type: 'BUILD'
-        docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
-        execute_commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 275,275'
-            - '.ci/snippet/FINISH'
-        shell: 'BASH'
-        run_next_parallel: true
-      - action: 'PHP 8.1 PHPStan spryker/spryker [3/5]'
-        type: 'BUILD'
-        docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
-        execute_commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 550,150'
-            - '.ci/snippet/FINISH'
-        shell: 'BASH'
-        run_next_parallel: true
-      - action: 'PHP 8.1 PHPStan spryker/spryker [4/5]'
-        type: 'BUILD'
-        docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
-        execute_commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 700,200'
-            - '.ci/snippet/FINISH'
-        shell: 'BASH'
-        run_next_parallel: true
-      - action: 'PHP 8.1 PHPStan spryker/spryker [5/5]'
-        type: 'BUILD'
-        docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
-        execute_commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 900'
-            - '.ci/snippet/FINISH'
-        shell: 'BASH'
-        run_next_parallel: true
-      - action: 'PHP 8.1 PHPStan spryker/spryker-shop'
-        type: 'BUILD'
-        docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
-        execute_commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m SprykerShop.all -v'
-            - '.ci/snippet/FINISH'
-        shell: 'BASH'
-
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Dynamic Store OFF'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
-  trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
-  terminate_stale_runs: true
-  auto_clear_cache: true
-  fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: true
-  clone_depth: 1
-  resources: 'NANO'
-  actions:
-      - action: 'Run tests'
-        type: 'NATIVE_BUILD_DOCKER_CLI'
-        commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.dynamic-store-off.yml'
-            - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
-            - '.ci/snippet/FINISH'
-        run_next_parallel: true
-        variables:
-            - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
-              type: 'VAR'
-            - key: 'TRAVIS'
-              value: '1'
-              type: 'VAR'
-        sync_paths:
-            - pipeline_path: '/'
-              vm_path: '/home/ubuntu/build'
-              direction: 'PIPELINE_TO_VM'
-        docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
-
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
-  trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
-  terminate_stale_runs: true
-  auto_clear_cache: true
-  fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: true
-  clone_depth: 1
-  resources: 'NANO'
-  actions:
-      - action: 'Run tests'
-        type: 'NATIVE_BUILD_DOCKER_CLI'
-        commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.yml'
-            - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
-            - '.ci/snippet/FINISH'
-        run_next_parallel: true
-        variables:
-            - key: 'SPRYKER_CURRENT_REGION'
-              value: 'EU'
-              type: 'VAR'
-            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
-              value: 'true'
-              type: 'VAR'
-            - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
-              type: 'VAR'
-            - key: 'TRAVIS'
-              value: '1'
-              type: 'VAR'
-        sync_paths:
-            - pipeline_path: '/'
-              vm_path: '/home/ubuntu/build'
-              direction: 'PIPELINE_TO_VM'
-        docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
-
-- pipeline: 'Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests / Dynamic Store OFF'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
-  terminate_stale_runs: true
-  auto_clear_cache: true
-  fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: true
-  clone_depth: 1
-  resources: 'NANO'
-  actions:
-      - action: 'Run tests'
-        type: 'NATIVE_BUILD_DOCKER_CLI'
-        commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.dynamic-store-off.yml'
-            - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
-            - '.ci/snippet/FINISH'
-        run_next_parallel: true
-        variables:
-            - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
-              type: 'VAR'
-            - key: 'TRAVIS'
-              value: '1'
-              type: 'VAR'
-        sync_paths:
-            - pipeline_path: '/'
-              vm_path: '/home/ubuntu/build'
-              direction: 'PIPELINE_TO_VM'
-        docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
-
-- pipeline: 'Docker / Alpine / PHP 8.1 / PostgreSQL / Functional Tests'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
-  trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
-  terminate_stale_runs: true
-  auto_clear_cache: true
-  fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: true
-  clone_depth: 1
-  resources: 'NANO'
-  actions:
-      - action: 'Run tests'
-        type: 'NATIVE_BUILD_DOCKER_CLI'
-        commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.yml'
-            - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
-            - '.ci/snippet/FINISH'
-        run_next_parallel: true
-        variables:
-            - key: 'SPRYKER_CURRENT_REGION'
-              value: 'EU'
-              type: 'VAR'
-            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
-              value: 'true'
-              type: 'VAR'
-            - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
-              type: 'VAR'
-            - key: 'TRAVIS'
-              value: '1'
-              type: 'VAR'
-        sync_paths:
-            - pipeline_path: '/'
-              vm_path: '/home/ubuntu/build'
-              direction: 'PIPELINE_TO_VM'
-        docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
-
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Dynamic Store OFF'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
-  trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
-  terminate_stale_runs: true
-  auto_clear_cache: true
-  fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: true
-  clone_depth: 1
-  resources: 'NANO'
-  actions:
-      - action: 'Run tests'
-        type: 'NATIVE_BUILD_DOCKER_CLI'
-        commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store-off.yml'
-            - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
-            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
-            - '.ci/snippet/FINISH'
-        run_next_parallel: true
-        variables:
-            - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
-              type: 'VAR'
-            - key: 'TRAVIS'
-              value: '1'
-              type: 'VAR'
-        sync_paths:
-            - pipeline_path: '/'
-              vm_path: '/home/ubuntu/build'
-              direction: 'PIPELINE_TO_VM'
-        docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
-
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
-  terminate_stale_runs: true
-  auto_clear_cache: true
-  fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: true
-  clone_depth: 1
-  resources: 'NANO'
-  actions:
-      - action: 'Run tests'
-        type: 'NATIVE_BUILD_DOCKER_CLI'
-        commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.yml'
-            - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
-            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
-            - '.ci/snippet/FINISH'
-        run_next_parallel: true
-        variables:
-            - key: 'SPRYKER_CURRENT_REGION'
-              value: 'EU'
-              type: 'VAR'
-            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
-              value: 'true'
-              type: 'VAR'
-            - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
-              type: 'VAR'
-            - key: 'TRAVIS'
-              value: '1'
-              type: 'VAR'
-        sync_paths:
-            - pipeline_path: '/'
-              vm_path: '/home/ubuntu/build'
-              direction: 'PIPELINE_TO_VM'
-        docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
-
-- pipeline: 'Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance / Dynamic Store OFF'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
-  trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
-  terminate_stale_runs: true
-  auto_clear_cache: true
-  fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: true
-  clone_depth: 1
-  resources: 'NANO'
-  actions:
-      - action: 'Run tests'
-        type: 'NATIVE_BUILD_DOCKER_CLI'
-        commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.dynamic-store-off.yml'
-            - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
-            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
-            - '.ci/snippet/FINISH'
-        run_next_parallel: true
-        variables:
-            - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
-              type: 'VAR'
-            - key: 'TRAVIS'
-              value: '1'
-              type: 'VAR'
-        sync_paths:
-            - pipeline_path: '/'
-              vm_path: '/home/ubuntu/build'
-              direction: 'PIPELINE_TO_VM'
-        docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
-
-- pipeline: 'Docker / Alpine / PHP 8.1 / PostgreSQL / Acceptance'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
-  trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
-  terminate_stale_runs: true
-  auto_clear_cache: true
-  fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: true
-  clone_depth: 1
-  resources: 'NANO'
-  actions:
-      - action: 'Run tests'
-        type: 'NATIVE_BUILD_DOCKER_CLI'
-        commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.yml'
-            - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
-            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
-            - '.ci/snippet/FINISH'
-        run_next_parallel: true
-        variables:
-            - key: 'SPRYKER_CURRENT_REGION'
-              value: 'EU'
-              type: 'VAR'
-            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
-              value: 'true'
-              type: 'VAR'
-            - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
-              type: 'VAR'
-            - key: 'TRAVIS'
-              value: '1'
-              type: 'VAR'
-        sync_paths:
-            - pipeline_path: '/'
-              vm_path: '/home/ubuntu/build'
-              direction: 'PIPELINE_TO_VM'
-        docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Dynamic Store OFF'
   events:
@@ -808,10 +436,6 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
-  trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -948,10 +572,6 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
-  trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1086,7 +706,387 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Debian / PHP 8.2 / Frontend & Assets'
+- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Functional Tests / Dynamic Store OFF'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Run tests'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.dynamic-store-off.yml'
+            - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
+
+- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Functional Tests'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Run tests'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.yml'
+            - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_CURRENT_REGION'
+              value: 'EU'
+              type: 'VAR'
+            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
+              value: 'true'
+              type: 'VAR'
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
+
+- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Functional Tests / Dynamic Store OFF'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Run tests'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.dynamic-store-off.yml'
+            - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
+
+- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Functional Tests'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Run tests'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.yml'
+            - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_CURRENT_REGION'
+              value: 'EU'
+              type: 'VAR'
+            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
+              value: 'true'
+              type: 'VAR'
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
+
+- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Acceptance / Dynamic Store OFF'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Run tests'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store-off.yml'
+            - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
+            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
+
+- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Acceptance'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Run tests'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.yml'
+            - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
+            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_CURRENT_REGION'
+              value: 'EU'
+              type: 'VAR'
+            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
+              value: 'true'
+              type: 'VAR'
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
+
+- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Acceptance / Dynamic Store OFF'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Run tests'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.dynamic-store-off.yml'
+            - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
+            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
+
+- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Acceptance'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+  trigger_conditions:
+      - trigger_condition: 'VAR_NOT_CONTAINS'
+        trigger_variable_value: 'hackathon'
+        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Run tests'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.yml'
+            - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
+            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_CURRENT_REGION'
+              value: 'EU'
+              type: 'VAR'
+            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
+              value: 'true'
+              type: 'VAR'
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
+
+- pipeline: 'Docker / Debian / PHP 8.3 / Frontend & Assets'
   events:
       - type: 'PUSH'
         refs:
@@ -1117,7 +1117,7 @@
         run_next_parallel: true
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.2-debian'
+              value: 'spryker/php:8.3-debian'
               type: 'VAR'
             - key: 'TRAVIS'
               value: '1'
@@ -1129,7 +1129,7 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Prefer Lowest / Dynamic Store OFF'
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Prefer Lowest / Dynamic Store OFF'
   events:
       - type: 'PUSH'
         refs:
@@ -1149,13 +1149,13 @@
       - action: 'Update Composer (Prefer Lowest)'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
+        docker_image_tag: '8.2'
         execute_commands:
             - 'composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - 'COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet'
             - 'composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Prefer Lowest'
+      - action: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Prefer Lowest'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
@@ -1171,7 +1171,7 @@
         run_next_parallel: true
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
+              value: 'spryker/php:8.2'
               type: 'VAR'
             - key: 'TRAVIS'
               value: '1'
@@ -1183,7 +1183,7 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Functional Tests / Prefer Lowest'
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Prefer Lowest'
   events:
       - type: 'PUSH'
         refs:
@@ -1203,7 +1203,7 @@
       - action: 'Update Composer (Prefer Lowest)'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
+        docker_image_tag: '8.2'
         execute_commands:
             - 'composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - 'COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet'
@@ -1231,7 +1231,7 @@
               value: 'true'
               type: 'VAR'
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
+              value: 'spryker/php:8.2'
               type: 'VAR'
             - key: 'TRAVIS'
               value: '1'
@@ -1243,7 +1243,7 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest / Dynamic Store OFF'
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance / Prefer Lowest / Dynamic Store OFF'
   events:
       - type: 'PUSH'
         refs:
@@ -1263,7 +1263,7 @@
       - action: 'Update Composer (Prefer Lowest)'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
+        docker_image_tag: '8.2'
         execute_commands:
             - 'composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - 'COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet'
@@ -1284,7 +1284,7 @@
         run_next_parallel: true
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
+              value: 'spryker/php:8.2'
               type: 'VAR'
             - key: 'TRAVIS'
               value: '1'
@@ -1296,7 +1296,7 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_LARGE'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Acceptance / Prefer Lowest'
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance / Prefer Lowest'
   events:
       - type: 'PUSH'
         refs:
@@ -1316,7 +1316,7 @@
       - action: 'Update Composer (Prefer Lowest)'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
+        docker_image_tag: '8.2'
         execute_commands:
             - 'composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - 'COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet'
@@ -1343,7 +1343,7 @@
               value: 'true'
               type: 'VAR'
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
+              value: 'spryker/php:8.2'
               type: 'VAR'
             - key: 'TRAVIS'
               value: '1'
@@ -1355,7 +1355,7 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot / Dynamic Store OFF'
+- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot / Dynamic Store OFF'
   events:
       - type: 'PUSH'
         refs:
@@ -1375,14 +1375,14 @@
       - action: 'Install Composer'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
+        docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+      - action: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
@@ -1399,14 +1399,14 @@
             - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.1MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
-            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.1MariaDBRobot/log.html"'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.2MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.2MariaDBRobot/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
+              value: 'spryker/php:8.2'
               type: 'VAR'
             - key: 'TRAVIS'
               value: '1'
@@ -1418,7 +1418,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Robot / API'
+- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / API'
   events:
       - type: 'PUSH'
         refs:
@@ -1438,7 +1438,7 @@
       - action: 'Install Composer'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
+        docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
@@ -1449,7 +1449,7 @@
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
-            - 'export SPRYKER_PLATFORM_IMAGE=spryker/php:8.2'
+            - 'export SPRYKER_PLATFORM_IMAGE=spryker/php:8.3'
             - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.api.robot.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
@@ -1463,13 +1463,13 @@
             - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.2PostgreSQLRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
-            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.2PostgreSQLRobot/log.html"'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.3PostgreSQLRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.3PostgreSQLRobot/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.2'
+              value: 'spryker/php:8.3'
               type: 'VAR'
             - key: 'SPRYKER_CURRENT_REGION'
               value: 'EU'
@@ -1487,7 +1487,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot / API'
+- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / API'
   events:
       - type: 'PUSH'
         refs:
@@ -1507,14 +1507,14 @@
       - action: 'Install Composer'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
+        docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+      - action: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
@@ -1531,14 +1531,14 @@
             - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.2MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
-            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.1MariaDBRobot/log.html"'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.3MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.2MariaDBRobot/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.2'
+              value: 'spryker/php:8.3'
               type: 'VAR'
             - key: 'SPRYKER_CURRENT_REGION'
               value: 'EU'
@@ -1557,7 +1557,7 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Cypress / Dynamic Store OFF'
+- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Cypress / Dynamic Store OFF'
   events:
       - type: 'PUSH'
         refs:
@@ -1577,7 +1577,7 @@
       - action: 'Install Composer'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
+        docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
@@ -1609,7 +1609,7 @@
         run_next_parallel: true
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.2'
+              value: 'spryker/php:8.3'
               type: 'VAR'
             - key: 'TRAVIS'
               value: '1'
@@ -1621,7 +1621,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Cypress'
+- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Cypress'
   events:
       - type: 'PUSH'
         refs:
@@ -1641,7 +1641,7 @@
       - action: 'Install Composer'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
+        docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
@@ -1673,7 +1673,7 @@
         run_next_parallel: true
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.2'
+              value: 'spryker/php:8.3'
               type: 'VAR'
             - key: 'SPRYKER_CURRENT_REGION'
               value: 'EU'
@@ -1691,7 +1691,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
 
-- pipeline: 'Positive / Docker / Alpine / PHP 8.1 / MariaDB / Robot / API'
+- pipeline: 'Positive / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API'
   events:
       - type: 'PUSH'
         refs:
@@ -1711,14 +1711,14 @@
       - action: 'Install Composer'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
+        docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+      - action: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
@@ -1735,14 +1735,14 @@
             - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.2MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
-            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.1MariaDBRobot/log.html"'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.3MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.2MariaDBRobot/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
+              value: 'spryker/php:8.2'
               type: 'VAR'
             - key: 'SPRYKER_CURRENT_REGION'
               value: 'EU'
@@ -1761,7 +1761,7 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
 
-- pipeline: 'Negative / Docker / Alpine / PHP 8.1 / MariaDB / Robot / API'
+- pipeline: 'Negative / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API'
   events:
       - type: 'PUSH'
         refs:
@@ -1781,14 +1781,14 @@
       - action: 'Install Composer'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.1'
+        docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.1 / MariaDB / Robot'
+      - action: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
@@ -1805,14 +1805,14 @@
             - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.2MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
-            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.1MariaDBRobot/log.html"'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-api-ci/$BUDDY_EXECUTION_HASH/PHP8.3MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-api-ci/${BUDDY_EXECUTION_HASH}/PHP8.2MariaDBRobot/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.1'
+              value: 'spryker/php:8.2'
               type: 'VAR'
             - key: 'SPRYKER_CURRENT_REGION'
               value: 'EU'
