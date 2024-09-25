@@ -8,8 +8,8 @@
         "url": "https://spryker.com/"
     },
     "workspaces": [
-        "vendor/spryker/spryker/*",
-        "vendor/spryker/spryker/*/assets/Zed"
+        "vendor/spryker/*",
+        "vendor/spryker/*/assets/Zed"
     ],
     "scripts": {
         "yves": "node ./frontend/build development",
@@ -56,8 +56,8 @@
         "zone.js": "~0.14.4"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "~17.3.2",
         "@angular-builders/custom-webpack": "~17.0.1",
+        "@angular-devkit/build-angular": "~17.3.2",
         "@angular-eslint/eslint-plugin": "~17.3.0",
         "@angular-eslint/eslint-plugin-template": "~17.3.0",
         "@angular-eslint/template-parser": "17.3.0",
@@ -119,6 +119,10 @@
         "webpack-merge": "~5.10.0"
     },
     "overrides": {
-        "ws": "^8.17.1"
+        "ws": "^8.17.1",
+        "webpack-dev-server": {
+            "express": "^4.21.0"
+        },
+        "rollup": "^4.22.4"
     }
 }
