@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.322.2",
+            "version": "3.322.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6a329cf111a4e54f2ca0e87ce07dd0b9e0befdad"
+                "reference": "f6d2c64cb87d9e70ad99aeaffcd879a412d2ccb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6a329cf111a4e54f2ca0e87ce07dd0b9e0befdad",
-                "reference": "6a329cf111a4e54f2ca0e87ce07dd0b9e0befdad",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f6d2c64cb87d9e70ad99aeaffcd879a412d2ccb5",
+                "reference": "f6d2c64cb87d9e70ad99aeaffcd879a412d2ccb5",
                 "shasum": ""
             },
             "require": {
@@ -338,9 +338,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.322.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.322.4"
             },
-            "time": "2024-09-20T18:08:53+00:00"
+            "time": "2024-09-24T18:10:10+00:00"
         },
         {
             "name": "brick/math",
@@ -2149,34 +2149,34 @@
         },
         {
             "name": "lcobucci/clock",
-            "version": "3.2.0",
+            "version": "3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/clock.git",
-                "reference": "6f28b826ea01306b07980cb8320ab30b966cd715"
+                "reference": "db3713a61addfffd615b79bf0bc22f0ccc61b86b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/clock/zipball/6f28b826ea01306b07980cb8320ab30b966cd715",
-                "reference": "6f28b826ea01306b07980cb8320ab30b966cd715",
+                "url": "https://api.github.com/repos/lcobucci/clock/zipball/db3713a61addfffd615b79bf0bc22f0ccc61b86b",
+                "reference": "db3713a61addfffd615b79bf0bc22f0ccc61b86b",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.2.0 || ~8.3.0",
+                "php": "~8.2.0 || ~8.3.0 || ~8.4.0",
                 "psr/clock": "^1.0"
             },
             "provide": {
                 "psr/clock-implementation": "1.0"
             },
             "require-dev": {
-                "infection/infection": "^0.27",
-                "lcobucci/coding-standard": "^11.0.0",
+                "infection/infection": "^0.29",
+                "lcobucci/coding-standard": "^11.1.0",
                 "phpstan/extension-installer": "^1.3.1",
                 "phpstan/phpstan": "^1.10.25",
                 "phpstan/phpstan-deprecation-rules": "^1.1.3",
                 "phpstan/phpstan-phpunit": "^1.3.13",
                 "phpstan/phpstan-strict-rules": "^1.5.1",
-                "phpunit/phpunit": "^10.2.3"
+                "phpunit/phpunit": "^11.3.6"
             },
             "type": "library",
             "autoload": {
@@ -2197,7 +2197,7 @@
             "description": "Yet another clock abstraction",
             "support": {
                 "issues": "https://github.com/lcobucci/clock/issues",
-                "source": "https://github.com/lcobucci/clock/tree/3.2.0"
+                "source": "https://github.com/lcobucci/clock/tree/3.3.1"
             },
             "funding": [
                 {
@@ -2209,7 +2209,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-11-17T17:00:27+00:00"
+            "time": "2024-09-24T20:45:14+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -6348,7 +6348,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1c17e597d063db5e488ac0dd66707e47bb5f8d9a"
+                "reference": "91ca338bbbf88eaabf3017e1906c08d7989d3015"
             },
             "require": {
                 "php": ">=8.1"
@@ -7200,6 +7200,7 @@
                 "spryker/sales": "*",
                 "spryker/sales-configurable-bundle": "*",
                 "spryker/sales-data-export": "*",
+                "spryker/sales-discount-connector": "*",
                 "spryker/sales-extension": "*",
                 "spryker/sales-invoice": "*",
                 "spryker/sales-invoice-extension": "*",
@@ -7460,7 +7461,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2024-09-20T14:38:30+00:00"
+            "time": "2024-09-25T13:43:18+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -18746,7 +18747,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "9c5d221e96c9a28b312a89b3f9caa069e8eb4cba"
+                "reference": "cd64d690cd7c48978bdff652629f328f6d1ad09e"
             },
             "default-branch": true,
             "type": "library",
@@ -18754,7 +18755,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2024-09-23T16:57:39+00:00"
+            "time": "2024-09-24T14:37:53+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
