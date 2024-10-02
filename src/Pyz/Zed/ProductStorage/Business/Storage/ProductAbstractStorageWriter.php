@@ -19,6 +19,7 @@ use Spryker\Zed\ProductStorage\Business\Storage\ProductAbstractStorageWriter as 
 use Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterface;
 use Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToStoreFacadeInterface;
 use Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface;
+use Spryker\Zed\ProductStorage\Persistence\ProductStorageRepositoryInterface;
 
 /**
  * @example
@@ -70,6 +71,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      * @param \Spryker\Zed\ProductStorage\Business\Attribute\AttributeMapInterface $attributeMap
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToStoreFacadeInterface $storeFacade
+     * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageRepositoryInterface $productStorageRepository
      * @param bool $isSendingToQueue
      * @param array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageExpanderPluginInterface> $productAbstractStorageExpanderPlugins
      * @param array<\Spryker\Zed\ProductStorageExtension\Dependency\Plugin\ProductAbstractStorageCollectionFilterPluginInterface> $productAbstractStorageCollectionFilterPlugins
@@ -82,6 +84,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         AttributeMapInterface $attributeMap,
         ProductStorageQueryContainerInterface $queryContainer,
         ProductStorageToStoreFacadeInterface $storeFacade,
+        ProductStorageRepositoryInterface $productStorageRepository,
         $isSendingToQueue,
         array $productAbstractStorageExpanderPlugins,
         array $productAbstractStorageCollectionFilterPlugins,
@@ -94,6 +97,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
             $attributeMap,
             $queryContainer,
             $storeFacade,
+            $productStorageRepository,
             $isSendingToQueue,
             $productAbstractStorageExpanderPlugins,
             $productAbstractStorageCollectionFilterPlugins,
@@ -128,12 +132,20 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         );
         $productAbstractStorageTransfers = $this->executeProductAbstractStorageFilterPlugins($productAbstractStorageTransfers);
         $indexedProductAbstractStorageTransfers = $this->indexProductAbstractStorageTransfersByIdProductAbstract($productAbstractStorageTransfers);
+        $idProductAbstracts = [];
+
+        foreach ($pairedEntities as $pair) {
+            $productAbstractLocalizedEntity = $pair[static::PRODUCT_ABSTRACT_LOCALIZED_ENTITY];
+            $idProductAbstracts[] = $productAbstractLocalizedEntity[static::COL_FK_PRODUCT_ABSTRACT];
+        }
+
+        $concreteProductCountMap = $this->productStorageRepository->getProductConcretesCountByIdProductAbstracts($idProductAbstracts);
 
         foreach ($pairedEntities as $pair) {
             $productAbstractLocalizedEntity = $pair[static::PRODUCT_ABSTRACT_LOCALIZED_ENTITY];
             $productAbstractStorageEntity = $pair[static::PRODUCT_ABSTRACT_STORAGE_ENTITY];
 
-            if ($productAbstractLocalizedEntity === null || !$this->isActive($productAbstractLocalizedEntity)) {
+            if ($productAbstractLocalizedEntity === null || !$this->isActive($productAbstractLocalizedEntity, $concreteProductCountMap)) {
                 $this->deleteProductAbstractStorageEntity($productAbstractStorageEntity);
 
                 continue;
