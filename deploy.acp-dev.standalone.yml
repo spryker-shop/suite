@@ -7,7 +7,7 @@ environment: docker.acp.dev
 pipeline: docker.acp.dev
 image:
     # change PHP version by specifying PHP_VERSION (e.g. `PHP_VERSION=8.0 docker/sdk up deploy.acp.dev`)
-    tag: spryker/php:${PHP_VERSION:-8.1}
+    tag: spryker/php:${PHP_VERSION:-8.2}
     php:
         enabled-extensions:
     environment:
@@ -143,8 +143,12 @@ groups:
                 endpoints:
                     glue.de.spryker.local:
                         store: DE
+                        cors-allow-origin: '*'
+                        cors-allow-headers: 'accept,content-type,content-language,accept-language,authorization,User-Agent,newrelic,traceparent,tracestate'
                     glue.at.spryker.local:
                         store: AT
+                        cors-allow-origin: '*'
+                        cors-allow-headers: 'accept,content-type,content-language,accept-language,authorization,User-Agent,newrelic,traceparent,tracestate'
             glue_storefront_eu:
                 application: glue-storefront
                 endpoints:
@@ -237,6 +241,9 @@ groups:
                     backend-api.us.spryker.local:
                         store: US
 services:
+    webdriver:
+        engine: chromedriver
+
     database:
         engine: mysql
         version: mariadb-10.4
