@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.322.9",
+            "version": "3.322.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "0bd7513a7dd9b5330cb92575da99d9057f79b39c"
+                "reference": "0adb58bc7989068b489d320970951163847b520b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0bd7513a7dd9b5330cb92575da99d9057f79b39c",
-                "reference": "0bd7513a7dd9b5330cb92575da99d9057f79b39c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0adb58bc7989068b489d320970951163847b520b",
+                "reference": "0adb58bc7989068b489d320970951163847b520b",
                 "shasum": ""
             },
             "require": {
@@ -338,9 +338,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.322.9"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.322.10"
             },
-            "time": "2024-10-01T18:23:10+00:00"
+            "time": "2024-10-02T18:14:16+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -14358,20 +14358,20 @@
         },
         {
             "name": "spryker-shop/quote-request-agent-page",
-            "version": "3.4.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/quote-request-agent-page.git",
-                "reference": "466435817dfe27aaea944abcc85375a73f034b32"
+                "reference": "6f13386af800255fe39b67d9ab84d6316aa8bfd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/quote-request-agent-page/zipball/466435817dfe27aaea944abcc85375a73f034b32",
-                "reference": "466435817dfe27aaea944abcc85375a73f034b32",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-agent-page/zipball/6f13386af800255fe39b67d9ab84d6316aa8bfd8",
+                "reference": "6f13386af800255fe39b67d9ab84d6316aa8bfd8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "spryker-shop/checkout-page-extension": "^1.2.0",
                 "spryker-shop/quote-request-agent-page-extension": "^1.0.0",
                 "spryker-shop/shop-application": "^1.2.0",
@@ -14402,7 +14402,8 @@
                 "spryker-shop/quote-request-page": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/router": "*",
-                "spryker/silex": "*"
+                "spryker/silex": "*",
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker-shop/agent-page": "If you want to use agent layout templates: ^1.2.0",
@@ -14432,9 +14433,9 @@
             ],
             "description": "QuoteRequestAgentPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/quote-request-agent-page/tree/3.4.0"
+                "source": "https://github.com/spryker-shop/quote-request-agent-page/tree/3.5.0"
             },
-            "time": "2023-12-12T08:52:32+00:00"
+            "time": "2024-10-03T08:10:37+00:00"
         },
         {
             "name": "spryker-shop/quote-request-agent-page-extension",
@@ -14543,20 +14544,20 @@
         },
         {
             "name": "spryker-shop/quote-request-page",
-            "version": "3.5.0",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/quote-request-page.git",
-                "reference": "698f54517e3efc641782714b42c8406992ab1b76"
+                "reference": "74d399b41a7c906ead8f407ef59613c3f29bff24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/quote-request-page/zipball/698f54517e3efc641782714b42c8406992ab1b76",
-                "reference": "698f54517e3efc641782714b42c8406992ab1b76",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-page/zipball/74d399b41a7c906ead8f407ef59613c3f29bff24",
+                "reference": "74d399b41a7c906ead8f407ef59613c3f29bff24",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "spryker-shop/checkout-page-extension": "^1.2.0",
                 "spryker-shop/quote-request-page-extension": "^1.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
@@ -14581,7 +14582,8 @@
                 "spryker-shop/product-option-widget": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/router": "*",
-                "spryker/silex": "*"
+                "spryker/silex": "*",
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker-shop/cart-page": "If you use shipment or shipment price customization during quote request: ^3.16.0",
@@ -14612,9 +14614,9 @@
             ],
             "description": "QuoteRequestPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/quote-request-page/tree/3.5.0"
+                "source": "https://github.com/spryker-shop/quote-request-page/tree/3.6.0"
             },
-            "time": "2023-12-12T08:52:32+00:00"
+            "time": "2024-10-03T08:10:37+00:00"
         },
         {
             "name": "spryker-shop/quote-request-page-extension",
@@ -15107,20 +15109,20 @@
         },
         {
             "name": "spryker-shop/sales-return-page",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/sales-return-page.git",
-                "reference": "ed8900ef639b4a2f293d57afe3662c1caa3018a9"
+                "reference": "d66400ab4108b891b2f0a401b5edd7a2210c39b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/sales-return-page/zipball/ed8900ef639b4a2f293d57afe3662c1caa3018a9",
-                "reference": "ed8900ef639b4a2f293d57afe3662c1caa3018a9",
+                "url": "https://api.github.com/repos/spryker-shop/sales-return-page/zipball/d66400ab4108b891b2f0a401b5edd7a2210c39b6",
+                "reference": "d66400ab4108b891b2f0a401b5edd7a2210c39b6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "spryker-shop/barcode-widget": "^1.0.0",
                 "spryker-shop/customer-reorder-widget-extension": "^1.2.0",
                 "spryker-shop/sales-return-page-extension": "^1.0.0",
@@ -15140,7 +15142,8 @@
                 "spryker-shop/sales-configurable-bundle-widget": "*",
                 "spryker-shop/sales-product-bundle-widget": "*",
                 "spryker/code-sniffer": "*",
-                "spryker/router": "*"
+                "spryker/router": "*",
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker-shop/customer-page": "Use this module when you want to use CustomerNavigationWidget",
@@ -15168,9 +15171,9 @@
             ],
             "description": "SalesReturnPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/sales-return-page/tree/1.8.0"
+                "source": "https://github.com/spryker-shop/sales-return-page/tree/1.9.0"
             },
-            "time": "2023-12-14T14:48:46+00:00"
+            "time": "2024-10-03T08:10:37+00:00"
         },
         {
             "name": "spryker-shop/sales-return-page-extension",
