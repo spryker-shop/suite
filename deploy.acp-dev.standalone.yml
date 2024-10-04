@@ -6,8 +6,7 @@ tag: 'dev'
 environment: docker.acp.dev
 pipeline: docker.acp.dev
 image:
-    # change PHP version by specifying PHP_VERSION (e.g. `PHP_VERSION=8.0 docker/sdk up deploy.acp.dev`)
-    tag: spryker/php:${PHP_VERSION:-8.2}
+    tag: spryker/php:8.3
     php:
         enabled-extensions:
     environment:
