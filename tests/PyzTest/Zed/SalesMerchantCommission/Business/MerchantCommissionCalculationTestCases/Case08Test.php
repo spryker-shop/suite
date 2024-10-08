@@ -329,7 +329,7 @@ class Case08Test extends Unit
                 ItemTransfer::UNIT_PRICE => static::TEST_PRODUCT_PRICE_GROSS,
                 ItemTransfer::UNIT_GROSS_PRICE => static::TEST_PRODUCT_PRICE_GROSS,
                 ItemTransfer::UNIT_NET_PRICE => static::TEST_PRODUCT_PRICE_NET,
-                ItemTransfer::SUM_PRICE => static::TEST_PRODUCT_PRICE_GROSS * static::TEST_PRODUCT_QUANTITY,
+                ItemTransfer::SUM_PRICE => static::TEST_PRODUCT_PRICE_NET * static::TEST_PRODUCT_QUANTITY,
                 ItemTransfer::SUM_GROSS_PRICE => static::TEST_PRODUCT_PRICE_GROSS * static::TEST_PRODUCT_QUANTITY,
                 ItemTransfer::SUM_NET_PRICE => static::TEST_PRODUCT_PRICE_NET * static::TEST_PRODUCT_QUANTITY,
                 ItemTransfer::QUANTITY => static::TEST_PRODUCT_QUANTITY,
