@@ -16,6 +16,6 @@ class SynchronizationBehaviorConfig extends SprykerSynchronizationBehaviorConfig
      */
     public function isDirectSynchronizationEnabled(): bool
     {
-        return true;
+        return false;
     }
 }
