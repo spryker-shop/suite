@@ -136,6 +136,11 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
 
         foreach ($pairedEntities as $pair) {
             $productAbstractLocalizedEntity = $pair[static::PRODUCT_ABSTRACT_LOCALIZED_ENTITY];
+
+            if ($productAbstractLocalizedEntity === null) {
+                continue;
+            }
+
             $idProductAbstracts[] = $productAbstractLocalizedEntity[static::COL_FK_PRODUCT_ABSTRACT];
         }
 
