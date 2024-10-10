@@ -2287,16 +2287,16 @@
         },
         {
             "name": "league/csv",
-            "version": "9.16.0",
+            "version": "9.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/csv.git",
-                "reference": "998280c6c34bd67d8125fdc8b45bae28d761b440"
+                "reference": "8cab815fb11ec93aa2f7b8a57b3daa1f1a364011"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/csv/zipball/998280c6c34bd67d8125fdc8b45bae28d761b440",
-                "reference": "998280c6c34bd67d8125fdc8b45bae28d761b440",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/8cab815fb11ec93aa2f7b8a57b3daa1f1a364011",
+                "reference": "8cab815fb11ec93aa2f7b8a57b3daa1f1a364011",
                 "shasum": ""
             },
             "require": {
@@ -2304,17 +2304,16 @@
                 "php": "^8.1.2"
             },
             "require-dev": {
-                "doctrine/collections": "^2.2.2",
                 "ext-dom": "*",
                 "ext-xdebug": "*",
-                "friendsofphp/php-cs-fixer": "^3.57.1",
-                "phpbench/phpbench": "^1.2.15",
-                "phpstan/phpstan": "^1.11.1",
-                "phpstan/phpstan-deprecation-rules": "^1.2.0",
+                "friendsofphp/php-cs-fixer": "^3.64.0",
+                "phpbench/phpbench": "^1.3.1",
+                "phpstan/phpstan": "^1.12.5",
+                "phpstan/phpstan-deprecation-rules": "^1.2.1",
                 "phpstan/phpstan-phpunit": "^1.4.0",
-                "phpstan/phpstan-strict-rules": "^1.6.0",
-                "phpunit/phpunit": "^10.5.16 || ^11.1.3",
-                "symfony/var-dumper": "^6.4.6 || ^7.0.7"
+                "phpstan/phpstan-strict-rules": "^1.6.1",
+                "phpunit/phpunit": "^10.5.16 || ^11.4.0",
+                "symfony/var-dumper": "^6.4.8 || ^7.1.5"
             },
             "suggest": {
                 "ext-dom": "Required to use the XMLConverter and the HTMLConverter classes",
@@ -2332,7 +2331,7 @@
                     "src/functions_include.php"
                 ],
                 "psr-4": {
-                    "League\\Csv\\": "src"
+                    "League\\Csv\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2371,7 +2370,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-24T11:04:54+00:00"
+            "time": "2024-10-10T10:30:28+00:00"
         },
         {
             "name": "league/event",
@@ -7471,7 +7470,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "a78bc3d6fd1434b3b52c910c90a8ea788c0d97b6"
+                "reference": "3b85884677020ddf7157ba9944e7974eb0b993a7"
             },
             "require": {
                 "php": ">=8.1"
@@ -7568,6 +7567,8 @@
                 "spryker-shop/product-barcode-widget": "*",
                 "spryker-shop/product-bundle-widget": "*",
                 "spryker-shop/product-category-widget": "*",
+                "spryker-shop/product-comparison-page": "*",
+                "spryker-shop/product-comparison-widget": "*",
                 "spryker-shop/product-configuration-cart-widget": "*",
                 "spryker-shop/product-configuration-cart-widget-extension": "*",
                 "spryker-shop/product-configuration-shopping-list-widget": "*",
@@ -7670,7 +7671,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2024-10-10T09:02:42+00:00"
+            "time": "2024-10-10T11:46:44+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -18834,7 +18835,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "aee842f6a6496b1cbdd31116d3cb4438d7a914f7"
+                "reference": "af54fc8f9e215a19acbd9800ed7ad10a1e4999de"
             },
             "default-branch": true,
             "type": "library",
@@ -18842,7 +18843,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2024-10-08T18:01:49+00:00"
+            "time": "2024-10-10T09:56:38+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
