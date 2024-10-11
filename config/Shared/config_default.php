@@ -606,12 +606,10 @@ $config[CustomerPageConstants::CUSTOMER_REMEMBER_ME_LIFETIME] = 31536000;
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
     's3-import' => [
         'sprykerAdapterClass' => Aws3v3FilesystemBuilderPlugin::class,
-        'root' => '/',
         'path' => '/',
         'key' => '',
         'secret' => '',
         'bucket' => '',
-        'version' => '',
         'region' => '',
     ],
     'files-import' => [
