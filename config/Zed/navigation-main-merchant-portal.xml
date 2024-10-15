@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<config>
+    <merchant-portal-dashboard>
+        <label>Dashboard</label>
+        <title>Merchant Dashboard</title>
+        <icon>dashboard</icon>
+        <bundle>dashboard-merchant-portal-gui</bundle>
+        <controller>dashboard</controller>
+        <action>index</action>
+    </merchant-portal-dashboard>
+    <merchant-portal-profile>
+        <label>Profile</label>
+        <title>Profile</title>
+        <icon>profile</icon>
+        <bundle>merchant-profile-merchant-portal-gui</bundle>
+        <controller>profile</controller>
+        <action>index</action>
+    </merchant-portal-profile>
+    <product-merchant-portal-gui>
+        <label>Products</label>
+        <title>Products</title>
+        <icon>products</icon>
+        <bundle>product-merchant-portal-gui</bundle>
+        <controller>products</controller>
+        <action>index</action>
+    </product-merchant-portal-gui>
+    <variants-product-merchant-portal-gui>
+        <label>Variants</label>
+        <title>Variants</title>
+        <icon>variants</icon>
+        <bundle>product-merchant-portal-gui</bundle>
+        <controller>products-concrete</controller>
+        <action>index</action>
+    </variants-product-merchant-portal-gui>
+    <product-offer-merchant-portal-gui>
+        <label>Offers</label>
+        <title>Offers</title>
+        <icon>offers</icon>
+        <bundle>product-offer-merchant-portal-gui</bundle>
+        <controller>product-offers</controller>
+        <action>index</action>
+        <pages>
+            <create-offer>
+                <label>Create Offer</label>
+                <title>Create Offer</title>
+                <bundle>product-offer-merchant-portal-gui</bundle>
+                <controller>product-list</controller>
+                <action>index</action>
+                <visible>0</visible>
+            </create-offer>
+        </pages>
+    </product-offer-merchant-portal-gui>
+    <sales-merchant-portal-gui>
+        <label>Orders</label>
+        <title>Orders</title>
+        <icon>orders</icon>
+        <bundle>sales-merchant-portal-gui</bundle>
+        <controller>orders</controller>
+        <action>index</action>
+    </sales-merchant-portal-gui>
+    <b2b-contracts>
+        <label>B2B Contracts</label>
+        <title>B2B Contracts</title>
+        <icon>contracts</icon>
+        <pages>
+            <merchant-relationship-merchant-portal-gui>
+                <label>Merchant Relations</label>
+                <title>Merchant Relations</title>
+                <bundle>merchant-relationship-merchant-portal-gui</bundle>
+                <controller>merchant-relationship</controller>
+                <action>index</action>
+            </merchant-relationship-merchant-portal-gui>
+            <merchant-relation-request-merchant-portal-gui>
+                <label>navigation.merchant_relation_requests</label>
+                <title>navigation.merchant_relation_requests</title>
+                <bundle>merchant-relation-request-merchant-portal-gui</bundle>
+                <controller>merchant-relation-requests</controller>
+                <action>index</action>
+            </merchant-relation-request-merchant-portal-gui>
+        </pages>
+    </b2b-contracts>
+    <agent-dashboard-merchant-portal-gui>
+        <label>Merchant Users</label>
+        <title>Merchant Users</title>
+        <icon>user-group</icon>
+        <bundle>agent-dashboard-merchant-portal-gui</bundle>
+        <controller>merchant-users</controller>
+        <action>index</action>
+    </agent-dashboard-merchant-portal-gui>
+    <merchant-portal-payment-settings>
+        <label>Payment Settings</label>
+        <title>Payment Settings</title>
+        <icon>payment</icon>
+        <bundle>merchant-app-merchant-portal-gui</bundle>
+        <controller>payment-settings</controller>
+        <action>index</action>
+        <pages>
+            <onboarding>
+                <label>Onboarding</label>
+                <title>Onboarding</title>
+                <icon>payment</icon>
+                <bundle>merchant-app-merchant-portal-gui</bundle>
+                <controller>payment-settings</controller>
+                <action>onboarding</action>
+                <visible>0</visible>
+            </onboarding>
+        </pages>
+    </merchant-portal-payment-settings>
+</config>

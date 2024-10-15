@@ -83,6 +83,7 @@ use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\ProductQuantityRestric
 use Spryker\Zed\ProductQuantity\Communication\Plugin\CartExtension\ProductQuantityRestrictionCartRemovalPreCheckPlugin;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Cart\SanitizeQuoteApprovalQuoteLockPreResetPlugin;
 use Spryker\Zed\QuoteRequest\Communication\Plugin\Cart\SanitizeQuoteRequestQuoteLockPreResetPlugin;
+use Spryker\Zed\SalesMerchantCommission\Communication\Plugin\Cart\SanitizeMerchantCommissionPreReloadPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Cart\AddThresholdMessagesCartPostReloadItemsPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Cart\SalesOrderThresholdCartTerminationPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
@@ -215,6 +216,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ConfiguredBundleQuantityPerSlotPreReloadItemsPlugin(),
             new SingleMerchantPreReloadItemsPlugin(),
             new ProductApprovalPreReloadItemsPlugin(),
+            new SanitizeMerchantCommissionPreReloadPlugin(),
         ];
     }
 

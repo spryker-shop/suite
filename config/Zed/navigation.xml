@@ -1,6 +1,14 @@
 <?xml version="1.0"?>
 <config>
     <!-- You can control navigation order here and add your custom navigation entries -->
+    <analytics>
+        <label>Analytics</label>
+        <title>Analytics</title>
+        <icon>fa-chart-bar</icon>
+        <bundle>analytics-gui</bundle>
+        <controller>analytics</controller>
+        <action>index</action>
+    </analytics>
     <dashboard>
         <label>Dashboard</label>
         <title>Dashboard</title>
@@ -18,7 +26,7 @@
             <order-matrix>
                 <label>Order Matrix</label>
                 <title>Order Matrix</title>
-                <bundle>sales</bundle>
+                <bundle>order-matrix-gui</bundle>
                 <controller>matrix</controller>
                 <action>index</action>
                 <visible>1</visible>
@@ -705,83 +713,4 @@
             </storage-gui>
         </pages>
     </maintenance>
-    <merchant-portal-dashboard>
-        <label>Dashboard</label>
-        <title>Merchant Dashboard</title>
-        <icon>dashboard</icon>
-        <bundle>dashboard-merchant-portal-gui</bundle>
-        <controller>dashboard</controller>
-        <action>index</action>
-    </merchant-portal-dashboard>
-    <merchant-portal-profile>
-        <label>Profile</label>
-        <title>Profile</title>
-        <icon>profile</icon>
-        <bundle>merchant-profile-merchant-portal-gui</bundle>
-        <controller>profile</controller>
-        <action>index</action>
-    </merchant-portal-profile>
-    <product-merchant-portal-gui>
-        <label>Products</label>
-        <title>Products</title>
-        <icon>products</icon>
-        <bundle>product-merchant-portal-gui</bundle>
-        <controller>products</controller>
-        <action>index</action>
-    </product-merchant-portal-gui>
-    <product-offer-merchant-portal-gui>
-        <label>Offers</label>
-        <title>Offers</title>
-        <icon>offers</icon>
-        <bundle>product-offer-merchant-portal-gui</bundle>
-        <controller>product-offers</controller>
-        <action>index</action>
-        <pages>
-            <create-offer>
-                <label>Create Offer</label>
-                <title>Create Offer</title>
-                <bundle>product-offer-merchant-portal-gui</bundle>
-                <controller>product-list</controller>
-                <action>index</action>
-                <visible>0</visible>
-            </create-offer>
-        </pages>
-    </product-offer-merchant-portal-gui>
-    <sales-merchant-portal-gui>
-        <label>Orders</label>
-        <title>Orders</title>
-        <icon>orders</icon>
-        <bundle>sales-merchant-portal-gui</bundle>
-        <controller>orders</controller>
-        <action>index</action>
-    </sales-merchant-portal-gui>
-    <b2b-contracts>
-        <label>B2B Contracts</label>
-        <title>B2B Contracts</title>
-        <icon>contracts</icon>
-        <pages>
-            <merchant-relationship-merchant-portal-gui>
-                <label>Merchant Relations</label>
-                <title>Merchant Relations</title>
-                <bundle>merchant-relationship-merchant-portal-gui</bundle>
-                <controller>merchant-relationship</controller>
-                <action>index</action>
-            </merchant-relationship-merchant-portal-gui>
-            <merchant-relation-request-merchant-portal-gui>
-                <label>navigation.merchant_relation_requests</label>
-                <title>navigation.merchant_relation_requests</title>
-                <bundle>merchant-relation-request-merchant-portal-gui</bundle>
-                <controller>merchant-relation-requests</controller>
-                <action>index</action>
-            </merchant-relation-request-merchant-portal-gui>
-        </pages>
-    </b2b-contracts>
-    <agent-dashboard-merchant-portal-gui>
-        <label>Merchant Users</label>
-        <title>Merchant Users</title>
-        <icon>user-group</icon>
-        <bundle>agent-dashboard-merchant-portal-gui</bundle>
-        <controller>merchant-users</controller>
-        <action>index</action>
-    </agent-dashboard-merchant-portal-gui>
 </config>

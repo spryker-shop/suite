@@ -31,6 +31,7 @@ class SalesConfig extends SprykerSalesConfig
             'comment' => '/comment-sales-connector/sales/list',
             'cart_note_bundle_items' => '/cart-note-product-bundle-connector/sales/list', #CartNoteFeature
             'payments' => '/sales-payment-gui/sales/list',
+            'sales_payment_details' => '/sales-payment-detail/sales/list',
             'giftCards' => '/gift-card/sales/list',
             'discount' => '/discount/sales/list',
             'refund' => '/refund/sales/list',
@@ -58,5 +59,13 @@ class SalesConfig extends SprykerSalesConfig
     public function isOldDeterminationForOrderItemProcessEnabled(): bool
     {
         return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function shouldPersistModifiedOrderItemProperties(): bool
+    {
+        return true;
     }
 }

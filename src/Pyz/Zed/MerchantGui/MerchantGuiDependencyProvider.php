@@ -57,6 +57,16 @@ class MerchantGuiDependencyProvider extends SprykerMerchantGuiDependencyProvider
     }
 
     /**
+     * @return array<\Spryker\Zed\MerchantGuiExtension\Dependency\Plugin\MerchantUpdateFormViewExpanderPluginInterface>
+     */
+    protected function getMerchantViewFormViewExpanderPlugins(): array
+    {
+        return [
+            new MerchantUserViewMerchantUpdateFormViewExpanderPlugin(),
+        ];
+    }
+
+    /**
      * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
      */
     protected function getStoreRelationFormTypePlugin(): FormTypeInterface

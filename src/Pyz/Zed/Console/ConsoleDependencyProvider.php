@@ -15,6 +15,7 @@ use Pyz\Zed\MerchantProductOfferDataImport\MerchantProductOfferDataImportConfig;
 use SecurityChecker\Command\SecurityCheckerCommand;
 use Spryker\Zed\AclDataImport\AclDataImportConfig;
 use Spryker\Zed\AclEntityDataImport\AclEntityDataImportConfig;
+use Spryker\Zed\AclMerchantPortal\Communication\Console\AclEntitySynchronizeConsole;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
@@ -57,6 +58,8 @@ use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRest
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerListenerConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
+use Spryker\Zed\IncrementalInstaller\Communication\Console\IncrementalInstallersConsole;
+use Spryker\Zed\IncrementalInstaller\Communication\Console\IncrementalInstallersRollbackConsole;
 use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexGeneratorConsole;
 use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexRemoverConsole;
 use Spryker\Zed\Installer\Communication\Console\InitializeDatabaseConsole;
@@ -81,6 +84,8 @@ use Spryker\Zed\Oauth\Communication\Console\ScopeCacheCollectorConsole;
 use Spryker\Zed\Oms\Communication\Console\CheckConditionConsole as OmsCheckConditionConsole;
 use Spryker\Zed\Oms\Communication\Console\CheckTimeoutConsole as OmsCheckTimeoutConsole;
 use Spryker\Zed\Oms\Communication\Console\ClearLocksConsole as OmsClearLocksConsole;
+use Spryker\Zed\Oms\Communication\Console\ProcessCacheWarmUpConsole as OmsProcessCacheWarmUpConsole;
+use Spryker\Zed\OrderMatrix\Communication\Console\OrderMatrixConsole;
 use Spryker\Zed\PaymentDataImport\PaymentDataImportConfig;
 use Spryker\Zed\PriceProduct\Communication\Console\PriceProductStoreOptimizeConsole;
 use Spryker\Zed\PriceProductDataImport\PriceProductDataImportConfig;
@@ -180,6 +185,7 @@ use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisImportRdbConsole;
 use Spryker\Zed\StoreContextDataImport\StoreContextDataImportConfig;
 use Spryker\Zed\StoreDataImport\StoreDataImportConfig;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
+use Spryker\Zed\Synchronization\Communication\Plugin\Console\DirectSynchronizationConsolePlugin;
 use Spryker\Zed\Testify\Communication\Console\CleanOutputConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\RemoveDataBuilderConsole;
@@ -234,6 +240,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new OmsCheckConditionConsole(),
             new OmsCheckTimeoutConsole(),
             new OmsClearLocksConsole(),
+            new OmsProcessCacheWarmUpConsole(),
             new StateMachineCheckTimeoutConsole(),
             new StateMachineCheckConditionConsole(),
             new StateMachineClearLocksConsole(),
@@ -449,6 +456,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DeleteExpiredPushNotificationSubscriptionConsole(),
             new SendPushNotificationConsole(),
             new RouterCacheWarmUpConsole(),
+            new OrderMatrixConsole(),
+            new IncrementalInstallersConsole(),
+            new IncrementalInstallersRollbackConsole(),
+            new AclEntitySynchronizeConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
@@ -541,12 +552,13 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return array<\Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin>
+     * @return array<\Symfony\Component\EventDispatcher\EventSubscriberInterface>
      */
     public function getEventSubscriber(Container $container): array
     {
         return [
             new MonitoringConsolePlugin(),
+            new DirectSynchronizationConsolePlugin(),
         ];
     }
 }

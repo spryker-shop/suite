@@ -1305,6 +1305,8 @@ checkout.payment.provider.DummyMarketplacePayment,Dummy Marketplace Payment,en_U
 checkout.payment.provider.DummyMarketplacePayment,Beispiel Marktplatz Zahlungsmethode,de_DE
 checkout.order.duplicate,Order with given reference {{reference}} already exists,en_US
 checkout.order.duplicate,Bestellung mit gegebener Referenz {{reference}} existiert bereits,de_DE
+checkout.order.checkout.error.duplicate-order-processing,Cart with given uid %quote-uid% has already been processing,en_US
+checkout.order.checkout.error.duplicate-order-processing,Warenkorb mit der angegebenen UID %quote-uid% wird bereits verarbeitet,de_DE
 checkout.item.option.pre.condition.validation.error.exists,"Product option of %name% is not available anymore.",en_US
 checkout.item.option.pre.condition.validation.error.exists,"Produktoption von %name% ist nicht mehr verfügbar.",de_DE
 cms.preview.access_denied,You are not logged in or you do not have permission to access this page.,en_US
@@ -3595,6 +3597,8 @@ oms.state.shipped,Shipped,en_US
 oms.state.shipped,Versandt,de_DE
 oms.state.delivered,Delivered,en_US
 oms.state.delivered,Geliefert,de_DE
+oms.state.payout-failed,Merchant Payout failed,en_US
+oms.state.payout-failed,Merchant Auszahlung fehlgeschlagen,de_DE
 oms.state.ready-for-return,Ready for return,en_US
 oms.state.ready-for-return,Bereit zum Retournieren,de_DE
 oms.state.refunded,Refunded,en_US
@@ -3625,6 +3629,8 @@ oms.state.reservation-cancelled,Payment cancelled,en_US
 oms.state.reservation-cancelled,Payment cancelled,de_DE
 oms.state.reservation-cancellation-pending,Payment cancellation in progress,en_US
 oms.state.reservation-cancellation-pending,Payment cancellation in progress,de_DE
+oms.state.tax-pending,Tax pending,en_US
+oms.state.tax-pending,Steuer ausstehend,de_DE
 return.create_return.validation.returnable_items_error,Return cannot be created as it contains non-returnable items,en_US
 return.create_return.validation.returnable_items_error,"Retoure kann nicht angestellt werden, weil sie die Artikel beinhaltet, die nicht retourniert werden können",de_DE
 return.create_return.validation.store_error,Return cannot be created - a wrong store has been selected,en_US
@@ -4385,8 +4391,8 @@ merchant_commission.validation.merchant_commission_does_not_exist,A merchant com
 merchant_commission.validation.merchant_commission_does_not_exist,Die Händlerprovision mit dem Schlüssel ‘%key%’ wurde nicht gefunden.,de_DE
 merchant_commission.validation.merchant_commission_group_does_not_exist,A merchant commission group was not found.,en_US
 merchant_commission.validation.merchant_commission_group_does_not_exist,Es wurde keine Händlerprovisionsgruppe gefunden.,de_DE
-merchant_commission.validation.merchant_commission_group_key_does_not_exist,A merchant commission group with the key "%key%" was not found.,en_US
-merchant_commission.validation.merchant_commission_group_does_not_exist,Die Händlerprovisionsgruppe mit dem Schlüssel „%key%“ wurde nicht gefunden.,de_DE
+merchant_commission.validation.merchant_commission_group_key_does_not_exist,A merchant commission group with the key ‘%key%’ was not found.,en_US
+merchant_commission.validation.merchant_commission_group_does_not_exist,Die Händlerprovisionsgruppe mit dem Schlüssel ‘%key%’ wurde nicht gefunden.,de_DE
 merchant_commission.validation.merchant_does_not_exist,A merchant with the reference ‘%merchant_reference%’ does not exist.,en_US
 merchant_commission.validation.merchant_does_not_exist,Ein Händler mit der Referenz ‘%merchant_reference%’ existiert nicht.,de_DE
 merchant_commission.validation.merchant_commission_name_invalid_length,A merchant commission name must have a length from %min% to %max% characters.,en_US
@@ -4401,3 +4407,30 @@ merchant_commission.validation.merchant_commission_valid_to_invalid_datetime,A m
 merchant_commission.validation.merchant_commission_valid_to_invalid_datetime,Das ‘Gültig bis’-Datum ist nicht im gültigen Format.,de_DE
 merchant_commission.validation.merchant_commission_validity_period_invalid,A merchant commission ‘valid to’ date must be later than the ‘valid from’ date.,en_US
 merchant_commission.validation.merchant_commission_validity_period_invalid,Das ‘Gültig bis’-Datum muss nach dem ‘Gültig von’-Datum liegen.,de_DE
+merchant_commission.validation.invalid_query_string,The provided query string has an invalid format in %field%.,en_US
+merchant_commission.validation.invalid_query_string,Die angegebene Abfragezeichenfolge hat ein ungültiges Format in %field%.,de_DE
+merchant_commission.validation.invalid_compare_operator,The provided compare operator is invalid in %field%.,en_US
+merchant_commission.validation.invalid_compare_operator,Der angegebene Vergleichsoperator ist ungültig in %field%.,de_DE
+rule_engine.validation.invalid_query_string,The provided query string has an invalid format.,en_US
+rule_engine.validation.invalid_query_string,Die angegebene Abfragezeichenfolge hat ein ungültiges Format.,de_DE
+rule_engine.validation.invalid_compare_operator_value,The provided compare operator is invalid.,en_US
+rule_engine.validation.invalid_compare_operator_value,Der angegebene Vergleichsoperator ist ungültig.,de_DE
+product_comparison_page.page_title,Artikel vergleichen,de_DE
+product_comparison_page.page_title,Compare products,en_US
+product_comparison_page.empty_comparison,Vergleichsliste ist leer.,de_DE
+product_comparison_page.empty_comparison,Comparison list is empty.,en_US
+product_comparison_page.clear-compare-list,Vergleichsliste leeren,de_DE
+product_comparison_page.clear-compare-list,Clear the comparison list,en_US
+product_comparison_page.add_to_comparison-list,Vergleichen,de_DE
+product_comparison_page.add_to_comparison-list,Compare,en_US
+product_comparison_page.remove_from_comparison-list,Aus Vergleich entfernen,de_DE
+product_comparison_page.remove_from_comparison-list,Remove from Compare,en_US
+product_comparison_page.list_link,Artikelvergleich,de_DE
+product_comparison_page.list_link,Product comparison,en_US
+product_comparison_page.add_to_comparison.success,Zum Vergleich hinzugefügt,de_DE
+product_comparison_page.add_to_comparison.success,Added to comparison,en_US
+product_comparison_page.add_to_comparison.error.max,Das Limit ist bereits erreicht,de_DE
+product_comparison_page.add_to_comparison.error.max,The limit has already been reached,en_US
+product_comparison_page.removed_from_the_list,Artikel wurde aus der Vergleichsliste entfernt.,de_DE
+product_comparison_page.removed_from_the_list,Product was removed from the comparison list.,en_US
+

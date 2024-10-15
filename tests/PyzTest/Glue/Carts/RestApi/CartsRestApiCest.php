@@ -1275,7 +1275,7 @@ class CartsRestApiCest
      *
      * @return void
      */
-    public function requestCustomerCartsAuthorizationError(CartsApiTester $I): void
+    public function requestCustomerCartsForbidden(CartsApiTester $I): void
     {
         // Arrange
         $quoteTransfer = $I->createPersistentQuote(
