@@ -58,7 +58,7 @@ regions:
                     name: Spryker No-Reply
                     email: no-reply@aop-suite-testing.demo-spryker.com
             database:
-                database: aop_demoshop_dms_testing #Example: customer_testing
+                database: aop_demoshop_dms_testing
                 username: spryker
                 password: secret
             broker:
@@ -109,6 +109,16 @@ groups:
                 endpoints:
                     glue.de.aop-suite-dms-testing.acp.demo-spryker.com:
                         region: EU
+            mportal:
+                application: merchant-portal
+                endpoints:
+                    mp.de.aop-suite-dms-testing.acp.demo-spryker.com:
+                        region: EU
+                        entry-point: MerchantPortal
+                        primal: true
+                        services:
+                            session:
+                                namespace: 4
 
 services:
     database:
