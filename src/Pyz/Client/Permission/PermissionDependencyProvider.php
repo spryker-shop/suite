@@ -8,8 +8,15 @@
 namespace Pyz\Client\Permission;
 
 use Spryker\Client\CompanyBusinessUnitSalesConnector\Plugin\Permission\SeeBusinessUnitOrdersPermissionPlugin;
+use Spryker\Client\CompanyRole\Plugin\Permission\CreateCompanyRolesPermissionPlugin;
+use Spryker\Client\CompanyRole\Plugin\Permission\DeleteCompanyRolesPermissionPlugin;
+use Spryker\Client\CompanyRole\Plugin\Permission\EditCompanyRolesPermissionPlugin;
+use Spryker\Client\CompanyRole\Plugin\Permission\SeeCompanyRolesPermissionPlugin;
 use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
 use Spryker\Client\CompanySalesConnector\Plugin\Permission\SeeCompanyOrdersPermissionPlugin;
+use Spryker\Client\CompanyUser\Plugin\CompanyUserStatusChangePermissionPlugin;
+use Spryker\Client\CompanyUser\Plugin\Permission\DeleteCompanyUsersPermissionPlugin;
+use Spryker\Client\CompanyUser\Plugin\Permission\EditCompanyUsersPermissionPlugin;
 use Spryker\Client\CompanyUser\Plugin\Permission\SeeCompanyUsersPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\CustomerAccessPermissionStoragePlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeAddToCartPermissionPlugin;
@@ -24,6 +31,8 @@ use Spryker\Client\SharedCart\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Client\SharedCart\Plugin\WriteSharedCartPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\WriteShoppingListPermissionPlugin;
+use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
+use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
@@ -49,6 +58,9 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new WriteSharedCartPermissionPlugin(), #SharedCartFeature
             new ReadShoppingListPermissionPlugin(), #ShoppingListFeature
             new WriteShoppingListPermissionPlugin(), #ShoppingListFeature
+            new ManageCompanyUserInvitationPermissionPlugin(),
+            new AddCompanyUserPermissionPlugin(),
+            new CompanyUserStatusChangePermissionPlugin(),
             new SeePricePermissionPlugin(), #CustomerAccessFeature
             new SeeOrderPlaceSubmitPermissionPlugin(), #CustomerAccessFeature
             new SeeAddToCartPermissionPlugin(), #CustomerAccessFeature
@@ -58,6 +70,12 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new SeeBusinessUnitOrdersPermissionPlugin(),
             new SeeCompanyUsersPermissionPlugin(),
             new CreateMerchantRelationRequestPermissionPlugin(),
+            new DeleteCompanyUsersPermissionPlugin(),
+            new EditCompanyUsersPermissionPlugin(),
+            new DeleteCompanyRolesPermissionPlugin(),
+            new CreateCompanyRolesPermissionPlugin(),
+            new EditCompanyRolesPermissionPlugin(),
+            new SeeCompanyRolesPermissionPlugin(),
         ];
     }
 }
