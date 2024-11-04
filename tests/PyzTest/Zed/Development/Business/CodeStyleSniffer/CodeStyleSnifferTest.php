@@ -98,7 +98,7 @@ class CodeStyleSnifferTest extends Unit
                 $developmentConfig,
                 $this->tester->getFactory()->createCodeStylePathResolver(),
             ])
-            ->setMethods(['runSnifferCommand'])
+            ->onlyMethods(['runSnifferCommand'])
             ->getMock();
 
         $codeStyleSnifferMock

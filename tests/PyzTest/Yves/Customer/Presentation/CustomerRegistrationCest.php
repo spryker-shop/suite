@@ -24,6 +24,16 @@ use PyzTest\Yves\Customer\PageObject\CustomerRegistrationPage;
 class CustomerRegistrationCest
 {
     /**
+     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     *
+     * @return void
+     */
+    public function _before(CustomerPresentationTester $i): void
+    {
+        $i->amYves();
+    }
+
+    /**
      * @skip This test was temporarily skipped due to flikerness. See {@link https://spryker.atlassian.net/browse/CC-25718} for details
      *
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i

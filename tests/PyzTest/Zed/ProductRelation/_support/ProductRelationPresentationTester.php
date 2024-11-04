@@ -8,7 +8,6 @@
 namespace PyzTest\Zed\ProductRelation;
 
 use Codeception\Actor;
-use Codeception\Scenario;
 
 /**
  * Inherited Methods
@@ -34,17 +33,6 @@ class ProductRelationPresentationTester extends Actor
      * @var int
      */
     protected $numberOfRulesSelected = 0;
-
-    /**
-     * @param \Codeception\Scenario $scenario
-     */
-    public function __construct(Scenario $scenario)
-    {
-        parent::__construct($scenario);
-
-        $this->amZed();
-        $this->amLoggedInUser();
-    }
 
     /**
      * @param string $type

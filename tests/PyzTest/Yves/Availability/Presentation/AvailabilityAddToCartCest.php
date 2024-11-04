@@ -28,6 +28,16 @@ class AvailabilityAddToCartCest
      *
      * @return void
      */
+    public function _before(AvailabilityPresentationTester $i): void
+    {
+        $i->amYves();
+    }
+
+    /**
+     * @param \PyzTest\Yves\Availability\AvailabilityPresentationTester $i
+     *
+     * @return void
+     */
     public function testAddToCartWhenBiggerQuantityIsUsed(AvailabilityPresentationTester $i): void
     {
         if ($i->isCartItemsViaAjaxLoadEnabled()) {
