@@ -8,7 +8,6 @@
 namespace PyzTest\Zed\NavigationGui;
 
 use Codeception\Actor;
-use Codeception\Scenario;
 use Exception;
 use Generated\Shared\Transfer\NavigationTransfer;
 use Generated\Shared\Transfer\NavigationTreeNodeTransfer;
@@ -120,17 +119,6 @@ class NavigationGuiPresentationTester extends Actor
      * @var string
      */
     public const FLASH_MESSAGE_TEXT_SELECTOR = '//div[@class="flash-messages"]/div';
-
-    /**
-     * @param \Codeception\Scenario $scenario
-     */
-    public function __construct(Scenario $scenario)
-    {
-        parent::__construct($scenario);
-
-        $this->amZed();
-        $this->amLoggedInUser();
-    }
 
     /**
      * @param string $value
