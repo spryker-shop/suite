@@ -1,0 +1,53 @@
+namespace: PyzTest
+actor: Tester
+
+include:
+    - vendor/spryker/spryker/Bundles/[R-Zr-z]*/*
+
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+
+settings:
+    suite_class: \PHPUnit_Framework_TestSuite
+    colors: true
+    memory_limit: 2048M
+    log: true
+    lint: false
+
+coverage:
+    enabled: true
+    remote: true
+    c3_url: 'http://backoffice.de.shop-suite.local'
+    whitelist: { include: ['src/Pyz/*.php'] }
+
+extensions:
+    enabled:
+        - \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper
+    config:
+        \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper:
+            exclusive:
+                - Api
+                - AsyncApi
+                - Glue
+                - Presentation
+                # ProductPageSearchListenerTest fails if runs after something
+                # see codeception.functional.stage0.yml
+                - ProductPageSearchListenerTest
+                # Zed & Client SearchElasticsearch tests always fail if running AFTER Shared SearchElasticsearch tests
+                # see codeception.functional.stage2.yml
+                - SearchElasticsearch
+                - SalesOrderThreshold
+                # Also see FacetQueryExpanderPluginFilteredQueryTest::createFilteredStringFacetDataWithMultipleValues
+                - SearchClientBCTest
+                - SearchFacadeBCTest
+                # ACL breadcrumbs tests falls due to no user in session (AclNavigationItemCollectionFilterPlugin)
+                - AclGroupCreateCest
+                - AclGroupEditCest
+                - AclGroupListCest
+                - AclRoleCreateCest
+                - AclRoleEditCest
+                - AclRoleListCest

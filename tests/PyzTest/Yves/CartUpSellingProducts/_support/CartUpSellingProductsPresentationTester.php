@@ -8,7 +8,6 @@
 namespace PyzTest\Yves\CartUpSellingProducts;
 
 use Codeception\Actor;
-use Codeception\Scenario;
 
 /**
  * Inherited Methods
@@ -29,14 +28,4 @@ use Codeception\Scenario;
 class CartUpSellingProductsPresentationTester extends Actor
 {
     use _generated\CartUpSellingProductsPresentationTesterActions;
-
-    /**
-     * @param \Codeception\Scenario $scenario
-     */
-    public function __construct(Scenario $scenario)
-    {
-        parent::__construct($scenario);
-
-        $this->amYves();
-    }
 }
