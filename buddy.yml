@@ -1833,7 +1833,7 @@
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI'
   events:
-      - type: 'on PULL_REQUEST'
+      - type: 'PULL_REQUEST'
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
