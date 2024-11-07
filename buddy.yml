@@ -1834,11 +1834,11 @@
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI'
   events:
       - type: 'PULL_REQUEST'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
+#        refs:
+#            - 'refs/pull/*'
+#            - 'refs/heads/master'
   trigger_conditions:
-      - trigger_condition: 'VAR_CONTAINS'
+      - trigger_condition: 'VAR_IS'
         trigger_variable_value: 'run-ui-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
