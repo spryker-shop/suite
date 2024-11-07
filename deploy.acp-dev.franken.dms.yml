@@ -1,42 +1,55 @@
 version: '0.1'
 
-namespace: spryker-dynamic-store
+namespace: spryker
 tag: 'dev'
 
-environment: docker.dev
+environment: docker.acp.dev
+pipeline: docker.acp.dev
 image:
-    tag: spryker/php:8.2
+    tag: spryker/php:8.3
     php:
         enabled-extensions:
-            - blackfire
     environment:
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.spryker.local
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
+        SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
+        SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR: '0c1ffefeebdab4a3d839d0e52590c9a2'
+        SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_PUBLIC_KEY: 'BGqNWbv0hWM5CQ1-KwAfSQBMC6TMVFyrnh3vQp37oGCNvQ6eG_HyMjxBFJRWeCPTbzDoxcjhxLJS8Ck8r1G2oFw'
+        SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_PRIVATE_KEY: 'UK6DywwjKITPpRHBSY9TLPIXm6BPrHX40sseIoXT9c8'
+        SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_SUBJECT: 'https://spryker.com'
         SPRYKER_DYNAMIC_STORE_MODE: true
         SPRYKER_YVES_HOST_EU: yves.eu.spryker.local
         SPRYKER_YVES_HOST_US: yves.us.spryker.local
 
+        ACP_DOCKER_SDK_FILE: acp-toolbox/bin/sdk/docker-sdk-acp-mb2.sh
+
         SPRYKER_TENANT_IDENTIFIER: 'tenant-154de332-b74c-41e3-a029-a3210b8a86f5'
 
         #AOP
-        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_SENDER_BASE_URL: 'https://publish.mb-testing.acp.demo-spryker.com/'
-        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_RECEIVER_BASE_URL: 'https://consume.mb-testing.acp.demo-spryker.com/'
-
+        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_SENDER_BASE_URL: 'http://mb2.spryker.local:8080/'
+        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_RECEIVER_BASE_URL: 'http://mb2.spryker.local:8080/'
         SPRYKER_AOP_APPLICATION: '{
-            "APP_CATALOG_SCRIPT_URL": "https://app-catalog.atrs-testing.demo-spryker.com/loader",
-            "APP_DOMAINS": [
-            "os.apps-testing.aop.demo-spryker.com",
-            "*.bazaarvoice.com",
-            "stripe-testing.acp.demo-spryker.com"
-            ]
+            "APP_DOMAINS": ["apps.spryker.local", "*.bazaarvoice.com"],
+            "STORE_NAME_REFERENCE_MAP": {},
+            "APP_CATALOG_SCRIPT_URL": "",
+            "PAYONE_APP_IDENTIFIER": "app-098aa300-2e3d-5a32-89c6-d79c45f15cd4",
+            "BAZAARVOICE_APP_IDENTIFIER": "app-b72fa702-7d8e-5d14-92b9-b8c9ad9c7066",
+            "USERCENTRICS_APP_IDENTIFIER": "app-804ebe5b-00f5-5121-9f90-29301d033dbb",
+            "ALGOLIA_APP_IDENTIFIER": "app-12470c65-13c1-4e1f-b48a-711196a22511",
+            "VERTEX_APP_IDENTIFIER": "app-7ff8d24e-4ea1-4440-b760-0aa92e60405b"
             }'
-
         SPRYKER_AOP_AUTHENTICATION: '{
-            "AUTH0_CUSTOM_DOMAIN": "dev-163i904u.us.auth0.com",
-            "AUTH0_CLIENT_ID": "Bp2N3wUTChi87eND8mLN06lyt0od8WRn",
-            "AUTH0_CLIENT_SECRET": "v0STi-ZAZtrR2nzQHExztj5-uoGMFZAj8lRqeRvOdaFuo31FK9POF2oxcZZQ-nok"
+            "AUTH0_CUSTOM_DOMAIN": "",
+            "AUTH0_CLIENT_ID": "",
+            "AUTH0_CLIENT_SECRET": ""
             }'
 
+        # RegistryService
+        PUBLIC_REGISTRY_SERVICE_YVES_FOLDER: ../public/Acp/RegistryServiceYves/
+        DATA_URL_SUPPORTED_DOMAIN: '*'
+
+        # Application Store Suite
+        PUBLIC_APP_STORE_SUITE_FOLDER: ../public/Acp/Apps/
     node:
         version: 18
         npm: 9
@@ -67,22 +80,39 @@ regions:
             search:
                 namespace: eu_search
 
-    US:
+    GLOBAL:
         services:
             mail:
                 sender:
                     name: Spryker No-Reply
                     email: no-reply@spryker.local
             database:
-                database: us-docker
+                database: app-store-suite-docker
                 username: spryker
                 password: secret
             broker:
-                namespace: us-docker
+                namespace: app-store-suite-docker
             key_value_store:
-                namespace: 2
+                namespace: 8
             search:
-                namespace: us_search
+                namespace: app-store-suite_search
+
+    REGISTRY:
+        services:
+            mail:
+                sender:
+                    name: Spryker No-Reply
+                    email: no-reply@spryker.local
+            database:
+                database: registry-service-docker
+                username: spryker
+                password: secret
+            broker:
+                namespace: registry-service-docker
+            key_value_store:
+                namespace: 9
+            search:
+                namespace: registry-service_search
 
 groups:
     EU:
@@ -101,6 +131,8 @@ groups:
             yves_eu:
                 application: yves
                 endpoints:
+                    date-time-configurator-example.spryker.local:
+                        entry-point: Configurator
                     yves.eu.spryker.local:
                         region: EU
                         services:
@@ -143,63 +175,56 @@ groups:
                         region: EU
                         entry-point: BackendApi
 
-    US:
-        region: US
+    GLOBAL:
+        region: GLOBAL
         applications:
-            mportal_us:
-                application: merchant-portal
+            app_store_suite_zed:
+                application: zed
                 endpoints:
-                    mp.us.multistore.frw.cloud.spryker.toys:
-                        region: US
-                        entry-point: MerchantPortal
-                        primal: true
+                    # acp-toolbox/bin/app-store-suite.sh:7
+                    apps.spryker.local:
+                        entry-point: Acp/Apps
+                        region: GLOBAL
                         services:
                             session:
                                 namespace: 4
-            yves_us:
-                application: yves
+            app_store_suite_glue_backend:
+                application: glue-backend
                 endpoints:
-                    yves.us.spryker.local:
-                        region: US
+                    glue-backend.apps.spryker.local:
+                        entry-point: Acp/AppsGlue
+                        region: GLOBAL
+
+    REGISTRY:
+        region: REGISTRY
+        applications:
+            registry_service_backoffice:
+                application: zed
+                endpoints:
+                    # acp-toolbox/bin/registry-service.sh:7
+                    backoffice.registry.spryker.local:
+                        entry-point: Acp/RegistryServiceBackoffice
+                        region: REGISTRY
                         services:
                             session:
                                 namespace: 5
-            glue_us:
-                application: glue
+            registry_service_yves:
+                application: yves
                 endpoints:
-                    glue.us.spryker.local:
-                        region: US
-            glue_storefront_us:
-                application: glue-storefront
-                endpoints:
-                    glue-storefront.us.spryker.local:
-                        region: EU
-            glue_backend_us:
-                application: glue-backend
-                endpoints:
-                    glue-backend.us.spryker.local:
-                        region: EU
-            backoffice_us:
-                application: backoffice
-                endpoints:
-                    backoffice.us.spryker.local:
-                        region: US
-                        primal: true
+                    # acp-toolbox/bin/registry-service.sh:8
+                    yves.registry.spryker.local:
+                        entry-point: Acp/RegistryServiceYves
+                        region: REGISTRY
                         services:
                             session:
                                 namespace: 6
-            backend_gateway_us:
-                application: backend-gateway
+            registry_service_glue:
+                application: glue-backend
                 endpoints:
-                    backend-gateway.us.spryker.local:
-                        region: US
-                        primal: true
-            backend_api_us:
-                application: zed
-                endpoints:
-                    backend-api.us.spryker.local:
-                        region: US
-                        entry-point: BackendApi
+                    # acp-toolbox/bin/registry-service.sh:9
+                    glue.registry.spryker.local:
+                        entry-point: Acp/RegistryServiceGlue
+                        region: REGISTRY
 services:
     database:
         engine: mysql
@@ -259,6 +284,11 @@ services:
         engine: chromedriver
 
 docker:
+    compose:
+        yamls:
+            - acp-toolbox/docker-services/localstack/docker-compose.franken.yml
+            - acp-toolbox/docker-services/mb2local/docker-compose.franken.yml
+
     ssl:
         enabled: false
         redirect: true

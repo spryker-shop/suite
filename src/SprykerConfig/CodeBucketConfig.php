@@ -18,7 +18,15 @@ class CodeBucketConfig extends AbstractCodeBucketConfig
     public function getCodeBuckets(): array
     {
         if ($this->isAcpDevOn()) {
-            return Store::getInstance()->getAllowedStores();
+            if (!Store::isDynamicStoreMode()) {
+                return Store::getInstance()->getAllowedStores();
+            }
+
+            return [
+                'EU',
+                'GLOBAL',
+                'REGISTRY',
+            ];
         }
 
         return [
@@ -34,7 +42,7 @@ class CodeBucketConfig extends AbstractCodeBucketConfig
      */
     public function getDefaultCodeBucket(): string
     {
-        if ($this->isAcpDevOn()) {
+        if ($this->isAcpDevOn() && !Store::isDynamicStoreMode()) {
             return APPLICATION_STORE;
         }
 
