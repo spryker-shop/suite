@@ -1832,8 +1832,10 @@
         instance_type: 'GENERAL_MEDIUM'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI'
-  type: "PULL_REQUEST"
-  events: "labeled"
+  events:
+    - type: "PULL_REQUEST"
+      events:
+          - "labeled"
   trigger_conditions:
       - trigger_condition: 'VAR_IS'
         trigger_variable_value: 'run-ui-tests'
