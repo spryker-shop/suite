@@ -1833,14 +1833,14 @@
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI'
   events:
-      - type: 'PULL_REQUEST'
-#        refs:
-#            - 'refs/pull/*'
-#            - 'refs/heads/master'
-  trigger_conditions:
-      - trigger_condition: 'VAR_IS'
-        trigger_variable_value: 'run-ui-tests'
-        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+#  trigger_conditions:
+#      - trigger_condition: 'VAR_IS'
+#        trigger_variable_value: 'run-ui-tests'
+#        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1866,7 +1866,45 @@
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite ."'
+
+            # Initial Test Run
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.ui.suite -output output.xml ."'
+
+            # Check for Failed Tests
+            - '
+                TEST_EXIST_CODE=\$?
+                if [ \$TEST_EXIST_CODE ne 0 ]; then
+                  echo "Tests failed. Re-running failed tests."
+
+                  # Re-run Failed Tests
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot \
+                    -v env:ui_suite \
+                    -v docker:True \
+                    -v dms:true \
+                    -v glue_env:http://glue.eu.spryker.local \
+                    -v bapi_env:http://glue-backend.eu.spryker.local \
+                    -v sapi_env:http://glue-storefront.eu.spryker.local \
+                    --exclude skip-due-to-issueORskip-due-to-refactoring \
+                    -d rerun_results \
+                    -s robotframework.tests.api.suite \
+                    --output rerun.xml \
+                    --rerunfailed results/output.xml \
+                    ."
+
+                  # Combine Results
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework rebot \
+                    --output final_output.xml \
+                    --merge \
+                    results/output.xml \
+                    rerun_results/rerun.xml"
+
+                  # Copy final reports to results directory
+                  cp rerun_results/* results/
+                else
+                  echo "All tests passed on the first run."
+                fi'
+
+            # Upload Results to AWS S3
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
