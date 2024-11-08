@@ -1835,7 +1835,10 @@
   events:
     - type: "PUSH"
       events:
+          - "reopened"
           - "labeled"
+          - "opened"
+          - "synchronize"
       branches:
           - "*"
   trigger_conditions:
