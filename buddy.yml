@@ -1834,8 +1834,10 @@
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI'
   events:
     - type: "PUSH"
-#      events:
-#          - "labeled"
+      events:
+          - "labeled"
+      branches:
+          - "*"
   trigger_conditions:
       - trigger_condition: 'VAR_IS'
         trigger_variable_value: 'run-ui-tests'
