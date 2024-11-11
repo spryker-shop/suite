@@ -1886,13 +1886,13 @@
                     -v sapi_env:http://glue-storefront.eu.spryker.local \
                     -v yves_env:http://yves.eu.spryker.local \
                     -v zed_env:http://backoffice.eu.spryker.local \
-                    -v mp_root_env:http://mp.eu.spryker.local/ \
-                    -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ \
+                    -v mp_root_env:http://mp.eu.spryker.local \
+                    -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login \
                     -d results/rerun \
                     --runemptysuite \
                     --rerunfailed results/output.xml \
                     -output rerun.xml \
-                    -s \"*\".tests.ui.suite ."
+                    -s robotframework.tests.ui.suite ."
 
                   # Combine Results
                   .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework rebot \
@@ -1993,8 +1993,8 @@
                     -v sapi_env:http://glue-storefront.eu.spryker.local \
                     -v yves_env:http://yves.eu.spryker.local \
                     -v zed_env:http://backoffice.eu.spryker.local \
-                    -v mp_root_env:http://mp.eu.spryker.local/ \
-                    -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ \
+                    -v mp_root_env:http://mp.eu.spryker.local \
+                    -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login \
                     -d results/rerun \
                     --runemptysuite \
                     --rerunfailed results/output.xml \
