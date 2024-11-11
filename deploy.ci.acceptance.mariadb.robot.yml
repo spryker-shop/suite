@@ -51,15 +51,32 @@ regions:
                     name: Spryker No-Reply
                     email: no-reply@spryker.local
             database:
-                database: us-docker
+                database: app-store-suite-docker
                 username: spryker
                 password: secret
             broker:
-                namespace: us-docker
+                namespace: app-store-suite-docker
             key_value_store:
-                namespace: 2
+                namespace: 8
             search:
-                namespace: us_search
+                namespace: app-store-suite_search
+
+    REGISTRY:
+        services:
+            mail:
+                sender:
+                    name: Spryker No-Reply
+                    email: no-reply@spryker.local
+            database:
+                database: registry-service-docker
+                username: spryker
+                password: secret
+            broker:
+                namespace: registry-service-docker
+            key_value_store:
+                namespace: 9
+            search:
+                namespace: registry-service_search
 
 groups:
     EU:
@@ -122,11 +139,11 @@ groups:
                         region: EU
                         entry-point: BackendApi
 
-    US:
-        region: US
+    GLOBAL:
+        region: GLOBAL
         applications:
-            mportal_us:
-                application: merchant-portal
+            app_store_suite_zed:
+                application: zed
                 endpoints:
                     mp.us.spryker.local:
                         region: US
@@ -135,40 +152,38 @@ groups:
                         services:
                             session:
                                 namespace: 4
-            yves_us:
-                application: yves
+            app_store_suite_glue_backend:
+                application: glue-backend
                 endpoints:
-                    yves.us.spryker.local:
-                        region: US
+                    glue-backend.apps.spryker.local:
+                        entry-point: Acp/AppsGlue
+                        region: GLOBAL
+
+    REGISTRY:
+        region: REGISTRY
+        applications:
+            registry_service_backoffice:
+                application: zed
+                endpoints:
+                    # acp-toolbox/bin/registry-service.sh:7
+                    backoffice.registry.spryker.local:
+                        entry-point: Acp/RegistryServiceBackoffice
+                        region: REGISTRY
                         services:
                             session:
                                 namespace: 5
-            glue_us:
-                application: glue
+            registry_service_yves:
+                application: yves
                 endpoints:
-                    glue.us.spryker.local:
-                        region: US
-            glue_storefront_us:
-                application: glue-storefront
-                endpoints:
-                    glue-storefront.us.spryker.local:
-                        region: EU
-            glue_backend_us:
-                application: glue-backend
-                endpoints:
-                    glue-backend.us.spryker.local:
-                        region: EU
-            backoffice_us:
-                application: backoffice
-                endpoints:
-                    backoffice.us.spryker.local:
-                        region: US
-                        primal: true
+                    # acp-toolbox/bin/registry-service.sh:8
+                    yves.registry.spryker.local:
+                        entry-point: Acp/RegistryServiceYves
+                        region: REGISTRY
                         services:
                             session:
                                 namespace: 6
-            backend_gateway_us:
-                application: backend-gateway
+            registry_service_glue:
+                application: glue-backend
                 endpoints:
                     backend-gateway.us.spryker.local:
                         region: US
@@ -213,6 +228,11 @@ services:
         engine: chromedriver
 
 docker:
+    compose:
+        yamls:
+            - acp-toolbox/docker-services/localstack/docker-compose.franken.yml
+            - acp-toolbox/docker-services/mb2local/docker-compose.franken.yml
+
     ssl:
         enabled: false
 
