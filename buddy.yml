@@ -1872,35 +1872,31 @@
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
 
             # Initial Tests Run
-            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -v mp_root_env:http://mp.eu.spryker.local/ -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_one -s \"*\".tests.ui.suite ."'
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -v mp_root_env:http://mp.eu.spryker.local -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_one -s \"*\".tests.ui.suite ."'
             - 'mkdir -p results && touch results/time.txt && echo $(date) > results/time.txt'
 
             # Check for Failed Tests
-            - '
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot \
-                    -v env:ui_suite \
-                    -v docker:True \
-                    -v dms:true \
-                    -v glue_env:http://glue.eu.spryker.local \
-                    -v bapi_env:http://glue-backend.eu.spryker.local \
-                    -v sapi_env:http://glue-storefront.eu.spryker.local \
-                    -v yves_env:http://yves.eu.spryker.local \
-                    -v zed_env:http://backoffice.eu.spryker.local \
-                    -v mp_root_env:http://mp.eu.spryker.local \
-                    -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login \
-                    -d results/rerun \
-                    --runemptysuite \
-                    --rerunfailed results/output.xml \
-                    -output rerun.xml \
-                    -s robotframework.tests.ui.suite ."
-
-                  # Combine Results
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework rebot \
-                    -d results --merge results/output.xml results/rerun/rerun.xml"
-
-                  # Copy final reports to results directory
-                  cp rerun_results/* results/
-                '
+#            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot \
+#                    -v env:ui_suite \
+#                    -v docker:True \
+#                    -v dms:true \
+#                    -v glue_env:http://glue.eu.spryker.local \
+#                    -v bapi_env:http://glue-backend.eu.spryker.local \
+#                    -v sapi_env:http://glue-storefront.eu.spryker.local \
+#                    -v yves_env:http://yves.eu.spryker.local \
+#                    -v zed_env:http://backoffice.eu.spryker.local \
+#                    -v mp_root_env:http://mp.eu.spryker.local \
+#                    -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login \
+#                    -d results/rerun \
+#                    --runemptysuite \
+#                    --rerunfailed results/output.xml \
+#                    -output rerun.xml \
+#                    -s robotframework.tests.ui.suite ."
+#
+#                  .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework rebot \
+#                    -d results --merge results/output.xml results/rerun/rerun.xml"
+#
+#                  cp rerun_results/* results/'
 
             # Upload Results to AWS S3
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
@@ -1979,34 +1975,34 @@
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
 
             # Initial Tests Run
-            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -v mp_root_env:http://mp.eu.spryker.local/ -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_two -s \"*\".tests.ui.suite ."'
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -v mp_root_env:http://mp.eu.spryker.local -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_two -s \"*\".tests.ui.suite ."'
             - 'mkdir -p results && touch results/time.txt && echo $(date) > results/time.txt'
 
             # Check for Failed Tests
-            - '
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot \
-                    -v env:ui_suite \
-                    -v docker:True \
-                    -v dms:true \
-                    -v glue_env:http://glue.eu.spryker.local \
-                    -v bapi_env:http://glue-backend.eu.spryker.local \
-                    -v sapi_env:http://glue-storefront.eu.spryker.local \
-                    -v yves_env:http://yves.eu.spryker.local \
-                    -v zed_env:http://backoffice.eu.spryker.local \
-                    -v mp_root_env:http://mp.eu.spryker.local \
-                    -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login \
-                    -d results/rerun \
-                    --runemptysuite \
-                    --rerunfailed results/output.xml \
-                    -output rerun.xml \
-                    -s robotframework.tests.ui.suite ."
-
-                  # Combine Results
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework rebot \
-                  -d results --merge results/output.xml results/rerun/rerun.xml"
-
-                  # Copy final reports to results directory
-                  cp rerun_results/* results/'
+#            - '
+#                  .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot \
+#                    -v env:ui_suite \
+#                    -v docker:True \
+#                    -v dms:true \
+#                    -v glue_env:http://glue.eu.spryker.local \
+#                    -v bapi_env:http://glue-backend.eu.spryker.local \
+#                    -v sapi_env:http://glue-storefront.eu.spryker.local \
+#                    -v yves_env:http://yves.eu.spryker.local \
+#                    -v zed_env:http://backoffice.eu.spryker.local \
+#                    -v mp_root_env:http://mp.eu.spryker.local \
+#                    -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login \
+#                    -d results/rerun \
+#                    --runemptysuite \
+#                    --rerunfailed results/output.xml \
+#                    -output rerun.xml \
+#                    -s robotframework.tests.ui.suite ."
+#
+#                  # Combine Results
+#                  .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework rebot \
+#                  -d results --merge results/output.xml results/rerun/rerun.xml"
+#
+#                  # Copy final reports to results directory
+#                  cp rerun_results/* results/'
 
             # Upload Results to AWS S3
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
@@ -2084,33 +2080,33 @@
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
 
             # Initial Tests Run
-            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -v mp_root_env:http://mp.eu.spryker.local/ -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_tree -s \"*\".tests.ui.suite ."'
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -v mp_root_env:http://mp.eu.spryker.local -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_tree -s \"*\".tests.ui.suite ."'
             - 'mkdir -p results && touch results/time.txt && echo $(date) > results/time.txt'
 
-            # Check for Failed Tests
-            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot \
-                    -v env:ui_suite \
-                    -v docker:True \
-                    -v dms:true \
-                    -v glue_env:http://glue.eu.spryker.local \
-                    -v bapi_env:http://glue-backend.eu.spryker.local \
-                    -v sapi_env:http://glue-storefront.eu.spryker.local \
-                    -v yves_env:http://yves.eu.spryker.local \
-                    -v zed_env:http://backoffice.eu.spryker.local \
-                    -v mp_root_env:http://mp.eu.spryker.local/ \
-                    -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ \
-                    -d results/rerun \
-                    --runemptysuite \
-                    --rerunfailed results/output.xml \
-                    -output rerun.xml \
-                    -s robotframework.tests.ui.suite ."
-
-                  # Combine Results
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework rebot \
-                  -d results --merge results/output.xml results/rerun/rerun.xml"
-
-                  # Copy final reports to results directory
-                  cp rerun_results/* results/'
+#            # Check for Failed Tests
+#            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot \
+#                    -v env:ui_suite \
+#                    -v docker:True \
+#                    -v dms:true \
+#                    -v glue_env:http://glue.eu.spryker.local \
+#                    -v bapi_env:http://glue-backend.eu.spryker.local \
+#                    -v sapi_env:http://glue-storefront.eu.spryker.local \
+#                    -v yves_env:http://yves.eu.spryker.local \
+#                    -v zed_env:http://backoffice.eu.spryker.local \
+#                    -v mp_root_env:http://mp.eu.spryker.local/ \
+#                    -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ \
+#                    -d results/rerun \
+#                    --runemptysuite \
+#                    --rerunfailed results/output.xml \
+#                    -output rerun.xml \
+#                    -s robotframework.tests.ui.suite ."
+#
+#                  # Combine Results
+#                  .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework rebot \
+#                  -d results --merge results/output.xml results/rerun/rerun.xml"
+#
+#                  # Copy final reports to results directory
+#                  cp rerun_results/* results/'
 
             # Upload Results to AWS S3
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
