@@ -707,6 +707,7 @@ jobs:
 
             - name: Install packages
               run: |
+                  sudo apt-get update
                   sudo apt install awscli -q
                   python3 -m pip install --upgrade pip
                   python3 -m pip install -U robotframework
@@ -761,6 +762,7 @@ jobs:
 
             - name: Install packages
               run: |
+                  sudo apt-get update
                   sudo apt install awscli -q
                   python3 -m pip install --upgrade pip
                   python3 -m pip install -U robotframework
@@ -819,6 +821,7 @@ jobs:
 
             - name: Install packages
               run: |
+                  sudo apt-get update
                   sudo apt install awscli -q
                   python3 -m pip install --upgrade pip
                   python3 -m pip install -U robotframework
