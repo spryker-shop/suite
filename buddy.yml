@@ -1862,7 +1862,7 @@
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot'
+      - action: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
