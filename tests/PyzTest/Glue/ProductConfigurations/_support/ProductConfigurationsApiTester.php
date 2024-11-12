@@ -64,7 +64,7 @@ class ProductConfigurationsApiTester extends ApiEndToEndTester
 
         $this->assertEqualsCanonicalizing(
             $productConfigurationData,
-            $restProductConfigurationInstanceAttributesTransfer->toArray(),
+            $restProductConfigurationInstanceAttributesTransfer->toArray(true, true),
         );
     }
 

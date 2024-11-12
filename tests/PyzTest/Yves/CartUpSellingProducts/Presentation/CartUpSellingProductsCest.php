@@ -25,6 +25,16 @@ use PyzTest\Yves\Product\PageObject\ProductDetailPage;
 class CartUpSellingProductsCest
 {
     /**
+     * @param \PyzTest\Yves\CartUpSellingProducts\CartUpSellingProductsPresentationTester $i
+     *
+     * @return void
+     */
+    public function _before(CartUpSellingProductsPresentationTester $i): void
+    {
+        $i->amYves();
+    }
+
+    /**
      * @skip This test was temporarily skipped due to flikerness. See {@link https://spryker.atlassian.net/browse/CC-25718} for details
      *
      * @param \PyzTest\Yves\CartUpSellingProducts\CartUpSellingProductsPresentationTester $i

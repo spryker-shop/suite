@@ -31,6 +31,17 @@ class NavigationCRUDCest
      *
      * @return void
      */
+    public function _before(NavigationGuiPresentationTester $i): void
+    {
+        $i->amZed();
+        $i->amLoggedInUser();
+    }
+
+    /**
+     * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
+     *
+     * @return void
+     */
     public function testICanCreateReadUpdateAndDeleteNavigation(NavigationGuiPresentationTester $i): void
     {
         $i->amOnPage(NavigationCreatePage::URL);
