@@ -1722,7 +1722,7 @@
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.api.mariadb.robot.yml'
+            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -1792,7 +1792,7 @@
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.api.mariadb.robot.yml'
+            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -1866,7 +1866,7 @@
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.api.mariadb.robot.yml'
+            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
