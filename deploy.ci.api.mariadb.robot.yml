@@ -87,16 +87,6 @@ groups:
                 endpoints:
                     glue-backend.eu.spryker.local:
                         region: EU
-            merchant_portal_eu:
-                application: merchant-portal
-                endpoints:
-                    mp.eu.spryker.local:
-                        region: EU
-                        entry-point: MerchantPortal
-                        primal: true
-                        services:
-                            session:
-                                namespace: 4
 
 services:
     database:
