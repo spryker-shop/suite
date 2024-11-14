@@ -1852,7 +1852,7 @@
       branches:
           - "*"
   trigger_conditions:
-      - trigger_condition: 'VAR_IS'
+      - trigger_condition: 'VAR_CONTAINS'
         trigger_variable_value: 'run-ui-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
@@ -1880,16 +1880,10 @@
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-
-            # Initial Tests Run
             - '.ci/snippet/RUN script -q -e -c "time docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -v mp_root_env:http://mp.eu.spryker.local -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_oneANDsmoke -s \"*\".tests.ui.suite ."'
             - 'mkdir -p results && touch results/time.txt && echo $(date) > results/time.txt'
-
-            # Re-run Failed Tests && Merge Results
             - '.ci/snippet/RERUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -v mp_root_env:http://mp.eu.spryker.local -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s \"*\".tests.ui.suite .
                 && docker/sdk exec robot-framework rebot -d results --merge results/output.xml results/rerun/rerun.xml"'
-
-            # Upload Results to AWS S3
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
@@ -1898,8 +1892,8 @@
             - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-ui-ci/$BUDDY_EXECUTION_HASH/PHP8.3MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
-            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=dms-on/suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDBRobot/log.html"'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-ui-ci/dms-on/$BUDDY_EXECUTION_HASH/PHP8.3MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-ui-ci/dms-on/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDBRobot/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -1936,7 +1930,7 @@
         branches:
             - "*"
   trigger_conditions:
-      - trigger_condition: 'VAR_IS'
+      - trigger_condition: 'VAR_CONTAINS'
         trigger_variable_value: 'run-ui-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
@@ -1964,16 +1958,10 @@
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-
-            # Initial Tests Run
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -v mp_root_env:http://mp.eu.spryker.local -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_twoANDsmoke -s \"*\".tests.ui.suite ."'
             - 'mkdir -p results && touch results/time.txt && echo $(date) > results/time.txt'
-
-            # Re-run Failed Tests
             - '.ci/snippet/RERUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -v mp_root_env:http://mp.eu.spryker.local -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s \"*\".tests.ui.suite .
-                && .ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework rebot -d results --merge results/output.xml results/rerun/rerun.xml"'
-
-            # Upload Results to AWS S3
+                && docker/sdk exec robot-framework rebot -d results --merge results/output.xml results/rerun/rerun.xml"'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
@@ -1982,8 +1970,8 @@
             - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-ui-ci/$BUDDY_EXECUTION_HASH/PHP8.3MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
-            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=dms-on/suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDBRobot/log.html"'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-ui-ci/dms-on/$BUDDY_EXECUTION_HASH/PHP8.3MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-ui-ci/dms-on/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDBRobot/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -2019,7 +2007,7 @@
         branches:
             - "*"
   trigger_conditions:
-      - trigger_condition: 'VAR_IS'
+      - trigger_condition: 'VAR_CONTAINS'
         trigger_variable_value: 'run-ui-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
@@ -2047,16 +2035,10 @@
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-
-            # Initial Tests Run
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -v mp_root_env:http://mp.eu.spryker.local -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_treeANDsmoke -s \"*\".tests.ui.suite ."'
             - 'mkdir -p results && touch results/time.txt && echo $(date) > results/time.txt'
-
-            # Re-run Failed Tests
             - '.ci/snippet/RERUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v yves_env:http://yves.eu.spryker.local -v zed_env:http://backoffice.eu.spryker.local -v mp_root_env:http://mp.eu.spryker.local -v mp_env:http://mp.eu.spryker.local/security-merchant-portal-gui/login/ -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s \"*\".tests.ui.suite .
                 && docker/sdk exec robot-framework rebot -d results --merge results/output.xml results/rerun/rerun.xml"'
-
-            # Upload Results to AWS S3
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
@@ -2065,8 +2047,8 @@
             - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-ui-ci/$BUDDY_EXECUTION_HASH/PHP8.3MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
-            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=dms-on/suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDBRobot/log.html"'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-ui-ci/dms-on/$BUDDY_EXECUTION_HASH/PHP8.3MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-ui-ci/dms-on/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDBRobot/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -2102,7 +2084,7 @@
         branches:
             - "*"
   trigger_conditions:
-      - trigger_condition: 'VAR_IS'
+      - trigger_condition: 'VAR_CONTAINS'
         trigger_variable_value: 'run-ui-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
@@ -2129,18 +2111,11 @@
             - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.dynamic-store-off.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN APPLICATION_STORE=DE docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN APPLICATION_STORE=AT docker/sdk testing console queue:worker:start --stop-when-empty'
-
-            # Initial Tests Run
+            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v db_engine:psycopg2 -v docker:True -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_oneANDsmoke -s \"*\".tests.ui.suite ."'
             - 'mkdir -p results && touch results/time.txt && echo $(date) > results/time.txt'
-
-            # Re-run Failed Tests
             - '.ci/snippet/RERUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v db_engine:psycopg2 -v docker:True -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s \"*\".tests.ui.suite .
                 && docker/sdk exec robot-framework rebot -d results --merge results/output.xml results/rerun/rerun.xml"'
-
-            # Upload Results to AWS S3
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
@@ -2180,7 +2155,7 @@
         branches:
             - "*"
   trigger_conditions:
-      - trigger_condition: 'VAR_IS'
+      - trigger_condition: 'VAR_CONTAINS'
         trigger_variable_value: 'run-ui-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
@@ -2207,18 +2182,11 @@
             - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.dynamic-store-off.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN APPLICATION_STORE=DE docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN APPLICATION_STORE=AT docker/sdk testing console queue:worker:start --stop-when-empty'
-
-            # Initial Tests Run
+            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v db_engine:psycopg2 -v docker:True -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_twoANDsmoke -s \"*\".tests.ui.suite ."'
             - 'mkdir -p results && touch results/time.txt && echo $(date) > results/time.txt'
-
-            # Re-run Failed Tests
             - '.ci/snippet/RERUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v db_engine:psycopg2 -v docker:True -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s \"*\".tests.ui.suite .
                 && docker/sdk exec robot-framework rebot -d results --merge results/output.xml results/rerun/rerun.xml"'
-
-            # Upload Results to AWS S3
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
@@ -2227,7 +2195,7 @@
             - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-ui-ci/$BUDDY_EXECUTION_HASH/PHP8.3PostgreSQLBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-ui-ci/$BUDDY_EXECUTION_HASH/PHP8.3PostgreSQLRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
             - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3PostgreSQLRobot/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
@@ -2258,7 +2226,7 @@
         branches:
             - "*"
   trigger_conditions:
-      - trigger_condition: 'VAR_IS'
+      - trigger_condition: 'VAR_CONTAINS'
         trigger_variable_value: 'run-ui-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
@@ -2285,8 +2253,7 @@
             - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.dynamic-store-off.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN APPLICATION_STORE=DE docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN APPLICATION_STORE=AT docker/sdk testing console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v db_engine:psycopg2 -v docker:True -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_treeANDsmoke -s \"*\".tests.ui.suite ."'
             - 'mkdir -p results && touch results/time.txt && echo $(date) > results/time.txt'
             - '.ci/snippet/RERUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v db_engine:psycopg2 -v docker:True -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s \"*\".tests.ui.suite .
