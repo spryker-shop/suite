@@ -1899,7 +1899,7 @@
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
             - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-ui-ci/$BUDDY_EXECUTION_HASH/PHP8.3MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
-            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDBRobot/log.html"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=dms-on/suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDBRobot/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -1983,7 +1983,7 @@
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
             - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-ui-ci/$BUDDY_EXECUTION_HASH/PHP8.3MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
-            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDBRobot/log.html"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=dms-on/suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDBRobot/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -2066,7 +2066,7 @@
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
             - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/dms-on/suite-nonsplit-robot-ui-ci/$BUDDY_EXECUTION_HASH/PHP8.3MariaDBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
-            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDBRobot/log.html"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=dms-on/suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDBRobot/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -2079,6 +2079,240 @@
               type: 'VAR'
             - key: 'SPRYKER_DYNAMIC_STORE_MODE'
               value: 'true'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        timeout: 8000
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_LARGE'
+
+- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / / Robot / UI / Group One / Dynamic Store Off'
+  events:
+      - type: "PULL_REQUEST"
+        events:
+            - "reopened"
+            - "labeled"
+            - "opened"
+            - "synchronize"
+        branches:
+            - "*"
+  trigger_conditions:
+      - trigger_condition: 'VAR_IS'
+        trigger_variable_value: 'run-ui-tests'
+        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Install Composer'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
+            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+      - action: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group One / Dynamic Store Off'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.dynamic-store-off.yml'
+            - '.ci/snippet/RUN docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN APPLICATION_STORE=DE docker/sdk testing console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN APPLICATION_STORE=AT docker/sdk testing console queue:worker:start --stop-when-empty'
+
+            # Initial Tests Run
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v db_engine:psycopg2 -v docker:True -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_oneANDsmoke -s \"*\".tests.ui.suite ."'
+            - 'mkdir -p results && touch results/time.txt && echo $(date) > results/time.txt'
+
+            # Re-run Failed Tests
+            - '.ci/snippet/RERUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v db_engine:psycopg2 -v docker:True -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s \"*\".tests.ui.suite .
+                && docker/sdk exec robot-framework rebot -d results --merge results/output.xml results/rerun/rerun.xml"'
+
+            # Upload Results to AWS S3
+            - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
+            - 'export AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID'
+            - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
+            - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
+            - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-ui-ci/$BUDDY_EXECUTION_HASH/PHP8.3PostgreSQLRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3PostgreSQLRobot/log.html"'
+            - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        timeout: 8000
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_LARGE'
+
+- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / / Robot / UI / Group Two / Dynamic Store Off'
+  events:
+      - type: "PULL_REQUEST"
+        events:
+            - "reopened"
+            - "labeled"
+            - "opened"
+            - "synchronize"
+        branches:
+            - "*"
+  trigger_conditions:
+      - trigger_condition: 'VAR_IS'
+        trigger_variable_value: 'run-ui-tests'
+        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Install Composer'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
+            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+      - action: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Two / Dynamic Store Off'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.dynamic-store-off.yml'
+            - '.ci/snippet/RUN docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN APPLICATION_STORE=DE docker/sdk testing console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN APPLICATION_STORE=AT docker/sdk testing console queue:worker:start --stop-when-empty'
+
+            # Initial Tests Run
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v db_engine:psycopg2 -v docker:True -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_twoANDsmoke -s \"*\".tests.ui.suite ."'
+            - 'mkdir -p results && touch results/time.txt && echo $(date) > results/time.txt'
+
+            # Re-run Failed Tests
+            - '.ci/snippet/RERUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v db_engine:psycopg2 -v docker:True -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s \"*\".tests.ui.suite .
+                && docker/sdk exec robot-framework rebot -d results --merge results/output.xml results/rerun/rerun.xml"'
+
+            # Upload Results to AWS S3
+            - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
+            - 'export AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID'
+            - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
+            - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
+            - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-ui-ci/$BUDDY_EXECUTION_HASH/PHP8.3PostgreSQLBRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3PostgreSQLRobot/log.html"'
+            - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        timeout: 8000
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_LARGE'
+
+- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / / Robot / UI / Group Three / Dynamic Store Off'
+  events:
+      - type: "PULL_REQUEST"
+        events:
+            - "reopened"
+            - "labeled"
+            - "opened"
+            - "synchronize"
+        branches:
+            - "*"
+  trigger_conditions:
+      - trigger_condition: 'VAR_IS'
+        trigger_variable_value: 'run-ui-tests'
+        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Install Composer'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
+            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+      - action: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Three / Dynamic Store Off'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.dynamic-store-off.yml'
+            - '.ci/snippet/RUN docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN APPLICATION_STORE=DE docker/sdk testing console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN APPLICATION_STORE=AT docker/sdk testing console queue:worker:start --stop-when-empty'
+
+            # Initial Tests Run
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v db_engine:psycopg2 -v docker:True -d results --exclude skip-due-to-issueORskip-due-to-refactoring --include group_treeANDsmoke -s \"*\".tests.ui.suite ."'
+            - 'mkdir -p results && touch results/time.txt && echo $(date) > results/time.txt'
+
+            # Re-run Failed Tests
+            - '.ci/snippet/RERUN script -q -e -c "docker/sdk exec robot-framework robot -v env:ui_suite -v headless:true -v ignore_console:false -v db_engine:psycopg2 -v docker:True -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s \"*\".tests.ui.suite .
+                && docker/sdk exec robot-framework rebot -d results --merge results/output.xml results/rerun/rerun.xml"'
+
+            # Upload Results to AWS S3
+            - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
+            - 'export AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID'
+            - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
+            - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
+            - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit-robot-ui-ci/$BUDDY_EXECUTION_HASH/PHP8.3PostgreSQLRobot/ --recursive --expires "$(date -d ''+7 days'' --utc +''%Y-%m-%dT%H:%M:%SZ'')"'
+            - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-ui-ci/${BUDDY_EXECUTION_HASH}/PHP8.3PostgreSQLRobot/log.html"'
+            - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
               type: 'VAR'
             - key: 'TRAVIS'
               value: '1'
