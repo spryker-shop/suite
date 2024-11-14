@@ -2122,7 +2122,7 @@
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group One / Dynamic Store Off'
+      - action: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Group One / Dynamic Store Off'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
@@ -2200,7 +2200,7 @@
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Two / Dynamic Store Off'
+      - action: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Group Two / Dynamic Store Off'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
@@ -2278,7 +2278,7 @@
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Three / Dynamic Store Off'
+      - action: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Group Three / Dynamic Store Off'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
