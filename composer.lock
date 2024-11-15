@@ -6349,7 +6349,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "35dfdb357937af3a723cf14d5d8cc520718829db"
+                "reference": "fc76842f07963aaf5e1a951e2842eb0ecf8f7c77"
             },
             "require": {
                 "php": ">=8.1"
@@ -6434,6 +6434,10 @@
                 "spryker/cart-notes-backend-api": "*",
                 "spryker/cart-permission-connector": "*",
                 "spryker/cart-permission-groups-rest-api": "*",
+                "spryker/cart-reorder": "*",
+                "spryker/cart-reorder-extension": "*",
+                "spryker/cart-reorder-rest-api": "*",
+                "spryker/cart-reorder-rest-api-extension": "*",
                 "spryker/cart-variant": "*",
                 "spryker/carts-rest-api": "*",
                 "spryker/carts-rest-api-extension": "*",
@@ -6902,6 +6906,7 @@
                 "spryker/oms-multi-thread": "*",
                 "spryker/oms-product-offer-reservation": "*",
                 "spryker/oms-rest-api": "*",
+                "spryker/order-amendments-rest-api": "*",
                 "spryker/order-custom-reference": "*",
                 "spryker/order-custom-reference-gui": "*",
                 "spryker/order-matrix": "*",
@@ -7215,6 +7220,9 @@
                 "spryker/sales-merchant-portal-gui": "*",
                 "spryker/sales-merchant-portal-gui-extension": "*",
                 "spryker/sales-oms": "*",
+                "spryker/sales-order-amendment": "*",
+                "spryker/sales-order-amendment-extension": "*",
+                "spryker/sales-order-amendment-oms": "*",
                 "spryker/sales-order-threshold": "*",
                 "spryker/sales-order-threshold-data-import": "*",
                 "spryker/sales-order-threshold-extension": "*",
@@ -7467,7 +7475,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2024-11-15T06:20:03+00:00"
+            "time": "2024-11-15T17:27:29+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7475,7 +7483,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "9d1d1c3d435632cdb764b6d6c03dd685348d85d1"
+                "reference": "9ceab3be767fdcd17a7e2005e1e7281b24b2b32c"
             },
             "require": {
                 "php": ">=8.1"
@@ -7495,6 +7503,8 @@
                 "spryker-shop/cart-note-widget": "*",
                 "spryker-shop/cart-page": "*",
                 "spryker-shop/cart-page-extension": "*",
+                "spryker-shop/cart-reorder-page": "*",
+                "spryker-shop/cart-reorder-page-extension": "*",
                 "spryker-shop/catalog-page": "*",
                 "spryker-shop/category-image-storage-widget": "*",
                 "spryker-shop/category-widget": "*",
@@ -7619,6 +7629,7 @@
                 "spryker-shop/resource-share-page": "*",
                 "spryker-shop/resource-share-page-extension": "*",
                 "spryker-shop/sales-configurable-bundle-widget": "*",
+                "spryker-shop/sales-order-amendment-widget": "*",
                 "spryker-shop/sales-order-threshold-widget": "*",
                 "spryker-shop/sales-product-bundle-widget": "*",
                 "spryker-shop/sales-product-configuration-widget": "*",
@@ -7676,7 +7687,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2024-11-04T14:07:50+00:00"
+            "time": "2024-11-15T17:27:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -18409,7 +18420,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/cypress-tests.git",
-                "reference": "1dd04b4caf3e469d942a9f3dd9cb1cddbcc63ece"
+                "reference": "d6e1e696a7724a1463d5f43de5c87db256d99464"
             },
             "default-branch": true,
             "type": "library",
@@ -18417,7 +18428,7 @@
                 "MIT"
             ],
             "description": "This repository is dedicated to housing an extensive collection of UI end-to-end tests, meticulously crafted using Cypress for Spryker applications. These tests are designed to thoroughly evaluate the user interface, ensuring that all interactions and visual elements function as intended in real-world scenarios. By leveraging Cypress's advanced browser automation capabilities, this suite provides an efficient and effective means of validating the user experience, confirming the seamless operation and aesthetic integrity of Spryker's front-end components. Our commitment to rigorous UI testing helps maintain the high standard of quality and reliability that Spryker users expect.",
-            "time": "2024-11-14T12:08:11+00:00"
+            "time": "2024-11-15T11:12:37+00:00"
         },
         {
             "name": "spryker/development-core",
