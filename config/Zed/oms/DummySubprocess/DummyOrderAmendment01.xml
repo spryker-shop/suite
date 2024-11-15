@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd"
+>
+
+    <process name="DummyOrderAmendment">
+        <states>
+            <state name="order amendment" display="oms.state.order-amendment"/>
+        </states>
+
+        <transitions>
+            <transition>
+                <source>payment pending</source>
+                <target>order amendment</target>
+                <event>start-order-amendment</event>
+            </transition>
+
+            <transition>
+                <source>order amendment</source>
+                <target>cancelled</target>
+                <event>finish-order-amendment</event>
+            </transition>
+
+            <transition>
+                <source>order amendment</source>
+                <target>payment pending</target>
+                <event>cancel-order-amendment</event>
+            </transition>
+        </transitions>
+
+        <events>
+            <event name="start-order-amendment"/>
+            <event name="finish-order-amendment"/>
+            <event name="cancel-order-amendment"/>
+        </events>
+    </process>
+
+</statemachine>

@@ -49,6 +49,7 @@ use Spryker\Zed\Sales\Communication\Plugin\Checkout\OrderItemsSaverPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\Checkout\OrderSaverPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\Checkout\OrderTotalsSaverPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\SalesOrderExpanderPlugin;
+use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\Checkout\FinishOrderAmendmentCheckoutPostSavePlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Checkout\SalesOrderThresholdCheckoutPreConditionPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Checkout\SalesOrderThresholdExpenseSavePlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Checkout\SalesPaymentCheckoutDoSaveOrderPlugin;
@@ -145,6 +146,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new SendEmailToGiftCardUser(), #GiftCardFeature
             new PaymentAuthorizationCheckoutPostSavePlugin(),
             new PaymentConfirmPreOrderPaymentCheckoutPostSavePlugin(),
+            new FinishOrderAmendmentCheckoutPostSavePlugin(),
         ];
     }
 

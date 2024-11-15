@@ -17,7 +17,6 @@ use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\CompanyBusinessUnitOrderSea
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\RedirectUriCustomerRedirectStrategyPlugin;
-use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
 use SprykerShop\Yves\MerchantSwitcherWidget\Plugin\CustomerPage\MerchantSwitchCartAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ServicePointAddressCheckoutAddressCollectionFormExpanderPlugin;
 use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ServicePointCheckoutAddressCollectionFormExpanderPlugin;
@@ -29,36 +28,6 @@ use SprykerShop\Yves\ShipmentTypeWidget\Plugin\CustomerPage\ShipmentTypeCheckout
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
-    /**
-     * @return array<string>
-     */
-    protected function getCustomerOverviewWidgetPlugins(): array
-    {
-        return [
-            CustomerReorderWidgetPlugin::class,
-        ];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getCustomerOrderListWidgetPlugins(): array
-    {
-        return [
-            CustomerReorderWidgetPlugin::class,
-        ];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getCustomerOrderViewWidgetPlugins(): array
-    {
-        return [
-            CustomerReorderWidgetPlugin::class,
-        ];
-    }
-
     /**
      * @return array<\SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\PreRegistrationCustomerTransferExpanderPluginInterface>
      */
