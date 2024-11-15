@@ -51,8 +51,7 @@ class AvailabilityPresentationTester extends Actor
     public const ADD_FUJITSU2_PRODUCT_TO_CART_URL = '/cart/add/119_29804808';
 
     /**
-     * @uses \Spryker\Zed\AvailabilityCartConnector\Business\Cart\CheckCartAvailability::CART_PRE_CHECK_AVAILABILITY_FAILED
-     * @uses \Spryker\Zed\ProductBundle\Business\ProductBundle\Availability\PreCheck\ProductBundleCartAvailabilityCheck::CART_PRE_CHECK_ITEM_AVAILABILITY_FAILED
+     * @uses \Spryker\Zed\AvailabilityCartConnector\Business\Creator\MessageCreator::GLOSSARY_KEY_AVAILABILITY_FAILED
      *
      * @var string
      */

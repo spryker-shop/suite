@@ -14,6 +14,7 @@
             <process>CreateGiftCard</process>
             <process>WarehouseAllocation</process>
             <process>DummyMerchantCommission</process>
+            <process>DummyOrderAmendment</process>
         </subprocesses>
 
         <states>
@@ -22,6 +23,7 @@
             </state>
             <state name="payment pending" reserved="true" display="oms.state.payment-pending">
                 <flag>cancellable</flag>
+                <flag>amendable</flag>
             </state>
             <state name="invalid" display="oms.state.invalid">
                 <flag>exclude from customer</flag>
@@ -181,5 +183,6 @@
     <process name="CreateGiftCard" file="GiftCardSubprocess/CreateGiftCard01.xml"/>
     <process name="WarehouseAllocation" file="WarehouseAllocationSubprocess/WarehouseAllocation01.xml"/>
     <process name="DummyMerchantCommission" file="DummySubprocess/DummyMerchantCommission01.xml"/>
+    <process name="DummyOrderAmendment" file="DummySubprocess/DummyOrderAmendment01.xml"/>
 
 </statemachine>
