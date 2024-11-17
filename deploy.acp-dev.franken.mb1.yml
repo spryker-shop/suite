@@ -83,7 +83,7 @@ regions:
                         namespace: 2
                     search:
                         namespace: at_search
-    app-store-suite:
+    GLOBAL:
         services:
             database:
                 database: app-store-suite-docker
@@ -98,7 +98,7 @@ regions:
                         namespace: 8
                     search:
                         namespace: app-store-suite-search
-    registry-service:
+    REGISTRY:
         services:
             database:
                 database: registry-service-docker
@@ -201,8 +201,8 @@ groups:
                     backend-api.at.spryker.local:
                         store: AT
                         entry-point: BackendApi
-    app-store-suite:
-        region: app-store-suite
+    GLOBAL:
+        region: GLOBAL
         applications:
             app_store_suite_zed:
                 application: zed
@@ -220,8 +220,8 @@ groups:
                     glue-backend.apps.spryker.local:
                         entry-point: Acp/AppsGlue
                         store: GLOBAL
-    registry-service:
-        region: registry-service
+    REGISTRY:
+        region: REGISTRY
         applications:
             registry_service_backoffice:
                 application: zed
