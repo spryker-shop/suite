@@ -12,6 +12,7 @@ use DateTime;
 use Generated\Shared\DataBuilder\ItemBuilder;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CurrencyTransfer;
+use Generated\Shared\Transfer\DiscountConfiguratorTransfer;
 use Generated\Shared\Transfer\DiscountGeneralTransfer;
 use Generated\Shared\Transfer\DiscountPromotionTransfer;
 use Generated\Shared\Transfer\DiscountTransfer;
@@ -205,13 +206,18 @@ class CalculationBusinessTester extends Actor
         $discountTransfers = [];
 
         foreach ($discountsData as $discountData) {
-            $discountAmount = $discountData[static::DISCOUNT_AMOUNTS_KEY] ?? [];
-            $skuPromotionalProductAbstract = $discountData[DiscountPromotionTransfer::ABSTRACT_SKU] ?? '';
+            $discountAmount = $discountData[DiscountConfiguratorTransfer::DISCOUNT_GENERAL][static::DISCOUNT_AMOUNTS_KEY] ?? [];
 
             $discountGeneralTransfer = $this->haveDiscount($discountData, $discountAmount);
+
+            $generalDiscountData = $discountData[DiscountConfiguratorTransfer::DISCOUNT_GENERAL];
+
+            $skuPromotionalProductAbstract = $generalDiscountData[DiscountPromotionTransfer::ABSTRACT_SKU] ?? '';
+
             $discountTransfer = (new DiscountTransfer())
-                ->fromArray($discountData, true)
-                ->setIdDiscount($discountGeneralTransfer->getIdDiscount());
+                ->fromArray($generalDiscountData, true)
+                ->setIdDiscount($discountGeneralTransfer->getIdDiscount())
+                ->setStoreRelation($discountGeneralTransfer->getStoreRelation());
 
             if ($skuPromotionalProductAbstract) {
                 $discountTransfer->setDiscountPromotion($this->createAvailablePromotionalProduct(
