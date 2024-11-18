@@ -9,6 +9,8 @@ namespace PyzTest\Zed\Calculation\Business\DiscountCalculationTestCases;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\CategoryTransfer;
+use Generated\Shared\Transfer\DiscountConfiguratorTransfer;
+use Generated\Shared\Transfer\DiscountGeneralTransfer;
 use Generated\Shared\Transfer\DiscountTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
@@ -245,12 +247,19 @@ class Case21Test extends Unit
 
         return [
             [
-                DiscountTransfer::DISCOUNT_TYPE => CalculationBusinessTester::TYPE_VOUCHER,
-                DiscountTransfer::COLLECTOR_QUERY_STRING => static::DISCOUNT_COLLECTOR_QUERY_STRING,
-                DiscountTransfer::CALCULATOR_PLUGIN => CalculationBusinessTester::PLUGIN_CALCULATOR_PERCENTAGE,
-                DiscountTransfer::DISPLAY_NAME => static::DISCOUNT_NAME,
-                DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT,
-                StoreRelationTransfer::ID_STORES => [$idStore],
+                DiscountConfiguratorTransfer::DISCOUNT_GENERAL => [
+                    DiscountTransfer::DISCOUNT_TYPE => CalculationBusinessTester::TYPE_VOUCHER,
+                    DiscountTransfer::DISPLAY_NAME => static::DISCOUNT_NAME,
+                    DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT,
+                    DiscountGeneralTransfer::STORE_RELATION => [
+                        StoreRelationTransfer::ID_STORES => [$idStore],
+                    ],
+                ],
+                DiscountConfiguratorTransfer::DISCOUNT_CALCULATOR => [
+                    DiscountTransfer::COLLECTOR_QUERY_STRING => static::DISCOUNT_COLLECTOR_QUERY_STRING,
+                    DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT,
+                    DiscountTransfer::CALCULATOR_PLUGIN => CalculationBusinessTester::PLUGIN_CALCULATOR_PERCENTAGE,
+                ],
             ],
         ];
     }
