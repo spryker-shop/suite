@@ -71,32 +71,12 @@ sections:
         zed-build-frontend:
             command: 'vendor/bin/console frontend:zed:build -e production'
 
-        merchant-portal-build-frontend:
-            command: 'vendor/bin/console frontend:mp:build -e production'
-            timeout: 1600
-
-        date-time-product-configurator:
-            command: 'vendor/bin/console frontend:date-time-product-configurator:build'
-
     build-static-development:
         yves-build-frontend:
             command: 'vendor/bin/console frontend:yves:build'
 
         zed-build-frontend:
             command: 'vendor/bin/console frontend:zed:build'
-
-        merchant-portal-build-frontend:
-            command: 'vendor/bin/console frontend:mp:build'
-            timeout: 1600
-
-        date-time-product-configurator:
-            command: 'vendor/bin/console frontend:date-time-product-configurator:build'
-
-    init-storages-per-store:
-        queue-setup:
-            command: 'vendor/bin/console queue:setup'
-        setup-search-create-sources:
-            command: 'vendor/bin/console search:setup:sources'
 
     init-storages-per-region:
         propel-copy-schema:
@@ -117,12 +97,18 @@ sections:
         propel-migration-cleanup:
             command: 'vendor/bin/console propel:migration:delete'
 
+    demodata:
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
+
         init-database:
             command: 'vendor/bin/console setup:init-db'
 
-    demodata:
         import-eu-region-demodata:
             command: 'vendor/bin/console data:import --config=data/import/local/full_EU.yml'
+
+        setup-search-create-sources:
+            command: 'vendor/bin/console search:setup:sources'
 
         apply-scheduled-prices:
             command: 'vendor/bin/console price-product-schedule:apply'
