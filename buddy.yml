@@ -2072,7 +2072,7 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_LARGE'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Group One / Dynamic Store Off'
+- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group One'
   events:
       - type: 'PULL_REQUEST'
         events:
@@ -2103,7 +2103,7 @@
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Group One / Dynamic Store Off'
+      - action: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group One'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
@@ -2143,7 +2143,7 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_LARGE'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Group Two / Dynamic Store Off'
+- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group Two'
   events:
       - type: 'PULL_REQUEST'
         events:
@@ -2174,7 +2174,7 @@
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Group Two / Dynamic Store Off'
+      - action: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group Two'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
@@ -2214,7 +2214,7 @@
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_LARGE'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Group Three / Dynamic Store Off'
+- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group Three'
   events:
       - type: 'PULL_REQUEST'
         events:
@@ -2245,7 +2245,7 @@
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Group Three / Dynamic Store Off'
+      - action: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group Three'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
