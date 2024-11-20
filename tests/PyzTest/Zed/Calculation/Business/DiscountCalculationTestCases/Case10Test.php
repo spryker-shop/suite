@@ -8,6 +8,8 @@
 namespace PyzTest\Zed\Calculation\Business\DiscountCalculationTestCases;
 
 use Codeception\Test\Unit;
+use Generated\Shared\Transfer\DiscountConfiguratorTransfer;
+use Generated\Shared\Transfer\DiscountGeneralTransfer;
 use Generated\Shared\Transfer\DiscountPromotionTransfer;
 use Generated\Shared\Transfer\DiscountTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
@@ -208,28 +210,42 @@ class Case10Test extends Unit
 
         return [
             [
-                DiscountTransfer::DISCOUNT_TYPE => CalculationBusinessTester::TYPE_CART_RULE,
-                DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT_ONE,
-                DiscountTransfer::CALCULATOR_PLUGIN => CalculationBusinessTester::PLUGIN_CALCULATOR_FIXED,
-                DiscountTransfer::DISPLAY_NAME => static::DISCOUNT_NAME_ONE,
-                DiscountTransfer::DISCOUNT_PROMOTION => static::DISCOUNT_NAME_ONE,
-                DiscountPromotionTransfer::ABSTRACT_SKU => static::DISCOUNT_PROMOTIONAL_PRODUCT_ABSTRACT_SKU_ONE,
-                StoreRelationTransfer::ID_STORES => [$idStore],
-                CalculationBusinessTester::DISCOUNT_AMOUNTS_KEY => [
-                    [
-                        MoneyValueTransfer::FK_CURRENCY => $quoteTransfer->getCurrency()->getIdCurrency(),
-                        MoneyValueTransfer::GROSS_AMOUNT => static::DISCOUNT_AMOUNT_ONE,
+                DiscountConfiguratorTransfer::DISCOUNT_GENERAL => [
+                    DiscountTransfer::DISCOUNT_TYPE => CalculationBusinessTester::TYPE_CART_RULE,
+                    DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT_ONE,
+                    DiscountTransfer::DISPLAY_NAME => static::DISCOUNT_NAME_ONE,
+                    DiscountTransfer::DISCOUNT_PROMOTION => static::DISCOUNT_NAME_ONE,
+                    DiscountPromotionTransfer::ABSTRACT_SKU => static::DISCOUNT_PROMOTIONAL_PRODUCT_ABSTRACT_SKU_ONE,
+                    DiscountGeneralTransfer::STORE_RELATION => [
+                        StoreRelationTransfer::ID_STORES => [$idStore],
                     ],
+                    CalculationBusinessTester::DISCOUNT_AMOUNTS_KEY => [
+                        [
+                            MoneyValueTransfer::FK_CURRENCY => $quoteTransfer->getCurrency()->getIdCurrency(),
+                            MoneyValueTransfer::GROSS_AMOUNT => static::DISCOUNT_AMOUNT_ONE,
+                        ],
+                    ],
+                ],
+                DiscountConfiguratorTransfer::DISCOUNT_CALCULATOR => [
+                    DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT_ONE,
+                    DiscountTransfer::CALCULATOR_PLUGIN => CalculationBusinessTester::PLUGIN_CALCULATOR_FIXED,
                 ],
             ],
             [
-                DiscountTransfer::DISCOUNT_TYPE => CalculationBusinessTester::TYPE_CART_RULE,
-                DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT_TWO,
-                DiscountTransfer::CALCULATOR_PLUGIN => CalculationBusinessTester::PLUGIN_CALCULATOR_PERCENTAGE,
-                DiscountTransfer::DISPLAY_NAME => static::DISCOUNT_NAME_TWO,
-                DiscountTransfer::DISCOUNT_PROMOTION => static::DISCOUNT_NAME_TWO,
-                DiscountPromotionTransfer::ABSTRACT_SKU => static::DISCOUNT_PROMOTIONAL_PRODUCT_ABSTRACT_SKU_TWO,
-                StoreRelationTransfer::ID_STORES => [$idStore],
+                DiscountConfiguratorTransfer::DISCOUNT_GENERAL => [
+                    DiscountTransfer::DISCOUNT_TYPE => CalculationBusinessTester::TYPE_CART_RULE,
+                    DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT_TWO,
+                    DiscountTransfer::DISPLAY_NAME => static::DISCOUNT_NAME_TWO,
+                    DiscountTransfer::DISCOUNT_PROMOTION => static::DISCOUNT_NAME_TWO,
+                    DiscountPromotionTransfer::ABSTRACT_SKU => static::DISCOUNT_PROMOTIONAL_PRODUCT_ABSTRACT_SKU_TWO,
+                    DiscountGeneralTransfer::STORE_RELATION => [
+                        StoreRelationTransfer::ID_STORES => [$idStore],
+                    ],
+                ],
+                DiscountConfiguratorTransfer::DISCOUNT_CALCULATOR => [
+                    DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT_TWO,
+                    DiscountTransfer::CALCULATOR_PLUGIN => CalculationBusinessTester::PLUGIN_CALCULATOR_PERCENTAGE,
+                ],
             ],
         ];
     }

@@ -59,6 +59,8 @@ use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBun
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundlesOrderItemsPostSavePlugin;
 use Spryker\Zed\SalesMerchantCommission\Communication\Plugin\Sales\MerchantCommissionOrderPostCancelPlugin;
 use Spryker\Zed\SalesOms\Communication\Plugin\OrderItemReferenceExpanderPreSavePlugin;
+use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\Sales\CreateSalesOrderAmendmentOrderPostSavePlugin;
+use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\Sales\SalesOrderAmendmentOrderExpanderPlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Sales\SalesPaymentOrderExpanderPlugin;
 use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\Sales\ProductConfigurationOrderItemExpanderPlugin;
 use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\Sales\ProductConfigurationOrderItemsPostSavePlugin;
@@ -113,6 +115,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new IsCancellableOrderExpanderPlugin(),
             new CurrencyOrderExpanderPlugin(),
             new MerchantDataOrderHydratePlugin(),
+            new SalesOrderAmendmentOrderExpanderPlugin(),
         ];
     }
 
@@ -163,6 +166,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new OrderCustomReferenceOrderPostSavePlugin(),
             new SaveCompanyBusinessUnitUuidOrderPostSavePlugin(),
             new SaveCompanyUuidOrderPostSavePlugin(),
+            new CreateSalesOrderAmendmentOrderPostSavePlugin(),
         ];
     }
 
