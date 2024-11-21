@@ -8,6 +8,8 @@
 namespace PyzTest\Zed\Calculation\Business\DiscountCalculationTestCases;
 
 use Codeception\Test\Unit;
+use Generated\Shared\Transfer\DiscountConfiguratorTransfer;
+use Generated\Shared\Transfer\DiscountGeneralTransfer;
 use Generated\Shared\Transfer\DiscountTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -205,22 +207,35 @@ class Case1Test extends Unit
 
         return [
             [
-                DiscountTransfer::DISCOUNT_TYPE => CalculationBusinessTester::TYPE_CART_RULE,
-                DiscountTransfer::DECISION_RULE_QUERY_STRING => static::DISCOUNT_DECISION_RULE_ONE,
-                DiscountTransfer::COLLECTOR_QUERY_STRING => static::DISCOUNT_COLLECTOR_QUERY_STRING_ONE,
-                DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT_ONE,
-                DiscountTransfer::CALCULATOR_PLUGIN => CalculationBusinessTester::PLUGIN_CALCULATOR_PERCENTAGE,
-                DiscountTransfer::DISPLAY_NAME => static::DISCOUNT_NAME_ONE,
-                StoreRelationTransfer::ID_STORES => [$idStore],
+                DiscountConfiguratorTransfer::DISCOUNT_GENERAL => [DiscountTransfer::DISCOUNT_TYPE => CalculationBusinessTester::TYPE_CART_RULE,
+                    DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT_ONE,
+                    DiscountTransfer::DISPLAY_NAME => static::DISCOUNT_NAME_ONE,
+                    DiscountGeneralTransfer::STORE_RELATION => [
+                        StoreRelationTransfer::ID_STORES => [$idStore],
+                    ],
+                ],
+                DiscountConfiguratorTransfer::DISCOUNT_CALCULATOR => [
+                    DiscountTransfer::DECISION_RULE_QUERY_STRING => static::DISCOUNT_DECISION_RULE_ONE,
+                    DiscountTransfer::COLLECTOR_QUERY_STRING => static::DISCOUNT_COLLECTOR_QUERY_STRING_ONE,
+                    DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT_ONE,
+                    DiscountTransfer::CALCULATOR_PLUGIN => CalculationBusinessTester::PLUGIN_CALCULATOR_PERCENTAGE,
+                ],
             ],
             [
-                DiscountTransfer::DISCOUNT_TYPE => CalculationBusinessTester::TYPE_CART_RULE,
-                DiscountTransfer::DECISION_RULE_QUERY_STRING => static::DISCOUNT_DECISION_RULE_TWO,
-                DiscountTransfer::COLLECTOR_QUERY_STRING => static::DISCOUNT_COLLECTOR_QUERY_STRING_TWO,
-                DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT_TWO,
-                DiscountTransfer::CALCULATOR_PLUGIN => CalculationBusinessTester::PLUGIN_CALCULATOR_PERCENTAGE,
-                DiscountTransfer::DISPLAY_NAME => static::DISCOUNT_NAME_TWO,
-                StoreRelationTransfer::ID_STORES => [$idStore],
+                DiscountConfiguratorTransfer::DISCOUNT_GENERAL => [
+                    DiscountTransfer::DISCOUNT_TYPE => CalculationBusinessTester::TYPE_CART_RULE,
+                    DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT_TWO,
+                    DiscountTransfer::DISPLAY_NAME => static::DISCOUNT_NAME_TWO,
+                    DiscountGeneralTransfer::STORE_RELATION => [
+                        StoreRelationTransfer::ID_STORES => [$idStore],
+                    ],
+                ],
+                DiscountConfiguratorTransfer::DISCOUNT_CALCULATOR => [
+                    DiscountTransfer::DECISION_RULE_QUERY_STRING => static::DISCOUNT_DECISION_RULE_TWO,
+                    DiscountTransfer::COLLECTOR_QUERY_STRING => static::DISCOUNT_COLLECTOR_QUERY_STRING_TWO,
+                    DiscountTransfer::AMOUNT => static::DISCOUNT_AMOUNT_TWO,
+                    DiscountTransfer::CALCULATOR_PLUGIN => CalculationBusinessTester::PLUGIN_CALCULATOR_PERCENTAGE,
+                ],
             ],
         ];
     }

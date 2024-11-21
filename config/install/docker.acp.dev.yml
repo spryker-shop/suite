@@ -166,6 +166,9 @@ sections:
         external-init-storages-per-region:
             command: 'bash acp-toolbox/bin/commands/external-region-install.sh -r docker -s init-storages-per-region'
 
+        queue-setup:
+            command: 'bash acp-toolbox/bin/commands/internal-region-console.sh queue:setup'
+
         propel-copy-schema:
             command: 'bash acp-toolbox/bin/commands/internal-region-console.sh propel:schema:copy'
 

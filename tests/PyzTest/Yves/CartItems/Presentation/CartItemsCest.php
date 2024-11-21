@@ -29,6 +29,16 @@ class CartItemsCest
      *
      * @return void
      */
+    public function _before(CartItemsPresentationTester $i): void
+    {
+        $i->amYves();
+    }
+
+    /**
+     * @param \PyzTest\Yves\CartItems\CartItemsPresentationTester $i
+     *
+     * @return void
+     */
     public function testAddToCartAndCheckExistItem(CartItemsPresentationTester $i): void
     {
         $i->markTestSkipped('Fails without reason. Tech debt ticket should fix that.');

@@ -71,7 +71,6 @@ sections:
         init-database:
             command: 'vendor/bin/console setup:init-db'
 
-    setup-glue:
         controller-cache-warmup:
             command: 'vendor/bin/glue glue-api:controller:cache:warm-up'
 

@@ -8,7 +8,6 @@
 namespace PyzTest\Yves\Availability;
 
 use Codeception\Actor;
-use Codeception\Scenario;
 use Pyz\Yves\CartPage\CartPageConfig;
 
 /**
@@ -52,22 +51,11 @@ class AvailabilityPresentationTester extends Actor
     public const ADD_FUJITSU2_PRODUCT_TO_CART_URL = '/cart/add/119_29804808';
 
     /**
-     * @uses \Spryker\Zed\AvailabilityCartConnector\Business\Cart\CheckCartAvailability::CART_PRE_CHECK_AVAILABILITY_FAILED
-     * @uses \Spryker\Zed\ProductBundle\Business\ProductBundle\Availability\PreCheck\ProductBundleCartAvailabilityCheck::CART_PRE_CHECK_ITEM_AVAILABILITY_FAILED
+     * @uses \Spryker\Zed\AvailabilityCartConnector\Business\Creator\MessageCreator::GLOSSARY_KEY_AVAILABILITY_FAILED
      *
      * @var string
      */
     public const CART_PRE_CHECK_AVAILABILITY_ERROR_MESSAGE = 'Item 119_29804808 only has availability of 10.';
-
-    /**
-     * @param \Codeception\Scenario $scenario
-     */
-    public function __construct(Scenario $scenario)
-    {
-        parent::__construct($scenario);
-
-        $this->amYves();
-    }
 
     /**
      * @return void

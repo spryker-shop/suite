@@ -32,6 +32,20 @@ class MessageBrokerConfig extends SprykerMessageBrokerConfig
     }
 
     /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @deprecated Will be removed without replacement.
+     *
+     * @return bool
+     */
+    public function isDefaultApplicationLoggerUsed(): bool
+    {
+        return true;
+    }
+
+    /**
      * Additional method to support MB1 and MB2 in parallel.
      * Will be removed when MB1 is deprecated and removed.
      *
