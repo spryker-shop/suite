@@ -19,6 +19,7 @@ if [ "$failed" -gt "0" ]; then
     echo -e "$((`cat /dev/shm/total` + 1))" > /dev/shm/total
 
     if [[ "${status}" -eq 0 ]]; then
+        echo "0" > /dev/shm/failed
         echo "------------- ↑↑↑ OK"
         echo "[✓] ${ANSI_GREEN}${cmd[*]}${ANSI_RESET}" >> /dev/shm/report
     else
