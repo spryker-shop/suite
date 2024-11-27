@@ -7,10 +7,11 @@
  * - jobs[]['role'] default value is 'admin'
  */
 
+$logger = 'config/Zed/cronjobs/bin/loggable.sh '; // script for jenkins logging
 /* ProductValidity */
 $jobs[] = [
     'name' => 'check-product-validity',
-    'command' => '$PHP_BIN vendor/bin/console product:check-validity',
+    'command' => $logger . '$PHP_BIN vendor/bin/console product:check-validity',
     'schedule' => '0 6 * * *',
     'enable' => true,
 ];
@@ -18,13 +19,13 @@ $jobs[] = [
 /* ProductLabel */
 $jobs[] = [
     'name' => 'check-product-label-validity',
-    'command' => '$PHP_BIN vendor/bin/console product-label:validity',
+    'command' => $logger . '$PHP_BIN vendor/bin/console product-label:validity',
     'schedule' => '0 6 * * *',
     'enable' => true,
 ];
 $jobs[] = [
     'name' => 'update-product-label-relations',
-    'command' => '$PHP_BIN vendor/bin/console product-label:relations:update -vvv --no-touch',
+    'command' => $logger . '$PHP_BIN vendor/bin/console product-label:relations:update -vvv --no-touch',
     'schedule' => '* * * * *',
     'enable' => true,
 ];
@@ -32,49 +33,49 @@ $jobs[] = [
 /* Oms */
 $jobs[] = [
     'name' => 'check-oms-conditions',
-    'command' => '$PHP_BIN vendor/bin/console oms:check-condition',
+    'command' => $logger . '$PHP_BIN vendor/bin/console oms:check-condition',
     'schedule' => '* * * * *',
     'enable' => true,
 ];
 
 $jobs[] = [
     'name' => 'check-oms-timeouts',
-    'command' => '$PHP_BIN vendor/bin/console oms:check-timeout',
+    'command' => $logger . '$PHP_BIN vendor/bin/console oms:check-timeout',
     'schedule' => '* * * * *',
     'enable' => true,
 ];
 
 $jobs[] = [
     'name' => 'clear-oms-locks',
-    'command' => '$PHP_BIN vendor/bin/console oms:clear-locks',
+    'command' => $logger . '$PHP_BIN vendor/bin/console oms:clear-locks',
     'schedule' => '0 6 * * *',
     'enable' => true,
 ];
 
 $jobs[] = [
     'name' => 'queue-worker-start',
-    'command' => '$PHP_BIN vendor/bin/console queue:worker:start',
+    'command' => $logger . '$PHP_BIN vendor/bin/console queue:worker:start',
     'schedule' => '* * * * *',
     'enable' => true,
 ];
 
 $jobs[] = [
     'name' => 'product-relation-updater',
-    'command' => '$PHP_BIN vendor/bin/console product-relation:update -vvv',
+    'command' => $logger . '$PHP_BIN vendor/bin/console product-relation:update -vvv',
     'schedule' => '30 2 * * *',
     'enable' => true,
 ];
 
 $jobs[] = [
     'name' => 'event-trigger-timeout',
-    'command' => '$PHP_BIN vendor/bin/console event:trigger:timeout -vvv',
+    'command' => $logger . '$PHP_BIN vendor/bin/console event:trigger:timeout -vvv',
     'schedule' => '*/5 * * * *',
     'enable' => true,
 ];
 
 $jobs[] = [
     'name' => 'deactivate-discontinued-products',
-    'command' => '$PHP_BIN vendor/bin/console deactivate-discontinued-products',
+    'command' => $logger . '$PHP_BIN vendor/bin/console deactivate-discontinued-products',
     'schedule' => '0 0 * * *',
     'enable' => true,
 ];
@@ -109,7 +110,7 @@ $jobs[] = [
 /* Quote */
 $jobs[] = [
     'name' => 'clean-expired-guest-cart',
-    'command' => '$PHP_BIN vendor/bin/console quote:delete-expired-guest-quotes',
+    'command' => $logger . '$PHP_BIN vendor/bin/console quote:delete-expired-guest-quotes',
     'schedule' => '30 1 * * *',
     'enable' => true,
 ];
@@ -117,7 +118,7 @@ $jobs[] = [
 /* QuoteRequest */
 $jobs[] = [
     'name' => 'close-outdated-quote-requests',
-    'command' => '$PHP_BIN vendor/bin/console quote-request:close-outdated',
+    'command' => $logger . '$PHP_BIN vendor/bin/console quote-request:close-outdated',
     'schedule' => '0 * * * *',
     'enable' => true,
 ];
@@ -125,7 +126,7 @@ $jobs[] = [
 /* PriceProductSchedule */
 $jobs[] = [
     'name' => 'apply-price-product-schedule',
-    'command' => '$PHP_BIN vendor/bin/console price-product-schedule:apply',
+    'command' => $logger . '$PHP_BIN vendor/bin/console price-product-schedule:apply',
     'schedule' => '0 6 * * *',
     'enable' => true,
 ];
@@ -133,7 +134,7 @@ $jobs[] = [
 /* ProductOfferValidity */
 $jobs[] = [
     'name' => 'check-product-offer-validity',
-    'command' => '$PHP_BIN vendor/bin/console product-offer:check-validity',
+    'command' => $logger . '$PHP_BIN vendor/bin/console product-offer:check-validity',
     'schedule' => '0 6 * * *',
     'enable' => true,
 ];
@@ -141,7 +142,7 @@ $jobs[] = [
 /* Oauth */
 $jobs[] = [
     'name' => 'remove-expired-refresh-tokens',
-    'command' => '$PHP_BIN vendor/bin/console oauth:refresh-token:remove-expired',
+    'command' => $logger . '$PHP_BIN vendor/bin/console oauth:refresh-token:remove-expired',
     'schedule' => '*/5 * * * *',
     'enable' => true,
 ];
@@ -149,7 +150,7 @@ $jobs[] = [
 /* Customer */
 $jobs[] = [
     'name' => 'delete-expired-customer-invalidated',
-    'command' => '$PHP_BIN vendor/bin/console customer:delete-expired-customer-invalidated',
+    'command' => $logger . '$PHP_BIN vendor/bin/console customer:delete-expired-customer-invalidated',
     'schedule' => '0 0 * * 0',
     'enable' => true,
 ];
@@ -157,14 +158,14 @@ $jobs[] = [
 /* Order invoice */
 $jobs[] = [
     'name' => 'order-invoice-send',
-    'command' => '$PHP_BIN vendor/bin/console order:invoice:send',
+    'command' => $logger . '$PHP_BIN vendor/bin/console order:invoice:send',
     'schedule' => '*/5 * * * *',
     'enable' => true,
 ];
 
 $jobs[] = [
     'name' => 'page-product-abstract-refresh',
-    'command' => '$PHP_BIN vendor/bin/console product-page-search:product-abstract-refresh',
+    'command' => $logger . '$PHP_BIN vendor/bin/console product-page-search:product-abstract-refresh',
     'schedule' => '0 6 * * *',
     'enable' => true,
 ];
@@ -172,28 +173,28 @@ $jobs[] = [
 /* Push notification */
 $jobs[] = [
     'name' => 'delete-expired-push-notification-subscriptions',
-    'command' => '$PHP_BIN vendor/bin/console push-notification:delete-expired-push-notification-subscriptions',
+    'command' => $logger . '$PHP_BIN vendor/bin/console push-notification:delete-expired-push-notification-subscriptions',
     'schedule' => '0 0 * * 0',
     'enable' => true,
 ];
 
 $jobs[] = [
     'name' => 'send-push-notifications',
-    'command' => '$PHP_BIN vendor/bin/console push-notification:send-push-notifications',
+    'command' => $logger . '$PHP_BIN vendor/bin/console push-notification:send-push-notifications',
     'schedule' => '* * * * *',
     'enable' => true,
 ];
 
 $jobs[] = [
     'name' => 'glue-api-generate-documentation',
-    'command' => '$PHP_BIN vendor/bin/glue api:generate:documentation --invalidated-after-interval 90sec',
+    'command' => $logger . '$PHP_BIN vendor/bin/glue api:generate:documentation --invalidated-after-interval 90sec',
     'schedule' => '*/1 * * * *',
     'enable' => true,
 ];
 
 $jobs[] = [
     'name' => 'sync-order-matrix',
-    'command' => '$PHP_BIN vendor/bin/console order-matrix:sync',
+    'command' => $logger . '$PHP_BIN vendor/bin/console order-matrix:sync',
     'schedule' => '*/1 * * * *',
     'enable' => true,
     'global' => true,
@@ -203,7 +204,7 @@ $jobs[] = [
 if (\Spryker\Shared\Config\Config::get(\Spryker\Shared\MessageBroker\MessageBrokerConstants::IS_ENABLED)) {
     $jobs[] = [
         'name' => 'message-broker-consume-channels',
-        'command' => 'config/Zed/cronjobs/bin/loggable.sh $PHP_BIN vendor/bin/console message-broker:consume --time-limit=15 --sleep=5',
+        'command' => $logger . '$PHP_BIN vendor/bin/console message-broker:consume --time-limit=15 --sleep=5',
         'schedule' => '* * * * *',
         'enable' => true,
     ];
