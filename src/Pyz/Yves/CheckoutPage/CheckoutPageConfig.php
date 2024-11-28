@@ -36,4 +36,14 @@ class CheckoutPageConfig extends SprykerCheckoutPageConfig
     {
         return static::SUCCESS_STEP_ESCAPE_ROUTE;
     }
+
+    /**
+     * @return list<string>
+     */
+    public function getExcludedPaymentMethodKeys(): array
+    {
+        return [
+            'payone-paypal-express',
+        ];
+    }
 }
