@@ -208,8 +208,8 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
     protected function getRouterEnhancerPlugins(): array
     {
         return [
-            new LanguagePrefixRouterEnhancerPlugin(),
             new StorePrefixRouterEnhancerPlugin(),
+            new LanguagePrefixRouterEnhancerPlugin(),
         ];
     }
 }
