@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.330.2",
+            "version": "3.331.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "4ac43cc8356fb16a494c3631c8f39f6e7555f00a"
+                "reference": "0f8b3f63ba7b296afedcb3e6a43ce140831b9400"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4ac43cc8356fb16a494c3631c8f39f6e7555f00a",
-                "reference": "4ac43cc8356fb16a494c3631c8f39f6e7555f00a",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0f8b3f63ba7b296afedcb3e6a43ce140831b9400",
+                "reference": "0f8b3f63ba7b296afedcb3e6a43ce140831b9400",
                 "shasum": ""
             },
             "require": {
@@ -284,7 +284,7 @@
                 "nette/neon": "^2.3",
                 "paragonie/random_compat": ">= 2",
                 "phpunit/phpunit": "^5.6.3 || ^8.5 || ^9.5",
-                "psr/cache": "^1.0",
+                "psr/cache": "^1.0 || ^2.0 || ^3.0",
                 "psr/simple-cache": "^1.0 || ^2.0 || ^3.0",
                 "sebastian/comparator": "^1.2.3 || ^4.0",
                 "yoast/phpunit-polyfills": "^1.0"
@@ -338,9 +338,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.330.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.331.0"
             },
-            "time": "2024-11-26T19:07:56+00:00"
+            "time": "2024-11-27T19:12:58+00:00"
         },
         {
             "name": "brick/math",
@@ -6350,7 +6350,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "efa7777f43bb579567b35c89bda0f0f69b3d634f"
+                "reference": "f9ca38514ef5b66b42e10c5d2afda48af3b62941"
             },
             "require": {
                 "php": ">=8.1"
@@ -6917,6 +6917,9 @@
                 "spryker/orders-rest-api": "*",
                 "spryker/orders-rest-api-extension": "*",
                 "spryker/payment": "*",
+                "spryker/payment-app": "*",
+                "spryker/payment-app-extension": "*",
+                "spryker/payment-app-shipment": "*",
                 "spryker/payment-cart-connector": "*",
                 "spryker/payment-data-import": "*",
                 "spryker/payment-extension": "*",
@@ -7476,7 +7479,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2024-11-27T11:43:17+00:00"
+            "time": "2024-11-28T12:12:52+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7484,7 +7487,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "7cf61d53bdd9d3c365acfaafc91c2f9e5f750882"
+                "reference": "9fa7e7484310f1bae1075aef0e9b23e8a6c9a8d1"
             },
             "require": {
                 "php": ">=8.1"
@@ -7573,6 +7576,8 @@
                 "spryker-shop/newsletter-widget": "*",
                 "spryker-shop/order-cancel-widget": "*",
                 "spryker-shop/order-custom-reference-widget": "*",
+                "spryker-shop/payment-app-widget": "*",
+                "spryker-shop/payment-app-widget-extension": "*",
                 "spryker-shop/payment-page": "*",
                 "spryker-shop/persistent-cart-share-page": "*",
                 "spryker-shop/persistent-cart-share-widget": "*",
@@ -7689,7 +7694,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2024-11-27T13:33:54+00:00"
+            "time": "2024-11-28T12:12:55+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -18421,7 +18426,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/cypress-tests.git",
-                "reference": "b5c0be284fc099f006b601218e24fee9534947bb"
+                "reference": "473e4e3af35bc1e6c8c9e9ec3c4709ee773b8c90"
             },
             "default-branch": true,
             "type": "library",
@@ -18429,7 +18434,7 @@
                 "MIT"
             ],
             "description": "This repository is dedicated to housing an extensive collection of UI end-to-end tests, meticulously crafted using Cypress for Spryker applications. These tests are designed to thoroughly evaluate the user interface, ensuring that all interactions and visual elements function as intended in real-world scenarios. By leveraging Cypress's advanced browser automation capabilities, this suite provides an efficient and effective means of validating the user experience, confirming the seamless operation and aesthetic integrity of Spryker's front-end components. Our commitment to rigorous UI testing helps maintain the high standard of quality and reliability that Spryker users expect.",
-            "time": "2024-11-27T11:59:16+00:00"
+            "time": "2024-11-28T07:57:27+00:00"
         },
         {
             "name": "spryker/development-core",

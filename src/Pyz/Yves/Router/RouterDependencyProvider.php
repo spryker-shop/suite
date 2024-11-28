@@ -61,6 +61,7 @@ use SprykerShop\Yves\NewsletterWidget\Plugin\Router\NewsletterWidgetRouteProvide
 use SprykerShop\Yves\OrderCancelWidget\Plugin\Router\OrderCancelWidgetRouteProviderPlugin;
 use SprykerShop\Yves\OrderCustomReferenceWidget\Plugin\Router\OrderCustomReferenceWidgetAsyncRouteProviderPlugin;
 use SprykerShop\Yves\OrderCustomReferenceWidget\Plugin\Router\OrderCustomReferenceWidgetRouteProviderPlugin;
+use SprykerShop\Yves\PaymentAppWidget\Plugin\Router\PaymentAppWidgetRouteProviderPlugin;
 use SprykerShop\Yves\PaymentPage\Plugin\Router\PaymentPageRouteProviderPlugin;
 use SprykerShop\Yves\PersistentCartSharePage\Plugin\Router\PersistentCartSharePageRouteProviderPlugin;
 use SprykerShop\Yves\PersistentCartShareWidget\Plugin\Router\PersistentCartShareWidgetRouteProviderPlugin;
@@ -179,6 +180,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new ProductComparisonPageRouteProviderPlugin(),
             new CartReorderPageRouteProviderPlugin(),
             new SalesOrderAmendmentWidgetRouteProviderPlugin(),
+            new PaymentAppWidgetRouteProviderPlugin(),
         ];
 
         if (class_exists(LoadTestingRouterProviderPlugin::class)) {
