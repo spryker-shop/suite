@@ -1893,7 +1893,7 @@
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
             - '.ci/snippet/REQUIRE ls -la ./.robot'
-            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results/log.html s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-on/robot-ui/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/log.html'
+            - '.ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-on/robot-ui/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/'
             - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit/dms-on/robot-ui/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDB/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
