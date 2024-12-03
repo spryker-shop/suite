@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.332.0",
+            "version": "3.332.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "3b4972a465b66fe3da461a3febdcc363954a0969"
+                "reference": "6790e53ab0aceca59e1d44fae06c66481013950c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3b4972a465b66fe3da461a3febdcc363954a0969",
-                "reference": "3b4972a465b66fe3da461a3febdcc363954a0969",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6790e53ab0aceca59e1d44fae06c66481013950c",
+                "reference": "6790e53ab0aceca59e1d44fae06c66481013950c",
                 "shasum": ""
             },
             "require": {
@@ -338,9 +338,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.332.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.332.2"
             },
-            "time": "2024-12-02T03:48:16+00:00"
+            "time": "2024-12-03T06:16:16+00:00"
         },
         {
             "name": "brick/math",
@@ -5789,8 +5789,8 @@
             "type": "project",
             "extra": {
                 "symfony": {
-                    "allow-contrib": false,
-                    "require": "^6.0"
+                    "require": "^6.0",
+                    "allow-contrib": false
                 }
             },
             "autoload": {
@@ -5974,10 +5974,10 @@
             "default-branch": true,
             "type": "composer-plugin",
             "extra": {
+                "class": "Spryker\\Composer\\Plugin\\MergePlugin",
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
-                },
-                "class": "Spryker\\Composer\\Plugin\\MergePlugin"
+                }
             },
             "autoload": {
                 "psr-4": {
@@ -6350,7 +6350,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "7def4609abcf25c4dbcfa73a6d312b76375cf4a2"
+                "reference": "c267574e6559c2166a15c8bf218fe8b8154b626d"
             },
             "require": {
                 "php": ">=8.1"
@@ -7479,7 +7479,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2024-12-02T09:58:28+00:00"
+            "time": "2024-12-03T11:23:20+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7920,16 +7920,16 @@
         },
         {
             "name": "symfony-cmf/routing",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing.git",
-                "reference": "4d6e40f8f91f5729e00e5a023640eb13fb359cbd"
+                "reference": "86c3e36a94f8e47a94f7b92ce09877ba3a0809fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/4d6e40f8f91f5729e00e5a023640eb13fb359cbd",
-                "reference": "4d6e40f8f91f5729e00e5a023640eb13fb359cbd",
+                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/86c3e36a94f8e47a94f7b92ce09877ba3a0809fb",
+                "reference": "86c3e36a94f8e47a94f7b92ce09877ba3a0809fb",
                 "shasum": ""
             },
             "require": {
@@ -7971,9 +7971,9 @@
             ],
             "support": {
                 "issues": "https://github.com/symfony-cmf/Routing/issues",
-                "source": "https://github.com/symfony-cmf/Routing/tree/3.0.3"
+                "source": "https://github.com/symfony-cmf/Routing/tree/3.0.4"
             },
-            "time": "2024-02-19T02:00:24+00:00"
+            "time": "2024-12-02T22:52:12+00:00"
         },
         {
             "name": "symfony/amazon-sqs-messenger",
@@ -16690,23 +16690,23 @@
         },
         {
             "name": "roave/better-reflection",
-            "version": "6.43.0",
+            "version": "6.44.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/BetterReflection.git",
-                "reference": "598266e24e14767cba386d2f4c2bcf2a9e278e12"
+                "reference": "6ff8860687ac93ba00384005fcba52e3e400aac1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/598266e24e14767cba386d2f4c2bcf2a9e278e12",
-                "reference": "598266e24e14767cba386d2f4c2bcf2a9e278e12",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/6ff8860687ac93ba00384005fcba52e3e400aac1",
+                "reference": "6ff8860687ac93ba00384005fcba52e3e400aac1",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "jetbrains/phpstorm-stubs": "2024.2",
                 "nikic/php-parser": "^5.3.1",
-                "php": "~8.2.0 || ~8.3.2"
+                "php": "~8.2.0 || ~8.3.2 || ~8.4.1"
             },
             "conflict": {
                 "thecodingmachine/safe": "<1.1.3"
@@ -16753,9 +16753,9 @@
             "description": "Better Reflection - an improved code reflection API",
             "support": {
                 "issues": "https://github.com/Roave/BetterReflection/issues",
-                "source": "https://github.com/Roave/BetterReflection/tree/6.43.0"
+                "source": "https://github.com/Roave/BetterReflection/tree/6.44.0"
             },
-            "time": "2024-11-19T17:44:59+00:00"
+            "time": "2024-12-02T14:26:42+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -18205,13 +18205,13 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                },
                 "phpstan": {
                     "includes": [
                         "extension.neon"
                     ]
+                },
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -18664,7 +18664,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "03ecaf533e2b87986ef555a8f2df13055c0e332d"
+                "reference": "27a4530f525c31340b82a738eb9dc58160586fb4"
             },
             "default-branch": true,
             "type": "library",
@@ -18672,7 +18672,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2024-11-22T15:44:29+00:00"
+            "time": "2024-12-02T18:23:44+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
