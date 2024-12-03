@@ -165,6 +165,7 @@ use Spryker\Glue\OrdersRestApi\Plugin\OrderItemByResourceIdResourceRelationshipP
 use Spryker\Glue\OrdersRestApi\Plugin\OrderRelationshipByOrderReferencePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrdersResourceRoutePlugin;
 use Spryker\Glue\PaymentsRestApi\Plugin\GlueApplication\PaymentCancellationsResourceRoutePlugin;
+use Spryker\Glue\PaymentsRestApi\Plugin\GlueApplication\PaymentCustomersResourceRoutePlugin;
 use Spryker\Glue\PaymentsRestApi\Plugin\GlueApplication\PaymentMethodsByCheckoutDataResourceRelationshipPlugin;
 use Spryker\Glue\PaymentsRestApi\Plugin\GlueApplication\PaymentsResourceRoutePlugin;
 use Spryker\Glue\ProductAttributesRestApi\Plugin\GlueApplication\ProductManagementAttributesResourceRoutePlugin;
@@ -391,6 +392,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new PaymentsResourceRoutePlugin(),
             new PaymentCancellationsResourceRoutePlugin(),
             new CartReorderResourceRoutePlugin(),
+            new PaymentCustomersResourceRoutePlugin(),
         ];
     }
 

@@ -113,14 +113,8 @@ services:
     search:
         engine: elastic
         version: '6.8'
-    scheduler:
-        engine: jenkins
-        version: '2.442'
-        csrf-protection-enabled: true
     mail_catcher:
         engine: mailhog
-    webdriver:
-        engine: chromedriver
 
 docker:
     ssl:
