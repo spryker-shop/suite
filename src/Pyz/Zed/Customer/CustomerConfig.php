@@ -29,7 +29,7 @@ class CustomerConfig extends SprykerCustomerConfig
     /**
      * @var bool
      */
-    protected const IS_CUSTOMER_EMAIL_VALIDATION_CASE_SENSITIVE = false;
+    protected const IS_CUSTOMER_EMAIL_VALIDATION_CASE_SENSITIVE = true;
 
     /**
      * {@inheritDoc}
