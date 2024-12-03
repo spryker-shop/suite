@@ -171,15 +171,13 @@ services:
         version: '7.10'
     mail_catcher:
         engine: mailhog
-    webdriver:
-        engine: chromedriver
 
 docker:
     ssl:
         enabled: false
 
     debug:
-        enabled: false
+        enabled: true
         xdebug:
             enabled: false
 

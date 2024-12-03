@@ -27,6 +27,11 @@ class CustomerConfig extends SprykerCustomerConfig
     protected const PASSWORD_RESET_EXPIRATION_IS_ENABLED = true;
 
     /**
+     * @var bool
+     */
+    protected const IS_CUSTOMER_EMAIL_VALIDATION_CASE_SENSITIVE = true;
+
+    /**
      * {@inheritDoc}
      *
      * @return array<string>

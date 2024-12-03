@@ -61,6 +61,22 @@ groups:
     EU:
         region: EU
         applications:
+            merchant_portal_eu:
+                application: merchant-portal
+                endpoints:
+                    mp.de.spryker.local:
+                        entry-point: MerchantPortal
+                        store: DE
+                        primal: true
+                        services:
+                            session:
+                                namespace: 5
+                    mp.at.spryker.local:
+                        entry-point: MerchantPortal
+                        store: AT
+                        services:
+                            session:
+                                namespace: 6
             yves_eu:
                 application: yves
                 endpoints:
@@ -151,10 +167,6 @@ services:
     search:
         engine: elastic
         version: '7.10'
-    scheduler:
-        engine: jenkins
-        version: '2.442'
-        csrf-protection-enabled: true
     mail_catcher:
         engine: mailhog
     webdriver:
