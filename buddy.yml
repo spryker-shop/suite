@@ -1892,7 +1892,7 @@
             - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - 'sleep 60 && .ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-off/robot-api/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/ -recursive --exclude "rerun/*" --exclude "output.xml"'
+            - 'sleep 60 && .ci/snippet/REQUIRE aws s3 cp ./.robot/results s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-off/robot-api/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/ --recursive --exclude "rerun/*" --exclude "output.xml"'
             - 'echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-west-1&prefix=suite-nonsplit-robot-ui-ci/dms-on/PHP8.3MariaDBRobot/${BUDDY_EXECUTION_HASH}/log.html"'
             - 'echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
