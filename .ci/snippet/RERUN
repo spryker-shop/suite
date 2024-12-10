@@ -30,6 +30,7 @@ if [ "$failed" -gt "0" ]; then
         echo "------------- ↑↑↑ ${ANSI_GREY}${cmd[*]}${ANSI_RESET}"
 
         failed=$(cat /dev/shm/failed 2>/dev/null || echo 0)
+        echo "------------- ↑↑↑ ERROR: failed rerun ${failed}"
         if [ "$failed" -gt "0" ]; then
             exit 1
         fi
