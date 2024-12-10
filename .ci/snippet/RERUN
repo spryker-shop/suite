@@ -16,6 +16,7 @@ if [ "$failed" -gt "0" ]; then
     wait "${cmd_pid}"
     status="${?}"
 
+    echo "------------- ↑↑↑ ERROR: failed rerun status ${status}"
     echo -e "$((`cat /dev/shm/total` + 1))" > /dev/shm/total
 
     if [[ "${status}" -eq 0 ]]; then
