@@ -32,7 +32,7 @@ if [ "$failed" -gt "0" ]; then
 
         failed=$(cat /dev/shm/failed 2>/dev/null || echo 0)
         echo "------------- ↑↑↑ ERROR: failed rerun ${failed}"
-        if [ "$failed" -gt "0" ]; then
+        if [[ "${status}" -eq 0 ]]; then
             exit 1
         fi
     fi
