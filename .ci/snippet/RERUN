@@ -23,6 +23,7 @@ if [ "$failed" -gt "0" ]; then
         echo "0" > /dev/shm/failed
         echo "------------- ↑↑↑ OK"
         echo "[✓] ${ANSI_GREEN}${cmd[*]}${ANSI_RESET}" >> /dev/shm/report
+        exit 0;
     else
         echo "$((`cat /dev/shm/failed` + 1))" > /dev/shm/failed
 
@@ -30,11 +31,7 @@ if [ "$failed" -gt "0" ]; then
         echo "------------- ↑↑↑ ${ANSI_RED}ERROR: exited with ${status}${ANSI_RESET}"
         echo "------------- ↑↑↑ ${ANSI_GREY}${cmd[*]}${ANSI_RESET}"
 
-        failed=$(cat /dev/shm/failed 2>/dev/null || echo 0)
-        echo "------------- ↑↑↑ ERROR: failed rerun ${failed}"
-        if [[ "${status}" -eq 0 ]]; then
-            exit 1
-        fi
+        exit 1
     fi
 fi
 
