@@ -19,7 +19,7 @@ class CustomerConfig extends SprykerCustomerConfig
     /**
      * @var int
      */
-    protected const MAX_LENGTH_CUSTOMER_PASSWORD = 64;
+    protected const MAX_LENGTH_CUSTOMER_PASSWORD = 128;
 
     /**
      * @var bool
