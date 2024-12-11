@@ -5,8 +5,6 @@ set +e
 total=`cat /dev/shm/total`
 failed=`cat /dev/shm/failed`
 
-echo "Failed: ${failed}"
-
 if [ "${failed}" != "" ] && [ "${failed}" -gt "0" ]; then
     cmd=("${@}")
     "${cmd[@]}" &
