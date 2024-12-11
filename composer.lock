@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.334.2",
+            "version": "3.334.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "b19afc076bb1cc2617bdef76efd41587596109e7"
+                "reference": "6576a9fcfc6ae7c76aed3c6fa4c3864060f72d04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b19afc076bb1cc2617bdef76efd41587596109e7",
-                "reference": "b19afc076bb1cc2617bdef76efd41587596109e7",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6576a9fcfc6ae7c76aed3c6fa4c3864060f72d04",
+                "reference": "6576a9fcfc6ae7c76aed3c6fa4c3864060f72d04",
                 "shasum": ""
             },
             "require": {
@@ -338,9 +338,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.334.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.334.3"
             },
-            "time": "2024-12-09T19:30:23+00:00"
+            "time": "2024-12-10T19:41:55+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -3132,35 +3132,30 @@
         },
         {
             "name": "league/oauth2-client",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-client.git",
-                "reference": "160d6274b03562ebeb55ed18399281d8118b76c8"
+                "reference": "3d5cf8d0543731dfb725ab30e4d7289891991e13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/160d6274b03562ebeb55ed18399281d8118b76c8",
-                "reference": "160d6274b03562ebeb55ed18399281d8118b76c8",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/3d5cf8d0543731dfb725ab30e4d7289891991e13",
+                "reference": "3d5cf8d0543731dfb725ab30e4d7289891991e13",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "^6.0 || ^7.0",
-                "paragonie/random_compat": "^1 || ^2 || ^9.99",
-                "php": "^5.6 || ^7.0 || ^8.0"
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.5.8 || ^7.4.5",
+                "php": "^7.1 || >=8.0.0 <8.5.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.3.5",
-                "php-parallel-lint/php-parallel-lint": "^1.3.1",
-                "phpunit/phpunit": "^5.7 || ^6.0 || ^9.5",
-                "squizlabs/php_codesniffer": "^2.3 || ^3.0"
+                "php-parallel-lint/php-parallel-lint": "^1.4",
+                "phpunit/phpunit": "^7 || ^8 || ^9 || ^10 || ^11",
+                "squizlabs/php_codesniffer": "^3.11"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "League\\OAuth2\\Client\\": "src/"
@@ -3196,9 +3191,9 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/oauth2-client/issues",
-                "source": "https://github.com/thephpleague/oauth2-client/tree/2.7.0"
+                "source": "https://github.com/thephpleague/oauth2-client/tree/2.8.0"
             },
-            "time": "2023-04-16T18:19:15+00:00"
+            "time": "2024-12-11T05:05:52+00:00"
         },
         {
             "name": "league/oauth2-server",
@@ -21290,22 +21285,22 @@
         },
         {
             "name": "spryker/cart-reorder",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cart-reorder.git",
-                "reference": "8e4d3a2dda6d5f5bb8564ae9c4a5fedc065048cb"
+                "reference": "da49f0ba948b48a0d89dbd49f5cb475a7d986cb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cart-reorder/zipball/8e4d3a2dda6d5f5bb8564ae9c4a5fedc065048cb",
-                "reference": "8e4d3a2dda6d5f5bb8564ae9c4a5fedc065048cb",
+                "url": "https://api.github.com/repos/spryker/cart-reorder/zipball/da49f0ba948b48a0d89dbd49f5cb475a7d986cb8",
+                "reference": "da49f0ba948b48a0d89dbd49f5cb475a7d986cb8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
                 "spryker/cart": "^7.0.0",
-                "spryker/cart-reorder-extension": "^1.1.0",
+                "spryker/cart-reorder-extension": "^1.2.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/quote": "^2.0.0",
                 "spryker/sales": "^11.0.0",
@@ -21338,22 +21333,22 @@
             ],
             "description": "CartReorder module",
             "support": {
-                "source": "https://github.com/spryker/cart-reorder/tree/0.1.1"
+                "source": "https://github.com/spryker/cart-reorder/tree/0.1.2"
             },
-            "time": "2024-11-19T14:32:31+00:00"
+            "time": "2024-12-11T06:44:00+00:00"
         },
         {
             "name": "spryker/cart-reorder-extension",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cart-reorder-extension.git",
-                "reference": "1546504ffca1200a6d1022e312f85465a5da8d7d"
+                "reference": "ce1821965dfa115f47caeafeab36dd795de06b64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cart-reorder-extension/zipball/1546504ffca1200a6d1022e312f85465a5da8d7d",
-                "reference": "1546504ffca1200a6d1022e312f85465a5da8d7d",
+                "url": "https://api.github.com/repos/spryker/cart-reorder-extension/zipball/ce1821965dfa115f47caeafeab36dd795de06b64",
+                "reference": "ce1821965dfa115f47caeafeab36dd795de06b64",
                 "shasum": ""
             },
             "require": {
@@ -21380,9 +21375,9 @@
             ],
             "description": "CartReorderExtension module",
             "support": {
-                "source": "https://github.com/spryker/cart-reorder-extension/tree/1.1.0"
+                "source": "https://github.com/spryker/cart-reorder-extension/tree/1.2.0"
             },
-            "time": "2024-11-19T14:32:31+00:00"
+            "time": "2024-12-11T06:44:00+00:00"
         },
         {
             "name": "spryker/cart-reorder-rest-api",
@@ -49758,16 +49753,16 @@
         },
         {
             "name": "spryker/product-bundle",
-            "version": "7.21.1",
+            "version": "7.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-bundle.git",
-                "reference": "5b89cd501eda323d3c5662ad2d6b9ee71cd4fcb1"
+                "reference": "d05b3c4ed8360024a90369df07f08d0d935e2a53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-bundle/zipball/5b89cd501eda323d3c5662ad2d6b9ee71cd4fcb1",
-                "reference": "5b89cd501eda323d3c5662ad2d6b9ee71cd4fcb1",
+                "url": "https://api.github.com/repos/spryker/product-bundle/zipball/d05b3c4ed8360024a90369df07f08d0d935e2a53",
+                "reference": "d05b3c4ed8360024a90369df07f08d0d935e2a53",
                 "shasum": ""
             },
             "require": {
@@ -49775,7 +49770,7 @@
                 "spryker/availability": "^9.8.0",
                 "spryker/calculation-extension": "^1.1.0",
                 "spryker/cart-extension": "^1.0.0 || ^2.0.0 || ^4.0.0",
-                "spryker/cart-reorder-extension": "^1.0.0",
+                "spryker/cart-reorder-extension": "^1.2.0",
                 "spryker/decimal-object": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0 || ^4.0.0",
@@ -49834,9 +49829,9 @@
             ],
             "description": "ProductBundle module",
             "support": {
-                "source": "https://github.com/spryker/product-bundle/tree/7.21.1"
+                "source": "https://github.com/spryker/product-bundle/tree/7.22.0"
             },
-            "time": "2024-11-18T13:28:47+00:00"
+            "time": "2024-12-11T06:44:00+00:00"
         },
         {
             "name": "spryker/product-bundle-carts-rest-api",
