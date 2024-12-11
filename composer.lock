@@ -18419,7 +18419,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/cypress-tests.git",
-                "reference": "96d0f4b39a17fee2f78e7000591a49bc258b8ac6"
+                "reference": "b8e104ad74bc19ea752cb6dde252c70dd6235836"
             },
             "default-branch": true,
             "type": "library",
@@ -18427,7 +18427,7 @@
                 "MIT"
             ],
             "description": "This repository is dedicated to housing an extensive collection of UI end-to-end tests, meticulously crafted using Cypress for Spryker applications. These tests are designed to thoroughly evaluate the user interface, ensuring that all interactions and visual elements function as intended in real-world scenarios. By leveraging Cypress's advanced browser automation capabilities, this suite provides an efficient and effective means of validating the user experience, confirming the seamless operation and aesthetic integrity of Spryker's front-end components. Our commitment to rigorous UI testing helps maintain the high standard of quality and reliability that Spryker users expect.",
-            "time": "2024-12-10T15:31:44+00:00"
+            "time": "2024-12-11T09:23:05+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -19240,36 +19240,36 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "pdepend/pdepend": 20,
+        "spryker/spryker": 20,
+        "spryker/spryker-shop": 20,
+        "spryker/install": 20,
+        "spryker/rabbit-mq": 20,
+        "spryker/event-behavior": 20,
+        "spryker/synchronization-behavior": 20,
+        "spryker/uuid-behavior": 20,
+        "spryker/silexphp": 20,
+        "spryker/checksum-generator": 20,
         "spryker-eco/loggly": 20,
         "spryker-eco/new-relic": 20,
-        "spryker-sdk/benchmark": 20,
+        "spryker/composer-merge-plugin": 20,
+        "spryker/tax-app-vertex": 20,
+        "spryker/architecture-sniffer": 20,
+        "spryker/development-core": 20,
+        "spryker/code-sniffer": 20,
+        "spryker/git-hook": 20,
+        "spryker/robotframework-suite-tests": 20,
+        "pdepend/pdepend": 20,
         "spryker-sdk/codeception-phantoman": 20,
         "spryker-sdk/composer-constrainer": 20,
         "spryker-sdk/composer-replace": 20,
-        "spryker-sdk/evaluator": 20,
-        "spryker-sdk/load-testing": 20,
         "spryker-sdk/spryk": 20,
-        "spryker/architecture-sniffer": 20,
-        "spryker/checksum-generator": 20,
-        "spryker/code-sniffer": 20,
-        "spryker/commerce-k6-performance-tests": 20,
-        "spryker/composer-merge-plugin": 20,
-        "spryker/cypress-tests": 20,
-        "spryker/development-core": 20,
+        "spryker-sdk/benchmark": 20,
         "spryker/docker-chromedriver": 20,
-        "spryker/event-behavior": 20,
-        "spryker/git-hook": 20,
-        "spryker/install": 20,
+        "spryker-sdk/load-testing": 20,
+        "spryker-sdk/evaluator": 20,
         "spryker/profiler": 20,
-        "spryker/rabbit-mq": 20,
-        "spryker/robotframework-suite-tests": 20,
-        "spryker/silexphp": 20,
-        "spryker/spryker": 20,
-        "spryker/spryker-shop": 20,
-        "spryker/synchronization-behavior": 20,
-        "spryker/tax-app-vertex": 20,
-        "spryker/uuid-behavior": 20
+        "spryker/commerce-k6-performance-tests": 20,
+        "spryker/cypress-tests": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -19288,7 +19288,7 @@
         "ext-readline": "*",
         "ext-redis": "*"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.2.0"
     },
