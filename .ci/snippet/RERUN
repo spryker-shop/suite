@@ -23,16 +23,11 @@ if [ "$failed" -gt "0" ]; then
         echo "0" > /dev/shm/failed
         echo "------------- ↑↑↑ OK"
         echo "[✓] ${ANSI_GREEN}${cmd[*]}${ANSI_RESET}" >> /dev/shm/report
-        exit 0;
     else
         echo "$((`cat /dev/shm/failed` + 1))" > /dev/shm/failed
 
         echo "[x] ${ANSI_RED}${cmd[*]}${ANSI_RESET}" >> /dev/shm/report
         echo "------------- ↑↑↑ ${ANSI_RED}ERROR: exited with ${status}${ANSI_RESET}"
         echo "------------- ↑↑↑ ${ANSI_GREY}${cmd[*]}${ANSI_RESET}"
-
-        exit 1
     fi
 fi
-
-exit 0
