@@ -31,4 +31,5 @@ if [ "$failed" -gt "0" ]; then
         echo "------------- ↑↑↑ ${ANSI_GREY}${cmd[*]}${ANSI_RESET}"
     fi
 
+    exit "${status}"
 fi
