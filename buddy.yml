@@ -1893,7 +1893,7 @@
                   .ci/snippet/REQUIRE script -q -e -c "docker/sdk exec robot-framework rebot -d results --merge results/output.xml results/rerun/rerun.xml" &&
                   .ci/snippet/REQUIRE aws s3 cp ./.robot/results/log.html s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-on/robot-ui/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/group1/log.html &&
                   echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-ui/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDB/group1/log.html" &&
-                  echo "You must have VPN access to AWS (Spryker-Internal account)"
+                  echo "You must have VPN access to AWS \(Spryker-Internal account\)"
                 fi'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
