@@ -1,5 +1,10 @@
 # We remove packages as soon as possible again, the goal is to keep this list minimal/empty.
 packages:
+    league/oauth2-client:
+        reason: 'https://spryker.atlassian.net/browse/ACP-4634 connection to ACP fails without this lock.'
+        constraint: ~2.7.0
+        original: ^2.6.0
+        date: 2024-12-11
 packages-dev:
     codeception/codeception:
         reason: 'The UI tests are failing with version higher than > 5.0.12.'
