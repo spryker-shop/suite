@@ -15,4 +15,14 @@ class SecurityMerchantPortalGuiConfig extends SprykerSecurityMerchantPortalGuiCo
      * @var bool
      */
     protected const MERCHANT_PORTAL_SECURITY_BLOCKER_ENABLED = true;
+
+    /**
+     * @var string
+     */
+    protected const MERCHANT_PORTAL_ROUTE_PATTERN = '^/(.+)-merchant-portal-gui|_profiler/';
+
+    /**
+     * @var string
+     */
+    protected const IGNORABLE_PATH_PATTERN = '^/(security-merchant-portal-gui|_profiler)';
 }
