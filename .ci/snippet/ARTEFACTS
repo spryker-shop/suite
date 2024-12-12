@@ -11,4 +11,6 @@ if [ "${failed}" != "" ] && [ "${failed}" -gt "0" ]; then
     cmd_pid="${!}"
     wait "${cmd_pid}"
     status="${?}"
+else
+    echo "Action is ignored because there are no failed tests."
 fi
