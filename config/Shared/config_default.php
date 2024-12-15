@@ -338,6 +338,12 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'type' => 'allow',
     ],
     [
+        'bundle' => '_profiler',
+        'controller' => '*',
+        'action' => '*',
+        'type' => 'allow',
+    ],
+    [
         'bundle' => 'api',
         'controller' => 'rest',
         'action' => '*',

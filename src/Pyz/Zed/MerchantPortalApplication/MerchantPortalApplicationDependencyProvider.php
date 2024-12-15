@@ -24,6 +24,7 @@ use Spryker\Zed\Session\Communication\Plugin\Application\SessionApplicationPlugi
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\Validator\Communication\Plugin\Application\ValidatorApplicationPlugin;
+use Spryker\Zed\WebProfiler\Communication\Plugin\Application\WebProfilerApplicationPlugin;
 use Spryker\Zed\ZedUi\Communication\Plugin\Application\ZedUiApplicationPlugin;
 
 class MerchantPortalApplicationDependencyProvider extends SprykerMerchantPortalApplicationDependencyProvider
@@ -33,7 +34,7 @@ class MerchantPortalApplicationDependencyProvider extends SprykerMerchantPortalA
      */
     protected function getMerchantPortalApplicationPlugins(): array
     {
-        return [
+        $applicationPlugins = [
             new SessionApplicationPlugin(),
             new TwigApplicationPlugin(),
             new EventDispatcherApplicationPlugin(),
@@ -52,5 +53,11 @@ class MerchantPortalApplicationDependencyProvider extends SprykerMerchantPortalA
             new AclEntityApplicationPlugin(),
             new MerchantPortalEventDispatcherApplicationPlugin(),
         ];
+
+        if (class_exists(WebProfilerApplicationPlugin::class)) {
+            $applicationPlugins[] = new WebProfilerApplicationPlugin();
+        }
+
+        return $applicationPlugins;
     }
 }
