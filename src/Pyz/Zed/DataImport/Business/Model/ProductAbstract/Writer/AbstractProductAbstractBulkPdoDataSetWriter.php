@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
@@ -109,16 +111,20 @@ abstract class AbstractProductAbstractBulkPdoDataSetWriter implements DataSetWri
      */
     public function write(DataSetInterface $dataSet): void
     {
-        if (!$this->isSkuAlreadyCollected($dataSet)) {
-            $this->prepareProductAbstractionCollection($dataSet);
-            $this->prepareProductAbstractLocalizedAttributesCollection($dataSet);
-            $this->prepareProductCategoryCollection($dataSet);
-            $this->prepareProductUrlCollection($dataSet);
-
-            if (count(static::$productAbstractCollection) >= ProductAbstractHydratorStep::BULK_SIZE) {
-                $this->flush();
-            }
+        if ($this->isSkuAlreadyCollected($dataSet)) {
+            return;
         }
+
+        $this->prepareProductAbstractionCollection($dataSet);
+        $this->prepareProductAbstractLocalizedAttributesCollection($dataSet);
+        $this->prepareProductCategoryCollection($dataSet);
+        $this->prepareProductUrlCollection($dataSet);
+
+        if (count(static::$productAbstractCollection) < ProductAbstractHydratorStep::BULK_SIZE) {
+            return;
+        }
+
+        $this->flush();
     }
 
     /**

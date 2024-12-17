@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql;
 
 class ProductConcreteSql implements ProductConcreteSqlInterface
@@ -14,7 +16,7 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
      */
     public function createConcreteProductSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.discount,
       input.warehouses,
@@ -77,8 +79,6 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
     ) RETURNING id_product,sku
   )
 SELECT updated.id_product,sku FROM updated UNION ALL SELECT inserted.id_product,sku FROM inserted;";
-
-        return $sql;
     }
 
     /**
@@ -86,7 +86,7 @@ SELECT updated.id_product,sku FROM updated UNION ALL SELECT inserted.id_product,
      */
     public function createConcreteProductLocalizedAttributesSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.sku,
       input.name,
@@ -149,8 +149,6 @@ SELECT updated.id_product,sku FROM updated UNION ALL SELECT inserted.id_product,
     ) RETURNING id_product_attributes
   )
 SELECT updated.id_product_attributes FROM updated UNION ALL SELECT inserted.id_product_attributes FROM inserted;";
-
-        return $sql;
     }
 
     /**
@@ -158,7 +156,7 @@ SELECT updated.id_product_attributes FROM updated UNION ALL SELECT inserted.id_p
      */
     public function createConcreteProductSearchSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.id_locale,
       input.sku,
@@ -201,8 +199,6 @@ SELECT updated.id_product_attributes FROM updated UNION ALL SELECT inserted.id_p
     ) RETURNING id_product_search
   )
 SELECT updated.id_product_search FROM updated UNION ALL SELECT inserted.id_product_search FROM inserted;";
-
-        return $sql;
     }
 
     /**
@@ -210,7 +206,7 @@ SELECT updated.id_product_search FROM updated UNION ALL SELECT inserted.id_produ
      */
     public function createConcreteProductBundleSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.sku,
       input.bundled_product_sku,
@@ -260,7 +256,5 @@ SELECT updated.id_product_search FROM updated UNION ALL SELECT inserted.id_produ
     ) RETURNING id_product_bundle
   )
 SELECT updated.id_product_bundle FROM updated UNION ALL SELECT inserted.id_product_bundle FROM inserted;";
-
-        return $sql;
     }
 }

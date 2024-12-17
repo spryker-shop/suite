@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 use Spryker\Shared\Config\Application\Environment;
 
 define('APPLICATION', 'ZED');

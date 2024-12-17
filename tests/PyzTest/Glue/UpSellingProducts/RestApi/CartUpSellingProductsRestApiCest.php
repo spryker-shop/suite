@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Glue\UpSellingProducts\RestApi;
 
 use Codeception\Util\HttpCode;
@@ -55,7 +57,6 @@ class CartUpSellingProductsRestApiCest
     {
         // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
-        $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
 
         $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
         $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());

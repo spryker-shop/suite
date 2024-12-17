@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Yves\Console;
 
 use Spryker\Yves\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
@@ -13,6 +15,8 @@ use Spryker\Yves\Monitoring\Plugin\Console\MonitoringConsolePlugin;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Yves\Router\Plugin\Console\RouterCacheWarmUpConsole;
 use Spryker\Yves\Router\Plugin\Console\RouterDebugYvesConsole;
+
+// phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
@@ -23,12 +27,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
      */
     protected function getConsoleCommands(Container $container): array
     {
-        $consoleCommands = [
+        return [
             new RouterDebugYvesConsole(),
             new RouterCacheWarmUpConsole(),
         ];
-
-        return $consoleCommands;
     }
 
     /**

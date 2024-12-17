@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql;
 
 class ProductAbstractStoreSql implements ProductAbstractStoreSqlInterface
@@ -14,7 +16,7 @@ class ProductAbstractStoreSql implements ProductAbstractStoreSqlInterface
      */
     public function createAbstractProductStoreSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.abstract_sku,
       input.store_name,
@@ -42,7 +44,5 @@ class ProductAbstractStoreSql implements ProductAbstractStoreSqlInterface
     ) ON CONFLICT DO NOTHING
 )
 SELECT 1;";
-
-        return $sql;
     }
 }

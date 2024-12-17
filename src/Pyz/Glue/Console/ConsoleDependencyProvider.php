@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Glue\Console;
 
 use Spryker\Glue\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
@@ -14,6 +16,8 @@ use Spryker\Glue\GlueApplication\Plugin\Console\RouterCacheWarmUpConsole;
 use Spryker\Glue\GlueApplication\Plugin\Console\RouterDebugGlueApplicationConsole;
 use Spryker\Glue\Kernel\Container;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
+
+// phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {

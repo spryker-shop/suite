@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Shared\Testify\Helper;
 
 use Codeception\Exception\ModuleConfigException;
@@ -28,6 +30,7 @@ class YvesBootstrap extends Framework
         $this->loadApplication();
     }
 
+    // phpcs:disable
     /**
      * @param array $settings
      *
@@ -37,6 +40,7 @@ class YvesBootstrap extends Framework
     {
         $this->client = new HttpKernelBrowser($this->yvesBootstrap->boot());
     }
+    // phpcs:enable
 
     /**
      * @throws \Codeception\Exception\ModuleConfigException

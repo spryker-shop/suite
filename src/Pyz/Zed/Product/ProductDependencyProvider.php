@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\Product;
 
 use Spryker\Zed\Kernel\Container;
@@ -75,7 +77,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      *
      * @return array<\Spryker\Zed\ProductExtension\Dependency\Plugin\ProductAbstractExpanderPluginInterface>
      */
-    protected function getProductAbstractExpanderPlugins(Container $container): array
+    protected function getProductAbstractExpanderPlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new ProductImageProductAbstractExpanderPlugin(),
@@ -89,7 +91,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      *
      * @return array<\Spryker\Zed\Product\Dependency\Plugin\ProductAbstractPluginUpdateInterface>
      */
-    protected function getProductAbstractBeforeUpdatePlugins(Container $container): array
+    protected function getProductAbstractBeforeUpdatePlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [];
     }
@@ -99,7 +101,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      *
      * @return array<\Spryker\Zed\Product\Dependency\Plugin\ProductAbstractPluginUpdateInterface>
      */
-    protected function getProductAbstractAfterUpdatePlugins(Container $container): array
+    protected function getProductAbstractAfterUpdatePlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new ImageSetProductAbstractAfterUpdatePlugin(),
@@ -113,7 +115,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      *
      * @return array<\Spryker\Zed\ProductExtension\Dependency\Plugin\ProductConcreteCreatePluginInterface>
      */
-    protected function getProductConcreteAfterCreatePlugins(Container $container): array
+    protected function getProductConcreteAfterCreatePlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new ImageSetProductConcreteAfterCreatePlugin(),
@@ -131,7 +133,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      *
      * @return array<\Spryker\Zed\Product\Dependency\Plugin\ProductConcretePluginUpdateInterface>
      */
-    protected function getProductConcreteBeforeUpdatePlugins(Container $container): array
+    protected function getProductConcreteBeforeUpdatePlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new ProductAlternativeGuiProductConcretePluginUpdate(), #ProductAlternativeFeature
@@ -143,7 +145,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      *
      * @return array<\Spryker\Zed\Product\Dependency\Plugin\ProductConcretePluginUpdateInterface>
      */
-    protected function getProductConcreteAfterUpdatePlugins(Container $container): array
+    protected function getProductConcreteAfterUpdatePlugins(Container $container): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         return [
             new ImageSetProductConcreteAfterUpdatePlugin(),

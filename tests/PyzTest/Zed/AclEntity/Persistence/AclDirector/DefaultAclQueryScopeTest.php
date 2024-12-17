@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\AclEntity\Persistence\AclDirector;
 
 use Codeception\Test\Unit;
@@ -485,8 +487,7 @@ class DefaultAclQueryScopeTest extends Unit
         // Arrange
         $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
 
-        /** @var \Spryker\Zed\AclEntity\AclEntityConfig $config */
-        $config = $this->tester->mockConfigMethod(
+        $this->tester->mockConfigMethod(
             'getDefaultGlobalOperationMask',
             AclEntityConstants::OPERATION_MASK_READ | AclEntityConstants::OPERATION_MASK_DELETE,
         );
@@ -541,8 +542,7 @@ class DefaultAclQueryScopeTest extends Unit
         $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
         $productTransfer = $this->tester->haveProduct();
 
-        /** @var \Spryker\Zed\AclEntity\AclEntityConfig $config */
-        $config = $this->tester->mockConfigMethod(
+        $this->tester->mockConfigMethod(
             'getDefaultGlobalOperationMask',
             AclEntityConstants::OPERATION_MASK_CREATE | AclEntityConstants::OPERATION_MASK_READ,
         );

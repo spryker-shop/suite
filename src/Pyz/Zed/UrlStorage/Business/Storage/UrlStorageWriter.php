@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\UrlStorage\Business\Storage;
 
 use Generated\Shared\Transfer\QueueSendMessageTransfer;
@@ -105,9 +107,11 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
 
         $this->write();
 
-        if ($this->synchronizedMessageCollection !== []) {
-            $this->queueClient->sendMessages('sync.storage.url', $this->synchronizedMessageCollection);
+        if ($this->synchronizedMessageCollection === []) {
+            return;
         }
+
+        $this->queueClient->sendMessages('sync.storage.url', $this->synchronizedMessageCollection);
     }
 
     /**
@@ -116,7 +120,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      *
      * @return void
      */
-    protected function storeDataSet(UrlStorageTransfer $urlStorageTransfer, ?SpyUrlStorage $urlStorageEntity = null): void
+    protected function storeDataSet(UrlStorageTransfer $urlStorageTransfer, ?SpyUrlStorage $urlStorageEntity = null): void // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $resource = $this->findResourceArguments($urlStorageTransfer->toArray());
 
@@ -146,9 +150,11 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
         $synchronizedData = $this->buildSynchronizedData($urlStorage, 'url', 'url');
         $this->synchronizedDataCollection[] = $synchronizedData;
 
-        if ($this->isSendingToQueue) {
-            $this->synchronizedMessageCollection[] = $this->buildSynchronizedMessage($synchronizedData, 'url');
+        if (!$this->isSendingToQueue) {
+            return;
         }
+
+        $this->synchronizedMessageCollection[] = $this->buildSynchronizedMessage($synchronizedData, 'url');
     }
 
     /**
