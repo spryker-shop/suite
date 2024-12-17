@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\Discount;
 
 use DateTime;
@@ -169,7 +171,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return string
      */
-    protected function processQueryString($queryString): string
+    protected function processQueryString(string $queryString): string
     {
         $queryString = $this->convertShipmentCarrierNameToId($queryString);
         $queryString = $this->convertShipmentMethodNameToId($queryString);
@@ -182,7 +184,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return string
      */
-    protected function convertShipmentMethodNameToId($queryString): string
+    protected function convertShipmentMethodNameToId(string $queryString): string
     {
         $shipmentConditionValues = $this->extractConditionValuesWithShipmentCarrierMethodNames($queryString);
 
@@ -199,7 +201,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return string
      */
-    protected function convertShipmentCarrierNameToId($queryString): string
+    protected function convertShipmentCarrierNameToId(string $queryString): string
     {
         $shipmentCarrierNames = $this->extractConditionValueWithShipmentCarrierNames($queryString);
 
@@ -219,7 +221,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return array<string>
      */
-    protected function extractConditionValuesWithShipmentCarrierMethodNames($queryString): array
+    protected function extractConditionValuesWithShipmentCarrierMethodNames(string $queryString): array
     {
         $shipmentMethodNames = [];
         preg_match_all('/shipment-method = "([\w \(\)]*)"/', $queryString, $shipmentMethodNames);
@@ -233,7 +235,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return array<string>
      */
-    protected function extractConditionValueWithShipmentCarrierNames($queryString): array
+    protected function extractConditionValueWithShipmentCarrierNames(string $queryString): array
     {
         $shipmentCarrierNames = [];
         preg_match_all('/shipment-carrier = "([\w \(\)]*)"/', $queryString, $shipmentCarrierNames);
@@ -247,7 +249,7 @@ class DiscountWriterStep implements DataImportStepInterface
      *
      * @return \Orm\Zed\Shipment\Persistence\SpyShipmentMethod
      */
-    protected function findShipmentMethodByConditionValue($conditionValue): SpyShipmentMethod
+    protected function findShipmentMethodByConditionValue(string $conditionValue): SpyShipmentMethod
     {
         $shipmentCarrierNameMatches = [];
         preg_match_all('/([\w ]+)\(([\w ]+)\)/', $conditionValue, $shipmentCarrierNameMatches);
@@ -255,14 +257,12 @@ class DiscountWriterStep implements DataImportStepInterface
         $shipmentMethodName = empty($shipmentCarrierNameMatches[1][0]) ? $conditionValue : trim($shipmentCarrierNameMatches[1][0]);
         $shipmentCarrierName = empty($shipmentCarrierNameMatches[2][0]) ? '' : trim($shipmentCarrierNameMatches[2][0]);
 
-        $spyShipmentMethod = SpyShipmentMethodQuery::create()
+        return SpyShipmentMethodQuery::create()
             ->filterByName($shipmentMethodName)
             ->useShipmentCarrierQuery()
             ->filterByName($shipmentCarrierName)
             ->endUse()
             ->findOne();
-
-        return $spyShipmentMethod;
     }
 
     /**

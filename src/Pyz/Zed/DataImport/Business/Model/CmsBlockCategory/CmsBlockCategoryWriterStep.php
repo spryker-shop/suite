@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\CmsBlockCategory;
 
 use Orm\Zed\Category\Persistence\SpyCategoryQuery;
@@ -79,11 +81,13 @@ class CmsBlockCategoryWriterStep extends PublishAwareStep implements DataImportS
             ->filterByFkCmsBlockCategoryPosition($cmsBlockCategoryPositionEntity->getIdCmsBlockCategoryPosition())
             ->findOneOrCreate();
 
-        if ($cmsBlockCategoryConnectorEntity->isNew() || $cmsBlockCategoryConnectorEntity->isModified()) {
-            $cmsBlockCategoryConnectorEntity->save();
-
-            $this->addPublishEvents(CmsBlockCategoryConnectorEvents::CMS_BLOCK_CATEGORY_CONNECTOR_PUBLISH, $cmsBlockCategoryConnectorEntity->getFkCategory());
+        if (!$cmsBlockCategoryConnectorEntity->isNew() && !$cmsBlockCategoryConnectorEntity->isModified()) {
+            return;
         }
+
+        $cmsBlockCategoryConnectorEntity->save();
+
+        $this->addPublishEvents(CmsBlockCategoryConnectorEvents::CMS_BLOCK_CATEGORY_CONNECTOR_PUBLISH, $cmsBlockCategoryConnectorEntity->getFkCategory());
     }
 
     /**

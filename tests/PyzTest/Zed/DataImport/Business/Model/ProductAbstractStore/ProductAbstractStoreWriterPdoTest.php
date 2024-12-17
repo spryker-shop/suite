@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\DataImport\Business\Model\ProductAbstractStore;
 
 use Spryker\Zed\Product\Business\ProductFacadeInterface;
@@ -37,9 +39,11 @@ class ProductAbstractStoreWriterPdoTest extends AbstractProductAbstractStoreWrit
     {
         //these SKUs data comes from import/ProductAbstractStore/product_abstract_store.csv
         foreach ($this->testSkus as $sku) {
-            if (!$this->getProductFacade()->findProductAbstractIdBySku($sku)) {
-                $this->tester->haveProductAbstract(['sku' => $sku]);
+            if ($this->getProductFacade()->findProductAbstractIdBySku($sku)) {
+                continue;
             }
+
+            $this->tester->haveProductAbstract(['sku' => $sku]);
         }
         $this->markTestSkippedOnDatabaseConstraintsMismatch();
 

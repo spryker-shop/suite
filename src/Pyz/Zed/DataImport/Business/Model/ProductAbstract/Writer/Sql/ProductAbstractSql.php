@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\Sql;
 
 class ProductAbstractSql implements ProductAbstractSqlInterface
@@ -14,7 +16,7 @@ class ProductAbstractSql implements ProductAbstractSqlInterface
      */
     public function createAbstractProductSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.abstract_sku,
       input.attributes,
@@ -75,8 +77,6 @@ class ProductAbstractSql implements ProductAbstractSqlInterface
   ) RETURNING id_product_abstract,sku
 )
 SELECT updated.id_product_abstract,sku FROM updated UNION ALL SELECT inserted.id_product_abstract,sku FROM inserted;";
-
-        return $sql;
     }
 
     /**
@@ -84,7 +84,7 @@ SELECT updated.id_product_abstract,sku FROM updated UNION ALL SELECT inserted.id
      */
     public function createAbstractProductLocalizedAttributesSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.abstract_sku,
       input.name,
@@ -150,8 +150,6 @@ SELECT updated.id_product_abstract,sku FROM updated UNION ALL SELECT inserted.id
     )
   )
 SELECT 1;";
-
-        return $sql;
     }
 
     /**
@@ -159,7 +157,7 @@ SELECT 1;";
      */
     public function createAbstractProductCategoriesSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
         input.abstract_sku,
         input.productOrder,
@@ -201,8 +199,6 @@ SELECT 1;";
         ) RETURNING fk_product_abstract as id_product_abstract
       )
 SELECT updated.id_product_abstract FROM updated UNION ALL SELECT inserted.id_product_abstract FROM inserted";
-
-        return $sql;
     }
 
     /**
@@ -210,7 +206,7 @@ SELECT updated.id_product_abstract FROM updated UNION ALL SELECT inserted.id_pro
      */
     public function createAbstractProductUrlsSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.abstract_sku,
       input.idLocale,
@@ -252,7 +248,5 @@ SELECT updated.id_product_abstract FROM updated UNION ALL SELECT inserted.id_pro
 )
 SELECT updated.id_url,id_product_abstract FROM updated UNION ALL SELECT inserted.id_url,id_product_abstract FROM inserted;
 ";
-
-        return $sql;
     }
 }

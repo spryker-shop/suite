@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\ZedNavigation;
 
 use Spryker\Zed\ZedNavigation\ZedNavigationConfig as SprykerZedNavigationConfig;
@@ -45,7 +47,7 @@ class ZedNavigationConfig extends SprykerZedNavigationConfig
      *
      * @return array<string>
      */
-    private function addSprykerFilePath($paths): array
+    private function addSprykerFilePath(array $paths): array
     {
         $paths[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/*/Zed/*/Communication';
 

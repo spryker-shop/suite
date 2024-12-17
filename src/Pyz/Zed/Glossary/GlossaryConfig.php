@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\Glossary;
 
 use Spryker\Zed\Glossary\GlossaryConfig as SprykerGlossaryConfig;
@@ -29,7 +31,7 @@ class GlossaryConfig extends SprykerGlossaryConfig
      *
      * @return array<string>
      */
-    private function addSprykerFilePath($paths): array
+    private function addSprykerFilePath(array $paths): array
     {
         $paths = array_merge(
             $paths,

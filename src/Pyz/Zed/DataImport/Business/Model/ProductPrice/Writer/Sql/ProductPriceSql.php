@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql;
 
 class ProductPriceSql implements ProductPriceSqlInterface
@@ -18,7 +20,7 @@ class ProductPriceSql implements ProductPriceSqlInterface
      */
     public function createPriceProductSQL(string $idProduct, string $productTable, string $productFkKey): string
     {
-        $sql = sprintf(
+        return sprintf(
             "WITH records AS (
     SELECT
       input.%1\$s,
@@ -58,8 +60,6 @@ class ProductPriceSql implements ProductPriceSqlInterface
             $productTable,
             $productFkKey,
         );
-
-        return $sql;
     }
 
     /**
@@ -70,7 +70,7 @@ class ProductPriceSql implements ProductPriceSqlInterface
      */
     public function selectProductPriceSQL(string $idProduct, string $productFkKey): string
     {
-        $sql = sprintf("WITH records AS (
+        return sprintf("WITH records AS (
     SELECT
       input.%1\$s,
       input.id_price_type,
@@ -84,8 +84,6 @@ class ProductPriceSql implements ProductPriceSqlInterface
                  ) input
       LEFT JOIN spy_price_product ON (spy_price_product.fk_price_type = input.id_price_type AND spy_price_product.%2\$s = input.%1\$s)
 ) SELECT records.%1\$s, records.id_price_product FROM records ORDER BY records.sort_key;", $idProduct, $productFkKey);
-
-        return $sql;
     }
 
     /**
@@ -93,7 +91,7 @@ class ProductPriceSql implements ProductPriceSqlInterface
      */
     public function createPriceTypeSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.name,
       input.price_mode_configuration,
@@ -129,8 +127,6 @@ class ProductPriceSql implements ProductPriceSqlInterface
         WHERE price_type_id IS NULL
       ) ON CONFLICT DO NOTHING
 ) SELECT 1";
-
-        return $sql;
     }
 
     /**
@@ -142,7 +138,7 @@ class ProductPriceSql implements ProductPriceSqlInterface
      */
     public function createPriceProductStoreSql(string $tableName, string $foreignKey, string $idProduct): string
     {
-        $sql = sprintf("WITH records AS (
+        return sprintf("WITH records AS (
        SELECT
        input.id_store,
        input.id_currency,
@@ -208,8 +204,6 @@ class ProductPriceSql implements ProductPriceSqlInterface
       ) RETURNING id_price_product_store
   )
 SELECT updated.id_price_product_store FROM updated UNION ALL SELECT inserted.id_price_product_store FROM inserted;", $tableName, $foreignKey, $idProduct);
-
-        return $sql;
     }
 
     /**
@@ -217,7 +211,7 @@ SELECT updated.id_price_product_store FROM updated UNION ALL SELECT inserted.id_
      */
     public function createPriceProductDefaultSql(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.id_price_product_store,
       spy_price_product_default.id_price_product_default as price_product_default_id
@@ -247,8 +241,6 @@ SELECT updated.id_price_product_store FROM updated UNION ALL SELECT inserted.id_
         ) ON CONFLICT DO NOTHING
   )
 SELECT 1;";
-
-        return $sql;
     }
 
     /**
@@ -256,7 +248,7 @@ SELECT 1;";
      */
     public function convertStoreNameToId(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.sortKey,
       input.store,
@@ -268,8 +260,6 @@ SELECT 1;";
          ) input
         LEFT JOIN spy_store ON spy_store.name = input.store
 ) SELECT records.id_store FROM records ORDER BY records.sortKey;";
-
-        return $sql;
     }
 
     /**
@@ -277,7 +267,7 @@ SELECT 1;";
      */
     public function convertCurrencyNameToId(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.sortKey,
       input.currency,
@@ -289,8 +279,6 @@ SELECT 1;";
          ) input
         LEFT JOIN spy_currency ON spy_currency.code = input.currency
 ) SELECT records.id_currency FROM records ORDER BY records.sortKey;";
-
-        return $sql;
     }
 
     /**
@@ -301,7 +289,7 @@ SELECT 1;";
      */
     public function convertProductSkuToId(string $tableName, string $fieldName): string
     {
-        $sql = sprintf("WITH records AS (
+        return sprintf("WITH records AS (
     SELECT
       input.sortKey,
       input.sku,
@@ -313,8 +301,6 @@ SELECT 1;";
          ) input
         LEFT JOIN %1\$s ON %1\$s.sku = input.sku
 ) SELECT records.%2\$s FROM records ORDER BY records.sortKey;", $tableName, $fieldName);
-
-        return $sql;
     }
 
     /**
@@ -322,7 +308,7 @@ SELECT 1;";
      */
     public function collectPriceTypes(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.price_type,
       input.sortKey,
@@ -334,7 +320,5 @@ SELECT 1;";
          ) input
         LEFT JOIN spy_price_type ON spy_price_type.name = input.price_type
 ) SELECT records.id_price_type FROM records ORDER BY records.sortKey;";
-
-        return $sql;
     }
 }

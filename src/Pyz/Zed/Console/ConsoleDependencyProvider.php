@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\Console;
 
 use Pyz\Zed\DataImport\DataImportConfig;
@@ -217,6 +219,7 @@ use SprykerShop\Zed\DateTimeConfiguratorPageExample\Communication\Console\DateTi
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+ * phpcs:disable SlevomatCodingStandard.Functions.UnusedParameter
  * @method \Pyz\Zed\Console\ConsoleConfig getConfig()
  */
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider

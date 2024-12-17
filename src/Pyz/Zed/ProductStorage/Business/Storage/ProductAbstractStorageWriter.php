@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\ProductStorage\Business\Storage;
 
 use Generated\Shared\Transfer\ProductAbstractStorageTransfer;
@@ -85,7 +87,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         ProductStorageQueryContainerInterface $queryContainer,
         ProductStorageToStoreFacadeInterface $storeFacade,
         ProductStorageRepositoryInterface $productStorageRepository,
-        $isSendingToQueue,
+        bool $isSendingToQueue,
         array $productAbstractStorageExpanderPlugins,
         array $productAbstractStorageCollectionFilterPlugins,
         SynchronizationServiceInterface $synchronizationService,
@@ -175,9 +177,11 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
 
         $this->write();
 
-        if ($this->synchronizedMessageCollection !== []) {
-            $this->queueClient->sendMessages('sync.storage.product', $this->synchronizedMessageCollection);
+        if ($this->synchronizedMessageCollection === []) {
+            return;
         }
+
+        $this->queueClient->sendMessages('sync.storage.product', $this->synchronizedMessageCollection);
     }
 
     /**
@@ -190,8 +194,8 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      */
     protected function addProductAbstractStorageEntity(
         array $productAbstractLocalizedEntity,
-        $storeName,
-        $localeName,
+        string $storeName,
+        string $localeName,
         array $attributeMapBulk = [],
     ): void {
         $productAbstractStorageTransfer = $this->mapToProductAbstractStorageTransfer(
@@ -220,9 +224,11 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         $synchronizedData = $this->buildSynchronizedData($productAbstractStorageData, 'fk_product_abstract', 'product_abstract');
         $this->synchronizedDataCollection[] = $synchronizedData;
 
-        if ($this->isSendingToQueue) {
-            $this->synchronizedMessageCollection[] = $this->buildSynchronizedMessage($synchronizedData, 'product_abstract');
+        if (!$this->isSendingToQueue) {
+            return;
         }
+
+        $this->synchronizedMessageCollection[] = $this->buildSynchronizedMessage($synchronizedData, 'product_abstract');
     }
 
     /**
