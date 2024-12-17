@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
@@ -100,9 +102,11 @@ abstract class AbstractProductConcreteBulkDataSetWriter implements DataSetWriter
         $this->collectProductConcreteLocalizedAttributes($dataSet);
         $this->collectProductConcreteBundle($dataSet);
 
-        if (count(static::$productConcreteCollection) >= static::BULK_SIZE) {
-            $this->flush();
+        if (count(static::$productConcreteCollection) < static::BULK_SIZE) {
+            return;
         }
+
+        $this->flush();
     }
 
     /**
@@ -146,11 +150,13 @@ abstract class AbstractProductConcreteBulkDataSetWriter implements DataSetWriter
      */
     protected function collectProductConcrete(DataSetInterface $dataSet): void
     {
-        if (!$this->isSkuAlreadyCollected($dataSet)) {
-            $productConcreteTransfer = $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_TRANSFER]->modifiedToArray();
-            $productConcreteTransfer[static::COLUMN_ABSTRACT_SKU] = $dataSet[static::COLUMN_ABSTRACT_SKU];
-            static::$productConcreteCollection[] = $productConcreteTransfer;
+        if ($this->isSkuAlreadyCollected($dataSet)) {
+            return;
         }
+
+        $productConcreteTransfer = $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_TRANSFER]->modifiedToArray();
+        $productConcreteTransfer[static::COLUMN_ABSTRACT_SKU] = $dataSet[static::COLUMN_ABSTRACT_SKU];
+        static::$productConcreteCollection[] = $productConcreteTransfer;
     }
 
     /**

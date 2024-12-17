@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\ExampleProductSalePage\Persistence;
 
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
@@ -38,7 +40,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
      *
      * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery<\Orm\Zed\ProductLabel\Persistence\SpyProductLabel>
      */
-    public function queryProductLabelByName($labelName): SpyProductLabelQuery
+    public function queryProductLabelByName(string $labelName): SpyProductLabelQuery
     {
         return $this->getFactory()
             ->getProductLabelQueryContainer()
@@ -54,7 +56,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
      *
      * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery<\Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstract>
      */
-    public function queryRelationsBecomingInactive($idProductLabel): SpyProductLabelProductAbstractQuery
+    public function queryRelationsBecomingInactive(int $idProductLabel): SpyProductLabelProductAbstractQuery
     {
         /** @var \Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery<\Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstract> $productLabelProductAbstractQuery */
         $productLabelProductAbstractQuery = $this->getFactory()
@@ -134,7 +136,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery<\Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstract>
      */
-    public function queryRelationsBecomingActive($idProductLabel): SpyProductAbstractQuery
+    public function queryRelationsBecomingActive(int $idProductLabel): SpyProductAbstractQuery
     {
         /** @var \Orm\Zed\Product\Persistence\SpyProductAbstractQuery<\Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstract> $productAbstractQuery */
         $productAbstractQuery = $this->getFactory()

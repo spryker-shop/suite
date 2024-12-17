@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\ProductPageSearch\Business\Publisher;
 
 use Generated\Shared\Transfer\LocalizedAttributesTransfer;
@@ -140,10 +142,12 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
 
         $this->write();
 
-        if ($this->synchronizedMessageCollection !== []) {
-            $this->queueClient->sendMessages('sync.search.product', $this->synchronizedMessageCollection);
-            $this->synchronizedMessageCollection = [];
+        if ($this->synchronizedMessageCollection === []) {
+            return;
         }
+
+        $this->queueClient->sendMessages('sync.search.product', $this->synchronizedMessageCollection);
+        $this->synchronizedMessageCollection = [];
     }
 
     /**

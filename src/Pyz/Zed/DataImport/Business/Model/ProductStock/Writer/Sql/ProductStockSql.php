@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql;
 
 class ProductStockSql implements ProductStockSqlInterface
@@ -14,7 +16,7 @@ class ProductStockSql implements ProductStockSqlInterface
      */
     public function createStockSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.name as inputName,
       id_stock as idStock,
@@ -46,8 +48,6 @@ class ProductStockSql implements ProductStockSqlInterface
     ) RETURNING id_stock
   )
 SELECT updated.idStock FROM updated UNION ALL SELECT inserted.id_stock FROM inserted;";
-
-        return $sql;
     }
 
     /**
@@ -55,7 +55,7 @@ SELECT updated.idStock FROM updated UNION ALL SELECT inserted.id_stock FROM inse
      */
     public function createStockProductSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.sku,
       input.stockName,
@@ -106,8 +106,6 @@ SELECT updated.idStock FROM updated UNION ALL SELECT inserted.id_stock FROM inse
     ) RETURNING id_stock_product
   )
 SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_product FROM inserted;";
-
-        return $sql;
     }
 
     /**
@@ -115,7 +113,7 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
      */
     public function createAbstractAvailabilitySQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.sku,
       input.qty,
@@ -155,8 +153,6 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
     ) RETURNING id_availability_abstract
   )
 SELECT updated.idAvailabilityAbstract FROM updated UNION ALL SELECT inserted.id_availability_abstract FROM inserted;";
-
-        return $sql;
     }
 
     /**
@@ -164,7 +160,7 @@ SELECT updated.idAvailabilityAbstract FROM updated UNION ALL SELECT inserted.id_
      */
     public function createAvailabilitySQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT
       input.sku,
       input.qty,
@@ -215,7 +211,5 @@ SELECT updated.idAvailabilityAbstract FROM updated UNION ALL SELECT inserted.id_
     ) RETURNING id_availability
   )
 SELECT updated.idAvailability FROM updated UNION ALL SELECT inserted.id_availability FROM inserted;";
-
-        return $sql;
     }
 }

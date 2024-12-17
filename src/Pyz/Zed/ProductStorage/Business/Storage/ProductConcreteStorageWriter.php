@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\ProductStorage\Business\Storage;
 
 use Generated\Shared\Transfer\ProductConcreteStorageTransfer;
@@ -67,7 +69,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     public function __construct(
         ProductStorageToProductInterface $productFacade,
         ProductStorageQueryContainerInterface $queryContainer,
-        $isSendingToQueue,
+        bool $isSendingToQueue,
         array $productConcreteStorageCollectionExpanderPlugins,
         array $productConcreteStorageCollectionFilterPlugins,
         SynchronizationServiceInterface $synchronizationService,
@@ -138,10 +140,14 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
 
         $this->write();
 
-        if ($this->synchronizedMessageCollection !== []) {
-            $this->queueClient->sendMessages('sync.storage.product', $this->synchronizedMessageCollection);
+        if ($this->synchronizedMessageCollection === []) {
+            return;
         }
+
+        $this->queueClient->sendMessages('sync.storage.product', $this->synchronizedMessageCollection);
     }
+
+    // phpcs:disable
 
     /**
      * @param \Generated\Shared\Transfer\ProductConcreteStorageTransfer $productConcreteStorageTransfer
@@ -153,7 +159,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     protected function storeProductConcreteStorageEntity(
         ProductConcreteStorageTransfer $productConcreteStorageTransfer,
         SpyProductConcreteStorage $productConcreteStorageEntity,
-        $localeName,
+        $localeName, // phpcs:ignore SlevomatCodingStandard.TypeHints.DeclareStrictTypes
     ): void {
         $productConcreteStorageData = [
             'fk_product' => $productConcreteStorageTransfer->getIdProductConcrete(),
@@ -163,6 +169,8 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
 
         $this->add($productConcreteStorageData);
     }
+
+    // phpcs:enable
 
     /**
      * @return void
@@ -194,9 +202,11 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
         $synchronizedData = $this->buildSynchronizedData($productConcreteStorageData, 'fk_product', 'product_concrete');
         $this->synchronizedDataCollection[] = $synchronizedData;
 
-        if ($this->isSendingToQueue) {
-            $this->synchronizedMessageCollection[] = $this->buildSynchronizedMessage($synchronizedData, 'product_concrete');
+        if (!$this->isSendingToQueue) {
+            return;
         }
+
+        $this->synchronizedMessageCollection[] = $this->buildSynchronizedMessage($synchronizedData, 'product_concrete');
     }
 
     /**

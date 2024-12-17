@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
 use Generated\Shared\Transfer\StoreTransfer;
@@ -189,9 +191,11 @@ abstract class AbstractProductStockBulkDataSetWriter implements DataSetWriterInt
         $this->collectStock($dataSet);
         $this->collectStockProduct($dataSet);
 
-        if (count(static::$stockProductCollection) >= static::BULK_SIZE) {
-            $this->writeEntities();
+        if (count(static::$stockProductCollection) < static::BULK_SIZE) {
+            return;
         }
+
+        $this->writeEntities();
     }
 
     /**

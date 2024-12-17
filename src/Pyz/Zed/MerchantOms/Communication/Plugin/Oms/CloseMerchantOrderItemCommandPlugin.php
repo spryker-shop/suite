@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\MerchantOms\Communication\Plugin\Oms;
 
 use Generated\Shared\Transfer\MerchantOmsTriggerRequestTransfer;
@@ -38,7 +40,7 @@ class CloseMerchantOrderItemCommandPlugin extends AbstractPlugin implements Comm
      *
      * @return array<mixed>
      */
-    public function run(SpySalesOrderItem $orderItem, ReadOnlyArrayObject $data): array
+    public function run(SpySalesOrderItem $orderItem, ReadOnlyArrayObject $data): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $merchantOrderItemTransfer = $this->getFactory()->getMerchantSalesOrderFacade()->findMerchantOrderItem(
             (new MerchantOrderItemCriteriaTransfer())

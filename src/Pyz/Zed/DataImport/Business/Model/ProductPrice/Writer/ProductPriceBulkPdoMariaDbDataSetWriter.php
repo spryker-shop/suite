@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
@@ -241,9 +243,7 @@ class ProductPriceBulkPdoMariaDbDataSetWriter extends AbstractProductPriceBulkDa
             $orderKey,
         ];
 
-        $result = $this->propelExecutor->execute($selectProductPriceSql, $priceProductAbstractProductParameters);
-
-        return $result;
+        return $this->propelExecutor->execute($selectProductPriceSql, $priceProductAbstractProductParameters);
     }
 
     /**

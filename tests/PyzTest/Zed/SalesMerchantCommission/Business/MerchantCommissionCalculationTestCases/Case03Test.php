@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\SalesMerchantCommission\Business\MerchantCommissionCalculationTestCases;
 
 use Codeception\Test\Unit;
@@ -242,7 +244,10 @@ class Case03Test extends Unit
     {
         // Arrange
         $storeTransfer = $this->tester->haveStore([StoreTransfer::NAME => static::STORE_NAME_DE]);
-        [$merchant1Transfer, $merchant2Transfer] = $this->createMerchants($storeTransfer);
+        // phpcs:disable
+        [$merchant1Transfer, $merchant2Transfer] = $this->createMerchants($storeTransfer); // phpcs:ignore SlevomatCodingStandard.Variables.UselessVariable
+        // phpcs:enable
+
         $this->createMerchantCommissions($storeTransfer, $merchant1Transfer);
 
         $orderTransfer = $this->createOrderWithItems();

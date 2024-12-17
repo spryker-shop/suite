@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\MerchantSalesOrder\Communication\Plugin\Oms;
 
 use Generated\Shared\Transfer\MerchantOrderCriteriaTransfer;
@@ -32,7 +34,7 @@ class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements Comman
      *
      * @return array<mixed>
      */
-    public function run(array $orderItems, SpySalesOrder $orderEntity, ReadOnlyArrayObject $data): array
+    public function run(array $orderItems, SpySalesOrder $orderEntity, ReadOnlyArrayObject $data): array // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
     {
         $merchantOrderTransfer = $this->getFacade()->findMerchantOrder(
             (new MerchantOrderCriteriaTransfer())

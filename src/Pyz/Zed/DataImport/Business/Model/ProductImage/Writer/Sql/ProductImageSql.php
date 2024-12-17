@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql;
 
 class ProductImageSql implements ProductImageSqlInterface
@@ -14,7 +16,7 @@ class ProductImageSql implements ProductImageSqlInterface
      */
     public function createProductImageSetSQL(): string
     {
-        $sql = "WITH records AS (
+        return "WITH records AS (
     SELECT DISTINCT
       input.name,
       input.fkLocale,
@@ -53,8 +55,6 @@ class ProductImageSql implements ProductImageSqlInterface
       FROM records
     )
  ";
-
-        return $sql;
     }
 
     /**
@@ -62,7 +62,7 @@ class ProductImageSql implements ProductImageSqlInterface
      */
     public function createOrUpdateProductImageSQL(): string
     {
-        $sql = "WITH 
+        return "WITH 
     records AS (
         SELECT
           input.externalUrlLarge,
@@ -111,8 +111,6 @@ class ProductImageSql implements ProductImageSqlInterface
     FROM inserted
     UNION ALL SELECT id_product_image
     FROM updated";
-
-        return $sql;
     }
 
     /**
@@ -120,7 +118,7 @@ class ProductImageSql implements ProductImageSqlInterface
      */
     public function createProductImageSetRelationSQL(): string
     {
-        $sql = "WITH
+        return "WITH
     records AS (
         SELECT
           id_product_image,
@@ -170,8 +168,6 @@ class ProductImageSql implements ProductImageSqlInterface
         ) ON CONFLICT DO NOTHING
     )
     SELECT 1;";
-
-        return $sql;
     }
 
     /**
@@ -179,7 +175,7 @@ class ProductImageSql implements ProductImageSqlInterface
      */
     public function findProductImageSetsByProductImageIds(): string
     {
-        $sql = "WITH 
+        return "WITH 
     touched_product_images as (
         SELECT unnest((? :: INTEGER [])) as id_product_image
     )
@@ -194,7 +190,5 @@ class ProductImageSql implements ProductImageSqlInterface
     WHERE fk_product_image IN (
         SELECT id_product_image FROM touched_product_images
     )";
-
-        return $sql;
     }
 }
