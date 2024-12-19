@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * This is the global runtime configuration for Yves and Generated_Yves_Zed in a development environment.
  */
@@ -72,7 +74,7 @@ $ELASTICA_AUTH_HEADER = str_pad(
     '=',
     STR_PAD_RIGHT,
 );
-$ELASTICA_PORT = ($ENV_ELASTICA_CONNECTION_DATA['scheme'] == 'https' ? 443 : 80);
+$ELASTICA_PORT = ($ENV_ELASTICA_CONNECTION_DATA['scheme'] === 'https' ? 443 : 80);
 $config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER]
     = $config[SearchElasticsearchConstants::AUTH_HEADER] = $ELASTICA_AUTH_HEADER;
 $config[SearchConstants::ELASTICA_PARAMETER__HOST]
