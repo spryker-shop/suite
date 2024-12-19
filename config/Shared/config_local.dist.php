@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 use Pyz\Shared\Console\ConsoleConstants;
 
 /*

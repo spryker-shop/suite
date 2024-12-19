@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\Calculation;
 
 use Codeception\Actor;
@@ -495,9 +497,7 @@ class CalculationBusinessTester extends Actor
 
         $this->createTaxSetTax($taxSetEntity, $taxRateEntity);
 
-        $abstractProductEntity = $this->createAbstractProduct($taxSetEntity);
-
-        return $abstractProductEntity;
+        return $this->createAbstractProduct($taxSetEntity);
     }
 
     /**
@@ -514,9 +514,7 @@ class CalculationBusinessTester extends Actor
 
         $this->createTaxSetTax($taxSetEntity, $taxRateEntity);
 
-        $abstractProductEntity = $this->createAbstractProduct($taxSetEntity);
-
-        return $abstractProductEntity;
+        return $this->createAbstractProduct($taxSetEntity);
     }
 
     /**
@@ -549,9 +547,11 @@ class CalculationBusinessTester extends Actor
     public function addVoucherDiscountsToQuote(QuoteTransfer $quoteTransfer, array $discountTransfers): QuoteTransfer
     {
         foreach ($discountTransfers as $discountTransfer) {
-            if ($discountTransfer->getVoucherCode()) {
-                $quoteTransfer->addVoucherDiscount($discountTransfer);
+            if (!$discountTransfer->getVoucherCode()) {
+                continue;
             }
+
+            $quoteTransfer->addVoucherDiscount($discountTransfer);
         }
 
         return $quoteTransfer;
@@ -619,10 +619,12 @@ class CalculationBusinessTester extends Actor
 
         foreach ($discountTransfers as $discountTransfer) {
             $discountPromotionTransfer = $discountTransfer->getDiscountPromotion();
-            if ($discountPromotionTransfer) {
-                $abstractSku = $discountPromotionTransfer->getAbstractSkus()[0] ?? $discountPromotionTransfer->getAbstractSku();
-                $discountPromotionTransfers[$abstractSku] = $discountPromotionTransfer;
+            if (!$discountPromotionTransfer) {
+                continue;
             }
+
+            $abstractSku = $discountPromotionTransfer->getAbstractSkus()[0] ?? $discountPromotionTransfer->getAbstractSku();
+            $discountPromotionTransfers[$abstractSku] = $discountPromotionTransfer;
         }
 
         return $discountPromotionTransfers;

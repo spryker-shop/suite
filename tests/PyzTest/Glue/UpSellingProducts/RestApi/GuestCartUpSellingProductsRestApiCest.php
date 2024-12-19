@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Glue\UpSellingProducts\RestApi;
 
 use Codeception\Util\HttpCode;
@@ -55,7 +57,7 @@ class GuestCartUpSellingProductsRestApiCest
     public function requestGuestCartUpSellingProducts(UpSellingProductsApiTester $I): void
     {
         // Arrange
-        $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
+        $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
             $this->fixtures->getGuestCustomerReference(),

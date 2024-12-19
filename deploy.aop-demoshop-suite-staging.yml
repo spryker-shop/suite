@@ -8,13 +8,14 @@ pipeline: docker.acp
 image:
     tag: spryker/php:8.3
     environment:
-        SPRYKER_HOOK_BEFORE_DEPLOY: 'vendor/bin/install -r pre-deploy.dynamic-store-off -vvv'
+        SPRYKER_HOOK_BEFORE_DEPLOY: 'vendor/bin/install -r pre-deploy -vvv'
         SPRYKER_HOOK_AFTER_DEPLOY: 'true'
-        SPRYKER_HOOK_INSTALL: 'vendor/bin/install -r production.dynamic-store-off --no-ansi -vvv'
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: 'vendor/bin/install -r destructive.dynamic-store-off --no-ansi -vvv'
+        SPRYKER_HOOK_INSTALL: 'vendor/bin/install -r production --no-ansi -vvv'
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: 'vendor/bin/install -r destructive --no-ansi -vvv'
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: 'demo-date-time-configurator.aop-suite-staging.demo-spryker.com'
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 443
 
+        SPRYKER_DYNAMIC_STORE_MODE: true
         #AOP
         SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_SENDER_BASE_URL: 'https://publish.mb-staging.acp.demo-spryker.com/'
         SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_RECEIVER_BASE_URL: 'https://consume.mb-staging.acp.demo-spryker.com/'
@@ -57,28 +58,12 @@ regions:
                 database: aop_demoshop_suite_staging #Example: customer_staging
                 username: spryker
                 password: secret
-
-        stores:
-            DE:
-                services:
-                    broker:
-                        namespace: appstore_staging_de_queue
-                    key_value_store:
-                        namespace: 41
-                    search:
-                        namespace: appstore_staging_de_search
-                    session:
-                        namespace: 42
-            AT:
-                services:
-                    broker:
-                        namespace: appstore_staging_at_queue
-                    key_value_store:
-                        namespace: 41
-                    search:
-                        namespace: appstore_staging_at_search
-                    session:
-                        namespace: 42
+            broker:
+                namespace: appstore_staging_de_queue
+            key_value_store:
+                namespace: 1
+            search:
+                namespace: appstore_staging_de_search
 
 groups:
     EU:
@@ -90,45 +75,41 @@ groups:
                     demo-date-time-configurator.aop-suite-staging.demo-spryker.com:
                         entry-point: Configurator
                     www.de.aop-suite-staging.demo-spryker.com:
-                        store: DE
-                    www.at.aop-suite-staging.demo-spryker.com:
-                        store: AT
+                        region: EU
+                        services:
+                            session:
+                                namespace: 2
             boffice:
                 application: backoffice
                 endpoints:
                     backoffice.de.aop-suite-staging.demo-spryker.com:
-                        store: DE
+                        region: EU
                         primal: true
-                    backoffice.at.aop-suite-staging.demo-spryker.com:
-                        store: AT
+                        services:
+                            session:
+                                namespace: 3
             backgw:
                 application: backend-gateway
                 endpoints:
                     backend-gateway.de.aop-suite-staging.demo-spryker.com:
-                        store: DE
+                        region: EU
                         primal: true
-                    backend-gateway.at.aop-suite-staging.demo-spryker.com:
-                        store: AT
             Glue:
                 application: glue
                 endpoints:
                     glue.de.aop-suite-staging.demo-spryker.com:
-                        cors-allow-origin: '*'
-                        store: DE
-                    glue.at.aop-suite-staging.demo-spryker.com:
-                        cors-allow-origin: '*'
-                        store: AT
+                        region: EU
 
             mportal:
                 application: merchant-portal
                 endpoints:
                     mp.de.aop-suite-staging.demo-spryker.com:
-                        store: DE
+                        region: EU
                         entry-point: MerchantPortal
                         primal: true
-                    mp.at.aop-suite-staging.demo-spryker.com:
-                        store: AT
-                        entry-point: MerchantPortal
+                        services:
+                            session:
+                                namespace: 4
 
 services:
     database:
@@ -177,7 +158,7 @@ docker:
     ssl:
         enabled: true
     testing:
-        store: DE
+        region: EU
     debug:
         enabled: false
     mount:

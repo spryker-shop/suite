@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\ProductRelation;
 
 use Codeception\Actor;
@@ -39,7 +41,7 @@ class ProductRelationPresentationTester extends Actor
      *
      * @return $this
      */
-    public function selectRelationType($type)
+    public function selectRelationType(string $type)
     {
         $this->selectOption('//*[@id="product_relation_productRelationType"]', $type);
 
@@ -51,7 +53,7 @@ class ProductRelationPresentationTester extends Actor
      *
      * @return $this
      */
-    public function filterProductsByName($name)
+    public function filterProductsByName(string $name)
     {
         $this->fillField('//*[@id="product-table_filter"]/label/input', $name);
 
@@ -63,7 +65,7 @@ class ProductRelationPresentationTester extends Actor
      *
      * @return $this
      */
-    public function selectProduct($sku)
+    public function selectProduct(string $sku)
     {
         $buttonElementId = sprintf('//*[@id="select-product-%s"]', $sku);
 
@@ -92,7 +94,7 @@ class ProductRelationPresentationTester extends Actor
      *
      * @return $this
      */
-    public function selectProductRule($ruleName, $operator, $value)
+    public function selectProductRule(string $ruleName, string $operator, string $value)
     {
         $ruleSelectorBaseId = sprintf('[@id="builder_rule_%d"]', $this->numberOfRulesSelected);
 

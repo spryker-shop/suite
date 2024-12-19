@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\AclEntity\Persistence\AclDirector;
 
 use ArrayObject;
@@ -226,7 +228,7 @@ class SegmentAclQueryScopeTest extends Unit
         // Arrange
         $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
         $merchantInSegmentTransfer = $this->tester->haveMerchant();
-        $merchantOutOfSegmentTransfer = $this->tester->haveMerchant();
+        $this->tester->haveMerchant();
 
         $aclEntitySegmentTransfer = $this->tester->haveAclEntitySegment(
             [

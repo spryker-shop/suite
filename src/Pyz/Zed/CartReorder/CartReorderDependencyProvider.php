@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\CartReorder;
 
 use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CartReorder\RemoveUnavailableItemsCartReorderPreAddToCartPlugin;
@@ -20,7 +22,7 @@ use Spryker\Zed\OrderCustomReference\Communication\Plugin\CartReorder\OrderCusto
 use Spryker\Zed\PersistentCart\Communication\Plugin\CartReorder\PersistentCartReorderQuoteProviderStrategyPlugin;
 use Spryker\Zed\PersistentCart\Communication\Plugin\CartReorder\UpdateQuoteCartPostReorderPlugin;
 use Spryker\Zed\Price\Communication\Plugin\CartReorder\CopyOrderPriceModeCartPreReorderPlugin;
-use Spryker\Zed\ProductBundle\Communication\Plugin\CartReorder\ProductBundleCartReorderItemFilterPlugin;
+use Spryker\Zed\ProductBundle\Communication\Plugin\CartReorder\ProductBundleCartReorderOrderItemFilterPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\CartReorder\ReplaceBundledItemsCartPreReorderPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\CartReorder\RemoveInactiveItemsCartReorderPreAddToCartPlugin;
 use Spryker\Zed\ProductList\Communication\Plugin\CartReorder\ProductListRestrictedItemsCartPreReorderPlugin;
@@ -129,12 +131,12 @@ class CartReorderDependencyProvider extends SprykerCartReorderDependencyProvider
     }
 
     /**
-     * @return list<\Spryker\Zed\CartReorderExtension\Dependency\Plugin\CartReorderItemFilterPluginInterface>
+     * @return list<\Spryker\Zed\CartReorderExtension\Dependency\Plugin\CartReorderOrderItemFilterPluginInterface>
      */
-    protected function getCartReorderItemFilterPlugins(): array
+    protected function getCartReorderOrderItemFilterPlugins(): array
     {
         return [
-            new ProductBundleCartReorderItemFilterPlugin(),
+            new ProductBundleCartReorderOrderItemFilterPlugin(),
         ];
     }
 }
