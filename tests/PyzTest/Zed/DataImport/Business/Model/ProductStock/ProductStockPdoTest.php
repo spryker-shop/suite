@@ -38,7 +38,7 @@ class ProductStockPdoTest extends AbstractProductStockWriterTest
     public function testProductStockWriter(): void
     {
         // This will be fixed in next release
-        $this->markTestSkipped(true);
+        $this->markTestSkipped();
         $writer = $this->getDataImportBusinessFactoryStub()->createProductStockBulkPdoWriter();
 
         $product = $this->tester->haveProduct();
