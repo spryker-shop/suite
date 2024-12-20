@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Yves\ExampleProductSalePage\Controller;
 
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
@@ -20,12 +22,12 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class SaleController extends AbstractController
 {
     /**
-     * @param string $categoryPath
+     * @param string|null $categoryPath
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Spryker\Yves\Kernel\View\View
      */
-    public function indexAction($categoryPath, Request $request): View
+    public function indexAction(?string $categoryPath, Request $request): View
     {
         $parameters = $request->query->all();
 
@@ -68,7 +70,7 @@ class SaleController extends AbstractController
      *
      * @return array<mixed>
      */
-    protected function getCategoryNode($categoryPath): array
+    protected function getCategoryNode(string $categoryPath): array
     {
         $categoryPathPrefix = '/' . $this->getFactory()->getLocaleClient()->getCurrentLanguage();
         $fullCategoryPath = $categoryPathPrefix . '/' . ltrim($categoryPath, '/');

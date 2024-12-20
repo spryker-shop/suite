@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Orm\Zed\ProductOfferShipmentTypeStorage\Persistence;
 
 use Spryker\Zed\ProductOfferShipmentTypeStorage\Persistence\Propel\AbstractSpyProductOfferShipmentTypeStorage as BaseSpyProductOfferShipmentTypeStorage;

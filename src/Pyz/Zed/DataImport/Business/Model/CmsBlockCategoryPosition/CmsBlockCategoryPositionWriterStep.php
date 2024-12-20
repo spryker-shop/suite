@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\CmsBlockCategoryPosition;
 
 use Orm\Zed\CmsBlockCategoryConnector\Persistence\SpyCmsBlockCategoryPositionQuery;
@@ -29,8 +31,10 @@ class CmsBlockCategoryPositionWriterStep implements DataImportStepInterface
             ->filterByName($dataSet[static::KEY_POSITION_NAME])
             ->findOneOrCreate();
 
-        if ($cmsBlockCategoryPositionEntity->isNew() || $cmsBlockCategoryPositionEntity->isModified()) {
-            $cmsBlockCategoryPositionEntity->save();
+        if (!$cmsBlockCategoryPositionEntity->isNew() && !$cmsBlockCategoryPositionEntity->isModified()) {
+            return;
         }
+
+        $cmsBlockCategoryPositionEntity->save();
     }
 }

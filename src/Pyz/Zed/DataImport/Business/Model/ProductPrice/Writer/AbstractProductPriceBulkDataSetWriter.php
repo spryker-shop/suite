@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer;
 
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
@@ -122,11 +124,13 @@ abstract class AbstractProductPriceBulkDataSetWriter implements DataSetWriterInt
         $this->collectProductPriceCollection($dataSet);
 
         if (
-            count(static::$priceProductAbstractCollection) >= static::BULK_SIZE ||
-            count(static::$priceProductConcreteCollection) >= static::BULK_SIZE
+            count(static::$priceProductAbstractCollection) < static::BULK_SIZE &&
+            count(static::$priceProductConcreteCollection) < static::BULK_SIZE
         ) {
-            $this->flush();
+            return;
         }
+
+        $this->flush();
     }
 
     /**

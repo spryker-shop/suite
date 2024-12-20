@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\AclEntity\Persistence\AclDirector;
 
 use Codeception\Test\Unit;
@@ -382,7 +384,7 @@ class GlobalAclQueryScopeTest extends Unit
         // Arrange
         $roleTransfer = $this->tester->haveRole([RoleTransfer::NAME => AclQueryDirectorTester::ACL_ROLE_1_NAME]);
 
-        $productConcreteTransfer = $this->tester->haveProduct();
+        $this->tester->haveProduct();
 
         $this->tester->haveAclEntityRule(
             [

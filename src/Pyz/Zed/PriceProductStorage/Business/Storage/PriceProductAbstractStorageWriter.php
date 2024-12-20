@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\PriceProductStorage\Business\Storage;
 
 use Generated\Shared\Transfer\PriceProductStorageTransfer;
@@ -131,8 +133,8 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
      * @return void
      */
     protected function createPriceProductStorage(
-        $idProductAbstract,
-        $storeName,
+        int $idProductAbstract,
+        string $storeName,
         array $priceGroup,
     ): void {
         $priceProductStorageTransfer = (new PriceProductStorageTransfer())
@@ -157,9 +159,11 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
         $synchronizedData = $this->buildSynchronizedData($priceProductAbstractStorageData, 'fk_product_abstract', 'price_product_abstract');
         $this->synchronizedDataCollection[] = $synchronizedData;
 
-        if ($this->isSendingToQueue) {
-            $this->synchronizedMessageCollection[] = $this->buildSynchronizedMessage($synchronizedData, 'price_product_abstract');
+        if (!$this->isSendingToQueue) {
+            return;
         }
+
+        $this->synchronizedMessageCollection[] = $this->buildSynchronizedMessage($synchronizedData, 'price_product_abstract');
     }
 
     /**

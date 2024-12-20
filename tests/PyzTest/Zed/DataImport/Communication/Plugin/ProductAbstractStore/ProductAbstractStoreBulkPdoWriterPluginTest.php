@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\DataImport\Communication\Plugin\ProductAbstractStore;
 
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
@@ -48,9 +50,11 @@ class ProductAbstractStoreBulkPdoWriterPluginTest extends AbstractWriterPluginTe
         $this->markTestSkippedOnDatabaseConstraintsMismatch();
 
         foreach ($this->testSkus as $sku) {
-            if (!$this->getProductFacade()->findProductAbstractIdBySku($sku)) {
-                $this->tester->haveProductAbstract(['sku' => $sku]);
+            if ($this->getProductFacade()->findProductAbstractIdBySku($sku)) {
+                continue;
             }
+
+            $this->tester->haveProductAbstract(['sku' => $sku]);
         }
 
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();

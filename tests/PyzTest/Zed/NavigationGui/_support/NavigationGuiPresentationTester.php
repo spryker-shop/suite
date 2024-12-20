@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\NavigationGui;
 
 use Codeception\Actor;
@@ -125,7 +127,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function setNameField($value): void
+    public function setNameField(string $value): void
     {
         $this->fillField('//*[@id="navigation_name"]', $value);
     }
@@ -135,7 +137,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function setKeyField($value): void
+    public function setKeyField(string $value): void
     {
         $this->fillField('//*[@id="navigation_key"]', $value);
     }
@@ -145,7 +147,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function checkIsActiveField($checked): void
+    public function checkIsActiveField(bool $checked): void
     {
         if ($checked) {
             $this->checkOption('//*[@id="navigation_is_active"]');
@@ -176,7 +178,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function seeMatches($pattern, $value): void
+    public function seeMatches(string $pattern, string $value): void
     {
         $this->assertRegExp($pattern, $value);
     }
@@ -194,7 +196,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return string
      */
-    public function seeSuccessMessage($expectedMessagePattern): string
+    public function seeSuccessMessage(string $expectedMessagePattern): string
     {
         $this->waitForElement(static::FLASH_MESSAGE_TEXT_SELECTOR, 30);
         $successMessage = $this->grabTextFrom(static::FLASH_MESSAGE_TEXT_SELECTOR);
@@ -241,7 +243,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function expandLocalizedForm($localeName): void
+    public function expandLocalizedForm(string $localeName): void
     {
         $this->click(sprintf(self::LOCALIZED_FORM_CONTAINER_SELECTOR, $localeName));
     }
@@ -259,7 +261,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function clickNode($idNavigationNode): void
+    public function clickNode(int $idNavigationNode): void
     {
         $this->click(sprintf(self::CHILD_NODE_ANCHOR_SELECTOR, $idNavigationNode));
     }
@@ -278,7 +280,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function seeNumberOfNavigationNodes($count): void
+    public function seeNumberOfNavigationNodes(int $count): void
     {
         $this->seeNumberOfElements(self::NAVIGATION_NODE_SELECTOR, $count);
     }
@@ -289,7 +291,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function seeNavigationNodeHierarchy($idParentNavigationNode, $idChildNavigationNode): void
+    public function seeNavigationNodeHierarchy(int $idParentNavigationNode, int $idChildNavigationNode): void
     {
         $this->waitForElement(sprintf(
             self::NODE_CHILD_SELECTOR,
@@ -304,7 +306,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function seeNavigationNodeHierarchyByChildNodeName($idParentNavigationNode, $childNavigationNodeName): void
+    public function seeNavigationNodeHierarchyByChildNodeName(int $idParentNavigationNode, string $childNavigationNodeName): void
     {
         $this->seeElement(sprintf(
             self::NODE_NAME_CHILD_SELECTOR,
@@ -319,7 +321,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function moveNavigationNode($idNavigationNode, $idTargetNavigationNode): void
+    public function moveNavigationNode(int $idNavigationNode, int $idTargetNavigationNode): void
     {
         $this->dragAndDrop(
             sprintf(self::CHILD_NODE_ANCHOR_SELECTOR, $idNavigationNode),
@@ -340,7 +342,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function seeSuccessfulOrderSaveMessage($message): void
+    public function seeSuccessfulOrderSaveMessage(string $message): void
     {
         $this->waitForElement(self::SWEET_ALERT_SELECTOR, 5);
         $this->wait(1);
@@ -387,7 +389,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function submitCreateNodeFormWithoutType($title): void
+    public function submitCreateNodeFormWithoutType(string $title): void
     {
         $this->submitForm(self::NODE_FORM_SELECTOR, [
             'navigation_node[navigation_node_localized_attributes][0][title]' => $title,
@@ -402,7 +404,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function submitCreateNodeFormWithExternalUrlType($title, $externalUrl): void
+    public function submitCreateNodeFormWithExternalUrlType(string $title, string $externalUrl): void
     {
         $this->submitForm(self::NODE_FORM_SELECTOR, [
             'navigation_node[node_type]' => 'external_url',
@@ -420,7 +422,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function submitUpdateNodeToCategoryType($categoryUrl_en_US, $categoryUrl_de_DE): void
+    public function submitUpdateNodeToCategoryType(string $categoryUrl_en_US, string $categoryUrl_de_DE): void
     {
         $this->submitForm(static::NODE_UPDATE_FORM_SELECTOR, [
             'navigation_node[node_type]' => 'category',
@@ -436,7 +438,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function submitCreateNodeFormWithCmsPageType($title, $cmsPageUrl_en_US, $cmsPageUrl_de_DE): void
+    public function submitCreateNodeFormWithCmsPageType(string $title, string $cmsPageUrl_en_US, string $cmsPageUrl_de_DE): void
     {
         $this->submitForm(self::NODE_FORM_SELECTOR, [
             'navigation_node[node_type]' => 'cms_page',
@@ -494,8 +496,8 @@ class NavigationGuiPresentationTester extends Actor
      */
     protected function createNavigationNodesRecursively(
         NavigationTreeNodeTransfer $navigationTreeNodeTransfer,
-        $idNavigation,
-        $idParentNavigationNode = null,
+        int $idNavigation,
+        ?int $idParentNavigationNode = null,
     ): void {
         $navigationNodeTransfer = $navigationTreeNodeTransfer->getNavigationNode();
         $navigationNodeTransfer
@@ -514,7 +516,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return int
      */
-    public function getIdLocale($locale): int
+    public function getIdLocale(string $locale): int
     {
         return $this->getLocator()->locale()->facade()->getLocale($locale)->getIdLocale();
     }
@@ -549,7 +551,7 @@ class NavigationGuiPresentationTester extends Actor
      */
     protected function findNavigationByName(NavigationTransfer $navigationTransfer): ?SpyNavigation
     {
-        $navigationEntity = (new SpyNavigationQuery())
+        return (new SpyNavigationQuery())
             ->joinWithSpyNavigationNode()
                 ->useSpyNavigationNodeQuery()
                     ->joinWithSpyNavigationNodeLocalizedAttributes()
@@ -557,8 +559,6 @@ class NavigationGuiPresentationTester extends Actor
             ->findByName(
                 $navigationTransfer->getName(),
             )->getFirst();
-
-        return $navigationEntity;
     }
 
     /**

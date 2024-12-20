@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\CmsBlock;
 
 use Orm\Zed\CmsBlock\Persistence\SpyCmsBlock;
@@ -191,11 +193,13 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
                 ->filterByFkCategory($idCategory)
                 ->findOneOrCreate();
 
-            if ($cmsBlockCategoryConnectorEntity->isNew() || $cmsBlockCategoryConnectorEntity->isModified()) {
-                $cmsBlockCategoryConnectorEntity->save();
-
-                $this->addPublishEvents(CmsBlockCategoryConnectorEvents::CMS_BLOCK_CATEGORY_CONNECTOR_PUBLISH, $idCategory);
+            if (!$cmsBlockCategoryConnectorEntity->isNew() && !$cmsBlockCategoryConnectorEntity->isModified()) {
+                continue;
             }
+
+            $cmsBlockCategoryConnectorEntity->save();
+
+            $this->addPublishEvents(CmsBlockCategoryConnectorEvents::CMS_BLOCK_CATEGORY_CONNECTOR_PUBLISH, $idCategory);
         }
     }
 
@@ -221,11 +225,13 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
                 ->filterByFkProductAbstract($idProductAbstract)
                 ->findOneOrCreate();
 
-            if ($cmsBlockProductConnectorEntity->isNew() || $cmsBlockProductConnectorEntity->isModified()) {
-                $cmsBlockProductConnectorEntity->save();
-
-                $this->addPublishEvents(CmsBlockProductConnectorEvents::CMS_BLOCK_PRODUCT_CONNECTOR_PUBLISH, $idProductAbstract);
+            if (!$cmsBlockProductConnectorEntity->isNew() && !$cmsBlockProductConnectorEntity->isModified()) {
+                continue;
             }
+
+            $cmsBlockProductConnectorEntity->save();
+
+            $this->addPublishEvents(CmsBlockProductConnectorEvents::CMS_BLOCK_PRODUCT_CONNECTOR_PUBLISH, $idProductAbstract);
         }
     }
 

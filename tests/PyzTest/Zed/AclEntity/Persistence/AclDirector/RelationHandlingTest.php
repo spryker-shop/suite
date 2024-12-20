@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\AclEntity\Persistence\AclDirector;
 
 use Codeception\Test\Unit;
@@ -523,7 +525,7 @@ class RelationHandlingTest extends Unit
 
         $merchantTransfer = $this->tester->haveMerchant();
         $productConcreteTransfer = $this->tester->haveProduct();
-        $merchantProductAbstractTransfer = $this->tester->haveMerchantProduct(
+        $this->tester->haveMerchantProduct(
             [
                 MerchantProductTransfer::ID_MERCHANT => $merchantTransfer->getIdMerchantOrFail(),
                 MerchantProductTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstractOrFail(),

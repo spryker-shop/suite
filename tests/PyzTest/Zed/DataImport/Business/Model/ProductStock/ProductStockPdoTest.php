@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\DataImport\Business\Model\ProductStock;
 
 /**
@@ -36,7 +38,7 @@ class ProductStockPdoTest extends AbstractProductStockWriterTest
     public function testProductStockWriter(): void
     {
         // This will be fixed in next release
-        $this->markTestSkipped(true);
+        $this->markTestSkipped();
         $writer = $this->getDataImportBusinessFactoryStub()->createProductStockBulkPdoWriter();
 
         $product = $this->tester->haveProduct();

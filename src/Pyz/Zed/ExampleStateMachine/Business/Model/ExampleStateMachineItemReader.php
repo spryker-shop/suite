@@ -5,9 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\ExampleStateMachine\Business\Model;
 
 use Generated\Shared\Transfer\StateMachineItemTransfer;
+use Propel\Runtime\Collection\Collection;
 use Pyz\Zed\ExampleStateMachine\Persistence\ExampleStateMachineQueryContainerInterface;
 
 class ExampleStateMachineItemReader
@@ -57,7 +60,7 @@ class ExampleStateMachineItemReader
      *
      * @return array<\Generated\Shared\Transfer\StateMachineItemTransfer>
      */
-    protected function hydrateTransferFromPersistence($exampleStateMachineItems): array
+    protected function hydrateTransferFromPersistence(Collection $exampleStateMachineItems): array
     {
         $stateMachineItems = [];
         foreach ($exampleStateMachineItems as $exampleStateMachineItemEntity) {

@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
@@ -80,9 +82,11 @@ abstract class AbstractProductImageBulkDataSetWriter implements DataSetWriterInt
     {
         $this->collectProductImageData($dataSet);
 
-        if (count(static::$productImageDataCollection) >= ProductImageHydratorStep::BULK_SIZE) {
-            $this->flush();
+        if (count(static::$productImageDataCollection) < ProductImageHydratorStep::BULK_SIZE) {
+            return;
         }
+
+        $this->flush();
     }
 
     /**

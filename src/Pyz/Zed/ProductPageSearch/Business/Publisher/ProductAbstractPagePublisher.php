@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Zed\ProductPageSearch\Business\Publisher;
 
 use Generated\Shared\Transfer\ProductPageLoadTransfer;
@@ -104,6 +106,8 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         $this->productAbstractPagePublisherCte = $productAbstractPagePublisherCte;
     }
 
+    // phpcs:disable
+
     /**
      * @param array<array<string, mixed>> $productAbstractLocalizedEntities
      * @param array<\Orm\Zed\ProductPageSearch\Persistence\SpyProductAbstractPageSearch> $productAbstractPageSearchEntities
@@ -173,10 +177,14 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
 
         $this->write();
 
-        if ($this->synchronizedMessageCollection !== []) {
-            $this->queueClient->sendMessages('sync.search.product', $this->synchronizedMessageCollection);
+        if ($this->synchronizedMessageCollection === []) {
+            return;
         }
+
+        $this->queueClient->sendMessages('sync.search.product', $this->synchronizedMessageCollection);
     }
+
+    // phpcs:enable
 
     /**
      * @param array<string, mixed> $productAbstractLocalizedEntity
@@ -190,7 +198,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      */
     protected function storeProductAbstractPageSearchEntity(
         array $productAbstractLocalizedEntity,
-        SpyProductAbstractPageSearch $productAbstractPageSearchEntity,
+        SpyProductAbstractPageSearch $productAbstractPageSearchEntity, // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter
         ProductPageSearchTransfer $productPageSearchTransfer,
         string $storeName,
         string $localeName,

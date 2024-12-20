@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace PyzTest\Zed\AclEntity\Persistence\AclDirector;
 
 use Codeception\Test\Unit;
@@ -531,15 +533,15 @@ class InheritedAclQueryScopeTest extends Unit
         $merchant2Transfer = $this->tester->haveMerchant();
         $merchant3Transfer = $this->tester->haveMerchant();
 
-        $productOfferMerchant1 = $this->tester->haveProductOffer(
+        $this->tester->haveProductOffer(
             [
                 ProductOfferTransfer::MERCHANT_REFERENCE => $merchant1Transfer->getMerchantReference(),
             ],
         );
-        $productOfferMerchant2 = $this->tester->haveProductOffer(
+        $this->tester->haveProductOffer(
             [ProductOfferTransfer::MERCHANT_REFERENCE => $merchant2Transfer->getMerchantReference()],
         );
-        $productOfferMerchant3 = $this->tester->haveProductOffer(
+        $this->tester->haveProductOffer(
             [ProductOfferTransfer::MERCHANT_REFERENCE => $merchant3Transfer->getMerchantReference()],
         );
 
