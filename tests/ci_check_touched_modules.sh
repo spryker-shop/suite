@@ -34,8 +34,8 @@ validateModuleTransfers() {
 
         let "TRANSFER_TOTAL_MODULES_PROCESSED_COUNT+=1"
 
-        echo $2.$module
-        output=$(vendor/bin/spryker-dev-console dev:validate-module-transfers -v -m $2.$module)
+        echo $module
+        output=$(vendor/bin/spryker-dev-console dev:validate-module-transfers -v -m $module)
         if [ $? -ne 0 ]; then
             echo $output
             EXITCODE=1
@@ -63,8 +63,8 @@ validateModuleArchitecture() {
 
         let "ARCHITECTURE_TOTAL_MODULES_PROCESSED_COUNT+=1"
 
-        echo $2.$module
-        output=$(vendor/bin/console code:sniff:architecture -v -m $2.$module)
+        echo $module
+        output=$(vendor/bin/console code:sniff:architecture -v -m $module)
         if [ $? -ne 0 ]; then
             echo $output
             EXITCODE=1
