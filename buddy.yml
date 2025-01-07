@@ -142,8 +142,8 @@
             - '.ci/snippet/RUN vendor/bin/phpstan analyze'
             - '.ci/snippet/RUN vendor/bin/console dev:dependency:find'
             - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:deprecation-links:check'
-            - '.ci/snippet/RUN tests/travis_check_untracked.sh'
-            - '.ci/snippet/RUN tests/travis_check_touched_modules.sh'
+            - '.ci/snippet/RUN tests/ci_check_untracked.sh'
+            - '.ci/snippet/RUN tests/ci_check_touched_modules.sh'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -197,6 +197,7 @@
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
+
       - action: 'PHP 8.3 PHPStan spryker/spryker-shop'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
@@ -324,6 +325,7 @@
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
+
       - action: 'PHP 8.2 PHPStan spryker/spryker-shop'
         type: 'BUILD'
         docker_image_name: 'spryker/php'

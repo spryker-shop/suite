@@ -50,6 +50,7 @@ class ZedNavigationConfig extends SprykerZedNavigationConfig
     private function addSprykerFilePath(array $paths): array
     {
         $paths[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/*/Zed/*/Communication';
+        $paths[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Features/*/src/*/Zed/*/Communication';
 
         return $paths;
     }

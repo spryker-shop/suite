@@ -22,6 +22,7 @@ class TranslatorConfig extends SprykerTranslatorConfig
     {
         $coreTranslationFilePathPatterns = parent::getCoreTranslationFilePathPatterns();
         $coreTranslationFilePathPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/data/translation/Zed/[a-z][a-z]_[A-Z][A-Z].csv';
+        $coreTranslationFilePathPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Features/*/data/translation/Zed/[a-z][a-z]_[A-Z][A-Z].csv';
 
         return $coreTranslationFilePathPatterns;
     }

@@ -21,7 +21,8 @@ class DocumentationGeneratorRestApiConfig extends SprykerDocumentationGeneratorR
     protected function getCoreAnnotationSourceDirectoryPatterns(): array
     {
         return [
-            APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/%1$s/src/Spryker/Glue/%1$s/Controller/',
+            APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/%1$s/src/Spryker/Glue/%2$s/Controller/',
+            APPLICATION_VENDOR_DIR . '/spryker/spryker/Features/%1$s/src/SprykerFeature/Glue/%2$s/Controller/',
         ];
     }
 

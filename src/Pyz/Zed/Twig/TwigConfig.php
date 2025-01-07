@@ -37,6 +37,7 @@ class TwigConfig extends SprykerTwigConfig
     {
         $directories = array_merge(
             glob('vendor/spryker/spryker/Bundles/*/src/*/Zed/*/Presentation', GLOB_NOSORT | GLOB_ONLYDIR) ?: [],
+            glob('vendor/spryker/spryker/Features/*/src/*/Zed/*/Presentation', GLOB_NOSORT | GLOB_ONLYDIR) ?: [],
             glob('vendor/spryker/spryker-shop/Bundles/*/src/*/Zed/*/Presentation', GLOB_NOSORT | GLOB_ONLYDIR) ?: [],
         );
 
@@ -57,14 +58,24 @@ class TwigConfig extends SprykerTwigConfig
      */
     public function getYvesDirectoryPathPatterns(): array
     {
-        $themeNameDefault = $this->getSharedConfig()->getYvesThemeNameDefault();
-        $directories = glob(APPLICATION_VENDOR_DIR . '/*/*/Bundles/*/src/*/Yves/*/Theme/' . $themeNameDefault, GLOB_NOSORT | GLOB_ONLYDIR) ?: [];
-
-        $directories = array_merge(
-            $directories,
+        return array_merge(
+            $this->getPyzYvesDirectoryPathPatterns(),
             parent::getYvesDirectoryPathPatterns(),
         );
+    }
 
-        return $directories;
+    /**
+     * @project Only needed in Project, not in demoshop
+     *
+     * @return array<string>
+     */
+    protected function getPyzYvesDirectoryPathPatterns(): array
+    {
+        $themeNameDefault = $this->getSharedConfig()->getYvesThemeNameDefault();
+
+        $bundleDirectories = glob(APPLICATION_VENDOR_DIR . '/*/*/Bundles/*/src/*/Yves/*/Theme/' . $themeNameDefault, GLOB_NOSORT | GLOB_ONLYDIR) ?: [];
+        $featuresDirectories = glob(APPLICATION_VENDOR_DIR . '/*/*/Features/*/src/*/Yves/*/Theme/' . $themeNameDefault, GLOB_NOSORT | GLOB_ONLYDIR) ?: [];
+
+        return array_merge($bundleDirectories, $featuresDirectories);
     }
 }
