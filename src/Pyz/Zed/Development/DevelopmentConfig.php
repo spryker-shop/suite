@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\Development;
 
+use FilesystemIterator;
 use Spryker\Zed\Development\DevelopmentConfig as SprykerDevelopmentConfig;
 
 class DevelopmentConfig extends SprykerDevelopmentConfig
@@ -37,6 +38,10 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
             $mergedInternalNamespacesToPathMapping =
                 static::INTERNAL_NAMESPACES_TO_PATH_MAPPING + parent::INTERNAL_NAMESPACES_TO_PATH_MAPPING;
 
+            if ($this->featureExists()) {
+                $mergedInternalNamespacesToPathMapping[self::NAMESPACE_SPRYKER_FEATURE] = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'vendor/spryker/spryker/Features/';
+            }
+
             return $mergedInternalNamespacesToPathMapping[$namespace];
         }
 
@@ -51,6 +56,33 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
         $pathToSprykerRoot = $this->checkPathToSprykerRoot(static::NAMESPACE_SPRYKER);
         $sprykerNamespacePath = $pathToSprykerRoot ? [static::NAMESPACE_SPRYKER => $pathToSprykerRoot] : [];
 
-        return $sprykerNamespacePath + static::INTERNAL_NAMESPACES_TO_PATH_MAPPING + parent::INTERNAL_NAMESPACES_TO_PATH_MAPPING;
+        $pathsToInternalNamespace = $sprykerNamespacePath + static::INTERNAL_NAMESPACES_TO_PATH_MAPPING + parent::INTERNAL_NAMESPACES_TO_PATH_MAPPING;
+
+        if ($this->featureExists()) {
+            $pathsToInternalNamespace[self::NAMESPACE_SPRYKER_FEATURE] = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'vendor/spryker/spryker/Features/';
+        }
+
+        return $pathsToInternalNamespace;
+    }
+
+    /**
+     * @project Only needed in nonsplit projects.
+     *
+     * @return bool
+     */
+    protected function featureExists(): bool
+    {
+        $featuresDir = APPLICATION_VENDOR_DIR . '/spryker/spryker/Features/';
+
+        if (is_dir($featuresDir)) {
+            $iterator = new FilesystemIterator($featuresDir, FilesystemIterator::SKIP_DOTS);
+            foreach ($iterator as $fileinfo) {
+                if ($fileinfo->isDir()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

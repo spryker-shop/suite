@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\Propel;
 
+use FilesystemIterator;
 use Spryker\Zed\Propel\PropelConfig as SprykerPropelConfig;
 
 class PropelConfig extends SprykerPropelConfig
