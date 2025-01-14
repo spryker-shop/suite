@@ -9,7 +9,9 @@
     },
     "workspaces": [
         "vendor/spryker/spryker/Bundles/*",
-        "vendor/spryker/spryker/Bundles/*/assets/Zed"
+        "vendor/spryker/spryker/Bundles/*/assets/Zed",
+        "vendor/spryker/spryker/Features/*",
+        "vendor/spryker/spryker/Features/*/assets/Zed"
     ],
     "scripts": {
         "yves": "node ./frontend/build development",
@@ -78,7 +80,7 @@
         "@spryker/frontend-config.eslint": "~0.1.0",
         "@spryker/frontend-config.prettier": "~0.0.5",
         "@spryker/frontend-config.stylelint": "~0.0.6",
-        "@spryker/oryx-for-zed": "~3.4.3",
+        "@spryker/oryx-for-zed": "~3.4.4",
         "@types/jest": "~29.5.12",
         "@types/node": "~18.16.9",
         "@types/webpack": "~5.28.0",

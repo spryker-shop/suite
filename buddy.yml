@@ -197,6 +197,20 @@
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker feature'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m SprykerFeature.all -v'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+        trigger_conditions:
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'ssp'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
 
       - action: 'PHP 8.3 PHPStan spryker/spryker-shop'
         type: 'BUILD'
@@ -325,6 +339,20 @@
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
+      - action: 'PHP 8.2 PHPStan spryker/spryker feature'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m SprykerFeature.all -v'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+        trigger_conditions:
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'ssp'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
 
       - action: 'PHP 8.2 PHPStan spryker/spryker-shop'
         type: 'BUILD'
