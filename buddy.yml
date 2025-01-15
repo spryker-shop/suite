@@ -25,7 +25,7 @@
             - 'apt-get update && apt-get install -y golang-go'
         shell: 'BASH'
 
-- pipeline: 'Standard Validation 1'
+- pipeline: 'Standard Validation'
   events:
       - type: 'PUSH'
         refs:
@@ -208,6 +208,9 @@
         shell: 'BASH'
         run_next_parallel: true
         trigger_conditions:
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'ssp'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-static-test-checks'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
