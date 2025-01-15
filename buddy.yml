@@ -211,6 +211,9 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'ssp'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-static-tests'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
 
       - action: 'PHP 8.3 PHPStan spryker/spryker-shop'
         type: 'BUILD'
