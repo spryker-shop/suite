@@ -39,7 +39,7 @@
   resources: 'LARGE'
   trigger_conditions:
       - trigger_condition: 'VAR_CONTAINS'
-        trigger_variable_value: 'run-static-test-checks'
+        trigger_variable_value: 'run-static-validation'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   actions:
       - action: 'JS Validation'
@@ -254,6 +254,10 @@
   concurrent_pipeline_runs: true
   clone_depth: 1
   resources: 'LARGE'
+  trigger_conditions:
+      - trigger_condition: 'VAR_CONTAINS'
+        trigger_variable_value: 'run-static-validation'
+        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   actions:
       - action: 'Build Project'
         type: 'BUILD'
