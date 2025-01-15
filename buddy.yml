@@ -1118,7 +1118,7 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-tests'
+              trigger_variable_value: 'run-ui-tests'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-all-tests'
