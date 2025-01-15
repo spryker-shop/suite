@@ -10,10 +10,6 @@
   concurrent_pipeline_runs: true
   clone_depth: 1
   resources: 'NANO'
-  trigger_conditions:
-      - trigger_condition: 'VAR_CONTAINS'
-        trigger_variable_value: 'run-static-test-checks'
-        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   actions:
       - action: 'Snyk Validation'
         type: 'BUILD'
@@ -41,6 +37,10 @@
   concurrent_pipeline_runs: true
   clone_depth: 1
   resources: 'LARGE'
+  trigger_conditions:
+      - trigger_condition: 'VAR_CONTAINS'
+        trigger_variable_value: 'run-static-test-checks'
+        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   actions:
       - action: 'JS Validation'
         type: 'BUILD'
