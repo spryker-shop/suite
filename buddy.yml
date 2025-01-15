@@ -888,6 +888,9 @@
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
         trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+      - trigger_condition: 'VAR_CONTAINS'
+        trigger_variable_value: 'run-compatibility-tests run-all-tests'
+        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -934,6 +937,9 @@
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
         trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+      - trigger_condition: 'VAR_CONTAINS'
+        trigger_variable_value: 'run-functional-tests run-all-tests'
+        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -986,6 +992,9 @@
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
         trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+      - trigger_condition: 'VAR_CONTAINS'
+        trigger_variable_value: 'run-compatibility-tests run-all-tests'
+        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1030,6 +1039,9 @@
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
         trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+      - trigger_condition: 'VAR_CONTAINS'
+        trigger_variable_value: 'run-ui-tests run-all-tests'
+        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1080,6 +1092,9 @@
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
         trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+      - trigger_condition: 'VAR_CONTAINS'
+        trigger_variable_value: 'run-compatibility-tests run-all-tests'
+        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1124,6 +1139,9 @@
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
         trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
+      - trigger_condition: 'VAR_CONTAINS'
+        trigger_variable_value: 'run-compatibility-tests run-all-tests'
+        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1936,7 +1954,7 @@
             - '*'
   trigger_conditions:
       - trigger_condition: 'VAR_CONTAINS'
-        trigger_variable_value: 'run-ui-tests'
+        trigger_variable_value: 'run-ui-tests run-all-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -2012,7 +2030,7 @@
             - '*'
   trigger_conditions:
       - trigger_condition: 'VAR_CONTAINS'
-        trigger_variable_value: 'run-ui-tests'
+        trigger_variable_value: 'run-ui-tests run-all-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -2088,7 +2106,7 @@
             - '*'
   trigger_conditions:
       - trigger_condition: 'VAR_CONTAINS'
-        trigger_variable_value: 'run-ui-tests'
+        trigger_variable_value: 'run-ui-tests run-all-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -2164,7 +2182,7 @@
             - '*'
   trigger_conditions:
       - trigger_condition: 'VAR_CONTAINS'
-        trigger_variable_value: 'run-ui-tests'
+        trigger_variable_value: 'run-compatibility-tests run-all-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -2234,7 +2252,7 @@
             - '*'
   trigger_conditions:
       - trigger_condition: 'VAR_CONTAINS'
-        trigger_variable_value: 'run-ui-tests'
+        trigger_variable_value: 'run-compatible-tests run-all-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -2304,7 +2322,7 @@
             - '*'
   trigger_conditions:
       - trigger_condition: 'VAR_CONTAINS'
-        trigger_variable_value: 'run-ui-tests'
+        trigger_variable_value: 'run-compatibility-tests run-all-tests'
         trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
