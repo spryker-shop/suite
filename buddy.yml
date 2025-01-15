@@ -38,9 +38,14 @@
   clone_depth: 1
   resources: 'LARGE'
   trigger_conditions:
-      - trigger_condition: 'VAR_CONTAINS'
-        trigger_variable_value: 'run-static-validation run-all-tests'
-        trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+      - trigger_condition: OR
+        trigger_operands:
+          - trigger_condition: "VAR_CONTAINS"
+            trigger_variable_value: "run-static-validation"
+            trigger_variable_key: "BUDDY_RUN_PR_LABELS"
+          - trigger_condition: "VAR_CONTAINS"
+            trigger_variable_value: "run-all-tests"
+            trigger_variable_key: "BUDDY_RUN_PR_LABELS"
   actions:
       - action: 'JS Validation'
         type: 'BUILD'
