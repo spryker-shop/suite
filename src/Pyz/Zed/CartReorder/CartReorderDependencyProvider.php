@@ -39,12 +39,27 @@ use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\CartReorder\MergeCo
 use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\CartReorder\AmendmentOrderReferenceCartPreReorderPlugin;
 use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\CartReorder\AmendmentQuoteNameCartPreReorderPlugin;
 use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\CartReorder\OrderAmendmentCartReorderValidatorPlugin;
+use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\CartReorder\OrderAmendmentQuoteProcessFlowExpanderCartPreReorderPlugin;
 use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\CartReorder\IsAmendableOrderCartReorderValidatorRulePlugin;
 use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\CartReorder\StartOrderAmendmentCartReorderPostCreatePlugin;
 use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\CartReorder\ProductConfigurationCartReorderItemHydratorPlugin;
 
 class CartReorderDependencyProvider extends SprykerCartReorderDependencyProvider
 {
+    /**
+     * @uses \Spryker\Zed\CartReorder\CartReorderConfig::DEFAULT_QUOTE_PROCESS_FLOW_NAME
+     *
+     * @var string
+     */
+    protected const DEFAULT_QUOTE_PROCESS_FLOW_NAME = 'default';
+
+    /**
+     * @uses \Spryker\Zed\SalesOrderAmendment\SalesOrderAmendmentConfig::ORDER_AMENDMENT_QUOTE_PROCESS_FLOW_NAME
+     *
+     * @var string
+     */
+    protected const ORDER_AMENDMENT_QUOTE_PROCESS_FLOW_NAME = 'order-amendment';
+
     /**
      * @return list<\Spryker\Zed\CartReorderExtension\Dependency\Plugin\CartReorderQuoteProviderStrategyPluginInterface>
      */
@@ -56,13 +71,16 @@ class CartReorderDependencyProvider extends SprykerCartReorderDependencyProvider
     }
 
     /**
-     * @return list<\Spryker\Zed\CartReorderExtension\Dependency\Plugin\CartReorderValidatorPluginInterface>
+     * @return array<string, list<\Spryker\Zed\CartReorderExtension\Dependency\Plugin\CartReorderValidatorPluginInterface>>
      */
     protected function getCartReorderValidatorPlugins(): array
     {
         return [
-            new OrderAmendmentCartReorderValidatorPlugin(),
-            new IsAmendableOrderCartReorderValidatorRulePlugin(),
+            static::DEFAULT_QUOTE_PROCESS_FLOW_NAME => [],
+            static::ORDER_AMENDMENT_QUOTE_PROCESS_FLOW_NAME => [
+                new OrderAmendmentCartReorderValidatorPlugin(),
+                new IsAmendableOrderCartReorderValidatorRulePlugin(),
+            ],
         ];
     }
 
@@ -76,6 +94,7 @@ class CartReorderDependencyProvider extends SprykerCartReorderDependencyProvider
             new CopyOrderPriceModeCartPreReorderPlugin(),
             new ProductListRestrictedItemsCartPreReorderPlugin(),
             new DefaultReorderQuoteNameCartPreReorderPlugin(),
+            new OrderAmendmentQuoteProcessFlowExpanderCartPreReorderPlugin(),
             new AmendmentOrderReferenceCartPreReorderPlugin(),
             new AmendmentQuoteNameCartPreReorderPlugin(),
             new ReplaceBundledItemsCartPreReorderPlugin(),
