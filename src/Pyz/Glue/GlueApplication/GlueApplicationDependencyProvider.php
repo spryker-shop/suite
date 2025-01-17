@@ -160,6 +160,7 @@ use Spryker\Glue\MerchantsRestApi\Plugin\GlueApplication\MerchantsResourceRouteP
 use Spryker\Glue\NavigationsCategoryNodesResourceRelationship\Plugin\GlueApplication\CategoryNodeByResourceIdResourceRelationshipPlugin;
 use Spryker\Glue\NavigationsRestApi\NavigationsRestApiConfig;
 use Spryker\Glue\NavigationsRestApi\Plugin\ResourceRoute\NavigationsResourceRoutePlugin;
+use Spryker\Glue\OrderAmendmentsRestApi\Plugin\GlueApplication\OrderAmendmentsByOrderResourceRelationshipPlugin;
 use Spryker\Glue\OrderPaymentsRestApi\Plugin\OrderPaymentsResourceRoutePlugin;
 use Spryker\Glue\OrdersRestApi\OrdersRestApiConfig;
 use Spryker\Glue\OrdersRestApi\Plugin\CustomerOrdersResourceRoutePlugin;
@@ -978,6 +979,11 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS,
             new ShipmentTypesByShipmentMethodsResourceRelationshipPlugin(),
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            OrdersRestApiConfig::RESOURCE_ORDERS,
+            new OrderAmendmentsByOrderResourceRelationshipPlugin(),
         );
 
         return $resourceRelationshipCollection;
