@@ -1286,7 +1286,7 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ui-ci'
+              trigger_variable_value: 'run-functional-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-all-ci'
