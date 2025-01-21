@@ -1,0 +1,24 @@
+namespace: PyzTest
+actor: Tester
+
+include:
+    - vendor/spryker/spryker/Features/*/*/SprykerFeatureTest/Glue/
+
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+
+settings:
+    suite_class: \PHPUnit_Framework_TestSuite
+    colors: true
+    memory_limit: 1024M
+    log: true
+
+coverage:
+    enabled: true
+    remote: true
+    c3_url: 'http://backoffice.de.shop-suite.local'
+    whitelist: { include: ['src/Pyz/*.php'] }
