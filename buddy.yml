@@ -810,12 +810,19 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" != *"feature-ci"* || "$BUDDY_RUN_PR_LABELS" == *"feature-and-core-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"feature-ci"* || "$BUDDY_RUN_PR_LABELS" == *"feature-and-core-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
