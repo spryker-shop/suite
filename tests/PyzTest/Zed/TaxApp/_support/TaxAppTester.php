@@ -117,7 +117,7 @@ class TaxAppTester extends Actor
     {
         $channelName = 'tax-commands';
         $this->setupMessageBroker($configureTaxAppMessage::class, $channelName);
-        $this->setupMessageBrokerValidationPlugins();
+        $this->setupMessageBrokerPlugins();
         $messageBrokerFacade = $this->getLocator()->messageBroker()->facade();
         $messageBrokerFacade->sendMessage($configureTaxAppMessage);
         $messageBrokerFacade->startWorker(

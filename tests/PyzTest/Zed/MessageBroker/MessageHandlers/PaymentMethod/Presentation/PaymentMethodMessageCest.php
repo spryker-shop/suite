@@ -58,6 +58,7 @@ class PaymentMethodMessageCest
         $channelName = 'payment-method-commands';
         $I->setupMessageBroker(AddPaymentMethodTransfer::class, $channelName);
         $I->setDependency(MessageBrokerDependencyProvider::PLUGINS_EXTERNAL_VALIDATOR, []);
+        $I->setDependency(MessageBrokerDependencyProvider::PLUGINS_FILTER_MESSAGE_CHANNEL, []);
         $messageBrokerFacade->sendMessage(
             $I->haveAddPaymentMethodTransfer(
                 [
@@ -100,6 +101,7 @@ class PaymentMethodMessageCest
         $channelName = 'payment-method-commands';
         $I->setupMessageBroker(AddPaymentMethodTransfer::class, $channelName);
         $I->setDependency(MessageBrokerDependencyProvider::PLUGINS_EXTERNAL_VALIDATOR, []);
+        $I->setDependency(MessageBrokerDependencyProvider::PLUGINS_FILTER_MESSAGE_CHANNEL, []);
         $messageBrokerFacade->sendMessage(
             $I->haveAddPaymentMethodTransfer(
                 [
