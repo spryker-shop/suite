@@ -397,9 +397,6 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -450,9 +447,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -514,9 +508,6 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   actions:
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -561,9 +552,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -622,9 +610,6 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -677,9 +662,6 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   actions:
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -729,9 +711,6 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -780,9 +759,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -838,9 +814,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -953,9 +926,6 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1006,9 +976,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -1066,9 +1033,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -1177,9 +1141,6 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1228,9 +1189,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -1338,9 +1296,6 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1400,9 +1355,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -1470,9 +1422,6 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1530,9 +1479,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -1597,9 +1543,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -1668,9 +1611,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
 
   terminate_stale_runs: true
@@ -1824,9 +1764,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -2359,9 +2296,6 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2434,9 +2368,6 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2508,9 +2439,6 @@
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
