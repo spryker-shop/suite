@@ -35,6 +35,21 @@ class MessageBrokerConfig extends SprykerMessageBrokerConfig
 
     /**
      * {@inheritDoc}
+     * - The list below is used strictly recommended to leave as is.
+     *
+     * @api
+     *
+     * @return list<string>
+     */
+    public function getSystemWorkerChannels(): array
+    {
+        return [
+            'app-events',
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
      *
      * @api
      *

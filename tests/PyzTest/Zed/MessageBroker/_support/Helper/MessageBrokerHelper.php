@@ -20,8 +20,9 @@ class MessageBrokerHelper extends Module
     /**
      * @return void
      */
-    public function setupMessageBrokerValidationPlugins(): void
+    public function setupMessageBrokerPlugins(): void
     {
         $this->getDependencyProviderHelper()->setDependency(MessageBrokerDependencyProvider::PLUGINS_EXTERNAL_VALIDATOR, []);
+        $this->getDependencyProviderHelper()->setDependency(MessageBrokerDependencyProvider::PLUGINS_FILTER_MESSAGE_CHANNEL, []);
     }
 }
