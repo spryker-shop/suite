@@ -45,6 +45,7 @@ use Spryker\Zed\Product\Dependency\Facade\ProductToLocaleBridge;
 use Spryker\Zed\Product\Dependency\Facade\ProductToTouchBridge;
 use Spryker\Zed\Product\Dependency\Facade\ProductToUrlBridge;
 use Spryker\Zed\Product\Persistence\ProductQueryContainer;
+use Spryker\Zed\Product\Persistence\ProductRepository;
 use Spryker\Zed\ProductImage\Persistence\ProductImageQueryContainer;
 use Spryker\Zed\Store\Business\StoreFacade;
 use Spryker\Zed\Tax\Persistence\TaxQueryContainer;
@@ -135,6 +136,11 @@ abstract class ProductTestAbstract extends Unit
      * @var \Spryker\Zed\Product\Persistence\ProductQueryContainerInterface
      */
     protected $productQueryContainer;
+
+    /**
+     * @var \Spryker\Zed\Product\Persistence\ProductRepositoryInterface
+     */
+    protected $productRepository;
 
     /**
      * @var \Spryker\Zed\ProductImage\Persistence\ProductImageQueryContainerInterface
@@ -255,6 +261,7 @@ abstract class ProductTestAbstract extends Unit
         $this->touchFacade = new TouchFacade();
         $this->utilTextService = new UtilTextService();
         $this->productQueryContainer = new ProductQueryContainer();
+        $this->productRepository = new ProductRepository();
         $this->touchQueryContainer = new TouchQueryContainer();
         $this->priceProductQueryContainer = new PriceProductQueryContainer();
         $this->productImageQueryContainer = new ProductImageQueryContainer();
@@ -292,6 +299,7 @@ abstract class ProductTestAbstract extends Unit
             $this->productQueryContainer,
             $urlGenerator,
             $this->productEventTrigger,
+            $this->productRepository,
         );
 
         $this->productManager = new ProductManager(
