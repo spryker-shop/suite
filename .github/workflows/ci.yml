@@ -123,24 +123,6 @@ jobs:
             - name: Speccy lint Glue specification
               run: speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
 
-            - name: Style lint
-              run: npm run yves:stylelint
-
-            - name: ES lint
-              run: npm run yves:lint
-
-            - name: Front-end Formatter
-              run: npm run formatter
-
-            - name: Front-end MP Lint
-              run: npm run mp:lint
-
-            - name: Front-end MP Style lint
-              run: npm run mp:stylelint
-
-            - name: Front-end MP Unit Tests
-              run: npm run mp:test
-
             - name: Validate propel files
               run: |
                   vendor/bin/console propel:schema:validate
@@ -161,6 +143,45 @@ jobs:
             - name: Run Evaluator
               run: vendor/bin/evaluator evaluate
 
+    js-validation:
+        if: >
+            contains(github.event.pull_request.labels.*.name, 'run-npm-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+        name: "NPM validation"
+        runs-on: ubuntu-22.04
+        strategy:
+            fail-fast: false
+
+        env:
+            APPLICATION_ENV: ci.mysql
+            APPLICATION_STORE: DE
+            SPRYKER_CURRENT_REGION: EU
+            PROJECT: suite
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Install NPM packages
+                run: npm ci
+
+            -   name: Style lint
+                run: npm run yves:stylelint
+
+            -   name: ES lint
+                run: npm run yves:lint
+
+            -   name: Front-end Formatter
+                run: npm run formatter
+
+            -   name: Front-end MP Lint
+                run: npm run mp:lint
+
+            -   name: Front-end MP Style lint
+                run: npm run mp:stylelint
+
+            -   name: Front-end MP Unit Tests
+                run: npm run mp:test
+                
     php-83-mariadb-glue-alpine-dynamic-store-off:
         if: contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
         name: "PHP 8.3 / MariaDB / Glue / Alpine / Dynamic Store OFF"
