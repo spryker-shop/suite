@@ -426,6 +426,19 @@
                 ]
             },
             {
+                "name": "productAbstractUrls",
+                "isEditable": false,
+                "childDynamicEntityConfiguration": {
+                    "tableAlias": "urls"
+                },
+                "relationFieldMappings": [
+                    {
+                        "childFieldName": "fk_resource_product_abstract",
+                        "parentFieldName": "fk_product_abstract"
+                    }
+                ]
+            },
+            {
                 "name": "productStocks",
                 "isEditable": true,
                 "childDynamicEntityConfiguration": {
@@ -2382,7 +2395,7 @@
                 },
                 {
                     "fieldName": "is_active",
-                    "fieldVisibleName": "price_mode_configuration",
+                    "fieldVisibleName": "is_active",
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
@@ -2391,6 +2404,14 @@
                 {
                     "fieldName": "key",
                     "fieldVisibleName": "key",
+                    "isCreatable": true,
+                    "isEditable": true,
+                    "type": "string",
+                    "validation": { "isRequired": true }
+                },
+                {
+                    "fieldName": "name",
+                    "fieldVisibleName": "name",
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
