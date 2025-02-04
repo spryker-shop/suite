@@ -226,7 +226,7 @@ groups:
                         store: AT
                     glue.us.suite-nonsplit.demo-spryker.com:
                         store: US
-            glue_storefront:
+            gluestorefront:
                 application: glue-storefront
                 endpoints:
                     glue-storefront.de.suite-nonsplit.demo-spryker.com:
@@ -235,7 +235,7 @@ groups:
                         store: AT
                     glue-storefront.us.suite-nonsplit.demo-spryker.com:
                         store: US
-            glue_backend:
+            gluebackend:
                 application: glue-backend
                 endpoints:
                     glue-backend.de.suite-nonsplit.demo-spryker.com:
@@ -256,7 +256,7 @@ services:
                 protocol: tcp
     broker:
         engine: rabbitmq
-        version: '3.9'
+        version: 3.13
         api:
             username: 'spryker'
             password: 'secret'
