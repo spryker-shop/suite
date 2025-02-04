@@ -278,7 +278,6 @@ services:
     scheduler:
         engine: jenkins
         version: '2.442'
-        csrf-protection-enabled: true
         endpoints:
             scheduler.suite-nonsplit.demo-spryker.com:
     mail_catcher:
