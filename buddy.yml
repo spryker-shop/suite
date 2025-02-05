@@ -4,6 +4,10 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+      -   type: "PULL_REQUEST"
+          events:
+              - "labeled"
+              - "unlabeled"
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
