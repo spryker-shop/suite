@@ -1,4 +1,3 @@
-#1
 - pipeline: 'Snyk Validation'
   events:
       - type: 'PUSH'
@@ -253,8 +252,6 @@
             - 'unlabeled'
         branches:
             - '*'
-        branches:
-            - '*'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -295,8 +292,6 @@
         events:
             - 'labeled'
             - 'unlabeled'
-        branches:
-            - '*'
         branches:
             - '*'
   terminate_stale_runs: true
