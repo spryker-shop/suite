@@ -50,7 +50,7 @@
               trigger_variable_value: 'run-static-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
+              trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   actions:
       - action: 'Build Project'
@@ -265,7 +265,7 @@
               trigger_variable_value: 'run-npm-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
+              trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   actions:
       - action: 'NPM Validation'
@@ -307,7 +307,7 @@
               trigger_variable_value: 'run-static-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
+              trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   actions:
       - action: 'Build Project'
@@ -968,7 +968,7 @@
               trigger_variable_value: 'run-functional-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
+              trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -1216,7 +1216,7 @@
               trigger_variable_value: 'run-ui-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
+              trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -1396,7 +1396,7 @@
               trigger_variable_value: 'run-functional-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
+              trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -1880,7 +1880,7 @@
               trigger_variable_value: 'run-api-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
+              trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -2039,7 +2039,7 @@
               trigger_variable_value: 'run-ui-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
+              trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -2270,7 +2270,7 @@
               trigger_variable_value: 'run-ui-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
+              trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -2351,7 +2351,7 @@
               trigger_variable_value: 'run-ui-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
+              trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -2432,7 +2432,7 @@
               trigger_variable_value: 'run-ui-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-all-ci'
+              trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
   terminate_stale_runs: true
   auto_clear_cache: true
