@@ -41,9 +41,12 @@ class PaymentConfig extends SprykerPaymentConfig
             ],
             QuoteTransfer::ITEMS => [
                 ItemTransfer::TAX_RATE => 'taxRate',
+                ItemTransfer::SUM_TAX_AMOUNT => 'taxAmount',
+                ItemTransfer::SUM_DISCOUNT_AMOUNT_AGGREGATION => 'discountAmount',
             ],
             QuoteTransfer::EXPENSES => [
                 ExpenseTransfer::TAX_RATE => 'taxRate',
+                ExpenseTransfer::SUM_TAX_AMOUNT => 'taxAmount',
             ],
         ]);
     }
