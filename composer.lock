@@ -6341,7 +6341,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "67ec7d16f729d06eb35c1fe6f1edf17019269bc7"
+                "reference": "74a5709422ad9c7f0c823c0792032ecf1ab626b1"
             },
             "require": {
                 "php": ">=8.1"
@@ -7380,6 +7380,7 @@
                 "spryker/tax": "*",
                 "spryker/tax-app": "*",
                 "spryker/tax-app-extension": "*",
+                "spryker/tax-app-rest-api": "*",
                 "spryker/tax-merchant-portal-gui": "*",
                 "spryker/tax-product-connector": "*",
                 "spryker/tax-product-connector-extension": "*",
@@ -7472,7 +7473,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2025-02-07T10:58:55+00:00"
+            "time": "2025-02-12T15:21:58+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -15266,16 +15267,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.12.1",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845"
+                "reference": "024473a478be9df5fdaca2c793f2232fe788e414"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/123267b2c49fbf30d78a7b2d333f6be754b94845",
-                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/024473a478be9df5fdaca2c793f2232fe788e414",
+                "reference": "024473a478be9df5fdaca2c793f2232fe788e414",
                 "shasum": ""
             },
             "require": {
@@ -15314,7 +15315,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.1"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.13.0"
             },
             "funding": [
                 {
@@ -15322,7 +15323,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-08T17:47:46+00:00"
+            "time": "2025-02-12T12:17:51+00:00"
         },
         {
             "name": "pdepend/pdepend",
@@ -16627,16 +16628,16 @@
         },
         {
             "name": "roave/better-reflection",
-            "version": "6.55.0",
+            "version": "6.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/BetterReflection.git",
-                "reference": "42e750c4e806ca1ff74959da2e221952f8bebee0"
+                "reference": "87fc50186197726e2e5aa24acf910743134951fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/42e750c4e806ca1ff74959da2e221952f8bebee0",
-                "reference": "42e750c4e806ca1ff74959da2e221952f8bebee0",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/87fc50186197726e2e5aa24acf910743134951fe",
+                "reference": "87fc50186197726e2e5aa24acf910743134951fe",
                 "shasum": ""
             },
             "require": {
@@ -16650,7 +16651,7 @@
             },
             "require-dev": {
                 "phpbench/phpbench": "^1.4.0",
-                "phpunit/phpunit": "^11.5.6"
+                "phpunit/phpunit": "^11.5.7"
             },
             "suggest": {
                 "composer/composer": "Required to use the ComposerSourceLocator"
@@ -16690,9 +16691,9 @@
             "description": "Better Reflection - an improved code reflection API",
             "support": {
                 "issues": "https://github.com/Roave/BetterReflection/issues",
-                "source": "https://github.com/Roave/BetterReflection/tree/6.55.0"
+                "source": "https://github.com/Roave/BetterReflection/tree/6.56.0"
             },
-            "time": "2025-02-06T12:13:01+00:00"
+            "time": "2025-02-09T11:05:37+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -18604,7 +18605,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "3ef141407e28f065a0c62e6214e24c3631c1ffe7"
+                "reference": "360bd34884232f25f16eb6a78f17c04e2cc60740"
             },
             "default-branch": true,
             "type": "library",
@@ -18612,7 +18613,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2025-01-17T11:01:18+00:00"
+            "time": "2025-02-12T14:25:14+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -19191,36 +19192,36 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "spryker/spryker": 20,
-        "spryker/spryker-shop": 20,
-        "spryker/install": 20,
-        "spryker/rabbit-mq": 20,
-        "spryker/event-behavior": 20,
-        "spryker/synchronization-behavior": 20,
-        "spryker/uuid-behavior": 20,
-        "spryker/silexphp": 20,
-        "spryker/checksum-generator": 20,
+        "pdepend/pdepend": 20,
         "spryker-eco/loggly": 20,
         "spryker-eco/new-relic": 20,
-        "spryker/composer-merge-plugin": 20,
-        "spryker/tax-app-vertex": 20,
-        "spryker/architecture-sniffer": 20,
-        "spryker/development-core": 20,
-        "spryker/code-sniffer": 20,
-        "spryker/git-hook": 20,
-        "spryker/robotframework-suite-tests": 20,
-        "pdepend/pdepend": 20,
+        "spryker-sdk/benchmark": 20,
         "spryker-sdk/codeception-phantoman": 20,
         "spryker-sdk/composer-constrainer": 20,
         "spryker-sdk/composer-replace": 20,
-        "spryker-sdk/spryk": 20,
-        "spryker-sdk/benchmark": 20,
-        "spryker/docker-chromedriver": 20,
-        "spryker-sdk/load-testing": 20,
         "spryker-sdk/evaluator": 20,
-        "spryker/profiler": 20,
+        "spryker-sdk/load-testing": 20,
+        "spryker-sdk/spryk": 20,
+        "spryker/architecture-sniffer": 20,
+        "spryker/checksum-generator": 20,
+        "spryker/code-sniffer": 20,
         "spryker/commerce-k6-performance-tests": 20,
-        "spryker/cypress-tests": 20
+        "spryker/composer-merge-plugin": 20,
+        "spryker/cypress-tests": 20,
+        "spryker/development-core": 20,
+        "spryker/docker-chromedriver": 20,
+        "spryker/event-behavior": 20,
+        "spryker/git-hook": 20,
+        "spryker/install": 20,
+        "spryker/profiler": 20,
+        "spryker/rabbit-mq": 20,
+        "spryker/robotframework-suite-tests": 20,
+        "spryker/silexphp": 20,
+        "spryker/spryker": 20,
+        "spryker/spryker-shop": 20,
+        "spryker/synchronization-behavior": 20,
+        "spryker/tax-app-vertex": 20,
+        "spryker/uuid-behavior": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -19239,7 +19240,7 @@
         "ext-readline": "*",
         "ext-redis": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.2.0"
     },
