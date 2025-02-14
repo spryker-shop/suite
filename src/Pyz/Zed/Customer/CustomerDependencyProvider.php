@@ -119,7 +119,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     }
 
     /**
-     * @return array<\Spryker\Zed\CustomerDataChangeRequest\Communication\Plugin\Customer\EmailChangeRequestSendVerificationCustomerPreUpdatePlugin>
+     * @return array<\Spryker\Zed\CustomerExtension\Dependency\Plugin\CustomerPreUpdatePluginInterface>
      */
     protected function getCustomerPreUpdatePlugins(): array
     {
