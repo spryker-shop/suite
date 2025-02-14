@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Yves\ShopApplication;
 
+use Spryker\Yves\CustomerDataChangeRequest\Widget\CustomerEmailChangeRequestWidget;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin;
@@ -359,6 +360,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             OrderAmendmentWidget::class,
             TraceableEventWidget::class,
             ExpressCheckoutPaymentWidget::class,
+            CustomerEmailChangeRequestWidget::class,
         ];
     }
 
