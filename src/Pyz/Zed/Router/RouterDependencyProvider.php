@@ -36,6 +36,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
     {
         return [
             new MerchantPortalRouterPlugin(),
+            new ZedDevelopmentRouterPlugin(), //This plugin is used to handle Profiler routes.
         ];
     }
 
