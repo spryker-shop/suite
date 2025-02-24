@@ -240,7 +240,8 @@ $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($trustedHosts, [
     'threedssvc.pay1.de', // trusted Payone domain
     'www.sofort.com', // trusted Payone domain
     'connect.stripe.com', // trusted Stripe domain
-    'checkout.b2b.credit', // trusted Trevipay checkout domain
+    'checkout.b2b.credit', // trusted TreviPay checkout domain
+    'trevipay-staging.acp.demo-spryker.com',  // trusted TreviPay App domain
 ]);
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
