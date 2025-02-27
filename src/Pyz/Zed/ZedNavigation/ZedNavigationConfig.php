@@ -38,6 +38,18 @@ class ZedNavigationConfig extends SprykerZedNavigationConfig
     }
 
     /**
+     * @return string
+     */
+    public function getDefaultNavigationType(): string
+    {
+        if (APPLICATION === 'MERCHANT_PORTAL') {
+            return self::NAVIGATION_TYPE_MAIN_MERCHANT_PORTAL;
+        }
+
+        return static::NAVIGATION_TYPE_MAIN;
+    }
+
+    /**
      * @return array<string>
      */
     public function getCacheFilePaths(): array
