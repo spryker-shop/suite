@@ -54,6 +54,8 @@ suites:
                 - \SprykerTest\Zed\Company\Helper\CompanyHelper
                 - \SprykerTest\Shared\CompanyUser\Helper\CompanyUserHelper
                 - \SprykerTest\Zed\Testify\Helper\Business\BusinessHelper
+                - \SprykerTest\Zed\Oms\Helper\OmsHelper
+                - \SprykerTest\Shared\Testify\Helper\TableRelationsCleanupHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser

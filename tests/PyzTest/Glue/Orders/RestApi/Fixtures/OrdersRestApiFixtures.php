@@ -7,7 +7,7 @@
 
 declare(strict_types = 1);
 
-namespace PyzTest\Glue\Orders\RestApi;
+namespace PyzTest\Glue\Orders\RestApi\Fixtures;
 
 use Generated\Shared\DataBuilder\QuoteBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;

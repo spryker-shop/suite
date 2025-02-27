@@ -16,6 +16,7 @@ suites:
         actor: OrdersApiTester
         modules:
             enabled:
+                - Asserts
                 - \PyzTest\Shared\Testify\Helper\Environment
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
                       projectNamespaces: ['Pyz']
@@ -35,6 +36,8 @@ suites:
                 - \SprykerTest\Zed\Sales\Helper\BusinessHelper
                 - \SprykerTest\Service\Container\Helper\ContainerHelper
                 - \SprykerTest\Shared\Store\Helper\StoreDependencyHelper
+                - \SprykerTest\Shared\Testify\Helper\TableRelationsCleanupHelper
+                - \SprykerTest\Shared\SalesOrderAmendment\Helper\SalesOrderAmendmentHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser

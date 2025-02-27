@@ -57,9 +57,25 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
     }
 
     /**
-     * @return array<\Spryker\Zed\CheckoutRestApiExtension\Dependency\Plugin\CheckoutDataValidatorPluginInterface>
+     * @return list<\Spryker\Zed\CheckoutRestApiExtension\Dependency\Plugin\CheckoutDataValidatorPluginInterface>
      */
     protected function getCheckoutDataValidatorPlugins(): array
+    {
+        return [
+            new CountriesCheckoutDataValidatorPlugin(),
+            new ShipmentMethodCheckoutDataValidatorPlugin(),
+            new ItemsCheckoutDataValidatorPlugin(),
+            new CustomerAddressCheckoutDataValidatorPlugin(),
+            new CompanyBusinessUnitAddressCheckoutDataValidatorPlugin(),
+            new ShipmentTypeCheckoutDataValidatorPlugin(),
+            new ClickAndCollectExampleReplaceCheckoutDataValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\CheckoutRestApiExtension\Dependency\Plugin\CheckoutDataValidatorPluginInterface>
+     */
+    protected function getCheckoutDataValidatorPluginsForOrderAmendment(): array
     {
         return [
             new CountriesCheckoutDataValidatorPlugin(),
