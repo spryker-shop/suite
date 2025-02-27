@@ -56,13 +56,23 @@ class ZedNavigationConfig extends SprykerZedNavigationConfig
     }
 
     /**
-     * @api
-     *
      * @return string
      */
     public function getMergeStrategy(): string
     {
         return static::BREADCRUMB_MERGE_STRATEGY;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultNavigationType(): string
+    {
+        if (APPLICATION === 'MERCHANT_PORTAL') {
+            return self::NAVIGATION_TYPE_MAIN_MERCHANT_PORTAL;
+        }
+
+        return static::NAVIGATION_TYPE_MAIN;
     }
 
     /**
