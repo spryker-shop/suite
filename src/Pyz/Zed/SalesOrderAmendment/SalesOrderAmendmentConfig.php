@@ -7,12 +7,12 @@
 
 declare(strict_types = 1);
 
-namespace Pyz\Zed\Quote;
+namespace Pyz\Zed\SalesOrderAmendment;
 
 use Generated\Shared\Transfer\QuoteTransfer;
-use Spryker\Zed\Quote\QuoteConfig as SprykerQuoteConfig;
+use Spryker\Zed\SalesOrderAmendment\SalesOrderAmendmentConfig as SprykerSalesOrderAmendmentConfig;
 
-class QuoteConfig extends SprykerQuoteConfig
+class SalesOrderAmendmentConfig extends SprykerSalesOrderAmendmentConfig
 {
     /**
      * @return array<string>
@@ -21,19 +21,17 @@ class QuoteConfig extends SprykerQuoteConfig
     {
         return array_merge(parent::getQuoteFieldsAllowedForSaving(), [
             QuoteTransfer::BUNDLE_ITEMS,
-            QuoteTransfer::CART_NOTE, #CartNoteFeature,
-            QuoteTransfer::EXPENSES, #QuoteApprovalFeature
-            QuoteTransfer::VOUCHER_DISCOUNTS, #QuoteApprovalFeature
+            QuoteTransfer::CART_NOTE,
+            QuoteTransfer::EXPENSES,
+            QuoteTransfer::VOUCHER_DISCOUNTS,
             QuoteTransfer::GIFT_CARDS,
-            QuoteTransfer::CART_RULE_DISCOUNTS, #QuoteApprovalFeature
-            QuoteTransfer::PROMOTION_ITEMS, #QuoteApprovalFeature
-            QuoteTransfer::IS_LOCKED, #QuoteApprovalFeature
+            QuoteTransfer::CART_RULE_DISCOUNTS,
+            QuoteTransfer::PROMOTION_ITEMS,
+            QuoteTransfer::IS_LOCKED,
             QuoteTransfer::QUOTE_REQUEST_VERSION_REFERENCE,
             QuoteTransfer::QUOTE_REQUEST_REFERENCE,
             QuoteTransfer::MERCHANT_REFERENCE,
             QuoteTransfer::IS_ORDER_PLACED_SUCCESSFULLY,
-            QuoteTransfer::AMENDMENT_ORDER_REFERENCE,
-            QuoteTransfer::QUOTE_PROCESS_FLOW,
         ]);
     }
 }

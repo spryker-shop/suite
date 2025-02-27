@@ -53,10 +53,15 @@ use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrderAddress;
 use Orm\Zed\Sales\Persistence\SpySalesOrderAddressQuery;
+use Orm\Zed\SalesOrderAmendment\Persistence\SpySalesOrderAmendment;
+use Orm\Zed\SalesOrderAmendment\Persistence\SpySalesOrderAmendmentQuery;
+use Orm\Zed\ServicePoint\Persistence\SpyServicePointQuery;
 use Orm\Zed\ServicePoint\Persistence\SpyServiceTypeQuery;
 use Orm\Zed\Shipment\Persistence\SpyShipmentMethodQuery;
 use Orm\Zed\ShipmentType\Persistence\SpyShipmentTypeQuery;
 use Orm\Zed\ShipmentTypeServicePoint\Persistence\SpyShipmentTypeServiceTypeQuery;
+use Spryker\Glue\CartReorderRestApi\CartReorderRestApiConfig;
+use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 use Spryker\Glue\OrdersRestApi\OrdersRestApiConfig;
@@ -264,6 +269,61 @@ class CheckoutApiTester extends ApiEndToEndTester
                 'resourceCheckout' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
             ],
         );
+    }
+
+    /**
+     * @return string
+     */
+    public function buildCartReorderUrl(): string
+    {
+        return $this->formatUrl('{cartReorderResource}', [
+            'cartReorderResource' => CartReorderRestApiConfig::RESOURCE_CART_REORDER,
+        ]);
+    }
+
+    /**
+     * @param string $cartUuid
+     *
+     * @return string
+     */
+    public function buildAddCartItemUrl(string $cartUuid): string
+    {
+        return $this->formatUrl(
+            '{resourceCarts}/{cartUuid}/{resourceCartItems}',
+            [
+                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                'cartUuid' => $cartUuid,
+                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+            ],
+        );
+    }
+
+    /**
+     * @return void
+     */
+    public function ensureSalesOrderAmendmentTableIsEmpty(): void
+    {
+        $this->ensureDatabaseTableIsEmpty($this->getSalesOrderAmendmentQuery());
+    }
+
+    /**
+     * @return void
+     */
+    public function ensureServicePointTableIsEmpty(): void
+    {
+        $this->ensureDatabaseTableIsEmpty($this->getServicePointQuery());
+    }
+
+    /**
+     * @param string $orderReference
+     *
+     * @return \Orm\Zed\SalesOrderAmendment\Persistence\SpySalesOrderAmendment|null
+     */
+    public function findSalesOrderAmendmentEntity(string $orderReference): ?SpySalesOrderAmendment
+    {
+        return $this->getSalesOrderAmendmentQuery()
+            ->filterByOriginalOrderReference($orderReference)
+            ->findOne();
     }
 
     /**
@@ -1218,5 +1278,21 @@ class CheckoutApiTester extends ApiEndToEndTester
     protected function getServiceTypeQuery(): SpyServiceTypeQuery
     {
         return SpyServiceTypeQuery::create();
+    }
+
+    /**
+     * @return \Orm\Zed\ServicePoint\Persistence\SpyServicePointQuery
+     */
+    protected function getServicePointQuery(): SpyServicePointQuery
+    {
+        return SpyServicePointQuery::create();
+    }
+
+    /**
+     * @return \Orm\Zed\SalesOrderAmendment\Persistence\SpySalesOrderAmendmentQuery
+     */
+    protected function getSalesOrderAmendmentQuery(): SpySalesOrderAmendmentQuery
+    {
+        return SpySalesOrderAmendmentQuery::create();
     }
 }
