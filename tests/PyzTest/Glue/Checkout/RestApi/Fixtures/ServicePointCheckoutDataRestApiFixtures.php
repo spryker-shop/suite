@@ -61,6 +61,7 @@ class ServicePointCheckoutDataRestApiFixtures implements FixturesBuilderInterfac
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {
         $I->truncateSalesOrderThresholds();
+        $I->ensureServicePointTableIsEmpty();
 
         $customerTransfer = $I->haveCustomer([
             CustomerTransfer::USERNAME => static::TEST_USERNAME,

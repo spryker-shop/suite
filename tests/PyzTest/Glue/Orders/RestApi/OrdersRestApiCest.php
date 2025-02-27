@@ -12,6 +12,7 @@ namespace PyzTest\Glue\Orders\RestApi;
 use Codeception\Util\HttpCode;
 use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Glue\Orders\OrdersApiTester;
+use PyzTest\Glue\Orders\RestApi\Fixtures\OrdersRestApiFixtures;
 use Spryker\Glue\OrdersRestApi\OrdersRestApiConfig;
 
 /**
@@ -28,9 +29,9 @@ use Spryker\Glue\OrdersRestApi\OrdersRestApiConfig;
 class OrdersRestApiCest
 {
     /**
-     * @var \PyzTest\Glue\Orders\RestApi\OrdersRestApiFixtures
+     * @var \PyzTest\Glue\Orders\RestApi\Fixtures\OrdersRestApiFixtures
      */
-    protected $fixtures;
+    protected OrdersRestApiFixtures $fixtures;
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersApiTester $I
@@ -39,7 +40,7 @@ class OrdersRestApiCest
      */
     public function loadFixtures(OrdersApiTester $I): void
     {
-        /** @var \PyzTest\Glue\Orders\RestApi\OrdersRestApiFixtures $fixtures */
+        /** @var \PyzTest\Glue\Orders\RestApi\Fixtures\OrdersRestApiFixtures $fixtures */
         $fixtures = $I->loadFixtures(OrdersRestApiFixtures::class);
         $this->fixtures = $fixtures;
     }
