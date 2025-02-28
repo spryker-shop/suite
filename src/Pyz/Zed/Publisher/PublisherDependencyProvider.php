@@ -11,6 +11,7 @@ namespace Pyz\Zed\Publisher;
 
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\PublishAndSynchronizeHealthCheck\PublishAndSynchronizeHealthCheckConfig;
+use Spryker\Zed\Asset\Communication\Plugin\Publisher\Store\RefreshAssetStoreRelationPublisherPlugin;
 use Spryker\Zed\AssetStorage\Communication\Plugin\Publisher\Asset\AssetDeletePublisherPlugin;
 use Spryker\Zed\AssetStorage\Communication\Plugin\Publisher\Asset\AssetWritePublisherPlugin;
 use Spryker\Zed\AssetStorage\Communication\Plugin\Publisher\AssetPublisherTriggerPlugin;
@@ -183,6 +184,7 @@ use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\LocaleStore\LocaleSt
 use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\Store\StoreSynchronizationTriggeringPublisherPlugin;
 use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\Store\StoreWritePublisherPlugin;
 use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\StorePublisherTriggerPlugin;
+use Spryker\Zed\TaxApp\Communication\Plugin\Publisher\Store\RefreshTaxAppStoreRelationPublisherPlugin;
 use Spryker\Zed\TaxProductStorage\Communication\Plugin\Publisher\TaxProductPublisherTriggerPlugin;
 use Spryker\Zed\TaxStorage\Communication\Plugin\Publisher\TaxSetPublisherTriggerPlugin;
 
@@ -222,6 +224,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getMerchantProductOfferStoragePlugins(),
             $this->getStoreStoragePlugins(),
             $this->getMerchantProductOfferSearchPlugins(),
+            $this->getAssetPlugins(),
             $this->getAssetStoragePlugins(),
             $this->getCustomerStoragePlugins(),
             $this->getProductMessageBrokerPlugins(),
@@ -231,6 +234,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getShipmentTypeStoragePlugins(),
             $this->getProductOfferServicePointStoragePlugins(),
             $this->getProductOfferShipmentTypeStoragePlugins(),
+            $this->getTaxAppPlugins(),
         );
     }
 
@@ -628,6 +632,16 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     /**
      * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
      */
+    protected function getAssetPlugins(): array
+    {
+        return [
+            new RefreshAssetStoreRelationPublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
     protected function getAssetStoragePlugins(): array
     {
         return [
@@ -732,6 +746,16 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ProductOfferStoreProductOfferShipmentTypeWritePublisherPlugin(),
             new ShipmentTypeProductOfferShipmentTypeWritePublisherPlugin(),
             new ShipmentTypeStoreProductOfferShipmentTypeWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getTaxAppPlugins(): array
+    {
+        return [
+            new RefreshTaxAppStoreRelationPublisherPlugin(),
         ];
     }
 }
