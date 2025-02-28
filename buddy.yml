@@ -92,6 +92,9 @@
               trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
+              trigger_variable_value: 'run-ssp-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
   actions:
@@ -253,9 +256,8 @@
         run_next_parallel: true
         trigger_conditions:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'ssp'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-
+              trigger_variable_value: 'run-ssp-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
       - action: 'PHP 8.3 PHPStan spryker/spryker-shop'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
@@ -422,6 +424,9 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
@@ -526,8 +531,8 @@
         run_next_parallel: true
         trigger_conditions:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'ssp'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'run-ssp-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
 
       - action: 'PHP 8.2 PHPStan spryker/spryker-shop'
         type: 'BUILD'
@@ -594,6 +599,9 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
@@ -611,12 +619,19 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.dynamic-store-off.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -689,6 +704,9 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
+              trigger_variable_value: 'run-ssp-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
   terminate_stale_runs: true
@@ -705,12 +723,19 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -791,6 +816,9 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
@@ -802,12 +830,19 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.dynamic-store-off.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -879,6 +914,9 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
@@ -896,12 +934,19 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -1357,6 +1402,9 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
+              trigger_variable_value: 'run-ssp-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
   terminate_stale_runs: true
@@ -1373,12 +1421,19 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.dynamic-store-off.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -1453,6 +1508,9 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
@@ -1471,7 +1529,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" != *"feature-ci"* || "$BUDDY_RUN_PR_LABELS" == *"feature-and-core-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
@@ -1480,7 +1538,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"feature-ci"* || "$BUDDY_RUN_PR_LABELS" == *"feature-and-core-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1561,6 +1619,9 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
+              trigger_variable_value: 'run-ssp-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
   terminate_stale_runs: true
@@ -1577,12 +1638,19 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.dynamic-store-off.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -1654,6 +1722,9 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
@@ -1671,12 +1742,19 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -2234,6 +2312,9 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
@@ -2260,12 +2341,19 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.dynamic-store-off.prefer-lowest.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -2338,6 +2426,9 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
+              trigger_variable_value: 'run-ssp-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
   terminate_stale_runs: true
@@ -2363,12 +2454,19 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.prefer-lowest.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -3004,6 +3102,9 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
@@ -3033,7 +3134,14 @@
             - '.ci/snippet/RUN docker/sdk cli composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.example .env"'
-            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
+                fi
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
@@ -3119,6 +3227,9 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_RUN_MODE'
               trigger_variable_value: 'SCHEDULE'
@@ -3148,7 +3259,14 @@
             - '.ci/snippet/RUN docker/sdk cli composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.dynamic-store.example .env"'
-            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* ]]; then
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* ]]; then
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
+                fi
             - ' .ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
