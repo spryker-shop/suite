@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94abe7e01b0857377c78d0eed74a6c45",
+    "content-hash": "3d743aa0b2e767374eb92163b7ecc6fe",
     "packages": [
         {
             "name": "async-aws/core",
@@ -18299,19 +18299,18 @@
         },
         {
             "name": "spryker/cypress-tests",
-            "version": "dev-master",
+            "version": "dev-bugfix/cc-35273-locale-switcher",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/cypress-tests.git",
-                "reference": "5bec06904a43be1f2566c3e502025ff38c949f37"
+                "reference": "643e64d5e2292de71960868f54584625073365f3"
             },
-            "default-branch": true,
             "type": "library",
             "license": [
                 "MIT"
             ],
             "description": "This repository is dedicated to housing an extensive collection of UI end-to-end tests, meticulously crafted using Cypress for Spryker applications. These tests are designed to thoroughly evaluate the user interface, ensuring that all interactions and visual elements function as intended in real-world scenarios. By leveraging Cypress's advanced browser automation capabilities, this suite provides an efficient and effective means of validating the user experience, confirming the seamless operation and aesthetic integrity of Spryker's front-end components. Our commitment to rigorous UI testing helps maintain the high standard of quality and reliability that Spryker users expect.",
-            "time": "2025-02-27T07:55:31+00:00"
+            "time": "2025-03-03T08:25:30+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -19128,36 +19127,36 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "pdepend/pdepend": 20,
+        "spryker/spryker": 20,
+        "spryker/spryker-shop": 20,
+        "spryker/install": 20,
+        "spryker/rabbit-mq": 20,
+        "spryker/event-behavior": 20,
+        "spryker/synchronization-behavior": 20,
+        "spryker/uuid-behavior": 20,
+        "spryker/silexphp": 20,
+        "spryker/checksum-generator": 20,
         "spryker-eco/loggly": 20,
         "spryker-eco/new-relic": 20,
-        "spryker-sdk/benchmark": 20,
+        "spryker/composer-merge-plugin": 20,
+        "spryker/tax-app-vertex": 20,
+        "spryker/architecture-sniffer": 20,
+        "spryker/development-core": 20,
+        "spryker/code-sniffer": 20,
+        "spryker/git-hook": 20,
+        "spryker/robotframework-suite-tests": 20,
+        "pdepend/pdepend": 20,
         "spryker-sdk/codeception-phantoman": 20,
         "spryker-sdk/composer-constrainer": 20,
         "spryker-sdk/composer-replace": 20,
-        "spryker-sdk/evaluator": 20,
-        "spryker-sdk/load-testing": 20,
         "spryker-sdk/spryk": 20,
-        "spryker/architecture-sniffer": 20,
-        "spryker/checksum-generator": 20,
-        "spryker/code-sniffer": 20,
-        "spryker/commerce-k6-performance-tests": 20,
-        "spryker/composer-merge-plugin": 20,
-        "spryker/cypress-tests": 20,
-        "spryker/development-core": 20,
+        "spryker-sdk/benchmark": 20,
         "spryker/docker-chromedriver": 20,
-        "spryker/event-behavior": 20,
-        "spryker/git-hook": 20,
-        "spryker/install": 20,
+        "spryker-sdk/load-testing": 20,
+        "spryker-sdk/evaluator": 20,
         "spryker/profiler": 20,
-        "spryker/rabbit-mq": 20,
-        "spryker/robotframework-suite-tests": 20,
-        "spryker/silexphp": 20,
-        "spryker/spryker": 20,
-        "spryker/spryker-shop": 20,
-        "spryker/synchronization-behavior": 20,
-        "spryker/tax-app-vertex": 20,
-        "spryker/uuid-behavior": 20
+        "spryker/commerce-k6-performance-tests": 20,
+        "spryker/cypress-tests": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -19176,7 +19175,7 @@
         "ext-readline": "*",
         "ext-redis": "*"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.2.0"
     },
