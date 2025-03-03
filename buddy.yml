@@ -3259,14 +3259,7 @@
             - '.ci/snippet/RUN docker/sdk cli composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.dynamic-store.example .env"'
-            - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* ]]; then
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
-                fi
-            - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* ]]; then
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
-                fi
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"'
             - ' .ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
