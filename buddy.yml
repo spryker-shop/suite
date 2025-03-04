@@ -1529,7 +1529,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-functional-ci"* ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
@@ -3260,7 +3260,7 @@
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.dynamic-store.example .env"'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-ui-ci"* ]]; then
                   .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
                 fi
             - |
