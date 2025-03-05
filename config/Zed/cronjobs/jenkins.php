@@ -202,6 +202,13 @@ $jobs[] = [
     'global' => true,
 ];
 
+$jobs[] = [
+    'name' => 'generate-sitemap-files',
+    'command' => '$PHP_BIN vendor/bin/console sitemap:generate',
+    'schedule' => '0 0 * * *',
+    'enable' => true,
+];
+
 /* Message broker */
 if (\Spryker\Shared\Config\Config::get(\Spryker\Shared\MessageBroker\MessageBrokerConstants::IS_ENABLED)) {
     $jobs[] = [

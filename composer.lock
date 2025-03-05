@@ -6333,7 +6333,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f9c5659c9e2d54d0e8a6ae4e5d021adc3a3a9995"
+                "reference": "bc92d755c4e5042422a645412fd8fca74da2c735"
             },
             "require": {
                 "php": ">=8.1"
@@ -7337,6 +7337,8 @@
                 "spryker/shopping-lists-rest-api": "*",
                 "spryker/shopping-lists-rest-api-extension": "*",
                 "spryker/silex": "*",
+                "spryker/sitemap": "*",
+                "spryker/sitemap-extension": "*",
                 "spryker/sql-criteria-builder": "*",
                 "spryker/state-machine": "*",
                 "spryker/step-engine": "*",
@@ -7466,7 +7468,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2025-03-04T11:03:54+00:00"
+            "time": "2025-03-05T12:03:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7474,7 +7476,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "daedaa2831d109a26b6847227d165499bff850c4"
+                "reference": "a24c84016d62e2dc40030e3e862dd94196081e92"
             },
             "require": {
                 "php": ">=8.1"
@@ -7681,7 +7683,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2025-03-04T10:26:36+00:00"
+            "time": "2025-03-05T12:03:58+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -19115,36 +19117,36 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "spryker/spryker": 20,
-        "spryker/spryker-shop": 20,
-        "spryker/install": 20,
-        "spryker/rabbit-mq": 20,
-        "spryker/event-behavior": 20,
-        "spryker/synchronization-behavior": 20,
-        "spryker/uuid-behavior": 20,
-        "spryker/silexphp": 20,
-        "spryker/checksum-generator": 20,
+        "pdepend/pdepend": 20,
         "spryker-eco/loggly": 20,
         "spryker-eco/new-relic": 20,
-        "spryker/composer-merge-plugin": 20,
-        "spryker/tax-app-vertex": 20,
-        "spryker/architecture-sniffer": 20,
-        "spryker/development-core": 20,
-        "spryker/code-sniffer": 20,
-        "spryker/git-hook": 20,
-        "spryker/robotframework-suite-tests": 20,
-        "pdepend/pdepend": 20,
+        "spryker-sdk/benchmark": 20,
         "spryker-sdk/codeception-phantoman": 20,
         "spryker-sdk/composer-constrainer": 20,
         "spryker-sdk/composer-replace": 20,
-        "spryker-sdk/spryk": 20,
-        "spryker-sdk/benchmark": 20,
-        "spryker/docker-chromedriver": 20,
-        "spryker-sdk/load-testing": 20,
         "spryker-sdk/evaluator": 20,
-        "spryker/profiler": 20,
+        "spryker-sdk/load-testing": 20,
+        "spryker-sdk/spryk": 20,
+        "spryker/architecture-sniffer": 20,
+        "spryker/checksum-generator": 20,
+        "spryker/code-sniffer": 20,
         "spryker/commerce-k6-performance-tests": 20,
-        "spryker/cypress-tests": 20
+        "spryker/composer-merge-plugin": 20,
+        "spryker/cypress-tests": 20,
+        "spryker/development-core": 20,
+        "spryker/docker-chromedriver": 20,
+        "spryker/event-behavior": 20,
+        "spryker/git-hook": 20,
+        "spryker/install": 20,
+        "spryker/profiler": 20,
+        "spryker/rabbit-mq": 20,
+        "spryker/robotframework-suite-tests": 20,
+        "spryker/silexphp": 20,
+        "spryker/spryker": 20,
+        "spryker/spryker-shop": 20,
+        "spryker/synchronization-behavior": 20,
+        "spryker/tax-app-vertex": 20,
+        "spryker/uuid-behavior": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -19163,7 +19165,7 @@
         "ext-readline": "*",
         "ext-redis": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.2.0"
     },
