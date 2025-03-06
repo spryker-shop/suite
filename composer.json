@@ -151,7 +151,7 @@
         "spryker-sdk/async-api": "^0.3.1",
         "spryker/profiler": "dev-master",
         "spryker/commerce-k6-performance-tests": "dev-master",
-        "spryker/cypress-tests": "dev-master"
+        "spryker/cypress-tests": "dev-ssp-master"
     },
     "autoload": {
         "psr-4": {
@@ -168,6 +168,7 @@
     "autoload-dev": {
         "psr-4": {
             "PyzTest\\": "tests/PyzTest/",
+            "SprykerFeatureTest\\": "tests/PyzFeatureTest/",
             "Benchmark\\": "tests/Benchmark/",
             "Symfony\\Contracts\\Translation\\": "vendor/symfony/translation-contracts/"
         },

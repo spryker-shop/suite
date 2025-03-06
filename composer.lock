@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94abe7e01b0857377c78d0eed74a6c45",
+    "content-hash": "b2dca1d308d6a056879c50cfd04c24f5",
     "packages": [
         {
             "name": "async-aws/core",
@@ -6333,12 +6333,14 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f1659689f39cb2a9077886eea8f2bdb9a6d31c98"
+                "reference": "e3fa66a6a9053f8b2f3dd6540f6834f1a0ce3520"
             },
             "require": {
                 "php": ">=8.1"
             },
             "replace": {
+                "spryker-feature/ssp-file-management": "*",
+                "spryker-feature/ssp-inquiry-management": "*",
                 "spryker/acl": "*",
                 "spryker/acl-data-import": "*",
                 "spryker/acl-entity": "*",
@@ -7468,7 +7470,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2025-03-05T12:37:18+00:00"
+            "time": "2025-03-06T16:05:23+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7476,7 +7478,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "a24c84016d62e2dc40030e3e862dd94196081e92"
+                "reference": "a0018bf42d41758d00ac4cb5eaeaa9934c454c29"
             },
             "require": {
                 "php": ">=8.1"
@@ -7683,7 +7685,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2025-03-05T12:03:58+00:00"
+            "time": "2025-03-06T16:05:25+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -18288,19 +18290,18 @@
         },
         {
             "name": "spryker/cypress-tests",
-            "version": "dev-master",
+            "version": "dev-ssp-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/cypress-tests.git",
-                "reference": "8a62721f15003a74b9d2b3d49477729303b2b8ee"
+                "reference": "4f92a168f8ab456b96c5b15f69492974799993b7"
             },
-            "default-branch": true,
             "type": "library",
             "license": [
                 "MIT"
             ],
             "description": "This repository is dedicated to housing an extensive collection of UI end-to-end tests, meticulously crafted using Cypress for Spryker applications. These tests are designed to thoroughly evaluate the user interface, ensuring that all interactions and visual elements function as intended in real-world scenarios. By leveraging Cypress's advanced browser automation capabilities, this suite provides an efficient and effective means of validating the user experience, confirming the seamless operation and aesthetic integrity of Spryker's front-end components. Our commitment to rigorous UI testing helps maintain the high standard of quality and reliability that Spryker users expect.",
-            "time": "2025-03-04T10:26:17+00:00"
+            "time": "2025-03-05T12:04:11+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -18530,7 +18531,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "6e22937cd813d7cbaf561f9c10a13fb62dac0fa8"
+                "reference": "17b606f4a5e3bd33cabb368cbe7600df8289b826"
             },
             "default-branch": true,
             "type": "library",
@@ -18538,7 +18539,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2025-03-03T17:20:16+00:00"
+            "time": "2025-03-06T14:22:57+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",

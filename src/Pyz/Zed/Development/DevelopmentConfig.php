@@ -57,6 +57,16 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
      *
      * @return string
      */
+    public function getPathToFeature(): string
+    {
+        return $this->getPathToRoot() . 'vendor/spryker/spryker/Features/';
+    }
+
+    /**
+     * @project Only needed in Project, not in demoshop
+     *
+     * @return string
+     */
     public function getPathToShop(): string
     {
         return $this->getPathToRoot() . 'vendor/spryker/spryker-shop/Bundles/';
@@ -132,5 +142,17 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
         }
 
         return false;
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getOrganizationPathMap(): array
+    {
+        return [
+            'Spryker' => $this->getPathToCore(),
+            'SprykerFeature' => $this->getPathToFeature(),
+            'SprykerEco' => $this->getPathToEco(),
+        ];
     }
 }
