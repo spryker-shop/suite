@@ -38,6 +38,7 @@ class SalesConfig extends SprykerSalesConfig
             'discount' => '/discount/sales/list',
             'refund' => '/refund/sales/list',
             'source' => '/manual-order-entry/sales/list',
+            'inquiries' => '/ssp-inquiry-management/order-ssp-inquiry-list',
         ];
 
         $externalBlocks = parent::getSalesDetailExternalBlocksUrls();
