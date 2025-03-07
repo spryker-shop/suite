@@ -9,6 +9,9 @@ image:
     php:
         enabled-extensions:
             - blackfire
+        ini:
+            'upload_max_filesize': '100M'
+            'post_max_size': '100M'
     environment:
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.spryker.local
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
@@ -91,6 +94,8 @@ groups:
                         services:
                             session:
                                 namespace: 2
+                http:
+                    max-request-body-size: 100M
             glue_eu:
                 application: glue
                 endpoints:
@@ -115,6 +120,8 @@ groups:
                         services:
                             session:
                                 namespace: 3
+                http:
+                    max-request-body-size: 100M
             backend_gateway_eu:
                 application: backend-gateway
                 endpoints:

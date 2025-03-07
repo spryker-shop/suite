@@ -139,6 +139,8 @@ use Spryker\Zed\OauthAuth0\OauthAuth0Config;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Payment\PaymentConfig;
 use Spryker\Zed\Propel\PropelConfig;
+use SprykerFeature\Shared\SspFileManagement\SspFileManagementConstants;
+use SprykerFeature\Shared\SspInquiryManagement\SspInquiryManagementConstants;
 use SprykerShop\Shared\CustomerPage\CustomerPageConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
 use SprykerShop\Shared\StorageRouter\StorageRouterConstants;
@@ -647,11 +649,22 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
     ],
     'files' => [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/data',
+        'path' => '/data/files',
+    ],
+    'ssp-inquiry' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/data',
+        'path' => '/data/ssp-inquiry',
+    ],
+    'ssp-files' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
         'root' => '/',
         'path' => '/',
     ],
 ];
 $config[FileManagerConstants::STORAGE_NAME] = 'files';
+$config[SspFileManagementConstants::STORAGE_NAME] = 'ssp-files';
 $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
 
 // ----------------------------------------------------------------------------
@@ -710,6 +723,7 @@ $config[ApplicationConstants::BASE_URL_YVES]
     = $config[NewsletterConstants::BASE_URL_YVES]
     = $config[MerchantRelationshipConstants::BASE_URL_YVES]
     = $config[MerchantRelationRequestConstants::BASE_URL_YVES]
+    = $config[SspInquiryManagementConstants::BASE_URL_YVES]
     = sprintf(
         'https://%s%s',
         $yvesHost,
@@ -1059,3 +1073,7 @@ $config[MessageBrokerConstants::IS_ENABLED] = (
 );
 
 $config[ProductConstants::PUBLISHING_TO_MESSAGE_BROKER_ENABLED] = $config[MessageBrokerConstants::IS_ENABLED];
+
+// Ssp Inquiries
+$config[SspInquiryManagementConstants::DEFAULT_TOTAL_FILE_MAX_SIZE] = getenv('SPRYKER_SSP_INQUIRY_DEFAULT_TOTAL_FILE_MAX_SIZE') ?: '100M';
+$config[SspInquiryManagementConstants::DEFAULT_FILE_MAX_SIZE] = getenv('SPRYKER_SSP_INQUIRY_DEFAULT_FILE_MAX_SIZE') ?: '20M';

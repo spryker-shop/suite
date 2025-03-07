@@ -134,6 +134,7 @@ use Spryker\Zed\StockDataImport\Communication\Plugin\StockDataImportPlugin;
 use Spryker\Zed\StockDataImport\Communication\Plugin\StockStoreDataImportPlugin;
 use Spryker\Zed\StoreContextDataImport\Communication\Plugin\DataImport\StoreContextDataImportPlugin;
 use Spryker\Zed\StoreDataImport\Communication\Plugin\DataImport\StoreDataImportPlugin;
+use SprykerFeature\Zed\SspInquiryManagement\Communication\Plugin\DataImport\SspInquiryDataImportPlugin;
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
@@ -444,6 +445,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new MerchantCommissionAmountDataImportPlugin(),
             new MerchantCommissionStoreDataImportPlugin(),
             new MerchantCommissionMerchantDataImportPlugin(),
+            new SspInquiryDataImportPlugin(),
         ];
     }
 
