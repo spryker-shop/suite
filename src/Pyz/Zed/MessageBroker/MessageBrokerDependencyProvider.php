@@ -28,6 +28,7 @@ use Spryker\Zed\MessageBrokerAws\Communication\Plugin\MessageBroker\Sender\HttpM
 use Spryker\Zed\OauthClient\Communication\Plugin\MessageBroker\AccessTokenMessageAttributeProviderPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentMethodMessageHandlerPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentOperationsMessageHandlerPlugin;
+use Spryker\Zed\PaymentApp\Communication\Plugin\MessageBroker\PaymentAppOperationsMessageHandlerPlugin;
 use Spryker\Zed\Product\Communication\Plugin\MessageBroker\ProductExportMessageHandlerPlugin;
 use Spryker\Zed\ProductReview\Communication\Plugin\MessageBroker\ProductReviewAddReviewsMessageHandlerPlugin;
 use Spryker\Zed\SalesPaymentDetail\Communication\Plugin\MessageBroker\SalesPaymentDetailMessageHandlerPlugin;
@@ -85,6 +86,7 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new AppConfigMessageHandlerPlugin(),
             new PaymentMethodMessageHandlerPlugin(),
             new PaymentOperationsMessageHandlerPlugin(),
+            new PaymentAppOperationsMessageHandlerPlugin(),
             new AssetMessageHandlerPlugin(),
             new ProductExportMessageHandlerPlugin(),
             new SearchEndpointMessageHandlerPlugin(),

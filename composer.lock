@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf17f3347e5e5ad35baa9689b1c6441e",
+    "content-hash": "2e5018e7296d553703e21db6f883c155",
     "packages": [
         {
             "name": "async-aws/core",
@@ -12270,16 +12270,16 @@
         },
         {
             "name": "spryker-shop/payment-app-widget",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/payment-app-widget.git",
-                "reference": "b1651b12f738b6a8a18460d5810bf004cb0b5fe3"
+                "reference": "33e2d6b43c697215bc9c57b1348ee6bd4caea130"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/payment-app-widget/zipball/b1651b12f738b6a8a18460d5810bf004cb0b5fe3",
-                "reference": "b1651b12f738b6a8a18460d5810bf004cb0b5fe3",
+                "url": "https://api.github.com/repos/spryker-shop/payment-app-widget/zipball/33e2d6b43c697215bc9c57b1348ee6bd4caea130",
+                "reference": "33e2d6b43c697215bc9c57b1348ee6bd4caea130",
                 "shasum": ""
             },
             "require": {
@@ -12293,7 +12293,7 @@
                 "spryker/locale": "^4.0.0",
                 "spryker/log": "^3.0.0",
                 "spryker/payment": "^5.25.0",
-                "spryker/payment-app": "^1.1.0",
+                "spryker/payment-app": "^1.1.0 || ^2.0.0",
                 "spryker/quote": "^2.20.0",
                 "spryker/step-engine": "^3.3.0",
                 "spryker/symfony": "^3.0.0",
@@ -12325,9 +12325,9 @@
             ],
             "description": "PaymentAppWidget module",
             "support": {
-                "source": "https://github.com/spryker-shop/payment-app-widget/tree/1.1.0"
+                "source": "https://github.com/spryker-shop/payment-app-widget/tree/1.2.0"
             },
-            "time": "2024-12-12T09:58:23+00:00"
+            "time": "2025-03-11T15:22:53+00:00"
         },
         {
             "name": "spryker-shop/payment-app-widget-extension",
@@ -45443,16 +45443,16 @@
         },
         {
             "name": "spryker/oms",
-            "version": "11.41.0",
+            "version": "11.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oms.git",
-                "reference": "6e05c29b5348074cc70191160b39f4b26e5a4330"
+                "reference": "e0ed3afb7c05286efba2f2e86a1f4813aa7bf787"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oms/zipball/6e05c29b5348074cc70191160b39f4b26e5a4330",
-                "reference": "6e05c29b5348074cc70191160b39f4b26e5a4330",
+                "url": "https://api.github.com/repos/spryker/oms/zipball/e0ed3afb7c05286efba2f2e86a1f4813aa7bf787",
+                "reference": "e0ed3afb7c05286efba2f2e86a1f4813aa7bf787",
                 "shasum": ""
             },
             "require": {
@@ -45510,9 +45510,9 @@
             ],
             "description": "Oms module",
             "support": {
-                "source": "https://github.com/spryker/oms/tree/11.41.0"
+                "source": "https://github.com/spryker/oms/tree/11.42.0"
             },
-            "time": "2025-02-27T08:01:24+00:00"
+            "time": "2025-03-11T15:22:51+00:00"
         },
         {
             "name": "spryker/oms-discount-connector",
@@ -46259,16 +46259,16 @@
         },
         {
             "name": "spryker/payment-app",
-            "version": "1.1.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/payment-app.git",
-                "reference": "86cb8c9f63a91d080970a4ef5d0a43b3f64a20b7"
+                "reference": "7417c1cc90eac595eeda4c790fb2ccea4127ac35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/payment-app/zipball/86cb8c9f63a91d080970a4ef5d0a43b3f64a20b7",
-                "reference": "86cb8c9f63a91d080970a4ef5d0a43b3f64a20b7",
+                "url": "https://api.github.com/repos/spryker/payment-app/zipball/7417c1cc90eac595eeda4c790fb2ccea4127ac35",
+                "reference": "7417c1cc90eac595eeda4c790fb2ccea4127ac35",
                 "shasum": ""
             },
             "require": {
@@ -46276,6 +46276,8 @@
                 "spryker/cart": "^7.5.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/kernel-app": "^1.0.0",
+                "spryker/log": "^3.0.0",
+                "spryker/message-broker-extension": "^1.0.0",
                 "spryker/payment": "^5.25.0",
                 "spryker/payment-app-extension": "^1.1.0",
                 "spryker/symfony": "^3.0.0",
@@ -46285,14 +46287,23 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/oms": "*",
                 "spryker/propel": "*",
+                "spryker/propel-orm": "*",
                 "spryker/ramsey-uuid": "*",
-                "spryker/testify": "*"
+                "spryker/sales": "*",
+                "spryker/shipment": "*",
+                "spryker/testify": "*",
+                "spryker/testify-async-api": "*"
+            },
+            "suggest": {
+                "spryker/oms": "If you want to use the OMS Plugins",
+                "spryker/sales": "If you want to use the OMS Plugins, they are using the SalesItem"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -46306,9 +46317,9 @@
             ],
             "description": "PaymentApp module",
             "support": {
-                "source": "https://github.com/spryker/payment-app/tree/1.1.0"
+                "source": "https://github.com/spryker/payment-app/tree/2.0.0"
             },
-            "time": "2024-12-12T09:58:21+00:00"
+            "time": "2025-03-11T15:22:51+00:00"
         },
         {
             "name": "spryker/payment-app-extension",
@@ -46584,16 +46595,16 @@
         },
         {
             "name": "spryker/payments-rest-api",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/payments-rest-api.git",
-                "reference": "40def2b91dc3120cc5b23d239f3540b1336899a1"
+                "reference": "4ec871acd2f33ab4f8a83349bdcdf592fa0135e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/payments-rest-api/zipball/40def2b91dc3120cc5b23d239f3540b1336899a1",
-                "reference": "40def2b91dc3120cc5b23d239f3540b1336899a1",
+                "url": "https://api.github.com/repos/spryker/payments-rest-api/zipball/4ec871acd2f33ab4f8a83349bdcdf592fa0135e6",
+                "reference": "4ec871acd2f33ab4f8a83349bdcdf592fa0135e6",
                 "shasum": ""
             },
             "require": {
@@ -46603,7 +46614,7 @@
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/payment": "^5.27.0",
-                "spryker/payment-app": "^1.0.0",
+                "spryker/payment-app": "^1.0.0 || ^2.0.0",
                 "spryker/symfony": "^3.17.0",
                 "spryker/transfer": "^3.27.0"
             },
@@ -46629,9 +46640,9 @@
             ],
             "description": "PaymentsRestApi module",
             "support": {
-                "source": "https://github.com/spryker/payments-rest-api/tree/1.4.0"
+                "source": "https://github.com/spryker/payments-rest-api/tree/1.5.0"
             },
-            "time": "2024-11-28T12:12:52+00:00"
+            "time": "2025-03-11T15:22:51+00:00"
         },
         {
             "name": "spryker/permission",
@@ -61703,16 +61714,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "11.55.0",
+            "version": "11.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "4cf337595d55b5a04155e652c94728d5971ba21e"
+                "reference": "595f31c30f6bb6829ad81c58fcc63cc076c22af0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/4cf337595d55b5a04155e652c94728d5971ba21e",
-                "reference": "4cf337595d55b5a04155e652c94728d5971ba21e",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/595f31c30f6bb6829ad81c58fcc63cc076c22af0",
+                "reference": "595f31c30f6bb6829ad81c58fcc63cc076c22af0",
                 "shasum": ""
             },
             "require": {
@@ -61752,6 +61763,7 @@
                 "spryker/currency": "*",
                 "spryker/price": "*",
                 "spryker/product": "*",
+                "spryker/ramsey-uuid": "*",
                 "spryker/shipment": "*",
                 "spryker/stock": "*",
                 "spryker/testify": "*",
@@ -61781,9 +61793,9 @@
             ],
             "description": "Sales module",
             "support": {
-                "source": "https://github.com/spryker/sales/tree/11.55.0"
+                "source": "https://github.com/spryker/sales/tree/11.56.0"
             },
-            "time": "2025-02-27T08:01:24+00:00"
+            "time": "2025-03-11T15:22:51+00:00"
         },
         {
             "name": "spryker/sales-configurable-bundle",
@@ -62973,16 +62985,16 @@
         },
         {
             "name": "spryker/sales-payment",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-payment.git",
-                "reference": "3c5ccf44d8f4f1cbb29334d8fcbafd51189fbcb3"
+                "reference": "e1c3cecea1f7cda729b8090051793c289e0c5d9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-payment/zipball/3c5ccf44d8f4f1cbb29334d8fcbafd51189fbcb3",
-                "reference": "3c5ccf44d8f4f1cbb29334d8fcbafd51189fbcb3",
+                "url": "https://api.github.com/repos/spryker/sales-payment/zipball/e1c3cecea1f7cda729b8090051793c289e0c5d9f",
+                "reference": "e1c3cecea1f7cda729b8090051793c289e0c5d9f",
                 "shasum": ""
             },
             "require": {
@@ -63028,9 +63040,9 @@
             ],
             "description": "SalesPayment module",
             "support": {
-                "source": "https://github.com/spryker/sales-payment/tree/1.11.0"
+                "source": "https://github.com/spryker/sales-payment/tree/1.12.0"
             },
-            "time": "2025-02-27T08:01:24+00:00"
+            "time": "2025-03-11T15:22:51+00:00"
         },
         {
             "name": "spryker/sales-payment-detail",
@@ -71320,16 +71332,16 @@
         },
         {
             "name": "spryker/testify-async-api",
-            "version": "0.1.6",
+            "version": "0.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify-async-api.git",
-                "reference": "bcb0022ba78560109ff4bed195044d0996efc916"
+                "reference": "3b3f67f4a0004dddf78e76e63947bca378809760"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify-async-api/zipball/bcb0022ba78560109ff4bed195044d0996efc916",
-                "reference": "bcb0022ba78560109ff4bed195044d0996efc916",
+                "url": "https://api.github.com/repos/spryker/testify-async-api/zipball/3b3f67f4a0004dddf78e76e63947bca378809760",
+                "reference": "3b3f67f4a0004dddf78e76e63947bca378809760",
                 "shasum": ""
             },
             "require": {
@@ -71360,9 +71372,9 @@
             ],
             "description": "TestifyAsyncApi module",
             "support": {
-                "source": "https://github.com/spryker/testify-async-api/tree/0.1.6"
+                "source": "https://github.com/spryker/testify-async-api/tree/0.1.7"
             },
-            "time": "2024-10-04T08:31:44+00:00"
+            "time": "2025-03-11T15:22:51+00:00"
         },
         {
             "name": "spryker/testify-backend-api",
