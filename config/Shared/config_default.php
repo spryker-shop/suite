@@ -23,8 +23,10 @@ use Generated\Shared\Transfer\PaymentCancellationFailedTransfer;
 use Generated\Shared\Transfer\PaymentCapturedTransfer;
 use Generated\Shared\Transfer\PaymentCaptureFailedTransfer;
 use Generated\Shared\Transfer\PaymentCreatedTransfer;
+use Generated\Shared\Transfer\PaymentOverpaidTransfer;
 use Generated\Shared\Transfer\PaymentRefundedTransfer;
 use Generated\Shared\Transfer\PaymentRefundFailedTransfer;
+use Generated\Shared\Transfer\PaymentUnderpaidTransfer;
 use Generated\Shared\Transfer\PaymentUpdatedTransfer;
 use Generated\Shared\Transfer\ProductCreatedTransfer;
 use Generated\Shared\Transfer\ProductDeletedTransfer;
@@ -960,6 +962,8 @@ $config[MessageBrokerAwsConstants::MESSAGE_TO_CHANNEL_MAP] = [
     PaymentCancellationFailedTransfer::class => 'payment-events',
     PaymentCreatedTransfer::class => 'payment-events',
     PaymentUpdatedTransfer::class => 'payment-events',
+    PaymentOverpaidTransfer::class => 'payment-events',
+    PaymentUnderpaidTransfer::class => 'payment-events',
     AssetAddedTransfer::class => 'asset-commands',
     AssetUpdatedTransfer::class => 'asset-commands',
     AssetDeletedTransfer::class => 'asset-commands',
