@@ -26,7 +26,7 @@ const globalSettings = {
         eco: './vendor/spryker-eco',
 
         // features folders
-        features: './vendor/spryker/spryker/Features',
+        features: './vendor/spryker-features',
 
         // project folders
         project: './src/Pyz/Yves',
