@@ -16,7 +16,7 @@ class SspInquiryManagementConfig extends SprykerSspInquiryManagementConfig
     /**
      * @var string
      */
-    protected const MODULE_NAME = 'SspInquiryManagement';
+    protected const MODULE_NAME = 'ssp-inquiry-management';
 
     /**
      * {@inheritDoc}
