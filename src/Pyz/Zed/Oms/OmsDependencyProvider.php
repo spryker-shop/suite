@@ -31,6 +31,15 @@ use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOffer
 use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferOmsReservationReaderStrategyPlugin;
 use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferOmsReservationWriterStrategyPlugin;
 use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferReservationPostSaveTerminationAwareStrategyPlugin;
+use Spryker\Zed\PaymentApp\Communication\Plugin\Oms\IsPaymentAppPaymentStatusAuthorizationFailedConditionPlugin;
+use Spryker\Zed\PaymentApp\Communication\Plugin\Oms\IsPaymentAppPaymentStatusAuthorizedConditionPlugin;
+use Spryker\Zed\PaymentApp\Communication\Plugin\Oms\IsPaymentAppPaymentStatusCanceledConditionPlugin;
+use Spryker\Zed\PaymentApp\Communication\Plugin\Oms\IsPaymentAppPaymentStatusCancellationFailedConditionPlugin;
+use Spryker\Zed\PaymentApp\Communication\Plugin\Oms\IsPaymentAppPaymentStatusCapturedConditionPlugin;
+use Spryker\Zed\PaymentApp\Communication\Plugin\Oms\IsPaymentAppPaymentStatusCaptureFailedConditionPlugin;
+use Spryker\Zed\PaymentApp\Communication\Plugin\Oms\IsPaymentAppPaymentStatusCaptureRequestedConditionPlugin;
+use Spryker\Zed\PaymentApp\Communication\Plugin\Oms\IsPaymentAppPaymentStatusOverpaidConditionPlugin;
+use Spryker\Zed\PaymentApp\Communication\Plugin\Oms\IsPaymentAppPaymentStatusUnderpaidConditionPlugin;
 use Spryker\Zed\PickingList\Communication\Plugin\Oms\GeneratePickingListsCommandByOrderPlugin;
 use Spryker\Zed\PickingList\Communication\Plugin\Oms\IsPickingFinishedConditionPlugin;
 use Spryker\Zed\PickingList\Communication\Plugin\Oms\IsPickingListGenerationFinishedConditionPlugin;
@@ -164,6 +173,17 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             // ----- External PSP
             $conditionCollection->add(new IsMerchantPaidOutConditionPlugin(), 'SalesPaymentMerchant/IsMerchantPaidOut');
             $conditionCollection->add(new IsMerchantPayoutReversedConditionPlugin(), 'SalesPaymentMerchant/IsMerchantPayoutReversed');
+
+            // ----- External PSP V2 Condition to ask for payment state instead of getting it told by the PSP
+            $conditionCollection->add(new IsPaymentAppPaymentStatusAuthorizationFailedConditionPlugin(), 'Payment/IsAuthorizationFailed');
+            $conditionCollection->add(new IsPaymentAppPaymentStatusAuthorizedConditionPlugin(), 'Payment/IsAuthorized');
+            $conditionCollection->add(new IsPaymentAppPaymentStatusCanceledConditionPlugin(), 'Payment/IsCanceled');
+            $conditionCollection->add(new IsPaymentAppPaymentStatusCancellationFailedConditionPlugin(), 'Payment/IsCancellationFailed');
+            $conditionCollection->add(new IsPaymentAppPaymentStatusCapturedConditionPlugin(), 'Payment/IsCaptured');
+            $conditionCollection->add(new IsPaymentAppPaymentStatusCaptureFailedConditionPlugin(), 'Payment/IsCaptureFailed');
+            $conditionCollection->add(new IsPaymentAppPaymentStatusCaptureRequestedConditionPlugin(), 'Payment/IsCaptureRequested');
+            $conditionCollection->add(new IsPaymentAppPaymentStatusOverpaidConditionPlugin(), 'Payment/IsOverpaid');
+            $conditionCollection->add(new IsPaymentAppPaymentStatusUnderpaidConditionPlugin(), 'Payment/IsUnderpaid');
 
             return $conditionCollection;
         });

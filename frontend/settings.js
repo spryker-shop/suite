@@ -25,6 +25,9 @@ const globalSettings = {
         // eco folders
         eco: './vendor/spryker-eco',
 
+        // features folders
+        features: './vendor/spryker-feature',
+
         // project folders
         project: './src/Pyz/Yves',
     },
@@ -146,6 +149,9 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
         // eco folders
         eco: globalSettings.paths.eco,
 
+        // features folders
+        features: globalSettings.paths.features,
+
         // project folders
         project: globalSettings.paths.project,
     };
@@ -208,6 +214,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
                     join(globalSettings.context, paths.core),
                     join(globalSettings.context, paths.eco),
                     join(globalSettings.context, paths.project),
+                    join(globalSettings.context, paths.features),
                 ],
                 // files/dirs patterns
                 patterns: customThemeEntryPointPatterns(),
@@ -219,7 +226,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
             // do not change unless necessary
             componentStyles: {
                 // absolute dirs in which look for
-                dirs: [join(globalSettings.context, paths.core)],
+                dirs: [join(globalSettings.context, paths.core), join(globalSettings.context, paths.features)],
                 // files/dirs patterns
                 patterns: [
                     `**/Theme/${namespaceConfig.defaultTheme}/components/atoms/*/*.scss`,
