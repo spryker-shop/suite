@@ -61771,16 +61771,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "11.56.0",
+            "version": "11.57.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "595f31c30f6bb6829ad81c58fcc63cc076c22af0"
+                "reference": "6ea6ec4e02e4968318db0c4daf485cc12b422d08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/595f31c30f6bb6829ad81c58fcc63cc076c22af0",
-                "reference": "595f31c30f6bb6829ad81c58fcc63cc076c22af0",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/6ea6ec4e02e4968318db0c4daf485cc12b422d08",
+                "reference": "6ea6ec4e02e4968318db0c4daf485cc12b422d08",
                 "shasum": ""
             },
             "require": {
@@ -61809,6 +61809,7 @@
                 "spryker/util-date-time": "^1.0.0",
                 "spryker/util-sanitize": "^2.0.0",
                 "spryker/util-text": "^1.1.0",
+                "spryker/util-uuid-generator": "^1.1.0",
                 "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
@@ -61850,9 +61851,9 @@
             ],
             "description": "Sales module",
             "support": {
-                "source": "https://github.com/spryker/sales/tree/11.56.0"
+                "source": "https://github.com/spryker/sales/tree/11.57.0"
             },
-            "time": "2025-03-11T15:22:51+00:00"
+            "time": "2025-03-20T10:27:11+00:00"
         },
         {
             "name": "spryker/sales-configurable-bundle",
@@ -73250,22 +73251,24 @@
         },
         {
             "name": "spryker/util-uuid-generator",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/util-uuid-generator.git",
-                "reference": "3082fdddb1e42653d59454863612e6ec3dc85e1a"
+                "reference": "c057040a20fc472a8a5074c8ba2008cd9b8c7427"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/util-uuid-generator/zipball/3082fdddb1e42653d59454863612e6ec3dc85e1a",
-                "reference": "3082fdddb1e42653d59454863612e6ec3dc85e1a",
+                "url": "https://api.github.com/repos/spryker/util-uuid-generator/zipball/c057040a20fc472a8a5074c8ba2008cd9b8c7427",
+                "reference": "c057040a20fc472a8a5074c8ba2008cd9b8c7427",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "hidehalo/nanoid-php": "^2.0",
+                "php": ">=8.2",
                 "spryker/kernel": "^3.30.0",
-                "spryker/ramsey-uuid": "^1.0.0 || ^2.0.0"
+                "spryker/ramsey-uuid": "^1.0.0 || ^2.0.0",
+                "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -73289,9 +73292,9 @@
             ],
             "description": "UtilUuidGenerator module",
             "support": {
-                "source": "https://github.com/spryker/util-uuid-generator/tree/1.0.2"
+                "source": "https://github.com/spryker/util-uuid-generator/tree/1.1.0"
             },
-            "time": "2020-06-02T09:42:31+00:00"
+            "time": "2025-03-20T10:27:11+00:00"
         },
         {
             "name": "spryker/util-validate",
