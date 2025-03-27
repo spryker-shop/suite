@@ -10,7 +10,9 @@ declare(strict_types = 1);
 namespace Pyz\Zed\FileManager;
 
 use Spryker\Zed\FileManager\FileManagerDependencyProvider as SprykerFileManagerDependencyProvider;
+use SprykerFeature\Zed\SspAssetManagement\Communication\Plugin\FileManager\SspAssetManagementFilePreDeletePlugin;
 use SprykerFeature\Zed\SspFileManagement\Communication\Plugin\FileManager\FileAttachmentFilePreDeletePlugin;
+use SprykerFeature\Zed\SspInquiryManagement\Communication\Plugin\FileManager\SspInquiryManagementFilePreDeletePlugin;
 
 class FileManagerDependencyProvider extends SprykerFileManagerDependencyProvider
 {
@@ -21,6 +23,8 @@ class FileManagerDependencyProvider extends SprykerFileManagerDependencyProvider
     {
         return [
             new FileAttachmentFilePreDeletePlugin(),
+            new SspInquiryManagementFilePreDeletePlugin(),
+            new SspAssetManagementFilePreDeletePlugin(),
         ];
     }
 }

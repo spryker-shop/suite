@@ -25,6 +25,7 @@ class SspInquiryManagementConfig extends SprykerSspInquiryConfig
         return [
             'general' => 'SspInquiryDefaultStateMachine',
             'order' => 'SspInquiryDefaultStateMachine',
+            'ssp_asset' => 'SspInquiryDefaultStateMachine',
         ];
     }
 
