@@ -35,4 +35,16 @@ class SspInquiryManagementConfig extends SprykerSspInquiryManagementConfig
             'in_review' => 'label-primary',
         ];
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @return string|null
+     */
+    public function getPendingStatus(): ?string
+    {
+        return 'pending';
+    }
 }
