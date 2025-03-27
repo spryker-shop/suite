@@ -21,6 +21,7 @@ use Spryker\Yves\Router\Plugin\RouterEnhancer\LanguagePrefixRouterEnhancerPlugin
 use Spryker\Yves\Router\Plugin\RouterEnhancer\StorePrefixRouterEnhancerPlugin;
 use Spryker\Yves\Router\RouterDependencyProvider as SprykerRouterDependencyProvider;
 use Spryker\Yves\Sitemap\Plugin\Router\SitemapRouteProviderPlugin;
+use SprykerFeature\Yves\SspAssetManagement\Plugin\Router\SspAssetRouteProviderPlugin;
 use SprykerFeature\Yves\SspDashboardManagement\Plugin\Router\DashboardRouteProviderPlugin;
 use SprykerFeature\Yves\SspFileManagement\Plugin\Router\SspFileManagementPageRouteProviderPlugin;
 use SprykerFeature\Yves\SspInquiryManagement\Plugin\Router\SspInquiryRouteProviderPlugin;
@@ -193,6 +194,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new SspInquiryRouteProviderPlugin(), #SspInquiryManagementFeature
             new SspFileManagementPageRouteProviderPlugin(),
             new DashboardRouteProviderPlugin(),
+            new SspAssetRouteProviderPlugin(), #SspAssetManagementFeature
         ];
 
         if (class_exists(LoadTestingRouterProviderPlugin::class)) {

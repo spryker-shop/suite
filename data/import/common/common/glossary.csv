@@ -719,6 +719,10 @@ general.back.button,Back,en_US
 general.back.button,Zurück,de_DE
 general.cancel.button,Cancel,en_US
 general.cancel.button,Abbrechen,de_DE
+general.confirm.button,Confirm,en_US
+general.confirm.button,Bestätigen,de_DE
+general.remove.button,Löschen,de_DE
+general.remove.button,Remove,en_US
 general.edit.button,Edit,en_US
 general.edit.button,Bearbeiten,de_DE
 newsletter.subscription.success,You successfully subscribed to the newsletter,en_US
@@ -2697,6 +2701,16 @@ permission.name.ViewBusinessUnitSspInquiryPermissionPlugin,View business unit in
 permission.name.ViewBusinessUnitSspInquiryPermissionPlugin,Anfragen der Geschäftseinheit anzeigen,de_DE
 permission.name.ViewDashboardPermissionPlugin,View Dashboard,en_US
 permission.name.ViewDashboardPermissionPlugin,Berechtigung zum Anzeigen des Dashboards,de_DE
+permission.name.ViewCompanySspAssetPermissionPlugin,View company ssp assets,en_US
+permission.name.ViewCompanySspAssetPermissionPlugin,Firmen-SSP-Assets anzeigen,de_DE
+permission.name.ViewBusinessUnitSspAssetPermissionPlugin,View business unit ssp assets,en_US
+permission.name.ViewBusinessUnitSspAssetPermissionPlugin,Geschäftseinheit-SSP-Assets anzeigen,de_DE
+permission.name.CreateSspAssetPermissionPlugin,Create ssp assets,en_US
+permission.name.CreateSspAssetPermissionPlugin,SSP-Assets erstellen,de_DE
+permission.name.UpdateSspAssetPermissionPlugin,Update ssp assets,en_US
+permission.name.UpdateSspAssetPermissionPlugin,SSP-Assets aktualisieren,de_DE
+permission.name.UnassignSspAssetPermissionPlugin,Unassign business unit ssp assets,en_US
+permission.name.UnassignSspAssetPermissionPlugin,Geschäftseinheit-SSP-Assets anzeigen,de_DE
 company_page.multi_currency_type.name.cent_amount.EUR,Cent Amount,en_US
 company_page.multi_currency_type.name.cent_amount.EUR,Cent Betrag,de_DE
 company_page.multi_currency_type.name.cent_amount.CHF,Centime Amount,en_US
@@ -4681,8 +4695,8 @@ ssp_inquiry.file.unavailable,File is not available,en_US
 ssp_inquiry.file.unavailable,Datei ist nicht verfügbar,de_DE
 customer.ssp_inquiry.details.files,Files,en_US
 customer.ssp_inquiry.details.files,Dateien,de_DE
-ssp_inquiry.order.create_ssp_inquiry,Inquiry,en_US
-ssp_inquiry.order.create_ssp_inquiry,Reklamation,de_DE
+ssp_inquiry.order.create_ssp_inquiry,Claim,en_US
+ssp_inquiry.order.create_ssp_inquiry,Anspruch stellen,de_DE
 ssp_inquiry.order_reference.label,Order Reference,en_US
 ssp_inquiry.order_reference.label,Bestellnummer,de_DE
 customer.ssp_inquiry.details.order_reference,Order Reference,en_US
@@ -4793,3 +4807,153 @@ customer.account.no_files,No Files,en_US
 customer.account.no_files,Keine Dateien,de_DE
 dashboard.overview.not_applicable,n/a,en_US
 dashboard.overview.not_applicable,n/a,de_DE
+ssp_asset.form.image.description,"Max up to %size%. Allowed file formats %format%",en_US
+ssp_asset.form.image.description,"Maximal bis zu %size%. Erlaubte Dateiformate: %format%",de_DE
+ssp_asset.validation.name.not_set,Asset name must be provided,en_US
+ssp_asset.validation.name.not_set,Der Name des Assets muss angegeben werden,de_DE
+ssp_asset.validation.company_business_unit.not_set,Company business unit must be provided,en_US
+ssp_asset.validation.company_business_unit.not_set,Die Geschäftseinheit muss angegeben werden,de_DE
+ssp_asset.validation.assets_not_provided,No assets were provided,en_US
+ssp_asset.validation.assets_not_provided,Es wurden keine Assets bereitgestellt,de_DE
+ssp_asset.validation.id_not_provided,Asset ID was not provided,en_US
+ssp_asset.validation.id_not_provided,Asset-ID wurde nicht angegeben,de_DE
+ssp_asset.validation.not_found,Asset was not found,en_US
+ssp_asset.validation.not_found,Asset wurde nicht gefunden,de_DE
+ssp_asset.list.widget.title,My Assets,en_US
+ssp_asset.list.widget.title,Meine Assets,de_DE
+ssp_asset.create.title,Create Asset,en_US
+ssp_asset.create.title,Asset erstellen,de_DE
+ssp_asset.list.title,My Assets,en_US
+ssp_asset.list.title,Meine Assets,de_DE
+ssp_asset.submit.button,Save,en_US
+ssp_asset.submit.button,Speichern,de_DE
+ssp_asset.success.created,Asset has been successfully created,en_US
+ssp_asset.success.created,Asset wurde erfolgreich erstellt,de_DE
+ssp_asset.error.create,Asset creation failed,en_US
+ssp_asset.error.create,Fehler beim Erstellen des Assets,de_DE
+ssp_asset.form.name,Name,en_US
+ssp_asset.form.name,Name,de_DE
+ssp_asset.form.serial_number,Serial Number,en_US
+ssp_asset.form.serial_number,Seriennummer,de_DE
+ssp_asset.form.note,Note,en_US
+ssp_asset.form.note,Notiz,de_DE
+ssp_asset.form.image,Image,en_US
+ssp_asset.form.image,Bild,de_DE
+ssp_asset.form.image.mime_type_error,Invalid file format. Allowed file formats: {{ types }},en_US
+ssp_asset.form.image.mime_type_error,Ungültiges Dateiformat. Erlaubte Dateiformate: {{ types }},de_DE
+ssp_asset.update.title,Edit Asset,en_US
+ssp_asset.update.title,Asset bearbeiten,de_DE
+ssp_asset.details.reference,Asset Reference,en_US
+ssp_asset.details.reference,Asset-Referenz,de_DE
+ssp_asset.cancel.button,Cancel,en_US
+ssp_asset.cancel.button,Abbrechen,de_DE
+ssp_asset.details.created_date,Date added,en_US
+ssp_asset.details.created_date,Hinzugefügt am,de_DE
+ssp_asset.details.owner,Business unit owner,en_US
+ssp_asset.details.owner,Inhaber der Geschäftseinheit,de_DE
+ssp_asset.details.confirm_delete_title,Confirm delete,en_US
+ssp_asset.details.confirm_delete_title,Löschen bestätigen,de_DE
+ssp_asset.details.confirm_delete_body,Are you sure you want to delete the image?,en_US
+ssp_asset.details.confirm_delete_body,"Sind Sie sicher, dass Sie das Bild löschen möchten?",de_DE
+ssp_asset.success.updated,Asset has been successfully updated,en_US
+ssp_asset.success.updated,Asset wurde erfolgreich aktualisiert,de_DE
+ssp_asset.image.requirements,Upload image requirements,en_US
+ssp_asset.image.requirements,Anforderungen für das Hochladen von Bildern,de_DE
+ssp_asset.image.upload,Upload,en_US
+ssp_asset.image.upload,Hochladen,de_DE
+ssp_asset.details_page.search_service,Search services,en_US
+ssp_asset.details_page.search_service,Services suchen,de_DE
+ssp_asset.details_page.name,Name,en_US
+ssp_asset.details_page.name,Name,de_DE
+ssp_asset.details_page.serial_number,Serial Number,en_US
+ssp_asset.details_page.serial_number,Seriennummer,de_DE
+ssp_asset.details_page.note,Note,en_US
+ssp_asset.details_page.note,Notiz,de_DE
+ssp_asset.details_page.reference,Reference,en_US
+ssp_asset.details_page.reference,Referenz,de_DE
+ssp_asset.details_page.confirm_unassign_title,Confirm unassign,en_US
+ssp_asset.details_page.confirm_unassign_title,Aufheben der Zuweisung bestätigen,de_DE
+ssp_asset.details_page.confirm_unassign_body,Unassign this asset from the business unit. Do you want to proceed?,en_US
+ssp_asset.details_page.confirm_unassign_body,Möchten Sie dieses Asset wirklich von der Geschäftseinheit entfernen?,de_DE
+ssp_asset.details_page.unassign,Unassign,en_US
+ssp_asset.details_page.unassign,Zuweisung aufheben,de_DE
+ssp_inquiry.type.ssp_asset,Asset,en_US
+ssp_inquiry.type.ssp_asset,Asset,de_DE
+customer.ssp_inquiry.details.ssp_asset_reference,Asset Reference,en_US
+customer.ssp_inquiry.details.ssp_asset_reference,Asset-Referenz,de_DE
+customer.ssp_inquiry.ssp_asset.details,Asset Details,en_US
+customer.ssp_inquiry.ssp_asset.details,Asset-Details,de_DE
+customer.ssp_inquiry.details.ssp_asset_not_available,Asset not available,en_US
+customer.ssp_inquiry.details.ssp_asset_not_available,Asset nicht verfügbar,de_DE
+ssp_asset.error.reference_not_found,Asset reference not found,en_US
+ssp_asset.error.reference_not_found,Asset-Referenz nicht gefunden,de_DE
+ssp_asset.error.company_user_not_found,Company user not found,en_US
+ssp_asset.error.company_user_not_found,Firmenbenutzer nicht gefunden,de_DE
+customer.ssp_inquiry.create.button,Create inquiry,en_US
+customer.ssp_inquiry.create.button,Anfrage stellen,de_DE
+ssp_inquiry.ssp_asset_reference.label,Asset Reference,en_US
+ssp_inquiry.ssp_asset_reference.label,Asset-Referenz,de_DE
+customer.ssp_inquiry.details.ssp_asset_name,Asset Name,en_US
+customer.ssp_inquiry.details.ssp_asset_name,Asset-Name,de_DE
+customer.account.ssp_assets,Assets,en_US
+customer.account.ssp_assets,Assets,de_DE
+customer.account.ssp_asset,Asset,en_US
+customer.account.ssp_asset,Asset,de_DE
+customer.ssp_asset.list.reference,Reference,en_US
+customer.ssp_asset.list.reference,Referenz,de_DE
+customer.ssp_asset.list.name,Asset Name,en_US
+customer.ssp_asset.list.name,Asset-Name,de_DE
+customer.ssp_asset.list.serial_number,Serial Number,en_US
+customer.ssp_asset.list.serial_number,Seriennummer,de_DE
+customer.ssp_asset.list.date_added,Date added,en_US
+customer.ssp_asset.list.date_added,Hinzugefügt am,de_DE
+customer.ssp_asset.view_ssp_asset,View,en_US
+customer.ssp_asset.view_ssp_asset,Anzeigen,de_DE
+customer.ssp_asset.create.button,Create Asset,en_US
+customer.ssp_asset.create.button,Asset erstellen,de_DE
+customer.account.no_ssp_assets,No assets at the moment,en_US
+customer.account.no_ssp_assets,Keine Assets vorhanden,de_DE
+ssp_asset.list.filter.apply,Apply,en_US
+ssp_asset.list.filter.apply,Anwenden,de_DE
+ssp_asset.status.active,Active,en_US
+ssp_asset.status.active,Aktiv,de_DE
+ssp_asset.status.inactive,Inactive,en_US
+ssp_asset.status.inactive,Inaktiv,de_DE
+company.error.company_user_not_found,Company user not found,en_US
+company.error.company_user_not_found,Firmenbenutzer nicht gefunden,de_DE
+customer.ssp_asset.list.business_unit,Business Unit,en_US
+customer.ssp_asset.list.business_unit,Geschäftseinheit,de_DE
+customer.ssp_asset.list.image,Image,en_US
+customer.ssp_asset.list.image,Bild,de_DE
+ssp_asset.details_page.created_date,Date added,en_US
+ssp_asset.details_page.created_date,Hinzugefügt am,de_DE
+ssp_asset.details_page.owner,Business unit owner,en_US
+ssp_asset.details_page.owner,Inhaber der Geschäftseinheit,de_DE
+ssp_asset.details_page.undefined,Undefined,en_US
+ssp_asset.details_page.undefined,Nicht definiert,de_DE
+ssp_asset.success.business_unit_relation_updated,Business unit has been successfully unassigned from the asset,en_US
+ssp_asset.success.business_unit_relation_updated,Die Zuordnung der Geschäftseinheit zum Asset wurde erfolgreich aufgehoben,de_DE
+ssp_asset.details_page.status,Status,en_US
+ssp_asset.details_page.status,Status,de_DE
+ssp_asset.details.status,Status,en_US
+ssp_asset.details.status,Status,de_DE
+ssp_asset.status.pending,Pending,en_US
+ssp_asset.status.pending,Ausstehend,de_DE
+customer.ssp_asset.list.business_unit,Business Unit Owner,en_US
+customer.ssp_asset.list.business_unit,Inhaber der Geschäftseinheit,de_DE
+ssp_asset.information.assigned_bu,Assigned business units,en_US
+ssp_asset.information.assigned_bu,Zugewiesene Geschäftseinheiten,de_DE
+customer.ssp_asset.filter.scope,Access level,en_US
+customer.ssp_asset.filter.scope,Zugriffsebene,de_DE
+customer.ssp_asset.filter.scope.placeholder,Select access level,en_US
+customer.ssp_asset.filter.scope.placeholder,Zugriffsebene auswählen,de_DE
+customer.ssp_asset.filter_by_business_unit,My business unit assets,en_US
+customer.ssp_asset.filter_by_business_unit,Assets meiner Geschäftseinheit,de_DE
+customer.ssp_asset.filter_by_company,My company assets,en_US
+customer.ssp_asset.filter_by_company,Assets meiner Firma,de_DE
+ssp_asset.error.cannot_unassign_own_business_unit,You cannot unassign your own business unit from the asset,en_US
+ssp_asset.error.cannot_unassign_own_business_unit,Sie können Ihre eigene Geschäftseinheit nicht vom Asset trennen,de_DE
+ssp_asset_management.ssp_asset_search_filter_form.label.active_filters,Active filters:,en_US
+ssp_asset_management.ssp_asset_search_filter_form.label.active_filters,Aktive filter:,de_DE
+ssp_asset_management.ssp_asset_search_filter_form.field.reset_all.label,Reset all,en_US
+ssp_asset_management.ssp_asset_search_filter_form.field.reset_all.label,Alles zurücksetzen,de_DE

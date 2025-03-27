@@ -141,6 +141,7 @@ use Spryker\Zed\OauthAuth0\OauthAuth0Config;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Payment\PaymentConfig;
 use Spryker\Zed\Propel\PropelConfig;
+use SprykerFeature\Shared\SspAssetManagement\SspAssetManagementConstants;
 use SprykerFeature\Shared\SspFileManagement\SspFileManagementConstants;
 use SprykerFeature\Shared\SspInquiryManagement\SspInquiryManagementConstants;
 use SprykerShop\Shared\CustomerPage\CustomerPageConstants;
@@ -661,8 +662,13 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
     ],
     'ssp-files' => [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
-        'root' => '/',
-        'path' => '/',
+        'root' => '/data',
+        'path' => '/data/ssp-files',
+    ],
+    'ssp-asset-image' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/data',
+        'path' => '/data/ssp-asset-image',
     ],
 ];
 $config[FileManagerConstants::STORAGE_NAME] = 'files';
@@ -726,6 +732,7 @@ $config[ApplicationConstants::BASE_URL_YVES]
     = $config[MerchantRelationshipConstants::BASE_URL_YVES]
     = $config[MerchantRelationRequestConstants::BASE_URL_YVES]
     = $config[SspInquiryManagementConstants::BASE_URL_YVES]
+    = $config[SspAssetManagementConstants::BASE_URL_YVES]
     = sprintf(
         'https://%s%s',
         $yvesHost,
