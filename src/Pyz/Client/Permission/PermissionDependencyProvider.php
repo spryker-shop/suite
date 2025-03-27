@@ -35,6 +35,7 @@ use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\WriteShoppingListPermissionPlugin;
 use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
+use SprykerFeature\Shared\SspDashboardManagement\Plugin\Permission\ViewDashboardPermissionPlugin;
 use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\DownloadFilesPermissionPlugin;
 use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\ViewCompanyBusinessUnitFilesPermissionPlugin;
 use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\ViewCompanyFilesPermissionPlugin;
@@ -94,6 +95,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new ViewCompanyUserFilesPermissionPlugin(), #SspFileManagementFeature
             new ViewCompanyBusinessUnitFilesPermissionPlugin(), #SspFileManagementFeature
             new ViewCompanyFilesPermissionPlugin(), #SspFileManagementFeature
+            new ViewDashboardPermissionPlugin(), #SspDashboardManagement Feature
         ];
     }
 }
