@@ -19,11 +19,15 @@ use Spryker\Zed\SharedCart\Communication\Plugin\WriteSharedCartPermissionPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionStoragePlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\WriteShoppingListPermissionPlugin;
+use SprykerFeature\Shared\SspDashboardManagement\Plugin\Permission\ViewDashboardPermissionPlugin;
 use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\DownloadFilesPermissionPlugin;
 use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\ViewCompanyBusinessUnitFilesPermissionPlugin;
 use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\ViewCompanyFilesPermissionPlugin;
 use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\ViewCompanyUserFilesPermissionPlugin;
 use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\ViewFilesPermissionPlugin;
+use SprykerFeature\Shared\SspInquiryManagement\Plugin\Permission\CreateSspInquiryPermissionPlugin;
+use SprykerFeature\Shared\SspInquiryManagement\Plugin\Permission\ViewBusinessUnitSspInquiryPermissionPlugin;
+use SprykerFeature\Shared\SspInquiryManagement\Plugin\Permission\ViewCompanySspInquiryPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
@@ -56,6 +60,10 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new ViewCompanyUserFilesPermissionPlugin(), #SspFileManagementFeature
             new ViewCompanyBusinessUnitFilesPermissionPlugin(), #SspFileManagementFeature
             new ViewCompanyFilesPermissionPlugin(), #SspFileManagementFeature
+            new CreateSspInquiryPermissionPlugin(), #SspInquiryManagementFeature
+            new ViewCompanySspInquiryPermissionPlugin(), #SspInquiryManagementFeature
+            new ViewBusinessUnitSspInquiryPermissionPlugin(), #SspInquiryManagementFeature
+            new ViewDashboardPermissionPlugin(), #SspDashboardManagement Feature
         ];
     }
 }
