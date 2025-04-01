@@ -76,16 +76,16 @@
         },
         {
             "name": "async-aws/sns",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/async-aws/sns.git",
-                "reference": "de0d29f5c1c0dce36eb41801b5033eece75ca9b3"
+                "reference": "abd88daef2ad1b6191f7f8c7cc237b4b72af0018"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/async-aws/sns/zipball/de0d29f5c1c0dce36eb41801b5033eece75ca9b3",
-                "reference": "de0d29f5c1c0dce36eb41801b5033eece75ca9b3",
+                "url": "https://api.github.com/repos/async-aws/sns/zipball/abd88daef2ad1b6191f7f8c7cc237b4b72af0018",
+                "reference": "abd88daef2ad1b6191f7f8c7cc237b4b72af0018",
                 "shasum": ""
             },
             "require": {
@@ -97,7 +97,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -118,7 +118,7 @@
                 "sdk"
             ],
             "support": {
-                "source": "https://github.com/async-aws/sns/tree/1.8.0"
+                "source": "https://github.com/async-aws/sns/tree/1.9.0"
             },
             "funding": [
                 {
@@ -130,7 +130,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-05T20:41:02+00:00"
+            "time": "2025-03-31T07:35:56+00:00"
         },
         {
             "name": "async-aws/sqs",
@@ -7421,16 +7421,16 @@
         },
         {
             "name": "spryker-feature/ssp-asset-management",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/ssp-asset-management.git",
-                "reference": "c1b33fe5ddc09bd2e5056e430de44fe6f8ee2a6a"
+                "reference": "30071b7d3cdf1f4daafde25d4c467999da4298ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/ssp-asset-management/zipball/c1b33fe5ddc09bd2e5056e430de44fe6f8ee2a6a",
-                "reference": "c1b33fe5ddc09bd2e5056e430de44fe6f8ee2a6a",
+                "url": "https://api.github.com/repos/spryker-feature/ssp-asset-management/zipball/30071b7d3cdf1f4daafde25d4c467999da4298ec",
+                "reference": "30071b7d3cdf1f4daafde25d4c467999da4298ec",
                 "shasum": ""
             },
             "require": {
@@ -7451,6 +7451,7 @@
                 "spryker/zed-request": "^3.22.0"
             },
             "require-dev": {
+                "spryker-feature/ssp-dashboard-management": "*",
                 "spryker-feature/ssp-inquiry-management": "*",
                 "spryker-shop/customer-page": "*",
                 "spryker/code-sniffer": "*",
@@ -7463,6 +7464,7 @@
                 "spryker/util-date-time": "*"
             },
             "suggest": {
+                "spryker-feature/ssp-dashboard-management": "If you want to see assets on the dashboard.",
                 "spryker-shop/customer-page": "Provides template for customer page",
                 "spryker/router": "You need to install this module when you want to use the RouterExtension interfaces."
             },
@@ -7484,22 +7486,22 @@
             ],
             "description": "SspAssetManagement module",
             "support": {
-                "source": "https://github.com/spryker-feature/ssp-asset-management/tree/0.1.0"
+                "source": "https://github.com/spryker-feature/ssp-asset-management/tree/0.1.1"
             },
-            "time": "2025-03-27T16:46:47+00:00"
+            "time": "2025-04-01T07:47:19+00:00"
         },
         {
             "name": "spryker-feature/ssp-dashboard-management",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/ssp-dashboard-management.git",
-                "reference": "6deee0cfdb82d117bd02756a20181561e5be53a5"
+                "reference": "edab832f84d67a22cd9bb3ba9c5bb3e211c56f1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/ssp-dashboard-management/zipball/6deee0cfdb82d117bd02756a20181561e5be53a5",
-                "reference": "6deee0cfdb82d117bd02756a20181561e5be53a5",
+                "url": "https://api.github.com/repos/spryker-feature/ssp-dashboard-management/zipball/edab832f84d67a22cd9bb3ba9c5bb3e211c56f1b",
+                "reference": "edab832f84d67a22cd9bb3ba9c5bb3e211c56f1b",
                 "shasum": ""
             },
             "require": {
@@ -7546,22 +7548,22 @@
             ],
             "description": "SspDashboardManagement module",
             "support": {
-                "source": "https://github.com/spryker-feature/ssp-dashboard-management/tree/0.1.0"
+                "source": "https://github.com/spryker-feature/ssp-dashboard-management/tree/0.1.1"
             },
-            "time": "2025-03-27T11:30:29+00:00"
+            "time": "2025-04-01T07:47:19+00:00"
         },
         {
             "name": "spryker-feature/ssp-file-management",
-            "version": "0.1.3",
+            "version": "0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/ssp-file-management.git",
-                "reference": "0c6f265c95992c1ac256b5ceb0080d586e76822a"
+                "reference": "927f5086a63ba636670d970099fd28cb3174ffc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/ssp-file-management/zipball/0c6f265c95992c1ac256b5ceb0080d586e76822a",
-                "reference": "0c6f265c95992c1ac256b5ceb0080d586e76822a",
+                "url": "https://api.github.com/repos/spryker-feature/ssp-file-management/zipball/927f5086a63ba636670d970099fd28cb3174ffc8",
+                "reference": "927f5086a63ba636670d970099fd28cb3174ffc8",
                 "shasum": ""
             },
             "require": {
@@ -7628,9 +7630,9 @@
             ],
             "description": "SspFileManagement module",
             "support": {
-                "source": "https://github.com/spryker-feature/ssp-file-management/tree/0.1.3"
+                "source": "https://github.com/spryker-feature/ssp-file-management/tree/0.1.4"
             },
-            "time": "2025-03-27T16:46:47+00:00"
+            "time": "2025-04-01T07:47:19+00:00"
         },
         {
             "name": "spryker-feature/ssp-inquiry-management",
@@ -7780,12 +7782,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/evaluator.git",
-                "reference": "2ce7722f8b15388ead4cea2f1b9be838235f4db0"
+                "reference": "fb6781caaaac6f0702e76de1e581cf64c8486c9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/2ce7722f8b15388ead4cea2f1b9be838235f4db0",
-                "reference": "2ce7722f8b15388ead4cea2f1b9be838235f4db0",
+                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/fb6781caaaac6f0702e76de1e581cf64c8486c9e",
+                "reference": "fb6781caaaac6f0702e76de1e581cf64c8486c9e",
                 "shasum": ""
             },
             "require": {
@@ -7795,7 +7797,7 @@
                 "ext-json": "*",
                 "guzzlehttp/guzzle": "^7.5",
                 "nikic/php-parser": "^5.1.0",
-                "php": ">=8.2",
+                "php": ">=8.1",
                 "spryker-sdk/security-checker": "^0.2.0",
                 "spryker-sdk/utils": "^0.2.1",
                 "symfony/console": "^6.0",
@@ -7846,9 +7848,9 @@
             "description": "The tool for evaluating Spryker shops",
             "support": {
                 "issues": "https://github.com/spryker-sdk/evaluator/issues",
-                "source": "https://github.com/spryker-sdk/evaluator/tree/master"
+                "source": "https://github.com/spryker-sdk/evaluator/tree/0.2.6"
             },
-            "time": "2025-04-01T04:07:06+00:00"
+            "time": "2024-11-04T13:08:23+00:00"
         },
         {
             "name": "spryker-sdk/security-checker",
@@ -74875,16 +74877,16 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v6.4.19",
+            "version": "v6.4.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "342e87b15ac02e4b4f0924ddc368e75d5262aab3"
+                "reference": "95af448bb7c3d8db02f7b4f5cbf3cb7a6ff1e432"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/342e87b15ac02e4b4f0924ddc368e75d5262aab3",
-                "reference": "342e87b15ac02e4b4f0924ddc368e75d5262aab3",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/95af448bb7c3d8db02f7b4f5cbf3cb7a6ff1e432",
+                "reference": "95af448bb7c3d8db02f7b4f5cbf3cb7a6ff1e432",
                 "shasum": ""
             },
             "require": {
@@ -74951,7 +74953,7 @@
                 "psr6"
             ],
             "support": {
-                "source": "https://github.com/symfony/cache/tree/v6.4.19"
+                "source": "https://github.com/symfony/cache/tree/v6.4.20"
             },
             "funding": [
                 {
@@ -74967,7 +74969,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-02-26T09:12:57+00:00"
+            "time": "2025-03-08T15:51:34+00:00"
         },
         {
             "name": "symfony/cache-contracts",
@@ -75424,16 +75426,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v6.4.19",
+            "version": "v6.4.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "b343c3b2f1539fe41331657b37d5c96c1d1ea842"
+                "reference": "c49796a9184a532843e78e50df9e55708b92543a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/b343c3b2f1539fe41331657b37d5c96c1d1ea842",
-                "reference": "b343c3b2f1539fe41331657b37d5c96c1d1ea842",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/c49796a9184a532843e78e50df9e55708b92543a",
+                "reference": "c49796a9184a532843e78e50df9e55708b92543a",
                 "shasum": ""
             },
             "require": {
@@ -75441,7 +75443,7 @@
                 "psr/container": "^1.1|^2.0",
                 "symfony/deprecation-contracts": "^2.5|^3",
                 "symfony/service-contracts": "^2.5|^3.0",
-                "symfony/var-exporter": "^6.2.10|^7.0"
+                "symfony/var-exporter": "^6.4.20|^7.2.5"
             },
             "conflict": {
                 "ext-psr": "<1.1|>=2",
@@ -75485,7 +75487,7 @@
             "description": "Allows you to standardize and centralize the way objects are constructed in your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/dependency-injection/tree/v6.4.19"
+                "source": "https://github.com/symfony/dependency-injection/tree/v6.4.20"
             },
             "funding": [
                 {
@@ -75501,7 +75503,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-02-20T10:02:49+00:00"
+            "time": "2025-03-13T09:55:08+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -81866,16 +81868,16 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v4.1.7",
+            "version": "v4.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "d201c9bc217e0969d1b678d286be49302972fb56"
+                "reference": "42806049a7774a2bd316c958f5dcf01c6b5c56fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/d201c9bc217e0969d1b678d286be49302972fb56",
-                "reference": "d201c9bc217e0969d1b678d286be49302972fb56",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/42806049a7774a2bd316c958f5dcf01c6b5c56fa",
+                "reference": "42806049a7774a2bd316c958f5dcf01c6b5c56fa",
                 "shasum": ""
             },
             "require": {
@@ -81929,9 +81931,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/php-generator/issues",
-                "source": "https://github.com/nette/php-generator/tree/v4.1.7"
+                "source": "https://github.com/nette/php-generator/tree/v4.1.8"
             },
-            "time": "2024-11-29T01:41:18+00:00"
+            "time": "2025-03-31T00:29:29+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -82063,16 +82065,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v4.0.5",
+            "version": "v4.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "736c567e257dbe0fcf6ce81b4d6dbe05c6899f96"
+                "reference": "ce708655043c7050eb050df361c5e313cf708309"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/736c567e257dbe0fcf6ce81b4d6dbe05c6899f96",
-                "reference": "736c567e257dbe0fcf6ce81b4d6dbe05c6899f96",
+                "url": "https://api.github.com/repos/nette/utils/zipball/ce708655043c7050eb050df361c5e313cf708309",
+                "reference": "ce708655043c7050eb050df361c5e313cf708309",
                 "shasum": ""
             },
             "require": {
@@ -82143,9 +82145,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v4.0.5"
+                "source": "https://github.com/nette/utils/tree/v4.0.6"
             },
-            "time": "2024-08-07T15:39:19+00:00"
+            "time": "2025-03-30T21:06:30+00:00"
         },
         {
             "name": "pdepend/pdepend",
@@ -83606,12 +83608,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "74e16a3a2b104a0bad23dd622c779ef89b42edea"
+                "reference": "e40197fac85a33071a31d14da567bf9fcf497b03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/74e16a3a2b104a0bad23dd622c779ef89b42edea",
-                "reference": "74e16a3a2b104a0bad23dd622c779ef89b42edea",
+                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/e40197fac85a33071a31d14da567bf9fcf497b03",
+                "reference": "e40197fac85a33071a31d14da567bf9fcf497b03",
                 "shasum": ""
             },
             "default-branch": true,
@@ -83625,7 +83627,7 @@
                 "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
                 "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
             },
-            "time": "2025-03-11T21:08:43+00:00"
+            "time": "2025-03-31T11:21:26+00:00"
         },
         {
             "name": "spryker/silex",
