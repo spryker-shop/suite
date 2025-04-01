@@ -25,6 +25,7 @@ use SprykerFeature\Yves\SspAssetManagement\Plugin\Router\SspAssetRouteProviderPl
 use SprykerFeature\Yves\SspDashboardManagement\Plugin\Router\DashboardRouteProviderPlugin;
 use SprykerFeature\Yves\SspFileManagement\Plugin\Router\SspFileManagementPageRouteProviderPlugin;
 use SprykerFeature\Yves\SspInquiryManagement\Plugin\Router\SspInquiryRouteProviderPlugin;
+use SprykerFeature\Yves\SspServiceManagement\Plugin\Router\SspServiceManagementPageRouteProviderPlugin;
 use SprykerSdk\Yves\LoadTesting\Plugin\Router\LoadTestingRouterProviderPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\Router\AgentPageRouteProviderPlugin;
 use SprykerShop\Yves\AgentWidget\Plugin\Router\AgentWidgetRouteProviderPlugin;
@@ -195,6 +196,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new SspFileManagementPageRouteProviderPlugin(),
             new DashboardRouteProviderPlugin(),
             new SspAssetRouteProviderPlugin(), #SspAssetManagementFeature
+            new SspServiceManagementPageRouteProviderPlugin(),
         ];
 
         if (class_exists(LoadTestingRouterProviderPlugin::class)) {

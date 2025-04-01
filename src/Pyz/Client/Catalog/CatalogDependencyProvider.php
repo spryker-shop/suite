@@ -71,6 +71,7 @@ use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\SpellingSuggestionS
 use Spryker\Client\SearchHttp\Plugin\Search\ProductConcreteCatalogSearchHttpResultFormatterPlugin;
 use Spryker\Client\SearchHttp\Plugin\Search\SearchHttpSearchResultCountPlugin;
 use Spryker\Shared\SearchHttp\SearchHttpConfig;
+use SprykerFeature\Client\SspServiceManagement\Plugin\Catalog\ProductAbstractTypeFacetConfigTransferBuilderPlugin;
 
 class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
 {
@@ -84,6 +85,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new PriceFacetConfigTransferBuilderPlugin(),
             new RatingFacetConfigTransferBuilderPlugin(),
             new ProductLabelFacetConfigTransferBuilderPlugin(),
+            new ProductAbstractTypeFacetConfigTransferBuilderPlugin(),
         ];
     }
 
@@ -98,6 +100,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
                 new PriceFacetConfigTransferBuilderPlugin(),
                 new RatingFacetConfigTransferBuilderPlugin(),
                 new ProductLabelSearchHttpFacetConfigTransferBuilderPlugin(),
+                new ProductAbstractTypeFacetConfigTransferBuilderPlugin(),
             ],
         ];
     }
