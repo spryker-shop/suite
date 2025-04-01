@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\SspDashboardManagement;
 
+use SprykerFeature\Zed\SspAssetManagement\Communication\Plugin\SspDashboardManagement\SspAssetDashboardDataProviderPlugin;
 use SprykerFeature\Zed\SspDashboardManagement\SspDashboardManagementDependencyProvider as SprykerSspDashboardManagementDependencyProvider;
 use SprykerFeature\Zed\SspFileManagement\Communication\Plugin\SspDashboardManagement\SspFileDashboardDataProviderPlugin;
 use SprykerFeature\Zed\SspInquiryManagement\Communication\Plugin\SspDashboardManagement\SspInquiryDashboardDataProviderPlugin;
@@ -23,6 +24,7 @@ class SspDashboardManagementDependencyProvider extends SprykerSspDashboardManage
         return [
             new SspInquiryDashboardDataProviderPlugin(),
             new SspFileDashboardDataProviderPlugin(),
+            new SspAssetDashboardDataProviderPlugin(),
         ];
     }
 }
