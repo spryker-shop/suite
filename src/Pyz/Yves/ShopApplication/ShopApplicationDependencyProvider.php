@@ -32,6 +32,11 @@ use SprykerFeature\Yves\SspInquiryManagement\Plugin\ShopApplication\SspInquiryRe
 use SprykerFeature\Yves\SspInquiryManagement\Widget\CreateOrderSspInquiryLinkWidget;
 use SprykerFeature\Yves\SspInquiryManagement\Widget\DashboardInquiryWidget;
 use SprykerFeature\Yves\SspInquiryManagement\Widget\SspInquiryMenuItemWidget;
+use SprykerFeature\Yves\SspServiceManagement\Widget\ListItemsByShipmentTypeWidget;
+use SprykerFeature\Yves\SspServiceManagement\Widget\ServicePointNameForItemWidget;
+use SprykerFeature\Yves\SspServiceManagement\Widget\ShipmentTypeServicePointSelectorWidget;
+use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceChangeScheduledTimeLinkWidget;
+use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceMenuItemWidget;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AssetWidget\Widget\AssetWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;

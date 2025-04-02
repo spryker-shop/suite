@@ -105,6 +105,8 @@ use Spryker\Zed\SalesServicePoint\Communication\Plugin\Sales\ServicePointSalesOr
 use Spryker\Zed\Shipment\Communication\Plugin\Sales\ShipmentOrderItemExpanderPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
 use Spryker\Zed\WarehouseAllocation\Communication\Plugin\Sales\WarehouseOrderItemExpanderPlugin;
+use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\ProductTypeOrderItemsPostSavePlugin;
+use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\ScheduleTimeOrderItemExpanderPreSavePlugin;
 
 class SalesDependencyProvider extends SprykerSalesDependencyProvider
 {
@@ -159,6 +161,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new MerchantReferenceOrderItemExpanderPreSavePlugin(),
             new ProductOfferReferenceOrderItemExpanderPreSavePlugin(),
             new OrderItemReferenceExpanderPreSavePlugin(),
+            new ScheduleTimeOrderItemExpanderPreSavePlugin(),
         ];
     }
 
@@ -317,6 +320,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ItemMetadataOrderItemsPostSavePlugin(),
             new ServicePointOrderItemsPostSavePlugin(),
             new GiftCardOrderItemsPostSavePlugin(),
+            new ProductTypeOrderItemsPostSavePlugin(),
             new ProductOptionOrderItemsPostSavePlugin(),
         ];
     }

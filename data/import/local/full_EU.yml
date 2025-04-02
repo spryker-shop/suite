@@ -403,6 +403,10 @@ actions:
     - data_entity: service-point-store
       source: data/import/common/AT/service_point_store.csv
 
+    #10. Product Shipment Type import
+    - data_entity: product-shipment-type
+      source: data/import/common/common/product_shipment_type.csv
+
     # Acl import
     - data_entity: acl-role
       source: data/import/common/common/acl_role.csv
@@ -418,3 +422,9 @@ actions:
     # SspInquiry
     - data_entity: ssp-inquiry
       source: data/import/common/common/ssp_inquiry.csv
+
+    # SspServiceManagement
+    - data_entity: product-abstract-type
+      source: data/import/common/common/product_abstract_type.csv
+    - data_entity: product-abstract-product-abstract-type
+      source: data/import/common/common/product_abstract_product_abstract_type.csv
