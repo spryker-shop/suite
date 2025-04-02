@@ -67,6 +67,7 @@ use Spryker\Zed\ShipmentDataImport\ShipmentDataImportConfig;
 use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig;
 use Spryker\Zed\StockAddressDataImport\StockAddressDataImportConfig;
 use Spryker\Zed\StockDataImport\StockDataImportConfig;
+use SprykerFeature\Zed\SspServiceManagement\SspServiceManagementConfig;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
@@ -444,6 +445,9 @@ class DataImportConfig extends SprykerDataImportConfig
             ProductOfferShoppingListDataImportConfig::IMPORT_TYPE_PRODUCT_OFFER_SHOPPING_LIST_ITEM,
             MerchantProductApprovalDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_APPROVAL_STATUS_DEFAULT,
             ProductApprovalDataImportConfig::IMPORT_TYPE_PRODUCT_APPROVAL_STATUS,
+            SspServiceManagementConfig::IMPORT_TYPE_PRODUCT_ABSTRACT_TYPE,
+            SspServiceManagementConfig::IMPORT_TYPE_PRODUCT_ABSTRACT_TO_PRODUCT_ABSTRACT_TYPE,
+            SspServiceManagementConfig::IMPORT_TYPE_PRODUCT_SHIPMENT_TYPE,
         ];
     }
 
