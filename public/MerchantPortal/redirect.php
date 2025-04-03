@@ -18,8 +18,7 @@ $referrer = !empty($_GET['HTTP_REFERER'])
 
 ?>
 <p style="text-align: center">
-    The site <?php echo $referrer; ?> wants to redirect you to <strong><?php echo $url ?></strong>. Do you want to
-    follow the redirect?
+    The site <?php echo $referrer; ?> wants to redirect you to <strong><?php echo $url ?></strong>. Do you want to follow the redirect?
 </p>
 <p style="text-align: center">
     <a href="<?php echo $url; ?>">Follow</a>
