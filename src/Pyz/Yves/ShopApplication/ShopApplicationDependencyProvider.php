@@ -24,6 +24,7 @@ use Spryker\Yves\Sitemap\Widget\SitemapWidget;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
+use SprykerFeature\Yves\SspAssetManagement\Widget\SspAssetMenuItemWidget;
 use SprykerFeature\Yves\SspDashboardManagement\Plugin\ShopApplication\SspDashboardFilterControllerEventHandlerPlugin;
 use SprykerFeature\Yves\SspDashboardManagement\Widget\DashboardMenuItemWidget;
 use SprykerFeature\Yves\SspFileManagement\Widget\DashboardFileWidget;
@@ -31,6 +32,7 @@ use SprykerFeature\Yves\SspFileManagement\Widget\SspFileManagerMenuItemWidget;
 use SprykerFeature\Yves\SspInquiryManagement\Plugin\ShopApplication\SspInquiryRestrictionHandlerPlugin;
 use SprykerFeature\Yves\SspInquiryManagement\Widget\CreateOrderSspInquiryLinkWidget;
 use SprykerFeature\Yves\SspInquiryManagement\Widget\DashboardInquiryWidget;
+use SprykerFeature\Yves\SspInquiryManagement\Widget\SspInquiryListWidget;
 use SprykerFeature\Yves\SspInquiryManagement\Widget\SspInquiryMenuItemWidget;
 use SprykerFeature\Yves\SspServiceManagement\Widget\ListItemsByShipmentTypeWidget;
 use SprykerFeature\Yves\SspServiceManagement\Widget\ServicePointNameForItemWidget;
@@ -382,6 +384,13 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             DashboardMenuItemWidget::class,
             DashboardInquiryWidget::class,
             DashboardFileWidget::class,
+            SspAssetMenuItemWidget::class,
+            SspInquiryListWidget::class,
+            SspServiceMenuItemWidget::class,
+            SspServiceChangeScheduledTimeLinkWidget::class,
+            ShipmentTypeServicePointSelectorWidget::class,
+            ServicePointNameForItemWidget::class,
+            ListItemsByShipmentTypeWidget::class,
         ];
     }
 

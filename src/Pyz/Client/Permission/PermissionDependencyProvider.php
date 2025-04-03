@@ -35,6 +35,11 @@ use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\WriteShoppingListPermissionPlugin;
 use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
+use SprykerFeature\Shared\SspAssetManagement\Plugin\Permission\CreateSspAssetPermissionPlugin;
+use SprykerFeature\Shared\SspAssetManagement\Plugin\Permission\UnassignSspAssetPermissionPlugin;
+use SprykerFeature\Shared\SspAssetManagement\Plugin\Permission\UpdateSspAssetPermissionPlugin;
+use SprykerFeature\Shared\SspAssetManagement\Plugin\Permission\ViewBusinessUnitSspAssetPermissionPlugin;
+use SprykerFeature\Shared\SspAssetManagement\Plugin\Permission\ViewCompanySspAssetPermissionPlugin;
 use SprykerFeature\Shared\SspDashboardManagement\Plugin\Permission\ViewDashboardPermissionPlugin;
 use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\DownloadFilesPermissionPlugin;
 use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\ViewCompanyBusinessUnitFilesPermissionPlugin;
@@ -96,6 +101,11 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new ViewCompanyBusinessUnitFilesPermissionPlugin(), #SspFileManagementFeature
             new ViewCompanyFilesPermissionPlugin(), #SspFileManagementFeature
             new ViewDashboardPermissionPlugin(), #SspDashboardManagement Feature
+            new ViewCompanySspAssetPermissionPlugin(), #SspAssetFeature
+            new ViewBusinessUnitSspAssetPermissionPlugin(), #SspAssetFeature
+            new CreateSspAssetPermissionPlugin(), #SspAssetFeature
+            new UpdateSspAssetPermissionPlugin(), #SspAssetFeature
+            new UnassignSspAssetPermissionPlugin(), #SspAssetFeature
         ];
     }
 }
