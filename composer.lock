@@ -901,26 +901,29 @@
         },
         {
             "name": "doctrine/deprecations",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/deprecations.git",
-                "reference": "31610dbb31faa98e6b5447b62340826f54fbc4e9"
+                "reference": "459c2f5dd3d6a4633d3b5f46ee2b1c40f57d3f38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/31610dbb31faa98e6b5447b62340826f54fbc4e9",
-                "reference": "31610dbb31faa98e6b5447b62340826f54fbc4e9",
+                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/459c2f5dd3d6a4633d3b5f46ee2b1c40f57d3f38",
+                "reference": "459c2f5dd3d6a4633d3b5f46ee2b1c40f57d3f38",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
             },
+            "conflict": {
+                "phpunit/phpunit": "<=7.5 || >=13"
+            },
             "require-dev": {
-                "doctrine/coding-standard": "^9 || ^12",
-                "phpstan/phpstan": "1.4.10 || 2.0.3",
+                "doctrine/coding-standard": "^9 || ^12 || ^13",
+                "phpstan/phpstan": "1.4.10 || 2.1.11",
                 "phpstan/phpstan-phpunit": "^1.0 || ^2",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.6 || ^10.5 || ^11.5 || ^12",
                 "psr/log": "^1 || ^2 || ^3"
             },
             "suggest": {
@@ -940,9 +943,9 @@
             "homepage": "https://www.doctrine-project.org/",
             "support": {
                 "issues": "https://github.com/doctrine/deprecations/issues",
-                "source": "https://github.com/doctrine/deprecations/tree/1.1.4"
+                "source": "https://github.com/doctrine/deprecations/tree/1.1.5"
             },
-            "time": "2024-12-07T21:18:45+00:00"
+            "time": "2025-04-07T20:06:18+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -11318,16 +11321,16 @@
         },
         {
             "name": "spryker-shop/language-switcher-widget",
-            "version": "1.6.2",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/language-switcher-widget.git",
-                "reference": "5a89014bc6e9bd815d36a63b409f867775efed5a"
+                "reference": "96dae32a0c190bfde09cc22fbf94dd501550d4fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/language-switcher-widget/zipball/5a89014bc6e9bd815d36a63b409f867775efed5a",
-                "reference": "5a89014bc6e9bd815d36a63b409f867775efed5a",
+                "url": "https://api.github.com/repos/spryker-shop/language-switcher-widget/zipball/96dae32a0c190bfde09cc22fbf94dd501550d4fb",
+                "reference": "96dae32a0c190bfde09cc22fbf94dd501550d4fb",
                 "shasum": ""
             },
             "require": {
@@ -11338,7 +11341,11 @@
                 "spryker/url-storage": "^1.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/store": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/symfony": "3.0.0 for using LanguageSwitcherPlugin"
@@ -11360,9 +11367,9 @@
             ],
             "description": "LanguageSwitcherWidget module",
             "support": {
-                "source": "https://github.com/spryker-shop/language-switcher-widget/tree/1.6.2"
+                "source": "https://github.com/spryker-shop/language-switcher-widget/tree/1.7.0"
             },
-            "time": "2025-03-17T09:01:31+00:00"
+            "time": "2025-04-08T10:42:49+00:00"
         },
         {
             "name": "spryker-shop/merchant-opening-hours-widget",
