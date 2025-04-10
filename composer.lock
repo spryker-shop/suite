@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af190a2f33246d08ab5584d9f148bc36",
+    "content-hash": "0d21b334247626b9c9135f57142adaf0",
     "packages": [
         {
             "name": "async-aws/core",
@@ -6393,7 +6393,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "70c64890277235edba7ec606fd0f6bb8dcec4f86"
+                "reference": "69f9a1a181648c412c21fc5169d97c428caa2be4"
             },
             "require": {
                 "php": ">=8.1"
@@ -6918,6 +6918,8 @@
                 "spryker/multi-cart": "*",
                 "spryker/multi-cart-data-import": "*",
                 "spryker/multi-carts-rest-api": "*",
+                "spryker/multi-factor-auth": "*",
+                "spryker/multi-factor-auth-extension": "*",
                 "spryker/navigation": "*",
                 "spryker/navigation-collector": "*",
                 "spryker/navigation-gui": "*",
@@ -7513,6 +7515,7 @@
                 "spryker/zed-ui": "*"
             },
             "require-dev": {
+                "phpstan/phpdoc-parser": "^1.33",
                 "spryker/code-sniffer": "dev-master"
             },
             "default-branch": true,
@@ -7533,7 +7536,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2025-04-10T07:58:03+00:00"
+            "time": "2025-04-10T08:17:32+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7541,7 +7544,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "b088df63e1aaebebe5fdbf15ab0bf4e3b878aa40"
+                "reference": "2b10d05cf54df0e71108b0a39aa4856828f7db58"
             },
             "require": {
                 "php": ">=8.1"
@@ -7748,7 +7751,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2025-04-08T10:42:49+00:00"
+            "time": "2025-04-10T08:17:34+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -18357,7 +18360,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/cypress-tests.git",
-                "reference": "ad1a646ddc03b3262c9d373e62f6d584be17bb13"
+                "reference": "a2170a4b0cee15689e4317caa652cc568e812a58"
             },
             "default-branch": true,
             "type": "library",
@@ -18365,7 +18368,7 @@
                 "MIT"
             ],
             "description": "This repository is dedicated to housing an extensive collection of UI end-to-end tests, meticulously crafted using Cypress for Spryker applications. These tests are designed to thoroughly evaluate the user interface, ensuring that all interactions and visual elements function as intended in real-world scenarios. By leveraging Cypress's advanced browser automation capabilities, this suite provides an efficient and effective means of validating the user experience, confirming the seamless operation and aesthetic integrity of Spryker's front-end components. Our commitment to rigorous UI testing helps maintain the high standard of quality and reliability that Spryker users expect.",
-            "time": "2025-04-09T15:23:47+00:00"
+            "time": "2025-04-10T08:17:13+00:00"
         },
         {
             "name": "spryker/development-core",
