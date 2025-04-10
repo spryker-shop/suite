@@ -12,8 +12,8 @@ if (empty($url)) {
     exit('Redirect URL invalid');
 }
 
-$referrer = !empty($_GET['HTTP_REFERER'])
-    ? filter_var($_GET['HTTP_REFERER'], FILTER_SANITIZE_URL)
+$referrer = !empty($_SERVER['HTTP_REFERER'])
+    ? filter_var($_SERVER['HTTP_REFERER'], FILTER_SANITIZE_URL)
     : '';
 
 ?>
