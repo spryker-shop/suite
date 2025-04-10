@@ -53,7 +53,12 @@
             <transition happy="true">
                 <source>new</source>
                 <target>grace period started</target>
-                <event>start grace period</event>
+            </transition>
+
+            <transition>
+                <source>grace period started</source>
+                <target>cancelled</target>
+                <event>cancel</event>
             </transition>
 
             <transition happy="true">
@@ -180,7 +185,6 @@
 
         <events>
             <event name="authorize" timeout="1 second"/>
-            <event name="start grace period" onEnter="true"/>
             <event name="skip grace period" manual="true" timeout="2 hour"/>
             <event name="pay" manual="true" timeout="1 hour" timeoutProcessor="OmsTimeout/Initiation" command="DummyPayment/Pay"/>
             <event name="submit tax invoice" onEnter="true" command="TaxApp/SubmitPaymentTaxInvoice"/>
