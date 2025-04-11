@@ -25,6 +25,9 @@ const globalSettings = {
         // spryker core folders
         sprykerCore: './vendor/spryker/spryker/Bundles',
 
+        // spryker core folders
+        sprykerCore: './vendor/spryker/spryker/Bundles',
+
         // eco folders
         eco: './vendor/spryker-eco',
 

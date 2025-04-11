@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "565cb7dd6205c36ea386b7516101a234",
+    "content-hash": "5ad471392bf4b2f91c41fc6d5e3d2472",
     "packages": [
         {
             "name": "async-aws/core",
@@ -7423,6 +7423,45 @@
             "time": "2021-11-10T11:57:20+00:00"
         },
         {
+            "name": "spryker-feature/feature-ui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-feature/feature-ui.git",
+                "reference": "2017d2bcd7475cb9033a5b90b129a03774a8f9ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-feature/feature-ui/zipball/2017d2bcd7475cb9033a5b90b129a03774a8f9ae",
+                "reference": "2017d2bcd7475cb9033a5b90b129a03774a8f9ae",
+                "shasum": ""
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerFeature\\": "src/SprykerFeature/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "FeatureUi module",
+            "support": {
+                "source": "https://github.com/spryker-feature/feature-ui/tree/0.1.0"
+            },
+            "time": "2025-04-11T09:52:57+00:00"
+        },
+        {
             "name": "spryker-feature/ssp-asset-management",
             "version": "0.1.3",
             "source": {
@@ -7495,20 +7534,21 @@
         },
         {
             "name": "spryker-feature/ssp-dashboard-management",
-            "version": "0.1.1",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/ssp-dashboard-management.git",
-                "reference": "edab832f84d67a22cd9bb3ba9c5bb3e211c56f1b"
+                "reference": "e6651d799d986af8b78a06511296dfc7a262802e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/ssp-dashboard-management/zipball/edab832f84d67a22cd9bb3ba9c5bb3e211c56f1b",
-                "reference": "edab832f84d67a22cd9bb3ba9c5bb3e211c56f1b",
+                "url": "https://api.github.com/repos/spryker-feature/ssp-dashboard-management/zipball/e6651d799d986af8b78a06511296dfc7a262802e",
+                "reference": "e6651d799d986af8b78a06511296dfc7a262802e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
+                "spryker-feature/feature-ui": "^0.1.0",
                 "spryker-shop/shop-application": "^1.15.0",
                 "spryker-shop/shop-application-extension": "^1.2.0",
                 "spryker/cms-block-storage-extension": "^1.0.0",
@@ -7551,26 +7591,27 @@
             ],
             "description": "SspDashboardManagement module",
             "support": {
-                "source": "https://github.com/spryker-feature/ssp-dashboard-management/tree/0.1.1"
+                "source": "https://github.com/spryker-feature/ssp-dashboard-management/tree/0.2.0"
             },
-            "time": "2025-04-01T07:47:19+00:00"
+            "time": "2025-04-11T09:52:57+00:00"
         },
         {
             "name": "spryker-feature/ssp-file-management",
-            "version": "0.1.7",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/ssp-file-management.git",
-                "reference": "d1dac43ce92bb81ad2556f4c7c9dc8f57a02f66c"
+                "reference": "0c544bee4512e78f505f98d1b24b096cca6ba0a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/ssp-file-management/zipball/d1dac43ce92bb81ad2556f4c7c9dc8f57a02f66c",
-                "reference": "d1dac43ce92bb81ad2556f4c7c9dc8f57a02f66c",
+                "url": "https://api.github.com/repos/spryker-feature/ssp-file-management/zipball/0c544bee4512e78f505f98d1b24b096cca6ba0a6",
+                "reference": "0c544bee4512e78f505f98d1b24b096cca6ba0a6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
+                "spryker-feature/feature-ui": "^0.1.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker/application": "^3.8.0",
                 "spryker/company": "^1.0.0",
@@ -7634,27 +7675,28 @@
             ],
             "description": "SspFileManagement module",
             "support": {
-                "source": "https://github.com/spryker-feature/ssp-file-management/tree/0.1.7"
+                "source": "https://github.com/spryker-feature/ssp-file-management/tree/0.2.0"
             },
-            "time": "2025-04-09T15:47:16+00:00"
+            "time": "2025-04-11T09:52:57+00:00"
         },
         {
             "name": "spryker-feature/ssp-inquiry-management",
-            "version": "0.2.2",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/ssp-inquiry-management.git",
-                "reference": "02b4835d72d318862a5d19902e5b71d7d563888c"
+                "reference": "8ec2455b41cb6ffc74591a97e57e3e2f593f6965"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/ssp-inquiry-management/zipball/02b4835d72d318862a5d19902e5b71d7d563888c",
-                "reference": "02b4835d72d318862a5d19902e5b71d7d563888c",
+                "url": "https://api.github.com/repos/spryker-feature/ssp-inquiry-management/zipball/8ec2455b41cb6ffc74591a97e57e3e2f593f6965",
+                "reference": "8ec2455b41cb6ffc74591a97e57e3e2f593f6965",
                 "shasum": ""
             },
             "require": {
                 "ext-zlib": "*",
                 "php": ">=8.2",
+                "spryker-feature/feature-ui": "^0.1.0",
                 "spryker-feature/ssp-asset-management": "^0.1.0",
                 "spryker-shop/shop-application": "^1.15.0",
                 "spryker-shop/shop-application-extension": "^1.2.0",
@@ -7719,26 +7761,27 @@
             ],
             "description": "SspInquiryManagement module",
             "support": {
-                "source": "https://github.com/spryker-feature/ssp-inquiry-management/tree/0.2.2"
+                "source": "https://github.com/spryker-feature/ssp-inquiry-management/tree/0.3.0"
             },
-            "time": "2025-04-01T17:15:15+00:00"
+            "time": "2025-04-11T09:52:57+00:00"
         },
         {
             "name": "spryker-feature/ssp-service-management",
-            "version": "0.1.2",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/ssp-service-management.git",
-                "reference": "d3b3c6f9e5ee4244ce3c29b1084607a9fb19a92c"
+                "reference": "7cd0884dcc651403118273255cdd6447ac8baf9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/ssp-service-management/zipball/d3b3c6f9e5ee4244ce3c29b1084607a9fb19a92c",
-                "reference": "d3b3c6f9e5ee4244ce3c29b1084607a9fb19a92c",
+                "url": "https://api.github.com/repos/spryker-feature/ssp-service-management/zipball/7cd0884dcc651403118273255cdd6447ac8baf9f",
+                "reference": "7cd0884dcc651403118273255cdd6447ac8baf9f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
+                "spryker-feature/feature-ui": "^0.1.0",
                 "spryker-shop/cart-page-extension": "^1.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker/cart-extension": "^4.2.0",
@@ -7820,9 +7863,9 @@
             ],
             "description": "SspServiceManagement module",
             "support": {
-                "source": "https://github.com/spryker-feature/ssp-service-management/tree/0.1.2"
+                "source": "https://github.com/spryker-feature/ssp-service-management/tree/0.2.0"
             },
-            "time": "2025-04-09T15:53:19+00:00"
+            "time": "2025-04-11T09:52:57+00:00"
         },
         {
             "name": "spryker-sdk/async-api",
@@ -7883,16 +7926,16 @@
         },
         {
             "name": "spryker-sdk/evaluator",
-            "version": "0.2.6",
+            "version": "0.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/evaluator.git",
-                "reference": "fb6781caaaac6f0702e76de1e581cf64c8486c9e"
+                "reference": "178b3e8d6861497636030b226552a8a7950d6597"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/fb6781caaaac6f0702e76de1e581cf64c8486c9e",
-                "reference": "fb6781caaaac6f0702e76de1e581cf64c8486c9e",
+                "url": "https://api.github.com/repos/spryker-sdk/evaluator/zipball/178b3e8d6861497636030b226552a8a7950d6597",
+                "reference": "178b3e8d6861497636030b226552a8a7950d6597",
                 "shasum": ""
             },
             "require": {
@@ -7902,7 +7945,7 @@
                 "ext-json": "*",
                 "guzzlehttp/guzzle": "^7.5",
                 "nikic/php-parser": "^5.1.0",
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "spryker-sdk/security-checker": "^0.2.0",
                 "spryker-sdk/utils": "^0.2.1",
                 "symfony/console": "^6.0",
@@ -7928,7 +7971,7 @@
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^9.6",
+                "phpunit/phpunit": "^11.4.0",
                 "spryker/code-sniffer": "^0.17.18"
             },
             "bin": [
@@ -7953,9 +7996,9 @@
             "description": "The tool for evaluating Spryker shops",
             "support": {
                 "issues": "https://github.com/spryker-sdk/evaluator/issues",
-                "source": "https://github.com/spryker-sdk/evaluator/tree/0.2.6"
+                "source": "https://github.com/spryker-sdk/evaluator/tree/0.2.7"
             },
-            "time": "2024-11-04T13:08:23+00:00"
+            "time": "2025-04-03T12:42:03+00:00"
         },
         {
             "name": "spryker-sdk/security-checker",
@@ -81849,12 +81892,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "bcf0669ffb31f74249dde1fdb4d30104987732f7"
+                "reference": "def1c15df98dd0dfaeaf78951866cda251f51253"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/bcf0669ffb31f74249dde1fdb4d30104987732f7",
-                "reference": "bcf0669ffb31f74249dde1fdb4d30104987732f7",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/def1c15df98dd0dfaeaf78951866cda251f51253",
+                "reference": "def1c15df98dd0dfaeaf78951866cda251f51253",
                 "shasum": ""
             },
             "require-dev": {
@@ -81889,7 +81932,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2025-03-20T12:51:14+00:00"
+            "time": "2025-04-10T15:56:22+00:00"
         },
         {
             "name": "masterminds/html5",
