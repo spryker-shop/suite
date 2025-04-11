@@ -48,13 +48,13 @@ image:
         SPRYKER_HOOK_AFTER_DEPLOY: 'true'
         SPRYKER_HOOK_INSTALL: 'vendor/bin/install -r production.dynamic-store-off --no-ansi -vvv'
         SPRYKER_HOOK_DESTRUCTIVE_INSTALL: 'vendor/bin/install -r destructive.dynamic-store-off --no-ansi -vvv'
-        SPRYKER_PRODUCT_CONFIGURATOR_HOST: demo-date-time-configurator.scos.demo-spryker.com
+        SPRYKER_PRODUCT_CONFIGURATOR_HOST: demo-date-time-configurator.scos.sh01.demo-spryker.com
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 443
         SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
         SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR: '0c1ffefeebdab4a3d839d0e52590c9a2'
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_SUBJECT: 'https://spryker.com'
-        SPRYKER_YVES_HOST_DE: de.scos.demo-spryker.com
-        SPRYKER_YVES_HOST_AT: at.scos.demo-spryker.com
+        SPRYKER_YVES_HOST_DE: de.scos.sh01.demo-spryker.com
+        SPRYKER_YVES_HOST_AT: at.scos.sh01.demo-spryker.com
     php:
         enabled-extensions:
             - blackfire
@@ -85,7 +85,7 @@ regions:
             mail:
                 sender:
                     name: Spryker No-Reply
-                    email: no-reply@scos.demo-spryker.com
+                    email: no-reply@scos.sh01.demo-spryker.com
             database:
                 database: spryker_scos
                 username: spryker
@@ -119,89 +119,89 @@ groups:
             Redirects:
                 application: static
                 endpoints:
-                    de.scos.demo-spryker.com:
+                    de.scos.sh01.demo-spryker.com:
                         store: DE
                         redirect:
                             code: 302
-                            url: www.de.scos.demo-spryker.com
-                    at.scos.demo-spryker.com:
+                            url: www.de.scos.sh01.demo-spryker.com
+                    at.scos.sh01.demo-spryker.com:
                         store: AT
                         redirect:
                             code: 302
-                            url: www.at.scos.demo-spryker.com
+                            url: www.at.scos.sh01.demo-spryker.com
             mportal:
                 application: merchant-portal
                 endpoints:
-                    mp.de.scos.demo-spryker.com:
+                    mp.de.scos.sh01.demo-spryker.com:
                         entry-point: MerchantPortal
                         store: DE
                         primal: true
                         services:
                             session:
                                 namespace: 7
-                    mp.at.scos.demo-spryker.com:
+                    mp.at.scos.sh01.demo-spryker.com:
                         entry-point: MerchantPortal
                         store: AT
                         services:
                             session:
                                 namespace: 8
-            Yves:
+            yves:
                 application: yves
                 endpoints:
-                    demo-date-time-configurator.scos.demo-spryker.com:
+                    demo-date-time-configurator.scos.sh01.demo-spryker.com:
                         entry-point: Configurator
-                    www.de.scos.demo-spryker.com:
+                    www.de.scos.sh01.demo-spryker.com:
                         store: DE
                         <<: *frontend-auth
-                    www.at.scos.demo-spryker.com:
+                    www.at.scos.sh01.demo-spryker.com:
                         store: AT
                         <<: *frontend-auth
             boffice:
                 application: backoffice
                 endpoints:
-                    backoffice.de.scos.demo-spryker.com:
+                    backoffice.de.scos.sh01.demo-spryker.com:
                         store: DE
                         primal: true
-                    backoffice.at.scos.demo-spryker.com:
+                    backoffice.at.scos.sh01.demo-spryker.com:
                         store: AT
             backgw:
                 application: backend-gateway
                 endpoints:
-                    backend-gateway.de.scos.demo-spryker.com:
+                    backend-gateway.de.scos.sh01.demo-spryker.com:
                         store: DE
                         primal: true
-                    backend-gateway.at.scos.demo-spryker.com:
+                    backend-gateway.at.scos.sh01.demo-spryker.com:
                         store: AT
             backapi:
                 application: zed
                 endpoints:
-                    backend-api.de.scos.demo-spryker.com:
+                    backend-api.de.scos.sh01.demo-spryker.com:
                         store: DE
                         entry-point: BackendApi
                         primal: true
-                    backend-api.at.scos.demo-spryker.com:
+                    backend-api.at.scos.sh01.demo-spryker.com:
                         store: AT
                         entry-point: BackendApi
-            Glue:
+            glue:
                 application: glue
                 endpoints:
-                    glue.de.scos.demo-spryker.com:
+                    glue.de.scos.sh01.demo-spryker.com:
                         store: DE
-                    glue.at.scos.demo-spryker.com:
+                    glue.at.scos.sh01.demo-spryker.com:
                         store: AT
             gluestorefront:
                 application: glue-storefront
                 endpoints:
-                    glue-storefront.de.scos.demo-spryker.com:
+                    glue-storefront.de.scos.sh01.demo-spryker.com:
                         store: DE
-                    glue-storefront.at.scos.demo-spryker.com:
+                    glue-storefront.at.scos.sh01.demo-spryker.com:
                         store: AT
             gluebackend:
                 application: glue-backend
                 endpoints:
-                    glue-backend.de.scos.demo-spryker.com:
+                    glue-backend.de.scos.sh01.demo-spryker.com:
                         store: DE
-                    glue-backend.at.scos.demo-spryker.com:
+                    glue-backend.at.scos.sh01.demo-spryker.com:
                         store: AT
 services:
     database:
@@ -220,7 +220,7 @@ services:
             username: 'spryker'
             password: 'secret'
         endpoints:
-            rabbitmq.scos.demo-spryker.com:
+            rabbitmq.scos.sh01.demo-spryker.com:
             localhost:5672:
                 protocol: tcp
     session:
@@ -239,12 +239,13 @@ services:
     scheduler:
         engine: jenkins
         version: '2.442'
+        csrf-protection-enabled: true
         endpoints:
-            scheduler.scos.demo-spryker.com:
+            scheduler.scos.sh01.demo-spryker.com:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.scos.demo-spryker.com:
+            mail.scos.sh01.demo-spryker.com:
     webdriver:
         engine: chromedriver
 
