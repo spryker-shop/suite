@@ -37,7 +37,7 @@ Recommended system requirements for MacOS:
 |15' | 4 | 6GB |
 |13' | 2 | 4GB |
 
-### Installation
+### Installation (Dummy change)
 
 Run the commands:
 ```bash
