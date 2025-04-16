@@ -12,6 +12,7 @@ namespace PyzTest\Glue\OrderAmendments\RestApi;
 use Codeception\Util\HttpCode;
 use Generated\Shared\Transfer\RestCheckoutErrorTransfer;
 use PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester;
+use PyzTest\Glue\OrderAmendments\RestApi\Fixtures\OrderAmendmentRestApiFixtures;
 use Spryker\Glue\CartReorderRestApi\CartReorderRestApiConfig;
 
 /**
@@ -47,7 +48,7 @@ class OrderAmendmentsRestApiCest
     protected const RESPONSE_DETAIL_PARAMETER_IS_AMENDABLE_INVALID = 'isAmendment => This value should be of type bool.';
 
     /**
-     * @var \PyzTest\Glue\OrderAmendments\RestApi\OrderAmendmentRestApiFixtures
+     * @var \PyzTest\Glue\OrderAmendments\RestApi\Fixtures\OrderAmendmentRestApiFixtures
      */
     protected OrderAmendmentRestApiFixtures $fixtures;
 
@@ -58,52 +59,9 @@ class OrderAmendmentsRestApiCest
      */
     public function loadFixtures(OrderAmendmentsApiTester $I): void
     {
-        /** @var \PyzTest\Glue\OrderAmendments\RestApi\OrderAmendmentRestApiFixtures $fixtures */
+        /** @var \PyzTest\Glue\OrderAmendments\RestApi\Fixtures\OrderAmendmentRestApiFixtures $fixtures */
         $fixtures = $I->loadFixtures(OrderAmendmentRestApiFixtures::class);
         $this->fixtures = $fixtures;
-    }
-
-    /**
-     * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
-     *
-     * @return void
-     */
-    public function requestCreateOrderAmendmentWithValidOrder(OrderAmendmentsApiTester $I): void
-    {
-        //Arrange
-        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
-
-        $requestPayload = [
-            'data' => [
-                'type' => CartReorderRestApiConfig::RESOURCE_CART_REORDER,
-                'attributes' => [
-                    'orderReference' => $this->fixtures->getReadyForAmendmentOrderTransfer()->getOrderReferenceOrFail(),
-                    'isAmendment' => true,
-                ],
-            ],
-        ];
-
-        // Act
-        $I->sendPost($I->getCartReorderUrl(), $requestPayload);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::CREATED);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('The returned resource is of correct type')
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType('carts');
-
-        $I->amSure('The returned response data contains amendment order reference')
-            ->whenI()
-            ->assertResponseContainsAmendmentOrderReference($this->fixtures->getReadyForAmendmentOrderTransfer()->getOrderReferenceOrFail());
-
-        $I->amSure('The returned response data contains correct cart name')
-            ->whenI()
-            ->assertResponseContainsCorrectCartName(
-                sprintf('Editing Order %s', $this->fixtures->getReadyForAmendmentOrderTransfer()->getOrderReferenceOrFail()),
-            );
     }
 
     /**
@@ -172,5 +130,48 @@ class OrderAmendmentsRestApiCest
         $I->assertEquals($errors[RestCheckoutErrorTransfer::CODE], static::RESPONSE_CODE_PARAMETER_IS_AMENDABLE_INVALID);
         $I->assertEquals($errors[RestCheckoutErrorTransfer::STATUS], HttpCode::UNPROCESSABLE_ENTITY);
         $I->assertEquals($errors[RestCheckoutErrorTransfer::DETAIL], static::RESPONSE_DETAIL_PARAMETER_IS_AMENDABLE_INVALID);
+    }
+
+    /**
+     * @param \PyzTest\Glue\OrderAmendments\OrderAmendmentsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCreateOrderAmendmentWithValidOrder(OrderAmendmentsApiTester $I): void
+    {
+        //Arrange
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
+
+        $requestPayload = [
+            'data' => [
+                'type' => CartReorderRestApiConfig::RESOURCE_CART_REORDER,
+                'attributes' => [
+                    'orderReference' => $this->fixtures->getReadyForAmendmentOrderTransfer()->getOrderReferenceOrFail(),
+                    'isAmendment' => true,
+                ],
+            ],
+        ];
+
+        // Act
+        $I->sendPost($I->getCartReorderUrl(), $requestPayload);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('The returned resource is of correct type')
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType('carts');
+
+        $I->amSure('The returned response data contains amendment order reference')
+            ->whenI()
+            ->assertResponseContainsAmendmentOrderReference($this->fixtures->getReadyForAmendmentOrderTransfer()->getOrderReferenceOrFail());
+
+        $I->amSure('The returned response data contains correct cart name')
+            ->whenI()
+            ->assertResponseContainsCorrectCartName(
+                sprintf('Editing Order %s', $this->fixtures->getReadyForAmendmentOrderTransfer()->getOrderReferenceOrFail()),
+            );
     }
 }
