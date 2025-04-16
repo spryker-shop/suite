@@ -37,6 +37,9 @@ suites:
                 - \SprykerTest\Shared\Product\Helper\ProductDataHelper
                 - \SprykerTest\Shared\Stock\Helper\StockDataHelper
                 - \SprykerTest\Shared\PriceProduct\Helper\PriceProductDataHelper
+                - \SprykerTest\Zed\ProductOffer\Helper\ProductOfferHelper
+                - \SprykerTest\Shared\ProductOfferStock\Helper\ProductOfferStockDataHelper
+                - \SprykerTest\Zed\Merchant\Helper\MerchantHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser

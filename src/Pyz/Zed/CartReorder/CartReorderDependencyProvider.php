@@ -23,6 +23,7 @@ use Spryker\Zed\OrderCustomReference\Communication\Plugin\CartReorder\OrderCusto
 use Spryker\Zed\PersistentCart\Communication\Plugin\CartReorder\PersistentCartReorderQuoteProviderStrategyPlugin;
 use Spryker\Zed\PersistentCart\Communication\Plugin\CartReorder\UpdateQuoteCartPostReorderPlugin;
 use Spryker\Zed\Price\Communication\Plugin\CartReorder\CopyOrderPriceModeCartPreReorderPlugin;
+use Spryker\Zed\PriceProductSalesOrderAmendment\Communication\Plugin\CartReorder\OriginalSalesOrderItemPriceCartPreReorderPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\CartReorder\ProductBundleCartReorderOrderItemFilterPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\CartReorder\ReplaceBundledItemsCartPreReorderPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\CartReorder\RemoveInactiveItemsCartReorderPreAddToCartPlugin;
@@ -92,6 +93,7 @@ class CartReorderDependencyProvider extends SprykerCartReorderDependencyProvider
             new OrderCustomReferenceCartPreReorderPlugin(),
             new MergeProductQuantityRestrictionItemsCartPreReorderPlugin(),
             new CopyOrderCommentThreadCartPreReorderPlugin(),
+            new OriginalSalesOrderItemPriceCartPreReorderPlugin(),
         ];
     }
 

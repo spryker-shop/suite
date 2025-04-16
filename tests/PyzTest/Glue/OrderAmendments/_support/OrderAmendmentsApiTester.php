@@ -14,6 +14,7 @@ use Generated\Shared\Transfer\MoneyValueTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
+use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Glue\CartReorderRestApi\CartReorderRestApiConfig;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
@@ -85,9 +86,39 @@ class OrderAmendmentsApiTester extends ApiEndToEndTester
     }
 
     /**
+     * @param string $sku
+     *
+     * @return string
+     */
+    public function getConcreteProductPricesUrl(string $sku): string
+    {
+        return $this->formatUrl('concrete-products/{sku}/concrete-product-prices', ['sku' => $sku]);
+    }
+
+    /**
+     * @param string $productOfferReference
+     *
+     * @return string
+     */
+    public function getProductOfferPricesUrl(string $productOfferReference): string
+    {
+        return $this->formatUrl('product-offers/{productOfferId}/product-offer-prices', ['productOfferId' => $productOfferReference]);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\StoreTransfer
+     */
+    public function getCurrentStore(): StoreTransfer
+    {
+        return $this->getLocator()->store()->facade()->getCurrentStore();
+    }
+
+    /**
+     * @param int|null $unitPrice
+     *
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    public function haveProductWithPriceAndStock(): ProductConcreteTransfer
+    public function haveProductWithPriceAndStock(?int $unitPrice = 10000): ProductConcreteTransfer
     {
         $storeTransfer = $this->getLocator()->store()->facade()->getCurrentStore();
         $productConcreteTransfer = $this->haveFullProduct();
@@ -97,16 +128,18 @@ class OrderAmendmentsApiTester extends ApiEndToEndTester
             StockProductTransfer::IS_NEVER_OUT_OF_STOCK => 1,
         ]);
 
-        $this->havePriceProduct([
+        $priceProductTransfer = $this->havePriceProduct([
             PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $productConcreteTransfer->getAbstractSku(),
             PriceProductTransfer::SKU_PRODUCT => $productConcreteTransfer->getSku(),
             PriceProductTransfer::ID_PRODUCT => $productConcreteTransfer->getIdProductConcrete(),
             PriceProductTransfer::PRICE_TYPE_NAME => 'DEFAULT',
             PriceProductTransfer::MONEY_VALUE => [
-                MoneyValueTransfer::NET_AMOUNT => 777,
-                MoneyValueTransfer::GROSS_AMOUNT => 888,
+                MoneyValueTransfer::NET_AMOUNT => $unitPrice,
+                MoneyValueTransfer::GROSS_AMOUNT => $unitPrice,
             ],
         ]);
+
+        $productConcreteTransfer->addPrice($priceProductTransfer);
 
         return $productConcreteTransfer;
     }

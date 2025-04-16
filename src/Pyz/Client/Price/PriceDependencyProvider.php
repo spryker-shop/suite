@@ -11,16 +11,27 @@ namespace Pyz\Client\Price;
 
 use Spryker\Client\PersistentCart\Plugin\UpdatePersistentCartPriceModePlugin;
 use Spryker\Client\Price\PriceDependencyProvider as SprykerPriceDependencyProvider;
+use Spryker\Client\SalesOrderAmendment\Plugin\Price\SalesOrderAmendmentCurrentPriceModePreCheckPlugin;
 
 class PriceDependencyProvider extends SprykerPriceDependencyProvider
 {
     /**
-     * @return array<\Spryker\Client\PriceExtension\Dependency\Plugin\PriceModePostUpdatePluginInterface>
+     * @return list<\Spryker\Client\PriceExtension\Dependency\Plugin\PriceModePostUpdatePluginInterface>
      */
     protected function getPriceModePostUpdatePlugins(): array
     {
         return [
             new UpdatePersistentCartPriceModePlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Client\PriceExtension\Dependency\Plugin\CurrentPriceModePreCheckPluginInterface>
+     */
+    protected function getCurrentPriceModePreCheckPlugins(): array
+    {
+        return [
+            new SalesOrderAmendmentCurrentPriceModePreCheckPlugin(),
         ];
     }
 }
