@@ -7,7 +7,7 @@
 
 declare(strict_types = 1);
 
-namespace PyzTest\Glue\OrderAmendments\RestApi;
+namespace PyzTest\Glue\OrderAmendments\RestApi\Fixtures;
 
 use ArrayObject;
 use Generated\Shared\DataBuilder\QuoteBuilder;
@@ -38,12 +38,17 @@ class OrderAmendmentRestApiFixtures implements FixturesBuilderInterface, Fixture
     /**
      * @var string
      */
-    protected const ORDER_ITEM_STATE_PAYMENT_PENDING = 'payment pending';
+    protected const ORDER_ITEM_STATE_GRACE_PERIOD_STARTED = 'grace period started';
 
     /**
      * @var string
      */
     protected const ORDER_ITEM_STATE_PAID = 'paid';
+
+    /**
+     * @var string
+     */
+    protected const PRICE_MODE_GROSS = 'GROSS_MODE';
 
     /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
@@ -95,10 +100,18 @@ class OrderAmendmentRestApiFixtures implements FixturesBuilderInterface, Fixture
         $this->customerTransfer = $this->createCustomerTransfer($I);
 
         $this->readyForAmendmentOrderTransfer = $this->createOrderWithProductConcretes($I);
-        $this->setOrderItemsState($I, $this->readyForAmendmentOrderTransfer->getOrderItems(), static::ORDER_ITEM_STATE_PAYMENT_PENDING);
+        $this->setOrderItemsState(
+            $I,
+            $this->readyForAmendmentOrderTransfer->getOrderItems(),
+            static::ORDER_ITEM_STATE_GRACE_PERIOD_STARTED,
+        );
 
         $this->notReadyForAmendmentOrderTransfer = $this->createOrderWithProductConcretes($I);
-        $this->setOrderItemsState($I, $this->notReadyForAmendmentOrderTransfer->getOrderItems(), static::ORDER_ITEM_STATE_PAID);
+        $this->setOrderItemsState(
+            $I,
+            $this->notReadyForAmendmentOrderTransfer->getOrderItems(),
+            static::ORDER_ITEM_STATE_PAID,
+        );
 
         return $this;
     }
@@ -144,6 +157,8 @@ class OrderAmendmentRestApiFixtures implements FixturesBuilderInterface, Fixture
             ->withCurrency()
             ->withPayment()
             ->build();
+
+        $quoteTransfer->setPriceMode(static::PRICE_MODE_GROSS);
 
         return $I->haveOrderFromQuote($quoteTransfer, static::STATE_MACHINE_NAME);
     }

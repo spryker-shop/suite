@@ -18,9 +18,11 @@ use Spryker\Zed\MultiCart\Communication\Plugin\AddSuccessMessageAfterQuoteCreate
 use Spryker\Zed\MultiCart\Communication\Plugin\DeactivateQuotesBeforeQuoteSavePlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\InitDefaultQuoteCustomerQuoteDeleteAfterPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\Quote\AddDefaultQuoteChangedMessageQuoteUpdateBeforePlugin;
+use Spryker\Zed\MultiCart\Communication\Plugin\Quote\DefaultQuoteCollectionFilterPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\ResolveQuoteNameBeforeQuoteCreatePlugin;
 use Spryker\Zed\OrderCustomReference\Communication\Plugin\Quote\OrderCustomReferenceQuoteFieldsAllowedForSavingProviderPlugin;
 use Spryker\Zed\Price\Communication\Plugin\Quote\QuotePriceModeValidatorPlugin;
+use Spryker\Zed\PriceProductSalesOrderAmendment\Communication\Plugin\Quote\ResetOriginalSalesOrderItemUnitPricesBeforeQuoteSavePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Quote\SanitizeBundleItemsBeforeQuoteSavePlugin;
 use Spryker\Zed\Quote\QuoteDependencyProvider as SprykerQuoteDependencyProvider;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\QuoteApprovalExpanderPlugin;
@@ -112,6 +114,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
             new SanitizeBundleItemsBeforeQuoteSavePlugin(),
             new CancelOrderAmendmentBeforeQuoteSavePlugin(),
             new ResetAmendmentOrderReferenceBeforeQuoteSavePlugin(),
+            new ResetOriginalSalesOrderItemUnitPricesBeforeQuoteSavePlugin(),
         ];
     }
 
@@ -168,6 +171,16 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
             new QuoteApprovalQuoteFieldsAllowedForSavingProviderPlugin(),
             new QuoteApprovalShipmentQuoteFieldsAllowedForSavingProviderPlugin(),
             new OrderCustomReferenceQuoteFieldsAllowedForSavingProviderPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteCollectionFilterPluginInterface>
+     */
+    protected function getQuoteCollectionFilterPlugins(): array
+    {
+        return [
+            new DefaultQuoteCollectionFilterPlugin(),
         ];
     }
 }
