@@ -22,7 +22,7 @@ jobs:
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "CS, ArchSniffer, PHPStan, Evaluator"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         strategy:
             fail-fast: false
             matrix:
@@ -199,7 +199,7 @@ jobs:
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.3 / MariaDB / Glue / Alpine / Dynamic Store OFF"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
@@ -270,7 +270,7 @@ jobs:
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
@@ -304,7 +304,7 @@ jobs:
             && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
@@ -338,7 +338,7 @@ jobs:
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
@@ -370,7 +370,7 @@ jobs:
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.3 / MariaDB / Functional / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
@@ -404,7 +404,7 @@ jobs:
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.2 / MariaDB / Glue / Alpine / Dynamic Store OFF"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -437,7 +437,7 @@ jobs:
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.2 / MariaDB / Glue / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -472,7 +472,7 @@ jobs:
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.2 / PostgreSQL / Acceptance / Alpine / Dynamic Store OFF"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -505,7 +505,7 @@ jobs:
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.2 / PostgreSQL / Acceptance / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -540,7 +540,7 @@ jobs:
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.2 / PostgreSQL / Functional / Alpine / Dynamic Store OFF"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -573,7 +573,7 @@ jobs:
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.2 / PostgreSQL / Functional / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -607,7 +607,7 @@ jobs:
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.2 / MariaDB / Acceptance / Alpine / Dynamic Store OFF"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -640,7 +640,7 @@ jobs:
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.2 / MariaDB / Acceptance / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -674,7 +674,7 @@ jobs:
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.2 / MariaDB / Functional / Alpine / Dynamic Store OFF"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -706,7 +706,7 @@ jobs:
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.2 / MariaDB / Functional / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -740,7 +740,7 @@ jobs:
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.2 / PostgreSQL / Functional / Debian / Dynamic Store OFF"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
@@ -771,7 +771,7 @@ jobs:
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "PHP 8.2 / PostgreSQL / Functional / Debian"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
@@ -801,7 +801,7 @@ jobs:
 
     php-82-frontend-and-assets-alpine:
         name: "PHP 8.2 / Frontend & Assets / Alpine"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && (contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
@@ -842,28 +842,33 @@ jobs:
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
 
         name: "PHP 8.2 / Prefer Lowest"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
             SPRYKER_CURRENT_REGION: EU
             DYNAMIC_STORE_MODE: true
             TRAVIS: 1
-
+        
         steps:
-            - uses: actions/checkout@v4
 
-            - name: Install prefer lowest
-              run: |
-                  composer lowest-setup
+          - uses: actions/checkout@v4
 
-            - name: Run prefer lowest
-              run: |
-                  composer lowest
+          - name: Set up PHP 8.2
+            uses: shivammathur/setup-php@v2
+            with:
+              php-version: '8.2'
+              coverage: none
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
-                if: always()
+          - name: Install prefer lowest
+            run: composer lowest-setup
+
+          - name: Run prefer lowest
+            run: composer lowest
+
+          -   name: Slack Notification for scheduled job
+              uses: ./.github/actions/scheduled-job-slack-notifications
+              if: always()
 
     docker-alpine-php-8-2-mariadb-robot-dynamic-store-off:
         if: >
@@ -871,7 +876,7 @@ jobs:
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Store OFF"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -929,7 +934,7 @@ jobs:
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / API"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
@@ -994,7 +999,7 @@ jobs:
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
             || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
         name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / API"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
@@ -1054,7 +1059,7 @@ jobs:
 
     positive-docker-alpine-php-8-2-mariadb-robot:
         name: "[Hackathon] Positive / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         if: "contains(github.event.pull_request.head.ref, 'hackathon')"
         env:
             PROGRESS_TYPE: plain
@@ -1113,7 +1118,7 @@ jobs:
 
     negative-docker-alpine-php-8-2-mariadb-robot:
         name: "[Hackathon] Negative / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API"
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
         if: "contains(github.event.pull_request.head.ref, 'hackathon')"
         env:
             PROGRESS_TYPE: plain
