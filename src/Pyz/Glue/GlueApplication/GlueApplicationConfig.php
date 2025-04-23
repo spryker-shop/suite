@@ -16,15 +16,11 @@ use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 class GlueApplicationConfig extends SprykerGlueApplicationConfig
 {
     /**
-     * @deprecated Will be removed without replacement.
-     *
      * @var bool
      */
     public const VALIDATE_REQUEST_HEADERS = false;
 
     /**
-     * @deprecated Will be removed without replacement.
-     *
      * @return array<string>
      */
     public function getCorsAllowedHeaders(): array
@@ -39,8 +35,6 @@ class GlueApplicationConfig extends SprykerGlueApplicationConfig
     }
 
     /**
-     * @deprecated Will be removed without replacement.
-     *
      * @return bool
      */
     public function isEagerRelationshipsLoadingEnabled(): bool
@@ -49,8 +43,6 @@ class GlueApplicationConfig extends SprykerGlueApplicationConfig
     }
 
     /**
-     * @deprecated Will be removed without replacement.
-     *
      * @return bool
      */
     public function getPathVersionResolving(): bool
@@ -59,8 +51,6 @@ class GlueApplicationConfig extends SprykerGlueApplicationConfig
     }
 
     /**
-     * @deprecated Will be removed without replacement.
-     *
      * @return string
      */
     public function getPathVersionPrefix(): string
