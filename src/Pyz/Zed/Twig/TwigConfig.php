@@ -24,6 +24,7 @@ class TwigConfig extends SprykerTwigConfig
     {
         $paths = parent::addCoreTemplatePaths($paths);
         $paths[] = $this->getBundlesDirectory() . '/%2$s/src/Spryker/Zed/%1$s/Presentation/';
+        $paths[] = '/data/vendor/spryker/spryker/Features/%2$s/src/SprykerFeature/Zed/%1$s/Presentation/';
 
         return $paths;
     }
