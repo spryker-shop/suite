@@ -107,7 +107,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto'
-            - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install -r ci.code-generate'
+            - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install --no-ansi -r ci.code-generate'
             - '.ci/snippet/FINISH'
         services:
             - type: 'POSTGRE_SQL'
@@ -158,18 +158,18 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:propel:validate-abstract'
-            - '.ci/snippet/RUN vendor/bin/console propel:schema:validate'
-            - '.ci/snippet/RUN vendor/bin/console propel:schema:validate-xml-names'
-            - '.ci/snippet/RUN vendor/bin/console transfer:validate'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:propel:validate-abstract'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi propel:schema:validate'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi propel:schema:validate-xml-names'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi transfer:validate'
             - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:validate-module-schemas'
             - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:validate-module-databuilders'
-            - '.ci/snippet/RUN vendor/bin/console dev:composer:replace -d -v'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi dev:composer:replace -d -v'
             - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:sync-composer -d'
             - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:module-meta-files -d -v'
-            - '.ci/snippet/RUN vendor/bin/console dev:composer:update-json-files -d -v'
-            - '.ci/snippet/RUN vendor/bin/console dev:composer:validate-json-files'
-            - '.ci/snippet/RUN vendor/bin/console code:sniff:style'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi dev:composer:update-json-files -d -v'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi dev:composer:validate-json-files'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:sniff:style'
             - '.ci/snippet/RUN vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2'
             - '.ci/snippet/RUN vendor/bin/phpstan analyze'
             - '.ci/snippet/RUN vendor/bin/psalm.phar --show-info=false --no-cache --threads=1'
@@ -187,7 +187,7 @@
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/RUN vendor/bin/phpstan analyze'
-            - '.ci/snippet/RUN vendor/bin/console dev:dependency:find'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi dev:dependency:find'
             - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:deprecation-links:check'
             - '.ci/snippet/RUN tests/ci_check_untracked.sh'
             - '.ci/snippet/RUN tests/ci_check_touched_modules.sh'
@@ -200,7 +200,7 @@
         docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 0,275'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 0,275'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -210,7 +210,7 @@
         docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 275,275'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 275,275'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -220,7 +220,7 @@
         docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 550,150'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 550,150'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -230,7 +230,7 @@
         docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 700'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 700'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -240,7 +240,7 @@
         docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 900'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 900'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -250,7 +250,7 @@
         docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m SprykerFeature.all -v'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerFeature.all -v'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -264,7 +264,7 @@
         docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m SprykerShop.all -v'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerShop.all -v'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -273,7 +273,7 @@
         docker_image_name: 'library/node'
         docker_image_tag: '18'
         execute_commands:
-            - '.ci/snippet/REQUIRE vendor/bin/console frontend:project:install-dependencies -vvv'
+            - '.ci/snippet/REQUIRE vendor/bin/console --no-ansi frontend:project:install-dependencies -vvv'
             - '.ci/snippet/REQUIRE npm install'
             - '.ci/snippet/RUN npm run mp:build:production'
             - '.ci/snippet/RUN npm run mp:stylelint'
@@ -441,7 +441,7 @@
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer update --prefer-lowest --optimize-autoloader --no-interaction --prefer-install=auto'
             - '.ci/snippet/REQUIRE composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies;'
-            - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install -r ci.code-generate'
+            - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install --no-ansi -r ci.code-generate'
             - '.ci/snippet/FINISH'
         services:
             - type: 'POSTGRE_SQL'
@@ -475,7 +475,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 0,275'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 0,275'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -485,7 +485,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 275,275'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 275,275'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -495,7 +495,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 550,150'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 550,150'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -505,7 +505,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 700,200'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 700,200'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -515,7 +515,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m Spryker.all -v -o 900'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 900'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -525,7 +525,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m SprykerFeature.all -v'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerFeature.all -v'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -540,7 +540,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console code:phpstan -m SprykerShop.all -v'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerShop.all -v'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
       - action: 'Scheduled Job Slack Notification failure'
@@ -621,16 +621,16 @@
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -725,16 +725,16 @@
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -832,16 +832,16 @@
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -936,16 +936,16 @@
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -1041,10 +1041,10 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store-off.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.api.yml'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -1130,10 +1130,10 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.api.yml'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -1228,10 +1228,10 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.dynamic-store-off.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.api.yml'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -1320,10 +1320,10 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.api.yml'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -1423,16 +1423,16 @@
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -1530,16 +1530,16 @@
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-functional-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -1640,16 +1640,16 @@
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -1744,16 +1744,16 @@
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -1849,10 +1849,10 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store-off.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.api.yml'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -1947,10 +1947,10 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.api.yml'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -2045,10 +2045,10 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.dynamic-store-off.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.api.yml'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -2137,10 +2137,10 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.api.yml'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -2343,16 +2343,16 @@
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -2456,16 +2456,16 @@
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run -c codeception.functional.feature.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -2570,10 +2570,10 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store-off.prefer-lowest.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.api.yml'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -2671,10 +2671,10 @@
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.prefer-lowest.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN docker/sdk testing codecept run -c codeception.api.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.api.yml'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
