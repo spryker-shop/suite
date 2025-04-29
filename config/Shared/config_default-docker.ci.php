@@ -12,6 +12,7 @@ use Spryker\Shared\GlueBackendApiApplication\GlueBackendApiApplicationConstants;
 use Spryker\Shared\GlueJsonApiConvention\GlueJsonApiConventionConstants;
 use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
 use Spryker\Shared\Product\ProductConstants;
+use Spryker\Shared\Redis\RedisConstants;
 use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerFeature\Shared\SspFileManagement\SspFileManagementConstants;
@@ -67,3 +68,11 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'path' => '/data/ssp-asset-image',
     ],
 ];
+
+// ----------------------------------------------------------------------------
+// ------------------------------ SERVICES ------------------------------------
+// ----------------------------------------------------------------------------
+
+// >>> STORAGE
+
+$config[RedisConstants::REDIS_IS_DEV_MODE] = false;

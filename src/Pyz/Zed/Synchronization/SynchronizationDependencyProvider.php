@@ -82,6 +82,7 @@ use Spryker\Zed\ServicePointStorage\Communication\Plugin\Synchronization\Service
 use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Synchronization\ShipmentTypeListSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ShipmentTypeStorage\Communication\Plugin\Synchronization\ShipmentTypeSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ShoppingListStorage\Communication\Plugin\Synchronization\ShoppingListSynchronizationDataBulkPlugin;
+use Spryker\Zed\StoreStorage\Communication\Plugin\Synchronization\StoreListSynchronizationDataPlugin;
 use Spryker\Zed\StoreStorage\Communication\Plugin\Synchronization\StoreSynchronizationDataPlugin;
 use Spryker\Zed\Synchronization\Communication\Plugin\Synchronization\SynchronizationDataQueryExpanderWhereBetweenStrategyPlugin;
 use Spryker\Zed\Synchronization\SynchronizationDependencyProvider as SprykerSynchronizationDependencyProvider;
@@ -169,6 +170,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ProductConfigurationSynchronizationDataRepositoryPlugin(),
             new MerchantSynchronizationDataBulkRepositoryPlugin(),
             new StoreSynchronizationDataPlugin(),
+            new StoreListSynchronizationDataPlugin(),
             new AssetStorageSynchronizationDataPlugin(),
             new SearchHttpSynchronizationDataPlugin(),
             new ServicePointSynchronizationDataBulkRepositoryPlugin(),
