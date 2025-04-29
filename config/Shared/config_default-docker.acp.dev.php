@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 use Spryker\Shared\AppCatalogGui\AppCatalogGuiConstants;
 use Spryker\Shared\Kernel\KernelConstants;
+use Spryker\Shared\Redis\RedisConstants;
 use Spryker\Shared\Store\StoreConstants;
 
 require 'config_default-docker.dev.php';
@@ -28,3 +29,11 @@ $config[KernelConstants::DOMAIN_WHITELIST][] = 'stripe.spryker.local';
 // ----------------------------------------------------------------------------
 
 require sprintf('%s/acp-toolbox/config/config_message-broker.php', APPLICATION_ROOT_DIR);
+
+// ----------------------------------------------------------------------------
+// ------------------------------ SERVICES ------------------------------------
+// ----------------------------------------------------------------------------
+
+// >>> STORAGE
+
+$config[RedisConstants::REDIS_IS_DEV_MODE] = getenv('SPRYKER_REDIS_IS_DEV_MODE') !== false ? getenv('SPRYKER_REDIS_IS_DEV_MODE') : true;
