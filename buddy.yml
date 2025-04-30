@@ -632,6 +632,16 @@
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
+            - |
+                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -734,6 +744,16 @@
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -843,6 +863,16 @@
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
+            - |
+                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -945,6 +975,16 @@
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1434,6 +1474,16 @@
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
+            - |
+                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -1539,6 +1589,16 @@
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1651,6 +1711,16 @@
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
+            - |
+                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -1753,6 +1823,16 @@
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -2354,6 +2434,16 @@
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
+            - |
+                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+                fi
             - '.ci/snippet/FINISH'
         run_next_parallel: true
         variables:
@@ -2465,6 +2555,16 @@
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -3142,6 +3242,11 @@
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
                   .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
                 fi
+            - |
+                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
+                fi
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
@@ -3265,6 +3370,11 @@
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* ]]; then
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
+                fi
+            - |
+                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
                   .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
                 fi
             - ' .ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
