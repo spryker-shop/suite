@@ -30,7 +30,7 @@ use SprykerFeature\Yves\SspAssetManagement\Widget\SspAssetListWidget;
 use SprykerFeature\Yves\SspAssetManagement\Widget\SspAssetMenuItemWidget;
 use SprykerFeature\Yves\SspDashboardManagement\Plugin\ShopApplication\SspDashboardFilterControllerEventHandlerPlugin;
 use SprykerFeature\Yves\SspDashboardManagement\Widget\DashboardMenuItemWidget;
-use SprykerFeature\Yves\SspFileManagement\Widget\DashboardFileWidget;
+use SprykerFeature\Yves\SspFileManagement\Widget\SspFileListWidget;
 use SprykerFeature\Yves\SspFileManagement\Widget\SspFileManagerMenuItemWidget;
 use SprykerFeature\Yves\SspInquiryManagement\Plugin\ShopApplication\SspInquiryRestrictionHandlerPlugin;
 use SprykerFeature\Yves\SspInquiryManagement\Widget\CreateOrderSspInquiryLinkWidget;
@@ -388,7 +388,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             SspFileManagerMenuItemWidget::class,
             DashboardMenuItemWidget::class,
             DashboardInquiryWidget::class,
-            DashboardFileWidget::class,
+            SspFileListWidget::class,
             SspAssetMenuItemWidget::class,
             SspInquiryListWidget::class,
             SspAssetListWidget::class,
