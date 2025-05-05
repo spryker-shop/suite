@@ -93,6 +93,7 @@ use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\MetadataOrderIt
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdOrderItemExpanderPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\IsQuantitySplittableOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\NonSplittableItemTransformerStrategyPlugin;
+use Spryker\Zed\SalesQuoteRequestConnector\Communication\Plugin\Sales\QuoteRequestVersionReferenceOrderPostSavePlugin;
 use Spryker\Zed\SalesReclamation\Communication\Plugin\Sales\SalesReclamationSalesOrderItemCollectionPreDeletePlugin;
 use Spryker\Zed\SalesReclamationGui\Communication\Plugin\Sales\ReclamationSalesTablePlugin;
 use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\RemunerationTotalOrderExpanderPlugin;
@@ -196,6 +197,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new OrderCustomReferenceOrderPostSavePlugin(),
             new SaveCompanyBusinessUnitUuidOrderPostSavePlugin(),
             new SaveCompanyUuidOrderPostSavePlugin(),
+            new QuoteRequestVersionReferenceOrderPostSavePlugin(),
         ];
     }
 

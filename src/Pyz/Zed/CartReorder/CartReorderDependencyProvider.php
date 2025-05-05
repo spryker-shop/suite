@@ -45,9 +45,11 @@ use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\CartReorder\AmendmentQu
 use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\CartReorder\OrderAmendmentCartReorderValidatorPlugin;
 use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\CartReorder\OrderAmendmentQuoteProcessFlowExpanderCartPreReorderPlugin;
 use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\CartReorder\OriginalSalesOrderItemGroupKeyCartReorderItemHydratorPlugin;
+use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\CartReorder\QuoteRequestVersionCartReorderValidatorPlugin;
 use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\CartReorder\IsAmendableOrderCartReorderValidatorRulePlugin;
 use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\CartReorder\StartOrderAmendmentCartReorderPostCreatePlugin;
 use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\CartReorder\ProductConfigurationCartReorderItemHydratorPlugin;
+use Spryker\Zed\Store\Communication\Plugin\CartReorder\CurrentStoreCartReorderValidatorPlugin;
 
 class CartReorderDependencyProvider extends SprykerCartReorderDependencyProvider
 {
@@ -64,11 +66,23 @@ class CartReorderDependencyProvider extends SprykerCartReorderDependencyProvider
     /**
      * @return list<\Spryker\Zed\CartReorderExtension\Dependency\Plugin\CartReorderValidatorPluginInterface>
      */
+    protected function getCartReorderValidatorPlugins(): array
+    {
+        return [
+            new CurrentStoreCartReorderValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\CartReorderExtension\Dependency\Plugin\CartReorderValidatorPluginInterface>
+     */
     protected function getCartReorderValidatorPluginsForOrderAmendment(): array
     {
         return [
+            new CurrentStoreCartReorderValidatorPlugin(),
             new OrderAmendmentCartReorderValidatorPlugin(),
             new IsAmendableOrderCartReorderValidatorRulePlugin(),
+            new QuoteRequestVersionCartReorderValidatorPlugin(),
         ];
     }
 
