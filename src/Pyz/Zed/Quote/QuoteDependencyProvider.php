@@ -22,16 +22,12 @@ use Spryker\Zed\MultiCart\Communication\Plugin\Quote\DefaultQuoteCollectionFilte
 use Spryker\Zed\MultiCart\Communication\Plugin\ResolveQuoteNameBeforeQuoteCreatePlugin;
 use Spryker\Zed\OrderCustomReference\Communication\Plugin\Quote\OrderCustomReferenceQuoteFieldsAllowedForSavingProviderPlugin;
 use Spryker\Zed\Price\Communication\Plugin\Quote\QuotePriceModeValidatorPlugin;
-use Spryker\Zed\PriceProductSalesOrderAmendment\Communication\Plugin\Quote\ResetOriginalSalesOrderItemUnitPricesBeforeQuoteSavePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Quote\SanitizeBundleItemsBeforeQuoteSavePlugin;
 use Spryker\Zed\Quote\QuoteDependencyProvider as SprykerQuoteDependencyProvider;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\QuoteApprovalExpanderPlugin;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\QuoteApprovalQuoteFieldsAllowedForSavingProviderPlugin;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\RemoveQuoteApprovalsBeforeQuoteDeletePlugin;
 use Spryker\Zed\QuoteApprovalShipmentConnector\Communication\Plugin\Quote\QuoteApprovalShipmentQuoteFieldsAllowedForSavingProviderPlugin;
-use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\Quote\ResetAmendmentOrderReferenceBeforeQuoteSavePlugin;
-use Spryker\Zed\SalesOrderAmendment\Communication\Plugin\Quote\ResetQuoteNameQuoteBeforeSavePlugin;
-use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\Quote\CancelOrderAmendmentBeforeQuoteSavePlugin;
 use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\Quote\CancelOrderAmendmentQuoteDeleteAfterPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\CleanQuoteShareBeforeQuoteCreatePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\DeactivateSharedQuotesBeforeQuoteSavePlugin;
@@ -103,7 +99,6 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteUpdateBeforePlugins(): array
     {
         return [
-            new ResetQuoteNameQuoteBeforeSavePlugin(),
             new AddDefaultNameBeforeQuoteSavePlugin(), #MultiCartFeature
             new ResolveQuoteNameBeforeQuoteCreatePlugin(), #MultiCartFeature
             new AddDefaultQuoteChangedMessageQuoteUpdateBeforePlugin(), #MultiCartFeature
@@ -112,9 +107,6 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
             new DeactivateSharedQuotesBeforeQuoteSavePlugin(), #SharedCartFeature
             new SharedQuoteSetDefaultBeforeQuoteSavePlugin(), #SharedCartFeature
             new SanitizeBundleItemsBeforeQuoteSavePlugin(),
-            new CancelOrderAmendmentBeforeQuoteSavePlugin(),
-            new ResetAmendmentOrderReferenceBeforeQuoteSavePlugin(),
-            new ResetOriginalSalesOrderItemUnitPricesBeforeQuoteSavePlugin(),
         ];
     }
 

@@ -27,6 +27,7 @@ use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\DecimalObject\Decimal;
 use Spryker\Glue\CartReorderRestApi\CartReorderRestApiConfig;
+use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
@@ -379,6 +380,22 @@ class CartReorderApiTester extends ApiEndToEndTester
 
         $this->assertArrayHasKey(RestItemProductOptionsTransfer::SKU, $productOption);
         $this->assertSame($productOptionSku, $productOption[RestItemProductOptionsTransfer::SKU]);
+    }
+
+    /**
+     * @param string $cartUuid
+     *
+     * @return string
+     */
+    public function buildCartsUrl(string $cartUuid): string
+    {
+        return $this->formatFullUrl(
+            '{resourceCarts}/{cartUuid}',
+            [
+                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                'cartUuid' => $cartUuid,
+            ],
+        );
     }
 
     /**
