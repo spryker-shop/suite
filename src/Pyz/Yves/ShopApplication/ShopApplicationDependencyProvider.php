@@ -397,6 +397,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ShipmentTypeServicePointSelectorWidget::class,
             ServicePointNameForItemWidget::class,
             ListItemsByShipmentTypeWidget::class,
+            SspListMenuItemWidget::class,
         ];
     }
 
