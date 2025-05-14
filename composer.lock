@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f8ad9d869f654c67a2d471e05afcd51",
+    "content-hash": "71b75ca642bd48345efd8b6acd3f9776",
     "packages": [
         {
             "name": "async-aws/core",
@@ -7479,22 +7479,24 @@
         },
         {
             "name": "spryker-feature/ssp-asset-management",
-            "version": "0.4.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/ssp-asset-management.git",
-                "reference": "7901954f5aae97bba9e3075d9258fe482214e143"
+                "reference": "706462d3864cd0cc23dfc71ebb080d7abde8b062"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/ssp-asset-management/zipball/7901954f5aae97bba9e3075d9258fe482214e143",
-                "reference": "7901954f5aae97bba9e3075d9258fe482214e143",
+                "url": "https://api.github.com/repos/spryker-feature/ssp-asset-management/zipball/706462d3864cd0cc23dfc71ebb080d7abde8b062",
+                "reference": "706462d3864cd0cc23dfc71ebb080d7abde8b062",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
                 "spryker-feature/feature-ui": "^0.1.0",
+                "spryker-shop/cart-page-extension": "^1.3.0",
                 "spryker-shop/shop-application": "^1.15.0",
+                "spryker/cart-extension": "^4.2.0",
                 "spryker/company-business-unit": "^2.17.0",
                 "spryker/company-user": "^2.19.0",
                 "spryker/file-manager": "^2.5.0",
@@ -7504,6 +7506,8 @@
                 "spryker/kernel": "^3.75.0",
                 "spryker/permission-extension": "^1.2.0",
                 "spryker/propel-orm": "^1.21.0",
+                "spryker/sales": "^11.0.0",
+                "spryker/sales-extension": "^1.9.0",
                 "spryker/sequence-number": "^3.1.0",
                 "spryker/state-machine": "^2.21.0",
                 "spryker/symfony": "^3.18.0",
@@ -7517,10 +7521,13 @@
                 "spryker-shop/customer-page": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/company": "*",
+                "spryker/container": "*",
                 "spryker/customer": "*",
+                "spryker/oms": "*",
                 "spryker/propel": "*",
                 "spryker/ramsey-uuid": "*",
                 "spryker/router": "*",
+                "spryker/store": "*",
                 "spryker/testify": "*",
                 "spryker/util-date-time": "*"
             },
@@ -7530,6 +7537,7 @@
                 "spryker/company-business-unit-gui": "Provides GUI for company business unit suggestion. You can install this module of min version 2.13.0 when you want to use /company-business-unit-gui/suggest endpoint.",
                 "spryker/router": "You need to install this module when you want to use the RouterExtension interfaces."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -7548,9 +7556,9 @@
             ],
             "description": "SspAssetManagement module",
             "support": {
-                "source": "https://github.com/spryker-feature/ssp-asset-management/tree/0.4.0"
+                "source": "https://github.com/spryker-feature/ssp-asset-management/tree/0.5.0"
             },
-            "time": "2025-05-05T13:27:46+00:00"
+            "time": "2025-05-14T11:04:37+00:00"
         },
         {
             "name": "spryker-feature/ssp-dashboard-management",
@@ -84819,10 +84827,18 @@
             "time": "2022-06-03T18:03:27+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "spryker-feature/ssp-asset-management",
+            "version": "9999999-dev",
+            "alias": "0.4.0",
+            "alias_normalized": "0.4.0.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "jetbrains/phpstorm-stubs": 20,
+        "spryker-feature/ssp-asset-management": 20,
         "spryker/code-sniffer": 20,
         "spryker/docker-chromedriver": 20,
         "spryker/robotframework-suite-tests": 20

@@ -27,6 +27,7 @@ use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
 use SprykerFeature\Yves\FeatureUi\Widget\SspListMenuItemWidget;
+use SprykerFeature\Yves\SspAssetManagement\Widget\SspAssetInfoForItemWidget;
 use SprykerFeature\Yves\SspAssetManagement\Widget\SspAssetMenuItemWidget;
 use SprykerFeature\Yves\SspAssetManagement\Widget\SspItemAssetSelectorWidget;
 use SprykerFeature\Yves\SspDashboardManagement\Plugin\ShopApplication\SspDashboardFilterControllerEventHandlerPlugin;
