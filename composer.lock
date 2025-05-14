@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3c18390352c2b7056980318277e1054",
+    "content-hash": "c960c76d947396e87a866dae3c1f27ce",
     "packages": [
         {
             "name": "async-aws/core",
@@ -404,23 +404,23 @@
         },
         {
             "name": "cebe/php-openapi",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cebe/php-openapi.git",
-                "reference": "020d72b8e3a9a60bc229953e93eda25c49f46f45"
+                "reference": "893ab104be1f5dfe5a39766703f583584e43c6e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cebe/php-openapi/zipball/020d72b8e3a9a60bc229953e93eda25c49f46f45",
-                "reference": "020d72b8e3a9a60bc229953e93eda25c49f46f45",
+                "url": "https://api.github.com/repos/cebe/php-openapi/zipball/893ab104be1f5dfe5a39766703f583584e43c6e1",
+                "reference": "893ab104be1f5dfe5a39766703f583584e43c6e1",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "justinrainbow/json-schema": "^5.2",
+                "justinrainbow/json-schema": "^5.2 || ^6.0",
                 "php": ">=7.1.0",
-                "symfony/yaml": "^3.4 || ^4 || ^5 || ^6"
+                "symfony/yaml": "^3.4 || ^4 || ^5 || ^6 || ^7.0"
             },
             "conflict": {
                 "symfony/yaml": "3.4.0 - 3.4.4 || 4.0.0 - 4.4.17 || 5.0.0 - 5.1.9 || 5.2.0"
@@ -431,7 +431,7 @@
                 "mermade/openapi3-examples": "1.0.0",
                 "nexmo/api-specification": "1.0.0",
                 "oai/openapi-specification": "3.0.3",
-                "phpstan/phpstan": "^0.12.0",
+                "phpstan/phpstan": "^0.12.0 || ^1.9",
                 "phpunit/phpunit": "^6.5 || ^7.5 || ^8.5 || ^9.4"
             },
             "bin": [
@@ -469,7 +469,7 @@
                 "issues": "https://github.com/cebe/php-openapi/issues",
                 "source": "https://github.com/cebe/php-openapi"
             },
-            "time": "2022-04-20T14:46:44+00:00"
+            "time": "2025-05-07T08:44:12+00:00"
         },
         {
             "name": "composer/semver",
@@ -6393,7 +6393,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "0ea31fcc4eb51397f51f347565b9822f85ba6169"
+                "reference": "8f1fc7a38e0d0d46398ceeac8dea133e3d779590"
             },
             "require": {
                 "php": ">=8.1"
@@ -7541,7 +7541,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2025-05-12T14:06:28+00:00"
+            "time": "2025-05-14T11:04:37+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7549,7 +7549,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "fd9b75e85a1a6e194e2d7cdd89be3ee3c17c598c"
+                "reference": "5ae7ad6386da2dfeb9e7f317e93cc70320abbf40"
             },
             "require": {
                 "php": ">=8.1"
@@ -7756,7 +7756,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2025-05-12T14:06:30+00:00"
+            "time": "2025-05-14T11:04:40+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -18366,7 +18366,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/cypress-tests.git",
-                "reference": "1393041a4e4ea08ae4c5d3b2e59d034e7ac42a2b"
+                "reference": "8e6c92af57ec9a8e6f7094dc0c4129b48f9158c8"
             },
             "default-branch": true,
             "type": "library",
@@ -18374,7 +18374,7 @@
                 "MIT"
             ],
             "description": "This repository is dedicated to housing an extensive collection of UI end-to-end tests, meticulously crafted using Cypress for Spryker applications. These tests are designed to thoroughly evaluate the user interface, ensuring that all interactions and visual elements function as intended in real-world scenarios. By leveraging Cypress's advanced browser automation capabilities, this suite provides an efficient and effective means of validating the user experience, confirming the seamless operation and aesthetic integrity of Spryker's front-end components. Our commitment to rigorous UI testing helps maintain the high standard of quality and reliability that Spryker users expect.",
-            "time": "2025-05-12T11:22:59+00:00"
+            "time": "2025-05-14T10:59:49+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -18604,7 +18604,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "0260682c562ecd485d6d28cf84cc004a65883992"
+                "reference": "cacdd7bc246db2e5dec1d1a90d4acf8dcf26cd12"
             },
             "default-branch": true,
             "type": "library",
@@ -18612,7 +18612,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2025-04-25T11:06:10+00:00"
+            "time": "2025-05-14T11:00:06+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
