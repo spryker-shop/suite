@@ -27,7 +27,9 @@ use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
 use SprykerFeature\Yves\FeatureUi\Widget\SspListMenuItemWidget;
+use SprykerFeature\Yves\SspAssetManagement\Widget\SspAssetInfoForItemWidget;
 use SprykerFeature\Yves\SspAssetManagement\Widget\SspAssetMenuItemWidget;
+use SprykerFeature\Yves\SspAssetManagement\Widget\SspItemAssetSelectorWidget;
 use SprykerFeature\Yves\SspDashboardManagement\Plugin\ShopApplication\SspDashboardFilterControllerEventHandlerPlugin;
 use SprykerFeature\Yves\SspDashboardManagement\Widget\DashboardMenuItemWidget;
 use SprykerFeature\Yves\SspFileManagement\Widget\SspFileListWidget;
@@ -37,11 +39,15 @@ use SprykerFeature\Yves\SspInquiryManagement\Widget\CreateOrderSspInquiryLinkWid
 use SprykerFeature\Yves\SspInquiryManagement\Widget\DashboardInquiryWidget;
 use SprykerFeature\Yves\SspInquiryManagement\Widget\SspInquiryListWidget;
 use SprykerFeature\Yves\SspInquiryManagement\Widget\SspInquiryMenuItemWidget;
+use SprykerFeature\Yves\SspServiceManagement\Plugin\ShopApplication\AddressFormItemsByShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerFeature\Yves\SspServiceManagement\Widget\ListItemsByShipmentTypeWidget;
-use SprykerFeature\Yves\SspServiceManagement\Widget\ServicePointNameForItemWidget;
-use SprykerFeature\Yves\SspServiceManagement\Widget\ShipmentTypeServicePointSelectorWidget;
+use SprykerFeature\Yves\SspServiceManagement\Widget\SspAddressFormItemsByShipmentTypeWidget;
+use SprykerFeature\Yves\SspServiceManagement\Widget\SspProductOfferPriceWidget;
+use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceCancelWidget;
 use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceChangeScheduledTimeLinkWidget;
 use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceMenuItemWidget;
+use SprykerFeature\Yves\SspServiceManagement\Widget\SspServicePointNameForItemWidget;
+use SprykerFeature\Yves\SspServiceManagement\Widget\SspShipmentTypeServicePointSelectorWidget;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AssetWidget\Widget\AssetWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
@@ -388,6 +394,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             SspInquiryMenuItemWidget::class,
             CreateOrderSspInquiryLinkWidget::class,
             SspFileManagerMenuItemWidget::class,
+            SspServiceCancelWidget::class,
             DashboardMenuItemWidget::class,
             DashboardInquiryWidget::class,
             SspFileListWidget::class,
@@ -395,10 +402,14 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             SspInquiryListWidget::class,
             SspServiceMenuItemWidget::class,
             SspServiceChangeScheduledTimeLinkWidget::class,
-            ShipmentTypeServicePointSelectorWidget::class,
-            ServicePointNameForItemWidget::class,
+            SspShipmentTypeServicePointSelectorWidget::class,
+            SspServicePointNameForItemWidget::class,
             ListItemsByShipmentTypeWidget::class,
             SspListMenuItemWidget::class,
+            SspAssetInfoForItemWidget::class,
+            SspItemAssetSelectorWidget::class,
+            SspProductOfferPriceWidget::class,
+            SspAddressFormItemsByShipmentTypeWidget::class,
         ];
     }
 
@@ -416,6 +427,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new MerchantSalesReturnCreateFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new ShipmentTypeAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new ClickAndCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
+            new AddressFormItemsByShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin(),
         ];
     }
 

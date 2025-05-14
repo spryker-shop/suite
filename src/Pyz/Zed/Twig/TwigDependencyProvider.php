@@ -58,6 +58,7 @@ use Spryker\Zed\ZedUi\Communication\Plugin\Twig\BooleanToStringTwigPlugin;
 use Spryker\Zed\ZedUi\Communication\Plugin\ZedUiNavigationTwigPlugin;
 use SprykerFeature\Zed\SspFileManagement\Communication\Plugin\Twig\FileSizeFormatterTwigPlugin;
 use SprykerFeature\Zed\SspInquiryManagement\Communication\Twig\BytesTwigPlugin;
+use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Twig\ProductServiceTypeNameTwigPlugin;
 
 class TwigDependencyProvider extends SprykerTwigDependencyProvider
 {
@@ -115,6 +116,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
 
             new BytesTwigPlugin(),
             new FileSizeFormatterTwigPlugin(),
+            new ProductServiceTypeNameTwigPlugin(),
         ];
     }
 

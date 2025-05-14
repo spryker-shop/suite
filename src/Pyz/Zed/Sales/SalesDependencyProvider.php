@@ -106,8 +106,13 @@ use Spryker\Zed\SalesServicePoint\Communication\Plugin\Sales\ServicePointSalesOr
 use Spryker\Zed\Shipment\Communication\Plugin\Sales\ShipmentOrderItemExpanderPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
 use Spryker\Zed\WarehouseAllocation\Communication\Plugin\Sales\WarehouseOrderItemExpanderPlugin;
+use SprykerFeature\Zed\SspAssetManagement\Communication\Plugin\Sales\SspAssetOrderExpanderPlugin;
+use SprykerFeature\Zed\SspAssetManagement\Communication\Plugin\Sales\SspAssetOrderItemsPostSavePlugin;
+use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\ProductTypeOrderExpanderPlugin;
 use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\ProductTypeOrderItemsPostSavePlugin;
 use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\ScheduleTimeOrderItemExpanderPreSavePlugin;
+use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\ServiceDateTimeEnabledOrderItemsPostSavePlugin;
+use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\SspServiceCancellableOrderItemExpanderPlugin;
 
 class SalesDependencyProvider extends SprykerSalesDependencyProvider
 {
@@ -146,6 +151,8 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new MerchantDataOrderHydratePlugin(),
             new SalesOrderAmendmentOrderExpanderPlugin(),
             new IsAmendableOrderExpanderPlugin(),
+            new SspAssetOrderExpanderPlugin(),
+            new ProductTypeOrderExpanderPlugin(),
         ];
     }
 
@@ -259,6 +266,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ShipmentOrderItemExpanderPlugin(),
             new WarehouseOrderItemExpanderPlugin(),
             new ServicePointOrderItemExpanderPlugin(),
+            new SspServiceCancellableOrderItemExpanderPlugin(),
         ];
     }
 
@@ -324,6 +332,8 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new GiftCardOrderItemsPostSavePlugin(),
             new ProductTypeOrderItemsPostSavePlugin(),
             new ProductOptionOrderItemsPostSavePlugin(),
+            new SspAssetOrderItemsPostSavePlugin(),
+            new ServiceDateTimeEnabledOrderItemsPostSavePlugin(),
         ];
     }
 
