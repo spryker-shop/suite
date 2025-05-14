@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SspAssetManagement\Persistence;
 
-use Orm\Zed\SspAssetManagement\Persistence\Base\SpySspAssetToCompanyBusinessUnitQuery as BaseSpySspAssetToCompanyBusinessUnitQuery;
+use SprykerFeature\Zed\SspAssetManagement\Persistence\Propel\AbstractSpySspAssetToCompanyBusinessUnitQuery as BaseSpySspAssetToCompanyBusinessUnitQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_ssp_asset_to_company_business_unit' table.

@@ -10,6 +10,7 @@ use Spryker\Shared\Nopayment\NopaymentConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Zed\GiftCard\GiftCardConfig;
+use SprykerFeature\Shared\SspServiceManagement\SspServiceManagementConstants;
 
 // ----------------------------------------------------------------------------
 // ------------------------------ OMS -----------------------------------------
@@ -51,3 +52,5 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = array_replace(
         GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
     ],
 );
+
+$config[SspServiceManagementConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING];

@@ -98,8 +98,10 @@ use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItem
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentCartOperationPostSavePlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\SanitizeCartShipmentItemExpanderPlugin;
+use SprykerFeature\Zed\SspAssetManagement\Communication\Plugin\Cart\SspAssetItemExpanderPlugin;
 use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Cart\ProductAbstactTypeItemExpanderPlugin;
 use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Cart\ServicePointItemExpanderPlugin;
+use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Cart\SspServiceShipmentTypePreReloadItemsPlugin;
 use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Cart\SspShipmentTypeItemExpanderPlugin;
 
 class CartDependencyProvider extends SprykerCartDependencyProvider
@@ -142,6 +144,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new SspShipmentTypeItemExpanderPlugin(),
             new ProductAbstactTypeItemExpanderPlugin(),
             new RemoveQuotePaymentCartItemExpanderPlugin(),
+            new SspAssetItemExpanderPlugin(),
             new ServicePointItemExpanderPlugin(),
         ];
     }
@@ -305,6 +308,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ConfiguredBundleQuantityPerSlotPreReloadItemsPlugin(),
             new SingleMerchantPreReloadItemsPlugin(),
             new ProductApprovalPreReloadItemsPlugin(),
+            new SspServiceShipmentTypePreReloadItemsPlugin(),
             new SanitizeMerchantCommissionPreReloadPlugin(),
             new ResetAmendmentOrderReferencePreReloadItemsPlugin(),
             new ResetOriginalSalesOrderItemUnitPricesPreReloadItemsPlugin(),

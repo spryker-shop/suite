@@ -20,7 +20,8 @@ use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Zed\Calculation\CalculationBusinessTester;
 
 /**
- * Two discounts apply to a cart. One is a percentage discount taken off all SKUs in the cart.
+ * Two discounts apply to a
+ * cart. One is a percentage discount taken off all SKUs in the cart.
  *
  * Discount use case intro: {@link https://spryker.atlassian.net/wiki/spaces/CORE/pages/2896527845/Discount+Use+Cases}
  *

@@ -9,10 +9,10 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SspAssetManagement\Persistence;
 
-use SprykerFeature\Zed\SspAssetManagement\Persistence\Propel\AbstractSpySspAsset as BaseSpySspAsset;
+use SprykerFeature\Zed\SspAssetManagement\Persistence\Propel\AbstractSpySalesOrderItemSspAsset as BaseSpySalesOrderItemSspAsset;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_ssp_asset' table.
+ * Skeleton subclass for representing a row from the 'spy_sales_order_item_ssp_asset' table.
  *
  *
  *
@@ -20,6 +20,6 @@ use SprykerFeature\Zed\SspAssetManagement\Persistence\Propel\AbstractSpySspAsset
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpySspAsset extends BaseSpySspAsset
+class SpySalesOrderItemSspAsset extends BaseSpySalesOrderItemSspAsset
 {
 }
