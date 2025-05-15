@@ -230,7 +230,7 @@
         docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 700'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 700,300'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -240,7 +240,7 @@
         docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 900'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 1000'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
