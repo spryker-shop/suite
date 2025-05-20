@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Yves\Router;
 
+use Pyz\Yves\ExampleModule\Plugin\Router\ExampleModuleRouteProviderPlugin;
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
 use Spryker\Yves\CustomerDataChangeRequest\Plugin\Router\CustomerDataChangeRequestRouteProviderPlugin;
 use Spryker\Yves\HealthCheck\Plugin\Router\HealthCheckRouteProviderPlugin;
@@ -201,6 +202,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new SspAssetRouteProviderPlugin(), #SspAssetManagementFeature
             new SspAssetManagementRouteProviderPlugin(), #SspAssetManagementFeature
             new SspServiceManagementPageRouteProviderPlugin(),
+            new ExampleModuleRouteProviderPlugin(),
         ];
 
         if (class_exists(LoadTestingRouterProviderPlugin::class)) {

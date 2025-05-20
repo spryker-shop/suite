@@ -1342,7 +1342,18 @@
             "Orm\\": "src/Orm/",
             "Pyz\\": "src/Pyz/",
             "SprykerConfig\\": "src/SprykerConfig/"
-        }
+        },
+        "exclude-from-classmap": [
+            "vendor/spryker/kernel/src/Spryker/Zed/Kernel/ClassResolver/Controller/ControllerResolver.php",
+            "vendor/spryker/kernel/src/Spryker/Yves/Kernel/ClassResolver/Controller/ControllerResolver.php",
+            "vendor/spryker/router/src/Spryker/Zed/Router/Communication/Resolver/ControllerResolver.php"
+        ],
+        "files": [
+            "src/Spryker/Shared/SymfonyContainer/ContainerTrait.php",
+            "src/Spryker/Zed/Kernel/ClassResolver/Controller/ControllerResolver.php",
+            "src/Spryker/Yves/Kernel/ClassResolver/Controller/ControllerResolver.php",
+            "src/Spryker/Shared/Router/Resolver/ControllerResolver.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
