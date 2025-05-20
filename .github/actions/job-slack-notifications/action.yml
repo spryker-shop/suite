@@ -1,14 +1,52 @@
-name: 'Slack Notification for scheduled job'
+name: 'Slack Notification for failed job'
 description: 'Send a Slack message based on job status'
 
 runs:
     using: "composite"
     steps:
-        -   name: Notify Slack on Scheduled Job Failure
-            if: job.status == 'failure' && github.ref == 'refs/heads/master'
-            uses: slackapi/slack-github-action@v1.26.0
-            env:
-                SLACK_BOT_TOKEN: ${{ env.SLACK_BOT_TOKEN }}
-            with:
-                channel-id: ${{ env.WEEKLY_CI_SLACK_CHANNEL_ID }}
-                slack-message: "❌Scheduled job *${{github.job}}* on the *${{ github.repository }}* repository failed. Manual intervention is required! \n*Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        - name: Set Slack message with user groups
+          if: job.status == 'failure' && github.ref == 'refs/heads/master'
+          shell: bash
+          run: |
+              echo "Generating Slack message..."
+              
+              # Extract team name (Latin letters only before dash)
+              COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
+              if [[ "$COMMIT_MESSAGE" =~ ^([a-zA-Z]+)-[0-9]+ ]]; then
+                TEAM_NAME="${BASH_REMATCH[1]}"
+                echo "Detected team: $TEAM_NAME"
+              else
+                echo "No valid team name found in commit message."
+                TEAM_NAME=""
+              fi
+              
+              # Base message
+              MESSAGE="❌ Job *${{ github.job }}* on the *${{ github.repository }}* repository failed. Manual intervention is required! \n*Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              
+              if [[ -n "$TEAM_NAME" ]]; then
+                # Look up user groups
+                USER_GROUPS=$(echo '${{ env.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}' | jq -r --arg team "$TEAM_NAME" '.[$team][]? // empty')
+              
+                if [[ -n "$USER_GROUPS" ]]; then
+                  MENTIONS=""
+                  for group in $USER_GROUPS; do
+                    MENTIONS+="<!subteam^$group> "
+                  done
+                  MESSAGE="❌ Job *${{ github.job }}* on the *${{ github.repository }}* repository failed. ${MENTIONS}Manual intervention is required! \n*Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                else
+                  echo "No user groups found for team '$TEAM_NAME', leaving message unchanged."
+                fi
+              fi
+              
+              echo "SLACK_MESSAGE<<EOF" >> $GITHUB_ENV
+              echo "$MESSAGE" >> $GITHUB_ENV
+              echo "EOF" >> $GITHUB_ENV
+
+        - name: Notify Slack on master Job Failure
+          if: job.status == 'failure' && github.ref == 'refs/heads/master'
+          uses: slackapi/slack-github-action@v1.26.0
+          env:
+              SLACK_BOT_TOKEN: ${{ env.SLACK_BOT_TOKEN }}
+          with:
+              channel-id: ${{ env.WEEKLY_CI_SLACK_CHANNEL_ID }}
+              slack-message: ${{ env.SLACK_MESSAGE }}
