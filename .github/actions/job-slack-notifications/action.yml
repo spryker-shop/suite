@@ -10,7 +10,7 @@ runs:
           run: |
               echo "Generating Slack message..."
               
-              # Extract team name (Latin letters only before dash)
+              # Extract team name (only Latin letters before dash)
               COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
               if [[ "$COMMIT_MESSAGE" =~ ^([a-zA-Z]+)-[0-9]+ ]]; then
                 TEAM_NAME="${BASH_REMATCH[1]}"
@@ -20,23 +20,21 @@ runs:
                 TEAM_NAME=""
               fi
               
-              # Base message
-              MESSAGE="❌ Job *${{ github.job }}* on the *${{ github.repository }}* repository failed. Manual intervention is required! \n*Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-              
+              # Initialize variables
+              MENTIONS=""
               if [[ -n "$TEAM_NAME" ]]; then
-                # Look up user groups
                 USER_GROUPS=$(echo '${{ env.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}' | jq -r --arg team "$TEAM_NAME" '.[$team][]? // empty')
-              
                 if [[ -n "$USER_GROUPS" ]]; then
-                  MENTIONS=""
                   for group in $USER_GROUPS; do
                     MENTIONS+="<!subteam^$group> "
                   done
-                  MESSAGE="❌ Job *${{ github.job }}* on the *${{ github.repository }}* repository failed. ${MENTIONS}Manual intervention is required! \n*Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                 else
-                  echo "No user groups found for team '$TEAM_NAME', leaving message unchanged."
+                  echo "No user groups found for team '$TEAM_NAME'."
                 fi
               fi
+              
+              # Construct final Slack message
+              MESSAGE="❌ Job *${{ github.job }}* on the *${{ github.repository }}* repository failed. ${MENTIONS}Manual intervention is required! \n*Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
               
               echo "SLACK_MESSAGE<<EOF" >> $GITHUB_ENV
               echo "$MESSAGE" >> $GITHUB_ENV
