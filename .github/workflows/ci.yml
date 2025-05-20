@@ -150,7 +150,7 @@ jobs:
               run: vendor/bin/evaluator evaluate
 
             - name: Slack Notification for master job
-              uses: ./.github/actions/scheduled-job-slack-notifications
+              uses: ./.github/actions/job-slack-notifications
               if: always()
 
     js-validation:
@@ -192,7 +192,7 @@ jobs:
                 run: npm run mp:test
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-83-mariadb-glue-alpine-dynamic-store-off:
@@ -225,7 +225,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.api.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-83-mariadb-glue-alpine:
@@ -262,7 +262,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.api.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-83-mariadb-acceptance-alpine-dynamic-store-off:
@@ -295,7 +295,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-83-mariadb-acceptance-alpine:
@@ -331,7 +331,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-83-mariadb-functional-alpine-dynamic-store-off:
@@ -362,7 +362,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-83-mariadb-functional-alpine:
@@ -396,7 +396,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-mariadb-glue-alpine-dynamic-store-off:
@@ -430,7 +430,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.api.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-mariadb-glue-alpine:
@@ -465,7 +465,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.api.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-postgresql-acceptance-alpine-dynamic-store-off:
@@ -497,7 +497,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-postgresql-acceptance-alpine:
@@ -532,7 +532,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-postgresql-functional-alpine-dynamic-store-off:
@@ -565,7 +565,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-postgresql-functional-alpine:
@@ -600,7 +600,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-mariadb-acceptance-alpine-dynamic-store-off:
@@ -632,7 +632,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-mariadb-acceptance-alpine:
@@ -667,7 +667,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-mariadb-functional-alpine-dynamic-store-off:
@@ -698,7 +698,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-mariadb-functional-alpine:
@@ -732,7 +732,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-postgres-functional-debian-dynamic-store-off:
@@ -764,7 +764,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-postgres-functional-debian:
@@ -797,7 +797,7 @@ jobs:
                   docker/sdk testing codecept run -c codeception.functional.yml
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-frontend-and-assets-alpine:
@@ -833,7 +833,7 @@ jobs:
                   docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-lowest:
@@ -868,7 +868,7 @@ jobs:
             run: composer lowest
 
           -   name: Slack Notification for master job
-              uses: ./.github/actions/scheduled-job-slack-notifications
+              uses: ./.github/actions/job-slack-notifications
               if: always()
 
     docker-alpine-php-8-2-mariadb-robot-dynamic-store-off:
@@ -926,7 +926,7 @@ jobs:
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-off/robot-api/${GITHUB_RUN_ID}/PHP8.2MariaDB/log.html
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     docker-alpine-php-8-3-postgresql-robot:
@@ -990,7 +990,7 @@ jobs:
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/log.html
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     docker-alpine-php-8-3-mariadb-robot:
@@ -1055,7 +1055,7 @@ jobs:
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3MariaDB/log.html
 
             -   name: Slack Notification for master job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     positive-docker-alpine-php-8-2-mariadb-robot:
