@@ -4,16 +4,8 @@ description: 'Send a Slack message based on job status'
 runs:
     using: "composite"
     steps:
-        -   name: Notify Slack on Scheduled Job Success
-            if: job.status == 'success' && github.event_name == 'schedule'
-            uses: slackapi/slack-github-action@v1.26.0
-            env:
-                SLACK_BOT_TOKEN: ${{ env.SLACK_BOT_TOKEN }}
-            with:
-                channel-id: ${{ env.WEEKLY_CI_SLACK_CHANNEL_ID }}
-                slack-message: "✅Scheduled job *${{github.job}}* on the *${{ github.repository }}* repository succeeded."
         -   name: Notify Slack on Scheduled Job Failure
-            if: job.status == 'failure' && github.event_name == 'schedule'
+            if: job.status == 'failure' && github.ref == 'refs/heads/master'
             uses: slackapi/slack-github-action@v1.26.0
             env:
                 SLACK_BOT_TOKEN: ${{ env.SLACK_BOT_TOKEN }}
