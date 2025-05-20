@@ -148,7 +148,7 @@ jobs:
             - name: Run Evaluator
               run: vendor/bin/evaluator evaluate
 
-            - name: Slack Notification for master job
+            - name: Slack Notification for failed job
               uses: ./.github/actions/job-slack-notifications
               if: always()
 
@@ -189,7 +189,7 @@ jobs:
             -   name: Front-end MP Unit Tests
                 run: npm run mp:test
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -221,7 +221,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -257,7 +257,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -289,7 +289,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -324,7 +324,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -354,7 +354,7 @@ jobs:
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -387,7 +387,7 @@ jobs:
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -420,7 +420,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -454,7 +454,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -485,7 +485,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -519,7 +519,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -551,7 +551,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -585,7 +585,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -616,7 +616,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -650,7 +650,7 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -680,7 +680,7 @@ jobs:
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -713,7 +713,7 @@ jobs:
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -744,7 +744,7 @@ jobs:
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -776,7 +776,7 @@ jobs:
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -811,7 +811,7 @@ jobs:
                   docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
                   docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -846,7 +846,7 @@ jobs:
           - name: Run prefer lowest
             run: composer lowest
 
-          -   name: Slack Notification for master job
+          -   name: Slack Notification for failed job
               uses: ./.github/actions/job-slack-notifications
               if: always()
 
@@ -903,7 +903,7 @@ jobs:
               run: |
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-off/robot-api/${GITHUB_RUN_ID}/PHP8.2MariaDB/log.html
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -966,7 +966,7 @@ jobs:
               run: |
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/log.html
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
@@ -1030,7 +1030,7 @@ jobs:
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3MariaDB/log.html
 
-            -   name: Slack Notification for master job
+            -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
