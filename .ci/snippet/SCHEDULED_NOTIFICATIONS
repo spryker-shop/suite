@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$PIPELINE_STATUS" = "FAILURE" ]; then
-    TEAM_NAME=$(echo "$TICKET_NAME" | cut -d'-' -f1)
+    TEAM_NAME=$(echo "$BUDDY_RUN_COMMIT_MESSAGE" | cut -d'-' -f1)
     SLACK_USER_GROUPS=$(echo "$JIRA_TICKET_SLACK_USER_GROUP_MAPPING" | jq -r --arg team "$TEAM_NAME" '.[$team] // empty')
     SLACK_MESSAGE=":x: The scheduled pipeline *'$BUDDY_PIPELINE_NAME'* on the *'$BUDDY_REPO_SLUG'* repository failed. Manual intervention is required!"
 
