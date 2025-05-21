@@ -5,7 +5,7 @@ runs:
     using: "composite"
     steps:
         - name: Set Slack message with user groups
-          if: job.status == 'failure' && github.ref == 'refs/heads/master'
+          if: job.status == 'failure' && github.ref == 'refs/heads/master-bla-bla'
           shell: bash
           run: |
               COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
@@ -33,7 +33,7 @@ runs:
               echo "EOF" >> $GITHUB_ENV
 
         - name: Notify Slack on master Job Failure
-          if: job.status == 'failure' && github.ref == 'refs/heads/master'
+          if: job.status == 'failure' && github.ref == 'refs/heads/master-bla-bla'
           uses: slackapi/slack-github-action@v1.26.0
           env:
               SLACK_BOT_TOKEN: ${{ env.SLACK_BOT_TOKEN }}
