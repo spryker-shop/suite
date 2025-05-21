@@ -39,7 +39,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Standard Validation'
   events:
@@ -72,7 +72,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   actions:
       - action: 'Build Project'
         type: 'BUILD'
@@ -274,7 +274,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'NPM Validation'
   events:
@@ -307,7 +307,7 @@
               trigger_variable_value: 'run-ssp-latest-ci'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   actions:
       - action: 'NPM Validation'
         type: 'BUILD'
@@ -337,7 +337,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Validation / Prefer Lowest'
   events:
@@ -370,7 +370,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   actions:
       - action: 'Build Project'
         type: 'BUILD'
@@ -499,7 +499,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Dynamic Store OFF'
   events:
@@ -526,7 +526,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -542,7 +542,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -551,7 +551,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -584,7 +584,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests'
   events:
@@ -611,7 +611,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -627,7 +627,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -636,7 +636,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -675,7 +675,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests / Dynamic Store OFF'
   events:
@@ -705,7 +705,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   actions:
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -715,7 +715,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -724,7 +724,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -757,7 +757,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests'
   events:
@@ -784,7 +784,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -800,7 +800,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -809,7 +809,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -848,7 +848,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance / Dynamic Store OFF'
   events:
@@ -872,7 +872,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -921,7 +921,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance'
   events:
@@ -948,7 +948,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   actions:
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -997,7 +997,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance / Dynamic Store OFF'
   events:
@@ -1021,7 +1021,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1070,7 +1070,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance'
   events:
@@ -1094,7 +1094,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1149,7 +1149,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Functional Tests / Dynamic Store OFF'
   events:
@@ -1176,7 +1176,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1192,7 +1192,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -1201,7 +1201,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1234,7 +1234,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Functional Tests'
   events:
@@ -1264,7 +1264,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1280,7 +1280,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-functional-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-functional-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -1289,7 +1289,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1328,7 +1328,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Functional Tests / Dynamic Store OFF'
   events:
@@ -1355,7 +1355,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1371,7 +1371,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -1380,7 +1380,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1413,7 +1413,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Functional Tests'
   events:
@@ -1440,7 +1440,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1456,7 +1456,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -1465,7 +1465,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1504,7 +1504,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Acceptance / Dynamic Store OFF'
   events:
@@ -1528,7 +1528,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1577,7 +1577,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Acceptance'
   events:
@@ -1607,7 +1607,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1662,7 +1662,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Acceptance / Dynamic Store OFF'
   events:
@@ -1686,7 +1686,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1735,7 +1735,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Acceptance'
   events:
@@ -1759,7 +1759,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1814,7 +1814,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Debian / PHP 8.3 / Frontend & Assets'
   events:
@@ -1841,7 +1841,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1889,7 +1889,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Prefer Lowest / Dynamic Store OFF'
   events:
@@ -1916,7 +1916,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1941,7 +1941,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -1950,7 +1950,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1983,7 +1983,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Prefer Lowest'
   events:
@@ -2010,7 +2010,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2035,7 +2035,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -2044,7 +2044,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -2083,7 +2083,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance / Prefer Lowest / Dynamic Store OFF'
   events:
@@ -2107,7 +2107,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2165,7 +2165,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance / Prefer Lowest'
   events:
@@ -2189,7 +2189,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2253,7 +2253,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot / Dynamic Store OFF'
   events:
@@ -2277,7 +2277,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2345,7 +2345,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / API'
   events:
@@ -2369,7 +2369,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -2444,7 +2444,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / API'
   events:
@@ -2471,7 +2471,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2546,7 +2546,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Cypress / Dynamic Store OFF'
   events:
@@ -2573,7 +2573,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2601,11 +2601,11 @@
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.example .env"'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
                 fi
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
@@ -2649,7 +2649,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Cypress'
   events:
@@ -2679,7 +2679,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2707,11 +2707,11 @@
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.dynamic-store.example .env"'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-ui-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-ui-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master-bla-bla" ]]; then
                   .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
                 fi
             - ' .ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
@@ -2761,7 +2761,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Positive / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API'
   events:
@@ -2934,7 +2934,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -3011,7 +3011,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Two'
   events:
@@ -3034,7 +3034,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -3111,7 +3111,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Three'
   events:
@@ -3134,7 +3134,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -3211,7 +3211,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group One'
   events:
@@ -3231,7 +3231,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -3302,7 +3302,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group Two'
   events:
@@ -3322,7 +3322,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -3393,7 +3393,7 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group Three'
   events:
@@ -3413,7 +3413,7 @@
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -3484,4 +3484,4 @@
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+              trigger_variable_value: 'master-bla-bla'
