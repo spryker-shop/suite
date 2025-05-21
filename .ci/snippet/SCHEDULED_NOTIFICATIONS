@@ -5,17 +5,18 @@ if [ "$PIPELINE_STATUS" = "FAILURE" ]; then
     SLACK_USER_GROUPS=$(echo "$JIRA_TICKET_SLACK_USER_GROUP_MAPPING" | jq -r --arg team "$TEAM_NAME" '.[$team] // empty')
     SLACK_MESSAGE=":x: The pipeline *'$BUDDY_PIPELINE_NAME'* on the *'$BUDDY_REPO_SLUG'* repository failed. Manual intervention is required!"
 
-    for SLACK_USER_GROUP in $(echo $SLACK_USER_GROUPS | jq -r '.[]'); do
-        SLACK_MESSAGE="$SLACK_MESSAGE <'"$SLACK_USER_GROUP"'>"
+    # Add proper mentions for each Slack user group
+    for SLACK_USER_GROUP in $(echo "$SLACK_USER_GROUPS" | jq -r '.[]'); do
+        SLACK_MESSAGE="$SLACK_MESSAGE <!subteam^${SLACK_USER_GROUP}>"
     done
 
-    SLACK_MESSAGE="$SLACK_MESSAGE \n*Details*:  <'"$BUDDY_RUN_URL"'>"
+    SLACK_MESSAGE="$SLACK_MESSAGE \n*Details*:  <${BUDDY_RUN_URL}>"
 
     curl -X POST --location 'https://slack.com/api/chat.postMessage' \
      -H 'Content-Type: application/json' \
-     -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' \
+     -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
      --data '{
          "channel": "'"$WEEKLY_CI_SLACK_CHANNEL_ID"'",
-         "text":  "'"$SLACK_MESSAGE"'"
+         "text": "'"$SLACK_MESSAGE"'"
      }'
 fi
