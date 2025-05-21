@@ -7,20 +7,22 @@ runs:
         - name: Set Slack message with user groups
           if: job.status == 'failure' && github.ref == 'refs/heads/master'
           shell: bash
-          run: |
-              echo "Generating Slack message..."
-              
-              # Extract team name (only Latin letters before dash)
-              COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
+          run: |  
+              COMMIT_MESSAGE="${{ github.event.head_commit.message }}"  
+              TEAM_NAME=""
+  
               if [[ "$COMMIT_MESSAGE" =~ ^([a-zA-Z]+)-[0-9]+ ]]; then
                 TEAM_NAME="${BASH_REMATCH[1]}"
-                echo "Detected team: $TEAM_NAME"
-              else
-                echo "No valid team name found in commit message."
-                TEAM_NAME=""
+              fi
+  
+              if [[ -z "$TEAM_NAME" && "$COMMIT_MESSAGE" =~ /([a-zA-Z]+)-[0-9]+[-/] ]]; then
+                TEAM_NAME="${BASH_REMATCH[1]}"
+              fi
+  
+              if [[ -n "$TEAM_NAME" ]]; then
+                TEAM_NAME=$(echo "$TEAM_NAME" | tr '[:lower:]' '[:upper:]')
               fi
               
-              # Initialize variables
               MENTIONS=""
               if [[ -n "$TEAM_NAME" ]]; then
                 USER_GROUPS=$(echo '${{ env.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}' | jq -r --arg team "$TEAM_NAME" '.[$team][]? // empty')
@@ -28,13 +30,11 @@ runs:
                   for group in $USER_GROUPS; do
                     MENTIONS+="<!subteam^$group> "
                   done
-                else
-                  echo "No user groups found for team '$TEAM_NAME'."
                 fi
               fi
               
-              # Construct final Slack message
-              MESSAGE="❌ Job *${{ github.job }}* on the *${{ github.repository }}* repository failed. ${MENTIONS}Manual intervention is required! \n*Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              MESSAGE="❌ Job *${{ github.job }}* on the *${{ github.repository }}* repository failed. ${MENTIONS}Manual intervention is required!
+              *Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
               
               echo "SLACK_MESSAGE<<EOF" >> $GITHUB_ENV
               echo "$MESSAGE" >> $GITHUB_ENV
@@ -47,4 +47,4 @@ runs:
               SLACK_BOT_TOKEN: ${{ env.SLACK_BOT_TOKEN }}
           with:
               channel-id: ${{ env.WEEKLY_CI_SLACK_CHANNEL_ID }}
-              slack-message: ${{ env.SLACK_MESSAGE }}
+              slack-message: "${{ env.SLACK_MESSAGE }}"
