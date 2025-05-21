@@ -36,7 +36,7 @@
         execute_commands:
             - '.ci/snippet/SLACK_NOTIFICATIONS'
         setup_commands:
-            - apt-get update && apt-get -y install jq      
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
@@ -766,7 +766,7 @@
         execute_commands:
             - '.ci/snippet/SLACK_NOTIFICATIONS'
         setup_commands:
-            - apt-get update && apt-get -y install jq      
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
