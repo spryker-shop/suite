@@ -7,12 +7,8 @@ runs:
         - name: Set Slack message with user groups
           if: job.status == 'failure' && github.ref == 'refs/heads/master'
           shell: bash
-          run: |
-              echo "Generating Slack message..."
-  
-              COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
-              echo "Commit message: $COMMIT_MESSAGE"
-  
+          run: |  
+              COMMIT_MESSAGE="${{ github.event.head_commit.message }}"  
               TEAM_NAME=""
   
               if [[ "$COMMIT_MESSAGE" =~ ^([a-zA-Z]+)-[0-9]+ ]]; then
