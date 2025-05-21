@@ -25,4 +25,16 @@ class PropelConfig extends SprykerPropelConfig
 
         return array_merge(parent::getCorePropelSchemaPathPatterns(), $nonsplitDirectories);
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @return bool
+     */
+    public function isSharedLoggerEnabled(): bool
+    {
+        return true;
+    }
 }

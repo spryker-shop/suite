@@ -9,26 +9,26 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\Sitemap;
 
-use Spryker\Zed\CategoryStorage\Communication\Plugin\Sitemap\CategoryNodeSitemapDataProviderPlugin;
-use Spryker\Zed\CmsStorage\Communication\Plugin\Sitemap\CmsPageSitemapDataProviderPlugin;
-use Spryker\Zed\MerchantStorage\Communication\Plugin\Sitemap\MerchantSitemapDataProviderPlugin;
-use Spryker\Zed\ProductSetStorage\Communication\Plugin\Sitemap\ProductSetSitemapDataProviderPlugin;
-use Spryker\Zed\ProductStorage\Communication\Plugin\Sitemap\ProductAbstractSitemapDataProviderPlugin;
+use Spryker\Zed\CategoryStorage\Communication\Plugin\Sitemap\CategoryNodeSitemapGeneratorDataProviderPlugin;
+use Spryker\Zed\CmsStorage\Communication\Plugin\Sitemap\CmsPageSitemapGeneratorDataProviderPlugin;
+use Spryker\Zed\MerchantStorage\Communication\Plugin\Sitemap\MerchantSitemapGeneratorDataProviderPlugin;
+use Spryker\Zed\ProductSetStorage\Communication\Plugin\Sitemap\ProductSetSitemapGeneratorDataProviderPlugin;
+use Spryker\Zed\ProductStorage\Communication\Plugin\Sitemap\ProductAbstractSitemapGeneratorDataProviderPlugin;
 use Spryker\Zed\Sitemap\SitemapDependencyProvider as SprykerSitemapDependencyProvider;
 
 class SitemapDependencyProvider extends SprykerSitemapDependencyProvider
 {
     /**
-     * @return array<\Spryker\Zed\SitemapExtension\Dependency\Plugin\SitemapDataProviderPluginInterface>
+     * @return array<\Spryker\Zed\SitemapExtension\Dependency\Plugin\SitemapGeneratorDataProviderPluginInterface>
      */
-    protected function getSitemapDataProviderPlugins(): array
+    protected function getSitemapGeneratorDataProviderPlugins(): array
     {
         return [
-            new ProductAbstractSitemapDataProviderPlugin(),
-            new CategoryNodeSitemapDataProviderPlugin(),
-            new CmsPageSitemapDataProviderPlugin(),
-            new ProductSetSitemapDataProviderPlugin(),
-            new MerchantSitemapDataProviderPlugin(),
+            new ProductAbstractSitemapGeneratorDataProviderPlugin(),
+            new CategoryNodeSitemapGeneratorDataProviderPlugin(),
+            new CmsPageSitemapGeneratorDataProviderPlugin(),
+            new ProductSetSitemapGeneratorDataProviderPlugin(),
+            new MerchantSitemapGeneratorDataProviderPlugin(),
         ];
     }
 }
