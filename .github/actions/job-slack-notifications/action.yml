@@ -20,7 +20,7 @@ runs:
               fi
   
               if [[ -n "$TEAM_NAME" ]]; then
-                TEAM_NAME=$(echo "$TEAM_NAME" | tr '[:upper:]' '[:lower:]')
+                TEAM_NAME=$(echo "$TEAM_NAME" | tr '[:lower:]' '[:upper:]')
               fi
               
               MENTIONS=""
@@ -33,7 +33,8 @@ runs:
                 fi
               fi
               
-              MESSAGE="❌ Job *${{ github.job }}* on the *${{ github.repository }}* repository failed. ${MENTIONS}Manual intervention is required! \n*Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              MESSAGE="❌ Job *${{ github.job }}* on the *${{ github.repository }}* repository failed. ${MENTIONS}Manual intervention is required!
+              *Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
               
               echo "SLACK_MESSAGE<<EOF" >> $GITHUB_ENV
               echo "$MESSAGE" >> $GITHUB_ENV
@@ -46,4 +47,4 @@ runs:
               SLACK_BOT_TOKEN: ${{ env.SLACK_BOT_TOKEN }}
           with:
               channel-id: ${{ env.WEEKLY_CI_SLACK_CHANNEL_ID }}
-              slack-message: ${{ env.SLACK_MESSAGE }}
+              slack-message: "${{ env.SLACK_MESSAGE }}"
