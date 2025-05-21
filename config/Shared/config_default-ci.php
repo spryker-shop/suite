@@ -7,6 +7,7 @@ use Pyz\Shared\Console\ConsoleConstants;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\AppCatalogGui\AppCatalogGuiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
+use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
@@ -202,6 +203,7 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = array_map(static function ($storeNa
 // ---------- LOGGER
 
 $config[LogConstants::LOG_LEVEL] = Logger::CRITICAL;
+$config[LogConstants::LOGGER_CONFIG] = SprykerLoggerConfig::class;
 
 // >>> SYMFONY_MAILER
 
