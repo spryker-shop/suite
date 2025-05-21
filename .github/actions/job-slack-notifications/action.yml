@@ -33,7 +33,7 @@ runs:
                 fi
               fi
               
-              MESSAGE="❌ Job *${{ github.job }}* on the *${{ github.repository }}* repository failed. ${MENTIONS}Manual intervention is required!
+              MESSAGE="❌ Job *${{ github.job }}* on the *${{ github.repository }}* repository failed. Manual intervention is required! ${MENTIONS}
               *Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
               
               echo "SLACK_MESSAGE<<EOF" >> $GITHUB_ENV
