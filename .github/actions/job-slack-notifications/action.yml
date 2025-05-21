@@ -24,14 +24,6 @@ runs:
               fi
 
               MENTIONS=""
-              if [[ -n "$TEAM_NAME" ]]; then
-                USER_GROUPS=$(echo '${{ env.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}' | jq -r --arg team "$TEAM_NAME" '.[$team][]? // empty')
-                if [[ -n "$USER_GROUPS" ]]; then
-                  for group in $USER_GROUPS; do
-                    MENTIONS+="<!subteam^$group> "
-                  done
-                fi
-              fi
 
               MESSAGE="❌ Job *${{ github.job }}* on the *${{ github.repository }}* repository failed. ${MENTIONS}Manual intervention is required!
               *Details*: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
