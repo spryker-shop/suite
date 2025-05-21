@@ -1,21 +1,22 @@
 #!/bin/bash
 
-if [ "$BUDDY_RUN_MODE" = "SCHEDULE" ]; then
-  if [ "$PIPELINE_STATUS" = "SUCCESS" ]; then
-      curl -X POST --location 'https://slack.com/api/chat.postMessage' \
-        -H 'Content-Type: application/json' \
-        -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' \
-        --data '{
-            "channel": "'"$WEEKLY_CI_SLACK_CHANNEL_ID"'",
-            "text": ":white_check_mark:The scheduled pipeline *'"$BUDDY_PIPELINE_NAME"'* on the *'"$BUDDY_REPO_SLUG"'* repository succeeded."
-        }'
-  elif [ "$PIPELINE_STATUS" = "FAILURE" ]; then
-      curl -X POST --location 'https://slack.com/api/chat.postMessage' \
-        -H 'Content-Type: application/json' \
-        -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' \
-        --data '{
-            "channel": "'"$WEEKLY_CI_SLACK_CHANNEL_ID"'",
-            "text": ":x:The scheduled pipeline *'"$BUDDY_PIPELINE_NAME"'* on the *'"$BUDDY_REPO_SLUG"'* repository failed. Manual intervention is required! \n*Details*:  <'"$BUDDY_RUN_URL"'>"
-        }'
-  fi
+if [ "$PIPELINE_STATUS" = "FAILURE" ]; then
+    TEAM_NAME=$(echo "$BUDDY_RUN_COMMIT_MESSAGE" | cut -d'-' -f1)
+    SLACK_USER_GROUPS=$(echo "$JIRA_TICKET_SLACK_USER_GROUP_MAPPING" | jq -r --arg team "$TEAM_NAME" '.[$team] // empty')
+    SLACK_MESSAGE=":x: The pipeline *'$BUDDY_PIPELINE_NAME'* on the *'$BUDDY_REPO_SLUG'* repository failed. Manual intervention is required!"
+
+    # Add proper mentions for each Slack user group
+    for SLACK_USER_GROUP in $(echo "$SLACK_USER_GROUPS" | jq -r '.[]'); do
+        SLACK_MESSAGE="$SLACK_MESSAGE <!subteam^${SLACK_USER_GROUP}>"
+    done
+
+    SLACK_MESSAGE="$SLACK_MESSAGE \n*Details*:  <${BUDDY_RUN_URL}>"
+
+    curl -X POST --location 'https://slack.com/api/chat.postMessage' \
+     -H 'Content-Type: application/json' \
+     -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
+     --data '{
+         "channel": "'"$WEEKLY_CI_SLACK_CHANNEL_ID"'",
+         "text": "'"$SLACK_MESSAGE"'"
+     }'
 fi
