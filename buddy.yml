@@ -362,6 +362,24 @@
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto'
             - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install --no-ansi -r ci.code-generate'
             - '.ci/snippet/FINISH'
+        services:
+            -   type: 'POSTGRE_SQL'
+                version: '17'
+                connection:
+                    host: 'postgres'
+                    user: 'postgres'
+                    password: 'secret'
+                volume_mappings: [ ]
+            -   type: 'RABBIT_MQ'
+                connection:
+                    host: 'rabbitmq'
+                    user: 'guest'
+                    password: 'guest'
+                volume_mappings: [ ]
+            -   type: 'REDIS'
+                connection:
+                    host: 'redis'
+                volume_mappings: [ ]
         shell: 'BASH'
         run_next_parallel: false
       - action: 'PHP 8.3 PHPStan spryker/spryker [1/5]'
