@@ -238,11 +238,6 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
-      - type: 'PULL_REQUEST'
-        events:
-            - 'labeled'
-        branches:
-            - '*'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -314,6 +309,11 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
+      -   type: 'PULL_REQUEST'
+          events:
+              - 'labeled'
+          branches:
+              - '*'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
