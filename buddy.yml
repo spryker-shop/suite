@@ -309,11 +309,11 @@
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
-      -   type: 'PULL_REQUEST'
-          events:
-              - 'labeled'
-          branches:
-              - '*'
+      - type: 'PULL_REQUEST'
+        events:
+            - 'labeled'
+        branches:
+            - '*'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -321,20 +321,20 @@
   clone_depth: 1
   resources: 'LARGE'
   trigger_conditions:
-      -   trigger_condition: OR
-          trigger_operands:
-              -   trigger_condition: 'VAR_CONTAINS'
-                  trigger_variable_value: 'run-phpstan-core-ci'
-                  trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-              -   trigger_condition: 'VAR_CONTAINS'
-                  trigger_variable_value: 'run-latest-ci'
-                  trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-              -   trigger_condition: 'VAR_CONTAINS'
-                  trigger_variable_value: 'run-ssp-latest-ci'
-                  trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-              -   trigger_condition: 'VAR_IS'
-                  trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-                  trigger_variable_value: 'master'
+      - trigger_condition: OR
+        trigger_operands:
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-phpstan-core-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   actions:
       - action: 'Build Project'
         type: 'BUILD'
@@ -348,23 +348,23 @@
             - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install --no-ansi -r ci.code-generate'
             - '.ci/snippet/FINISH'
         services:
-            -   type: 'POSTGRE_SQL'
-                version: '17'
-                connection:
-                    host: 'postgres'
-                    user: 'postgres'
-                    password: 'secret'
-                volume_mappings: [ ]
-            -   type: 'RABBIT_MQ'
-                connection:
-                    host: 'rabbitmq'
-                    user: 'guest'
-                    password: 'guest'
-                volume_mappings: [ ]
-            -   type: 'REDIS'
-                connection:
-                    host: 'redis'
-                volume_mappings: [ ]
+            - type: 'POSTGRE_SQL'
+              version: '17'
+              connection:
+                  host: 'postgres'
+                  user: 'postgres'
+                  password: 'secret'
+              volume_mappings: []
+            - type: 'RABBIT_MQ'
+              connection:
+                  host: 'rabbitmq'
+                  user: 'guest'
+                  password: 'guest'
+              volume_mappings: []
+            - type: 'REDIS'
+              connection:
+                  host: 'redis'
+              volume_mappings: []
         shell: 'BASH'
         run_next_parallel: false
       - action: 'PHP 8.3 PHPStan spryker/spryker [1/5]'
@@ -441,97 +441,178 @@
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
-      -   action: 'PHP 8.2 PHPStan spryker/spryker [1/5]'
-          type: 'BUILD'
-          docker_image_name: 'spryker/php'
-          docker_image_tag: '8.2'
-          execute_commands:
-              - '.ci/snippet/PREPARE'
-              - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 0,275'
-              - '.ci/snippet/FINISH'
-          shell: 'BASH'
-          run_next_parallel: true
-      -   action: 'PHP 8.2 PHPStan spryker/spryker [2/5]'
-          type: 'BUILD'
-          docker_image_name: 'spryker/php'
-          docker_image_tag: '8.2'
-          execute_commands:
-              - '.ci/snippet/PREPARE'
-              - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 275,275'
-              - '.ci/snippet/FINISH'
-          shell: 'BASH'
-          run_next_parallel: true
-      -   action: 'PHP 8.2 PHPStan spryker/spryker [3/5]'
-          type: 'BUILD'
-          docker_image_name: 'spryker/php'
-          docker_image_tag: '8.2'
-          execute_commands:
-              - '.ci/snippet/PREPARE'
-              - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 550,150'
-              - '.ci/snippet/FINISH'
-          shell: 'BASH'
-          run_next_parallel: true
-      -   action: 'PHP 8.2 PHPStan spryker/spryker [4/5]'
-          type: 'BUILD'
-          docker_image_name: 'spryker/php'
-          docker_image_tag: '8.2'
-          execute_commands:
-              - '.ci/snippet/PREPARE'
-              - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 700,200'
-              - '.ci/snippet/FINISH'
-          shell: 'BASH'
-          run_next_parallel: true
-      -   action: 'PHP 8.2 PHPStan spryker/spryker [5/5]'
-          type: 'BUILD'
-          docker_image_name: 'spryker/php'
-          docker_image_tag: '8.2'
-          execute_commands:
-              - '.ci/snippet/PREPARE'
-              - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 900'
-              - '.ci/snippet/FINISH'
-          shell: 'BASH'
-          run_next_parallel: true
-      -   action: 'PHP 8.2 PHPStan spryker/spryker feature'
-          type: 'BUILD'
-          docker_image_name: 'spryker/php'
-          docker_image_tag: '8.2'
-          execute_commands:
-              - '.ci/snippet/PREPARE'
-              - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerFeature.all -v'
-              - '.ci/snippet/FINISH'
-          shell: 'BASH'
-          run_next_parallel: true
-          trigger_conditions:
-              -   trigger_condition: 'VAR_CONTAINS'
-                  trigger_variable_value: 'run-ssp-latest-ci'
-                  trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-      -   action: 'PHP 8.2 PHPStan spryker/spryker-shop'
-          type: 'BUILD'
-          docker_image_name: 'spryker/php'
-          docker_image_tag: '8.2'
-          execute_commands:
-              - '.ci/snippet/PREPARE'
-              - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerShop.all -v'
-              - '.ci/snippet/FINISH'
-          shell: 'BASH'
-      -   action: 'Master Job Slack Notification failure'
-          type: 'BUILD'
-          trigger_time: 'ON_FAILURE'
-          docker_image_name: 'library/node'
-          docker_image_tag: '18'
-          variables:
-              -   key: 'PIPELINE_STATUS'
-                  value: 'FAILURE'
-                  type: 'VAR'
-          execute_commands:
-              - '.ci/snippet/SLACK_NOTIFICATIONS'
-          setup_commands:
-              - apt-get update && apt-get -y install jq
-          shell: 'BASH'
-          trigger_conditions:
-              -   trigger_condition: 'VAR_IS'
-                  trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-                  trigger_variable_value: 'master'
+      - action: 'Master Job Slack Notification failure'
+        type: 'BUILD'
+        trigger_time: 'ON_FAILURE'
+        docker_image_name: 'library/node'
+        docker_image_tag: '18'
+        variables:
+            - key: 'PIPELINE_STATUS'
+              value: 'FAILURE'
+              type: 'VAR'
+        execute_commands:
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
+        shell: 'BASH'
+        trigger_conditions:
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
+
+- pipeline: 'PHPStan Validation / Prefer Lowest'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+      - type: 'PULL_REQUEST'
+        events:
+            - 'labeled'
+        branches:
+            - '*'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'LARGE'
+  trigger_conditions:
+      - trigger_condition: OR
+        trigger_operands:
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-phpstan-core-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
+  actions:
+      - action: 'Build Project'
+        type: 'BUILD'
+        main_service_name: 'post'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
+            - '.ci/snippet/REQUIRE composer update --prefer-lowest --optimize-autoloader --no-interaction --prefer-install=auto'
+            - '.ci/snippet/REQUIRE composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies;'
+            - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install --no-ansi -r ci.code-generate'
+            - '.ci/snippet/FINISH'
+        services:
+            - type: 'POSTGRE_SQL'
+              version: '9.6'
+              connection:
+                  host: 'postgres'
+                  user: 'postgres'
+                  password: 'secret'
+            - type: 'RABBIT_MQ'
+              connection:
+                  host: 'rabbitmq'
+                  user: 'guest'
+                  password: 'guest'
+            - type: 'REDIS'
+              connection:
+                  host: 'redis'
+        shell: 'BASH'
+        run_next_parallel: false
+      - action: 'PHP 8.2 PHPStan spryker/spryker [1/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 0,275'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.2 PHPStan spryker/spryker [2/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 275,275'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.2 PHPStan spryker/spryker [3/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 550,150'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.2 PHPStan spryker/spryker [4/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 700,200'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.2 PHPStan spryker/spryker [5/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 900'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.2 PHPStan spryker/spryker feature'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerFeature.all -v'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+        trigger_conditions:
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+      - action: 'PHP 8.2 PHPStan spryker/spryker-shop'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerShop.all -v'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+      - action: 'Master Job Slack Notification failure'
+        type: 'BUILD'
+        trigger_time: 'ON_FAILURE'
+        docker_image_name: 'library/node'
+        docker_image_tag: '18'
+        variables:
+            - key: 'PIPELINE_STATUS'
+              value: 'FAILURE'
+              type: 'VAR'
+        execute_commands:
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
+        shell: 'BASH'
+        trigger_conditions:
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Dynamic Store OFF'
   events:
