@@ -1265,7 +1265,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Functional Tests'
+- pipeline: '[run-functional-ci] PHP 8.3 / MariaDB / Functional Tests'
   events:
       - type: 'PUSH'
         refs:
@@ -1532,7 +1532,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Acceptance / Dynamic Store OFF'
+- pipeline: '[run-api-ci] PHP 8.3 / MariaDB / Acceptance / Dynamic Store OFF'
   events:
       - type: 'PUSH'
         refs:
@@ -1604,7 +1604,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Acceptance'
+- pipeline: '[run-api-ci] [run-ui-ci] PHP 8.3 / MariaDB / Acceptance'
   events:
       - type: 'PUSH'
         refs:
@@ -1838,7 +1838,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Debian / PHP 8.3 / Frontend & Assets'
+- pipeline: '[run-functional-ci] / PHP 8.3 / Frontend & Assets'
   events:
       - type: 'PUSH'
         refs:
@@ -2566,7 +2566,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Cypress'
+- pipeline: '[run-ui-ci] PHP 8.3 / MariaDB / Cypress'
   events:
       - type: 'PUSH'
         refs:
@@ -2677,7 +2677,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group One'
+- pipeline: '[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group One'
   events:
       - type: 'PULL_REQUEST'
         events:
@@ -2779,7 +2779,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Two'
+- pipeline: '[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group Two'
   events:
       - type: 'PULL_REQUEST'
         events:
@@ -2881,7 +2881,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Three'
+- pipeline: '[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group Three'
   events:
       - type: 'PULL_REQUEST'
         events:
