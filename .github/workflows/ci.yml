@@ -3,9 +3,10 @@ name: SUITE-CI
 on:
     pull_request:
         types: [ labeled, unlabeled, synchronize ]
+    push:
+        branches:
+            - master
     workflow_dispatch:
-    schedule:
-        - cron: '0 0 * * 0'
 
 env:
     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
@@ -20,7 +21,7 @@ jobs:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-static-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "CS, ArchSniffer, PHPStan, Evaluator"
         runs-on: ubuntu-22.04
         strategy:
@@ -148,15 +149,15 @@ jobs:
             - name: Run Evaluator
               run: vendor/bin/evaluator evaluate
 
-            - name: Slack Notification for scheduled job
-              uses: ./.github/actions/scheduled-job-slack-notifications
+            - name: Slack Notification for failed job
+              uses: ./.github/actions/job-slack-notifications
               if: always()
 
     js-validation:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-npm-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "NPM validation"
         runs-on: ubuntu-22.04
         strategy:
@@ -190,14 +191,14 @@ jobs:
             -   name: Front-end MP Unit Tests
                 run: npm run mp:test
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-83-mariadb-glue-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.3 / MariaDB / Glue / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -223,8 +224,8 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-83-mariadb-glue-alpine:
@@ -233,7 +234,7 @@ jobs:
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && (contains(github.event.pull_request.labels.*.name, 'run-api-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -260,8 +261,8 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-83-mariadb-acceptance-alpine-dynamic-store-off:
@@ -269,7 +270,7 @@ jobs:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -293,8 +294,8 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-83-mariadb-acceptance-alpine:
@@ -303,7 +304,7 @@ jobs:
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -329,15 +330,15 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-83-mariadb-functional-alpine-dynamic-store-off:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -360,15 +361,15 @@ jobs:
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-83-mariadb-functional-alpine:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.3 / MariaDB / Functional / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -394,15 +395,15 @@ jobs:
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-mariadb-glue-alpine-dynamic-store-off:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / MariaDB / Glue / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -428,14 +429,14 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-mariadb-glue-alpine:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / MariaDB / Glue / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -463,14 +464,14 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.api.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-postgresql-acceptance-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / PostgreSQL / Acceptance / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -495,15 +496,15 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-postgresql-acceptance-alpine:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / PostgreSQL / Acceptance / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -530,15 +531,15 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-postgresql-functional-alpine-dynamic-store-off:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / PostgreSQL / Functional / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -563,15 +564,15 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-postgresql-functional-alpine:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / PostgreSQL / Functional / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -598,14 +599,14 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-mariadb-acceptance-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / MariaDB / Acceptance / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -630,15 +631,15 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-mariadb-acceptance-alpine:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / MariaDB / Acceptance / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -665,14 +666,14 @@ jobs:
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing codecept run -c codeception.acceptance.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-mariadb-functional-alpine-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / MariaDB / Functional / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -696,15 +697,15 @@ jobs:
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-mariadb-functional-alpine:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / MariaDB / Functional / Alpine"
         runs-on: ubuntu-22.04
         env:
@@ -730,15 +731,15 @@ jobs:
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-postgres-functional-debian-dynamic-store-off:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / PostgreSQL / Functional / Debian / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -762,14 +763,14 @@ jobs:
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-postgres-functional-debian:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / PostgreSQL / Functional / Debian"
         runs-on: ubuntu-22.04
         env:
@@ -795,8 +796,8 @@ jobs:
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-frontend-and-assets-alpine:
@@ -806,7 +807,7 @@ jobs:
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && (contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -831,15 +832,15 @@ jobs:
                   docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
                   docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-82-lowest:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
 
         name: "PHP 8.2 / Prefer Lowest"
         runs-on: ubuntu-22.04
@@ -849,7 +850,7 @@ jobs:
             SPRYKER_CURRENT_REGION: EU
             DYNAMIC_STORE_MODE: true
             TRAVIS: 1
-        
+
         steps:
 
           - uses: actions/checkout@v4
@@ -866,15 +867,15 @@ jobs:
           - name: Run prefer lowest
             run: composer lowest
 
-          -   name: Slack Notification for scheduled job
-              uses: ./.github/actions/scheduled-job-slack-notifications
+          -   name: Slack Notification for failed job
+              uses: ./.github/actions/job-slack-notifications
               if: always()
 
     docker-alpine-php-8-2-mariadb-robot-dynamic-store-off:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
@@ -924,15 +925,15 @@ jobs:
               run: |
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-off/robot-api/${GITHUB_RUN_ID}/PHP8.2MariaDB/log.html
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     docker-alpine-php-8-3-postgresql-robot:
         if: >
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / API"
         runs-on: ubuntu-22.04
         env:
@@ -988,8 +989,8 @@ jobs:
               run: |
                   AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/log.html
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     docker-alpine-php-8-3-mariadb-robot:
@@ -997,7 +998,7 @@ jobs:
             !contains(github.event.pull_request.head.ref, 'hackathon')
             && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
-            || (github.event_name == 'schedule' && github.ref == 'refs/heads/master')
+            || github.ref == 'refs/heads/master'
         name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / API"
         runs-on: ubuntu-22.04
         env:
@@ -1053,8 +1054,8 @@ jobs:
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3MariaDB/log.html
 
-            -   name: Slack Notification for scheduled job
-                uses: ./.github/actions/scheduled-job-slack-notifications
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     positive-docker-alpine-php-8-2-mariadb-robot:
