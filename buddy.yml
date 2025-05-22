@@ -1,14 +1,9 @@
-#1
 - pipeline: 'Snyk Validation'
   events:
       - type: 'PUSH'
         refs:
             - 'refs/pull/*'
             - 'refs/heads/master'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -29,7 +24,7 @@
         setup_commands:
             - 'apt-get update && apt-get install -y golang-go'
         shell: 'BASH'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -39,27 +34,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Standard Validation'
   events:
@@ -72,10 +54,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -91,12 +69,12 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
+            - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-ssp-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   actions:
       - action: 'Build Project'
         type: 'BUILD'
@@ -283,7 +261,7 @@
         setup_commands:
             - 'apt-get update && apt-get -y install php8.2-cli php8.2-mbstring'
         shell: 'BASH'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -293,27 +271,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'NPM Validation'
   events:
@@ -326,10 +291,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -345,9 +306,12 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+              trigger_variable_value: 'run-ssp-latest-ci'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   actions:
       - action: 'NPM Validation'
         type: 'BUILD'
@@ -362,7 +326,7 @@
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -372,27 +336,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Validation / Prefer Lowest'
   events:
@@ -405,10 +356,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -428,8 +375,8 @@
               trigger_variable_value: 'run-ssp-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   actions:
       - action: 'Build Project'
         type: 'BUILD'
@@ -543,7 +490,7 @@
             - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerShop.all -v'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -553,27 +500,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Dynamic Store OFF'
   events:
@@ -586,10 +520,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -603,8 +533,8 @@
               trigger_variable_value: 'run-ssp-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -620,7 +550,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -629,17 +559,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
-                fi
-            - |
-                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -657,7 +577,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -667,27 +587,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests'
   events:
@@ -700,10 +607,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -713,12 +616,12 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
+            - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-ssp-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -734,7 +637,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -743,17 +646,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
-                fi
-            - |
-                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -777,7 +670,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -787,27 +680,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests / Dynamic Store OFF'
   events:
@@ -820,10 +700,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -840,8 +716,8 @@
               trigger_variable_value: 'run-ssp-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   actions:
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -851,7 +727,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -860,17 +736,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
-                fi
-            - |
-                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -888,7 +754,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -898,27 +764,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests'
   events:
@@ -931,10 +784,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -948,8 +797,8 @@
               trigger_variable_value: 'run-ssp-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -965,7 +814,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -974,17 +823,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
-                fi
-            - |
-                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1008,7 +847,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -1018,27 +857,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance / Dynamic Store OFF'
   events:
@@ -1051,10 +877,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -1065,8 +887,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1100,7 +922,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -1110,27 +932,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance'
   events:
@@ -1143,10 +952,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1160,8 +965,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   actions:
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -1195,7 +1000,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -1205,27 +1010,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance / Dynamic Store OFF'
   events:
@@ -1238,10 +1030,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -1252,8 +1040,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1287,7 +1075,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -1297,27 +1085,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance'
   events:
@@ -1330,10 +1105,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -1344,8 +1115,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1385,7 +1156,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -1395,27 +1166,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Functional Tests / Dynamic Store OFF'
   events:
@@ -1428,10 +1186,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -1441,12 +1195,12 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
+            - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-ssp-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1462,7 +1216,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -1471,17 +1225,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
-                fi
-            - |
-                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1499,7 +1243,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -1509,27 +1253,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Functional Tests'
   events:
@@ -1542,10 +1273,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -1562,8 +1289,8 @@
               trigger_variable_value: 'run-ssp-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1579,7 +1306,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-functional-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-functional-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -1588,17 +1315,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
-                fi
-            - |
-                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1622,7 +1339,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -1632,27 +1349,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Functional Tests / Dynamic Store OFF'
   events:
@@ -1665,10 +1369,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -1678,12 +1378,12 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
+            - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-ssp-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1699,7 +1399,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -1708,17 +1408,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
-                fi
-            - |
-                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1736,7 +1426,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -1746,27 +1436,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Functional Tests'
   events:
@@ -1779,10 +1456,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -1796,8 +1469,8 @@
               trigger_variable_value: 'run-ssp-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1813,7 +1486,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -1822,17 +1495,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
-                fi
-            - |
-                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -1856,7 +1519,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -1866,27 +1529,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Acceptance / Dynamic Store OFF'
   events:
@@ -1899,10 +1549,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -1913,8 +1559,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1948,7 +1594,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -1958,27 +1604,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Acceptance'
   events:
@@ -1991,10 +1624,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -2011,8 +1640,8 @@
               trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2052,7 +1681,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -2062,27 +1691,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Acceptance / Dynamic Store OFF'
   events:
@@ -2095,10 +1711,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -2109,8 +1721,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2144,7 +1756,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -2154,27 +1766,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Acceptance'
   events:
@@ -2187,10 +1786,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -2201,8 +1796,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2242,7 +1837,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -2252,27 +1847,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Debian / PHP 8.3 / Frontend & Assets'
   events:
@@ -2285,10 +1867,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -2302,8 +1880,8 @@
               trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2336,7 +1914,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -2346,27 +1924,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Prefer Lowest / Dynamic Store OFF'
   events:
@@ -2379,10 +1944,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -2396,8 +1957,8 @@
               trigger_variable_value: 'run-ssp-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2422,7 +1983,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -2431,17 +1992,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
-                fi
-            - |
-                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -2459,7 +2010,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -2469,27 +2020,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Functional Tests / Prefer Lowest'
   events:
@@ -2502,10 +2040,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -2515,12 +2049,12 @@
             - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
+            - trigger_condition: 'VAR_CONTAINS'
               trigger_variable_value: 'run-ssp-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2545,7 +2079,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
@@ -2554,17 +2088,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
-                fi
-            - |
-                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
-                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
                 fi
             - '.ci/snippet/FINISH'
@@ -2588,7 +2112,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -2598,27 +2122,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance / Prefer Lowest / Dynamic Store OFF'
   events:
@@ -2631,10 +2142,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -2645,8 +2152,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2689,7 +2196,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_LARGE'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -2699,27 +2206,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Acceptance / Prefer Lowest'
   events:
@@ -2732,10 +2226,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -2746,8 +2236,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2796,7 +2286,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -2806,27 +2296,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot / Dynamic Store OFF'
   events:
@@ -2839,10 +2316,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -2853,8 +2326,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2907,7 +2380,7 @@
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -2917,27 +2390,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / API'
   events:
@@ -2950,10 +2410,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -2964,8 +2420,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
   terminate_stale_runs: true
   auto_clear_cache: true
@@ -3025,7 +2481,7 @@
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -3035,27 +2491,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / API'
   events:
@@ -3068,10 +2511,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -3085,8 +2524,8 @@
               trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -3146,7 +2585,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_MEDIUM'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -3156,27 +2595,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Cypress / Dynamic Store OFF'
   events:
@@ -3189,10 +2615,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -3206,8 +2628,8 @@
               trigger_variable_value: 'run-ssp-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -3235,16 +2657,11 @@
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.example .env"'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* ]]; then
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
-                fi
-            - |
-                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
                 fi
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
@@ -3273,7 +2690,7 @@
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -3283,27 +2700,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Cypress'
   events:
@@ -3316,10 +2720,6 @@
             - 'labeled'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: 'VAR_NOT_CONTAINS'
         trigger_variable_value: 'hackathon'
@@ -3336,8 +2736,8 @@
               trigger_variable_value: 'run-ssp-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -3365,16 +2765,11 @@
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.dynamic-store.example .env"'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-ui-ci"* ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-ui-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
                 fi
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* ]]; then
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
-                fi
-            - |
-                if [[ "$BUDDY_RUN_MODE" == "SCHEDULE" ]]; then
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
                 fi
             - ' .ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
@@ -3409,7 +2804,7 @@
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -3419,27 +2814,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Positive / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API'
   events:
@@ -3601,10 +2983,6 @@
             - 'synchronize'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: OR
         trigger_operands:
@@ -3615,8 +2993,8 @@
               trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -3678,7 +3056,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_LARGE'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -3688,27 +3066,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Two'
   events:
@@ -3720,10 +3085,6 @@
             - 'synchronize'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: OR
         trigger_operands:
@@ -3734,8 +3095,8 @@
               trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -3797,7 +3158,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_LARGE'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -3807,27 +3168,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Three'
   events:
@@ -3839,10 +3187,6 @@
             - 'synchronize'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: OR
         trigger_operands:
@@ -3853,8 +3197,8 @@
               trigger_variable_value: 'run-latest-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -3916,7 +3260,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_LARGE'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -3926,27 +3270,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group One'
   events:
@@ -3958,10 +3289,6 @@
             - 'synchronize'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: OR
         trigger_operands:
@@ -3969,8 +3296,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -4026,7 +3353,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_LARGE'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -4036,27 +3363,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group Two'
   events:
@@ -4068,10 +3382,6 @@
             - 'synchronize'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: OR
         trigger_operands:
@@ -4079,8 +3389,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -4136,7 +3446,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_LARGE'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -4146,27 +3456,14 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
 
 - pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group Three'
   events:
@@ -4178,10 +3475,6 @@
             - 'synchronize'
         branches:
             - '*'
-      - type: 'SCHEDULE'
-        refs:
-            - 'refs/heads/master'
-        cron: '0 0 * * 0'
   trigger_conditions:
       - trigger_condition: OR
         trigger_operands:
@@ -4189,8 +3482,8 @@
               trigger_variable_value: 'run-compatibility-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -4246,7 +3539,7 @@
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
         instance_type: 'GENERAL_LARGE'
-      - action: 'Scheduled Job Slack Notification failure'
+      - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
         docker_image_name: 'library/node'
@@ -4256,24 +3549,11 @@
               value: 'FAILURE'
               type: 'VAR'
         execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
         shell: 'BASH'
         trigger_conditions:
             - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
-      - action: 'Scheduled Job Slack Notification success'
-        type: 'BUILD'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'SUCCESS'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SCHEDULED_NOTIFICATIONS'
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_RUN_MODE'
-              trigger_variable_value: 'SCHEDULE'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
