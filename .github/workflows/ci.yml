@@ -11,6 +11,7 @@ on:
 env:
     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
     WEEKLY_CI_SLACK_CHANNEL_ID: ${{ secrets.WEEKLY_CI_SLACK_CHANNEL_ID }}
+    JIRA_TICKET_SLACK_USER_GROUP_MAPPING: ${{ secrets.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -229,11 +230,10 @@ jobs:
                 if: always()
 
     php-83-mariadb-glue-alpine:
-        name: "PHP 8.3 / MariaDB / Glue / Alpine"
+        name: "[run-api-ci] PHP 8.3 / MariaDB / Glue / Alpine"
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && (contains(github.event.pull_request.labels.*.name, 'run-api-ci')
-                || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
+            contains(github.event.pull_request.labels.*.name, 'run-api-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
         runs-on: ubuntu-22.04
         env:
@@ -268,8 +268,7 @@ jobs:
     php-83-mariadb-acceptance-alpine-dynamic-store-off:
         name: "PHP 8.3 / MariaDB / Acceptance / Alpine / Dynamic Store OFF"
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
         runs-on: ubuntu-22.04
         env:
@@ -299,11 +298,10 @@ jobs:
                 if: always()
 
     php-83-mariadb-acceptance-alpine:
-        name: "PHP 8.3 / MariaDB / Acceptance / Alpine"
+        name: "[run-ui-ci] PHP 8.3 / MariaDB / Acceptance / Alpine"
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
-                || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
+            contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
         runs-on: ubuntu-22.04
         env:
@@ -336,8 +334,7 @@ jobs:
 
     php-83-mariadb-functional-alpine-dynamic-store-off:
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
         runs-on: ubuntu-22.04
         env:
@@ -370,7 +367,7 @@ jobs:
             contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
-        name: "PHP 8.3 / MariaDB / Functional / Alpine"
+        name: "[run-functional-ci] PHP 8.3 / MariaDB / Functional / Alpine"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -401,8 +398,7 @@ jobs:
 
     php-82-mariadb-glue-alpine-dynamic-store-off:
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / MariaDB / Glue / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
@@ -502,8 +498,7 @@ jobs:
 
     php-82-postgresql-acceptance-alpine:
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / PostgreSQL / Acceptance / Alpine"
         runs-on: ubuntu-22.04
@@ -537,8 +532,7 @@ jobs:
 
     php-82-postgresql-functional-alpine-dynamic-store-off:
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / PostgreSQL / Functional / Alpine / Dynamic Store OFF"
         runs-on: ubuntu-22.04
@@ -570,8 +564,7 @@ jobs:
 
     php-82-postgresql-functional-alpine:
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / PostgreSQL / Functional / Alpine"
         runs-on: ubuntu-22.04
@@ -637,8 +630,7 @@ jobs:
 
     php-82-mariadb-acceptance-alpine:
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / MariaDB / Acceptance / Alpine"
         runs-on: ubuntu-22.04
@@ -703,8 +695,7 @@ jobs:
 
     php-82-mariadb-functional-alpine:
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / MariaDB / Functional / Alpine"
         runs-on: ubuntu-22.04
@@ -737,8 +728,7 @@ jobs:
 
     php-82-postgres-functional-debian-dynamic-store-off:
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
         name: "PHP 8.2 / PostgreSQL / Functional / Debian / Dynamic Store OFF"
         runs-on: ubuntu-22.04
@@ -801,12 +791,11 @@ jobs:
                 if: always()
 
     php-82-frontend-and-assets-alpine:
-        name: "PHP 8.2 / Frontend & Assets / Alpine"
+        name: "[run-functional-ci] PHP 8.2 / Frontend & Assets / Alpine"
         runs-on: ubuntu-22.04
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && (contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
-                || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
+            contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
         env:
             PROGRESS_TYPE: plain
@@ -838,8 +827,7 @@ jobs:
 
     php-82-lowest:
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
 
         name: "PHP 8.2 / Prefer Lowest"
@@ -871,78 +859,17 @@ jobs:
               uses: ./.github/actions/job-slack-notifications
               if: always()
 
-    docker-alpine-php-8-2-mariadb-robot-dynamic-store-off:
+    docker-alpine-php-8-2-postgresql-robot-dynamic-store-off:
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
-        name: "Docker / Alpine / PHP 8.2 / MariaDB / Robot / API / Dynamic Store OFF"
+        name: "Docker / Alpine / PHP 8.2 / PostgreSQL / Robot / API / Dynamic Store OFF"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
-        steps:
-            - uses: actions/checkout@v4
-
-            - uses: actions/setup-python@v4
-              with:
-                  python-version: '3.9'
-
-            - name: Install packages
-              run: |
-                  sudo apt-get update
-                  sudo apt install awscli -q
-                  python3 -m pip install --upgrade pip
-                  python3 -m pip install -U robotframework
-                  python3 -m pip install -U robotframework-requests
-                  python3 -m pip install -U robotframework-jsonlibrary
-                  python3 -m pip install -U robotframework-databaselibrary
-                  python3 -m pip install PyMySQL
-            - name: Install docker-compose
-              run: |
-                  sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                  sudo chmod +x /usr/local/bin/docker-compose
-            - name: Install Robot tests
-              run: |
-                  git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
-            - name: Install Project
-              continue-on-error: true
-              run: |
-                  git clone https://github.com/spryker/docker-sdk.git ./docker
-                  docker/sdk boot deploy.ci.acceptance.mariadb.dynamic-store-off.robot.yml
-                  docker/sdk up -t
-                  docker/sdk cli composer dump-autoload -o -a --apcu
-                  docker/sdk testing console queue:worker:start --stop-when-empty
-                  sudo bash -c "echo '127.0.0.1 backend-api.at.spryker.local backend-api.de.spryker.local backend-gateway.at.spryker.local backend-gateway.de.spryker.local backoffice.at.spryker.local backoffice.de.spryker.local date-time-configurator-example.spryker.local glue.at.spryker.local glue.de.spryker.local yves.at.spryker.local yves.de.spryker.local glue-backend.de.spryker.local glue-storefront.de.spryker.local' >> /etc/hosts"
-            - name: Run Tests
-              run: |
-                  cd robotframework-tests
-                  robot -v env:api_suite -v ignore_console:false --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework-tests.tests.api.suite .
-            - name: Upload artifacts
-              if: failure()
-              run: |
-                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-off/robot-api/${GITHUB_RUN_ID}/PHP8.2MariaDB/log.html
-
-            -   name: Slack Notification for failed job
-                uses: ./.github/actions/job-slack-notifications
-                if: always()
-
-    docker-alpine-php-8-3-postgresql-robot:
-        if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
-        name: "Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / API"
-        runs-on: ubuntu-22.04
-        env:
-            PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
-            TRAVIS: 1
-            ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
-            SPRYKER_CURRENT_REGION: EU
-            SPRYKER_DYNAMIC_STORE_MODE: true
         steps:
             - uses: actions/checkout@v4
 
@@ -971,23 +898,19 @@ jobs:
               continue-on-error: true
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  docker/sdk boot deploy.ci.acceptance.robot.yml
+                  docker/sdk boot deploy.ci.acceptance.dynamic-store-off.prefer-lowest.yml
                   docker/sdk up -t
                   docker/sdk cli composer dump-autoload -o -a --apcu
-                  sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
-            - name: Custom commands
-              continue-on-error: false
-              run: |
-                  docker/sdk cli composer dump-autoload -o -a
-                  docker/sdk console queue:worker:start --stop-when-empty
+                  docker/sdk testing console queue:worker:start --stop-when-empty
+                  sudo bash -c "echo '127.0.0.1 backend-api.at.spryker.local backend-api.de.spryker.local backend-gateway.at.spryker.local backend-gateway.de.spryker.local backoffice.at.spryker.local backoffice.de.spryker.local date-time-configurator-example.spryker.local glue.at.spryker.local glue.de.spryker.local yves.at.spryker.local yves.de.spryker.local glue-backend.de.spryker.local glue-storefront.de.spryker.local' >> /etc/hosts"
             - name: Run Tests
               run: |
                   cd robotframework-tests
-                  robot -v env:api_suite -v db_engine:psycopg2 -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v ignore_console:false --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework-tests.tests.api.suite .
+                  robot -v env:api_suite -v db_engine:psycopg2 -v ignore_console:false --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework-tests.tests.api.suite .
             - name: Upload artifacts
               if: failure()
               run: |
-                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/log.html
+                  AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-off/robot-api/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/log.html
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
@@ -995,11 +918,10 @@ jobs:
 
     docker-alpine-php-8-3-mariadb-robot:
         if: >
-            !contains(github.event.pull_request.head.ref, 'hackathon')
-            && (contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
-                || contains(github.event.pull_request.labels.*.name, 'run-latest-ci'))
+            contains(github.event.pull_request.labels.*.name, 'run-api-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
-        name: "Docker / Alpine / PHP 8.3 / MariaDB / Robot / API"
+        name: "[run-api-ci] PHP 8.3 / MariaDB / Robot / API"
         runs-on: ubuntu-22.04
         env:
             PROGRESS_TYPE: plain
@@ -1057,121 +979,3 @@ jobs:
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
-
-    positive-docker-alpine-php-8-2-mariadb-robot:
-        name: "[Hackathon] Positive / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API"
-        runs-on: ubuntu-22.04
-        if: "contains(github.event.pull_request.head.ref, 'hackathon')"
-        env:
-            PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
-            TRAVIS: 1
-            ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
-        steps:
-            -   name: apt update
-                run: sudo apt update
-
-            - uses: actions/checkout@v3
-
-            - uses: actions/setup-python@v4
-              with:
-                  python-version: '3.9'
-
-            - name: Install packages
-              run: |
-                  sudo apt-get update
-                  sudo apt-get install apache2-utils
-                  sudo apt install awscli -q
-                  python3 -m pip install --upgrade pip
-                  python3 -m pip install -U robotframework
-                  python3 -m pip install -U robotframework-requests
-                  python3 -m pip install -U robotframework-jsonlibrary
-                  python3 -m pip install -U robotframework-databaselibrary
-                  python3 -m pip install PyMySQL
-            - name: Install docker-compose
-              run: |
-                  sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                  sudo chmod +x /usr/local/bin/docker-compose
-            - name: Install Robot tests
-              run: |
-                  git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
-            - name: Install Project
-              continue-on-error: true
-              run: |
-                  git clone https://github.com/spryker/docker-sdk.git ./docker
-                  docker/sdk boot -v deploy.ci.acceptance.mariadb.robot.yml
-                  sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
-                  docker/sdk up -t -v
-            -   name: Custom commands
-                continue-on-error: false
-                run: |
-                    docker/sdk cli composer dump-autoload -o -a --apcu
-                    SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
-            -   name: Run Tests
-                run: |
-                    cd robotframework-tests
-                    robot -v env:api_suite -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s '*'.tests.api.suite.'*'.positive .
-                    touch results/time.txt && echo $(date) > results/time.txt
-            -   name: Upload artifacts
-                if: failure()
-                run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.2MariaDB/positive/log.html
-
-    negative-docker-alpine-php-8-2-mariadb-robot:
-        name: "[Hackathon] Negative / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API"
-        runs-on: ubuntu-22.04
-        if: "contains(github.event.pull_request.head.ref, 'hackathon')"
-        env:
-            PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
-            TRAVIS: 1
-            ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
-        steps:
-            -   name: apt update
-                run: sudo apt update
-
-            - uses: actions/checkout@v3
-
-            - uses: actions/setup-python@v4
-              with:
-                  python-version: '3.9'
-
-            - name: Install packages
-              run: |
-                  sudo apt-get update
-                  sudo apt-get install apache2-utils
-                  sudo apt install awscli -q
-                  python3 -m pip install --upgrade pip
-                  python3 -m pip install -U robotframework
-                  python3 -m pip install -U robotframework-requests
-                  python3 -m pip install -U robotframework-jsonlibrary
-                  python3 -m pip install -U robotframework-databaselibrary
-                  python3 -m pip install PyMySQL
-            - name: Install docker-compose
-              run: |
-                  sudo curl -L "https://github.com/docker/compose/releases/download/2.12.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                  sudo chmod +x /usr/local/bin/docker-compose
-            - name: Install Robot tests
-              run: |
-                  git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
-            - name: Install Project
-              continue-on-error: true
-              run: |
-                  git clone https://github.com/spryker/docker-sdk.git ./docker
-                  docker/sdk boot -v deploy.ci.acceptance.mariadb.robot.yml
-                  sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
-                  docker/sdk up -t -v
-            -   name: Custom commands
-                continue-on-error: false
-                run: |
-                    docker/sdk cli composer dump-autoload -o -a --apcu
-                    SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
-            -   name: Run Tests
-                run: |
-                    cd robotframework-tests
-                    robot -v env:api_suite -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s '*'.tests.api.suite.'*'.negative .
-                    touch results/time.txt && echo $(date) > results/time.txt
-            -   name: Upload artifacts
-                if: failure()
-                run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.2MariaDB/negative/log.html
