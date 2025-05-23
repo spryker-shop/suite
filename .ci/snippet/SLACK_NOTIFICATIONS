@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ "$PIPELINE_STATUS" = "FAILURE" ]; then
+    TEAM_NAME=$(echo "$BUDDY_RUN_COMMIT_MESSAGE" | grep -oE '^[a-zA-Z]+[a-zA-Z0-9]*-' | cut -d'-' -f1)
+
+    if [[ -z "$TEAM_NAME" || "$TEAM_NAME" == "$BUDDY_RUN_COMMIT_MESSAGE" ]]; then
+        TEAM_NAME=$(echo "$BUDDY_RUN_COMMIT_MESSAGE" | grep -oE '/([a-zA-Z]+)-[0-9]+[-/]?' | head -n 1 | cut -d'/' -f2 | cut -d'-' -f1)
+    fi
+
+    TEAM_NAME=$(echo "$TEAM_NAME" | tr '[:lower:]' '[:upper:]')
+    SLACK_USER_GROUPS=$(echo "$JIRA_TICKET_SLACK_USER_GROUP_MAPPING" | jq -r --arg team "$TEAM_NAME" '.[$team] // empty')
+    SLACK_MESSAGE=":x: The pipeline *'$BUDDY_PIPELINE_NAME'* on the *'$BUDDY_REPO_SLUG'* repository failed. Manual intervention is required!"
+
+    for SLACK_USER_GROUP in $(echo "$SLACK_USER_GROUPS" | jq -r '.[]'); do
+        SLACK_MESSAGE="$SLACK_MESSAGE <!subteam^${SLACK_USER_GROUP}>"
+    done
+
+    SLACK_MESSAGE="$SLACK_MESSAGE \n*Details*:  <${BUDDY_RUN_URL}>"
+
+    curl -X POST --location 'https://slack.com/api/chat.postMessage' \
+     -H 'Content-Type: application/json' \
+     -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
+     --data '{
+         "channel": "'"$WEEKLY_CI_SLACK_CHANNEL_ID"'",
+         "text": "'"$SLACK_MESSAGE"'"
+     }'
+fi
