@@ -2383,7 +2383,7 @@
       - action: 'Install Composer'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.3'
+        docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
