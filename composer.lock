@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9e253e843e290a2cddaa75d6428360f8",
+    "content-hash": "0ded990fdc66f95ce8ac0f5bec34197d",
     "packages": [
         {
             "name": "async-aws/core",
@@ -344,16 +344,16 @@
         },
         {
             "name": "behat/gherkin",
-            "version": "v4.13.0",
+            "version": "v4.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Gherkin.git",
-                "reference": "9294d26bb75f1718441b89f3a10e15ecb2c67f70"
+                "reference": "34c9b59c59355a7b4c53b9f041c8dbd1c8acc3b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/9294d26bb75f1718441b89f3a10e15ecb2c67f70",
-                "reference": "9294d26bb75f1718441b89f3a10e15ecb2c67f70",
+                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/34c9b59c59355a7b4c53b9f041c8dbd1c8acc3b4",
+                "reference": "34c9b59c59355a7b4c53b9f041c8dbd1c8acc3b4",
                 "shasum": ""
             },
             "require": {
@@ -363,6 +363,7 @@
             "require-dev": {
                 "cucumber/gherkin-monorepo": "dev-gherkin-v32.1.1",
                 "friendsofphp/php-cs-fixer": "^3.65",
+                "mikey179/vfsstream": "^1.6",
                 "phpstan/extension-installer": "^1",
                 "phpstan/phpstan": "^2",
                 "phpstan/phpstan-phpunit": "^2",
@@ -406,9 +407,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Behat/Gherkin/issues",
-                "source": "https://github.com/Behat/Gherkin/tree/v4.13.0"
+                "source": "https://github.com/Behat/Gherkin/tree/v4.14.0"
             },
-            "time": "2025-05-06T15:26:21+00:00"
+            "time": "2025-05-23T15:06:40+00:00"
         },
         {
             "name": "brick/math",
@@ -61472,30 +61473,28 @@
         },
         {
             "name": "spryker/quote-request-agents-rest-api",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quote-request-agents-rest-api.git",
-                "reference": "f9c0fab2b705ff840d87aafcaad662f2b3323c9d"
+                "reference": "9d6952b3fa98da0e54f2986520ce5321e5171db4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quote-request-agents-rest-api/zipball/f9c0fab2b705ff840d87aafcaad662f2b3323c9d",
-                "reference": "f9c0fab2b705ff840d87aafcaad662f2b3323c9d",
+                "url": "https://api.github.com/repos/spryker/quote-request-agents-rest-api/zipball/9d6952b3fa98da0e54f2986520ce5321e5171db4",
+                "reference": "9d6952b3fa98da0e54f2986520ce5321e5171db4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
-                "spryker/carts-rest-api": "^5.0.0",
+                "php": ">=8.2",
                 "spryker/company-user-storage": "^1.0.0",
                 "spryker/glue-application": "^1.18.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/quote-request-agent": "^2.2.0",
-                "spryker/quote-requests-rest-api": "^0.1.4",
+                "spryker/quote-requests-rest-api": "^0.2.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/transfer": "^3.25.0",
-                "spryker/zed-request": "^3.0.0"
+                "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -61517,9 +61516,9 @@
             ],
             "description": "QuoteRequestAgentsRestApi module",
             "support": {
-                "source": "https://github.com/spryker/quote-request-agents-rest-api/tree/0.3.0"
+                "source": "https://github.com/spryker/quote-request-agents-rest-api/tree/0.4.0"
             },
-            "time": "2022-01-21T12:16:33+00:00"
+            "time": "2025-05-23T15:09:29+00:00"
         },
         {
             "name": "spryker/quote-request-data-import",
@@ -61617,20 +61616,20 @@
         },
         {
             "name": "spryker/quote-requests-rest-api",
-            "version": "0.1.6",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quote-requests-rest-api.git",
-                "reference": "4362324bd5f6537f45a79d1d658ca701c63b9366"
+                "reference": "e1c058cace6424f72f07a003f9c69f8cd8406126"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quote-requests-rest-api/zipball/4362324bd5f6537f45a79d1d658ca701c63b9366",
-                "reference": "4362324bd5f6537f45a79d1d658ca701c63b9366",
+                "url": "https://api.github.com/repos/spryker/quote-requests-rest-api/zipball/e1c058cace6424f72f07a003f9c69f8cd8406126",
+                "reference": "e1c058cace6424f72f07a003f9c69f8cd8406126",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0",
+                "php": ">=8.2",
                 "spryker/carts-rest-api": "^5.7.0",
                 "spryker/glue-application": "^1.18.0",
                 "spryker/glue-application-extension": "^1.0.0",
@@ -61638,7 +61637,7 @@
                 "spryker/quote-request": "^2.4.0",
                 "spryker/quote-requests-rest-api-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/transfer": "^3.25.0",
+                "spryker/transfer": "^3.27.0",
                 "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
@@ -61670,9 +61669,9 @@
             ],
             "description": "QuoteRequestsRestApi module",
             "support": {
-                "source": "https://github.com/spryker/quote-requests-rest-api/tree/0.1.6"
+                "source": "https://github.com/spryker/quote-requests-rest-api/tree/0.2.0"
             },
-            "time": "2023-03-31T19:36:11+00:00"
+            "time": "2025-05-23T15:09:29+00:00"
         },
         {
             "name": "spryker/quote-requests-rest-api-extension",
@@ -84139,12 +84138,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "884d8987da0a8155b7eb0a544d5ad970009d32bb"
+                "reference": "29bea41f123fb2f23b98bfe427839f9bea51fb60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/884d8987da0a8155b7eb0a544d5ad970009d32bb",
-                "reference": "884d8987da0a8155b7eb0a544d5ad970009d32bb",
+                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/29bea41f123fb2f23b98bfe427839f9bea51fb60",
+                "reference": "29bea41f123fb2f23b98bfe427839f9bea51fb60",
                 "shasum": ""
             },
             "default-branch": true,
@@ -84158,7 +84157,7 @@
                 "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
                 "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
             },
-            "time": "2025-05-22T12:57:16+00:00"
+            "time": "2025-05-23T15:07:05+00:00"
         },
         {
             "name": "spryker/silex",
