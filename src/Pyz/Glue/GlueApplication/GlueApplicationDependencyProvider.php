@@ -232,6 +232,7 @@ use Spryker\Glue\QuoteRequestAgentsRestApi\Plugin\GlueApplication\QuoteRequestAg
 use Spryker\Glue\QuoteRequestAgentsRestApi\Plugin\GlueApplication\QuoteRequestAgentSendResourceRoutePlugin;
 use Spryker\Glue\QuoteRequestAgentsRestApi\Plugin\GlueApplication\QuoteRequestAgentsResourceRoutePlugin;
 use Spryker\Glue\QuoteRequestsRestApi\Plugin\GlueApplication\QuoteRequestCancelResourceRoutePlugin;
+use Spryker\Glue\QuoteRequestsRestApi\Plugin\GlueApplication\QuoteRequestConvertResourceRoutePlugin;
 use Spryker\Glue\QuoteRequestsRestApi\Plugin\GlueApplication\QuoteRequestReviseResourceRoutePlugin;
 use Spryker\Glue\QuoteRequestsRestApi\Plugin\GlueApplication\QuoteRequestSendResourceRoutePlugin;
 use Spryker\Glue\QuoteRequestsRestApi\Plugin\GlueApplication\QuoteRequestsResourceRoutePlugin;
@@ -380,6 +381,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new QuoteRequestCancelResourceRoutePlugin(),
             new QuoteRequestReviseResourceRoutePlugin(),
             new QuoteRequestSendResourceRoutePlugin(),
+            new QuoteRequestConvertResourceRoutePlugin(),
             new CustomerConfirmationResourceRoutePlugin(),
             new TokenResourceRoutePlugin(),
             new CustomerCartsResourceRoutePlugin(),
