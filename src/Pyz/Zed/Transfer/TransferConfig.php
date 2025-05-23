@@ -96,4 +96,14 @@ class TransferConfig extends SprykerTransferConfig
     {
         return TransferConstants::PROPERTY_DESCRIPTION_MERGE_STRATEGY_GET_FIRST;
     }
+
+    /**
+     * @api
+     *
+     * @return bool
+     */
+    public function isArrayRequireValidationEnabled(): bool
+    {
+        return true;
+    }
 }
