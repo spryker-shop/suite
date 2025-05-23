@@ -626,9 +626,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -713,9 +710,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -890,9 +884,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -983,9 +974,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -1136,9 +1124,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -1211,9 +1196,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -1292,9 +1274,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -1367,7 +1346,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Functional Tests'
+- pipeline: '[run-functional-ci] PHP 8.3 / MariaDB / Functional Tests'
   events:
       - type: 'PUSH'
         refs:
@@ -1379,9 +1358,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -1475,9 +1451,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -1562,9 +1535,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -1643,7 +1613,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Acceptance / Dynamic Store OFF'
+- pipeline: 'PHP 8.3 / MariaDB / Acceptance / Dynamic Store OFF'
   events:
       - type: 'PUSH'
         refs:
@@ -1655,9 +1625,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -1718,7 +1685,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Acceptance'
+- pipeline: '[run-api-ci] [run-ui-ci] PHP 8.3 / MariaDB / Acceptance'
   events:
       - type: 'PUSH'
         refs:
@@ -1730,9 +1697,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -1817,9 +1781,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -1892,9 +1853,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -1961,7 +1919,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Debian / PHP 8.3 / Frontend & Assets'
+- pipeline: '[run-functional-ci] / PHP 8.3 / Frontend & Assets'
   events:
       - type: 'PUSH'
         refs:
@@ -1973,9 +1931,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -2050,9 +2005,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -2146,9 +2098,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -2248,9 +2197,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -2332,9 +2278,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -2410,7 +2353,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot / Dynamic Store OFF'
+- pipeline: 'PHP 8.2 / PostgreSQL / Robot / API / Dynamic Store OFF'
   events:
       - type: 'PUSH'
         refs:
@@ -2422,9 +2365,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -2443,22 +2383,22 @@
       - action: 'Install Composer'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.3'
+        docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot'
+      - action: 'PHP 8.2 / PostgreSQL / Robot / API / Dynamic Store OFF'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.mariadb.dynamic-store-off.yml'
+            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.dynamic-store-off.prefer-lowest.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v docker:True --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite ."'
+            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v db_engine:psycopg2 -v docker:True -v dms:false --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite ."'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
@@ -2468,7 +2408,7 @@
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
             - '.ci/snippet/ARTEFACTS aws s3 cp ./.robot/results/log.html s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-off/robot-api/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/log.html'
-            - '.ci/snippet/ARTEFACTS echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-central-1&prefix=suite-nonsplit/dms-off/robot-api/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDB/log.html"'
+            - '.ci/snippet/ARTEFACTS echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-central-1&prefix=suite-nonsplit/dms-off/robot-api/${BUDDY_EXECUTION_HASH}/PHP8.2PostgreSQL/log.html"'
             - '.ci/snippet/ARTEFACTS echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
         run_next_parallel: true
@@ -2504,7 +2444,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / API'
+- pipeline: '[run-api-ci] PHP 8.3 / MariaDB / Robot / API'
   events:
       - type: 'PUSH'
         refs:
@@ -2516,110 +2456,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
-      - trigger_condition: OR
-        trigger_operands:
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
-
-  terminate_stale_runs: true
-  auto_clear_cache: true
-  fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: true
-  clone_depth: 1
-  resources: 'NANO'
-  actions:
-      - action: 'Install Composer'
-        type: 'BUILD'
-        docker_image_name: 'spryker/php'
-        docker_image_tag: '8.3'
-        execute_commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
-            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
-            - '.ci/snippet/FINISH'
-        shell: 'BASH'
-      - action: 'Run tests'
-        type: 'NATIVE_BUILD_DOCKER_CLI'
-        commands:
-            - '.ci/snippet/PREPARE'
-            - 'export SPRYKER_PLATFORM_IMAGE=spryker/php:8.3'
-            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.api.robot.yml'
-            - '.ci/snippet/RUN docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v db_engine:psycopg2 -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite ."'
-            - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
-            - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
-            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
-            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
-            - 'export AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID'
-            - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
-            - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
-            - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/ARTEFACTS aws s3 cp ./.robot/results/log.html s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-on/robot-api/$BUDDY_EXECUTION_HASH/PHP8.3PostgreSQL/log.html'
-            - '.ci/snippet/ARTEFACTS echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-api/${BUDDY_EXECUTION_HASH}/PHP8.3PostgreSQL/log.html"'
-            - '.ci/snippet/ARTEFACTS echo "You must have VPN access to AWS (Spryker-Internal account)"'
-            - '.ci/snippet/FINISH'
-        variables:
-            - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.3'
-              type: 'VAR'
-            - key: 'SPRYKER_CURRENT_REGION'
-              value: 'EU'
-              type: 'VAR'
-            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
-              value: 'true'
-              type: 'VAR'
-            - key: 'TRAVIS'
-              value: '1'
-              type: 'VAR'
-        timeout: 8000
-        sync_paths:
-            - pipeline_path: '/'
-              vm_path: '/home/ubuntu/build'
-              direction: 'PIPELINE_TO_VM'
-        docker_layer_caching_scope: 'ACTION'
-      - action: 'Master Job Slack Notification failure'
-        type: 'BUILD'
-        trigger_time: 'ON_FAILURE'
-        docker_image_name: 'library/node'
-        docker_image_tag: '18'
-        variables:
-            - key: 'PIPELINE_STATUS'
-              value: 'FAILURE'
-              type: 'VAR'
-        execute_commands:
-            - '.ci/snippet/SLACK_NOTIFICATIONS'
-        setup_commands:
-            - apt-get update && apt-get -y install jq
-        shell: 'BASH'
-        trigger_conditions:
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
-
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / API'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
-      - type: 'PULL_REQUEST'
-        events:
-            - 'labeled'
-        branches:
-            - '*'
-  trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -2721,9 +2557,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -2814,7 +2647,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Cypress'
+- pipeline: '[run-ui-ci] PHP 8.3 / MariaDB / Cypress'
   events:
       - type: 'PUSH'
         refs:
@@ -2826,9 +2659,6 @@
         branches:
             - '*'
   trigger_conditions:
-      - trigger_condition: 'VAR_NOT_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
@@ -2928,157 +2758,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Positive / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
-      - type: 'PULL_REQUEST'
-        events:
-            - 'labeled'
-        branches:
-            - '*'
-  trigger_conditions:
-      - trigger_condition: 'VAR_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
-  terminate_stale_runs: true
-  auto_clear_cache: true
-  fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: true
-  clone_depth: 1
-  resources: 'NANO'
-  actions:
-      - action: 'Install Composer'
-        type: 'BUILD'
-        docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
-        execute_commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
-            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
-            - '.ci/snippet/FINISH'
-        shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot'
-        type: 'NATIVE_BUILD_DOCKER_CLI'
-        commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.api.mariadb.robot.yml'
-            - '.ci/snippet/RUN docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite.\"*\".positive ."'
-            - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
-            - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
-            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
-            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
-            - 'export AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID'
-            - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
-            - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
-            - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/ARTEFACTS aws s3 cp ./.robot/results/log.html s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-on/robot-api/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/positive/log.html'
-            - '.ci/snippet/ARTEFACTS echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-api/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDB/positive/log.html"'
-            - '.ci/snippet/ARTEFACTS echo "You must have VPN access to AWS (Spryker-Internal account)"'
-            - '.ci/snippet/FINISH'
-        run_next_parallel: true
-        variables:
-            - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.2'
-              type: 'VAR'
-            - key: 'SPRYKER_CURRENT_REGION'
-              value: 'EU'
-              type: 'VAR'
-            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
-              value: 'true'
-              type: 'VAR'
-            - key: 'TRAVIS'
-              value: '1'
-              type: 'VAR'
-        timeout: 8000
-        sync_paths:
-            - pipeline_path: '/'
-              vm_path: '/home/ubuntu/build'
-              direction: 'PIPELINE_TO_VM'
-        docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
-
-- pipeline: 'Negative / Docker / Alpine / PHP 8.2 / MariaDB / Robot / API'
-  events:
-      - type: 'PUSH'
-        refs:
-            - 'refs/pull/*'
-            - 'refs/heads/master'
-      - type: 'PULL_REQUEST'
-        events:
-            - 'labeled'
-        branches:
-            - '*'
-  trigger_conditions:
-      - trigger_condition: 'VAR_CONTAINS'
-        trigger_variable_value: 'hackathon'
-        trigger_variable_key: 'BUDDY_EXECUTION_PULL_REQUEST_HEAD_BRANCH'
-  terminate_stale_runs: true
-  auto_clear_cache: true
-  fail_on_prepare_env_warning: true
-  concurrent_pipeline_runs: true
-  clone_depth: 1
-  resources: 'NANO'
-  actions:
-      - action: 'Install Composer'
-        type: 'BUILD'
-        docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
-        execute_commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
-            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
-            - '.ci/snippet/FINISH'
-        shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot'
-        type: 'NATIVE_BUILD_DOCKER_CLI'
-        commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.api.mariadb.robot.yml'
-            - '.ci/snippet/RUN docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
-            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
-            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite.\"*\".negative ."'
-            - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
-            - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
-            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
-            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
-            - 'export AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID'
-            - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
-            - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
-            - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/ARTEFACTS aws s3 cp ./.robot/results/log.html s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-on/robot-api/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/negative/log.html'
-            - '.ci/snippet/ARTEFACTS echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-api/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDB/negative/log.html"'
-            - '.ci/snippet/ARTEFACTS echo "You must have VPN access to AWS (Spryker-Internal account)"'
-            - '.ci/snippet/FINISH'
-        run_next_parallel: true
-        variables:
-            - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.2'
-              type: 'VAR'
-            - key: 'SPRYKER_CURRENT_REGION'
-              value: 'EU'
-              type: 'VAR'
-            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
-              value: 'true'
-              type: 'VAR'
-            - key: 'TRAVIS'
-              value: '1'
-              type: 'VAR'
-        timeout: 8000
-        sync_paths:
-            - pipeline_path: '/'
-              vm_path: '/home/ubuntu/build'
-              direction: 'PIPELINE_TO_VM'
-        docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
-
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group One'
+- pipeline: '[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group One'
   events:
       - type: 'PULL_REQUEST'
         events:
@@ -3180,7 +2860,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Two'
+- pipeline: '[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group Two'
   events:
       - type: 'PULL_REQUEST'
         events:
@@ -3282,7 +2962,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Three'
+- pipeline: '[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group Three'
   events:
       - type: 'PULL_REQUEST'
         events:
