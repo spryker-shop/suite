@@ -45,6 +45,7 @@ use SprykerFeature\Yves\SspServiceManagement\Widget\SspAddressFormItemsByShipmen
 use SprykerFeature\Yves\SspServiceManagement\Widget\SspProductOfferPriceWidget;
 use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceCancelWidget;
 use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceChangeScheduledTimeLinkWidget;
+use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceDetectorWidget;
 use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceMenuItemWidget;
 use SprykerFeature\Yves\SspServiceManagement\Widget\SspServicePointNameForItemWidget;
 use SprykerFeature\Yves\SspServiceManagement\Widget\SspShipmentTypeServicePointSelectorWidget;
@@ -407,6 +408,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ListItemsByShipmentTypeWidget::class,
             SspListMenuItemWidget::class,
             SspAssetInfoForItemWidget::class,
+            SspServiceDetectorWidget::class,
             SspItemAssetSelectorWidget::class,
             SspProductOfferPriceWidget::class,
             SspAddressFormItemsByShipmentTypeWidget::class,
