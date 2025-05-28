@@ -14,15 +14,15 @@ use Spryker\Zed\ProductManagement\ProductManagementConfig as SprykerProductManag
 class ProductManagementConfig extends SprykerProductManagementConfig
 {
     /**
-     * @api
-     *
-     * Specification:
-     * - Returns whether the concrete SKU search in the product table is enabled.
-     *
      * @return bool
      */
     public function isConcreteSkuSearchInProductTableEnabled(): bool
     {
         return true;
     }
+
+    /**
+     * @var list<string>
+     */
+    protected const PRODUCT_TABLE_FILTER_FORM_EXTERNAL_FIELD_NAMES = ['id-merchant'];
 }
