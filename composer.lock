@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4407768abd2fe1dfc475df56a0750981",
+    "content-hash": "bf41d7c26641c50c95e07382ac842d3d",
     "packages": [
         {
             "name": "async-aws/core",
@@ -7999,16 +7999,16 @@
         },
         {
             "name": "spryker-shop/agent-page",
-            "version": "1.17.0",
+            "version": "1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/agent-page.git",
-                "reference": "4d40312e18cd42a56274d4749359b5e10f35eb50"
+                "reference": "42109bda44bdf39f8596afce4b29db7588728a65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/agent-page/zipball/4d40312e18cd42a56274d4749359b5e10f35eb50",
-                "reference": "4d40312e18cd42a56274d4749359b5e10f35eb50",
+                "url": "https://api.github.com/repos/spryker-shop/agent-page/zipball/42109bda44bdf39f8596afce4b29db7588728a65",
+                "reference": "42109bda44bdf39f8596afce4b29db7588728a65",
                 "shasum": ""
             },
             "require": {
@@ -8024,6 +8024,7 @@
                 "spryker/kernel": "^3.52.0",
                 "spryker/log": "^3.17.0",
                 "spryker/messenger": "^3.1.0",
+                "spryker/multi-factor-auth-extension": "^1.1.0",
                 "spryker/quote": "^2.0.0",
                 "spryker/router": "^1.5.0",
                 "spryker/security-extension": "^1.0.0",
@@ -8044,6 +8045,7 @@
                 "spryker/testify": "*"
             },
             "suggest": {
+                "spryker/multi-factor-auth": "Use this module when using plugins that need MultiFactorAuth dependencies.",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
             "type": "library",
@@ -8063,26 +8065,27 @@
             ],
             "description": "AgentPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/agent-page/tree/1.17.0"
+                "source": "https://github.com/spryker-shop/agent-page/tree/1.18.0"
             },
-            "time": "2024-10-22T10:40:39+00:00"
+            "time": "2025-06-02T15:30:18+00:00"
         },
         {
             "name": "spryker-shop/agent-page-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/agent-page-extension.git",
-                "reference": "d33a31ff55d67d6e86ce8e745ebc38921c17406f"
+                "reference": "61c3e5a46ceec1a5767938814fa9adfeb3ce4839"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/agent-page-extension/zipball/d33a31ff55d67d6e86ce8e745ebc38921c17406f",
-                "reference": "d33a31ff55d67d6e86ce8e745ebc38921c17406f",
+                "url": "https://api.github.com/repos/spryker-shop/agent-page-extension/zipball/61c3e5a46ceec1a5767938814fa9adfeb3ce4839",
+                "reference": "61c3e5a46ceec1a5767938814fa9adfeb3ce4839",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0"
+                "php": ">=8.2",
+                "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -8104,9 +8107,9 @@
             ],
             "description": "AgentPageExtension module",
             "support": {
-                "source": "https://github.com/spryker-shop/agent-page-extension/tree/1.0.0"
+                "source": "https://github.com/spryker-shop/agent-page-extension/tree/1.1.0"
             },
-            "time": "2022-12-13T15:22:32+00:00"
+            "time": "2025-06-02T15:30:18+00:00"
         },
         {
             "name": "spryker-shop/agent-widget",
@@ -10536,16 +10539,16 @@
         },
         {
             "name": "spryker-shop/customer-page",
-            "version": "2.65.0",
+            "version": "2.66.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-page.git",
-                "reference": "80277e2d4ab5cacca3231b328715b6e4c365ef83"
+                "reference": "fe18994e9d49f508fca00093b68e4f2526f6061e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/80277e2d4ab5cacca3231b328715b6e4c365ef83",
-                "reference": "80277e2d4ab5cacca3231b328715b6e4c365ef83",
+                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/fe18994e9d49f508fca00093b68e4f2526f6061e",
+                "reference": "fe18994e9d49f508fca00093b68e4f2526f6061e",
                 "shasum": ""
             },
             "require": {
@@ -10559,6 +10562,7 @@
                 "spryker/customer": "^7.30.0",
                 "spryker/kernel": "^3.52.0",
                 "spryker/log": "^3.17.0",
+                "spryker/multi-factor-auth-extension": "^1.1.0",
                 "spryker/product-bundle": "^4.1.0 || ^6.0.0 || ^7.0.0",
                 "spryker/quote": "^1.0.0 || ^2.1.0",
                 "spryker/router": "^1.6.0",
@@ -10631,9 +10635,9 @@
             ],
             "description": "CustomerPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/customer-page/tree/2.65.0"
+                "source": "https://github.com/spryker-shop/customer-page/tree/2.66.0"
             },
-            "time": "2025-05-14T11:04:40+00:00"
+            "time": "2025-06-02T15:30:18+00:00"
         },
         {
             "name": "spryker-shop/customer-page-extension",
@@ -32958,16 +32962,16 @@
         },
         {
             "name": "spryker/discount",
-            "version": "9.46.0",
+            "version": "9.46.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount.git",
-                "reference": "cb3abac3b514abd20a12d01b1370c1018f76eda2"
+                "reference": "bdadeeeb5f0c77079a2728035213e299d4aa2004"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount/zipball/cb3abac3b514abd20a12d01b1370c1018f76eda2",
-                "reference": "cb3abac3b514abd20a12d01b1370c1018f76eda2",
+                "url": "https://api.github.com/repos/spryker/discount/zipball/bdadeeeb5f0c77079a2728035213e299d4aa2004",
+                "reference": "bdadeeeb5f0c77079a2728035213e299d4aa2004",
                 "shasum": ""
             },
             "require": {
@@ -33032,9 +33036,9 @@
             ],
             "description": "Discount module",
             "support": {
-                "source": "https://github.com/spryker/discount/tree/9.46.0"
+                "source": "https://github.com/spryker/discount/tree/9.46.1"
             },
-            "time": "2025-05-30T13:21:19+00:00"
+            "time": "2025-06-02T15:30:14+00:00"
         },
         {
             "name": "spryker/discount-calculation-connector",
@@ -36367,26 +36371,27 @@
         },
         {
             "name": "spryker/gui",
-            "version": "3.61.0",
+            "version": "3.62.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "2cccb62dc79a012714f2617355d56a7b1cb44325"
+                "reference": "9536b35f4dd4616fc75b7d156b007a089fddb6aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/2cccb62dc79a012714f2617355d56a7b1cb44325",
-                "reference": "2cccb62dc79a012714f2617355d56a7b1cb44325",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/9536b35f4dd4616fc75b7d156b007a089fddb6aa",
+                "reference": "9536b35f4dd4616fc75b7d156b007a089fddb6aa",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
                 "spryker/form-extension": "^1.0.0",
+                "spryker/gui-extension": "^1.0.0",
                 "spryker/kernel": "^3.52.0",
                 "spryker/laminas": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/transfer": "^3.25.0",
+                "spryker/transfer": "^3.27.0",
                 "spryker/twig": "^3.0.0",
                 "spryker/twig-extension": "^1.0.0",
                 "spryker/util-number": "^1.0.0",
@@ -36425,9 +36430,51 @@
             ],
             "description": "Gui module",
             "support": {
-                "source": "https://github.com/spryker/gui/tree/3.61.0"
+                "source": "https://github.com/spryker/gui/tree/3.62.0"
             },
-            "time": "2025-05-28T14:36:24+00:00"
+            "time": "2025-06-02T15:30:14+00:00"
+        },
+        {
+            "name": "spryker/gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/gui-extension.git",
+                "reference": "f4ba7c8cdc72a0b0f222a5f6381f72d6456e4038"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/gui-extension/zipball/f4ba7c8cdc72a0b0f222a5f6381f72d6456e4038",
+                "reference": "f4ba7c8cdc72a0b0f222a5f6381f72d6456e4038",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "GuiExtension module",
+            "support": {
+                "source": "https://github.com/spryker/gui-extension/tree/1.0.0"
+            },
+            "time": "2025-06-02T15:30:14+00:00"
         },
         {
             "name": "spryker/gui-table",
@@ -44080,36 +44127,45 @@
         },
         {
             "name": "spryker/multi-factor-auth",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/multi-factor-auth.git",
-                "reference": "72ca7e049313c90afe9f85235f86d563b7adc1fb"
+                "reference": "9d6e79a3bb5e7922ad82d9b7de38f66cc8117798"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/multi-factor-auth/zipball/72ca7e049313c90afe9f85235f86d563b7adc1fb",
-                "reference": "72ca7e049313c90afe9f85235f86d563b7adc1fb",
+                "url": "https://api.github.com/repos/spryker/multi-factor-auth/zipball/9d6e79a3bb5e7922ad82d9b7de38f66cc8117798",
+                "reference": "9d6e79a3bb5e7922ad82d9b7de38f66cc8117798",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
+                "spryker-shop/agent-page-extension": "^1.1.0",
                 "spryker-shop/customer-page-extension": "^1.7.0",
+                "spryker/agent": "^1.0.0",
                 "spryker/application": "^3.0.0",
                 "spryker/customer": "^7.0.0",
+                "spryker/customer-extension": "^1.6.0",
                 "spryker/form-extension": "^1.0.0",
                 "spryker/glossary": "^3.0.0",
+                "spryker/glue-application": "^1.15.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/gui-extension": "^1.0.0",
                 "spryker/kernel": "^3.52.0",
                 "spryker/mail": "^4.6.0",
                 "spryker/mail-extension": "^1.0.0",
                 "spryker/multi-factor-auth-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.16.0",
+                "spryker/security-gui-extension": "^1.3.0",
                 "spryker/symfony": "^3.15.0",
                 "spryker/transfer": "^3.27.0",
                 "spryker/twig": "^3.0.0",
+                "spryker/user": "^3.27.0",
                 "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
+                "spryker-shop/agent-page": "*",
                 "spryker-shop/customer-page": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
@@ -44117,6 +44173,7 @@
                 "spryker/testify": "*"
             },
             "suggest": {
+                "spryker-shop/agent-page": "Use this module when you want to use the AgentPage plugins.",
                 "spryker-shop/customer-page": "Use this module when you want to use the CustomerPage plugins.",
                 "spryker/container": "Use this module when you want to use the Container.",
                 "spryker/router": "Use this module when you want to use the Router."
@@ -44139,22 +44196,22 @@
             ],
             "description": "MultiFactorAuth module",
             "support": {
-                "source": "https://github.com/spryker/multi-factor-auth/tree/0.1.0"
+                "source": "https://github.com/spryker/multi-factor-auth/tree/0.1.1"
             },
-            "time": "2025-04-10T08:17:32+00:00"
+            "time": "2025-06-02T15:30:14+00:00"
         },
         {
             "name": "spryker/multi-factor-auth-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/multi-factor-auth-extension.git",
-                "reference": "a900a843244c18bfb29e6d7e38f13b1503194bd6"
+                "reference": "d6ca1e0543ee0959f65b4d094e947aed8664dbb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/multi-factor-auth-extension/zipball/a900a843244c18bfb29e6d7e38f13b1503194bd6",
-                "reference": "a900a843244c18bfb29e6d7e38f13b1503194bd6",
+                "url": "https://api.github.com/repos/spryker/multi-factor-auth-extension/zipball/d6ca1e0543ee0959f65b4d094e947aed8664dbb8",
+                "reference": "d6ca1e0543ee0959f65b4d094e947aed8664dbb8",
                 "shasum": ""
             },
             "require": {
@@ -44162,9 +44219,11 @@
                 "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/kernel": "*"
             },
             "suggest": {
+                "spryker/kernel": "If you want to use kernel functionality with certain plugins",
                 "spryker/symfony": "If you want to use the Symfony component."
             },
             "type": "library",
@@ -44184,9 +44243,9 @@
             ],
             "description": "MultiFactorAuthExtension module",
             "support": {
-                "source": "https://github.com/spryker/multi-factor-auth-extension/tree/1.0.0"
+                "source": "https://github.com/spryker/multi-factor-auth-extension/tree/1.1.0"
             },
-            "time": "2025-04-10T08:17:32+00:00"
+            "time": "2025-06-02T15:30:14+00:00"
         },
         {
             "name": "spryker/navigation",
@@ -66099,16 +66158,16 @@
         },
         {
             "name": "spryker/security-gui",
-            "version": "1.9.1",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/security-gui.git",
-                "reference": "5a3a1c493f17ed571efc2ec5879f776f8688d0a1"
+                "reference": "158adea55780485edd27154382a53330df86fddd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/security-gui/zipball/5a3a1c493f17ed571efc2ec5879f776f8688d0a1",
-                "reference": "5a3a1c493f17ed571efc2ec5879f776f8688d0a1",
+                "url": "https://api.github.com/repos/spryker/security-gui/zipball/158adea55780485edd27154382a53330df86fddd",
+                "reference": "158adea55780485edd27154382a53330df86fddd",
                 "shasum": ""
             },
             "require": {
@@ -66116,6 +66175,7 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^3.17.0",
                 "spryker/messenger": "^3.0.0",
+                "spryker/multi-factor-auth-extension": "^1.1.0",
                 "spryker/security": "^1.8.0",
                 "spryker/security-blocker": "^1.0.0",
                 "spryker/security-extension": "^1.0.0",
@@ -66139,6 +66199,7 @@
                 "spryker/testify": "*"
             },
             "suggest": {
+                "spryker-shop/customer-page": "ADD SUGGEST DESCRIPTION",
                 "spryker/router": "You need to install this module when you want to use the RouterExtension interfaces."
             },
             "type": "library",
@@ -66158,26 +66219,27 @@
             ],
             "description": "SecurityGui module",
             "support": {
-                "source": "https://github.com/spryker/security-gui/tree/1.9.1"
+                "source": "https://github.com/spryker/security-gui/tree/1.10.0"
             },
-            "time": "2025-04-14T14:16:21+00:00"
+            "time": "2025-06-02T15:30:14+00:00"
         },
         {
             "name": "spryker/security-gui-extension",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/security-gui-extension.git",
-                "reference": "7df35059c98dd5dd17650a28b41b8197b24950a2"
+                "reference": "591a92ada172e3d58ebcefa0a4a5c0cd2140869b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/security-gui-extension/zipball/7df35059c98dd5dd17650a28b41b8197b24950a2",
-                "reference": "7df35059c98dd5dd17650a28b41b8197b24950a2",
+                "url": "https://api.github.com/repos/spryker/security-gui-extension/zipball/591a92ada172e3d58ebcefa0a4a5c0cd2140869b",
+                "reference": "591a92ada172e3d58ebcefa0a4a5c0cd2140869b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0"
+                "php": ">=8.2",
+                "spryker/transfer": "^3.27.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -66199,9 +66261,9 @@
             ],
             "description": "SecurityGuiExtension module",
             "support": {
-                "source": "https://github.com/spryker/security-gui-extension/tree/1.2.0"
+                "source": "https://github.com/spryker/security-gui-extension/tree/1.3.0"
             },
-            "time": "2023-02-08T12:23:08+00:00"
+            "time": "2025-06-02T15:30:14+00:00"
         },
         {
             "name": "spryker/security-merchant-portal-gui",
@@ -72706,16 +72768,16 @@
         },
         {
             "name": "spryker/user",
-            "version": "3.26.0",
+            "version": "3.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/user.git",
-                "reference": "953b166e5d09142c9002987c0fbe15b2096112e6"
+                "reference": "1486b442b9d2e800412ad54f078294326745c4fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/user/zipball/953b166e5d09142c9002987c0fbe15b2096112e6",
-                "reference": "953b166e5d09142c9002987c0fbe15b2096112e6",
+                "url": "https://api.github.com/repos/spryker/user/zipball/1486b442b9d2e800412ad54f078294326745c4fb",
+                "reference": "1486b442b9d2e800412ad54f078294326745c4fb",
                 "shasum": ""
             },
             "require": {
@@ -72774,9 +72836,9 @@
             ],
             "description": "User module",
             "support": {
-                "source": "https://github.com/spryker/user/tree/3.26.0"
+                "source": "https://github.com/spryker/user/tree/3.27.0"
             },
-            "time": "2025-02-28T10:29:27+00:00"
+            "time": "2025-06-02T15:30:14+00:00"
         },
         {
             "name": "spryker/user-extension",
@@ -75328,32 +75390,31 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v7.3.0",
+            "version": "v6.4.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "c4b217b578c11ec764867aa0c73e602c602965de"
+                "reference": "d1abcf763a7414f2e572f676f22da7a06c8cd9ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/c4b217b578c11ec764867aa0c73e602c602965de",
-                "reference": "c4b217b578c11ec764867aa0c73e602c602965de",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/d1abcf763a7414f2e572f676f22da7a06c8cd9ee",
+                "reference": "d1abcf763a7414f2e572f676f22da7a06c8cd9ee",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
+                "php": ">=8.1",
                 "psr/cache": "^2.0|^3.0",
                 "psr/log": "^1.1|^2|^3",
-                "symfony/cache-contracts": "^3.6",
-                "symfony/deprecation-contracts": "^2.5|^3.0",
+                "symfony/cache-contracts": "^2.5|^3",
                 "symfony/service-contracts": "^2.5|^3",
-                "symfony/var-exporter": "^6.4|^7.0"
+                "symfony/var-exporter": "^6.3.6|^7.0"
             },
             "conflict": {
-                "doctrine/dbal": "<3.6",
-                "symfony/dependency-injection": "<6.4",
-                "symfony/http-kernel": "<6.4",
-                "symfony/var-dumper": "<6.4"
+                "doctrine/dbal": "<2.13.1",
+                "symfony/dependency-injection": "<5.4",
+                "symfony/http-kernel": "<5.4",
+                "symfony/var-dumper": "<5.4"
             },
             "provide": {
                 "psr/cache-implementation": "2.0|3.0",
@@ -75362,16 +75423,15 @@
             },
             "require-dev": {
                 "cache/integration-tests": "dev-master",
-                "doctrine/dbal": "^3.6|^4",
+                "doctrine/dbal": "^2.13.1|^3|^4",
                 "predis/predis": "^1.1|^2.0",
                 "psr/simple-cache": "^1.0|^2.0|^3.0",
-                "symfony/clock": "^6.4|^7.0",
-                "symfony/config": "^6.4|^7.0",
-                "symfony/dependency-injection": "^6.4|^7.0",
-                "symfony/filesystem": "^6.4|^7.0",
-                "symfony/http-kernel": "^6.4|^7.0",
-                "symfony/messenger": "^6.4|^7.0",
-                "symfony/var-dumper": "^6.4|^7.0"
+                "symfony/config": "^5.4|^6.0|^7.0",
+                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+                "symfony/filesystem": "^5.4|^6.0|^7.0",
+                "symfony/http-kernel": "^5.4|^6.0|^7.0",
+                "symfony/messenger": "^5.4|^6.0|^7.0",
+                "symfony/var-dumper": "^5.4|^6.0|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -75406,7 +75466,7 @@
                 "psr6"
             ],
             "support": {
-                "source": "https://github.com/symfony/cache/tree/v7.3.0"
+                "source": "https://github.com/symfony/cache/tree/v6.4.21"
             },
             "funding": [
                 {
@@ -75422,7 +75482,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-05-06T19:00:13+00:00"
+            "time": "2025-04-08T08:21:20+00:00"
         },
         {
             "name": "symfony/cache-contracts",
@@ -75879,39 +75939,40 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v7.3.0",
+            "version": "v6.4.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "f64a8f3fa7d4ad5e85de1b128a0e03faed02b732"
+                "reference": "8cb11f833d1f5bfbb2df97dfc23c92b4d42c18d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/f64a8f3fa7d4ad5e85de1b128a0e03faed02b732",
-                "reference": "f64a8f3fa7d4ad5e85de1b128a0e03faed02b732",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/8cb11f833d1f5bfbb2df97dfc23c92b4d42c18d9",
+                "reference": "8cb11f833d1f5bfbb2df97dfc23c92b4d42c18d9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
+                "php": ">=8.1",
                 "psr/container": "^1.1|^2.0",
                 "symfony/deprecation-contracts": "^2.5|^3",
-                "symfony/service-contracts": "^3.5",
+                "symfony/service-contracts": "^2.5|^3.0",
                 "symfony/var-exporter": "^6.4.20|^7.2.5"
             },
             "conflict": {
                 "ext-psr": "<1.1|>=2",
-                "symfony/config": "<6.4",
-                "symfony/finder": "<6.4",
-                "symfony/yaml": "<6.4"
+                "symfony/config": "<6.1",
+                "symfony/finder": "<5.4",
+                "symfony/proxy-manager-bridge": "<6.3",
+                "symfony/yaml": "<5.4"
             },
             "provide": {
                 "psr/container-implementation": "1.1|2.0",
                 "symfony/service-implementation": "1.1|2.0|3.0"
             },
             "require-dev": {
-                "symfony/config": "^6.4|^7.0",
-                "symfony/expression-language": "^6.4|^7.0",
-                "symfony/yaml": "^6.4|^7.0"
+                "symfony/config": "^6.1|^7.0",
+                "symfony/expression-language": "^5.4|^6.0|^7.0",
+                "symfony/yaml": "^5.4|^6.0|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -75939,7 +76000,7 @@
             "description": "Allows you to standardize and centralize the way objects are constructed in your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/dependency-injection/tree/v7.3.0"
+                "source": "https://github.com/symfony/dependency-injection/tree/v6.4.22"
             },
             "funding": [
                 {
@@ -75955,7 +76016,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-05-19T13:28:56+00:00"
+            "time": "2025-05-17T07:35:26+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -76623,34 +76684,34 @@
         },
         {
             "name": "symfony/framework-bundle",
-            "version": "v6.4.0-BETA1",
+            "version": "v6.3.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/framework-bundle.git",
-                "reference": "701e7b5ccab0c98e16f27a10c795d6052715b180"
+                "reference": "e144e3757296bed367ec3b764d8438891af75f78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/framework-bundle/zipball/701e7b5ccab0c98e16f27a10c795d6052715b180",
-                "reference": "701e7b5ccab0c98e16f27a10c795d6052715b180",
+                "url": "https://api.github.com/repos/symfony/framework-bundle/zipball/e144e3757296bed367ec3b764d8438891af75f78",
+                "reference": "e144e3757296bed367ec3b764d8438891af75f78",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": ">=2.1",
                 "ext-xml": "*",
                 "php": ">=8.1",
-                "symfony/cache": "^5.4|^6.0|^7.0",
-                "symfony/config": "^6.1|^7.0",
-                "symfony/dependency-injection": "^6.4|^7.0",
+                "symfony/cache": "^5.4|^6.0",
+                "symfony/config": "^6.1",
+                "symfony/dependency-injection": "^6.3.1",
                 "symfony/deprecation-contracts": "^2.5|^3",
-                "symfony/error-handler": "^6.1|^7.0",
-                "symfony/event-dispatcher": "^5.4|^6.0|^7.0",
-                "symfony/filesystem": "^5.4|^6.0|^7.0",
-                "symfony/finder": "^5.4|^6.0|^7.0",
-                "symfony/http-foundation": "^6.4|^7.0",
-                "symfony/http-kernel": "^6.4",
+                "symfony/error-handler": "^6.1",
+                "symfony/event-dispatcher": "^5.4|^6.0",
+                "symfony/filesystem": "^5.4|^6.0",
+                "symfony/finder": "^5.4|^6.0",
+                "symfony/http-foundation": "^6.3",
+                "symfony/http-kernel": "^6.3",
                 "symfony/polyfill-mbstring": "~1.0",
-                "symfony/routing": "^6.4|^7.0"
+                "symfony/routing": "^5.4|^6.0"
             },
             "conflict": {
                 "doctrine/annotations": "<1.13.1",
@@ -76658,70 +76719,67 @@
                 "phpdocumentor/reflection-docblock": "<3.2.2",
                 "phpdocumentor/type-resolver": "<1.4.0",
                 "symfony/asset": "<5.4",
-                "symfony/asset-mapper": "<6.4",
                 "symfony/clock": "<6.3",
-                "symfony/console": "<5.4",
-                "symfony/dom-crawler": "<6.4",
+                "symfony/console": "<5.4|>=7.0",
+                "symfony/dom-crawler": "<6.3",
                 "symfony/dotenv": "<5.4",
                 "symfony/form": "<5.4",
                 "symfony/http-client": "<6.3",
                 "symfony/lock": "<5.4",
                 "symfony/mailer": "<5.4",
                 "symfony/messenger": "<6.3",
-                "symfony/mime": "<6.4",
+                "symfony/mime": "<6.2",
                 "symfony/property-access": "<5.4",
                 "symfony/property-info": "<5.4",
-                "symfony/scheduler": "<6.4",
                 "symfony/security-core": "<5.4",
                 "symfony/security-csrf": "<5.4",
-                "symfony/serializer": "<6.4",
+                "symfony/serializer": "<6.3",
                 "symfony/stopwatch": "<5.4",
-                "symfony/translation": "<6.4",
+                "symfony/translation": "<6.2.8",
                 "symfony/twig-bridge": "<5.4",
                 "symfony/twig-bundle": "<5.4",
-                "symfony/validator": "<6.4",
+                "symfony/validator": "<6.3",
                 "symfony/web-profiler-bundle": "<5.4",
-                "symfony/workflow": "<6.4"
+                "symfony/workflow": "<5.4"
             },
             "require-dev": {
                 "doctrine/annotations": "^1.13.1|^2",
                 "doctrine/persistence": "^1.3|^2|^3",
                 "phpdocumentor/reflection-docblock": "^3.0|^4.0|^5.0",
-                "seld/jsonlint": "^1.10",
-                "symfony/asset": "^5.4|^6.0|^7.0",
-                "symfony/asset-mapper": "^6.4|^7.0",
-                "symfony/browser-kit": "^5.4|^6.0|^7.0",
-                "symfony/clock": "^6.2|^7.0",
-                "symfony/console": "^5.4.9|^6.0.9|^7.0",
-                "symfony/css-selector": "^5.4|^6.0|^7.0",
-                "symfony/dom-crawler": "^6.4|^7.0",
-                "symfony/dotenv": "^5.4|^6.0|^7.0",
-                "symfony/expression-language": "^5.4|^6.0|^7.0",
-                "symfony/form": "^5.4|^6.0|^7.0",
-                "symfony/html-sanitizer": "^6.1|^7.0",
-                "symfony/http-client": "^6.3|^7.0",
-                "symfony/lock": "^5.4|^6.0|^7.0",
-                "symfony/mailer": "^5.4|^6.0|^7.0",
-                "symfony/messenger": "^6.3|^7.0",
-                "symfony/mime": "^6.4|^7.0",
-                "symfony/notifier": "^5.4|^6.0|^7.0",
+                "symfony/asset": "^5.4|^6.0",
+                "symfony/asset-mapper": "^6.3",
+                "symfony/browser-kit": "^5.4|^6.0",
+                "symfony/clock": "^6.2",
+                "symfony/console": "^5.4.9|^6.0.9",
+                "symfony/css-selector": "^5.4|^6.0",
+                "symfony/dom-crawler": "^6.3",
+                "symfony/dotenv": "^5.4|^6.0",
+                "symfony/expression-language": "^5.4|^6.0",
+                "symfony/form": "^5.4|^6.0",
+                "symfony/html-sanitizer": "^6.1",
+                "symfony/http-client": "^6.3",
+                "symfony/lock": "^5.4|^6.0",
+                "symfony/mailer": "^5.4|^6.0",
+                "symfony/messenger": "^6.3",
+                "symfony/mime": "^6.2",
+                "symfony/notifier": "^5.4|^6.0",
                 "symfony/polyfill-intl-icu": "~1.0",
-                "symfony/process": "^5.4|^6.0|^7.0",
-                "symfony/property-info": "^5.4|^6.0|^7.0",
-                "symfony/rate-limiter": "^5.4|^6.0|^7.0",
-                "symfony/scheduler": "^6.4|^7.0",
-                "symfony/security-bundle": "^5.4|^6.0|^7.0",
-                "symfony/semaphore": "^5.4|^6.0|^7.0",
-                "symfony/serializer": "^6.4|^7.0",
-                "symfony/stopwatch": "^5.4|^6.0|^7.0",
-                "symfony/string": "^5.4|^6.0|^7.0",
-                "symfony/translation": "^6.4|^7.0",
-                "symfony/twig-bundle": "^5.4|^6.0|^7.0",
-                "symfony/uid": "^5.4|^6.0|^7.0",
-                "symfony/validator": "^6.4|^7.0",
-                "symfony/web-link": "^5.4|^6.0|^7.0",
-                "symfony/workflow": "^6.4|^7.0",
-                "symfony/yaml": "^5.4|^6.0|^7.0",
+                "symfony/process": "^5.4|^6.0",
+                "symfony/property-info": "^5.4|^6.0",
+                "symfony/rate-limiter": "^5.4|^6.0",
+                "symfony/scheduler": "^6.3",
+                "symfony/security-bundle": "^5.4|^6.0",
+                "symfony/semaphore": "^5.4|^6.0",
+                "symfony/serializer": "^6.3",
+                "symfony/stopwatch": "^5.4|^6.0",
+                "symfony/string": "^5.4|^6.0",
+                "symfony/translation": "^6.2.8",
+                "symfony/twig-bundle": "^5.4|^6.0",
+                "symfony/uid": "^5.4|^6.0",
+                "symfony/validator": "^6.3",
+                "symfony/web-link": "^5.4|^6.0",
+                "symfony/workflow": "^5.4|^6.0",
+                "symfony/yaml": "^5.4|^6.0",
                 "twig/twig": "^2.10|^3.0"
             },
             "type": "symfony-bundle",
@@ -76750,7 +76808,7 @@
             "description": "Provides a tight integration between Symfony components and the Symfony full-stack framework",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/framework-bundle/tree/v6.4.0-BETA1"
+                "source": "https://github.com/symfony/framework-bundle/tree/v6.3.12"
             },
             "funding": [
                 {
@@ -76766,7 +76824,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-10-21T07:14:32+00:00"
+            "time": "2024-01-23T16:21:43+00:00"
         },
         {
             "name": "symfony/http-client",
