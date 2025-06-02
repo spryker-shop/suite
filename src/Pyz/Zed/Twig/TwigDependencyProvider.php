@@ -36,6 +36,7 @@ use Spryker\Zed\Gui\Communication\Plugin\Twig\Buttons\Table\ViewTableButtonTwigP
 use Spryker\Zed\Gui\Communication\Plugin\Twig\FormRuntimeLoaderTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\GuiFilterTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\GuiTwigLoaderPlugin;
+use Spryker\Zed\Gui\Communication\Plugin\Twig\NavigationLinkTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\NumberFormatterTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\TabsTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\UrlDecodeTwigPlugin;
@@ -100,6 +101,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ViewActionButtonTwigPlugin(),
             new EditActionButtonTwigPlugin(),
             new RemoveActionButtonTwigPlugin(),
+            new NavigationLinkTwigPlugin(),
             // table row buttons
             new EditTableButtonTwigPlugin(),
             new BackTableButtonTwigPlugin(),

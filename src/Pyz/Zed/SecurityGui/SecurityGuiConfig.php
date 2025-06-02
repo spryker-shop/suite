@@ -16,7 +16,7 @@ class SecurityGuiConfig extends SprykerSecurityGuiConfig
     /**
      * @var string
      */
-    protected const IGNORABLE_ROUTE_PATTERN = '^/(security-gui|health-check|_profiler/wdt|api/rest/.+)';
+    protected const IGNORABLE_ROUTE_PATTERN = '^/(security-gui|health-check|multi-factor-auth|_profiler/wdt|api/rest/.+)';
 
     /**
      * @var bool
