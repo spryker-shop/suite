@@ -557,6 +557,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     public function getApplicationPlugins(Container $container): array
     {
         $applicationPlugins = parent::getApplicationPlugins($container);
+        $applicationPlugins[] = new ConsoleLocaleApplicationPlugin();
+        $applicationPlugins[] = new ConsoleSecurityApplicationPlugin();
         $applicationPlugins[] = new PropelApplicationPlugin();
         $applicationPlugins[] = new TwigApplicationPlugin();
         $applicationPlugins[] = new FormApplicationPlugin();
