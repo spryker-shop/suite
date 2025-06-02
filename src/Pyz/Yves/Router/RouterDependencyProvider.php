@@ -12,6 +12,7 @@ namespace Pyz\Yves\Router;
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
 use Spryker\Yves\CustomerDataChangeRequest\Plugin\Router\CustomerDataChangeRequestRouteProviderPlugin;
 use Spryker\Yves\HealthCheck\Plugin\Router\HealthCheckRouteProviderPlugin;
+use Spryker\Yves\MerchantRegistrationRequest\Plugin\Router\MerchantRegistrationRequestRouteProviderPlugin;
 use Spryker\Yves\MultiFactorAuth\Plugin\Router\Customer\MultiFactorAuthCustomerRouteProviderPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\LanguageDefaultPostAddRouteManipulatorPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\SslPostAddRouteManipulatorPlugin;
@@ -201,6 +202,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new SspAssetRouteProviderPlugin(), #SspAssetManagementFeature
             new SspAssetManagementRouteProviderPlugin(), #SspAssetManagementFeature
             new SspServiceManagementPageRouteProviderPlugin(),
+            new MerchantRegistrationRequestRouteProviderPlugin(),
         ];
 
         if (class_exists(LoadTestingRouterProviderPlugin::class)) {
