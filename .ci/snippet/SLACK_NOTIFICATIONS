@@ -1,10 +1,10 @@
 #!/bin/bash
 
 if [ "$PIPELINE_STATUS" = "FAILURE" ]; then
-    TEAM_NAME=$(echo "$BUDDY_RUN_COMMIT_MESSAGE" | grep -oE '^[a-zA-Z]+[a-zA-Z0-9]*-' | cut -d'-' -f1)
+    TEAM_NAME=$(echo "$BUDDY_RUN_COMMIT_SUBJECT" | grep -oE '^[a-zA-Z]+[a-zA-Z0-9]*-' | cut -d'-' -f1)
 
-    if [[ -z "$TEAM_NAME" || "$TEAM_NAME" == "$BUDDY_RUN_COMMIT_MESSAGE" ]]; then
-        TEAM_NAME=$(echo "$BUDDY_RUN_COMMIT_MESSAGE" | grep -oE '/([a-zA-Z]+)-[0-9]+[-/]?' | head -n 1 | cut -d'/' -f2 | cut -d'-' -f1)
+    if [[ -z "$TEAM_NAME" || "$TEAM_NAME" == "$BUDDY_RUN_COMMIT_SUBJECT" ]]; then
+        TEAM_NAME=$(echo "$BUDDY_RUN_COMMIT_SUBJECT" | grep -oE '/([a-zA-Z]+)-[0-9]+[-/]?' | head -n 1 | cut -d'/' -f2 | cut -d'-' -f1)
     fi
 
     TEAM_NAME=$(echo "$TEAM_NAME" | tr '[:lower:]' '[:upper:]')
