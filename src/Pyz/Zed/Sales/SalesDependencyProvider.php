@@ -112,6 +112,7 @@ use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\ProductTy
 use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\ProductTypeOrderItemsPostSavePlugin;
 use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\ScheduleTimeOrderItemExpanderPreSavePlugin;
 use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\ServiceDateTimeEnabledOrderItemsPostSavePlugin;
+use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\SspProductAbstractTypeSalesOrderItemCollectionPreDeletePlugin;
 use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Sales\SspServiceCancellableOrderItemExpanderPlugin;
 
 class SalesDependencyProvider extends SprykerSalesDependencyProvider
@@ -372,6 +373,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new SalesProductConfigurationSalesOrderItemCollectionPreDeletePlugin(),
             new GiftCardSalesOrderItemCollectionPreDeletePlugin(),
             new NopaymentSalesOrderItemCollectionPreDeletePlugin(),
+            new SspProductAbstractTypeSalesOrderItemCollectionPreDeletePlugin(),
             new SalesReclamationSalesOrderItemCollectionPreDeletePlugin(),
         ];
     }
