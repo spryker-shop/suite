@@ -1,0 +1,61 @@
+namespace: VolumeDataGenerationTest\Zed\Ssp
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    output: _output
+
+projectNamespaces: ['Pyz']
+
+suites:
+    Zed:
+        path: .
+        actor: SspTester
+        modules:
+            enabled:
+                - \PyzTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                      projectNamespaces: ['Pyz']
+                - \SprykerTest\Shared\Propel\Helper\ConnectionHelper
+                - \SprykerTest\Service\Container\Helper\ContainerHelper
+                - \SprykerTest\Zed\Application\Helper\ApplicationHelper
+                - \SprykerTest\Zed\EventDispatcher\Helper\EventDispatcherHelper
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Zed\Testify\Helper\Communication\DependencyProviderHelper
+                - \SprykerFeatureTest\Zed\SspInquiryManagement\Helper\SalesDataHelper
+                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
+                - \SprykerTest\Shared\Customer\Helper\CustomerDataHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+                - \SprykerTest\Shared\Quote\Helper\PersistentQuoteHelper
+                - \SprykerTest\Shared\Product\Helper\ProductDataHelper
+                - \SprykerTest\Shared\Store\Helper\StoreDependencyHelper
+                - \SprykerTest\Shared\Stock\Helper\StockDataHelper
+                - \SprykerTest\Zed\Testify\Helper\Communication\CommunicationHelper
+                - \SprykerTest\Shared\TestifyBackendApi\Helper\TestifyBackendApiHelper
+                - \SprykerTest\Shared\PriceProduct\Helper\PriceProductDataHelper
+                - \SprykerTest\Zed\Merchant\Helper\MerchantHelper
+                - \SprykerTest\Zed\MerchantStock\Helper\MerchantStockHelper
+                - \SprykerTest\Shared\ProductImage\Helper\ProductImageDataHelper
+                - \SprykerTest\Zed\Company\Helper\CompanyHelper
+                - \SprykerTest\Zed\CompanyBusinessUnit\Helper\CompanyBusinessUnitHelper
+                - \SprykerTest\Shared\CompanyUser\Helper\CompanyUserHelper
+                - \SprykerFeatureTest\Zed\SspInquiryManagement\Helper\SspInquiryDataHelper
+                - \SprykerTest\Shared\FileManager\Helper\FileManagerHelper
+                - \SprykerFeatureTest\Shared\SspFileManagement\Helper\SspFileManagementHelper
+                - \SprykerFeatureTest\Zed\SspAssetManagement\Helper\SspAssetDataHelper
+                - \SprykerTest\Shared\Store\Helper\StoreDataHelper
+                - \SprykerFeatureTest\Shared\SspServiceManagement\Helper\SspServiceManagementHelper
+                - \SprykerTest\Zed\Locale\Helper\LocaleDataHelper
+                - \SprykerFeatureTest\Zed\SspDashboardManagement\Helper\SspDashboardManagementHelper
+                - \SprykerTest\Zed\ProductOffer\Helper\ProductOfferHelper
+                - \SprykerTest\Shared\ProductOfferStock\Helper\ProductOfferStockDataHelper
+                - \SprykerTest\Shared\Shipment\Helper\ShipmentDataHelper
+                - \SprykerTest\Shared\ShipmentType\Helper\ShipmentTypeHelper
+                - \SprykerTest\Shared\Shipment\Helper\ShipmentMethodDataHelper
+                - \SprykerTest\Zed\Twig\Helper\TwigHelper:
+            config:
+                \SprykerTest\Shared\Testify\Helper\DataCleanupHelper:
+                    cleanup: false
+                \SprykerTest\Shared\Customer\Helper\CustomerDataHelper:
+                    isMailFacadeMockEnabled: false
