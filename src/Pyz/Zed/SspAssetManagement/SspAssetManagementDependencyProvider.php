@@ -12,6 +12,7 @@ namespace Pyz\Zed\SspAssetManagement;
 use SprykerFeature\Zed\SspAssetManagement\SspAssetManagementDependencyProvider as SprykerSspAssetManagementDependencyProvider;
 use SprykerFeature\Zed\SspFileManagement\Communication\Plugin\SspAssetManagement\SspFileSspAssetManagementExpanderPlugin;
 use SprykerFeature\Zed\SspInquiryManagement\Communication\Plugin\SspAssetManagement\SspInquirySspAssetManagementExpanderPlugin;
+use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\SspAssetManagement\ServiceSspAssetManagementExpanderPlugin;
 
 class SspAssetManagementDependencyProvider extends SprykerSspAssetManagementDependencyProvider
 {
@@ -23,6 +24,7 @@ class SspAssetManagementDependencyProvider extends SprykerSspAssetManagementDepe
         return [
             new SspInquirySspAssetManagementExpanderPlugin(),
             new SspFileSspAssetManagementExpanderPlugin(),
+            new ServiceSspAssetManagementExpanderPlugin(),
         ];
     }
 }
