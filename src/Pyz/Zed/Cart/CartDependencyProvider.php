@@ -98,11 +98,11 @@ use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItem
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentCartOperationPostSavePlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\SanitizeCartShipmentItemExpanderPlugin;
-use SprykerFeature\Zed\SspAssetManagement\Communication\Plugin\Cart\SspAssetItemExpanderPlugin;
-use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Cart\ProductAbstactTypeItemExpanderPlugin;
-use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Cart\ServicePointItemExpanderPlugin;
-use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Cart\SspServiceShipmentTypePreReloadItemsPlugin;
-use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Cart\SspShipmentTypeItemExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\ProductAbstractTypeItemExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\ServicePointItemExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\SspAssetItemExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\SspServiceShipmentTypePreReloadItemsPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Cart\SspShipmentTypeItemExpanderPlugin;
 
 class CartDependencyProvider extends SprykerCartDependencyProvider
 {
@@ -142,7 +142,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new MerchantShipmentItemExpanderPlugin(),
             new GroupKeyWithCartIdentifierItemExpanderPlugin(),
             new SspShipmentTypeItemExpanderPlugin(),
-            new ProductAbstactTypeItemExpanderPlugin(),
+            new ProductAbstractTypeItemExpanderPlugin(),
             new RemoveQuotePaymentCartItemExpanderPlugin(),
             new SspAssetItemExpanderPlugin(),
             new ServicePointItemExpanderPlugin(),
@@ -186,7 +186,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new MerchantShipmentItemExpanderPlugin(),
             new GroupKeyWithCartIdentifierItemExpanderPlugin(),
             new SspShipmentTypeItemExpanderPlugin(),
-            new ProductAbstactTypeItemExpanderPlugin(),
+            new ProductAbstractTypeItemExpanderPlugin(),
             new ServicePointItemExpanderPlugin(),
             new RemoveQuotePaymentCartItemExpanderPlugin(),
         ];

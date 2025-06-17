@@ -47,13 +47,14 @@
                 <action>index</action>
                 <visible>1</visible>
             </merchant-sales-order>
-            <ssp-service-management>
+            <self-service-portal-services>
                 <label>Services</label>
                 <title>Services</title>
-                <bundle>ssp-service-management</bundle>
-                <controller>list</controller>
+                <bundle>self-service-portal</bundle>
+                <controller>list-service</controller>
                 <action>index</action>
-            </ssp-service-management>
+                <icon>fa-paperclip</icon>
+            </self-service-portal-services>
             <merchant-sales-return>
                 <label>My Returns</label>
                 <title>My Returns</title>
@@ -99,28 +100,27 @@
         <title>Customer portal</title>
         <icon>fa-id-badge</icon>
         <pages>
-            <ssp-assets>
+            <self-service-portal-asset>
                 <label>Assets</label>
                 <title>Assets</title>
-                <bundle>ssp-asset-management</bundle>
-                <controller>index</controller>
+                <bundle>self-service-portal</bundle>
+                <controller>list-asset</controller>
                 <action>index</action>
-            </ssp-assets>
-            <ssp-file-management>
+            </self-service-portal-asset>
+            <self-service-portal-company-file>
                 <label>File Attachments</label>
                 <title>File Attachments</title>
-                <bundle>ssp-file-management</bundle>
-                <controller>list</controller>
+                <bundle>self-service-portal</bundle>
+                <controller>list-file</controller>
                 <action>index</action>
-                <visible>1</visible>
-            </ssp-file-management>
-            <ssp-inquiries>
+            </self-service-portal-company-file>
+            <self-service-portal-inquiries>
                 <label>Ssp Inquiries</label>
                 <title>Ssp Inquiries</title>
-                <bundle>ssp-inquiry-management</bundle>
-                <controller>index</controller>
+                <bundle>self-service-portal</bundle>
+                <controller>list-inquiry</controller>
                 <action>index</action>
-            </ssp-inquiries>
+            </self-service-portal-inquiries>
         </pages>
     </ssp>
     <customer>

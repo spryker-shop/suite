@@ -14,7 +14,7 @@ use Orm\Zed\Company\Persistence\Map\SpyCompanyTableMap;
 use Orm\Zed\Company\Persistence\SpyCompanyQuery;
 use Orm\Zed\FileManager\Persistence\Map\SpyFileTableMap;
 use Orm\Zed\FileManager\Persistence\SpyFileQuery;
-use Orm\Zed\SspFileManagement\Persistence\SpyCompanyFile;
+use Orm\Zed\SelfServicePortal\Persistence\SpyCompanyFile;
 
 /**
  * Attaches files to companies.

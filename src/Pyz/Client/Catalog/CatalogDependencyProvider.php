@@ -71,7 +71,7 @@ use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\SpellingSuggestionS
 use Spryker\Client\SearchHttp\Plugin\Search\ProductConcreteCatalogSearchHttpResultFormatterPlugin;
 use Spryker\Client\SearchHttp\Plugin\Search\SearchHttpSearchResultCountPlugin;
 use Spryker\Shared\SearchHttp\SearchHttpConfig;
-use SprykerFeature\Client\SspServiceManagement\Plugin\Catalog\ProductAbstractTypeFacetConfigTransferBuilderPlugin;
+use SprykerFeature\Client\SelfServicePortal\Plugin\Catalog\ProductAbstractTypeFacetConfigTransferBuilderPlugin;
 
 class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
 {

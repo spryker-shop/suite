@@ -13,8 +13,8 @@ use Codeception\Test\Unit;
 use Orm\Zed\Company\Persistence\Map\SpyCompanyTableMap;
 use Orm\Zed\CompanyBusinessUnit\Persistence\Map\SpyCompanyBusinessUnitTableMap;
 use Orm\Zed\CompanyBusinessUnit\Persistence\SpyCompanyBusinessUnitQuery;
-use Orm\Zed\SspAssetManagement\Persistence\SpySspAsset;
-use Orm\Zed\SspAssetManagement\Persistence\SpySspAssetToCompanyBusinessUnit;
+use Orm\Zed\SelfServicePortal\Persistence\SpySspAsset;
+use Orm\Zed\SelfServicePortal\Persistence\SpySspAssetToCompanyBusinessUnit;
 use Ramsey\Uuid\Uuid;
 use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
 

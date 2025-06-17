@@ -24,7 +24,7 @@ use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductConc
 use Spryker\Client\ProductOfferStorage\Plugin\ProductStorage\ProductViewProductOfferExpanderPlugin;
 use Spryker\Client\ProductStorage\Plugin\ProductVariantProductViewExpanderPlugin;
 use Spryker\Client\ProductStorage\ProductStorageDependencyProvider as SprykerProductStorageDependencyProvider;
-use SprykerFeature\Client\SspServiceManagement\Plugin\ProductStorage\ShipmentTypeProductViewExpanderPlugin;
+use SprykerFeature\Client\SelfServicePortal\Plugin\ProductStorage\ShipmentTypeProductViewExpanderPlugin;
 
 class ProductStorageDependencyProvider extends SprykerProductStorageDependencyProvider
 {

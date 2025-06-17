@@ -14,8 +14,8 @@ use Generated\Shared\DataBuilder\MerchantProfileBuilder;
 use Generated\Shared\Transfer\MerchantTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
-use Orm\Zed\SspServiceManagement\Persistence\SpyProductAbstractToProductAbstractTypeQuery;
-use Orm\Zed\SspServiceManagement\Persistence\SpyProductAbstractTypeQuery;
+use Orm\Zed\SelfServicePortal\Persistence\SpyProductAbstractToProductAbstractTypeQuery;
+use Orm\Zed\SelfServicePortal\Persistence\SpyProductAbstractTypeQuery;
 use Orm\Zed\Store\Persistence\SpyStoreQuery;
 use Orm\Zed\Tax\Persistence\SpyTaxSetQuery;
 
