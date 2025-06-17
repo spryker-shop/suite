@@ -12,9 +12,9 @@ namespace VolumeDataGenerationTest\Zed\Ssp;
 use Codeception\Test\Unit;
 use Orm\Zed\FileManager\Persistence\Map\SpyFileTableMap;
 use Orm\Zed\FileManager\Persistence\SpyFileQuery;
-use Orm\Zed\SspAssetManagement\Persistence\Map\SpySspAssetTableMap;
-use Orm\Zed\SspAssetManagement\Persistence\SpySspAssetQuery;
-use Orm\Zed\SspFileManagement\Persistence\SpySspAssetFile;
+use Orm\Zed\SelfServicePortal\Persistence\Map\SpySspAssetTableMap;
+use Orm\Zed\SelfServicePortal\Persistence\SpySspAssetFile;
+use Orm\Zed\SelfServicePortal\Persistence\SpySspAssetQuery;
 
 /**
  * Attaches files to ssp assets.

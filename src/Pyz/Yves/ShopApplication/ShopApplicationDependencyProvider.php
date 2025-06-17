@@ -26,31 +26,30 @@ use Spryker\Yves\Sitemap\Widget\SitemapWidget;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
-use SprykerFeature\Yves\FeatureUi\Widget\SspListMenuItemWidget;
-use SprykerFeature\Yves\SspAssetManagement\Widget\SspAssetInfoForItemWidget;
-use SprykerFeature\Yves\SspAssetManagement\Widget\SspAssetListWidget;
-use SprykerFeature\Yves\SspAssetManagement\Widget\SspAssetMenuItemWidget;
-use SprykerFeature\Yves\SspAssetManagement\Widget\SspItemAssetSelectorWidget;
-use SprykerFeature\Yves\SspDashboardManagement\Plugin\ShopApplication\SspDashboardFilterControllerEventHandlerPlugin;
-use SprykerFeature\Yves\SspDashboardManagement\Widget\DashboardMenuItemWidget;
-use SprykerFeature\Yves\SspFileManagement\Widget\SspFileListWidget;
-use SprykerFeature\Yves\SspFileManagement\Widget\SspFileManagerMenuItemWidget;
-use SprykerFeature\Yves\SspInquiryManagement\Plugin\ShopApplication\SspInquiryRestrictionHandlerPlugin;
-use SprykerFeature\Yves\SspInquiryManagement\Widget\CreateOrderSspInquiryLinkWidget;
-use SprykerFeature\Yves\SspInquiryManagement\Widget\DashboardInquiryWidget;
-use SprykerFeature\Yves\SspInquiryManagement\Widget\SspInquiryListWidget;
-use SprykerFeature\Yves\SspInquiryManagement\Widget\SspInquiryMenuItemWidget;
-use SprykerFeature\Yves\SspServiceManagement\Plugin\ShopApplication\AddressFormItemsByShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin;
-use SprykerFeature\Yves\SspServiceManagement\Widget\ListItemsByShipmentTypeWidget;
-use SprykerFeature\Yves\SspServiceManagement\Widget\ServiceListWidget;
-use SprykerFeature\Yves\SspServiceManagement\Widget\SspAddressFormItemsByShipmentTypeWidget;
-use SprykerFeature\Yves\SspServiceManagement\Widget\SspProductOfferPriceWidget;
-use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceCancelWidget;
-use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceChangeScheduledTimeLinkWidget;
-use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceDetectorWidget;
-use SprykerFeature\Yves\SspServiceManagement\Widget\SspServiceMenuItemWidget;
-use SprykerFeature\Yves\SspServiceManagement\Widget\SspServicePointNameForItemWidget;
-use SprykerFeature\Yves\SspServiceManagement\Widget\SspShipmentTypeServicePointSelectorWidget;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\ShopApplication\AddressFormItemsByShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\ShopApplication\SspDashboardFilterControllerEventHandlerPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\ShopApplication\SspInquiryRestrictionHandlerPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Widget\CreateOrderSspInquiryWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\DashboardMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\ListCartItemsByShipmentTypeWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\ServiceListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAddressFormItemsByShipmentTypeWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetInfoForItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspCompanyFilesMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspFileListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspInquiryMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspItemAssetSelectorWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspListMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspProductOfferPriceWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceCancelWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceChangeScheduledTimeLinkWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceDetectorWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceMenuItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServicePointNameForItemWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspShipmentTypeServicePointSelectorWidget;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AssetWidget\Widget\AssetWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
@@ -399,20 +398,19 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MultiFactorAuthHandlerWidget::class,
             SitemapWidget::class,
             SspInquiryMenuItemWidget::class,
-            CreateOrderSspInquiryLinkWidget::class,
-            SspFileManagerMenuItemWidget::class,
-            SspServiceCancelWidget::class,
-            DashboardMenuItemWidget::class,
-            DashboardInquiryWidget::class,
-            SspFileListWidget::class,
-            SspAssetMenuItemWidget::class,
+            CreateOrderSspInquiryWidget::class,
+            SspCompanyFilesMenuItemWidget::class,
             SspInquiryListWidget::class,
             SspAssetListWidget::class,
+            SspServiceCancelWidget::class,
+            DashboardMenuItemWidget::class,
+            SspFileListWidget::class,
+            SspAssetMenuItemWidget::class,
             SspServiceMenuItemWidget::class,
             SspServiceChangeScheduledTimeLinkWidget::class,
             SspShipmentTypeServicePointSelectorWidget::class,
             SspServicePointNameForItemWidget::class,
-            ListItemsByShipmentTypeWidget::class,
+            ListCartItemsByShipmentTypeWidget::class,
             SspListMenuItemWidget::class,
             SspAssetInfoForItemWidget::class,
             SspServiceDetectorWidget::class,
