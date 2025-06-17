@@ -191,6 +191,8 @@ use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderItemsConfiguredBundleWidget;
 use SprykerShop\Yves\SalesOrderAmendmentWidget\Widget\CancelOrderAmendmentWidget;
 use SprykerShop\Yves\SalesOrderAmendmentWidget\Widget\OrderAmendmentWidget;
+use SprykerShop\Yves\SalesOrderAmendmentWidget\Widget\UpdateOrderCheckoutSubmitButtonTextWidget;
+use SprykerShop\Yves\SalesOrderAmendmentWidget\Widget\UpdateOrderCheckoutSuccessTitleWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SalesProductBundleWidget\Widget\OrderItemsProductBundleWidget;
 use SprykerShop\Yves\SalesProductConfigurationWidget\Widget\ProductConfigurationOrderItemDisplayWidget;
@@ -387,6 +389,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CartReorderItemsWidget::class,
             OrderAmendmentWidget::class,
             CancelOrderAmendmentWidget::class,
+            UpdateOrderCheckoutSubmitButtonTextWidget::class,
+            UpdateOrderCheckoutSuccessTitleWidget::class,
             TraceableEventWidget::class,
             ExpressCheckoutPaymentWidget::class,
             CustomerEmailChangeRequestWidget::class,
