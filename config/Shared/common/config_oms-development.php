@@ -10,7 +10,7 @@ use Spryker\Shared\Nopayment\NopaymentConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Zed\GiftCard\GiftCardConfig;
-use SprykerFeature\Shared\SspServiceManagement\SspServiceManagementConstants;
+use SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConstants;
 
 // ----------------------------------------------------------------------------
 // ------------------------------ OMS -----------------------------------------
@@ -53,4 +53,4 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = array_replace(
     ],
 );
 
-$config[SspServiceManagementConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING];
+$config[SelfServicePortalConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING];

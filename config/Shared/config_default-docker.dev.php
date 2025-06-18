@@ -38,8 +38,7 @@ use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\OauthDummy\OauthDummyConfig;
-use SprykerFeature\Shared\SspAssetManagement\SspAssetManagementConstants;
-use SprykerFeature\Shared\SspInquiryManagement\SspInquiryManagementConstants;
+use SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConstants;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
@@ -154,8 +153,7 @@ if (!getenv('SPRYKER_SSL_ENABLE')) {
         = $config[NewsletterConstants::BASE_URL_YVES]
         = $config[MerchantRelationshipConstants::BASE_URL_YVES]
         = $config[MerchantRelationRequestConstants::BASE_URL_YVES]
-        = $config[SspInquiryManagementConstants::BASE_URL_YVES]
-        = $config[SspAssetManagementConstants::BASE_URL_YVES]
+        = $config[SelfServicePortalConstants::BASE_URL_YVES]
         = sprintf(
             'http://%s%s',
             $yvesHost,

@@ -19,19 +19,19 @@ use Spryker\Zed\SharedCart\Communication\Plugin\WriteSharedCartPermissionPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionStoragePlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\WriteShoppingListPermissionPlugin;
-use SprykerFeature\Shared\SspAssetManagement\Plugin\Permission\CreateSspAssetPermissionPlugin;
-use SprykerFeature\Shared\SspAssetManagement\Plugin\Permission\UnassignSspAssetPermissionPlugin;
-use SprykerFeature\Shared\SspAssetManagement\Plugin\Permission\UpdateSspAssetPermissionPlugin;
-use SprykerFeature\Shared\SspAssetManagement\Plugin\Permission\ViewBusinessUnitSspAssetPermissionPlugin;
-use SprykerFeature\Shared\SspAssetManagement\Plugin\Permission\ViewCompanySspAssetPermissionPlugin;
-use SprykerFeature\Shared\SspDashboardManagement\Plugin\Permission\ViewDashboardPermissionPlugin;
-use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\DownloadFilesPermissionPlugin;
-use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\ViewCompanyBusinessUnitFilesPermissionPlugin;
-use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\ViewCompanyFilesPermissionPlugin;
-use SprykerFeature\Shared\SspFileManagement\Plugin\Permission\ViewCompanyUserFilesPermissionPlugin;
-use SprykerFeature\Shared\SspInquiryManagement\Plugin\Permission\CreateSspInquiryPermissionPlugin;
-use SprykerFeature\Shared\SspInquiryManagement\Plugin\Permission\ViewBusinessUnitSspInquiryPermissionPlugin;
-use SprykerFeature\Shared\SspInquiryManagement\Plugin\Permission\ViewCompanySspInquiryPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\CreateSspAssetPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\CreateSspInquiryPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\DownloadCompanyFilesPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\UnassignSspAssetPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\UpdateSspAssetPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewBusinessUnitSspAssetPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewBusinessUnitSspInquiryPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanyBusinessUnitFilesPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanyFilesPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanySspAssetPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanySspInquiryPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanyUserFilesPermissionPlugin;
+use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewDashboardPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
@@ -59,19 +59,19 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new WriteShoppingListPermissionPlugin(), #ShoppingListFeature
             new SeeBusinessUnitOrdersPermissionPlugin(),
             new SeeCompanyOrdersPermissionPlugin(),
-            new DownloadFilesPermissionPlugin(), #SspFileManagementFeature
-            new ViewCompanyUserFilesPermissionPlugin(), #SspFileManagementFeature
-            new ViewCompanyBusinessUnitFilesPermissionPlugin(), #SspFileManagementFeature
-            new ViewCompanyFilesPermissionPlugin(), #SspFileManagementFeature
-            new CreateSspInquiryPermissionPlugin(), #SspInquiryManagementFeature
-            new ViewCompanySspInquiryPermissionPlugin(), #SspInquiryManagementFeature
-            new ViewBusinessUnitSspInquiryPermissionPlugin(), #SspInquiryManagementFeature
-            new ViewDashboardPermissionPlugin(), #SspDashboardManagement Feature
-            new ViewCompanySspAssetPermissionPlugin(), #SspAssetManagement Feature
-            new ViewBusinessUnitSspAssetPermissionPlugin(), #SspAssetManagement Feature
-            new UpdateSspAssetPermissionPlugin(), #SspAssetManagement Feature
-            new UnassignSspAssetPermissionPlugin(), #SspAssetManagement Feature
-            new CreateSspAssetPermissionPlugin(), #SspAssetManagement Feature
+            new DownloadCompanyFilesPermissionPlugin(),
+            new ViewCompanyUserFilesPermissionPlugin(),
+            new ViewCompanyBusinessUnitFilesPermissionPlugin(),
+            new ViewCompanyFilesPermissionPlugin(),
+            new CreateSspInquiryPermissionPlugin(),
+            new ViewCompanySspInquiryPermissionPlugin(),
+            new ViewBusinessUnitSspInquiryPermissionPlugin(),
+            new ViewDashboardPermissionPlugin(),
+            new ViewCompanySspAssetPermissionPlugin(),
+            new ViewBusinessUnitSspAssetPermissionPlugin(),
+            new UpdateSspAssetPermissionPlugin(),
+            new UnassignSspAssetPermissionPlugin(),
+            new CreateSspAssetPermissionPlugin(),
         ];
     }
 }

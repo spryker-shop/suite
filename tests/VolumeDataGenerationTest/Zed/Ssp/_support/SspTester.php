@@ -20,7 +20,7 @@ use Generated\Shared\Transfer\ProductImageTransfer;
 use Generated\Shared\Transfer\ProductOfferStockTransfer;
 use Generated\Shared\Transfer\ProductOfferTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
-use Orm\Zed\SspServiceManagement\Persistence\SpyProductAbstractType;
+use Orm\Zed\SelfServicePortal\Persistence\SpyProductAbstractType;
 use Orm\Zed\Tax\Persistence\SpyTaxSet;
 use VolumeDataGenerationTest\Zed\Ssp\_generated\SspTesterActions;
 
@@ -61,7 +61,7 @@ class SspTester extends Actor
     /**
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param \Orm\Zed\Tax\Persistence\SpyTaxSet $taxSetEntity
-     * @param \Orm\Zed\SspServiceManagement\Persistence\SpyProductAbstractType $serviceProductTypeEntity
+     * @param \Orm\Zed\SelfServicePortal\Persistence\SpyProductAbstractType $serviceProductTypeEntity
      * @param \Generated\Shared\Transfer\MerchantTransfer $merchantTransfer
      *
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
