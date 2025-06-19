@@ -905,6 +905,15 @@ $config[GlueJsonApiConventionConstants::GLUE_DOMAIN] = sprintf(
     $sprykerGlueStorefrontHost ?: $sprykerGlueBackendHost ?: 'localhost',
 );
 
+if ($isTestifyConstantsClassExists) {
+    $config[TestifyConstants::GLUE_STOREFRONT_API_DOMAIN] = sprintf(
+        'https://%s%s',
+        $sprykerGlueStorefrontHost,
+        $gluePort !== 443 ? ':' . $gluePort : '',
+    );
+    $config[TestifyConstants::GLUE_STOREFRONT_API_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml';
+}
+
 // ----------------------------------------------------------------------------
 // ------------------------------ ACP -----------------------------------------
 // ----------------------------------------------------------------------------

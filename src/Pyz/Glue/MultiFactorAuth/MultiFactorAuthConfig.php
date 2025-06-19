@@ -27,4 +27,22 @@ class MultiFactorAuthConfig extends SprykerMultiFactorAuthConfig
             'order-payments',
         ];
     }
+
+    /**
+     * @return array<string>
+     */
+    public function getMultiFactorAuthProtectedBackendResources(): array
+    {
+        return [
+            'warehouse-user-assignments',
+        ];
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getMultiFactorAuthProtectedStorefrontResources(): array
+    {
+        return [];
+    }
 }

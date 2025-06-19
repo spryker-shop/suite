@@ -11,6 +11,7 @@ namespace Pyz\Glue\MultiFactorAuth;
 
 use Spryker\Glue\MultiFactorAuth\MultiFactorAuthDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Yves\MultiFactorAuth\Plugin\Factors\Email\CustomerEmailMultiFactorAuthPlugin;
+use Spryker\Zed\MultiFactorAuth\Communication\Plugin\Factors\Email\UserEmailMultiFactorAuthPlugin;
 
 class MultiFactorAuthDependencyProvider extends SprykerGlueApplicationDependencyProvider
 {
@@ -21,6 +22,16 @@ class MultiFactorAuthDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new CustomerEmailMultiFactorAuthPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Shared\MultiFactorAuthExtension\Dependency\Plugin\MultiFactorAuthPluginInterface>
+     */
+    protected function getUserMultiFactorAuthPlugins(): array
+    {
+        return [
+            new UserEmailMultiFactorAuthPlugin(),
         ];
     }
 }
