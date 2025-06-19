@@ -7,19 +7,19 @@
 
 declare(strict_types = 1);
 
-namespace PyzTest\Glue\MultiFactorAuth\RestApi\Fixtures;
+namespace PyzTest\Glue\MultiFactorAuth\StorefrontApi\Fixtures;
 
 use Generated\Shared\Transfer\CustomerTransfer;
-use PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester;
+use PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
-class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
+class MultiFactorAuthStorefrontApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     /**
      * @var string
      */
-    protected const TEST_USERNAME = 'MultiFactorAuthRestApiFixtures';
+    protected const TEST_CUSTOMER_NAME = 'multiFactorAuthStorefrontApiCustomer@example.com';
 
     /**
      * @var string
@@ -27,23 +27,18 @@ class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, Fixtur
     protected const MFA_TYPE = 'email';
 
     /**
-     * @var string
-     */
-    protected const RESOURCE_CARTS = 'carts';
-
-    /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
      */
     protected CustomerTransfer $customerTransfer;
 
     /**
-     * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
+     * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthStorefrontApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
-    public function buildFixtures(MultiFactorAuthRestApiTester $I): FixturesContainerInterface
+    public function buildFixtures(MultiFactorAuthStorefrontApiTester $I): FixturesContainerInterface
     {
-        $this->customerTransfer = $I->createCustomer(static::TEST_USERNAME);
+        $this->customerTransfer = $I->createCustomer(static::TEST_CUSTOMER_NAME);
 
         return $this;
     }
@@ -74,24 +69,6 @@ class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, Fixtur
     }
 
     /**
-     * @return array<string, mixed>
-     */
-    public function createCartRequestPayload(): array
-    {
-        return [
-            'data' => [
-                'type' => static::RESOURCE_CARTS,
-                'attributes' => [
-                    'name' => 'Test Cart',
-                    'priceMode' => 'GROSS_MODE',
-                    'currency' => 'EUR',
-                    'store' => 'DE',
-                ],
-            ],
-        ];
-    }
-
-    /**
      * @param string $resourceName
      *
      * @return string
@@ -99,13 +76,5 @@ class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, Fixtur
     public function generateUrl(string $resourceName): string
     {
         return sprintf('/%s', $resourceName);
-    }
-
-    /**
-     * @return string
-     */
-    public function generateCartUrl(): string
-    {
-        return sprintf('/%s', static::RESOURCE_CARTS);
     }
 }

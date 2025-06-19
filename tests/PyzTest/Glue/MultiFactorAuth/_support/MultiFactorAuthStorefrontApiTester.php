@@ -12,7 +12,7 @@ namespace PyzTest\Glue\MultiFactorAuth;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Orm\Zed\MultiFactorAuth\Persistence\Map\SpyCustomerMultiFactorAuthCodesTableMap;
 use Orm\Zed\MultiFactorAuth\Persistence\SpyCustomerMultiFactorAuthCodesQuery;
-use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
+use SprykerTest\Glue\Testify\Tester\StorefrontApiEndToEndTester;
 
 /**
  * Inherited Methods
@@ -30,23 +30,23 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
  *
  * @SuppressWarnings(PHPMD)
  */
-class MultiFactorAuthApiTester extends ApiEndToEndTester
+class MultiFactorAuthStorefrontApiTester extends StorefrontApiEndToEndTester
 {
-    use _generated\MultiFactorAuthApiTesterActions;
+    use _generated\MultiFactorAuthStorefrontApiTesterActions;
 
     /**
      * @var string
      */
-    protected const TEST_CUSTOMER_PASSWORD = 'Change!23456';
+    protected const TEST_PASSWORD = 'Change!23456';
 
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return void
      */
-    public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
+    public function authorizeCustomerToStorefrontApi(CustomerTransfer $customerTransfer): void
     {
-        $oauthResponseTransfer = $this->haveAuthorizationToGlue($customerTransfer);
+        $oauthResponseTransfer = $this->havePasswordAuthorizationToStorefrontApi($customerTransfer);
         $this->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
     }
 
@@ -59,11 +59,14 @@ class MultiFactorAuthApiTester extends ApiEndToEndTester
     {
         $customerTransfer = $this->haveCustomer([
             CustomerTransfer::USERNAME => $customerName,
-            CustomerTransfer::PASSWORD => static::TEST_CUSTOMER_PASSWORD,
-            CustomerTransfer::NEW_PASSWORD => static::TEST_CUSTOMER_PASSWORD,
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::EMAIL => $customerName,
         ]);
 
-        return $this->confirmCustomer($customerTransfer);
+        $this->confirmCustomer($customerTransfer);
+
+        return $customerTransfer->setPassword(static::TEST_PASSWORD);
     }
 
     /**
@@ -72,7 +75,7 @@ class MultiFactorAuthApiTester extends ApiEndToEndTester
      *
      * @return string|null
      */
-    public function getCustomerMfaCodeFromDatabase(CustomerTransfer $customerTransfer, string $mfaType): ?string
+    public function getCustomerMultiFactorAuthCodeFromDatabase(CustomerTransfer $customerTransfer, string $mfaType): ?string
     {
         $customerMultiFactorAuthCodeEntity = (new SpyCustomerMultiFactorAuthCodesQuery())
             ->innerJoinSpyCustomerMultiFactorAuth()
