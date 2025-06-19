@@ -7,19 +7,19 @@
 
 declare(strict_types = 1);
 
-namespace PyzTest\Glue\MultiFactorAuth\RestApi\Fixtures;
+namespace PyzTest\Glue\MultiFactorAuth\BackendApi\Fixtures;
 
-use Generated\Shared\Transfer\CustomerTransfer;
-use PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester;
+use Generated\Shared\Transfer\UserTransfer;
+use PyzTest\Glue\MultiFactorAuth\MultiFactorAuthBackendApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
-class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
+class MultiFactorAuthBackendApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     /**
      * @var string
      */
-    protected const TEST_USERNAME = 'MultiFactorAuthRestApiFixtures';
+    protected const TEST_USER_NAME = 'multiFactorAuthBackendApiUser@example.com';
 
     /**
      * @var string
@@ -29,31 +29,31 @@ class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, Fixtur
     /**
      * @var string
      */
-    protected const RESOURCE_CARTS = 'carts';
+    protected const RESOURCE_WAREHOUSE_USER_ASSIGNMENTS = 'warehouse-user-assignments';
 
     /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
+     * @var \Generated\Shared\Transfer\UserTransfer
      */
-    protected CustomerTransfer $customerTransfer;
+    protected UserTransfer $userTransfer;
 
     /**
-     * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthRestApiTester $I
+     * @param \PyzTest\Glue\MultiFactorAuth\MultiFactorAuthBackendApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
-    public function buildFixtures(MultiFactorAuthRestApiTester $I): FixturesContainerInterface
+    public function buildFixtures(MultiFactorAuthBackendApiTester $I): FixturesContainerInterface
     {
-        $this->customerTransfer = $I->createCustomer(static::TEST_USERNAME);
+        $this->userTransfer = $I->createUser(static::TEST_USER_NAME);
 
         return $this;
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
+     * @return \Generated\Shared\Transfer\UserTransfer
      */
-    public function getCustomerTransfer(): CustomerTransfer
+    public function getUserTransfer(): UserTransfer
     {
-        return $this->customerTransfer;
+        return $this->userTransfer;
     }
 
     /**
@@ -76,16 +76,17 @@ class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, Fixtur
     /**
      * @return array<string, mixed>
      */
-    public function createCartRequestPayload(): array
+    public function createWarehouseUserAssignmentsRequestPayload(): array
     {
         return [
             'data' => [
-                'type' => static::RESOURCE_CARTS,
+                'type' => static::RESOURCE_WAREHOUSE_USER_ASSIGNMENTS,
                 'attributes' => [
-                    'name' => 'Test Cart',
-                    'priceMode' => 'GROSS_MODE',
-                    'currency' => 'EUR',
-                    'store' => 'DE',
+                    'userUuid' => 'test',
+                    'warehouse' => [
+                        'uuid' => 'test',
+                    ],
+                    'isActive' => 'false',
                 ],
             ],
         ];
@@ -104,8 +105,8 @@ class MultiFactorAuthRestApiFixtures implements FixturesBuilderInterface, Fixtur
     /**
      * @return string
      */
-    public function generateCartUrl(): string
+    public function generateWarehouseUserAssignmentsUrl(): string
     {
-        return sprintf('/%s', static::RESOURCE_CARTS);
+        return sprintf('/%s', static::RESOURCE_WAREHOUSE_USER_ASSIGNMENTS);
     }
 }
