@@ -69514,23 +69514,24 @@
         },
         {
             "name": "spryker/stock",
-            "version": "8.12.0",
+            "version": "8.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/stock.git",
-                "reference": "fea708a7b895749c62d8d8b2f52f12625de35cef"
+                "reference": "fbe6ff182ef2ae63ffa89d7d06fb46bcd75a3dae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/stock/zipball/fea708a7b895749c62d8d8b2f52f12625de35cef",
-                "reference": "fea708a7b895749c62d8d8b2f52f12625de35cef",
+                "url": "https://api.github.com/repos/spryker/stock/zipball/fbe6ff182ef2ae63ffa89d7d06fb46bcd75a3dae",
+                "reference": "fbe6ff182ef2ae63ffa89d7d06fb46bcd75a3dae",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
                 "spryker/acl-merchant-portal-extension": "^1.0.0",
                 "spryker/decimal-object": "^1.0.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/event": "^2.0.0",
+                "spryker/kernel": "^3.77.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
                 "spryker/product-extension": "^1.3.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -69562,9 +69563,9 @@
             ],
             "description": "Stock module",
             "support": {
-                "source": "https://github.com/spryker/stock/tree/8.12.0"
+                "source": "https://github.com/spryker/stock/tree/8.13.0"
             },
-            "time": "2025-05-27T14:18:30+00:00"
+            "time": "2025-06-19T15:39:33+00:00"
         },
         {
             "name": "spryker/stock-address",
@@ -69755,24 +69756,25 @@
         },
         {
             "name": "spryker/stock-gui",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/stock-gui.git",
-                "reference": "7dbd744031e475fed7dea4135bea253f704da937"
+                "reference": "d8a637c5e3d7da94a3b0c671c44874efc1e72a89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/stock-gui/zipball/7dbd744031e475fed7dea4135bea253f704da937",
-                "reference": "7dbd744031e475fed7dea4135bea253f704da937",
+                "url": "https://api.github.com/repos/spryker/stock-gui/zipball/d8a637c5e3d7da94a3b0c671c44874efc1e72a89",
+                "reference": "d8a637c5e3d7da94a3b0c671c44874efc1e72a89",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.2",
                 "spryker/gui": "^3.45.0",
                 "spryker/kernel": "^3.33.0",
-                "spryker/stock": "^8.0.0",
+                "spryker/stock": "^8.13.0",
                 "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0",
                 "spryker/util-text": "^1.2.0"
             },
             "require-dev": {
@@ -69795,9 +69797,9 @@
             ],
             "description": "StockGui module",
             "support": {
-                "source": "https://github.com/spryker/stock-gui/tree/2.1.0"
+                "source": "https://github.com/spryker/stock-gui/tree/2.2.0"
             },
-            "time": "2022-09-19T06:48:51+00:00"
+            "time": "2025-06-19T15:39:33+00:00"
         },
         {
             "name": "spryker/storage",
