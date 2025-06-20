@@ -66,6 +66,7 @@
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto'
             - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install --no-ansi -r ci.code-generate'
+            - '.ci/snippet/REQUIRE composer dump-autoload -o -a --apcu'
             - '.ci/snippet/FINISH'
         services:
             - type: 'POSTGRE_SQL'
@@ -129,7 +130,6 @@
             - '.ci/snippet/RUN vendor/bin/console --no-ansi dev:composer:validate-json-files'
             - '.ci/snippet/RUN vendor/bin/console --no-ansi code:sniff:style'
             - '.ci/snippet/RUN vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2'
-            - '.ci/snippet/RUN vendor/bin/phpstan analyze'
             - '.ci/snippet/RUN vendor/bin/psalm.phar --show-info=false --no-cache --threads=1'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
@@ -144,7 +144,6 @@
         docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/phpstan analyze'
             - '.ci/snippet/RUN vendor/bin/console --no-ansi dev:dependency:find'
             - '.ci/snippet/RUN vendor/bin/spryker-dev-console dev:deprecation-links:check'
             - '.ci/snippet/RUN tests/ci_check_untracked.sh'
@@ -167,6 +166,100 @@
         setup_commands:
             - 'apt-get update && apt-get -y install php8.2-cli php8.2-mbstring'
         shell: 'BASH'
+      - action: 'PHP 8.2 PHPStan'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/phpstan analyze'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN vendor/bin/phpstan analyze'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker [1/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 0 275'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker [2/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 275 275'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker [3/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 550 150'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker [4/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 700 300'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker [5/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 1000'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.3 PHPStan spryker/spryker feature'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan SprykerFeature'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+        trigger_conditions:
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+      - action: 'PHP 8.3 PHPStan spryker/spryker-shop'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.3'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan SprykerShop'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
       - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
@@ -232,7 +325,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Validation / Prefer Lowest'
+- pipeline: 'Standard Validation / Prefer Lowest'
   events:
       - type: 'PUSH'
         refs:
@@ -254,8 +347,9 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer update --prefer-lowest --optimize-autoloader --no-interaction --prefer-install=auto'
-            - '.ci/snippet/REQUIRE composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies;'
+            - '.ci/snippet/REQUIRE composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies'
             - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install --no-ansi -r ci.code-generate'
+            - '.ci/snippet/REQUIRE composer dump-autoload -o -a --apcu'
             - '.ci/snippet/FINISH'
         services:
             - type: 'POSTGRE_SQL'
@@ -346,6 +440,7 @@
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto'
             - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install --no-ansi -r ci.code-generate'
+            - '.ci/snippet/REQUIRE composer dump-autoload -o -a --apcu'
             - '.ci/snippet/FINISH'
         services:
             - type: 'POSTGRE_SQL'
@@ -502,8 +597,9 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer update --prefer-lowest --optimize-autoloader --no-interaction --prefer-install=auto'
-            - '.ci/snippet/REQUIRE composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies;'
+            - '.ci/snippet/REQUIRE composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies'
             - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install --no-ansi -r ci.code-generate'
+            - '.ci/snippet/REQUIRE composer dump-autoload -o -a --apcu'
             - '.ci/snippet/FINISH'
         services:
             - type: 'POSTGRE_SQL'
@@ -528,7 +624,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 0,275'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 0 275'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -538,7 +634,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 275,275'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 275 275'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -548,7 +644,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 550,150'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 550 150'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -558,7 +654,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 700,200'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 700 200'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -568,7 +664,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 900'
+            - '.ci/snippet/RUN tests/spryker-ci.sh  phpStan Spryker 900'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -578,7 +674,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerFeature.all -v'
+            - '.ci/snippet/RUN tests/spryker-ci.sh  phpStan SprykerFeature'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -592,9 +688,359 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerShop.all -v'
+            - '.ci/snippet/RUN tests/spryker-ci.sh  phpStan SprykerShop'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
+      - action: 'Master Job Slack Notification failure'
+        type: 'BUILD'
+        trigger_time: 'ON_FAILURE'
+        docker_image_name: 'library/node'
+        docker_image_tag: '18'
+        variables:
+            - key: 'PIPELINE_STATUS'
+              value: 'FAILURE'
+              type: 'VAR'
+        execute_commands:
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
+        shell: 'BASH'
+        trigger_conditions:
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
+
+- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Functional Tests / Dynamic Store ON'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+      - type: 'PULL_REQUEST'
+        events:
+            - 'labeled'
+        branches:
+            - '*'
+  trigger_conditions:
+      - trigger_condition: OR
+        trigger_operands:
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-functional-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Run tests'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.php83.es7.yml'
+            - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --skip-group=Presentation
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+                fi
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_CURRENT_REGION'
+              value: 'EU'
+              type: 'VAR'
+            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
+              value: 'true'
+              type: 'VAR'
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
+      - action: 'Master Job Slack Notification failure'
+        type: 'BUILD'
+        trigger_time: 'ON_FAILURE'
+        docker_image_name: 'library/node'
+        docker_image_tag: '18'
+        variables:
+            - key: 'PIPELINE_STATUS'
+              value: 'FAILURE'
+              type: 'VAR'
+        execute_commands:
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
+        shell: 'BASH'
+        trigger_conditions:
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
+
+- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests / Prefer Lowest / Dynamic Store OFF'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+      - type: 'PULL_REQUEST'
+        events:
+            - 'labeled'
+        branches:
+            - '*'
+  trigger_conditions:
+      - trigger_condition: OR
+        trigger_operands:
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ssp-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Update Composer (Prefer Lowest)'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - 'composer config github-oauth.github.com ${GITHUB_TOKEN}'
+            - 'COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet'
+            - 'composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies'
+        shell: 'BASH'
+      - action: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests / Prefer Lowest'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.postgres.dynamic-store-off.prefer-lowest.php82.es6.yml'
+            - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/REQUIRE docker/sdk testing composer dump-autoload -o -a --apcu'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                  .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+                fi
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.2'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
+      - action: 'Master Job Slack Notification failure'
+        type: 'BUILD'
+        trigger_time: 'ON_FAILURE'
+        docker_image_name: 'library/node'
+        docker_image_tag: '18'
+        variables:
+            - key: 'PIPELINE_STATUS'
+              value: 'FAILURE'
+              type: 'VAR'
+        execute_commands:
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
+        shell: 'BASH'
+        trigger_conditions:
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
+
+- pipeline: 'Docker / Alpine / PHP 8.3 / MariaDB / Acceptance / Dynamic Store ON'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+      - type: 'PULL_REQUEST'
+        events:
+            - 'labeled'
+        branches:
+            - '*'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  trigger_conditions:
+      - trigger_condition: OR
+        trigger_operands:
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-latest-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-ui-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
+  actions:
+      - action: 'Run tests'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.php83.es7.yml'
+            - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
+            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.api.yml'
+            - '.ci/snippet/RUN docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --group=Presentation'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_CURRENT_REGION'
+              value: 'EU'
+              type: 'VAR'
+            - key: 'SPRYKER_DYNAMIC_STORE_MODE'
+              value: 'true'
+              type: 'VAR'
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.3'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
+      - action: 'Master Job Slack Notification failure'
+        type: 'BUILD'
+        trigger_time: 'ON_FAILURE'
+        docker_image_name: 'library/node'
+        docker_image_tag: '18'
+        variables:
+            - key: 'PIPELINE_STATUS'
+              value: 'FAILURE'
+              type: 'VAR'
+        execute_commands:
+            - '.ci/snippet/SLACK_NOTIFICATIONS'
+        setup_commands:
+            - apt-get update && apt-get -y install jq
+        shell: 'BASH'
+        trigger_conditions:
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
+
+- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance / Prefer Lowest / Dynamic Store OFF'
+  events:
+      - type: 'PUSH'
+        refs:
+            - 'refs/pull/*'
+            - 'refs/heads/master'
+      - type: 'PULL_REQUEST'
+        events:
+            - 'labeled'
+        branches:
+            - '*'
+  trigger_conditions:
+      - trigger_condition: OR
+        trigger_operands:
+            - trigger_condition: 'VAR_CONTAINS'
+              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+            - trigger_condition: 'VAR_IS'
+              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+              trigger_variable_value: 'master'
+  terminate_stale_runs: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  concurrent_pipeline_runs: true
+  clone_depth: 1
+  resources: 'NANO'
+  actions:
+      - action: 'Update Composer (Prefer Lowest)'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - 'composer config github-oauth.github.com ${GITHUB_TOKEN}'
+            - 'COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet'
+            - 'composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies'
+        shell: 'BASH'
+      - action: 'Run tests'
+        type: 'NATIVE_BUILD_DOCKER_CLI'
+        commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.dynamic-store-off.prefer-lowest.php82.es6.yml'
+            - '.ci/snippet/REQUIRE docker/sdk up -t'
+            - '.ci/snippet/REQUIRE docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
+            - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
+            - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
+            - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.api.yml'
+            - '.ci/snippet/FINISH'
+        run_next_parallel: true
+        variables:
+            - key: 'SPRYKER_PLATFORM_IMAGE'
+              value: 'spryker/php:8.2'
+              type: 'VAR'
+            - key: 'TRAVIS'
+              value: '1'
+              type: 'VAR'
+        sync_paths:
+            - pipeline_path: '/'
+              vm_path: '/home/ubuntu/build'
+              direction: 'PIPELINE_TO_VM'
+        docker_layer_caching_scope: 'ACTION'
+        instance_type: 'GENERAL_MEDIUM'
       - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
@@ -629,14 +1075,17 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ssp-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-ssp-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -650,7 +1099,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.dynamic-store-off.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/REQUIRE docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
@@ -713,14 +1162,17 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ssp-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-ssp-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -732,7 +1184,7 @@
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.yml'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.php82.es7.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
@@ -809,14 +1261,17 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ssp-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-ssp-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   actions:
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -887,14 +1342,17 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ssp-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-ssp-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -977,11 +1435,14 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1055,11 +1516,14 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   actions:
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -1127,11 +1591,14 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1199,11 +1666,14 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1277,14 +1747,17 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ssp-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-ssp-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1307,6 +1780,7 @@
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
+                  .ci/snippet/RUN docker/sdk testing bash tests/spryker-ci.sh Codeception all
                 fi
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
@@ -1361,17 +1835,20 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-functional-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-latest-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ssp-latest-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-functional-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-latest-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-ssp-latest-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1383,7 +1860,7 @@
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.yml'
+            - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.php83.es7.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
@@ -1454,14 +1931,17 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ssp-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-ssp-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1538,14 +2018,17 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ssp-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-ssp-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1628,11 +2111,14 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1700,17 +2186,20 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ui-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-api-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-latest-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-ui-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-api-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-latest-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1784,11 +2273,14 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -1856,11 +2348,14 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2008,14 +2503,17 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ssp-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-ssp-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2038,7 +2536,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.dynamic-store-off.prefer-lowest.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/REQUIRE docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
@@ -2101,14 +2599,17 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ssp-compatibility-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-ssp-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2131,7 +2632,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.functional.mariadb.prefer-lowest.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/REQUIRE docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
                 if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
@@ -2200,11 +2701,14 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2227,7 +2731,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.dynamic-store-off.prefer-lowest.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/REQUIRE docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -2281,11 +2785,14 @@
       - trigger_condition: OR
         trigger_operands:
             - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-compatibility-ci'
+              trigger_variable_value: 'run-deprecated-ci'
               trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
-            - trigger_condition: 'VAR_IS'
-              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
-              trigger_variable_value: 'master'
+  #            - trigger_condition: 'VAR_CONTAINS'
+  #              trigger_variable_value: 'run-compatibility-ci'
+  #              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+  #            - trigger_condition: 'VAR_IS'
+  #              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+  #              trigger_variable_value: 'master'
   terminate_stale_runs: true
   auto_clear_cache: true
   fail_on_prepare_env_warning: true
@@ -2308,7 +2815,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot -v deploy.ci.acceptance.mariadb.prefer-lowest.yml'
             - '.ci/snippet/REQUIRE docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/REQUIRE docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.acceptance.yml'
             - '.ci/snippet/RUN docker/sdk testing codecept fixtures'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -2394,7 +2901,7 @@
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.dynamic-store-off.prefer-lowest.yml'
+            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.es7.postgres.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
@@ -2481,7 +2988,7 @@
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
-            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
+            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
       - action: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot'
@@ -2490,7 +2997,7 @@
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.api.mariadb.robot.yml'
             - '.ci/snippet/RUN docker/sdk up -t'
-            - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
+            - '.ci/snippet/REQUIRE docker/sdk testing composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk testing console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec robot-framework robot -v env:api_suite -v docker:True -v dms:true -v glue_env:http://glue.eu.spryker.local -v bapi_env:http://glue-backend.eu.spryker.local -v sapi_env:http://glue-storefront.eu.spryker.local --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s robotframework.tests.api.suite ."'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
