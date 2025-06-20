@@ -1030,7 +1030,7 @@ jobs:
                     SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
             -   name: Run Tests
                 run: |
-                    docker/sdk exec robot-framework robot -v env:api_suite -v dms:true -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s '*'.tests.api.suite.'*'.positive .
+                    docker/sdk exec robot-framework robot -v env:api_suite -v dms:true -v docker:true -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s '*'.tests.api.suite.'*'.positive .
             -   name: Upload artifacts
                 if: failure()
                 run: |
