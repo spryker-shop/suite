@@ -898,7 +898,7 @@ jobs:
               continue-on-error: true
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  docker/sdk boot deploy.ci.acceptance.dynamic-store-off.prefer-lowest.yml
+                  docker/sdk boot deploy.ci.acceptance.postgres.dynamic-store-off.es7.php82.yml
                   docker/sdk up -t
                   docker/sdk cli composer dump-autoload -o -a --apcu
                   docker/sdk testing console queue:worker:start --stop-when-empty
