@@ -920,7 +920,73 @@ jobs:
     #             uses: ./.github/actions/job-slack-notifications
     #             if: always()
 
-    docker-alpine-php-83-mariadb-robot:
+    # docker-alpine-php-83-mariadb-robot:
+    #     if: >
+    #         contains(github.event.pull_request.labels.*.name, 'run-api-ci')
+    #         || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+    #         || github.ref == 'refs/heads/master'
+    #     name: "[run-api-ci] PHP 8.3 / MariaDB / Robot / API"
+    #     runs-on: ubuntu-latest
+    #     env:
+    #         PROGRESS_TYPE: plain
+    #         SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+    #         TRAVIS: 1
+    #         ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+    #         SPRYKER_CURRENT_REGION: EU
+    #         SPRYKER_DYNAMIC_STORE_MODE: true
+    #     steps:
+    #         -   uses: actions/checkout@v4
+
+    #         -   uses: actions/setup-python@v4
+    #             with:
+    #                 python-version: '3.9'
+
+    #         -   name: Install packages
+    #             run: |
+    #                 sudo apt-get update
+    #                 sudo apt-get install -y python3-pip
+    #                 pip3 install --upgrade pip
+    #                 pip3 install awscli
+    #                 python3 -m pip install --upgrade pip
+    #                 python3 -m pip install -U robotframework
+    #                 python3 -m pip install -U robotframework-requests
+    #                 python3 -m pip install -U robotframework-jsonlibrary
+    #                 python3 -m pip install -U robotframework-databaselibrary
+    #                 python3 -m pip install PyMySQL
+    #         -   name: Install docker-compose
+    #             run: |
+    #                 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    #                 sudo chmod +x /usr/local/bin/docker-compose
+    #         -   name: Install Robot tests
+    #             run: |
+    #                 git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
+    #         -   name: Install Project
+    #             continue-on-error: false
+    #             run: |
+    #                 git clone https://github.com/spryker/docker-sdk.git ./docker
+    #                 docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml
+    #                 sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
+    #                 docker/sdk up -t
+    #         -   name: Custom commands
+    #             continue-on-error: false
+    #             run: |
+    #                 docker/sdk cli composer dump-autoload -o -a --apcu
+    #                 SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
+    #         -   name: Run Tests
+    #             run: |
+    #                 cd robotframework-tests
+    #                 robot -v env:api_suite -v dms:true -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s '*'.tests.api.suite.'*'.positive .
+    #                 touch results/time.txt && echo $(date) > results/time.txt
+    #         -   name: Upload artifacts
+    #             if: failure()
+    #             run: |
+    #                 AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3MariaDB/log.html
+
+    #         -   name: Slack Notification for failed job
+    #             uses: ./.github/actions/job-slack-notifications
+    #             if: always()
+
+docker-alpine-php-83-mariadb-robot-docker:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-api-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
@@ -936,30 +1002,20 @@ jobs:
             SPRYKER_DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
-
-            -   uses: actions/setup-python@v4
-                with:
-                    python-version: '3.9'
-
             -   name: Install packages
                 run: |
                     sudo apt-get update
                     sudo apt-get install -y python3-pip
                     pip3 install --upgrade pip
                     pip3 install awscli
-                    python3 -m pip install --upgrade pip
-                    python3 -m pip install -U robotframework
-                    python3 -m pip install -U robotframework-requests
-                    python3 -m pip install -U robotframework-jsonlibrary
-                    python3 -m pip install -U robotframework-databaselibrary
-                    python3 -m pip install PyMySQL
             -   name: Install docker-compose
                 run: |
                     sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
                     sudo chmod +x /usr/local/bin/docker-compose
-            -   name: Install Robot tests
+            -   name: Install robotframework-suite-tests folder
                 run: |
-                    git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
+                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
+                    cp -r vendor ../vendor
             -   name: Install Project
                 continue-on-error: false
                 run: |
@@ -974,13 +1030,11 @@ jobs:
                     SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
             -   name: Run Tests
                 run: |
-                    cd robotframework-tests
-                    robot -v env:api_suite -v dms:true -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s '*'.tests.api.suite.'*'.positive .
-                    touch results/time.txt && echo $(date) > results/time.txt
+                    docker/sdk exec robot-framework robot -v env:api_suite -v dms:true -v ignore_console:false -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s '*'.tests.api.suite.'*'.positive .
             -   name: Upload artifacts
                 if: failure()
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp robotframework-tests/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3MariaDB/log.html
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3MariaDB/log.html
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
