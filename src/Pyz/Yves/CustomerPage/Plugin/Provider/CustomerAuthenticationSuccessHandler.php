@@ -11,7 +11,14 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class CustomerAuthenticationSuccessHandler extends SprykerCustomerAuthenticationSuccessHandler
 {
+    /**
+     * @var string
+     */
     protected const REDIS_CONNECTION = 'SESSION_YVES';
+
+    /**
+     * @var string
+     */
     protected const REDIS_KEY = 'force_logout_customers';
 
     /**

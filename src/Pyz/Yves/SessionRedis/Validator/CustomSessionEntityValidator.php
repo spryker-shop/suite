@@ -17,10 +17,27 @@ use Spryker\Shared\SessionRedis\Handler\KeyBuilder\SessionKeyBuilderInterface;
 class CustomSessionEntityValidator extends SprykerSessionEntityValidator
 {
     /**
-     * @param \Generated\Shared\Transfer\SessionEntityRequestTransfer $sessionEntityRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\SessionEntityResponseTransfer
+     * @var \Spryker\Shared\SessionRedis\Redis\SessionRedisWrapperInterface
      */
+    protected SessionRedisWrapperInterface $redisClient;
+
+    /**
+     * @var string
+     */
+    protected const REDIS_KEY = 'force_logout_customers';
+    /**
+     * @param \Spryker\Shared\SessionRedis\Redis\SessionRedisWrapperInterface $redisClient
+     * @param \Spryker\Shared\SessionRedis\Hasher\HasherInterface $hasher
+     * @param \Spryker\Shared\SessionRedis\Handler\KeyBuilder\SessionKeyBuilderInterface $keyBuilder
+     */
+    public function __construct(
+        SessionRedisWrapperInterface $redisClient,
+        HasherInterface $hasher,
+        SessionKeyBuilderInterface $keyBuilder
+    ) {
+        parent::__construct($redisClient, $hasher, $keyBuilder);
+    }
+
     /**
      * @param \Generated\Shared\Transfer\SessionEntityRequestTransfer $sessionEntityRequestTransfer
      *
@@ -28,21 +45,14 @@ class CustomSessionEntityValidator extends SprykerSessionEntityValidator
      */
     public function validate(SessionEntityRequestTransfer $sessionEntityRequestTransfer): SessionEntityResponseTransfer
     {
-        $forceLogoutKey = 'force_logout_customers';
-        $forceLogoutData = $this->redisClient->get($forceLogoutKey);
+        if ($this->redisClient->get(static::REDIS_KEY)) {
+            $usersToLogout = json_decode($this->redisClient->get(static::REDIS_KEY), true);
 
-        if ($forceLogoutData) {
-            $usersToLogout = json_decode($forceLogoutData, true);
-
-            if (is_array($usersToLogout) && in_array($sessionEntityRequestTransfer->getIdEntity(), $usersToLogout)) {
-                $updatedUsers = array_diff($usersToLogout, [$sessionEntityRequestTransfer->getIdEntity()]);
-                $this->redisClient->set($forceLogoutKey, json_encode($updatedUsers));
-
+            if (in_array($sessionEntityRequestTransfer->getIdEntity(), $usersToLogout)) {
                 return (new SessionEntityResponseTransfer())->setIsSuccessfull(false);
             }
         }
 
-        // Call parent validation
         return parent::validate($sessionEntityRequestTransfer);
     }
 }

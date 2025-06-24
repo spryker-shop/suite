@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Generated\Shared\Transfer\PermissionCollectionTransfer;
 use Spryker\Yves\Kernel\PermissionAwareTrait;
 use SprykerShop\Yves\CompanyPage\Controller\CompanyRolePermissionController as SprykerCompanyRolePermissionController;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @method \Pyz\Yves\CompanyPage\CompanyPageFactory getFactory()
@@ -19,6 +18,16 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class CompanyRolePermissionController extends SprykerCompanyRolePermissionController
 {
     use PermissionAwareTrait;
+
+    /**
+     * @var string
+     */
+    protected const REDIS_CONNECTION = 'SESSION_YVES';
+
+    /**
+     * @var string
+     */
+    protected const REDIS_KEY = 'force_logout_customers';
 
     /**
      * @param int $idCompanyRole
@@ -45,20 +54,19 @@ class CompanyRolePermissionController extends SprykerCompanyRolePermissionContro
     protected function addCustomersToForceLogoutListByCompanyRoleId(CompanyRoleTransfer $companyRoleTransfer): void
     {
         $customerCollectionTransfer = $this->getFactory()
-            ->getCompanyRoleClient()
-            ->getCustomerIdsByIdCompanyRole($companyRoleTransfer);
+            ->getCompanyRoleClient()->getCustomerIdsByIdCompanyRole($companyRoleTransfer);
 
         if ($customerCollectionTransfer->getCustomers()->count() === 0) {
             return;
         }
 
-        $redisKey = 'force_logout_customers';
         $customerIdsToLogout = $this->getFactory()->getRedisClient()->get(
-            'SESSION_YVES',
-            $redisKey,
+            static::REDIS_CONNECTION,
+            static::REDIS_KEY
         );
 
         $customerIdsToLogout = json_decode($customerIdsToLogout, true) ?: [];
+
         $customerIdsPerRole = [];
 
         foreach ($customerCollectionTransfer->getCustomers() as $customerTransfer) {
@@ -70,12 +78,10 @@ class CompanyRolePermissionController extends SprykerCompanyRolePermissionContro
             $customerIdsPerRole[] = $customerTransfer->getIdCustomer();
         }
 
-        $mergedCustomerIds = array_unique(array_merge($customerIdsPerRole, $customerIdsToLogout));
-
         $this->getFactory()->getRedisClient()->set(
-            'SESSION_YVES',
-            $redisKey,
-            json_encode($mergedCustomerIds),
+            static::REDIS_CONNECTION,
+            static::REDIS_KEY,
+            json_encode($customerIdsPerRole + $customerIdsToLogout)
         );
     }
 }
