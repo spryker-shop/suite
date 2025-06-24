@@ -28,7 +28,7 @@ class CompanyRoleRepository extends SprykerCompanyRoleRepository implements Comp
     {
         $customerIds = $this->getFactory()
             ->createCompanyRoleToCompanyUserQuery()
-            ->filterByFkCompanyRole($companyRoleTransfer->getIdCompanyRoleOrFail())
+            ->filterByFkCompanyRole($idCompanyRole)
             ->joinCompanyUser()
             ->select([SpyCompanyUserTableMap::COL_FK_CUSTOMER])
             ->distinct()
