@@ -26,28 +26,22 @@ class CompanyRoleRepository extends SprykerCompanyRoleRepository implements Comp
      */
     public function getCustomerCollectionByIdCompanyRole(int $idCompanyRole): CustomerCollectionTransfer
     {
-        $customerCollection = new CustomerCollectionTransfer();
+        $customerIds = $this->getFactory()
+            ->createCompanyRoleToCompanyUserQuery()
+            ->filterByFkCompanyRole($companyRoleTransfer->getIdCompanyRoleOrFail())
+            ->joinCompanyUser()
+            ->select([SpyCompanyUserTableMap::COL_FK_CUSTOMER])
+            ->distinct()
+            ->find()
+            ->getData();
 
-        $customerQuery = $this->getFactory()
-            ->createCustomerQuery()
-            ->useCompanyUserQuery()
-                ->useSpyCompanyRoleToCompanyUserQuery()
-                    ->filterByFkCompanyRole($idCompanyRole)
-                ->endUse()
-            ->endUse()
-            ->select([
-                SpyCustomerTableMap::COL_ID_CUSTOMER,
-                SpyCustomerTableMap::COL_CUSTOMER_REFERENCE,
-            ]);
-
-        foreach ($customerQuery->find() as $customerData) {
-            $customerTransfer = (new CustomerTransfer())
-                ->setIdCustomer($customerData[SpyCustomerTableMap::COL_ID_CUSTOMER])
-                ->setCustomerReference($customerData[SpyCustomerTableMap::COL_CUSTOMER_REFERENCE]);
-
-            $customerCollection->addCustomer($customerTransfer);
+        $customerCollectionTransfer = new CustomerCollectionTransfer();
+        foreach ($customerIds as $idCustomer) {
+            $customerCollectionTransfer->addCustomer(
+                (new CustomerTransfer())->setIdCustomer($idCustomer)
+            );
         }
 
-        return $customerCollection;
+        return $customerCollectionTransfer;
     }
 }
