@@ -18,8 +18,10 @@ use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUser
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\CompanyBusinessUnitOrderSearchFormExpanderPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\CompanyBusinessUnitOrderSearchFormHandlerPlugin;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
+use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\RedirectUriCustomerRedirectStrategyPlugin;
+use Pyz\Yves\CustomerPage\Plugin\Provider\CustomerAuthenticationSuccessHandler;
 use SprykerShop\Yves\MerchantSwitcherWidget\Plugin\CustomerPage\MerchantSwitchCartAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ServicePointAddressCheckoutAddressCollectionFormExpanderPlugin;
 use SprykerShop\Yves\ServicePointWidget\Plugin\CustomerPage\ServicePointCheckoutAddressCollectionFormExpanderPlugin;
@@ -31,6 +33,34 @@ use SprykerShop\Yves\ShipmentTypeWidget\Plugin\CustomerPage\ShipmentTypeCheckout
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
+    public const CLIENT_REDIS = 'CLIENT_REDIS';
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function provideDependencies(Container $container): Container
+    {
+        $container = parent::provideDependencies($container);
+        $container = $this->addRedisClient($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addRedisClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_REDIS, function (Container $container) {
+            return $container->getLocator()->redis()->client();
+        });
+
+        return $container;
+    }
     /**
      * @return array<\SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\PreRegistrationCustomerTransferExpanderPluginInterface>
      */
@@ -61,6 +91,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
             new UpdateAgentTokenAfterCustomerAuthenticationSuccessPlugin(),
             new MerchantSwitchCartAfterCustomerAuthenticationSuccessPlugin(),
             new UpdateAgentSessionAfterCustomerAuthenticationSuccessPlugin(),
+            // Add any additional after authentication success plugins here
         ];
     }
 
@@ -129,4 +160,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
             new CustomerMultiFactorAuthenticationHandlerPlugin(),
         ];
     }
+
+
 }
