@@ -14,7 +14,7 @@ use Generated\Shared\Transfer\CustomerCollectionTransfer;
 use Spryker\Zed\CompanyRole\Business\Reader\CompanyRoleReader as SprykerCompanyRoleReader;
 use Spryker\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface;
 
-class CompanyRoleReader extends SprykerCompanyRoleReader
+class CompanyRoleReader extends SprykerCompanyRoleReader implements CompanyRoleReaderInterface
 {
     /**
      * @var \Spryker\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface
