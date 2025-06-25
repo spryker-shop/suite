@@ -11,14 +11,8 @@ namespace Pyz\Zed\CompanyRole\Business\Reader;
 
 use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Generated\Shared\Transfer\CustomerCollectionTransfer;
-use Generated\Shared\Transfer\CustomerTransfer;
-use Orm\Zed\Customer\Persistence\Map\SpyCustomerTableMap;
-use Orm\Zed\CompanyUser\Persistence\Map\SpyCompanyUserTableMap;
-use Orm\Zed\CompanyRole\Persistence\Map\SpyCompanyRoleToCompanyUserTableMap;
-use Propel\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\CompanyRole\Business\Reader\CompanyRoleReader as SprykerCompanyRoleReader;
 use Spryker\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface;
-use Pyz\Zed\CompanyRole\Persistence\CompanyRolePersistenceFactoryInterface;
 
 class CompanyRoleReader extends SprykerCompanyRoleReader
 {
@@ -28,13 +22,7 @@ class CompanyRoleReader extends SprykerCompanyRoleReader
     protected $companyRoleRepository;
 
     /**
-     * @var \Pyz\Zed\CompanyRole\Persistence\CompanyRolePersistenceFactoryInterface
-     */
-    protected $factory;
-
-    /**
      * @param \Spryker\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface $companyRoleRepository
-     * @param \Pyz\Zed\CompanyRole\Persistence\CompanyRolePersistenceFactoryInterface $factory
      */
     public function __construct(
         CompanyRoleRepositoryInterface $companyRoleRepository,
