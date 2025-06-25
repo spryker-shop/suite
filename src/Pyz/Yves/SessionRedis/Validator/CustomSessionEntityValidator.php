@@ -45,10 +45,13 @@ class CustomSessionEntityValidator extends SprykerSessionEntityValidator
      */
     public function validate(SessionEntityRequestTransfer $sessionEntityRequestTransfer): SessionEntityResponseTransfer
     {
-        if ($this->redisClient->get(static::REDIS_KEY)) {
-            $usersToLogout = json_decode($this->redisClient->get(static::REDIS_KEY), true);
+        $usersToLogout = $this->redisClient->get(static::REDIS_KEY);
 
-            if (in_array($sessionEntityRequestTransfer->getIdEntity(), $usersToLogout)) {
+        if ($usersToLogout) {
+            if (in_array(
+                $sessionEntityRequestTransfer->getIdEntity(),
+                json_decode($this->redisClient->get(static::REDIS_KEY), true))
+            ) {
                 return (new SessionEntityResponseTransfer())->setIsSuccessfull(false);
             }
         }

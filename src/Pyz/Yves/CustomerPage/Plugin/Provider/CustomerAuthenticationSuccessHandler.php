@@ -55,13 +55,7 @@ class CustomerAuthenticationSuccessHandler extends SprykerCustomerAuthentication
         );
         $this->setUsersToLogout($updatedUsersToLogout);
 
-        $response = parent::onAuthenticationSuccess($request, $token);
-
-        if (!in_array(static::ACCESS_MODE_PRE_AUTH, $token->getRoleNames())) {
-            $this->executeCustomAuthenticationSuccess($customer->getCustomerTransfer());
-        }
-
-        return $response;
+        return  parent::onAuthenticationSuccess($request, $token);
     }
 
     /**
@@ -89,17 +83,5 @@ class CustomerAuthenticationSuccessHandler extends SprykerCustomerAuthentication
             static::REDIS_KEY,
             json_encode($users)
         );
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
-     */
-    protected function executeCustomAuthenticationSuccess(CustomerTransfer $customerTransfer): void
-    {
-        // Your custom logic here after successful authentication
-        // Example:
-        // $this->getFactory()->getYourService()->doSomething($customerTransfer);
     }
 }

@@ -91,7 +91,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
             new UpdateAgentTokenAfterCustomerAuthenticationSuccessPlugin(),
             new MerchantSwitchCartAfterCustomerAuthenticationSuccessPlugin(),
             new UpdateAgentSessionAfterCustomerAuthenticationSuccessPlugin(),
-            // Add any additional after authentication success plugins here
         ];
     }
 
@@ -160,6 +159,4 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
             new CustomerMultiFactorAuthenticationHandlerPlugin(),
         ];
     }
-
-
 }
