@@ -38,11 +38,9 @@ class CompanyRoleReader extends SprykerCompanyRoleReader
      */
     public function __construct(
         CompanyRoleRepositoryInterface $companyRoleRepository,
-        CompanyRolePersistenceFactoryInterface $factory
     ) {
         parent::__construct($companyRoleRepository);
         $this->companyRoleRepository = $companyRoleRepository;
-        $this->factory = $factory;
     }
 
     /**

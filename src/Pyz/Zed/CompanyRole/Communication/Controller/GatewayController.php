@@ -9,12 +9,13 @@ namespace Pyz\Zed\CompanyRole\Communication\Controller;
 
 use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Generated\Shared\Transfer\CustomerCollectionTransfer;
+use Spryker\Zed\CompanyRole\Communication\Controller\GatewayController as SprykerGatewayController;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
 
 /**
  * @method \Pyz\Zed\CompanyRole\Business\CompanyRoleFacadeInterface getFacade()
  */
-class GatewayController extends AbstractGatewayController
+class GatewayController extends SprykerGatewayController
 {
     /**
      * @param \Generated\Shared\Transfer\CompanyRoleTransfer $companyRoleTransfer

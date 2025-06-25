@@ -28,9 +28,9 @@ class SessionRedisFactory extends SprykerSessionRedisFactory
     public function createSessionEntityValidator(): SessionEntityValidatorInterface
     {
         return new CustomSessionEntityValidator(
-            $this->getSessionRedisWrapper(),
-            $this->createHasher(),
-            $this->createSessionKeyBuilder()
+            $this->createSessionRedisWrapper(),
+            $this->createBcryptHasher(),
+            $this->createSessionKeyBuilder(),
         );
     }
 

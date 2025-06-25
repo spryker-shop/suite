@@ -54,7 +54,7 @@ class CompanyRolePermissionController extends SprykerCompanyRolePermissionContro
     protected function addCustomersToForceLogoutListByCompanyRoleId(CompanyRoleTransfer $companyRoleTransfer): void
     {
         $customerCollectionTransfer = $this->getFactory()
-            ->getCompanyRoleClient()->getCustomerIdsByIdCompanyRole($companyRoleTransfer);
+            ->getPyzCompanyRoleClient()->getCustomerIdsByIdCompanyRole($companyRoleTransfer);
 
         if ($customerCollectionTransfer->getCustomers()->count() === 0) {
             return;

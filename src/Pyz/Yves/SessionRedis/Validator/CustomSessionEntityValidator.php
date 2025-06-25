@@ -50,7 +50,7 @@ class CustomSessionEntityValidator extends SprykerSessionEntityValidator
         if ($usersToLogout) {
             if (in_array(
                 $sessionEntityRequestTransfer->getIdEntity(),
-                json_decode($this->redisClient->get(static::REDIS_KEY), true))
+                json_decode($usersToLogout, true))
             ) {
                 return (new SessionEntityResponseTransfer())->setIsSuccessfull(false);
             }
