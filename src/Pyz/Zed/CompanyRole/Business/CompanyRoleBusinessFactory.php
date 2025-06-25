@@ -20,7 +20,7 @@ use Spryker\Zed\CompanyRole\Business\Reader\CompanyRoleReaderInterface;
 class CompanyRoleBusinessFactory extends SprykerCompanyRoleBusinessFactory
 {
     /**
-     * @return \Spryker\Zed\CompanyRole\Business\Reader\CompanyRoleReaderInterface
+     * @return \Pyz\Client\CompanyRole\Zed\CompanyRoleReaderInterface
      */
     public function createCompanyRoleReader(): CompanyRoleReaderInterface
     {

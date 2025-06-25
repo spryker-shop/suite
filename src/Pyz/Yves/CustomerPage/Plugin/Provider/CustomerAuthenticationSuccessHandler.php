@@ -59,7 +59,7 @@ class CustomerAuthenticationSuccessHandler extends SprykerCustomerAuthentication
     }
 
     /**
-     * @return array
+     * @return array<int>
      */
     protected function getUsersToLogout(): array
     {
@@ -72,7 +72,7 @@ class CustomerAuthenticationSuccessHandler extends SprykerCustomerAuthentication
     }
 
     /**
-     * @param array $users
+     * @param array<int> $users
      *
      * @return void
      */

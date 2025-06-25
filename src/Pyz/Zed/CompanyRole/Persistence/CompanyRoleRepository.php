@@ -12,11 +12,10 @@ namespace Pyz\Zed\CompanyRole\Persistence;
 use Generated\Shared\Transfer\CustomerCollectionTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Orm\Zed\CompanyUser\Persistence\Map\SpyCompanyUserTableMap;
-use Orm\Zed\Customer\Persistence\Map\SpyCustomerTableMap;
 use Spryker\Zed\CompanyRole\Persistence\CompanyRoleRepository as SprykerCompanyRoleRepository;
 
 /**
- * @method \Pyz\Zed\CompanyRole\Persistence\CompanyRolePersistenceFactory getFactory()
+ * @method \Spryker\Zed\CompanyRole\Persistence\CompanyRolePersistenceFactory getFactory()
  */
 class CompanyRoleRepository extends SprykerCompanyRoleRepository implements CompanyRoleRepositoryInterface
 {

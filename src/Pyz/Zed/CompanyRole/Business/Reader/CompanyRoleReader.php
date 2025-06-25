@@ -12,17 +12,17 @@ namespace Pyz\Zed\CompanyRole\Business\Reader;
 use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Generated\Shared\Transfer\CustomerCollectionTransfer;
 use Spryker\Zed\CompanyRole\Business\Reader\CompanyRoleReader as SprykerCompanyRoleReader;
-use Spryker\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface;
+use Pyz\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface;
 
 class CompanyRoleReader extends SprykerCompanyRoleReader implements CompanyRoleReaderInterface
 {
     /**
-     * @var \Spryker\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface
+     * @var \Pyz\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface
      */
     protected $companyRoleRepository;
 
     /**
-     * @param \Spryker\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface $companyRoleRepository
+     * @param \Pyz\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface $companyRoleRepository
      */
     public function __construct(
         CompanyRoleRepositoryInterface $companyRoleRepository,

@@ -17,7 +17,7 @@ use Spryker\Client\CompanyRole\Zed\CompanyRoleStubInterface;
 class CompanyRoleFactory extends SprykerCompanyRoleFactory
 {
     /**
-     * @return \Spryker\Client\CompanyRole\Zed\CompanyRoleStubInterface
+     * @return \Pyz\Client\CompanyRole\Zed\CompanyRoleStubInterface
      */
     public function createZedCompanyRoleStub(): CompanyRoleStubInterface
     {

@@ -9,9 +9,7 @@ namespace Pyz\Client\CompanyRole\Zed;
 
 use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Generated\Shared\Transfer\CustomerCollectionTransfer;
-use Spryker\Client\CompanyRole\Dependency\Client\CompanyRoleToZedRequestClientInterface;
 use Spryker\Client\CompanyRole\Zed\CompanyRoleStub as SprykerCompanyRoleStub;
-use Spryker\Client\CompanyRole\Zed\CompanyRoleStubInterface;
 
 class CompanyRoleStub extends SprykerCompanyRoleStub implements CompanyRoleStubInterface
 {
@@ -26,8 +24,6 @@ class CompanyRoleStub extends SprykerCompanyRoleStub implements CompanyRoleStubI
         $customerCollectionTransfer = $this->zedRequestClient->call(
             '/company-role/gateway/get-customer-ids-by-id-company-role',
             $companyRoleTransfer,
-            null,
-            null
         );
 
         return $customerCollectionTransfer;

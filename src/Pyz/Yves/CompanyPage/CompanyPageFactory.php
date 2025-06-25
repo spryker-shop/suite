@@ -30,7 +30,7 @@ class CompanyPageFactory extends SprykerShopCompanyPageFactory
     }
 
     /**
-     * @return \Spryker\Client\CompanyRole\CompanyRoleClientInterface
+     * @return \Pyz\Client\CompanyRole\CompanyRoleClientInterface
      */
     public function getPyzCompanyRoleClient()
     {
