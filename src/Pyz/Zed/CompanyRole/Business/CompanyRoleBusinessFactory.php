@@ -11,7 +11,7 @@ namespace Pyz\Zed\CompanyRole\Business;
 
 use Pyz\Zed\CompanyRole\Business\Reader\CompanyRoleReader;
 use Spryker\Zed\CompanyRole\Business\CompanyRoleBusinessFactory as SprykerCompanyRoleBusinessFactory;
-use Spryker\Zed\CompanyRole\Business\Reader\CompanyRoleReaderInterface;
+use Pyz\Zed\CompanyRole\Business\Reader\CompanyRoleReaderInterface;
 
 /**
  * @method \Pyz\Zed\CompanyRole\CompanyRoleConfig getConfig()
@@ -21,7 +21,7 @@ use Spryker\Zed\CompanyRole\Business\Reader\CompanyRoleReaderInterface;
 class CompanyRoleBusinessFactory extends SprykerCompanyRoleBusinessFactory
 {
     /**
-     * @return \Spryker\Zed\CompanyRole\Business\Reader\CompanyRoleReaderInterface
+     * @return \Pyz\Zed\CompanyRole\Business\Reader\CompanyRoleReaderInterface
      */
     public function createCompanyRoleReader(): CompanyRoleReaderInterface
     {
