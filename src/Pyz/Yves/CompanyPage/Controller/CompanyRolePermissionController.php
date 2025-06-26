@@ -9,7 +9,6 @@ declare(strict_types = 1);
 
 namespace Pyz\Yves\CompanyPage\Controller;
 
-use ArrayObject;
 use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Spryker\Yves\Kernel\PermissionAwareTrait;
 use SprykerShop\Yves\CompanyPage\Controller\CompanyRolePermissionController as SprykerCompanyRolePermissionController;
@@ -33,9 +32,7 @@ class CompanyRolePermissionController extends SprykerCompanyRolePermissionContro
 
     /**
      * @param int $idCompanyRole
-     * @param \ArrayObject<int, \Generated\Shared\Transfer\PermissionTransfer> $permissions
-     *
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     * @param $permissions
      *
      * @return void
      */
