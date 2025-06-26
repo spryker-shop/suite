@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\SessionRedis\Validator;
 
 use Generated\Shared\Transfer\SessionEntityRequestTransfer;
 use Generated\Shared\Transfer\SessionEntityResponseTransfer;
+use Spryker\Shared\SessionRedis\Handler\KeyBuilder\SessionKeyBuilderInterface;
 use Spryker\Shared\SessionRedis\Hasher\HasherInterface;
 use Spryker\Shared\SessionRedis\Redis\SessionRedisWrapperInterface;
 use Spryker\Shared\SessionRedis\Validator\SessionEntityValidator as SprykerSessionEntityValidator;
-use Spryker\Shared\SessionRedis\Handler\KeyBuilder\SessionKeyBuilderInterface;
 
 class CustomSessionEntityValidator extends SprykerSessionEntityValidator
 {
@@ -25,6 +25,7 @@ class CustomSessionEntityValidator extends SprykerSessionEntityValidator
      * @var string
      */
     protected const REDIS_KEY = 'force_logout_customers';
+
     /**
      * @param \Spryker\Shared\SessionRedis\Redis\SessionRedisWrapperInterface $redisClient
      * @param \Spryker\Shared\SessionRedis\Hasher\HasherInterface $hasher
@@ -48,9 +49,11 @@ class CustomSessionEntityValidator extends SprykerSessionEntityValidator
         $usersToLogout = $this->redisClient->get(static::REDIS_KEY);
 
         if ($usersToLogout) {
-            if (in_array(
-                $sessionEntityRequestTransfer->getIdEntity(),
-                json_decode($usersToLogout, true))
+            if (
+                in_array(
+                    $sessionEntityRequestTransfer->getIdEntity(),
+                    json_decode($usersToLogout, true),
+                )
             ) {
                 return (new SessionEntityResponseTransfer())->setIsSuccessfull(false);
             }

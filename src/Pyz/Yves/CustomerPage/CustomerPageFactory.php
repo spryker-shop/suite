@@ -49,5 +49,4 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
             $this->createMultiFactorAuthBadge(),
         );
     }
-
 }

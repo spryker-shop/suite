@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Yves\CustomerPage\Plugin\Provider;
 
-use Generated\Shared\Transfer\CustomerTransfer;
 use Spryker\Client\Redis\RedisClientInterface;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerAuthenticationSuccessHandler as SprykerCustomerAuthenticationSuccessHandler;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,11 +55,11 @@ class CustomerAuthenticationSuccessHandler extends SprykerCustomerAuthentication
         // Remove current user from the logout list
         $updatedUsersToLogout = array_diff(
             $usersToLogout,
-            [$customer->getCustomerTransfer()->getIdCustomer()]
+            [$customer->getCustomerTransfer()->getIdCustomer()],
         );
         $this->setUsersToLogout($updatedUsersToLogout);
 
-        return  parent::onAuthenticationSuccess($request, $token);
+        return parent::onAuthenticationSuccess($request, $token);
     }
 
     /**
@@ -65,7 +69,7 @@ class CustomerAuthenticationSuccessHandler extends SprykerCustomerAuthentication
     {
         $usersToLogout = $this->redisClient->get(
             static::REDIS_CONNECTION,
-            static::REDIS_KEY
+            static::REDIS_KEY,
         );
 
         return $usersToLogout ? json_decode($usersToLogout, true) : [];
@@ -81,7 +85,7 @@ class CustomerAuthenticationSuccessHandler extends SprykerCustomerAuthentication
         $this->redisClient->set(
             static::REDIS_CONNECTION,
             static::REDIS_KEY,
-            json_encode($users)
+            json_encode($users),
         );
     }
 }

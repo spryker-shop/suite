@@ -10,12 +10,8 @@ declare(strict_types=1);
 namespace Pyz\Yves\SessionRedis;
 
 use Pyz\Yves\SessionRedis\Validator\CustomSessionEntityValidator;
-use Spryker\Client\Redis\RedisClientInterface;
-use Spryker\Shared\SessionRedis\Hasher\HasherInterface;
-use Spryker\Shared\SessionRedis\Handler\KeyBuilder\SessionKeyBuilderInterface;
 use Spryker\Shared\SessionRedis\Validator\SessionEntityValidatorInterface;
 use Spryker\Yves\SessionRedis\SessionRedisFactory as SprykerSessionRedisFactory;
-use Spryker\Shared\SessionRedis\Redis\SessionRedisWrapperInterface;
 
 /**
  * @method \Spryker\Yves\SessionRedis\SessionRedisConfig getConfig()
@@ -33,5 +29,4 @@ class SessionRedisFactory extends SprykerSessionRedisFactory
             $this->createSessionKeyBuilder(),
         );
     }
-
 }

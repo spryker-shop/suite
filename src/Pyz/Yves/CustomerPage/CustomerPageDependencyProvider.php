@@ -32,6 +32,9 @@ use SprykerShop\Yves\ShipmentTypeWidget\Plugin\CustomerPage\ShipmentTypeCheckout
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
+    /**
+     * @var string
+     */
     public const CLIENT_REDIS = 'CLIENT_REDIS';
 
     /**
@@ -60,6 +63,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
 
         return $container;
     }
+
     /**
      * @return array<\SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\PreRegistrationCustomerTransferExpanderPluginInterface>
      */

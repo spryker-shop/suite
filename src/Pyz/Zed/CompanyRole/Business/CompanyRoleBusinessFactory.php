@@ -10,8 +10,8 @@ declare(strict_types = 1);
 namespace Pyz\Zed\CompanyRole\Business;
 
 use Pyz\Zed\CompanyRole\Business\Reader\CompanyRoleReader;
-use Spryker\Zed\CompanyRole\Business\CompanyRoleBusinessFactory as SprykerCompanyRoleBusinessFactory;
 use Pyz\Zed\CompanyRole\Business\Reader\CompanyRoleReaderInterface;
+use Spryker\Zed\CompanyRole\Business\CompanyRoleBusinessFactory as SprykerCompanyRoleBusinessFactory;
 
 /**
  * @method \Pyz\Zed\CompanyRole\CompanyRoleConfig getConfig()
