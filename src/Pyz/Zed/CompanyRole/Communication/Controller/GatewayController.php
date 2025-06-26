@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\CompanyRole\Communication\Controller;
@@ -10,10 +10,10 @@ namespace Pyz\Zed\CompanyRole\Communication\Controller;
 use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Generated\Shared\Transfer\CustomerCollectionTransfer;
 use Spryker\Zed\CompanyRole\Communication\Controller\GatewayController as SprykerGatewayController;
-use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
 
 /**
  * @method \Pyz\Zed\CompanyRole\Business\CompanyRoleFacadeInterface getFacade()
+ * @method \Pyz\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface getRepository()
  */
 class GatewayController extends SprykerGatewayController
 {

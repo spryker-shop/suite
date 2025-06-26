@@ -9,16 +9,13 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\CompanyRole\Persistence;
 
-use Generated\Shared\Transfer\CompanyRoleCollectionTransfer;
-use Generated\Shared\Transfer\CompanyRoleCriteriaFilterTransfer;
-use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Generated\Shared\Transfer\CustomerCollectionTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Orm\Zed\Customer\Persistence\Map\SpyCustomerTableMap;
 use Spryker\Zed\CompanyRole\Persistence\CompanyRoleRepository as SprykerCompanyRoleRepository;
 
 /**
- * @method \Pyz\Zed\CompanyRole\Persistence\CompanyRolePersistenceFactory getFactory()
+ * @method \Spryker\Zed\CompanyRole\Persistence\CompanyRolePersistenceFactory getFactory()
  */
 class CompanyRoleRepository extends SprykerCompanyRoleRepository implements CompanyRoleRepositoryInterface
 {
@@ -41,7 +38,7 @@ class CompanyRoleRepository extends SprykerCompanyRoleRepository implements Comp
         $customerCollectionTransfer = new CustomerCollectionTransfer();
         foreach ($customerIds as $idCustomer) {
             $customerCollectionTransfer->addCustomer(
-                (new CustomerTransfer())->setIdCustomer($idCustomer)
+                (new CustomerTransfer())->setIdCustomer($idCustomer),
             );
         }
 

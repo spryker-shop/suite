@@ -12,7 +12,6 @@ namespace Pyz\Zed\CompanyRole\Business;
 use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Generated\Shared\Transfer\CustomerCollectionTransfer;
 use Spryker\Zed\CompanyRole\Business\CompanyRoleFacade as SprykerCompanyRoleFacade;
-use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 
 /**
  * @method \Pyz\Zed\CompanyRole\Business\CompanyRoleBusinessFactory getFactory()

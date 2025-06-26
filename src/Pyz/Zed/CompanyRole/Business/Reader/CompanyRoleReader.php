@@ -14,7 +14,6 @@ use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Generated\Shared\Transfer\CustomerCollectionTransfer;
 use Pyz\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface;
 use Spryker\Zed\CompanyRole\Business\Reader\CompanyRoleReader as SprykerCompanyRoleReader;
-use Spryker\Zed\Kernel\Persistence\AbstractRepository;
 
 /**
  * @method \Pyz\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface getRepository()
