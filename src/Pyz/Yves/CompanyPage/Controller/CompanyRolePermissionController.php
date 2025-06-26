@@ -32,7 +32,7 @@ class CompanyRolePermissionController extends SprykerCompanyRolePermissionContro
 
     /**
      * @param int $idCompanyRole
-     * @param $permissions
+     * @param \ArrayObject<int, \Generated\Shared\Transfer\PermissionTransfer> $permissions
      *
      * @return void
      */
