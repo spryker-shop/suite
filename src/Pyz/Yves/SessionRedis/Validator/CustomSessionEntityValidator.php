@@ -5,6 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Yves\SessionRedis\Validator;
 
 use Generated\Shared\Transfer\SessionEntityRequestTransfer;
@@ -34,7 +36,7 @@ class CustomSessionEntityValidator extends SprykerSessionEntityValidator
     public function __construct(
         SessionRedisWrapperInterface $redisClient,
         HasherInterface $hasher,
-        SessionKeyBuilderInterface $keyBuilder
+        SessionKeyBuilderInterface $keyBuilder,
     ) {
         parent::__construct($redisClient, $hasher, $keyBuilder);
     }

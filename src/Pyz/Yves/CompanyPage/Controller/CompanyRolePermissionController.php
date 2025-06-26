@@ -5,8 +5,11 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Yves\CompanyPage\Controller;
 
+use ArrayObject;
 use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Spryker\Yves\Kernel\PermissionAwareTrait;
 use SprykerShop\Yves\CompanyPage\Controller\CompanyRolePermissionController as SprykerCompanyRolePermissionController;
@@ -34,7 +37,7 @@ class CompanyRolePermissionController extends SprykerCompanyRolePermissionContro
      *
      * @return void
      */
-    protected function saveCompanyRolePermissions(int $idCompanyRole, $permissions): void
+    protected function saveCompanyRolePermissions(int $idCompanyRole, ArrayObject $permissions): void
     {
         parent::saveCompanyRolePermissions($idCompanyRole, $permissions);
 

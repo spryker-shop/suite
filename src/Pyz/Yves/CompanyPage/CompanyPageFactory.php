@@ -5,9 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types = 1);
+
 namespace Pyz\Yves\CompanyPage;
 
 use Pyz\Client\CompanyRole\CompanyRoleClient;
+use Pyz\Client\CompanyRole\CompanyRoleClientInterface;
 use Spryker\Client\Redis\RedisClientInterface;
 use SprykerShop\Yves\CompanyPage\CompanyPageFactory as SprykerShopCompanyPageFactory;
 
@@ -27,7 +30,7 @@ class CompanyPageFactory extends SprykerShopCompanyPageFactory
     /**
      * @return \Pyz\Client\CompanyRole\CompanyRoleClientInterface
      */
-    public function getPyzCompanyRoleClient()
+    public function getPyzCompanyRoleClient(): CompanyRoleClientInterface
     {
         return new CompanyRoleClient();
     }
