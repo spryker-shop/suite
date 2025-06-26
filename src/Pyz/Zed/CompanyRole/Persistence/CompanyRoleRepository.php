@@ -9,6 +9,9 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\CompanyRole\Persistence;
 
+use Generated\Shared\Transfer\CompanyRoleCollectionTransfer;
+use Generated\Shared\Transfer\CompanyRoleCriteriaFilterTransfer;
+use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Generated\Shared\Transfer\CustomerCollectionTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Orm\Zed\Customer\Persistence\Map\SpyCustomerTableMap;
@@ -38,7 +41,7 @@ class CompanyRoleRepository extends SprykerCompanyRoleRepository implements Comp
         $customerCollectionTransfer = new CustomerCollectionTransfer();
         foreach ($customerIds as $idCustomer) {
             $customerCollectionTransfer->addCustomer(
-                (new CustomerTransfer())->setIdCustomer($idCustomer),
+                (new CustomerTransfer())->setIdCustomer($idCustomer)
             );
         }
 
