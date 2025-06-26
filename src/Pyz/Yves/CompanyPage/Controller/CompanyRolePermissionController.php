@@ -35,9 +35,11 @@ class CompanyRolePermissionController extends SprykerCompanyRolePermissionContro
      * @param int $idCompanyRole
      * @param \ArrayObject<int, \Generated\Shared\Transfer\PermissionTransfer> $permissions
      *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     *
      * @return void
      */
-    protected function saveCompanyRolePermissions(int $idCompanyRole, ArrayObject $permissions): void
+    protected function saveCompanyRolePermissions(int $idCompanyRole, $permissions): void
     {
         parent::saveCompanyRolePermissions($idCompanyRole, $permissions);
 
