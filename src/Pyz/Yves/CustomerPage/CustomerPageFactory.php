@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+declare(strict_types = 1);
+
 namespace Pyz\Yves\CustomerPage;
 
 use Pyz\Yves\CustomerPage\Plugin\Provider\CustomerAuthenticationSuccessHandler;
@@ -13,13 +20,13 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
     /**
      * @return \Pyz\Yves\CustomerPage\Plugin\Provider\CustomerAuthenticationSuccessHandler
      */
-    public function createCustomerAuthenticationSuccessHandler()
+    public function createCustomerAuthenticationSuccessHandler(): CustomerAuthenticationSuccessHandler
     {
         return new CustomerAuthenticationSuccessHandler(
-            $this->getRedisClient()
+            $this->getRedisClient(),
         );
     }
-    
+
     /**
      * @return \Spryker\Client\Redis\RedisClientInterface
      */
@@ -39,7 +46,8 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
             $this->createCustomerAuthenticationSuccessHandler(),
             $this->createCustomerAuthenticationFailureHandler(),
             $this->getRouter(),
-            $this->createMultiFactorAuthBadge()
+            $this->createMultiFactorAuthBadge(),
         );
     }
+
 }
