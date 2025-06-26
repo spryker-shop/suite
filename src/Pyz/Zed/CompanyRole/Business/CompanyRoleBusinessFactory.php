@@ -10,22 +10,20 @@ declare(strict_types=1);
 namespace Pyz\Zed\CompanyRole\Business;
 
 use Pyz\Zed\CompanyRole\Business\Reader\CompanyRoleReader;
+use Pyz\Zed\CompanyRole\Business\Reader\CompanyRoleReaderInterface;
 use Spryker\Zed\CompanyRole\Business\CompanyRoleBusinessFactory as SprykerCompanyRoleBusinessFactory;
-use Spryker\Zed\CompanyRole\Business\Reader\CompanyRoleReaderInterface;
 
 /**
  * @method \Pyz\Zed\CompanyRole\CompanyRoleConfig getConfig()
- * @method \Spryker\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface getRepository()
+ * @method \Pyz\Zed\CompanyRole\Persistence\CompanyRoleRepositoryInterface getRepository()
  */
 class CompanyRoleBusinessFactory extends SprykerCompanyRoleBusinessFactory
 {
     /**
-     * @return \Pyz\Client\CompanyRole\Zed\CompanyRoleReaderInterface
+     * @return \Pyz\Zed\CompanyRole\Business\Reader\CompanyRoleReaderInterface
      */
     public function createCompanyRoleReader(): CompanyRoleReaderInterface
     {
-        return new CompanyRoleReader(
-            $this->getRepository(),
-        );
+        return new CompanyRoleReader($this->getRepository());
     }
 }
