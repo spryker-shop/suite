@@ -5938,12 +5938,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/checksum-generator.git",
-                "reference": "10003970033128c2ad83c2a009d75f960dca0676"
+                "reference": "bcee8556ff0c244cac8edd6860c6811e3625fc3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checksum-generator/zipball/10003970033128c2ad83c2a009d75f960dca0676",
-                "reference": "10003970033128c2ad83c2a009d75f960dca0676",
+                "url": "https://api.github.com/repos/spryker/checksum-generator/zipball/bcee8556ff0c244cac8edd6860c6811e3625fc3b",
+                "reference": "bcee8556ff0c244cac8edd6860c6811e3625fc3b",
                 "shasum": ""
             },
             "require": {
@@ -5951,10 +5951,11 @@
                 "php": ">=8.2"
             },
             "require-dev": {
-                "codeception/codeception": "^4.2",
-                "phpstan/phpstan": "^1.2.0",
+                "codeception/codeception": "^5.0.8",
+                "codeception/module-asserts": "^3.0.0",
+                "phpstan/phpstan": "1.10.60",
                 "spryker/code-sniffer": "*",
-                "symfony/yaml": "^2.8.0"
+                "symfony/yaml": "^6.0.0"
             },
             "default-branch": true,
             "type": "library",
@@ -5975,9 +5976,9 @@
             "description": "ChecksumGenerator",
             "support": {
                 "issues": "https://github.com/spryker/checksum-generator/issues",
-                "source": "https://github.com/spryker/checksum-generator/tree/master"
+                "source": "https://github.com/spryker/checksum-generator/tree/1.0.1"
             },
-            "time": "2024-10-08T01:00:04+00:00"
+            "time": "2025-06-27T08:17:03+00:00"
         },
         {
             "name": "spryker/composer-merge-plugin",
@@ -6164,12 +6165,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/install.git",
-                "reference": "4a3e5df4810e17dd8d6b9ee274907d4e8def9bcb"
+                "reference": "a7206c0853cda72a305a16905b08e9745f0c5de0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/install/zipball/4a3e5df4810e17dd8d6b9ee274907d4e8def9bcb",
-                "reference": "4a3e5df4810e17dd8d6b9ee274907d4e8def9bcb",
+                "url": "https://api.github.com/repos/spryker/install/zipball/a7206c0853cda72a305a16905b08e9745f0c5de0",
+                "reference": "a7206c0853cda72a305a16905b08e9745f0c5de0",
                 "shasum": ""
             },
             "require": {
@@ -6209,7 +6210,7 @@
                 "issues": "https://github.com/spryker/install/issues",
                 "source": "https://github.com/spryker/install/tree/master"
             },
-            "time": "2024-10-07T08:48:30+00:00"
+            "time": "2025-06-26T14:29:21+00:00"
         },
         {
             "name": "spryker/rabbit-mq",
@@ -7533,7 +7534,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "50df363040c57a952a24239aaf8d4ea6c5582ed8"
+                "reference": "5485d05673f0475cc9fe02a924acffaf5a0b6890"
             },
             "require": {
                 "php": ">=8.1"
@@ -7740,7 +7741,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2025-06-24T15:41:05+00:00"
+            "time": "2025-06-27T10:56:25+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -18265,12 +18266,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "96eae1198f877bbc42adae2a606efbebed769a91"
+                "reference": "d9d9cafbce8f224b39231c2fd5d8bbe0f7bd104f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/96eae1198f877bbc42adae2a606efbebed769a91",
-                "reference": "96eae1198f877bbc42adae2a606efbebed769a91",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/d9d9cafbce8f224b39231c2fd5d8bbe0f7bd104f",
+                "reference": "d9d9cafbce8f224b39231c2fd5d8bbe0f7bd104f",
                 "shasum": ""
             },
             "require": {
@@ -18282,11 +18283,11 @@
                 "symfony/finder": "^4.0.0 || ^5.0.0 || ^6.0.0"
             },
             "require-dev": {
-                "codeception/codeception": "^4.1",
-                "codeception/module-asserts": "^1.3",
-                "phpstan/phpstan": "^1.0.0",
+                "codeception/codeception": "^5.0.8",
+                "codeception/module-asserts": "^3.0.0",
+                "phpstan/phpstan": "1.10.60",
                 "spryker/code-sniffer": "*",
-                "symfony/var-dumper": "^4.0"
+                "symfony/var-dumper": "^5.4.24"
             },
             "default-branch": true,
             "type": "library",
@@ -18320,7 +18321,7 @@
                 "issues": "https://github.com/spryker/architecture-sniffer/issues",
                 "source": "https://github.com/spryker/architecture-sniffer"
             },
-            "time": "2024-09-19T15:34:09+00:00"
+            "time": "2025-06-27T08:17:43+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -18531,12 +18532,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "8c712bbda3a264cc8eabe1e3b836202c25231d5f"
+                "reference": "b1c1af594a0a746ae9cfa73045f2420d7b382f0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/8c712bbda3a264cc8eabe1e3b836202c25231d5f",
-                "reference": "8c712bbda3a264cc8eabe1e3b836202c25231d5f",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/b1c1af594a0a746ae9cfa73045f2420d7b382f0e",
+                "reference": "b1c1af594a0a746ae9cfa73045f2420d7b382f0e",
                 "shasum": ""
             },
             "require": {
@@ -18580,7 +18581,7 @@
                 "issues": "https://github.com/spryker/git-hook/issues",
                 "source": "https://github.com/spryker/git-hook"
             },
-            "time": "2024-10-07T08:24:25+00:00"
+            "time": "2025-06-26T14:19:23+00:00"
         },
         {
             "name": "spryker/profiler",
