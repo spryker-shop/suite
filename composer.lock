@@ -15784,16 +15784,16 @@
         },
         {
             "name": "spryker-shop/service-point-widget",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/service-point-widget.git",
-                "reference": "fcaab1e07c7646adb0d888c4816132c01ad02670"
+                "reference": "e947e66cf22c7ffd4befb66e766d4c1b51b8a7f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/service-point-widget/zipball/fcaab1e07c7646adb0d888c4816132c01ad02670",
-                "reference": "fcaab1e07c7646adb0d888c4816132c01ad02670",
+                "url": "https://api.github.com/repos/spryker-shop/service-point-widget/zipball/e947e66cf22c7ffd4befb66e766d4c1b51b8a7f5",
+                "reference": "e947e66cf22c7ffd4befb66e766d4c1b51b8a7f5",
                 "shasum": ""
             },
             "require": {
@@ -15834,9 +15834,9 @@
             ],
             "description": "ServicePointWidget module",
             "support": {
-                "source": "https://github.com/spryker-shop/service-point-widget/tree/1.6.0"
+                "source": "https://github.com/spryker-shop/service-point-widget/tree/1.6.1"
             },
-            "time": "2025-06-24T15:41:05+00:00"
+            "time": "2025-06-27T10:56:25+00:00"
         },
         {
             "name": "spryker-shop/session-agent-validation",
@@ -23267,25 +23267,28 @@
         },
         {
             "name": "spryker/checksum-generator",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/checksum-generator.git",
-                "reference": "94366ba2d0fd34ac4948a8391fb9ecdde3ab092c"
+                "reference": "bcee8556ff0c244cac8edd6860c6811e3625fc3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checksum-generator/zipball/94366ba2d0fd34ac4948a8391fb9ecdde3ab092c",
-                "reference": "94366ba2d0fd34ac4948a8391fb9ecdde3ab092c",
+                "url": "https://api.github.com/repos/spryker/checksum-generator/zipball/bcee8556ff0c244cac8edd6860c6811e3625fc3b",
+                "reference": "bcee8556ff0c244cac8edd6860c6811e3625fc3b",
                 "shasum": ""
             },
             "require": {
                 "ext-openssl": "*",
-                "php": ">=7.3"
+                "php": ">=8.2"
             },
             "require-dev": {
-                "phpstan/phpstan": "^0.12",
-                "spryker/code-sniffer": "*"
+                "codeception/codeception": "^5.0.8",
+                "codeception/module-asserts": "^3.0.0",
+                "phpstan/phpstan": "1.10.60",
+                "spryker/code-sniffer": "*",
+                "symfony/yaml": "^6.0.0"
             },
             "type": "library",
             "extra": {
@@ -23305,9 +23308,9 @@
             "description": "ChecksumGenerator",
             "support": {
                 "issues": "https://github.com/spryker/checksum-generator/issues",
-                "source": "https://github.com/spryker/checksum-generator/tree/1.0.0"
+                "source": "https://github.com/spryker/checksum-generator/tree/1.0.1"
             },
-            "time": "2020-11-16T14:02:55+00:00"
+            "time": "2025-06-27T08:17:03+00:00"
         },
         {
             "name": "spryker/click-and-collect-example",
@@ -83663,32 +83666,32 @@
         },
         {
             "name": "spryker/architecture-sniffer",
-            "version": "0.5.7",
+            "version": "0.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "07fa5a75f481dfd0de2676a4f11c36df6365f652"
+                "reference": "d9d9cafbce8f224b39231c2fd5d8bbe0f7bd104f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/07fa5a75f481dfd0de2676a4f11c36df6365f652",
-                "reference": "07fa5a75f481dfd0de2676a4f11c36df6365f652",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/d9d9cafbce8f224b39231c2fd5d8bbe0f7bd104f",
+                "reference": "d9d9cafbce8f224b39231c2fd5d8bbe0f7bd104f",
                 "shasum": ""
             },
             "require": {
                 "laminas/laminas-config": "^2.5.1 || ^3.1.0",
                 "laminas/laminas-filter": "^2.5.1",
-                "php": ">=7.4",
+                "php": ">=8.1",
                 "phpdocumentor/reflection-docblock": "^5.3.0",
                 "phpmd/phpmd": "^2.10.0",
                 "symfony/finder": "^4.0.0 || ^5.0.0 || ^6.0.0"
             },
             "require-dev": {
-                "codeception/codeception": "^4.1",
-                "codeception/module-asserts": "^1.3",
-                "phpstan/phpstan": "^1.0.0",
+                "codeception/codeception": "^5.0.8",
+                "codeception/module-asserts": "^3.0.0",
+                "phpstan/phpstan": "1.10.60",
                 "spryker/code-sniffer": "*",
-                "symfony/var-dumper": "^4.0"
+                "symfony/var-dumper": "^5.4.24"
             },
             "type": "library",
             "autoload": {
@@ -83721,7 +83724,7 @@
                 "issues": "https://github.com/spryker/architecture-sniffer/issues",
                 "source": "https://github.com/spryker/architecture-sniffer"
             },
-            "time": "2023-01-24T16:01:38+00:00"
+            "time": "2025-06-27T08:17:43+00:00"
         },
         {
             "name": "spryker/code-sniffer",
