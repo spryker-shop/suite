@@ -13,7 +13,7 @@ Master Suite represents all Spryker OS modules and doesn't guarantee functional,
 - https://github.com/spryker-shop/b2b-demo-marketplace/releases/
 
 
-## Vagrant Installation
+## Vagrant Installation test 22
 In order to install the Shop Suite on your machine, you can follow the instructions described in the link below:
 
 For DevVM based installation instructions, see [About the Installation Guides](https://documentation.spryker.com/docs/about-installation).
