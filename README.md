@@ -4,7 +4,7 @@
 
 License: [MIT](LICENSE)
 
-## Suite vs Demo Shops
+## Suite vs Demo Shops test
 Master Suite represents all Spryker OS modules and doesn't guarantee functional, business, and demo data consistency. Please consider B2B or B2C demo-shop when building standard E-Commerce use cases:
 
 - https://github.com/spryker-shop/b2c-demo-shop/releases/
