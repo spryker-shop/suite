@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8af32f60940ff9ce29498f3a221b723c",
+    "content-hash": "ec130fcfda638685b5381b11e50ad7d3",
     "packages": [
         {
             "name": "async-aws/core",
@@ -7300,16 +7300,16 @@
         },
         {
             "name": "spryker-feature/self-service-portal",
-            "version": "0.3.2",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/self-service-portal.git",
-                "reference": "072b55c98aa7783cb326d327d5d798de24b91656"
+                "reference": "42d4f8976865d5afacfb3aee7ec3d750a3479814"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/self-service-portal/zipball/072b55c98aa7783cb326d327d5d798de24b91656",
-                "reference": "072b55c98aa7783cb326d327d5d798de24b91656",
+                "url": "https://api.github.com/repos/spryker-feature/self-service-portal/zipball/42d4f8976865d5afacfb3aee7ec3d750a3479814",
+                "reference": "42d4f8976865d5afacfb3aee7ec3d750a3479814",
                 "shasum": ""
             },
             "require": {
@@ -7385,6 +7385,7 @@
                 "spryker/catalog": "*",
                 "spryker/cms-block": "*",
                 "spryker/code-sniffer": "*",
+                "spryker/company-role": "*",
                 "spryker/container": "*",
                 "spryker/country": "*",
                 "spryker/file-system": "*",
@@ -7416,7 +7417,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "SprykerFeature\\": "src/SprykerFeature/"
+                    "SprykerFeature\\": "src/SprykerFeature/",
+                    "SprykerFeatureTest\\Shared\\SelfServicePortal\\Helper\\": "tests/SprykerFeatureTest/Shared/SelfServicePortal/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -7425,9 +7427,9 @@
             ],
             "description": "SelfServicePortal module",
             "support": {
-                "source": "https://github.com/spryker-feature/self-service-portal/tree/0.3.2"
+                "source": "https://github.com/spryker-feature/self-service-portal/tree/0.4.0"
             },
-            "time": "2025-06-26T06:46:17+00:00"
+            "time": "2025-06-27T11:11:24+00:00"
         },
         {
             "name": "spryker-sdk/async-api",
