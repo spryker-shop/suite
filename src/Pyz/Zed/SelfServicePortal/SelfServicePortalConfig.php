@@ -24,7 +24,7 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
     /**
      * @var string
      */
-    protected const MODULE_NAME = 'SelfServicePortal';
+    public const MODULE_NAME = 'SelfServicePortal';
 
     /**
      * @return array<string>
