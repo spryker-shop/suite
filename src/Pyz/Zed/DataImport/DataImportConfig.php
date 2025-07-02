@@ -445,8 +445,6 @@ class DataImportConfig extends SprykerDataImportConfig
             ProductOfferShoppingListDataImportConfig::IMPORT_TYPE_PRODUCT_OFFER_SHOPPING_LIST_ITEM,
             MerchantProductApprovalDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_APPROVAL_STATUS_DEFAULT,
             ProductApprovalDataImportConfig::IMPORT_TYPE_PRODUCT_APPROVAL_STATUS,
-            SelfServicePortalConfig::IMPORT_TYPE_PRODUCT_ABSTRACT_TYPE,
-            SelfServicePortalConfig::IMPORT_TYPE_PRODUCT_ABSTRACT_TO_PRODUCT_ABSTRACT_TYPE,
             SelfServicePortalConfig::IMPORT_TYPE_PRODUCT_SHIPMENT_TYPE,
         ];
     }

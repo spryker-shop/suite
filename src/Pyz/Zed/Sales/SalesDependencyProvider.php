@@ -106,13 +106,12 @@ use Spryker\Zed\SalesServicePoint\Communication\Plugin\Sales\ServicePointSalesOr
 use Spryker\Zed\Shipment\Communication\Plugin\Sales\ShipmentOrderItemExpanderPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
 use Spryker\Zed\WarehouseAllocation\Communication\Plugin\Sales\WarehouseOrderItemExpanderPlugin;
-use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ProductTypeOrderExpanderPlugin;
-use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ProductTypeOrderItemsPostSavePlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ProductClassOrderExpanderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ProductClassOrderItemsPostSavePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ScheduleTimeOrderItemExpanderPreSavePlugin;
-use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\ServiceDateTimeEnabledOrderItemsPostSavePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspAssetOrderExpanderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspAssetOrderItemsPostSavePlugin;
-use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspProductAbstractTypeSalesOrderItemCollectionPreDeletePlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspProductClassSalesOrderItemCollectionPreDeletePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Sales\SspServiceCancellableOrderItemExpanderPlugin;
 
 class SalesDependencyProvider extends SprykerSalesDependencyProvider
@@ -153,7 +152,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new SalesOrderAmendmentOrderExpanderPlugin(),
             new IsAmendableOrderExpanderPlugin(),
             new SspAssetOrderExpanderPlugin(),
-            new ProductTypeOrderExpanderPlugin(),
+            new ProductClassOrderExpanderPlugin(),
         ];
     }
 
@@ -331,10 +330,9 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ItemMetadataOrderItemsPostSavePlugin(),
             new ServicePointOrderItemsPostSavePlugin(),
             new GiftCardOrderItemsPostSavePlugin(),
-            new ProductTypeOrderItemsPostSavePlugin(),
+            new ProductClassOrderItemsPostSavePlugin(),
             new ProductOptionOrderItemsPostSavePlugin(),
             new SspAssetOrderItemsPostSavePlugin(),
-            new ServiceDateTimeEnabledOrderItemsPostSavePlugin(),
         ];
     }
 
@@ -373,7 +371,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new SalesProductConfigurationSalesOrderItemCollectionPreDeletePlugin(),
             new GiftCardSalesOrderItemCollectionPreDeletePlugin(),
             new NopaymentSalesOrderItemCollectionPreDeletePlugin(),
-            new SspProductAbstractTypeSalesOrderItemCollectionPreDeletePlugin(),
+            new SspProductClassSalesOrderItemCollectionPreDeletePlugin(),
             new SalesReclamationSalesOrderItemCollectionPreDeletePlugin(),
         ];
     }

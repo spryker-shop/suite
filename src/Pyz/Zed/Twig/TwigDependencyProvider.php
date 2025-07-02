@@ -58,7 +58,7 @@ use Spryker\Zed\ZedNavigation\Communication\Plugin\Twig\ZedNavigationTwigPlugin;
 use Spryker\Zed\ZedUi\Communication\Plugin\Twig\BooleanToStringTwigPlugin;
 use Spryker\Zed\ZedUi\Communication\Plugin\ZedUiNavigationTwigPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Twig\FileSizeFormatterTwigPlugin;
-use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Twig\ProductServiceTypeNameTwigPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Twig\ProductServiceClassNameTwigPlugin;
 
 class TwigDependencyProvider extends SprykerTwigDependencyProvider
 {
@@ -116,7 +116,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new MerchantNavigationTypeTwigPlugin(),
 
             new FileSizeFormatterTwigPlugin(),
-            new ProductServiceTypeNameTwigPlugin(),
+            new ProductServiceClassNameTwigPlugin(),
         ];
     }
 
