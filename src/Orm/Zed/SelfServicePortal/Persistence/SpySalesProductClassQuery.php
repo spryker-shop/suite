@@ -9,10 +9,10 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpyProductAbstractToProductAbstractTypeQuery as BaseSpyProductAbstractToProductAbstractTypeQuery;
+use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySalesProductClassQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_product_abstract_to_product_abstract_type' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_sales_product_class' table.
  *
  *
  *
@@ -20,6 +20,6 @@ use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpyProductAb
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductAbstractToProductAbstractTypeQuery extends BaseSpyProductAbstractToProductAbstractTypeQuery
+class SpySalesProductClassQuery extends AbstractSpySalesProductClassQuery
 {
 }

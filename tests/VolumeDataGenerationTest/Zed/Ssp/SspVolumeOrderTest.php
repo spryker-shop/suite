@@ -17,11 +17,9 @@ use Generated\Shared\Transfer\SspAssetTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Orm\Zed\CompanyBusinessUnit\Persistence\SpyCompanyBusinessUnitQuery;
-use Orm\Zed\SelfServicePortal\Persistence\SpyProductAbstractType;
-use Orm\Zed\SelfServicePortal\Persistence\SpyProductAbstractTypeQuery;
-use Orm\Zed\SelfServicePortal\Persistence\SpySalesOrderItemProductAbstractType;
+use Orm\Zed\SelfServicePortal\Persistence\SpyProductClassQuery;
+use Orm\Zed\SelfServicePortal\Persistence\SpySalesOrderItemProductClass;
 use Orm\Zed\SelfServicePortal\Persistence\SpySalesOrderItemSspAsset;
-use Orm\Zed\SelfServicePortal\Persistence\SpySalesProductAbstractTypeQuery;
 use Orm\Zed\SelfServicePortal\Persistence\SpySspAsset;
 use Orm\Zed\SelfServicePortal\Persistence\SpySspAssetToCompanyBusinessUnit;
 use Orm\Zed\Store\Persistence\SpyStoreQuery;
@@ -63,13 +61,14 @@ class SspVolumeOrderTest extends Unit
      */
     public function testGenerateOrder(): void
     {
-        $serviceProductTypeEntity = SpyProductAbstractTypeQuery::create()->findOneByName('service');
-        if (!$serviceProductTypeEntity) {
-            $this->tester->haveProductAbstractType([
-                'name' => 'service',
+        $serviceProductClassEntity = SpyProductClassQuery::create()->findOneByName('Service');
+
+        if (!$serviceProductClassEntity) {
+            $this->tester->haveProductClass([
+                'name' => 'Service',
             ]);
 
-            $serviceProductTypeEntity = (new SpyProductAbstractType())->fromArray($serviceProductTypeEntity->toArray());
+            $serviceProductClassEntity = SpyProductClassQuery::create()->findOneByName('Service');
         }
 
         $taxSetEntity = SpyTaxSetQuery::create()->findOne();
@@ -96,8 +95,10 @@ class SspVolumeOrderTest extends Unit
 
         $sspAssetTransfer = $this->generateSspAsset();
 
+        $this->tester->configureTestStateMachine(['DummyPayment01']);
+
         for ($i = 0; $i < self::SERVICE_ORDER_COUNT; $i++) {
-            $product = $this->tester->generateService($storeTransfer, $taxSetEntity, $serviceProductTypeEntity, $merchantTransfer);
+            $product = $this->tester->generateService($storeTransfer, $taxSetEntity, $serviceProductClassEntity, $merchantTransfer);
             $saveOrderTransfer = $this->tester->haveFullOrder([
                 'item' => ['sku' => $product->getSku()],
                     'customerReference' => $customerTransfer->getCustomerReference(),
@@ -118,9 +119,8 @@ class SspVolumeOrderTest extends Unit
                 ->setFkSalesOrderItem($saleOrderItemId)
                 ->save();
 
-            (new SpySalesOrderItemProductAbstractType())
-                ->setFkSalesProductAbstractType(SpySalesProductAbstractTypeQuery::create()
-                    ->findOneByName('Service')->getIdSalesProductAbstractType())
+            (new SpySalesOrderItemProductClass())
+                ->setFkSalesProductClass($serviceProductClassEntity->getIdProductClass())
                 ->setFkSalesOrderItem($saleOrderItemId)
                 ->save();
         }

@@ -134,9 +134,9 @@ use Spryker\Zed\StockDataImport\Communication\Plugin\StockDataImportPlugin;
 use Spryker\Zed\StockDataImport\Communication\Plugin\StockStoreDataImportPlugin;
 use Spryker\Zed\StoreContextDataImport\Communication\Plugin\DataImport\StoreContextDataImportPlugin;
 use Spryker\Zed\StoreDataImport\Communication\Plugin\DataImport\StoreDataImportPlugin;
-use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\DataImport\ProductAbstractToProductAbstractTypeDataImportPlugin;
-use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\DataImport\ProductAbstractTypeDataImportPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\DataImport\ProductClassDataImportPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\DataImport\ProductShipmentTypeDataImportPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\DataImport\ProductToProductClassDataImportPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\DataImport\SspInquiryDataImportPlugin;
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
@@ -450,8 +450,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new MerchantCommissionStoreDataImportPlugin(),
             new MerchantCommissionMerchantDataImportPlugin(),
             new SspInquiryDataImportPlugin(),
-            new ProductAbstractTypeDataImportPlugin(),
-            new ProductAbstractToProductAbstractTypeDataImportPlugin(),
+            new ProductClassDataImportPlugin(),
+            new ProductToProductClassDataImportPlugin(),
         ];
     }
 
