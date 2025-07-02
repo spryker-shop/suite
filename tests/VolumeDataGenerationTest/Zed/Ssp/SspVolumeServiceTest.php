@@ -14,8 +14,8 @@ use Generated\Shared\DataBuilder\MerchantProfileBuilder;
 use Generated\Shared\Transfer\MerchantTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
-use Orm\Zed\SelfServicePortal\Persistence\SpyProductAbstractToProductAbstractTypeQuery;
-use Orm\Zed\SelfServicePortal\Persistence\SpyProductAbstractTypeQuery;
+use Orm\Zed\SelfServicePortal\Persistence\SpyProductClassQuery;
+use Orm\Zed\SelfServicePortal\Persistence\SpyProductToProductClassQuery;
 use Orm\Zed\Store\Persistence\SpyStoreQuery;
 use Orm\Zed\Tax\Persistence\SpyTaxSetQuery;
 
@@ -75,17 +75,23 @@ class SspVolumeServiceTest extends Unit
      */
     public function testGenerateServices(): void
     {
-        $serviceProductTypeEntity = SpyProductAbstractTypeQuery::create()->findOneByName('service');
-        if (!$serviceProductTypeEntity) {
-            $this->tester->haveProductAbstractType([
-                'name' => 'service',
+        $serviceProductClassEntity = SpyProductClassQuery::create()->findOneByName('Service');
+
+        if (!$serviceProductClassEntity) {
+            $this->tester->haveProductClass([
+                'name' => 'Service',
             ]);
 
-            $serviceProductTypeEntity = SpyProductAbstractTypeQuery::create()->findOneByName('service');
+            $serviceProductClassEntity = SpyProductClassQuery::create()->findOneByName('Service');
         }
 
-        $existingServiceProductCount = SpyProductAbstractToProductAbstractTypeQuery::create()
-            ->filterByFkProductAbstractType($serviceProductTypeEntity->getIdProductAbstractType())->count();
+        $existingServiceProductCount = SpyProductToProductClassQuery::create()
+            ->useProductQuery()
+                ->useSpyProductAbstractQuery()
+                    ->groupByIdProductAbstract()
+                ->endUse()
+            ->endUse()
+            ->filterByFkProduct($serviceProductClassEntity->getIdProductClass())->count();
 
         if ($existingServiceProductCount >= self::SERVICE_COUNT) {
             $this->assertTrue(false, SspTester::ALL_ENTITIES_GENERATED_MESSAGE);
@@ -110,7 +116,7 @@ class SspVolumeServiceTest extends Unit
         ]);
 
         for ($i = 0; $i < min(self::SERVICE_COUNT - $existingServiceProductCount, self::BATCH_SIZE); $i++) { // phpcs:ignore Generic.CodeAnalysis.ForLoopWithTestFunctionCall
-            $this->tester->generateService($storeTransfer, $taxSetEntity, $serviceProductTypeEntity, $merchantTransfer);
+            $this->tester->generateService($storeTransfer, $taxSetEntity, $serviceProductClassEntity, $merchantTransfer);
         }
 
         $this->assertTrue(

@@ -20,7 +20,7 @@ use Generated\Shared\Transfer\ProductImageTransfer;
 use Generated\Shared\Transfer\ProductOfferStockTransfer;
 use Generated\Shared\Transfer\ProductOfferTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
-use Orm\Zed\SelfServicePortal\Persistence\SpyProductAbstractType;
+use Orm\Zed\SelfServicePortal\Persistence\SpyProductClass;
 use Orm\Zed\Tax\Persistence\SpyTaxSet;
 use VolumeDataGenerationTest\Zed\Ssp\_generated\SspTesterActions;
 
@@ -61,7 +61,7 @@ class SspTester extends Actor
     /**
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param \Orm\Zed\Tax\Persistence\SpyTaxSet $taxSetEntity
-     * @param \Orm\Zed\SelfServicePortal\Persistence\SpyProductAbstractType $serviceProductTypeEntity
+     * @param \Orm\Zed\SelfServicePortal\Persistence\SpyProductClass $serviceProductClassEntity
      * @param \Generated\Shared\Transfer\MerchantTransfer $merchantTransfer
      *
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
@@ -69,14 +69,14 @@ class SspTester extends Actor
     public function generateService(
         StoreTransfer $storeTransfer,
         SpyTaxSet $taxSetEntity,
-        SpyProductAbstractType $serviceProductTypeEntity,
+        SpyProductClass $serviceProductClassEntity,
         MerchantTransfer $merchantTransfer,
     ): ProductConcreteTransfer {
         $productTransfer = $this->haveFullProduct([
             ProductAbstractTransfer::ID_TAX_SET => $taxSetEntity->getIdTaxSet(),
         ]);
 
-        $this->haveProductAbstractToProductAbstractType($productTransfer->getFkProductAbstract(), $serviceProductTypeEntity->getIdProductAbstractType());
+        $this->haveProductToProductClass($productTransfer->getIdProductConcrete(), $serviceProductClassEntity->getIdProductClass());
         $this->haveProductImageSet([
             ProductImageSetTransfer::NAME => 'default',
             ProductImageSetTransfer::ID_PRODUCT => $productTransfer->getIdProductConcrete(),
