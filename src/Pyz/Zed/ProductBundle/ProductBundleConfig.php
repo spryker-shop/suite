@@ -15,6 +15,11 @@ use Spryker\Zed\ProductBundle\ProductBundleConfig as SprykerProductBundleConfig;
 class ProductBundleConfig extends SprykerProductBundleConfig
 {
     /**
+     * @var bool
+     */
+    protected const USE_BATCH_AVAILABILITY_CHECK = true;
+
+    /**
      * @return list<string>
      */
     public function getAllowedBundleItemFieldsToCopy(): array
