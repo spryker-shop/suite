@@ -751,7 +751,7 @@
             - '.ci/snippet/REQUIRE docker/sdk up -t'
             - '.ci/snippet/RUN docker/sdk testing composer dump-autoload -o -a --apcu'
             - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-functional-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
                   .ci/snippet/RUN docker/sdk testing codecept run --no-ansi -c codeception.functional.yml
