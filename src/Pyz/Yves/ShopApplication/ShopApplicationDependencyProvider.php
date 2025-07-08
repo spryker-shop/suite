@@ -33,7 +33,6 @@ use SprykerFeature\Yves\SelfServicePortal\Widget\CreateOrderSspInquiryWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\DashboardMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\ListCartItemsByShipmentTypeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\ServiceListWidget;
-use SprykerFeature\Yves\SelfServicePortal\Widget\SspAddressFormItemsByShipmentTypeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetInfoForItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetMenuItemWidget;
@@ -422,7 +421,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             SspServiceDetectorWidget::class,
             SspItemAssetSelectorWidget::class,
             SspProductOfferPriceWidget::class,
-            SspAddressFormItemsByShipmentTypeWidget::class,
             ServiceListWidget::class,
         ];
     }
