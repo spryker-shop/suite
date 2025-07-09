@@ -19,7 +19,7 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'root' => '/ssp-inquiry',
         'path' => '',
     ],
-    'ssp-files' => [
+    'files' => [
         'sprykerAdapterClass' => Aws3v3FilesystemBuilderPlugin::class,
         'key' => getenv('TEST_BUCKET_6_SSP_FILES_STORAGE_S3_KEY_ACTUAL') ?: '',
         'secret' => getenv('TEST_BUCKET_6_SSP_FILES_STORAGE_S3_SECRET_ACTUAL') ?: '',

@@ -11,6 +11,7 @@ namespace VolumeDataGenerationTest\Zed\Ssp;
 
 use ArrayObject;
 use Codeception\Actor;
+use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\MerchantTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
@@ -20,6 +21,10 @@ use Generated\Shared\Transfer\ProductImageTransfer;
 use Generated\Shared\Transfer\ProductOfferStockTransfer;
 use Generated\Shared\Transfer\ProductOfferTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
+use Orm\Zed\Category\Persistence\SpyCategory;
+use Orm\Zed\PriceProduct\Persistence\SpyPriceProductDefault;
+use Orm\Zed\PriceProduct\Persistence\SpyPriceProductStore;
+use Orm\Zed\ProductCategory\Persistence\SpyProductCategory;
 use Orm\Zed\SelfServicePortal\Persistence\SpyProductClass;
 use Orm\Zed\Tax\Persistence\SpyTaxSet;
 use VolumeDataGenerationTest\Zed\Ssp\_generated\SspTesterActions;
@@ -63,6 +68,8 @@ class SspTester extends Actor
      * @param \Orm\Zed\Tax\Persistence\SpyTaxSet $taxSetEntity
      * @param \Orm\Zed\SelfServicePortal\Persistence\SpyProductClass $serviceProductClassEntity
      * @param \Generated\Shared\Transfer\MerchantTransfer $merchantTransfer
+     * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
+     * @param \Orm\Zed\Category\Persistence\SpyCategory $categoryEntity
      *
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
@@ -71,8 +78,10 @@ class SspTester extends Actor
         SpyTaxSet $taxSetEntity,
         SpyProductClass $serviceProductClassEntity,
         MerchantTransfer $merchantTransfer,
+        CurrencyTransfer $currencyTransfer,
+        SpyCategory $categoryEntity,
     ): ProductConcreteTransfer {
-        $productTransfer = $this->haveFullProduct([
+        $productTransfer = $this->haveFullProduct([], [
             ProductAbstractTransfer::ID_TAX_SET => $taxSetEntity->getIdTaxSet(),
         ]);
 
@@ -91,11 +100,44 @@ class SspTester extends Actor
         $this->havePriceProduct([
             PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $productTransfer->getAbstractSku(),
             PriceProductTransfer::SKU_PRODUCT => $productTransfer->getSku(),
+            PriceProductTransfer::PRICE_TYPE_NAME => 'DEFAULT',
             PriceProductTransfer::MONEY_VALUE => [
                 'grossAmount' => 1000,
                 'netAmount' => 1000,
             ],
         ]);
+
+        (new SpyProductCategory())
+            ->setFkProductAbstract($productTransfer->getFkProductAbstract())
+            ->setFkCategory($categoryEntity->getIdCategory())
+            ->save();
+
+        $priceProductAbstract = $this->havePriceProductAbstract(
+            $productTransfer->getFkProductAbstract(),
+            [
+                PriceProductTransfer::SKU_PRODUCT => $productTransfer->getSku(),
+                PriceProductTransfer::PRICE_TYPE_NAME => 'DEFAULT',
+                PriceProductTransfer::MONEY_VALUE => [
+                    'grossAmount' => 1000,
+                    'netAmount' => 1000,
+                ],
+            ],
+        );
+
+        $priceProductStoreEntity = (new SpyPriceProductStore())
+            ->setFkPriceProduct($priceProductAbstract->getIdPriceProduct())
+            ->setFkCurrency($currencyTransfer->getIdCurrency())
+            ->setFkStore($storeTransfer->getIdStore())
+            ->setPriceData('{}')
+            ->setPriceDataChecksum('{}')
+            ->setNetPrice(100)
+            ->setGrossPrice(100);
+
+        $priceProductStoreEntity->save();
+
+        (new SpyPriceProductDefault())
+            ->setFkPriceProductStore($priceProductStoreEntity->getIdPriceProductStore())
+            ->save();
 
         $productOfferTransfer = $this->haveProductOffer([
             ProductOfferTransfer::IS_ACTIVE => true,
