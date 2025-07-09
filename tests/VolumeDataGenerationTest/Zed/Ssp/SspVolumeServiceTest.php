@@ -11,9 +11,13 @@ namespace VolumeDataGenerationTest\Zed\Ssp;
 
 use Codeception\Test\Unit;
 use Generated\Shared\DataBuilder\MerchantProfileBuilder;
+use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\MerchantTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
+use Orm\Zed\Category\Persistence\SpyCategoryQuery;
+use Orm\Zed\Currency\Persistence\SpyCurrencyQuery;
+use Orm\Zed\Merchant\Persistence\SpyMerchantStore;
 use Orm\Zed\SelfServicePortal\Persistence\SpyProductClassQuery;
 use Orm\Zed\SelfServicePortal\Persistence\SpyProductToProductClassQuery;
 use Orm\Zed\Store\Persistence\SpyStoreQuery;
@@ -80,6 +84,7 @@ class SspVolumeServiceTest extends Unit
         if (!$serviceProductClassEntity) {
             $this->tester->haveProductClass([
                 'name' => 'Service',
+                'key' => 'service',
             ]);
 
             $serviceProductClassEntity = SpyProductClassQuery::create()->findOneByName('Service');
@@ -91,7 +96,7 @@ class SspVolumeServiceTest extends Unit
                     ->groupByIdProductAbstract()
                 ->endUse()
             ->endUse()
-            ->filterByFkProduct($serviceProductClassEntity->getIdProductClass())->count();
+            ->filterByFkProductClass($serviceProductClassEntity->getIdProductClass())->count();
 
         if ($existingServiceProductCount >= self::SERVICE_COUNT) {
             $this->assertTrue(false, SspTester::ALL_ENTITIES_GENERATED_MESSAGE);
@@ -110,13 +115,31 @@ class SspVolumeServiceTest extends Unit
             MerchantTransfer::IS_ACTIVE => true,
             MerchantTransfer::STATUS => 'approved',
             MerchantTransfer::STORE_RELATION => [
-        StoreRelationTransfer::STORES => [
+            StoreRelationTransfer::STORES => [
                 $storeTransfer,
             ]],
         ]);
 
+        (new SpyMerchantStore())
+            ->setFkMerchant($merchantTransfer->getIdMerchant())
+            ->setFkStore($storeTransfer->getIdStore())
+            ->save();
+
+        $currencyTransfer = (new CurrencyTransfer())->fromArray(
+            SpyCurrencyQuery::create()->findOneByCode('EUR')->toArray(),
+        );
+
+        $categoryEntity = SpyCategoryQuery::create()->findOneByCategoryKey('services');
+
         for ($i = 0; $i < min(self::SERVICE_COUNT - $existingServiceProductCount, self::BATCH_SIZE); $i++) { // phpcs:ignore Generic.CodeAnalysis.ForLoopWithTestFunctionCall
-            $this->tester->generateService($storeTransfer, $taxSetEntity, $serviceProductClassEntity, $merchantTransfer);
+            $this->tester->generateService(
+                $storeTransfer,
+                $taxSetEntity,
+                $serviceProductClassEntity,
+                $merchantTransfer,
+                $currencyTransfer,
+                $categoryEntity,
+            );
         }
 
         $this->assertTrue(
