@@ -122,7 +122,7 @@ class VolumeDataGeneratorConsole extends Console
      */
     protected function buildCodeception(): void
     {
-        $command = 'codecept build -c ' . $this->getCodeceptionConfigPath();
+        $command = 'vendor/bin/codecept build -c ' . $this->getCodeceptionConfigPath();
         exec($command . ' 2>&1');
     }
 
@@ -138,7 +138,7 @@ class VolumeDataGeneratorConsole extends Console
         $totalMemory = 0;
 
         $currentIteration = 0;
-        $command = 'ITERATION=%s codecept run -c ' . $this->getCodeceptionConfigPath() . ' -g %s';
+        $command = 'ITERATION=%s vendor/bin/codecept run -c ' . $this->getCodeceptionConfigPath() . ' -g %s';
 
         $allDataIsGenerated = false;
 

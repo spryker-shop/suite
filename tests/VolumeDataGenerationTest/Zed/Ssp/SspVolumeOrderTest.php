@@ -11,12 +11,15 @@ namespace VolumeDataGenerationTest\Zed\Ssp;
 
 use Codeception\Test\Unit;
 use Generated\Shared\DataBuilder\MerchantProfileBuilder;
+use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\MerchantTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
 use Generated\Shared\Transfer\SspAssetTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
+use Orm\Zed\Category\Persistence\SpyCategoryQuery;
 use Orm\Zed\CompanyBusinessUnit\Persistence\SpyCompanyBusinessUnitQuery;
+use Orm\Zed\Currency\Persistence\SpyCurrencyQuery;
 use Orm\Zed\SelfServicePortal\Persistence\SpyProductClassQuery;
 use Orm\Zed\SelfServicePortal\Persistence\SpySalesOrderItemProductClass;
 use Orm\Zed\SelfServicePortal\Persistence\SpySalesOrderItemSspAsset;
@@ -95,10 +98,23 @@ class SspVolumeOrderTest extends Unit
 
         $sspAssetTransfer = $this->generateSspAsset();
 
+        $currencyTransfer = (new CurrencyTransfer())->fromArray(
+            SpyCurrencyQuery::create()->findOneByCode('EUR')->toArray(),
+        );
+
+        $categoryEntity = SpyCategoryQuery::create()->findOneByName('service');
+
         $this->tester->configureTestStateMachine(['DummyPayment01']);
 
         for ($i = 0; $i < self::SERVICE_ORDER_COUNT; $i++) {
-            $product = $this->tester->generateService($storeTransfer, $taxSetEntity, $serviceProductClassEntity, $merchantTransfer);
+            $product = $this->tester->generateService(
+                $storeTransfer,
+                $taxSetEntity,
+                $serviceProductClassEntity,
+                $merchantTransfer,
+                $currencyTransfer,
+                $categoryEntity,
+            );
             $saveOrderTransfer = $this->tester->haveFullOrder([
                 'item' => ['sku' => $product->getSku()],
                     'customerReference' => $customerTransfer->getCustomerReference(),
@@ -118,6 +134,13 @@ class SspVolumeOrderTest extends Unit
                 ->fromArray($sspAssetTransfer->toArray())
                 ->setFkSalesOrderItem($saleOrderItemId)
                 ->save();
+
+            $salesProductAbstractTypeEntity = (new SpySalesProductAbstractTypeQuery())->filterByPrimaryKey('service')
+                ->findOneOrCreate();
+
+            if ($salesProductAbstractTypeEntity->isNew()) {
+                $salesProductAbstractTypeEntity->save();
+            }
 
             (new SpySalesOrderItemProductClass())
                 ->setFkSalesProductClass($serviceProductClassEntity->getIdProductClass())
