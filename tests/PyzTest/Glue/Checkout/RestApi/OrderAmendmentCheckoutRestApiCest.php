@@ -126,7 +126,7 @@ class OrderAmendmentCheckoutRestApiCest
                     'billingAddress' => $I->getAddressRequestPayload($quoteTransfer->getBillingAddress()),
                     'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
                     'customer' => $I->getCustomerRequestPayload($customerTransfer),
-                    'payments' => $I->getPaymentRequestPayload(),
+                    'payments' => $I->getPaymentRequestPayload(CheckoutApiTester::REQUEST_PARAM_PAYMENT_METHOD_NAME_CREDIT_CARD),
                     'shipment' => $I->getShipmentRequestPayload($shipmentMethodTransfer->getIdShipmentMethod()),
                 ],
             ],
