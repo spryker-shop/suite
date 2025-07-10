@@ -96,7 +96,12 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @var string
      */
-    protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'Invoice';
+    public const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'Invoice';
+
+    /**
+     * @var string
+     */
+    public const REQUEST_PARAM_PAYMENT_METHOD_NAME_CREDIT_CARD = 'Credit Card';
 
     /**
      * @var string

@@ -34,6 +34,8 @@ use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterUnsubscribedMailT
 use Spryker\Zed\Oms\Communication\Plugin\Mail\OrderConfirmationMailTypeBuilderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Mail\OrderShippedMailTypeBuilderPlugin;
 use Spryker\Zed\SalesInvoice\Communication\Plugin\Mail\OrderInvoiceMailTypeBuilderPlugin;
+use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\Mail\NotifyOrderAmendmentAppliedMailTypeBuilderPlugin;
+use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\Mail\NotifyOrderAmendmentFailedMailTypeBuilderPlugin;
 use Spryker\Zed\SymfonyMailer\Communication\Plugin\Mail\SymfonyMailerProviderPlugin;
 use Spryker\Zed\UserPasswordResetMail\Communication\Plugin\Mail\UserPasswordResetMailTypeBuilderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Mail\SspInquiryApprovedMailTypeBuilderPlugin;
@@ -104,6 +106,8 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
             new UserEmailMultiFactorAuthMailTypeBuilderPlugin(),
             new SspInquiryApprovedMailTypeBuilderPlugin(),
             new SspInquiryRejectedMailTypeBuilderPlugin(),
+            new NotifyOrderAmendmentAppliedMailTypeBuilderPlugin(),
+            new NotifyOrderAmendmentFailedMailTypeBuilderPlugin(),
         ];
     }
 }
