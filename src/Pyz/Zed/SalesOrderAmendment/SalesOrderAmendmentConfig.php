@@ -32,6 +32,17 @@ class SalesOrderAmendmentConfig extends SprykerSalesOrderAmendmentConfig
             QuoteTransfer::QUOTE_REQUEST_REFERENCE,
             QuoteTransfer::MERCHANT_REFERENCE,
             QuoteTransfer::IS_ORDER_PLACED_SUCCESSFULLY,
+            // the next fields are needed for the async quote process flow
+            QuoteTransfer::CUSTOMER,
+            QuoteTransfer::CUSTOMER_REFERENCE,
+            QuoteTransfer::STORE,
+            QuoteTransfer::PAYMENT,
+            QuoteTransfer::PAYMENTS,
+            QuoteTransfer::BILLING_ADDRESS,
+            QuoteTransfer::SHIPPING_ADDRESS,
+            QuoteTransfer::ORDER_CUSTOM_REFERENCE,
+            QuoteTransfer::SHIPMENT,
+            QuoteTransfer::ERRORS,
         ]);
     }
 }
