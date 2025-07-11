@@ -3101,14 +3101,6 @@
             - '.ci/snippet/RUN docker/sdk cli composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.example .env"'
-            - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
-                fi
-            - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
-                fi
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
@@ -3117,7 +3109,16 @@
             - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/ARTEFACTS aws s3 cp ./.cypress s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-off/cypress/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/ --recursive'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
+                  .ci/snippet/ARTEFACTS aws s3 cp ./.cypress s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-off/cypress/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/ --recursive
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
+                  .ci/snippet/ARTEFACTS aws s3 cp ./.cypress s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-off/cypress/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/ --recursive
+                fi
             - '.ci/snippet/ARTEFACTS echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDB/screenshots/&showversions=false"'
             - '.ci/snippet/ARTEFACTS echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
@@ -3206,15 +3207,7 @@
             - '.ci/snippet/RUN docker/sdk cli composer dump-autoload -o -a --apcu'
             - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
             - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.dynamic-store.example .env"'
-            - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-ui-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
-                fi
-            - |
-                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
-                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
-                fi
-            - ' .ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
+            - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
             - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
             - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
@@ -3222,7 +3215,16 @@
             - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
             - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
             - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
-            - '.ci/snippet/ARTEFACTS aws s3 cp ./.cypress s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-on/cypress/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/ --recursive'
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-latest-ci"* || "$BUDDY_RUN_PR_LABELS" == *"run-ui-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
+                  .ci/snippet/ARTEFACTS aws s3 cp ./.cypress s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-on/cypress/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/ --recursive
+                fi
+            - |
+                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-latest-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
+                  .ci/snippet/ARTEFACTS aws s3 cp ./.cypress s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-on/cypress/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/ --recursive
+                fi
             - '.ci/snippet/ARTEFACTS echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDB/screenshots/&showversions=false"'
             - '.ci/snippet/ARTEFACTS echo "You must have VPN access to AWS (Spryker-Internal account)"'
             - '.ci/snippet/FINISH'
