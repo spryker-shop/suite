@@ -8,6 +8,20 @@
         <controller>my-account</controller>
         <action>index</action>
     </my-account>
+    <set-up-multi-factor-auth>
+        <label>Set up Multi-Factor Authentication</label>
+        <title>Set up Multi-Factor Authentication</title>
+        <bundle>multi-factor-auth</bundle>
+        <controller>user-management-merchant-portal</controller>
+        <action>set-up</action>
+    </set-up-multi-factor-auth>
+    <set-up-multi-factor-auth-agent>
+        <label>Set up Multi-Factor Authentication</label>
+        <title>Set up Multi-Factor Authentication</title>
+        <bundle>multi-factor-auth</bundle>
+        <controller>user-management-agent-merchant-portal</controller>
+        <action>set-up</action>
+    </set-up-multi-factor-auth-agent>
     <logout>
         <label>Logout</label>
         <title>Logout</title>
