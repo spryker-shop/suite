@@ -32,7 +32,7 @@ use Spryker\Zed\Merchant\Communication\Plugin\Checkout\MerchantCheckoutPreCondit
 use Spryker\Zed\MerchantProductOption\Communication\Plugin\Checkout\MerchantProductOptionCheckoutPreConditionPlugin;
 use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Checkout\SingleMerchantCheckoutPreConditionPlugin;
 use Spryker\Zed\Nopayment\Communication\Plugin\Checkout\NopaymentCheckoutPreConditionPlugin;
-use Spryker\Zed\OrderAmendmentExample\Communication\Plugin\Checkout\InvoicePaymentToAsyncOrderAmendmentFlowCheckoutPreSavePlugin;
+use Spryker\Zed\OrderAmendmentExample\Communication\Plugin\Checkout\PaymentToAsyncOrderAmendmentFlowCheckoutPreSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentAuthorizationCheckoutPostSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentConfirmPreOrderPaymentCheckoutPostSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentMethodValidityCheckoutPreConditionPlugin;
@@ -313,7 +313,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new SalesOrderExpanderPlugin(),
             new OriginalOrderQuoteExpanderCheckoutPreSavePlugin(),
             new FilterOriginalOrderBundleItemCheckoutPreSavePlugin(), #Order Amendment Feature
-            new InvoicePaymentToAsyncOrderAmendmentFlowCheckoutPreSavePlugin(), #Order Amendment Feature
+            new PaymentToAsyncOrderAmendmentFlowCheckoutPreSavePlugin(), #Order Amendment Feature
         ];
     }
 }
