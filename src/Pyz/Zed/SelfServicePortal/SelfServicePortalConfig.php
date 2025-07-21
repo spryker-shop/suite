@@ -41,6 +41,19 @@ class SelfServicePortalConfig extends SprykerSelfServicePortalConfig
     }
 
     /**
+     * @return array<string>
+     */
+    public function getAssetStatusClassMap(): array
+    {
+        return [
+            'pending' => 'label-warning',
+            'in_review' => 'label-primary',
+            'approved' => 'label-success',
+            'deactivated' => 'label-danger',
+        ];
+    }
+
+    /**
      * @return string
      */
     public function getInquiryPendingStatus(): string
