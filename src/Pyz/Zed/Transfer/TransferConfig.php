@@ -40,14 +40,6 @@ class TransferConfig extends SprykerTransferConfig
     }
 
     /**
-     * @return bool
-     */
-    public function isTransferSuffixCheckStrict(): bool
-    {
-        return true;
-    }
-
-    /**
      * We use strict validation for case sensitive declaration for all new projects.
      *
      * @return bool
