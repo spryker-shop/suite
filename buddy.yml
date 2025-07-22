@@ -166,15 +166,6 @@
         setup_commands:
             - 'apt-get update && apt-get -y install php8.2-cli php8.2-mbstring'
         shell: 'BASH'
-      - action: 'PHP 8.2 PHPStan'
-        type: 'BUILD'
-        docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
-        execute_commands:
-            - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN vendor/bin/phpstan analyze'
-            - '.ci/snippet/FINISH'
-        shell: 'BASH'
         run_next_parallel: true
       - action: 'PHP 8.3 PHPStan'
         type: 'BUILD'
@@ -246,10 +237,6 @@
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
-        trigger_conditions:
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ssp-latest-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
       - action: 'PHP 8.3 PHPStan spryker/spryker-shop'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
@@ -377,7 +364,76 @@
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
-
+      - action: 'PHP 8.2 PHPStan spryker/spryker [1/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 0 275'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.2 PHPStan spryker/spryker [2/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 275 275'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.2 PHPStan spryker/spryker [3/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 550 150'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.2 PHPStan spryker/spryker [4/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 700 300'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.2 PHPStan spryker/spryker [5/5]'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 1000'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.2 PHPStan spryker/spryker feature'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan SprykerFeature'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
+      - action: 'PHP 8.2 PHPStan spryker/spryker-shop'
+        type: 'BUILD'
+        docker_image_name: 'spryker/php'
+        docker_image_tag: '8.2'
+        execute_commands:
+            - '.ci/snippet/PREPARE'
+            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan SprykerShop'
+            - '.ci/snippet/FINISH'
+        shell: 'BASH'
+        run_next_parallel: true
       - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
@@ -434,7 +490,7 @@
         type: 'BUILD'
         main_service_name: 'post'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
+        docker_image_tag: '8.3'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
@@ -522,10 +578,6 @@
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
-        trigger_conditions:
-            - trigger_condition: 'VAR_CONTAINS'
-              trigger_variable_value: 'run-ssp-latest-ci'
-              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
       - action: 'PHP 8.3 PHPStan spryker/spryker-shop'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
@@ -624,7 +676,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 0 275'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 0,275'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -634,7 +686,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 275 275'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 275,275'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -644,7 +696,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 550 150'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 550,150'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -654,7 +706,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN tests/spryker-ci.sh phpStan Spryker 700 200'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 700,200'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -664,7 +716,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN tests/spryker-ci.sh  phpStan Spryker 900'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 900'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -674,7 +726,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN tests/spryker-ci.sh  phpStan SprykerFeature'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerFeature.all -v'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -688,7 +740,7 @@
         docker_image_tag: '8.2'
         execute_commands:
             - '.ci/snippet/PREPARE'
-            - '.ci/snippet/RUN tests/spryker-ci.sh  phpStan SprykerShop'
+            - '.ci/snippet/RUN vendor/bin/console --no-ansi code:phpstan -m SprykerShop.all -v'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
       - action: 'Master Job Slack Notification failure'
