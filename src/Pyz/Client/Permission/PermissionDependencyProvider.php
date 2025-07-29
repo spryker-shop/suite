@@ -47,6 +47,8 @@ use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanySspAsse
 use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanySspInquiryPermissionPlugin;
 use SprykerFeature\Shared\SelfServicePortal\Plugin\Permission\ViewCompanyUserFilesPermissionPlugin;
 use SprykerFeature\Yves\SelfServicePortal\Plugin\Permission\DownloadCompanyFilesPermissionPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\Permission\ViewBusinessUnitSspServicePermissionPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\Permission\ViewCompanySspServicePermissionPlugin;
 use SprykerFeature\Yves\SelfServicePortal\Plugin\Permission\ViewDashboardPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
@@ -94,6 +96,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new CreateSspInquiryPermissionPlugin(),
             new ViewCompanySspInquiryPermissionPlugin(),
             new ViewBusinessUnitSspInquiryPermissionPlugin(),
+            new ViewCompanySspServicePermissionPlugin(),
+            new ViewBusinessUnitSspServicePermissionPlugin(),
             new DownloadCompanyFilesPermissionPlugin(),
             new ViewCompanyUserFilesPermissionPlugin(),
             new ViewCompanyBusinessUnitFilesPermissionPlugin(),
