@@ -46,6 +46,7 @@ use SprykerFeature\Yves\SelfServicePortal\Widget\SspProductOfferPriceWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceCancelWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceChangeScheduledTimeLinkWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceDetectorWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspServiceMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspServicePointGeoCodeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspServicePointNameForItemWidget;
@@ -407,6 +408,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             SspCompanyFilesMenuItemWidget::class,
             SspInquiryListWidget::class,
             SspAssetListWidget::class,
+            SspServiceListWidget::class,
             SspServiceCancelWidget::class,
             DashboardMenuItemWidget::class,
             SspFileListWidget::class,
