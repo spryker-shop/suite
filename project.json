@@ -30,6 +30,16 @@
                         "glob": "*/Presentation/Components/assets/**/*",
                         "input": "src/Pyz/Zed",
                         "output": "/assets/"
+                    },
+                    {
+                        "glob": "*/data/files/**/*",
+                        "input": "vendor/spryker/spryker/Bundles",
+                        "output": "/static/"
+                    },
+                    {
+                        "glob": "*/data/files/**/*",
+                        "input": "src/Pyz/Zed",
+                        "output": "/static/"
                     }
                 ],
                 "styles": [

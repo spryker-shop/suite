@@ -79,6 +79,7 @@ use Spryker\Shared\KernelApp\KernelAppConstants;
 use Spryker\Shared\Locale\LocaleConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
+use Spryker\Shared\MerchantFile\MerchantFileConstants;
 use Spryker\Shared\MerchantPortalApplication\MerchantPortalConstants;
 use Spryker\Shared\MerchantRelationRequest\MerchantRelationRequestConstants;
 use Spryker\Shared\MerchantRelationship\MerchantRelationshipConstants;
@@ -679,11 +680,22 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'root' => '/data',
         'path' => '/data/ssp-asset-image',
     ],
+    'merchant-files' => [
+        'sprykerAdapterClass' => Aws3v3FilesystemBuilderPlugin::class,
+        'key' => getenv('SPRYKER_S3_MERCHANT_FILES_KEY') ?: '',
+        'bucket' => getenv('SPRYKER_S3_MERCHANT_FILES_BUCKET') ?: '',
+        'secret' => getenv('SPRYKER_S3_MERCHANT_FILES_SECRET') ?: '',
+        'root' => '/',
+        'path' => '/',
+        'version' => 'latest',
+        'region' => getenv('AWS_REGION') ?: 'eu-central-1',
+    ],
 ];
 $config[FileManagerConstants::STORAGE_NAME] = 'files';
 $config[SelfServicePortalConstants::STORAGE_NAME] = 'ssp-files';
 $config[SelfServicePortalConstants::INQUIRY_STORAGE_NAME] = 'ssp-inquiry';
 $config[SelfServicePortalConstants::ASSET_STORAGE_NAME] = 'ssp-asset-image';
+$config[MerchantFileConstants::FILE_SYSTEM_NAME] = 'merchant-files';
 $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
 
 // ----------------------------------------------------------------------------

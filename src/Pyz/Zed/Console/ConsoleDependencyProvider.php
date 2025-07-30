@@ -69,6 +69,7 @@ use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRest
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerListenerConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
+use Spryker\Zed\FileImportMerchantPortalGui\Communication\Console\MerchantPortalFileImportConsole;
 use Spryker\Zed\Form\Communication\Plugin\Application\FormApplicationPlugin;
 use Spryker\Zed\IncrementalInstaller\Communication\Console\IncrementalInstallersConsole;
 use Spryker\Zed\IncrementalInstaller\Communication\Console\IncrementalInstallersRollbackConsole;
@@ -489,6 +490,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new IncrementalInstallersRollbackConsole(),
             new AclEntitySynchronizeConsole(),
             new SitemapGenerateConsole(),
+            new MerchantPortalFileImportConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

@@ -171,3 +171,7 @@ sections:
 
         api-generate-documentation:
             command: 'vendor/bin/glue api:generate:documentation'
+
+    acl:
+        acl-entity-synchronize:
+            command: 'vendor/bin/console acl-entity:synchronize -vvv --no-ansi'
