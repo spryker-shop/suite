@@ -209,6 +209,13 @@ $jobs[] = [
     'enable' => true,
 ];
 
+$jobs[] = [
+    'name' => 'merchant-portal-file-import',
+    'command' => $logger . '$PHP_BIN vendor/bin/console merchant-portal:file-import',
+    'schedule' => '* * * * *',
+    'enable' => true,
+];
+
 /* Message broker */
 if (\Spryker\Shared\Config\Config::get(\Spryker\Shared\MessageBroker\MessageBrokerConstants::IS_ENABLED)) {
     $jobs[] = [
