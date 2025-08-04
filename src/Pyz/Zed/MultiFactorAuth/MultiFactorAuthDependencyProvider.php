@@ -9,13 +9,12 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\MultiFactorAuth;
 
-use Spryker\Zed\AgentSecurityMerchantPortalGui\Communication\Plugin\MultiFactorAuth\PostAgentMerchantUserLoginMultiFactorAuthenticationPlugin;
 use Spryker\Zed\MultiFactorAuth\Communication\Plugin\Factors\Email\UserEmailMultiFactorAuthPlugin;
 use Spryker\Zed\MultiFactorAuth\Communication\Plugin\Sender\Customer\CustomerEmailCodeSenderStrategyPlugin;
 use Spryker\Zed\MultiFactorAuth\Communication\Plugin\Sender\User\UserEmailCodeSenderStrategyPlugin;
 use Spryker\Zed\MultiFactorAuth\MultiFactorAuthDependencyProvider as SprykerMultiFactorAuthDependencyProvider;
+use Spryker\Zed\MultiFactorAuthMerchantPortal\Communication\Plugin\Expander\MerchantPortalMultiFactorAuthPluginExpanderPlugin;
 use Spryker\Zed\SecurityGui\Communication\Plugin\MultiFactorAuth\PostUserLoginMultiFactorAuthenticationPlugin;
-use Spryker\Zed\SecurityMerchantPortalGui\Communication\Plugin\MultiFactorAuth\PostMerchantUserLoginMultiFactorAuthenticationPlugin;
 
 class MultiFactorAuthDependencyProvider extends SprykerMultiFactorAuthDependencyProvider
 {
@@ -56,8 +55,16 @@ class MultiFactorAuthDependencyProvider extends SprykerMultiFactorAuthDependency
     {
         return [
             new PostUserLoginMultiFactorAuthenticationPlugin(),
-            new PostMerchantUserLoginMultiFactorAuthenticationPlugin(),
-            new PostAgentMerchantUserLoginMultiFactorAuthenticationPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Shared\MultiFactorAuthExtension\Dependency\Plugin\MultiFactorAuthPluginExpanderPluginInterface>
+     */
+    protected function getMultiFactorAuthPluginExpanderPlugins(): array
+    {
+        return [
+            new MerchantPortalMultiFactorAuthPluginExpanderPlugin(),
         ];
     }
 }

@@ -345,6 +345,12 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'type' => 'allow',
     ],
     [
+        'bundle' => 'multi-factor-auth-merchant-portal',
+        'controller' => '*',
+        'action' => '*',
+        'type' => 'allow',
+    ],
+    [
         'bundle' => 'acl',
         'controller' => 'index',
         'action' => 'denied',

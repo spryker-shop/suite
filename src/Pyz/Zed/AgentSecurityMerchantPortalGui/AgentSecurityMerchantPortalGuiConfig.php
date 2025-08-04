@@ -18,7 +18,7 @@ class AgentSecurityMerchantPortalGuiConfig extends SprykerAgentSecurityMerchantP
      */
     public function getRoutePatternAgentMerchantPortal(): string
     {
-        return '^/(agent(.+)-merchant-portal-gui|multi-factor-auth/(agent-merchant-user|user-management-agent-merchant-portal))(?!agent-security-merchant-portal-gui\/login$)/';
+        return '^/(agent(.+)-merchant-portal-gui|multi-factor-auth-merchant-portal/(agent-merchant-user|agent-user-management))(?!agent-security-merchant-portal-gui\/login$)/';
     }
 
     /**
@@ -26,6 +26,6 @@ class AgentSecurityMerchantPortalGuiConfig extends SprykerAgentSecurityMerchantP
      */
     public function getRoutePatternAgentMerchantPortalLogin(): string
     {
-        return '^/(agent-security-merchant-portal-gui/login|multi-factor-auth/agent-merchant-user($|/))';
+        return '^/(agent-security-merchant-portal-gui/login|multi-factor-auth-merchant-portal/agent-merchant-user($|/))';
     }
 }
