@@ -149,6 +149,7 @@ use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRel
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelationProductAbstract\ProductRelationProductAbstractWritePublisherPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelationPublisherTriggerPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelationStore\ProductRelationStoreWritePublisherPlugin;
+use Spryker\Zed\ProductStorage\Communication\Plugin\Publisher\ProductAbstract\ProductLocalizedAttributesProductAbstractWritePublisherPlugin;
 use Spryker\Zed\PublishAndSynchronizeHealthCheckSearch\Communication\Plugin\Publisher\PublishAndSynchronizeHealthCheckSearchPublisherTriggerPlugin;
 use Spryker\Zed\PublishAndSynchronizeHealthCheckSearch\Communication\Plugin\Publisher\PublishAndSynchronizeHealthCheckSearchWritePublisherPlugin;
 use Spryker\Zed\PublishAndSynchronizeHealthCheckStorage\Communication\Plugin\Publisher\PublishAndSynchronizeHealthCheckPublisherTriggerPlugin;
@@ -235,6 +236,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductOfferServicePointStoragePlugins(),
             $this->getProductOfferShipmentTypeStoragePlugins(),
             $this->getTaxAppPlugins(),
+            $this->getProductStoragePlugins(),
         );
     }
 
@@ -756,6 +758,16 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     {
         return [
             new RefreshTaxAppStoreRelationPublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getProductStoragePlugins(): array
+    {
+        return [
+            new ProductLocalizedAttributesProductAbstractWritePublisherPlugin(),
         ];
     }
 }
