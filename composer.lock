@@ -3630,27 +3630,27 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v4.1.8",
+            "version": "v4.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "42806049a7774a2bd316c958f5dcf01c6b5c56fa"
+                "reference": "ad8a0f5e5026c9d6baa51a16c533096bab0472a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/42806049a7774a2bd316c958f5dcf01c6b5c56fa",
-                "reference": "42806049a7774a2bd316c958f5dcf01c6b5c56fa",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/ad8a0f5e5026c9d6baa51a16c533096bab0472a8",
+                "reference": "ad8a0f5e5026c9d6baa51a16c533096bab0472a8",
                 "shasum": ""
             },
             "require": {
                 "nette/utils": "^3.2.9 || ^4.0",
-                "php": "8.0 - 8.4"
+                "php": "8.0 - 8.5"
             },
             "require-dev": {
-                "jetbrains/phpstorm-attributes": "dev-master",
+                "jetbrains/phpstorm-attributes": "^1.2",
                 "nette/tester": "^2.4",
                 "nikic/php-parser": "^4.18 || ^5.0",
-                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan-nette": "^2.0@stable",
                 "tracy/tracy": "^2.8"
             },
             "suggest": {
@@ -3663,6 +3663,9 @@
                 }
             },
             "autoload": {
+                "psr-4": {
+                    "Nette\\": "src"
+                },
                 "classmap": [
                     "src/"
                 ]
@@ -3683,7 +3686,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 8.4 features.",
+            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 8.5 features.",
             "homepage": "https://nette.org",
             "keywords": [
                 "code",
@@ -3693,9 +3696,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/php-generator/issues",
-                "source": "https://github.com/nette/php-generator/tree/v4.1.8"
+                "source": "https://github.com/nette/php-generator/tree/v4.1.9"
             },
-            "time": "2025-03-31T00:29:29+00:00"
+            "time": "2025-08-06T16:12:49+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -6089,12 +6092,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "51f845ee1ebe16b6a136ddcc6a242a4174cc0243"
+                "reference": "a00c89595730bfb26a78fe8e764e7121f8643d8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/51f845ee1ebe16b6a136ddcc6a242a4174cc0243",
-                "reference": "51f845ee1ebe16b6a136ddcc6a242a4174cc0243",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/a00c89595730bfb26a78fe8e764e7121f8643d8e",
+                "reference": "a00c89595730bfb26a78fe8e764e7121f8643d8e",
                 "shasum": ""
             },
             "require": {
@@ -6106,6 +6109,7 @@
                 "spryker/propel": "^3.45.0",
                 "spryker/propel-orm": "^1.16.0",
                 "spryker/symfony": "^3.1.0",
+                "spryker/transfer": "^3.39.0",
                 "spryker/util-encoding": "^2.1.0"
             },
             "require-dev": {
@@ -6122,8 +6126,7 @@
                 "spryker/monolog": "*",
                 "spryker/queue": "*",
                 "spryker/silex": "^2.0.0",
-                "spryker/testify": "^3.58.0",
-                "spryker/transfer": "^3.39.0"
+                "spryker/testify": "^3.58.0"
             },
             "suggest": {
                 "spryker/console": "If you want to execute console commands",
@@ -6157,7 +6160,7 @@
             "support": {
                 "source": "https://github.com/spryker/event-behavior"
             },
-            "time": "2025-07-03T13:52:27+00:00"
+            "time": "2025-08-06T16:55:31+00:00"
         },
         {
             "name": "spryker/install",
@@ -6380,7 +6383,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d26df1566fe06e8fed61820cc27421d17b3118ba"
+                "reference": "f861e162d42e75e3c0b98fa16ccf65f03b058d1d"
             },
             "require": {
                 "php": ">=8.1"
@@ -7532,7 +7535,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2025-08-06T06:17:30+00:00"
+            "time": "2025-08-06T16:55:34+00:00"
         },
         {
             "name": "spryker/spryker-shop",
