@@ -140,6 +140,7 @@ use Pyz\Zed\DataImport\Business\Model\ProductSearchAttribute\Hook\ProductSearchA
 use Pyz\Zed\DataImport\Business\Model\ProductSearchAttribute\ProductSearchAttributeWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductSearchAttributeMap\ProductSearchAttributeMapWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetImageExtractorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetImageLocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Reader\ProductStockReader;
@@ -766,7 +767,12 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataSetStepBroker
             ->addStep($this->createProductAbstractSkuToIdProductAbstractStep(CombinedProductImageAbstractHydratorStep::COLUMN_ABSTRACT_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT))
             ->addStep($this->createLocaleNameToIdStep(CombinedProductImageAbstractHydratorStep::COLUMN_LOCALE, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE))
-            ->addStep(new CombinedProductImageAbstractHydratorStep());
+            ->addStep(new CombinedProductImageAbstractHydratorStep())
+            ->addStep($this->createAddLocalesStep())
+            ->addStep($this->createLocalizedAttributesExtractorStep([
+                CombinedProductImagePropelDataSetWriter::KEY_ALT_TEXT_SMALL,
+                CombinedProductImagePropelDataSetWriter::KEY_ALT_TEXT_LARGE,
+            ]));
 
         $dataImporter->setDataSetCondition($this->createCombinedProductImageAbstractTypeDataSetCondition());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
@@ -791,7 +797,12 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataSetStepBroker
             ->addStep($this->createProductSkuToIdProductStep(CombinedProductImageConcreteHydratorStep::COLUMN_CONCRETE_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT))
             ->addStep($this->createLocaleNameToIdStep(CombinedProductImageConcreteHydratorStep::COLUMN_LOCALE, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE))
-            ->addStep(new CombinedProductImageConcreteHydratorStep());
+            ->addStep(new CombinedProductImageConcreteHydratorStep())
+            ->addStep($this->createAddLocalesStep())
+            ->addStep($this->createLocalizedAttributesExtractorStep([
+                CombinedProductImagePropelDataSetWriter::KEY_ALT_TEXT_SMALL,
+                CombinedProductImagePropelDataSetWriter::KEY_ALT_TEXT_LARGE,
+            ]));
 
         $dataImporter->setDataSetCondition($this->createCombinedProductImageConcreteTypeDataSetCondition());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
@@ -2165,7 +2176,12 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addStep($this->createProductAbstractSkuToIdProductAbstractStep(ProductImageHydratorStep::COLUMN_ABSTRACT_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT))
             ->addStep($this->createProductSkuToIdProductStep(ProductImageHydratorStep::COLUMN_CONCRETE_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT))
             ->addStep($this->createLocaleNameToIdStep(ProductImageHydratorStep::COLUMN_LOCALE, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE))
-            ->addStep(new ProductImageHydratorStep());
+            ->addStep(new ProductImageHydratorStep())
+            ->addStep($this->createAddLocalesStep())
+            ->addStep($this->createLocalizedAttributesExtractorStep([
+                ProductImagePropelDataSetWriter::KEY_ALT_TEXT_SMALL,
+                ProductImagePropelDataSetWriter::KEY_ALT_TEXT_LARGE,
+            ]));
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetWriter($this->createProductImageDataWriters());
@@ -2594,6 +2610,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addStep($this->createAddProductAbstractSkusStep())
             ->addStep($this->createAddLocalesStep())
             ->addStep($this->createProductSetImageExtractorStep())
+            ->addStep($this->createProductSetImageLocalizedAttributesExtractorStep())
             ->addStep($this->createLocalizedAttributesExtractorStep([
                 ProductSetWriterStep::KEY_NAME,
                 ProductSetWriterStep::KEY_URL,
@@ -2617,6 +2634,14 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createProductSetImageExtractorStep(): ProductSetImageExtractorStep
     {
         return new ProductSetImageExtractorStep();
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetImageLocalizedAttributesExtractorStep
+     */
+    protected function createProductSetImageLocalizedAttributesExtractorStep(): ProductSetImageLocalizedAttributesExtractorStep
+    {
+        return new ProductSetImageLocalizedAttributesExtractorStep();
     }
 
     /**
