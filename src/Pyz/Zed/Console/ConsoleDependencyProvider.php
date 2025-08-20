@@ -66,6 +66,7 @@ use Spryker\Zed\Development\Communication\Console\RemoveServiceIdeAutoCompletion
 use Spryker\Zed\Development\Communication\Console\RemoveYvesIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveZedIdeAutoCompletionConsole;
 use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole;
+use Spryker\Zed\Event\Communication\Plugin\Console\EventListenerDumpConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerListenerConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
@@ -500,6 +501,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         if ($this->getConfig()->isDevelopmentConsoleCommandsEnabled()) {
             $commands = $this->addProjectNonsplitOnlyCommands($commands);
 
+            $commands[] = new EventListenerDumpConsole();
             $commands[] = new RouterDebugBackofficeConsole();
             $commands[] = new RouterDebugBackendGatewayConsole();
             $commands[] = new RouterDebugBackendApiConsole();
