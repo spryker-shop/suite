@@ -188,6 +188,13 @@ use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\StorePublisherTrigge
 use Spryker\Zed\TaxApp\Communication\Plugin\Publisher\Store\RefreshTaxAppStoreRelationPublisherPlugin;
 use Spryker\Zed\TaxProductStorage\Communication\Plugin\Publisher\TaxProductPublisherTriggerPlugin;
 use Spryker\Zed\TaxStorage\Communication\Plugin\Publisher\TaxSetPublisherTriggerPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Storage\SspAssetToCompanyBusinessUnitWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Storage\SspAssetToModelWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Storage\SspAssetWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAssetPublisherTriggerPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspModel\Storage\SspModelToProductListWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspModel\Storage\SspModelWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspModelPublisherTriggerPlugin;
 
 class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
 {
@@ -235,6 +242,8 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductOfferServicePointStoragePlugins(),
             $this->getProductOfferShipmentTypeStoragePlugins(),
             $this->getTaxAppPlugins(),
+            $this->getSspModelStoragePlugins(),
+            $this->getSspAssetStoragePlugins(),
             $this->getProductStoragePlugins(),
         );
     }
@@ -283,6 +292,8 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ServiceTypePublisherTriggerPlugin(),
             new ShipmentTypePublisherTriggerPlugin(),
             new ProductOfferServicePublisherTriggerPlugin(),
+            new SspModelPublisherTriggerPlugin(),
+            new SspAssetPublisherTriggerPlugin(),
             new ProductOfferShipmentTypePublisherTriggerPlugin(),
         ];
     }
@@ -757,6 +768,29 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     {
         return [
             new RefreshTaxAppStoreRelationPublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getSspModelStoragePlugins(): array
+    {
+        return [
+            new SspModelWritePublisherPlugin(),
+            new SspModelToProductListWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getSspAssetStoragePlugins(): array
+    {
+        return [
+            new SspAssetWritePublisherPlugin(),
+            new SspAssetToModelWritePublisherPlugin(),
+            new SspAssetToCompanyBusinessUnitWritePublisherPlugin(),
         ];
     }
 

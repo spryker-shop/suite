@@ -61,6 +61,7 @@ use Spryker\Shared\TaxProductStorage\TaxProductStorageConfig;
 use Spryker\Shared\TaxStorage\TaxStorageConfig;
 use Spryker\Shared\UrlStorage\UrlStorageConfig;
 use Spryker\Shared\UrlStorage\UrlStorageConstants;
+use SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConfig;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -183,6 +184,8 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             ShipmentTypeStorageConfig::QUEUE_NAME_SYNC_STORAGE_SHIPMENT_TYPE,
             ProductOfferServicePointStorageConfig::QUEUE_NAME_SYNC_STORAGE_PRODUCT_OFFER_SERVICE,
             ProductOfferShipmentTypeStorageConfig::PRODUCT_OFFER_SHIPMENT_TYPE_SYNC_STORAGE_QUEUE,
+            SelfServicePortalConfig::QUEUE_NAME_SYNC_STORAGE_SSP_MODEL,
+            SelfServicePortalConfig::QUEUE_NAME_SYNC_STORAGE_SSP_ASSET,
         ];
     }
 
