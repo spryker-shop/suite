@@ -34048,16 +34048,16 @@
         },
         {
             "name": "spryker/event",
-            "version": "2.12.0",
+            "version": "2.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event.git",
-                "reference": "52e5429a9d1ac3a65752c500247fc25f57adf78e"
+                "reference": "7d6d9d25ad06d2faedca2bfbde27a4047b497361"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event/zipball/52e5429a9d1ac3a65752c500247fc25f57adf78e",
-                "reference": "52e5429a9d1ac3a65752c500247fc25f57adf78e",
+                "url": "https://api.github.com/repos/spryker/event/zipball/7d6d9d25ad06d2faedca2bfbde27a4047b497361",
+                "reference": "7d6d9d25ad06d2faedca2bfbde27a4047b497361",
                 "shasum": ""
             },
             "require": {
@@ -34074,7 +34074,11 @@
                 "spryker/code-sniffer": "*",
                 "spryker/propel": "^3.0.0",
                 "spryker/publisher": "*",
+                "spryker/symfony": "*",
                 "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "When the EventListenerDumpConsole command should be used."
             },
             "type": "library",
             "extra": {
@@ -34094,9 +34098,9 @@
             ],
             "description": "Event module",
             "support": {
-                "source": "https://github.com/spryker/event/tree/2.12.0"
+                "source": "https://github.com/spryker/event/tree/2.13.0"
             },
-            "time": "2025-07-03T13:52:30+00:00"
+            "time": "2025-08-20T10:20:44+00:00"
         },
         {
             "name": "spryker/event-behavior",
@@ -42868,16 +42872,16 @@
         },
         {
             "name": "spryker/merchant-storage",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-storage.git",
-                "reference": "e675e3a98e59ce60a3472e2781e088b16627d096"
+                "reference": "74f2ba20cd59f329f4bcaf8e12daa261baa932d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-storage/zipball/e675e3a98e59ce60a3472e2781e088b16627d096",
-                "reference": "e675e3a98e59ce60a3472e2781e088b16627d096",
+                "url": "https://api.github.com/repos/spryker/merchant-storage/zipball/74f2ba20cd59f329f4bcaf8e12daa261baa932d3",
+                "reference": "74f2ba20cd59f329f4bcaf8e12daa261baa932d3",
                 "shasum": ""
             },
             "require": {
@@ -42930,9 +42934,9 @@
             ],
             "description": "MerchantStorage module",
             "support": {
-                "source": "https://github.com/spryker/merchant-storage/tree/1.4.0"
+                "source": "https://github.com/spryker/merchant-storage/tree/1.5.0"
             },
-            "time": "2025-05-20T13:23:34+00:00"
+            "time": "2025-08-20T10:20:44+00:00"
         },
         {
             "name": "spryker/merchant-switcher",
