@@ -820,7 +820,6 @@
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
       - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
