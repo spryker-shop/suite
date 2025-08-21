@@ -186,6 +186,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             ProductOfferShipmentTypeStorageConfig::PRODUCT_OFFER_SHIPMENT_TYPE_SYNC_STORAGE_QUEUE,
             SelfServicePortalConfig::QUEUE_NAME_SYNC_STORAGE_SSP_MODEL,
             SelfServicePortalConfig::QUEUE_NAME_SYNC_STORAGE_SSP_ASSET,
+            SelfServicePortalConfig::QUEUE_NAME_SYNC_SEARCH_SSP_ASSET,
         ];
     }
 

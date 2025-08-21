@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\Queue;
 
+use Pyz\Shared\SelfServicePortal\SelfServicePortalConfig;
 use Spryker\Shared\AssetStorage\AssetStorageConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
@@ -66,7 +67,6 @@ use Spryker\Zed\RabbitMq\Communication\Plugin\Queue\RabbitMqQueueMessageCheckerP
 use Spryker\Zed\Synchronization\Communication\Plugin\Queue\SynchronizationSearchQueueMessageProcessorPlugin;
 use Spryker\Zed\Synchronization\Communication\Plugin\Queue\SynchronizationStorageQueueMessageProcessorPlugin;
 use SprykerEco\Zed\Loggly\Communication\Plugin\LogglyLoggerQueueMessageProcessorPlugin;
-use SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConfig;
 
 class QueueDependencyProvider extends SprykerDependencyProvider
 {
@@ -137,6 +137,7 @@ class QueueDependencyProvider extends SprykerDependencyProvider
             ProductOfferShipmentTypeStorageConfig::PRODUCT_OFFER_SHIPMENT_TYPE_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             SelfServicePortalConfig::QUEUE_NAME_SYNC_STORAGE_SSP_MODEL => new SynchronizationStorageQueueMessageProcessorPlugin(),
             SelfServicePortalConfig::QUEUE_NAME_SYNC_STORAGE_SSP_ASSET => new SynchronizationStorageQueueMessageProcessorPlugin(),
+            SelfServicePortalConfig::QUEUE_NAME_SYNC_SEARCH_SSP_ASSET => new SynchronizationSearchQueueMessageProcessorPlugin(),
         ];
     }
 
