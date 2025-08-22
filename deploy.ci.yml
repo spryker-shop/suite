@@ -46,8 +46,8 @@ image:
     tag: spryker/php:8.3
     php:
         enabled-extensions:
-            - blackfire
             - newrelic
+            - otel
     environment:
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: demo-date-time-configurator.night-test.cloud.spryker.toys
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
