@@ -849,6 +849,7 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: '8.2'
+                    extensions: mbstring, intl, pdo_mysql, redis, grpc
                     coverage: none
 
             -   name: Install prefer lowest
