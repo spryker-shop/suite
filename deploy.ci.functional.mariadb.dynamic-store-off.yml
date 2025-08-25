@@ -7,6 +7,9 @@ environment: docker.ci
 pipeline: docker.ci.functional.dynamic-store-off
 image:
     tag: spryker/php:8.3
+    php:
+        enabled-extensions:
+            - otel
     environment:
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.spryker.local
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
@@ -17,6 +20,9 @@ image:
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_SUBJECT: 'https://spryker.com'
         SPRYKER_YVES_HOST_DE: yves.de.spryker.local
         SPRYKER_YVES_HOST_AT: yves.at.spryker.local
+    node:
+        version: 18
+        npm: 9
 
 composer:
     mode: '--no-dev --quiet -o -a'
