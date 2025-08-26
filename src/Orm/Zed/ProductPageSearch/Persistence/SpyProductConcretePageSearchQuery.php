@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductPageSearch\Persistence;
 
-use Spryker\Zed\ProductPageSearch\Persistence\Propel\AbstractSpyProductConcretePageSearchQuery;
+use Spryker\Zed\ProductPageSearch\Persistence\Propel\AbstractSpyProductConcretePageSearchQuery as BaseSpyProductConcretePageSearchQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_concrete_page_search' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductPageSearch\Persistence\Propel\AbstractSpyProductConcreteP
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductConcretePageSearchQuery extends AbstractSpyProductConcretePageSearchQuery
+class SpyProductConcretePageSearchQuery extends BaseSpyProductConcretePageSearchQuery
 {
 }

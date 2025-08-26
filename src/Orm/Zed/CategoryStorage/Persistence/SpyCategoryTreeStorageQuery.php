@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\CategoryStorage\Persistence;
 
-use Spryker\Zed\CategoryStorage\Persistence\Propel\AbstractSpyCategoryTreeStorageQuery;
+use Spryker\Zed\CategoryStorage\Persistence\Propel\AbstractSpyCategoryTreeStorageQuery as BaseSpyCategoryTreeStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_category_tree_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\CategoryStorage\Persistence\Propel\AbstractSpyCategoryTreeStorag
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCategoryTreeStorageQuery extends AbstractSpyCategoryTreeStorageQuery
+class SpyCategoryTreeStorageQuery extends BaseSpyCategoryTreeStorageQuery
 {
 }

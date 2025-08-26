@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SalesPaymentMerchant\Persistence;
 
-use Orm\Zed\SalesPaymentMerchant\Persistence\Base\SpySalesPaymentMerchantPayoutReversal as BaseSpySalesPaymentMerchantPayoutReversal;
+use Spryker\Zed\SalesPaymentMerchant\Persistence\Propel\AbstractSpySalesPaymentMerchantPayoutReversal as BaseSpySalesPaymentMerchantPayoutReversal;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_sales_payment_merchant_payout_reversal' table.

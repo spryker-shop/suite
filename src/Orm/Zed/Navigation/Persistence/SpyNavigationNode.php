@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\Navigation\Persistence;
 
-use Orm\Zed\Navigation\Persistence\Base\SpyNavigationNode as BaseSpyNavigationNode;
+use Spryker\Zed\Navigation\Persistence\Propel\AbstractSpyNavigationNode as BaseSpyNavigationNode;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_navigation_node' table.

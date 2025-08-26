@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductRelationStorage\Persistence;
 
-use Spryker\Zed\ProductRelationStorage\Persistence\Propel\AbstractSpyProductAbstractRelationStorageQuery;
+use Spryker\Zed\ProductRelationStorage\Persistence\Propel\AbstractSpyProductAbstractRelationStorageQuery as BaseSpyProductAbstractRelationStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_abstract_relation_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductRelationStorage\Persistence\Propel\AbstractSpyProductAbst
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductAbstractRelationStorageQuery extends AbstractSpyProductAbstractRelationStorageQuery
+class SpyProductAbstractRelationStorageQuery extends BaseSpyProductAbstractRelationStorageQuery
 {
 }

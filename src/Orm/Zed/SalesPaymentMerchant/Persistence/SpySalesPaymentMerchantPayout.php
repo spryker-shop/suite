@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SalesPaymentMerchant\Persistence;
 
-use Orm\Zed\SalesPaymentMerchant\Persistence\Base\SpySalesPaymentMerchantPayout as BaseSpySalesPaymentMerchantPayout;
+use Spryker\Zed\SalesPaymentMerchant\Persistence\Propel\AbstractSpySalesPaymentMerchantPayout as BaseSpySalesPaymentMerchantPayout;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_sales_payment_merchant_payout' table.

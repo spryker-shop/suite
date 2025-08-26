@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\CmsBlockProductStorage\Persistence;
 
-use Spryker\Zed\CmsBlockProductStorage\Persistence\Propel\AbstractSpyCmsBlockProductStorageQuery;
+use Spryker\Zed\CmsBlockProductStorage\Persistence\Propel\AbstractSpyCmsBlockProductStorageQuery as BaseSpyCmsBlockProductStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_cms_block_product_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\CmsBlockProductStorage\Persistence\Propel\AbstractSpyCmsBlockPro
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCmsBlockProductStorageQuery extends AbstractSpyCmsBlockProductStorageQuery
+class SpyCmsBlockProductStorageQuery extends BaseSpyCmsBlockProductStorageQuery
 {
 }

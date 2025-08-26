@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\Discount\Persistence;
 
-use Spryker\Zed\Discount\Persistence\Propel\AbstractSpyDiscountStoreQuery;
+use Spryker\Zed\Discount\Persistence\Propel\AbstractSpyDiscountStoreQuery as BaseSpyDiscountStoreQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_discount_store' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\Discount\Persistence\Propel\AbstractSpyDiscountStoreQuery;
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyDiscountStoreQuery extends AbstractSpyDiscountStoreQuery
+class SpyDiscountStoreQuery extends BaseSpyDiscountStoreQuery
 {
 }

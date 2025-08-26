@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductCategoryFilterStorage\Persistence;
 
-use Spryker\Zed\ProductCategoryFilterStorage\Persistence\Propel\AbstractSpyProductCategoryFilterStorage;
+use Spryker\Zed\ProductCategoryFilterStorage\Persistence\Propel\AbstractSpyProductCategoryFilterStorage as BaseSpyProductCategoryFilterStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_category_filter_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductCategoryFilterStorage\Persistence\Propel\AbstractSpyProdu
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductCategoryFilterStorage extends AbstractSpyProductCategoryFilterStorage
+class SpyProductCategoryFilterStorage extends BaseSpyProductCategoryFilterStorage
 {
 }

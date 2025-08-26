@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\NavigationStorage\Persistence;
 
-use Spryker\Zed\NavigationStorage\Persistence\Propel\AbstractSpyNavigationStorageQuery;
+use Spryker\Zed\NavigationStorage\Persistence\Propel\AbstractSpyNavigationStorageQuery as BaseSpyNavigationStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_navigation_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\NavigationStorage\Persistence\Propel\AbstractSpyNavigationStorag
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyNavigationStorageQuery extends AbstractSpyNavigationStorageQuery
+class SpyNavigationStorageQuery extends BaseSpyNavigationStorageQuery
 {
 }

@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SearchHttp\Persistence;
 
-use Orm\Zed\SearchHttp\Persistence\Base\SpySearchHttpConfigQuery as BaseSpySearchHttpConfigQuery;
+use Spryker\Zed\SearchHttp\Persistence\Propel\AbstractSpySearchHttpConfigQuery as BaseSpySearchHttpConfigQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_search_http_config' table.

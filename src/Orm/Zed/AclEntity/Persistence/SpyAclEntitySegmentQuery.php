@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\AclEntity\Persistence;
 
-use Orm\Zed\AclEntity\Persistence\Base\SpyAclEntitySegmentQuery as BaseSpyAclEntitySegmentQuery;
+use Spryker\Zed\AclEntity\Persistence\Propel\AbstractSpyAclEntitySegmentQuery as BaseSpyAclEntitySegmentQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_acl_entity_segment' table.

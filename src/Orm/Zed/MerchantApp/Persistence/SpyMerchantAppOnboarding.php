@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\MerchantApp\Persistence;
 
-use Orm\Zed\MerchantApp\Persistence\Base\SpyMerchantAppOnboarding as BaseSpyMerchantAppOnboarding;
+use Spryker\Zed\MerchantApp\Persistence\Propel\AbstractSpyMerchantAppOnboarding as BaseSpyMerchantAppOnboarding;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_merchant_app_onboarding' table.

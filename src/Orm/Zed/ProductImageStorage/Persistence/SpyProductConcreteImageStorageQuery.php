@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductImageStorage\Persistence;
 
-use Spryker\Zed\ProductImageStorage\Persistence\Propel\AbstractSpyProductConcreteImageStorageQuery;
+use Spryker\Zed\ProductImageStorage\Persistence\Propel\AbstractSpyProductConcreteImageStorageQuery as BaseSpyProductConcreteImageStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_concrete_image_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductImageStorage\Persistence\Propel\AbstractSpyProductConcret
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductConcreteImageStorageQuery extends AbstractSpyProductConcreteImageStorageQuery
+class SpyProductConcreteImageStorageQuery extends BaseSpyProductConcreteImageStorageQuery
 {
 }

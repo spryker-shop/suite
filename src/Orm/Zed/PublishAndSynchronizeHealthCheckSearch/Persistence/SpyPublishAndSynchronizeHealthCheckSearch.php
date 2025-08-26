@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\PublishAndSynchronizeHealthCheckSearch\Persistence;
 
-use Orm\Zed\PublishAndSynchronizeHealthCheckSearch\Persistence\Base\SpyPublishAndSynchronizeHealthCheckSearch as BaseSpyPublishAndSynchronizeHealthCheckSearch;
+use Spryker\Zed\PublishAndSynchronizeHealthCheckSearch\Persistence\Propel\AbstractSpyPublishAndSynchronizeHealthCheckSearch as BaseSpyPublishAndSynchronizeHealthCheckSearch;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_publish_and_synchronize_health_check_search' table.

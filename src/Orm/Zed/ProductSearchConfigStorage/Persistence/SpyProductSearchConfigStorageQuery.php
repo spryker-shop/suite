@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductSearchConfigStorage\Persistence;
 
-use Spryker\Zed\ProductSearchConfigStorage\Persistence\Propel\AbstractSpyProductSearchConfigStorageQuery;
+use Spryker\Zed\ProductSearchConfigStorage\Persistence\Propel\AbstractSpyProductSearchConfigStorageQuery as BaseSpyProductSearchConfigStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_search_config_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductSearchConfigStorage\Persistence\Propel\AbstractSpyProduct
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductSearchConfigStorageQuery extends AbstractSpyProductSearchConfigStorageQuery
+class SpyProductSearchConfigStorageQuery extends BaseSpyProductSearchConfigStorageQuery
 {
 }
