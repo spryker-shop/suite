@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\GlossaryStorage\Persistence;
 
-use Spryker\Zed\GlossaryStorage\Persistence\Propel\AbstractSpyGlossaryStorageQuery;
+use Spryker\Zed\GlossaryStorage\Persistence\Propel\AbstractSpyGlossaryStorageQuery as BaseSpyGlossaryStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_glossary_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\GlossaryStorage\Persistence\Propel\AbstractSpyGlossaryStorageQue
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyGlossaryStorageQuery extends AbstractSpyGlossaryStorageQuery
+class SpyGlossaryStorageQuery extends BaseSpyGlossaryStorageQuery
 {
 }

@@ -24,7 +24,9 @@ use Orm\Zed\ProductImage\Persistence\Map\SpyProductImageTableMap;
 use Orm\Zed\ProductImage\Persistence\SpyProductImageQuery;
 use Orm\Zed\ProductImage\Persistence\SpyProductImageSetQuery;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImagePropelDataSetWriter;
 use PyzTest\Zed\DataImport\Business\Model\AbstractWriterTest;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 
 /**
@@ -93,6 +95,12 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
         $dataSet[ProductImageHydratorStep::COLUMN_LOCALE] = $locale->getLocaleName();
         $dataSet[ProductImageHydratorStep::COLUMN_SORT_ORDER] = 0;
         $dataSet[ProductImageHydratorStep::COLUMN_PRODUCT_IMAGE_KEY] = $productImageKey;
+        $dataSet[LocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] = [
+            $locale->getIdLocale() => [
+                ProductImagePropelDataSetWriter::KEY_ALT_TEXT_SMALL => ProductImagePropelDataSetWriter::KEY_ALT_TEXT_SMALL,
+                ProductImagePropelDataSetWriter::KEY_ALT_TEXT_LARGE => ProductImagePropelDataSetWriter::KEY_ALT_TEXT_LARGE,
+            ],
+        ];
         /** @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer $spyProductImageSetEntityTransfer */
         $spyProductImageSetEntityTransfer = (new SpyProductImageSetEntityBuilder())->build();
 

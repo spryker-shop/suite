@@ -15,12 +15,14 @@
             <process>WarehouseAllocation</process>
             <process>DummyMerchantCommission</process>
             <process>DummyOrderAmendment</process>
+            <process>DummyOrderAmendmentAsync</process>
         </subprocesses>
 
         <states>
             <state name="new" display="oms.state.new">
                 <flag>cancellable</flag>
             </state>
+            <state name="grace period pending" display="oms.state.new"/>
             <state name="grace period started" reserved="true" display="oms.state.new">
                 <flag>cancellable</flag>
                 <flag>amendable</flag>
@@ -52,7 +54,7 @@
         <transitions>
             <transition happy="true">
                 <source>new</source>
-                <target>grace period started</target>
+                <target>grace period pending</target>
             </transition>
 
             <transition>
@@ -232,5 +234,6 @@
     <process name="WarehouseAllocation" file="WarehouseAllocationSubprocess/WarehouseAllocation01.xml"/>
     <process name="DummyMerchantCommission" file="DummySubprocess/DummyMerchantCommission01.xml"/>
     <process name="DummyOrderAmendment" file="DummySubprocess/DummyOrderAmendment01.xml"/>
+    <process name="DummyOrderAmendmentAsync" file="DummySubprocess/DummyOrderAmendmentAsync01.xml"/>
 
 </statemachine>

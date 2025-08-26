@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\CompanyUser\Persistence;
 
-use Orm\Zed\CompanyUser\Persistence\Base\SpyCompanyUser as BaseSpyCompanyUser;
+use Spryker\Zed\CompanyUser\Persistence\Propel\AbstractSpyCompanyUser as BaseSpyCompanyUser;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_company_user' table.

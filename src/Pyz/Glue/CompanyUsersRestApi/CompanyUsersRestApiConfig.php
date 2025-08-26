@@ -24,6 +24,6 @@ class CompanyUsersRestApiConfig extends SprykerCompanyUsersRestApiConfig
         QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUESTS,
         QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUEST_CANCEL,
         QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUEST_REVISE,
-        QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUEST_SEND_TO_CUSTOMER,
+        QuoteRequestsRestApiConfig::RESOURCE_QUOTE_REQUEST_SEND_TO_USER,
     ];
 }

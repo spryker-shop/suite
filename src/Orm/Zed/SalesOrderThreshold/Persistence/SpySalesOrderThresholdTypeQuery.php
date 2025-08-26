@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SalesOrderThreshold\Persistence;
 
-use Spryker\Zed\SalesOrderThreshold\Persistence\Propel\AbstractSpySalesOrderThresholdTypeQuery;
+use Spryker\Zed\SalesOrderThreshold\Persistence\Propel\AbstractSpySalesOrderThresholdTypeQuery as BaseSpySalesOrderThresholdTypeQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_sales_order_threshold_type' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\SalesOrderThreshold\Persistence\Propel\AbstractSpySalesOrderThre
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpySalesOrderThresholdTypeQuery extends AbstractSpySalesOrderThresholdTypeQuery
+class SpySalesOrderThresholdTypeQuery extends BaseSpySalesOrderThresholdTypeQuery
 {
 }

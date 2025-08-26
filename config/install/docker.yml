@@ -48,10 +48,19 @@ sections:
         generate-scope-collection-file:
             command: 'vendor/bin/console oauth:scope-collection-file:generate'
 
+        generate-open-telemetry:
+            command: 'vendor/bin/console open-telemetry:generate'
+
     build-production:
         excluded: true
         cache-class-resolver-build:
             command: 'vendor/bin/console cache:class-resolver:build'
+
+        twig-template-warmup-zed:
+            command: 'vendor/bin/console twig:template:warmer'
+
+        twig-template-warmup-yves:
+            command: 'vendor/bin/yves twig:template:warmer'
 
     build-development:
         generate-transfers:
@@ -80,7 +89,7 @@ sections:
 
         merchant-portal-build-frontend:
             command: 'vendor/bin/console frontend:mp:build -e production'
-            timeout: 1600
+            timeout: 3200
 
         date-time-product-configurator:
             command: 'vendor/bin/console frontend:date-time-product-configurator:build'
@@ -165,3 +174,7 @@ sections:
 
         api-generate-documentation:
             command: 'vendor/bin/glue api:generate:documentation'
+
+    acl:
+        acl-entity-synchronize:
+            command: 'vendor/bin/console acl-entity:synchronize -vvv --no-ansi'

@@ -10,6 +10,7 @@
             <state name="new" display="oms.state.new">
                 <flag>cancellable</flag>
             </state>
+            <state name="grace period pending" display="oms.state.new"/>
             <state name="grace period started" reserved="true" display="oms.state.new">
                 <flag>cancellable</flag>
                 <flag>amendable</flag>
@@ -30,7 +31,7 @@
         <transitions>
             <transition happy="true">
                 <source>new</source>
-                <target>grace period started</target>
+                <target>grace period pending</target>
             </transition>
 
             <transition>
@@ -150,6 +151,7 @@
             <process>DummyPicking</process>
             <process>DummyMarketplaceMerchantCommission</process>
             <process>DummyOrderAmendment</process>
+            <process>DummyOrderAmendmentAsync</process>
         </subprocesses>
 
     </process>
@@ -160,5 +162,6 @@
     <process name="DummyPicking" file="DummySubprocess/DummyPicking01.xml"/>
     <process name="DummyMarketplaceMerchantCommission" file="DummySubprocess/DummyMarketplaceMerchantCommission01.xml"/>
     <process name="DummyOrderAmendment" file="DummySubprocess/DummyOrderAmendment01.xml"/>
+    <process name="DummyOrderAmendmentAsync" file="DummySubprocess/DummyOrderAmendmentAsync01.xml"/>
 
 </statemachine>

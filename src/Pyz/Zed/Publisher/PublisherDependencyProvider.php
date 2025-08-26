@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\Publisher;
 
-use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
+use Spryker\Shared\MerchantStorage\MerchantStorageConfig;
 use Spryker\Shared\PublishAndSynchronizeHealthCheck\PublishAndSynchronizeHealthCheckConfig;
 use Spryker\Zed\Asset\Communication\Plugin\Publisher\Store\RefreshAssetStoreRelationPublisherPlugin;
 use Spryker\Zed\AssetStorage\Communication\Plugin\Publisher\Asset\AssetDeletePublisherPlugin;
@@ -149,6 +149,7 @@ use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRel
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelationProductAbstract\ProductRelationProductAbstractWritePublisherPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelationPublisherTriggerPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelationStore\ProductRelationStoreWritePublisherPlugin;
+use Spryker\Zed\ProductStorage\Communication\Plugin\Publisher\ProductAbstract\ProductLocalizedAttributesProductAbstractWritePublisherPlugin;
 use Spryker\Zed\PublishAndSynchronizeHealthCheckSearch\Communication\Plugin\Publisher\PublishAndSynchronizeHealthCheckSearchPublisherTriggerPlugin;
 use Spryker\Zed\PublishAndSynchronizeHealthCheckSearch\Communication\Plugin\Publisher\PublishAndSynchronizeHealthCheckSearchWritePublisherPlugin;
 use Spryker\Zed\PublishAndSynchronizeHealthCheckStorage\Communication\Plugin\Publisher\PublishAndSynchronizeHealthCheckPublisherTriggerPlugin;
@@ -187,6 +188,16 @@ use Spryker\Zed\StoreStorage\Communication\Plugin\Publisher\StorePublisherTrigge
 use Spryker\Zed\TaxApp\Communication\Plugin\Publisher\Store\RefreshTaxAppStoreRelationPublisherPlugin;
 use Spryker\Zed\TaxProductStorage\Communication\Plugin\Publisher\TaxProductPublisherTriggerPlugin;
 use Spryker\Zed\TaxStorage\Communication\Plugin\Publisher\TaxSetPublisherTriggerPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Search\SspAssetToCompanyBusinessUnitWritePublisherPlugin as SearchSspAssetToCompanyBusinessUnitWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Search\SspAssetToModelWritePublisherPlugin as SearchSspAssetToModelWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Search\SspAssetWritePublisherPlugin as SearchSspAssetWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Storage\SspAssetToCompanyBusinessUnitWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Storage\SspAssetToModelWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAsset\Storage\SspAssetWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspAssetPublisherTriggerPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspModel\Storage\SspModelToProductListWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspModel\Storage\SspModelWritePublisherPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Publisher\SspModelPublisherTriggerPlugin;
 
 class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
 {
@@ -202,28 +213,27 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductLabelStoragePlugins(),
             $this->getProductLabelSearchPlugins(),
             $this->getProductRelationStoragePlugins(),
-            $this->getMerchantStoragePlugins(),
             $this->getReturnReasonSearchPlugins(),
             $this->getMerchantCategoryPlugins(),
+            $this->getMerchantOpeningHoursStoragePlugins(),
             $this->getMerchantProductPlugins(),
             $this->getMerchantProductSearchPlugins(),
-            $this->getProductBundleStoragePlugins(),
-            $this->getMerchantProductSearchPlugins(),
-            $this->getProductConfigurationStoragePlugins(),
             $this->getMerchantSearchPlugins(),
+            $this->getMerchantStoragePlugins(),
+            $this->getMerchantProductOfferSearchPlugins(),
+            $this->getMerchantProductOfferStoragePlugins(),
+            $this->getMerchantProductOptionStoragePlugins(),
+            $this->getProductBundleStoragePlugins(),
+            $this->getProductConfigurationStoragePlugins(),
             $this->getCategoryStoragePlugins(),
             $this->getCategoryPageSearchPlugins(),
             $this->getProductPageSearchPlugins(),
             $this->getProductAbstractPageSearchPlugins(),
             $this->getProductCategoryStoragePlugins(),
-            $this->getMerchantOpeningHoursStoragePlugins(),
-            $this->getMerchantProductOptionStoragePlugins(),
             $this->getPriceProductOfferStoragePlugins(),
             $this->getPriceProductMerchantRelationshipStoragePlugins(),
             $this->getProductOfferStoragePlugins(),
-            $this->getMerchantProductOfferStoragePlugins(),
             $this->getStoreStoragePlugins(),
-            $this->getMerchantProductOfferSearchPlugins(),
             $this->getAssetPlugins(),
             $this->getAssetStoragePlugins(),
             $this->getCustomerStoragePlugins(),
@@ -235,6 +245,10 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductOfferServicePointStoragePlugins(),
             $this->getProductOfferShipmentTypeStoragePlugins(),
             $this->getTaxAppPlugins(),
+            $this->getSspModelStoragePlugins(),
+            $this->getSspAssetStoragePlugins(),
+            $this->getProductStoragePlugins(),
+            $this->getSspAssetSearchPlugins(),
         );
     }
 
@@ -248,7 +262,6 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ProductRelationPublisherTriggerPlugin(),
             new ProductAbstractLabelPublisherTriggerPlugin(),
             new ProductLabelDictionaryPublisherTriggerPlugin(),
-            new MerchantPublisherTriggerPlugin(),
             new ReturnReasonPublisherTriggerPlugin(),
             new ProductBundlePublisherTriggerPlugin(),
             new ProductConfigurationPublisherTriggerPlugin(),
@@ -270,6 +283,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ProductLabelSearchPublisherTriggerPlugin(),
             new CategoryImagePublisherTriggerPlugin(),
             new FileManagerPublisherTriggerPlugin(),
+            new MerchantPublisherTriggerPlugin(),
             new MerchantProductOfferSearchPublisherTriggerPlugin(),
             new MerchantProductOptionGroupPublisherTriggerPlugin(),
             new MerchantProductSearchPublisherTriggerPlugin(),
@@ -282,6 +296,8 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ServiceTypePublisherTriggerPlugin(),
             new ShipmentTypePublisherTriggerPlugin(),
             new ProductOfferServicePublisherTriggerPlugin(),
+            new SspModelPublisherTriggerPlugin(),
+            new SspAssetPublisherTriggerPlugin(),
             new ProductOfferShipmentTypePublisherTriggerPlugin(),
         ];
     }
@@ -292,11 +308,9 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     protected function getGlossaryStoragePlugins(): array
     {
         return [
-            GlossaryStorageConfig::PUBLISH_TRANSLATION => [
-                new GlossaryKeyDeletePublisherPlugin(),
-                new GlossaryKeyWriterPublisherPlugin(),
-                new GlossaryTranslationWritePublisherPlugin(),
-            ],
+            new GlossaryKeyDeletePublisherPlugin(),
+            new GlossaryKeyWriterPublisherPlugin(),
+            new GlossaryTranslationWritePublisherPlugin(),
         ];
     }
 
@@ -363,13 +377,15 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     }
 
     /**
-     * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     * @return array<int|string, \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>|array<string, array<int|string, \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>>
      */
     protected function getMerchantStoragePlugins(): array
     {
         return [
-            new MerchantCategoryStoragePublisherPlugin(),
-            new MerchantStoragePublisherPlugin(),
+            MerchantStorageConfig::PUBLISH_MERCHANT => [
+                new MerchantStoragePublisherPlugin(),
+                new MerchantCategoryStoragePublisherPlugin(),
+            ],
         ];
     }
 
@@ -756,6 +772,51 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     {
         return [
             new RefreshTaxAppStoreRelationPublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getSspModelStoragePlugins(): array
+    {
+        return [
+            new SspModelWritePublisherPlugin(),
+            new SspModelToProductListWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getSspAssetStoragePlugins(): array
+    {
+        return [
+            new SspAssetWritePublisherPlugin(),
+            new SspAssetToModelWritePublisherPlugin(),
+            new SspAssetToCompanyBusinessUnitWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getProductStoragePlugins(): array
+    {
+        return [
+            new ProductLocalizedAttributesProductAbstractWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getSspAssetSearchPlugins(): array
+    {
+        return [
+            new SearchSspAssetWritePublisherPlugin(),
+            new SearchSspAssetToModelWritePublisherPlugin(),
+            new SearchSspAssetToCompanyBusinessUnitWritePublisherPlugin(),
         ];
     }
 }

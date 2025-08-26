@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
+use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Api\ApiConstants;
 use Spryker\Shared\AppCatalogGui\AppCatalogGuiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
@@ -15,6 +16,7 @@ use Spryker\Shared\ErrorHandler\ErrorRenderer\ApiErrorRenderer;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
+use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\GlueBackendApiApplication\GlueBackendApiApplicationConstants;
 use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
@@ -38,8 +40,7 @@ use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\OauthDummy\OauthDummyConfig;
-use SprykerFeature\Shared\SspAssetManagement\SspAssetManagementConstants;
-use SprykerFeature\Shared\SspInquiryManagement\SspInquiryManagementConstants;
+use SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConstants;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
@@ -112,6 +113,16 @@ $config[ZedRequestConstants::SET_REPEAT_DATA] = (bool)getenv('SPRYKER_DEBUG_ENAB
 
 $isTestifyConstantsClassExists = class_exists(TestifyConstants::class);
 
+// >>> FILESYSTEM
+
+if (!getenv('SPRYKER_S3_MERCHANT_FILES_BUCKET')) {
+    $config[FileSystemConstants::FILESYSTEM_SERVICE]['merchant-files'] = [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/data',
+        'path' => '/data/merchant-files',
+    ];
+}
+
 if (!getenv('SPRYKER_SSL_ENABLE')) {
 // ----------------------------------------------------------------------------
 // ------------------------------ SECURITY ------------------------------------
@@ -157,8 +168,7 @@ if (!getenv('SPRYKER_SSL_ENABLE')) {
         = $config[NewsletterConstants::BASE_URL_YVES]
         = $config[MerchantRelationshipConstants::BASE_URL_YVES]
         = $config[MerchantRelationRequestConstants::BASE_URL_YVES]
-        = $config[SspInquiryManagementConstants::BASE_URL_YVES]
-        = $config[SspAssetManagementConstants::BASE_URL_YVES]
+        = $config[SelfServicePortalConstants::BASE_URL_YVES]
         = sprintf(
             'http://%s%s',
             $yvesHost,
@@ -219,4 +229,13 @@ if ($isTestifyConstantsClassExists) {
 // ------------------------------ Glue Storefront API -------------------------------
 // ----------------------------------------------------------------------------
 $sprykerGlueStorefrontHost = getenv('SPRYKER_GLUE_STOREFRONT_HOST');
+$sprykerGlueStorefrontPort = (int)(getenv('SPRYKER_GLUE_STOREFRONT_PORT')) ?: 80;
 $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $sprykerGlueStorefrontHost;
+
+if ($isTestifyConstantsClassExists) {
+    $config[TestifyConstants::GLUE_STOREFRONT_API_DOMAIN] = sprintf(
+        'http://%s%s',
+        $sprykerGlueStorefrontHost,
+        $sprykerGlueStorefrontPort !== 80 ? ':' . $sprykerGlueStorefrontPort : '',
+    );
+}

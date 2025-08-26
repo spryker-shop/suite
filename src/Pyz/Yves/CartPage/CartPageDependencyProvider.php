@@ -9,12 +9,11 @@ declare(strict_types = 1);
 
 namespace Pyz\Yves\CartPage;
 
-use SprykerFeature\Yves\SspAssetManagement\Plugin\CartPage\SspAssetPreAddToCartPlugin;
-use SprykerFeature\Yves\SspServiceManagement\Plugin\CartPage\ProductOfferPreAddToCartPlugin;
-use SprykerFeature\Yves\SspServiceManagement\Plugin\CartPage\ServiceDateTimeEnabledPreAddToCartPlugin;
-use SprykerFeature\Yves\SspServiceManagement\Plugin\CartPage\ServiceDateTimePreAddToCartPlugin;
-use SprykerFeature\Yves\SspServiceManagement\Plugin\CartPage\ServicePointPreAddToCartPlugin;
-use SprykerFeature\Yves\SspServiceManagement\Plugin\CartPage\ShipmentTypePreAddToCartPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\CartPage\ProductOfferPreAddToCartPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\CartPage\ServiceDateTimePreAddToCartPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\CartPage\ServicePointPreAddToCartPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\CartPage\ShipmentTypePreAddToCartPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\CartPage\SspAssetPreAddToCartPlugin;
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
 use SprykerShop\Yves\CartPage\Plugin\CartPage\CartBlockMiniCartViewExpanderPlugin;
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\CartPage\DiscountPromotionAddToCartFormWidgetParameterExpanderPlugin;
@@ -50,7 +49,6 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
             new ShipmentTypePreAddToCartPlugin(),
             new SspAssetPreAddToCartPlugin(),
             new ServiceDateTimePreAddToCartPlugin(),
-            new ServiceDateTimeEnabledPreAddToCartPlugin(),
         ];
     }
 

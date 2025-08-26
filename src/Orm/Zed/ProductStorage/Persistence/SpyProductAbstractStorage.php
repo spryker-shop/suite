@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductStorage\Persistence;
 
-use Spryker\Zed\ProductStorage\Persistence\Propel\AbstractSpyProductAbstractStorage;
+use Spryker\Zed\ProductStorage\Persistence\Propel\AbstractSpyProductAbstractStorage as BaseSpyProductAbstractStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_abstract_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductStorage\Persistence\Propel\AbstractSpyProductAbstractStor
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductAbstractStorage extends AbstractSpyProductAbstractStorage
+class SpyProductAbstractStorage extends BaseSpyProductAbstractStorage
 {
 }

@@ -22,8 +22,7 @@ use Spryker\Yves\Translator\Plugin\Twig\TranslatorTwigPlugin;
 use Spryker\Yves\Twig\Plugin\FilesystemTwigLoaderPlugin;
 use Spryker\Yves\Twig\Plugin\FormFilesystemTwigLoaderPlugin;
 use Spryker\Yves\Twig\TwigDependencyProvider as SprykerTwigDependencyProvider;
-use SprykerFeature\Yves\SspInquiryManagement\Plugin\Twig\BytesTwigPlugin;
-use SprykerFeature\Yves\SspServiceManagement\Plugin\Twig\SspServiceDetectorTwigPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Plugin\Twig\FileSizeFormatterTwigPlugin;
 use SprykerShop\Yves\CartPage\Plugin\Twig\CartTwigPlugin;
 use SprykerShop\Yves\CatalogPage\Plugin\Twig\CatalogPageTwigPlugin;
 use SprykerShop\Yves\CatalogPage\Plugin\Twig\CategoryFilterTwigPlugin;
@@ -93,8 +92,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ContentNavigationTwigPlugin(),
             new NumberFormatterTwigPlugin(),
             new GeneratePathTwigPlugin(),
-            new SspServiceDetectorTwigPlugin(),
-            new BytesTwigPlugin(),
+            new FileSizeFormatterTwigPlugin(),
         ];
     }
 

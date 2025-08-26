@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\CategoryImage\Persistence;
 
-use Spryker\Zed\CategoryImage\Persistence\Propel\AbstractSpyCategoryImageSet;
+use Spryker\Zed\CategoryImage\Persistence\Propel\AbstractSpyCategoryImageSet as BaseSpyCategoryImageSet;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_category_image_set' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\CategoryImage\Persistence\Propel\AbstractSpyCategoryImageSet;
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCategoryImageSet extends AbstractSpyCategoryImageSet
+class SpyCategoryImageSet extends BaseSpyCategoryImageSet
 {
 }

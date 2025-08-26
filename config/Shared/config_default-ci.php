@@ -7,6 +7,7 @@ use Pyz\Shared\Console\ConsoleConstants;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\AppCatalogGui\AppCatalogGuiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
+use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
@@ -46,7 +47,7 @@ use Spryker\Shared\TaxApp\TaxAppConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\OauthDummy\OauthDummyConfig;
-use SprykerFeature\Shared\SspInquiryManagement\SspInquiryManagementConstants;
+use SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 
 // ############################################################################
@@ -202,6 +203,7 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = array_map(static function ($storeNa
 // ---------- LOGGER
 
 $config[LogConstants::LOG_LEVEL] = Logger::CRITICAL;
+$config[LogConstants::LOGGER_CONFIG] = SprykerLoggerConfig::class;
 
 // >>> SYMFONY_MAILER
 
@@ -260,7 +262,7 @@ $config[ApplicationConstants::BASE_URL_YVES]
     = $config[ProductManagementConstants::BASE_URL_YVES]
     = $config[NewsletterConstants::BASE_URL_YVES]
     = $config[MerchantRelationshipConstants::BASE_URL_YVES]
-    = $config[SspInquiryManagementConstants::BASE_URL_YVES]
+    = $config[SelfServicePortalConstants::BASE_URL_YVES]
     = $config[MerchantRelationRequestConstants::BASE_URL_YVES]
     = sprintf(
         'http://%s',
@@ -327,6 +329,9 @@ if ($isTestifyConstantsClassExists) {
 // ----------------------------------------------------------------------------
 $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $glueStorefrontHost;
 
+if ($isTestifyConstantsClassExists) {
+    $config[TestifyConstants::GLUE_STOREFRONT_API_DOMAIN] = sprintf('http://%s', $glueStorefrontHost);
+}
 //-----------------------------------------------------------------------------
 //----------------------------------- ACP -------------------------------------
 //-----------------------------------------------------------------------------
@@ -372,5 +377,10 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
         'root' => '/data',
         'path' => '/data/ssp-inquiry',
+    ],
+    'merchant-files' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/data',
+        'path' => '/data/merchant-files',
     ],
 ];

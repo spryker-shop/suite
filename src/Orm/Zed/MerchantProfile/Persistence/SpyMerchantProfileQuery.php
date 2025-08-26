@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\MerchantProfile\Persistence;
 
-use Spryker\Zed\MerchantProfile\Persistence\Propel\AbstractSpyMerchantProfileQuery;
+use Spryker\Zed\MerchantProfile\Persistence\Propel\AbstractSpyMerchantProfileQuery as BaseSpyMerchantProfileQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_merchant_profile' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\MerchantProfile\Persistence\Propel\AbstractSpyMerchantProfileQue
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyMerchantProfileQuery extends AbstractSpyMerchantProfileQuery
+class SpyMerchantProfileQuery extends BaseSpyMerchantProfileQuery
 {
 }

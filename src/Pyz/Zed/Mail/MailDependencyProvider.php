@@ -28,15 +28,18 @@ use Spryker\Zed\Mail\MailConfig;
 use Spryker\Zed\Mail\MailDependencyProvider as SprykerMailDependencyProvider;
 use Spryker\Zed\MerchantUserPasswordResetMail\Communication\Plugin\Mail\MerchantUserPasswordResetMailTypeBuilderPlugin;
 use Spryker\Zed\MultiFactorAuth\Communication\Plugin\Mail\Customer\CustomerEmailMultiFactorAuthMailTypeBuilderPlugin;
+use Spryker\Zed\MultiFactorAuth\Communication\Plugin\Mail\User\UserEmailMultiFactorAuthMailTypeBuilderPlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterSubscribedMailTypeBuilderPlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterUnsubscribedMailTypeBuilderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Mail\OrderConfirmationMailTypeBuilderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Mail\OrderShippedMailTypeBuilderPlugin;
 use Spryker\Zed\SalesInvoice\Communication\Plugin\Mail\OrderInvoiceMailTypeBuilderPlugin;
+use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\Mail\NotifyOrderAmendmentAppliedMailTypeBuilderPlugin;
+use Spryker\Zed\SalesOrderAmendmentOms\Communication\Plugin\Mail\NotifyOrderAmendmentFailedMailTypeBuilderPlugin;
 use Spryker\Zed\SymfonyMailer\Communication\Plugin\Mail\SymfonyMailerProviderPlugin;
 use Spryker\Zed\UserPasswordResetMail\Communication\Plugin\Mail\UserPasswordResetMailTypeBuilderPlugin;
-use SprykerFeature\Zed\SspInquiryManagement\Communication\Plugin\Mail\SspInquiryApprovedMailTypeBuilderPlugin;
-use SprykerFeature\Zed\SspInquiryManagement\Communication\Plugin\Mail\SspInquiryRejectedMailTypeBuilderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Mail\SspInquiryApprovedMailTypeBuilderPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Mail\SspInquiryRejectedMailTypeBuilderPlugin;
 
 class MailDependencyProvider extends SprykerMailDependencyProvider
 {
@@ -100,8 +103,11 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
             new CustomerEmailChangeVerificationMailTypePlugin(),
             new CustomerEmailChangeNotificationMailTypePlugin(),
             new CustomerEmailMultiFactorAuthMailTypeBuilderPlugin(),
+            new UserEmailMultiFactorAuthMailTypeBuilderPlugin(),
             new SspInquiryApprovedMailTypeBuilderPlugin(),
             new SspInquiryRejectedMailTypeBuilderPlugin(),
+            new NotifyOrderAmendmentAppliedMailTypeBuilderPlugin(),
+            new NotifyOrderAmendmentFailedMailTypeBuilderPlugin(),
         ];
     }
 }

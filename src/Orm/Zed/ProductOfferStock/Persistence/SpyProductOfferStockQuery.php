@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductOfferStock\Persistence;
 
-use Spryker\Zed\ProductOfferStock\Persistence\Propel\AbstractSpyProductOfferStockQuery;
+use Spryker\Zed\ProductOfferStock\Persistence\Propel\AbstractSpyProductOfferStockQuery as BaseSpyProductOfferStockQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_offer_stock' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductOfferStock\Persistence\Propel\AbstractSpyProductOfferStoc
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductOfferStockQuery extends AbstractSpyProductOfferStockQuery
+class SpyProductOfferStockQuery extends BaseSpyProductOfferStockQuery
 {
 }

@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\PriceProductStorage\Persistence;
 
-use Spryker\Zed\PriceProductStorage\Persistence\Propel\AbstractSpyPriceProductConcreteStorageQuery;
+use Spryker\Zed\PriceProductStorage\Persistence\Propel\AbstractSpyPriceProductConcreteStorageQuery as BaseSpyPriceProductConcreteStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_price_product_concrete_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\PriceProductStorage\Persistence\Propel\AbstractSpyPriceProductCo
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyPriceProductConcreteStorageQuery extends AbstractSpyPriceProductConcreteStorageQuery
+class SpyPriceProductConcreteStorageQuery extends BaseSpyPriceProductConcreteStorageQuery
 {
 }

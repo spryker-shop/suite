@@ -59,6 +59,7 @@ image:
     php:
         enabled-extensions:
             - newrelic
+            - otel
         ini:
             max_execution_time: 60
 
@@ -200,7 +201,7 @@ services:
             rabbitmq.boba.cloud.spryker.toys:
             localhost:5672:
                 protocol: tcp
-        version: '3.9'
+        version: '3.13'
     session:
         engine: redis
     key_value_store:
@@ -220,7 +221,7 @@ services:
             scheduler.boba.cloud.spryker.toys:
         version: '2.442'
     mail_catcher:
-        engine: mailhog
+        engine: mailpit
         endpoints:
             mail.boba.cloud.spryker.toys:
 docker:

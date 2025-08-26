@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\GiftCardBalance\Persistence;
 
-use Orm\Zed\GiftCardBalance\Persistence\Base\SpyGiftCardBalanceLog as BaseSpyGiftCardBalanceLog;
+use Spryker\Zed\GiftCardBalance\Persistence\Propel\AbstractSpyGiftCardBalanceLog as BaseSpyGiftCardBalanceLog;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_gift_card_balance_log' table.

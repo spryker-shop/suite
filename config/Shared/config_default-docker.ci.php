@@ -15,7 +15,7 @@ use Spryker\Shared\Product\ProductConstants;
 use Spryker\Shared\Redis\RedisConstants;
 use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Zed\Propel\PropelConfig;
-use SprykerFeature\Shared\SspFileManagement\SspFileManagementConstants;
+use SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConstants;
 
 require 'config_default-docker.dev.php';
 
@@ -50,7 +50,7 @@ $config[GlueJsonApiConventionConstants::GLUE_DOMAIN] = sprintf(
     'http://%s',
     $sprykerGlueStorefrontHost ?: $sprykerGlueBackendHost ?: 'localhost',
 );
-$config[SspFileManagementConstants::STORAGE_NAME] = 'files';
+$config[SelfServicePortalConstants::STORAGE_NAME] = 'files';
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
     'files' => [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
@@ -66,6 +66,11 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
         'root' => '/',
         'path' => '/data/ssp-asset-image',
+    ],
+    'ssp-model-image' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/data',
+        'path' => '/data/ssp-model-image',
     ],
 ];
 

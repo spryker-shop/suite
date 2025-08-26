@@ -36,6 +36,7 @@ use Spryker\Zed\Gui\Communication\Plugin\Twig\Buttons\Table\ViewTableButtonTwigP
 use Spryker\Zed\Gui\Communication\Plugin\Twig\FormRuntimeLoaderTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\GuiFilterTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\GuiTwigLoaderPlugin;
+use Spryker\Zed\Gui\Communication\Plugin\Twig\NavigationLinkTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\NumberFormatterTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\TabsTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\UrlDecodeTwigPlugin;
@@ -56,9 +57,8 @@ use Spryker\Zed\WebProfiler\Communication\Plugin\Twig\WebProfilerTwigLoaderPlugi
 use Spryker\Zed\ZedNavigation\Communication\Plugin\Twig\ZedNavigationTwigPlugin;
 use Spryker\Zed\ZedUi\Communication\Plugin\Twig\BooleanToStringTwigPlugin;
 use Spryker\Zed\ZedUi\Communication\Plugin\ZedUiNavigationTwigPlugin;
-use SprykerFeature\Zed\SspFileManagement\Communication\Plugin\Twig\FileSizeFormatterTwigPlugin;
-use SprykerFeature\Zed\SspInquiryManagement\Communication\Twig\BytesTwigPlugin;
-use SprykerFeature\Zed\SspServiceManagement\Communication\Plugin\Twig\ProductServiceTypeNameTwigPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Twig\FileSizeFormatterTwigPlugin;
+use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Twig\ProductServiceClassNameTwigPlugin;
 
 class TwigDependencyProvider extends SprykerTwigDependencyProvider
 {
@@ -100,6 +100,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ViewActionButtonTwigPlugin(),
             new EditActionButtonTwigPlugin(),
             new RemoveActionButtonTwigPlugin(),
+            new NavigationLinkTwigPlugin(),
             // table row buttons
             new EditTableButtonTwigPlugin(),
             new BackTableButtonTwigPlugin(),
@@ -114,9 +115,8 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new MerchantUserTwigPlugin(),
             new MerchantNavigationTypeTwigPlugin(),
 
-            new BytesTwigPlugin(),
             new FileSizeFormatterTwigPlugin(),
-            new ProductServiceTypeNameTwigPlugin(),
+            new ProductServiceClassNameTwigPlugin(),
         ];
     }
 

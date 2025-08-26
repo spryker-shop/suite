@@ -36,6 +36,22 @@ class GlueStorefrontApiApplicationAuthorizationConnectorConfig extends SprykerGl
      */
     public function getProtectedPaths(): array
     {
-        return [];
+        return [
+            '/multi-factor-auth-types' => [
+                'isRegularExpression' => false,
+            ],
+            '/multi-factor-auth-trigger' => [
+                'isRegularExpression' => false,
+            ],
+            '/multi-factor-auth-type-activate' => [
+                'isRegularExpression' => false,
+            ],
+            '/multi-factor-auth-type-verify' => [
+                'isRegularExpression' => false,
+            ],
+            '/multi-factor-auth-type-deactivate' => [
+                'isRegularExpression' => false,
+            ],
+        ];
     }
 }

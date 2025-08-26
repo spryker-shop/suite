@@ -58,7 +58,7 @@ image:
         SPRYKER_YVES_HOST_US: us.sns.sh01.demo-spryker.com
     php:
         enabled-extensions:
-            - blackfire
+            - otel
             - newrelic
         ini:
             'opcache.revalidate_freq': 0
@@ -282,7 +282,7 @@ services:
         endpoints:
             scheduler.sns.sh01.demo-spryker.com:
     mail_catcher:
-        engine: mailhog
+        engine: mailpit
         endpoints:
             mail.sns.sh01.demo-spryker.com:
     webdriver:

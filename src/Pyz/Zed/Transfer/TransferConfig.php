@@ -9,7 +9,6 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\Transfer;
 
-use Spryker\Shared\Transfer\TransferConstants;
 use Spryker\Zed\Transfer\TransferConfig as SprykerTransferConfig;
 
 class TransferConfig extends SprykerTransferConfig
@@ -62,6 +61,14 @@ class TransferConfig extends SprykerTransferConfig
     }
 
     /**
+     * @return bool
+     */
+    public function isTransferSuffixCheckStrict(): bool
+    {
+        return true;
+    }
+
+    /**
      * We use strict validation for case sensitive declaration for all new projects.
      *
      * @return bool
@@ -90,10 +97,12 @@ class TransferConfig extends SprykerTransferConfig
     }
 
     /**
-     * @return string
+     * @api
+     *
+     * @return bool
      */
-    public function getPropertyDescriptionMergeStrategy(): string
+    public function isArrayRequireValidationEnabled(): bool
     {
-        return TransferConstants::PROPERTY_DESCRIPTION_MERGE_STRATEGY_GET_FIRST;
+        return true;
     }
 }

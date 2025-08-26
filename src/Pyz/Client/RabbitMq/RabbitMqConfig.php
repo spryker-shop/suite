@@ -61,6 +61,7 @@ use Spryker\Shared\TaxProductStorage\TaxProductStorageConfig;
 use Spryker\Shared\TaxStorage\TaxStorageConfig;
 use Spryker\Shared\UrlStorage\UrlStorageConfig;
 use Spryker\Shared\UrlStorage\UrlStorageConstants;
+use SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConfig;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -116,14 +117,14 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
     protected function getPublishQueueConfiguration(): array
     {
         return [
+            AvailabilityStorageConfig::PUBLISH_AVAILABILITY,
+            CustomerStorageConfig::PUBLISH_CUSTOMER_INVALIDATED,
+            MerchantStorageConfig::PUBLISH_MERCHANT,
+            PublishAndSynchronizeHealthCheckConfig::PUBLISH_PUBLISH_AND_SYNCHRONIZE_HEALTH_CHECK,
             PublisherConfig::PUBLISH_QUEUE => [
                 PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => PublisherConfig::PUBLISH_RETRY_QUEUE,
                 PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => PublisherConfig::PUBLISH_ERROR_QUEUE,
             ],
-            GlossaryStorageConfig::PUBLISH_TRANSLATION,
-            PublishAndSynchronizeHealthCheckConfig::PUBLISH_PUBLISH_AND_SYNCHRONIZE_HEALTH_CHECK,
-            UrlStorageConfig::PUBLISH_URL,
-            AvailabilityStorageConfig::PUBLISH_AVAILABILITY,
             PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_ABSTRACT,
             PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_CONCRETE,
             ProductImageStorageConfig::PUBLISH_PRODUCT_ABSTRACT_IMAGE,
@@ -132,7 +133,9 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             ProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE_PAGE,
             ProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT,
             ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE,
-            CustomerStorageConfig::PUBLISH_CUSTOMER_INVALIDATED,
+            UrlStorageConfig::PUBLISH_URL => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => UrlStorageConfig::PUBLISH_URL_RETRY,
+            ],
         ];
     }
 
@@ -181,6 +184,9 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             ShipmentTypeStorageConfig::QUEUE_NAME_SYNC_STORAGE_SHIPMENT_TYPE,
             ProductOfferServicePointStorageConfig::QUEUE_NAME_SYNC_STORAGE_PRODUCT_OFFER_SERVICE,
             ProductOfferShipmentTypeStorageConfig::PRODUCT_OFFER_SHIPMENT_TYPE_SYNC_STORAGE_QUEUE,
+            SelfServicePortalConfig::QUEUE_NAME_SYNC_STORAGE_SSP_MODEL,
+            SelfServicePortalConfig::QUEUE_NAME_SYNC_STORAGE_SSP_ASSET,
+            SelfServicePortalConfig::QUEUE_NAME_SYNC_SEARCH_SSP_ASSET,
         ];
     }
 

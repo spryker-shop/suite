@@ -71,13 +71,14 @@ use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\SpellingSuggestionS
 use Spryker\Client\SearchHttp\Plugin\Search\ProductConcreteCatalogSearchHttpResultFormatterPlugin;
 use Spryker\Client\SearchHttp\Plugin\Search\SearchHttpSearchResultCountPlugin;
 use Spryker\Shared\SearchHttp\SearchHttpConfig;
-use SprykerFeature\Client\SspServiceManagement\Plugin\Catalog\ProductAbstractTypeFacetConfigTransferBuilderPlugin;
+use SprykerFeature\Client\SelfServicePortal\Plugin\Catalog\ProductClassFacetConfigTransferBuilderPlugin;
+use SprykerFeature\Client\SelfServicePortal\Plugin\Catalog\SspAssetQueryExpanderPlugin;
 
 class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
 {
-    /**
-     * @return array<\Spryker\Client\Catalog\Dependency\Plugin\FacetConfigTransferBuilderPluginInterface>
-     */
+ /**
+  * @return array<\Spryker\Client\Catalog\Dependency\Plugin\FacetConfigTransferBuilderPluginInterface>
+  */
     protected function getFacetConfigTransferBuilderPlugins(): array
     {
         return [
@@ -85,7 +86,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new PriceFacetConfigTransferBuilderPlugin(),
             new RatingFacetConfigTransferBuilderPlugin(),
             new ProductLabelFacetConfigTransferBuilderPlugin(),
-            new ProductAbstractTypeFacetConfigTransferBuilderPlugin(),
+            new ProductClassFacetConfigTransferBuilderPlugin(),
         ];
     }
 
@@ -100,7 +101,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
                 new PriceFacetConfigTransferBuilderPlugin(),
                 new RatingFacetConfigTransferBuilderPlugin(),
                 new ProductLabelSearchHttpFacetConfigTransferBuilderPlugin(),
-                new ProductAbstractTypeFacetConfigTransferBuilderPlugin(),
+                new ProductClassFacetConfigTransferBuilderPlugin(),
             ],
         ];
     }
@@ -211,6 +212,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new IsActiveInDateRangeQueryExpanderPlugin(),
             new CustomerCatalogProductListQueryExpanderPlugin(),
             new MerchantReferenceQueryExpanderPlugin(),
+            new SspAssetQueryExpanderPlugin(),
 
             /*
              * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
