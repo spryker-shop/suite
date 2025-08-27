@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\CustomerAccess\Persistence;
 
-use Orm\Zed\CustomerAccess\Persistence\Base\SpyUnauthenticatedCustomerAccessQuery as BaseSpyUnauthenticatedCustomerAccessQuery;
+use Spryker\Zed\CustomerAccess\Persistence\Propel\AbstractSpyUnauthenticatedCustomerAccessQuery as BaseSpyUnauthenticatedCustomerAccessQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_unauthenticated_customer_access' table.

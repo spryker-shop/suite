@@ -29,10 +29,13 @@ use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
 use SprykerFeature\Yves\SelfServicePortal\Plugin\ShopApplication\AddressFormItemsByShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerFeature\Yves\SelfServicePortal\Plugin\ShopApplication\SspDashboardFilterControllerEventHandlerPlugin;
 use SprykerFeature\Yves\SelfServicePortal\Plugin\ShopApplication\SspInquiryRestrictionHandlerPlugin;
+use SprykerFeature\Yves\SelfServicePortal\Widget\AssetCompatibilityLabelWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\CreateOrderSspInquiryWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\DashboardMenuItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\ListCartItemsByShipmentTypeWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\ServiceListWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetFilterNameWidget;
+use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetFilterWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetInfoForItemWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetListWidget;
 use SprykerFeature\Yves\SelfServicePortal\Widget\SspAssetMenuItemWidget;
@@ -424,6 +427,9 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             SspItemAssetSelectorWidget::class,
             SspProductOfferPriceWidget::class,
             ServiceListWidget::class,
+            AssetCompatibilityLabelWidget::class,
+            SspAssetFilterNameWidget::class,
+            SspAssetFilterWidget::class,
         ];
     }
 

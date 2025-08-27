@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SalesMerchantCommission\Persistence;
 
-use Orm\Zed\SalesMerchantCommission\Persistence\Base\SpySalesMerchantCommissionQuery as BaseSpySalesMerchantCommissionQuery;
+use Spryker\Zed\SalesMerchantCommission\Persistence\Propel\AbstractSpySalesMerchantCommissionQuery as BaseSpySalesMerchantCommissionQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_sales_merchant_commission' table.

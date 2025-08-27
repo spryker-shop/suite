@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\CompanyUnitAddress\Persistence;
 
-use Orm\Zed\CompanyUnitAddress\Persistence\Base\SpyCompanyUnitAddress as BaseSpyCompanyUnitAddress;
+use Spryker\Zed\CompanyUnitAddress\Persistence\Propel\AbstractSpyCompanyUnitAddress as BaseSpyCompanyUnitAddress;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_company_unit_address' table.

@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\PaymentApp\Persistence;
 
-use Orm\Zed\PaymentApp\Persistence\Base\SpyPaymentAppPaymentStatusQuery as BaseSpyPaymentAppPaymentStatusQuery;
+use Spryker\Zed\PaymentApp\Persistence\Propel\AbstractSpyPaymentAppPaymentStatusQuery as BaseSpyPaymentAppPaymentStatusQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_payment_app_payment_status' table.

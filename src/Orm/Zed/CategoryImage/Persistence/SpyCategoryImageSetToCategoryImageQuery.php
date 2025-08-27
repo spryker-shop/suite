@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\CategoryImage\Persistence;
 
-use Spryker\Zed\CategoryImage\Persistence\Propel\AbstractSpyCategoryImageSetToCategoryImageQuery;
+use Spryker\Zed\CategoryImage\Persistence\Propel\AbstractSpyCategoryImageSetToCategoryImageQuery as BaseSpyCategoryImageSetToCategoryImageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_category_image_set_to_category_image' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\CategoryImage\Persistence\Propel\AbstractSpyCategoryImageSetToCa
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCategoryImageSetToCategoryImageQuery extends AbstractSpyCategoryImageSetToCategoryImageQuery
+class SpyCategoryImageSetToCategoryImageQuery extends BaseSpyCategoryImageSetToCategoryImageQuery
 {
 }

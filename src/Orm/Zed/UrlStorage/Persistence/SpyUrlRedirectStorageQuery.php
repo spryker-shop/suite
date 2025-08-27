@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\UrlStorage\Persistence;
 
-use Spryker\Zed\UrlStorage\Persistence\Propel\AbstractSpyUrlRedirectStorageQuery;
+use Spryker\Zed\UrlStorage\Persistence\Propel\AbstractSpyUrlRedirectStorageQuery as BaseSpyUrlRedirectStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_url_redirect_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\UrlStorage\Persistence\Propel\AbstractSpyUrlRedirectStorageQuery
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyUrlRedirectStorageQuery extends AbstractSpyUrlRedirectStorageQuery
+class SpyUrlRedirectStorageQuery extends BaseSpyUrlRedirectStorageQuery
 {
 }

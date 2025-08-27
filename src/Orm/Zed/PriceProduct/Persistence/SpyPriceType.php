@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\PriceProduct\Persistence;
 
-use Spryker\Zed\PriceProduct\Persistence\Propel\AbstractSpyPriceType;
+use Spryker\Zed\PriceProduct\Persistence\Propel\AbstractSpyPriceType as BaseSpyPriceType;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_price_type' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\PriceProduct\Persistence\Propel\AbstractSpyPriceType;
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyPriceType extends AbstractSpyPriceType
+class SpyPriceType extends BaseSpyPriceType
 {
 }

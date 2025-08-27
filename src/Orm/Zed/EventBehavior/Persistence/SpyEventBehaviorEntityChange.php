@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\EventBehavior\Persistence;
 
-use Spryker\Zed\EventBehavior\Persistence\Propel\AbstractSpyEventBehaviorEntityChange;
+use Spryker\Zed\EventBehavior\Persistence\Propel\AbstractSpyEventBehaviorEntityChange as BaseSpyEventBehaviorEntityChange;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_event_behavior_entity_change' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\EventBehavior\Persistence\Propel\AbstractSpyEventBehaviorEntityC
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyEventBehaviorEntityChange extends AbstractSpyEventBehaviorEntityChange
+class SpyEventBehaviorEntityChange extends BaseSpyEventBehaviorEntityChange
 {
 }

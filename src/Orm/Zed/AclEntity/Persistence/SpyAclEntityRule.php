@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\AclEntity\Persistence;
 
-use Orm\Zed\AclEntity\Persistence\Base\SpyAclEntityRule as BaseSpyAclEntityRule;
+use Spryker\Zed\AclEntity\Persistence\Propel\AbstractSpyAclEntityRule as BaseSpyAclEntityRule;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_acl_entity_rule' table.

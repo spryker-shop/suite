@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductValidity\Persistence;
 
-use Spryker\Zed\ProductValidity\Persistence\Propel\AbstractSpyProductValidityQuery;
+use Spryker\Zed\ProductValidity\Persistence\Propel\AbstractSpyProductValidityQuery as BaseSpyProductValidityQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_validity' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductValidity\Persistence\Propel\AbstractSpyProductValidityQue
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductValidityQuery extends AbstractSpyProductValidityQuery
+class SpyProductValidityQuery extends BaseSpyProductValidityQuery
 {
 }

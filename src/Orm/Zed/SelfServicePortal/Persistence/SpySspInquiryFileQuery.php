@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySspInquiryFileQuery as BaseSpySspInquiryFileQuery;
+use Orm\Zed\SelfServicePortal\Persistence\Base\SpySspInquiryFileQuery as BaseSpySspInquiryFileQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_ssp_inquiry_file' table.

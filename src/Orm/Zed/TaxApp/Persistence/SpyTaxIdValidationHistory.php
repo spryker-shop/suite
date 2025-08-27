@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\TaxApp\Persistence;
 
-use Orm\Zed\TaxApp\Persistence\Base\SpyTaxIdValidationHistory as BaseSpyTaxIdValidationHistory;
+use Spryker\Zed\TaxApp\Persistence\Propel\AbstractSpyTaxIdValidationHistory as BaseSpyTaxIdValidationHistory;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_tax_id_validation_history' table.

@@ -9,15 +9,16 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\PublishAndSynchronizeHealthCheckSearch\Persistence;
 
-use Orm\Zed\PublishAndSynchronizeHealthCheckSearch\Persistence\Base\SpyPublishAndSynchronizeHealthCheckSearchQuery as BaseSpyPublishAndSynchronizeHealthCheckSearchQuery;
+use Spryker\Zed\PublishAndSynchronizeHealthCheckSearch\Persistence\Propel\AbstractSpyPublishAndSynchronizeHealthCheckSearchQuery as BaseSpyPublishAndSynchronizeHealthCheckSearchQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_publish_and_synchronize_health_check_search' table.
  *
  *
  *
- * You should add additional methods to this class to meet the application requirements.
- * This class will only be generated as long as it does not already exist in the output directory.
+ * You should add additional methods to this class to meet the
+ * application requirements. This class will only be generated as
+ * long as it does not already exist in the output directory.
  */
 class SpyPublishAndSynchronizeHealthCheckSearchQuery extends BaseSpyPublishAndSynchronizeHealthCheckSearchQuery
 {

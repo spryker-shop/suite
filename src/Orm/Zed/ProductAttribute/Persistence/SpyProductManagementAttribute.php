@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductAttribute\Persistence;
 
-use Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductManagementAttribute as BaseSpyProductAttribute;
+use Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductManagementAttribute as BaseSpyProductManagementAttribute;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_management_attribute' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductManagement
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductManagementAttribute extends BaseSpyProductAttribute
+class SpyProductManagementAttribute extends BaseSpyProductManagementAttribute
 {
 }

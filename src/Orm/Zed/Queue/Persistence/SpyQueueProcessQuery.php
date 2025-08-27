@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\Queue\Persistence;
 
-use Orm\Zed\Queue\Persistence\Base\SpyQueueProcessQuery as BaseSpyQueueProcessQuery;
+use Spryker\Zed\Queue\Persistence\Propel\AbstractSpyQueueProcessQuery as BaseSpyQueueProcessQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_queue_process' table.

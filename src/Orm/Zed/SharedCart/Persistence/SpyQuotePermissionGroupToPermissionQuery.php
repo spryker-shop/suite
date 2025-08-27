@@ -9,10 +9,10 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SharedCart\Persistence;
 
-use Spryker\Zed\SharedCart\Persistence\Propel\AbstractSpyQuotePermissionGroupToPermissionQuery as BaseSpyQuoteRoleToPermissionQuery;
+use Spryker\Zed\SharedCart\Persistence\Propel\AbstractSpyQuotePermissionGroupToPermissionQuery as BaseSpyQuotePermissionGroupToPermissionQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_quote_role_to_permission' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_quote_permission_group_to_permission' table.
  *
  *
  *
@@ -20,6 +20,6 @@ use Spryker\Zed\SharedCart\Persistence\Propel\AbstractSpyQuotePermissionGroupToP
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyQuotePermissionGroupToPermissionQuery extends BaseSpyQuoteRoleToPermissionQuery
+class SpyQuotePermissionGroupToPermissionQuery extends BaseSpyQuotePermissionGroupToPermissionQuery
 {
 }

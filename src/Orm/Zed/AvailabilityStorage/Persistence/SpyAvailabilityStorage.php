@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\AvailabilityStorage\Persistence;
 
-use Spryker\Zed\AvailabilityStorage\Persistence\Propel\AbstractSpyAvailabilityStorage;
+use Spryker\Zed\AvailabilityStorage\Persistence\Propel\AbstractSpyAvailabilityStorage as BaseSpyAvailabilityStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_availability_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\AvailabilityStorage\Persistence\Propel\AbstractSpyAvailabilitySt
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyAvailabilityStorage extends AbstractSpyAvailabilityStorage
+class SpyAvailabilityStorage extends BaseSpyAvailabilityStorage
 {
 }

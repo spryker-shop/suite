@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\MerchantStorage\Persistence;
 
-use Spryker\Zed\MerchantStorage\Persistence\Propel\AbstractSpyMerchantStorageQuery;
+use Spryker\Zed\MerchantStorage\Persistence\Propel\AbstractSpyMerchantStorageQuery as BaseSpyMerchantStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_merchant_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\MerchantStorage\Persistence\Propel\AbstractSpyMerchantStorageQue
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyMerchantStorageQuery extends AbstractSpyMerchantStorageQuery
+class SpyMerchantStorageQuery extends BaseSpyMerchantStorageQuery
 {
 }

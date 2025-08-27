@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductPackagingUnit\Persistence;
 
-use Spryker\Zed\ProductPackagingUnit\Persistence\Propel\AbstractSpyProductPackagingUnit;
+use Spryker\Zed\ProductPackagingUnit\Persistence\Propel\AbstractSpyProductPackagingUnit as BaseSpyProductPackagingUnit;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_packaging_unit' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductPackagingUnit\Persistence\Propel\AbstractSpyProductPackag
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductPackagingUnit extends AbstractSpyProductPackagingUnit
+class SpyProductPackagingUnit extends BaseSpyProductPackagingUnit
 {
 }

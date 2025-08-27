@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\PublishAndSynchronizeHealthCheckStorage\Persistence;
 
-use Orm\Zed\PublishAndSynchronizeHealthCheckStorage\Persistence\Base\SpyPublishAndSynchronizeHealthCheckStorageQuery as BaseSpyPublishAndSynchronizeHealthCheckStorageQuery;
+use Spryker\Zed\PublishAndSynchronizeHealthCheckStorage\Persistence\Propel\AbstractSpyPublishAndSynchronizeHealthCheckStorageQuery as BaseSpyPublishAndSynchronizeHealthCheckStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_publish_and_synchronize_health_check_storage' table.
