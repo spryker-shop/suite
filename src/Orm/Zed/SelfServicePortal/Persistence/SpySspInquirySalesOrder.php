@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySspInquirySalesOrder as BaseSpySspInquirySalesOrder;
+use Orm\Zed\SelfServicePortal\Persistence\Base\SpySspInquirySalesOrder as BaseSpySspInquirySalesOrder;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_ssp_inquiry_sales_order' table.

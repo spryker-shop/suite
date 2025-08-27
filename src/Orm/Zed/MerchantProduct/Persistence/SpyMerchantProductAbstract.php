@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\MerchantProduct\Persistence;
 
-use Spryker\Zed\MerchantProduct\Persistence\Propel\AbstractSpyMerchantProductAbstract;
+use Spryker\Zed\MerchantProduct\Persistence\Propel\AbstractSpyMerchantProductAbstract as BaseSpyMerchantProductAbstract;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_merchant_product_abstract' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\MerchantProduct\Persistence\Propel\AbstractSpyMerchantProductAbs
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyMerchantProductAbstract extends AbstractSpyMerchantProductAbstract
+class SpyMerchantProductAbstract extends BaseSpyMerchantProductAbstract
 {
 }

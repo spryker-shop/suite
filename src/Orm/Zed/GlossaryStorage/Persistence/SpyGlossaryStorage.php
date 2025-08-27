@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\GlossaryStorage\Persistence;
 
-use Spryker\Zed\GlossaryStorage\Persistence\Propel\AbstractSpyGlossaryStorage;
+use Spryker\Zed\GlossaryStorage\Persistence\Propel\AbstractSpyGlossaryStorage as BaseSpyGlossaryStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_glossary_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\GlossaryStorage\Persistence\Propel\AbstractSpyGlossaryStorage;
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyGlossaryStorage extends AbstractSpyGlossaryStorage
+class SpyGlossaryStorage extends BaseSpyGlossaryStorage
 {
 }

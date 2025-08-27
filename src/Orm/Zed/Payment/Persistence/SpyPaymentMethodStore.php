@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\Payment\Persistence;
 
-use Orm\Zed\Payment\Persistence\Base\SpyPaymentMethodStore as BaseSpyPaymentMethodStore;
+use Spryker\Zed\Payment\Persistence\Propel\AbstractSpyPaymentMethodStore as BaseSpyPaymentMethodStore;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_payment_method_store' table.

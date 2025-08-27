@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\CustomerAccess\Persistence;
 
-use Orm\Zed\CustomerAccess\Persistence\Base\SpyUnauthenticatedCustomerAccess as BaseSpyUnauthenticatedCustomerAccess;
+use Spryker\Zed\CustomerAccess\Persistence\Propel\AbstractSpyUnauthenticatedCustomerAccess as BaseSpyUnauthenticatedCustomerAccess;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_unauthenticated_customer_access' table.

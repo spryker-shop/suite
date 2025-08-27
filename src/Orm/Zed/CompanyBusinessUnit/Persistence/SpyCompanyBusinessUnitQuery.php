@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\CompanyBusinessUnit\Persistence;
 
-use Spryker\Zed\CompanyBusinessUnit\Persistence\Propel\AbstractSpyCompanyBusinessUnitQuery;
+use Spryker\Zed\CompanyBusinessUnit\Persistence\Propel\AbstractSpyCompanyBusinessUnitQuery as BaseSpyCompanyBusinessUnitQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_company_business_unit' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\CompanyBusinessUnit\Persistence\Propel\AbstractSpyCompanyBusines
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCompanyBusinessUnitQuery extends AbstractSpyCompanyBusinessUnitQuery
+class SpyCompanyBusinessUnitQuery extends BaseSpyCompanyBusinessUnitQuery
 {
 }

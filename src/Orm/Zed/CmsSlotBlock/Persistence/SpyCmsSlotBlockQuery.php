@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\CmsSlotBlock\Persistence;
 
-use Orm\Zed\CmsSlotBlock\Persistence\Base\SpyCmsSlotBlockQuery as BaseSpyCmsSlotBlockQuery;
+use Spryker\Zed\CmsSlotBlock\Persistence\Propel\AbstractSpyCmsSlotBlockQuery as BaseSpyCmsSlotBlockQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_cms_slot_block' table.

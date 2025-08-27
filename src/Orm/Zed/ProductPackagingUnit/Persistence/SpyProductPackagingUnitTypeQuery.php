@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductPackagingUnit\Persistence;
 
-use Spryker\Zed\ProductPackagingUnit\Persistence\Propel\AbstractSpyProductPackagingUnitTypeQuery;
+use Spryker\Zed\ProductPackagingUnit\Persistence\Propel\AbstractSpyProductPackagingUnitTypeQuery as BaseSpyProductPackagingUnitTypeQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_packaging_unit_type' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductPackagingUnit\Persistence\Propel\AbstractSpyProductPackag
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductPackagingUnitTypeQuery extends AbstractSpyProductPackagingUnitTypeQuery
+class SpyProductPackagingUnitTypeQuery extends BaseSpyProductPackagingUnitTypeQuery
 {
 }

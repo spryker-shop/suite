@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\Navigation\Persistence;
 
-use Orm\Zed\Navigation\Persistence\Base\SpyNavigationNodeLocalizedAttributes as BaseSpyNavigationNodeLocalizedAttributes;
+use Spryker\Zed\Navigation\Persistence\Propel\AbstractSpyNavigationNodeLocalizedAttributes as BaseSpyNavigationNodeLocalizedAttributes;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_navigation_node_localized_attributes' table.

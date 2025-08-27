@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\PriceProduct\Persistence;
 
-use Spryker\Zed\PriceProduct\Persistence\Propel\AbstractSpyPriceProductDefaultQuery;
+use Spryker\Zed\PriceProduct\Persistence\Propel\AbstractSpyPriceProductDefaultQuery as BaseSpyPriceProductDefaultQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_price_product_default' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\PriceProduct\Persistence\Propel\AbstractSpyPriceProductDefaultQu
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyPriceProductDefaultQuery extends AbstractSpyPriceProductDefaultQuery
+class SpyPriceProductDefaultQuery extends BaseSpyPriceProductDefaultQuery
 {
 }

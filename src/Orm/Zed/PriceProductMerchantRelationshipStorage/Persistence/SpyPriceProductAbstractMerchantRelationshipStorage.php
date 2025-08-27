@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\PriceProductMerchantRelationshipStorage\Persistence;
 
-use Spryker\Zed\PriceProductMerchantRelationshipStorage\Persistence\Propel\AbstractSpyPriceProductAbstractMerchantRelationshipStorage;
+use Spryker\Zed\PriceProductMerchantRelationshipStorage\Persistence\Propel\AbstractSpyPriceProductAbstractMerchantRelationshipStorage as BaseSpyPriceProductAbstractMerchantRelationshipStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_price_product_abstract_merchant_relationship_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\PriceProductMerchantRelationshipStorage\Persistence\Propel\Abstr
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyPriceProductAbstractMerchantRelationshipStorage extends AbstractSpyPriceProductAbstractMerchantRelationshipStorage
+class SpyPriceProductAbstractMerchantRelationshipStorage extends BaseSpyPriceProductAbstractMerchantRelationshipStorage
 {
 }

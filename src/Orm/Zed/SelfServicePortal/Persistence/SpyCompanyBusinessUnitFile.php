@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpyCompanyBusinessUnitFile as BaseSpyCompanyBusinessUnitFile;
+use Orm\Zed\SelfServicePortal\Persistence\Base\SpyCompanyBusinessUnitFile as BaseSpyCompanyBusinessUnitFile;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_company_business_unit_file' table.

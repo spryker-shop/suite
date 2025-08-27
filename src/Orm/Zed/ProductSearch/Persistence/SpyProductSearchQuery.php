@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductSearch\Persistence;
 
-use Orm\Zed\ProductSearch\Persistence\Base\SpyProductSearchQuery as BaseSpyProductSearchQuery;
+use Spryker\Zed\ProductSearch\Persistence\Propel\AbstractSpyProductSearchQuery as BaseSpyProductSearchQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_search' table.

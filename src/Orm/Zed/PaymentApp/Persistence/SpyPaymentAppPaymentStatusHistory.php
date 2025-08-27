@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\PaymentApp\Persistence;
 
-use Orm\Zed\PaymentApp\Persistence\Base\SpyPaymentAppPaymentStatusHistory as BaseSpyPaymentAppPaymentStatusHistory;
+use Spryker\Zed\PaymentApp\Persistence\Propel\AbstractSpyPaymentAppPaymentStatusHistory as BaseSpyPaymentAppPaymentStatusHistory;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_payment_app_payment_status_history' table.

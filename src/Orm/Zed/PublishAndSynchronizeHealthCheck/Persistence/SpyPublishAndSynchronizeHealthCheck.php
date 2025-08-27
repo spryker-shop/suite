@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\PublishAndSynchronizeHealthCheck\Persistence;
 
-use Spryker\Zed\PublishAndSynchronizeHealthCheck\Persistence\Propel\AbstractSpyPublishAndSynchronizeHealthCheck;
+use Spryker\Zed\PublishAndSynchronizeHealthCheck\Persistence\Propel\AbstractSpyPublishAndSynchronizeHealthCheck as BaseSpyPublishAndSynchronizeHealthCheck;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_publish_and_synchronize_health_check' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\PublishAndSynchronizeHealthCheck\Persistence\Propel\AbstractSpyP
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyPublishAndSynchronizeHealthCheck extends AbstractSpyPublishAndSynchronizeHealthCheck
+class SpyPublishAndSynchronizeHealthCheck extends BaseSpyPublishAndSynchronizeHealthCheck
 {
 }
