@@ -25,6 +25,7 @@ use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfi
 use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
+use Spryker\Zed\Console\Communication\Plugin\Console\MultiProcessRunConsole;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\ContentNavigationDataImport\ContentNavigationDataImportConfig;
 use Spryker\Zed\CountryDataImport\CountryDataImportConfig;
