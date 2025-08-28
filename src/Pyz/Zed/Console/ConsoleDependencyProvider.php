@@ -534,6 +534,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new ComposerConstraintConsole();
             $commands[] = new CleanOutputConsole();
             $commands[] = new MessageBrokerDebugConsole();
+            $commands[] = new MultiProcessRunConsole();
 
             if (class_exists(SecurityCheckerCommand::class)) {
                 $commands[] = new SecurityCheckerCommand();
