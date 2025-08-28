@@ -26,6 +26,7 @@ use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfi
 use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
+use Spryker\Zed\Console\Communication\Plugin\Console\MultiProcessRunConsole;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\ContentNavigationDataImport\ContentNavigationDataImportConfig;
 use Spryker\Zed\CountryDataImport\CountryDataImportConfig;
@@ -555,6 +556,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new MessageBrokerAwsSnsTopicsCreatorConsole();
             $commands[] = new MessageBrokerSqsToSnsSubscriberConsole();
             $commands[] = new VolumeDataGeneratorConsole();
+            $commands[] = new MultiProcessRunConsole();
 
             if (class_exists(SecurityCheckerCommand::class)) {
                 $commands[] = new SecurityCheckerCommand();
