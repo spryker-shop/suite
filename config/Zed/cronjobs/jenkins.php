@@ -173,12 +173,14 @@ $jobs[] = [
 ];
 
 /* Push notification */
-$jobs[] = [
-    'name' => 'delete-expired-push-notification-subscriptions',
-    'command' => $logger . '$PHP_BIN vendor/bin/console push-notification:delete-expired-push-notification-subscriptions',
-    'schedule' => '0 0 * * 0',
-    'enable' => true,
-];
+if (getenv('SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_PUBLIC_KEY')) {
+    $jobs[] = [
+        'name' => 'delete-expired-push-notification-subscriptions',
+        'command' => $logger . '$PHP_BIN vendor/bin/console push-notification:delete-expired-push-notification-subscriptions',
+        'schedule' => '0 0 * * 0',
+        'enable' => true,
+    ];
+}
 
 $jobs[] = [
     'name' => 'send-push-notifications',

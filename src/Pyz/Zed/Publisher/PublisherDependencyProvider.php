@@ -42,6 +42,8 @@ use Spryker\Zed\CategoryStorage\Communication\Plugin\Publisher\CategoryTree\Cate
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Publisher\CategoryTree\CategoryTreeWriteForPublishingPublisherPlugin;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Publisher\CategoryTreePublisherTriggerPlugin;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Publisher\ParentWritePublisherPlugin;
+use Spryker\Zed\Cms\Communication\Plugin\Publisher\CmsPageUpdateMessageBrokerPublisherPlugin;
+use Spryker\Zed\Cms\Communication\Plugin\Publisher\CmsPageVersionPublishedMessageBrokerPublisherPlugin;
 use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Publisher\CustomerAccessPublisherTriggerPlugin;
 use Spryker\Zed\CustomerStorage\Communication\Plugin\Publisher\Customer\CustomerInvalidatedWritePublisherPlugin;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Publisher\FileManagerPublisherTriggerPlugin;
@@ -249,6 +251,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getSspAssetStoragePlugins(),
             $this->getProductStoragePlugins(),
             $this->getSspAssetSearchPlugins(),
+            $this->getCmsPageMessageBrokerPlugins(),
         );
     }
 
@@ -817,6 +820,17 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new SearchSspAssetWritePublisherPlugin(),
             new SearchSspAssetToModelWritePublisherPlugin(),
             new SearchSspAssetToCompanyBusinessUnitWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getCmsPageMessageBrokerPlugins(): array
+    {
+        return [
+            new CmsPageVersionPublishedMessageBrokerPublisherPlugin(),
+            new CmsPageUpdateMessageBrokerPublisherPlugin(),
         ];
     }
 }
