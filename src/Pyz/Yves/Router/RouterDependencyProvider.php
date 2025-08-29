@@ -12,7 +12,6 @@ namespace Pyz\Yves\Router;
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
 use Spryker\Yves\CustomerDataChangeRequest\Plugin\Router\CustomerDataChangeRequestRouteProviderPlugin;
 use Spryker\Yves\HealthCheck\Plugin\Router\HealthCheckRouteProviderPlugin;
-use Spryker\Yves\MerchantRegistrationRequest\Plugin\Router\MerchantRegistrationRequestRouteProviderPlugin;
 use Spryker\Yves\MultiFactorAuth\Plugin\Router\Agent\MultiFactorAuthAgentRouteProviderPlugin;
 use Spryker\Yves\MultiFactorAuth\Plugin\Router\Customer\MultiFactorAuthCustomerRouteProviderPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\LanguageDefaultPostAddRouteManipulatorPlugin;
@@ -59,6 +58,7 @@ use SprykerShop\Yves\ErrorPage\Plugin\Router\ErrorPageRouteProviderPlugin;
 use SprykerShop\Yves\FileManagerWidget\Plugin\Router\FileManagerWidgetRouteProviderPlugin;
 use SprykerShop\Yves\HomePage\Plugin\Router\HomePageRouteProviderPlugin;
 use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\Router\MerchantProductOfferWidgetRouteProviderPlugin;
+use SprykerShop\Yves\MerchantRegistrationRequestPage\Plugin\Router\MerchantRegistrationRequestPageRouteProviderPlugin;
 use SprykerShop\Yves\MerchantRelationRequestPage\Plugin\Router\MerchantRelationRequestPageRouteProviderPlugin;
 use SprykerShop\Yves\MerchantRelationshipPage\Plugin\Router\MerchantRelationshipPageRouteProviderPlugin;
 use SprykerShop\Yves\MerchantSwitcherWidget\Plugin\Router\MerchantSwitcherWidgetRouteProviderPlugin;
@@ -193,7 +193,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new MultiFactorAuthCustomerRouteProviderPlugin(),
             new MultiFactorAuthAgentRouteProviderPlugin(),
             new SitemapRouteProviderPlugin(),
-            new MerchantRegistrationRequestRouteProviderPlugin(),
+            new MerchantRegistrationRequestPageRouteProviderPlugin(),
             new SelfServicePortalPageRouteProviderPlugin(),
         ];
 
