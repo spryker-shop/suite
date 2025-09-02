@@ -120,7 +120,6 @@
         "spryker/architecture-sniffer": "dev-master",
         "spryker/development-core": "dev-master",
         "spryker/code-sniffer": "dev-master",
-        "spryker/git-hook": "dev-master",
         "spryker/robotframework-suite-tests": "dev-master",
         "pdepend/pdepend": "dev-master as 2.11.0",
         "phpmd/phpmd": "^2.0.0",
@@ -245,16 +244,10 @@
             "mkdir -p ./data/DE/logs/ZED"
         ],
         "post-install-cmd": [
-            "ChromedriverInstaller\\Installer::installChromedriver",
-            "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerHooks",
-            "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerShopHooks",
-            "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
+            "ChromedriverInstaller\\Installer::installChromedriver"
         ],
         "post-update-cmd": [
-            "ChromedriverInstaller\\Installer::installChromedriver",
-            "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerHooks",
-            "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerShopHooks",
-            "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
+            "ChromedriverInstaller\\Installer::installChromedriver"
         ],
         "phpstan": [
             "php -d memory_limit=-1 vendor/bin/phpstan"
@@ -266,6 +259,11 @@
         "psalm-update-report": "vendor/bin/psalm.phar --report=psalm-report.xml",
         "prefer-mid": [
             "COMPOSER_MEMORY_LIMIT=-1 composer require twig/twig:\"^2.9.0\""
+        ],
+        "rm-githooks": [
+            "echo 'Removing GitHooks in the project' && rm -f .git/hooks/pre-commit",
+            "echo 'Removing GitHooks in spryker/spryker' && rm -f vendor/spryker/spryker/.git/hooks/pre-commit",
+            "echo 'Removing GitHooks in spryker/spryker-shop' && rm -f vendor/spryker/spryker-shop/.git/hooks/pre-commit"
         ]
     },
     "conflict": {
