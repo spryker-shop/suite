@@ -18,6 +18,10 @@ sections:
             command: 'vendor/bin/console storage:delete -vvv --no-ansi'
             stores: true
 
+        clean-search:
+            command: 'vendor/bin/console elasticsearch:index:delete -vvv --no-ansi'
+            stores: true
+
         clean-db:
             command: 'vendor/bin/console propel:tables:drop -vvv --no-ansi'
             stores:
@@ -26,6 +30,9 @@ sections:
     init-storage:
         queue-setup:
             command: 'vendor/bin/console queue:setup'
+            stores: true
+        setup-search-create-sources:
+            command: 'vendor/bin/console search:setup:sources -vvv --no-ansi'
             stores: true
 
     init-storages-per-region:
@@ -58,15 +65,6 @@ sections:
             command: 'vendor/bin/console setup:init-db -vvv --no-ansi'
             stores:
                 - DE
-        clear-and-init-search:
-            clean-search:
-                command: 'vendor/bin/console elasticsearch:index:delete -vvv --no-ansi'
-                stores: true
-            setup-search-create-sources:
-                command: 'vendor/bin/console search:setup:sources -vvv --no-ansi'
-                stores: true
-            sleep-to-create-indices:
-                command: 'sleep 30'
 
     demodata:
         import-eu-region-demodata:
@@ -82,8 +80,15 @@ sections:
         check-product-validity:
             command: 'vendor/bin/console product:check-validity'
             stores: true
-
     scheduler-start:
+        queue:
+            command: 'vendor/bin/console queue:worker:start --stop-when-empty'
+            timeout: 2000
+            stores: true
+
         scheduler-setup:
             command: 'vendor/bin/console scheduler:setup -vvv --no-ansi || true'
             stores: true
+
+        sync-data:
+            command: 'vendor/bin/console sync:data'
