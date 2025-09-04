@@ -111,7 +111,8 @@
         "hidehalo/nanoid-php": "^2.0",
         "spryker/monitoring": "^2.10.0",
         "spryker/opentelemetry": "^1.17.0",
-        "spryker/monitoring-extension": "^1.1.0"
+        "spryker/monitoring-extension": "^1.1.0",
+        "composer/installers": "^2.3"
     },
     "require-dev": {
         "phpunit/phpunit": "11.4.0",
@@ -168,6 +169,13 @@
             "Pimple": "vendor/spryker/spryker/Bundles/Container/src/Spryker/"
         }
     },
+    "extra": {
+        "installer-paths": {
+            "tests/cypress-tests/": [
+                "type:zend-module"
+            ]
+        }
+    },
     "autoload-dev": {
         "psr-4": {
             "PyzTest\\": "tests/PyzTest/",
@@ -209,7 +217,8 @@
             "symfony/runtime": false,
             "symfony/flex": false,
             "php-http/discovery": true,
-            "tbachert/spi": true
+            "tbachert/spi": true,
+            "composer/installers": true
         }
     },
     "repositories": [
@@ -234,8 +243,20 @@
             "url": "git@github.com:spryker/commerce-k6-performance-tests.git"
         },
         {
-            "type": "git",
-            "url": "git@github.com:spryker/cypress-tests.git"
+            "type": "package",
+            "package": {
+                "name": "spryker/cypress-tests",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/spryker/cypress-tests.git",
+                    "type": "git",
+                    "reference": "c528c4351f7108997d2646e0f648973ce5b0affe"
+                },
+                "type": "zend-module",
+                "license": [
+                    "MIT"
+                ]
+            }
         }
     ],
     "scripts": {
