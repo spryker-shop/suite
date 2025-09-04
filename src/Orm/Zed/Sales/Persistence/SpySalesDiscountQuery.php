@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\Sales\Persistence;
 
-use Orm\Zed\Sales\Persistence\Base\SpySalesDiscountQuery as BaseSpySalesDiscountQuery;
+use Spryker\Zed\Sales\Persistence\Propel\AbstractSpySalesDiscountQuery as BaseSpySalesDiscountQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_sales_discount' table.

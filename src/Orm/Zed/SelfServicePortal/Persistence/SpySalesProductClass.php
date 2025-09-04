@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySalesProductClass;
+use Orm\Zed\SelfServicePortal\Persistence\Base\SpySalesProductClass as BaseSpySalesProductClass;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_sales_product_class' table.
@@ -20,6 +20,6 @@ use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpySalesProd
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpySalesProductClass extends AbstractSpySalesProductClass
+class SpySalesProductClass extends BaseSpySalesProductClass
 {
 }

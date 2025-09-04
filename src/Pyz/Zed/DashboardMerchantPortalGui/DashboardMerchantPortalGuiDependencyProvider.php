@@ -11,6 +11,7 @@ namespace Pyz\Zed\DashboardMerchantPortalGui;
 
 use Spryker\Zed\DashboardMerchantPortalGui\DashboardMerchantPortalGuiDependencyProvider as SprykerDashboardMerchantPortalGuiDependencyProvider;
 use Spryker\Zed\MerchantRelationshipMerchantPortalGui\Communication\Plugin\DashboardMerchantPortalGui\MerchantRelationshipMerchantDashboardCardPlugin;
+use Spryker\Zed\ProductMerchantPortalGui\Communication\Plugin\DashboardMerchantPortalGui\ProductsMerchantDashboardCardPlugin;
 use Spryker\Zed\ProductOfferMerchantPortalGui\Communication\Plugin\DashboardMerchantPortalGui\OffersMerchantDashboardCardPlugin;
 use Spryker\Zed\SalesMerchantPortalGui\Communication\Plugin\DashboardMerchantPortalGui\OrdersMerchantDashboardCardPlugin;
 
@@ -22,6 +23,7 @@ class DashboardMerchantPortalGuiDependencyProvider extends SprykerDashboardMerch
     protected function getDashboardCardPlugins(): array
     {
         return [
+            new ProductsMerchantDashboardCardPlugin(),
             new OffersMerchantDashboardCardPlugin(),
             new OrdersMerchantDashboardCardPlugin(),
             new MerchantRelationshipMerchantDashboardCardPlugin(),

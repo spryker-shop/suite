@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\MultiFactorAuth\Persistence;
 
-use Orm\Zed\MultiFactorAuth\Persistence\Base\SpyUserMultiFactorAuthCodesAttemptsQuery as BaseSpyUserMultiFactorAuthCodesAttemptsQuery;
+use Spryker\Zed\MultiFactorAuth\Persistence\Propel\AbstractSpyUserMultiFactorAuthCodesAttemptsQuery as BaseSpyUserMultiFactorAuthCodesAttemptsQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_user_multi_factor_auth_codes_attempts' table.

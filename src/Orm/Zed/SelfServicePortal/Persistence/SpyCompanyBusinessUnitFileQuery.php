@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\SelfServicePortal\Persistence;
 
-use SprykerFeature\Zed\SelfServicePortal\Persistence\Propel\AbstractSpyCompanyBusinessUnitFileQuery as BaseSpyCompanyBusinessUnitFileQuery;
+use Orm\Zed\SelfServicePortal\Persistence\Base\SpyCompanyBusinessUnitFileQuery as BaseSpyCompanyBusinessUnitFileQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_company_business_unit_file' table.

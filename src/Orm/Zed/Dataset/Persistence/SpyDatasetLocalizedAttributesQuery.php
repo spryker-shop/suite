@@ -9,8 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\Dataset\Persistence;
 
-use Spryker\Zed\Dataset\Persistence\Propel\AbstractSpyDatasetLocalizedAttributesQuery
-    as BaseSpyDatasetLocalizedAttributesQuery;
+use Spryker\Zed\Dataset\Persistence\Propel\AbstractSpyDatasetLocalizedAttributesQuery as BaseSpyDatasetLocalizedAttributesQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_dataset_localized_attributes' table.

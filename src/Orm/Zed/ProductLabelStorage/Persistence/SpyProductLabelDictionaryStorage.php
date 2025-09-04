@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductLabelStorage\Persistence;
 
-use Spryker\Zed\ProductLabelStorage\Persistence\Propel\AbstractSpyProductLabelDictionaryStorage;
+use Spryker\Zed\ProductLabelStorage\Persistence\Propel\AbstractSpyProductLabelDictionaryStorage as BaseSpyProductLabelDictionaryStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_label_dictionary_storage' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductLabelStorage\Persistence\Propel\AbstractSpyProductLabelDi
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductLabelDictionaryStorage extends AbstractSpyProductLabelDictionaryStorage
+class SpyProductLabelDictionaryStorage extends BaseSpyProductLabelDictionaryStorage
 {
 }

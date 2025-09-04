@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductMeasurementUnit\Persistence;
 
-use Spryker\Zed\ProductMeasurementUnit\Persistence\Propel\AbstractSpyProductMeasurementSalesUnitStoreQuery;
+use Spryker\Zed\ProductMeasurementUnit\Persistence\Propel\AbstractSpyProductMeasurementSalesUnitStoreQuery as BaseSpyProductMeasurementSalesUnitStoreQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_measurement_sales_unit_store' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\ProductMeasurementUnit\Persistence\Propel\AbstractSpyProductMeas
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductMeasurementSalesUnitStoreQuery extends AbstractSpyProductMeasurementSalesUnitStoreQuery
+class SpyProductMeasurementSalesUnitStoreQuery extends BaseSpyProductMeasurementSalesUnitStoreQuery
 {
 }

@@ -68,6 +68,8 @@
             - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install --no-ansi -r ci.code-generate'
             - '.ci/snippet/REQUIRE composer dump-autoload -o -a --apcu'
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         services:
             - type: 'POSTGRE_SQL'
               version: '17'
@@ -130,7 +132,6 @@
             - '.ci/snippet/RUN vendor/bin/console --no-ansi dev:composer:validate-json-files'
             - '.ci/snippet/RUN vendor/bin/console --no-ansi code:sniff:style'
             - '.ci/snippet/RUN vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2'
-            - '.ci/snippet/RUN vendor/bin/psalm.phar --show-info=false --no-cache --threads=1'
             - '.ci/snippet/FINISH'
         shell: 'BASH'
         run_next_parallel: true
@@ -338,6 +339,8 @@
             - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install --no-ansi -r ci.code-generate'
             - '.ci/snippet/REQUIRE composer dump-autoload -o -a --apcu'
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         services:
             - type: 'POSTGRE_SQL'
               version: '9.6'
@@ -488,6 +491,8 @@
             - 'SPRYKER_CURRENT_REGION=EU SPRYKER_DYNAMIC_STORE_MODE=true .ci/snippet/REQUIRE vendor/bin/install --no-ansi -r ci.code-generate'
             - '.ci/snippet/REQUIRE composer dump-autoload -o -a --apcu'
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         services:
             - type: 'POSTGRE_SQL'
               version: '17'
@@ -820,7 +825,6 @@
               vm_path: '/home/ubuntu/build'
               direction: 'PIPELINE_TO_VM'
         docker_layer_caching_scope: 'ACTION'
-        instance_type: 'GENERAL_MEDIUM'
       - action: 'Master Job Slack Notification failure'
         type: 'BUILD'
         trigger_time: 'ON_FAILURE'
@@ -840,7 +844,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests / Prefer Lowest / Dynamic Store OFF'
+- pipeline: 'Docker / Debian / PHP 8.2 / PostgreSQL / Functional Tests / Prefer Lowest / Dynamic Store OFF'
   events:
       - type: 'PUSH'
         refs:
@@ -873,13 +877,15 @@
       - action: 'Update Composer (Prefer Lowest)'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
+        docker_image_tag: '8.2-debian'
         execute_commands:
             - 'composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - 'COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet'
             - 'composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         shell: 'BASH'
-      - action: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Functional Tests / Prefer Lowest'
+      - action: 'Docker / Debian / PHP 8.2 / PostgreSQL / Functional Tests / Prefer Lowest'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
@@ -903,7 +909,7 @@
         run_next_parallel: true
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.2'
+              value: 'spryker/php:8.2-debian'
               type: 'VAR'
             - key: 'TRAVIS'
               value: '1'
@@ -1015,7 +1021,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'Docker / Alpine / PHP 8.2 / PostgreSQL / Acceptance / Prefer Lowest / Dynamic Store OFF'
+- pipeline: 'Docker / Debian / PHP 8.2 / PostgreSQL / Acceptance / Prefer Lowest / Dynamic Store OFF'
   events:
       - type: 'PUSH'
         refs:
@@ -1045,11 +1051,13 @@
       - action: 'Update Composer (Prefer Lowest)'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
+        docker_image_tag: '8.2-debian'
         execute_commands:
             - 'composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - 'COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest --no-interaction --prefer-install=auto --quiet'
             - 'composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         shell: 'BASH'
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -1066,7 +1074,7 @@
         run_next_parallel: true
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.2'
+              value: 'spryker/php:8.2-debian'
               type: 'VAR'
             - key: 'TRAVIS'
               value: '1'
@@ -1170,7 +1178,7 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
-- pipeline: 'PHP 8.2 / PostgreSQL / Robot / API / Dynamic Store OFF'
+- pipeline: 'PHP 8.2 / Debian / PostgreSQL / Robot / API / Dynamic Store OFF'
   events:
       - type: 'PUSH'
         refs:
@@ -1200,14 +1208,16 @@
       - action: 'Install Composer'
         type: 'BUILD'
         docker_image_name: 'spryker/php'
-        docker_image_tag: '8.2'
+        docker_image_tag: '8.2-debian'
         execute_commands:
             - '.ci/snippet/PREPARE'
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         shell: 'BASH'
-      - action: 'PHP 8.2 / PostgreSQL / Robot / API / Dynamic Store OFF'
+      - action: 'PHP 8.2 / Debian / PostgreSQL / Robot / API / Dynamic Store OFF'
         type: 'NATIVE_BUILD_DOCKER_CLI'
         commands:
             - '.ci/snippet/PREPARE'
@@ -1231,7 +1241,7 @@
         run_next_parallel: true
         variables:
             - key: 'SPRYKER_PLATFORM_IMAGE'
-              value: 'spryker/php:8.2'
+              value: 'spryker/php:8.2-debian'
               type: 'VAR'
             - key: 'TRAVIS'
               value: '1'
@@ -1300,6 +1310,8 @@
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto'
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         shell: 'BASH'
       - action: 'Docker / Alpine / PHP 8.2 / MariaDB / Robot'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -1401,6 +1413,8 @@
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         shell: 'BASH'
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -1465,6 +1479,111 @@
               trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
               trigger_variable_value: 'master'
 
+#- pipeline: 'Docker / Debian / PHP 8.2 / PostgreSql / Cypress / Dynamic Store OFF'
+#  events:
+#      - type: 'PUSH'
+#        refs:
+#            - 'refs/pull/*'
+#            - 'refs/heads/master'
+#      - type: 'PULL_REQUEST'
+#        events:
+#            - 'labeled'
+#        branches:
+#            - '*'
+#  trigger_conditions:
+#      - trigger_condition: OR
+#        trigger_operands:
+#            - trigger_condition: 'VAR_CONTAINS'
+#              trigger_variable_value: 'run-compatibility-ci'
+#              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+#            - trigger_condition: 'VAR_CONTAINS'
+#              trigger_variable_value: 'run-ssp-compatibility-ci'
+#              trigger_variable_key: 'BUDDY_RUN_PR_LABELS'
+#            - trigger_condition: 'VAR_IS'
+#              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+#              trigger_variable_value: 'master'
+#  terminate_stale_runs: true
+#  auto_clear_cache: true
+#  fail_on_prepare_env_warning: true
+#  concurrent_pipeline_runs: true
+#  clone_depth: 1
+#  resources: 'NANO'
+#  actions:
+#      - action: 'Install Composer'
+#        type: 'BUILD'
+#        docker_image_name: 'spryker/php'
+#        docker_image_tag: '8.2-debian'
+#        execute_commands:
+#            - '.ci/snippet/PREPARE'
+#            - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
+#            - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
+#            - '.ci/snippet/FINISH'
+#        setup_commands:
+#            - 'docker-php-ext-enable protobuf grpc opentelemetry'
+#        shell: 'BASH'
+#      - action: 'Run tests'
+#        type: 'NATIVE_BUILD_DOCKER_CLI'
+#        commands:
+#            - '.ci/snippet/PREPARE'
+#            - '.ci/snippet/REQUIRE docker/sdk boot deploy.ci.acceptance.postgresql.dynamic-store-off.cypress.yml'
+#            - '.ci/snippet/RUN docker/sdk up -t'
+#            - '.ci/snippet/RUN docker/sdk cli composer dump-autoload -o -a --apcu'
+#            - '.ci/snippet/RUN docker/sdk cli console queue:worker:start --stop-when-empty'
+#            - '.ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests cp .env.example .env"'
+#            - '.ci/snippet/REQUIRE aws configure set default.s3.max_concurrent_requests 80'
+#            - '.ci/snippet/REQUIRE aws configure set default.s3.max_queue_size 6000'
+#            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_threshold 36MB'
+#            - '.ci/snippet/REQUIRE aws configure set default.s3.multipart_chunksize 16MB'
+#            - 'export AWS_ACCESS_KEY_ID=$AWS_S3_ACCESS_KEY_ID'
+#            - 'export AWS_SECRET_ACCESS_KEY=$AWS_S3_SECRET_ACCESS_KEY'
+#            - 'export AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY'
+#            - 'export AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET'
+#            - |
+#                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+#                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci"
+#                  .ci/snippet/ARTEFACTS aws s3 cp ./.cypress s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-off/cypress/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/ --recursive
+#                fi
+#            - |
+#                if [[ "$BUDDY_RUN_PR_LABELS" == *"run-ssp-compatibility-ci"* || "$BUDDY_EXECUTION_BRANCH" == "master" ]]; then
+#                  .ci/snippet/RUN script -q -e -c "docker/sdk exec cypress-tests npm run cy:ci:ssp"
+#                  .ci/snippet/ARTEFACTS aws s3 cp ./.cypress s3://$ROBOT_TESTS_ARTIFACTS_BUCKET/suite-nonsplit/dms-off/cypress/$BUDDY_EXECUTION_HASH/PHP8.3MariaDB/ --recursive
+#                fi
+#            - '.ci/snippet/ARTEFACTS echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${ROBOT_TESTS_ARTIFACTS_BUCKET}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${BUDDY_EXECUTION_HASH}/PHP8.3MariaDB/screenshots/&showversions=false"'
+#            - '.ci/snippet/ARTEFACTS echo "You must have VPN access to AWS (Spryker-Internal account)"'
+#            - '.ci/snippet/FINISH'
+#        run_next_parallel: true
+#        variables:
+#            - key: 'SPRYKER_PLATFORM_IMAGE'
+#              value: 'spryker/php:8.2-debian'
+#              type: 'VAR'
+#            - key: 'TRAVIS'
+#              value: '1'
+#              type: 'VAR'
+#        timeout: 8000
+#        sync_paths:
+#            - pipeline_path: '/'
+#              vm_path: '/home/ubuntu/build'
+#              direction: 'PIPELINE_TO_VM'
+#        docker_layer_caching_scope: 'ACTION'
+#      - action: 'Master Job Slack Notification failure'
+#        type: 'BUILD'
+#        trigger_time: 'ON_FAILURE'
+#        docker_image_name: 'library/node'
+#        docker_image_tag: '18'
+#        variables:
+#            - key: 'PIPELINE_STATUS'
+#              value: 'FAILURE'
+#              type: 'VAR'
+#        execute_commands:
+#            - '.ci/snippet/SLACK_NOTIFICATIONS'
+#        setup_commands:
+#            - apt-get update && apt-get -y install jq
+#        shell: 'BASH'
+#        trigger_conditions:
+#            - trigger_condition: 'VAR_IS'
+#              trigger_variable_key: 'BUDDY_EXECUTION_BRANCH'
+#              trigger_variable_value: 'master'
+
 - pipeline: '[run-ui-ci] PHP 8.3 / MariaDB / Cypress'
   events:
       - type: 'PUSH'
@@ -1507,6 +1626,8 @@
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         shell: 'BASH'
       - action: 'Run tests'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -1615,6 +1736,8 @@
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         shell: 'BASH'
       - action: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group One'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -1717,6 +1840,8 @@
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         shell: 'BASH'
       - action: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Two'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -1819,6 +1944,8 @@
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         shell: 'BASH'
       - action: 'Docker / Alpine / PHP 8.3 / MariaDB / Robot / UI / Group Three'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -1918,6 +2045,8 @@
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         shell: 'BASH'
       - action: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group One'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -2011,6 +2140,8 @@
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         shell: 'BASH'
       - action: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group Two'
         type: 'NATIVE_BUILD_DOCKER_CLI'
@@ -2104,6 +2235,8 @@
             - '.ci/snippet/REQUIRE composer config github-oauth.github.com ${GITHUB_TOKEN}'
             - '.ci/snippet/REQUIRE composer install --optimize-autoloader --no-interaction --prefer-install=auto '
             - '.ci/snippet/FINISH'
+        setup_commands:
+            - 'docker-php-ext-enable protobuf grpc opentelemetry'
         shell: 'BASH'
       - action: 'Docker / Alpine / PHP 8.3 / PostgreSQL / Robot / UI / Dynamic Store Off / Group Three'
         type: 'NATIVE_BUILD_DOCKER_CLI'

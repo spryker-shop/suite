@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\ProductSearch\Persistence;
 
-use Orm\Zed\ProductSearch\Persistence\Base\SpyProductSearch as BaseSpyProductSearch;
+use Spryker\Zed\ProductSearch\Persistence\Propel\AbstractSpyProductSearch as BaseSpyProductSearch;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_search' table.

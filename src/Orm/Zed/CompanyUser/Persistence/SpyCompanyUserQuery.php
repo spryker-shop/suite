@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\CompanyUser\Persistence;
 
-use Orm\Zed\CompanyUser\Persistence\Base\SpyCompanyUserQuery as BaseSpyCompanyUserQuery;
+use Spryker\Zed\CompanyUser\Persistence\Propel\AbstractSpyCompanyUserQuery as BaseSpyCompanyUserQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_company_user' table.

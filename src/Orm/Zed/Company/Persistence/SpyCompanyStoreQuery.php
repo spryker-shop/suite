@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\Company\Persistence;
 
-use Spryker\Zed\Company\Persistence\Propel\AbstractSpyCompanyStoreQuery;
+use Spryker\Zed\Company\Persistence\Propel\AbstractSpyCompanyStoreQuery as BaseSpyCompanyStoreQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_company_store' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\Company\Persistence\Propel\AbstractSpyCompanyStoreQuery;
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCompanyStoreQuery extends AbstractSpyCompanyStoreQuery
+class SpyCompanyStoreQuery extends BaseSpyCompanyStoreQuery
 {
 }

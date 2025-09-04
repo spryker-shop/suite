@@ -9,7 +9,7 @@ declare(strict_types = 1);
 
 namespace Orm\Zed\MerchantProfile\Persistence;
 
-use Spryker\Zed\MerchantProfile\Persistence\Propel\AbstractSpyMerchantProfile;
+use Spryker\Zed\MerchantProfile\Persistence\Propel\AbstractSpyMerchantProfile as BaseSpyMerchantProfile;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_merchant_profile' table.
@@ -20,6 +20,6 @@ use Spryker\Zed\MerchantProfile\Persistence\Propel\AbstractSpyMerchantProfile;
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyMerchantProfile extends AbstractSpyMerchantProfile
+class SpyMerchantProfile extends BaseSpyMerchantProfile
 {
 }

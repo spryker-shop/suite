@@ -26,6 +26,7 @@ use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfi
 use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
+use Spryker\Zed\Console\Communication\Plugin\Console\MultiProcessRunConsole;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\ContentNavigationDataImport\ContentNavigationDataImportConfig;
 use Spryker\Zed\CountryDataImport\CountryDataImportConfig;
@@ -66,6 +67,7 @@ use Spryker\Zed\Development\Communication\Console\RemoveServiceIdeAutoCompletion
 use Spryker\Zed\Development\Communication\Console\RemoveYvesIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveZedIdeAutoCompletionConsole;
 use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole;
+use Spryker\Zed\Event\Communication\Plugin\Console\EventListenerDumpConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerListenerConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
@@ -101,6 +103,7 @@ use Spryker\Zed\Oms\Communication\Console\CheckConditionConsole as OmsCheckCondi
 use Spryker\Zed\Oms\Communication\Console\CheckTimeoutConsole as OmsCheckTimeoutConsole;
 use Spryker\Zed\Oms\Communication\Console\ClearLocksConsole as OmsClearLocksConsole;
 use Spryker\Zed\Oms\Communication\Console\ProcessCacheWarmUpConsole as OmsProcessCacheWarmUpConsole;
+use Spryker\Zed\Opentelemetry\Communication\Plugin\Console\OpentelemetryGeneratorConsole;
 use Spryker\Zed\OrderMatrix\Communication\Console\OrderMatrixConsole;
 use Spryker\Zed\PaymentDataImport\PaymentDataImportConfig;
 use Spryker\Zed\PriceProduct\Communication\Console\PriceProductStoreOptimizeConsole;
@@ -245,6 +248,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     protected function getConsoleCommands(Container $container): array
     {
         $commands = [
+            new OpentelemetryGeneratorConsole(),
             new CacheWarmerConsole(),
             new TwigTemplateWarmerConsole(),
             new BuildNavigationConsole(),
@@ -391,6 +395,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . SelfServicePortalConfig::IMPORT_TYPE_PRODUCT_CLASS),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . SelfServicePortalConfig::IMPORT_TYPE_PRODUCT_TO_PRODUCT_CLASS),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . SelfServicePortalConfig::IMPORT_TYPE_SSP_INQUIRY),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . SelfServicePortalConfig::IMPORT_TYPE_SSP_MODEL),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . SelfServicePortalConfig::IMPORT_TYPE_SSP_MODEL_ASSET),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . SelfServicePortalConfig::IMPORT_TYPE_SSP_MODEL_PRODUCT_LIST),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::COMMAND_SEPARATOR . SelfServicePortalConfig::IMPORT_TYPE_SSP_ASSET),
 
             // Publish and Synchronization
@@ -500,6 +507,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         if ($this->getConfig()->isDevelopmentConsoleCommandsEnabled()) {
             $commands = $this->addProjectNonsplitOnlyCommands($commands);
 
+            $commands[] = new EventListenerDumpConsole();
             $commands[] = new RouterDebugBackofficeConsole();
             $commands[] = new RouterDebugBackendGatewayConsole();
             $commands[] = new RouterDebugBackendApiConsole();
@@ -548,6 +556,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new MessageBrokerAwsSnsTopicsCreatorConsole();
             $commands[] = new MessageBrokerSqsToSnsSubscriberConsole();
             $commands[] = new VolumeDataGeneratorConsole();
+            $commands[] = new MultiProcessRunConsole();
 
             if (class_exists(SecurityCheckerCommand::class)) {
                 $commands[] = new SecurityCheckerCommand();
