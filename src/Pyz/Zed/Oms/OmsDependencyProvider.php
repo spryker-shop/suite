@@ -19,6 +19,7 @@ use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Command\CreateGiftCardCommandP
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Condition\IsGiftCardConditionPlugin;
 use Spryker\Zed\GiftCardMailConnector\Communication\Plugin\Oms\Command\ShipGiftCardByEmailCommandPlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\Lock\Communication\Plugin\Oms\StorageRedisOmsLockPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderConfirmationPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderShippedPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderStatusChangedMessagePlugin;
@@ -26,6 +27,7 @@ use Spryker\Zed\Oms\Communication\Plugin\Oms\ReservationHandler\ReservationVersi
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandCollectionInterface;
 use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionCollectionInterface;
 use Spryker\Zed\Oms\OmsDependencyProvider as SprykerOmsDependencyProvider;
+use Spryker\Zed\OmsExtension\Dependency\Plugin\OmsLockPluginInterface;
 use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferOmsReservationAggregationPlugin;
 use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferOmsReservationReaderStrategyPlugin;
 use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\Oms\ProductOfferOmsReservationWriterStrategyPlugin;
@@ -289,5 +291,13 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         return [
             new OrderRefundedEventListenerPlugin(),
         ];
+    }
+
+    /**
+     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\OmsLockPluginInterface|null
+     */
+    protected function getLockPlugin(): ?OmsLockPluginInterface
+    {
+        return new StorageRedisOmsLockPlugin();
     }
 }
