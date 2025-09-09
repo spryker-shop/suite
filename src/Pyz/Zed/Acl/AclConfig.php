@@ -80,7 +80,7 @@ class AclConfig extends SprykerAclConfig
             'merchant-relation-request-merchant-portal-gui',
             'merchant-relationship-merchant-portal-gui',
             'merchant-app-merchant-portal-gui',
-            'file-import-merchant-portal-gui',
+            'data-import-merchant-portal-gui',
         ];
 
         foreach ($bundleNames as $bundleName) {
