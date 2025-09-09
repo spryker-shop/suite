@@ -7,20 +7,26 @@
 
 declare(strict_types = 1);
 
-namespace Pyz\Zed\FileImportMerchantPortalGui;
+namespace Pyz\Zed\DataImportMerchantPortalGui;
 
-use Spryker\Zed\FileImportMerchantPortalGui\FileImportMerchantPortalGuiConfig as SprykerFileImportMerchantPortalGuiConfig;
+use Spryker\Zed\DataImportMerchantPortalGui\DataImportMerchantPortalGuiConfig as SprykerDataImportMerchantPortalGuiConfig;
 use Spryker\Zed\MerchantProductDataImport\MerchantProductDataImportConfig;
 
-class FileImportMerchantPortalGuiConfig extends SprykerFileImportMerchantPortalGuiConfig
+class DataImportMerchantPortalGuiConfig extends SprykerDataImportMerchantPortalGuiConfig
 {
-    public function getImportTypes(): array
+    /**
+     * @return list<string>
+     */
+    public function getSupportedImporterTypes(): array
     {
         return [
             MerchantProductDataImportConfig::IMPORT_TYPE_MERCHANT_COMBINED_PRODUCT,
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getDataImportTemplates(): array
     {
         return [
