@@ -37,6 +37,7 @@ use Spryker\Zed\CustomerStorage\Communication\Console\DeleteExpiredCustomerInval
 use Spryker\Zed\DataExport\Communication\Console\DataExportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole;
+use Spryker\Zed\DataImportMerchant\Communication\Console\DataImportMerchantImportConsole;
 use Spryker\Zed\Development\Communication\Console\CodeArchitectureSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodeFixturesConsole;
 use Spryker\Zed\Development\Communication\Console\CodePhpMessDetectorConsole;
@@ -71,7 +72,6 @@ use Spryker\Zed\Event\Communication\Plugin\Console\EventListenerDumpConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerListenerConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
-use Spryker\Zed\FileImportMerchantPortalGui\Communication\Console\MerchantPortalFileImportConsole;
 use Spryker\Zed\Form\Communication\Plugin\Application\FormApplicationPlugin;
 use Spryker\Zed\IncrementalInstaller\Communication\Console\IncrementalInstallersConsole;
 use Spryker\Zed\IncrementalInstaller\Communication\Console\IncrementalInstallersRollbackConsole;
@@ -498,7 +498,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new IncrementalInstallersRollbackConsole(),
             new AclEntitySynchronizeConsole(),
             new SitemapGenerateConsole(),
-            new MerchantPortalFileImportConsole(),
+            new DataImportMerchantImportConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

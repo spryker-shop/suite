@@ -72,6 +72,11 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'root' => '/data',
         'path' => '/data/ssp-model-image',
     ],
+    'merchant-product-data-import-files' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/data',
+        'path' => '/data/merchant-product-data-import-files',
+    ],
 ];
 
 // ----------------------------------------------------------------------------

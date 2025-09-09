@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "904b7acdc95c614b8d5ebd47af16f564",
+    "content-hash": "e6ba2cc13957ea28223402acce5954dd",
     "packages": [
         {
             "name": "async-aws/core",
@@ -7256,7 +7256,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6d0190b99ff1a938a028eccac828de7748aef27f"
+                "reference": "09a68d4499dc1895432fef78bf0d85b73e9a595d"
             },
             "require": {
                 "php": ">=8.1"
@@ -7557,6 +7557,9 @@
                 "spryker/data-export-extension": "*",
                 "spryker/data-import": "*",
                 "spryker/data-import-extension": "*",
+                "spryker/data-import-merchant": "*",
+                "spryker/data-import-merchant-extension": "*",
+                "spryker/data-import-merchant-portal-gui": "*",
                 "spryker/dataset": "*",
                 "spryker/development": "*",
                 "spryker/discount": "*",
@@ -7590,7 +7593,6 @@
                 "spryker/event": "*",
                 "spryker/event-dispatcher": "*",
                 "spryker/event-dispatcher-extension": "*",
-                "spryker/file-import-merchant-portal-gui": "*",
                 "spryker/file-manager": "*",
                 "spryker/file-manager-data-import": "*",
                 "spryker/file-manager-extension": "*",
@@ -7679,8 +7681,6 @@
                 "spryker/merchant-data-import": "*",
                 "spryker/merchant-discount-connector": "*",
                 "spryker/merchant-extension": "*",
-                "spryker/merchant-file": "*",
-                "spryker/merchant-file-extension": "*",
                 "spryker/merchant-gui": "*",
                 "spryker/merchant-gui-extension": "*",
                 "spryker/merchant-oms": "*",
@@ -8409,7 +8409,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2025-09-08T11:09:10+00:00"
+            "time": "2025-09-09T09:20:43+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -19689,11 +19689,11 @@
         },
         {
             "name": "spryker/cypress-tests",
-            "version": "dev-master",
+            "version": "dev-feature/cc-36137-merchant-portal-data-import",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cypress-tests.git",
-                "reference": "268e0496da296af735cad78c9ca75a8327bce84e"
+                "reference": "66ff056057905bd59a910d686bae62c673b33ed8"
             },
             "type": "zend-module",
             "license": [
