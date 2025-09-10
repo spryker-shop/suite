@@ -38600,16 +38600,16 @@
         },
         {
             "name": "spryker/merchant",
-            "version": "3.16.0",
+            "version": "3.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant.git",
-                "reference": "f9ce442cf02582621cc018202c2e4f7f4dedfdc1"
+                "reference": "178f73f2c163371815f446928fff94292cf00507"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant/zipball/f9ce442cf02582621cc018202c2e4f7f4dedfdc1",
-                "reference": "f9ce442cf02582621cc018202c2e4f7f4dedfdc1",
+                "url": "https://api.github.com/repos/spryker/merchant/zipball/178f73f2c163371815f446928fff94292cf00507",
+                "reference": "178f73f2c163371815f446928fff94292cf00507",
                 "shasum": ""
             },
             "require": {
@@ -38618,6 +38618,7 @@
                 "spryker/cart-extension": "^4.0.0",
                 "spryker/checkout-extension": "^1.2.0",
                 "spryker/event": "^2.3.0",
+                "spryker/event-behavior": "^1.32.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/log": "^3.0.0",
                 "spryker/merchant-extension": "^1.2.0",
@@ -38661,9 +38662,9 @@
             ],
             "description": "Merchant module",
             "support": {
-                "source": "https://github.com/spryker/merchant/tree/3.16.0"
+                "source": "https://github.com/spryker/merchant/tree/3.17.0"
             },
-            "time": "2025-08-04T10:53:26+00:00"
+            "time": "2025-09-10T10:18:46+00:00"
         },
         {
             "name": "spryker/merchant-agent",
@@ -40026,16 +40027,16 @@
         },
         {
             "name": "spryker/merchant-product",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-product.git",
-                "reference": "e0a1939508ad2fd2b2b3d988e89e1e6a0589a6b1"
+                "reference": "421ae0122861327da7f03bbfedbd83173f327467"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-product/zipball/e0a1939508ad2fd2b2b3d988e89e1e6a0589a6b1",
-                "reference": "e0a1939508ad2fd2b2b3d988e89e1e6a0589a6b1",
+                "url": "https://api.github.com/repos/spryker/merchant-product/zipball/421ae0122861327da7f03bbfedbd83173f327467",
+                "reference": "421ae0122861327da7f03bbfedbd83173f327467",
                 "shasum": ""
             },
             "require": {
@@ -40043,12 +40044,15 @@
                 "spryker/acl-merchant-portal-extension": "^1.0.0",
                 "spryker/cart-extension": "^4.0.0",
                 "spryker/cart-reorder-extension": "^1.0.0",
-                "spryker/kernel": "^3.33.0",
+                "spryker/event": "^2.6.0",
+                "spryker/event-behavior": "^1.8.0",
+                "spryker/kernel": "^3.76.0",
                 "spryker/locale": "^3.0.0 || ^4.0.0",
                 "spryker/merchant": "^3.0.0",
                 "spryker/product": "^6.0.0",
                 "spryker/product-extension": "^1.1.0",
                 "spryker/propel-orm": "^1.0.0",
+                "spryker/publisher-extension": "^1.0.0",
                 "spryker/shopping-list-extension": "^1.4.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.27.0",
@@ -40079,9 +40083,9 @@
             ],
             "description": "MerchantProduct module",
             "support": {
-                "source": "https://github.com/spryker/merchant-product/tree/1.9.0"
+                "source": "https://github.com/spryker/merchant-product/tree/1.10.0"
             },
-            "time": "2025-08-04T10:53:26+00:00"
+            "time": "2025-09-10T10:18:46+00:00"
         },
         {
             "name": "spryker/merchant-product-approval",
@@ -40449,27 +40453,28 @@
         },
         {
             "name": "spryker/merchant-product-offer-search",
-            "version": "1.6.1",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-product-offer-search.git",
-                "reference": "d22dbaad84d47a5287ee1f4dbf534169df312e1d"
+                "reference": "0184ffd114622a6e76cfb7d989b0b872d8d3f843"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-product-offer-search/zipball/d22dbaad84d47a5287ee1f4dbf534169df312e1d",
-                "reference": "d22dbaad84d47a5287ee1f4dbf534169df312e1d",
+                "url": "https://api.github.com/repos/spryker/merchant-product-offer-search/zipball/0184ffd114622a6e76cfb7d989b0b872d8d3f843",
+                "reference": "0184ffd114622a6e76cfb7d989b0b872d8d3f843",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
+                "spryker/event": "^2.6.0",
                 "spryker/event-behavior": "^1.8.0",
-                "spryker/kernel": "^3.33.0",
+                "spryker/kernel": "^3.76.0",
                 "spryker/merchant": "^3.0.0",
                 "spryker/merchant-product-offer": "^1.6.0",
                 "spryker/product": "^6.0.0",
                 "spryker/product-offer": "^1.0.0",
-                "spryker/product-page-search": "^3.2.0",
+                "spryker/product-page-search": "^3.40.0",
                 "spryker/product-page-search-extension": "^1.2.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/publisher-extension": "^1.0.0",
@@ -40482,7 +40487,6 @@
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
                 "spryker/elastica": "*",
-                "spryker/event": "*",
                 "spryker/product-attribute": "*",
                 "spryker/propel": "*",
                 "spryker/queue": "*",
@@ -40494,7 +40498,6 @@
             "suggest": {
                 "spryker/catalog": "If you want to use Catalog plugins, minimum required version: 5.2.0.",
                 "spryker/elastica": "If you want to use ElasticSearch query expander.",
-                "spryker/event": "To use event behavior.",
                 "spryker/search": "If you want to use Search plugins.",
                 "spryker/search-http": "If you want to use SearchHttp plugins."
             },
@@ -40515,9 +40518,9 @@
             ],
             "description": "MerchantProductOfferSearch module",
             "support": {
-                "source": "https://github.com/spryker/merchant-product-offer-search/tree/1.6.1"
+                "source": "https://github.com/spryker/merchant-product-offer-search/tree/1.7.0"
             },
-            "time": "2025-02-27T08:01:24+00:00"
+            "time": "2025-09-10T10:18:46+00:00"
         },
         {
             "name": "spryker/merchant-product-offer-service-point-availabilities-rest-api",
@@ -41118,20 +41121,20 @@
         },
         {
             "name": "spryker/merchant-product-search",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-product-search.git",
-                "reference": "c5d77ed084ceebb93cc510efa881ec6f2bf6523a"
+                "reference": "364e5e39e8f79536fec80a052467cf49c2bba3de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-product-search/zipball/c5d77ed084ceebb93cc510efa881ec6f2bf6523a",
-                "reference": "c5d77ed084ceebb93cc510efa881ec6f2bf6523a",
+                "url": "https://api.github.com/repos/spryker/merchant-product-search/zipball/364e5e39e8f79536fec80a052467cf49c2bba3de",
+                "reference": "364e5e39e8f79536fec80a052467cf49c2bba3de",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "spryker/event-behavior": "^1.8.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/merchant": "^3.0.0",
@@ -41178,9 +41181,9 @@
             ],
             "description": "MerchantProductSearch module",
             "support": {
-                "source": "https://github.com/spryker/merchant-product-search/tree/1.4.0"
+                "source": "https://github.com/spryker/merchant-product-search/tree/1.4.1"
             },
-            "time": "2024-05-06T12:15:28+00:00"
+            "time": "2025-09-10T10:18:46+00:00"
         },
         {
             "name": "spryker/merchant-product-shopping-lists-rest-api",
@@ -41231,20 +41234,20 @@
         },
         {
             "name": "spryker/merchant-product-storage",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-product-storage.git",
-                "reference": "2362031633485c3fa216f5c3f78c35219b5002b3"
+                "reference": "9ec35b848479d3a1285312d8976c6ab354574257"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-product-storage/zipball/2362031633485c3fa216f5c3f78c35219b5002b3",
-                "reference": "2362031633485c3fa216f5c3f78c35219b5002b3",
+                "url": "https://api.github.com/repos/spryker/merchant-product-storage/zipball/9ec35b848479d3a1285312d8976c6ab354574257",
+                "reference": "9ec35b848479d3a1285312d8976c6ab354574257",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0",
+                "php": ">=8.2",
                 "spryker/event-behavior": "^1.17.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.5.0 || ^4.0.0",
@@ -41264,6 +41267,7 @@
                 "spryker/product": "*",
                 "spryker/propel": "*",
                 "spryker/queue": "*",
+                "spryker/rabbit-mq": "*",
                 "spryker/storage": "*",
                 "spryker/store": "*",
                 "spryker/store-extension": "*",
@@ -41290,9 +41294,9 @@
             ],
             "description": "MerchantProductStorage module",
             "support": {
-                "source": "https://github.com/spryker/merchant-product-storage/tree/1.5.0"
+                "source": "https://github.com/spryker/merchant-product-storage/tree/1.6.0"
             },
-            "time": "2023-03-31T19:36:11+00:00"
+            "time": "2025-09-10T10:18:46+00:00"
         },
         {
             "name": "spryker/merchant-product-wishlist",
@@ -50419,16 +50423,16 @@
         },
         {
             "name": "spryker/product",
-            "version": "6.50.0",
+            "version": "6.51.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product.git",
-                "reference": "fd78bfba8d5a52bb2081b14009418430d6ddd1b8"
+                "reference": "c8b430c298dc89f24b3fc3755e1310de986ff1cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product/zipball/fd78bfba8d5a52bb2081b14009418430d6ddd1b8",
-                "reference": "fd78bfba8d5a52bb2081b14009418430d6ddd1b8",
+                "url": "https://api.github.com/repos/spryker/product/zipball/c8b430c298dc89f24b3fc3755e1310de986ff1cd",
+                "reference": "c8b430c298dc89f24b3fc3755e1310de986ff1cd",
                 "shasum": ""
             },
             "require": {
@@ -50479,9 +50483,9 @@
             ],
             "description": "Product module",
             "support": {
-                "source": "https://github.com/spryker/product/tree/6.50.0"
+                "source": "https://github.com/spryker/product/tree/6.51.0"
             },
-            "time": "2025-08-04T11:20:12+00:00"
+            "time": "2025-09-10T10:18:46+00:00"
         },
         {
             "name": "spryker/product-abstract-data-feed",
@@ -59007,16 +59011,16 @@
         },
         {
             "name": "spryker/product-page-search",
-            "version": "3.40.0",
+            "version": "3.41.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-page-search.git",
-                "reference": "98bb0b0a607545c78d41f5abc93e73c325aa0dc0"
+                "reference": "1558744e37ceb41b030a8ca28d6e6817dd8e9961"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-page-search/zipball/98bb0b0a607545c78d41f5abc93e73c325aa0dc0",
-                "reference": "98bb0b0a607545c78d41f5abc93e73c325aa0dc0",
+                "url": "https://api.github.com/repos/spryker/product-page-search/zipball/1558744e37ceb41b030a8ca28d6e6817dd8e9961",
+                "reference": "1558744e37ceb41b030a8ca28d6e6817dd8e9961",
                 "shasum": ""
             },
             "require": {
@@ -59030,7 +59034,7 @@
                 "spryker/locale": "^3.3.0 || ^4.0.0",
                 "spryker/price": "^5.3.0",
                 "spryker/price-product": "^2.8.0 || ^4.0.0",
-                "spryker/product": "^6.16.0",
+                "spryker/product": "^6.51.0",
                 "spryker/product-category": "^4.5.0",
                 "spryker/product-image": "^3.8.0",
                 "spryker/product-page-search-extension": "^1.6.0",
@@ -59079,9 +59083,9 @@
             ],
             "description": "ProductPageSearch module",
             "support": {
-                "source": "https://github.com/spryker/product-page-search/tree/3.40.0"
+                "source": "https://github.com/spryker/product-page-search/tree/3.41.0"
             },
-            "time": "2025-08-21T14:56:22+00:00"
+            "time": "2025-09-10T10:18:46+00:00"
         },
         {
             "name": "spryker/product-page-search-extension",
