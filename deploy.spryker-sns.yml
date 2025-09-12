@@ -59,7 +59,6 @@ image:
     php:
         enabled-extensions:
             - otel
-            - newrelic
         ini:
             'opcache.revalidate_freq': 0
             'opcache.enable_cli': 0
@@ -263,9 +262,9 @@ services:
             localhost:5672:
                 protocol: tcp
     session:
-        engine: redis
+        engine: valkey
     key_value_store:
-        engine: redis
+        engine: valkey
         endpoints:
             localhost:16379:
                 protocol: tcp
