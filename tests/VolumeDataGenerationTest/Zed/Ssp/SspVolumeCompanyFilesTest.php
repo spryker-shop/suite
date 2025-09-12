@@ -10,11 +10,12 @@ declare(strict_types = 1);
 namespace VolumeDataGenerationTest\Zed\Ssp;
 
 use Codeception\Test\Unit;
-use Orm\Zed\Company\Persistence\Map\SpyCompanyTableMap;
 use Orm\Zed\Company\Persistence\SpyCompanyQuery;
+use Orm\Zed\CompanyBusinessUnit\Persistence\Base\SpyCompanyBusinessUnitQuery;
+use Orm\Zed\CompanyBusinessUnit\Persistence\Map\SpyCompanyBusinessUnitTableMap;
 use Orm\Zed\FileManager\Persistence\Map\SpyFileTableMap;
 use Orm\Zed\FileManager\Persistence\SpyFileQuery;
-use Orm\Zed\SelfServicePortal\Persistence\SpyCompanyFile;
+use Orm\Zed\SelfServicePortal\Persistence\SpyCompanyBusinessUnitFile;
 
 /**
  * Attaches files to companies.
@@ -57,7 +58,7 @@ class SspVolumeCompanyFilesTest extends Unit
     /**
      * @return void
      */
-    public function testAttachFilesToCompanies(): void
+    public function testAttachFilesToBusinessUnits(): void
     {
         $fileIds = [];
 
@@ -70,27 +71,23 @@ class SspVolumeCompanyFilesTest extends Unit
 
         $offset = $iteration * self::BATCH_SIZE_COMPANY;
 
-        $companyIds = SpyCompanyQuery::create()
-            ->useCompanyBusinessUnitExistsQuery()
-                ->useCompanyUserExistsQuery()
-                ->endUse()
-            ->endUse()
-            ->select([SpyCompanyTableMap::COL_ID_COMPANY])
+        $companyBusinessUnitIds = SpyCompanyBusinessUnitQuery::create()
+            ->select([SpyCompanyBusinessUnitTableMap::COL_ID_COMPANY_BUSINESS_UNIT])
             ->offset($offset)
             ->limit(self::BATCH_SIZE_COMPANY)
             ->find()
             ->getData();
 
-        if (!$companyIds) {
+        if (!$companyBusinessUnitIds) {
             $this->assertTrue(false, SspTester::ALL_ENTITIES_GENERATED_MESSAGE);
 
             return;
         }
 
-        foreach ($companyIds as $companyId) {
-            $companyFileIds = array_splice($fileIds, 0, self::FILES_PER_COMPANY);
+        foreach ($companyBusinessUnitIds as $companyBusinessUnitId) {
+            $companyBusinessUnitFileIds = array_splice($fileIds, 0, self::FILES_PER_COMPANY);
 
-            if (!$companyFileIds) {
+            if (!$companyBusinessUnitFileIds) {
                 $fileIds = SpyFileQuery::create()
                     ->select([SpyFileTableMap::COL_ID_FILE])
                     ->offset($fileOffset * self::BATCH_SIZE_FILE * self::FILES_PER_COMPANY)
@@ -109,13 +106,13 @@ class SspVolumeCompanyFilesTest extends Unit
                         ->getData();
                 }
 
-                $companyFileIds = array_splice($fileIds, 0, self::FILES_PER_COMPANY);
+                $companyBusinessUnitFileIds = array_splice($fileIds, 0, self::FILES_PER_COMPANY);
             }
 
-            foreach ($companyFileIds as $companyFileId) {
-                (new SpyCompanyFile())
-                    ->setFkCompany($companyId)
-                    ->setFkFile($companyFileId)
+            foreach ($companyBusinessUnitFileIds as $companyBusinessUnitFileId) {
+                (new SpyCompanyBusinessUnitFile())
+                    ->setFkCompanyBusinessUnit($companyBusinessUnitId)
+                    ->setFkFile($companyBusinessUnitFileId)
                     ->save();
             }
 
@@ -131,7 +128,7 @@ class SspVolumeCompanyFilesTest extends Unit
 
         $this->assertTrue(
             false,
-            sprintf('%s %s', SspTester::GENERATION_RESULT_TEXT, sprintf('files generated for %d companies. Left to generate for %d companies.', count($companyIds), $totalCompaniesCount - $offset - count($companyIds))),
+            sprintf('%s %s', SspTester::GENERATION_RESULT_TEXT, sprintf('files generated for %d companies. Left to generate for %d companies.', count($companyBusinessUnitIds), $totalCompaniesCount - $offset - count($companyBusinessUnitIds))),
         );
     }
 }
