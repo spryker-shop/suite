@@ -337,41 +337,6 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    php-82-lowest:
-        if: >
-            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-            || github.ref == 'refs/heads/master'
-
-        name: "PHP 8.2 / Prefer Lowest"
-        runs-on: ubuntu-latest
-        env:
-            PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
-            SPRYKER_CURRENT_REGION: EU
-            DYNAMIC_STORE_MODE: true
-            TRAVIS: 1
-
-        steps:
-
-            -   uses: actions/checkout@v4
-
-            -   name: Set up PHP 8.2
-                uses: shivammathur/setup-php@v2
-                with:
-                    php-version: '8.2'
-                    extensions: mbstring, intl, pdo_mysql, redis, grpc
-                    coverage: none
-
-            -   name: Install prefer lowest
-                run: composer lowest-setup
-
-            -   name: Run prefer lowest
-                run: composer lowest
-
-            -   name: Slack Notification for failed job
-                uses: ./.github/actions/job-slack-notifications
-                if: always()
-
     docker-alpine-php-83-mariadb-robot:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-api-ci')
