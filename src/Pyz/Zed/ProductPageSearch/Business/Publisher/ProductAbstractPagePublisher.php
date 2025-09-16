@@ -24,6 +24,7 @@ use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductAbstractPagePublishe
 use Spryker\Zed\ProductPageSearch\Business\Reader\AddToCartSkuReaderInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface;
 use Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchQueryContainerInterface;
+use Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchRepositoryInterface;
 use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
 
 /**
@@ -37,21 +38,6 @@ use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
 class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
 {
     /**
-     * @var \Spryker\Service\Synchronization\SynchronizationServiceInterface
-     */
-    protected $synchronizationService;
-
-    /**
-     * @var \Spryker\Client\Queue\QueueClientInterface
-     */
-    protected $queueClient;
-
-    /**
-     * @var \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface
-     */
-    protected $productAbstractPagePublisherCte;
-
-    /**
      * @var array<array<string, mixed>>
      */
     protected $synchronizedDataCollection = [];
@@ -62,6 +48,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     protected $synchronizedMessageCollection = [];
 
     /**
+     * @param \Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchRepositoryInterface $repository
      * @param \Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchQueryContainerInterface $queryContainer
      * @param array<\Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface> $pageDataExpanderPlugins
      * @param array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface> $productPageDataLoaderPlugins
@@ -76,20 +63,22 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      * @param \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface $productAbstractPagePublisherCte
      */
     public function __construct(
-        ProductPageSearchQueryContainerInterface $queryContainer,
-        array $pageDataExpanderPlugins,
-        array $productPageDataLoaderPlugins,
-        array $productPageSearchCollectionFilterPlugins,
-        ProductPageSearchMapperInterface $productPageSearchMapper,
-        ProductPageSearchWriterInterface $productPageSearchWriter,
-        ProductPageSearchConfig $productPageSearchConfig,
-        ProductPageSearchToStoreFacadeInterface $storeFacade,
-        AddToCartSkuReaderInterface $addToCartSkuReader,
-        SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient,
-        ProductPagePublisherCteInterface $productAbstractPagePublisherCte,
+        protected ProductPageSearchRepositoryInterface $repository,
+        protected ProductPageSearchQueryContainerInterface $queryContainer,
+        protected array $pageDataExpanderPlugins,
+        protected array $productPageDataLoaderPlugins,
+        protected array $productPageSearchCollectionFilterPlugins,
+        protected ProductPageSearchMapperInterface $productPageSearchMapper,
+        protected ProductPageSearchWriterInterface $productPageSearchWriter,
+        protected ProductPageSearchConfig $productPageSearchConfig,
+        protected ProductPageSearchToStoreFacadeInterface $storeFacade,
+        protected AddToCartSkuReaderInterface $addToCartSkuReader,
+        protected SynchronizationServiceInterface $synchronizationService,
+        protected QueueClientInterface $queueClient,
+        protected ProductPagePublisherCteInterface $productAbstractPagePublisherCte,
     ) {
         parent::__construct(
+            $repository,
             $queryContainer,
             $pageDataExpanderPlugins,
             $productPageDataLoaderPlugins,
@@ -100,10 +89,6 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             $storeFacade,
             $addToCartSkuReader,
         );
-
-        $this->synchronizationService = $synchronizationService;
-        $this->queueClient = $queueClient;
-        $this->productAbstractPagePublisherCte = $productAbstractPagePublisherCte;
     }
 
     // phpcs:disable
