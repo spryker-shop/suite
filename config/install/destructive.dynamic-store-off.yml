@@ -66,6 +66,16 @@ sections:
             stores:
                 - DE
 
+    setup-minimal-data:
+        import-demodata:
+            command: 'vendor/bin/console data:import --config=data/import/local/store_EU.yml'
+
+    clear-and-init-search:
+        clean-search:
+            command: 'vendor/bin/console elasticsearch:index:delete -vvv --no-ansi'
+        setup-search-create-sources:
+            command: 'vendor/bin/console search:setup:sources -vvv --no-ansi'
+
     demodata:
         import-eu-region-demodata:
             command: 'vendor/bin/console data:import --config=data/import/production/full_EU.yml'
@@ -80,15 +90,7 @@ sections:
         check-product-validity:
             command: 'vendor/bin/console product:check-validity'
             stores: true
-    scheduler-start:
-        queue:
-            command: 'vendor/bin/console queue:worker:start --stop-when-empty'
-            timeout: 2000
-            stores: true
 
+    scheduler-start:
         scheduler-setup:
             command: 'vendor/bin/console scheduler:setup -vvv --no-ansi || true'
-            stores: true
-
-        sync-data:
-            command: 'vendor/bin/console sync:data'
