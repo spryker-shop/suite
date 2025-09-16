@@ -27,6 +27,7 @@ use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductIn
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductSearchInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface;
+use Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchRepositoryInterface;
 use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
 
 /**
@@ -42,21 +43,6 @@ use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
 class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearchPublisher
 {
     /**
-     * @var \Spryker\Service\Synchronization\SynchronizationServiceInterface
-     */
-    protected $synchronizationService;
-
-    /**
-     * @var \Spryker\Client\Queue\QueueClientInterface
-     */
-    protected $queueClient;
-
-    /**
-     * @var \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface
-     */
-    protected $productConcretePagePublisherCte;
-
-    /**
      * @var array<array<string, mixed>>
      */
     protected $synchronizedDataCollection = [];
@@ -67,6 +53,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     protected $synchronizedMessageCollection = [];
 
     /**
+     * @param \Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchRepositoryInterface $repository
      * @param \Spryker\Zed\ProductPageSearch\Business\ProductConcretePageSearchReader\ProductConcretePageSearchReaderInterface $productConcretePageSearchReader
      * @param \Spryker\Zed\ProductPageSearch\Business\ProductConcretePageSearchWriter\ProductConcretePageSearchWriterInterface $productConcretePageSearchWriter
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductInterface $productFacade
@@ -82,21 +69,23 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Pyz\Zed\ProductPageSearch\Business\Publisher\Sql\ProductPagePublisherCteInterface $productConcretePagePublisherCte
      */
     public function __construct(
-        ProductConcretePageSearchReaderInterface $productConcretePageSearchReader,
-        ProductConcretePageSearchWriterInterface $productConcretePageSearchWriter,
-        ProductPageSearchToProductInterface $productFacade,
-        ProductPageSearchToUtilEncodingInterface $utilEncoding,
-        AbstractProductSearchDataMapper $productConcreteSearchDataMapper,
-        ProductPageSearchToStoreFacadeInterface $storeFacade,
-        ProductPageSearchToProductSearchInterface $productPageSearchFacade,
-        ProductPageSearchConfig $productPageSearchConfig,
-        array $pageDataExpanderPlugins,
-        array $productConcreteCollectionFilterPlugins,
-        SynchronizationServiceInterface $synchronizationService,
-        QueueClientInterface $queueClient,
-        ProductPagePublisherCteInterface $productConcretePagePublisherCte,
+        protected ProductPageSearchRepositoryInterface $repository,
+        protected ProductConcretePageSearchReaderInterface $productConcretePageSearchReader,
+        protected ProductConcretePageSearchWriterInterface $productConcretePageSearchWriter,
+        protected ProductPageSearchToProductInterface $productFacade,
+        protected ProductPageSearchToUtilEncodingInterface $utilEncoding,
+        protected AbstractProductSearchDataMapper $productConcreteSearchDataMapper,
+        protected ProductPageSearchToStoreFacadeInterface $storeFacade,
+        protected ProductPageSearchToProductSearchInterface $productPageSearchFacade,
+        protected ProductPageSearchConfig $productPageSearchConfig,
+        protected array $pageDataExpanderPlugins,
+        protected array $productConcreteCollectionFilterPlugins,
+        protected SynchronizationServiceInterface $synchronizationService,
+        protected QueueClientInterface $queueClient,
+        protected ProductPagePublisherCteInterface $productConcretePagePublisherCte,
     ) {
         parent::__construct(
+            $repository,
             $productConcretePageSearchReader,
             $productConcretePageSearchWriter,
             $productFacade,
@@ -108,10 +97,6 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             $pageDataExpanderPlugins,
             $productConcreteCollectionFilterPlugins,
         );
-
-        $this->synchronizationService = $synchronizationService;
-        $this->queueClient = $queueClient;
-        $this->productConcretePagePublisherCte = $productConcretePagePublisherCte;
     }
 
     /**

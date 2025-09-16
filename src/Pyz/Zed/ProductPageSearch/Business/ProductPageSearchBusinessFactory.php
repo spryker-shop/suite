@@ -44,6 +44,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
         }
 
         return new ProductAbstractPagePublisher(
+            $this->getRepository(),
             $this->getQueryContainer(),
             $this->getProductPageDataExpanderPlugins(),
             $this->getProductPageDataLoaderPlugins(),
@@ -69,6 +70,7 @@ class ProductPageSearchBusinessFactory extends SprykerProductPageSearchBusinessF
         }
 
         return new ProductConcretePageSearchPublisher(
+            $this->getRepository(),
             $this->createProductConcretePageSearchReader(),
             $this->createProductConcretePageSearchWriter(),
             $this->getProductFacade(),
