@@ -19,7 +19,6 @@ image:
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_PRIVATE_KEY: 'UK6DywwjKITPpRHBSY9TLPIXm6BPrHX40sseIoXT9c8'
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_SUBJECT: 'https://spryker.com'
         SPRYKER_YVES_HOST_EU: yves.eu.spryker.local
-        SPRYKER_YVES_HOST_US: yves.us.spryker.local
         SPRYKER_DYNAMIC_STORE_MODE: true
     node:
         version: 18
@@ -47,47 +46,11 @@ regions:
                     namespace: 1
                 search:
                     namespace: eu_search
-    US:
-        services:
-            mail:
-                sender:
-                    name: Spryker No-Reply
-                    email: no-reply@spryker.local
-            database:
-                database: us-docker
-                username: spryker
-                password: secret
-            broker:
-                namespace: us-docker
-            key_value_store:
-                namespace: 2
-            search:
-                namespace: us_search
 
 groups:
     EU:
         region: EU
         applications:
-            merchant_portal_eu:
-                application: merchant-portal
-                endpoints:
-                    mp.eu.spryker.local:
-                        region: EU
-                        entry-point: MerchantPortal
-                        primal: true
-                        services:
-                            session:
-                                namespace: 1
-            yves_eu:
-                application: yves
-                endpoints:
-                    date-time-configurator-example.spryker.local:
-                        entry-point: Configurator
-                    yves.eu.spryker.local:
-                        region: EU
-                        services:
-                            session:
-                                namespace: 2
             glue_eu:
                 application: glue
                 endpoints:
@@ -103,15 +66,6 @@ groups:
                 endpoints:
                     glue-backend.eu.spryker.local:
                         region: EU
-            backoffice_eu:
-                application: backoffice
-                endpoints:
-                    backoffice.eu.spryker.local:
-                        region: EU
-                        primal: true
-                        services:
-                            session:
-                                namespace: 3
             backend_gateway_eu:
                 application: backend-gateway
                 endpoints:
@@ -124,65 +78,6 @@ groups:
                     backend-api.eu.spryker.local:
                         region: EU
                         entry-point: BackendApi
-
-    US:
-        region: US
-        applications:
-            mportal_us:
-                application: merchant-portal
-                endpoints:
-                    mp.us.spryker.local:
-                        region: US
-                        entry-point: MerchantPortal
-                        primal: true
-                        services:
-                            session:
-                                namespace: 4
-            yves_us:
-                application: yves
-                endpoints:
-                    yves.us.spryker.local:
-                        region: US
-                        services:
-                            session:
-                                namespace: 5
-            glue_us:
-                application: glue
-                endpoints:
-                    glue.us.spryker.local:
-                        region: US
-            glue_storefront_us:
-                application: glue-storefront
-                endpoints:
-                    glue-storefront.us.spryker.local:
-                        region: EU
-            glue_backend_us:
-                application: glue-backend
-                endpoints:
-                    glue-backend.us.spryker.local:
-                        region: EU
-            backoffice_us:
-                application: backoffice
-                endpoints:
-                    backoffice.us.spryker.local:
-                        region: US
-                        primal: true
-                        services:
-                            session:
-                                namespace: 6
-            backend_gateway_us:
-                application: backend-gateway
-                endpoints:
-                    backend-gateway.us.spryker.local:
-                        region: US
-                        primal: true
-            backend_api_us:
-                application: zed
-                endpoints:
-                    backend-api.us.spryker.local:
-                        region: US
-                        entry-point: BackendApi
-
 services:
     database:
         engine: mysql
@@ -206,14 +101,6 @@ services:
     search:
         engine: elastic
         version: '7.10'
-    scheduler:
-        engine: jenkins
-        version: '2.442'
-        csrf-protection-enabled: true
-    mail_catcher:
-        engine: mailhog
-    webdriver:
-        engine: chromedriver
 
 docker:
     ssl:
