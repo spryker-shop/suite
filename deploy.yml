@@ -25,8 +25,8 @@ image:
         npm: 9
 
 composer:
-    mode: --no-dev
-    autoload: --classmap-authoritative
+    mode: '--no-dev --quiet -o -a'
+    autoload: '-o -a --apcu'
 
 assets:
     image: spryker/nginx-brotli:latest
