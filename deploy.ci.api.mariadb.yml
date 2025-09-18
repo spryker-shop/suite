@@ -23,7 +23,7 @@ image:
 
 composer:
     mode: '--no-dev --quiet -o -a'
-    autoload: '-o -a --apcu'
+    autoload: '--classmap-authoritative -o'
 
 regions:
     EU:
@@ -98,10 +98,6 @@ services:
     search:
         engine: elastic
         version: '7.10'
-    scheduler:
-        engine: jenkins
-        version: '2.442'
-        csrf-protection-enabled: true
     mail_catcher:
         engine: mailpit
     webdriver:
