@@ -224,6 +224,7 @@ jobs:
                     git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.api.mariadb.yml
                     docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept fixtures
                     docker/sdk console queue:worker:start --stop-when-empty
                     docker/sdk testing codecept run -c codeception.api.yml
@@ -259,6 +260,7 @@ jobs:
                     git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.acceptance.mariadb.yml
                     docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk console queue:worker:start --stop-when-empty
                     docker/sdk testing codecept run -c codeception.acceptance.yml
 
@@ -293,6 +295,7 @@ jobs:
                     git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.functional.mariadb.yml
                     docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.functional.yml
 
             -   name: Slack Notification for failed job
@@ -325,6 +328,7 @@ jobs:
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.yml
+                    docker/sdk cli composer dump-autoload -o -a --apcu
                     SPRYKER_BUILD_HASH=myhash docker/sdk export images
                     docker run -i --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
                     docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
@@ -372,6 +376,7 @@ jobs:
                     docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml
                     sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
                     docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Custom commands
                 continue-on-error: false
                 run: |
