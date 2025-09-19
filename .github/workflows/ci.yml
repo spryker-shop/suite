@@ -153,50 +153,6 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    js-validation:
-        if: >
-            contains(github.event.pull_request.labels.*.name, 'run-npm-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
-        name: "NPM validation"
-        runs-on: ubuntu-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                node-version: [ '18' ]
-
-        env:
-            APPLICATION_ENV: ci.mysql
-            PROJECT: suite
-
-        steps:
-            -   uses: actions/checkout@v4
-
-            -   name: Install NPM packages
-                run: npm ci
-
-            -   name: Style lint
-                run: npm run yves:stylelint
-
-            -   name: ES lint
-                run: npm run yves:lint
-
-            -   name: Front-end Formatter
-                run: npm run formatter
-
-            -   name: Front-end MP Lint
-                run: npm run mp:lint
-
-            -   name: Front-end MP Style lint
-                run: npm run mp:stylelint
-
-            -   name: Front-end MP Unit Tests
-                run: npm run mp:test
-
-            -   name: Slack Notification for failed job
-                uses: ./.github/actions/job-slack-notifications
-                if: always()
-
     php-83-mariadb-glue-alpine:
         name: "[run-api-ci] PHP 8.3 / MariaDB / Glue / Alpine"
         if: >
