@@ -7,12 +7,12 @@
 
 declare(strict_types = 1);
 
-namespace Orm\Zed\SelfServicePortal\Persistence;
+namespace Orm\Zed\DataImportMerchant\Persistence;
 
-use Orm\Zed\SelfServicePortal\Persistence\Base\SpyCompanyFileQuery as BaseSpyCompanyFileQuery;
+use Spryker\Zed\DataImportMerchant\Persistence\Propel\AbstractSpyDataImportMerchantFile as BaseSpyDataImportMerchantFile;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_company_file' table.
+ * Skeleton subclass for representing a row from the 'spy_data_import_merchant_file' table.
  *
  *
  *
@@ -20,6 +20,6 @@ use Orm\Zed\SelfServicePortal\Persistence\Base\SpyCompanyFileQuery as BaseSpyCom
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCompanyFileQuery extends BaseSpyCompanyFileQuery
+class SpyDataImportMerchantFile extends BaseSpyDataImportMerchantFile
 {
 }

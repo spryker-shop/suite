@@ -212,8 +212,8 @@ $jobs[] = [
 ];
 
 $jobs[] = [
-    'name' => 'merchant-portal-file-import',
-    'command' => $logger . '$PHP_BIN vendor/bin/console merchant-portal:file-import',
+    'name' => 'data-import-merchant-import',
+    'command' => $logger . '$PHP_BIN vendor/bin/console data-import-merchant:import',
     'schedule' => '* * * * *',
     'enable' => true,
 ];

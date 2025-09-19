@@ -24,7 +24,9 @@ class GlueControllerFinder extends SprykerGlueControllerFinder
         $controllerNamespace = $this->getPluginControllerClass($plugin);
         $controllerNamespaceExploded = explode('\\', $controllerNamespace);
 
-        $moduleName = array_slice($controllerNamespaceExploded, -3)[0];
+        $controllerIndex = array_search('Controller', $controllerNamespaceExploded, true);
+        $moduleName = ($controllerIndex !== false && $controllerIndex > 0) ? $controllerNamespaceExploded[$controllerIndex - 1] : array_slice($controllerNamespaceExploded, -3)[0];
+
         $existingDirectories = $this->getMonoRepositoryControllerSourceDirectories($moduleName, $moduleName);
         if (!$existingDirectories) {
             $existingDirectories = $this->getMonoRepositoryControllerSourceDirectories(

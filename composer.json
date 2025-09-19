@@ -111,7 +111,9 @@
         "hidehalo/nanoid-php": "^2.0",
         "spryker/monitoring": "^2.10.0",
         "spryker/opentelemetry": "^1.17.0",
-        "spryker/monitoring-extension": "^1.1.0"
+        "spryker/monitoring-extension": "^1.1.0",
+        "composer/installers": "^2.3",
+        "symfony/lock": "^5.4.0 || ^6.4.0"
     },
     "require-dev": {
         "phpunit/phpunit": "11.4.0",
@@ -120,7 +122,6 @@
         "spryker/architecture-sniffer": "dev-master",
         "spryker/development-core": "dev-master",
         "spryker/code-sniffer": "dev-master",
-        "spryker/git-hook": "dev-master",
         "spryker/robotframework-suite-tests": "dev-master",
         "pdepend/pdepend": "dev-master as 2.11.0",
         "phpmd/phpmd": "^2.0.0",
@@ -142,7 +143,6 @@
         "codeception/module-cli": "^2.0.0",
         "codeception/module-filesystem": "^3.0.0",
         "codeception/stub": "^3.7.0 || ^4.0",
-        "psalm/phar": "^4.3.1",
         "sebastian/diff": "*",
         "phpstan/phpstan": "1.10.66",
         "symfony/browser-kit": "~5.1.8  || ^5.4",
@@ -168,6 +168,13 @@
         },
         "psr-0": {
             "Pimple": "vendor/spryker/spryker/Bundles/Container/src/Spryker/"
+        }
+    },
+    "extra": {
+        "installer-paths": {
+            "tests/cypress-tests/": [
+                "type:zend-module"
+            ]
         }
     },
     "autoload-dev": {
@@ -211,7 +218,8 @@
             "symfony/runtime": false,
             "symfony/flex": false,
             "php-http/discovery": true,
-            "tbachert/spi": true
+            "tbachert/spi": true,
+            "composer/installers": true
         }
     },
     "repositories": [
@@ -236,8 +244,20 @@
             "url": "git@github.com:spryker/commerce-k6-performance-tests.git"
         },
         {
-            "type": "git",
-            "url": "git@github.com:spryker/cypress-tests.git"
+            "type": "package",
+            "package": {
+                "name": "spryker/cypress-tests",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/spryker/cypress-tests.git",
+                    "type": "git",
+                    "reference": "ab9c2370fd37665c46b57b697a5ea5943818be16"
+                },
+                "type": "zend-module",
+                "license": [
+                    "MIT"
+                ]
+            }
         }
     ],
     "scripts": {
@@ -245,27 +265,22 @@
             "mkdir -p ./data/DE/logs/ZED"
         ],
         "post-install-cmd": [
-            "ChromedriverInstaller\\Installer::installChromedriver",
-            "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerHooks",
-            "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerShopHooks",
-            "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
+            "ChromedriverInstaller\\Installer::installChromedriver"
         ],
         "post-update-cmd": [
-            "ChromedriverInstaller\\Installer::installChromedriver",
-            "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerHooks",
-            "GitHook\\Composer\\Scripts\\HookInstaller::installSprykerShopHooks",
-            "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
+            "ChromedriverInstaller\\Installer::installChromedriver"
         ],
         "phpstan": [
             "php -d memory_limit=-1 vendor/bin/phpstan"
         ],
         "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate",
-        "psalm": "vendor/bin/psalm.phar --show-info=false --no-cache",
-        "psalm-update-baseline": "vendor/bin/psalm.phar --update-baseline",
-        "psalm-set-baseline": "vendor/bin/psalm.phar --set-baseline=psalm-baseline.xml",
-        "psalm-update-report": "vendor/bin/psalm.phar --report=psalm-report.xml",
         "prefer-mid": [
             "COMPOSER_MEMORY_LIMIT=-1 composer require twig/twig:\"^2.9.0\""
+        ],
+        "rm-githooks": [
+            "echo 'Removing GitHooks in the project' && rm -f .git/hooks/pre-commit",
+            "echo 'Removing GitHooks in spryker/spryker' && rm -f vendor/spryker/spryker/.git/hooks/pre-commit",
+            "echo 'Removing GitHooks in spryker/spryker-shop' && rm -f vendor/spryker/spryker-shop/.git/hooks/pre-commit"
         ]
     },
     "conflict": {
