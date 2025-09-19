@@ -45,8 +45,12 @@ regions:
 groups:
     EU:
         region: EU
-        applications: []
-
+        applications:
+            glue_eu:
+                application: glue
+                endpoints:
+                    glue.eu.spryker.local:
+                        region: EU
 services:
     database:
         engine: mysql
