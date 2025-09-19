@@ -23,7 +23,7 @@ image:
 
 composer:
     mode: '--no-dev --quiet -o -a'
-    autoload: --classmap-authoritative
+    autoload: '-a -o'
 
 regions:
     EU:
@@ -47,27 +47,11 @@ groups:
     EU:
         region: EU
         applications:
-            yves_eu:
-                application: yves
-                endpoints:
-                    yves.eu.spryker.local:
-                        region: EU
-                        services:
-                            session:
-                                namespace: 1
             glue_eu:
                 application: glue
                 endpoints:
                     glue.eu.spryker.local:
                         region: EU
-            backoffice_eu:
-                application: backoffice
-                endpoints:
-                    backoffice.eu.spryker.local:
-                        region: EU
-                        services:
-                            session:
-                                namespace: 3
             backend_gateway_eu:
                 application: backend-gateway
                 endpoints:
@@ -114,10 +98,6 @@ services:
     search:
         engine: elastic
         version: '7.10'
-    scheduler:
-        engine: jenkins
-        version: '2.442'
-        csrf-protection-enabled: true
     mail_catcher:
         engine: mailpit
     webdriver:
