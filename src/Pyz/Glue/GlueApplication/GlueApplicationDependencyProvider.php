@@ -286,6 +286,8 @@ use Spryker\Glue\WishlistsRestApi\Plugin\WishlistRelationshipByResourceIdPlugin;
 use Spryker\Glue\WishlistsRestApi\Plugin\WishlistsResourceRoutePlugin;
 use Spryker\Glue\WishlistsRestApi\WishlistsRestApiConfig;
 use SprykerFeature\Glue\SelfServicePortal\Plugin\GlueApplication\SspAssetsResourceRoutePlugin;
+use SprykerFeature\Glue\SelfServicePortal\Plugin\GlueApplication\SspInquiriesResourceRoutePlugin;
+use SprykerFeature\Glue\SelfServicePortal\Plugin\GlueApplication\SspServicesResourceRoutePlugin;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -411,6 +413,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new MultiFactorAuthTypeVerifyResourcePlugin(),
             new MultiFactorAuthTypeDeactivateResourcePlugin(),
             new SspAssetsResourceRoutePlugin(),
+            new SspInquiriesResourceRoutePlugin(),
+            new SspServicesResourceRoutePlugin(),
         ];
     }
 
