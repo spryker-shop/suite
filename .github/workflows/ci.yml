@@ -153,121 +153,19 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    php-83-mariadb-glue-alpine:
-        name: "[run-api-ci] PHP 8.3 / MariaDB / Glue / Alpine"
-        if: >
-            contains(github.event.pull_request.labels.*.name, 'run-api-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
-        runs-on: ubuntu-latest
-        env:
-            PROGRESS_TYPE: plain
-            SPRYKER_CURRENT_REGION: EU
-            SPRYKER_DYNAMIC_STORE_MODE: true
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
-            TRAVIS: 1
 
-        steps:
-            -   uses: actions/checkout@v4
-
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
-
-            -   name: Run docker
-                run: |
-                    git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.api.mariadb.yml
-                    docker/sdk up -t
-                    docker/sdk cli composer dump-autoload -o -a --apcu
-                    docker/sdk testing codecept fixtures
-                    docker/sdk testing console queue:worker:start --stop-when-empty
-                    docker/sdk testing codecept run -c codeception.api.yml
-
-            -   name: Slack Notification for failed job
-                uses: ./.github/actions/job-slack-notifications
-                if: always()
-
-    php-83-mariadb-acceptance-alpine:
-        name: "[run-ui-ci] PHP 8.3 / MariaDB / Acceptance / Alpine"
-        if: >
-            contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
-        runs-on: ubuntu-latest
-        env:
-            PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
-            SPRYKER_CURRENT_REGION: EU
-            SPRYKER_DYNAMIC_STORE_MODE: true
-            TRAVIS: 1
-
-        steps:
-            -   uses: actions/checkout@v4
-
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
-
-            -   name: Run docker
-                run: |
-                    git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.mariadb.yml
-                    docker/sdk up -t
-                    docker/sdk cli composer dump-autoload -o -a --apcu
-                    docker/sdk testing console queue:worker:start --stop-when-empty
-                    docker/sdk testing codecept run -c codeception.acceptance.yml
-
-            -   name: Slack Notification for failed job
-                uses: ./.github/actions/job-slack-notifications
-                if: always()
-
-    php-83-mariadb-functional-alpine:
-        if: >
-            contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
-        name: "[run-functional-ci] PHP 8.3 / MariaDB / Functional / Alpine"
-        runs-on: ubuntu-latest
-        env:
-            PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
-            SPRYKER_CURRENT_REGION: EU
-            SPRYKER_DYNAMIC_STORE_MODE: true
-            TRAVIS: 1
-
-        steps:
-            -   uses: actions/checkout@v4
-
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
-
-            -   name: Run docker
-                run: |
-                    git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.functional.mariadb.yml
-                    docker/sdk up -t
-                    docker/sdk cli composer dump-autoload -o -a --apcu
-                    docker/sdk testing codecept run -c codeception.functional.yml
-
-            -   name: Slack Notification for failed job
-                uses: ./.github/actions/job-slack-notifications
-                if: always()
-
-    php-82-frontend-and-assets-alpine:
-        name: "[run-functional-ci] PHP 8.2 / Frontend & Assets / Alpine"
+    php-83-frontend-and-assets-alpine:
+        name: "[run-functional-ci] PHP 8.3 / Frontend & Assets / e2e / Alpine"
         runs-on: ubuntu-latest
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-api-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
             SPRYKER_CURRENT_REGION: EU
             SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
@@ -280,69 +178,25 @@ jobs:
                     sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
                     sudo chmod +x /usr/local/bin/docker-compose
 
-            -   name: Run docker
+            -   name: Run docker clone docker-sdk
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
+
+            -   name: Run docker assets
+                run: |
                     docker/sdk boot deploy.yml
                     SPRYKER_BUILD_HASH=myhash docker/sdk export images
                     docker run -i --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
                     docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
                     docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
 
-            -   name: Slack Notification for failed job
-                uses: ./.github/actions/job-slack-notifications
-                if: always()
-
-    docker-alpine-php-83-mariadb-robot:
-        if: >
-            contains(github.event.pull_request.labels.*.name, 'run-api-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
-        name: "[run-api-ci] PHP 8.3 / MariaDB / Robot / API"
-        runs-on: ubuntu-latest
-        env:
-            PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
-            TRAVIS: 1
-            ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
-            SPRYKER_CURRENT_REGION: EU
-            SPRYKER_DYNAMIC_STORE_MODE: true
-        steps:
-            -   uses: actions/checkout@v4
-
-            -   name: Install packages
+            -   name: Run docker acceptance
                 run: |
-                    sudo apt-get update
-                    sudo apt-get install -y python3-pip
-                    pip3 install --upgrade pip
-                    pip3 install awscli
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
-            -   name: Install robotframework-suite-tests folder
-                run: |
-                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
-                    cp -r vendor ../vendor
-            -   name: Install Project
-                continue-on-error: false
-                run: |
-                    git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml
-                    sudo bash -c "echo '127.0.0.1 backend-api.eu.spryker.local backend-api.us.spryker.local backend-gateway.eu.spryker.local backend-gateway.us.spryker.local backoffice.eu.spryker.local backoffice.us.spryker.local glue-backend.eu.spryker.local glue-backend.us.spryker.local glue-storefront.eu.spryker.local glue-storefront.us.spryker.local glue.eu.spryker.local glue.us.spryker.local mail.spryker.local mp.eu.spryker.local mp.us.spryker.local queue.spryker.local scheduler.spryker.local spryker.local swagger.spryker.local yves.eu.spryker.local yves.us.spryker.local' >> /etc/hosts"
+                    docker/sdk boot deploy.ci.acceptance.mariadb.yml
                     docker/sdk up -t
-            -   name: Custom commands
-                continue-on-error: false
-                run: |
                     docker/sdk cli composer dump-autoload -o -a --apcu
-                    SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
-            -   name: Run Tests
-                run: |
-                    docker/sdk exec robot-framework robot -v env:api_suite -v dms:true -v docker:true -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s '*'.tests.api.suite.'*'.positive .
-            -   name: Upload artifacts
-                if: failure()
-                run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3MariaDB/log.html
+                    docker/sdk testing console queue:worker:start --stop-when-empty
+                    docker/sdk testing codecept run -c codeception.acceptance.yml
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
