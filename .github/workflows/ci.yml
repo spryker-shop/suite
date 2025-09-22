@@ -29,7 +29,7 @@ jobs:
             fail-fast: false
             matrix:
                 php-version: [
-                    '8.2'
+                    '8.3'
                 ]
 
         env:
@@ -155,7 +155,7 @@ jobs:
 
 
     php-83-frontend-and-assets-alpine:
-        name: "[run-functional-ci] PHP 8.3 / Frontend & Assets / e2e / Alpine"
+        name: "PHP 8.3 / Frontend & Assets & Glue / Alpine"
         runs-on: ubuntu-latest
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
@@ -182,6 +182,15 @@ jobs:
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
 
+            -   name: Run docker acceptance
+                run: |
+                    docker/sdk boot deploy.ci.api.mariadb.yml
+                    docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+                    docker/sdk testing codecept fixtures
+                    docker/sdk testing console queue:worker:start --stop-when-empty
+                    docker/sdk testing codecept run -c codeception.api.yml
+
             -   name: Run docker assets
                 run: |
                     docker/sdk boot deploy.yml
@@ -189,14 +198,6 @@ jobs:
                     docker run -i --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
                     docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
                     docker run -i --rm --entrypoint='' spryker_demo_frontend:1.0-frontend ls -al /data/public/Zed/assets/
-
-            -   name: Run docker acceptance
-                run: |
-                    docker/sdk boot deploy.ci.acceptance.mariadb.yml
-                    docker/sdk up -t
-                    docker/sdk cli composer dump-autoload -o -a --apcu
-                    docker/sdk testing console queue:worker:start --stop-when-empty
-                    docker/sdk testing codecept run -c codeception.acceptance.yml
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
