@@ -10,6 +10,7 @@ declare(strict_types = 1);
 namespace Pyz\Zed\Payment;
 
 use Generated\Shared\Transfer\ExpenseTransfer;
+use Generated\Shared\Transfer\GiftCardTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\TaxTotalTransfer;
@@ -47,6 +48,9 @@ class PaymentConfig extends SprykerPaymentConfig
             QuoteTransfer::EXPENSES => [
                 ExpenseTransfer::TAX_RATE => 'taxRate',
                 ExpenseTransfer::SUM_TAX_AMOUNT => 'taxAmount',
+            ],
+            QuoteTransfer::GIFT_CARDS => [
+                GiftCardTransfer::ACTUAL_VALUE => 'actualValue',
             ],
         ]);
     }
