@@ -184,7 +184,7 @@ jobs:
 
             -   name: Run docker acceptance
                 run: |
-                    docker/sdk boot deploy.ci.api.mariadb.yml
+                    docker/sdk boot deploy.ci.fe-api.mariadb.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept fixtures
