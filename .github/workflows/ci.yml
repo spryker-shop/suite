@@ -159,7 +159,7 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: failure() && github.event.pull_request.base.ref == 'master'
+                if: always()
 
     standard-validation-prefer-lowest:
         name: "Standard Validation / Prefer Lowest"
@@ -261,7 +261,7 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: failure() && github.event.pull_request.base.ref == 'master'
+                if: always()
 
     phpstan-validation:
         name: "PHPStan Validation"
@@ -353,7 +353,7 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: failure() && github.event.pull_request.base.ref == 'master'
+                if: always()
 
     snyk-validation:
         name: "Snyk Validation"
@@ -380,7 +380,7 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     js-validation:
         name: "NPM validation"
@@ -420,7 +420,7 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     php-83-mariadb-glue-alpine:
         name: "[run-api-ci] PHP 8.3 / MariaDB / Glue / Alpine"
@@ -454,7 +454,7 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     php-83-mariadb-acceptance-alpine:
         name: "[run-ui-ci] PHP 8.3 / MariaDB / Acceptance / Alpine"
@@ -492,7 +492,7 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     php-83-mariadb-functional-alpine:
         if: >
@@ -548,7 +548,7 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     php-82-postgres-acceptance-debian-prefer-lowest-dynamic-store-off:
         if: >
@@ -598,7 +598,7 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     php-82-postgres-debian-robot-ui-dynamic-store-off-group-one:
         if: >
@@ -653,7 +653,7 @@ jobs:
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     php-82-postgres-debian-robot-ui-dynamic-store-off-group-two:
         if: >
@@ -708,7 +708,7 @@ jobs:
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     php-82-postgres-debian-robot-ui-dynamic-store-off-group-three:
         if: >
@@ -763,7 +763,7 @@ jobs:
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     php-82-postgres-functional-debian-prefer-lowest-dynamic-store-off:
         if: >
@@ -828,7 +828,7 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     php-83-frontend-and-assets-alpine:
         name: "[run-functional-ci] PHP 8.3 / Frontend & Assets / Alpine"
@@ -863,7 +863,7 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     docker-debian-php-82-postgres-robot-dynamic-store-off:
         if: >
@@ -915,7 +915,7 @@ jobs:
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     docker-alpine-php-83-mariadb-robot-api:
         if: >
@@ -975,7 +975,7 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
 
     docker-alpine-php-83-mariadb-robot-ui-group-one:
             if: >
@@ -1038,7 +1038,7 @@ jobs:
 
                 -   name: Slack Notification for failed job
                     uses: ./.github/actions/job-slack-notifications
-                    if: github.event.pull_request.base.ref == 'master'
+                    if: always()
     docker-alpine-php-83-mariadb-robot-ui-group-two:
             if: >
                 contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
@@ -1099,7 +1099,7 @@ jobs:
                         echo "You must have VPN access to AWS (Spryker-Internal account)"
                 -   name: Slack Notification for failed job
                     uses: ./.github/actions/job-slack-notifications
-                    if: github.event.pull_request.base.ref == 'master'
+                    if: always()
     docker-alpine-php-83-mariadb-robot-ui-group-three:
             if: >
                 contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
@@ -1160,7 +1160,7 @@ jobs:
                         echo "You must have VPN access to AWS (Spryker-Internal account)"
                 -   name: Slack Notification for failed job
                     uses: ./.github/actions/job-slack-notifications
-                    if: github.event.pull_request.base.ref == 'master'
+                    if: always()
 # Temporarily disabled due to a measurement unit bug that causes the tests to fail. Should be re-enabled after the fix.
 #    docker-debian-php-82-postgresql-cypress-dynamic-store-off:
 #        if: >
@@ -1244,7 +1244,7 @@ jobs:
 #
 #            -   name: Slack Notification for failed job
 #                uses: ./.github/actions/job-slack-notifications
-#                if: github.event.pull_request.base.ref == 'master'
+#                if: always()
 
     docker-alpine-php-83-mariadb-cypress:
         if: >
@@ -1330,4 +1330,4 @@ jobs:
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
-                if: github.event.pull_request.base.ref == 'master'
+                if: always()
