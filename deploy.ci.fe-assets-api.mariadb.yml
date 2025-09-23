@@ -4,7 +4,7 @@ namespace: spryker_ci
 tag: '1.0'
 
 environment: docker.ci
-pipeline: docker.ci
+pipeline: docker.ci.fe-api
 image:
     tag: spryker/php:8.3
     php:
@@ -14,20 +14,28 @@ image:
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.spryker.local
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
         SPRYKER_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
-        SPRYKER_YVES_HOST_EU: yves.eu.spryker.local
-        SPRYKER_YVES_HOST_US: yves.us.spryker.local
-        SPRYKER_DYNAMIC_STORE_MODE: true
         SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR: '0c1ffefeebdab4a3d839d0e52590c9a2'
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_PUBLIC_KEY: 'BGqNWbv0hWM5CQ1-KwAfSQBMC6TMVFyrnh3vQp37oGCNvQ6eG_HyMjxBFJRWeCPTbzDoxcjhxLJS8Ck8r1G2oFw'
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_PRIVATE_KEY: 'UK6DywwjKITPpRHBSY9TLPIXm6BPrHX40sseIoXT9c8'
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_SUBJECT: 'https://spryker.com'
+        SPRYKER_YVES_HOST_EU: yves.eu.spryker.local
+        SPRYKER_YVES_HOST_US: yves.us.spryker.local
+        SPRYKER_DYNAMIC_STORE_MODE: true
     node:
         version: 18
         npm: 9
 
 composer:
-    mode: ''
-    autoload: ''
+    mode: '--no-dev --quiet -o -a'
+    autoload: --classmap-authoritative
+
+assets:
+    image: spryker/nginx-brotli:latest
+    mode: production
+    compression:
+        brotli:
+            static: on
+            level: 5
 
 regions:
     EU:
@@ -47,7 +55,6 @@ regions:
                     namespace: 1
                 search:
                     namespace: eu_search
-
     US:
         services:
             mail:
@@ -58,25 +65,37 @@ regions:
                 database: us-docker
                 username: spryker
                 password: secret
+
             broker:
                 namespace: us-docker
             key_value_store:
                 namespace: 2
             search:
                 namespace: us_search
-
 groups:
     EU:
         region: EU
         applications:
+            merchant_portal_eu:
+                application: merchant-portal
+                endpoints:
+                    mp.eu.spryker.local:
+                        entry-point: MerchantPortal
+                        region: EU
+                        primal: true
+                        services:
+                            session:
+                                namespace: 7
             yves_eu:
                 application: yves
                 endpoints:
+                    date-time-configurator-example.spryker.local:
+                        entry-point: Configurator
                     yves.eu.spryker.local:
                         region: EU
                         services:
                             session:
-                                namespace: 1
+                                namespace: 2
             glue_eu:
                 application: glue
                 endpoints:
@@ -90,8 +109,6 @@ groups:
                         services:
                             session:
                                 namespace: 3
-                http:
-                    max-request-body-size: 100M
             backend_gateway_eu:
                 application: backend-gateway
                 endpoints:
@@ -114,17 +131,15 @@ groups:
                 endpoints:
                     glue-backend.eu.spryker.local:
                         region: EU
-
     US:
         region: US
         applications:
-            mportal_us:
+            merchant_portal_us:
                 application: merchant-portal
                 endpoints:
                     mp.us.spryker.local:
-                        region: US
                         entry-point: MerchantPortal
-                        primal: true
+                        region: US
                         services:
                             session:
                                 namespace: 4
@@ -156,7 +171,6 @@ groups:
                 endpoints:
                     backoffice.us.spryker.local:
                         region: US
-                        primal: true
                         services:
                             session:
                                 namespace: 6
@@ -165,7 +179,6 @@ groups:
                 endpoints:
                     backend-gateway.us.spryker.local:
                         region: US
-                        primal: true
             backend_api_us:
                 application: zed
                 endpoints:
@@ -202,17 +215,20 @@ services:
         csrf-protection-enabled: true
     mail_catcher:
         engine: mailpit
-    webdriver:
-        engine: chromedriver
-    redis-gui:
-        engine: redis-commander
+    swagger:
+        engine: swagger-ui
+        endpoints:
+            swagger.spryker.local:
     dashboard:
         engine: dashboard
+        endpoints:
+            spryker.local:
+    webdriver:
+        engine: chromedriver
 
 docker:
     ssl:
         enabled: false
-        redirect: true
 
     debug:
         enabled: false
