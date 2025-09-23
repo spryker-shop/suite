@@ -27,6 +27,7 @@ use Spryker\Shared\Calculation\CalculationPriceMode;
  * @group CartsRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
+ * @group CheckoutMinimumWorkflow
  */
 class CartsRestApiCest
 {
