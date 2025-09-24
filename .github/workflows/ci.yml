@@ -310,13 +310,13 @@ jobs:
 
             -   name: Run PHPStan
                 run: |
-                    tests/spryker-ci.sh phpStan Spryker 0 275
-                    tests/spryker-ci.sh phpStan Spryker 275 275
-                    tests/spryker-ci.sh phpStan Spryker 550 150
-                    tests/spryker-ci.sh phpStan Spryker 700 300
-                    tests/spryker-ci.sh phpStan Spryker 1000
-                    tests/spryker-ci.sh phpStan SprykerFeature
-                    tests/spryker-ci.sh phpStan SprykerShop
+                    vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 0,275
+                    vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 275,275
+                    vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 550,150
+                    vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 700,300
+                    vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 1000
+                    vendor/bin/console --no-ansi code:phpstan -m SprykerFeature.all -v
+                    vendor/bin/console --no-ansi code:phpstan -m SprykerShop.all -v
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
@@ -389,42 +389,8 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    php-83-mariadb-glue-alpine:
-        name: "[run-api-ci] PHP 8.3 / MariaDB / Glue / Alpine"
-        if: >
-            contains(github.event.pull_request.labels.*.name, 'run-api-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
-        runs-on: ubuntu-latest
-        env:
-            PROGRESS_TYPE: plain
-            SPRYKER_CURRENT_REGION: EU
-            SPRYKER_DYNAMIC_STORE_MODE: true
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
-            TRAVIS: 1
-        steps:
-            -   uses: actions/checkout@v4
-
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
-            -   name: Run docker
-                run: |
-                    git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.api.mariadb.yml
-                    docker/sdk up -t
-                    docker/sdk cli composer dump-autoload -o -a --apcu
-                    docker/sdk testing codecept fixtures
-                    docker/sdk testing console queue:worker:start --stop-when-empty
-                    docker/sdk testing codecept run -c codeception.api.yml
-
-            -   name: Slack Notification for failed job
-                uses: ./.github/actions/job-slack-notifications
-                if: always()
-
     php-83-mariadb-acceptance-alpine:
-        name: "[run-ui-ci] PHP 8.3 / MariaDB / Acceptance / Alpine"
+        name: "[run-ui-ci] PHP 8.3 / MariaDB / Acceptance & API / Alpine"
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
@@ -455,7 +421,9 @@ jobs:
                     docker/sdk testing codecept fixtures
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk testing codecept run --no-ansi -c codeception.api.yml
-                    docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --group=Presentation
+
+            -   name: Run Presentation Tests for changed modules
+                run: docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --group=Presentation
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
@@ -504,7 +472,6 @@ jobs:
                     docker/sdk testing codecept run --no-ansi -c codeception.functional2.yml
                     docker/sdk testing codecept run --no-ansi -c codeception.functional.stage2.yml
                     docker/sdk testing codecept run --no-ansi -c codeception.functional.glue.yml
-                    docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --skip-group=Presentation
 
             -   name: Run Functional Tests (SSP)
                 if: >
@@ -512,6 +479,9 @@ jobs:
                     || github.ref == 'refs/heads/master'
                 run: |
                     docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
+
+            - name: Run Functional Tests for changed modules
+              run: docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --skip-group=Presentation
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
@@ -521,7 +491,7 @@ jobs:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-compatibility-ci] PHP 8.2 / PostgreSQL / Acceptance / Debian / Prefer Lowest / Dynamic Store OFF"
+        name: "[run-compatibility-ci] PHP 8.2 / PostgreSQL / Acceptance & API / Debian / Prefer Lowest / Dynamic Store OFF"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
@@ -594,13 +564,13 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.yml
+                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.es7.yml
                     docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Custom commands
                 continue-on-error: false
                 run: |
-                    docker/sdk cli composer dump-autoload -o -a --apcu
-                    SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
+                    docker/sdk console queue:worker:start --stop-when-empty
             -   name: Run Tests
                 continue-on-error: true
                 run: |
@@ -649,7 +619,7 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.yml
+                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.es7.yml
                     docker/sdk up -t
             -   name: Custom commands
                 continue-on-error: false
@@ -704,13 +674,13 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.yml
+                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.es7.yml
                     docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Custom commands
                 continue-on-error: false
                 run: |
-                    docker/sdk cli composer dump-autoload -o -a --apcu
-                    SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
+                    docker/sdk console queue:worker:start --stop-when-empty
             -   name: Run Tests
                 continue-on-error: true
                 run: |
@@ -864,7 +834,7 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.es7.postgres.yml
+                    docker/sdk boot deploy.ci.api.dynamic-store-off.php82.postgres.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Run Tests
@@ -921,10 +891,10 @@ jobs:
                     git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.api.mariadb.robot.yml
                     docker/sdk up -t
+                    docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Custom commands
                 continue-on-error: false
                 run: |
-                    docker/sdk cli composer dump-autoload -o -a --apcu
                     SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
             -   name: Run Tests
                 run: |
@@ -980,10 +950,10 @@ jobs:
                         git clone https://github.com/spryker/docker-sdk.git ./docker
                         docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml
                         docker/sdk up -t
+                        docker/sdk cli composer dump-autoload -o -a --apcu
                 -   name: Custom commands
                     continue-on-error: false
                     run: |
-                        docker/sdk cli composer dump-autoload -o -a --apcu
                         SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
                 -   name: Run Tests
                     continue-on-error: true
@@ -1042,10 +1012,10 @@ jobs:
                         git clone https://github.com/spryker/docker-sdk.git ./docker
                         docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml
                         docker/sdk up -t
+                        docker/sdk cli composer dump-autoload -o -a --apcu
                 -   name: Custom commands
                     continue-on-error: false
                     run: |
-                        docker/sdk cli composer dump-autoload -o -a --apcu
                         SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
                 -   name: Run Tests
                     continue-on-error: true
@@ -1103,10 +1073,10 @@ jobs:
                         git clone https://github.com/spryker/docker-sdk.git ./docker
                         docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml
                         docker/sdk up -t
+                        docker/sdk cli composer dump-autoload -o -a --apcu
                 -   name: Custom commands
                     continue-on-error: false
                     run: |
-                        docker/sdk cli composer dump-autoload -o -a --apcu
                         SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
                 -   name: Run Tests
                     continue-on-error: true
@@ -1164,7 +1134,7 @@ jobs:
 #                continue-on-error: false
 #                run: |
 #                    git clone https://github.com/spryker/docker-sdk.git ./docker
-#                    docker/sdk boot deploy.ci.acceptance.postgres.dynamic-store-off.cypress.yml
+#                    docker/sdk boot deploy.ci.acceptance.postgres.dynamic-store-off.php82.cypress.yml
 #                    docker/sdk up -t
 #                    docker/sdk cli composer dump-autoload -o -a --apcu
 #
