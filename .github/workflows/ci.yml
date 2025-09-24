@@ -136,26 +136,15 @@ jobs:
                     tests/ci_check_untracked.sh
                     tests/ci_check_touched_modules.sh
 
-            -   name: Run PHPStan (spryker/spryker [1/5])
-                run: tests/spryker-ci.sh phpStan Spryker 0 275
-
-            -   name: Run PHPStan (spryker/spryker [2/5])
-                run: tests/spryker-ci.sh phpStan Spryker 275 275
-
-            -   name: Run PHPStan (spryker/spryker [3/5])
-                run: tests/spryker-ci.sh phpStan Spryker 550 150
-
-            -   name: Run PHPStan (spryker/spryker [4/5])
-                run: tests/spryker-ci.sh phpStan Spryker 700 300
-
-            -   name: Run PHPStan (spryker/spryker [5/5])
-                run: tests/spryker-ci.sh phpStan Spryker 1000
-
-            -   name: Run PHPStan (spryker/spryker feature)
-                run: tests/spryker-ci.sh phpStan SprykerFeature
-
-            -   name: Run PHPStan (spryker/spryker-shop)
-                run: tests/spryker-ci.sh phpStan SprykerShop
+            -   name: Run PHPStan
+                run: |
+                    tests/spryker-ci.sh phpStan Spryker 0 275
+                    tests/spryker-ci.sh phpStan Spryker 275 275
+                    tests/spryker-ci.sh phpStan Spryker 550 150
+                    tests/spryker-ci.sh phpStan Spryker 700 300
+                    tests/spryker-ci.sh phpStan Spryker 1000
+                    tests/spryker-ci.sh phpStan SprykerFeature
+                    tests/spryker-ci.sh phpStan SprykerShop
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
