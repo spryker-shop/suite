@@ -1,4 +1,4 @@
-name: SUITE-NONSPLIT-CI
+name: SN-CI
 
 on:
     pull_request:
@@ -564,7 +564,7 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.yml
+                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.robot.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Custom commands
@@ -619,7 +619,7 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.yml
+                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.robot.yml
                     docker/sdk up -t
             -   name: Custom commands
                 continue-on-error: false
@@ -674,7 +674,7 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.yml
+                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.robot.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Custom commands
@@ -834,7 +834,7 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.api.dynamic-store-off.php82.postgres.yml
+                    docker/sdk boot deploy.ci.api.dynamic-store-off.php82.postgres.robot.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Run Tests

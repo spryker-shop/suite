@@ -119,12 +119,13 @@ sections:
 
         init-database:
             command: 'vendor/bin/console setup:init-db'
-        queue-setup:
-            command: 'vendor/bin/console queue:setup'
 
     demodata:
         import-eu-region-demodata:
             command: 'vendor/bin/console data:import --config=data/import/local/full_EU.yml'
+
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
 
         apply-scheduled-prices:
             command: 'vendor/bin/console price-product-schedule:apply'
