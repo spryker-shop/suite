@@ -24,6 +24,18 @@ jobs:
     standard-validation:
         name: "Standard Validation"
         runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                propel-validation:
+                    - { command: "vendor/bin/console --no-ansi code:propel:validate-abstract" }
+                    - { command: "vendor/bin/console --no-ansi propel:schema:validate" }
+                    - { command: "vendor/bin/console --no-ansi propel:schema:validate-xml-names" }
+                file-validation:
+                    - { command: "vendor/bin/console --no-ansi transfer:validate" }
+                    - { command: "vendor/bin/spryker-dev-console dev:validate-module-schemas" }
+                    - { command: "vendor/bin/spryker-dev-console dev:validate-module-databuilders" }
+                    - { command: "vendor/bin/spryker-dev-console dev:module-meta-files -d -v" }
         env:
             APPLICATION_ENV: ci.mysql
             PROJECT: suite-nonsplit
@@ -113,17 +125,16 @@ jobs:
                     speccy lint src/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml --rules=default --skip openapi-tags
                     speccy lint src/Generated/GlueBackend/Specification/spryker_backend_api.schema.yml --rules=default --skip openapi-tags
 
+            -   name: Propel Validation
+                run: ${{ matrix.propel-validation.command }}
+
+            -   name: File Validation
+                run: ${{ matrix.file-validation.command }}
+
             -   name: Run Generic Validation
                 run: |
-                    vendor/bin/console --no-ansi code:propel:validate-abstract
-                    vendor/bin/console --no-ansi propel:schema:validate
-                    vendor/bin/console --no-ansi propel:schema:validate-xml-names
-                    vendor/bin/console --no-ansi transfer:validate
-                    vendor/bin/spryker-dev-console dev:validate-module-schemas
-                    vendor/bin/spryker-dev-console dev:validate-module-databuilders
                     vendor/bin/console --no-ansi dev:composer:replace -d -v
                     vendor/bin/spryker-dev-console dev:sync-composer -d
-                    vendor/bin/spryker-dev-console dev:module-meta-files -d -v
                     vendor/bin/console --no-ansi dev:composer:update-json-files -d -v
                     vendor/bin/console --no-ansi dev:composer:validate-json-files
                     vendor/bin/console --no-ansi code:sniff:style
@@ -164,18 +175,17 @@ jobs:
     standard-validation-prefer-lowest:
         name: "Standard Validation / Prefer Lowest"
         runs-on: ubuntu-latest
-        env:
-            APPLICATION_ENV: ci.mysql
-            APPLICATION_STORE: DE
-            PROJECT: suite-nonsplit
-            SPRYKER_CURRENT_REGION: EU
-            SPRYKER_DYNAMIC_STORE_MODE: "false"
-            COMPOSER_MEMORY_LIMIT: -1
-            DB_USER: root
-            DB_PASSWORD: ""
-            DB_HOST: 127.0.0.1
-            DB_PORT: 3306
-
+        strategy:
+            fail-fast: false
+            matrix:
+                phpstan-task:
+                    - { name: "Spryker [1/5]", args: "Spryker 0 275" }
+                    - { name: "Spryker [2/5]", args: "Spryker 275 275" }
+                    - { name: "Spryker [3/5]", args: "Spryker 550 150" }
+                    - { name: "Spryker [4/5]", args: "Spryker 700 300" }
+                    - { name: "Spryker [5/5]", args: "Spryker 1000" }
+                    - { name: "Spryker feature", args: "SprykerFeature" }
+                    - { name: "SprykerShop", args: "SprykerShop" }
         services:
             mysql:
                 image: mysql:5.7
@@ -220,13 +230,6 @@ jobs:
                     tools: composer:v2
                     coverage: none
 
-            -   name: Configure sysctl limits
-                run: |
-                    sudo swapoff -a
-                    sudo sysctl -w vm.swappiness=1
-                    sudo sysctl -w fs.file-max=262144
-                    sudo sysctl -w vm.max_map_count=262144
-
             -   name: Install Composer dependencies (prefer-lowest)
                 run: |
                     composer config github-oauth.github.com ${{ env.GITHUB_TOKEN }}
@@ -238,35 +241,24 @@ jobs:
                     vendor/bin/install --no-ansi -r ci.code-generate
                     composer dump-autoload -o -a --apcu
 
-            -   name: Run PHPStan (spryker/spryker [1/5])
-                run: tests/spryker-ci.sh phpStan Spryker 0 275
-
-            -   name: Run PHPStan (spryker/spryker [2/5])
-                run: tests/spryker-ci.sh phpStan Spryker 275 275
-
-            -   name: Run PHPStan (spryker/spryker [3/5])
-                run: tests/spryker-ci.sh phpStan Spryker 550 150
-
-            -   name: Run PHPStan (spryker/spryker [4/5])
-                run: tests/spryker-ci.sh phpStan Spryker 700 300
-
-            -   name: Run PHPStan (spryker/spryker [5/5])
-                run: tests/spryker-ci.sh phpStan Spryker 1000
-
-            -   name: Run PHPStan (spryker/spryker feature)
-                run: tests/spryker-ci.sh phpStan SprykerFeature
-
-            -   name: Run PHPStan (spryker/spryker-shop)
-                run: tests/spryker-ci.sh phpStan SprykerShop
-
-            -   name: Slack Notification for failed job
-                uses: ./.github/actions/job-slack-notifications
-                if: always()
+            -   name: Run PHPStan ${{ matrix.phpstan-task.name }}
+                run: tests/spryker-ci.sh phpStan ${{ matrix.phpstan-task.args }}
 
     phpstan-validation:
         name: "PHPStan Validation"
         runs-on: ubuntu-latest
         if: contains(github.event.pull_request.labels.*.name, 'run-phpstan-core-ci')
+        strategy:
+            fail-fast: false
+            matrix:
+                phpstan-task:
+                    - { name: "Spryker [1/5]", args: "Spryker 0 275" }
+                    - { name: "Spryker [2/5]", args: "Spryker 275 275" }
+                    - { name: "Spryker [3/5]", args: "Spryker 550 150" }
+                    - { name: "Spryker [4/5]", args: "Spryker 700 300" }
+                    - { name: "Spryker [5/5]", args: "Spryker 1000" }
+                    - { name: "Spryker feature", args: "SprykerFeature" }
+                    - { name: "SprykerShop", args: "SprykerShop" }
         env:
             APPLICATION_ENV: ci.mysql
             DB_USER: root
@@ -330,26 +322,8 @@ jobs:
                     vendor/bin/install -r ci.code-generate
                     composer dump-autoload -o -a --apcu
 
-            -   name: Run PHPStan (spryker/spryker [1/5])
-                run: vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 0,275
-
-            -   name: Run PHPStan (spryker/spryker [2/5])
-                run: vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 275,275
-
-            -   name: Run PHPStan (spryker/spryker [3/5])
-                run: vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 550,150
-
-            -   name: Run PHPStan (spryker/spryker [4/5])
-                run: vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 700,300
-
-            -   name: Run PHPStan (spryker/spryker [5/5])
-                run: vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 1000
-
-            -   name: Run PHPStan (spryker/spryker feature)
-                run: vendor/bin/console --no-ansi code:phpstan -m SprykerFeature.all -v
-
-            -   name: Run PHPStan (spryker/spryker-shop)
-                run: vendor/bin/console --no-ansi code:phpstan -m SprykerShop.all -v
+            -   name: Run PHPStan ${{ matrix.phpstan-task.name }}
+                run: tests/spryker-ci.sh phpStan ${{ matrix.phpstan-task.args }}
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
