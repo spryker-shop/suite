@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.356.21",
+            "version": "3.356.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "90007f76fab4312e10d9200595d706ec59f7ff70"
+                "reference": "d897c1345496af3440b8d8a5979d5f47cce6c433"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/90007f76fab4312e10d9200595d706ec59f7ff70",
-                "reference": "90007f76fab4312e10d9200595d706ec59f7ff70",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d897c1345496af3440b8d8a5979d5f47cce6c433",
+                "reference": "d897c1345496af3440b8d8a5979d5f47cce6c433",
                 "shasum": ""
             },
             "require": {
@@ -337,9 +337,9 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.356.21"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.356.24"
             },
-            "time": "2025-09-18T18:17:25+00:00"
+            "time": "2025-09-23T18:08:42+00:00"
         },
         {
             "name": "brick/math",
@@ -4801,24 +4801,26 @@
         },
         {
             "name": "paragonie/constant_time_encoding",
-            "version": "v3.0.0",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/constant_time_encoding.git",
-                "reference": "df1e7fde177501eee2037dd159cf04f5f301a512"
+                "reference": "5bd79e0e88e8757f23e757bcedd1e37fa818cf68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/df1e7fde177501eee2037dd159cf04f5f301a512",
-                "reference": "df1e7fde177501eee2037dd159cf04f5f301a512",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/5bd79e0e88e8757f23e757bcedd1e37fa818cf68",
+                "reference": "5bd79e0e88e8757f23e757bcedd1e37fa818cf68",
                 "shasum": ""
             },
             "require": {
                 "php": "^8"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9",
-                "vimeo/psalm": "^4|^5"
+                "infection/infection": "^0",
+                "nikic/php-fuzzer": "^0",
+                "phpunit/phpunit": "^9|^10|^11",
+                "vimeo/psalm": "^4|^5|^6"
             },
             "type": "library",
             "autoload": {
@@ -4864,7 +4866,7 @@
                 "issues": "https://github.com/paragonie/constant_time_encoding/issues",
                 "source": "https://github.com/paragonie/constant_time_encoding"
             },
-            "time": "2024-05-08T12:36:18+00:00"
+            "time": "2025-09-24T01:22:14+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -4918,16 +4920,16 @@
         },
         {
             "name": "paragonie/sodium_compat",
-            "version": "v2.1.0",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/sodium_compat.git",
-                "reference": "a673d5f310477027cead2e2f2b6db5d8368157cb"
+                "reference": "9c3535883f1b60b5d26aeae5914bbec61132ad7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/a673d5f310477027cead2e2f2b6db5d8368157cb",
-                "reference": "a673d5f310477027cead2e2f2b6db5d8368157cb",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/9c3535883f1b60b5d26aeae5914bbec61132ad7f",
+                "reference": "9c3535883f1b60b5d26aeae5914bbec61132ad7f",
                 "shasum": ""
             },
             "require": {
@@ -4935,8 +4937,10 @@
                 "php-64bit": "*"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7|^8|^9",
-                "vimeo/psalm": "^4|^5"
+                "infection/infection": "^0",
+                "nikic/php-fuzzer": "^0",
+                "phpunit/phpunit": "^7|^8|^9|^10|^11",
+                "vimeo/psalm": "^4|^5|^6"
             },
             "suggest": {
                 "ext-sodium": "Better performance, password hashing (Argon2i), secure memory management (memzero), and better security."
@@ -4950,7 +4954,10 @@
             "autoload": {
                 "files": [
                     "autoload.php"
-                ]
+                ],
+                "psr-4": {
+                    "ParagonIE\\Sodium\\": "namespaced/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5003,9 +5010,9 @@
             ],
             "support": {
                 "issues": "https://github.com/paragonie/sodium_compat/issues",
-                "source": "https://github.com/paragonie/sodium_compat/tree/v2.1.0"
+                "source": "https://github.com/paragonie/sodium_compat/tree/v2.2.0"
             },
-            "time": "2024-09-04T12:51:01+00:00"
+            "time": "2025-09-21T18:27:14+00:00"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -6785,12 +6792,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/composer-merge-plugin.git",
-                "reference": "81719beed8a8af255100e805e5ebfd33a1ba64d5"
+                "reference": "b33cc1d82fa15b3fae2b36f17b7a0ba381bf1a38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/composer-merge-plugin/zipball/81719beed8a8af255100e805e5ebfd33a1ba64d5",
-                "reference": "81719beed8a8af255100e805e5ebfd33a1ba64d5",
+                "url": "https://api.github.com/repos/spryker/composer-merge-plugin/zipball/b33cc1d82fa15b3fae2b36f17b7a0ba381bf1a38",
+                "reference": "b33cc1d82fa15b3fae2b36f17b7a0ba381bf1a38",
                 "shasum": ""
             },
             "require": {
@@ -6828,7 +6835,7 @@
                 "issues": "https://github.com/spryker/composer-merge-plugin/issues",
                 "source": "https://github.com/spryker/composer-merge-plugin/tree/master"
             },
-            "time": "2025-01-03T17:41:31+00:00"
+            "time": "2025-09-19T12:12:39+00:00"
         },
         {
             "name": "spryker/decimal-object",
@@ -7252,7 +7259,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c648fb86d9ad8b1df4ded8251131813d8f02780a"
+                "reference": "8862d348f7ca26f0b4650efae25ffef7ba7cd0ed"
             },
             "require": {
                 "php": ">=8.1"
@@ -8405,7 +8412,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2025-09-19T16:39:20+00:00"
+            "time": "2025-09-24T13:20:23+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8413,7 +8420,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "981ca3bd0cc65cdd79f92fb25d6d5e82f1f8c5c1"
+                "reference": "908d8f6b66877cfebc55fd0a9989d1dd0c7af2f9"
             },
             "require": {
                 "php": ">=8.1"
@@ -8611,16 +8618,11 @@
                 "spryker/spryker": "dev-master"
             },
             "type": "library",
-            "scripts": {
-                "cs-check": [
-                    "phpcs"
-                ]
-            },
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2025-09-19T16:38:25+00:00"
+            "time": "2025-09-24T08:43:59+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -15499,22 +15501,22 @@
         },
         {
             "name": "codeception/lib-xml",
-            "version": "1.0.3",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-xml.git",
-                "reference": "ba49213e60807e3612513f404a5c93aec63f4c72"
+                "reference": "da6559647c1e0f3839335d401e383ae3e61aafaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-xml/zipball/ba49213e60807e3612513f404a5c93aec63f4c72",
-                "reference": "ba49213e60807e3612513f404a5c93aec63f4c72",
+                "url": "https://api.github.com/repos/Codeception/lib-xml/zipball/da6559647c1e0f3839335d401e383ae3e61aafaa",
+                "reference": "da6559647c1e0f3839335d401e383ae3e61aafaa",
                 "shasum": ""
             },
             "require": {
-                "codeception/lib-web": "^1.0.6",
+                "codeception/lib-web": "^1.0.6 || ^2",
                 "ext-dom": "*",
-                "php": "^8.0",
+                "php": "^8.2",
                 "symfony/css-selector": ">=4.4.24 <8.0"
             },
             "conflict": {
@@ -15542,9 +15544,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/lib-xml/issues",
-                "source": "https://github.com/Codeception/lib-xml/tree/1.0.3"
+                "source": "https://github.com/Codeception/lib-xml/tree/1.1.0"
             },
-            "time": "2024-02-06T21:00:41+00:00"
+            "time": "2025-09-21T18:33:44+00:00"
         },
         {
             "name": "codeception/module-asserts",
@@ -17823,16 +17825,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.12.10",
+            "version": "v0.12.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "6e80abe6f2257121f1eb9a4c55bf29d921025b22"
+                "reference": "cd23863404a40ccfaf733e3af4db2b459837f7e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/6e80abe6f2257121f1eb9a4c55bf29d921025b22",
-                "reference": "6e80abe6f2257121f1eb9a4c55bf29d921025b22",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/cd23863404a40ccfaf733e3af4db2b459837f7e7",
+                "reference": "cd23863404a40ccfaf733e3af4db2b459837f7e7",
                 "shasum": ""
             },
             "require": {
@@ -17895,9 +17897,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.12.10"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.12.12"
             },
-            "time": "2025-08-04T12:39:37+00:00"
+            "time": "2025-09-20T13:46:31+00:00"
         },
         {
             "name": "roave/better-reflection",
@@ -18433,16 +18435,16 @@
         },
         {
             "name": "sebastian/exporter",
-            "version": "6.3.0",
+            "version": "6.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "3473f61172093b2da7de1fb5782e1f24cc036dc3"
+                "reference": "70a298763b40b213ec087c51c739efcaa90bcd74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/3473f61172093b2da7de1fb5782e1f24cc036dc3",
-                "reference": "3473f61172093b2da7de1fb5782e1f24cc036dc3",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/70a298763b40b213ec087c51c739efcaa90bcd74",
+                "reference": "70a298763b40b213ec087c51c739efcaa90bcd74",
                 "shasum": ""
             },
             "require": {
@@ -18456,7 +18458,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "6.1-dev"
+                    "dev-main": "6.3-dev"
                 }
             },
             "autoload": {
@@ -18499,15 +18501,27 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/exporter/issues",
                 "security": "https://github.com/sebastianbergmann/exporter/security/policy",
-                "source": "https://github.com/sebastianbergmann/exporter/tree/6.3.0"
+                "source": "https://github.com/sebastianbergmann/exporter/tree/6.3.2"
             },
             "funding": [
                 {
                     "url": "https://github.com/sebastianbergmann",
                     "type": "github"
+                },
+                {
+                    "url": "https://liberapay.com/sebastianbergmann",
+                    "type": "liberapay"
+                },
+                {
+                    "url": "https://thanks.dev/u/gh/sebastianbergmann",
+                    "type": "thanks_dev"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/sebastian/exporter",
+                    "type": "tidelift"
                 }
             ],
-            "time": "2024-12-05T09:17:50+00:00"
+            "time": "2025-09-24T06:12:51+00:00"
         },
         {
             "name": "sebastian/global-state",
@@ -19867,7 +19881,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "3dbb6c7b41c4a3299f791f440fcfd6300becc68c"
+                "reference": "d710565fa7697cc7ce79accd39e500e96787d2eb"
             },
             "default-branch": true,
             "type": "library",
@@ -19875,7 +19889,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2025-09-17T10:49:01+00:00"
+            "time": "2025-09-19T12:01:05+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
