@@ -116,10 +116,8 @@ sections:
 
         init-database:
             command: 'vendor/bin/console setup:init-db'
-
-        init-storages-per-store:
-            queue-setup:
-                command: 'vendor/bin/console queue:setup'
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
 
     demodata:
         import-eu-region-demodata:
