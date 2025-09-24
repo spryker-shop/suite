@@ -68,6 +68,52 @@ groups:
                         store: DE
                     glue.at.spryker.local:
                         store: AT
+            backoffice_eu:
+                application: backoffice
+                endpoints:
+                    backoffice.de.spryker.local:
+                        store: DE
+                        primal: true
+                        services:
+                            session:
+                                namespace: 3
+                    backoffice.at.spryker.local:
+                        store: AT
+                        services:
+                            session:
+                                namespace: 4
+            backend_gateway_eu:
+                application: backend-gateway
+                endpoints:
+                    backend-gateway.de.spryker.local:
+                        store: DE
+                        primal: true
+                    backend-gateway.at.spryker.local:
+                        store: AT
+                        primal: true
+            backend_api_eu:
+                application: zed
+                endpoints:
+                    backend-api.de.spryker.local:
+                        store: DE
+                        entry-point: BackendApi
+                    backend-api.at.spryker.local:
+                        store: AT
+                        entry-point: BackendApi
+            glue_storefront_eu:
+                application: glue-storefront
+                endpoints:
+                    glue-storefront.de.spryker.local:
+                        store: DE
+                    glue-storefront.at.spryker.local:
+                        store: AT
+            glue_backend_eu:
+                application: glue-backend
+                endpoints:
+                    glue-backend.de.spryker.local:
+                        store: DE
+                    glue-backend.at.spryker.local:
+                        store: AT
 
 services:
     database:

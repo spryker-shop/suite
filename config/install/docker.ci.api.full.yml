@@ -13,6 +13,9 @@ sections:
         router-cache-warmup-backend-gateway:
             command: 'vendor/bin/console router:cache:warm-up:backend-gateway'
 
+        navigation-cache-warmup:
+            command: 'vendor/bin/console navigation:build-cache'
+
         rest-request-validation-cache-warmup:
             command: 'vendor/bin/console rest-api:build-request-validation-cache'
 
