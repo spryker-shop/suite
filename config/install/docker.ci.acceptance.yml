@@ -96,6 +96,9 @@ sections:
             command: 'vendor/bin/console frontend:date-time-product-configurator:build'
 
     init-storages-per-region:
+        queue-pre-setup:
+            command: 'vendor/bin/console queue:setup'
+
         propel-copy-schema:
             command: 'vendor/bin/console propel:schema:copy'
 
