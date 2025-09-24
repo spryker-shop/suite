@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d024e4dd8d9addd4eca7c31aefba5f8b",
+    "content-hash": "0117d592e84f54d0724214e311ce572a",
     "packages": [
         {
             "name": "async-aws/core",
@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.356.21",
+            "version": "3.356.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "90007f76fab4312e10d9200595d706ec59f7ff70"
+                "reference": "d897c1345496af3440b8d8a5979d5f47cce6c433"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/90007f76fab4312e10d9200595d706ec59f7ff70",
-                "reference": "90007f76fab4312e10d9200595d706ec59f7ff70",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d897c1345496af3440b8d8a5979d5f47cce6c433",
+                "reference": "d897c1345496af3440b8d8a5979d5f47cce6c433",
                 "shasum": ""
             },
             "require": {
@@ -337,9 +337,9 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.356.21"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.356.24"
             },
-            "time": "2025-09-18T18:17:25+00:00"
+            "time": "2025-09-23T18:08:42+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -4781,24 +4781,26 @@
         },
         {
             "name": "paragonie/constant_time_encoding",
-            "version": "v3.0.0",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/constant_time_encoding.git",
-                "reference": "df1e7fde177501eee2037dd159cf04f5f301a512"
+                "reference": "5bd79e0e88e8757f23e757bcedd1e37fa818cf68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/df1e7fde177501eee2037dd159cf04f5f301a512",
-                "reference": "df1e7fde177501eee2037dd159cf04f5f301a512",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/5bd79e0e88e8757f23e757bcedd1e37fa818cf68",
+                "reference": "5bd79e0e88e8757f23e757bcedd1e37fa818cf68",
                 "shasum": ""
             },
             "require": {
                 "php": "^8"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9",
-                "vimeo/psalm": "^4|^5"
+                "infection/infection": "^0",
+                "nikic/php-fuzzer": "^0",
+                "phpunit/phpunit": "^9|^10|^11",
+                "vimeo/psalm": "^4|^5|^6"
             },
             "type": "library",
             "autoload": {
@@ -4844,7 +4846,7 @@
                 "issues": "https://github.com/paragonie/constant_time_encoding/issues",
                 "source": "https://github.com/paragonie/constant_time_encoding"
             },
-            "time": "2024-05-08T12:36:18+00:00"
+            "time": "2025-09-24T01:22:14+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -5658,16 +5660,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.27",
+            "version": "9.6.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "0a9aa4440b6a9528cf360071502628d717af3e0a"
+                "reference": "9ecfec57835a5581bc888ea7e13b51eb55ab9dd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0a9aa4440b6a9528cf360071502628d717af3e0a",
-                "reference": "0a9aa4440b6a9528cf360071502628d717af3e0a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9ecfec57835a5581bc888ea7e13b51eb55ab9dd3",
+                "reference": "9ecfec57835a5581bc888ea7e13b51eb55ab9dd3",
                 "shasum": ""
             },
             "require": {
@@ -5692,7 +5694,7 @@
                 "sebastian/comparator": "^4.0.9",
                 "sebastian/diff": "^4.0.6",
                 "sebastian/environment": "^5.1.5",
-                "sebastian/exporter": "^4.0.6",
+                "sebastian/exporter": "^4.0.8",
                 "sebastian/global-state": "^5.0.8",
                 "sebastian/object-enumerator": "^4.0.4",
                 "sebastian/resource-operations": "^3.0.4",
@@ -5741,7 +5743,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.27"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.29"
             },
             "funding": [
                 {
@@ -5765,7 +5767,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-09-14T06:18:03+00:00"
+            "time": "2025-09-24T06:29:11+00:00"
         },
         {
             "name": "predis/predis",
@@ -6312,16 +6314,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.12.10",
+            "version": "v0.12.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "6e80abe6f2257121f1eb9a4c55bf29d921025b22"
+                "reference": "cd23863404a40ccfaf733e3af4db2b459837f7e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/6e80abe6f2257121f1eb9a4c55bf29d921025b22",
-                "reference": "6e80abe6f2257121f1eb9a4c55bf29d921025b22",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/cd23863404a40ccfaf733e3af4db2b459837f7e7",
+                "reference": "cd23863404a40ccfaf733e3af4db2b459837f7e7",
                 "shasum": ""
             },
             "require": {
@@ -6384,9 +6386,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.12.10"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.12.12"
             },
-            "time": "2025-08-04T12:39:37+00:00"
+            "time": "2025-09-20T13:46:31+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -7222,16 +7224,16 @@
         },
         {
             "name": "sebastian/exporter",
-            "version": "4.0.6",
+            "version": "4.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "78c00df8f170e02473b682df15bfcdacc3d32d72"
+                "reference": "14c6ba52f95a36c3d27c835d65efc7123c446e8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/78c00df8f170e02473b682df15bfcdacc3d32d72",
-                "reference": "78c00df8f170e02473b682df15bfcdacc3d32d72",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/14c6ba52f95a36c3d27c835d65efc7123c446e8c",
+                "reference": "14c6ba52f95a36c3d27c835d65efc7123c446e8c",
                 "shasum": ""
             },
             "require": {
@@ -7287,15 +7289,27 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/exporter/issues",
-                "source": "https://github.com/sebastianbergmann/exporter/tree/4.0.6"
+                "source": "https://github.com/sebastianbergmann/exporter/tree/4.0.8"
             },
             "funding": [
                 {
                     "url": "https://github.com/sebastianbergmann",
                     "type": "github"
+                },
+                {
+                    "url": "https://liberapay.com/sebastianbergmann",
+                    "type": "liberapay"
+                },
+                {
+                    "url": "https://thanks.dev/u/gh/sebastianbergmann",
+                    "type": "thanks_dev"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/sebastian/exporter",
+                    "type": "tidelift"
                 }
             ],
-            "time": "2024-03-02T06:33:00+00:00"
+            "time": "2025-09-24T06:03:27+00:00"
         },
         {
             "name": "sebastian/global-state",
@@ -8028,16 +8042,16 @@
         },
         {
             "name": "spryker-feature/self-service-portal",
-            "version": "10.0.0",
+            "version": "11.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/self-service-portal.git",
-                "reference": "586ce6f8bce31f39397ce9137bd09f5189eaa1bf"
+                "reference": "aa9451a3d73f78b824e59ed0cf439482f895b9d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/self-service-portal/zipball/586ce6f8bce31f39397ce9137bd09f5189eaa1bf",
-                "reference": "586ce6f8bce31f39397ce9137bd09f5189eaa1bf",
+                "url": "https://api.github.com/repos/spryker-feature/self-service-portal/zipball/aa9451a3d73f78b824e59ed0cf439482f895b9d1",
+                "reference": "aa9451a3d73f78b824e59ed0cf439482f895b9d1",
                 "shasum": ""
             },
             "require": {
@@ -8047,7 +8061,8 @@
                 "spryker-shop/customer-page-extension": "^1.6.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-application-extension": "^1.2.0",
-                "spryker-shop/shop-ui": "^1.94.0",
+                "spryker-shop/shop-ui": "^1.97.1",
+                "spryker/availability-storage-extension": "^1.0.0",
                 "spryker/cart-extension": "^4.2.0",
                 "spryker/cms-block-storage-extension": "^1.0.0",
                 "spryker/comment": "^1.6.0",
@@ -8063,7 +8078,8 @@
                 "spryker/glossary-storage": "^1.0.0",
                 "spryker/glue-application": "^1.47.0",
                 "spryker/glue-application-extension": "^1.0.0",
-                "spryker/gui": "^3.66.0",
+                "spryker/glue-json-api-convention-extension": "^1.0.0",
+                "spryker/gui": "^3.67.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^4.0.0",
                 "spryker/log": "^3.16.0",
@@ -8079,9 +8095,11 @@
                 "spryker/product-extension": "^1.3.0",
                 "spryker/product-image": "^3.0.0",
                 "spryker/product-list": "^1.8.0",
+                "spryker/product-list-gui-extension": "^1.2.0",
                 "spryker/product-list-storage": "^1.17.0",
                 "spryker/product-management-extension": "^1.2.0",
                 "spryker/product-offer": "^1.0.0",
+                "spryker/product-offer-availability-storage": "^1.2.0",
                 "spryker/product-offer-gui-extension": "^1.0.0",
                 "spryker/product-offer-sales": "^1.0.0",
                 "spryker/product-offer-shipment-type": "^1.0.0",
@@ -8117,6 +8135,7 @@
                 "spryker/twig": "^3.18.0",
                 "spryker/twig-extension": "^1.0.0",
                 "spryker/user": "^3.27.0",
+                "spryker/util-csv": "^1.1.0",
                 "spryker/util-date-time": "^1.1.0",
                 "spryker/util-encoding": "^2.1.1",
                 "spryker/util-text": "^1.0.0",
@@ -8173,9 +8192,9 @@
             ],
             "description": "SelfServicePortal module",
             "support": {
-                "source": "https://github.com/spryker-feature/self-service-portal/tree/10.0.0"
+                "source": "https://github.com/spryker-feature/self-service-portal/tree/11.0.0"
             },
-            "time": "2025-09-16T12:49:44+00:00"
+            "time": "2025-09-22T15:28:23+00:00"
         },
         {
             "name": "spryker-sdk/async-api",
@@ -36921,16 +36940,16 @@
         },
         {
             "name": "spryker/gui",
-            "version": "3.66.0",
+            "version": "3.67.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "43c162bd60e069d5a2a051cefa88be102276c0c2"
+                "reference": "c312465b69bf2b69bb40625870a6e958c717320c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/43c162bd60e069d5a2a051cefa88be102276c0c2",
-                "reference": "43c162bd60e069d5a2a051cefa88be102276c0c2",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/c312465b69bf2b69bb40625870a6e958c717320c",
+                "reference": "c312465b69bf2b69bb40625870a6e958c717320c",
                 "shasum": ""
             },
             "require": {
@@ -36980,9 +36999,9 @@
             ],
             "description": "Gui module",
             "support": {
-                "source": "https://github.com/spryker/gui/tree/3.66.0"
+                "source": "https://github.com/spryker/gui/tree/3.67.0"
             },
-            "time": "2025-09-03T09:41:45+00:00"
+            "time": "2025-09-22T15:28:23+00:00"
         },
         {
             "name": "spryker/gui-extension",
@@ -46274,22 +46293,22 @@
         },
         {
             "name": "spryker/oauth-permission",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth-permission.git",
-                "reference": "e2d8da3fa14916fd0b4537a1606778316334c9be"
+                "reference": "86841a1e4bd8c9cbc331f182128dd8a5e560ecc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-permission/zipball/e2d8da3fa14916fd0b4537a1606778316334c9be",
-                "reference": "e2d8da3fa14916fd0b4537a1606778316334c9be",
+                "url": "https://api.github.com/repos/spryker/oauth-permission/zipball/86841a1e4bd8c9cbc331f182128dd8a5e560ecc2",
+                "reference": "86841a1e4bd8c9cbc331f182128dd8a5e560ecc2",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
                 "spryker/company-user": "^2.9.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/kernel": "^3.76.0",
                 "spryker/oauth": "^1.3.0 || ^2.0.0",
                 "spryker/oauth-company-user-extension": "^1.0.0",
                 "spryker/oauth-customer-connector-extension": "^1.0.0",
@@ -46297,7 +46316,9 @@
                 "spryker/oauth-revoke-extension": "^1.0.0",
                 "spryker/permission": "^1.5.0",
                 "spryker/permission-extension": "^1.0.0",
+                "spryker/storage-redis": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0",
                 "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
@@ -46327,9 +46348,9 @@
             ],
             "description": "OauthPermission module",
             "support": {
-                "source": "https://github.com/spryker/oauth-permission/tree/1.5.0"
+                "source": "https://github.com/spryker/oauth-permission/tree/1.6.0"
             },
-            "time": "2024-11-04T14:07:47+00:00"
+            "time": "2025-09-23T15:07:26+00:00"
         },
         {
             "name": "spryker/oauth-revoke",
@@ -82676,22 +82697,22 @@
         },
         {
             "name": "codeception/lib-xml",
-            "version": "1.0.3",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-xml.git",
-                "reference": "ba49213e60807e3612513f404a5c93aec63f4c72"
+                "reference": "da6559647c1e0f3839335d401e383ae3e61aafaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-xml/zipball/ba49213e60807e3612513f404a5c93aec63f4c72",
-                "reference": "ba49213e60807e3612513f404a5c93aec63f4c72",
+                "url": "https://api.github.com/repos/Codeception/lib-xml/zipball/da6559647c1e0f3839335d401e383ae3e61aafaa",
+                "reference": "da6559647c1e0f3839335d401e383ae3e61aafaa",
                 "shasum": ""
             },
             "require": {
-                "codeception/lib-web": "^1.0.6",
+                "codeception/lib-web": "^1.0.6 || ^2",
                 "ext-dom": "*",
-                "php": "^8.0",
+                "php": "^8.2",
                 "symfony/css-selector": ">=4.4.24 <8.0"
             },
             "conflict": {
@@ -82719,9 +82740,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/lib-xml/issues",
-                "source": "https://github.com/Codeception/lib-xml/tree/1.0.3"
+                "source": "https://github.com/Codeception/lib-xml/tree/1.1.0"
             },
-            "time": "2024-02-06T21:00:41+00:00"
+            "time": "2025-09-21T18:33:44+00:00"
         },
         {
             "name": "codeception/module-asserts",
@@ -83530,12 +83551,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JetBrains/phpstorm-stubs.git",
-                "reference": "ab311234c3200fb3bb5769485b68e9845f33d6f0"
+                "reference": "d1ee5e570343bd4276a3d5959e6e1c2530b006d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/ab311234c3200fb3bb5769485b68e9845f33d6f0",
-                "reference": "ab311234c3200fb3bb5769485b68e9845f33d6f0",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/d1ee5e570343bd4276a3d5959e6e1c2530b006d0",
+                "reference": "d1ee5e570343bd4276a3d5959e6e1c2530b006d0",
                 "shasum": ""
             },
             "require-dev": {
@@ -83570,7 +83591,7 @@
             "support": {
                 "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
             },
-            "time": "2025-09-18T14:46:24+00:00"
+            "time": "2025-09-20T07:44:45+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -85392,16 +85413,16 @@
         },
         {
             "name": "spryker/development",
-            "version": "3.45.0",
+            "version": "3.46.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/development.git",
-                "reference": "494ff9ecefe71a4bb2db38d8167692ded4c436d3"
+                "reference": "4799685ca27679fbcae0742ffeaa67b2b18ae240"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/development/zipball/494ff9ecefe71a4bb2db38d8167692ded4c436d3",
-                "reference": "494ff9ecefe71a4bb2db38d8167692ded4c436d3",
+                "url": "https://api.github.com/repos/spryker/development/zipball/4799685ca27679fbcae0742ffeaa67b2b18ae240",
+                "reference": "4799685ca27679fbcae0742ffeaa67b2b18ae240",
                 "shasum": ""
             },
             "require": {
@@ -85448,9 +85469,9 @@
             ],
             "description": "Development module",
             "support": {
-                "source": "https://github.com/spryker/development/tree/3.45.0"
+                "source": "https://github.com/spryker/development/tree/3.46.0"
             },
-            "time": "2025-09-08T10:10:33+00:00"
+            "time": "2025-09-22T14:19:11+00:00"
         },
         {
             "name": "spryker/docker-chromedriver",
@@ -85496,12 +85517,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/robotframework-suite-tests.git",
-                "reference": "3dbb6c7b41c4a3299f791f440fcfd6300becc68c"
+                "reference": "d710565fa7697cc7ce79accd39e500e96787d2eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/3dbb6c7b41c4a3299f791f440fcfd6300becc68c",
-                "reference": "3dbb6c7b41c4a3299f791f440fcfd6300becc68c",
+                "url": "https://api.github.com/repos/spryker/robotframework-suite-tests/zipball/d710565fa7697cc7ce79accd39e500e96787d2eb",
+                "reference": "d710565fa7697cc7ce79accd39e500e96787d2eb",
                 "shasum": ""
             },
             "default-branch": true,
@@ -85515,7 +85536,7 @@
                 "issues": "https://github.com/spryker/robotframework-suite-tests/issues",
                 "source": "https://github.com/spryker/robotframework-suite-tests/tree/master"
             },
-            "time": "2025-09-17T10:49:01+00:00"
+            "time": "2025-09-19T12:01:05+00:00"
         },
         {
             "name": "spryker/silex",

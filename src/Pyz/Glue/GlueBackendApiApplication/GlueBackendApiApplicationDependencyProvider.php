@@ -54,6 +54,7 @@ use Spryker\Glue\WarehouseOauthBackendApi\Plugin\GlueBackendApiApplication\Wareh
 use Spryker\Glue\WarehouseUsersBackendApi\Plugin\GlueBackendApiApplication\WarehouseUserAssignmentsBackendResourcePlugin;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
+use SprykerFeature\Glue\SelfServicePortal\Plugin\GlueBackendApiApplication\SspAssetsBackendResourcePlugin;
 
 class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiApplicationDependencyProvider
 {
@@ -150,6 +151,7 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
             new MultiFactorAuthTypeActivateBackendResourcePlugin(),
             new MultiFactorAuthTypeDeactivateBackendResourcePlugin(),
             new MultiFactorAuthTypeVerifyBackendResourcePlugin(),
+            new SspAssetsBackendResourcePlugin(),
         ];
 
         if (class_exists(DynamicFixturesBackendResourcePlugin::class)) {
