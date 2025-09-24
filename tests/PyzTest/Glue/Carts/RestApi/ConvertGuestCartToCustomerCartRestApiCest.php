@@ -24,6 +24,7 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
  * @group ConvertGuestCartToCustomerCartRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
+ * @group CheckoutMinimumWorkflow
  */
 class ConvertGuestCartToCustomerCartRestApiCest
 {

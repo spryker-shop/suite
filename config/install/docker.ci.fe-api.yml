@@ -103,20 +103,6 @@ sections:
         date-time-product-configurator:
             command: 'vendor/bin/console frontend:date-time-product-configurator:build'
 
-    scheduler-setup:
-        jenkins-setup:
-            command: 'vendor/bin/console scheduler:setup'
-
-    scheduler-suspend:
-        excluded: true
-        jenkins-suspend:
-            command: 'vendor/bin/console scheduler:suspend'
-
-    scheduler-clean:
-        excluded: true
-        jenkins-clean:
-            command: 'vendor/bin/console scheduler:clean'
-
     init-storages-per-store:
         queue-setup:
             command: 'vendor/bin/console queue:setup'
