@@ -154,8 +154,8 @@ jobs:
                 if: always()
 
 
-    php-83-frontend-and-assets-alpine:
-        name: "PHP 8.3 / Frontend & Assets & Glue / Alpine"
+    php-83-frontend-assets-glue-mariadb-alpine:
+        name: "PHP 8.3 / Frontend & Assets & Glue Checkout / MariaDB / Alpine"
         runs-on: ubuntu-latest
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
@@ -178,25 +178,46 @@ jobs:
                     sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
                     sudo chmod +x /usr/local/bin/docker-compose
 
-            -   name: Run docker
+            -   name: Docker bootstrap
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.fe-assets-api.mariadb.yml
+
+            -   name: Run docker up testing
+                run: |
                     docker/sdk up -t
+
+            -   name: Run docker build development
+                run: |
+                    docker/sdk cli vendor/bin/console transfer:databuilder:generate
+                    docker/sdk cli vendor/bin/console rest-api:generate:documentation
+
+            -   name: Composer dump-autoload
+                run: |
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+
+            -   name: Demo-data
+                run: |
+                    docker/sdk cli vendor/bin/console queue:setup
+                    docker/sdk cli vendor/bin/console setup:init-db
+                    docker/sdk cli vendor/bin/console data:import --config=data/import/common/minimal.yml
+                    docker/sdk cli vendor/bin/console search:setup:sources
+                    docker/sdk cli vendor/bin/glue glue-api:controller:cache:warm-up
+                    docker/sdk cli vendor/bin/glue api:generate:documentation
+
+            -   name: Publish & Sync
+                run: |
+                    docker/sdk testing console queue:worker:start --stop-when-empty
 
             -   name: Fixtures
                 run: |
                     docker/sdk testing codecept fixtures
 
-            -   name: Queue worker start
-                run: |
-                    docker/sdk testing console queue:worker:start --stop-when-empty
-
-            -   name: Glue acceptance
+            -   name: Glue Acceptance CheckoutMinimumWorkflow
                 run: |
                     docker/sdk testing codecept run -c codeception.api.yml -g CheckoutMinimumWorkflow
 
-            -   name: Frontend and assets
+            -   name: Frontend Assets
                 run: |
                     SPRYKER_BUILD_HASH=myhash docker/sdk export images
                     docker run -i --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_ci_frontend:1.0-frontend nginx -t

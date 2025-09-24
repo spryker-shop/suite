@@ -1,13 +1,11 @@
 env:
     NEW_RELIC_ENABLED: 0
+    SPRYKER_LOG_STDOUT: /dev/null
 
 sections:
     build:
         generate-transfers:
             command: 'vendor/bin/console transfer:generate'
-
-        router-cache-warmup-yves:
-            command: 'vendor/bin/yves router:cache:warm-up'
 
         router-cache-warmup-backoffice:
             command: 'vendor/bin/console router:cache:warm-up:backoffice'
@@ -17,15 +15,6 @@ sections:
 
         router-cache-warmup-backend-gateway:
             command: 'vendor/bin/console router:cache:warm-up:backend-gateway'
-
-        router-cache-warmup-merchant-portal:
-            command: 'vendor/bin/console router:cache:warm-up:merchant-portal'
-
-        twig-cache-warmup:
-            command: 'vendor/bin/console twig:cache:warmer'
-
-        navigation-cache-warmup:
-            command: 'vendor/bin/console navigation:build-cache'
 
         rest-request-validation-cache-warmup:
             command: 'vendor/bin/console rest-api:build-request-validation-cache'
@@ -51,40 +40,23 @@ sections:
         generate-scope-collection-file:
             command: 'vendor/bin/console oauth:scope-collection-file:generate'
 
-    build-static:
-        project-install-dependencies:
-            command: 'console frontend:project:install-dependencies | tail -100 && echo "Output trimmed, only last 100 lines shown."'
+    build-development:
+        generate-transfers:
+            command: 'vendor/bin/console transfer:generate'
 
-    build-static-production:
-        excluded: true
-        yves-build-frontend:
-            command: 'vendor/bin/console frontend:yves:build -e production'
+        generate-transfer-databuilders:
+            command: 'vendor/bin/console transfer:databuilder:generate'
 
-        zed-build-frontend:
-            command: 'vendor/bin/console frontend:zed:build -e production'
-
-        merchant-portal-build-frontend:
-            command: 'vendor/bin/console frontend:mp:build -e production'
-            timeout: 3200
-
-        date-time-product-configurator:
-            command: 'vendor/bin/console frontend:date-time-product-configurator:build'
-
-    build-static-development:
-        yves-build-frontend:
-            command: 'vendor/bin/console frontend:yves:build'
-
-        zed-build-frontend:
-            command: 'vendor/bin/console frontend:zed:build'
-
-        merchant-portal-build-frontend:
-            command: 'vendor/bin/console frontend:mp:build'
-            timeout: 1600
-
-        date-time-product-configurator:
-            command: 'vendor/bin/console frontend:date-time-product-configurator:build'
+        rest-api-generate-documentation:
+            command: 'vendor/bin/console rest-api:generate:documentation'
 
     init-storages-per-region:
+        propel-copy-schema:
+            command: 'vendor/bin/console propel:schema:copy'
+
+        propel-postgres-compatibility:
+            command: 'vendor/bin/console propel:pg-sql-compat'
+
         propel-migration-delete:
             command: 'vendor/bin/console propel:migration:delete'
 
@@ -96,3 +68,26 @@ sections:
 
         propel-migration-cleanup:
             command: 'vendor/bin/console propel:migration:delete'
+
+    demodata:
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
+
+        init-database:
+            command: 'vendor/bin/console setup:init-db'
+
+        import-demodata:
+            command: 'vendor/bin/console data:import --config=data/import/common/minimal.yml'
+
+        setup-search-create-sources:
+            command: 'vendor/bin/console search:setup:sources'
+
+        publish-and-sync:
+            command: 'vendor/bin/console queue:worker:start --stop-when-empty'
+            timeout: 2000
+
+        controller-cache-warmup:
+            command: 'vendor/bin/glue glue-api:controller:cache:warm-up'
+
+        api-generate-documentation:
+            command: 'vendor/bin/glue api:generate:documentation'

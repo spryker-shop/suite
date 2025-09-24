@@ -78,11 +78,15 @@ groups:
                         services:
                             session:
                                 namespace: 2
+                http:
+                    max-request-body-size: 100M
             glue_eu:
                 application: glue
                 endpoints:
                     glue.eu.spryker.local:
                         region: EU
+                http:
+                    max-request-body-size: 100M
             backoffice_eu:
                 application: backoffice
                 endpoints:
@@ -91,28 +95,38 @@ groups:
                         services:
                             session:
                                 namespace: 3
+                http:
+                    max-request-body-size: 100M
             backend_gateway_eu:
                 application: backend-gateway
                 endpoints:
                     backend-gateway.eu.spryker.local:
                         region: EU
                         primal: true
+                http:
+                    max-request-body-size: 100M
             backend_api_eu:
                 application: zed
                 endpoints:
                     backend-api.eu.spryker.local:
                         region: EU
                         entry-point: BackendApi
+                http:
+                    max-request-body-size: 100M
             glue_storefront_eu:
                 application: glue-storefront
                 endpoints:
                     glue-storefront.eu.spryker.local:
                         region: EU
+                http:
+                    max-request-body-size: 100M
             glue_backend_eu:
                 application: glue-backend
                 endpoints:
                     glue-backend.eu.spryker.local:
                         region: EU
+                http:
+                    max-request-body-size: 100M
 
 services:
     database:
