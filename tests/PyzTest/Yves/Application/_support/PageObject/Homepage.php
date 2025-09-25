@@ -19,5 +19,5 @@ class Homepage
     /**
      * @var string
      */
-    public const URL_EN = '/en';
+    public const URL_EN = '/en/';
 }

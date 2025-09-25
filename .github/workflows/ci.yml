@@ -250,11 +250,6 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
-
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
@@ -263,6 +258,26 @@ jobs:
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk testing codecept run -c codeception.acceptance.yml
+
+            -   name: Save PHP logs
+                if: failure()
+                run: |
+                    mkdir -p logs
+                    docker logs spryker_ci_backoffice_eu_1 > logs/backoffice_app.log 2>&1
+                    docker logs spryker_ci_glue_eu_1 > logs/glue_app.log 2>&1
+                    docker logs spryker_ci_yves_eu_1 > logs/yves_app.log 2>&1
+                    docker logs spryker_ci_merchant_portal_eu_1 > logs/merchant_portal_app.log 2>&1
+
+            -   name: Upload Failed Screenshots and HTML
+                if: always()
+                uses: actions/upload-artifact@v4
+                with:
+                    name: codeception-failed-artifacts
+                    retention-days: 5 # save for 5 days
+                    path: |
+                        logs/*.log
+                        tests/**/_output/**/*
+                        vendor/spryker/spryker/Bundles/**/tests/_output/*
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
@@ -284,11 +299,6 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
-
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
 
             -   name: Run docker
                 run: |
@@ -318,11 +328,6 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
-
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
 
             -   name: Run docker
                 run: |
@@ -360,10 +365,6 @@ jobs:
                     sudo apt-get install -y python3-pip
                     pip3 install --upgrade pip
                     pip3 install awscli
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
             -   name: Install robotframework-suite-tests folder
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
