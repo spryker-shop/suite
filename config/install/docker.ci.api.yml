@@ -69,13 +69,20 @@ sections:
         propel-migration-cleanup:
             command: 'vendor/bin/console propel:migration:delete'
 
-    demodata:
         queue-setup:
             command: 'vendor/bin/console queue:setup'
 
         init-database:
             command: 'vendor/bin/console setup:init-db'
 
+    setup-minimal-data:
+        import-demodata:
+            command: 'vendor/bin/console data:import --config=data/import/local/store_EU.yml'
+
+        setup-search-create-sources:
+            command: 'vendor/bin/console search:setup:sources'
+
+    demodata:
         import-demodata:
             command: 'vendor/bin/console data:import --config=data/import/common/minimal.yml'
 
