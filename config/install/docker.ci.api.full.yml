@@ -50,6 +50,12 @@ sections:
         rest-api-generate-documentation:
             command: 'vendor/bin/console rest-api:generate:documentation'
 
+    init-storages-per-store:
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
+        setup-search-create-sources:
+            command: 'vendor/bin/console search:setup:sources'
+
     init-storages-per-region:
         queue-setup:
             command: 'vendor/bin/console queue:setup'
@@ -63,6 +69,9 @@ sections:
         propel-migration-delete:
             command: 'vendor/bin/console propel:migration:delete'
 
+        propel-tables-drop:
+            command: 'vendor/bin/console propel:tables:drop'
+
         propel-diff:
             command: 'vendor/bin/console propel:diff'
 
@@ -75,19 +84,15 @@ sections:
         init-database:
             command: 'vendor/bin/console setup:init-db'
 
-    setup-minimal-data:
-        import-demodata:
-            command: 'vendor/bin/console data:import --config=data/import/local/store_EU.yml'
+    demodata:
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
 
-        clean-search:
-            command: 'vendor/bin/console elasticsearch:index:delete -vvv --no-ansi'
+        import-eu-region-demodata:
+            command: 'vendor/bin/console data:import --config=data/import/local/full_EU.yml'
 
         setup-search-create-sources:
             command: 'vendor/bin/console search:setup:sources'
-
-    demodata:
-        import-eu-region-demodata:
-            command: 'vendor/bin/console data:import --config=data/import/local/full_EU.yml'
 
         apply-scheduled-prices:
             command: 'vendor/bin/console price-product-schedule:apply'
