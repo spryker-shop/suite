@@ -90,10 +90,11 @@ jobs:
                     sudo sysctl -w fs.file-max=262144
                     sudo sysctl -w vm.max_map_count=262144
 
-            -   name: Install Composer dependencies
-                run: |
-                    composer config github-oauth.github.com ${{ env.GITHUB_TOKEN }}
-                    composer install --optimize-autoloader --no-interaction --prefer-install=auto
+            -   uses: ramsey/composer-install@v3
+                env:
+                    COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ env.GITHUB_TOKEN }}"}}'
+                with:
+                    composer-options: "--optimize-autoloader --no-interaction --prefer-install=auto"
 
             -   name: Run Spryker install
                 run: |
@@ -216,11 +217,12 @@ jobs:
                     sudo sysctl -w fs.file-max=262144
                     sudo sysctl -w vm.max_map_count=262144
 
-            -   name: Install Composer dependencies (prefer-lowest)
-                run: |
-                    composer config github-oauth.github.com ${{ env.GITHUB_TOKEN }}
-                    composer update --prefer-lowest --optimize-autoloader --no-interaction --prefer-install=auto
-                    composer prefer-mid
+            -   uses: ramsey/composer-install@v3
+                env:
+                    COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ env.GITHUB_TOKEN }}"}}'
+                with:
+                    composer-options: "--optimize-autoloader --no-interaction --prefer-install=auto"
+                    dependency-versions: "lowest"
 
             -   name: Run Spryker install
                 run: |
@@ -298,10 +300,11 @@ jobs:
                     tools: composer:v2
                     coverage: none
 
-            -   name: Install dependencies
-                run: |
-                    composer config github-oauth.github.com ${{ env.GITHUB_TOKEN }}
-                    composer install --optimize-autoloader --no-interaction --prefer-install=auto
+            -   uses: ramsey/composer-install@v3
+                env:
+                    COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ env.GITHUB_TOKEN }}"}}'
+                with:
+                    composer-options: "--optimize-autoloader --no-interaction --prefer-install=auto"
 
             -   name: Setup Spryker
                 run: |
@@ -406,11 +409,6 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
-
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
@@ -424,6 +422,26 @@ jobs:
 
             -   name: Run Presentation Tests for changed modules
                 run: docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --group=Presentation
+
+            -   name: Save PHP logs
+                if: failure()
+                run: |
+                    mkdir -p logs
+                    docker logs spryker_ci_backoffice_eu_1 > logs/backoffice_app.log 2>&1
+                    docker logs spryker_ci_glue_eu_1 > logs/glue_app.log 2>&1
+                    docker logs spryker_ci_yves_eu_1 > logs/yves_app.log 2>&1
+                    docker logs spryker_ci_merchant_portal_eu_1 > logs/merchant_portal_app.log 2>&1
+
+            -   name: Upload Failed Screenshots and HTML
+                if: always()
+                uses: actions/upload-artifact@v4
+                with:
+                    name: codeception-failed-artifacts
+                    retention-days: 5 # save for 5 days
+                    path: |
+                        logs/*.log
+                        tests/**/_output/**/*
+                        vendor/spryker/spryker/Bundles/**/tests/_output/*
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
@@ -446,11 +464,6 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
-
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
 
             -   name: Run docker
                 run: |
@@ -505,20 +518,15 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: '8.2'
-                    extensions: grpc, protobuf, opentelemetry
                     tools: composer:v2
                     coverage: none
 
-            -   name: Install Composer dependencies (prefer-lowest)
-                run: |
-                    composer config github-oauth.github.com ${{ env.GITHUB_TOKEN }}
-                    composer update --prefer-lowest --optimize-autoloader --no-interaction --prefer-install=auto
-                    composer require --dev dereuromark/composer-prefer-lowest:dev-master --with-all-dependencies
-
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
+            -   uses: ramsey/composer-install@v3
+                env:
+                    COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ env.GITHUB_TOKEN }}"}}'
+                with:
+                    composer-options: "--ignore-platform-reqs --optimize-autoloader --no-interaction --prefer-install=auto"
+                    dependency-versions: "lowest"
 
             -   name: Run docker
                 run: |
@@ -526,12 +534,33 @@ jobs:
                     docker/sdk boot deploy.ci.acceptance.dynamic-store-off.prefer-lowest.php82.es6.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
+
             -   name: Run tests
                 run: |
                     docker/sdk testing codecept run -c codeception.acceptance.yml
                     docker/sdk testing codecept fixtures
                     docker/sdk testing console queue:worker:start --stop-when-empty
                     docker/sdk testing codecept run --no-ansi -c codeception.api.yml
+
+            -   name: Save PHP logs
+                if: failure()
+                run: |
+                    mkdir -p logs
+                    docker logs spryker_ci_backoffice_eu_1 > logs/backoffice_app.log 2>&1
+                    docker logs spryker_ci_glue_eu_1 > logs/glue_app.log 2>&1
+                    docker logs spryker_ci_yves_eu_1 > logs/yves_app.log 2>&1
+                    docker logs spryker_ci_merchant_portal_eu_1 > logs/merchant_portal_app.log 2>&1
+
+            -   name: Upload Failed Screenshots and HTML
+                if: always()
+                uses: actions/upload-artifact@v4
+                with:
+                    name: codeception-failed-artifacts
+                    retention-days: 5 # save for 5 days
+                    path: |
+                        logs/*.log
+                        tests/**/_output/**/*
+                        vendor/spryker/spryker/Bundles/**/tests/_output/*
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
@@ -550,11 +579,6 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
-
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
 
             -   name: Install robotframework-suite-tests folder
                 run: |
@@ -606,11 +630,6 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
-
             -   name: Install robotframework-suite-tests folder
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
@@ -660,11 +679,6 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
-
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
 
             -   name: Install robotframework-suite-tests folder
                 run: |
@@ -784,11 +798,6 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
-
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
@@ -822,10 +831,6 @@ jobs:
                     sudo apt-get install -y python3-pip
                     pip3 install --upgrade pip
                     pip3 install awscli
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
             -   name: Install robotframework-suite-tests folder
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
@@ -877,10 +882,6 @@ jobs:
                     sudo apt-get install -y python3-pip
                     pip3 install --upgrade pip
                     pip3 install awscli
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
             -   name: Install robotframework-suite-tests folder
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
@@ -936,10 +937,6 @@ jobs:
                         sudo apt-get install -y python3-pip
                         pip3 install --upgrade pip
                         pip3 install awscli
-                -   name: Install docker-compose
-                    run: |
-                        sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                        sudo chmod +x /usr/local/bin/docker-compose
                 -   name: Install robotframework-suite-tests folder
                     run: |
                         cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
@@ -998,10 +995,6 @@ jobs:
                         sudo apt-get install -y python3-pip
                         pip3 install --upgrade pip
                         pip3 install awscli
-                -   name: Install docker-compose
-                    run: |
-                        sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                        sudo chmod +x /usr/local/bin/docker-compose
                 -   name: Install robotframework-suite-tests folder
                     run: |
                         cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
@@ -1059,10 +1052,6 @@ jobs:
                         sudo apt-get install -y python3-pip
                         pip3 install --upgrade pip
                         pip3 install awscli
-                -   name: Install docker-compose
-                    run: |
-                        sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                        sudo chmod +x /usr/local/bin/docker-compose
                 -   name: Install robotframework-suite-tests folder
                     run: |
                         cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
@@ -1212,10 +1201,6 @@ jobs:
                     cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
                     cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
 
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
             -   name: Install Project
                 continue-on-error: false
                 run: |
