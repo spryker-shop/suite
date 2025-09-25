@@ -78,6 +78,10 @@ sections:
     setup-minimal-data:
         import-demodata:
             command: 'vendor/bin/console data:import --config=data/import/local/store_EU.yml'
+
+        clean-search:
+            command: 'vendor/bin/console elasticsearch:index:delete -vvv --no-ansi'
+
         setup-search-create-sources:
             command: 'vendor/bin/console search:setup:sources'
 
