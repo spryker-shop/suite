@@ -78,7 +78,7 @@
         "symfony/event-dispatcher": "^5.1.0 || ^6.4.0",
         "symfony/filesystem": "^5.2.1 || 6.4.0",
         "symfony/finder": "^5.3.0 || ^6.4.0",
-        "symfony/form": "^5.2.0 || ^6.4.0",
+        "symfony/form": "^5.4.19 || ^6.4.0",
         "symfony/http-client": "^5.0.9 || ^6.4.0",
         "symfony/http-foundation": "^5.2.0 || ^6.4.3",
         "symfony/http-kernel": "^5.2.1 || ^6.4.0",
@@ -274,9 +274,6 @@
             "php -d memory_limit=-1 vendor/bin/phpstan"
         ],
         "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate",
-        "prefer-mid": [
-            "COMPOSER_MEMORY_LIMIT=-1 composer require twig/twig:\"^2.9.0\""
-        ],
         "rm-githooks": [
             "echo 'Removing GitHooks in the project' && rm -f .git/hooks/pre-commit",
             "echo 'Removing GitHooks in spryker/spryker' && rm -f vendor/spryker/spryker/.git/hooks/pre-commit",
