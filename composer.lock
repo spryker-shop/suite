@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fabe86273172f30f267d4f9bc8806f69",
+    "content-hash": "26a9dd03c49211b6ee3a632b5b6e6249",
     "packages": [
         {
             "name": "async-aws/core",
@@ -7255,11 +7255,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/cc-35709-yves-merchant-registration-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f0196f21b04505f6f743089af89d1be118fc4d97"
+                "reference": "ee45cca37fbe7d9e7bcec83bf185b663f27e6348"
             },
             "require": {
                 "php": ">=8.1"
@@ -7725,6 +7725,7 @@
                 "spryker/merchant-profile-gui": "*",
                 "spryker/merchant-profile-merchant-portal-gui": "*",
                 "spryker/merchant-profile-merchant-portal-gui-extension": "*",
+                "spryker/merchant-registration-request": "*",
                 "spryker/merchant-relation-request": "*",
                 "spryker/merchant-relation-request-extension": "*",
                 "spryker/merchant-relation-request-gui": "*",
@@ -8394,7 +8395,6 @@
                 "phpstan/phpdoc-parser": "^1.33",
                 "spryker/code-sniffer": "dev-master"
             },
-            "default-branch": true,
             "bin": [
                 "Bundles/Console/bin/console",
                 "Bundles/Console/bin/yves",
@@ -8412,15 +8412,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2025-09-25T19:20:55+00:00"
+            "time": "2025-09-25T20:40:16+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/cc-35709-yves-merchant-registration-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "b5e4d86f3abcb374c1a9a301c0e8af61ada79b62"
+                "reference": "e7609e39c42f37a1e4c1197f5a07b155d254541f"
             },
             "require": {
                 "php": ">=8.1"
@@ -8493,6 +8493,7 @@
                 "spryker-shop/merchant-product-offer-widget-extension": "*",
                 "spryker-shop/merchant-product-widget": "*",
                 "spryker-shop/merchant-profile-widget": "*",
+                "spryker-shop/merchant-registration-request-page": "*",
                 "spryker-shop/merchant-relation-request-page": "*",
                 "spryker-shop/merchant-relation-request-widget": "*",
                 "spryker-shop/merchant-relationship-page": "*",
@@ -8616,13 +8617,12 @@
                 "spryker/code-sniffer": "dev-master",
                 "spryker/spryker": "dev-master"
             },
-            "default-branch": true,
             "type": "library",
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2025-09-24T15:31:20+00:00"
+            "time": "2025-09-25T20:41:21+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
