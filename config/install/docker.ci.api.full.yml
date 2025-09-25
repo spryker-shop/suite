@@ -85,9 +85,6 @@ sections:
         apply-scheduled-prices:
             command: 'vendor/bin/console price-product-schedule:apply'
 
-        update-product-labels:
-            command: 'vendor/bin/console product-label:relations:update'
-
         publish-and-sync:
             command: 'vendor/bin/console queue:worker:start --stop-when-empty'
             timeout: 2000
