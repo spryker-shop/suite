@@ -198,6 +198,7 @@ class GuestCartsRestApiCest
 
     /**
      * @skip to be fixed in CC-36430
+     *
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
