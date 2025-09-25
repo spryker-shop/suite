@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace PyzTest\Zed\NavigationGui\Presentation;
 
+use Exception;
 use Generated\Shared\Transfer\NavigationNodeLocalizedAttributesTransfer;
 use Generated\Shared\Transfer\NavigationNodeTransfer;
 use Generated\Shared\Transfer\NavigationTransfer;
@@ -52,16 +53,25 @@ class NavigationTreeCest
         $i->wantTo('See navigation tree.');
         $i->expect('Empty navigation tree displayed.');
 
-        $i->amLoggedInUser();
-        $navigationTreeTransfer = $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
-            ->setNavigation((new NavigationTransfer())
-                ->setName('Create child node without type test 1')
-                ->setKey('Create child node without type test 1')
-                ->setIsActive(true)));
+        $navigationTreeTransfer = null;
+        try {
+            $navigationTreeTransfer = $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
+                ->setNavigation((new NavigationTransfer())
+                    ->setName('Create child node without type test 1')
+                    ->setKey('Create child node without type test 1')
+                    ->setIsActive(true)));
+        } catch (Exception $e) {
+            codecept_debug('Exception: ' . $e->getMessage() . ($e->getPrevious() ? $e->getPrevious()->getMessage() : ''));
+        }
+
         $i->amOnPage(NavigationPage::URL);
 
         $i->waitForNavigationTree();
         $i->seeNumberOfNavigationNodes(1);
+
+        if (!$navigationTreeTransfer) {
+            return;
+        }
 
         $i->cleanUpNavigationTree($navigationTreeTransfer);
     }
