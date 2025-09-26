@@ -430,6 +430,7 @@ jobs:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-api-ci')
             || github.ref == 'refs/heads/master'
         runs-on: ubuntu-latest
         env:
@@ -448,10 +449,24 @@ jobs:
                     docker/sdk boot deploy.ci.acceptance.mariadb.yml
                     docker/sdk up -t
                     docker/sdk testing composer dump-autoload -o -a --apcu
-                    docker/sdk testing codecept run -c codeception.acceptance.yml
                     docker/sdk testing codecept fixtures
                     docker/sdk testing console queue:worker:start --stop-when-empty
-                    docker/sdk testing codecept run --no-ansi -c codeception.api.yml
+
+            -   name: Run Acceptance Tests
+                if: >
+                    contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
+                    || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+                    || github.ref == 'refs/heads/master'
+                run: |
+                    docker/sdk testing codecept run -c codeception.acceptance.yml
+
+            -   name: Run API Tests
+                if: >
+                    contains(github.event.pull_request.labels.*.name, 'run-api-ci')
+                    || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+                    || github.ref == 'refs/heads/master'
+                run: |
+                    docker/sdk testing codecept run -c codeception.api.yml
 
             -   name: Run Presentation Tests for changed modules
                 run: docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --group=Presentation
@@ -567,13 +582,16 @@ jobs:
                     docker/sdk boot deploy.ci.acceptance.dynamic-store-off.prefer-lowest.php82.es6.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
-
-            -   name: Run tests
-                run: |
-                    docker/sdk testing codecept run -c codeception.acceptance.yml
                     docker/sdk testing codecept fixtures
                     docker/sdk testing console queue:worker:start --stop-when-empty
-                    docker/sdk testing codecept run --no-ansi -c codeception.api.yml
+
+            -   name: Run Acceptance Tests
+                run: |
+                    docker/sdk testing codecept run -c codeception.acceptance.yml
+
+            -   name: Run API Tests
+                run: |
+                    docker/sdk testing codecept run -c codeception.api.yml
 
             -   name: Save PHP logs
                 if: failure()
