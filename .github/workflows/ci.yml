@@ -279,6 +279,26 @@ jobs:
                         tests/**/_output/**/*
                         vendor/spryker/spryker/Bundles/**/tests/_output/*
 
+            -   name: Save PHP logs
+                if: failure()
+                run: |
+                    mkdir -p logs
+                    docker logs spryker_ci_backoffice_eu_1 > logs/backoffice_app.log 2>&1
+                    docker logs spryker_ci_glue_eu_1 > logs/glue_app.log 2>&1
+                    docker logs spryker_ci_yves_eu_1 > logs/yves_app.log 2>&1
+                    docker logs spryker_ci_merchant_portal_eu_1 > logs/merchant_portal_app.log 2>&1
+
+            -   name: Upload Failed Screenshots and HTML
+                if: always()
+                uses: actions/upload-artifact@v4
+                with:
+                    name: codeception-failed-artifacts
+                    retention-days: 5 # save for 5 days
+                    path: |
+                        logs/*.log
+                        tests/**/_output/**/*
+                        vendor/spryker/spryker/Bundles/**/tests/_output/*
+
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
