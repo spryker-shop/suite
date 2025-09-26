@@ -12,7 +12,7 @@ RUN apt-get update -y && DEBIAN_FRONTEND=noninteractive apt install -y \
 RUN pip3 install  \
     --no-cache-dir  \
     robotframework  \
-    robotframework-browser  \
+    robotframework-browser==19.7.2  \
     robotframework-databaselibrary  \
     robotframework-requests \
     PyMySQL \
