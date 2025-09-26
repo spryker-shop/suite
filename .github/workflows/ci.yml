@@ -137,15 +137,26 @@ jobs:
                     tests/ci_check_untracked.sh
                     tests/ci_check_touched_modules.sh
 
-            -   name: Run PHPStan
-                run: |
-                    tests/spryker-ci.sh phpStan Spryker 0 275
-                    tests/spryker-ci.sh phpStan Spryker 275 275
-                    tests/spryker-ci.sh phpStan Spryker 550 150
-                    tests/spryker-ci.sh phpStan Spryker 700 300
-                    tests/spryker-ci.sh phpStan Spryker 1000
-                    tests/spryker-ci.sh phpStan SprykerFeature
-                    tests/spryker-ci.sh phpStan SprykerShop
+            -   name: Run PHPStan (spryker/spryker [1/5])
+                run: tests/spryker-ci.sh phpStan Spryker 0 275
+
+            -   name: Run PHPStan (spryker/spryker [2/5])
+                run: tests/spryker-ci.sh phpStan Spryker 275 275
+
+            -   name: Run PHPStan (spryker/spryker [3/5])
+                run: tests/spryker-ci.sh phpStan Spryker 550 150
+
+            -   name: Run PHPStan (spryker/spryker [4/5])
+                run: tests/spryker-ci.sh phpStan Spryker 700 300
+
+            -   name: Run PHPStan (spryker/spryker [5/5])
+                run: tests/spryker-ci.sh phpStan Spryker 1000
+
+            -   name: Run PHPStan (spryker/spryker feature)
+                run: tests/spryker-ci.sh phpStan SprykerFeature
+
+            -   name: Run PHPStan (spryker/spryker-shop)
+                run: tests/spryker-ci.sh phpStan SprykerShop
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
@@ -229,15 +240,26 @@ jobs:
                     vendor/bin/install --no-ansi -r ci.code-generate
                     composer dump-autoload -o -a --apcu
 
-            -   name: Run PHPStan
-                run: |
-                    tests/spryker-ci.sh phpStan Spryker 0 275
-                    tests/spryker-ci.sh phpStan Spryker 275 275
-                    tests/spryker-ci.sh phpStan Spryker 550 150
-                    tests/spryker-ci.sh phpStan Spryker 700 300
-                    tests/spryker-ci.sh phpStan Spryker 1000
-                    tests/spryker-ci.sh phpStan SprykerFeature
-                    tests/spryker-ci.sh phpStan SprykerShop
+            -   name: Run PHPStan (spryker/spryker [1/5])
+                run: tests/spryker-ci.sh phpStan Spryker 0 275
+
+            -   name: Run PHPStan (spryker/spryker [2/5])
+                run: tests/spryker-ci.sh phpStan Spryker 275 275
+
+            -   name: Run PHPStan (spryker/spryker [3/5])
+                run: tests/spryker-ci.sh phpStan Spryker 550 150
+
+            -   name: Run PHPStan (spryker/spryker [4/5])
+                run: tests/spryker-ci.sh phpStan Spryker 700 300
+
+            -   name: Run PHPStan (spryker/spryker [5/5])
+                run: tests/spryker-ci.sh phpStan Spryker 1000
+
+            -   name: Run PHPStan (spryker/spryker feature)
+                run: tests/spryker-ci.sh phpStan SprykerFeature
+
+            -   name: Run PHPStan (spryker/spryker-shop)
+                run: tests/spryker-ci.sh phpStan SprykerShop
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
@@ -311,15 +333,26 @@ jobs:
                     vendor/bin/install -r ci.code-generate
                     composer dump-autoload -o -a --apcu
 
-            -   name: Run PHPStan
-                run: |
-                    vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 0,275
-                    vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 275,275
-                    vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 550,150
-                    vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 700,300
-                    vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 1000
-                    vendor/bin/console --no-ansi code:phpstan -m SprykerFeature.all -v
-                    vendor/bin/console --no-ansi code:phpstan -m SprykerShop.all -v
+            -   name: Run PHPStan (spryker/spryker [1/5])
+                run: vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 0,275
+
+            -   name: Run PHPStan (spryker/spryker [2/5])
+                run: vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 275,275
+
+            -   name: Run PHPStan (spryker/spryker [3/5])
+                run: vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 550,150
+
+            -   name: Run PHPStan (spryker/spryker [4/5])
+                run: vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 700,300
+
+            -   name: Run PHPStan (spryker/spryker [5/5])
+                run: vendor/bin/console --no-ansi code:phpstan -m Spryker.all -v -o 1000
+
+            -   name: Run PHPStan (spryker/spryker feature)
+                run: vendor/bin/console --no-ansi code:phpstan -m SprykerFeature.all -v
+
+            -   name: Run PHPStan (spryker/spryker-shop)
+                run: vendor/bin/console --no-ansi code:phpstan -m SprykerShop.all -v
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
