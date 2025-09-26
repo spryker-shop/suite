@@ -26,6 +26,7 @@ use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
  * @group OrderAmendmentCheckoutRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
+ * @group CheckoutMinimumWorkflow
  */
 class OrderAmendmentCheckoutRestApiCest
 {

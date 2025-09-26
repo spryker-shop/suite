@@ -20,6 +20,7 @@ use PyzTest\Yves\Checkout\CheckoutControllerTester;
  * @group Controller
  * @group CheckoutCest
  * Add your own group annotations below this line
+ * @group YvesCheckoutMinimumWorkflow
  */
 class CheckoutCest
 {

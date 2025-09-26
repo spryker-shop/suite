@@ -29,6 +29,7 @@ use Spryker\Shared\Price\PriceConfig;
  * @group CheckoutRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
+ * @group CheckoutMinimumWorkflow
  */
 class CheckoutRestApiCest
 {

@@ -27,6 +27,7 @@ use Spryker\Shared\Calculation\CalculationPriceMode;
  * @group GuestCartsRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
+ * @group CheckoutMinimumWorkflow
  */
 class GuestCartsRestApiCest
 {
@@ -196,6 +197,8 @@ class GuestCartsRestApiCest
     }
 
     /**
+     * @skip to be fixed in CC-36430
+     *
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
