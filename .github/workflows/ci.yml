@@ -1146,105 +1146,18 @@ jobs:
                 -   name: Slack Notification for failed job
                     uses: ./.github/actions/job-slack-notifications
                     if: always()
-# Temporarily disabled due to a measurement unit bug that causes the tests to fail. Should be re-enabled after the fix.
-#    docker-debian-php-82-postgresql-cypress-dynamic-store-off:
-#        if: >
-#            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-#            || contains(github.event.pull_request.labels.*.name, 'run-ssp-compatibility-ci')
-#            || github.ref == 'refs/heads/master'
-#        name: "[run-compatibility-ci] PHP 8.2 / Debian /  PostgreSql / Cypress / Dynamic Store OFF"
-#        runs-on: ubuntu-latest
-#        env:
-#            PROGRESS_TYPE: plain
-#            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
-#            TRAVIS: 1
-#            ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
-#
-#        steps:
-#            -   uses: actions/checkout@v4
-#            -   name: Install packages
-#                run: |
-#                    sudo apt-get update
-#                    sudo apt-get install -y python3-pip
-#                    pip3 install --upgrade pip
-#                    pip3 install awscli
-#
-#            -   name: Install cypress-tests folder
-#                run: |
-#                    cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
-#                    cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
-#
-#            -   name: Install docker-compose
-#                run: |
-#                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-#                    sudo chmod +x /usr/local/bin/docker-compose
-#            -   name: Install Project
-#                continue-on-error: false
-#                run: |
-#                    git clone https://github.com/spryker/docker-sdk.git ./docker
-#                    docker/sdk boot deploy.ci.acceptance.postgres.dynamic-store-off.cypress.yml
-#                    docker/sdk up -t
-#                    docker/sdk cli composer dump-autoload -o -a --apcu
-#
-#            -   name: Publish & Sync
-#                run: |
-#                    for i in {1..5}; do
-#                      docker/sdk cli console queue:worker:start --stop-when-empty
-#                    done
-#
-#            -   name: Install Cypress
-#                run: |
-#                    docker/sdk exec cypress-tests cp .env.example .env
-#                    docker/sdk exec cypress-tests npx cypress install
-#
-#            -   name: Run Tests
-#                if: >
-#                    contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
-#                    || github.ref == 'refs/heads/master'
-#                run: |
-#                    for i in 1 2; do
-#                      docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci && s=0 && break || s=$? && echo "Test failed, retrying..."
-#                      sleep 1
-#                    done
-#                    (exit $s)
-#
-#            -   name: Upload artifacts
-#                if: failure()
-#                run: |
-#                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/ --recursive
-#                    echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/screenshots/&showversions=false"'
-#                    echo "You must have VPN access to AWS (Spryker-Internal account)"
-#
-#            -   name: Run Tests (SSP)
-#                if: >
-#                    contains(github.event.pull_request.labels.*.name, 'run-ssp-compatibility-ci')
-#                    || github.ref == 'refs/heads/master'
-#                run: |
-#                    docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci:ssp
-#
-#            -   name: Upload SSP artifacts
-#                if: failure()
-#                run: |
-#                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/ --recursive
-#
-#            -   name: Slack Notification for failed job
-#                uses: ./.github/actions/job-slack-notifications
-#                if: always()
-
-    docker-alpine-php-83-mariadb-cypress:
+    docker-debian-php-82-postgresql-cypress-dynamic-store-off:
         if: >
-            contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-ssp-compatibility-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-ui-ci] PHP 8.3 / MariaDB / Cypress / UI"
+        name: "[run-compatibility-ci] PHP 8.2 / Debian /  PostgreSql / Cypress / Dynamic Store OFF"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
             TRAVIS: 1
-            SPRYKER_CURRENT_REGION: EU
-            DYNAMIC_STORE_MODE: true
+            ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
 
         steps:
             -   uses: actions/checkout@v4
@@ -1264,7 +1177,7 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.mariadb.cypress.yml
+                    docker/sdk boot deploy.ci.acceptance.postgres.dynamic-store-off.cypress.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
 
@@ -1276,28 +1189,30 @@ jobs:
 
             -   name: Install Cypress
                 run: |
-                    docker/sdk exec cypress-tests cp .env.dynamic-store.example .env
-                    docker/sdk exec cypress-tests git log -2
+                    docker/sdk exec cypress-tests cp .env.example .env
                     docker/sdk exec cypress-tests npx cypress install
 
             -   name: Run Tests
                 if: >
-                    contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-                    || contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
+                    contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
                     || github.ref == 'refs/heads/master'
                 run: |
-                    docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci
+                    for i in 1 2; do
+                      docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci && s=0 && break || s=$? && echo "Test failed, retrying..."
+                      sleep 1
+                    done
+                    (exit $s)
 
             -   name: Upload artifacts
                 if: failure()
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/ --recursive
-                    echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PPHP8.3MariaDB/screenshots/&showversions=false"'
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/ --recursive
+                    echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/screenshots/&showversions=false"'
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
 
-            -   name: Run SSP Tests
+            -   name: Run Tests (SSP)
                 if: >
-                    contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
+                    contains(github.event.pull_request.labels.*.name, 'run-ssp-compatibility-ci')
                     || github.ref == 'refs/heads/master'
                 run: |
                     docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci:ssp
@@ -1305,9 +1220,7 @@ jobs:
             -   name: Upload SSP artifacts
                 if: failure()
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/ --recursive
-                    echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PPHP8.3MariaDB/screenshots/&showversions=false"'
-                    echo "You must have VPN access to AWS (Spryker-Internal account)"
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/ --recursive
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
