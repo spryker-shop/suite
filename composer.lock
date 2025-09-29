@@ -7259,7 +7259,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "ee45cca37fbe7d9e7bcec83bf185b663f27e6348"
+                "reference": "33389fc6c9b818903977b34e8895b5338672725a"
             },
             "require": {
                 "php": ">=8.1"
@@ -8412,7 +8412,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2025-09-25T20:40:16+00:00"
+            "time": "2025-09-29T11:43:42+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8420,7 +8420,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "e7609e39c42f37a1e4c1197f5a07b155d254541f"
+                "reference": "6fa26bf384b232ccf383ebf0fc3e12f71e09abd5"
             },
             "require": {
                 "php": ">=8.1"
@@ -8622,7 +8622,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2025-09-25T20:41:21+00:00"
+            "time": "2025-09-29T11:42:29+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -20476,35 +20476,35 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "pdepend/pdepend": 20,
+        "spryker/spryker": 20,
+        "spryker/spryker-shop": 20,
+        "spryker/install": 20,
+        "spryker/rabbit-mq": 20,
+        "spryker/event-behavior": 20,
+        "spryker/synchronization-behavior": 20,
+        "spryker/uuid-behavior": 20,
+        "spryker/silexphp": 20,
+        "spryker/checksum-generator": 20,
         "spryker-eco/loggly": 20,
         "spryker-eco/new-relic": 20,
-        "spryker-sdk/benchmark": 20,
+        "spryker/composer-merge-plugin": 20,
+        "spryker/tax-app-vertex": 20,
+        "spryker/architecture-sniffer": 20,
+        "spryker/development-core": 20,
+        "spryker/code-sniffer": 20,
+        "spryker/robotframework-suite-tests": 20,
+        "pdepend/pdepend": 20,
         "spryker-sdk/codeception-phantoman": 20,
         "spryker-sdk/composer-constrainer": 20,
         "spryker-sdk/composer-replace": 20,
-        "spryker-sdk/evaluator": 20,
-        "spryker-sdk/load-testing": 20,
         "spryker-sdk/spryk": 20,
-        "spryker/architecture-sniffer": 20,
-        "spryker/checksum-generator": 20,
-        "spryker/code-sniffer": 20,
-        "spryker/commerce-k6-performance-tests": 20,
-        "spryker/composer-merge-plugin": 20,
-        "spryker/cypress-tests": 20,
-        "spryker/development-core": 20,
+        "spryker-sdk/benchmark": 20,
         "spryker/docker-chromedriver": 20,
-        "spryker/event-behavior": 20,
-        "spryker/install": 20,
+        "spryker-sdk/load-testing": 20,
+        "spryker-sdk/evaluator": 20,
         "spryker/profiler": 20,
-        "spryker/rabbit-mq": 20,
-        "spryker/robotframework-suite-tests": 20,
-        "spryker/silexphp": 20,
-        "spryker/spryker": 20,
-        "spryker/spryker-shop": 20,
-        "spryker/synchronization-behavior": 20,
-        "spryker/tax-app-vertex": 20,
-        "spryker/uuid-behavior": 20
+        "spryker/commerce-k6-performance-tests": 20,
+        "spryker/cypress-tests": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -20523,7 +20523,7 @@
         "ext-readline": "*",
         "ext-redis": "*"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.2.0"
     },
