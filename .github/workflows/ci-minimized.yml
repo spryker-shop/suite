@@ -19,19 +19,8 @@ concurrency:
 
 jobs:
     validation:
-        if: >
-            contains(github.event.pull_request.labels.*.name, 'run-static-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
         name: "PHP 8.3 / CS, ArchSniffer, PHPStan, Evaluator"
         runs-on: ubuntu-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                php-version: [
-                    '8.3'
-                ]
-
         env:
             APPLICATION_ENV: ci.mysql
             APPLICATION_STORE: DE
@@ -150,10 +139,6 @@ jobs:
     php-83-frontend-assets-glue-yves-mariadb-alpine:
         name: "PHP 8.3 / Frontend & Assets / Glue & Yves / MariaDB / Alpine"
         runs-on: ubuntu-latest
-        if: >
-            contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
@@ -163,11 +148,6 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
-
-            -   name: Install docker-compose
-                run: |
-                    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
 
             -   name: Docker bootstrap
                 run: |
@@ -181,7 +161,6 @@ jobs:
             -   name: Run docker build development
                 run: |
                     docker/sdk cli vendor/bin/console transfer:databuilder:generate
-                    docker/sdk cli vendor/bin/console rest-api:generate:documentation
 
             -   name: Composer dump-autoload
                 run: |
@@ -194,7 +173,6 @@ jobs:
                     docker/sdk cli vendor/bin/console data:import --config=data/import/common/minimal.yml
                     docker/sdk cli vendor/bin/console search:setup:sources
                     docker/sdk cli vendor/bin/glue glue-api:controller:cache:warm-up
-                    docker/sdk cli vendor/bin/glue api:generate:documentation
 
             -   name: Publish & Sync
                 run: |
