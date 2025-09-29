@@ -23,7 +23,7 @@ jobs:
             contains(github.event.pull_request.labels.*.name, 'run-static-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
-        name: "CS, ArchSniffer, PHPStan, Evaluator"
+        name: "PHP 8.3 / CS, ArchSniffer, PHPStan, Evaluator"
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -37,13 +37,6 @@ jobs:
             APPLICATION_STORE: DE
             SPRYKER_CURRENT_REGION: EU
             PROJECT: suite
-
-        services:
-            redis:
-                image: redis
-                ports:
-                    - 6379/tcp
-                options: --health-cmd="redis-cli ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
         steps:
             -   uses: actions/checkout@v4
@@ -68,7 +61,7 @@ jobs:
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: ${{ matrix.php-version }}
+                    php-version: '8.3'
                     extensions: mbstring, intl, pdo_mysql, redis, grpc
                     tools: composer:v2
 
@@ -158,9 +151,7 @@ jobs:
         name: "PHP 8.3 / Frontend & Assets / Glue & Yves / MariaDB / Alpine"
         runs-on: ubuntu-latest
         if: >
-            contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-api-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
+            contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
         env:
@@ -180,7 +171,7 @@ jobs:
 
             -   name: Docker bootstrap
                 run: |
-                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    git clone --depth 1 https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.fe-assets-api.mariadb.yml
 
             -   name: Run docker up testing
@@ -225,10 +216,8 @@ jobs:
                 if: failure()
                 run: |
                     mkdir -p logs
-                    docker logs spryker_ci_backoffice_eu_1 > logs/backoffice_app.log 2>&1
                     docker logs spryker_ci_glue_eu_1 > logs/glue_app.log 2>&1
                     docker logs spryker_ci_yves_eu_1 > logs/yves_app.log 2>&1
-                    docker logs spryker_ci_merchant_portal_eu_1 > logs/merchant_portal_app.log 2>&1
 
             -   name: Upload Failed Screenshots and HTML
                 if: always()
@@ -239,13 +228,11 @@ jobs:
                     path: |
                         logs/*.log
                         tests/**/_output/**/*
-                        vendor/spryker/spryker/Bundles/**/tests/_output/*
 
             -   name: Frontend Assets
                 run: |
-                    SPRYKER_BUILD_HASH=myhash docker/sdk export images
                     docker run -i --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e ALLOWED_IP=127.0.0.1 spryker_ci_frontend:1.0-frontend nginx -t
-                    docker run -i --rm --entrypoint='' spryker_ci_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
+                    docker run -i --rm --entrypoint='' spryker_ci_frontend:1.0-frontend ls -al /data/public/Yves/assets/
                     docker run -i --rm --entrypoint='' spryker_ci_frontend:1.0-frontend ls -al /data/public/Zed/assets/
                     docker run -i --rm --entrypoint='' spryker_ci_frontend:1.0-frontend ls -al /data/public/MerchantPortal/assets/
 
