@@ -13,7 +13,9 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "fk_tax_set",
@@ -21,7 +23,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    }
                 },
                 {
                     "fieldName": "approval_status",
@@ -29,7 +33,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The current approval status of an entity, e.g., a approved.",
+                    "examples": ["'approved'"]
                 },
                 {
                     "fieldName": "attributes",
@@ -37,7 +45,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["'{\"megapixel\":\"20 MP\"}'"],
+                    "description": "A set of key-value pairs describing a product or entity."
                 },
                 {
                     "fieldName": "new_from",
@@ -45,7 +57,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The date from which a product is considered 'new'.",
+                    "examples": ["1980-12-06 07:36:00"]
                 },
                 {
                     "fieldName": "new_to",
@@ -53,7 +69,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The date until which a product is considered 'new'.",
+                    "examples": ["1980-12-06 07:36:00"]
                 },
                 {
                     "fieldName": "sku",
@@ -61,7 +81,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["001"],
+                    "description": "The Stock Keeping Unit, a unique identifier for a concrete product."
                 },
                 {
                     "fieldName": "color_code",
@@ -69,7 +93,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["001122"]
                 }
             ]
         },
@@ -297,7 +324,9 @@
                     "fieldVisibleName": "id_product",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
+                    "validation": {
+                        "isRequired": false
+                    },
                     "type": "integer"
                 },
                 {
@@ -306,7 +335,9 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    }
                 },
                 {
                     "fieldName": "attributes",
@@ -314,7 +345,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "A set of key-value pairs describing a product or entity.",
+                    "examples": ["'{\"size\":\"m\"}"]
                 },
                 {
                     "fieldName": "discount",
@@ -322,7 +357,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["10"],
+                    "description": "A discount applied to a product or order."
                 },
                 {
                     "fieldName": "is_active",
@@ -331,7 +370,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "A boolean flag indicating if an entity is currently active.",
+                    "examples": [0, 1]
                 },
                 {
                     "fieldName": "is_quantity_splittable",
@@ -339,7 +382,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "Indicates if the quantity of an order item can be split across multiple shipments.",
+                    "examples": [0, 1]
                 },
                 {
                     "fieldName": "sku",
@@ -347,7 +394,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "The Stock Keeping Unit, a unique identifier for a concrete product.",
+                    "examples": ["001_25904006"]
                 },
                 {
                     "fieldName": "warehouses",
@@ -355,7 +406,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["ware_house_1"],
+                    "description": "The warehouses associated with a product."
                 }
             ]
         },
@@ -531,8 +586,11 @@
                     "fieldVisibleName": "id_abstract_attributes",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_locale",
@@ -540,7 +598,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -548,7 +609,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "attributes",
@@ -556,7 +620,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["{\"color\":\"Weinrot\"}"],
+                    "description": "A set of key-value pairs describing a product or entity."
                 },
                 {
                     "fieldName": "description",
@@ -564,7 +632,13 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [
+                        "Add a personal touch Make shots your own with quick and easy control over picture settings such as brightness and colour intensity."
+                    ],
+                    "description": "A description of an entity."
                 },
                 {
                     "fieldName": "name",
@@ -572,7 +646,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["Canon IXUS 160"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 },
                 {
                     "fieldName": "meta_description",
@@ -580,7 +658,13 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [
+                        "Add a personal touch Make shots your own with quick and easy control over picture settings such as brightness and colour intensity."
+                    ],
+                    "description": "The meta description of a page for SEO purposes."
                 },
                 {
                     "fieldName": "meta_keywords",
@@ -588,7 +672,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["Canon"],
+                    "description": "The meta keywords of a page for SEO purposes."
                 },
                 {
                     "fieldName": "meta_title",
@@ -596,7 +684,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["Canon IXUS 160"],
+                    "description": "The meta title of a page for SEO purposes."
                 }
             ]
         }
@@ -614,8 +706,11 @@
                     "fieldVisibleName": "id_category",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_category_template",
@@ -623,7 +718,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "category_key",
@@ -631,7 +729,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["demoshop"],
+                    "description": "A unique key for a category."
                 },
                 {
                     "fieldName": "is_active",
@@ -639,7 +741,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A boolean flag indicating if an entity is currently active."
                 },
                 {
                     "fieldName": "is_clickable",
@@ -647,7 +753,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a category is clickable in the navigation."
                 },
                 {
                     "fieldName": "is_in_menu",
@@ -655,7 +765,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a category should appear in the menu."
                 },
                 {
                     "fieldName": "is_searchable",
@@ -663,7 +777,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a product or page is searchable."
                 }
             ]
         },
@@ -722,8 +840,11 @@
                     "fieldVisibleName": "id_category_template",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "name",
@@ -731,7 +852,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["Catalog (default)"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 },
                 {
                     "fieldName": "template_path",
@@ -739,7 +864,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["@CatalogPage/views/catalog/catalog.twig"],
+                    "description": "The file system path to the template."
                 }
             ]
         },
@@ -772,16 +901,22 @@
                     "fieldVisibleName": "id_product_category",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_category",
                     "fieldVisibleName": "fk_category",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -789,7 +924,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "product_order",
@@ -797,7 +935,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["16"],
+                    "description": "The display order of a product within a specific category."
                 }
             ]
         },
@@ -830,7 +972,9 @@
                     "fieldVisibleName": "id_url",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
+                    "validation": {
+                        "isRequired": false
+                    },
                     "type": "integer"
                 },
                 {
@@ -839,7 +983,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    }
                 },
                 {
                     "fieldName": "url",
@@ -849,8 +995,14 @@
                     "type": "string",
                     "validation": {
                         "isRequired": true,
-                        "constraints": [{ "name": "url" }]
-                    }
+                        "constraints": [
+                            {
+                                "name": "url"
+                            }
+                        ]
+                    },
+                    "description": "A URL for a resource.",
+                    "examples": ["https://your-shop.com/product/super-plex"]
                 },
                 {
                     "fieldName": "fk_resource_product_set",
@@ -858,7 +1010,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "fk_resource_product_abstract",
@@ -866,7 +1020,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 }
             ]
         }
@@ -884,8 +1040,11 @@
                     "fieldVisibleName": "id_locale",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "locale_name",
@@ -893,7 +1052,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["en_US"],
+                    "description": "The name of a locale, such as \"en_US\" or \"de_DE\"."
                 },
                 {
                     "fieldName": "is_active",
@@ -901,7 +1064,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": [0, 1],
+                    "description": "A boolean flag indicating if an entity is currently active."
                 }
             ]
         },
@@ -1103,8 +1270,11 @@
                     "fieldVisibleName": "id_product_attributes",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_locale",
@@ -1112,7 +1282,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product",
@@ -1120,7 +1293,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "attributes",
@@ -1128,7 +1304,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["'{\"color\":\"Weinrot\"}'"],
+                    "description": "A set of key-value pairs describing a product or entity."
                 },
                 {
                     "fieldName": "description",
@@ -1136,7 +1316,13 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [
+                        "Add a personal touch Make shots your own with quick and easy control over picture settings such as brightness and colour intensity."
+                    ],
+                    "description": "A description of an entity."
                 },
                 {
                     "fieldName": "name",
@@ -1144,7 +1330,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["Canon IXUS 160"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 }
             ]
         }
@@ -1163,7 +1353,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_bundled_product",
@@ -1171,7 +1364,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "Representation of the single item in this bundle",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product",
@@ -1179,7 +1376,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "Relation to the main bundle product",
+                    "examples": []
                 },
                 {
                     "fieldName": "quantity",
@@ -1187,7 +1388,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "Number of items bundled. For instance when you have 5000 equal items you will have quantity 5000",
+                    "examples": ["10"]
                 }
             ]
         }
@@ -1206,7 +1411,10 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -1214,7 +1422,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -1222,7 +1433,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -1240,7 +1454,9 @@
                     "fieldVisibleName": "id_store",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
+                    "validation": {
+                        "isRequired": false
+                    },
                     "type": "integer"
                 },
                 {
@@ -1249,7 +1465,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    }
                 },
                 {
                     "fieldName": "fk_currency",
@@ -1257,7 +1475,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "Default currency for the store.",
+                    "examples": []
                 },
                 {
                     "fieldName": "name",
@@ -1265,7 +1487,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The name of an entity (e.g., user, category, product, role).",
+                    "examples": ["MyStore"]
                 }
             ]
         },
@@ -1403,7 +1629,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "is_super",
@@ -1411,7 +1640,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if an attribute is a super attribute used for variant creation."
                 },
                 {
                     "fieldName": "key",
@@ -1419,7 +1652,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["storage_capacity"],
+                    "description": "A unique key used to identify an entity or a piece of data."
                 }
             ]
         },
@@ -1479,7 +1716,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "product_group_key",
@@ -1487,7 +1727,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["shoes"]
                 }
             ]
         },
@@ -1521,7 +1764,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_group",
@@ -1529,7 +1775,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "position",
@@ -1537,7 +1786,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["0"],
+                    "description": "The position or order of an item in a list."
                 }
             ]
         }
@@ -1555,8 +1808,11 @@
                     "fieldVisibleName": "id_product_image",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "external_url_large",
@@ -1564,7 +1820,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["https://images.icecat.biz/img/norm/high/25904006-8438.jpg"],
+                    "description": "The URL for a large version of an image."
                 },
                 {
                     "fieldName": "external_url_small",
@@ -1572,7 +1832,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["https://images.icecat.biz/img/norm/medium/25904006-8438.jpg"],
+                    "description": "The URL for a small version of an image."
                 }
             ]
         },
@@ -1605,7 +1869,9 @@
                     "fieldVisibleName": "id_product_image_set",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
+                    "validation": {
+                        "isRequired": false
+                    },
                     "type": "integer"
                 },
                 {
@@ -1614,7 +1880,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "fk_product",
@@ -1622,7 +1890,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "name",
@@ -1630,7 +1900,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The name of an entity (e.g., user, category, product, role).",
+                    "examples": ["Default"]
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -1638,7 +1912,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 }
             ]
         },
@@ -1671,8 +1947,11 @@
                     "fieldVisibleName": "id_product_image_set_to_product_image",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_image",
@@ -1680,7 +1959,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_image_set",
@@ -1688,7 +1970,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "sort_order",
@@ -1696,7 +1981,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["0"],
+                    "description": "The numerical order for sorting items in a list."
                 }
             ]
         }
@@ -1715,7 +2004,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_attribute_key",
@@ -1723,7 +2015,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "allow_input",
@@ -1731,7 +2026,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": [0, 1],
+                    "description": "Indicates if user input is allowed for an attribute."
                 },
                 {
                     "fieldName": "input_type",
@@ -1739,7 +2038,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["text"],
+                    "description": "The type of input for an attribute (e.g., text, select)."
                 }
             ]
         },
@@ -1773,7 +2076,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_management_attribute",
@@ -1781,7 +2087,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "value",
@@ -1789,7 +2098,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["16 GB"],
+                    "description": "A generic value for a property, often used in key-value pairs or translations."
                 }
             ]
         },
@@ -1823,7 +2136,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "is_active",
@@ -1831,7 +2147,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": [0, 1],
+                    "description": "A boolean flag indicating if an entity is currently active."
                 },
                 {
                     "fieldName": "key",
@@ -1839,7 +2159,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["cart.remove.items.success"],
+                    "description": "A unique key used to identify an entity or a piece of data."
                 }
             ]
         },
@@ -1873,7 +2197,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_glossary_key",
@@ -1881,7 +2208,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_locale",
@@ -1889,7 +2219,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "is_active",
@@ -1897,7 +2230,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": [0, 1],
+                    "description": "A boolean flag indicating if an entity is currently active."
                 },
                 {
                     "fieldName": "value",
@@ -1905,7 +2242,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["Produkte wurden erfolgreich aus dem Warenkorb entfernt"],
+                    "description": "A generic value for a property, often used in key-value pairs or translations."
                 }
             ]
         }
@@ -1924,7 +2265,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_locale",
@@ -1932,7 +2276,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_management_attribute_value",
@@ -1940,7 +2287,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "translation",
@@ -1948,7 +2298,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["Speichergr\u00f6\u00dfe"],
+                    "description": "A translated string."
                 }
             ]
         }
@@ -1967,7 +2321,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "fk_tax_set",
@@ -1975,7 +2331,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    }
                 },
                 {
                     "fieldName": "active",
@@ -1983,7 +2341,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "A boolean flag indicating if an entity is active.",
+                    "examples": [0, 1]
                 },
                 {
                     "fieldName": "key",
@@ -1991,7 +2353,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "Key is an identifier for existing entities. This should never be changed.",
+                    "examples": ["warranty"]
                 },
                 {
                     "fieldName": "name",
@@ -1999,7 +2365,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The name of an entity (e.g., user, category, product, role).",
+                    "examples": ["Default"]
                 }
             ]
         },
@@ -2046,7 +2416,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_option_group",
@@ -2054,7 +2427,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "price",
@@ -2062,7 +2438,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "Deprecated",
+                    "examples": ["1000"]
                 },
                 {
                     "fieldName": "sku",
@@ -2070,7 +2450,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["OP_1_year_warranty"],
+                    "description": "The Stock Keeping Unit, a unique identifier for a concrete product."
                 },
                 {
                     "fieldName": "value",
@@ -2078,7 +2462,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["One (1) year limited warranty"],
+                    "description": "A generic value for a property, often used in key-value pairs or translations."
                 }
             ]
         },
@@ -2112,7 +2500,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_option_group",
@@ -2120,7 +2511,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -2139,7 +2533,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_currency",
@@ -2147,7 +2544,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_option_value",
@@ -2155,7 +2555,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -2163,7 +2566,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "gross_price",
@@ -2171,7 +2577,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["10000"],
+                    "description": "The gross price (including tax)."
                 },
                 {
                     "fieldName": "net_price",
@@ -2179,7 +2589,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["11900"],
+                    "description": "The net price (excluding tax)."
                 }
             ]
         }
@@ -2198,7 +2612,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "name",
@@ -2206,7 +2623,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["Andorran Peseta"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 },
                 {
                     "fieldName": "code",
@@ -2214,7 +2635,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["ADP"],
+                    "description": "A unique code, often for currency, country, or barcode."
                 },
                 {
                     "fieldName": "symbol",
@@ -2222,7 +2647,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["ADP"],
+                    "description": "The symbol for a currency (e.g., '$', '\u20ac')."
                 }
             ]
         },
@@ -2282,7 +2711,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "name",
@@ -2290,7 +2722,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["DEFAULT"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 },
                 {
                     "fieldName": "price_mode_configuration",
@@ -2298,7 +2734,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["NET_MODE", "GROSS_MODE", "BOTH"],
+                    "description": "The configuration that determines the price mode (GROSS or NET) for a price type."
                 }
             ]
         }
@@ -2316,7 +2756,9 @@
                     "fieldVisibleName": "id_price_product",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
+                    "validation": {
+                        "isRequired": false
+                    },
                     "type": "integer"
                 },
                 {
@@ -2325,7 +2767,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    }
                 },
                 {
                     "fieldName": "fk_product",
@@ -2333,7 +2777,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -2341,7 +2787,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "price",
@@ -2349,7 +2797,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The price of a product or service.",
+                    "examples": ["10000"]
                 }
             ]
         },
@@ -2383,7 +2835,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "fk_company_type",
@@ -2391,7 +2845,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "is_active",
@@ -2399,7 +2855,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "A boolean flag indicating if an entity is currently active.",
+                    "examples": [0, 1]
                 },
                 {
                     "fieldName": "key",
@@ -2407,7 +2867,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "Key is used for DataImport as identifier for existing entities. This should never be changed.",
+                    "examples": ["my-company"]
                 },
                 {
                     "fieldName": "name",
@@ -2415,7 +2879,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "The name of an entity (e.g., user, category, product, role).",
+                    "examples": ["My Company"]
                 },
                 {
                     "fieldName": "status",
@@ -2423,7 +2891,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "The current status of an entity (e.g., \"active\", \"pending\", \"approved\").",
+                    "examples": ["pending", "approved", "denied"]
                 },
                 {
                     "fieldName": "uuid",
@@ -2431,7 +2903,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["ebe6ac77-9673-4945-9160-30d819c29ee0"],
+                    "description": "A Universally Unique Identifier for an entity."
                 }
             ]
         },
@@ -2465,7 +2941,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "name",
@@ -2473,7 +2952,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["woodworker"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 }
             ]
         },
@@ -2506,8 +2989,11 @@
                     "fieldVisibleName": "id_price_product_store",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_currency",
@@ -2515,7 +3001,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_price_product",
@@ -2523,7 +3012,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -2531,7 +3023,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "gross_price",
@@ -2539,7 +3034,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["9999"],
+                    "description": "The gross price (including tax)."
                 },
                 {
                     "fieldName": "net_price",
@@ -2547,7 +3046,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["8999"],
+                    "description": "The net price (excluding tax)."
                 }
             ]
         },
@@ -2580,8 +3083,11 @@
                     "fieldVisibleName": "id_price_product_default",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_price_product_store",
@@ -2589,7 +3095,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -2608,7 +3117,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_locale",
@@ -2616,7 +3128,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -2624,7 +3139,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "customer_reference",
@@ -2632,7 +3150,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["DE--1"],
+                    "description": "A unique reference for a customer."
                 },
                 {
                     "fieldName": "description",
@@ -2640,7 +3162,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["This is a very nice product. I can fully recommend this."],
+                    "description": "A description of an entity."
                 },
                 {
                     "fieldName": "nickname",
@@ -2648,7 +3174,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["Spencor"],
+                    "description": "The nickname of a user, especially for product reviews."
                 },
                 {
                     "fieldName": "rating",
@@ -2656,7 +3186,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["4"],
+                    "description": "The rating given to a product in a review."
                 },
                 {
                     "fieldName": "status",
@@ -2664,7 +3198,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["pending", "approved", "rejected"],
+                    "description": "The current status of an entity (e.g., \"active\", \"pending\", \"approved\")."
                 },
                 {
                     "fieldName": "summary",
@@ -2672,7 +3210,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["Donec vestibulum lectus ligula"],
+                    "description": "A summary description of an API endpoint or operation."
                 }
             ]
         }
@@ -2691,7 +3233,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_attribute_key",
@@ -2699,7 +3244,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "filter_type",
@@ -2707,7 +3255,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["multi-select"],
+                    "description": "The type of filter to be used for a product search attribute (e.g., 'select', 'range')."
                 },
                 {
                     "fieldName": "position",
@@ -2715,7 +3267,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["1"],
+                    "description": "The position or order of an item in a list."
                 },
                 {
                     "fieldName": "synced",
@@ -2723,7 +3279,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if an attribute map has been synchronized with the search index."
                 }
             ]
         }
@@ -2742,7 +3302,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "target_field",
@@ -2750,7 +3313,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["full-text"],
+                    "description": "The target field in the search index where an attribute's value will be stored."
                 },
                 {
                     "fieldName": "synced",
@@ -2758,7 +3325,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if an attribute map has been synchronized with the search index."
                 }
             ]
         }
@@ -2777,7 +3348,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "is_active",
@@ -2785,7 +3359,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": [0, 1],
+                    "description": "A boolean flag indicating if an entity is currently active."
                 },
                 {
                     "fieldName": "product_set_key",
@@ -2793,7 +3371,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["1_hp_set"],
+                    "description": "A unique key for a product set."
                 },
                 {
                     "fieldName": "weight",
@@ -2801,7 +3383,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["30"],
+                    "description": "A numerical weight used for sorting or prioritizing product sets."
                 }
             ]
         },
@@ -2874,7 +3460,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -2882,7 +3471,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_set",
@@ -2890,7 +3482,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "position",
@@ -2898,7 +3493,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["1"],
+                    "description": "The position or order of an item in a list."
                 }
             ]
         }
@@ -2917,7 +3516,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_locale",
@@ -2925,7 +3527,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_set",
@@ -2933,7 +3538,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "description",
@@ -2941,7 +3549,13 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [
+                        "Take the next step in productivity with the HP set. The ElitePad 1000 G2 Tablet equipped with a 64-bit Intel\u00ae processor and the features you need to stay productive in the office or on the go. Control wireless connection"
+                    ],
+                    "description": "A description of an entity."
                 },
                 {
                     "fieldName": "meta_description",
@@ -2949,7 +3563,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [""],
+                    "description": "The meta description of a page for SEO purposes."
                 },
                 {
                     "fieldName": "meta_keywords",
@@ -2957,7 +3575,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["hp,product set, hp elite, hp pro table, hp elitedesk,"],
+                    "description": "The meta keywords of a page for SEO purposes."
                 },
                 {
                     "fieldName": "meta_title",
@@ -2965,7 +3587,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["HP Product Set"],
+                    "description": "The meta title of a page for SEO purposes."
                 },
                 {
                     "fieldName": "name",
@@ -2973,7 +3599,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["HP Product Set"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 }
             ]
         }
@@ -2991,7 +3621,9 @@
                     "fieldVisibleName": "id_stock",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": false },
+                    "validation": {
+                        "isRequired": false
+                    },
                     "type": "integer"
                 },
                 {
@@ -3000,7 +3632,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "A boolean flag indicating if an entity is currently active.",
+                    "examples": [0, 1]
                 },
                 {
                     "fieldName": "name",
@@ -3008,7 +3644,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "The name of an entity (e.g., user, category, product, role).",
+                    "examples": ["default"]
                 },
                 {
                     "fieldName": "uuid",
@@ -3016,7 +3656,11 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "A Universally Unique Identifier for an entity.",
+                    "examples": ["ebe6ac77-9673-4945-9160-30d819c29ee0"]
                 }
             ]
         },
@@ -3049,8 +3693,11 @@
                     "fieldVisibleName": "id_stock_product",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product",
@@ -3058,7 +3705,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_stock",
@@ -3066,7 +3716,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "is_never_out_of_stock",
@@ -3074,7 +3727,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a product should never be considered out of stock."
                 },
                 {
                     "fieldName": "quantity",
@@ -3082,7 +3739,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["10"],
+                    "description": "The number of units for an item."
                 }
             ]
         }
@@ -3101,7 +3762,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -3109,7 +3773,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "abstract_sku",
@@ -3117,7 +3784,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["007"],
+                    "description": "The Stock Keeping Unit (SKU) for an abstract product."
                 },
                 {
                     "fieldName": "quantity",
@@ -3125,7 +3796,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "float",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["'10.0000000000"],
+                    "description": "The number of units for an item."
                 }
             ]
         },
@@ -3159,7 +3834,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_availability_abstract",
@@ -3167,7 +3845,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -3175,7 +3856,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "is_never_out_of_stock",
@@ -3183,7 +3867,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a product should never be considered out of stock."
                 },
                 {
                     "fieldName": "quantity",
@@ -3191,7 +3879,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "float",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["'10.0000000000"],
+                    "description": "The number of units for an item."
                 },
                 {
                     "fieldName": "sku",
@@ -3199,7 +3891,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["112_312526171"],
+                    "description": "The Stock Keeping Unit, a unique identifier for a concrete product."
                 }
             ]
         }
@@ -3218,7 +3914,9 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "name",
@@ -3226,7 +3924,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "The name of an entity (e.g., user, category, product, role).",
+                    "examples": ["us-tax-set"]
                 },
                 {
                     "fieldName": "uuid",
@@ -3234,7 +3936,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "A Universally Unique Identifier for an entity.",
+                    "examples": ["ebe6ac77-9673-4945-9160-30d819c29ee0"]
                 }
             ]
         },
@@ -3294,7 +4000,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_tax_set",
@@ -3302,7 +4011,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -3321,7 +4033,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_country",
@@ -3329,7 +4044,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "name",
@@ -3337,7 +4055,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["Austria Standard"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 },
                 {
                     "fieldName": "rate",
@@ -3345,7 +4067,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "float",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["20"],
+                    "description": "The tax rate percentage."
                 }
             ]
         }
@@ -3364,7 +4090,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "iso2_code",
@@ -3372,7 +4101,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["DE"],
+                    "description": "The two-letter ISO code for a country."
                 },
                 {
                     "fieldName": "iso3_code",
@@ -3380,7 +4113,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["DEU"],
+                    "description": "The three-letter ISO code for a country."
                 },
                 {
                     "fieldName": "name",
@@ -3388,7 +4125,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["Germany"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 },
                 {
                     "fieldName": "postal_code_mandatory",
@@ -3396,7 +4137,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a postal code is mandatory."
                 },
                 {
                     "fieldName": "postal_code_regex",
@@ -3404,7 +4149,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$"],
+                    "description": "A regular expression for validating postal codes."
                 }
             ]
         },
@@ -3437,8 +4186,11 @@
                     "fieldVisibleName": "id_product_search",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product",
@@ -3446,7 +4198,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_locale",
@@ -3454,7 +4209,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "is_searchable",
@@ -3462,7 +4220,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a product or page is searchable."
                 }
             ]
         }
@@ -3480,8 +4242,11 @@
                     "fieldVisibleName": "id_category_node",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_category",
@@ -3489,7 +4254,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_parent_category_node",
@@ -3497,7 +4265,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "is_main",
@@ -3505,7 +4276,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a category node is a main node."
                 },
                 {
                     "fieldName": "is_root",
@@ -3513,7 +4288,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a category node is a root node."
                 },
                 {
                     "fieldName": "node_order",
@@ -3521,7 +4300,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [""],
+                    "description": "The numerical order of a node within its parent in a tree structure."
                 }
             ]
         },
@@ -3554,8 +4337,11 @@
                     "fieldVisibleName": "id_category_store",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_category",
@@ -3563,7 +4349,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -3571,7 +4360,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -3589,8 +4381,11 @@
                     "fieldVisibleName": "id_category_attribute",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_category",
@@ -3598,7 +4393,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_locale",
@@ -3606,7 +4404,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "category_image_name",
@@ -3614,7 +4415,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["'Sony Category Picture'"],
+                    "description": "The name of the image file for a category."
                 },
                 {
                     "fieldName": "name",
@@ -3622,7 +4427,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["Demoshop"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 },
                 {
                     "fieldName": "meta_description",
@@ -3630,7 +4439,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["Deutsche Version des Demoshop"],
+                    "description": "The meta description of a page for SEO purposes."
                 },
                 {
                     "fieldName": "meta_keywords",
@@ -3638,7 +4451,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["Deutsche Version des Demoshop"],
+                    "description": "The meta keywords of a page for SEO purposes."
                 },
                 {
                     "fieldName": "meta_title",
@@ -3646,7 +4463,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["Demoshop"],
+                    "description": "The meta title of a page for SEO purposes."
                 }
             ]
         }
@@ -3664,8 +4485,11 @@
                     "fieldVisibleName": "id_product_relation_type",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "key",
@@ -3673,7 +4497,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["up-selling"],
+                    "description": "A unique key used to identify an entity or a piece of data."
                 }
             ]
         },
@@ -3706,8 +4534,11 @@
                     "fieldVisibleName": "id_product_relation",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -3715,7 +4546,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_relation_type",
@@ -3723,7 +4557,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "is_active",
@@ -3731,7 +4568,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A boolean flag indicating if an entity is currently active."
                 },
                 {
                     "fieldName": "is_rebuild_scheduled",
@@ -3739,7 +4580,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a rebuild is scheduled for a product relation."
                 },
                 {
                     "fieldName": "product_relation_key",
@@ -3747,7 +4592,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "A unique key for a product relation.",
+                    "examples": ["relation-key"]
                 },
                 {
                     "fieldName": "query_set_data",
@@ -3755,7 +4604,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["{\"condition\":\"AND\""],
+                    "description": "A JSON-encoded string representing the rule set for a product relation."
                 }
             ]
         },
@@ -3801,8 +4654,11 @@
                     "fieldVisibleName": "id_product_relation_product_abstract",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -3810,7 +4666,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_relation",
@@ -3818,7 +4677,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "order",
@@ -3826,7 +4688,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["1"],
+                    "description": "The order of a product abstract in a product relation."
                 }
             ]
         }
@@ -3844,8 +4710,11 @@
                     "fieldVisibleName": "id_product_relation_store",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_relation",
@@ -3853,7 +4722,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -3861,7 +4733,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -3879,8 +4754,11 @@
                     "fieldVisibleName": "id_product_label",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "front_end_reference",
@@ -3888,7 +4766,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [""],
+                    "description": "A reference used on the front end, often for product labels."
                 },
                 {
                     "fieldName": "is_active",
@@ -3896,7 +4778,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A boolean flag indicating if an entity is currently active."
                 },
                 {
                     "fieldName": "is_dynamic",
@@ -3904,7 +4790,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a product label is dynamic."
                 },
                 {
                     "fieldName": "is_exclusive",
@@ -3912,7 +4802,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a discount is exclusive."
                 },
                 {
                     "fieldName": "is_published",
@@ -3920,7 +4814,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a product label is published and visible."
                 },
                 {
                     "fieldName": "name",
@@ -3928,7 +4826,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["Standard label"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 },
                 {
                     "fieldName": "position",
@@ -3936,7 +4838,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["0"],
+                    "description": "The position or order of an item in a list."
                 },
                 {
                     "fieldName": "valid_from",
@@ -3944,7 +4850,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["1980-12-06 07:36:00"],
+                    "description": "The date and time from which an entity is valid."
                 },
                 {
                     "fieldName": "valid_to",
@@ -3952,7 +4862,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": ["2065-12-06 07:36:00"],
+                    "description": "The date and time until which an entity is valid."
                 }
             ]
         },
@@ -4012,7 +4926,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_locale",
@@ -4020,7 +4937,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_label",
@@ -4028,7 +4948,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "name",
@@ -4036,7 +4959,11 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "string",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["Standard Label"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 }
             ]
         }
@@ -4055,7 +4982,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_label",
@@ -4063,7 +4993,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -4071,7 +5004,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -4090,7 +5026,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -4098,7 +5037,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_label",
@@ -4106,7 +5048,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -4124,7 +5069,9 @@
                     "fieldVisibleName": "id_sales_order",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
+                    "validation": {
+                        "isRequired": false
+                    },
                     "type": "integer"
                 },
                 {
@@ -4133,7 +5080,9 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "fk_sales_order_address_shipping",
@@ -4141,7 +5090,9 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "fk_locale",
@@ -4149,7 +5100,9 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 },
                 {
                     "fieldName": "email",
@@ -4157,7 +5110,11 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The email address of a user or contact.",
+                    "examples": ["hans.muster@gmail.com"]
                 },
                 {
                     "fieldName": "salutation",
@@ -4165,7 +5122,11 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The salutation of a person (e.g., Mr., Mrs., Dr.).",
+                    "examples": ["Mr", "Mrs", "Dr", "Ms", "n/a"]
                 },
                 {
                     "fieldName": "first_name",
@@ -4173,7 +5134,11 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The first name of a person.",
+                    "examples": ["Hans"]
                 },
                 {
                     "fieldName": "last_name",
@@ -4181,7 +5146,11 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The last name of a user or customer.",
+                    "examples": ["Muster"]
                 },
                 {
                     "fieldName": "order_reference",
@@ -4189,7 +5158,11 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "A unique reference identifier for a sales order.",
+                    "examples": ["DE--123456789"]
                 },
                 {
                     "fieldName": "price_mode",
@@ -4197,7 +5170,11 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "integer",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The mode for price calculation, typically \"GROSS_MODE\" or \"NET_MODE\".",
+                    "examples": ["NET_MODE", "GROSS_MODE"]
                 },
                 {
                     "fieldName": "is_test",
@@ -4205,7 +5182,11 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "boolean",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "A flag indicating if an order is a test order.",
+                    "examples": [0, 1]
                 },
                 {
                     "fieldName": "store",
@@ -4213,7 +5194,11 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The store context for an operation, determining which store's data is used.",
+                    "examples": ["MyStore"]
                 },
                 {
                     "fieldName": "currency_iso_code",
@@ -4221,7 +5206,11 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "description": "The ISO code for a currency.",
+                    "examples": ["EUR"]
                 },
                 {
                     "fieldName": "created_at",
@@ -4229,7 +5218,9 @@
                     "isCreatable": false,
                     "isEditable": false,
                     "type": "string",
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    }
                 }
             ]
         }
@@ -4247,8 +5238,11 @@
                     "fieldVisibleName": "id_locale_store",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false },
-                    "type": "integer"
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_locale",
@@ -4256,7 +5250,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -4264,7 +5261,10 @@
                     "isCreatable": true,
                     "isEditable": true,
                     "type": "integer",
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -4283,7 +5283,10 @@
                     "type": "integer",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_currency",
@@ -4291,7 +5294,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -4299,7 +5305,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -4318,7 +5327,10 @@
                     "type": "integer",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_stock",
@@ -4326,7 +5338,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -4334,7 +5349,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -4353,7 +5371,10 @@
                     "type": "integer",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "is_active",
@@ -4361,7 +5382,11 @@
                     "type": "boolean",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": [0, 1],
+                    "description": "A boolean flag indicating if an entity is currently active."
                 },
                 {
                     "fieldName": "name",
@@ -4369,7 +5394,11 @@
                     "type": "string",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["Invoice"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 }
             ]
         }
@@ -4388,7 +5417,10 @@
                     "type": "integer",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_payment_method",
@@ -4396,7 +5428,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -4404,7 +5439,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -4423,7 +5461,10 @@
                     "type": "integer",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "is_active",
@@ -4431,7 +5472,11 @@
                     "type": "boolean",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": [0, 1],
+                    "description": "A boolean flag indicating if an entity is currently active."
                 },
                 {
                     "fieldName": "name",
@@ -4439,7 +5484,11 @@
                     "type": "string",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["Standard"],
+                    "description": "The name of an entity (e.g., user, category, product, role)."
                 }
             ]
         }
@@ -4458,7 +5507,10 @@
                     "type": "integer",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_shipment_method",
@@ -4466,7 +5518,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -4474,7 +5529,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -4493,7 +5551,10 @@
                     "type": "integer",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_country",
@@ -4501,7 +5562,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -4509,7 +5573,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 }
             ]
         }
@@ -4528,7 +5595,10 @@
                     "type": "integer",
                     "isCreatable": false,
                     "isEditable": false,
-                    "validation": { "isRequired": false }
+                    "validation": {
+                        "isRequired": false
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_currency",
@@ -4536,7 +5606,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_shipment_method",
@@ -4544,7 +5617,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_store",
@@ -4552,7 +5628,10 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": []
                 },
                 {
                     "fieldName": "default_gross_price",
@@ -4560,7 +5639,11 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["490"],
+                    "description": "The default gross price."
                 },
                 {
                     "fieldName": "default_net_price",
@@ -4568,7 +5651,11 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["390"],
+                    "description": "The default net price."
                 },
                 {
                     "fieldName": "uuid",
@@ -4576,7 +5663,11 @@
                     "type": "string",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "description": "A Universally Unique Identifier for an entity.",
+                    "examples": ["ebe6ac77-9673-4945-9160-30d819c29ee0"]
                 }
             ]
         }
@@ -4596,7 +5687,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_lead_product",
@@ -4606,7 +5698,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product",
@@ -4616,7 +5709,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_packaging_unit_type",
@@ -4626,7 +5720,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "amount_interval",
@@ -4636,7 +5731,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["2"],
+                    "description": "The interval by which the amount of a product can be increased or decreased."
                 },
                 {
                     "fieldName": "amount_max",
@@ -4646,7 +5743,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["5"],
+                    "description": "The maximum allowable amount for a product packaging unit."
                 },
                 {
                     "fieldName": "amount_min",
@@ -4656,7 +5755,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["3"],
+                    "description": "The minimum allowable amount for a product packaging unit."
                 },
                 {
                     "fieldName": "default_amount",
@@ -4666,7 +5767,9 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["5"],
+                    "description": "The default amount for a product packaging unit."
                 },
                 {
                     "fieldName": "is_amount_variable",
@@ -4676,7 +5779,9 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "boolean"
+                    "type": "boolean",
+                    "examples": [0, 1],
+                    "description": "Indicates if the amount for a packaging unit can be varied."
                 },
                 {
                     "fieldName": "created_at",
@@ -4706,7 +5811,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "string"
+                    "type": "string",
+                    "description": "A Universally Unique Identifier for an entity.",
+                    "examples": ["ebe6ac77-9673-4945-9160-30d819c29ee0"]
                 }
             ],
             "identifier": "id_product_packaging_unit"
@@ -4727,7 +5834,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -4737,7 +5845,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_measurement_unit",
@@ -4747,7 +5856,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "created_at",
@@ -4803,7 +5913,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product",
@@ -4813,7 +5924,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_measurement_base_unit",
@@ -4823,7 +5935,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_measurement_unit",
@@ -4833,7 +5946,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "conversion",
@@ -4843,7 +5957,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["1"],
+                    "description": "The conversion factor between a sales unit and a base unit."
                 },
                 {
                     "fieldName": "is_default",
@@ -4853,7 +5969,9 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "boolean"
+                    "type": "boolean",
+                    "examples": [0, 1],
+                    "description": "A flag indicating if an entity is the default one."
                 },
                 {
                     "fieldName": "is_displayed",
@@ -4863,7 +5981,9 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "boolean"
+                    "type": "boolean",
+                    "examples": [0, 1],
+                    "description": "A flag indicating if a sales unit should be displayed to the customer."
                 },
                 {
                     "fieldName": "key",
@@ -4873,7 +5993,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "string"
+                    "type": "string",
+                    "examples": ["sales_unit_1"],
+                    "description": "A unique key used to identify an entity or a piece of data."
                 },
                 {
                     "fieldName": "precision",
@@ -4883,7 +6005,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["100"],
+                    "description": "The total number of digits in a decimal value."
                 },
                 {
                     "fieldName": "created_at",
@@ -4924,7 +6048,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product",
@@ -4934,7 +6059,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "active_until",
@@ -4944,7 +6070,9 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "string"
+                    "type": "string",
+                    "examples": ["2025-11-19"],
+                    "description": "The date until which a product is active before being discontinued."
                 },
                 {
                     "fieldName": "discontinued_on",
@@ -4985,7 +6113,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product",
@@ -4995,7 +6124,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_abstract_alternative",
@@ -5005,7 +6135,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 },
                 {
                     "fieldName": "fk_product_concrete_alternative",
@@ -5015,7 +6146,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": []
                 }
             ],
             "identifier": "id_product_alternative"
@@ -5035,7 +6167,9 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": false,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    }
                 },
                 {
                     "fieldName": "fk_state_machine_item_state",
@@ -5043,7 +6177,9 @@
                     "type": "integer",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    }
                 },
                 {
                     "fieldName": "name",
@@ -5051,7 +6187,10 @@
                     "type": "string",
                     "isCreatable": true,
                     "isEditable": true,
-                    "validation": { "isRequired": true }
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "examples": ["ebe6ac77-9673-4945-9160-30d819c29ee0"]
                 }
             ]
         }
