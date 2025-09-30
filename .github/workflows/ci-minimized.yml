@@ -1,0 +1,222 @@
+name: SUITE-CI-MINIMIZED
+
+on:
+    pull_request:
+        types: [ labeled, unlabeled, synchronize ]
+    push:
+        branches:
+            - master
+    workflow_dispatch:
+
+env:
+    SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+    WEEKLY_CI_SLACK_CHANNEL_ID: ${{ secrets.WEEKLY_CI_SLACK_CHANNEL_ID }}
+    JIRA_TICKET_SLACK_USER_GROUP_MAPPING: ${{ secrets.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    validation:
+        name: "PHP 8.3 / CS, ArchSniffer, PHPStan, Evaluator"
+        runs-on: ubuntu-latest
+        env:
+            APPLICATION_ENV: ci.mysql
+            APPLICATION_STORE: DE
+            SPRYKER_CURRENT_REGION: EU
+            PROJECT: suite
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   uses: actions/setup-node@v4
+                with:
+                    node-version: '18'
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '8.3'
+                    extensions: mbstring, intl, pdo_mysql, redis, grpc
+                    tools: composer:v2
+                    coverage: none # disables xdebug and other coverage tools
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+            
+            -   name: Runs Elasticsearch
+                uses: elastic/elastic-github-actions/elasticsearch@master
+                with:
+                    stack-version: 7.10.0
+                    port: 9200
+
+            -   name: Composer get cache directory
+                id: composer-cache
+                run: |
+                    echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+            -   name: Composer cache
+                uses: actions/cache@v4
+                with:
+                    path: ${{ steps.composer-cache.outputs.dir }}
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-
+
+            -   name: Composer validate
+                run: composer validate
+
+            -   name: Composer version
+                run: composer --version
+
+            -   name: Composer install
+                run: composer install
+
+            -   name: Generate transfer objects
+                run: vendor/bin/console transfer:generate
+
+            -   name: Generate transfer databuilder objects
+                run: vendor/bin/console transfer:databuilder:generate
+
+            -   name: Propel install
+                run: |
+                    vendor/bin/console propel:schema:copy
+                    vendor/bin/console propel:model:build
+                    vendor/bin/console transfer:entity:generate
+
+            -   name: Setup search
+                run: vendor/bin/console setup:search
+
+            -   name: Codecept build
+                run: vendor/bin/codecept build --ansi
+
+            -   name: Generate autocompletion files
+                run: vendor/bin/console dev:ide-auto-completion:generate
+
+            -   name: Generate rest API dcoumentation
+                run: vendor/bin/console rest-api:generate:documentation
+
+            -   name: Frontend install-dependencies
+                run: |
+                    vendor/bin/console frontend:project:install-dependencies -vvv
+
+            -   name: Install NPM packages
+                run: |
+                    sudo npm i --location=global --unsafe-perm speccy@0.11.0
+
+            -   name: Speccy lint Glue specification
+                run: speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
+
+            -   name: Validate propel files
+                run: |
+                    vendor/bin/console propel:schema:validate
+                    vendor/bin/console propel:schema:validate-xml-names
+
+            -   name: Validate transfer files
+                run: vendor/bin/console transfer:validate
+
+            -   name: Run PHPStan
+                run: vendor/bin/phpstan analyze
+
+            -   name: Run Architecture rules
+                run: vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
+
+            -   name: Run CodeStyle checks
+                run: vendor/bin/console code:sniff:style
+
+            -   name: Run Evaluator
+                run: vendor/bin/evaluator evaluate
+
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
+                if: always()
+
+
+    php-83-frontend-assets-glue-yves-mariadb-alpine:
+        name: "PHP 8.3 / Frontend & Assets / Glue & Yves / MariaDB / Alpine"
+        runs-on: ubuntu-latest
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
+            TRAVIS: 1
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Docker bootstrap
+                run: |
+                    git clone --depth 1 https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.fe-assets-api.mariadb.yml
+
+            -   name: Run docker up testing
+                run: |
+                    docker/sdk up -t
+
+            -   name: Run docker build development
+                run: |
+                    docker/sdk cli vendor/bin/console transfer:databuilder:generate
+                    docker/sdk cli vendor/bin/console rest-api:generate:documentation
+
+            -   name: Composer dump-autoload
+                run: |
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+
+            -   name: Demo-data
+                run: |
+                    docker/sdk cli vendor/bin/console queue:setup
+                    docker/sdk cli vendor/bin/console setup:init-db
+                    docker/sdk cli vendor/bin/console data:import --config=data/import/common/minimal.yml
+                    docker/sdk cli vendor/bin/console search:setup:sources
+                    docker/sdk cli vendor/bin/glue glue-api:controller:cache:warm-up
+                    docker/sdk cli vendor/bin/glue api:generate:documentation
+
+            -   name: Publish & Sync
+                run: |
+                    docker/sdk testing console queue:worker:start --stop-when-empty
+
+            -   name: Fixtures
+                run: |
+                    docker/sdk testing codecept fixtures
+
+            -   name: Glue Acceptance CheckoutMinimumWorkflow
+                run: |
+                    docker/sdk testing codecept run -c codeception.api.yml -g CheckoutMinimumWorkflow
+
+            -   name: Yves Acceptance CheckoutMinimumWorkflow
+                run: |
+                    docker/sdk testing codecept run -c codeception.acceptance.yml -g YvesCheckoutMinimumWorkflow
+
+            -   name: Save PHP logs
+                if: failure()
+                run: |
+                    mkdir -p logs
+                    docker logs spryker_ci_glue_eu_1 > logs/glue_app.log 2>&1
+                    docker logs spryker_ci_yves_eu_1 > logs/yves_app.log 2>&1
+
+            -   name: Upload Failed Screenshots and HTML
+                if: always()
+                uses: actions/upload-artifact@v4
+                with:
+                    name: codeception-failed-artifacts
+                    retention-days: 5 # save for 5 days
+                    path: |
+                        logs/*.log
+                        tests/**/_output/**/*
+
+            -   name: Frontend Assets
+                run: |
+                    docker run -i --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e ALLOWED_IP=127.0.0.1 spryker_ci_frontend:1.0-frontend nginx -t
+                    docker run -i --rm --entrypoint='' spryker_ci_frontend:1.0-frontend ls -al /data/public/Yves/assets/
+                    docker run -i --rm --entrypoint='' spryker_ci_frontend:1.0-frontend ls -al /data/public/Zed/assets/
+                    docker run -i --rm --entrypoint='' spryker_ci_frontend:1.0-frontend ls -al /data/public/MerchantPortal/assets/
+
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
+                if: always()
