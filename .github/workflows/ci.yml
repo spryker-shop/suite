@@ -69,6 +69,15 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
+            -   name: Cache Composer
+                uses: actions/cache@v4
+                with:
+                    path: |
+                        ~/.composer/cache
+                        vendor
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-
 
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
@@ -213,6 +222,16 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Cache Composer
+                uses: actions/cache@v4
+                with:
+                    path: |
+                        ~/.composer/cache
+                        vendor
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-
+
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
@@ -314,6 +333,17 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Cache Composer
+                uses: actions/cache@v4
+                with:
+                    path: |
+                        ~/.composer/cache
+                        vendor
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-
+
+
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
@@ -321,6 +351,13 @@ jobs:
                     extensions: mbstring, intl, pdo_mysql, redis, grpc, protobuf
                     tools: composer:v2
                     coverage: none
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
 
             -   uses: ramsey/composer-install@v3
                 env:
@@ -399,7 +436,13 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
-
+            -   name: Cache Node.js modules
+                uses: actions/cache@v4
+                with:
+                    path: ~/.npm
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                    restore-keys: |
+                        ${{ runner.os }}-node-
             -   name: Install NPM packages
                 run: npm ci
 
@@ -442,6 +485,13 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
 
             -   name: Run docker
                 run: |
@@ -513,6 +563,13 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
@@ -568,6 +625,13 @@ jobs:
                     php-version: '8.2'
                     tools: composer:v2
                     coverage: none
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
 
             -   uses: ramsey/composer-install@v3
                 env:
@@ -631,6 +695,13 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
+
             -   name: Install robotframework-suite-tests folder
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
@@ -677,6 +748,13 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
+
             -   name: Install robotframework-suite-tests folder
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
@@ -722,6 +800,13 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
 
             -   name: Install robotframework-suite-tests folder
                 run: |
@@ -770,6 +855,13 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
 
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
@@ -837,6 +929,13 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
@@ -863,6 +962,20 @@ jobs:
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
         steps:
             -   uses: actions/checkout@v4
+            -   name: Cache pip
+                uses: actions/cache@v4
+                with:
+                    path: ~/.cache/pip
+                    key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+                    restore-keys: |
+                        ${{ runner.os }}-pip-
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
 
             -   name: Install packages
                 run: |
@@ -914,6 +1027,19 @@ jobs:
             SPRYKER_DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
+            -   name: Cache pip
+                uses: actions/cache@v4
+                with:
+                    path: ~/.cache/pip
+                    key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+                    restore-keys: |
+                        ${{ runner.os }}-pip-
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
 
             -   name: Install packages
                 run: |
@@ -965,7 +1091,19 @@ jobs:
                 SPRYKER_DYNAMIC_STORE_MODE: true
             steps:
                 -   uses: actions/checkout@v4
-
+                -   name: Cache pip
+                    uses: actions/cache@v4
+                    with:
+                        path: ~/.cache/pip
+                        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+                        restore-keys: |
+                            ${{ runner.os }}-pip-
+                -   name: Configure sysctl limits
+                    run: |
+                        sudo sysctl -w vm.swappiness=10
+                        sudo sysctl -w fs.file-max=262144
+                        sudo sysctl -w vm.max_map_count=262144
+                        ulimit -n 65536
                 -   name: Install packages
                     run: |
                         sudo apt-get update
@@ -1019,7 +1157,19 @@ jobs:
                 SPRYKER_DYNAMIC_STORE_MODE: true
             steps:
                 -   uses: actions/checkout@v4
-
+                -   name: Cache pip
+                    uses: actions/cache@v4
+                    with:
+                        path: ~/.cache/pip
+                        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+                        restore-keys: |
+                            ${{ runner.os }}-pip-
+                -   name: Configure sysctl limits
+                    run: |
+                        sudo sysctl -w vm.swappiness=10
+                        sudo sysctl -w fs.file-max=262144
+                        sudo sysctl -w vm.max_map_count=262144
+                        ulimit -n 65536
                 -   name: Install packages
                     run: |
                         sudo apt-get update
@@ -1072,7 +1222,19 @@ jobs:
                 SPRYKER_DYNAMIC_STORE_MODE: true
             steps:
                 -   uses: actions/checkout@v4
-
+                -   name: Cache pip
+                    uses: actions/cache@v4
+                    with:
+                        path: ~/.cache/pip
+                        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+                        restore-keys: |
+                            ${{ runner.os }}-pip-
+                -   name: Configure sysctl limits
+                    run: |
+                        sudo sysctl -w vm.swappiness=10
+                        sudo sysctl -w fs.file-max=262144
+                        sudo sysctl -w vm.max_map_count=262144
+                        ulimit -n 65536
                 -   name: Install packages
                     run: |
                         sudo apt-get update
@@ -1125,6 +1287,22 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
+            -   name: Cache Node.js & Cypress
+                uses: actions/cache@v4
+                with:
+                    path: |
+                        ~/.npm
+                        ~/.cache/Cypress
+                        tests/cypress-tests/node_modules
+                    key: ${{ runner.os }}-cypress-${{ hashFiles('tests/cypress-tests/package-lock.json') }}
+                    restore-keys: |
+                        ${{ runner.os }}-cypress-
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -1136,7 +1314,6 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
                     cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
-
             -   name: Install Project
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
@@ -1155,11 +1332,7 @@ jobs:
                     contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
                     || github.ref == 'refs/heads/master'
                 run: |
-                    for i in 1 2; do
-                      docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci && s=0 && break || s=$? && echo "Test failed, retrying..."
-                      sleep 1
-                    done
-                    (exit $s)
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci
 
             -   name: Upload artifacts
                 continue-on-error: true
@@ -1203,6 +1376,22 @@ jobs:
             DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
+            -   name: Cache Node.js & Cypress
+                uses: actions/cache@v4
+                with:
+                    path: |
+                        ~/.npm
+                        ~/.cache/Cypress
+                        tests/cypress-tests/node_modules
+                    key: ${{ runner.os }}-cypress-${{ hashFiles('tests/cypress-tests/package-lock.json') }}
+                    restore-keys: |
+                        ${{ runner.os }}-cypress-
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -1235,11 +1424,7 @@ jobs:
                     || contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                     || github.ref == 'refs/heads/master'
                 run: |
-                    for i in 1 2; do
-                      docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci && s=0 && break || s=$? && echo "Test failed, retrying..."
-                      sleep 1
-                    done
-                    (exit $s)
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci
 
             -   name: Upload artifacts
                 continue-on-error: true
