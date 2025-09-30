@@ -479,22 +479,9 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            -   name: Restore Docker SDK Cache
-                uses: actions/cache@v4
-                with:
-                    path: ./docker
-                    key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                    restore-keys: |
-                        ${{ runner.os }}-docker-sdk-
-
-            -   name: Clone Docker SDK
-                run: |
-                    if [ ! -d "./docker" ]; then
-                      git clone https://github.com/spryker/docker-sdk.git ./docker
-                    fi
-
             -   name: Run docker
                 run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.acceptance.mariadb.yml
                     docker/sdk up -t
                     docker/sdk testing composer dump-autoload -o -a --apcu
@@ -562,22 +549,9 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            -   name: Restore Docker SDK Cache
-                uses: actions/cache@v4
-                with:
-                    path: ./docker
-                    key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                    restore-keys: |
-                        ${{ runner.os }}-docker-sdk-
-
-            -   name: Clone Docker SDK
-                run: |
-                    if [ ! -d "./docker" ]; then
-                      git clone https://github.com/spryker/docker-sdk.git ./docker
-                    fi
-
             -   name: Run docker
                 run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.functional.mariadb.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
@@ -638,22 +612,9 @@ jobs:
                     composer-options: "--ignore-platform-reqs --optimize-autoloader --no-interaction --prefer-install=auto"
                     dependency-versions: "lowest"
 
-            -   name: Restore Docker SDK Cache
-                uses: actions/cache@v4
-                with:
-                    path: ./docker
-                    key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                    restore-keys: |
-                        ${{ runner.os }}-docker-sdk-
-
-            -   name: Clone Docker SDK
-                run: |
-                    if [ ! -d "./docker" ]; then
-                      git clone https://github.com/spryker/docker-sdk.git ./docker
-                    fi
-
             -   name: Run docker
                 run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.acceptance.dynamic-store-off.prefer-lowest.php82.es6.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
@@ -710,21 +671,10 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
-            -   name: Restore Docker SDK Cache
-                uses: actions/cache@v4
-                with:
-                    path: ./docker
-                    key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                    restore-keys: |
-                        ${{ runner.os }}-docker-sdk-
-            -   name: Clone Docker SDK
-                run: |
-                    if [ ! -d "./docker" ]; then
-                      git clone https://github.com/spryker/docker-sdk.git ./docker
-                    fi
             -   name: Install Project
                 continue-on-error: false
                 run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.robot.yml
                     docker/sdk up
                     docker/sdk cli composer dump-autoload -o -a --apcu
@@ -767,22 +717,10 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
-            -   name: Restore Docker SDK Cache
-                uses: actions/cache@v4
-                with:
-                    path: ./docker
-                    key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                    restore-keys: |
-                        ${{ runner.os }}-docker-sdk-
-
-            -   name: Clone Docker SDK
-                run: |
-                    if [ ! -d "./docker" ]; then
-                      git clone https://github.com/spryker/docker-sdk.git ./docker
-                    fi
             -   name: Install Project
                 continue-on-error: false
                 run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.robot.yml
                     docker/sdk up
                     docker/sdk cli composer dump-autoload -o -a --apcu
@@ -825,22 +763,10 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
-            -   name: Restore Docker SDK Cache
-                uses: actions/cache@v4
-                with:
-                    path: ./docker
-                    key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                    restore-keys: |
-                        ${{ runner.os }}-docker-sdk-
-
-            -   name: Clone Docker SDK
-                run: |
-                    if [ ! -d "./docker" ]; then
-                      git clone https://github.com/spryker/docker-sdk.git ./docker
-                    fi
             -   name: Install Project
                 continue-on-error: false
                 run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.robot.yml
                     docker/sdk up
                     docker/sdk cli composer dump-autoload -o -a --apcu
@@ -900,22 +826,9 @@ jobs:
                     sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
                     sudo chmod +x /usr/local/bin/docker-compose
 
-            -   name: Restore Docker SDK Cache
-                uses: actions/cache@v4
-                with:
-                    path: ./docker
-                    key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                    restore-keys: |
-                        ${{ runner.os }}-docker-sdk-
-
-            -   name: Clone Docker SDK
-                run: |
-                    if [ ! -d "./docker" ]; then
-                      git clone https://github.com/spryker/docker-sdk.git ./docker
-                    fi
-
             -   name: Run docker
                 run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.functional.postgres.dynamic-store-off.prefer-lowest.php82.es6.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
@@ -960,22 +873,9 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            -   name: Restore Docker SDK Cache
-                uses: actions/cache@v4
-                with:
-                    path: ./docker
-                    key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                    restore-keys: |
-                        ${{ runner.os }}-docker-sdk-
-
-            -   name: Clone Docker SDK
-                run: |
-                    if [ ! -d "./docker" ]; then
-                      git clone https://github.com/spryker/docker-sdk.git ./docker
-                    fi
-
             -   name: Run docker
                 run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.yml
                     SPRYKER_BUILD_HASH=myhash docker/sdk export images
                     docker run -i --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
@@ -1016,22 +916,10 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
-            -   name: Restore Docker SDK Cache
-                uses: actions/cache@v4
-                with:
-                    path: ./docker
-                    key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                    restore-keys: |
-                        ${{ runner.os }}-docker-sdk-
-
-            -   name: Clone Docker SDK
-                run: |
-                    if [ ! -d "./docker" ]; then
-                      git clone https://github.com/spryker/docker-sdk.git ./docker
-                    fi
             -   name: Install Project
                 continue-on-error: false
                 run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.api.dynamic-store-off.php82.postgres.robot.yml
                     docker/sdk up
                     docker/sdk cli composer dump-autoload -o -a --apcu
@@ -1085,22 +973,10 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
-            -   name: Restore Docker SDK Cache
-                uses: actions/cache@v4
-                with:
-                    path: ./docker
-                    key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                    restore-keys: |
-                        ${{ runner.os }}-docker-sdk-
-
-            -   name: Clone Docker SDK
-                run: |
-                    if [ ! -d "./docker" ]; then
-                      git clone https://github.com/spryker/docker-sdk.git ./docker
-                    fi
             -   name: Install Project
                 continue-on-error: false
                 run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.api.mariadb.robot.yml
                     docker/sdk up
                     docker/sdk cli composer dump-autoload -o -a --apcu
@@ -1154,22 +1030,10 @@ jobs:
                     run: |
                         cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                         cp -r vendor ../vendor
-                -   name: Restore Docker SDK Cache
-                    uses: actions/cache@v4
-                    with:
-                        path: ./docker
-                        key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                        restore-keys: |
-                            ${{ runner.os }}-docker-sdk-
-
-                -   name: Clone Docker SDK
-                    run: |
-                        if [ ! -d "./docker" ]; then
-                          git clone https://github.com/spryker/docker-sdk.git ./docker
-                        fi
                 -   name: Install Project
                     continue-on-error: false
                     run: |
+                        git clone https://github.com/spryker/docker-sdk.git ./docker
                         docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml
                         docker/sdk up
                         docker/sdk cli composer dump-autoload -o -a --apcu
@@ -1226,22 +1090,10 @@ jobs:
                     run: |
                         cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                         cp -r vendor ../vendor
-                -   name: Restore Docker SDK Cache
-                    uses: actions/cache@v4
-                    with:
-                        path: ./docker
-                        key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                        restore-keys: |
-                            ${{ runner.os }}-docker-sdk-
-
-                -   name: Clone Docker SDK
-                    run: |
-                        if [ ! -d "./docker" ]; then
-                          git clone https://github.com/spryker/docker-sdk.git ./docker
-                        fi
                 -   name: Install Project
                     continue-on-error: false
                     run: |
+                        git clone https://github.com/spryker/docker-sdk.git ./docker
                         docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml
                         docker/sdk up
                         docker/sdk cli composer dump-autoload -o -a --apcu
@@ -1297,22 +1149,10 @@ jobs:
                     run: |
                         cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                         cp -r vendor ../vendor
-                -   name: Restore Docker SDK Cache
-                    uses: actions/cache@v4
-                    with:
-                        path: ./docker
-                        key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                        restore-keys: |
-                            ${{ runner.os }}-docker-sdk-
-
-                -   name: Clone Docker SDK
-                    run: |
-                        if [ ! -d "./docker" ]; then
-                          git clone https://github.com/spryker/docker-sdk.git ./docker
-                        fi
                 -   name: Install Project
                     continue-on-error: false
                     run: |
+                        git clone https://github.com/spryker/docker-sdk.git ./docker
                         docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml
                         docker/sdk up
                         docker/sdk cli composer dump-autoload -o -a --apcu
@@ -1372,21 +1212,9 @@ jobs:
                 run: |
                     cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
                     cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
-            -   name: Restore Docker SDK Cache
-                uses: actions/cache@v4
-                with:
-                    path: ./docker
-                    key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                    restore-keys: |
-                        ${{ runner.os }}-docker-sdk-
-
-            -   name: Clone Docker SDK
-                run: |
-                    if [ ! -d "./docker" ]; then
-                      git clone https://github.com/spryker/docker-sdk.git ./docker
-                    fi
             -   name: Install Project
                 run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.acceptance.postgres.dynamic-store-off.cypress.yml
                     docker/sdk up
                     docker/sdk cli composer dump-autoload -o -a --apcu
@@ -1472,22 +1300,9 @@ jobs:
                     cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
                     cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
 
-            -   name: Restore Docker SDK Cache
-                uses: actions/cache@v4
-                with:
-                    path: ./docker
-                    key: ${{ runner.os }}-docker-sdk-${{ hashFiles('docker-sdk/**') }}
-                    restore-keys: |
-                        ${{ runner.os }}-docker-sdk-
-
-            -   name: Clone Docker SDK
-                run: |
-                  if [ ! -d "./docker" ]; then
-                    git clone https://github.com/spryker/docker-sdk.git ./docker
-                  fi
-
             -   name: Install Project
                 run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.acceptance.mariadb.cypress.yml
                     docker/sdk up
                     docker/sdk cli composer dump-autoload -o -a --apcu
