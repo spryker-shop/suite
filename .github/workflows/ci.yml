@@ -1231,7 +1231,8 @@ jobs:
             -   name: Run Tests
                 continue-on-error: true
                 if: >
-                    contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
+                    contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+                    || contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                     || github.ref == 'refs/heads/master'
                 run: |
                     for i in 1 2; do
