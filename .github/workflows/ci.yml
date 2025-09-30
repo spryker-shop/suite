@@ -697,10 +697,10 @@ jobs:
 
             -   name: Configure sysctl limits
                 run: |
-                    sudo swapoff -a
-                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w vm.swappiness=10
                     sudo sysctl -w fs.file-max=262144
                     sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
 
             -   name: Install robotframework-suite-tests folder
                 run: |
@@ -750,10 +750,10 @@ jobs:
 
             -   name: Configure sysctl limits
                 run: |
-                    sudo swapoff -a
-                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w vm.swappiness=10
                     sudo sysctl -w fs.file-max=262144
                     sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
 
             -   name: Install robotframework-suite-tests folder
                 run: |
@@ -803,10 +803,10 @@ jobs:
 
             -   name: Configure sysctl limits
                 run: |
-                    sudo swapoff -a
-                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w vm.swappiness=10
                     sudo sysctl -w fs.file-max=262144
                     sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
 
             -   name: Install robotframework-suite-tests folder
                 run: |
@@ -972,10 +972,10 @@ jobs:
 
             -   name: Configure sysctl limits
                 run: |
-                    sudo swapoff -a
-                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w vm.swappiness=10
                     sudo sysctl -w fs.file-max=262144
                     sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
 
             -   name: Install packages
                 run: |
@@ -1036,10 +1036,11 @@ jobs:
                         ${{ runner.os }}-pip-
             -   name: Configure sysctl limits
                 run: |
-                    sudo swapoff -a
-                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w vm.swappiness=10
                     sudo sysctl -w fs.file-max=262144
                     sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
+
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -1099,10 +1100,10 @@ jobs:
                             ${{ runner.os }}-pip-
                 -   name: Configure sysctl limits
                     run: |
-                        sudo swapoff -a
-                        sudo sysctl -w vm.swappiness=1
+                        sudo sysctl -w vm.swappiness=10
                         sudo sysctl -w fs.file-max=262144
                         sudo sysctl -w vm.max_map_count=262144
+                        ulimit -n 65536
                 -   name: Install packages
                     run: |
                         sudo apt-get update
@@ -1165,10 +1166,10 @@ jobs:
                             ${{ runner.os }}-pip-
                 -   name: Configure sysctl limits
                     run: |
-                        sudo swapoff -a
-                        sudo sysctl -w vm.swappiness=1
+                        sudo sysctl -w vm.swappiness=10
                         sudo sysctl -w fs.file-max=262144
                         sudo sysctl -w vm.max_map_count=262144
+                        ulimit -n 65536
                 -   name: Install packages
                     run: |
                         sudo apt-get update
@@ -1230,10 +1231,10 @@ jobs:
                             ${{ runner.os }}-pip-
                 -   name: Configure sysctl limits
                     run: |
-                        sudo swapoff -a
-                        sudo sysctl -w vm.swappiness=1
+                        sudo sysctl -w vm.swappiness=10
                         sudo sysctl -w fs.file-max=262144
                         sudo sysctl -w vm.max_map_count=262144
+                        ulimit -n 65536
                 -   name: Install packages
                     run: |
                         sudo apt-get update
@@ -1298,10 +1299,10 @@ jobs:
                         ${{ runner.os }}-cypress-
             -   name: Configure sysctl limits
                 run: |
-                    sudo swapoff -a
-                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w vm.swappiness=10
                     sudo sysctl -w fs.file-max=262144
                     sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -1387,10 +1388,10 @@ jobs:
                         ${{ runner.os }}-cypress-
             -   name: Configure sysctl limits
                 run: |
-                    sudo swapoff -a
-                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w vm.swappiness=10
                     sudo sysctl -w fs.file-max=262144
                     sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
             -   name: Install packages
                 run: |
                     sudo apt-get update
