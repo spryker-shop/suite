@@ -53,6 +53,7 @@ jobs:
                     php-version: '8.3'
                     extensions: mbstring, intl, pdo_mysql, redis, grpc
                     tools: composer:v2
+                    coverage: none # disables xdebug and other coverage tools
 
             -   name: Composer get cache directory
                 id: composer-cache
