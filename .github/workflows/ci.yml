@@ -352,6 +352,13 @@ jobs:
                     tools: composer:v2
                     coverage: none
 
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+
             -   uses: ramsey/composer-install@v3
                 env:
                     COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ env.GITHUB_TOKEN }}"}}'
@@ -479,6 +486,13 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
@@ -549,6 +563,13 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
@@ -604,6 +625,13 @@ jobs:
                     php-version: '8.2'
                     tools: composer:v2
                     coverage: none
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
 
             -   uses: ramsey/composer-install@v3
                 env:
@@ -667,6 +695,13 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+
             -   name: Install robotframework-suite-tests folder
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
@@ -713,6 +748,13 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+
             -   name: Install robotframework-suite-tests folder
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
@@ -758,6 +800,13 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
 
             -   name: Install robotframework-suite-tests folder
                 run: |
@@ -806,6 +855,13 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
 
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
@@ -873,6 +929,13 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
@@ -906,6 +969,14 @@ jobs:
                     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
                     restore-keys: |
                         ${{ runner.os }}-pip-
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -963,6 +1034,12 @@ jobs:
                     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
                     restore-keys: |
                         ${{ runner.os }}-pip-
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -1020,6 +1097,12 @@ jobs:
                         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
                         restore-keys: |
                             ${{ runner.os }}-pip-
+                -   name: Configure sysctl limits
+                    run: |
+                        sudo swapoff -a
+                        sudo sysctl -w vm.swappiness=1
+                        sudo sysctl -w fs.file-max=262144
+                        sudo sysctl -w vm.max_map_count=262144
                 -   name: Install packages
                     run: |
                         sudo apt-get update
@@ -1080,6 +1163,12 @@ jobs:
                         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
                         restore-keys: |
                             ${{ runner.os }}-pip-
+                -   name: Configure sysctl limits
+                    run: |
+                        sudo swapoff -a
+                        sudo sysctl -w vm.swappiness=1
+                        sudo sysctl -w fs.file-max=262144
+                        sudo sysctl -w vm.max_map_count=262144
                 -   name: Install packages
                     run: |
                         sudo apt-get update
@@ -1139,6 +1228,12 @@ jobs:
                         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
                         restore-keys: |
                             ${{ runner.os }}-pip-
+                -   name: Configure sysctl limits
+                    run: |
+                        sudo swapoff -a
+                        sudo sysctl -w vm.swappiness=1
+                        sudo sysctl -w fs.file-max=262144
+                        sudo sysctl -w vm.max_map_count=262144
                 -   name: Install packages
                     run: |
                         sudo apt-get update
@@ -1201,6 +1296,12 @@ jobs:
                     key: ${{ runner.os }}-cypress-${{ hashFiles('tests/cypress-tests/package-lock.json') }}
                     restore-keys: |
                         ${{ runner.os }}-cypress-
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -1230,11 +1331,7 @@ jobs:
                     contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
                     || github.ref == 'refs/heads/master'
                 run: |
-                    for i in 1 2; do
-                      docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci && s=0 && break || s=$? && echo "Test failed, retrying..."
-                      sleep 1
-                    done
-                    (exit $s)
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci
 
             -   name: Upload artifacts
                 continue-on-error: true
@@ -1288,6 +1385,12 @@ jobs:
                     key: ${{ runner.os }}-cypress-${{ hashFiles('tests/cypress-tests/package-lock.json') }}
                     restore-keys: |
                         ${{ runner.os }}-cypress-
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
             -   name: Install packages
                 run: |
                     sudo apt-get update
@@ -1320,11 +1423,7 @@ jobs:
                     || contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                     || github.ref == 'refs/heads/master'
                 run: |
-                    for i in 1 2; do
-                      docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci && s=0 && break || s=$? && echo "Test failed, retrying..."
-                      sleep 1
-                    done
-                    (exit $s)
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci
 
             -   name: Upload artifacts
                 continue-on-error: true
