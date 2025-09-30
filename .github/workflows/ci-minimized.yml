@@ -42,6 +42,19 @@ jobs:
                     tools: composer:v2
                     coverage: none # disables xdebug and other coverage tools
 
+            -   name: Configure sysctl limits
+                run: |
+                    sudo swapoff -a
+                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+            
+            -   name: Runs Elasticsearch
+                uses: elastic/elastic-github-actions/elasticsearch@master
+                with:
+                    stack-version: 7.10.0
+                    port: 9200
+
             -   name: Composer get cache directory
                 id: composer-cache
                 run: |
