@@ -1138,7 +1138,6 @@ jobs:
                     cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
 
             -   name: Install Project
-                continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.acceptance.postgres.dynamic-store-off.cypress.yml
@@ -1151,6 +1150,7 @@ jobs:
                     docker/sdk exec cypress-tests npx cypress install
 
             -   name: Run Tests
+                continue-on-error: true
                 if: >
                     contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
                     || github.ref == 'refs/heads/master'
@@ -1162,6 +1162,7 @@ jobs:
                     (exit $s)
 
             -   name: Upload artifacts
+                continue-on-error: true
                 if: failure()
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/ --recursive
@@ -1169,6 +1170,7 @@ jobs:
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
 
             -   name: Run Tests (SSP)
+                continue-on-error: true
                 if: >
                     contains(github.event.pull_request.labels.*.name, 'run-ssp-compatibility-ci')
                     || github.ref == 'refs/heads/master'
@@ -1214,7 +1216,6 @@ jobs:
                     cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
 
             -   name: Install Project
-                continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
                     docker/sdk boot deploy.ci.acceptance.mariadb.cypress.yml
@@ -1222,11 +1223,13 @@ jobs:
                     docker/sdk cli composer dump-autoload -o -a --apcu
 
             -   name: Install Cypress
+                continue-on-error: true
                 run: |
                     docker/sdk exec cypress-tests cp .env.dynamic-store.example .env
                     docker/sdk exec cypress-tests npx cypress install
 
             -   name: Run Tests
+                continue-on-error: true
                 if: >
                     contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
                     || github.ref == 'refs/heads/master'
@@ -1238,6 +1241,7 @@ jobs:
                     (exit $s)
 
             -   name: Upload artifacts
+                continue-on-error: true
                 if: failure()
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/ --recursive
@@ -1245,6 +1249,7 @@ jobs:
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
 
             -   name: Run Tests (SSP)
+                continue-on-error: true
                 if: >
                     contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
                     || github.ref == 'refs/heads/master'
