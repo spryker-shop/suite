@@ -1287,16 +1287,6 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
-            -   name: Cache Node.js & Cypress
-                uses: actions/cache@v4
-                with:
-                    path: |
-                        ~/.npm
-                        ~/.cache/Cypress
-                        tests/cypress-tests/node_modules
-                    key: ${{ runner.os }}-cypress-${{ hashFiles('tests/cypress-tests/package-lock.json') }}
-                    restore-keys: |
-                        ${{ runner.os }}-cypress-
             -   name: Configure sysctl limits
                 run: |
                     sudo sysctl -w vm.swappiness=10
@@ -1376,16 +1366,6 @@ jobs:
             DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
-            -   name: Cache Node.js & Cypress
-                uses: actions/cache@v4
-                with:
-                    path: |
-                        ~/.npm
-                        ~/.cache/Cypress
-                        tests/cypress-tests/node_modules
-                    key: ${{ runner.os }}-cypress-${{ hashFiles('tests/cypress-tests/package-lock.json') }}
-                    restore-keys: |
-                        ${{ runner.os }}-cypress-
             -   name: Configure sysctl limits
                 run: |
                     sudo sysctl -w vm.swappiness=10
