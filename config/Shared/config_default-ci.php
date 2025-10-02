@@ -380,4 +380,9 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'root' => '/data',
         'path' => '/data/merchant-product-data-import-files',
     ],
+    'merchant-product-offer-data-import-files' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/data',
+        'path' => '/data/merchant-product-offer-data-import-files',
+    ],
 ];

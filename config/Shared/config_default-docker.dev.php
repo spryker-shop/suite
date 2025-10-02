@@ -112,11 +112,17 @@ $isTestifyConstantsClassExists = class_exists(TestifyConstants::class);
 
 // >>> FILESYSTEM
 
-if (!getenv('SPRYKER_S3_MERCHANT_PRODUCT_DATA_IMPORT_FILES_BUCKET')) {
+if (!getenv('SPRYKER_S3_MERCHANT_FILES_KEY')) {
     $config[FileSystemConstants::FILESYSTEM_SERVICE]['merchant-product-data-import-files'] = [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
         'root' => '/data',
         'path' => '/data/merchant-product-data-import-files',
+    ];
+
+    $config[FileSystemConstants::FILESYSTEM_SERVICE]['merchant-product-offer-data-import-files'] = [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => '/data',
+        'path' => '/data/merchant-product-offer-data-import-files',
     ];
 }
 

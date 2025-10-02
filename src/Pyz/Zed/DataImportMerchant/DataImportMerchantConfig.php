@@ -11,6 +11,7 @@ namespace Pyz\Zed\DataImportMerchant;
 
 use Spryker\Zed\DataImportMerchant\DataImportMerchantConfig as SprykerDataImportMerchantConfig;
 use Spryker\Zed\MerchantProductDataImport\MerchantProductDataImportConfig;
+use Spryker\Zed\MerchantProductOfferDataImport\MerchantProductOfferDataImportConfig;
 
 class DataImportMerchantConfig extends SprykerDataImportMerchantConfig
 {
@@ -21,6 +22,7 @@ class DataImportMerchantConfig extends SprykerDataImportMerchantConfig
     {
         return [
             MerchantProductDataImportConfig::IMPORT_TYPE_MERCHANT_COMBINED_PRODUCT,
+            MerchantProductOfferDataImportConfig::IMPORT_TYPE_MERCHANT_COMBINED_PRODUCT_OFFER,
         ];
     }
 
