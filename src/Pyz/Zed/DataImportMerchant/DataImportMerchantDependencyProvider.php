@@ -13,6 +13,8 @@ use Spryker\Zed\DataImportMerchant\DataImportMerchantDependencyProvider as Spryk
 use Spryker\Zed\MerchantProductDataImport\Communication\Plugin\DataImportMerchant\MerchantCombinedProductMerchantFileRequestExpanderPlugin;
 use Spryker\Zed\MerchantProductDataImport\Communication\Plugin\DataImportMerchant\MerchantCombinedProductMerchantFileValidationPlugin;
 use Spryker\Zed\MerchantProductDataImport\Communication\Plugin\DataImportMerchant\MerchantCombinedProductPossibleCsvHeaderExpanderPlugin;
+use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\DataImportMerchant\MerchantCombinedMerchantProductOfferFileRequestExpanderPlugin;
+use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\DataImportMerchant\MerchantCombinedProductOfferMerchantFileValidationPlugin;
 use Spryker\Zed\User\Communication\Plugin\DataImportMerchant\UserDataImportMerchantFileExpanderPlugin;
 
 class DataImportMerchantDependencyProvider extends SprykerDataImportMerchantDependencyProvider
@@ -24,6 +26,7 @@ class DataImportMerchantDependencyProvider extends SprykerDataImportMerchantDepe
     {
         return [
             new MerchantCombinedProductMerchantFileValidationPlugin(),
+            new MerchantCombinedProductOfferMerchantFileValidationPlugin(),
         ];
     }
 
@@ -44,6 +47,7 @@ class DataImportMerchantDependencyProvider extends SprykerDataImportMerchantDepe
     {
         return [
             new MerchantCombinedProductMerchantFileRequestExpanderPlugin(),
+            new MerchantCombinedMerchantProductOfferFileRequestExpanderPlugin(),
         ];
     }
 

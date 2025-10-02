@@ -4,13 +4,16 @@ namespace: spryker_ci
 tag: '1.0'
 
 environment: docker.ci
-pipeline: docker.ci.api.full
+pipeline: docker.ci.acceptance
 image:
-    tag: spryker/php:8.2
+    tag: spryker/php:8.3
     php:
         enabled-extensions:
             - otel
     environment:
+        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.spryker.local
+        SPRYKER_PRODUCT_CONFIGURATOR_PORT: 80
+        SPRYKER_CONFIGURATOR_ENCRYPTION_KEY: 'change123'
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_PUBLIC_KEY: 'BGqNWbv0hWM5CQ1-KwAfSQBMC6TMVFyrnh3vQp37oGCNvQ6eG_HyMjxBFJRWeCPTbzDoxcjhxLJS8Ck8r1G2oFw'
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_PRIVATE_KEY: 'UK6DywwjKITPpRHBSY9TLPIXm6BPrHX40sseIoXT9c8'
         SPRYKER_PUSH_NOTIFICATION_WEB_PUSH_PHP_VAPID_SUBJECT: 'https://spryker.com'
@@ -61,6 +64,37 @@ groups:
     EU:
         region: EU
         applications:
+            merchant_portal_eu:
+                application: merchant-portal
+                endpoints:
+                    mp.de.spryker.local:
+                        entry-point: MerchantPortal
+                        store: DE
+                        primal: true
+                        services:
+                            session:
+                                namespace: 5
+                    mp.at.spryker.local:
+                        entry-point: MerchantPortal
+                        store: AT
+                        services:
+                            session:
+                                namespace: 6
+            yves_eu:
+                application: yves
+                endpoints:
+                    date-time-configurator-example.spryker.local:
+                        entry-point: Configurator
+                    yves.de.spryker.local:
+                        store: DE
+                        services:
+                            session:
+                                namespace: 1
+                    yves.at.spryker.local:
+                        store: AT
+                        services:
+                            session:
+                                namespace: 2
             glue_eu:
                 application: glue
                 endpoints:
@@ -73,7 +107,6 @@ groups:
                 endpoints:
                     backoffice.de.spryker.local:
                         store: DE
-                        primal: true
                         services:
                             session:
                                 namespace: 3
@@ -121,6 +154,9 @@ services:
         root:
             username: 'root'
             password: 'secret'
+        endpoints:
+            localhost:5432:
+                protocol: tcp
     broker:
         engine: rabbitmq
         version: '3.13'
@@ -133,9 +169,9 @@ services:
         engine: valkey
     search:
         engine: elastic
-        version: 6.8
+        version: '7.10'
     mail_catcher:
-        engine: mailpit
+        engine: mailhog
 
 docker:
     ssl:
@@ -151,3 +187,7 @@ docker:
 
     mount:
         baked:
+
+    compose:
+        yamls:
+            - .robot/docker-compose.robot.yml
