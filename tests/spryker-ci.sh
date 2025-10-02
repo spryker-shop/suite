@@ -264,7 +264,7 @@ fi
 module_paths=$(get_core_command_list "$organization" "$offset" "$limit")
 "$command" "$module_paths" "$option"
 
-readarray -t array_modules <<< "$module_paths"
+mapfile -t array_modules < <(echo "$module_paths" | grep -v '^$')
 echo "📦 ${#array_modules[@]} touched module(s)."
 
 if [ ${#FAILED_MODULES[@]} -gt 0 ]; then
@@ -272,7 +272,7 @@ if [ ${#FAILED_MODULES[@]} -gt 0 ]; then
   for module in "${FAILED_MODULES[@]}"; do
     echo " - $module"
   done
-else
+elif [ -n "$array_modules" ]; then
   echo "✅ All module(s) passed."
 fi
 
