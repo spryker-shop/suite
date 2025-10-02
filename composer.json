@@ -196,7 +196,7 @@
     "prefer-stable": true,
     "config": {
         "platform": {
-            "php": "8.2.0"
+            "php": "8.3.2"
         },
         "preferred-install": {
             "spryker/*": "source",
@@ -245,13 +245,14 @@
         },
         {
             "type": "package",
+            "canonical": false,
             "package": {
                 "name": "spryker/cypress-tests",
-                "version": "dev-master",
+                "version": "dev-feature/cc-35870-merchant-portal-product-offer-import",
                 "source": {
                     "url": "https://github.com/spryker/cypress-tests.git",
                     "type": "git",
-                    "reference": "ab9c2370fd37665c46b57b697a5ea5943818be16"
+                    "reference": "10d8062807eade21c30358f1d04f5c14b9fb700a"
                 },
                 "type": "zend-module",
                 "license": [
