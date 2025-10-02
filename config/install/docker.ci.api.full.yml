@@ -7,14 +7,14 @@ sections:
         generate-transfers:
             command: 'vendor/bin/console transfer:generate'
 
-        router-cache-warmup-backoffice:
-            command: 'vendor/bin/console router:cache:warm-up:backoffice'
-
         oms-process-cache-warmup:
             command: 'vendor/bin/console oms:process-cache:warm-up'
 
         router-cache-warmup-backend-gateway:
             command: 'vendor/bin/console router:cache:warm-up:backend-gateway'
+
+        navigation-cache-warmup:
+            command: 'vendor/bin/console navigation:build-cache'
 
         rest-request-validation-cache-warmup:
             command: 'vendor/bin/console rest-api:build-request-validation-cache'
@@ -57,6 +57,9 @@ sections:
             command: 'vendor/bin/console search:setup:sources'
 
     init-storages-per-region:
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
+
         propel-copy-schema:
             command: 'vendor/bin/console propel:schema:copy'
 
@@ -65,6 +68,9 @@ sections:
 
         propel-migration-delete:
             command: 'vendor/bin/console propel:migration:delete'
+
+        propel-tables-drop:
+            command: 'vendor/bin/console propel:tables:drop'
 
         propel-diff:
             command: 'vendor/bin/console propel:diff'
@@ -79,8 +85,24 @@ sections:
             command: 'vendor/bin/console setup:init-db'
 
     demodata:
-        import-demodata:
-            command: 'vendor/bin/console data:import --config=data/import/common/minimal.yml'
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
+
+        import-eu-region-demodata:
+            command: 'vendor/bin/console data:import --config=data/import/local/full_EU.yml'
+
+        setup-search-create-sources:
+            command: 'vendor/bin/console search:setup:sources'
+
+        apply-scheduled-prices:
+            command: 'vendor/bin/console price-product-schedule:apply'
+
+        update-product-labels:
+            command: 'vendor/bin/console product-label:relations:update'
+
+        publish-and-sync:
+            command: 'vendor/bin/console queue:worker:start --stop-when-empty'
+            timeout: 2000
 
         controller-cache-warmup:
             command: 'vendor/bin/glue glue-api:controller:cache:warm-up'

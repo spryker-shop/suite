@@ -50,10 +50,10 @@ jobs:
 
             -   name: Configure sysctl limits
                 run: |
-                    sudo swapoff -a
-                    sudo sysctl -w vm.swappiness=1
+                    sudo sysctl -w vm.swappiness=10
                     sudo sysctl -w fs.file-max=262144
                     sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
 
             -   name: Runs Elasticsearch
                 uses: elastic/elastic-github-actions/elasticsearch@master
@@ -64,6 +64,17 @@ jobs:
             -   uses: actions/setup-node@v4
                 with:
                     node-version: '18'
+
+            -   name: Cache Composer
+                uses: actions/cache@v4
+                with:
+                    path: |
+                        ~/.composer/cache
+                        vendor
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-
+
 
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
@@ -171,7 +182,13 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
-
+            -   name: Cache Node.js modules
+                uses: actions/cache@v4
+                with:
+                    path: ~/.npm
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                    restore-keys: |
+                        ${{ runner.os }}-node-
             -   name: Install NPM packages
                 run: npm ci
 
@@ -234,10 +251,11 @@ jobs:
                 if: always()
 
     php-83-mariadb-acceptance-alpine:
-        name: "[run-ui-ci] PHP 8.3 / MariaDB / Acceptance / Alpine"
+        name: "[run-ui-ci] PHP 8.3 / MariaDB / Acceptance & API / Alpine"
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-api-ci')
             || github.ref == 'refs/heads/master'
         runs-on: ubuntu-latest
         env:
@@ -249,6 +267,13 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
 
             -   name: Run docker
                 run: |
@@ -320,6 +345,13 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
+
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
@@ -327,6 +359,9 @@ jobs:
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.functional.yml
+
+            - name: Run Functional Tests for changed modules
+              run: docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --skip-group=Presentation
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
@@ -348,6 +383,13 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
 
             -   name: Run docker
                 run: |
@@ -378,6 +420,19 @@ jobs:
             SPRYKER_DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
+            -   name: Cache pip
+                uses: actions/cache@v4
+                with:
+                    path: ~/.cache/pip
+                    key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+                    restore-keys: |
+                        ${{ runner.os }}-pip-
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
 
             -   name: Install packages
                 run: |
@@ -400,7 +455,6 @@ jobs:
                 continue-on-error: false
                 run: |
                     docker/sdk cli composer dump-autoload -o -a --apcu
-                    SPRYKER_CURRENT_REGION=EU docker/sdk console queue:worker:start --stop-when-empty
             -   name: Run Tests
                 run: |
                     docker/sdk exec robot-framework robot -v env:api_suite -v dms:true -v docker:true -d results --exclude skip-due-to-issueORskip-due-to-refactoring -s '*'.tests.api.suite.'*'.positive .
@@ -408,6 +462,88 @@ jobs:
                 if: failure()
                 run: |
                     AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3MariaDB/log.html
+
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
+                if: always()
+
+    docker-alpine-php-83-mariadb-cypress:
+        if: >
+            contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
+            || github.ref == 'refs/heads/master'
+        name: "[run-ui-ci] PHP 8.3 / MariaDB / Cypress / UI"
+        runs-on: ubuntu-latest
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            TRAVIS: 1
+            ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+            SPRYKER_CURRENT_REGION: EU
+            DYNAMIC_STORE_MODE: true
+        steps:
+            -   uses: actions/checkout@v4
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
+            -   name: Install packages
+                run: |
+                    sudo apt-get update
+                    sudo apt-get install -y python3-pip
+                    pip3 install --upgrade pip
+                    pip3 install awscli
+
+            -   name: Install cypress-tests folder
+                run: |
+                    cd ./data && composer require "spryker/cypress-tests:dev-master" --dev --no-interaction
+                    cp -r vendor/spryker/cypress-tests ../tests/cypress-tests
+
+            -   name: Install Project
+                run: |
+                    git clone https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.acceptance.mariadb.cypress.yml
+                    docker/sdk up
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+
+            -   name: Install Cypress
+                continue-on-error: true
+                run: |
+                    docker/sdk exec cypress-tests cp .env.dynamic-store.example .env
+                    docker/sdk exec cypress-tests npx cypress install
+
+            -   name: Run Tests
+                continue-on-error: true
+                if: >
+                    contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+                    || contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
+                    || github.ref == 'refs/heads/master'
+                run: |
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci
+
+            -   name: Upload artifacts
+                continue-on-error: true
+                if: failure()
+                run: |
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/ --recursive
+                    echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/screenshots/&showversions=false"'
+                    echo "You must have VPN access to AWS (Spryker-Internal account)"
+
+            -   name: Run Tests (SSP)
+                continue-on-error: true
+                if: >
+                    contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
+                    || github.ref == 'refs/heads/master'
+                run: |
+                    docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci:ssp
+
+            -   name: Upload SSP artifacts
+                if: failure()
+                run: |
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/ --recursive
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
