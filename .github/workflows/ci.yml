@@ -1365,17 +1365,17 @@ jobs:
             -   name: Output test results
                 if: always()
                 run: |
-                    CORE="${{ steps.core_tests.conclusion || 'skipped' }}"
-                    SSP="${{ steps.ssp_tests.conclusion || 'skipped' }}"
+                    CORE="${{ steps.core_tests.outcome }}"
+                    SSP="${{ steps.ssp_tests.outcome }}"
 
                     echo "Core tests result: ${CORE}"
                     echo "SSP tests result: ${SSP}"
 
-                    if [[ "${CORE}" == "failure" || "${SSP}" == "failure" ]]; then
-                    echo "Some tests failed."
+                    if [[ "${CORE}" != "success" || "${SSP}" != "success" ]]; then
+                    echo "Some tests failed (or did not succeed)."
                     exit 1
                     else
-                    echo "All tests passed (or were skipped by conditions)."
+                    echo "All tests passed."
                     exit 0
                     fi
 
