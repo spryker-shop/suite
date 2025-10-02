@@ -6,7 +6,7 @@ tag: '1.0'
 environment: docker.ci
 pipeline: docker.ci.api.full
 image:
-    tag: spryker/php:8.2
+    tag: spryker/php:8.3
     php:
         enabled-extensions:
             - otel
@@ -21,8 +21,8 @@ image:
         npm: 9
 
 composer:
-    mode: '--no-dev --quiet'
-    autoload: '-a -o'
+    mode: '--no-dev --quiet -o -a'
+    autoload: --classmap-authoritative
 
 regions:
     EU:
@@ -73,7 +73,6 @@ groups:
                 endpoints:
                     backoffice.de.spryker.local:
                         store: DE
-                        primal: true
                         services:
                             session:
                                 namespace: 3
@@ -121,6 +120,9 @@ services:
         root:
             username: 'root'
             password: 'secret'
+        endpoints:
+            localhost:5432:
+                protocol: tcp
     broker:
         engine: rabbitmq
         version: '3.13'
@@ -133,9 +135,9 @@ services:
         engine: valkey
     search:
         engine: elastic
-        version: 6.8
+        version: '7.10'
     mail_catcher:
-        engine: mailpit
+        engine: mailhog
 
 docker:
     ssl:
@@ -151,3 +153,7 @@ docker:
 
     mount:
         baked:
+
+    compose:
+        yamls:
+            - .robot/docker-compose.robot.yml
