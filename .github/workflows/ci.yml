@@ -96,7 +96,7 @@ jobs:
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: '8.3'
+                    php-version: '8.4'
                     extensions: mbstring, intl, pdo_mysql, redis, grpc, protobuf, opentelemetry
                     tools: composer:v2
                     coverage: none
@@ -153,7 +153,7 @@ jobs:
                     vendor/bin/console --no-ansi code:sniff:style
                     vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
 
-            -   name: Run PHP 8.3 specific validations
+            -   name: Run PHP 8.4 specific validations
                 run: |
                     vendor/bin/console --no-ansi dev:dependency:find
                     vendor/bin/spryker-dev-console dev:deprecation-links:check
@@ -249,7 +249,7 @@ jobs:
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: '8.2'
+                    php-version: '8.3'
                     extensions: mbstring, intl, pdo_pgsql, pgsql, redis, grpc, protobuf, opentelemetry
                     tools: composer:v2
                     coverage: none
@@ -361,7 +361,7 @@ jobs:
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: '8.3'
+                    php-version: '8.4'
                     extensions: mbstring, intl, pdo_mysql, redis, grpc, protobuf
                     tools: composer:v2
                     coverage: none
@@ -482,8 +482,8 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    php-83-mariadb-acceptance-alpine:
-        name: "[run-ui-ci] PHP 8.3 / MariaDB / Acceptance & API / Alpine"
+    php-84-mariadb-acceptance-alpine:
+        name: "[run-ui-ci] PHP 8.4 / MariaDB / Acceptance & API / Alpine"
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
@@ -492,7 +492,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.4
             SPRYKER_CURRENT_REGION: EU
             SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
@@ -559,17 +559,17 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    php-83-mariadb-functional-alpine:
+    php-84-mariadb-functional-alpine:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-functional-ci] PHP 8.3 / MariaDB / Functional / Alpine"
+        name: "[run-functional-ci] PHP 8.4 / MariaDB / Functional / Alpine"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.4
             SPRYKER_CURRENT_REGION: EU
             SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
@@ -619,15 +619,15 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    php-82-postgres-acceptance-debian-prefer-lowest-dynamic-store-off:
+    php-83-postgres-acceptance-debian-prefer-lowest-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-compatibility-ci] PHP 8.2 / PostgreSQL / Acceptance & API / Debian / Prefer Lowest / Dynamic Store OFF"
+        name: "[run-compatibility-ci] PHP 8.3 / PostgreSQL / Acceptance & API / Debian / Prefer Lowest / Dynamic Store OFF"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
             TRAVIS: 1
 
         steps:
@@ -636,7 +636,7 @@ jobs:
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: '8.2'
+                    php-version: '8.3'
                     tools: composer:v2
                     coverage: none
 
@@ -657,7 +657,7 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.prefer-lowest.php82.es6.yml
+                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.prefer-lowest.php83.es6.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept fixtures
@@ -695,15 +695,15 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    php-82-postgres-debian-robot-ui-dynamic-store-off-group-one:
+    php-83-postgres-debian-robot-ui-dynamic-store-off-group-one:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-compatibility-ci] PHP 8.2 / PostgreSQL / Debian / Robot / UI / Dynamic Store OFF / Group One"
+        name: "[run-compatibility-ci] PHP 8.3 / PostgreSQL / Debian / Robot / UI / Dynamic Store OFF / Group One"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
             TRAVIS: 1
 
         steps:
@@ -724,7 +724,7 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.robot.yml
+                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php83.robot.yml
                     docker/sdk up
                     docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Run Tests
@@ -741,22 +741,22 @@ jobs:
                     aws configure set default.s3.max_queue_size 6000
                     aws configure set default.s3.multipart_threshold 36MB
                     aws configure set default.s3.multipart_chunksize 16MB
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/group1/log.html
-                    echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/group1/log.html"
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/group1/log.html
+                    echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/group1/log.html"
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    php-82-postgres-debian-robot-ui-dynamic-store-off-group-two:
+    php-83-postgres-debian-robot-ui-dynamic-store-off-group-two:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-compatibility-ci] PHP 8.2 / PostgreSQL / Debian / Robot / UI / Dynamic Store OFF / Group Two"
+        name: "[run-compatibility-ci] PHP 8.3 / PostgreSQL / Debian / Robot / UI / Dynamic Store OFF / Group Two"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
             TRAVIS: 1
 
         steps:
@@ -777,7 +777,7 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.robot.yml
+                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php83.robot.yml
                     docker/sdk up
                     docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Run Tests
@@ -794,22 +794,22 @@ jobs:
                     aws configure set default.s3.max_queue_size 6000
                     aws configure set default.s3.multipart_threshold 36MB
                     aws configure set default.s3.multipart_chunksize 16MB
-                    AWS_DEFAULT_REGION=${{ env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{ vars.ROBOT_TESTS_ARTIFACTS_BUCKET }}/suite-nonsplit/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/group2/log.html
-                    echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/suite-nonsplit/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/group2/log.html"
+                    AWS_DEFAULT_REGION=${{ env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{ vars.ROBOT_TESTS_ARTIFACTS_BUCKET }}/suite-nonsplit/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/group2/log.html
+                    echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/suite-nonsplit/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/group2/log.html"
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    php-82-postgres-debian-robot-ui-dynamic-store-off-group-three:
+    php-83-postgres-debian-robot-ui-dynamic-store-off-group-three:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-compatibility-ci] PHP 8.2 / PostgreSQL / Debian / Robot / UI / Dynamic Store OFF / Group Three"
+        name: "[run-compatibility-ci] PHP 8.3 / PostgreSQL / Debian / Robot / UI / Dynamic Store OFF / Group Three"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
             TRAVIS: 1
 
         steps:
@@ -830,7 +830,7 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php82.robot.yml
+                    docker/sdk boot deploy.ci.acceptance.dynamic-store-off.php83.robot.yml
                     docker/sdk up
                     docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Run Tests
@@ -847,23 +847,23 @@ jobs:
                     aws configure set default.s3.max_queue_size 6000
                     aws configure set default.s3.multipart_threshold 36MB
                     aws configure set default.s3.multipart_chunksize 16MB
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/group3/log.html
-                    echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/suite-nonsplit/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/group3/log.html"
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/group3/log.html
+                    echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/suite-nonsplit/dms-off/robot-ui/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/group3/log.html"
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    php-82-postgres-functional-debian-prefer-lowest-dynamic-store-off:
+    php-83-postgres-functional-debian-prefer-lowest-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-ssp-compatibility-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-compatibility-ci] PHP 8.2 / PostgreSQL / Functional / Debian / Prefer Lowest / Dynamic Store OFF"
+        name: "[run-compatibility-ci] PHP 8.3 / PostgreSQL / Functional / Debian / Prefer Lowest / Dynamic Store OFF"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
             TRAVIS: 1
             DOCKER_PHP_EXTENSIONS: 'protobuf grpc opentelemetry'
 
@@ -880,7 +880,7 @@ jobs:
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: '8.2'
+                    php-version: '8.3'
                     extensions: grpc, protobuf, opentelemetry
                     tools: composer:v2
                     coverage: none
@@ -899,7 +899,7 @@ jobs:
             -   name: Run docker
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.functional.postgres.dynamic-store-off.prefer-lowest.php82.es6.yml
+                    docker/sdk boot deploy.ci.functional.postgres.dynamic-store-off.prefer-lowest.php83.es6.yml
                     docker/sdk up -t
                     docker/sdk cli composer dump-autoload -o -a --apcu
 
@@ -926,8 +926,8 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    php-83-frontend-and-assets-alpine:
-        name: "[run-functional-ci] PHP 8.3 / Frontend & Assets / Alpine"
+    php-84-frontend-and-assets-alpine:
+        name: "[run-functional-ci] PHP 8.4 / Frontend & Assets / Alpine"
         runs-on: ubuntu-latest
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
@@ -935,7 +935,7 @@ jobs:
             || github.ref == 'refs/heads/master'
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.4
             SPRYKER_CURRENT_REGION: EU
             SPRYKER_DYNAMIC_STORE_MODE: true
             TRAVIS: 1
@@ -963,15 +963,15 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    docker-debian-php-82-postgres-robot-dynamic-store-off:
+    docker-debian-php-83-postgres-robot-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-compatibility-ci] PHP 8.2 / Debian / PostgreSQL / Robot / API / Dynamic Store OFF"
+        name: "[run-compatibility-ci] PHP 8.3 / Debian / PostgreSQL / Robot / API / Dynamic Store OFF"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
         steps:
@@ -1005,7 +1005,7 @@ jobs:
                 continue-on-error: false
                 run: |
                     git clone https://github.com/spryker/docker-sdk.git ./docker
-                    docker/sdk boot deploy.ci.api.dynamic-store-off.php82.postgres.robot.yml
+                    docker/sdk boot deploy.ci.api.dynamic-store-off.php83.postgres.robot.yml
                     docker/sdk up
                     docker/sdk cli composer dump-autoload -o -a --apcu
             -   name: Run Tests
@@ -1018,23 +1018,23 @@ jobs:
                     aws configure set default.s3.max_queue_size 6000
                     aws configure set default.s3.multipart_threshold 36MB
                     aws configure set default.s3.multipart_chunksize 16MB
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/robot-api/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/log.html
-                    echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/suite-nonsplit/dms-off/robot-api/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/log.html"
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/robot-api/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/log.html
+                    echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/suite-nonsplit/dms-off/robot-api/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/log.html"
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    docker-alpine-php-83-mariadb-robot-api:
+    docker-alpine-php-84-mariadb-robot-api:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-api-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-api-ci] PHP 8.3 / MariaDB / Robot / API"
+        name: "[run-api-ci] PHP 8.4 / MariaDB / Robot / API"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.4
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
             SPRYKER_CURRENT_REGION: EU
@@ -1082,24 +1082,24 @@ jobs:
                     aws configure set default.s3.max_queue_size 6000
                     aws configure set default.s3.multipart_threshold 36MB
                     aws configure set default.s3.multipart_chunksize 16MB
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3MariaDB/log.html
-                    echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.3MariaDB/log.html"
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.4MariaDB/log.html
+                    echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-api/${GITHUB_RUN_ID}/PHP8.4MariaDB/log.html"
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    docker-alpine-php-83-mariadb-robot-ui-group-one:
+    docker-alpine-php-84-mariadb-robot-ui-group-one:
             if: >
                 contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
                 || github.ref == 'refs/heads/master'
-            name: "[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group One"
+            name: "[run-ui-ci] PHP 8.4 / MariaDB / Robot / UI / Group One"
             runs-on: ubuntu-latest
             env:
                 PROGRESS_TYPE: plain
-                SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+                SPRYKER_PLATFORM_IMAGE: spryker/php:8.4
                 TRAVIS: 1
                 SPRYKER_CURRENT_REGION: EU
                 SPRYKER_DYNAMIC_STORE_MODE: true
@@ -1149,23 +1149,23 @@ jobs:
                         aws configure set default.s3.max_queue_size 6000
                         aws configure set default.s3.multipart_threshold 36MB
                         aws configure set default.s3.multipart_chunksize 16MB
-                        AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/group1/log.html
-                        echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/group1/log.html"
+                        AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.4MariaDB/group1/log.html
+                        echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.4MariaDB/group1/log.html"
                         echo "You must have VPN access to AWS (Spryker-Internal account)"
 
                 -   name: Slack Notification for failed job
                     uses: ./.github/actions/job-slack-notifications
                     if: always()
-    docker-alpine-php-83-mariadb-robot-ui-group-two:
+    docker-alpine-php-84-mariadb-robot-ui-group-two:
             if: >
                 contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
                 || github.ref == 'refs/heads/master'
-            name: "[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group Two"
+            name: "[run-ui-ci] PHP 8.4 / MariaDB / Robot / UI / Group Two"
             runs-on: ubuntu-latest
             env:
                 PROGRESS_TYPE: plain
-                SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+                SPRYKER_PLATFORM_IMAGE: spryker/php:8.4
                 TRAVIS: 1
                 SPRYKER_CURRENT_REGION: EU
                 SPRYKER_DYNAMIC_STORE_MODE: true
@@ -1215,22 +1215,22 @@ jobs:
                         aws configure set default.s3.max_queue_size 6000
                         aws configure set default.s3.multipart_threshold 36MB
                         aws configure set default.s3.multipart_chunksize 16MB
-                        AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/group2/log.html
-                        echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/group2/log.html"
+                        AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.4MariaDB/group2/log.html
+                        echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.4MariaDB/group2/log.html"
                         echo "You must have VPN access to AWS (Spryker-Internal account)"
                 -   name: Slack Notification for failed job
                     uses: ./.github/actions/job-slack-notifications
                     if: always()
-    docker-alpine-php-83-mariadb-robot-ui-group-three:
+    docker-alpine-php-84-mariadb-robot-ui-group-three:
             if: >
                 contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
                 || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
                 || github.ref == 'refs/heads/master'
-            name: "[run-ui-ci] PHP 8.3 / MariaDB / Robot / UI / Group Three"
+            name: "[run-ui-ci] PHP 8.4 / MariaDB / Robot / UI / Group Three"
             runs-on: ubuntu-latest
             env:
                 PROGRESS_TYPE: plain
-                SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+                SPRYKER_PLATFORM_IMAGE: spryker/php:8.4
                 TRAVIS: 1
                 SPRYKER_CURRENT_REGION: EU
                 SPRYKER_DYNAMIC_STORE_MODE: true
@@ -1280,23 +1280,22 @@ jobs:
                         aws configure set default.s3.max_queue_size 6000
                         aws configure set default.s3.multipart_threshold 36MB
                         aws configure set default.s3.multipart_chunksize 16MB
-                        AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/group3/log.html
-                        echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.3MariaDB/group3/log.html"
+                        AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.4MariaDB/group3/log.html
+                        echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.4MariaDB/group3/log.html"
                         echo "You must have VPN access to AWS (Spryker-Internal account)"
                 -   name: Slack Notification for failed job
                     uses: ./.github/actions/job-slack-notifications
                     if: always()
-
-    docker-debian-php-82-postgresql-cypress-dynamic-store-off:
+    docker-debian-php-83-postgresql-cypress-dynamic-store-off:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-compatibility-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-ssp-compatibility-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-compatibility-ci] PHP 8.2 / Debian /  PostgreSql / Cypress / Dynamic Store OFF"
+        name: "[run-compatibility-ci] PHP 8.3 / Debian /  PostgreSql / Cypress / Dynamic Store OFF"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.2-debian
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
 
@@ -1344,8 +1343,8 @@ jobs:
                 continue-on-error: true
                 if: always() && steps.core_tests.outcome == 'failure'
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/core/ --recursive
-                    echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/core/&showversions=false"'
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/core/ --recursive
+                    echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/core/&showversions=false"'
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
 
             -   name: Run Tests (SSP)
@@ -1360,7 +1359,7 @@ jobs:
             -   name: Upload SSP artifacts
                 if: always() && steps.ssp_tests.outcome == 'failure'
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/ssp/ --recursive
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/ssp/ --recursive
 
             -   name: Output test results
                 if: always()
@@ -1372,10 +1371,10 @@ jobs:
                     echo "SSP tests result: ${SSP}"
 
                     if [[ "${CORE}" == "failure" ]]; then
-                        echo "❌ 'Core' tests failed. Check screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/core/&showversions=false"
+                        echo "❌ 'Core' tests failed. Check screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/core/&showversions=false"
                     fi
                     if [[ "${SSP}" == "failure" ]]; then
-                        echo "❌ 'SSP' tests failed. Check  screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/ssp/&showversions=false"
+                        echo "❌ 'SSP' tests failed. Check  screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/ssp/&showversions=false"
                     fi
 
                     if [[ "${CORE}" == "failure" || "${SSP}" == "failure" ]]; then
@@ -1389,17 +1388,17 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    docker-alpine-php-83-mariadb-cypress:
+    docker-alpine-php-84-mariadb-cypress:
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-ui-ci] PHP 8.3 / MariaDB / Cypress / UI"
+        name: "[run-ui-ci] PHP 8.4 / MariaDB / Cypress / UI"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
-            SPRYKER_PLATFORM_IMAGE: spryker/php:8.3
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.4
             TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
             SPRYKER_CURRENT_REGION: EU
@@ -1451,8 +1450,8 @@ jobs:
                 continue-on-error: true
                 if: always() && steps.core_tests.outcome == 'failure'
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/core/ --recursive
-                    echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/core/&showversions=false"'
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/core/ --recursive
+                    echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/core/&showversions=false"'
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
 
             -   name: Run Tests (SSP)
@@ -1467,7 +1466,7 @@ jobs:
             -   name: Upload SSP artifacts
                 if: always() && steps.ssp_tests.outcome == 'failure'
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/ssp/ --recursive
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/ssp/ --recursive
 
             -   name: Output test results
                 if: always()
@@ -1479,10 +1478,10 @@ jobs:
                     echo "SSP tests result: ${SSP}"
 
                     if [[ "${CORE}" == "failure" ]]; then
-                        echo "❌ 'Core' tests failed. Check screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/core/&showversions=false"
+                        echo "❌ 'Core' tests failed. Check screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/core/&showversions=false"
                     fi
                     if [[ "${SSP}" == "failure" ]]; then
-                        echo "❌ 'SSP' tests failed. Check  screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.3MariaDB/ssp/&showversions=false"
+                        echo "❌ 'SSP' tests failed. Check  screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/ssp/&showversions=false"
                     fi
 
                     if [[ "${CORE}" == "failure" || "${SSP}" == "failure" ]]; then
