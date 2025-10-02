@@ -709,12 +709,12 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            # -   name: Configure sysctl limits
-            #     run: |
-            #         sudo sysctl -w vm.swappiness=10
-            #         sudo sysctl -w fs.file-max=262144
-            #         sudo sysctl -w vm.max_map_count=262144
-            #         ulimit -n 65536
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
 
             -   name: Install robotframework-suite-tests folder
                 run: |
@@ -1023,12 +1023,12 @@ jobs:
                         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
                         restore-keys: |
                             ${{ runner.os }}-pip-
-                # -   name: Configure sysctl limits
-                #     run: |
-                #         sudo sysctl -w vm.swappiness=10
-                #         sudo sysctl -w fs.file-max=262144
-                #         sudo sysctl -w vm.max_map_count=262144
-                #         ulimit -n 65536
+                -   name: Configure sysctl limits
+                    run: |
+                        sudo sysctl -w vm.swappiness=10
+                        sudo sysctl -w fs.file-max=262144
+                        sudo sysctl -w vm.max_map_count=262144
+                        ulimit -n 65536
                 -   name: Install packages
                     run: |
                         sudo apt-get update
