@@ -1331,7 +1331,7 @@ jobs:
             #         docker/sdk exec cypress-tests cp .env.example .env
             #         docker/sdk exec cypress-tests npx cypress install
 
-            -   name: Run Tests
+            -   name: Run Tests (Core)
                 id: core_tests
                 continue-on-error: true
                 if: >
@@ -1378,7 +1378,6 @@ jobs:
                     fi
 
                     if [[ "${CORE}" == "failure" || "${SSP}" == "failure" ]]; then
-                    echo "Some tests failed (or did not succeed)."
                     exit 1
                     else
                     echo "All tests passed."
