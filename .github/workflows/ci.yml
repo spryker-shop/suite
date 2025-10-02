@@ -705,17 +705,15 @@ jobs:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.3-debian
             TRAVIS: 1
-
         steps:
             -   uses: actions/checkout@v4
-
-            -   name: Configure sysctl limits
-                run: |
-                    sudo sysctl -w vm.swappiness=10
-                    sudo sysctl -w fs.file-max=262144
-                    sudo sysctl -w vm.max_map_count=262144
-                    ulimit -n 65536
-
+            -   name: Cache pip
+                uses: actions/cache@v4
+                with:
+                    path: ~/.cache/pip
+                    key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+                    restore-keys: |
+                        ${{ runner.os }}-pip-
             -   name: Install robotframework-suite-tests folder
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
@@ -730,7 +728,7 @@ jobs:
                 id: run_dynamic_tests
                 continue-on-error: true
                 run: |
-                    docker/sdk exec robot-framework pabot --processes 4 --ordering pabot_suite_ordering -v env:ui_suite -v docker:True -v headless:true -v ignore_console:false -v dms:false -v db_engine:psycopg2 -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set --include smoke -s '*'.tests.parallel_ui.suite .
+                    docker/sdk exec robot-framework pabot --processes 5 --ordering pabot_suite_ordering -v env:ui_suite -v docker:True -v headless:true -v ignore_console:false -v dms:false -v db_engine:psycopg2 -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set --include smoke -s '*'.tests.parallel_ui.suite .
             -   name: Run Static Tests Set
                 id: run_static_tests
                 continue-on-error: true
@@ -1023,12 +1021,6 @@ jobs:
                         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
                         restore-keys: |
                             ${{ runner.os }}-pip-
-                -   name: Configure sysctl limits
-                    run: |
-                        sudo sysctl -w vm.swappiness=10
-                        sudo sysctl -w fs.file-max=262144
-                        sudo sysctl -w vm.max_map_count=262144
-                        ulimit -n 65536
                 -   name: Install packages
                     run: |
                         sudo apt-get update
@@ -1049,7 +1041,7 @@ jobs:
                     id: run_dynamic_tests
                     continue-on-error: true
                     run: |
-                        docker/sdk exec robot-framework pabot --processes 4 --ordering pabot_suite_ordering -v env:ui_suite -v docker:True -v headless:true -v ignore_console:false -v dms:true -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set --include smoke -s '*'.tests.parallel_ui.suite .
+                        docker/sdk exec robot-framework pabot --processes 5 --ordering pabot_suite_ordering -v env:ui_suite -v docker:True -v headless:true -v ignore_console:false -v dms:true -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set --include smoke -s '*'.tests.parallel_ui.suite .
                 -   name: Run Static Tests Set
                     id: run_static_tests
                     continue-on-error: true
