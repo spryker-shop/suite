@@ -1372,9 +1372,9 @@ jobs:
                     echo "SSP tests result: ${SSP}"
 
                     if [[ "${CORE}" == "failure" ]]; then
-                        echo "⚠️ Check 'Core' Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/core/&showversions=false"
+                        echo "❌ 'Core' tests failed. Check screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/core/&showversions=false"
                     elif [[ "${SSP}" == "failure" ]]; then
-                        echo "⚠️ Check 'SSP' Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/ssp/&showversions=false"
+                        echo "❌ 'SSP' tests failed. Check  screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.2PostgreSQL/ssp/&showversions=false"
                     fi
 
                     if [[ "${CORE}" == "failure" || "${SSP}" == "failure" ]]; then
