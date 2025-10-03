@@ -1,0 +1,44 @@
+namespace: PyzTest\Yves\SelfServicePortal
+actor: SelfServicePortalFunctionalTester
+paths:
+    tests: .
+    output: ../../../_output
+    data: ../../../_data
+    support: _support
+    envs: ../../../_envs
+settings:
+    suite_class: \PHPUnit\Framework\TestSuite
+    colors: true
+    memory_limit: 1024M
+    log: true
+coverage:
+    enabled: true
+    whitelist:
+        include:
+            - '../../../../src/Pyz/Yves/SelfServicePortal/*'
+suites:
+    Functional:
+        path: Functional
+        actor: SelfServicePortalFunctionalTester
+        modules:
+            enabled:
+                - \PyzTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                      projectNamespaces: ['Pyz']
+                - \SprykerTest\Shared\Propel\Helper\ConnectionHelper
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
+                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
+                - \SprykerTest\Service\Container\Helper\ContainerHelper
+                - \SprykerTest\Shared\Store\Helper\StoreDependencyHelper
+                - \SprykerTest\Zed\Company\Helper\CompanyHelper
+                - \SprykerTest\Shared\Customer\Helper\CustomerDataHelper
+                - \SprykerTest\Shared\CompanyUser\Helper\CompanyUserHelper
+                - \SprykerTest\Zed\CompanyRole\Helper\CompanyRoleHelper
+                - \SprykerTest\Zed\CompanyBusinessUnit\Helper\CompanyBusinessUnitHelper
+                - \SprykerTest\Zed\Permission\Helper\PermissionHelper
+                - \SprykerFeatureTest\Shared\SelfServicePortal\Helper\SelfServicePortalHelper
+                - \SprykerFeatureTest\Shared\SelfServicePortal\Helper\SspModelHelper
+            config:
+                \SprykerTest\Shared\Testify\Helper\DataCleanupHelper:
+                    cleanup: true

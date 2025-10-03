@@ -515,7 +515,8 @@ jobs:
                     docker/sdk exec cypress-tests cp .env.dynamic-store.example .env
                     docker/sdk exec cypress-tests npx cypress install
 
-            -   name: Run Tests
+            -   name: Run Tests (Core)
+                id: core_tests
                 continue-on-error: true
                 if: >
                     contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
@@ -526,13 +527,14 @@ jobs:
 
             -   name: Upload artifacts
                 continue-on-error: true
-                if: failure()
+                if: always() && steps.core_tests.outcome == 'failure'
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/ --recursive
-                    echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/screenshots/&showversions=false"'
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/core/ --recursive
+                    echo "Check the Cypress screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/core/&showversions=false"'
                     echo "You must have VPN access to AWS (Spryker-Internal account)"
 
             -   name: Run Tests (SSP)
+                id: ssp_tests
                 continue-on-error: true
                 if: >
                     contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
@@ -541,10 +543,33 @@ jobs:
                     docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci:ssp
 
             -   name: Upload SSP artifacts
-                if: failure()
+                if: always() && steps.ssp_tests.outcome == 'failure'
                 run: |
-                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-off/cypress/${GITHUB_RUN_ID}/PHP8.3PostgreSQL/ --recursive
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .cypress s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/ssp/ --recursive
 
+            -   name: Output test results
+                if: always()
+                run: |
+                    CORE="${{ steps.core_tests.outcome }}"
+                    SSP="${{ steps.ssp_tests.outcome }}"
+
+                    echo "Core tests result: ${CORE}"
+                    echo "SSP tests result: ${SSP}"
+
+                    if [[ "${CORE}" == "failure" ]]; then
+                        echo "❌ 'Core' tests failed. Check screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/core/&showversions=false"
+                    fi
+                    if [[ "${SSP}" == "failure" ]]; then
+                        echo "❌ 'SSP' tests failed. Check  screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/ssp/&showversions=false"
+                    fi
+
+                    if [[ "${CORE}" == "failure" || "${SSP}" == "failure" ]]; then
+                    exit 1
+                    else
+                    echo "All tests passed."
+                    exit 0
+                    fi
+            
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
