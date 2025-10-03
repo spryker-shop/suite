@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "70f62d4d0ff57cade17fb1c625d693bd",
+    "content-hash": "ab06fc486592dee9fb3e44d8736c3f4f",
     "packages": [
         {
             "name": "async-aws/core",
@@ -12050,6 +12050,58 @@
                 "source": "https://github.com/spryker-shop/merchant-profile-widget/tree/1.2.0"
             },
             "time": "2024-03-27T10:11:31+00:00"
+        },
+        {
+            "name": "spryker-shop/merchant-registration-request-page",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/merchant-registration-request-page.git",
+                "reference": "0da61f061fe31543b1dc1ade848776ee4bc77862"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/merchant-registration-request-page/zipball/0da61f061fe31543b1dc1ade848776ee4bc77862",
+                "reference": "0da61f061fe31543b1dc1ade848776ee4bc77862",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.3",
+                "spryker-shop/shop-ui": "^1.73.0",
+                "spryker/kernel": "^3.52.0",
+                "spryker/merchant-registration-request": "^1.0.0",
+                "spryker/store": "^1.24.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/twig": "^3.24.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*"
+            },
+            "suggest": {
+                "spryker/router": "Use this module if you want use the RouterProviderPlugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantRegistrationRequestPage module",
+            "support": {
+                "source": "https://github.com/spryker-shop/merchant-registration-request-page/tree/1.0.0"
+            },
+            "time": "2025-10-03T15:46:36+00:00"
         },
         {
             "name": "spryker-shop/merchant-relation-request-page",
@@ -26833,20 +26885,20 @@
         },
         {
             "name": "spryker/comment",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/comment.git",
-                "reference": "afc43ba55302ff27933dd9020a3e1a20017ca265"
+                "reference": "a89f9ce8dc7be6765701138439424928469a55a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/comment/zipball/afc43ba55302ff27933dd9020a3e1a20017ca265",
-                "reference": "afc43ba55302ff27933dd9020a3e1a20017ca265",
+                "url": "https://api.github.com/repos/spryker/comment/zipball/a89f9ce8dc7be6765701138439424928469a55a5",
+                "reference": "a89f9ce8dc7be6765701138439424928469a55a5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
+                "php": ">=8.3",
                 "spryker/acl-merchant-portal-extension": "^1.0.0",
                 "spryker/cart-reorder-extension": "^1.0.0",
                 "spryker/comment-extension": "^1.1.0",
@@ -26884,9 +26936,9 @@
             ],
             "description": "Comment module",
             "support": {
-                "source": "https://github.com/spryker/comment/tree/1.8.0"
+                "source": "https://github.com/spryker/comment/tree/1.9.0"
             },
-            "time": "2025-08-04T08:52:14+00:00"
+            "time": "2025-10-03T15:46:32+00:00"
         },
         {
             "name": "spryker/comment-data-import",
@@ -38617,20 +38669,20 @@
         },
         {
             "name": "spryker/merchant",
-            "version": "3.17.1",
+            "version": "3.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant.git",
-                "reference": "089a6f90e77e82f94a910ca1105591bf7ff51d47"
+                "reference": "29bc7feff2475b176f43ca845a8eb1eabce7b700"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant/zipball/089a6f90e77e82f94a910ca1105591bf7ff51d47",
-                "reference": "089a6f90e77e82f94a910ca1105591bf7ff51d47",
+                "url": "https://api.github.com/repos/spryker/merchant/zipball/29bc7feff2475b176f43ca845a8eb1eabce7b700",
+                "reference": "29bc7feff2475b176f43ca845a8eb1eabce7b700",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
+                "php": ">=8.3",
                 "spryker/acl-merchant-portal-extension": "^1.0.0",
                 "spryker/cart-extension": "^4.0.0",
                 "spryker/checkout-extension": "^1.2.0",
@@ -38679,9 +38731,9 @@
             ],
             "description": "Merchant module",
             "support": {
-                "source": "https://github.com/spryker/merchant/tree/3.17.1"
+                "source": "https://github.com/spryker/merchant/tree/3.18.0"
             },
-            "time": "2025-10-02T07:51:37+00:00"
+            "time": "2025-10-03T15:46:32+00:00"
         },
         {
             "name": "spryker/merchant-agent",
@@ -41670,6 +41722,68 @@
                 "source": "https://github.com/spryker/merchant-profile-merchant-portal-gui-extension/tree/1.0.0"
             },
             "time": "2024-03-27T10:11:29+00:00"
+        },
+        {
+            "name": "spryker/merchant-registration-request",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-registration-request.git",
+                "reference": "26378aefe22d3659e2760711051ea02a13f9630f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-registration-request/zipball/26378aefe22d3659e2760711051ea02a13f9630f",
+                "reference": "26378aefe22d3659e2760711051ea02a13f9630f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.3",
+                "spryker/comment": "^1.9.0",
+                "spryker/country": "^4.0.0",
+                "spryker/gui": "^3.45.0",
+                "spryker/kernel": "^3.76.0",
+                "spryker/locale": "^4.0.0",
+                "spryker/merchant": "^3.18.0",
+                "spryker/merchant-user": "^1.6.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/store": "^1.24.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/util-date-time": "^1.0.0",
+                "spryker/util-text": "^1.6.0",
+                "spryker/util-uuid-generator": "^1.1.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/application": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/comment-user-connector": "*",
+                "spryker/container": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*",
+                "spryker/user": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantRegistrationRequest module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-registration-request/tree/1.0.0"
+            },
+            "time": "2025-10-03T15:46:32+00:00"
         },
         {
             "name": "spryker/merchant-relation-request",
