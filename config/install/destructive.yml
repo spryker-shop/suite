@@ -17,6 +17,9 @@ sections:
             command: 'vendor/bin/console propel:tables:drop -vvv --no-ansi'
 
     init-storages-per-region:
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
+
         propel-copy-schema:
             command: 'vendor/bin/console propel:schema:copy -vvv --no-ansi'
 
@@ -56,6 +59,9 @@ sections:
             command: 'vendor/bin/console search:setup:sources -vvv --no-ansi'
 
     demodata:
+        setup-search-create-sources:
+            command: 'vendor/bin/console search:setup:sources'
+
         import-demodata:
             command: 'vendor/bin/console data:import --config=data/import/local/full_${SPRYKER_CURRENT_REGION}.yml'
 
@@ -66,5 +72,8 @@ sections:
             command: 'vendor/bin/console product:check-validity'
 
     scheduler-start:
+        trigger-events:
+            command: 'vendor/bin/console publish:trigger-events'
+
         scheduler-setup:
             command: 'vendor/bin/console scheduler:setup -vvv --no-ansi || true'
