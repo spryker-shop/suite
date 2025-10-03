@@ -4,9 +4,9 @@ namespace: spryker_ci
 tag: '1.0'
 
 environment: docker.ci
-pipeline: docker.ci.acceptance.dynamic-store-off
+pipeline: docker.ci.acceptance
 image:
-    tag: spryker/php:8.2
+    tag: spryker/php:8.3
     php:
         enabled-extensions:
             - otel
@@ -25,7 +25,7 @@ image:
 
 composer:
     mode: '--no-dev --quiet'
-    autoload: --classmap-authoritative
+    autoload: '-a -o'
 
 regions:
     EU:
@@ -64,22 +64,6 @@ groups:
     EU:
         region: EU
         applications:
-            merchant_portal_eu:
-                application: merchant-portal
-                endpoints:
-                    mp.de.spryker.local:
-                        entry-point: MerchantPortal
-                        store: DE
-                        primal: true
-                        services:
-                            session:
-                                namespace: 5
-                    mp.at.spryker.local:
-                        entry-point: MerchantPortal
-                        store: AT
-                        services:
-                            session:
-                                namespace: 6
             yves_eu:
                 application: yves
                 endpoints:
@@ -169,7 +153,7 @@ services:
         engine: valkey
     search:
         engine: elastic
-        version: '7.10'
+        version: '6.8'
     mail_catcher:
         engine: mailhog
     webdriver:
@@ -188,8 +172,4 @@ docker:
         store: DE
 
     mount:
-        baked:
-
-    compose:
-        yamls:
-            - .robot/docker-compose.robot.yml
+        native:
