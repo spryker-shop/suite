@@ -716,7 +716,7 @@ jobs:
                         ${{ runner.os }}-pip-
             -   name: Install robotframework-suite-tests folder
                 run: |
-                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
+                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-improvement/refactor-ui-suite-orderign" --dev --no-interaction
                     cp -r vendor ../vendor
             -   name: Install Project
                 run: |
@@ -1029,7 +1029,7 @@ jobs:
                         pip3 install awscli
                 -   name: Install robotframework-suite-tests folder
                     run: |
-                        cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
+                        cd ./data && composer require "spryker/robotframework-suite-tests:dev-improvement/refactor-ui-suite-orderign" --dev --no-interaction
                         cp -r vendor ../vendor
                 -   name: Install Project
                     run: |
