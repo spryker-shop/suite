@@ -77,6 +77,9 @@ sections:
             command: 'vendor/bin/console search:setup:sources -vvv --no-ansi'
 
     demodata:
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
+
         import-eu-region-demodata:
             command: 'vendor/bin/console data:import --config=data/import/production/full_EU.yml'
             stores:
@@ -92,5 +95,8 @@ sections:
             stores: true
 
     scheduler-start:
+        trigger-events:
+            command: 'vendor/bin/console publish:trigger-events'
+
         scheduler-setup:
             command: 'vendor/bin/console scheduler:setup -vvv --no-ansi || true'
