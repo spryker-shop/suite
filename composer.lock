@@ -246,16 +246,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.356.30",
+            "version": "3.356.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "8ee5c1f3849489452ee4eec01a9cdd338defc246"
+                "reference": "3e74e822177581c90faed3d607b022af9962bd00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8ee5c1f3849489452ee4eec01a9cdd338defc246",
-                "reference": "8ee5c1f3849489452ee4eec01a9cdd338defc246",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3e74e822177581c90faed3d607b022af9962bd00",
+                "reference": "3e74e822177581c90faed3d607b022af9962bd00",
                 "shasum": ""
             },
             "require": {
@@ -337,9 +337,9 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.356.30"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.356.31"
             },
-            "time": "2025-10-01T18:19:37+00:00"
+            "time": "2025-10-02T18:59:02+00:00"
         },
         {
             "name": "brick/math",
@@ -4336,16 +4336,16 @@
         },
         {
             "name": "open-telemetry/api",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opentelemetry-php/api.git",
-                "reference": "ee17d937652eca06c2341b6fadc0f74c1c1a5af2"
+                "reference": "610b79ad9d6d97e8368bcb6c4d42394fbb87b522"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/api/zipball/ee17d937652eca06c2341b6fadc0f74c1c1a5af2",
-                "reference": "ee17d937652eca06c2341b6fadc0f74c1c1a5af2",
+                "url": "https://api.github.com/repos/opentelemetry-php/api/zipball/610b79ad9d6d97e8368bcb6c4d42394fbb87b522",
+                "reference": "610b79ad9d6d97e8368bcb6c4d42394fbb87b522",
                 "shasum": ""
             },
             "require": {
@@ -4365,7 +4365,7 @@
                     ]
                 },
                 "branch-alias": {
-                    "dev-main": "1.4.x-dev"
+                    "dev-main": "1.7.x-dev"
                 }
             },
             "autoload": {
@@ -4402,7 +4402,7 @@
                 "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
                 "source": "https://github.com/open-telemetry/opentelemetry-php"
             },
-            "time": "2025-09-19T00:05:49+00:00"
+            "time": "2025-10-02T23:44:28+00:00"
         },
         {
             "name": "open-telemetry/context",
@@ -7259,7 +7259,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "2ebf5be4f7aa2cac7db1feb8b12dd4d5819205d4"
+                "reference": "99aebe4e4e005d9446bf8e702cafb1c725798af6"
             },
             "require": {
                 "php": ">=8.3"
@@ -7725,6 +7725,7 @@
                 "spryker/merchant-profile-gui": "*",
                 "spryker/merchant-profile-merchant-portal-gui": "*",
                 "spryker/merchant-profile-merchant-portal-gui-extension": "*",
+                "spryker/merchant-registration-request": "*",
                 "spryker/merchant-relation-request": "*",
                 "spryker/merchant-relation-request-extension": "*",
                 "spryker/merchant-relation-request-gui": "*",
@@ -8412,7 +8413,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2025-10-02T13:03:50+00:00"
+            "time": "2025-10-03T15:46:32+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8420,7 +8421,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "2be5d888c3cd02f68f3d290946e5b0611a417c87"
+                "reference": "9f4cf5919a303962b987f8d33b067349367e6ced"
             },
             "require": {
                 "php": ">=8.3"
@@ -8493,6 +8494,7 @@
                 "spryker-shop/merchant-product-offer-widget-extension": "*",
                 "spryker-shop/merchant-product-widget": "*",
                 "spryker-shop/merchant-profile-widget": "*",
+                "spryker-shop/merchant-registration-request-page": "*",
                 "spryker-shop/merchant-relation-request-page": "*",
                 "spryker-shop/merchant-relation-request-widget": "*",
                 "spryker-shop/merchant-relationship-page": "*",
@@ -8622,7 +8624,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2025-10-02T13:03:59+00:00"
+            "time": "2025-10-03T15:46:36+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -19571,18 +19573,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "d9d9cafbce8f224b39231c2fd5d8bbe0f7bd104f"
+                "reference": "9bfe3d424359e2624bdf7391c1f7c72f0d0c000c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/d9d9cafbce8f224b39231c2fd5d8bbe0f7bd104f",
-                "reference": "d9d9cafbce8f224b39231c2fd5d8bbe0f7bd104f",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/9bfe3d424359e2624bdf7391c1f7c72f0d0c000c",
+                "reference": "9bfe3d424359e2624bdf7391c1f7c72f0d0c000c",
                 "shasum": ""
             },
             "require": {
                 "laminas/laminas-config": "^2.5.1 || ^3.1.0",
                 "laminas/laminas-filter": "^2.5.1",
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "phpdocumentor/reflection-docblock": "^5.3.0",
                 "phpmd/phpmd": "^2.10.0",
                 "symfony/finder": "^4.0.0 || ^5.0.0 || ^6.0.0"
@@ -19590,7 +19592,7 @@
             "require-dev": {
                 "codeception/codeception": "^5.0.8",
                 "codeception/module-asserts": "^3.0.0",
-                "phpstan/phpstan": "1.10.60",
+                "phpstan/phpstan": "^1.11",
                 "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "^5.4.24"
             },
@@ -19626,7 +19628,7 @@
                 "issues": "https://github.com/spryker/architecture-sniffer/issues",
                 "source": "https://github.com/spryker/architecture-sniffer"
             },
-            "time": "2025-06-27T08:17:43+00:00"
+            "time": "2025-10-02T14:52:23+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -19902,7 +19904,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/robotframework-suite-tests.git",
-                "reference": "f8ce3f0a3edea2c32a906312a83140affe893db9"
+                "reference": "596865c51f32f81cc1b1f2a5a8ee34d5f4d326c3"
             },
             "default-branch": true,
             "type": "library",
@@ -19910,7 +19912,7 @@
                 "MIT"
             ],
             "description": "Automated tests for the Robot Framework",
-            "time": "2025-09-24T11:27:44+00:00"
+            "time": "2025-10-03T13:22:17+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
