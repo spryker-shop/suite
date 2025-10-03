@@ -15,7 +15,7 @@ env:
     WEEKLY_CI_SLACK_CHANNEL_ID: ${{ secrets.WEEKLY_CI_SLACK_CHANNEL_ID }}
     JIRA_TICKET_SLACK_USER_GROUP_MAPPING: ${{ secrets.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}
     ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
-    SKIP_ON_MASTER_PUSH: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' }}
+    SKIP_ON_MASTER_PUSH: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -24,6 +24,7 @@ concurrency:
 jobs:
     scan-credentials:
         name: "Scan for Credentials"
+        if: ${{ env.SKIP_ON_MASTER_PUSH != 'true' }}
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
@@ -38,6 +39,7 @@ jobs:
 
     standard-validation:
         name: "Standard Validation"
+        if: ${{ env.SKIP_ON_MASTER_PUSH != 'true' }}
         runs-on: ubuntu-latest
         env:
             APPLICATION_ENV: ci.mysql
@@ -188,6 +190,7 @@ jobs:
 
     standard-validation-prefer-lowest:
         name: "Standard Validation / Prefer Lowest"
+        if: ${{ env.SKIP_ON_MASTER_PUSH != 'true' }}
         runs-on: ubuntu-latest
         env:
             APPLICATION_ENV: ci.mysql
@@ -412,6 +415,7 @@ jobs:
 
     snyk-validation:
         name: "Snyk Validation"
+        if: ${{ env.SKIP_ON_MASTER_PUSH != 'true' }}
         runs-on: ubuntu-latest
 
         steps:
@@ -439,6 +443,7 @@ jobs:
 
     js-validation:
         name: "NPM validation"
+        if: ${{ env.SKIP_ON_MASTER_PUSH != 'true' }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
