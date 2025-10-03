@@ -23,6 +23,7 @@ concurrency:
 jobs:
     scan-credentials:
         name: "Scan for Credentials"
+        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
@@ -37,6 +38,7 @@ jobs:
 
     standard-validation:
         name: "Standard Validation"
+        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
         runs-on: ubuntu-latest
         env:
             APPLICATION_ENV: ci.mysql
@@ -187,6 +189,7 @@ jobs:
 
     standard-validation-prefer-lowest:
         name: "Standard Validation / Prefer Lowest"
+        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
         runs-on: ubuntu-latest
         env:
             APPLICATION_ENV: ci.mysql
@@ -411,6 +414,7 @@ jobs:
 
     snyk-validation:
         name: "Snyk Validation"
+        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
         runs-on: ubuntu-latest
 
         steps:
@@ -438,6 +442,7 @@ jobs:
 
     js-validation:
         name: "NPM validation"
+        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -1490,7 +1495,7 @@ jobs:
                     echo "All tests passed."
                     exit 0
                     fi
-            
+
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
