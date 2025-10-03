@@ -15,6 +15,7 @@ env:
     WEEKLY_CI_SLACK_CHANNEL_ID: ${{ secrets.WEEKLY_CI_SLACK_CHANNEL_ID }}
     JIRA_TICKET_SLACK_USER_GROUP_MAPPING: ${{ secrets.JIRA_TICKET_SLACK_USER_GROUP_MAPPING }}
     ROBOT_TESTS_ARTIFACTS_BUCKET_REGION: eu-west-1
+    SKIP_ON_MASTER_PUSH: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' }}
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -1490,7 +1491,7 @@ jobs:
                     echo "All tests passed."
                     exit 0
                     fi
-            
+
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
