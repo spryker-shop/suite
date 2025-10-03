@@ -728,7 +728,7 @@ jobs:
                 id: run_dynamic_tests
                 continue-on-error: true
                 run: |
-                    docker/sdk exec robot-framework pabot --processes 5 --ordering pabot_suite_ordering -v env:ui_suite -v docker:True -v headless:true -v ignore_console:false -v dms:false -v db_engine:psycopg2 -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set --include smoke -s '*'.tests.parallel_ui.suite .
+                    docker/sdk exec robot-framework pabot --processes 4 --ordering pabot_suite_ordering -v env:ui_suite -v docker:True -v headless:true -v ignore_console:false -v dms:false -v db_engine:psycopg2 -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set --include smoke -s '*'.tests.parallel_ui.suite .
             -   name: Run Static Tests Set
                 id: run_static_tests
                 continue-on-error: true
@@ -1041,7 +1041,7 @@ jobs:
                     id: run_dynamic_tests
                     continue-on-error: true
                     run: |
-                        docker/sdk exec robot-framework pabot --processes 5 --ordering pabot_suite_ordering -v env:ui_suite -v docker:True -v headless:true -v ignore_console:false -v dms:true -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set --include smoke -s '*'.tests.parallel_ui.suite .
+                        docker/sdk exec robot-framework pabot --processes 4 --ordering pabot_suite_ordering -v env:ui_suite -v docker:True -v headless:true -v ignore_console:false -v dms:true -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set --include smoke -s '*'.tests.parallel_ui.suite .
                 -   name: Run Static Tests Set
                     id: run_static_tests
                     continue-on-error: true
