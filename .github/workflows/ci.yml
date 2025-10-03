@@ -24,7 +24,7 @@ concurrency:
 jobs:
     scan-credentials:
         name: "Scan for Credentials"
-        if: ${{ env.SKIP_ON_MASTER_PUSH != 'true' }}
+        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
