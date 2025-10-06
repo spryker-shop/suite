@@ -14,6 +14,8 @@ use Spryker\Zed\CartNote\Communication\Plugin\CartReorder\CartNoteCartPreReorder
 use Spryker\Zed\CartNote\Communication\Plugin\CartReorder\CartNoteCartReorderItemHydratorPlugin;
 use Spryker\Zed\CartReorder\CartReorderDependencyProvider as SprykerCartReorderDependencyProvider;
 use Spryker\Zed\Comment\Communication\Plugin\CartReorder\CopyOrderCommentThreadCartPreReorderPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\CartReorder\EditBusinessUnitOrderCartReorderOrderProviderPlugin;
+use Spryker\Zed\CompanySalesConnector\Communication\Plugin\CartReorder\EditCompanyOrderCartReorderOrderProviderPlugin;
 use Spryker\Zed\ConfigurableBundleNote\Communication\Plugin\CartReorder\ConfigurableBundleNoteCartReorderItemHydratorPlugin;
 use Spryker\Zed\Currency\Communication\Plugin\CartReorder\CopyOrderCurrencyCartPreReorderPlugin;
 use Spryker\Zed\MerchantProduct\Communication\Plugin\CartReorder\MerchantProductCartReorderItemHydratorPlugin;
@@ -188,6 +190,17 @@ class CartReorderDependencyProvider extends SprykerCartReorderDependencyProvider
     {
         return [
             new ProductBundleCartReorderOrderItemFilterPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\CartReorderExtension\Dependency\Plugin\CartReorderOrderProviderPluginInterface>
+     */
+    protected function getCartReorderOrderProviderPlugins(): array
+    {
+        return [
+            new EditCompanyOrderCartReorderOrderProviderPlugin(),
+            new EditBusinessUnitOrderCartReorderOrderProviderPlugin(),
         ];
     }
 }

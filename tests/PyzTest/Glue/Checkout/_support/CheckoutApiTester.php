@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace PyzTest\Glue\Checkout;
 
+use Codeception\Stub;
 use DateTime;
 use Generated\Shared\DataBuilder\AddressBuilder;
 use Generated\Shared\DataBuilder\CustomerBuilder;
@@ -68,7 +69,11 @@ use Spryker\Glue\OrdersRestApi\OrdersRestApiConfig;
 use Spryker\Shared\Price\PriceConfig;
 use Spryker\Shared\Shipment\ShipmentConfig;
 use Spryker\Zed\Cart\Business\CartFacadeInterface;
+use Spryker\Zed\CompanyMailConnector\Business\CompanyMailConnectorBusinessFactory;
+use Spryker\Zed\CompanyMailConnector\CompanyMailConnectorDependencyProvider;
+use Spryker\Zed\CompanyMailConnector\Dependency\Facade\CompanyMailConnectorToMailFacadeBridge;
 use Spryker\Zed\Customer\Business\CustomerFacadeInterface;
+use Spryker\Zed\Mail\Business\MailFacadeInterface;
 use Spryker\Zed\Payment\Business\PaymentFacadeInterface;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
@@ -1042,6 +1047,19 @@ class CheckoutApiTester extends ApiEndToEndTester
         $this->assertSame($companyUnitAddressTransfer->getCity(), $shippingAddress['city']);
         $this->assertSame($companyUnitAddressTransfer->getZipCode(), $shippingAddress['zipCode']);
         $this->assertSame($companyUnitAddressTransfer->getIso2Code(), $shippingAddress['iso2Code']);
+    }
+
+    public function haveCompanyMailConnectorToMailDependency(): void
+    {
+        $companyMailConnectorToMailFacadeBridge = new CompanyMailConnectorToMailFacadeBridge(
+            Stub::makeEmpty(MailFacadeInterface::class),
+        );
+
+        $this->setDependency(
+            CompanyMailConnectorDependencyProvider::FACADE_MAIL,
+            $companyMailConnectorToMailFacadeBridge,
+            CompanyMailConnectorBusinessFactory::class,
+        );
     }
 
     /**

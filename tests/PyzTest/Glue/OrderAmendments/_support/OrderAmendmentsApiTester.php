@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace PyzTest\Glue\OrderAmendments;
 
+use Codeception\Stub;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\MoneyValueTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
@@ -16,6 +17,10 @@ use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Glue\CartReorderRestApi\CartReorderRestApiConfig;
+use Spryker\Zed\CompanyMailConnector\Business\CompanyMailConnectorBusinessFactory;
+use Spryker\Zed\CompanyMailConnector\CompanyMailConnectorDependencyProvider;
+use Spryker\Zed\CompanyMailConnector\Dependency\Facade\CompanyMailConnectorToMailFacadeBridge;
+use Spryker\Zed\Mail\Business\MailFacadeInterface;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
@@ -142,5 +147,18 @@ class OrderAmendmentsApiTester extends ApiEndToEndTester
         $productConcreteTransfer->addPrice($priceProductTransfer);
 
         return $productConcreteTransfer;
+    }
+
+    public function haveCompanyMailConnectorToMailDependency(): void
+    {
+        $companyMailConnectorToMailFacadeBridge = new CompanyMailConnectorToMailFacadeBridge(
+            Stub::makeEmpty(MailFacadeInterface::class),
+        );
+
+        $this->setDependency(
+            CompanyMailConnectorDependencyProvider::FACADE_MAIL,
+            $companyMailConnectorToMailFacadeBridge,
+            CompanyMailConnectorBusinessFactory::class,
+        );
     }
 }
