@@ -85,15 +85,6 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
-            -   name: Cache Composer
-                uses: actions/cache@v4
-                with:
-                    path: |
-                        ~/.composer/cache
-                        vendor
-                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-                    restore-keys: |
-                        ${{ runner.os }}-composer-
 
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
@@ -239,16 +230,6 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
-            -   name: Cache Composer
-                uses: actions/cache@v4
-                with:
-                    path: |
-                        ~/.composer/cache
-                        vendor
-                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-                    restore-keys: |
-                        ${{ runner.os }}-composer-
-
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
@@ -349,17 +330,6 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
-
-            -   name: Cache Composer
-                uses: actions/cache@v4
-                with:
-                    path: |
-                        ~/.composer/cache
-                        vendor
-                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-                    restore-keys: |
-                        ${{ runner.os }}-composer-
-
 
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
