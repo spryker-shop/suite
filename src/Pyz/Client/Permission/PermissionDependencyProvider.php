@@ -9,12 +9,14 @@ declare(strict_types = 1);
 
 namespace Pyz\Client\Permission;
 
+use Spryker\Client\CompanyBusinessUnitSalesConnector\Plugin\Permission\EditBusinessUnitOrdersPermissionPlugin;
 use Spryker\Client\CompanyBusinessUnitSalesConnector\Plugin\Permission\SeeBusinessUnitOrdersPermissionPlugin;
 use Spryker\Client\CompanyRole\Plugin\Permission\CreateCompanyRolesPermissionPlugin;
 use Spryker\Client\CompanyRole\Plugin\Permission\DeleteCompanyRolesPermissionPlugin;
 use Spryker\Client\CompanyRole\Plugin\Permission\EditCompanyRolesPermissionPlugin;
 use Spryker\Client\CompanyRole\Plugin\Permission\SeeCompanyRolesPermissionPlugin;
 use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
+use Spryker\Client\CompanySalesConnector\Plugin\Permission\EditCompanyOrdersPermissionPlugin;
 use Spryker\Client\CompanySalesConnector\Plugin\Permission\SeeCompanyOrdersPermissionPlugin;
 use Spryker\Client\CompanyUser\Plugin\CompanyUserStatusChangePermissionPlugin;
 use Spryker\Client\CompanyUser\Plugin\Permission\DeleteCompanyUsersPermissionPlugin;
@@ -108,6 +110,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new CreateSspAssetPermissionPlugin(),
             new UpdateSspAssetPermissionPlugin(),
             new UnassignSspAssetPermissionPlugin(),
+            new EditCompanyOrdersPermissionPlugin(),
+            new EditBusinessUnitOrdersPermissionPlugin(),
         ];
     }
 }

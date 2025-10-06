@@ -10,6 +10,8 @@ declare(strict_types = 1);
 namespace Pyz\Glue\CartReorderRestApi;
 
 use Spryker\Glue\CartReorderRestApi\CartReorderRestApiDependencyProvider as SprykerCartReorderRestApiDependencyProvider;
+use Spryker\Glue\CompaniesRestApi\Plugin\CartReorderRestApi\CompanyUserCompanyCartReorderRequestExpanderPlugin;
+use Spryker\Glue\CompanyBusinessUnitsRestApi\Plugin\CartReorderRestApi\CompanyUserCompanyBusinessUnitCartReorderRequestExpanderPlugin;
 use Spryker\Glue\OrderAmendmentsRestApi\Plugin\CartReorderRestApi\OrderAmendmentRestCartReorderAttributesMapperPlugin;
 
 class CartReorderRestApiDependencyProvider extends SprykerCartReorderRestApiDependencyProvider
@@ -21,6 +23,17 @@ class CartReorderRestApiDependencyProvider extends SprykerCartReorderRestApiDepe
     {
         return [
             new OrderAmendmentRestCartReorderAttributesMapperPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Glue\CartReorderRestApiExtension\Dependency\Plugin\CartReorderRequestExpanderPluginInterface>
+     */
+    protected function getCartReorderRequestExpanderPlugins(): array
+    {
+        return [
+            new CompanyUserCompanyCartReorderRequestExpanderPlugin(),
+            new CompanyUserCompanyBusinessUnitCartReorderRequestExpanderPlugin(),
         ];
     }
 }
