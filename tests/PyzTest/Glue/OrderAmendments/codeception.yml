@@ -40,6 +40,10 @@ suites:
                 - \SprykerTest\Zed\ProductOffer\Helper\ProductOfferHelper
                 - \SprykerTest\Shared\ProductOfferStock\Helper\ProductOfferStockDataHelper
                 - \SprykerTest\Zed\Merchant\Helper\MerchantHelper
+                - \SprykerTest\Zed\Permission\Helper\PermissionHelper
+                - \SprykerTest\Zed\Company\Helper\CompanyHelper
+                - \SprykerTest\Zed\CompanyRole\Helper\CompanyRoleHelper
+                - \SprykerTest\Shared\CompanyUser\Helper\CompanyUserHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser

@@ -13,6 +13,8 @@ use Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPreCo
 use Spryker\Zed\CartNote\Communication\Plugin\Checkout\CartNoteSaverPlugin;
 use Spryker\Zed\CartNote\Communication\Plugin\Checkout\UpdateCartNoteCheckoutDoSaveOrderPlugin;
 use Spryker\Zed\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependencyProvider;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Checkout\EditBusinessUnitOrderQuoteExpanderCheckoutPreSavePlugin;
+use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Checkout\EditCompanyOrderQuoteExpanderCheckoutPreSavePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerAddressSalutationCheckoutPreConditionPlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerOrderSavePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerSalutationCheckoutPreConditionPlugin;
@@ -312,6 +314,8 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new DisallowQuoteCheckoutPreSavePlugin(),
             new SalesOrderExpanderPlugin(),
             new OriginalOrderQuoteExpanderCheckoutPreSavePlugin(),
+            new EditCompanyOrderQuoteExpanderCheckoutPreSavePlugin(),
+            new EditBusinessUnitOrderQuoteExpanderCheckoutPreSavePlugin(),
             new FilterOriginalOrderBundleItemCheckoutPreSavePlugin(), #Order Amendment Feature
             new PaymentToAsyncOrderAmendmentFlowCheckoutPreSavePlugin(), #Order Amendment Feature
         ];
