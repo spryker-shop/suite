@@ -124,7 +124,6 @@ jobs:
                 run: npm install -g speccy@0.11.0
 
             -   name: Validate OpenAPI schemas
-                continue-on-error: true
                 run: |
                     speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
                     speccy lint src/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml --rules=default --skip openapi-tags
