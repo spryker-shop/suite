@@ -15,7 +15,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["175"],
+                    "description": "Unique identifier for the abstract product record."
                 },
                 {
                     "fieldName": "fk_tax_set",
@@ -25,7 +27,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": true
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Foreign key to tax set table. Links abstract product to specific tax configuration."
                 },
                 {
                     "fieldName": "approval_status",
@@ -36,8 +40,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "description": "The current approval status of an entity, e.g., a approved.",
-                    "examples": ["'approved'"]
+                    "description": "The current approval status of an entity (e.g., \"approved\", \"waiting_for_approval\", \"denied\").",
+                    "examples": ["approved"]
                 },
                 {
                     "fieldName": "attributes",
@@ -48,8 +52,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": ["'{\"megapixel\":\"20 MP\"}'"],
-                    "description": "A set of key-value pairs describing a product or entity."
+                    "examples": ["{\"color\": \"yellow\", \"size\": \"M\", \"waterproof\": \"1\"}"],
+                    "description": "JSON string containing NON-LOCALIZED product attributes as key-value pairs. Use English keys and values that don't need translation (technical specs, measurements, etc.). For translated attributes use localized_attributes table. Boolean values: 0/1 format."
                 },
                 {
                     "fieldName": "new_from",
@@ -61,7 +65,7 @@
                         "isRequired": false
                     },
                     "description": "The date from which a product is considered 'new'.",
-                    "examples": ["1980-12-06 07:36:00"]
+                    "examples": ["2024-12-06 07:36:00"]
                 },
                 {
                     "fieldName": "new_to",
@@ -73,7 +77,7 @@
                         "isRequired": false
                     },
                     "description": "The date until which a product is considered 'new'.",
-                    "examples": ["1980-12-06 07:36:00"]
+                    "examples": ["2025-12-06 07:36:00"]
                 },
                 {
                     "fieldName": "sku",
@@ -96,7 +100,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": ["001122"]
+                    "examples": ["001122"],
+                    "description": "Hexadecimal color code for the product (e.g., #FF0000 for red)."
                 }
             ]
         },
@@ -327,7 +332,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["1"],
+                    "description": "Unique identifier for the concrete product record."
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -337,7 +344,9 @@
                     "isEditable": true,
                     "validation": {
                         "isRequired": true
-                    }
+                    },
+                    "examples": ["123"],
+                    "description": "Foreign key to abstract product. Abstract product is ALWAYS required, even in 1-1 relationships. This ensures consistent product hierarchy, proper attribute inheritance, unified Back Office management, and correct data synchronization."
                 },
                 {
                     "fieldName": "attributes",
@@ -348,8 +357,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "description": "A set of key-value pairs describing a product or entity.",
-                    "examples": ["'{\"size\":\"m\"}"]
+                    "examples": ["{\"weight\": \"150g\", \"sku_variant\": \"ABC123\", \"waterproof\": \"0\"}"],
+                    "description": "JSON string containing NON-LOCALIZED concrete product attributes as key-value pairs. Use English keys and values that don't need translation (technical specs, SKUs, measurements). For translated attributes use localized_attributes table. Super attributes distinguish product variants. Boolean values: 0/1 format."
                 },
                 {
                     "fieldName": "discount",
@@ -373,8 +382,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "description": "A boolean flag indicating if an entity is currently active.",
-                    "examples": [0, 1]
+                    "examples": [true],
+                    "description": "Boolean flag indicating if product is active and available."
                 },
                 {
                     "fieldName": "is_quantity_splittable",
@@ -385,8 +394,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "description": "Indicates if the quantity of an order item can be split across multiple shipments.",
-                    "examples": [0, 1]
+                    "examples": [true],
+                    "description": "Indicates if the quantity of an order item can be split across multiple shipments."
                 },
                 {
                     "fieldName": "sku",
@@ -590,7 +599,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the abstract product localized attributes record."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -601,7 +611,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the language for localized content (e.g., 66=en_US)."
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -612,7 +623,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["123"],
+                    "description": "Foreign key to abstract product. Links localized attributes to specific abstract product."
                 },
                 {
                     "fieldName": "attributes",
@@ -623,8 +635,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": ["{\"color\":\"Weinrot\"}"],
-                    "description": "A set of key-value pairs describing a product or entity."
+                    "examples": ["{\"color\": \"Weinrot\", \"material\": \"Baumwolle\", \"easy_care\": \"1\"}"],
+                    "description": "JSON string containing localized abstract product attributes. Use ENGLISH keys with translated values for specific locale. Example: {\"color\": \"rot\", \"material\": \"baumwolle\"} - keys stay in English, values are translated. Boolean attributes: 0/1 format."
                 },
                 {
                     "fieldName": "description",
@@ -638,7 +650,7 @@
                     "examples": [
                         "Add a personal touch Make shots your own with quick and easy control over picture settings such as brightness and colour intensity."
                     ],
-                    "description": "A description of an entity."
+                    "description": "Localized product description for marketing and customer information purposes."
                 },
                 {
                     "fieldName": "name",
@@ -650,7 +662,7 @@
                         "isRequired": true
                     },
                     "examples": ["Canon IXUS 160"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Localized product name for display to customers in specific language."
                 },
                 {
                     "fieldName": "meta_description",
@@ -710,7 +722,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the category record."
                 },
                 {
                     "fieldName": "fk_category_template",
@@ -721,7 +734,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to category template. Defines the template used for category display."
                 },
                 {
                     "fieldName": "category_key",
@@ -744,8 +758,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
-                    "description": "A boolean flag indicating if an entity is currently active."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if category is active and visible."
                 },
                 {
                     "fieldName": "is_clickable",
@@ -756,7 +770,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if a category is clickable in the navigation."
                 },
                 {
@@ -768,7 +782,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if a category should appear in the menu."
                 },
                 {
@@ -780,7 +794,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if a product or page is searchable."
                 }
             ]
@@ -844,7 +858,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the category template record."
                 },
                 {
                     "fieldName": "name",
@@ -856,7 +871,7 @@
                         "isRequired": false
                     },
                     "examples": ["Catalog (default)"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Category name for organizing and displaying products in hierarchical structure."
                 },
                 {
                     "fieldName": "template_path",
@@ -905,7 +920,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product-category relationship record."
                 },
                 {
                     "fieldName": "fk_category",
@@ -916,7 +932,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["5"],
+                    "description": "Foreign key to category table. Links product to a specific category."
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -927,7 +944,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links category to a specific abstract product."
                 },
                 {
                     "fieldName": "product_order",
@@ -975,7 +993,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["1"],
+                    "description": "Unique identifier for the URL record."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -985,7 +1005,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": true
-                    }
+                    },
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the language for URL localization."
                 },
                 {
                     "fieldName": "url",
@@ -1012,7 +1034,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Foreign key to product set table. Links URL to specific product set resource."
                 },
                 {
                     "fieldName": "fk_resource_product_abstract",
@@ -1022,7 +1046,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links URL to specific abstract product resource."
                 }
             ]
         }
@@ -1044,7 +1070,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["66"],
+                    "description": "Unique identifier for the locale record."
                 },
                 {
                     "fieldName": "locale_name",
@@ -1067,8 +1094,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": [0, 1],
-                    "description": "A boolean flag indicating if an entity is currently active."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if locale is active and available."
                 }
             ]
         },
@@ -1274,7 +1301,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product localized attributes record."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -1285,7 +1313,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the language for localized product content (e.g., 66=en_US)."
                 },
                 {
                     "fieldName": "fk_product",
@@ -1296,7 +1325,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["142"],
+                    "description": "Foreign key to concrete product table. Links localized attributes to specific product variant."
                 },
                 {
                     "fieldName": "attributes",
@@ -1307,8 +1337,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": ["'{\"color\":\"Weinrot\"}'"],
-                    "description": "A set of key-value pairs describing a product or entity."
+                    "examples": ["{\"color\": \"Weinrot\", \"size\": \"L\", \"waterproof\": \"0\"}"],
+                    "description": "JSON string containing localized concrete product attributes. Use ENGLISH keys with translated values for specific locale. Example: {\"color\": \"rot\", \"size\": \"groß\"} - keys stay in English, values are translated. Boolean values: 0/1 format."
                 },
                 {
                     "fieldName": "description",
@@ -1322,7 +1352,7 @@
                     "examples": [
                         "Add a personal touch Make shots your own with quick and easy control over picture settings such as brightness and colour intensity."
                     ],
-                    "description": "A description of an entity."
+                    "description": "Localized concrete product description for marketing and customer information purposes."
                 },
                 {
                     "fieldName": "name",
@@ -1334,7 +1364,7 @@
                         "isRequired": true
                     },
                     "examples": ["Canon IXUS 160"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Localized concrete product name for display to customers in specific language."
                 }
             ]
         }
@@ -1356,7 +1386,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product bundle relationship record."
                 },
                 {
                     "fieldName": "fk_bundled_product",
@@ -1368,7 +1399,7 @@
                         "isRequired": true
                     },
                     "description": "Representation of the single item in this bundle",
-                    "examples": []
+                    "examples": ["142"]
                 },
                 {
                     "fieldName": "fk_product",
@@ -1380,7 +1411,7 @@
                         "isRequired": true
                     },
                     "description": "Relation to the main bundle product",
-                    "examples": []
+                    "examples": ["175"]
                 },
                 {
                     "fieldName": "quantity",
@@ -1391,7 +1422,7 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "description": "Number of items bundled. For instance when you have 5000 equal items you will have quantity 5000",
+                    "description": "Number of bundled product units included in this product bundle. Represents discrete countable units (e.g., 5 items, 10 pieces). Different from 'amount' which represents measurable quantities in specific units (kg, liters, etc.). Example: quantity=3 means 3 individual items of the bundled product.",
                     "examples": ["10"]
                 }
             ]
@@ -1414,7 +1445,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product abstract-store relationship record."
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -1425,7 +1457,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links store availability to specific abstract product."
                 },
                 {
                     "fieldName": "fk_store",
@@ -1436,7 +1469,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Defines which store the abstract product is available in (e.g., 1=DE, 2=AT, 3=US)."
                 }
             ]
         }
@@ -1457,7 +1491,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["1"],
+                    "description": "Unique identifier for the store record."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -1467,7 +1503,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": true
-                    }
+                    },
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the default language for the store."
                 },
                 {
                     "fieldName": "fk_currency",
@@ -1479,7 +1517,7 @@
                         "isRequired": true
                     },
                     "description": "Default currency for the store.",
-                    "examples": []
+                    "examples": ["1"]
                 },
                 {
                     "fieldName": "name",
@@ -1490,7 +1528,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "description": "The name of an entity (e.g., user, category, product, role).",
+                    "description": "Store name for identifying and displaying the commerce store or marketplace.",
                     "examples": ["MyStore"]
                 }
             ]
@@ -1632,7 +1670,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product attribute key record."
                 },
                 {
                     "fieldName": "is_super",
@@ -1643,8 +1682,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": [0, 1],
-                    "description": "A flag indicating if an attribute is a super attribute used for variant creation."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if this attribute is a super attribute. Super attributes distinguish product variants and enable variant selection on Storefront. Required ONLY for products with multiple variants - NOT required for 1-1 abstract-to-concrete relationships where abstract product has only one concrete variant. An attribute cannot be both super and non-super simultaneously - this is a global setting. Example: 'color' and 'size' as super attributes create variant matrix (red-S, red-M, blue-S, blue-M)."
                 },
                 {
                     "fieldName": "key",
@@ -1719,7 +1758,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product group record."
                 },
                 {
                     "fieldName": "product_group_key",
@@ -1730,7 +1770,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": ["shoes"]
+                    "examples": ["shoes"],
+                    "description": "Unique key identifier for the product group."
                 }
             ]
         },
@@ -1767,7 +1808,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links product group to specific abstract product."
                 },
                 {
                     "fieldName": "fk_product_group",
@@ -1778,7 +1820,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product group table. Links abstract product to specific product group."
                 },
                 {
                     "fieldName": "position",
@@ -1812,7 +1855,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product image record."
                 },
                 {
                     "fieldName": "external_url_large",
@@ -1872,7 +1916,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product image set record."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -1882,7 +1928,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the language for image set localization."
                 },
                 {
                     "fieldName": "fk_product",
@@ -1892,7 +1940,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Foreign key to product table. Links image set to specific concrete product."
                 },
                 {
                     "fieldName": "name",
@@ -1903,7 +1953,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "description": "The name of an entity (e.g., user, category, product, role).",
+                    "description": "Image set name for organizing and categorizing product images (e.g., 'Default', 'Gallery', 'Thumbnails').",
                     "examples": ["Default"]
                 },
                 {
@@ -1914,7 +1964,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links image set to specific abstract product."
                 }
             ]
         },
@@ -1951,7 +2003,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product image set to product image relationship record."
                 },
                 {
                     "fieldName": "fk_product_image",
@@ -1962,7 +2015,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product image table. Links image set to specific product image."
                 },
                 {
                     "fieldName": "fk_product_image_set",
@@ -1973,7 +2027,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product image set table. Links product image to specific image set."
                 },
                 {
                     "fieldName": "sort_order",
@@ -2007,7 +2062,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product management attribute record."
                 },
                 {
                     "fieldName": "fk_product_attribute_key",
@@ -2018,7 +2074,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product attribute key table. Links management attribute to specific attribute key."
                 },
                 {
                     "fieldName": "allow_input",
@@ -2029,7 +2086,7 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "Indicates if user input is allowed for an attribute."
                 },
                 {
@@ -2079,7 +2136,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product management attribute value record."
                 },
                 {
                     "fieldName": "fk_product_management_attribute",
@@ -2090,7 +2148,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product management attribute table. Links value to specific management attribute."
                 },
                 {
                     "fieldName": "value",
@@ -2139,7 +2198,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the glossary key record."
                 },
                 {
                     "fieldName": "is_active",
@@ -2150,8 +2210,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": [0, 1],
-                    "description": "A boolean flag indicating if an entity is currently active."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if glossary key is active and available."
                 },
                 {
                     "fieldName": "key",
@@ -2200,7 +2260,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the glossary translation record."
                 },
                 {
                     "fieldName": "fk_glossary_key",
@@ -2211,7 +2272,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to glossary key table. Links translation to specific glossary key."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -2222,7 +2284,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the language for the glossary translation."
                 },
                 {
                     "fieldName": "is_active",
@@ -2233,8 +2296,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": [0, 1],
-                    "description": "A boolean flag indicating if an entity is currently active."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if product management attribute is active and available."
                 },
                 {
                     "fieldName": "value",
@@ -2268,7 +2331,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product management attribute value translation record."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -2279,7 +2343,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the language for the attribute value translation."
                 },
                 {
                     "fieldName": "fk_product_management_attribute_value",
@@ -2290,7 +2355,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product management attribute value table. Links translation to specific attribute value."
                 },
                 {
                     "fieldName": "translation",
@@ -2301,7 +2367,7 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": ["Speichergr\u00f6\u00dfe"],
+                    "examples": ["Translated string"],
                     "description": "A translated string."
                 }
             ]
@@ -2323,7 +2389,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product option group record."
                 },
                 {
                     "fieldName": "fk_tax_set",
@@ -2333,7 +2401,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": true
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Foreign key to tax set table. Links product option group to specific tax configuration."
                 },
                 {
                     "fieldName": "active",
@@ -2344,8 +2414,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "description": "A boolean flag indicating if an entity is active.",
-                    "examples": [0, 1]
+                    "examples": [true],
+                    "description": "Boolean flag indicating if product option group is active and available."
                 },
                 {
                     "fieldName": "key",
@@ -2368,7 +2438,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "description": "The name of an entity (e.g., user, category, product, role).",
+                    "description": "Product option group name for categorizing related product options (e.g., 'Color', 'Size', 'Material').",
                     "examples": ["Default"]
                 }
             ]
@@ -2419,7 +2489,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product option value record."
                 },
                 {
                     "fieldName": "fk_product_option_group",
@@ -2430,7 +2501,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product option group table. Links option value to specific option group."
                 },
                 {
                     "fieldName": "price",
@@ -2503,7 +2575,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links option group to specific abstract product."
                 },
                 {
                     "fieldName": "fk_product_option_group",
@@ -2514,7 +2587,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product option group table. Links abstract product to specific option group."
                 }
             ]
         }
@@ -2536,7 +2610,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product option value price record."
                 },
                 {
                     "fieldName": "fk_currency",
@@ -2547,7 +2622,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to currency table. Defines the currency for the option value price (e.g., 1=EUR, 2=USD)."
                 },
                 {
                     "fieldName": "fk_product_option_value",
@@ -2558,7 +2634,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["23"],
+                    "description": "Foreign key to product option value table. Links price to specific option value."
                 },
                 {
                     "fieldName": "fk_store",
@@ -2569,7 +2646,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Defines which store the option value price applies to."
                 },
                 {
                     "fieldName": "gross_price",
@@ -2581,7 +2659,7 @@
                         "isRequired": false
                     },
                     "examples": ["10000"],
-                    "description": "The gross price (including tax)."
+                    "description": "Gross price (including tax) stored in cents as INTEGER. IMPORTANT: INT limit is 2,147,483,647 cents = €21,474,836.47 maximum price. Example: €100.00 = 10000 cents."
                 },
                 {
                     "fieldName": "net_price",
@@ -2593,7 +2671,7 @@
                         "isRequired": false
                     },
                     "examples": ["11900"],
-                    "description": "The net price (excluding tax)."
+                    "description": "Net price (excluding tax) stored in cents as INTEGER. IMPORTANT: INT limit is 2,147,483,647 cents = €21,474,836.47 maximum price. Example: €119.00 = 11900 cents."
                 }
             ]
         }
@@ -2615,7 +2693,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the currency record."
                 },
                 {
                     "fieldName": "name",
@@ -2627,7 +2706,7 @@
                         "isRequired": false
                     },
                     "examples": ["Andorran Peseta"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Currency name for display purposes (e.g., 'Euro', 'US Dollar', 'British Pound')."
                 },
                 {
                     "fieldName": "code",
@@ -2714,7 +2793,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the price type record."
                 },
                 {
                     "fieldName": "name",
@@ -2726,7 +2806,7 @@
                         "isRequired": true
                     },
                     "examples": ["DEFAULT"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Price type name for categorizing different pricing strategies. DEFAULT: product's regular price displayed to customers. ORIGINAL: product's price before discount was applied, typically displayed in strikethrough font next to default price for sale pricing scenarios."
                 },
                 {
                     "fieldName": "price_mode_configuration",
@@ -2737,7 +2817,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": ["NET_MODE", "GROSS_MODE", "BOTH"],
+                    "examples": ["2"],
                     "description": "The configuration that determines the price mode (GROSS or NET) for a price type."
                 }
             ]
@@ -2759,7 +2839,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["1"],
+                    "description": "Unique identifier for the price product record."
                 },
                 {
                     "fieldName": "fk_price_type",
@@ -2769,7 +2851,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": true
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Foreign key to price type table. Defines the type of price (e.g., DEFAULT, ORIGINAL)."
                 },
                 {
                     "fieldName": "fk_product",
@@ -2779,7 +2863,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Foreign key to product table. Links price to specific concrete product."
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -2789,7 +2875,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links price to specific abstract product."
                 },
                 {
                     "fieldName": "price",
@@ -2800,7 +2888,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "description": "The price of a product or service.",
+                    "description": "The price of a product or service stored in cents as INTEGER. IMPORTANT: INT limit is 2,147,483,647 cents = €21,474,836.47 maximum price. Example: €99.99 = 9999 cents.",
                     "examples": ["10000"]
                 }
             ]
@@ -2837,7 +2925,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Unique identifier for the company record."
                 },
                 {
                     "fieldName": "fk_company_type",
@@ -2847,7 +2937,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Foreign key to company type table. Defines the type of company."
                 },
                 {
                     "fieldName": "is_active",
@@ -2858,8 +2950,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "description": "A boolean flag indicating if an entity is currently active.",
-                    "examples": [0, 1]
+                    "examples": [true],
+                    "description": "Boolean flag indicating if company is active and available."
                 },
                 {
                     "fieldName": "key",
@@ -2882,7 +2974,7 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "description": "The name of an entity (e.g., user, category, product, role).",
+                    "description": "Company name for business identification and display purposes.",
                     "examples": ["My Company"]
                 },
                 {
@@ -2895,7 +2987,7 @@
                         "isRequired": true
                     },
                     "description": "The current status of an entity (e.g., \"active\", \"pending\", \"approved\").",
-                    "examples": ["pending", "approved", "denied"]
+                    "examples": ["approved"]
                 },
                 {
                     "fieldName": "uuid",
@@ -2944,7 +3036,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the company type record."
                 },
                 {
                     "fieldName": "name",
@@ -2956,7 +3049,7 @@
                         "isRequired": true
                     },
                     "examples": ["woodworker"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Company type name for categorizing businesses by industry or function (e.g., 'manufacturer', 'retailer', 'distributor')."
                 }
             ]
         },
@@ -2993,7 +3086,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the price product store record."
                 },
                 {
                     "fieldName": "fk_currency",
@@ -3004,7 +3098,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to currency table. Defines the currency for the product price."
                 },
                 {
                     "fieldName": "fk_price_product",
@@ -3015,7 +3110,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["45"],
+                    "description": "Foreign key to price product table. Links store-specific price to base price record."
                 },
                 {
                     "fieldName": "fk_store",
@@ -3026,7 +3122,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Defines which store the product price applies to."
                 },
                 {
                     "fieldName": "gross_price",
@@ -3038,7 +3135,7 @@
                         "isRequired": true
                     },
                     "examples": ["9999"],
-                    "description": "The gross price (including tax)."
+                    "description": "Gross price (including tax) stored in cents as INTEGER. IMPORTANT: INT limit is 2,147,483,647 cents = €21,474,836.47 maximum price. Example: €99.99 = 9999 cents."
                 },
                 {
                     "fieldName": "net_price",
@@ -3050,7 +3147,7 @@
                         "isRequired": true
                     },
                     "examples": ["8999"],
-                    "description": "The net price (excluding tax)."
+                    "description": "Net price (excluding tax) stored in cents as INTEGER. IMPORTANT: INT limit is 2,147,483,647 cents = €21,474,836.47 maximum price. Example: €89.99 = 8999 cents."
                 }
             ]
         },
@@ -3087,7 +3184,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the price product default record."
                 },
                 {
                     "fieldName": "fk_price_product_store",
@@ -3098,7 +3196,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to price product store table. Links default price to specific store price."
                 }
             ]
         }
@@ -3120,7 +3219,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product review record."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -3131,7 +3231,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the language for the product review."
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -3142,7 +3243,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links review to specific abstract product."
                 },
                 {
                     "fieldName": "customer_reference",
@@ -3166,7 +3268,7 @@
                         "isRequired": false
                     },
                     "examples": ["This is a very nice product. I can fully recommend this."],
-                    "description": "A description of an entity."
+                    "description": "Customer review description providing detailed feedback about the product."
                 },
                 {
                     "fieldName": "nickname",
@@ -3201,8 +3303,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": ["pending", "approved", "rejected"],
-                    "description": "The current status of an entity (e.g., \"active\", \"pending\", \"approved\")."
+                    "examples": ["1"],
+                    "description": "The current status of an entity."
                 },
                 {
                     "fieldName": "summary",
@@ -3236,7 +3338,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product search attribute record."
                 },
                 {
                     "fieldName": "fk_product_attribute_key",
@@ -3247,7 +3350,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product attribute key table. Links search attribute to specific attribute key."
                 },
                 {
                     "fieldName": "filter_type",
@@ -3282,7 +3386,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if an attribute map has been synchronized with the search index."
                 }
             ]
@@ -3305,7 +3409,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product attribute key table. Links search map to specific attribute key."
                 },
                 {
                     "fieldName": "target_field",
@@ -3328,7 +3433,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if an attribute map has been synchronized with the search index."
                 }
             ]
@@ -3351,7 +3456,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product set record."
                 },
                 {
                     "fieldName": "is_active",
@@ -3362,8 +3468,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": [0, 1],
-                    "description": "A boolean flag indicating if an entity is currently active."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if product set is active and available."
                 },
                 {
                     "fieldName": "product_set_key",
@@ -3463,7 +3569,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product abstract set relationship record."
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -3474,7 +3581,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links product set to specific abstract product."
                 },
                 {
                     "fieldName": "fk_product_set",
@@ -3485,7 +3593,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product set table. Links abstract product to specific product set."
                 },
                 {
                     "fieldName": "position",
@@ -3519,7 +3628,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product set data record."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -3530,7 +3640,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the language for the product set data."
                 },
                 {
                     "fieldName": "fk_product_set",
@@ -3541,7 +3652,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product set table. Links localized data to specific product set."
                 },
                 {
                     "fieldName": "description",
@@ -3555,7 +3667,7 @@
                     "examples": [
                         "Take the next step in productivity with the HP set. The ElitePad 1000 G2 Tablet equipped with a 64-bit Intel\u00ae processor and the features you need to stay productive in the office or on the go. Control wireless connection"
                     ],
-                    "description": "A description of an entity."
+                    "description": "Detailed description of the product set for marketing and customer information purposes."
                 },
                 {
                     "fieldName": "meta_description",
@@ -3578,7 +3690,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": ["hp,product set, hp elite, hp pro table, hp elitedesk,"],
+                    "examples": ["hp,product set, hp elite, hp pro table, hp elitedesk"],
                     "description": "The meta keywords of a page for SEO purposes."
                 },
                 {
@@ -3603,7 +3715,7 @@
                         "isRequired": true
                     },
                     "examples": ["HP Product Set"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Product set name for identifying and marketing bundled product collections."
                 }
             ]
         }
@@ -3624,7 +3736,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["1"],
+                    "description": "Unique identifier for the stock record."
                 },
                 {
                     "fieldName": "is_active",
@@ -3635,8 +3749,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "description": "A boolean flag indicating if an entity is currently active.",
-                    "examples": [0, 1]
+                    "examples": [true],
+                    "description": "Boolean flag indicating if stock location is active and available."
                 },
                 {
                     "fieldName": "name",
@@ -3647,7 +3761,7 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "description": "The name of an entity (e.g., user, category, product, role).",
+                    "description": "Stock name for identifying inventory location or warehouse (e.g., 'Warehouse A', 'Main Stock', 'EU Distribution Center').",
                     "examples": ["default"]
                 },
                 {
@@ -3697,7 +3811,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the stock product record."
                 },
                 {
                     "fieldName": "fk_product",
@@ -3708,7 +3823,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["142"],
+                    "description": "Foreign key to product table. Links stock to specific concrete product."
                 },
                 {
                     "fieldName": "fk_stock",
@@ -3719,7 +3835,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to stock table. Links product to specific stock location."
                 },
                 {
                     "fieldName": "is_never_out_of_stock",
@@ -3730,7 +3847,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if a product should never be considered out of stock."
                 },
                 {
@@ -3743,7 +3860,7 @@
                         "isRequired": true
                     },
                     "examples": ["10"],
-                    "description": "The number of units for an item."
+                    "description": "Available stock quantity for concrete product in specific stock location. Represents discrete countable units in inventory (e.g., 50 items, 100 pieces). Different from 'amount' which represents measurable quantities in specific units (kg, liters, etc.). Used for stock management and availability calculations."
                 }
             ]
         }
@@ -3765,7 +3882,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the abstract product availability record."
                 },
                 {
                     "fieldName": "fk_store",
@@ -3776,7 +3894,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Defines which store the abstract product availability applies to."
                 },
                 {
                     "fieldName": "abstract_sku",
@@ -3837,7 +3956,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the concrete product availability record."
                 },
                 {
                     "fieldName": "fk_availability_abstract",
@@ -3848,7 +3968,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to abstract product availability table. Links concrete availability to abstract availability."
                 },
                 {
                     "fieldName": "fk_store",
@@ -3859,7 +3980,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Defines which store the concrete product availability applies to."
                 },
                 {
                     "fieldName": "is_never_out_of_stock",
@@ -3870,7 +3992,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if a product should never be considered out of stock."
                 },
                 {
@@ -3916,7 +4038,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Unique identifier for the tax set record."
                 },
                 {
                     "fieldName": "name",
@@ -3927,7 +4051,7 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "description": "The name of an entity (e.g., user, category, product, role).",
+                    "description": "Tax set name for identifying tax configuration groups by region or jurisdiction (e.g., 'US Standard', 'EU VAT', 'UK Tax Set').",
                     "examples": ["us-tax-set"]
                 },
                 {
@@ -4003,7 +4127,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to tax rate table. Links tax set to specific tax rate."
                 },
                 {
                     "fieldName": "fk_tax_set",
@@ -4014,7 +4139,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to tax set table. Links tax rate to specific tax set."
                 }
             ]
         }
@@ -4036,7 +4162,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the tax rate record."
                 },
                 {
                     "fieldName": "fk_country",
@@ -4047,7 +4174,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["60"],
+                    "description": "Foreign key to country table. Links tax rate to specific country."
                 },
                 {
                     "fieldName": "name",
@@ -4059,7 +4187,7 @@
                         "isRequired": true
                     },
                     "examples": ["Austria Standard"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Tax rate name for identifying specific tax rates within jurisdiction (e.g., 'Standard VAT', 'Reduced Rate', 'Zero Rate')."
                 },
                 {
                     "fieldName": "rate",
@@ -4093,7 +4221,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["60"],
+                    "description": "Unique identifier for the country record."
                 },
                 {
                     "fieldName": "iso2_code",
@@ -4129,7 +4258,7 @@
                         "isRequired": false
                     },
                     "examples": ["Germany"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Country name for geographical identification and localization purposes."
                 },
                 {
                     "fieldName": "postal_code_mandatory",
@@ -4140,7 +4269,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": ["1"],
                     "description": "A flag indicating if a postal code is mandatory."
                 },
                 {
@@ -4190,7 +4319,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product search record."
                 },
                 {
                     "fieldName": "fk_product",
@@ -4201,7 +4331,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["142"],
+                    "description": "Foreign key to product table. Links search data to specific concrete product."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -4212,7 +4343,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the language for the product search data."
                 },
                 {
                     "fieldName": "is_searchable",
@@ -4223,7 +4355,7 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if a product or page is searchable."
                 }
             ]
@@ -4246,7 +4378,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the category node record."
                 },
                 {
                     "fieldName": "fk_category",
@@ -4257,7 +4390,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["5"],
+                    "description": "Foreign key to category table. Links node to specific category."
                 },
                 {
                     "fieldName": "fk_parent_category_node",
@@ -4268,7 +4402,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to parent category node. Creates hierarchical category structure."
                 },
                 {
                     "fieldName": "is_main",
@@ -4279,7 +4414,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if a category node is a main node."
                 },
                 {
@@ -4291,7 +4426,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if a category node is a root node."
                 },
                 {
@@ -4341,7 +4476,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the category store relationship record."
                 },
                 {
                     "fieldName": "fk_category",
@@ -4352,7 +4488,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["5"],
+                    "description": "Foreign key to category table. Links store to specific category."
                 },
                 {
                     "fieldName": "fk_store",
@@ -4363,7 +4500,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Links category to specific store."
                 }
             ]
         }
@@ -4385,7 +4523,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the category attribute record."
                 },
                 {
                     "fieldName": "fk_category",
@@ -4396,7 +4535,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["5"],
+                    "description": "Foreign key to category table. Links attribute to specific category."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -4407,7 +4547,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the language for the category attribute."
                 },
                 {
                     "fieldName": "category_image_name",
@@ -4431,7 +4572,7 @@
                         "isRequired": true
                     },
                     "examples": ["Demoshop"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "CMS page name for identifying and managing content pages (e.g., 'About Us', 'Privacy Policy', 'Terms of Service')."
                 },
                 {
                     "fieldName": "meta_description",
@@ -4489,7 +4630,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product relation type record."
                 },
                 {
                     "fieldName": "key",
@@ -4538,7 +4680,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product relation record."
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -4549,7 +4692,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links relation to specific abstract product."
                 },
                 {
                     "fieldName": "fk_product_relation_type",
@@ -4560,7 +4704,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product relation type table. Defines the type of product relation."
                 },
                 {
                     "fieldName": "is_active",
@@ -4571,8 +4716,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
-                    "description": "A boolean flag indicating if an entity is currently active."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if CMS page is active and published."
                 },
                 {
                     "fieldName": "is_rebuild_scheduled",
@@ -4583,7 +4728,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if a rebuild is scheduled for a product relation."
                 },
                 {
@@ -4658,7 +4803,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product relation product abstract record."
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -4669,7 +4815,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links relation to specific abstract product."
                 },
                 {
                     "fieldName": "fk_product_relation",
@@ -4680,7 +4827,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product relation table. Links abstract product to specific relation."
                 },
                 {
                     "fieldName": "order",
@@ -4714,7 +4862,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product relation store record."
                 },
                 {
                     "fieldName": "fk_product_relation",
@@ -4725,7 +4874,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product relation table. Links store to specific product relation."
                 },
                 {
                     "fieldName": "fk_store",
@@ -4736,7 +4886,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Links product relation to specific store."
                 }
             ]
         }
@@ -4758,7 +4909,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product label record."
                 },
                 {
                     "fieldName": "front_end_reference",
@@ -4781,8 +4933,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
-                    "description": "A boolean flag indicating if an entity is currently active."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if product label is active and available."
                 },
                 {
                     "fieldName": "is_dynamic",
@@ -4793,7 +4945,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if a product label is dynamic."
                 },
                 {
@@ -4805,7 +4957,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if a discount is exclusive."
                 },
                 {
@@ -4817,7 +4969,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": [0, 1],
+                    "examples": [true],
                     "description": "A flag indicating if a product label is published and visible."
                 },
                 {
@@ -4830,7 +4982,7 @@
                         "isRequired": true
                     },
                     "examples": ["Standard label"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Product label name for identifying promotional or informational tags (e.g., 'New', 'Sale', 'Best Seller', 'Limited Edition')."
                 },
                 {
                     "fieldName": "position",
@@ -4853,7 +5005,7 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": ["1980-12-06 07:36:00"],
+                    "examples": ["2024-12-06 07:36:00"],
                     "description": "The date and time from which an entity is valid."
                 },
                 {
@@ -4929,7 +5081,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product label localized attributes record."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -4940,7 +5093,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the language for the product label attributes."
                 },
                 {
                     "fieldName": "fk_product_label",
@@ -4951,7 +5105,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product label table. Links localized attributes to specific product label."
                 },
                 {
                     "fieldName": "name",
@@ -4963,7 +5118,7 @@
                         "isRequired": true
                     },
                     "examples": ["Standard Label"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Localized product label name for display to customers in specific language (e.g., 'New', 'Sale', 'Best Seller')."
                 }
             ]
         }
@@ -4985,7 +5140,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product label store record."
                 },
                 {
                     "fieldName": "fk_product_label",
@@ -4996,7 +5152,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product label table. Links store to specific product label."
                 },
                 {
                     "fieldName": "fk_store",
@@ -5007,7 +5164,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Links product label to specific store."
                 }
             ]
         }
@@ -5029,7 +5187,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product label product abstract record."
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -5040,7 +5199,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links label to specific abstract product."
                 },
                 {
                     "fieldName": "fk_product_label",
@@ -5051,7 +5211,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product label table. Links abstract product to specific label."
                 }
             ]
         }
@@ -5072,7 +5233,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer"
+                    "type": "integer",
+                    "examples": ["1"],
+                    "description": "Unique identifier for the sales order record."
                 },
                 {
                     "fieldName": "fk_sales_order_address_billing",
@@ -5081,8 +5244,10 @@
                     "isEditable": false,
                     "type": "integer",
                     "validation": {
-                        "isRequired": false
-                    }
+                        "isRequired": true
+                    },
+                    "examples": ["1"],
+                    "description": "Foreign key to sales order address table. Links to billing address for the order."
                 },
                 {
                     "fieldName": "fk_sales_order_address_shipping",
@@ -5092,7 +5257,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Foreign key to sales order address table. Links to shipping address for the order."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -5102,7 +5269,9 @@
                     "type": "integer",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Defines the language for the sales order."
                 },
                 {
                     "fieldName": "email",
@@ -5126,7 +5295,7 @@
                         "isRequired": false
                     },
                     "description": "The salutation of a person (e.g., Mr., Mrs., Dr.).",
-                    "examples": ["Mr", "Mrs", "Dr", "Ms", "n/a"]
+                    "examples": ["Mr"]
                 },
                 {
                     "fieldName": "first_name",
@@ -5174,7 +5343,7 @@
                         "isRequired": false
                     },
                     "description": "The mode for price calculation, typically \"GROSS_MODE\" or \"NET_MODE\".",
-                    "examples": ["NET_MODE", "GROSS_MODE"]
+                    "examples": ["GROSS_MODE"]
                 },
                 {
                     "fieldName": "is_test",
@@ -5185,8 +5354,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "description": "A flag indicating if an order is a test order.",
-                    "examples": [0, 1]
+                    "examples": [true],
+                    "description": "A flag indicating if an order is a test order."
                 },
                 {
                     "fieldName": "store",
@@ -5220,7 +5389,9 @@
                     "type": "string",
                     "validation": {
                         "isRequired": false
-                    }
+                    },
+                    "examples": ["2023-01-01 12:00:00"],
+                    "description": "Timestamp when the record was created."
                 }
             ]
         }
@@ -5242,7 +5413,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the locale store record."
                 },
                 {
                     "fieldName": "fk_locale",
@@ -5253,7 +5425,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["66"],
+                    "description": "Foreign key to locale table. Links store to specific locale."
                 },
                 {
                     "fieldName": "fk_store",
@@ -5264,7 +5437,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Links locale to specific store."
                 }
             ]
         }
@@ -5286,7 +5460,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the currency store record."
                 },
                 {
                     "fieldName": "fk_currency",
@@ -5297,7 +5472,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to currency table. Links store to specific currency."
                 },
                 {
                     "fieldName": "fk_store",
@@ -5308,7 +5484,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Links currency to specific store."
                 }
             ]
         }
@@ -5330,7 +5507,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the stock store record."
                 },
                 {
                     "fieldName": "fk_stock",
@@ -5341,7 +5519,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to stock table. Links store to specific stock location."
                 },
                 {
                     "fieldName": "fk_store",
@@ -5352,7 +5531,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Links stock to specific store."
                 }
             ]
         }
@@ -5374,7 +5554,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the payment method record."
                 },
                 {
                     "fieldName": "is_active",
@@ -5385,8 +5566,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": [0, 1],
-                    "description": "A boolean flag indicating if an entity is currently active."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if payment method is active and available."
                 },
                 {
                     "fieldName": "name",
@@ -5398,7 +5579,7 @@
                         "isRequired": true
                     },
                     "examples": ["Invoice"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Payment method name for identifying payment options available to customers (e.g., 'Credit Card', 'PayPal', 'Bank Transfer', 'Invoice')."
                 }
             ]
         }
@@ -5420,7 +5601,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the payment method store record."
                 },
                 {
                     "fieldName": "fk_payment_method",
@@ -5431,7 +5613,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to payment method table. Links store to specific payment method."
                 },
                 {
                     "fieldName": "fk_store",
@@ -5442,7 +5625,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Links payment method to specific store."
                 }
             ]
         }
@@ -5464,7 +5648,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the shipment method record."
                 },
                 {
                     "fieldName": "is_active",
@@ -5475,8 +5660,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": [0, 1],
-                    "description": "A boolean flag indicating if an entity is currently active."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if shipment method is active and available."
                 },
                 {
                     "fieldName": "name",
@@ -5488,7 +5673,7 @@
                         "isRequired": true
                     },
                     "examples": ["Standard"],
-                    "description": "The name of an entity (e.g., user, category, product, role)."
+                    "description": "Shipment method name for identifying delivery options available to customers (e.g., 'Standard Shipping', 'Express Delivery', 'Next Day', 'Free Shipping')."
                 }
             ]
         }
@@ -5510,7 +5695,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the shipment method store record."
                 },
                 {
                     "fieldName": "fk_shipment_method",
@@ -5521,7 +5707,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to shipment method table. Links store to specific shipment method."
                 },
                 {
                     "fieldName": "fk_store",
@@ -5532,7 +5719,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Links shipment method to specific store."
                 }
             ]
         }
@@ -5554,7 +5742,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the country store record."
                 },
                 {
                     "fieldName": "fk_country",
@@ -5565,7 +5754,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to country table. Links store to specific country."
                 },
                 {
                     "fieldName": "fk_store",
@@ -5576,7 +5766,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Links country to specific store."
                 }
             ]
         }
@@ -5598,7 +5789,8 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the shipment method price record."
                 },
                 {
                     "fieldName": "fk_currency",
@@ -5609,7 +5801,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to currency table. Links shipment method price to specific currency."
                 },
                 {
                     "fieldName": "fk_shipment_method",
@@ -5620,7 +5813,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to shipment method table. Links price to specific shipment method."
                 },
                 {
                     "fieldName": "fk_store",
@@ -5631,7 +5825,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to store table. Links shipment method price to specific store."
                 },
                 {
                     "fieldName": "default_gross_price",
@@ -5643,7 +5838,7 @@
                         "isRequired": true
                     },
                     "examples": ["490"],
-                    "description": "The default gross price."
+                    "description": "The default gross price (including tax) stored in cents as INTEGER. IMPORTANT: INT limit is 2,147,483,647 cents = €21,474,836.47 maximum price. Example: €99.99 = 9999 cents."
                 },
                 {
                     "fieldName": "default_net_price",
@@ -5655,7 +5850,7 @@
                         "isRequired": true
                     },
                     "examples": ["390"],
-                    "description": "The default net price."
+                    "description": "The default net price (excluding tax) stored in cents as INTEGER. IMPORTANT: INT limit is 2,147,483,647 cents = €21,474,836.47 maximum price. Example: €119.00 = 11900 cents."
                 },
                 {
                     "fieldName": "uuid",
@@ -5688,7 +5883,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product packaging unit record."
                 },
                 {
                     "fieldName": "fk_lead_product",
@@ -5699,7 +5895,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to lead product (main product that defines the packaging unit). The lead product is the primary product that customers see and order, while fk_product is the actual packaged product. Example: Lead product 'Rice 1kg bag' contains packaged product 'Rice bulk'."
                 },
                 {
                     "fieldName": "fk_product",
@@ -5710,7 +5907,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to the actual packaged product (the product being packaged). This is the concrete product that gets packaged in the specified amounts. Works together with fk_lead_product to define packaging relationships. Example: Bulk rice product that gets packaged into 1kg, 5kg, 10kg units."
                 },
                 {
                     "fieldName": "fk_product_packaging_unit_type",
@@ -5721,7 +5919,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product packaging unit type table. Defines the packaging type (box, bag, bottle, etc.) and measurement unit (kg, liters, pieces). This determines how the product is packaged and measured. Example: type_id=1 for 'bag/kg', type_id=2 for 'bottle/liters'."
                 },
                 {
                     "fieldName": "amount_interval",
@@ -5731,9 +5930,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer",
-                    "examples": ["2"],
-                    "description": "The interval by which the amount of a product can be increased or decreased."
+                    "type": "float",
+                    "examples": ["0.5"],
+                    "description": "Step interval for measurable product amounts in packaging units. Defines increment/decrement steps for 'amount' (measurable quantities like 2.5kg, 1.5L) vs 'quantity' (discrete countable units like 3 boxes, 5 items). Example: interval=0.5 allows amounts like 1.0, 1.5, 2.0 kg. Used in frontend quantity selectors and cart validation."
                 },
                 {
                     "fieldName": "amount_max",
@@ -5743,9 +5942,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer",
-                    "examples": ["5"],
-                    "description": "The maximum allowable amount for a product packaging unit."
+                    "type": "float",
+                    "examples": ["10.5"],
+                    "description": "Maximum measurable amount allowed for packaging unit. Represents upper limit for 'amount' (measurable quantities like 5.0kg, 10.5L) vs 'quantity' (discrete countable units). Used for products sold by weight, volume, or other measurements rather than individual pieces."
                 },
                 {
                     "fieldName": "amount_min",
@@ -5755,9 +5954,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer",
-                    "examples": ["3"],
-                    "description": "The minimum allowable amount for a product packaging unit."
+                    "type": "float",
+                    "examples": ["0.5"],
+                    "description": "Minimum measurable amount required for packaging unit. Represents lower limit for 'amount' (measurable quantities like 3.0kg, 2.5L) vs 'quantity' (discrete countable units). Used for products sold by weight, volume, or other measurements with minimum purchase requirements."
                 },
                 {
                     "fieldName": "default_amount",
@@ -5767,9 +5966,9 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "type": "integer",
-                    "examples": ["5"],
-                    "description": "The default amount for a product packaging unit."
+                    "type": "float",
+                    "examples": ["2.5"],
+                    "description": "Default measurable amount for packaging unit when customer doesn't specify custom amount. Represents preset 'amount' (measurable quantities like 5.0kg, 2.5L) vs 'quantity' (discrete countable units). Used as starting value for products sold by weight, volume, or other measurements."
                 },
                 {
                     "fieldName": "is_amount_variable",
@@ -5780,8 +5979,8 @@
                         "isRequired": true
                     },
                     "type": "boolean",
-                    "examples": [0, 1],
-                    "description": "Indicates if the amount for a packaging unit can be varied."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if customers can customize the measurable 'amount' for this packaging unit. When true, customers can specify custom amounts (e.g., 3.5kg instead of default 5kg). When false, only fixed 'amount' is allowed. Different from 'quantity' which represents discrete countable units."
                 },
                 {
                     "fieldName": "created_at",
@@ -5791,7 +5990,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "string"
+                    "type": "string",
+                    "examples": ["2023-01-01 12:00:00"],
+                    "description": "Timestamp when the record was created."
                 },
                 {
                     "fieldName": "updated_at",
@@ -5801,7 +6002,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "string"
+                    "type": "string",
+                    "examples": ["2023-01-01 12:00:00"],
+                    "description": "Timestamp when the record was last updated."
                 },
                 {
                     "fieldName": "uuid",
@@ -5812,8 +6015,8 @@
                         "isRequired": false
                     },
                     "type": "string",
-                    "description": "A Universally Unique Identifier for an entity.",
-                    "examples": ["ebe6ac77-9673-4945-9160-30d819c29ee0"]
+                    "examples": ["ebe6ac77-9673-4945-9160-30d819c29ee0"],
+                    "description": "A Universally Unique Identifier for an entity."
                 }
             ],
             "identifier": "id_product_packaging_unit"
@@ -5835,7 +6038,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product measurement base unit record."
                 },
                 {
                     "fieldName": "fk_product_abstract",
@@ -5846,7 +6050,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links measurement base unit to specific abstract product. This defines the primary measurement unit for the product family (e.g., abstract product 'Rice' has base unit 'kg'). All concrete products under this abstract will inherit this base measurement unit."
                 },
                 {
                     "fieldName": "fk_product_measurement_unit",
@@ -5857,7 +6062,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product measurement unit table. Defines the base measurement unit for this abstract product (kg, liters, meters, etc.). This is the fundamental unit used for inventory, pricing, and calculations. Example: base_unit_id=1 for 'kg', base_unit_id=2 for 'liters'. All sales units will convert to this base unit."
                 },
                 {
                     "fieldName": "created_at",
@@ -5867,7 +6073,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "string"
+                    "type": "string",
+                    "examples": ["2023-01-01 12:00:00"],
+                    "description": "Timestamp when the record was created."
                 },
                 {
                     "fieldName": "updated_at",
@@ -5877,7 +6085,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "string"
+                    "type": "string",
+                    "examples": ["2023-01-01 12:00:00"],
+                    "description": "Timestamp when the record was last updated."
                 }
             ],
             "identifier": "id_product_measurement_base_unit"
@@ -5914,7 +6124,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product measurement sales unit record."
                 },
                 {
                     "fieldName": "fk_product",
@@ -5925,7 +6136,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to concrete product table. Links measurement sales unit to specific concrete product. This defines which product variant can be sold in this measurement unit. Example: Concrete product 'Rice Premium 1kg' can have sales units: 1kg, 5kg, 10kg bags."
                 },
                 {
                     "fieldName": "fk_product_measurement_base_unit",
@@ -5936,7 +6148,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product measurement base unit table. Links this sales unit to the base measurement unit of the abstract product. This ensures all sales units are properly converted to the same base unit for calculations. Example: All rice sales units link to base unit 'kg'."
                 },
                 {
                     "fieldName": "fk_product_measurement_unit",
@@ -5947,7 +6160,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product measurement unit table. Defines the measurement unit for this sales unit (kg, grams, liters, ml, etc.). This can be different from the base unit and requires conversion. Example: sales_unit='grams' while base_unit='kg' with conversion=1000."
                 },
                 {
                     "fieldName": "conversion",
@@ -5957,9 +6171,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "integer",
-                    "examples": ["1"],
-                    "description": "The conversion factor between a sales unit and a base unit."
+                    "type": "float",
+                    "examples": ["1000.0"],
+                    "description": "Conversion factor from sales unit to base unit. Multiplier used to convert sales unit amounts to base unit amounts for calculations. Example: sales_unit='grams', base_unit='kg', conversion=1000.0 means 1000g = 1kg. Can be fractional for smaller units: conversion=0.001 for mg→g. Used in pricing, inventory, and order calculations."
                 },
                 {
                     "fieldName": "is_default",
@@ -5970,8 +6184,8 @@
                         "isRequired": true
                     },
                     "type": "boolean",
-                    "examples": [0, 1],
-                    "description": "A flag indicating if an entity is the default one."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if this is the default sales unit for the product. The default unit is pre-selected in product pages and used for primary pricing display. Only one sales unit per product should be marked as default."
                 },
                 {
                     "fieldName": "is_displayed",
@@ -5982,8 +6196,8 @@
                         "isRequired": true
                     },
                     "type": "boolean",
-                    "examples": [0, 1],
-                    "description": "A flag indicating if a sales unit should be displayed to the customer."
+                    "examples": [true],
+                    "description": "Boolean flag indicating if this sales unit should be visible to customers in the frontend. Hidden units can be used for internal calculations or B2B-only sales. Example: Show '1kg bag' to all customers but hide '25kg bulk' for retail customers."
                 },
                 {
                     "fieldName": "key",
@@ -5994,8 +6208,8 @@
                         "isRequired": false
                     },
                     "type": "string",
-                    "examples": ["sales_unit_1"],
-                    "description": "A unique key used to identify an entity or a piece of data."
+                    "examples": ["rice_1kg_bag"],
+                    "description": "Unique string identifier for this sales unit. Used in API calls, frontend components, and data imports. Should be descriptive and consistent. Example: 'rice_1kg_bag', 'oil_500ml_bottle', 'cable_per_meter'."
                 },
                 {
                     "fieldName": "precision",
@@ -6006,8 +6220,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": ["100"],
-                    "description": "The total number of digits in a decimal value."
+                    "examples": ["2"],
+                    "description": "Number of decimal places for displaying amounts in this sales unit. Controls precision of amount display in frontend. Example: precision=2 shows '10.25 kg', precision=0 shows '10 kg', precision=3 shows '10.125 kg'."
                 },
                 {
                     "fieldName": "created_at",
@@ -6017,7 +6231,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "string"
+                    "type": "string",
+                    "examples": ["2023-01-01 12:00:00"],
+                    "description": "Timestamp when the record was created."
                 },
                 {
                     "fieldName": "updated_at",
@@ -6027,7 +6243,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "string"
+                    "type": "string",
+                    "examples": ["2023-01-01 12:00:00"],
+                    "description": "Timestamp when the record was last updated."
                 }
             ],
             "identifier": "id_product_measurement_sales_unit"
@@ -6049,7 +6267,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the discontinued product record."
                 },
                 {
                     "fieldName": "fk_product",
@@ -6060,7 +6279,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product table. Links discontinuation record to specific product."
                 },
                 {
                     "fieldName": "active_until",
@@ -6082,7 +6302,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "string"
+                    "type": "string",
+                    "examples": ["2023-12-31"],
+                    "description": "Date when the product was discontinued."
                 },
                 {
                     "fieldName": "updated_at",
@@ -6092,7 +6314,9 @@
                     "validation": {
                         "isRequired": false
                     },
-                    "type": "string"
+                    "type": "string",
+                    "examples": ["2023-01-01 12:00:00"],
+                    "description": "Timestamp when the record was last updated."
                 }
             ],
             "identifier": "id_product_discontinued"
@@ -6114,7 +6338,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Unique identifier for the product alternative record."
                 },
                 {
                     "fieldName": "fk_product",
@@ -6125,7 +6350,8 @@
                         "isRequired": true
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to product table. Links alternative record to specific product."
                 },
                 {
                     "fieldName": "fk_product_abstract_alternative",
@@ -6136,7 +6362,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["175"],
+                    "description": "Foreign key to abstract product table. Links to alternative abstract product."
                 },
                 {
                     "fieldName": "fk_product_concrete_alternative",
@@ -6147,7 +6374,8 @@
                         "isRequired": false
                     },
                     "type": "integer",
-                    "examples": []
+                    "examples": ["1"],
+                    "description": "Foreign key to concrete product table. Links to alternative concrete product."
                 }
             ],
             "identifier": "id_product_alternative"
@@ -6169,7 +6397,9 @@
                     "isEditable": false,
                     "validation": {
                         "isRequired": true
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Unique identifier for the example state machine item record."
                 },
                 {
                     "fieldName": "fk_state_machine_item_state",
@@ -6179,7 +6409,9 @@
                     "isEditable": true,
                     "validation": {
                         "isRequired": true
-                    }
+                    },
+                    "examples": ["1"],
+                    "description": "Foreign key to state machine item state table."
                 },
                 {
                     "fieldName": "name",
@@ -6190,7 +6422,8 @@
                     "validation": {
                         "isRequired": true
                     },
-                    "examples": ["ebe6ac77-9673-4945-9160-30d819c29ee0"]
+                    "examples": ["ebe6ac77-9673-4945-9160-30d819c29ee0"],
+                    "description": "Name for the example state machine item."
                 }
             ]
         }
