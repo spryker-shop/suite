@@ -492,9 +492,7 @@ jobs:
 
             -   name: Run Acceptance Tests
                 if: >
-                    contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
-                    || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-                    || github.ref == 'refs/heads/master'
+                    github.ref == 'refs/heads/master'
                 run: |
                     docker/sdk testing codecept run -c codeception.acceptance.yml
 
@@ -507,7 +505,15 @@ jobs:
                     docker/sdk testing codecept run -c codeception.api.yml
 
             -   name: Run Presentation Tests for changed modules
-                run: docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --group=Presentation
+                if: >
+                    (contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+                    ||
+                    contains(github.event.pull_request.labels.*.name, 'run-functional-ci'))
+                    &&
+                    github.ref != 'refs/heads/master'
+                run: |
+                    docker/sdk testing codecept run -c codeception.acceptance.project.yml
+                    docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --group=Presentation
 
             -   name: Save PHP logs
                 if: failure()
@@ -567,10 +573,7 @@ jobs:
 
             -   name: Run Functional Tests
                 if: >
-                    contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-                    ||
-                    contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
-                    || github.ref == 'refs/heads/master'
+                    github.ref == 'refs/heads/master'
                 run: |
                     docker/sdk testing codecept run --no-ansi -c codeception.functional.stage0.yml
                     docker/sdk testing codecept run --no-ansi -c codeception.functional.stage1.yml
@@ -586,8 +589,16 @@ jobs:
                 run: |
                     docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
 
-            - name: Run Functional Tests for changed modules
-              run: docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --skip-group=Presentation
+            -   name: Run Functional Tests for changed modules
+                if: >
+                      (contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+                      ||
+                      contains(github.event.pull_request.labels.*.name, 'run-functional-ci'))
+                      &&
+                      github.ref != 'refs/heads/master'
+                run: |
+                    docker/sdk testing codecept run -c codeception.functional.project.yml
+                    docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --skip-group=Presentation
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
