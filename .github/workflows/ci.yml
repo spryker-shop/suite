@@ -361,8 +361,16 @@ jobs:
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.functional.yml
 
-            - name: Run Functional Tests for changed modules
-              run: docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --skip-group=Presentation
+            -   name: Run Functional Tests for changed modules
+                if: >
+                      (contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+                      ||
+                      contains(github.event.pull_request.labels.*.name, 'run-functional-ci'))
+                      &&
+                      github.ref != 'refs/heads/master'
+                run: |
+                    docker/sdk testing codecept run -c codeception.functional.project.yml
+                    docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --skip-group=Presentation
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
