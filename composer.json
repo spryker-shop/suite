@@ -112,8 +112,8 @@
         "spryker/monitoring": "^2.10.0",
         "spryker/opentelemetry": "^1.17.0",
         "spryker/monitoring-extension": "^1.1.0",
-        "composer/installers": "^2.3",
-        "symfony/lock": "^5.4.0 || ^6.4.0"
+        "symfony/lock": "^5.4.0 || ^6.4.0",
+        "oomphinc/composer-installers-extender": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "11.4.0",
@@ -170,13 +170,6 @@
             "Pimple": "vendor/spryker/spryker/Bundles/Container/src/Spryker/"
         }
     },
-    "extra": {
-        "installer-paths": {
-            "tests/cypress-tests/": [
-                "type:zend-module"
-            ]
-        }
-    },
     "autoload-dev": {
         "psr-4": {
             "PyzTest\\": "tests/PyzTest/",
@@ -219,7 +212,8 @@
             "symfony/flex": false,
             "php-http/discovery": true,
             "tbachert/spi": true,
-            "composer/installers": true
+            "composer/installers": true,
+            "oomphinc/composer-installers-extender": true
         }
     },
     "repositories": [
@@ -244,23 +238,20 @@
             "url": "git@github.com:spryker/commerce-k6-performance-tests.git"
         },
         {
-            "type": "package",
-            "canonical": false,
-            "package": {
-                "name": "spryker/cypress-tests",
-                "version": "dev-feature/cc-35870-merchant-portal-product-offer-import",
-                "source": {
-                    "url": "https://github.com/spryker/cypress-tests.git",
-                    "type": "git",
-                    "reference": "defd1dbccd082abb21fbeac608e90d8c1361f829"
-                },
-                "type": "zend-module",
-                "license": [
-                    "MIT"
-                ]
-            }
+            "type": "git",
+            "url": "git@github.com:spryker/cypress-tests.git"
         }
     ],
+    "extra": {
+        "installer-types": [
+            "spryker-test"
+        ],
+        "installer-paths": {
+            "tests/cypress-tests/": [
+                "spryker/cypress-tests"
+            ]
+        }
+    },
     "scripts": {
         "compile": [
             "mkdir -p ./data/DE/logs/ZED"
