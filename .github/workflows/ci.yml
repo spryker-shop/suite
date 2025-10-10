@@ -841,11 +841,21 @@ jobs:
                 id: core_tests
                 continue-on-error: true
                 if: >
-                    contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-                    || contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
-                    || github.ref == 'refs/heads/master'
+                    github.ref == 'refs/heads/master'
                 run: |
                     docker/sdk exec --env "ENV_REPOSITORY_ID=suite" cypress-tests npm run cy:ci
+
+            -   name: Run Tests (Core) in Context
+                id: core_tests_context
+                continue-on-error: true
+                if: >
+                    (
+                        contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+                        || contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
+                    )
+                    && github.ref != 'refs/heads/master'
+                run: |
+                    tests/spryker-ci.sh CypressSuite all
 
             -   name: Upload artifacts
                 continue-on-error: true
@@ -873,19 +883,20 @@ jobs:
                 if: always()
                 run: |
                     CORE="${{ steps.core_tests.outcome }}"
+                    CORE_CONTEXT="${{ steps.core_tests_context.outcome }}"
                     SSP="${{ steps.ssp_tests.outcome }}"
 
-                    echo "Core tests result: ${CORE}"
+                    echo "Core tests result: all - ${CORE}, context - ${CORE_CONTEXT}"
                     echo "SSP tests result: ${SSP}"
 
-                    if [[ "${CORE}" == "failure" ]]; then
+                    if [[ "${CORE}" == "failure" || "${CORE_CONTEXT}" == "failure" ]]; then
                         echo "❌ 'Core' tests failed. Check screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/core/&showversions=false"
                     fi
                     if [[ "${SSP}" == "failure" ]]; then
                         echo "❌ 'SSP' tests failed. Check  screenshots - https://s3.console.aws.amazon.com/s3/buckets/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/cypress/${GITHUB_RUN_ID}/PHP8.4MariaDB/ssp/&showversions=false"
                     fi
 
-                    if [[ "${CORE}" == "failure" || "${SSP}" == "failure" ]]; then
+                    if [[ "${CORE}" == "failure" || "${CORE_CONTEXT}" == "failure" || "${SSP}" == "failure" ]]; then
                     exit 1
                     else
                     echo "All tests passed."

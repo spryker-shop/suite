@@ -2,6 +2,62 @@
 
 set -e
 
+# Cypress tool
+CypressSuite() {
+    IS_FEATURE_PACKAGES=1
+    local groups
+    groups=$(get_suite_feature_packages "$1")
+
+    env_args=(--env "ENV_REPOSITORY_ID=suite")
+    if [[ -n "$groups" ]]; then
+        env_args+=( --env "CYPRESS_grepTags=$(echo "$groups" | tr ' ' ',')")
+    fi
+
+    if ! docker/sdk exec "${env_args[@]}" cypress-tests npm run cy:ci; then
+        EXITCODE=1
+        if [[ -n "$groups" ]]; then
+            FAILED_MODULES+=($groups)
+        fi
+    fi
+}
+
+# Robot tool
+RobotSuite() {
+    IS_FEATURE_PACKAGES=1
+    local groups
+    groups=$(get_suite_feature_packages "$1")
+
+    local cmd=(docker/sdk exec robot-framework robot -v env:ui_suite -v dms:false -v headless:true -v docker:true -d results)
+    if [[ -n "$groups" ]]; then
+        cmd+=(--include $(echo "$groups" | tr ' ' 'AND'))
+    fi
+
+    cmd+=( -s robotframework.tests.ui.suite .)
+
+    if ! "${cmd[@]}"; then
+        EXITCODE=1
+        if [[ -n "$groups" ]]; then
+            FAILED_MODULES+=($groups)
+        fi
+    fi
+}
+
+# Codeception tool
+Codeception() {
+    local module_paths=$1
+    local option=$2
+
+    for path in $module_paths; do
+        if [[ ! -f "$path/codeception.yml" ]]; then
+            continue
+        fi
+        if ! run_command "vendor/bin/codecept run -c $path $option" "$(basename "$path")"; then
+            EXITCODE=1
+            FAILED_MODULES+=("$path")
+        fi
+    done
+}
+
 # PhpStan tool
 phpStan() {
     local module_paths=$1
@@ -65,19 +121,29 @@ parse_diff_output() {
     '
 }
 
-Codeception() {
-    local module_paths=$1
-    local option=$2
+#returns all feature packages from changed modules for Suite repo
+get_suite_feature_packages() {
+        local module_paths=$1
+        local packages=()
 
-    for path in $module_paths; do
-        if [[ ! -f "$path/codeception.yml" ]]; then
-            continue
-        fi
-        if ! run_command "vendor/bin/codecept run -c $path $option" "$(basename "$path")"; then
-            EXITCODE=1
-            FAILED_MODULES+=("$path")
-        fi
-    done
+        for module_path in $module_paths; do
+            if [[ -f "$module_path/composer.json" ]]; then
+                pkg=$(jq -r '.name' "$module_path/composer.json")
+
+                 if [[ "$pkg" == spryker-feature* ]]; then
+                    continue
+                fi
+                packages+=("$pkg")
+            else
+                echo "Warning: composer.json not found in $module_path" >&2
+            fi
+        done
+
+        local packages_str="${packages[*]}"
+        local api_url="https://release.spryker.com/feature-packages.txt"
+        local groups=$(curl -s -X POST "$api_url" -H "Content-Type: text/plain" -d "$packages_str")
+
+        echo $groups
 }
 
 # Returns all changed packages that starts from spryker*
@@ -245,6 +311,7 @@ run_command() {
 
 EXITCODE=0
 FAILED_MODULES=()
+IS_FEATURE_PACKAGES=0
 
 command="$1"
 organization="$2" # Spryker, SprykerShop, SprykerFeature, all
@@ -257,7 +324,7 @@ if [[ -z "$1" ]]; then
   exit 1
 fi
 if ! declare -f "$command" > /dev/null; then
-  echo "Error: the command tool '$command' is not found. Available: PhpStan."
+  echo "Error: the command tool '$command' is not found. Available: PhpStan, Codeception, RobotSuite, CypressSuite."
   exit 1
 fi
 
@@ -265,10 +332,20 @@ module_paths=$(get_core_command_list "$organization" "$offset" "$limit")
 "$command" "$module_paths" "$option"
 
 mapfile -t array_modules < <(echo "$module_paths" | grep -v '^$')
+
 echo "📦 ${#array_modules[@]} touched module(s)."
+for module in "${array_modules[@]}"; do
+    echo "- $module"
+done
 
 if [ ${#FAILED_MODULES[@]} -gt 0 ]; then
-  echo "❌ The following module(s) failed:"
+
+  if (( IS_FEATURE_PACKAGES )); then
+      echo "📦 ${#FAILED_MODULES[@]} touched feature(s)."
+    echo "❌ The following feature(s) failed (See details above):"
+  else
+    echo "❌ The following module(s) failed:"
+  fi
   for module in "${FAILED_MODULES[@]}"; do
     echo " - $module"
   done
