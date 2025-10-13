@@ -20,6 +20,7 @@ use PyzTest\Glue\SelfServicePortalBackend\JsonApi\Fixtures\SspAssetsBackendJsonA
  * @group SelfServicePortalBackend
  * @group CreateSspAssetBackendJsonApiCest
  * Add your own group annotations below this line
+ * @group EndToEnd
  */
 class CreateSspAssetBackendJsonApiCest
 {
@@ -126,6 +127,7 @@ class CreateSspAssetBackendJsonApiCest
             'https://example.com/image.png',
             $companyBusinessUnitUUID,
         );
+        $I->haveHttpHeader('Accept-Language', 'en_US');
 
         // Act
         $I->sendJsonApiPost($I->getCreateSspAssetUrl(), $requestData);

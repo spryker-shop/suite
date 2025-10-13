@@ -1351,13 +1351,6 @@
             "SprykerConfig\\": "src/SprykerConfig/"
         }
     },
-    "extra": {
-        "installer-paths": {
-            "tests/cypress-tests/": [
-                "type:zend-module"
-            ]
-        }
-    },
     "autoload-dev": {
         "psr-4": {
             "PyzTest\\": "tests/PyzTest/",
@@ -1389,7 +1382,8 @@
             "symfony/flex": false,
             "php-http/discovery": true,
             "tbachert/spi": true,
-            "composer/installers": true
+            "composer/installers": true,
+            "oomphinc/composer-installers-extender": true
         }
     },
     "conflict": {

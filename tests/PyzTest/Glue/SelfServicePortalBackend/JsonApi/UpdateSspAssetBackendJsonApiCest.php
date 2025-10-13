@@ -22,6 +22,7 @@ use PyzTest\Glue\SelfServicePortalBackend\SelfServicePortalBackendApiTester;
  * @group JsonApi
  * @group UpdateSspAssetBackendJsonApiCest
  * Add your own group annotations below this line
+ * @group EndToEnd
  */
 class UpdateSspAssetBackendJsonApiCest
 {
