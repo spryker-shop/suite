@@ -23,6 +23,7 @@ use PyzTest\Glue\SelfServicePortal\SelfServicePortalApiTester;
  * @group RestApi
  * @group SspInquiriesRestApiCest
  * Add your own group annotations below this line
+ * @group EndToEnd
  */
 class SspInquiriesRestApiCest
 {
