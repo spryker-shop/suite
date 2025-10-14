@@ -305,7 +305,6 @@ jobs:
 
     js-validation:
         name: "NPM validation"
-        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
