@@ -36,52 +36,42 @@ jobs:
               with:
                   extra_args: --log-level=2 --results=verified,unknown
 
-    standard-validation:
-        name: "Standard Validation"
+    snyk-validation:
+        name: "Snyk Validation"
         if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
+        runs-on: ubuntu-latest
+
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Setup Node.js
+                uses: actions/setup-node@v5
+                with:
+                    node-version: '18'
+                    cache: 'npm'
+
+            -   name: Install Snyk
+                run: npm install --global snyk
+
+            -   name: Run Snyk monitor
+                continue-on-error: true  # Continue even if monitor fails
+                run: snyk monitor --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --exclude=project.json,docker
+
+            -   name: Run Snyk test
+                run: snyk test --fail-on=all --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --severity-threshold=high --exclude=project.json,docker
+
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
+                if: always()
+
+    standard-validation:
+        name: "Standard Validation / PHP 8.4"
         runs-on: ubuntu-latest
         env:
             APPLICATION_ENV: ci.mysql
             PROJECT: suite-nonsplit
             SPRYKER_CURRENT_REGION: EU
-            SPRYKER_DYNAMIC_STORE_MODE: "true"
-            DB_USER: root
-            DB_PASSWORD: ""
-            DB_HOST: 127.0.0.1
-            DB_PORT: 3306
-
-        services:
-            mysql:
-                image: mysql:5.7
-                env:
-                    MYSQL_ROOT_PASSWORD: ""
-                    MYSQL_ALLOW_EMPTY_PASSWORD: 1
-                    MYSQL_DATABASE: DE_test_zed
-                ports:
-                    - 3306:3306
-                options: >-
-                    --health-cmd="mysqladmin ping"
-                    --health-interval=10s
-                    --health-timeout=5s
-                    --health-retries=3
-            rabbitmq:
-                image: rabbitmq:3.8-management
-                ports:
-                    - 5672:5672
-                options: >-
-                    --health-cmd "rabbitmq-diagnostics -q ping"
-                    --health-interval 10s
-                    --health-timeout 5s
-                    --health-retries 5
-            redis:
-                image: redis:alpine
-                ports:
-                    - 6379:6379
-                options: >-
-                    --health-cmd "redis-cli ping"
-                    --health-interval 10s
-                    --health-timeout 5s
-                    --health-retries 5
+            SPRYKER_DYNAMIC_STORE_MODE: true
 
         steps:
             -   uses: actions/checkout@v4
@@ -94,62 +84,62 @@ jobs:
                     tools: composer:v2
                     coverage: none
 
-            -   name: Setup Node.js
-                uses: actions/setup-node@v4
-                with:
-                    node-version: '18'
-
-            -   name: Configure sysctl limits
-                run: |
-                    sudo sysctl -w vm.swappiness=10
-                    sudo sysctl -w fs.file-max=262144
-                    sudo sysctl -w vm.max_map_count=262144
-                    ulimit -n 65536
-
             -   uses: ramsey/composer-install@v3
                 env:
                     COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ env.GITHUB_TOKEN }}"}}'
                 with:
                     composer-options: "--optimize-autoloader --no-interaction --prefer-install=auto"
 
-            -   name: Run Spryker install
-                run: |
-                    vendor/bin/install --no-ansi -r ci.code-generate
-                    composer dump-autoload -o -a --apcu
-
             -   name: Run Evaluator
-                run: vendor/bin/evaluator evaluate --exclude-checkers=SPRYKER_DEV_PACKAGES_CHECKER,MINIMUM_ALLOWED_SHOP_VERSION --format=compact
+                run: vendor/bin/evaluator evaluate --exclude-checkers=SPRYKER_DEV_PACKAGES_CHECKER,MINIMUM_ALLOWED_SHOP_VERSION --format=compact  # 6.5s
 
-            -   name: Install OpenAPI validator
-                run: npm install -g speccy@0.11.0
+            -   name: Run static checks
+                run: |
+                    echo "Run static checks"
+                    tests/ci_check_untracked.sh
+                    echo "vendor/bin/console dev:composer:replace -d -v" && vendor/bin/console dev:composer:replace -d -v # 2s
+                    echo "vendor/bin/spryker-dev-console dev:sync-composer -d" && vendor/bin/spryker-dev-console dev:sync-composer -d # 2s
+                    echo "vendor/bin/console transfer:validate" && vendor/bin/console transfer:validate # 3s
+                    echo "vendor/bin/yves twig:template:warmer -v" && vendor/bin/yves twig:template:warmer -v # 1s
+                    echo "vendor/bin/console transfer:generate" && vendor/bin/console transfer:generate # 2s
+                    echo "vendor/bin/console rest-api:generate:documentation" && vendor/bin/console rest-api:generate:documentation # 1s
+                    echo "vendor/bin/console rest-api:build-request-validation-cache" && vendor/bin/console rest-api:build-request-validation-cache # 1s
+                    echo "vendor/bin/console dev:composer:validate-json-files" && vendor/bin/console dev:composer:validate-json-files # 1s
+                    echo "vendor/bin/console dev:composer:update-json-files -d -v" && vendor/bin/console dev:composer:update-json-files -d -v # 2s
+                    echo "vendor/bin/console propel:schema:validate-xml-names" && vendor/bin/console propel:schema:validate-xml-names # 1s
+                    echo "vendor/bin/console propel:schema:validate" && vendor/bin/console propel:schema:validate # 1s
+                    echo "vendor/bin/spryker-dev-console dev:validate-module-schemas" && vendor/bin/spryker-dev-console dev:validate-module-schemas # 1s
+                    echo "vendor/bin/spryker-dev-console dev:validate-module-databuilders" && vendor/bin/spryker-dev-console dev:validate-module-databuilders  # 1s
+                    echo "vendor/bin/spryker-dev-console dev:module-meta-files -d -v" && vendor/bin/spryker-dev-console dev:module-meta-files -d -v # 1.5s
+                    echo "vendor/bin/console search:setup:source-map" && vendor/bin/console search:setup:source-map # 1s
+                    echo "vendor/bin/console dev:dependency:find" && vendor/bin/console dev:dependency:find # 8s
+                    echo "vendor/bin/console propel:schema:copy" && vendor/bin/console propel:schema:copy # 0.5s
+                    echo "vendor/bin/console propel:model:build" && vendor/bin/console propel:model:build # 3s
+                    echo "vendor/bin/console transfer:entity:generate" && vendor/bin/console transfer:entity:generate # 1s
+                    echo "vendor/bin/console code:propel:validate-abstract" && vendor/bin/console code:propel:validate-abstract # 1.5
+                    echo "vendor/bin/spryker-dev-console dev:deprecation-links:check" && vendor/bin/spryker-dev-console dev:deprecation-links:check  # 3s
+                    echo "vendor/bin/console transfer:databuilder:generate" && vendor/bin/console transfer:databuilder:generate # 1s
+                    echo "vendor/bin/console dev:ide-auto-completion:generate" && vendor/bin/console dev:ide-auto-completion:generate # 2s
+                    echo "vendor/bin/codecept build" && vendor/bin/codecept build --quiet # 4s
+                    echo "vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2" && vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 # 10s
+                    echo "vendor/bin/console code:sniff:style" && vendor/bin/console code:sniff:style # 35s
+
+            -   name: Setup Node.js
+                uses: actions/setup-node@v5
+                with:
+                    node-version: '18'
+                    cache: 'npm'
 
             -   name: Validate OpenAPI schemas
                 run: |
-                    speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default
-                    speccy lint src/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml --rules=default --skip openapi-tags
-                    speccy lint src/Generated/GlueBackend/Specification/spryker_backend_api.schema.yml --rules=default --skip openapi-tags
-
-            -   name: Run Generic Validation
-                run: |
-                    vendor/bin/console --no-ansi code:propel:validate-abstract
-                    vendor/bin/console --no-ansi propel:schema:validate
-                    vendor/bin/console --no-ansi propel:schema:validate-xml-names
-                    vendor/bin/console --no-ansi transfer:validate
-                    vendor/bin/spryker-dev-console dev:validate-module-schemas
-                    vendor/bin/spryker-dev-console dev:validate-module-databuilders
-                    vendor/bin/console --no-ansi dev:composer:replace -d -v
-                    vendor/bin/spryker-dev-console dev:sync-composer -d
-                    vendor/bin/spryker-dev-console dev:module-meta-files -d -v
-                    vendor/bin/console --no-ansi dev:composer:update-json-files -d -v
-                    vendor/bin/console --no-ansi dev:composer:validate-json-files
-                    vendor/bin/console --no-ansi code:sniff:style
-                    vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
+                    npm install -g speccy@0.11.0  # 8s
+                    speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default # 1.5s
+#                    # requires vendor/bin/glue api:generate:documentation and DB running.
+#                    speccy lint src/Generated/GlueStorefront/Specification/spryker_storefront_api.schema.yml --rules=default --skip openapi-tags
+#                    speccy lint src/Generated/GlueBackend/Specification/spryker_backend_api.schema.yml --rules=default --skip openapi-tags
 
             -   name: Run PHP 8.4 specific validations
                 run: |
-                    vendor/bin/console --no-ansi dev:dependency:find
-                    vendor/bin/spryker-dev-console dev:deprecation-links:check
-                    tests/ci_check_untracked.sh
                     tests/ci_check_touched_modules.sh
 
             -   name: Run PHPStan (spryker/spryker [1/5])
@@ -178,53 +168,14 @@ jobs:
                 if: always()
 
     standard-validation-prefer-lowest:
-        name: "Standard Validation / Prefer Lowest"
-        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
+        name: "Standard Validation / Prefer Lowest / PHP 8.3"
         runs-on: ubuntu-latest
         env:
-            APPLICATION_ENV: ci.mysql
+            APPLICATION_ENV: ci.pgsql
             APPLICATION_STORE: DE
             PROJECT: suite-nonsplit
             SPRYKER_CURRENT_REGION: EU
-            SPRYKER_DYNAMIC_STORE_MODE: "false"
-            COMPOSER_MEMORY_LIMIT: -1
-            DB_USER: root
-            DB_PASSWORD: ""
-            DB_HOST: 127.0.0.1
-            DB_PORT: 3306
-
-        services:
-            mysql:
-                image: mysql:5.7
-                env:
-                    MYSQL_ROOT_PASSWORD: ""
-                    MYSQL_ALLOW_EMPTY_PASSWORD: 1
-                    MYSQL_DATABASE: DE_test_zed
-                ports:
-                    - 3306:3306
-                options: >-
-                    --health-cmd="mysqladmin ping"
-                    --health-interval=10s
-                    --health-timeout=5s
-                    --health-retries=3
-            rabbitmq:
-                image: rabbitmq:3.8-management
-                ports:
-                    - 5672:5672
-                options: >-
-                    --health-cmd "rabbitmq-diagnostics -q ping"
-                    --health-interval 10s
-                    --health-timeout 5s
-                    --health-retries 5
-            redis:
-                image: redis:alpine
-                ports:
-                    - 6379:6379
-                options: >-
-                    --health-cmd "redis-cli ping"
-                    --health-interval 10s
-                    --health-timeout 5s
-                    --health-retries 5
+            SPRYKER_DYNAMIC_STORE_MODE: false
 
         steps:
             -   uses: actions/checkout@v4
@@ -237,13 +188,6 @@ jobs:
                     tools: composer:v2
                     coverage: none
 
-            -   name: Configure sysctl limits
-                run: |
-                    sudo sysctl -w vm.swappiness=10
-                    sudo sysctl -w fs.file-max=262144
-                    sudo sysctl -w vm.max_map_count=262144
-                    ulimit -n 65536
-
             -   uses: ramsey/composer-install@v3
                 env:
                     COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ env.GITHUB_TOKEN }}"}}'
@@ -251,10 +195,25 @@ jobs:
                     composer-options: "--optimize-autoloader --no-interaction --prefer-install=auto"
                     dependency-versions: "lowest"
 
-            -   name: Run Spryker install
+            -   name: Run static checks
                 run: |
-                    vendor/bin/install --no-ansi -r ci.code-generate
-                    composer dump-autoload -o -a --apcu
+                    echo "Run static checks"
+                    echo "vendor/bin/yves twig:template:warmer -v" && vendor/bin/yves twig:template:warmer -v
+                    echo "vendor/bin/console transfer:generate" && vendor/bin/console transfer:generate
+                    echo "vendor/bin/console rest-api:generate:documentation" && vendor/bin/console rest-api:generate:documentation
+                    echo "vendor/bin/console rest-api:build-request-validation-cache" && vendor/bin/console rest-api:build-request-validation-cache
+                    echo "vendor/bin/console search:setup:source-map" && vendor/bin/console search:setup:source-map
+                    echo "vendor/bin/console propel:schema:copy" && vendor/bin/console propel:schema:copy
+                    echo "vendor/bin/console propel:model:build" && vendor/bin/console propel:model:build
+                    echo "vendor/bin/console transfer:entity:generate" && vendor/bin/console transfer:entity:generate
+                    echo "vendor/bin/console transfer:databuilder:generate" && vendor/bin/console transfer:databuilder:generate
+                    echo "vendor/bin/console dev:ide-auto-completion:generate" && vendor/bin/console dev:ide-auto-completion:generate
+                    vendor/bin/codecept --version
+                    echo "vendor/bin/codecept build" && vendor/bin/codecept build --quiet
+                    vendor/bin/phpmd --version
+                    echo "vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2" && vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
+                    vendor/bin/phpcs --version
+                    echo "vendor/bin/console code:sniff:style" && vendor/bin/console code:sniff:style
 
             -   name: Run PHPStan (spryker/spryker [1/5])
                 run: tests/spryker-ci.sh phpStan Spryker 0 275
@@ -282,50 +241,14 @@ jobs:
                 if: always()
 
     phpstan-validation:
-        name: "PHPStan Validation"
+        name: "PHPStan Core Validation"
+        needs: [standard-validation]
         runs-on: ubuntu-latest
         if: contains(github.event.pull_request.labels.*.name, 'run-phpstan-core-ci')
         env:
             APPLICATION_ENV: ci.mysql
-            DB_USER: root
-            DB_PASS: ""
-            DB_HOST: 127.0.0.1
-            DB_PORT: 3306
             SPRYKER_CURRENT_REGION: EU
-            SPRYKER_DYNAMIC_STORE_MODE: "true"
-
-        services:
-            mysql:
-                image: mysql:5.7
-                env:
-                    MYSQL_ROOT_PASSWORD: ""
-                    MYSQL_ALLOW_EMPTY_PASSWORD: 1
-                    MYSQL_DATABASE: DE_test_zed
-                ports:
-                    - 3306:3306
-                options: >-
-                    --health-cmd="mysqladmin ping"
-                    --health-interval=10s
-                    --health-timeout=5s
-                    --health-retries=3
-            rabbitmq:
-                image: rabbitmq:3.8-management
-                ports:
-                    - 5672:5672
-                options: >-
-                    --health-cmd "rabbitmq-diagnostics -q ping"
-                    --health-interval 10s
-                    --health-timeout 5s
-                    --health-retries 5
-            redis:
-                image: redis:alpine
-                ports:
-                    - 6379:6379
-                options: >-
-                    --health-cmd "redis-cli ping"
-                    --health-interval 10s
-                    --health-timeout 5s
-                    --health-retries 5
+            SPRYKER_DYNAMIC_STORE_MODE: true
 
         steps:
             -   uses: actions/checkout@v4
@@ -334,16 +257,9 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: '8.4'
-                    extensions: mbstring, intl, pdo_mysql, redis, grpc, protobuf
+                    extensions: mbstring, intl, pdo_mysql, redis, grpc, protobuf, opentelemetry
                     tools: composer:v2
                     coverage: none
-
-            -   name: Configure sysctl limits
-                run: |
-                    sudo sysctl -w vm.swappiness=10
-                    sudo sysctl -w fs.file-max=262144
-                    sudo sysctl -w vm.max_map_count=262144
-                    ulimit -n 65536
 
             -   uses: ramsey/composer-install@v3
                 env:
@@ -351,9 +267,15 @@ jobs:
                 with:
                     composer-options: "--optimize-autoloader --no-interaction --prefer-install=auto"
 
-            -   name: Setup Spryker
+            -   name: Setup PHPStan prerequisites
                 run: |
-                    vendor/bin/install -r ci.code-generate
+                    echo "Setup PHPStan prerequisites"
+                    vendor/bin/console transfer:generate
+                    vendor/bin/console search:setup:source-map
+                    vendor/bin/console propel:schema:copy
+                    vendor/bin/console propel:model:build
+                    vendor/bin/console transfer:entity:generate
+                    vendor/bin/console dev:ide-auto-completion:generate
                     composer dump-autoload -o -a --apcu
 
             -   name: Run PHPStan (spryker/spryker [1/5])
@@ -381,34 +303,6 @@ jobs:
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
-    snyk-validation:
-        name: "Snyk Validation"
-        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
-        runs-on: ubuntu-latest
-
-        steps:
-            -   uses: actions/checkout@v4
-
-            -   name: Setup Node.js
-                uses: actions/setup-node@v3
-                with:
-                    node-version: '18'
-                    cache: 'npm'
-
-            -   name: Install Snyk
-                run: npm install --global snyk
-
-            -   name: Run Snyk monitor
-                continue-on-error: true  # Continue even if monitor fails
-                run: snyk monitor --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --exclude=project.json,docker
-
-            -   name: Run Snyk test
-                run: snyk test --fail-on=all --all-projects --org=c408eea4-f0a4-4d7a-846d-5457aefa0cac --severity-threshold=high --exclude=project.json,docker
-
-            -   name: Slack Notification for failed job
-                uses: ./.github/actions/job-slack-notifications
-                if: always()
-
     js-validation:
         name: "NPM validation"
         if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
@@ -418,12 +312,9 @@ jobs:
             matrix:
                 node-version: [ '18' ]
 
-        env:
-            APPLICATION_ENV: ci.mysql
-            PROJECT: suite-nonsplit
-
         steps:
             -   uses: actions/checkout@v4
+
             -   name: Cache Node.js modules
                 uses: actions/cache@v4
                 with:
@@ -431,33 +322,35 @@ jobs:
                     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
                     restore-keys: |
                         ${{ runner.os }}-node-
+
             -   name: Install NPM packages
-                run: npm ci
-
-            -   name: Style lint
-                run: npm run yves:stylelint
-
-            -   name: ES lint
-                run: npm run yves:lint
+                run: npm ci # 19s
 
             -   name: Front-end Formatter
-                run: npm run formatter
+                run: npm run formatter # 7s
 
-            -   name: Front-end MP Lint
-                run: npm run mp:lint
+            -   name: Style lint
+                run: npm run yves:stylelint # 1s
+
+            -   name: ES lint
+                run: npm run yves:lint # 14s
 
             -   name: Front-end MP Style lint
-                run: npm run mp:stylelint
+                run: npm run mp:stylelint # 0.5s
+
+            -   name: Front-end MP Lint
+                run: npm run mp:lint # 6s
 
             -   name: Front-end MP Unit Tests
-                run: npm run mp:test
+                run: npm run mp:test # 1.5s
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
                 if: always()
 
     php-84-mariadb-acceptance-alpine:
-        name: "[run-ui-ci] PHP 8.4 / MariaDB / Acceptance & API / Alpine"
+        name: "[run-ui-ci] Codeception / Acceptance & API"
+        needs: [standard-validation, js-validation]
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
@@ -491,6 +384,7 @@ jobs:
                     docker/sdk testing console queue:worker:start --stop-when-empty
 
             -   name: Run Acceptance Tests
+                id: acceptance-tests
                 if: >
                     github.ref == 'refs/heads/master'
                 run: |
@@ -505,6 +399,7 @@ jobs:
                     docker/sdk testing codecept run -c codeception.api.yml
 
             -   name: Run Presentation Tests for changed modules
+                id: presentation-tests
                 if: >
                     (contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
                     ||
@@ -516,7 +411,7 @@ jobs:
                     docker/sdk testing bash tests/spryker-ci.sh Codeception all null null --group=Presentation
 
             -   name: Save PHP logs
-                if: failure()
+                if: steps.presentation-tests.outcome == 'failure' || steps.acceptance-tests.outcome == 'failure'
                 run: |
                     mkdir -p logs
                     docker logs spryker_ci_backoffice_eu_1 > logs/backoffice_app.log 2>&1
@@ -525,7 +420,7 @@ jobs:
                     docker logs spryker_ci_merchant_portal_eu_1 > logs/merchant_portal_app.log 2>&1
 
             -   name: Upload Failed Screenshots and HTML
-                if: always()
+                if: steps.presentation-tests.outcome == 'failure' || steps.acceptance-tests.outcome == 'failure'
                 uses: actions/upload-artifact@v4
                 with:
                     name: codeception-failed-artifacts
@@ -540,12 +435,13 @@ jobs:
                 if: always()
 
     php-84-mariadb-functional-alpine:
+        name: "[run-functional-ci] Codeception / Functional Tests"
+        needs: [standard-validation]
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-functional-ci] PHP 8.4 / MariaDB / Functional / Alpine"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
@@ -589,7 +485,7 @@ jobs:
                 run: |
                     docker/sdk testing codecept run --no-ansi -c codeception.functional.feature.yml
 
-            -   name: Run Functional Tests for changed modules
+            -   name: Run Functional Tests for project and changed modules
                 if: >
                       (contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
                       ||
@@ -605,12 +501,11 @@ jobs:
                 if: always()
 
     php-84-frontend-and-assets-alpine:
-        name: "[run-functional-ci] PHP 8.4 / Frontend & Assets / Alpine"
+        name: "Frontend & Assets in production mode"
+        needs: [standard-validation, js-validation]
         runs-on: ubuntu-latest
         if: >
-            contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
+            github.ref == 'refs/heads/master'
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.4
@@ -642,11 +537,12 @@ jobs:
                 if: always()
 
     docker-alpine-php-84-mariadb-robot-api:
+        name: "[run-api-ci] Robot / API"
+        needs: [standard-validation]
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-api-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-api-ci] PHP 8.4 / MariaDB / Robot / API"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
@@ -657,6 +553,7 @@ jobs:
             SPRYKER_DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
+
             -   name: Cache pip
                 uses: actions/cache@v4
                 with:
@@ -664,6 +561,7 @@ jobs:
                     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
                     restore-keys: |
                         ${{ runner.os }}-pip-
+
             -   name: Configure sysctl limits
                 run: |
                     sudo sysctl -w vm.swappiness=10
@@ -677,10 +575,12 @@ jobs:
                     sudo apt-get install -y python3-pip
                     pip3 install --upgrade pip
                     pip3 install awscli
+
             -   name: Install robotframework-suite-tests folder
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
+
             -   name: Install Project
                 continue-on-error: false
                 run: |
@@ -707,95 +607,103 @@ jobs:
                 if: always()
 
     docker-alpine-php-84-mariadb-robot-ui:
-            if: >
-                contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
-                || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-                || github.ref == 'refs/heads/master'
-            name: "[run-ui-ci] PHP 8.4 / MariaDB / Robot / UI"
-            runs-on: ubuntu-latest
-            env:
-                PROGRESS_TYPE: plain
-                SPRYKER_PLATFORM_IMAGE: spryker/php:8.4
-                TRAVIS: 1
-                SPRYKER_CURRENT_REGION: EU
-                SPRYKER_DYNAMIC_STORE_MODE: true
-            steps:
-                -   uses: actions/checkout@v4
-                -   name: Cache pip
-                    uses: actions/cache@v4
-                    with:
-                        path: ~/.cache/pip
-                        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-                        restore-keys: |
-                            ${{ runner.os }}-pip-
-                -   name: Configure sysctl limits
-                    run: |
-                        sudo sysctl -w vm.swappiness=10
-                        sudo sysctl -w fs.file-max=262144
-                        sudo sysctl -w vm.max_map_count=262144
-                        ulimit -n 65536
-                -   name: Install packages
-                    run: |
-                        sudo apt-get update
-                        sudo apt-get install -y python3-pip
-                        pip3 install --upgrade pip
-                        pip3 install awscli
-                -   name: Install robotframework-suite-tests folder
-                    run: |
-                        cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
-                        cp -r vendor ../vendor
-                -   name: Install Project
-                    run: |
-                        git clone --depth 1 https://github.com/spryker/docker-sdk.git ./docker
-                        docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml
-                        docker/sdk up
-                        docker/sdk cli composer dump-autoload -o -a --apcu
-                -   name: Run Dynamic Tests Set
-                    id: run_dynamic_tests
-                    continue-on-error: true
-                    run: |
-                        docker/sdk exec robot-framework pabot --processes 4 --ordering pabot_suite_ordering -v env:ui_suite -v docker:True -v headless:true -v ignore_console:false -v dms:true -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set --include smoke -s '*'.tests.parallel_ui.suite .
-                -   name: Run Static Tests Set
-                    id: run_static_tests
-                    continue-on-error: true
-                    run: |
-                        docker/sdk exec robot-framework robot -v env:ui_suite -v docker:True -v headless:true -v ignore_console:false -v dms:true -d results/static_set --exclude skip-due-to-issueORskip-due-to-refactoring --include static-setANDsmoke -s '*'.tests.parallel_ui.suite .
-                -   name: Merge Initial Test Results
-                    id: merge_initial_results
-                    continue-on-error: true
-                    run: |
-                        docker/sdk exec robot-framework rebot -d results --output output.xml --merge results/dynamic_set/output.xml results/static_set/output.xml
-                -   name: Rerun Failed Tests
-                    id: rerun_failed_tests
-                    if: always() && steps.merge_initial_results.outcome != 'success'
-                    run: |
-                        docker/sdk exec robot-framework robot -v env:ui_suite -v docker:True -v dms:true -v headless:true -v ignore_console:false -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.parallel_ui.suite .
-                -   name: Merge Final Test Results
-                    if: always() && steps.merge_initial_results.outcome != 'success'
-                    run: |
-                        docker/sdk exec robot-framework rebot -d results --merge results/output.xml results/rerun/rerun.xml
-                -   name: Upload artifacts
-                    if: failure()
-                    run: |
-                        aws configure set default.s3.max_concurrent_requests 80
-                        aws configure set default.s3.max_queue_size 6000
-                        aws configure set default.s3.multipart_threshold 36MB
-                        aws configure set default.s3.multipart_chunksize 16MB
-                        AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.4MariaDB/log.html
-                        echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.4MariaDB/log.html"
-                        echo "You must have VPN access to AWS (Spryker-Internal account)"
+        name: "[run-ui-ci] Robot / UI"
+        needs: [standard-validation, js-validation]
+        if: >
+            contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
+            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
+            || github.ref == 'refs/heads/master'
+        runs-on: ubuntu-latest
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:8.4
+            TRAVIS: 1
+            SPRYKER_CURRENT_REGION: EU
+            SPRYKER_DYNAMIC_STORE_MODE: true
+        steps:
+            -   uses: actions/checkout@v4
 
-                -   name: Slack Notification for failed job
-                    uses: ./.github/actions/job-slack-notifications
-                    if: always()
+            -   name: Cache pip
+                uses: actions/cache@v4
+                with:
+                    path: ~/.cache/pip
+                    key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+                    restore-keys: |
+                        ${{ runner.os }}-pip-
+
+            -   name: Configure sysctl limits
+                run: |
+                    sudo sysctl -w vm.swappiness=10
+                    sudo sysctl -w fs.file-max=262144
+                    sudo sysctl -w vm.max_map_count=262144
+                    ulimit -n 65536
+
+            -   name: Install packages
+                run: |
+                    sudo apt-get update
+                    sudo apt-get install -y python3-pip
+                    pip3 install --upgrade pip
+                    pip3 install awscli
+
+            -   name: Install robotframework-suite-tests folder
+                run: |
+                    cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
+                    cp -r vendor ../vendor
+
+            -   name: Install Project
+                run: |
+                    git clone --depth 1 https://github.com/spryker/docker-sdk.git ./docker
+                    docker/sdk boot deploy.ci.acceptance.mariadb.robot.yml
+                    docker/sdk up
+                    docker/sdk cli composer dump-autoload -o -a --apcu
+
+            -   name: Run Dynamic Tests Set
+                id: run_dynamic_tests
+                continue-on-error: true
+                run: |
+                    docker/sdk exec robot-framework pabot --processes 4 --ordering pabot_suite_ordering -v env:ui_suite -v docker:True -v headless:true -v ignore_console:false -v dms:true -d results/dynamic_set --exclude skip-due-to-issueORskip-due-to-refactoringORstatic-set --include smoke -s '*'.tests.parallel_ui.suite .
+            -   name: Run Static Tests Set
+                id: run_static_tests
+                continue-on-error: true
+                run: |
+                    docker/sdk exec robot-framework robot -v env:ui_suite -v docker:True -v headless:true -v ignore_console:false -v dms:true -d results/static_set --exclude skip-due-to-issueORskip-due-to-refactoring --include static-setANDsmoke -s '*'.tests.parallel_ui.suite .
+            -   name: Merge Initial Test Results
+                id: merge_initial_results
+                continue-on-error: true
+                run: |
+                    docker/sdk exec robot-framework rebot -d results --output output.xml --merge results/dynamic_set/output.xml results/static_set/output.xml
+            -   name: Rerun Failed Tests
+                id: rerun_failed_tests
+                if: always() && steps.merge_initial_results.outcome != 'success'
+                run: |
+                    docker/sdk exec robot-framework robot -v env:ui_suite -v docker:True -v dms:true -v headless:true -v ignore_console:false -d results/rerun --runemptysuite --rerunfailed results/output.xml --output rerun.xml -s '*'.tests.parallel_ui.suite .
+            -   name: Merge Final Test Results
+                if: always() && steps.merge_initial_results.outcome != 'success'
+                run: |
+                    docker/sdk exec robot-framework rebot -d results --merge results/output.xml results/rerun/rerun.xml
+            -   name: Upload artifacts
+                if: failure()
+                run: |
+                    aws configure set default.s3.max_concurrent_requests 80
+                    aws configure set default.s3.max_queue_size 6000
+                    aws configure set default.s3.multipart_threshold 36MB
+                    aws configure set default.s3.multipart_chunksize 16MB
+                    AWS_DEFAULT_REGION=${{env.ROBOT_TESTS_ARTIFACTS_BUCKET_REGION}} AWS_ACCESS_KEY_ID=${{ secrets.ROBOT_TESTS_ARTIFACTS_KEY }} AWS_SECRET_ACCESS_KEY=${{ secrets.ROBOT_TESTS_ARTIFACTS_SECRET }} aws s3 cp .robot/results/log.html s3://${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}/suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.4MariaDB/log.html
+                    echo "Check the logs - https://s3.console.aws.amazon.com/s3/object/${{vars.ROBOT_TESTS_ARTIFACTS_BUCKET}}?region=eu-central-1&prefix=suite-nonsplit/dms-on/robot-ui/${GITHUB_RUN_ID}/PHP8.4MariaDB/log.html"
+                    echo "You must have VPN access to AWS (Spryker-Internal account)"
+
+            -   name: Slack Notification for failed job
+                uses: ./.github/actions/job-slack-notifications
+                if: always()
 
     docker-alpine-php-84-mariadb-cypress:
+        name: "[run-ui-ci] Cypress / UI"
+        needs: [standard-validation, js-validation]
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-ui-ci] PHP 8.4 / MariaDB / Cypress / UI"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
@@ -806,12 +714,14 @@ jobs:
             DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
+
             -   name: Configure sysctl limits
                 run: |
                     sudo sysctl -w vm.swappiness=10
                     sudo sysctl -w fs.file-max=262144
                     sudo sysctl -w vm.max_map_count=262144
                     ulimit -n 65536
+
             -   name: Install packages
                 run: |
                     sudo apt-get update
