@@ -151,6 +151,7 @@ use Spryker\Zed\Propel\PropelConfig;
 use SprykerFeature\Shared\SelfServicePortal\SelfServicePortalConstants;
 use SprykerShop\Shared\AgentPage\AgentPageConstants;
 use SprykerShop\Shared\CustomerPage\CustomerPageConstants;
+use SprykerShop\Shared\SecurityBlockerPage\SecurityBlockerPageConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
 use SprykerShop\Shared\StorageRouter\StorageRouterConstants;
 use SprykerShop\Shared\StoreWidget\StoreWidgetConstants;
@@ -199,6 +200,7 @@ $config[RouterConstants::IS_STORE_ROUTING_ENABLED]
     = $config[ShopUiConstants::IS_STORE_ROUTING_ENABLED]
     = $config[CustomerPageConstants::IS_STORE_ROUTING_ENABLED]
     = $config[AgentPageConstants::IS_STORE_ROUTING_ENABLED]
+    = $config[SecurityBlockerPageConstants::IS_STORE_ROUTING_ENABLED]
     = $config[LocaleConstants::IS_STORE_ROUTING_ENABLED] = (bool)getenv('SPRYKER_DYNAMIC_STORE_MODE');
 
 // >>> DEV TOOLS
