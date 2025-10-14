@@ -53,9 +53,6 @@ sections:
             command: 'vendor/bin/console oauth:scope-collection-file:generate'
 
     build-development:
-        generate-transfers:
-            command: 'vendor/bin/console transfer:generate'
-
         generate-transfer-databuilders:
             command: 'vendor/bin/console transfer:databuilder:generate'
 

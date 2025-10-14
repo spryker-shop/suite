@@ -33,7 +33,7 @@ jobs:
                 ]
 
         env:
-            APPLICATION_ENV: ci.mysql
+            APPLICATION_ENV: ci.pgsql
             APPLICATION_STORE: DE
             SPRYKER_CURRENT_REGION: EU
             PROJECT: suite
@@ -170,7 +170,6 @@ jobs:
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
         name: "NPM validation"
-        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -183,6 +182,7 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v4
+
             -   name: Cache Node.js modules
                 uses: actions/cache@v4
                 with:
@@ -190,26 +190,27 @@ jobs:
                     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
                     restore-keys: |
                         ${{ runner.os }}-node-
+
             -   name: Install NPM packages
-                run: npm ci
-
-            -   name: Style lint
-                run: npm run yves:stylelint
-
-            -   name: ES lint
-                run: npm run yves:lint
+                run: npm ci # 19s
 
             -   name: Front-end Formatter
-                run: npm run formatter
+                run: npm run formatter # 7s
 
-            -   name: Front-end MP Lint
-                run: npm run mp:lint
+            -   name: Style lint
+                run: npm run yves:stylelint # 1s
+
+            -   name: ES lint
+                run: npm run yves:lint # 14s
 
             -   name: Front-end MP Style lint
-                run: npm run mp:stylelint
+                run: npm run mp:stylelint # 0.5s
+
+            -   name: Front-end MP Lint
+                run: npm run mp:lint # 6s
 
             -   name: Front-end MP Unit Tests
-                run: npm run mp:test
+                run: npm run mp:test # 1.5s
 
             -   name: Slack Notification for failed job
                 uses: ./.github/actions/job-slack-notifications
@@ -306,7 +307,7 @@ jobs:
                         vendor/spryker/spryker/Bundles/**/tests/_output/*
 
             -   name: Save PHP logs
-                if: failure()
+                if: steps.presentation-tests.outcome == 'failure' || steps.acceptance-tests.outcome == 'failure'
                 run: |
                     mkdir -p logs
                     docker logs spryker_ci_backoffice_eu_1 > logs/backoffice_app.log 2>&1
@@ -315,7 +316,7 @@ jobs:
                     docker logs spryker_ci_merchant_portal_eu_1 > logs/merchant_portal_app.log 2>&1
 
             -   name: Upload Failed Screenshots and HTML
-                if: always()
+                if: steps.presentation-tests.outcome == 'failure' || steps.acceptance-tests.outcome == 'failure'
                 uses: actions/upload-artifact@v4
                 with:
                     name: codeception-failed-artifacts
@@ -330,11 +331,12 @@ jobs:
                 if: always()
 
     php-84-mariadb-functional-alpine:
+        name: "[run-functional-ci] Codeception / Functional Tests"
+        needs: [standard-validation]
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-functional-ci] PHP 8.4 / MariaDB / Functional / Alpine"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
@@ -361,7 +363,7 @@ jobs:
                     docker/sdk cli composer dump-autoload -o -a --apcu
                     docker/sdk testing codecept run -c codeception.functional.yml
 
-            -   name: Run Functional Tests for changed modules
+            -   name: Run Functional Tests for project and changed modules
                 if: >
                       (contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
                       ||
@@ -380,9 +382,7 @@ jobs:
         name: "[run-functional-ci] PHP 8.2 / Frontend & Assets / Alpine"
         runs-on: ubuntu-latest
         if: >
-            contains(github.event.pull_request.labels.*.name, 'run-functional-ci')
-            || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
-            || github.ref == 'refs/heads/master'
+            github.ref == 'refs/heads/master'
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.2
@@ -418,7 +418,6 @@ jobs:
             contains(github.event.pull_request.labels.*.name, 'run-api-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-api-ci] PHP 8.4 / MariaDB / Robot / API"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
@@ -429,6 +428,7 @@ jobs:
             SPRYKER_DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
+
             -   name: Cache pip
                 uses: actions/cache@v4
                 with:
@@ -436,6 +436,7 @@ jobs:
                     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
                     restore-keys: |
                         ${{ runner.os }}-pip-
+
             -   name: Configure sysctl limits
                 run: |
                     sudo sysctl -w vm.swappiness=10
@@ -449,10 +450,12 @@ jobs:
                     sudo apt-get install -y python3-pip
                     pip3 install --upgrade pip
                     pip3 install awscli
+
             -   name: Install robotframework-suite-tests folder
                 run: |
                     cd ./data && composer require "spryker/robotframework-suite-tests:dev-master" --dev --no-interaction
                     cp -r vendor ../vendor
+
             -   name: Install Project
                 continue-on-error: false
                 run: |
@@ -477,12 +480,13 @@ jobs:
                 if: always()
 
     docker-alpine-php-84-mariadb-cypress:
+        name: "[run-ui-ci] Cypress / UI"
+        needs: [standard-validation, js-validation]
         if: >
             contains(github.event.pull_request.labels.*.name, 'run-ui-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-latest-ci')
             || contains(github.event.pull_request.labels.*.name, 'run-ssp-latest-ci')
             || github.ref == 'refs/heads/master'
-        name: "[run-ui-ci] PHP 8.4 / MariaDB / Cypress / UI"
         runs-on: ubuntu-latest
         env:
             PROGRESS_TYPE: plain
@@ -493,12 +497,14 @@ jobs:
             DYNAMIC_STORE_MODE: true
         steps:
             -   uses: actions/checkout@v4
+
             -   name: Configure sysctl limits
                 run: |
                     sudo sysctl -w vm.swappiness=10
                     sudo sysctl -w fs.file-max=262144
                     sudo sysctl -w vm.max_map_count=262144
                     ulimit -n 65536
+
             -   name: Install packages
                 run: |
                     sudo apt-get update
