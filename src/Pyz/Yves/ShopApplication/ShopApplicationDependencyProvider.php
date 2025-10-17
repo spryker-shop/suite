@@ -109,6 +109,7 @@ use SprykerShop\Yves\MerchantSalesReturnWidget\Plugin\MerchantSalesReturnCreateF
 use SprykerShop\Yves\MerchantSalesReturnWidget\Widget\MerchantSalesReturnCreateFormWidget;
 use SprykerShop\Yves\MerchantSearchWidget\Widget\MerchantSearchWidget;
 use SprykerShop\Yves\MerchantSwitcherWidget\Widget\MerchantSwitcherSelectorFormWidget;
+use SprykerShop\Yves\MerchantWidget\Plugin\ShopApplication\SoldByMerchantWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerShop\Yves\MerchantWidget\Widget\MerchantMetaSchemaWidget;
 use SprykerShop\Yves\MerchantWidget\Widget\ShoppingListMerchantWidget;
 use SprykerShop\Yves\MerchantWidget\Widget\SoldByMerchantWidget;
@@ -450,6 +451,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new ShipmentTypeAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new ClickAndCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugin(),
             new AddressFormItemsByShipmentTypeWidgetCacheKeyGeneratorStrategyPlugin(),
+            new SoldByMerchantWidgetCacheKeyGeneratorStrategyPlugin(),
         ];
     }
 
