@@ -62841,20 +62841,21 @@
         },
         {
             "name": "spryker/redis",
-            "version": "2.9.1",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/redis.git",
-                "reference": "7f0793bd54b80df07b0d0c9909320983e517e7db"
+                "reference": "3086afe4a5ed0f4cf72452243806dc43671ad3aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/redis/zipball/7f0793bd54b80df07b0d0c9909320983e517e7db",
-                "reference": "7f0793bd54b80df07b0d0c9909320983e517e7db",
+                "url": "https://api.github.com/repos/spryker/redis/zipball/3086afe4a5ed0f4cf72452243806dc43671ad3aa",
+                "reference": "3086afe4a5ed0f4cf72452243806dc43671ad3aa",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
+                "ext-redis": "*",
+                "php": ">=8.3",
                 "predis/predis": "^1.1.1 || ^2.3.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/symfony": "^3.0.0",
@@ -62887,9 +62888,9 @@
             ],
             "description": "Redis module",
             "support": {
-                "source": "https://github.com/spryker/redis/tree/2.9.1"
+                "source": "https://github.com/spryker/redis/tree/2.10.0"
             },
-            "time": "2025-04-30T07:03:59+00:00"
+            "time": "2025-10-17T11:56:31+00:00"
         },
         {
             "name": "spryker/refund",
